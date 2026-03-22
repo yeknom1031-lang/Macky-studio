@@ -2152,14 +2152,15 @@
             stopAllSounds();
             isNewRecord = false;
 
-            // 初期位置とゴール距離の設定
+            // 内部的には 1m = 3.6ユニット として扱う (100m/秒 の表示速度を実現するため)
+            const METER_SCALE = 3.6;
             if (isCustomLevel && editorLevel) {
-                goalDistance = editorLevel.totalDist || 4000;
-                distance = editorLevel.startDist || 0;
+                goalDistance = (editorLevel.totalDist || 4000) * METER_SCALE;
+                distance = (editorLevel.startDist || 0) * METER_SCALE;
                 player.x = (editorLevel.startX !== undefined) ? editorLevel.startX : (canvas.width / 2 - player.width / 2);
-                editorLevel.objects.forEach(o => o.spawned = (o.d < distance));
+                editorLevel.objects.forEach(o => o.spawned = (o.d * METER_SCALE < distance));
             } else {
-                goalDistance = 12000;
+                goalDistance = 4000 * METER_SCALE; // 14400 units
                 player.x = canvas.width / 2 - player.width / 2;
                 distance = 0;
             }
@@ -2708,11 +2709,11 @@
 
             if (isEndlessMode) {
                 endlessTime += 0.016; 
-                score = Math.floor(endlessTime);
+                score = Math.floor(endlessTime * 100); // 秒間100mペース
                 obsSpawnRate += 0.00001 * timeFactor; 
                 if (obsSpawnRate > 0.1) obsSpawnRate = 0.1; 
             } else {
-                score = Math.floor(distance / 10);
+                score = Math.floor(distance / 3.6);
             }
 
             screenShake *= 0.85;
@@ -4128,7 +4129,7 @@
                     ctx.shadowColor = 'black';
                     ctx.shadowBlur = 4;
                 }
-                let displayDistance = Math.max(0, Math.floor(goalDistance - distance));
+                let displayDistance = Math.max(0, Math.floor((goalDistance - distance) / 3.6));
                 if (goal) displayDistance = 0;
                 
                 if (isEndlessMode) {
@@ -4312,7 +4313,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.5.1-long-stage', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.5.2-meter-scale', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
