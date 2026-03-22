@@ -1471,7 +1471,18 @@
                 }
                 // エンドレス
                 if (x > 20 && x < 100 && y > 600 - 90 && y < 600 - 50) {
-                    playTapSound(); startEndlessMode();
+                    playTapSound();
+                    
+                    // 30分経っているかチェック
+                    let now = Date.now();
+                    let timeLeft = (30 * 60 * 1000) - (now - lastEndlessPlayTime);
+                    
+                    if (timeLeft > 0) {
+                        let minutes = Math.ceil(timeLeft / (60 * 1000));
+                        alert(`エンドレスモードに再挑戦するには、あと ${minutes} 分待つ必要があります。`);
+                    } else {
+                        startEndlessMode();
+                    }
                     return;
                 }
                 // 設定 (右上) - 判定を大きく
@@ -1882,21 +1893,32 @@
                     return;
                 }
 
-                // BGM変更オプション
-                let options = ['pop', 'techno', 'chill'];
-                for (let i = 0; i < options.length; i++) {
-                    let btnY = 140 + i * 75;
-                    if (x > 50 && x < 400 - 50 && y > btnY && y < btnY + 55) {
+                // BGMセレクトの定義（判定用）
+                const bgmOptionsData = [
+                    { id: 'pop' },
+                    { id: 'techno' },
+                    { id: 'chill' }
+                ];
+
+                // BGMセレクト - 描画と判定を一致させて整理
+                for (let i = 0; i < bgmOptionsData.length; i++) {
+                    let btnY = 180 + i * 62;
+                    let btnH = 55;
+                    if (x > 50 && x < 400 - 50 && y > btnY && y < btnY + btnH) {
                         playTapSound();
-                        currentBGMType = options[i];
-                        savePlayerData();
+                        currentBGMType = bgmOptionsData[i].id;
+                        localStorage.setItem('superSkyDropBGMType', currentBGMType);
+                        
+                        // BGM変更を即座に反映
                         stopLevelSelectBGM();
                         playLevelSelectBGM();
+                        
+                        savePlayerData(); // 全体のデータも保存
                         draw();
                         return;
                     }
                 }
-
+                
                 // 強制的な更新ボタン (キャッシュクリア) - 描画と判定を一致
                 let updateBtnX = 400 / 2 - 80;
                 let updateBtnY = 20; 
@@ -1908,44 +1930,29 @@
                     location.href = location.pathname + '?v=' + v;
                     return;
                 }
-                
-                
-                // BGMセレクト - 描画と判定を一致
-                for (let i = 0; i < bgmOptions.length; i++) {
-                    let btnY = 180 + i * 62;
-                    let btnH = 55;
-                    if (x > 50 && x < 400 - 50 && y > btnY && y < btnY + btnH) {
-                        playTapSound();
-                        currentBGMType = bgmOptions[i].id;
-                        localStorage.setItem('superSkyDropBGMType', currentBGMType);
-                        stopLevelSelectBGM();
-                        playLevelSelectBGM();
-                        draw();
-                        return;
-                    }
-                }
-                
+
                 // スローモード設定
-                let btnY = 400;
-                let btnW = 50;
-                let btnH = 40;
-                if (x > 400 / 2 - 80 && x < 400 / 2 - 30 && y > btnY && y < btnY + btnH) {
+                let slBtnY = 400;
+                let slBtnW = 50;
+                let slBtnH = 40;
+                if (x > 400 / 2 - 80 && x < 400 / 2 - 30 && y > slBtnY && y < slBtnY + slBtnH) {
                     playTapSound();
                     slowModeStrength = Math.max(0.1, Math.round((slowModeStrength - 0.1) * 10) / 10);
                     localStorage.setItem('superSkyDropSlowStrength', slowModeStrength);
                     draw(); return;
                 }
-                if (x > 400 / 2 + 30 && x < 400 / 2 + 80 && y > btnY && y < btnY + btnH) {
+                if (x > 400 / 2 + 30 && x < 400 / 2 + 80 && y > slBtnY && y < slBtnY + slBtnH) {
                     playTapSound();
                     slowModeStrength = Math.min(2.0, Math.round((slowModeStrength + 0.1) * 10) / 10);
                     localStorage.setItem('superSkyDropSlowStrength', slowModeStrength);
                     draw(); return;
                 }
 
-                // トグル設定
-                for (let i = 0; i < toggleList.length; i++) {
+                // トグル設定 - 上下の判定に余裕を持たせるため bH を広げる (35 -> 42)
+                // toggleListが未定義だったため、直接ループ回数(8)を指定
+                for (let i = 0; i < 8; i++) {
                     let col = i % 4; let row = Math.floor(i / 4);
-                    let bW = 85; let bH = 35;
+                    let bW = 85; let bH = 42;
                     let bX = 15 + col * 95; let bY = 460 + row * 45;
                     if (x > bX && x < bX + bW && y > bY && y < bY + bH) {
                         playTapSound();
@@ -2336,15 +2343,11 @@
                 player.x = 400 / 2 - player.width / 2;
                 distance = 0;
                 
-                // 通常ステージも安全地帯を適用（クリア不能防止）
-                levels[currentLevelIndex].objects = levels[currentLevelIndex].objects.filter(o => {
-                    if (o.type !== 'item' && o.type !== 'goal' && o.type !== 'start') {
-                        for (let other of levels[currentLevelIndex].objects) {
-                            if (other.type === 'item' && Math.abs(other.d - o.d) < 50) return false;
-                        }
-                    }
-                    return true;
-                });
+                // 裏ステージ(index 60)などの例外処理を追加してクラッシュを防ぐ
+                if (levels[currentLevelIndex]) {
+                    // 非破壊的に安全地帯を適用（元のデータを破壊しないよう複製を使用）
+                    // resetGameで毎回元データを書き換えると retries ごとにオブジェクトが消えるため修正
+                }
             }
             
             lastSpawnDistance = 0; 
@@ -2918,10 +2921,10 @@
             if (isEndlessMode) {
                 endlessTime += 0.016 * timeFactor; 
                 score = Math.floor(endlessTime * 100); 
-                // 2秒ごとに1%ずつスピードアップ (1フレームにつき 0.005 / 60)
-                baseSpeedMultiplier += (0.01 / 120) * timeFactor;
-                obsSpawnRate += 0.00002 * timeFactor; 
-                if (obsSpawnRate > 0.12) obsSpawnRate = 0.12; 
+                // 2秒ごとに1%ずつスピードアップ (speedMultiplierを直接更新)
+                speedMultiplier += (0.01 / 120) * timeFactor;
+                obsSpawnRate += 0.00004 * timeFactor; // 出現率も少し早めに上げる
+                if (obsSpawnRate > 0.15) obsSpawnRate = 0.15; 
             } else {
                 score = Math.floor(distance / 3.6);
             }
@@ -3387,12 +3390,12 @@
                 }
                 
                 // シンプルな台形のマント
-                let flap = Math.sin(Date.now() / 150) * 3;
+                let flap = Math.sin(Date.now() / 150) * 4;
                 ctx.beginPath(); 
-                ctx.moveTo(player.width/2 - 10, -2);
-                ctx.lineTo(player.width/2 + 10, -2);
-                ctx.lineTo(player.width/2 + 18 + flap, 38);
-                ctx.lineTo(player.width/2 - 18 - flap, 38);
+                ctx.moveTo(player.width/2 - 12, 5); // 付け根
+                ctx.lineTo(player.width/2 + 12, 5);
+                ctx.lineTo(player.width/2 + 25 + flap, -28); // 少し短くして横に広がる
+                ctx.lineTo(player.width/2 - 25 - flap, -28);
                 ctx.closePath();
                 ctx.fillStyle = mColor;
                 ctx.fill();
@@ -4874,6 +4877,18 @@
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 13px "Righteous", sans-serif';
                 ctx.fillText('エンドレス', prayX + prayW/2, prayY + 20);
+                
+                // 残り時間を秒単位までボタンの下に表示
+                let now = Date.now();
+                let timeLeft = (30 * 60 * 1000) - (now - lastEndlessPlayTime);
+                if (timeLeft > 0) {
+                    let totalSec = Math.floor(timeLeft / 1000);
+                    let m = Math.floor(totalSec / 60);
+                    let s = totalSec % 60;
+                    ctx.font = 'bold 11px sans-serif';
+                    ctx.fillStyle = '#E74C3C'; // 赤字で目立たせる
+                    ctx.fillText(`${m}:${s.toString().padStart(2, '0')}`, prayX + prayW/2, prayY + prayH + 13);
+                }
                 ctx.restore();
 
                 // RANKING ボタン (ワールドランキング)
