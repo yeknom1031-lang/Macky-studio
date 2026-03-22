@@ -1894,6 +1894,20 @@
                     if (!isEndlessMode && x > canvas.width / 2 - 50 && x < canvas.width / 2 + 50 && y > canvas.height / 2 + 150 && y < canvas.height / 2 + 185) {
                         playTapSound(); resetGame(); return;
                     }
+
+                    // エンドレスモード時のランキングボタン判定
+                    if (isEndlessMode) {
+                        let btnW = 160; let btnH = 40;
+                        let btnX = canvas.width / 2 - btnW / 2;
+                        let btnY = canvas.height / 2 + 140;
+                        if (x > btnX && x < btnX + btnW && y > btnY && y < btnY + btnH) {
+                            playTapSound();
+                            gameState = 'RANKING';
+                            fetchRanking();
+                            draw();
+                            return;
+                        }
+                    }
                 }
                 
                 if (gameState === 'PLAYING') {
@@ -3769,25 +3783,31 @@
                 let startY = 150;
                 for (let i = 0; i < Math.min(worldRankingData.length, 10); i++) {
                     let r = worldRankingData[i];
-                    let y = startY + i * 40;
+                    let y = startY + i * 42;
                     
-                    // 背景
-                    ctx.fillStyle = (i < 3) ? `rgba(241, 196, 15, ${0.3 - i*0.1})` : 'rgba(255,255,255,0.05)';
-                    ctx.fillRect(20, y - 25, canvas.width - 40, 35);
+                    // 背景 (グラデーションっぽく)
+                    let rowAlpha = (i < 3) ? (0.35 - i*0.1) : 0.08;
+                    ctx.fillStyle = (i === 0) ? `rgba(241, 196, 15, ${rowAlpha})` : 
+                                   (i === 1) ? `rgba(189, 195, 199, ${rowAlpha})` :
+                                   (i === 2) ? `rgba(230, 126, 34, ${rowAlpha})` : `rgba(255,255,255,${rowAlpha})`;
+                    
+                    ctx.beginPath();
+                    ctx.roundRect(20, y - 28, canvas.width - 40, 36, 6);
+                    ctx.fill();
 
                     // 順位
                     ctx.fillStyle = (i === 0) ? '#F1C40F' : (i === 1) ? '#BDC3C7' : (i === 2) ? '#E67E22' : 'white';
-                    ctx.font = 'bold 18px "Righteous", sans-serif';
+                    ctx.font = 'bold 20px "Righteous", sans-serif';
                     ctx.fillText(`${i + 1}`, 35, y);
 
                     // 名前
                     ctx.font = '16px sans-serif';
                     ctx.fillStyle = 'white';
-                    ctx.fillText(r.name || "---", 80, y);
+                    ctx.fillText(r.name || "---", 85, y);
 
                     // スコア
                     ctx.textAlign = 'right';
-                    ctx.font = 'bold 18px "Righteous", sans-serif';
+                    ctx.font = 'bold 22px "Righteous", sans-serif';
                     ctx.fillStyle = '#F1C40F';
                     ctx.fillText(`${r.score}秒`, canvas.width - 35, y);
                     ctx.textAlign = 'left';
@@ -5114,7 +5134,17 @@
                 ctx.font = '16px sans-serif';
                 ctx.fillStyle = '#ccc';
                 if (isEndlessMode) {
-                    ctx.fillText('クリックで戻る', canvas.width/2, canvas.height/2 + 125);
+                    ctx.fillText('クリックでタイトルに戻る', canvas.width/2, canvas.height/2 + 125);
+                    
+                    // ランキングボタン
+                    let btnW = 160; let btnH = 40;
+                    let btnX = canvas.width / 2 - btnW / 2;
+                    let btnY = canvas.height / 2 + 140;
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+                    ctx.beginPath(); ctx.roundRect(btnX, btnY, btnW, btnH, 10); ctx.fill();
+                    ctx.strokeStyle = 'white'; ctx.lineWidth = 1; ctx.stroke();
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 14px sans-serif';
+                    ctx.fillText('🌍 ランキングを見る', canvas.width / 2, btnY + 25);
                 } else {
                     ctx.fillText('[← →] でリトライ  /  [↑] でスローモード', canvas.width / 2, canvas.height / 2 + 100);
                     ctx.fillText('クリックで戻る', canvas.width / 2, canvas.height / 2 + 125);
