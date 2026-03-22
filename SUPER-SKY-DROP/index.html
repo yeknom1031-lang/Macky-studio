@@ -3803,6 +3803,7 @@
             
             if (editorSelectedIndex !== -1) {
                 // セレクトパネルの背景（重なり防止）
+                let editX = 400 - 245 + 5;
                 ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(400 - 245, 600 - 145, 170, 140);
                 let self = editorLevel.objects[editorSelectedIndex];
                 let props = ['幅', '高さ', '回転'];
@@ -4617,7 +4618,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.6.5-grid-fix', 400/2, 600/2);
+                ctx.fillText('v1.6.6-editor-bugfix', 400/2, 600/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
