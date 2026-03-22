@@ -601,7 +601,12 @@
             initAudio();
             if (ingameBgmProgressionInterval) return; 
 
-            let themeIndex = Math.floor(currentLevelIndex / 2) % 10;
+            let themeIndex = 0;
+            if (isCustomLevel && editorLevel && editorLevel.bgmThemeIdx !== undefined) {
+                themeIndex = editorLevel.bgmThemeIdx % 10;
+            } else {
+                themeIndex = Math.floor(currentLevelIndex / 2) % 10;
+            }
             const progression = ingameBgmThemes[themeIndex];
             ingameBgmStep = 0;
 
@@ -1537,7 +1542,7 @@
                         }
                     }
                 } else {
-                    let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBGM', 'setBG'];
+                    let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBGM', 'setBG', 'setTheme'];
                     if (editorSelectedIndex !== -1 && x > canvas.width - 245 && x < canvas.width - 80) {
                         let self = editorLevel.objects[editorSelectedIndex];
                         let editX = canvas.width - 245;
@@ -1572,6 +1577,10 @@
                                 }
                                 else if (types[i] === 'setBG') { 
                                     editorLevel.bgIdx = ((editorLevel.bgIdx || 0) + 1) % themeBgData.length;
+                                    playTapSound();
+                                }
+                                else if (types[i] === 'setTheme') { 
+                                    editorLevel.bgmThemeIdx = ((editorLevel.bgmThemeIdx || 0) + 1) % 10;
                                     playTapSound();
                                 }
                                 else { editorSelectedType = types[i]; }
@@ -3655,8 +3664,8 @@
                 ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(`開始地点: ${sD}m`, sX + 15, startLocY + 45); ctx.globalAlpha = 1.0;
             }
             ctx.fillStyle = '#34495e'; ctx.fillRect(0, canvas.height - 150, canvas.width, 150);
-            let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBGM', 'setBG'];
-            let typeNames = ['通常', '高速', '動く', '線', '追跡', '火球', 'コイン', 'ゴール', 'スタート', '距離+100', '距離-100', '距離+10', '距離-10', 'BGM', '背景'];
+            let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBGM', 'setBG', 'setTheme'];
+            let typeNames = ['通常', '高速', '動く', '線', '追跡', '火球', 'コイン', 'ゴール', 'スタート', '距離+100', '距離-100', '距離+10', '距離-10', '音色', '背景', '曲調'];
             for(let i=0; i<types.length; i++) {
                 let col = i % 5; let row = Math.floor(i / 5);
                 let btnX = 10 + col * 55; let btnY = canvas.height - 140 + row * 45;
@@ -3690,13 +3699,17 @@
                     let bgNames = ['夕焼け', '青空', '宇宙', '紫暮', '猛毒', '朝焼け'];
                     ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
                     ctx.fillText(bgNames[editorLevel.bgIdx || 0], btnX + 25, btnY + 18);
+                } else if (types[i] === 'setTheme') {
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
+                    ctx.fillText('テーマ' + ((editorLevel.bgmThemeIdx || 0) + 1), btnX + 25, btnY + 18);
                 }
                 
                 ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
                 ctx.fillText(typeNames[i], btnX + 25, btnY + 35);
             }
             if (editorSelectedIndex !== -1) {
-                let editX = canvas.width - 245;
+                // セレクトパネルの背景（重なり防止）
+                ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(canvas.width - 245, canvas.height - 145, 170, 140);
                 let self = editorLevel.objects[editorSelectedIndex];
                 let props = ['幅', '高さ', '回転'];
                 let dist = self.d;
