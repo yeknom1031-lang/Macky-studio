@@ -1784,10 +1784,10 @@
                     }
                 }
 
-                // スローモード設定（0.1x - 2.0x の可変式）
+                // スローモード設定
                 let decBtnX = canvas.width / 2 - 80;
                 let incBtnX = canvas.width / 2 + 30;
-                let btnY = 405;
+                let btnY = 375;
                 let btnW = 50;
                 let btnH = 40;
 
@@ -1824,7 +1824,7 @@
                     let btnW = 85;
                     let btnH = 35;
                     let btnX = 15 + col * 95;
-                    let btnY = 500 + row * 45;
+                    let btnY = 435 + row * 45;
 
                     if (x > btnX && x < btnX + btnW && y > btnY && y < btnY + btnH) {
                         playTapSound();
@@ -1848,9 +1848,9 @@
                     }
                 }
 
-                // 強制的な更新ボタン (キャッシュクリア)
+                // 強制的な更新ボタン (キャッシュクリア) - 最上部に移動
                 let updateBtnX = canvas.width / 2 - 80;
-                let updateBtnY = 585; // 下の方に配置
+                let updateBtnY = 85; 
                 let updateBtnW = 160;
                 let updateBtnH = 35;
                 if (x > updateBtnX && x < updateBtnX + updateBtnW && y > updateBtnY && y < updateBtnY + updateBtnH) {
@@ -4254,7 +4254,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.4.17-endless-retry-fix', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.4.18-settings-ui', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
@@ -4996,10 +4996,26 @@
                 ctx.font = '16px sans-serif';
                 ctx.fillText('戻る', 50, 33);
 
+                // 強制的な更新ボタン (キャッシュクリア)
+                let updateBtnX = canvas.width / 2 - 80;
+                let updateBtnY = 85; 
+                let updateBtnW = 160;
+                let updateBtnH = 35;
+                ctx.fillStyle = 'rgba(231, 76, 60, 0.4)';
+                ctx.strokeStyle = '#E74C3C';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.roundRect(updateBtnX, updateBtnY, updateBtnW, updateBtnH, 5);
+                ctx.fill();
+                ctx.stroke();
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 14px sans-serif';
+                ctx.fillText('🔄 最新の状態に更新', canvas.width/2, updateBtnY + 22);
+
                 // BGMセレクト
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 20px sans-serif';
-                ctx.fillText('BGMの雰囲気', canvas.width/2, 120);
+                ctx.fillText('BGMの雰囲気', canvas.width/2, 135);
 
                 let bgmOptions = [
                     { id: 'pop', name: 'ポップ', desc: 'いつもの楽しい曲' },
@@ -5010,7 +5026,7 @@
                 for (let i = 0; i < bgmOptions.length; i++) {
                     let opt = bgmOptions[i];
                     let btnX = 50;
-                    let btnY = 140 + i * 75;
+                    let btnY = 155 + i * 62;
                     let btnW = canvas.width - 100;
                     let btnH = 55;
 
@@ -5032,38 +5048,36 @@
 
                 // スローモードの強さ設定
                 ctx.fillStyle = 'white';
-                ctx.font = 'bold 20px sans-serif';
-                ctx.textAlign = 'center';
                 ctx.font = 'bold 18px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('スローモード倍率 (0.1x - 2.0x)', canvas.width/2, 388);
+                ctx.fillText('スローモード倍率 (0.1x - 2.0x)', canvas.width/2, 355);
 
-                let btnY = 405;
-                let btnW = 50;
-                let btnH = 40;
+                let sBtnY = 375;
+                let sBtnW = 50;
+                let sBtnH = 40;
                 let decBtnX = canvas.width / 2 - 80;
                 let incBtnX = canvas.width / 2 + 30;
 
                 // マイナスボタン
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-                ctx.beginPath(); ctx.roundRect(decBtnX, btnY, btnW, btnH, 5); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(decBtnX, sBtnY, sBtnW, sBtnH, 5); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = 'bold 24px sans-serif';
-                ctx.fillText('-', decBtnX + btnW/2, btnY + 28);
+                ctx.fillText('-', decBtnX + sBtnW/2, sBtnY + 28);
 
                 // 現在の値
                 ctx.fillStyle = '#F1C40F';
                 ctx.font = 'bold 22px "Righteous", sans-serif';
-                ctx.fillText(slowModeStrength.toFixed(1) + 'x', canvas.width/2, btnY + 28);
+                ctx.fillText(slowModeStrength.toFixed(1) + 'x', canvas.width/2, sBtnY + 28);
 
                 // プラスボタン
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-                ctx.beginPath(); ctx.roundRect(incBtnX, btnY, btnW, btnH, 5); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(incBtnX, sBtnY, sBtnW, sBtnH, 5); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = 'bold 24px sans-serif';
-                ctx.fillText('+', incBtnX + btnW/2, btnY + 28);
+                ctx.fillText('+', incBtnX + sBtnW/2, sBtnY + 28);
 
                 ctx.fillStyle = '#ccc';
                 ctx.font = '12px sans-serif';
-                ctx.fillText('※プレイ中に ↑キー で切り替わります', canvas.width/2, 465);
+                ctx.fillText('※プレイ中に ↑キー で切り替わります', canvas.width/2, 422);
 
                 // 各種ON/OFFトグル
                 let toggles = [
@@ -5082,7 +5096,7 @@
                     let row = Math.floor(i / 4);
                     let t = toggles[i];
                     let btnX = 15 + col * 95;
-                    let btnY = 500 + row * 45;
+                    let btnY = 435 + row * 45;
                     let btnW = 85;
                     let btnH = 35;
 
@@ -5095,22 +5109,6 @@
                     ctx.font = 'bold 10px sans-serif';
                     ctx.fillText(t.label + (t.val ? ':ON' : ':OFF'), btnX + btnW/2, btnY + btnH/2 + 4);
                 }
-
-                // 強制的な更新ボタン (キャッシュクリア)
-                let updateBtnX = canvas.width / 2 - 80;
-                let updateBtnY = 580; // 下の方に配置
-                let updateBtnW = 160;
-                let updateBtnH = 35;
-                ctx.fillStyle = 'rgba(231, 76, 60, 0.4)';
-                ctx.strokeStyle = '#E74C3C';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.roundRect(updateBtnX, updateBtnY, updateBtnW, updateBtnH, 5);
-                ctx.fill();
-                ctx.stroke();
-                ctx.fillStyle = 'white';
-                ctx.font = 'bold 14px sans-serif';
-                ctx.fillText('🔄 最新の状態に更新', canvas.width/2, updateBtnY + 22);
 
                 ctx.textAlign = 'left';
             } else if (gameState === 'CUSTOM_LEVEL_SELECT') {
