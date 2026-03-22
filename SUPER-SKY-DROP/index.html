@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPER SKY DROP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; background-color: #000; overflow: hidden; font-family: 'Inter', sans-serif; }
         canvas { display: block; filter: contrast(110%) brightness(105%); }
@@ -4974,26 +4981,25 @@
             ctx.restore();
         }
 
-        function gameLoop() {
-            try {
-                if (typeof updateBackgroundColors === 'function') updateBackgroundColors();
-                if (gameState === 'PLAYING') {
-                    update();
-                }
-                draw();
-            } catch (e) {
-                if (window.debugOverlay) {
-                    window.debugOverlay.style.display = 'block';
-                    window.debugOverlay.innerHTML += `[CRITICAL LOOP ERROR] ${e.message}<br>`;
-                } else {
-                    alert(`🚨 ERROR: ${e.message}`);
-                }
-                console.error(e);
-                // 永久ループでブラウザが固まるのを防ぐため、致命的エラー時はアニメーションを止める
-                return; 
+    function gameLoop() {
+        try {
+            if (typeof updateBackgroundColors === 'function') updateBackgroundColors();
+            // 致命的ミス：過去の整理で PLAYING の時しか update が呼ばれないようにしてしまっていた。
+            // update() 内部に OPENING など別の状態ごとの時計もあるため、無条件で呼ぶ必要がある。
+            update();
+            draw();
+        } catch (e) {
+            if (window.debugOverlay) {
+                window.debugOverlay.style.display = 'block';
+                window.debugOverlay.innerHTML += `[CRITICAL LOOP ERROR] ${e.message}<br>`;
+            } else {
+                alert(`🚨 ERROR: ${e.message}`);
             }
-            requestAnimationFrame(gameLoop);
+            console.error(e);
+            return; 
         }
+        requestAnimationFrame(gameLoop);
+    }
 
         // ブラウザの仕様で、最初のクリック・またはキー入力で確実にBGMを鳴らせるようにする
         const enableInitialAudio = () => {
