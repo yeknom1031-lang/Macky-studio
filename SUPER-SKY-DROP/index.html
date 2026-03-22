@@ -20,9 +20,16 @@
             display: block; 
             filter: contrast(110%) brightness(105%); 
             width: 100vw;
-            height: 100dvh;
+            height: 100vh;
             object-fit: contain;
             background-color: #000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
         #debug-info {
             position: fixed; top: 10px; left: 10px; background: rgba(0,0,0,0.8);
@@ -139,7 +146,7 @@
 
         // ==== 緊急デバッグ：なぜ画面が真っ暗になるかの究明 ====
         const debugOverlay = document.createElement('div');
-        debugOverlay.style.cssText = 'position:fixed; top:10px; left:10px; background:rgba(0,0,0,0.8); color:#ff3333; padding:10px; font-family:monospace; z-index:9999; border:1px solid red;';
+        debugOverlay.style.cssText = 'position:fixed; top:10px; left:10px; background:rgba(0,0,0,0.8); color:#ff3333; padding:10px; font-family:monospace; z-index:9999; border:1px solid red; pointer-events:none;';
         document.body.appendChild(debugOverlay);
         
         window.onerror = function(msg, source, lineno, colno, error) {
@@ -702,6 +709,9 @@
         let distance = 0;
         let goalDistance = 4000;
         let speedMultiplier = 1;
+        let lastClickTime = 0;
+        let lastClickX = -1;
+        let lastClickY = -1;
         let gameOverTime = 0; // ゲームオーバー時の時刻を記録
         let baseSpeedMultiplier = 1;
         let obsSpawnRate = 0.04;
@@ -1181,14 +1191,56 @@
             }
         });
 
+        // --- 座標変換ユーティリティ ---
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            let clientX, clientY;
+            if (e.touches && e.touches[0]) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else if (e.changedTouches && e.changedTouches[0]) {
+                clientX = e.changedTouches[0].clientX;
+                clientY = e.changedTouches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+
+            const internalW = canvas.width;
+            const internalH = canvas.height;
+            const externalW = rect.width;
+            const externalH = rect.height;
+
+            const canvasRatio = internalW / internalH;
+            const screenRatio = externalW / externalH;
+
+            let scale, offsetX, offsetY;
+            if (screenRatio > canvasRatio) {
+                // 左右に余白（pillarbox）
+                scale = externalH / internalH;
+                offsetX = (externalW - internalW * scale) / 2;
+                offsetY = 0;
+            } else {
+                // 上下に余白（letterbox）
+                scale = externalW / internalW;
+                offsetX = 0;
+                offsetY = (externalH - internalH * scale) / 2;
+            }
+
+            return {
+                x: (clientX - rect.left - offsetX) / scale,
+                y: (clientY - rect.top - offsetY) / scale
+            };
+        }
+
         // ====== タッチ操作 (iPhone用) ======
         canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
             initAudio();
-            const rect = canvas.getBoundingClientRect();
-            const touch = e.touches[0];
-            const x = (touch.clientX - rect.left) * (canvas.width / rect.width);
-            const y = (touch.clientY - rect.top) * (canvas.height / rect.height);
+            const pos = getMousePos(e);
+            const x = pos.x;
+            const y = pos.y;
+
 
             if (gameState === 'PLAYING') {
                 if (x > canvas.width - 70 && y < 50) {
@@ -1222,10 +1274,10 @@
 
         canvas.addEventListener('touchmove', (e) => {
             e.preventDefault();
-            const rect = canvas.getBoundingClientRect();
-            const touch = e.touches[0];
-            const x = (touch.clientX - rect.left) * (canvas.width / rect.width);
-            const y = (touch.clientY - rect.top) * (canvas.height / rect.height);
+            const pos = getMousePos(e);
+            const x = pos.x;
+            const y = pos.y;
+
             
             if (gameState === 'PLAYING') {
                 if (y >= canvas.height * 0.25) {
@@ -1257,9 +1309,9 @@
         }, { passive: false });
 
         canvas.addEventListener('mousedown', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            const y = e.clientY - rect.top;
-            const x = e.clientX - rect.left;
+            const pos = getMousePos(e);
+            const x = pos.x;
+            const y = pos.y;
 
             if (gameState === 'EDITOR') {
                 if (y < canvas.height - 150) {
@@ -1288,9 +1340,9 @@
         });
 
         window.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            const pos = getMousePos(e);
+            const x = pos.x;
+            const y = pos.y;
             
             if (gameState === 'EDITOR') {
                 if (isObjectDragging && editorSelectedIndex !== -1) {
@@ -1314,10 +1366,15 @@
 
         canvas.addEventListener('click', (e) => {
             initAudio();
-            const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            handleInteraction(x, y);
+            const pos = getMousePos(e);
+            lastClickX = pos.x;
+            lastClickY = pos.y;
+            lastClickTime = Date.now();
+            
+            // デバッグログ
+            debugOverlay.innerHTML = `CLICK at (${Math.floor(pos.x)}, ${Math.floor(pos.y)}) State: ${gameState}`;
+            
+            handleInteraction(pos.x, pos.y);
         });
 
         function handleInteraction(x, y) {
@@ -2531,6 +2588,10 @@
         }
 
         function update() {
+            // クリック地点の消去タイマー
+            if (lastClickTime > 0 && Date.now() - lastClickTime > 1000) {
+                lastClickTime = 0;
+            }
             // パーティクルの更新（GAMEOVERやCLEAR状態でも動き続ける）
             for (let i = particles.length - 1; i >= 0; i--) {
                 let p = particles[i];
@@ -5114,6 +5175,19 @@
                 ctx.fillText('もどる', canvas.width/2, 347);
             }
             ctx.restore();
+
+            // デバッグ：クリック地点に赤い丸を描画 (1秒間)
+            if (lastClickTime > 0) {
+                ctx.save();
+                ctx.fillStyle = 'red';
+                ctx.beginPath();
+                ctx.arc(lastClickX, lastClickY, 6, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.restore();
+            }
         }
 
     function gameLoop() {
