@@ -712,6 +712,8 @@
         let lastClickTime = 0;
         let lastClickX = -1;
         let lastClickY = -1;
+        let wasEndlessReady = (Date.now() - parseInt(localStorage.getItem('superSkyDropLastEndlessPlayTime') || '0', 10) >= 30 * 60 * 1000);
+        let endlessNotificationTimer = 0;
         let gameOverTime = 0; // ゲームオーバー時の時刻を記録
         let baseSpeedMultiplier = 1;
         let obsSpawnRate = 0.04;
@@ -2590,6 +2592,14 @@
         }
 
         function update() {
+            // エンドレスモードの通知チェック
+            let isReadyNow = (Date.now() - lastEndlessPlayTime >= 30 * 60 * 1000);
+            if (isReadyNow && !wasEndlessReady) {
+                endlessNotificationTimer = 120; // 約2秒
+            }
+            wasEndlessReady = isReadyNow;
+            if (endlessNotificationTimer > 0) endlessNotificationTimer--;
+
             // クリック地点の消去タイマー
             if (lastClickTime > 0 && Date.now() - lastClickTime > 1000) {
                 lastClickTime = 0;
@@ -4244,7 +4254,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.4.15-endless-timer', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.4.16-endless-notif', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
@@ -5188,6 +5198,25 @@
                 ctx.strokeStyle = 'white';
                 ctx.lineWidth = 2;
                 ctx.stroke();
+                ctx.restore();
+            }
+
+            // エンドレスモード準備完了通知
+            if (endlessNotificationTimer > 0) {
+                ctx.save();
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                ctx.beginPath();
+                ctx.roundRect(canvas.width/2 - 140, 20, 280, 40, 20);
+                ctx.fill();
+                ctx.strokeStyle = '#F1C40F';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                ctx.fillStyle = '#F1C40F';
+                ctx.font = 'bold 14px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('エンドレスモードが解放されました！', canvas.width/2, 40);
                 ctx.restore();
             }
         }
