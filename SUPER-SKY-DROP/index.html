@@ -3697,37 +3697,50 @@
 
 
         // ====== ランキング通信機能 ======
-        async function sendScore(name, score) {
+        // GASとの通信は「URLパラメーター付きのGET」で行う（CORS回避のため）
+        async function sendScore(name, scoreVal) {
             if (!RANKING_GAS_URL) return;
             try {
-                await fetch(RANKING_GAS_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: name, score: score })
-                });
-                console.log("Score sent successfully");
+                // GASへはGETリクエストにパラメーターをつけて送信（CORS問題を回避）
+                let url = RANKING_GAS_URL + 
+                    '?action=post' +
+                    '&name=' + encodeURIComponent(name) + 
+                    '&score=' + encodeURIComponent(scoreVal);
+                // no-corsモードで送るだけ（レスポンスは読めないが保存はされる）
+                await fetch(url, { mode: 'no-cors' });
+                console.log("Score sent: " + name + " / " + scoreVal);
             } catch (e) {
                 console.error("Failed to send score:", e);
             }
         }
 
-        async function fetchRanking() {
+        function fetchRanking() {
             if (!RANKING_GAS_URL) {
                 worldRankingData = [{name: "設定待ち", score: 0}];
+                isRankingLoading = false;
+                draw();
                 return;
             }
             isRankingLoading = true;
-            try {
-                const res = await fetch(RANKING_GAS_URL);
-                worldRankingData = await res.json();
-            } catch (e) {
-                console.error("Failed to fetch ranking:", e);
-                worldRankingData = [{name: "エラー", score: 0}];
-            } finally {
+            // JSONPでデータを取得（CORSを回避）
+            window.__rankingCallback = function(data) {
+                worldRankingData = data;
                 isRankingLoading = false;
+                document.getElementById('gasJsonpScript')?.remove();
                 draw();
-            }
+            };
+            let script = document.createElement('script');
+            script.id = 'gasJsonpScript';
+            script.onerror = function() {
+                console.error('JSONP failed');
+                worldRankingData = [{name: "取得失敗", score: 0}];
+                isRankingLoading = false;
+                document.getElementById('gasJsonpScript')?.remove();
+                draw();
+            };
+            // GASにcallback=__rankingCallbackをつけてJSONP形式で要求
+            script.src = RANKING_GAS_URL + '?action=get&callback=__rankingCallback';
+            document.head.appendChild(script);
         }
 
         function drawRanking() {
