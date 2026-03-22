@@ -133,6 +133,11 @@
     <canvas id="gameCanvas" width="400" height="600"></canvas>
 
     <script>
+        // ==== グローバルランキング設定 ====
+        // ※ ユーザーから提供されるGASのURLをここに記述します
+        const RANKING_GAS_URL = ""; 
+        let worldRankingData = [];
+        let isRankingLoading = false;
         // エラー発生時に画面に表示する
         const debugInfo = document.getElementById('debug-info');
         window.onerror = function(msg, url, line) {
@@ -702,7 +707,7 @@
         // ========================
 
         // ゲームの状態管理
-        let gameState = 'OPENING'; // OPENING, START, LEVEL_SELECT, PLAYING, GAMEOVER, CLEAR
+        let gameState = 'OPENING'; // OPENING, START, LEVEL_SELECT, PLAYING, GAMEOVER, CLEAR, RANKING
         let openingTimerValue = 150; // 起動時の演出タイマー (2.5秒)
         let globalOpeningInvincibility = 150; // 起動から2.5秒間は完全無敵
         let score = 0;
@@ -1449,6 +1454,22 @@
                 if (x > creX && x < creX + 80 && y > creY && y < creY + 80) {
                     playTapSound(); gameState = 'EDITOR_MENU'; draw(); return;
                 }
+                // ワールドランキングボタン
+                if (x > 110 && x < 240 && y > canvas.height - 60 && y < canvas.height - 20) {
+                    playTapSound();
+                    gameState = 'RANKING';
+                    fetchRanking();
+                    draw();
+                    return;
+                }
+            } else if (gameState === 'RANKING') {
+                // BACKボタン
+                if (x > 10 && x < 90 && y > 10 && y < 45) {
+                    playTapSound();
+                    gameState = 'START';
+                    draw();
+                    return;
+                }
             } else if (gameState === 'EDITOR_MENU') {
                 // 新しく作る
                 if (x > 50 && x < 350 && y > 150 && y < 220) {
@@ -2070,6 +2091,8 @@
                 if (isEndlessMode) {
                     lastEndlessPlayTime = Date.now();
                     localStorage.setItem('superSkyDropLastEndlessPlayTime', lastEndlessPlayTime);
+                    // エンドレスモード終了時にスコアを送信
+                    sendScore(playerName, Math.floor(endlessTime * 100));
                 }
                 retryCountdown = 0; 
                 return;
@@ -3655,6 +3678,102 @@
         }
 
 
+        // ====== ランキング通信機能 ======
+        async function sendScore(name, score) {
+            if (!RANKING_GAS_URL) return;
+            try {
+                await fetch(RANKING_GAS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name, score: score })
+                });
+                console.log("Score sent successfully");
+            } catch (e) {
+                console.error("Failed to send score:", e);
+            }
+        }
+
+        async function fetchRanking() {
+            if (!RANKING_GAS_URL) {
+                worldRankingData = [{name: "設定待ち", score: 0}];
+                return;
+            }
+            isRankingLoading = true;
+            try {
+                const res = await fetch(RANKING_GAS_URL);
+                worldRankingData = await res.json();
+            } catch (e) {
+                console.error("Failed to fetch ranking:", e);
+                worldRankingData = [{name: "エラー", score: 0}];
+            } finally {
+                isRankingLoading = false;
+                draw();
+            }
+        }
+
+        function drawRanking() {
+            ctx.fillStyle = 'rgba(0,0,0,0.85)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // ヘッダー
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 28px "Righteous", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('WORLD RANKING', canvas.width/2, 80);
+            ctx.font = 'bold 14px sans-serif';
+            ctx.fillStyle = '#F1C40F';
+            ctx.fillText('ENDLESS MODE SURVIVAL', canvas.width/2, 105);
+
+            // 戻るボタン
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.beginPath(); ctx.roundRect(10, 10, 80, 35, 5); ctx.fill();
+            ctx.fillStyle = 'white'; ctx.font = '14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('戻る', 50, 33);
+
+            // リスト表示
+            ctx.textAlign = 'left';
+            if (isRankingLoading) {
+                ctx.fillStyle = 'white';
+                ctx.fillText('読み込み中...', canvas.width/2 - 40, canvas.height/2);
+            } else {
+                let startY = 150;
+                for (let i = 0; i < Math.min(worldRankingData.length, 10); i++) {
+                    let r = worldRankingData[i];
+                    let y = startY + i * 40;
+                    
+                    // 背景
+                    ctx.fillStyle = (i < 3) ? `rgba(241, 196, 15, ${0.3 - i*0.1})` : 'rgba(255,255,255,0.05)';
+                    ctx.fillRect(20, y - 25, canvas.width - 40, 35);
+
+                    // 順位
+                    ctx.fillStyle = (i === 0) ? '#F1C40F' : (i === 1) ? '#BDC3C7' : (i === 2) ? '#E67E22' : 'white';
+                    ctx.font = 'bold 18px "Righteous", sans-serif';
+                    ctx.fillText(`${i + 1}`, 35, y);
+
+                    // 名前
+                    ctx.font = '16px sans-serif';
+                    ctx.fillStyle = 'white';
+                    ctx.fillText(r.name || "---", 80, y);
+
+                    // スコア
+                    ctx.textAlign = 'right';
+                    ctx.font = 'bold 18px "Righteous", sans-serif';
+                    ctx.fillStyle = '#F1C40F';
+                    ctx.fillText(`${Math.floor(r.score)}m`, canvas.width - 35, y);
+                    ctx.textAlign = 'left';
+                }
+                
+                if (!RANKING_GAS_URL) {
+                    ctx.fillStyle = '#E74C3C';
+                    ctx.font = '12px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('※GAS連携設定が未完了です', canvas.width/2, canvas.height - 50);
+                }
+            }
+        }
+
         function draw() {
             updateBackgroundColors();
             
@@ -4295,6 +4414,10 @@
                 drawEditor();
             }
 
+            if (gameState === 'RANKING') {
+                drawRanking();
+            }
+
             if (gameState === 'START') {
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -4404,6 +4527,7 @@
                     ctx.fillText('〜 幻の世界へ 〜', canvas.width/2, secY + 42);
                 }
                 
+
                 // 所持コイン表示
                 ctx.fillStyle = 'white';
                 ctx.font = '16px sans-serif';
@@ -4460,6 +4584,15 @@
                     ctx.fillText(`${m}:${s.toString().padStart(2, '0')}`, prayX + prayW/2, prayY + 28);
                 }
                 ctx.restore();
+
+                // RANKING ボタン (ワールドランキング)
+                let rnkX = 110; 
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.beginPath(); ctx.roundRect(rnkX, prayY, 130, prayH, 10); ctx.fill();
+                ctx.strokeStyle = 'white'; ctx.lineWidth = 1; ctx.stroke();
+                ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('🌍 ランキング', rnkX + 65, prayY + 20);
 
                 
                 // 設定ボタン (歯車アイコン) を右上に描画
