@@ -3499,16 +3499,34 @@
                 let screenY = 150 + o.d - editorScroll;
                 if (screenY > -150 && screenY < canvas.height - 150) {
                     ctx.save();
-                    if (editorSelectedIndex === editorLevel.objects.indexOf(o)) { ctx.strokeStyle = '#00FFFF'; ctx.setLineDash([5, 5]); ctx.strokeRect(o.x - 5, screenY - 5, o.w + 10, o.h + 10); }
-                    else if (o.type === 'goal') { ctx.fillStyle = '#2ECC71'; ctx.fillRect(o.x, screenY, o.w, o.h); ctx.fillStyle = 'white'; ctx.fillText('GOAL', o.x+o.w/2, screenY+14); }
-                    else if (o.type === 'item') { drawStar(ctx, o.x + o.w/2, screenY + o.h/2, 12); }
-                    else if (o.type === 'fireball' || o.rotation) { ctx.translate(o.x + o.w/2, screenY + o.h/2); ctx.rotate(o.rotation || 0); ctx.fillStyle = o.color; ctx.beginPath(); ctx.roundRect(-o.w/2, -o.h/2, o.w, o.h, 5); ctx.fill(); }
+                    if (o.type === 'goal') {
+                        ctx.fillStyle = '#2ECC71'; ctx.fillRect(o.x, screenY, o.w, o.h);
+                        ctx.fillStyle = 'white'; ctx.textAlign = 'center'; ctx.font = 'bold 12px sans-serif'; ctx.fillText('GOAL', o.x+o.w/2, screenY+14);
+                    }
+                    else if (o.type === 'item') {
+                        drawGoldCoin(ctx, o.x + o.w/2, screenY + o.h/2, 12);
+                    }
+                    else if (o.type === 'fireball' || (o.rotation && o.rotation !== 0)) {
+                        ctx.translate(o.x + o.w/2, screenY + o.h/2);
+                        ctx.rotate(o.rotation || 0);
+                        ctx.fillStyle = o.color || '#E74C3C';
+                        ctx.beginPath(); ctx.roundRect(-o.w/2, -o.h/2, o.w, o.h, 5); ctx.fill();
+                    }
                     else { 
-                        ctx.fillStyle = o.color; ctx.beginPath(); ctx.roundRect(o.x, screenY, o.w, o.h, 4); ctx.fill();
+                        ctx.fillStyle = o.color || '#E74C3C';
+                        ctx.beginPath(); ctx.roundRect(o.x, screenY, o.w, o.h, 4); ctx.fill();
                         if (o.type === 'fast') { ctx.fillStyle='white'; ctx.fillRect(o.x+o.w/2-2, screenY, 4, o.h); }
-                        else if (o.type === 'moving') { ctx.fillStyle='#9B59B6'; ctx.fillRect(o.x, screenY+2, 4, o.h-4); ctx.fillRect(o.x+o.w-4, screenY+2, 4, o.h-4); }
+                        else if (o.type === 'moving') { ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.fillRect(o.x, screenY+2, 4, o.h-4); ctx.fillRect(o.x+o.w-4, screenY+2, 4, o.h-4); }
                         else if (o.type === 'laser') { ctx.strokeStyle = 'red'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(o.x, screenY+o.h/2); ctx.lineTo(o.x+o.w, screenY+o.h/2); ctx.stroke(); }
                         else if (o.type === 'seeker') { ctx.fillStyle='red'; ctx.beginPath(); ctx.moveTo(o.x+o.w/2, screenY); ctx.lineTo(o.x+o.w, screenY+o.h); ctx.lineTo(o.x, screenY+o.h); ctx.closePath(); ctx.fill(); }
+                    }
+
+                    // 選択枠は最後に重ねて描画する
+                    if (editorSelectedIndex === editorLevel.objects.indexOf(o)) {
+                        ctx.strokeStyle = '#00FFFF';
+                        ctx.setLineDash([5, 5]);
+                        ctx.lineWidth = 2;
+                        ctx.strokeRect(o.x - 2, screenY - 2, o.w + 4, o.h + 4);
                     }
                     ctx.restore();
                 }
@@ -4230,7 +4248,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.4.20-settings-top', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.4.21-editor-vis', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
