@@ -718,7 +718,7 @@
         // ========================
 
         // ゲームの状態管理
-        let gameState = 'OPENING'; // OPENING, START, LEVEL_SELECT, PLAYING, GAMEOVER, CLEAR, RANKING
+        let gameState = 'TITLE_TAP'; // TITLE_TAP, OPENING, START, LEVEL_SELECT, PLAYING, GAMEOVER, CLEAR, RANKING
         let openingTimerValue = 150; // 起動時の演出タイマー (2.5秒)
         let globalOpeningInvincibility = 150; // 起動から2.5秒間は完全無敵
         let score = 0;
@@ -1006,12 +1006,13 @@
             { c1: [255, 78, 80], c2: [252, 145, 58], c3: [249, 212, 35] }     // 6. 朝焼け
         ];
 
+        let startBgIdx = Math.floor(Math.random() * themeBgData.length);
         let currentBgColors = {
-            c1: [...themeBgData[0].c1],
-            c2: [...themeBgData[0].c2],
-            c3: [...themeBgData[0].c3]
+            c1: [...themeBgData[startBgIdx].c1],
+            c2: [...themeBgData[startBgIdx].c2],
+            c3: [...themeBgData[startBgIdx].c3]
         };
-        let lastTargetIdx = -1;
+        let lastTargetIdx = startBgIdx;
         let transitionStartTime = 0;
         let sourceBgColors = null;
 
@@ -1430,6 +1431,12 @@
         });
 
         function handleInteraction(x, y) {
+            if (gameState === 'TITLE_TAP') {
+                playTapSound();
+                gameState = 'OPENING';
+                draw();
+                return;
+            }
             if (gameState === 'OPENING') {
                 playTapSound();
                 gameState = 'START';
@@ -1467,8 +1474,8 @@
                     playTapSound(); startEndlessMode();
                     return;
                 }
-                // 設定 (右上)
-                if (x > 400 - 60 && x < 400 - 10 && y > 10 && y < 60) {
+                // 設定 (右上) - 判定を大きく
+                if (x > 330 && x < 400 && y > 0 && y < 70) {
                     playTapSound(); gameState = 'SETTINGS'; draw(); return;
                 }
                 // 挨拶テキストのタップ判定（名前変更）
@@ -1779,13 +1786,15 @@
                             } else {
                                 if (confirm(`★ ${reqStars} 個を達成しました！${item.name}を解禁しますか？`)) {
                                     playClearSound(); 
-                                    spentStars += reqStars; // スターを消費する
+                                    spentStars += reqStars; 
                                     if (item.id === 'ch2') {
                                         isChapter2Bought = true;
                                         localStorage.setItem('superSkyDropChapter2Unlocked', 'true');
+                                        alert("チャプター2が解禁されました！\n新しいステージを楽しみましょう！");
                                     } else {
                                         isChapter3Bought = true;
                                         localStorage.setItem('superSkyDropChapter3Unlocked', 'true');
+                                        alert("チャプター3が解禁されました！\n最後の物語が幕を開けます！");
                                     }
                                     saveShopData();
                                 }
@@ -1888,9 +1897,9 @@
                     }
                 }
 
-                // 強制的な更新ボタン (キャッシュクリア) - タイトル「設定」よりも上に配置
+                // 強制的な更新ボタン (キャッシュクリア) - 描画と判定を一致
                 let updateBtnX = 400 / 2 - 80;
-                let updateBtnY = 40; 
+                let updateBtnY = 20; 
                 let updateBtnW = 160;
                 let updateBtnH = 35;
                 if (x > updateBtnX && x < updateBtnX + updateBtnW && y > updateBtnY && y < updateBtnY + updateBtnH) {
@@ -1901,7 +1910,7 @@
                 }
                 
                 
-                // BGMセレクト
+                // BGMセレクト - 描画と判定を一致
                 for (let i = 0; i < bgmOptions.length; i++) {
                     let btnY = 180 + i * 62;
                     let btnH = 55;
@@ -1952,9 +1961,11 @@
                     }
                 }
             } else if (gameState === 'TUTORIAL') {
-                if (x > 400/2 - 80 && x < 400/2 + 80 && y > 600 - 100 && y < 600 - 50) {
+                // 判定エリアを少し広げる
+                if (x > 400/2 - 100 && x < 400/2 + 100 && y > 600 - 110 && y < 600 - 30) {
                     playTapSound();
-                    gameState = 'LEVEL_SELECT'; playLevelSelectBGM(); draw(); return;
+                    gameState = 'START'; // タイトル画面に戻す
+                    draw(); return;
                 }
             } else if (gameState === 'CLEAR' || gameState === 'PLAYING' || gameState === 'GAMEOVER') {
                 // 自作ステージ時の左上「エディターに戻る」ボタン
@@ -2002,6 +2013,15 @@
                 }
                 if (gameState === 'CLEAR') {
                     playTapSound();
+                    
+                    // チャプター解禁のヒント通知
+                    let stars = getTotalGoldStars();
+                    if (!isChapter2Bought && stars >= 30) {
+                        alert("★ おめでとう！スターを30個達成しました！\nショップで「チャプター2」が解禁可能になりました！");
+                    } else if (isChapter2Bought && !isChapter3Bought && stars >= 70) {
+                        alert("★ 素晴らしい！スターを70個達成しました！\nショップで「チャプター3」が解禁可能になりました！");
+                    }
+
                     isEndlessMode = false;
                     if (isCustomLevel) {
                         gameState = 'CUSTOM_LEVEL_SELECT';
@@ -2219,7 +2239,8 @@
             isCustomLevel = false;
             isSlowMode = false; // エンドレスでは絶対にスロー禁止
             currentLevelIndex = 0; 
-            obsSpawnRate = levels[0].rate; 
+            obsSpawnRate = 0.08; // 1ステージ目並みの難易度から開始
+            baseSpeedMultiplier = 1.0; 
             resetGame();
         }
 
@@ -2259,15 +2280,32 @@
         }
 
         function checkHighScore() {
+            // スローモードを使用していた場合はハイスコアに記録しない
+            if (isPracticeUsed) return false;
+
             let recordId = isEndlessMode ? 'endless' : (isSecretStage ? 'secret' : currentLevelIndex);
-            let currentBest = highScores[recordId] || 0;
-            let currentVal = isEndlessMode ? Math.floor(endlessTime) : Math.floor(distance);
+            // 通常ステージの場合、小さい値（4000に近い残り距離）が良い記録となるため初期値を大きく設定
+            let currentBest = highScores[recordId];
+            if (currentBest === undefined) currentBest = isEndlessMode ? 0 : 4001; 
             
-            if (currentVal > currentBest) {
-                highScores[recordId] = currentVal;
-                localStorage.setItem('superSkyDropHighScores', JSON.stringify(highScores));
-                isNewRecord = true;
-                return true;
+            if (isEndlessMode) {
+                let currentVal = Math.floor(endlessTime);
+                if (currentVal > currentBest) {
+                    highScores[recordId] = currentVal;
+                    localStorage.setItem('superSkyDropHighScores', JSON.stringify(highScores));
+                    isNewRecord = true;
+                    return true;
+                }
+            } else {
+                // 通常ステージ: 4000m - 到達距離 (残り距離)
+                let currentVal = Math.max(0, 4000 - Math.floor(distance / 3.6));
+                // 小さいほど良い（ゴールに近い）
+                if (currentVal < currentBest) {
+                    highScores[recordId] = currentVal;
+                    localStorage.setItem('superSkyDropHighScores', JSON.stringify(highScores));
+                    isNewRecord = true;
+                    return true;
+                }
             }
             return false;
         }
@@ -2282,11 +2320,31 @@
                 goalDistance = (editorLevel.totalDist || 4000) * METER_SCALE;
                 distance = (editorLevel.startDist || 0) * METER_SCALE;
                 player.x = (editorLevel.startX !== undefined) ? editorLevel.startX : (400 / 2 - player.width / 2);
+                
+                // コイン周囲の安全地帯：障害物と重ならないように自動調整
+                editorLevel.objects = editorLevel.objects.filter(o => {
+                    if (o.type !== 'item' && o.type !== 'goal' && o.type !== 'start') {
+                        for (let other of editorLevel.objects) {
+                            if (other.type === 'item' && Math.abs(other.d - o.d) < 50) return false;
+                        }
+                    }
+                    return true;
+                });
                 editorLevel.objects.forEach(o => o.spawned = (o.d * METER_SCALE < distance));
             } else {
-                goalDistance = 4000 * METER_SCALE; // 14400 units
+                goalDistance = 4000 * METER_SCALE; 
                 player.x = 400 / 2 - player.width / 2;
                 distance = 0;
+                
+                // 通常ステージも安全地帯を適用（クリア不能防止）
+                levels[currentLevelIndex].objects = levels[currentLevelIndex].objects.filter(o => {
+                    if (o.type !== 'item' && o.type !== 'goal' && o.type !== 'start') {
+                        for (let other of levels[currentLevelIndex].objects) {
+                            if (other.type === 'item' && Math.abs(other.d - o.d) < 50) return false;
+                        }
+                    }
+                    return true;
+                });
             }
             
             lastSpawnDistance = 0; 
@@ -2843,10 +2901,12 @@
             distance += scrollInc;
 
             if (isEndlessMode) {
-                endlessTime += 0.016; 
-                score = Math.floor(endlessTime * 100); // 秒間100mペース
-                obsSpawnRate += 0.00001 * timeFactor; 
-                if (obsSpawnRate > 0.1) obsSpawnRate = 0.1; 
+                endlessTime += 0.016 * timeFactor; 
+                score = Math.floor(endlessTime * 100); 
+                // 2秒ごとに1%ずつスピードアップ (1フレームにつき 0.005 / 60)
+                baseSpeedMultiplier += (0.01 / 120) * timeFactor;
+                obsSpawnRate += 0.00002 * timeFactor; 
+                if (obsSpawnRate > 0.12) obsSpawnRate = 0.12; 
             } else {
                 score = Math.floor(distance / 3.6);
             }
@@ -3298,19 +3358,14 @@
                     vX = Math.cos(Date.now() / 250) * 3;
                 }
                 
-                // よりダイナミックなマントの形状
+                // シンプルな台形のマント
+                let flap = Math.sin(Date.now() / 150) * 3;
                 ctx.beginPath(); 
-                ctx.moveTo(3, 0); 
-                // 左端
-                ctx.quadraticCurveTo(-10 + vX, -10 - vY * 0.5, -18 + vX * 1.2, -28 - vY); 
-                // 中央（たわみ）
-                ctx.quadraticCurveTo(player.width/2 + vX * 0.5, -20 - vY * 0.7, player.width + 18 + vX * 1.2, -28 - vY); 
-                // 右端
-                ctx.quadraticCurveTo(player.width + 10 + vX, -10 - vY * 0.5, player.width - 3, 0); 
-                ctx.closePath(); 
-                
-                ctx.save();
-                ctx.clip();
+                ctx.moveTo(player.width/2 - 10, -2);
+                ctx.lineTo(player.width/2 + 10, -2);
+                ctx.lineTo(player.width/2 + 18 + flap, 42);
+                ctx.lineTo(player.width/2 - 18 - flap, 42);
+                ctx.closePath();
                 ctx.fillStyle = mColor;
                 ctx.fill();
                 
@@ -3739,7 +3794,7 @@
             // タブの描画
             const categories = [
                 { name: '障害物', tools: ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball'], names: ['通常', '高速', '動く', '線', '追跡', '火球'] },
-                { name: 'アイテム', tools: ['item', 'goal', 'start'], names: ['コイン', 'ゴール', '開始点'] },
+                { name: 'アイテム', tools: ['item'], names: ['コイン'] },
                 { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'], names: ['＋100', '－100', '＋10', '－10', '背景', '曲調'] }
             ];
             let tabW = (400 - 85) / 3;
@@ -3841,7 +3896,7 @@
             let actX = 400 - 75;
             ctx.fillStyle = '#E67E22'; ctx.fillRect(actX, 600 - 145, 65, 35);
             ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('テスト', actX + 32.5, 600 - 125);
-            ctx.fillStyle = '#95a5a6'; ctx.fillRect(actX, 600 - 105, 65, 35); ctx.fillText('終了', actX + 32.5, 600 - 85);
+            ctx.fillStyle = '#95a5a6'; ctx.fillRect(actX, 600 - 105, 65, 35); ctx.fillText('戻る', actX + 32.5, 600 - 85);
             
             ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'left';
             ctx.fillText(`距離: ${Math.floor(editorScroll)}m`, 10, 20);
@@ -3906,10 +3961,10 @@
             ctx.fillStyle = 'white';
             ctx.font = 'bold 28px "Righteous", sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('WORLD RANKING', 400/2, 80);
+            ctx.fillText('世界ランキング', 400/2, 80);
             ctx.font = 'bold 14px sans-serif';
             ctx.fillStyle = '#F1C40F';
-            ctx.fillText('ENDLESS MODE SURVIVAL', 400/2, 105);
+            ctx.fillText('TOP 10 SURVIVAL', 400/2, 105);
 
             // 戻るボタン
             ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
@@ -4795,10 +4850,10 @@
                 ctx.fillStyle = 'white';
                 ctx.font = '16px sans-serif';
                 ctx.fillText('・画面下半分をタップで左右移動', 400/2, 130);
-                ctx.fillText('（PCは [←] [→] キー）', 400/2, 158);
+                // PC版説明を削除
                 
                 ctx.fillText('・画面上半分をタップでスローモード', 400/2, 210);
-                ctx.fillText('（PCは [↑] キー）※やり直し用', 400/2, 238);
+                // PC版説明を削除
                 
                 ctx.fillText('・赤い障害物を避けてゴールを目指せ！', 400/2, 285);
                 ctx.fillText('・黄色い星を集めると着替えが買えるぞ！', 400/2, 320);
@@ -5179,13 +5234,15 @@
                 ctx.fillText(lev.name, 400/2, btnY + 70);
                 
                 ctx.font = 'bold 16px sans-serif';
-                ctx.fillText('クリックで開始', 400/2, btnY + 105);
+                ctx.fillText('タップで開始', 400/2, btnY + 105);
 
                 // レベルのハイスコア表示
-                let best = highScores[currentLevelIndex] || 0;
-                ctx.fillStyle = 'rgba(255,255,255,0.7)';
-                ctx.font = '14px sans-serif';
-                ctx.fillText(`最高記録: 残り ${Math.max(0, goalDistance - best)}m`, 400/2, btnY + btnH + 55);
+                let best = highScores[currentLevelIndex];
+                if (best !== undefined) {
+                    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+                    ctx.font = '14px sans-serif';
+                    ctx.fillText(`最高記録: ${Math.floor(best)}m`, 400/2, btnY + btnH + 55);
+                }
 
                 // 星の進行状況
                 let levelCoins = savedCoins[currentLevelIndex] || [false, false, false];
@@ -5195,10 +5252,11 @@
                     if (levelCoins[c]) {
                         drawGoldCoin(ctx, cx, cy, 10);
                     } else {
-                        ctx.fillStyle = 'rgba(0,0,0,0.3)';
-                        ctx.beginPath();
-                        ctx.arc(cx, cy, 8, 0, Math.PI*2);
-                        ctx.fill();
+                        // 未獲得の星を星型（半透明）にする
+                        ctx.save();
+                        ctx.globalAlpha = 0.2;
+                        drawStar(ctx, cx, cy, 8, '#7f8c8d');
+                        ctx.restore();
                     }
                 }
 
@@ -5299,23 +5357,22 @@
                 ctx.fillStyle = '#2ECC71';
                 ctx.font = 'bold 40px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('着地成功！', 400/2, 600/2 - 40);
+                ctx.fillText('STAGE CLEAR!', 400/2, 600/2 - 40);
                 
                 if (isPracticeUsed) {
-                    ctx.fillStyle = '#E74C3C';
-                    ctx.font = 'bold 20px sans-serif';
-                    ctx.fillText('練習モード使用のため報酬なし', 400/2, 600/2 + 20);
+                    // 練習モード使用時：メッセージを出さない（スッキリさせる）
                 } else if (isCustomLevel) {
                     // 自作ステージ：メッセージも報酬も出さない（スッキリさせる）
                 } else {
-                    ctx.fillStyle = '#333';
-                    ctx.font = '18px sans-serif';
-                    let best = highScores[currentLevelIndex] || 0;
-                    ctx.fillText(`最高記録: 残り ${Math.max(0, goalDistance - best)}m`, 400/2, 600/2 - 90);
+                    let best = highScores[currentLevelIndex];
+                    if (best !== undefined) {
+                        ctx.fillStyle = '#333'; ctx.font = '18px sans-serif';
+                        ctx.fillText(`最高記録: ${Math.floor(best)}m`, 400 / 2, 600 / 2 - 90);
+                    }
 
                     if (isNewRecord) {
                         ctx.fillStyle = '#F1C40F';
-                        ctx.font = 'bold 24px "Righteous", sans-serif';
+                        ctx.font = 'bold 24px sans-serif';
                         ctx.fillText('新記録達成！', 400/2, 600/2 - 120);
                     }
 
@@ -5347,7 +5404,7 @@
                 
                 ctx.fillStyle = '#333';
                 ctx.font = '18px sans-serif';
-                ctx.fillText('クリックで戻る', 400/2, 600/2 + 150);
+                ctx.fillText('タップで戻る', 400/2, 600/2 + 150);
                 ctx.textAlign = 'left';
             } else if (gameState === 'SETTINGS') {
                 ctx.fillStyle = 'rgba(30, 30, 30, 0.9)';
