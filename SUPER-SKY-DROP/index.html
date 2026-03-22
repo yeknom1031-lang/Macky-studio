@@ -1005,6 +1005,7 @@
         }
 
         function updateBackgroundColors() {
+            let targetIdx = 0;
             if (gameState === 'LEVEL_SELECT' || gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR' || gameState === 'EDITOR') {
                 if ((isCustomLevel || gameState === 'EDITOR') && editorLevel && editorLevel.bgIdx !== undefined) {
                     targetIdx = editorLevel.bgIdx % themeBgData.length;
