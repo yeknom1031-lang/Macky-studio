@@ -16,7 +16,14 @@
 
     <style>
         body { margin: 0; background-color: #000; overflow: hidden; font-family: 'Inter', sans-serif; }
-        canvas { display: block; filter: contrast(110%) brightness(105%); }
+        canvas { 
+            display: block; 
+            filter: contrast(110%) brightness(105%); 
+            width: 100vw;
+            height: 100dvh;
+            object-fit: contain;
+            background-color: #000;
+        }
         #debug-info {
             position: fixed; top: 10px; left: 10px; background: rgba(0,0,0,0.8);
             color: #ff3333; padding: 10px; border-radius: 5px; font-size: 11px;
@@ -116,7 +123,7 @@
         </div>
     </div>
 
-    <canvas id="gameCanvas" width="400" height="600" style="margin-top: 20px;"></canvas>
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
 
     <script>
         // エラー発生時に画面に表示する
