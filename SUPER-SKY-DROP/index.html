@@ -837,6 +837,7 @@
         let lastEditorY = 0;
         let editorSelectedIndex = -1; // 選択中のオブジェクト
         let editorTab = 0; // 0: 障害物, 1: アイテム, 2: 設定
+        let isScrollbarDragging = false;
         let editingCustomIndex = -1; // 現在編集中の自作ステージ番号 (-1は新規)
         let selectedCustomIdx = -1; // アクションメニューで選択されたステージ番号
         
@@ -1302,6 +1303,14 @@
                     }
                 }
             } else if (gameState === 'EDITOR') {
+                if (isScrollbarDragging) {
+                    let totalDist = editorLevel.totalDist || 4000;
+                    let scrollAreaH = canvas.height - 150;
+                    let ratio = (y / scrollAreaH);
+                    editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
+                    draw();
+                    return;
+                }
                 if (y < canvas.height - 150) {
                     if (window.editorLastTouchY !== undefined) {
                         editorScroll -= (y - window.editorLastTouchY) * 2;
@@ -1318,6 +1327,7 @@
             keys.ArrowLeft = false;
             keys.ArrowRight = false;
             window.editorLastTouchY = undefined;
+            isScrollbarDragging = false;
         }, { passive: false });
 
         canvas.addEventListener('mousedown', (e) => {
@@ -1326,6 +1336,14 @@
             const y = pos.y;
 
             if (gameState === 'EDITOR') {
+                if (x > canvas.width - 25 && y < canvas.height - 150) {
+                    isScrollbarDragging = true;
+                    let totalDist = editorLevel.totalDist || 4000;
+                    let ratio = y / (canvas.height - 150);
+                    editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
+                    draw();
+                    return;
+                }
                 if (y < canvas.height - 150) {
                     // オブジェクトのクリック判定
                     let foundIdx = -1;
@@ -1357,7 +1375,14 @@
             const y = pos.y;
             
             if (gameState === 'EDITOR') {
-                if (isObjectDragging && editorSelectedIndex !== -1) {
+                if (isScrollbarDragging) {
+                    let totalDist = editorLevel.totalDist || 4000;
+                    let scrollAreaH = canvas.height - 150;
+                    let ratio = (y / scrollAreaH);
+                    editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
+                    draw();
+                }
+                else if (isObjectDragging && editorSelectedIndex !== -1) {
                     // オブジェクトのドラッグ
                     let o = editorLevel.objects[editorSelectedIndex];
                     let GRID = 20;
@@ -1374,6 +1399,7 @@
         window.addEventListener('mouseup', () => {
             isEditorDragging = false;
             isObjectDragging = false;
+            isScrollbarDragging = false;
         });
 
         canvas.addEventListener('click', (e) => {
@@ -1499,6 +1525,13 @@
                 const GRID = 20;
                 editorLevel.totalDist = editorLevel.totalDist || 4000;
                 if (y < canvas.height - 150) {
+                    if (x > canvas.width - 20) {
+                        isScrollbarDragging = true;
+                        let ratio = y / (canvas.height - 150);
+                        editorScroll = Math.max(0, Math.min(editorLevel.totalDist, ratio * editorLevel.totalDist));
+                        draw();
+                        return;
+                    }
                     if (isEditorDragging) return;
                     let clickDist = editorScroll + y - 150;
                     let snapX = Math.round(x / GRID) * GRID;
@@ -3733,6 +3766,20 @@
                 ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
                 ctx.fillText(typeNames[i], btnX + 25, btnY + 35);
             }
+
+            // スクロールバーの描画
+            let scrollAreaH = canvas.height - 150;
+            let totalDistScroll = editorLevel.totalDist || 4000;
+            let handleH = Math.max(30, scrollAreaH * (scrollAreaH / (totalDistScroll + scrollAreaH)));
+            let handleY = (editorScroll / totalDistScroll) * (scrollAreaH - handleH);
+            
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+            ctx.fillRect(canvas.width - 15, 0, 15, scrollAreaH);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            ctx.beginPath();
+            ctx.roundRect(canvas.width - 12, handleY + 5, 9, handleH - 10, 4);
+            ctx.fill();
+            
             if (editorSelectedIndex !== -1) {
                 // セレクトパネルの背景（重なり防止）
                 ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(canvas.width - 245, canvas.height - 145, 170, 140);
