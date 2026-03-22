@@ -1809,14 +1809,6 @@
                     return;
                 }
                 
-                // 名前変更ボタン
-                let nameBtnY = canvas.height/2 + 100;
-                if (x > canvas.width/2 - 100 && x < canvas.width/2 + 100 && y > nameBtnY && y < nameBtnY + 40) {
-                    playTapSound();
-                    changePlayerName();
-                    draw();
-                    return;
-                }
                 
                 // BGMセレクト
                 for (let i = 0; i < bgmOptions.length; i++) {
@@ -5347,14 +5339,6 @@
                     ctx.fillText(t.label + (t.val ? ':ON' : ':OFF'), btnX + btnW/2, btnY + btnH/2 + 4);
                 }
 
-                // 名前変更ボタン
-                let nameBtnY = canvas.height/2 + 100;
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-                ctx.beginPath(); ctx.roundRect(canvas.width/2 - 100, nameBtnY, 200, 40, 10); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = 'bold 16px sans-serif';
-                ctx.fillText('名前を変更', canvas.width/2, nameBtnY + 25);
-                ctx.font = '12px sans-serif'; ctx.fillStyle = '#BDC3C7';
-                ctx.fillText(`現在の名前: ${playerName}`, canvas.width/2, nameBtnY + 55);
 
                 ctx.textAlign = 'left';
             } else if (gameState === 'CUSTOM_LEVEL_SELECT') {
