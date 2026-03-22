@@ -2,9 +2,18 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>SUPER SKY DROP</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SkyDrop">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#000000">
+
     <style>
         body { margin: 0; background-color: #000; overflow: hidden; font-family: 'Inter', sans-serif; }
         canvas { display: block; filter: contrast(110%) brightness(105%); }
@@ -14,10 +23,99 @@
             pointer-events: none; z-index: 10000; border: 1px solid #ff3333;
             max-width: 320px; display: none; font-family: monospace;
         }
+
+        /* iOS Installation Guide */
+        #ios-pwa-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            display: none;
+            padding: 20px;
+            z-index: 100000;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .prompt-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .prompt-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            margin-right: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .prompt-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #000;
+        }
+
+        .prompt-text {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .prompt-action-bar {
+            border-top: 1px solid #ddd;
+            padding-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .share-icon {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+
+        .btn-close {
+            background: #eee;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body>
     <div id="debug-info"></div>
+    
+    <!-- iOS PWA Prompt -->
+    <div id="ios-pwa-prompt">
+        <div class="prompt-header">
+            <img src="apple-touch-icon.png" class="prompt-icon" alt="App Icon">
+            <div class="prompt-title">ホーム画面に追加</div>
+        </div>
+        <div class="prompt-text">
+            このゲームをフルスクリーンで遊ぶには、ホーム画面に追加してください。
+        </div>
+        <div class="prompt-action-bar">
+            <button class="btn-close" onclick="document.getElementById('ios-pwa-prompt').style.display='none'">閉じる</button>
+            <span>下の <img src="https://developer.apple.com/design/human-interface-guidelines/foundations/images/icons/sharing/share.png" class="share-icon" style="height:20px; filter:invert(0.5);"> アイコンをタップして「ホーム画面に追加」を選択してください。</span>
+        </div>
+    </div>
+
     <canvas id="gameCanvas" width="400" height="600" style="margin-top: 20px;"></canvas>
 
     <script>
@@ -5028,6 +5126,33 @@
         // playLevelSelectBGM();
         
         gameLoop();
+
+        // PWA & iOS Install Prompt Logic
+        const isIos = () => {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            return /iphone|ipad|ipod/.test(userAgent);
+        };
+        const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+        if (isIos() && !isInStandaloneMode()) {
+            const prompt = document.getElementById('ios-pwa-prompt');
+            // 初回訪問時のみ表示（sessionStorageを使用）
+            if (prompt && !sessionStorage.getItem('ios-pwa-prompt-shown')) {
+                prompt.style.display = 'block';
+                sessionStorage.setItem('ios-pwa-prompt-shown', 'true');
+            }
+        }
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then((reg) => {
+                    console.log('Service Worker registered');
+                }).catch((err) => {
+                    console.error('Service Worker registration failed:', err);
+                });
+            });
+        }
     </script>
 </body>
 </html>
