@@ -820,6 +820,7 @@
         let isEndlessMode = false;
         let currentChapter = 1; // 1: 第一章(1-20), 2: 第二章(21-40)
         let endlessTime = 0;
+        let endlessStartTime = 0;
 
         // タイトルの色を確率で決定
         let titleColorRand = Math.random() * 100;
@@ -956,8 +957,8 @@
             [
                 { type: 'boost', name: '20%ボーナス', price: 200, id: 'boost', desc: '次クリア時、銀の鳥コイン20%UP!' },
                 { type: 'boost', name: '大容量ボーナス', price: 500, id: 'boost_large', desc: '次クリア時、銀の鳥コイン30%UP!' },
-                { type: 'chapter', name: '第2章 解禁券', price: 30, id: 'ch2', desc: '30個以上の★を持っていれば解禁可能！' },
-                { type: 'chapter', name: '第3章 解禁券', price: 70, id: 'ch3', desc: '70個以上の★を持っていれば解禁可能！' }
+                { type: 'chapter', name: '第2章 解禁券', price: 100000, id: 'ch2', desc: '★30個 ＋ 10万コインで解禁！' },
+                { type: 'chapter', name: '第3章 解禁券', price: 300000, id: 'ch3', desc: '★70個 ＋ 30万コインで解禁！' }
             ]
         ];
 
@@ -1614,8 +1615,8 @@
                 } else {
                     // 下部パネル操作 (150px内)
                     let categories = [
-                        { name: '障害物', tools: ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball'] },
-                        { name: 'アイテム', tools: ['item', 'goal', 'start'] },
+                        { name: '障害物', tools: ['normal', 'fast', 'moving', 'large', 'laser', 'seeker', 'fireball'] },
+                        { name: 'アイテム', tools: ['item'] },
                         { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'] }
                     ];
 
@@ -1789,14 +1790,18 @@
                         } else if (item.type === 'chapter') {
                             let totalStars = getTotalGoldStars();
                             let reqStars = (item.id === 'ch2' ? 30 : 70);
+                            let reqCoins = (item.id === 'ch2' ? 100000 : 300000);
                             let alreadyBought = (item.id === 'ch2' ? isChapter2Bought : isChapter3Bought);
                             if (alreadyBought) {
                                 alert("すでにこの章は解禁されています！");
                             } else if (totalStars < reqStars) {
                                 alert(`解禁には ${reqStars} 個のスターが必要です！（現在：${totalStars} 個）`);
+                            } else if (totalSilverBirds < reqCoins) {
+                                alert(`解禁には ${reqCoins} コインが必要です！（現在：${totalSilverBirds}）`);
                             } else {
-                                if (confirm(`★ ${reqStars} 個を達成しました！${item.name}を解禁しますか？`)) {
+                                if (confirm(`★ ${reqStars} 個と ${reqCoins} コインで、${item.name}を解禁しますか？`)) {
                                     playClearSound(); 
+                                    totalSilverBirds -= reqCoins;
                                     spentStars += reqStars; 
                                     if (item.id === 'ch2') {
                                         isChapter2Bought = true;
@@ -2360,6 +2365,7 @@
             goal = null;
             score = 0;
             endlessTime = 0;
+            endlessStartTime = Date.now(); // タイマーの開始時刻を保存
             starsSpawned = 0;
             starsCollected = 0;
             currentCoins = [false, false, false];
@@ -2919,7 +2925,8 @@
             distance += scrollInc;
 
             if (isEndlessMode) {
-                endlessTime += 0.016 * timeFactor; 
+                // 現実の時間から経過秒数を計算することで、ステージの速度アップにタイマーが影響されないように修正
+                endlessTime = (Date.now() - (endlessStartTime || Date.now())) / 1000;
                 score = Math.floor(endlessTime * 100); 
                 // 2秒ごとに1%ずつスピードアップ (speedMultiplierを直接更新)
                 speedMultiplier += (0.01 / 120) * timeFactor;
@@ -3854,8 +3861,6 @@
                     ctx.fillStyle = '#F1C40F'; ctx.beginPath(); ctx.arc(0, 0, 8*sc, 0, Math.PI*2); ctx.fill();
                 }
                 else if (types[i] === 'item') { drawGoldCoin(ctx, 0, 0, 18*sc); }
-                else if (types[i] === 'goal') { ctx.fillStyle = '#2ECC71'; ctx.fillRect(-20*sc, -8*sc, 40*sc, 16*sc); }
-                else if (types[i] === 'start') { ctx.fillStyle = 'white'; ctx.globalAlpha = 0.6; ctx.fillRect(-10*sc, -10*sc, 20*sc, 20*sc); }
                 ctx.restore();
 
                 if (types[i].startsWith('len')) {
@@ -3919,9 +3924,11 @@
                 }
             }
             let actX = 400 - 75;
-            ctx.fillStyle = '#E67E22'; ctx.fillRect(actX, 600 - 145, 65, 35);
-            ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('テスト', actX + 32.5, 600 - 125);
-            ctx.fillStyle = '#95a5a6'; ctx.fillRect(actX, 600 - 105, 65, 35); ctx.fillText('戻る', actX + 32.5, 600 - 85);
+            ctx.fillStyle = '#E67E22'; ctx.beginPath(); ctx.roundRect(actX, 600 - 145, 65, 35, 5); ctx.fill();
+            ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('テスト', actX + 32.5, 600 - 123);
+            
+            ctx.fillStyle = '#7f8c8d'; ctx.beginPath(); ctx.roundRect(actX, 600 - 105, 65, 35, 5); ctx.fill();
+            ctx.fillStyle = 'white'; ctx.font = 'bold 14px sans-serif'; ctx.fillText('戻る', actX + 32.5, 600 - 83);
             
             ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'left';
             ctx.fillText(`距離: ${Math.floor(editorScroll)}m`, 10, 20);
@@ -4930,15 +4937,14 @@
                 ctx.fillText('〜 遊び方 〜', 400/2, 80);
                 
                 ctx.fillStyle = 'white';
+                ctx.font = 'bold 18px sans-serif';
+                ctx.fillText('・画面左をタップで左移動', 400/2, 130);
+                ctx.fillText('・画面右をタップで右移動', 400/2, 180);
+                ctx.fillText('・画面上半分をタップでスロー！', 400/2, 240);
+                
                 ctx.font = '16px sans-serif';
-                ctx.fillText('・画面下半分をタップで左右移動', 400/2, 130);
-                // PC版説明を削除
-                
-                ctx.fillText('・画面上半分をタップでスローモード', 400/2, 210);
-                // PC版説明を削除
-                
-                ctx.fillText('・赤い障害物を避けてゴールを目指せ！', 400/2, 285);
-                ctx.fillText('・黄色い星を集めると着替えが買えるぞ！', 400/2, 320);
+                ctx.fillText('赤い障害物を避けてゴールを目指せ！', 400/2, 305);
+                ctx.fillText('黄色い星を集めると着替えが買えるぞ！', 400/2, 340);
 
                 // エンドレスモードの説明
                 ctx.fillStyle = '#F1C40F';
