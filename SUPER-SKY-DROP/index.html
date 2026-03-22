@@ -2098,7 +2098,7 @@
                     lastEndlessPlayTime = Date.now();
                     localStorage.setItem('superSkyDropLastEndlessPlayTime', lastEndlessPlayTime);
                     // エンドレスモード終了時にスコアを送信
-                    sendScore(playerName, Math.floor(endlessTime * 100));
+                    sendScore(playerName, Math.floor(endlessTime * 10) / 10);
                 }
                 retryCountdown = 0; 
                 return;
@@ -3789,7 +3789,7 @@
                     ctx.textAlign = 'right';
                     ctx.font = 'bold 18px "Righteous", sans-serif';
                     ctx.fillStyle = '#F1C40F';
-                    ctx.fillText(`${Math.floor(r.score)}m`, canvas.width - 35, y);
+                    ctx.fillText(`${r.score}秒`, canvas.width - 35, y);
                     ctx.textAlign = 'left';
                 }
                 
