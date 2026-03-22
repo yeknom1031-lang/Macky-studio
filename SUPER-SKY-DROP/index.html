@@ -1418,6 +1418,16 @@
             isScrollbarDragging = false;
         });
 
+        window.addEventListener('wheel', (e) => {
+            if (gameState === 'EDITOR') {
+                e.preventDefault();
+                let delta = e.deltaY;
+                let totalDist = editorLevel.totalDist || 4000;
+                editorScroll = Math.max(0, Math.min(totalDist, editorScroll + delta));
+                draw();
+            }
+        }, { passive: false });
+
         canvas.addEventListener('click', (e) => {
             initAudio();
             const pos = getMousePos(e);
@@ -1590,37 +1600,69 @@
                         editorSelectedIndex = foundIdx;
                     } else {
                         // 何も選択されていない状態で空地をタップしたなら新規作成
-                        if (editorSelectedType === 'start') {
-                            editorLevel.startX = snapX - 15;
-                            editorLevel.startDist = clickDist;
-                        } else {
-                            let ow = 60, oh = 20;
-                            if (editorSelectedType === 'laser') { ow = 400; snapX = 0; oh = 20; }
-                            else if (editorSelectedType === 'item') {
-                                ow = 20; oh = 20;
-                                let itemCount = editorLevel.objects.filter(o => o.type === 'item').length;
-                                if (itemCount >= 3) { alert("星は最大3枚までです！"); return; }
-                            } else if (editorSelectedType === 'goal') { ow = 100; oh = 20; snapX = (400-ow)/2; }
-                            else if (editorSelectedType === 'fireball') { ow = 40; oh = 40; }
-                            
-                            editorLevel.objects.push({
-                                d: clickDist, x: snapX, y: 0, w: ow, h: oh, 
-                                type: editorSelectedType, rotation: 0,
-                                color: (editorSelectedType === 'item' ? '#F1C40F' : (editorSelectedType === 'goal' ? '#2ECC71' : (editorSelectedType === 'fireball' ? '#FF5722' : '#E74C3C'))),
-                                spawned: false
-                            });
-                            editorSelectedIndex = editorLevel.objects.length - 1;
-                        }
+                        let ow = 60, oh = 20;
+                        if (editorSelectedType === 'laser') { ow = 400; snapX = 0; oh = 20; }
+                        else if (editorSelectedType === 'item') {
+                            ow = 20; oh = 20;
+                            let itemCount = editorLevel.objects.filter(o => o.type === 'item').length;
+                            if (itemCount >= 3) { alert("星は最大3枚までです！"); return; }
+                        } else if (editorSelectedType === 'fireball') { ow = 40; oh = 40; }
+                        else if (editorSelectedType === 'large') { ow = 120; oh = 30; }
+                        
+                        editorLevel.objects.push({
+                            d: clickDist, x: snapX, y: 0, w: ow, h: oh, 
+                            type: editorSelectedType, rotation: 0,
+                            color: (editorSelectedType === 'item' ? '#F1C40F' : (editorSelectedType === 'fireball' ? '#FF5722' : '#E74C3C')),
+                            spawned: false
+                        });
+                        editorSelectedIndex = editorLevel.objects.length - 1;
                     }
                 } else {
                     // 下部パネル操作 (150px内)
-                    let categories = [
+                    const categories = [
                         { name: '障害物', tools: ['normal', 'fast', 'moving', 'large', 'laser', 'seeker', 'fireball'] },
                         { name: 'アイテム', tools: ['item'] },
                         { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'] }
                     ];
 
+                    let tabW = (400 - 85) / 3;
+                    if (y > 600 - 145 && y < 600 - 110) {
+                        // タブ切り替え
+                        if (x > 10 && x < 400 - 75) {
+                            playTapSound();
+                            editorTab = Math.floor((x - 10) / tabW);
+                            editorTab = Math.max(0, Math.min(2, editorTab));
+                            draw(); return;
+                        }
+                    }
+
+                    if (y > 600 - 110) {
+                        // ツール選択
+                        let types = categories[editorTab].tools;
+                        for (let i = 0; i < types.length; i++) {
+                            let col = i % 5; let row = Math.floor(i / 5);
+                            let btnX = 10 + col * 55; let btnY = 600 - 110 + row * 45;
+                            if (x > btnX && x < btnX + 50 && y > btnY && y < btnY + 40) {
+                                playTapSound();
+                                editorSelectedType = types[i];
+                                
+                                // 設定系ツールの即時反映
+                                if (types[i].startsWith('len')) {
+                                    let amt = parseInt(types[i].substring(3));
+                                    editorLevel.totalDist = Math.max(200, Math.min(20000, (editorLevel.totalDist || 4000) + amt));
+                                } else if (types[i] === 'setBG') {
+                                    editorLevel.bgIdx = ((editorLevel.bgIdx || 0) + 1) % 6;
+                                    setBGTheme(editorLevel.bgIdx);
+                                } else if (types[i] === 'setTheme') {
+                                    editorLevel.bgmThemeIdx = ((editorLevel.bgmThemeIdx || 0) + 1) % 3;
+                                }
+                                draw(); return;
+                            }
+                        }
+                    }
+
                     if (editorSelectedIndex !== -1 && x > 400 - 245 && x < 400 - 80) {
+                        // 編集パネルの操作
                         let self = editorLevel.objects[editorSelectedIndex];
                         let editX = 400 - 245;
                         if (y > 600 - 140 && y < 600 - 110) { // 1行目 (幅)
@@ -3825,7 +3867,7 @@
             
             // タブの描画
             const categories = [
-                { name: '障害物', tools: ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball'], names: ['通常', '高速', '動く', '線', '追跡', '火球'] },
+                { name: '障害物', tools: ['normal', 'fast', 'moving', 'large', 'laser', 'seeker', 'fireball'], names: ['通常', '高速', '動く', '巨大', '線', '追跡', '火球'] },
                 { name: 'アイテム', tools: ['item'], names: ['コイン'] },
                 { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'], names: ['＋100', '－100', '＋10', '－10', '背景', '曲調'] }
             ];
