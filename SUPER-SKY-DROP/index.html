@@ -2001,15 +2001,6 @@
                         return;
                     }
                 }
-                // 全消去ボタン (右下)
-                if (x > canvas.width - 100 && x < canvas.width - 10 && y > canvas.height - 50 && y < canvas.height - 10) {
-                    if (confirm("これまでに作った「すべての」自作ステージを削除しますか？\n（この操作は取り消せません）")) {
-                        customLevels = [];
-                        localStorage.setItem('superSkyDropCustom', JSON.stringify(customLevels));
-                        playTapSound(); gameState = 'START'; draw();
-                    }
-                    return;
-                }
             } else if (gameState === 'CUSTOM_ACTION_MENU') {
                 let btnW = 200; let btnH = 60;
                 let centerX = canvas.width / 2 - btnW / 2;
@@ -2019,7 +2010,7 @@
                     playTapSound();
                     isCustomLevel = true;
                     customLevelData = customLevels[selectedCustomIdx];
-                    editorLevel = customLevelData; // これを追加！
+                    editorLevel = customLevelData;
                     resetGame();
                 }
                 // 編集
@@ -2031,8 +2022,18 @@
                     gameState = 'EDITOR';
                     draw();
                 }
-                // もどる
+                // 削除
                 else if (x > centerX && x < centerX + btnW && y > 310 && y < 310 + btnH) {
+                    if (confirm("このステージを削除してもよろしいですか？")) {
+                        customLevels.splice(selectedCustomIdx, 1);
+                        localStorage.setItem('superSkyDropCustom', JSON.stringify(customLevels));
+                        playTapSound();
+                        gameState = 'CUSTOM_LEVEL_SELECT';
+                        draw();
+                    }
+                }
+                // もどる
+                else if (x > centerX && x < centerX + btnW && y > 390 && y < 390 + btnH) {
                     playTapSound();
                     gameState = 'CUSTOM_LEVEL_SELECT';
                     draw();
@@ -4248,7 +4249,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.4.21-editor-vis', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.4.22-delete-fix', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
@@ -5131,10 +5132,6 @@
                         ctx.font = '10px sans-serif'; ctx.fillStyle = '#aaa';
                         ctx.fillText(`${level.totalDist}m`, bx + itemW/2, by + 45);
                     }
-                    // 全消去ボタン
-                    ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.roundRect(canvas.width - 100, canvas.height - 50, 90, 40, 5); ctx.fill();
-                    ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
-                    ctx.fillText('全消去', canvas.width - 55, canvas.height - 25);
                 }
             } else if (gameState === 'EDITOR_MENU') {
                 ctx.fillStyle = 'rgba(0,0,0,0.85)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -5175,10 +5172,15 @@
                 ctx.fillStyle = 'white';
                 ctx.fillText('編集する', canvas.width/2, 267);
 
-                // もどるボタン
-                ctx.fillStyle = '#95a5a6'; ctx.beginPath(); ctx.roundRect(centerX, 310, btnW, btnH, 10); ctx.fill();
+                // 削除ボタン
+                ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.roundRect(centerX, 310, btnW, btnH, 10); ctx.fill();
                 ctx.fillStyle = 'white';
-                ctx.fillText('もどる', canvas.width/2, 347);
+                ctx.fillText('削除する', canvas.width/2, 347);
+
+                // もどるボタン
+                ctx.fillStyle = '#95a5a6'; ctx.beginPath(); ctx.roundRect(centerX, 390, btnW, btnH, 10); ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.fillText('もどる', canvas.width/2, 427);
             }
             ctx.restore();
 
