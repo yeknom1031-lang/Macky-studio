@@ -149,13 +149,8 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
-        // ==== 緊急デバッグ：なぜ画面が真っ暗になるかの究明 ====
-        const debugOverlay = document.createElement('div');
-        debugOverlay.style.cssText = 'position:fixed; top:10px; left:10px; background:rgba(0,0,0,0.8); color:#ff3333; padding:10px; font-family:monospace; z-index:9999; border:1px solid red; pointer-events:none;';
-        document.body.appendChild(debugOverlay);
-        
         window.onerror = function(msg, source, lineno, colno, error) {
-            debugOverlay.innerHTML += `🚨 ERROR: ${msg} <br> LINE: ${lineno}<br>`;
+            console.error(`🚨 ERROR: ${msg} LINE: ${lineno}`);
             return false;
         };
 
@@ -1378,8 +1373,8 @@
             lastClickY = pos.y;
             lastClickTime = Date.now();
             
-            // デバッグログ
-            debugOverlay.innerHTML = `CLICK at (${Math.floor(pos.x)}, ${Math.floor(pos.y)}) State: ${gameState}`;
+            // デバッグログ (非表示)
+            // console.log(`CLICK at (${Math.floor(pos.x)}, ${Math.floor(pos.y)}) State: ${gameState}`);
             
             handleInteraction(pos.x, pos.y);
         });
@@ -5477,13 +5472,7 @@
             update();
             draw();
         } catch (e) {
-            if (window.debugOverlay) {
-                window.debugOverlay.style.display = 'block';
-                window.debugOverlay.innerHTML += `[CRITICAL LOOP ERROR] ${e.message}<br>`;
-            } else {
-                alert(`🚨 ERROR: ${e.message}`);
-            }
-            console.error(e);
+            console.error(`🚨 CRITICAL LOOP ERROR: ${e.message}`, e);
             return; 
         }
         requestAnimationFrame(gameLoop);
