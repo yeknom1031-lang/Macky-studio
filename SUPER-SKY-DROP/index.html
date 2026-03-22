@@ -3148,23 +3148,44 @@
                 ctx.clip();
                 ctx.fillStyle = mColor; ctx.fill();
             } else {
-                // 通常のマント - プレイ中のみ激しく揺れる。オープニングでは揺らさない
+                // 通常のマント - プレイ中のみ激しく揺れる。
+                let time = Date.now() / 80;
                 let vY = 0; let vX = 0;
+                let sway1 = Math.sin(time) * 12;
+                let sway2 = Math.cos(time * 0.8) * 8;
+                
                 if (gameState === 'PLAYING') {
-                    vY = Math.random() * 15;
-                    vX = (Math.random() - 0.5) * 10;
+                    vY = 10 + sway1 + (Math.random() * 5);
+                    vX = sway2 + (Math.random() - 0.5) * 6;
                 } else if (gameState !== 'OPENING') {
                     // 通常時（タイトル等）はゆったり
-                    vY = Math.sin(Date.now() / 150) * 4;
+                    vY = Math.sin(Date.now() / 200) * 5;
+                    vX = Math.cos(Date.now() / 250) * 3;
                 }
+                
+                // よりダイナミックなマントの形状
                 ctx.beginPath(); 
-                ctx.moveTo(5, 0); 
-                ctx.lineTo(-15 + vX, -25 - vY); 
-                ctx.lineTo(player.width + 15 + vX, -25 - vY); 
-                ctx.lineTo(player.width - 5, 0); 
+                ctx.moveTo(3, 0); 
+                // 左端
+                ctx.quadraticCurveTo(-10 + vX, -10 - vY * 0.5, -18 + vX * 1.2, -28 - vY); 
+                // 中央（たわみ）
+                ctx.quadraticCurveTo(player.width/2 + vX * 0.5, -20 - vY * 0.7, player.width + 18 + vX * 1.2, -28 - vY); 
+                // 右端
+                ctx.quadraticCurveTo(player.width + 10 + vX, -10 - vY * 0.5, player.width - 3, 0); 
                 ctx.closePath(); 
+                
+                ctx.save();
                 ctx.clip();
-                ctx.fillStyle = mColor; ctx.fill();
+                ctx.fillStyle = mColor;
+                ctx.fill();
+                
+                // マントに深みを出すためのグラデーション
+                let mGrad = ctx.createLinearGradient(0, 0, 0, -30 - vY);
+                mGrad.addColorStop(0, 'rgba(0,0,0,0)');
+                mGrad.addColorStop(1, 'rgba(0,0,0,0.3)');
+                ctx.fillStyle = mGrad;
+                ctx.fill();
+                ctx.restore();
             }
             if (mPattern === 'stripe') {
                 ctx.strokeStyle = 'rgba(255,255,255,0.5)'; ctx.lineWidth = 4;
@@ -3485,14 +3506,25 @@
 
         function drawStar(ctx, x, y, size, color = '#F1C40F') {
             ctx.save(); ctx.translate(x, y);
+            let time = Date.now() / 200;
+            let pulse = (Math.sin(time) + 1) / 2;
+            
+            // 外側の光輪
+            ctx.globalAlpha = 0.3 * pulse;
+            ctx.fillStyle = color;
+            ctx.beginPath(); ctx.arc(0, 0, size * 1.5, 0, Math.PI * 2); ctx.fill();
+            ctx.globalAlpha = 1.0;
+
             ctx.fillStyle = color; ctx.beginPath();
+            ctx.rotate(time * 0.2); // ゆっくり回転
             for (let i = 0; i < 5; i++) {
                 ctx.rotate(Math.PI / 5); ctx.lineTo(0, 0 - (size * 0.45));
                 ctx.rotate(Math.PI / 5); ctx.lineTo(0, 0 - size);
             }
             ctx.closePath(); ctx.fill();
-            ctx.shadowBlur = 10; ctx.shadowColor = color;
-            ctx.strokeStyle = 'white'; ctx.lineWidth = 1; ctx.stroke();
+            
+            ctx.shadowBlur = 15 + pulse * 10; ctx.shadowColor = color;
+            ctx.strokeStyle = 'white'; ctx.lineWidth = 1.5; ctx.stroke();
             ctx.restore();
         }
         function drawBirdCoin(ctx, x, y, size) { drawStar(ctx, x, y, size, '#BDC3C7'); }
@@ -3700,10 +3732,17 @@
             }
 
             ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-            if (gameState === 'PLAYING') {
-                for (let i=0; i<3; i++) {
-                    ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 30);
+            if (gameState === 'PLAYING' && introTimer <= 0) {
+                let currentFrameSpeedMultiplier = speedMultiplier * (isSlowMode ? slowModeStrength : 1.0);
+                // スピード感のある風のライン
+                for (let i=0; i<8; i++) {
+                    let lx = Math.random() * canvas.width;
+                    let ly = Math.random() * canvas.height;
+                    let len = 40 + Math.random() * 60;
+                    ctx.globalAlpha = 0.1 + Math.random() * 0.3;
+                    ctx.fillRect(lx, ly, 1.5, len * currentFrameSpeedMultiplier);
                 }
+                ctx.globalAlpha = 1.0;
             }
 
             if (gameState === 'PLAYING' || gameState === 'CLEAR' || gameState === 'GAMEOVER') {
@@ -4094,9 +4133,18 @@
                 if (goal) displayDistance = 0;
                 
                 if (isEndlessMode) {
-                    ctx.fillText(`${Math.floor(endlessTime)}秒`, 30, 45); // 所持ロゴとかぶらないように少し下げる
+                    ctx.fillStyle = '#F1C40F';
+                    ctx.fillText(`${Math.floor(endlessTime)}s`, 30, 45);
                 } else {
+                    // 距離表示の背景を少し豪華に
+                    ctx.save();
+                    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+                    ctx.beginPath(); ctx.roundRect(15, 20, 110, 35, 10); ctx.fill();
+                    ctx.strokeStyle = 'rgba(255,255,255,0.2)'; ctx.lineWidth = 1; ctx.stroke();
+                    ctx.fillStyle = '#FFF';
+                    ctx.shadowBlur = 5; ctx.shadowColor = '#000';
                     ctx.fillText(`${displayDistance}m`, 30, 45); 
+                    ctx.restore();
                 }
                 
                 // 自作ステージ時の「エディターに戻る」ボタン
@@ -4265,7 +4313,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.4.29-speed-fix', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.5.0-premium-fx', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
