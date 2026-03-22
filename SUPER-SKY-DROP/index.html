@@ -836,6 +836,7 @@
         let isObjectDragging = false; 
         let lastEditorY = 0;
         let editorSelectedIndex = -1; // 選択中のオブジェクト
+        let editorTab = 0; // 0: 障害物, 1: アイテム, 2: 設定
         let editingCustomIndex = -1; // 現在編集中の自作ステージ番号 (-1は新規)
         let selectedCustomIdx = -1; // アクションメニューで選択されたステージ番号
         
@@ -1499,60 +1500,63 @@
                 editorLevel.totalDist = editorLevel.totalDist || 4000;
                 if (y < canvas.height - 150) {
                     if (isEditorDragging) return;
-                    if (y < canvas.height - 150) {
-                        let clickDist = editorScroll + y - 150;
-                        let snapX = Math.round(x / GRID) * GRID;
-                        // グリッドスナップ
-                        clickDist = Math.round(clickDist / GRID) * GRID;
-                        
-                        let foundIdx = -1;
-                        for(let i=0; i<editorLevel.objects.length; i++){
-                            let o = editorLevel.objects[i];
-                            if (Math.abs(o.d - clickDist) < 15 && snapX >= o.x && snapX <= o.x + o.w) {
-                                foundIdx = i; break;
-                            }
+                    let clickDist = editorScroll + y - 150;
+                    let snapX = Math.round(x / GRID) * GRID;
+                    clickDist = Math.round(clickDist / GRID) * GRID;
+                    
+                    let foundIdx = -1;
+                    for(let i=0; i<editorLevel.objects.length; i++){
+                        let o = editorLevel.objects[i];
+                        if (Math.abs(o.d - clickDist) < 15 && snapX >= o.x && snapX <= o.x + o.w) {
+                            foundIdx = i; break;
                         }
-                        if (foundIdx !== -1) {
-                            editorSelectedIndex = foundIdx;
-                        } else {
-                            if (editorSelectedIndex !== -1 && x < canvas.width - 245) {
-                                editorSelectedIndex = -1;
-                            } else if (editorSelectedIndex === -1) {
-                                if (editorSelectedType === 'start') {
-                                    editorLevel.startX = snapX - 15;
-                                    editorLevel.startDist = clickDist;
-                                } else {
-                                    let ow = 60, oh = 20;
-                                    if (editorSelectedType === 'laser') { ow = canvas.width; snapX = 0; oh = 20; }
-                                    else if (editorSelectedType === 'item') {
-                                        ow = 20; oh = 20;
-                                        let itemCount = editorLevel.objects.filter(o => o.type === 'item').length;
-                                        if (itemCount >= 3) { alert("星は最大3枚までです！"); return; }
-                                    } else if (editorSelectedType === 'goal') { ow = 100; oh = 20; snapX = (canvas.width-ow)/2; }
-                                    else if (editorSelectedType === 'fireball') { ow = 40; oh = 40; }
-                                    editorLevel.objects.push({
-                                        d: clickDist, x: snapX, y: 0, w: ow, h: oh, 
-                                        type: editorSelectedType, rotation: 0,
-                                        color: (editorSelectedType === 'item' ? '#F1C40F' : (editorSelectedType === 'goal' ? '#2ECC71' : (editorSelectedType === 'fireball' ? '#FF5722' : '#E74C3C'))),
-                                        spawned: false
-                                    });
-                                    editorSelectedIndex = editorLevel.objects.length - 1;
-                                }
+                    }
+                    if (foundIdx !== -1) {
+                        editorSelectedIndex = foundIdx;
+                    } else {
+                        if (editorSelectedIndex !== -1 && x < canvas.width - 245) {
+                            editorSelectedIndex = -1;
+                        } else if (editorSelectedIndex === -1) {
+                            if (editorSelectedType === 'start') {
+                                editorLevel.startX = snapX - 15;
+                                editorLevel.startDist = clickDist;
+                            } else {
+                                let ow = 60, oh = 20;
+                                if (editorSelectedType === 'laser') { ow = canvas.width; snapX = 0; oh = 20; }
+                                else if (editorSelectedType === 'item') {
+                                    ow = 20; oh = 20;
+                                    let itemCount = editorLevel.objects.filter(o => o.type === 'item').length;
+                                    if (itemCount >= 3) { alert("星は最大3枚までです！"); return; }
+                                } else if (editorSelectedType === 'goal') { ow = 100; oh = 20; snapX = (canvas.width-ow)/2; }
+                                else if (editorSelectedType === 'fireball') { ow = 40; oh = 40; }
+                                editorLevel.objects.push({
+                                    d: clickDist, x: snapX, y: 0, w: ow, h: oh, 
+                                    type: editorSelectedType, rotation: 0,
+                                    color: (editorSelectedType === 'item' ? '#F1C40F' : (editorSelectedType === 'goal' ? '#2ECC71' : (editorSelectedType === 'fireball' ? '#FF5722' : '#E74C3C'))),
+                                    spawned: false
+                                });
+                                editorSelectedIndex = editorLevel.objects.length - 1;
                             }
                         }
                     }
                 } else {
-                    let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'];
+                    // 下部パネル操作 (150px内)
+                    let categories = [
+                        { name: '障害物', tools: ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball'] },
+                        { name: 'アイテム', tools: ['item', 'goal', 'start'] },
+                        { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'] }
+                    ];
+
                     if (editorSelectedIndex !== -1 && x > canvas.width - 245 && x < canvas.width - 80) {
                         let self = editorLevel.objects[editorSelectedIndex];
                         let editX = canvas.width - 245;
-                        if (y > canvas.height - 140 && y < canvas.height - 110) { // 行目 (幅)
-                            if (x < editX + 45) self.w = Math.max(GRID, self.w - GRID);
-                            else if (x > editX + 130) self.w = Math.min(canvas.width, self.w + GRID);
-                            else editorSelectedIndex = -1; 
+                        if (y > canvas.height - 140 && y < canvas.height - 110) { // 1行目 (幅)
+                            if (x < editX + 45) self.w = Math.max(20, self.w - 20);
+                            else if (x > editX + 130) self.w = Math.min(canvas.width, self.w + 20);
+                            else editorSelectedIndex = -1;
                         } else if (y > canvas.height - 105 && y < canvas.height - 75) { // 2行目 (高さ)
-                            if (x < editX + 45) self.h = Math.max(GRID/2, self.h - GRID/2);
-                            else if (x > editX + 130) self.h = Math.min(200, self.h + GRID/2);
+                            if (x < editX + 45) self.h = Math.max(10, self.h - 10);
+                            else if (x > editX + 130) self.h = Math.min(200, self.h + 10);
                             else editorSelectedIndex = -1;
                         } else if (y > canvas.height - 70 && y < canvas.height - 40) { // 3行目 (回転 or 削除)
                             if (x < editX + 50) { editorLevel.objects.splice(editorSelectedIndex, 1); editorSelectedIndex = -1; }
@@ -1561,11 +1565,24 @@
                             else { editorSelectedIndex = -1; }
                         }
                     } else {
-                        let bgmTypes = ['pop', 'techno', 'chill'];
-                        let bgNames = ['夕焼け', '青空', '宇宙', '紫暮', '猛毒', '朝焼け'];
+                        // タブ切り替え
+                        if (y > canvas.height - 145 && y < canvas.height - 115) {
+                            let tabW = (canvas.width - 85) / 3;
+                            for (let i = 0; i < 3; i++) {
+                                if (x > 10 + i * tabW && x < 10 + (i+1) * tabW) {
+                                    editorTab = i;
+                                    playTapSound();
+                                    draw();
+                                    return;
+                                }
+                            }
+                        }
+
+                        // ツール選択
+                        let types = categories[editorTab].tools;
                         for(let i=0; i<types.length; i++) {
                             let col = i % 5; let row = Math.floor(i / 5);
-                            let btnX = 10 + col * 55; let btnY = canvas.height - 140 + row * 45;
+                            let btnX = 10 + col * 55; let btnY = canvas.height - 110 + row * 45;
                             if (x > btnX && x < btnX + 50 && y > btnY && y < btnY + 40) {
                                 if (types[i] === 'len+100') { editorLevel.totalDist = (editorLevel.totalDist || 4000) + 100; playTapSound(); }
                                 else if (types[i] === 'len-100') { editorLevel.totalDist = Math.max(100, (editorLevel.totalDist || 4000) - 100); playTapSound(); }
@@ -1583,14 +1600,15 @@
                                 draw();
                             }
                         }
-                        if (x > canvas.width - 80 && y > canvas.height - 145) {
-                            if (y < canvas.height - 105) {
-                                autoSaveCustomLevel();
-                                startCustomLevel(JSON.parse(JSON.stringify(editorLevel)));
-                            } else if (y < canvas.height - 65) {
-                                autoSaveCustomLevel();
-                                gameState = 'START';
-                            }
+                    }
+
+                    if (x > canvas.width - 80 && y > canvas.height - 145) {
+                        if (y < canvas.height - 105) {
+                            autoSaveCustomLevel();
+                            startCustomLevel(JSON.parse(JSON.stringify(editorLevel)));
+                        } else if (y < canvas.height - 65) {
+                            autoSaveCustomLevel();
+                            gameState = 'START';
                         }
                     }
                 }
@@ -3660,11 +3678,27 @@
                 ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(`開始地点: ${sD}m`, sX + 15, startLocY + 45); ctx.globalAlpha = 1.0;
             }
             ctx.fillStyle = '#34495e'; ctx.fillRect(0, canvas.height - 150, canvas.width, 150);
-            let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'];
-            let typeNames = ['通常', '高速', '動く', '線', '追跡', '火球', 'コイン', 'ゴール', 'スタート', '距離+100', '距離-100', '距離+10', '距離-10', '背景', '曲調'];
+            
+            // タブの描画
+            const categories = [
+                { name: '障害物', tools: ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball'], names: ['通常', '高速', '動く', '線', '追跡', '火球'] },
+                { name: 'アイテム', tools: ['item', 'goal', 'start'], names: ['コイン', 'ゴール', '開始点'] },
+                { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'], names: ['＋100', '－100', '＋10', '－10', '背景', '曲調'] }
+            ];
+            let tabW = (canvas.width - 85) / 3;
+            for (let i = 0; i < 3; i++) {
+                let isActive = editorTab === i;
+                ctx.fillStyle = isActive ? '#2ECC71' : '#2c3e50';
+                ctx.beginPath(); ctx.roundRect(10 + i * tabW, canvas.height - 145, tabW - 5, 30, 5); ctx.fill();
+                ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
+                ctx.fillText(categories[i].name, 10 + i * tabW + (tabW-5)/2, canvas.height - 125);
+            }
+
+            let types = categories[editorTab].tools;
+            let typeNames = categories[editorTab].names;
             for(let i=0; i<types.length; i++) {
                 let col = i % 5; let row = Math.floor(i / 5);
-                let btnX = 10 + col * 55; let btnY = canvas.height - 140 + row * 45;
+                let btnX = 10 + col * 55; let btnY = canvas.height - 110 + row * 45;
                 let isActive = editorSelectedType === types[i];
                 ctx.fillStyle = (isActive ? '#2ECC71' : (types[i].startsWith('len') ? '#3498DB' : '#7f8c8d'));
                 ctx.beginPath(); ctx.roundRect(btnX, btnY, 50, 40, 5); ctx.fill();
