@@ -2480,6 +2480,21 @@
                 possibleTypes.push('blackhole');
             }
 
+            // --- 追加: コイン周囲の安全地帯 (クリア不可能な状況を防ぐ) ---
+            if (!isEndlessMode) {
+                let coinNearby = false;
+                let levelObj = isCustomLevel ? editorLevel.objects : levels[currentLevelIndex].objects;
+                if (levelObj) {
+                    for (let obj of levelObj) {
+                        // オブジェクトの出現位置 (distance + 600) とコインの距離 (obj.d) を比較
+                        if (obj.type === 'item' && Math.abs(obj.d - (distance + 600)) < 60) {
+                            coinNearby = true; break;
+                        }
+                    }
+                }
+                if (coinNearby) return;
+            }
+
             // ボスステージの特別調整
             if (levels[currentLevelIndex].isBossStage) {
                 let isRush = levels[currentLevelIndex].isBossRush;
@@ -3001,8 +3016,21 @@
                         lastSilverBirdsEarned = 0;
                         lastClearHadBoost = false;
                     } else {
+                        // チャプター解禁チェック
+                        if (currentLevelIndex === 19 && !isChapter2Bought) {
+                            isChapter2Bought = true;
+                            localStorage.setItem('superSkyDropChapter2Unlocked', 'true');
+                            gameState = 'CHAPTER_UNLOCKED';
+                            unlockedDetail = '第2章が解禁されました！\nレベル21〜40が遊べるようになります。';
+                        } else if (currentLevelIndex === 39 && !isChapter3Bought) {
+                            isChapter3Bought = true;
+                            localStorage.setItem('superSkyDropChapter3Unlocked', 'true');
+                            gameState = 'CHAPTER_UNLOCKED';
+                            unlockedDetail = '第3章が解禁されました！\nレベル41〜60が遊べるようになります。';
+                        }
+
                         // 裏ステージクリア報酬：イケメンの目
-                        if (currentLevelIndex === 60 && !isHandsomeEyesUnlocked) {
+                        if (currentLevelIndex === 59 && !isHandsomeEyesUnlocked) {
                              isHandsomeEyesUnlocked = true;
                              localStorage.setItem('superSkyDropHandsUnlocked', 'true');
                              alert("★クリアおめでとうございます！★\n「イケメンの目」をゲットしました！着替え室から装備できます。");
@@ -3363,20 +3391,14 @@
                 ctx.beginPath(); 
                 ctx.moveTo(player.width/2 - 10, -2);
                 ctx.lineTo(player.width/2 + 10, -2);
-                ctx.lineTo(player.width/2 + 18 + flap, 42);
-                ctx.lineTo(player.width/2 - 18 - flap, 42);
+                ctx.lineTo(player.width/2 + 18 + flap, 38);
+                ctx.lineTo(player.width/2 - 18 - flap, 38);
                 ctx.closePath();
                 ctx.fillStyle = mColor;
                 ctx.fill();
-                
-                // マントに深みを出すためのグラデーション
-                let mGrad = ctx.createLinearGradient(0, 0, 0, -30 - vY);
-                mGrad.addColorStop(0, 'rgba(0,0,0,0)');
-                mGrad.addColorStop(1, 'rgba(0,0,0,0.3)');
-                ctx.fillStyle = mGrad;
-                ctx.fill();
-                ctx.restore();
             }
+
+            // マントのパターン描画 (台形やパラシュートの形にクリップされるべきだが、簡易化のためそのまま描画)
             if (mPattern === 'stripe') {
                 ctx.strokeStyle = 'rgba(255,255,255,0.5)'; ctx.lineWidth = 4;
                 for (let si = -40; si < player.width + 20; si += 10) { ctx.beginPath(); ctx.moveTo(si, -40); ctx.lineTo(si + 40, 10); ctx.stroke(); }
@@ -3398,7 +3420,7 @@
                     ctx.closePath(); ctx.fill();
                 }
             }
-            ctx.restore();
+            ctx.restore(); // restore 2
 
             let skinId = equippedSkin;
             if (skinId === 'chrome') {
@@ -3999,18 +4021,35 @@
                     ctx.font = 'bold 20px "Righteous", sans-serif';
                     ctx.fillText(`${i + 1}`, 35, y);
 
-                    // 名前
-                    ctx.font = '16px sans-serif';
-                    ctx.fillStyle = 'white';
-                    ctx.fillText(r.name || "---", 85, y);
+            // 名前
+            ctx.font = '16px sans-serif';
+            ctx.fillStyle = (r.name === playerName) ? '#F1C40F' : 'white';
+            ctx.fillText(r.name || "名無しのダイバー", 85, y);
 
-                    // スコア
-                    ctx.textAlign = 'right';
-                    ctx.font = 'bold 22px "Righteous", sans-serif';
-                    ctx.fillStyle = '#F1C40F';
-                    ctx.fillText(`${r.score}秒`, 400 - 35, y);
-                    ctx.textAlign = 'left';
-                }
+            // スコア
+            ctx.textAlign = 'right';
+            ctx.font = 'bold 22px "Righteous", sans-serif';
+            ctx.fillStyle = (r.name === playerName) ? '#F1C40F' : 'white';
+            ctx.fillText(`${r.score}秒`, 400 - 35, y);
+            ctx.textAlign = 'left';
+        }
+
+        // 自分の順位が10位以下の場合の表示
+        let userRank = worldRankingData.findIndex(r => r.name === playerName) + 1;
+        if (userRank > 10) {
+            let ry = 150 + 10 * 42 + 20;
+            ctx.fillStyle = 'rgba(241, 196, 15, 0.2)';
+            ctx.fillRect(20, ry - 28, 400 - 40, 36);
+            ctx.fillStyle = '#F1C40F';
+            ctx.font = 'bold 20px "Righteous", sans-serif';
+            ctx.fillText(`${userRank}`, 35, ry);
+            ctx.font = '16px sans-serif';
+            ctx.fillText(playerName, 85, ry);
+            ctx.textAlign = 'right';
+            ctx.font = 'bold 22px "Righteous", sans-serif';
+            ctx.fillText(`${worldRankingData[userRank-1].score}秒`, 400 - 35, ry);
+            ctx.textAlign = 'left';
+        }
                 
                 if (!RANKING_GAS_URL) {
                     ctx.fillStyle = '#E74C3C';
@@ -4024,7 +4063,35 @@
         function draw() {
             updateBackgroundColors();
             
-            ctx.save();
+            if (gameState === 'TITLE_TAP') {
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 32px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('SUPER SKY DROP', 400/2, 600/2 - 50);
+                
+                ctx.font = '20px sans-serif';
+                let alpha = 0.5 + Math.sin(Date.now() / 300) * 0.5;
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                ctx.fillText('タップしてスタート', 400/2, 600/2 + 50);
+                return;
+            }
+
+            if (gameState === 'CHAPTER_UNLOCKED') {
+                ctx.fillStyle = 'rgba(0,0,0,0.85)';
+                ctx.fillRect(0, 0, 400, 600);
+                ctx.fillStyle = '#F1C40F';
+                ctx.font = 'bold 30px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.shadowBlur = 15; ctx.shadowColor = 'yellow';
+                ctx.fillText('Chapter Unlocked!', 400/2, 240);
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = 'white';
+                ctx.font = '18px sans-serif';
+                ctx.fillText(unlockedDetail || '新チャプターが解禁されました！', 400/2, 290);
+                ctx.font = 'bold 16px sans-serif';
+                ctx.fillText('タップで戻る', 400/2, 450);
+                return;
+            }
             // 画面全体を揺らす
             if (screenShake > 0) {
                 ctx.translate((Math.random() - 0.5) * screenShake, (Math.random() - 0.5) * screenShake);
@@ -4683,7 +4750,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.6.8-editor-ux-fix', 400/2, 600/2);
+                ctx.fillText('v1.7.0-complete-refine', 400/2, 600/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
@@ -5300,9 +5367,9 @@
 
                 // ハイスコア表示
                 let recordId = isEndlessMode ? 'endless' : (isSecretStage ? 'secret' : currentLevelIndex);
-                let best = highScores[recordId] || 0;
+                let best = highScores[recordId];
                 let unit = isEndlessMode ? '秒' : 'm';
-                let recordText = isEndlessMode ? `最高記録: ${best}${unit}` : `最高記録: 残り ${Math.max(0, goalDistance - best)}${unit}`;
+                let recordText = `最高記録: ${best !== undefined ? best : '---'}${unit}`;
                 
                 ctx.fillStyle = 'rgba(255,255,255,0.8)';
                 ctx.font = '18px sans-serif';
@@ -5326,7 +5393,7 @@
                 ctx.font = '16px sans-serif';
                 ctx.fillStyle = '#ccc';
                 if (isEndlessMode) {
-                    ctx.fillText('クリックでタイトルに戻る', 400/2, 600/2 + 125);
+                    ctx.fillText('タップでタイトルに戻る', 400/2, 600/2 + 125);
                     
                     // ランキングボタン
                     let btnW = 160; let btnH = 40;
@@ -5339,7 +5406,7 @@
                     ctx.fillText('🌍 ランキングを見る', 400 / 2, btnY + 25);
                 } else {
                     ctx.fillText('[← →] でリトライ  /  [↑] でスローモード', 400 / 2, 600 / 2 + 100);
-                    ctx.fillText('クリックで戻る', 400 / 2, 600 / 2 + 125);
+                    ctx.fillText('タップで戻る', 400 / 2, 600 / 2 + 125);
                 }
                 
                 // スマホ用リトライボタン (エンドレス以外)
@@ -5357,12 +5424,10 @@
                 ctx.fillStyle = '#2ECC71';
                 ctx.font = 'bold 40px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('STAGE CLEAR!', 400/2, 600/2 - 40);
+                ctx.fillText('CLEAR!', 400/2, 600/2 - 40);
                 
-                if (isPracticeUsed) {
-                    // 練習モード使用時：メッセージを出さない（スッキリさせる）
-                } else if (isCustomLevel) {
-                    // 自作ステージ：メッセージも報酬も出さない（スッキリさせる）
+                if (isPracticeUsed || isCustomLevel) {
+                    // 追加メッセージなし
                 } else {
                     let best = highScores[currentLevelIndex];
                     if (best !== undefined) {
@@ -5378,33 +5443,20 @@
 
                     ctx.fillStyle = '#333';
                     ctx.font = '20px sans-serif';
-                    ctx.fillText(`ゴールドコイン獲得: ${starsCollected} 枚`, 400/2, 600/2);
+                    ctx.fillText(`ゴールドコイン獲得: ${starsCollected} 枚`, 400/2, 600/2 + 20);
                     
                     // ゴールドコインを描画
                     for (let i = 0; i < starsCollected; i++) {
                         let cx = 400/2 - ((starsCollected - 1) * 45) + (i * 90);
-                        let cy = 600/2 + 60;
-                        drawGoldCoin(ctx, cx, cy, 36);
+                        let cy = 600/2 + 70;
+                        drawGoldCoin(ctx, cx, cy, 32);
                     }
-                    
-                    // 銀の鳥コインの計算と描画
-                    let by = 600/2 + 95;
-                    ctx.fillStyle = '#555';
-                    ctx.font = 'bold 18px sans-serif';
-                    ctx.textAlign = 'center';
-                    let boostText = lastClearHadBoost ? ` (ボーナス+${lastBoostPercent}%!)` : '';
-                    ctx.fillText(`獲得 : ${lastSilverBirdsEarned} 枚` + boostText, 400/2 + 15, by);
-                    drawBirdCoin(ctx, 400/2 - 90, by - 6, 11);
-                    
-                    ctx.font = '12px sans-serif';
-                    ctx.fillStyle = '#777';
-                    ctx.fillText('※何度クリアしても報酬がもらえます！', 400/2, by + 25);
                 }
                 ctx.textBaseline = 'alphabetic'; // リセット
                 
                 ctx.fillStyle = '#333';
-                ctx.font = '18px sans-serif';
-                ctx.fillText('タップで戻る', 400/2, 600/2 + 150);
+                ctx.font = 'bold 18px sans-serif';
+                ctx.fillText('タップでタイトルへ', 400/2, 600/2 + 150);
                 ctx.textAlign = 'left';
             } else if (gameState === 'SETTINGS') {
                 ctx.fillStyle = 'rgba(30, 30, 30, 0.9)';
