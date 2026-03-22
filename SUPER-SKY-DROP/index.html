@@ -4586,8 +4586,8 @@
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillStyle = 'white';
-                ctx.font = 'bold 16px "Righteous", sans-serif';
-                ctx.fillText('PLAY', prayX + prayW/2, prayY + 20);
+                ctx.font = 'bold 13px "Righteous", sans-serif';
+                ctx.fillText('エンドレス', prayX + prayW/2, prayY + 20);
                 ctx.restore();
 
                 // RANKING ボタン (ワールドランキング)
@@ -4630,19 +4630,29 @@
                 
                 ctx.fillStyle = 'white';
                 ctx.font = '16px sans-serif';
-                ctx.fillText('・画面下半分をタップで左右移動', canvas.width/2, 140);
-                ctx.fillText('（PCは [←] [→] キー）', canvas.width/2, 170);
+                ctx.fillText('・画面下半分をタップで左右移動', canvas.width/2, 130);
+                ctx.fillText('（PCは [←] [→] キー）', canvas.width/2, 158);
                 
-                ctx.fillText('・画面上半分をタップでスローモード', canvas.width/2, 230);
-                ctx.fillText('（PCは [↑] キー）※やり直し用', canvas.width/2, 260);
+                ctx.fillText('・画面上半分をタップでスローモード', canvas.width/2, 210);
+                ctx.fillText('（PCは [↑] キー）※やり直し用', canvas.width/2, 238);
                 
-                ctx.fillText('・赤い障害物を避けてゴールを目指せ！', canvas.width/2, 320);
-                ctx.fillText('・黄色い星を集めると着替えが買えるぞ！', canvas.width/2, 380);
+                ctx.fillText('・赤い障害物を避けてゴールを目指せ！', canvas.width/2, 285);
+                ctx.fillText('・黄色い星を集めると着替えが買えるぞ！', canvas.width/2, 320);
+
+                // エンドレスモードの説明
+                ctx.fillStyle = '#F1C40F';
+                ctx.font = 'bold 16px sans-serif';
+                ctx.fillText('〜 エンドレスモード 〜', canvas.width/2, 370);
+                ctx.fillStyle = 'white';
+                ctx.font = '14px sans-serif';
+                ctx.fillText('左下の「エンドレス」ボタンでスタート！', canvas.width/2, 400);
+                ctx.fillText('障害物を避けて何秒生き残れるか挑戦しよう！', canvas.width/2, 428);
+                ctx.fillText('スコアはワールドランキングに記録される！', canvas.width/2, 456);
                 
                 ctx.fillStyle = '#2ECC71';
-                ctx.beginPath(); ctx.roundRect(canvas.width/2 - 80, canvas.height - 100, 160, 50, 10); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(canvas.width/2 - 80, canvas.height - 80, 160, 50, 10); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = 'bold 20px sans-serif';
-                ctx.fillText('わかった！', canvas.width/2, canvas.height - 68);
+                ctx.fillText('わかった！', canvas.width/2, canvas.height - 48);
                 ctx.textAlign = 'left';
             } else if (gameState === 'SHOP') {
                 // --- ショップの背景（内装）を描画 ---
