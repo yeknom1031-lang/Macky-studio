@@ -1542,7 +1542,7 @@
                         }
                     }
                 } else {
-                    let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBGM', 'setBG', 'setTheme'];
+                    let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'];
                     if (editorSelectedIndex !== -1 && x > canvas.width - 245 && x < canvas.width - 80) {
                         let self = editorLevel.objects[editorSelectedIndex];
                         let editX = canvas.width - 245;
@@ -1571,10 +1571,6 @@
                                 else if (types[i] === 'len-100') { editorLevel.totalDist = Math.max(100, (editorLevel.totalDist || 4000) - 100); playTapSound(); }
                                 else if (types[i] === 'len+10') { editorLevel.totalDist = (editorLevel.totalDist || 4000) + 10; playTapSound(); }
                                 else if (types[i] === 'len-10') { editorLevel.totalDist = Math.max(10, (editorLevel.totalDist || 4000) - 10); playTapSound(); }
-                                else if (types[i] === 'setBGM') { 
-                                    editorLevel.bgmType = ((editorLevel.bgmType || 0) + 1) % bgmTypes.length;
-                                    playTapSound();
-                                }
                                 else if (types[i] === 'setBG') { 
                                     editorLevel.bgIdx = ((editorLevel.bgIdx || 0) + 1) % themeBgData.length;
                                     playTapSound();
@@ -3664,8 +3660,8 @@
                 ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(`開始地点: ${sD}m`, sX + 15, startLocY + 45); ctx.globalAlpha = 1.0;
             }
             ctx.fillStyle = '#34495e'; ctx.fillRect(0, canvas.height - 150, canvas.width, 150);
-            let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBGM', 'setBG', 'setTheme'];
-            let typeNames = ['通常', '高速', '動く', '線', '追跡', '火球', 'コイン', 'ゴール', 'スタート', '距離+100', '距離-100', '距離+10', '距離-10', '音色', '背景', '曲調'];
+            let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'];
+            let typeNames = ['通常', '高速', '動く', '線', '追跡', '火球', 'コイン', 'ゴール', 'スタート', '距離+100', '距離-100', '距離+10', '距離-10', '背景', '曲調'];
             for(let i=0; i<types.length; i++) {
                 let col = i % 5; let row = Math.floor(i / 5);
                 let btnX = 10 + col * 55; let btnY = canvas.height - 140 + row * 45;
@@ -3691,11 +3687,7 @@
                 else if (types[i] === 'start') { ctx.fillStyle = 'white'; ctx.globalAlpha = 0.6; ctx.fillRect(-10*sc, -10*sc, 20*sc, 20*sc); }
                 ctx.restore();
 
-                if (types[i] === 'setBGM') {
-                    let bgmTypes = ['pop', 'techno', 'chill'];
-                    ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
-                    ctx.fillText(bgmTypes[editorLevel.bgmType || 0].toUpperCase(), btnX + 25, btnY + 18);
-                } else if (types[i] === 'setBG') {
+                if (types[i] === 'setBG') {
                     let bgNames = ['夕焼け', '青空', '宇宙', '紫暮', '猛毒', '朝焼け'];
                     ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
                     ctx.fillText(bgNames[editorLevel.bgIdx || 0], btnX + 25, btnY + 18);
