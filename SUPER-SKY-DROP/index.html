@@ -1555,32 +1555,34 @@
                             foundIdx = i; break;
                         }
                     }
-                    if (foundIdx !== -1) {
+                    if (editorSelectedIndex !== -1) {
+                        // すでに選択中の場合、画面のどこをタップしてもまずは「選択解除」のみを行う
+                        editorSelectedIndex = -1;
+                    } else if (foundIdx !== -1) {
+                        // 未選択の状態でオブジェクトをタップしたなら選択
                         editorSelectedIndex = foundIdx;
                     } else {
-                        if (editorSelectedIndex !== -1 && x < 400 - 245) {
-                            editorSelectedIndex = -1;
-                        } else if (editorSelectedIndex === -1) {
-                            if (editorSelectedType === 'start') {
-                                editorLevel.startX = snapX - 15;
-                                editorLevel.startDist = clickDist;
-                            } else {
-                                let ow = 60, oh = 20;
-                                if (editorSelectedType === 'laser') { ow = 400; snapX = 0; oh = 20; }
-                                else if (editorSelectedType === 'item') {
-                                    ow = 20; oh = 20;
-                                    let itemCount = editorLevel.objects.filter(o => o.type === 'item').length;
-                                    if (itemCount >= 3) { alert("星は最大3枚までです！"); return; }
-                                } else if (editorSelectedType === 'goal') { ow = 100; oh = 20; snapX = (400-ow)/2; }
-                                else if (editorSelectedType === 'fireball') { ow = 40; oh = 40; }
-                                editorLevel.objects.push({
-                                    d: clickDist, x: snapX, y: 0, w: ow, h: oh, 
-                                    type: editorSelectedType, rotation: 0,
-                                    color: (editorSelectedType === 'item' ? '#F1C40F' : (editorSelectedType === 'goal' ? '#2ECC71' : (editorSelectedType === 'fireball' ? '#FF5722' : '#E74C3C'))),
-                                    spawned: false
-                                });
-                                editorSelectedIndex = editorLevel.objects.length - 1;
-                            }
+                        // 何も選択されていない状態で空地をタップしたなら新規作成
+                        if (editorSelectedType === 'start') {
+                            editorLevel.startX = snapX - 15;
+                            editorLevel.startDist = clickDist;
+                        } else {
+                            let ow = 60, oh = 20;
+                            if (editorSelectedType === 'laser') { ow = 400; snapX = 0; oh = 20; }
+                            else if (editorSelectedType === 'item') {
+                                ow = 20; oh = 20;
+                                let itemCount = editorLevel.objects.filter(o => o.type === 'item').length;
+                                if (itemCount >= 3) { alert("星は最大3枚までです！"); return; }
+                            } else if (editorSelectedType === 'goal') { ow = 100; oh = 20; snapX = (400-ow)/2; }
+                            else if (editorSelectedType === 'fireball') { ow = 40; oh = 40; }
+                            
+                            editorLevel.objects.push({
+                                d: clickDist, x: snapX, y: 0, w: ow, h: oh, 
+                                type: editorSelectedType, rotation: 0,
+                                color: (editorSelectedType === 'item' ? '#F1C40F' : (editorSelectedType === 'goal' ? '#2ECC71' : (editorSelectedType === 'fireball' ? '#FF5722' : '#E74C3C'))),
+                                spawned: false
+                            });
+                            editorSelectedIndex = editorLevel.objects.length - 1;
                         }
                     }
                 } else {
@@ -4618,7 +4620,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.6.6-editor-bugfix', 400/2, 600/2);
+                ctx.fillText('v1.6.7-editor-select-fix', 400/2, 600/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
