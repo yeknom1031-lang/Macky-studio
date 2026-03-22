@@ -149,6 +149,17 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
+        // 高画質化 (High DPI / Retina 対応)
+        const dpr = window.devicePixelRatio || 1;
+        const logicalWidth = 400;
+        const logicalHeight = 600;
+        canvas.width = 400 * dpr;
+        canvas.height = 600 * dpr;
+        ctx.scale(dpr, dpr);
+        // コンテキストの設定を維持
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
         window.onerror = function(msg, source, lineno, colno, error) {
             console.error(`🚨 ERROR: ${msg} LINE: ${lineno}`);
             return false;
@@ -1101,7 +1112,7 @@
 
         // プレイヤーキャラクターの設定
         const player = {
-            x: canvas.width / 2 - 15,
+            x: 400 / 2 - 15,
             y: 150,
             width: 30,
             height: 30,
@@ -1128,8 +1139,8 @@
 
         for(let i = 0; i < 5; i++) {
             clouds.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
+                x: Math.random() * 400,
+                y: Math.random() * 600,
                 width: 50 + Math.random() * 50,
                 height: 20 + Math.random() * 20,
                 speedY: 2 + Math.random() * 2
@@ -1137,8 +1148,8 @@
         }
         for(let i = 0; i < 40; i++) {
             bgStars.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
+                x: Math.random() * 400,
+                y: Math.random() * 600,
                 size: Math.random() * 2 + 0.5,
                 speedY: Math.random() * 1.5 + 0.5,
                 alpha: Math.random()
@@ -1219,8 +1230,8 @@
                 clientY = e.clientY;
             }
 
-            const internalW = canvas.width;
-            const internalH = canvas.height;
+            const internalW = 400;
+            const internalH = 600;
             const externalW = rect.width;
             const externalH = rect.height;
 
@@ -1256,10 +1267,10 @@
 
 
             if (gameState === 'PLAYING') {
-                if (x > canvas.width - 70 && y < 50) {
+                if (x > 400 - 70 && y < 50) {
                     playTapSound(); stopAllSounds(); gameState = 'START'; draw(); return;
                 }
-                if (y < canvas.height * 0.25) {
+                if (y < 600 * 0.25) {
                     // 画面上部25%：スローモード切り替え
                     if (!isEndlessMode) {
                         isSlowMode = !isSlowMode;
@@ -1268,7 +1279,7 @@
                     }
                 } else {
                     // 画面下部75%：左右移動
-                    if (x < canvas.width / 2) {
+                    if (x < 400 / 2) {
                         keys.ArrowLeft = true;
                         keys.ArrowRight = false;
                     } else {
@@ -1293,8 +1304,8 @@
 
             
             if (gameState === 'PLAYING') {
-                if (y >= canvas.height * 0.25) {
-                    if (x < canvas.width / 2) {
+                if (y >= 600 * 0.25) {
+                    if (x < 400 / 2) {
                         keys.ArrowLeft = true;
                         keys.ArrowRight = false;
                     } else {
@@ -1305,13 +1316,13 @@
             } else if (gameState === 'EDITOR') {
                 if (isScrollbarDragging) {
                     let totalDist = editorLevel.totalDist || 4000;
-                    let scrollAreaH = canvas.height - 150;
+                    let scrollAreaH = 600 - 150;
                     let ratio = (y / scrollAreaH);
                     editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
                     draw();
                     return;
                 }
-                if (y < canvas.height - 150) {
+                if (y < 600 - 150) {
                     if (window.editorLastTouchY !== undefined) {
                         editorScroll -= (y - window.editorLastTouchY) * 2;
                         editorScroll = Math.max(0, editorScroll);
@@ -1336,15 +1347,15 @@
             const y = pos.y;
 
             if (gameState === 'EDITOR') {
-                if (x > canvas.width - 25 && y < canvas.height - 150) {
+                if (x > 400 - 25 && y < 600 - 150) {
                     isScrollbarDragging = true;
                     let totalDist = editorLevel.totalDist || 4000;
-                    let ratio = y / (canvas.height - 150);
+                    let ratio = y / (600 - 150);
                     editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
                     draw();
                     return;
                 }
-                if (y < canvas.height - 150) {
+                if (y < 600 - 150) {
                     // オブジェクトのクリック判定
                     let foundIdx = -1;
                     let clickDist = editorScroll + y - 150;
@@ -1377,7 +1388,7 @@
             if (gameState === 'EDITOR') {
                 if (isScrollbarDragging) {
                     let totalDist = editorLevel.totalDist || 4000;
-                    let scrollAreaH = canvas.height - 150;
+                    let scrollAreaH = 600 - 150;
                     let ratio = (y / scrollAreaH);
                     editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
                     draw();
@@ -1388,7 +1399,7 @@
                     let GRID = 20;
                     
                     // X座標と距離dを更新
-                    o.x = Math.max(0, Math.min(canvas.width - o.w, Math.round((x - o.w / 2) / GRID) * GRID));
+                    o.x = Math.max(0, Math.min(400 - o.w, Math.round((x - o.w / 2) / GRID) * GRID));
                     o.d = Math.max(0, Math.min(20000, Math.round((editorScroll + y - 150) / GRID) * GRID));
                     
                     draw();
@@ -1424,9 +1435,9 @@
             }
             if (gameState === 'START') {
                 let btnW = 80; let btnH = 80;
-                let btnX = canvas.width/2 - btnW - 20;
-                let shpX = canvas.width/2 + 20;
-                let stgY = canvas.height/2 + 50;
+                let btnX = 400/2 - btnW - 20;
+                let shpX = 400/2 + 20;
+                let stgY = 600/2 + 50;
                 // ? 遊び方 (左上に移動)
                 if (x > 10 && x < 90 && y > 10 && y < 40) {
                     playTapSound(); gameState = 'TUTORIAL'; draw(); return;
@@ -1449,16 +1460,16 @@
                     playTapSound(); gameState = 'SHOP'; draw(); return;
                 }
                 // エンドレス
-                if (x > 20 && x < 100 && y > canvas.height - 90 && y < canvas.height - 50) {
+                if (x > 20 && x < 100 && y > 600 - 90 && y < 600 - 50) {
                     playTapSound(); startEndlessMode();
                     return;
                 }
                 // 設定 (右上)
-                if (x > canvas.width - 60 && x < canvas.width - 10 && y > 10 && y < 60) {
+                if (x > 400 - 60 && x < 400 - 10 && y > 10 && y < 60) {
                     playTapSound(); gameState = 'SETTINGS'; draw(); return;
                 }
                 // 挨拶テキストのタップ判定（名前変更）
-                if (x > canvas.width/2 - 120 && x < canvas.width/2 + 120 && y > canvas.height/2 - 125 && y < canvas.height/2 - 80) {
+                if (x > 400/2 - 120 && x < 400/2 + 120 && y > 600/2 - 125 && y < 600/2 - 80) {
                     playTapSound();
                     let newName = prompt("新しい名前を入力（1〜15文字）：", playerName);
                     if (newName !== null) {
@@ -1478,12 +1489,12 @@
                     draw(); return;
                 }
                 // エディター
-                let creX = canvas.width - 100; let creY = canvas.height - 100;
+                let creX = 400 - 100; let creY = 600 - 100;
                 if (x > creX && x < creX + 80 && y > creY && y < creY + 80) {
                     playTapSound(); gameState = 'EDITOR_MENU'; draw(); return;
                 }
                 // ワールドランキングボタン
-                if (x > 110 && x < 240 && y > canvas.height - 90 && y < canvas.height - 50) {
+                if (x > 110 && x < 240 && y > 600 - 90 && y < 600 - 50) {
                     playTapSound();
                     gameState = 'RANKING';
                     fetchRanking();
@@ -1504,12 +1515,12 @@
                     playTapSound();
                     if (editorLevel.objects.length > 0) {
                         if (confirm("新しくステージを作りますか？（現在の編集内容は消えます）")) {
-                            editorLevel = { name: "MY STAGE", speed: 0.7, objects: [], bgText: 'linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d)', totalDist: 4000, startDist: 0, startX: canvas.width/2 - 15 };
+                            editorLevel = { name: "MY STAGE", speed: 0.7, objects: [], bgText: 'linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d)', totalDist: 4000, startDist: 0, startX: 400/2 - 15 };
                             editorScroll = 0; editorSelectedIndex = -1; editingCustomIndex = -1;
                             gameState = 'EDITOR'; draw();
                         }
                     } else {
-                        editorLevel = { name: "MY STAGE", speed: 0.7, objects: [], bgText: 'linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d)', totalDist: 4000, startDist: 0, startX: canvas.width/2 - 15 };
+                        editorLevel = { name: "MY STAGE", speed: 0.7, objects: [], bgText: 'linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d)', totalDist: 4000, startDist: 0, startX: 400/2 - 15 };
                         editorScroll = 0; editorSelectedIndex = -1; editingCustomIndex = -1;
                         gameState = 'EDITOR'; draw();
                     }
@@ -1524,10 +1535,10 @@
             } else if (gameState === 'EDITOR') {
                 const GRID = 20;
                 editorLevel.totalDist = editorLevel.totalDist || 4000;
-                if (y < canvas.height - 150) {
-                    if (x > canvas.width - 20) {
+                if (y < 600 - 150) {
+                    if (x > 400 - 20) {
                         isScrollbarDragging = true;
-                        let ratio = y / (canvas.height - 150);
+                        let ratio = y / (600 - 150);
                         editorScroll = Math.max(0, Math.min(editorLevel.totalDist, ratio * editorLevel.totalDist));
                         draw();
                         return;
@@ -1547,7 +1558,7 @@
                     if (foundIdx !== -1) {
                         editorSelectedIndex = foundIdx;
                     } else {
-                        if (editorSelectedIndex !== -1 && x < canvas.width - 245) {
+                        if (editorSelectedIndex !== -1 && x < 400 - 245) {
                             editorSelectedIndex = -1;
                         } else if (editorSelectedIndex === -1) {
                             if (editorSelectedType === 'start') {
@@ -1555,12 +1566,12 @@
                                 editorLevel.startDist = clickDist;
                             } else {
                                 let ow = 60, oh = 20;
-                                if (editorSelectedType === 'laser') { ow = canvas.width; snapX = 0; oh = 20; }
+                                if (editorSelectedType === 'laser') { ow = 400; snapX = 0; oh = 20; }
                                 else if (editorSelectedType === 'item') {
                                     ow = 20; oh = 20;
                                     let itemCount = editorLevel.objects.filter(o => o.type === 'item').length;
                                     if (itemCount >= 3) { alert("星は最大3枚までです！"); return; }
-                                } else if (editorSelectedType === 'goal') { ow = 100; oh = 20; snapX = (canvas.width-ow)/2; }
+                                } else if (editorSelectedType === 'goal') { ow = 100; oh = 20; snapX = (400-ow)/2; }
                                 else if (editorSelectedType === 'fireball') { ow = 40; oh = 40; }
                                 editorLevel.objects.push({
                                     d: clickDist, x: snapX, y: 0, w: ow, h: oh, 
@@ -1580,18 +1591,18 @@
                         { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'] }
                     ];
 
-                    if (editorSelectedIndex !== -1 && x > canvas.width - 245 && x < canvas.width - 80) {
+                    if (editorSelectedIndex !== -1 && x > 400 - 245 && x < 400 - 80) {
                         let self = editorLevel.objects[editorSelectedIndex];
-                        let editX = canvas.width - 245;
-                        if (y > canvas.height - 140 && y < canvas.height - 110) { // 1行目 (幅)
+                        let editX = 400 - 245;
+                        if (y > 600 - 140 && y < 600 - 110) { // 1行目 (幅)
                             if (x < editX + 45) self.w = Math.max(20, self.w - 20);
-                            else if (x > editX + 130) self.w = Math.min(canvas.width, self.w + 20);
+                            else if (x > editX + 130) self.w = Math.min(400, self.w + 20);
                             else editorSelectedIndex = -1;
-                        } else if (y > canvas.height - 105 && y < canvas.height - 75) { // 2行目 (高さ)
+                        } else if (y > 600 - 105 && y < 600 - 75) { // 2行目 (高さ)
                             if (x < editX + 45) self.h = Math.max(10, self.h - 10);
                             else if (x > editX + 130) self.h = Math.min(200, self.h + 10);
                             else editorSelectedIndex = -1;
-                        } else if (y > canvas.height - 70 && y < canvas.height - 40) { // 3行目 (回転 or 削除)
+                        } else if (y > 600 - 70 && y < 600 - 40) { // 3行目 (回転 or 削除)
                             if (x < editX + 50) { editorLevel.objects.splice(editorSelectedIndex, 1); editorSelectedIndex = -1; }
                             else if (x > editX + 55 && x < editX + 90) { self.rotation = (self.rotation || 0) - 0.2; }
                             else if (x > editX + 135) { self.rotation = (self.rotation || 0) + 0.2; }
@@ -1599,8 +1610,8 @@
                         }
                     } else {
                         // タブ切り替え
-                        if (y > canvas.height - 145 && y < canvas.height - 115) {
-                            let tabW = (canvas.width - 85) / 3;
+                        if (y > 600 - 145 && y < 600 - 115) {
+                            let tabW = (400 - 85) / 3;
                             for (let i = 0; i < 3; i++) {
                                 if (x > 10 + i * tabW && x < 10 + (i+1) * tabW) {
                                     editorTab = i;
@@ -1615,7 +1626,7 @@
                         let types = categories[editorTab].tools;
                         for(let i=0; i<types.length; i++) {
                             let col = i % 5; let row = Math.floor(i / 5);
-                            let btnX = 10 + col * 55; let btnY = canvas.height - 110 + row * 45;
+                            let btnX = 10 + col * 55; let btnY = 600 - 110 + row * 45;
                             if (x > btnX && x < btnX + 50 && y > btnY && y < btnY + 40) {
                                 if (types[i] === 'len+100') { editorLevel.totalDist = (editorLevel.totalDist || 4000) + 100; playTapSound(); }
                                 else if (types[i] === 'len-100') { editorLevel.totalDist = Math.max(100, (editorLevel.totalDist || 4000) - 100); playTapSound(); }
@@ -1635,11 +1646,11 @@
                         }
                     }
 
-                    if (x > canvas.width - 80 && y > canvas.height - 145) {
-                        if (y < canvas.height - 105) {
+                    if (x > 400 - 80 && y > 600 - 145) {
+                        if (y < 600 - 105) {
                             autoSaveCustomLevel();
                             startCustomLevel(JSON.parse(JSON.stringify(editorLevel)));
-                        } else if (y < canvas.height - 65) {
+                        } else if (y < 600 - 65) {
                             autoSaveCustomLevel();
                             gameState = 'START';
                         }
@@ -1656,7 +1667,7 @@
                 }
                 
                 // 更衣室への矢印ボタン
-                if (x > canvas.width - 60 && x < canvas.width - 10 && y > 10 && y < 45) {
+                if (x > 400 - 60 && x < 400 - 10 && y > 10 && y < 45) {
                     playTapSound();
                     gameState = 'CHANGING_ROOM';
                     shopTab = 0; // 更衣室もタブ0から
@@ -1667,7 +1678,7 @@
                 // タブ切り替え判定
                 if (y > 70 && y < 110) {
                     let tabsCount = isHandsomeEyesUnlocked ? 5 : 4;
-                    let tabW = (canvas.width - 40) / tabsCount;
+                    let tabW = (400 - 40) / tabsCount;
                     for (let t = 0; t < tabsCount; t++) {
                         if (x > 20 + t * tabW && x < 20 + (t+1) * tabW) {
                             playTapSound();
@@ -1692,7 +1703,7 @@
                 }
                 if (!currentItems) return;
 
-                let shopColW = (canvas.width - 30) / 2;
+                let shopColW = (400 - 30) / 2;
                 for (let i = 0; i < currentItems.length; i++) {
                     let item = currentItems[i];
                     let col = i % 2; let row = Math.floor(i / 2);
@@ -1790,7 +1801,7 @@
 
                 // タブ切り替え判定 (更衣室は顔も追加で4つ)
                 if (y > 70 && y < 110) {
-                    let tabW = (canvas.width - 40) / 4;
+                    let tabW = (400 - 40) / 4;
                     for (let t = 0; t < 4; t++) {
                         let actualTab = (t === 3) ? 4 : t; // その他(3)を飛ばして 顔(4) にマッピング
                         if (x > 20 + t * tabW && x < 20 + (t+1) * tabW) {
@@ -1856,7 +1867,7 @@
                 let options = ['pop', 'techno', 'chill'];
                 for (let i = 0; i < options.length; i++) {
                     let btnY = 140 + i * 75;
-                    if (x > 50 && x < canvas.width - 50 && y > btnY && y < btnY + 55) {
+                    if (x > 50 && x < 400 - 50 && y > btnY && y < btnY + 55) {
                         playTapSound();
                         currentBGMType = options[i];
                         savePlayerData();
@@ -1868,7 +1879,7 @@
                 }
 
                 // 強制的な更新ボタン (キャッシュクリア) - タイトル「設定」よりも上に配置
-                let updateBtnX = canvas.width / 2 - 80;
+                let updateBtnX = 400 / 2 - 80;
                 let updateBtnY = 40; 
                 let updateBtnW = 160;
                 let updateBtnH = 35;
@@ -1884,7 +1895,7 @@
                 for (let i = 0; i < bgmOptions.length; i++) {
                     let btnY = 180 + i * 62;
                     let btnH = 55;
-                    if (x > 50 && x < canvas.width - 50 && y > btnY && y < btnY + btnH) {
+                    if (x > 50 && x < 400 - 50 && y > btnY && y < btnY + btnH) {
                         playTapSound();
                         currentBGMType = bgmOptions[i].id;
                         localStorage.setItem('superSkyDropBGMType', currentBGMType);
@@ -1899,13 +1910,13 @@
                 let btnY = 400;
                 let btnW = 50;
                 let btnH = 40;
-                if (x > canvas.width / 2 - 80 && x < canvas.width / 2 - 30 && y > btnY && y < btnY + btnH) {
+                if (x > 400 / 2 - 80 && x < 400 / 2 - 30 && y > btnY && y < btnY + btnH) {
                     playTapSound();
                     slowModeStrength = Math.max(0.1, Math.round((slowModeStrength - 0.1) * 10) / 10);
                     localStorage.setItem('superSkyDropSlowStrength', slowModeStrength);
                     draw(); return;
                 }
-                if (x > canvas.width / 2 + 30 && x < canvas.width / 2 + 80 && y > btnY && y < btnY + btnH) {
+                if (x > 400 / 2 + 30 && x < 400 / 2 + 80 && y > btnY && y < btnY + btnH) {
                     playTapSound();
                     slowModeStrength = Math.min(2.0, Math.round((slowModeStrength + 0.1) * 10) / 10);
                     localStorage.setItem('superSkyDropSlowStrength', slowModeStrength);
@@ -1931,7 +1942,7 @@
                     }
                 }
             } else if (gameState === 'TUTORIAL') {
-                if (x > canvas.width/2 - 80 && x < canvas.width/2 + 80 && y > canvas.height - 100 && y < canvas.height - 50) {
+                if (x > 400/2 - 80 && x < 400/2 + 80 && y > 600 - 100 && y < 600 - 50) {
                     playTapSound();
                     gameState = 'LEVEL_SELECT'; playLevelSelectBGM(); draw(); return;
                 }
@@ -1948,15 +1959,15 @@
                 
                 if (gameState === 'GAMEOVER') {
                     // スマホ用リトライボタン (エンドレス以外のみ表示・動作)
-                    if (!isEndlessMode && x > canvas.width / 2 - 50 && x < canvas.width / 2 + 50 && y > canvas.height / 2 + 150 && y < canvas.height / 2 + 185) {
+                    if (!isEndlessMode && x > 400 / 2 - 50 && x < 400 / 2 + 50 && y > 600 / 2 + 150 && y < 600 / 2 + 185) {
                         playTapSound(); resetGame(); return;
                     }
 
                     // エンドレスモード時のランキングボタン判定
                     if (isEndlessMode) {
                         let btnW = 160; let btnH = 40;
-                        let btnX = canvas.width / 2 - btnW / 2;
-                        let btnY = canvas.height / 2 + 140;
+                        let btnX = 400 / 2 - btnW / 2;
+                        let btnY = 600 / 2 + 140;
                         if (x > btnX && x < btnX + btnW && y > btnY && y < btnY + btnH) {
                             playTapSound();
                             gameState = 'RANKING';
@@ -1969,7 +1980,7 @@
                 
                 if (gameState === 'PLAYING') {
                     // スマホ用もどるボタン（右上）
-                    if (x > canvas.width - 70 && y < 50) {
+                    if (x > 400 - 70 && y < 50) {
                         playTapSound(); stopAllSounds(); gameState = 'START'; draw(); return;
                     }
                     // プレイ中の他の場所のクリックは何もしない
@@ -2020,8 +2031,8 @@
 
                 let btnW = 180;
                 let btnH = 120;
-                let btnX = canvas.width/2 - btnW/2;
-                let btnY = canvas.height/2 - 50;
+                let btnX = 400/2 - btnW/2;
+                let btnY = 600/2 - 50;
 
                 // 左の三角 (前へ)
                 if (x > 10 && x < 60 && y > btnY && y < btnY + btnH) {
@@ -2037,7 +2048,7 @@
                 }
 
                 // 右の三角 (次へ)
-                if (x > canvas.width - 60 && x < canvas.width - 10 && y > btnY && y < btnY + btnH) {
+                if (x > 400 - 60 && x < 400 - 10 && y > btnY && y < btnY + btnH) {
                     playTapSound();
                     if (currentChapter === 4) {
                         currentLevelIndex = 60; // 1つしかないのでそのまま
@@ -2055,7 +2066,7 @@
                     let numTabs = allCleared ? 4 : 3;
                     let tabW = 88; let tabG = 8;
                     let totalW = numTabs * tabW + (numTabs - 1) * tabG;
-                    let startX = (canvas.width - totalW) / 2;
+                    let startX = (400 - totalW) / 2;
 
                     for (let i = 0; i < numTabs; i++) {
                         let tx1 = startX + i * (tabW + tabG);
@@ -2104,7 +2115,7 @@
                 }
             } else if (gameState === 'CUSTOM_ACTION_MENU') {
                 let btnW = 200; let btnH = 60;
-                let centerX = canvas.width / 2 - btnW / 2;
+                let centerX = 400 / 2 - btnW / 2;
                 
                 // 遊ぶ
                 if (x > centerX && x < centerX + btnW && y > 150 && y < 150 + btnH) {
@@ -2260,11 +2271,11 @@
             if (isCustomLevel && editorLevel) {
                 goalDistance = (editorLevel.totalDist || 4000) * METER_SCALE;
                 distance = (editorLevel.startDist || 0) * METER_SCALE;
-                player.x = (editorLevel.startX !== undefined) ? editorLevel.startX : (canvas.width / 2 - player.width / 2);
+                player.x = (editorLevel.startX !== undefined) ? editorLevel.startX : (400 / 2 - player.width / 2);
                 editorLevel.objects.forEach(o => o.spawned = (o.d * METER_SCALE < distance));
             } else {
                 goalDistance = 4000 * METER_SCALE; // 14400 units
-                player.x = canvas.width / 2 - player.width / 2;
+                player.x = 400 / 2 - player.width / 2;
                 distance = 0;
             }
             
@@ -2284,7 +2295,7 @@
             isPracticeUsed = isSlowMode; // スローモード使用中なら練習済みとみなす
             introTimer = isIntroEnabled ? 1.0 : 0;
             lightningAlpha = 0; 
-            lastSecretPathX = canvas.width / 2 - 50; 
+            lastSecretPathX = 400 / 2 - 50; 
             lastSecretSpawnDistance = -200; 
             
             if (isCustomLevel) {
@@ -2322,7 +2333,7 @@
                 
                 // 画面端の制限
                 if (pathX < 5) pathX = 5;
-                if (pathX > canvas.width - pathWidth - 5) pathX = canvas.width - pathWidth - 5;
+                if (pathX > 400 - pathWidth - 5) pathX = 400 - pathWidth - 5;
                 
                 lastSecretPathX = pathX; // 次回の基準にする
                 
@@ -2333,7 +2344,7 @@
                 // 左の巨大な壁
                 obstacles.push({
                     x: 0, 
-                    y: canvas.height + 50,
+                    y: 600 + 50,
                     width: pathX, 
                     height: 40, // 少し薄くして通りやすく
                     color: wallColor,
@@ -2344,8 +2355,8 @@
                 // 右の巨大な壁
                 obstacles.push({
                     x: pathX + pathWidth, 
-                    y: canvas.height + 50,
-                    width: canvas.width - (pathX + pathWidth), 
+                    y: 600 + 50,
+                    width: 400 - (pathX + pathWidth), 
                     height: 40, // 少し薄くして通りやすく
                     color: wallColor,
                     type: 'secret',
@@ -2358,7 +2369,7 @@
             if (isCustomLevel) {
                 // 自作ステージ：配置済みデータから指定距離に現れたらスポーン
                 for (let obj of editorLevel.objects) {
-                    if (!obj.spawned && distance >= obj.d - canvas.height) {
+                    if (!obj.spawned && distance >= obj.d - 600) {
                         obj.spawned = true;
                         // スポーン時のy座標を、現在のdistanceとの差分に基づいて調整（150pxの基準点で完全同期）
                         let spawnY = 150 + obj.d - distance;
@@ -2419,8 +2430,8 @@
                 // ボス（魔術師）は魔法の弾を放つ
                 if (seededRandom() < 0.25 * diffMulti) {
                     playFireSound();
-                    let fx = seededRandom() * (canvas.width - 40);
-                    let fy = canvas.height;
+                    let fx = seededRandom() * (400 - 40);
+                    let fy = 600;
                     let dx = (player.x + player.width/2) - (fx + 20);
                     let dy = (player.y + player.height/2) - (fy + 20);
                     let dist = Math.sqrt(dx*dx + dy*dy);
@@ -2437,8 +2448,8 @@
                 // 雷ボール
                 if (seededRandom() < 0.2 * diffMulti) {
                     obstacles.push({
-                        x: seededRandom() * (canvas.width - 60),
-                        y: canvas.height + 60,
+                        x: seededRandom() * (400 - 60),
+                        y: 600 + 60,
                         width: 60, height: 60,
                         type: 'thunderball',
                         rotation: 0, rotSpeed: (0.08 + seededRandom() * 0.05) * (isRush ? 1.5 : 1.0),
@@ -2449,9 +2460,9 @@
                 // 3章ボス (またはボスラッシュのボス3) は紫レーザーも
                 if (activeBoss === 3 && seededRandom() < (0.05 * diffMulti)) {
                     obstacles.push({
-                        x: seededRandom() * (canvas.width - 80),
+                        x: seededRandom() * (400 - 80),
                         y: 0,
-                        width: 80, height: canvas.height,
+                        width: 80, height: 600,
                         type: 'bossLaser', color: '#9B59B6',
                         active: true, timer: 0,
                         state: 'warning',
@@ -2487,8 +2498,8 @@
                 const wallWidth = seededRandom() * 40 + 60; // 60-100px
                 const isLeft = seededRandom() < 0.5;
                 obstacles.push({
-                    x: isLeft ? 0 : canvas.width - wallWidth,
-                    y: canvas.height + 50,
+                    x: isLeft ? 0 : 400 - wallWidth,
+                    y: 600 + 50,
                     width: wallWidth,
                     height: 30,
                     color: '#34495E',
@@ -2539,11 +2550,11 @@
                 type = 'laser';
                 color = '#E74C3C'; // 赤: レーザー
                 sizeX = 20;
-                sizeY = canvas.height * 2; // 長い
+                sizeY = 600 * 2; // 長い
             } else if (selectedType === 'laserH') {
                 type = 'laserH';
                 color = '#E74C3C';
-                sizeX = canvas.width;
+                sizeX = 400;
                 sizeY = 20;
             } else if (selectedType === 'seeker') {
                 type = 'seeker';
@@ -2557,9 +2568,9 @@
                 sizeY = 80;
             } else if (selectedType === 'warpgate') {
                 // ワープゲートは必ずペアで生成
-                let x1 = seededRandom() * (canvas.width / 2 - 60) + 20;
-                let x2 = seededRandom() * (canvas.width / 2 - 60) + canvas.width / 2 + 20;
-                let yGate = canvas.height + 50;
+                let x1 = seededRandom() * (400 / 2 - 60) + 20;
+                let x2 = seededRandom() * (400 / 2 - 60) + 400 / 2 + 20;
+                let yGate = 600 + 50;
                 let gateID = distance + seededRandom(); // Date.now()をdistanceに置換
                 
                 obstacles.push({
@@ -2578,20 +2589,20 @@
             // 出現位置
             let x;
             if (selectedType === 'gear') {
-                x = seededRandom() * (canvas.width - 100) + 50; // 少し中央寄り
+                x = seededRandom() * (400 - 100) + 50; // 少し中央寄り
             } else {
                 let posRand = seededRandom();
                 if (posRand < 0.15) {
                     x = 0; // 左端
                 } else if (posRand < 0.3) {
-                    x = canvas.width - sizeX; // 右端
+                    x = 400 - sizeX; // 右端
                 } else {
-                    x = seededRandom() * (canvas.width - sizeX);
+                    x = seededRandom() * (400 - sizeX);
                 }
             }
 
             obstacles.push({
-                x: x, y: canvas.height + 50, width: sizeX, height: sizeY,
+                x: x, y: 600 + 50, width: sizeX, height: sizeY,
                 type: type, color: color, vx: vx,
                 rotation: type === 'diagonal' ? (seededRandom() > 0.5 ? Math.PI/4 : -Math.PI/4) : 0, 
                 rotSpeed: type === 'gear' ? 0.1 : 0, 
@@ -2601,7 +2612,7 @@
         }
         
         function spawnPteranodon() {
-            let px = seededRandom() * (canvas.width - 40) + 20;
+            let px = seededRandom() * (400 - 40) + 20;
              obstacles.push({
                 x: px, y: -100, width: 30, height: 30,
                 type: 'pteranodon', color: '#8b4513',
@@ -2613,12 +2624,12 @@
         function spawnStar(coinIndex) {
             // 星の配置を右か左かランダムに決める（シード値使用）
             let isLeft = seededRandom() > 0.5;
-            let starX = isLeft ? 12 : canvas.width - 12 - 26;
+            let starX = isLeft ? 12 : 400 - 12 - 26;
 
             // コイン（星）本体
             obstacles.push({
                 x: starX,
-                y: canvas.height + 50,
+                y: 600 + 50,
                 width: 26,
                 height: 26,
                 color: '#F1C40F',
@@ -2632,7 +2643,7 @@
                 // 左が狭い道(幅50px)、右が広い道(幅160px)のパターン
                 obstacles.push({
                     x: 50,
-                    y: canvas.height + 50,
+                    y: 600 + 50,
                     width: 150,             // 真ん中を塞ぐ大きな壁
                     height: 20,
                     color: '#34495E',
@@ -2641,7 +2652,7 @@
                 });
                 obstacles.push({
                     x: 360,
-                    y: canvas.height + 50,
+                    y: 600 + 50,
                     width: 40,              // 右端の壁
                     height: 20,
                     color: '#34495E',
@@ -2652,7 +2663,7 @@
                 // 右が狭い道(幅50px)、左が広い道(幅160px)のパターン
                 obstacles.push({
                     x: 0,
-                    y: canvas.height + 50,
+                    y: 600 + 50,
                     width: 40,              // 左端の壁
                     height: 20,
                     color: '#34495E',
@@ -2661,7 +2672,7 @@
                 });
                 obstacles.push({
                     x: 200,
-                    y: canvas.height + 50,
+                    y: 600 + 50,
                     width: 150,             // 真ん中を塞ぐ大きな壁
                     height: 20,
                     color: '#34495E',
@@ -2731,8 +2742,8 @@
             for (let i = 0; i < clouds.length; i++) {
                 clouds[i].y -= clouds[i].speedY * scrollSpeed;
                 if (clouds[i].y + clouds[i].height < 0) {
-                    clouds[i].y = canvas.height + 50;
-                    clouds[i].x = Math.random() * canvas.width;
+                    clouds[i].y = 600 + 50;
+                    clouds[i].x = Math.random() * 400;
                 }
             }
             
@@ -2743,8 +2754,8 @@
                 if (bgStars[i].alpha < 0) bgStars[i].alpha = 0;
                 if (bgStars[i].alpha > 1) bgStars[i].alpha = 1;
                 if (bgStars[i].y + bgStars[i].size < 0) {
-                    bgStars[i].y = canvas.height + 10;
-                    bgStars[i].x = Math.random() * canvas.width;
+                    bgStars[i].y = 600 + 10;
+                    bgStars[i].x = Math.random() * 400;
                 }
             }
 
@@ -2806,7 +2817,7 @@
                 isMoving = true;
                 targetRotation = -0.15; // 左に少し傾ける
             }
-            if (keys.ArrowRight && player.x < canvas.width - player.width) {
+            if (keys.ArrowRight && player.x < 400 - player.width) {
                 player.x += player.speed * timeFactor;
                 isMoving = true;
                 targetRotation = 0.15; // 右に少し傾ける
@@ -2888,8 +2899,8 @@
             if (!isEndlessMode && distance >= goalDistance && !goal) {
                 goal = {
                     x: 0, 
-                    y: canvas.height + 100,
-                    width: canvas.width,
+                    y: 600 + 100,
+                    width: 400,
                     height: 100,
                     color: '#2ECC71',
                     paraScale: 0 // パラシュートの開き具合 (0 to 1)
@@ -2898,7 +2909,7 @@
 
             if (goal) {
                 if (goal.paraScale < 1) goal.paraScale += 0.05 * currentFrameSpeedMultiplier;
-                if (goal.y > canvas.height - 100) {
+                if (goal.y > 600 - 100) {
                    goal.y -= 6.0 * currentFrameSpeedMultiplier; 
                 } else {
                     player.y += 3 * timeFactor;
@@ -2958,7 +2969,7 @@
 
                     createParticles(player.x + player.width/2, player.y + player.height, '#2ECC71');
                     checkHighScore(); // クリア時もハイスコアチェック
-                } else if (player.y > canvas.height) {
+                } else if (player.y > 600) {
                     playerTrail = []; // 負荷軽減
                     triggerGameOver();
                     createParticles(player.x + player.width/2, player.y, '#E74C3C');
@@ -2981,7 +2992,7 @@
                     obs.timer += 0.15 * timeFactor;
                     obs.x += obs.vx * timeFactor;
                     if (obs.x < 0) { obs.x = 0; obs.vx *= -1; }
-                    else if (obs.x + obs.width > canvas.width) { obs.x = canvas.width - obs.width; obs.vx *= -1; }
+                    else if (obs.x + obs.width > 400) { obs.x = 400 - obs.width; obs.vx *= -1; }
                 }
 
                 if (obs.type === 'laser' || obs.type === 'laserH' || obs.type === 'bossLaser') {
@@ -3061,15 +3072,15 @@
                     if (obs.x < 0) {
                         obs.x = 0;
                         obs.vx *= -1;
-                    } else if (obs.x + obs.width > canvas.width) {
-                        obs.x = canvas.width - obs.width;
+                    } else if (obs.x + obs.width > 400) {
+                        obs.x = 400 - obs.width;
                         obs.vx *= -1;
                     }
                 }
 
                 // 画面外、または寿命が尽きた(active=false)障害物を削除
                 // （上へ抜けるもの、下へ抜けるプテラノドン両方確実に消去する）
-                if (obs.y < -canvas.height-200 || obs.y > canvas.height + 1000 || obs.active === false) {
+                if (obs.y < -600-200 || obs.y > 600 + 1000 || obs.active === false) {
                     obstacles.splice(i, 1);
                     continue;
                 }
@@ -3203,7 +3214,7 @@
 
             // 最終安全装置：プレイヤーの座標が異常(NaNなど)になったら瞬時に修復してフリーズを防ぐ
             if (!isFinite(player.x) || !isFinite(player.y)) {
-                player.x = canvas.width / 2 - player.width / 2;
+                player.x = 400 / 2 - player.width / 2;
                 player.y = 150;
                 console.error("座標異常を検知：修復しました");
             }
@@ -3360,8 +3371,8 @@
 
         function drawHorrorBoss(ctx, chapter) {
             ctx.save();
-            let centerX = canvas.width / 2;
-            let baseY = canvas.height + 15; // 画面内にしっかり収めるため少し上げる
+            let centerX = 400 / 2;
+            let baseY = 600 + 15; // 画面内にしっかり収めるため少し上げる
             let time = Date.now() * 0.001;
             let shakeX = Math.sin(time * 12) * 5; 
             let shakeY = Math.cos(time * 8) * 3;
@@ -3648,7 +3659,7 @@
             const GRID = 20; const TOTAL = editorLevel.totalDist || 4000; const MAX_SCROLL = 20000;
             
             // 背景テーマの描画 (単色からグラデーションへ変更)
-            let bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            let bgGrad = ctx.createLinearGradient(0, 0, 0, 600);
             let c1 = currentBgColors.c1;
             let c2 = currentBgColors.c2;
             let c3 = currentBgColors.c3;
@@ -3656,20 +3667,20 @@
             bgGrad.addColorStop(0.5, `rgb(${c2[0]},${c2[1]},${c2[2]})`);
             bgGrad.addColorStop(1, `rgb(${c3[0]},${c3[1]},${c3[2]})`);
             ctx.fillStyle = bgGrad;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillRect(0, 0, 400, 600);
             ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1;
-            for(let i=0; i<canvas.width; i+=GRID){ ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height - 150); ctx.stroke(); }
+            for(let i=0; i<400; i+=GRID){ ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 600 - 150); ctx.stroke(); }
             // マス目の起点を150px(自機位置)に合わせて、0.5マスのズレを解消
             let startY = (150 - Math.floor(editorScroll)) % GRID;
             if (startY > 0) startY -= GRID;
-            for(let j=startY; j < canvas.height-150; j+=GRID){ 
+            for(let j=startY; j < 600-150; j+=GRID){ 
                 if(j < 0) continue; 
-                ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(canvas.width, j); ctx.stroke(); 
+                ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(400, j); ctx.stroke(); 
             }
             
             for(let o of editorLevel.objects) {
                 let screenY = 150 + o.d - editorScroll;
-                if (screenY > -150 && screenY < canvas.height - 150) {
+                if (screenY > -150 && screenY < 600 - 150) {
                     ctx.save();
                     if (o.type === 'goal') {
                         ctx.fillStyle = '#2ECC71'; ctx.fillRect(o.x, screenY, o.w, o.h);
@@ -3703,14 +3714,14 @@
                     ctx.restore();
                 }
             }
-            let sX = editorLevel.startX !== undefined ? editorLevel.startX : canvas.width/2 - 15;
+            let sX = editorLevel.startX !== undefined ? editorLevel.startX : 400/2 - 15;
             let sD = editorLevel.startDist || 0;
             let startLocY = 150 + sD - editorScroll;
-            if (startLocY > -50 && startLocY < canvas.height - 150) {
+            if (startLocY > -50 && startLocY < 600 - 150) {
                 ctx.globalAlpha = 0.4; ctx.fillStyle = 'white'; ctx.fillRect(sX, startLocY, 30, 30);
                 ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(`開始地点: ${sD}m`, sX + 15, startLocY + 45); ctx.globalAlpha = 1.0;
             }
-            ctx.fillStyle = '#34495e'; ctx.fillRect(0, canvas.height - 150, canvas.width, 150);
+            ctx.fillStyle = '#34495e'; ctx.fillRect(0, 600 - 150, 400, 150);
             
             // タブの描画
             const categories = [
@@ -3718,20 +3729,20 @@
                 { name: 'アイテム', tools: ['item', 'goal', 'start'], names: ['コイン', 'ゴール', '開始点'] },
                 { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'], names: ['＋100', '－100', '＋10', '－10', '背景', '曲調'] }
             ];
-            let tabW = (canvas.width - 85) / 3;
+            let tabW = (400 - 85) / 3;
             for (let i = 0; i < 3; i++) {
                 let isActive = editorTab === i;
                 ctx.fillStyle = isActive ? '#2ECC71' : '#2c3e50';
-                ctx.beginPath(); ctx.roundRect(10 + i * tabW, canvas.height - 145, tabW - 5, 30, 5); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(10 + i * tabW, 600 - 145, tabW - 5, 30, 5); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText(categories[i].name, 10 + i * tabW + (tabW-5)/2, canvas.height - 125);
+                ctx.fillText(categories[i].name, 10 + i * tabW + (tabW-5)/2, 600 - 125);
             }
 
             let types = categories[editorTab].tools;
             let typeNames = categories[editorTab].names;
             for(let i=0; i<types.length; i++) {
                 let col = i % 5; let row = Math.floor(i / 5);
-                let btnX = 10 + col * 55; let btnY = canvas.height - 110 + row * 45;
+                let btnX = 10 + col * 55; let btnY = 600 - 110 + row * 45;
                 let isActive = editorSelectedType === types[i];
                 ctx.fillStyle = (isActive ? '#2ECC71' : (types[i].startsWith('len') ? '#3498DB' : '#7f8c8d'));
                 ctx.beginPath(); ctx.roundRect(btnX, btnY, 50, 40, 5); ctx.fill();
@@ -3775,27 +3786,27 @@
             }
 
             // スクロールバーの描画
-            let scrollAreaH = canvas.height - 150;
+            let scrollAreaH = 600 - 150;
             let totalDistScroll = editorLevel.totalDist || 4000;
             let handleH = Math.max(30, scrollAreaH * (scrollAreaH / (totalDistScroll + scrollAreaH)));
             let handleY = (editorScroll / totalDistScroll) * (scrollAreaH - handleH);
             
             ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-            ctx.fillRect(canvas.width - 15, 0, 15, scrollAreaH);
+            ctx.fillRect(400 - 15, 0, 15, scrollAreaH);
             ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
             ctx.beginPath();
-            ctx.roundRect(canvas.width - 12, handleY + 5, 9, handleH - 10, 4);
+            ctx.roundRect(400 - 12, handleY + 5, 9, handleH - 10, 4);
             ctx.fill();
             
             if (editorSelectedIndex !== -1) {
                 // セレクトパネルの背景（重なり防止）
-                ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(canvas.width - 245, canvas.height - 145, 170, 140);
+                ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(400 - 245, 600 - 145, 170, 140);
                 let self = editorLevel.objects[editorSelectedIndex];
                 let props = ['幅', '高さ', '回転'];
                 let dist = self.d;
                 let vals = [Math.floor(self.w), Math.floor((self.h || 0)), Math.floor((self.rotation || 0) * (180/Math.PI)) + '°'];
                 for (let i = 0; i < 3; i++) {
-                    let py = canvas.height - 140 + i * 35;
+                    let py = 600 - 140 + i * 35;
                     if (i === 2) {
                         ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.roundRect(editX, py, 50, 30, 5); ctx.fill();
                         ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.fillText('削除', editX + 25, py + 19);
@@ -3813,15 +3824,15 @@
                     }
                 }
             }
-            let actX = canvas.width - 75;
-            ctx.fillStyle = '#E67E22'; ctx.fillRect(actX, canvas.height - 145, 65, 35);
-            ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('テスト', actX + 32.5, canvas.height - 125);
-            ctx.fillStyle = '#95a5a6'; ctx.fillRect(actX, canvas.height - 105, 65, 35); ctx.fillText('終了', actX + 32.5, canvas.height - 85);
+            let actX = 400 - 75;
+            ctx.fillStyle = '#E67E22'; ctx.fillRect(actX, 600 - 145, 65, 35);
+            ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('テスト', actX + 32.5, 600 - 125);
+            ctx.fillStyle = '#95a5a6'; ctx.fillRect(actX, 600 - 105, 65, 35); ctx.fillText('終了', actX + 32.5, 600 - 85);
             
             ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'left';
             ctx.fillText(`距離: ${Math.floor(editorScroll)}m`, 10, 20);
             ctx.textAlign = 'right';
-            ctx.fillText(`目標距離 (全長): ${TOTAL}m`, canvas.width - 10, 20);
+            ctx.fillText(`目標距離 (全長): ${TOTAL}m`, 400 - 10, 20);
             ctx.textAlign = 'left';
         }
 
@@ -3875,16 +3886,16 @@
 
         function drawRanking() {
             ctx.fillStyle = 'rgba(0,0,0,0.85)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillRect(0, 0, 400, 600);
 
             // ヘッダー
             ctx.fillStyle = 'white';
             ctx.font = 'bold 28px "Righteous", sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('WORLD RANKING', canvas.width/2, 80);
+            ctx.fillText('WORLD RANKING', 400/2, 80);
             ctx.font = 'bold 14px sans-serif';
             ctx.fillStyle = '#F1C40F';
-            ctx.fillText('ENDLESS MODE SURVIVAL', canvas.width/2, 105);
+            ctx.fillText('ENDLESS MODE SURVIVAL', 400/2, 105);
 
             // 戻るボタン
             ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
@@ -3897,7 +3908,7 @@
             ctx.textAlign = 'left';
             if (isRankingLoading) {
                 ctx.fillStyle = 'white';
-                ctx.fillText('読み込み中...', canvas.width/2 - 40, canvas.height/2);
+                ctx.fillText('読み込み中...', 400/2 - 40, 600/2);
             } else {
                 let startY = 150;
                 for (let i = 0; i < Math.min(worldRankingData.length, 10); i++) {
@@ -3911,7 +3922,7 @@
                                    (i === 2) ? `rgba(230, 126, 34, ${rowAlpha})` : `rgba(255,255,255,${rowAlpha})`;
                     
                     ctx.beginPath();
-                    ctx.roundRect(20, y - 28, canvas.width - 40, 36, 6);
+                    ctx.roundRect(20, y - 28, 400 - 40, 36, 6);
                     ctx.fill();
 
                     // 順位
@@ -3928,7 +3939,7 @@
                     ctx.textAlign = 'right';
                     ctx.font = 'bold 22px "Righteous", sans-serif';
                     ctx.fillStyle = '#F1C40F';
-                    ctx.fillText(`${r.score}秒`, canvas.width - 35, y);
+                    ctx.fillText(`${r.score}秒`, 400 - 35, y);
                     ctx.textAlign = 'left';
                 }
                 
@@ -3936,7 +3947,7 @@
                     ctx.fillStyle = '#E74C3C';
                     ctx.font = '12px sans-serif';
                     ctx.textAlign = 'center';
-                    ctx.fillText('※GAS連携設定が未完了です', canvas.width/2, canvas.height - 50);
+                    ctx.fillText('※GAS連携設定が未完了です', 400/2, 600 - 50);
                 }
             }
         }
@@ -3952,20 +3963,20 @@
             
             // 背景の描画 (隠しステージ用の特別背景)
             if (isSecretStage && gameState === 'PLAYING') {
-                let sGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                let sGrad = ctx.createLinearGradient(0, 0, 0, 600);
                 sGrad.addColorStop(0, '#000000');
                 sGrad.addColorStop(0.5, '#1a0d2d');
                 sGrad.addColorStop(1, '#000000');
                 ctx.fillStyle = sGrad;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(0, 0, 400, 600);
                 // 幻想的な粒子をたまに描画
                 if (Math.random() < 0.1) {
                     ctx.fillStyle = `hsl(${Math.random()*360}, 100%, 70%)`;
-                    ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height, 2, 2);
+                    ctx.fillRect(Math.random()*400, Math.random()*600, 2, 2);
                 }
             } else {
                 // 通常の背景描画 (補間された色でグラデーションを作成)
-                let bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                let bgGrad = ctx.createLinearGradient(0, 0, 0, 600);
             let c1 = [...currentBgColors.c1];
             let c2 = [...currentBgColors.c2];
             let c3 = [...currentBgColors.c3];
@@ -3994,12 +4005,12 @@
             bgGrad.addColorStop(0.5, `rgb(${Math.floor(c2[0])}, ${Math.floor(c2[1])}, ${Math.floor(c2[2])})`);
                 bgGrad.addColorStop(1, `rgb(${Math.floor(c3[0])}, ${Math.floor(c3[1])}, ${Math.floor(c3[2])})`);
                 ctx.fillStyle = bgGrad;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(0, 0, 400, 600);
             }
 
             if (!isCustomLevel && levels[currentLevelIndex].isBossStage && currentChapter === 1 && lightningAlpha > 0.1) {
                 ctx.fillStyle = `rgba(255, 255, 255, ${lightningAlpha * 0.3})`;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(0, 0, 400, 600);
             }
 
             // 背景の星を描画
@@ -4022,8 +4033,8 @@
                 let currentFrameSpeedMultiplier = speedMultiplier * (isSlowMode ? slowModeStrength : 1.0);
                 // スピード感のある風のライン
                 for (let i=0; i<8; i++) {
-                    let lx = Math.random() * canvas.width;
-                    let ly = Math.random() * canvas.height;
+                    let lx = Math.random() * 400;
+                    let ly = Math.random() * 600;
                     let len = 40 + Math.random() * 60;
                     ctx.globalAlpha = 0.1 + Math.random() * 0.3;
                     ctx.fillRect(lx, ly, 1.5, len * currentFrameSpeedMultiplier);
@@ -4041,7 +4052,7 @@
                     let px = player.x + player.width / 2;
                     let py = player.y + player.height / 2;
                     
-                    ctx.translate(canvas.width / 2, canvas.height / 2); // 画面中央へ
+                    ctx.translate(400 / 2, 600 / 2); // 画面中央へ
                     ctx.scale(scale, scale); // ズーム
                     ctx.translate(-px, -py); // プレイヤーを中心に合わせる
                 }
@@ -4059,7 +4070,7 @@
                     ctx.strokeStyle = '#27AE60';
                     ctx.lineWidth = 2;
                     let time = Date.now() / 1000;
-                    for (let gx = 10; gx < canvas.width; gx += 25) {
+                    for (let gx = 10; gx < 400; gx += 25) {
                         let sway = Math.sin(time * 3 + gx) * 8; // 左右に揺れる量
                         ctx.beginPath();
                         ctx.moveTo(gx, goal.y + 15);
@@ -4077,7 +4088,7 @@
                     // 4. 花を描画 (草の合間にまばらに)
                     let flowerColors = ['#E74C3C', '#F1C40F', '#9B59B6', '#3498DB', '#FFFFFF'];
                     for (let fi = 0; fi < 15; fi++) {
-                        let fx = (fi * 27.5 + 5) % canvas.width;
+                        let fx = (fi * 27.5 + 5) % 400;
                         let sway = Math.sin(time * 3 + fx) * 4;
                         let fy = goal.y + 10;
                         ctx.fillStyle = flowerColors[fi % flowerColors.length];
@@ -4231,7 +4242,7 @@
                          if (obs.warningTimer > 0) {
                             // 警告点線
                             ctx.strokeStyle = 'white'; ctx.setLineDash([5, 10]); ctx.lineWidth = 1;
-                            ctx.beginPath(); ctx.moveTo(obs.x + obs.width/2, 0); ctx.lineTo(obs.x + obs.width/2, canvas.height); ctx.stroke();
+                            ctx.beginPath(); ctx.moveTo(obs.x + obs.width/2, 0); ctx.lineTo(obs.x + obs.width/2, 600); ctx.stroke();
                             ctx.setLineDash([]);
                         } else {
                             // プテラノドンの描画 (茶色の鋭い鳥)
@@ -4444,9 +4455,9 @@
                 
                 // スマホ向け「戻る」ボタン
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-                ctx.beginPath(); ctx.roundRect(canvas.width - 60, 10, 50, 30, 5); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(400 - 60, 10, 50, 30, 5); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText('戻る', canvas.width - 35, 30);
+                ctx.fillText('戻る', 400 - 35, 30);
                 ctx.textAlign = 'left';
                 
                 ctx.shadowBlur = 0;
@@ -4456,9 +4467,9 @@
                     ctx.fillStyle = 'rgba(255, 100, 100, 0.8)';
                     ctx.font = 'bold 24px sans-serif';
                     ctx.textAlign = 'center';
-                    ctx.fillText('SLOW MODE', canvas.width/2, 80);
+                    ctx.fillText('SLOW MODE', 400/2, 80);
                     ctx.font = 'bold 12px sans-serif';
-                    ctx.fillText('↑キーで解除', canvas.width/2, 100);
+                    ctx.fillText('↑キーで解除', 400/2, 100);
                     ctx.textAlign = 'left';
                 }
             }
@@ -4480,9 +4491,9 @@
                     ctx.translate((Math.random() - 0.5) * shakePower, (Math.random() - 0.5) * shakePower);
                 }
 
-                ctx.translate(canvas.width/2, canvas.height/2);
+                ctx.translate(400/2, 600/2);
                 ctx.scale(zoomScale, zoomScale);
-                ctx.translate(-(canvas.width/2), -(canvas.height/2));
+                ctx.translate(-(400/2), -(600/2));
                 
                 let alpha = (openingTimerValue > 30) ? 1 : openingTimerValue / 30;
 
@@ -4495,14 +4506,14 @@
                         let r1 = 100 + Math.random() * 400;
                         let r2 = r1 + 300;
                         ctx.beginPath();
-                        ctx.moveTo(canvas.width/2 + Math.cos(angle) * r1, canvas.height/2 + Math.sin(angle) * r1);
-                        ctx.lineTo(canvas.width/2 + Math.cos(angle) * r2, canvas.height/2 + Math.sin(angle) * r2);
+                        ctx.moveTo(400/2 + Math.cos(angle) * r1, 600/2 + Math.sin(angle) * r1);
+                        ctx.lineTo(400/2 + Math.cos(angle) * r2, 600/2 + Math.sin(angle) * r2);
                         ctx.stroke();
                     }
                 }
 
                 // 3. 落下する自機 & 衝撃
-                let cubeY = (landingProgress < 1) ? -500 + landingProgress * (canvas.height/2 + 500) : canvas.height / 2;
+                let cubeY = (landingProgress < 1) ? -500 + landingProgress * (600/2 + 500) : 600 / 2;
                 
                 // --- 超強力な衝撃演出 ---
                 if (landingProgress >= 1 && openingTimerValue > 80) {
@@ -4510,21 +4521,21 @@
                     let impactRatio = (150 - openingTimerValue - 30) / 25; // 衝撃の広がり
                     ctx.strokeStyle = `rgba(255, 255, 255, ${Math.max(0, 1 - impactRatio)})`;
                     ctx.lineWidth = 10;
-                    ctx.beginPath(); ctx.arc(canvas.width/2, canvas.height/2, impactRatio * 600, 0, Math.PI * 2); ctx.stroke();
+                    ctx.beginPath(); ctx.arc(400/2, 600/2, impactRatio * 600, 0, Math.PI * 2); ctx.stroke();
                     
                     // 爆発的な火花パーティクル
                     for (let i = 0; i < 60; i++) {
                         let side = (i / 60) * Math.PI * 2 + (Math.random() * 0.5);
                         let dist = impactRatio * (500 + Math.random() * 200);
                         ctx.fillStyle = (i % 2 === 0) ? '#FFFFFF' : '#3498DB';
-                        ctx.fillRect(canvas.width/2 + Math.cos(side)*dist, canvas.height/2 + Math.sin(side)*dist, 4, 4);
+                        ctx.fillRect(400/2 + Math.cos(side)*dist, 600/2 + Math.sin(side)*dist, 4, 4);
                     }
                     ctx.restore();
                     
                     // 着地時のホワイトアウト・フラッシュ
                     if (openingTimerValue > 115) {
                         ctx.fillStyle = `rgba(255, 255, 255, ${(openingTimerValue - 115) / 10})`;
-                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.fillRect(0, 0, 400, 600);
                     }
                 }
 
@@ -4537,7 +4548,7 @@
                     ctx.font = 'bold 36px "Righteous", sans-serif';
                     ctx.textAlign = 'center';
                     ctx.shadowBlur = 20; ctx.shadowColor = '#3498DB';
-                    ctx.fillText('SUPER SKY DROP', canvas.width/2, canvas.height/2 + 100);
+                    ctx.fillText('SUPER SKY DROP', 400/2, 600/2 + 100);
                     ctx.shadowBlur = 0;
                     ctx.restore();
                 }
@@ -4547,14 +4558,14 @@
                 let tempX = player.x, tempY = player.y;
                 let tempSkin = equippedSkin, tempMantle = equippedMantle, tempShape = equippedShape;
                 let tempColor = player.color;
-                player.x = canvas.width / 2 - 20; player.y = cubeY - 20;
+                player.x = 400 / 2 - 20; player.y = cubeY - 20;
                 equippedSkin = 'default'; equippedMantle = 'default'; equippedShape = 'square';
                 player.color = skinColors['default'];
                 
                 ctx.save();
-                ctx.translate(canvas.width / 2, cubeY);
+                ctx.translate(400 / 2, cubeY);
                 ctx.scale(1.8, 1.8);
-                ctx.translate(-(canvas.width / 2), -cubeY);
+                ctx.translate(-(400 / 2), -cubeY);
                 
                 // 強烈な発光
                 if (openingTimerValue < 125 && openingTimerValue > 90) {
@@ -4573,7 +4584,7 @@
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
                 ctx.font = 'bold 14px sans-serif';
                 ctx.textAlign = 'right';
-                ctx.fillText('SKIP >>', canvas.width - 20, canvas.height - 20);
+                ctx.fillText('SKIP >>', 400 - 20, 600 - 20);
                 ctx.textAlign = 'left';
             }
 
@@ -4587,23 +4598,23 @@
 
             if (gameState === 'START') {
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(0, 0, 400, 600);
                 if (isShadowsEnabled) ctx.shadowBlur = 10;
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
                 ctx.font = '18px "Righteous", sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText(`${playerName}さん、ようこそ！`, canvas.width/2, canvas.height/2 - 100);
+                ctx.fillText(`${playerName}さん、ようこそ！`, 400/2, 600/2 - 100);
 
                 ctx.fillStyle = titleColor;
                 ctx.font = '44px "Righteous", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText('SUPER SKY DROP', canvas.width/2, canvas.height/2 - 30);
+                ctx.fillText('SUPER SKY DROP', 400/2, 600/2 - 30);
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.6.2-editor-fix', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.6.3-retina-ready', 400/2, 600/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
@@ -4617,8 +4628,8 @@
                 
                 // STAGES ボタン (再生マーク)
                 let btnW = 80; let btnH = 80;
-                let btnX = canvas.width/2 - btnW - 20;
-                let stgY = canvas.height/2 + 50; // 元の位置に戻す
+                let btnX = 400/2 - btnW - 20;
+                let stgY = 600/2 + 50; // 元の位置に戻す
                 ctx.fillStyle = '#2ECC71';
                 ctx.beginPath();
                 ctx.roundRect(btnX, stgY, btnW, btnH, 15);
@@ -4637,7 +4648,7 @@
                 ctx.fill();
                 
                 // SHOP ボタン (お店のアイコン)
-                let shpX = canvas.width/2 + 20;
+                let shpX = 400/2 + 20;
                 ctx.fillStyle = '#9B59B6';
                 ctx.beginPath();
                 ctx.roundRect(shpX, stgY, btnW, btnH, 15);
@@ -4674,8 +4685,8 @@
 
                 // 隠しステージボタンの表示
                 if (playerName === 'super sky drop!') {
-                    let secX = canvas.width/2 - 100;
-                    let secY = canvas.height/2 + 150;
+                    let secX = 400/2 - 100;
+                    let secY = 600/2 + 150;
                     let secW = 200;
                     let secH = 50;
                     
@@ -4689,9 +4700,9 @@
                     ctx.fillStyle = 'white';
                     ctx.font = 'bold 20px "Righteous", sans-serif';
                     ctx.textAlign = 'center';
-                    ctx.fillText('隠しステージ', canvas.width/2, secY + 25);
+                    ctx.fillText('隠しステージ', 400/2, secY + 25);
                     ctx.font = 'bold 10px sans-serif';
-                    ctx.fillText('〜 幻の世界へ 〜', canvas.width/2, secY + 42);
+                    ctx.fillText('〜 幻の世界へ 〜', 400/2, secY + 42);
                 }
                 
 
@@ -4699,12 +4710,12 @@
                 ctx.fillStyle = 'white';
                 ctx.font = '16px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText(`所持           : ${totalSilverBirds} 枚`, canvas.width/2, canvas.height - 20);
-                drawBirdCoin(ctx, canvas.width/2 - 18, canvas.height - 26, 10);
+                ctx.fillText(`所持           : ${totalSilverBirds} 枚`, 400/2, 600 - 20);
+                drawBirdCoin(ctx, 400/2 - 18, 600 - 26, 10);
 
                 // EDITOR ボタン
-                let creX = canvas.width - 100;
-                let creY = canvas.height - 100;
+                let creX = 400 - 100;
+                let creY = 600 - 100;
                 ctx.fillStyle = '#E67E22';
                 ctx.beginPath(); ctx.roundRect(creX, creY, 80, 80, 15); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = '14px bold sans-serif';
@@ -4714,7 +4725,7 @@
                 
                 // PLAY (エンドレス) ボタンを描画
                 ctx.save();
-                let prayX = 20; let prayY = canvas.height - 90;
+                let prayX = 20; let prayY = 600 - 90;
                 let prayW = 80; let prayH = 40;
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
@@ -4741,7 +4752,7 @@
                 
                 // 設定ボタン (歯車アイコン) を右上に描画
                 ctx.save();
-                ctx.translate(canvas.width - 35, 35);
+                ctx.translate(400 - 35, 35);
                 ctx.fillStyle = '#95a5a6';
                 for (let i = 0; i < 8; i++) {
                     ctx.rotate(Math.PI / 4);
@@ -4760,50 +4771,50 @@
             } else if (gameState === 'TUTORIAL') {
                 updateBackgroundColors();
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(0, 0, 400, 600);
                 
                 ctx.fillStyle = '#F1C40F';
                 ctx.font = 'bold 30px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('〜 遊び方 〜', canvas.width/2, 80);
+                ctx.fillText('〜 遊び方 〜', 400/2, 80);
                 
                 ctx.fillStyle = 'white';
                 ctx.font = '16px sans-serif';
-                ctx.fillText('・画面下半分をタップで左右移動', canvas.width/2, 130);
-                ctx.fillText('（PCは [←] [→] キー）', canvas.width/2, 158);
+                ctx.fillText('・画面下半分をタップで左右移動', 400/2, 130);
+                ctx.fillText('（PCは [←] [→] キー）', 400/2, 158);
                 
-                ctx.fillText('・画面上半分をタップでスローモード', canvas.width/2, 210);
-                ctx.fillText('（PCは [↑] キー）※やり直し用', canvas.width/2, 238);
+                ctx.fillText('・画面上半分をタップでスローモード', 400/2, 210);
+                ctx.fillText('（PCは [↑] キー）※やり直し用', 400/2, 238);
                 
-                ctx.fillText('・赤い障害物を避けてゴールを目指せ！', canvas.width/2, 285);
-                ctx.fillText('・黄色い星を集めると着替えが買えるぞ！', canvas.width/2, 320);
+                ctx.fillText('・赤い障害物を避けてゴールを目指せ！', 400/2, 285);
+                ctx.fillText('・黄色い星を集めると着替えが買えるぞ！', 400/2, 320);
 
                 // エンドレスモードの説明
                 ctx.fillStyle = '#F1C40F';
                 ctx.font = 'bold 16px sans-serif';
-                ctx.fillText('〜 エンドレスモード 〜', canvas.width/2, 370);
+                ctx.fillText('〜 エンドレスモード 〜', 400/2, 370);
                 ctx.fillStyle = 'white';
                 ctx.font = '14px sans-serif';
-                ctx.fillText('左下の「エンドレス」ボタンでスタート！', canvas.width/2, 400);
-                ctx.fillText('障害物を避けて何秒生き残れるか挑戦しよう！', canvas.width/2, 428);
-                ctx.fillText('スコアはワールドランキングに記録される！', canvas.width/2, 456);
+                ctx.fillText('左下の「エンドレス」ボタンでスタート！', 400/2, 400);
+                ctx.fillText('障害物を避けて何秒生き残れるか挑戦しよう！', 400/2, 428);
+                ctx.fillText('スコアはワールドランキングに記録される！', 400/2, 456);
                 
                 ctx.fillStyle = '#2ECC71';
-                ctx.beginPath(); ctx.roundRect(canvas.width/2 - 80, canvas.height - 80, 160, 50, 10); ctx.fill();
+                ctx.beginPath(); ctx.roundRect(400/2 - 80, 600 - 80, 160, 50, 10); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = 'bold 20px sans-serif';
-                ctx.fillText('わかった！', canvas.width/2, canvas.height - 48);
+                ctx.fillText('わかった！', 400/2, 600 - 48);
                 ctx.textAlign = 'left';
             } else if (gameState === 'SHOP') {
                 // --- ショップの背景（内装）を描画 ---
-                let wallGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                let wallGrad = ctx.createLinearGradient(0, 0, 0, 600);
                 wallGrad.addColorStop(0, '#5D4037'); wallGrad.addColorStop(1, '#3E2723');
-                ctx.fillStyle = wallGrad; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = wallGrad; ctx.fillRect(0, 0, 400, 600);
 
                 ctx.fillStyle = '#4E342E';
                 for (let i = 0; i < 6; i++) {
-                    ctx.fillRect(10, 115 + i * 80, canvas.width - 20, 8); 
+                    ctx.fillRect(10, 115 + i * 80, 400 - 20, 8); 
                 }
-                ctx.fillStyle = '#212121'; ctx.fillRect(0, canvas.height - 80, canvas.width, 80);
+                ctx.fillStyle = '#212121'; ctx.fillRect(0, 600 - 80, 400, 80);
 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
                 ctx.font = '14px sans-serif';
@@ -4812,11 +4823,11 @@
                 ctx.fillStyle = '#F1C40F';
                 ctx.font = '36px "Righteous", sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('ショップ', canvas.width/2, 55);
+                ctx.fillText('ショップ', 400/2, 55);
 
                 ctx.fillStyle = 'white'; ctx.font = '16px sans-serif'; ctx.textAlign = 'right';
-                ctx.fillText(`所持 ${totalSilverBirds}`, canvas.width - 25, 35);
-                drawBirdCoin(ctx, canvas.width - 15, 30, 9);
+                ctx.fillText(`所持 ${totalSilverBirds}`, 400 - 25, 35);
+                drawBirdCoin(ctx, 400 - 15, 30, 9);
                 
                 ctx.fillStyle = '#555';
                 ctx.beginPath(); ctx.roundRect(10, 10, 80, 35, 5); ctx.fill();
@@ -4824,13 +4835,13 @@
                 ctx.fillText('戻る', 50, 33);
 
                 ctx.fillStyle = '#f39c12';
-                ctx.beginPath(); ctx.roundRect(canvas.width - 60, 10, 50, 35, 5); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = 'bold 20px sans-serif'; ctx.fillText('👕', canvas.width - 35, 35);
+                ctx.beginPath(); ctx.roundRect(400 - 60, 10, 50, 35, 5); ctx.fill();
+                ctx.fillStyle = 'white'; ctx.font = 'bold 20px sans-serif'; ctx.fillText('👕', 400 - 35, 35);
 
                 // タブ描画
                 let tabs = ['スキン', 'マント', '自機', 'その他'];
                 if (isHandsomeEyesUnlocked) tabs.push('目');
-                let tabW = (canvas.width - 40) / tabs.length;
+                let tabW = (400 - 40) / tabs.length;
                 for (let t = 0; t < tabs.length; t++) {
                     ctx.fillStyle = shopTab === t ? '#2ECC71' : 'rgba(255,255,255,0.1)';
                     ctx.beginPath(); ctx.roundRect(20 + t * tabW, 70, tabW - 5, 35, 5); ctx.fill();
@@ -4840,7 +4851,7 @@
 
                 // 2列グリッドでアイテムを表示
                 let currentItems = shopPages[shopTab];
-                let shopColW = (canvas.width - 30) / 2;
+                let shopColW = (400 - 30) / 2;
                 for (let i = 0; i < currentItems.length; i++) {
                     let item = currentItems[i];
                     let col = i % 2; let row = Math.floor(i / 2);
@@ -4900,18 +4911,18 @@
                 }
                 ctx.textAlign = 'left';
             } else if (gameState === 'CHANGING_ROOM') {
-                let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                let grad = ctx.createLinearGradient(0, 0, 0, 600);
                 grad.addColorStop(0, '#2C3E50'); grad.addColorStop(1, '#000');
-                ctx.fillStyle = grad; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = grad; ctx.fillRect(0, 0, 400, 600);
                 ctx.fillStyle = '#F1C40F'; ctx.font = '36px "Righteous", sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText('着替え室', canvas.width/2, 50);
+                ctx.fillText('着替え室', 400/2, 50);
 
                 ctx.fillStyle = '#555';
                 ctx.beginPath(); ctx.roundRect(10, 10, 110, 35, 5); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = '16px sans-serif'; ctx.fillText('← ショップ', 65, 33);
 
                 let tabs = ['スキン', 'マント', '形', '顔'];
-                let tabW = (canvas.width - 40) / 4;
+                let tabW = (400 - 40) / 4;
                 for (let t = 0; t < 4; t++) {
                     let actualTab = (t === 3) ? 4 : t;
                     ctx.fillStyle = shopTab === actualTab ? '#E67E22' : 'rgba(255,255,255,0.1)';
@@ -4922,8 +4933,8 @@
 
                 ctx.save();
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
-                ctx.beginPath(); ctx.arc(canvas.width - 100, canvas.height - 100, 80, 0, Math.PI*2); ctx.fill();
-                ctx.translate(canvas.width - 150, canvas.height - 130);
+                ctx.beginPath(); ctx.arc(400 - 100, 600 - 100, 80, 0, Math.PI*2); ctx.fill();
+                ctx.translate(400 - 150, 600 - 130);
                 ctx.scale(3, 3);
                 let px = player.x; let py = player.y; player.x = 0; player.y = 0;
                 drawPlayer();
@@ -5044,22 +5055,22 @@
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
                 ctx.font = '14px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText(`${playerName}さん、ようこそ！`, canvas.width/2, 45);
+                ctx.fillText(`${playerName}さん、ようこそ！`, 400/2, 45);
 
                 ctx.fillStyle = '#F1C40F';
                 ctx.font = '36px "Righteous", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.shadowColor = 'black';
                 ctx.shadowBlur = 8;
-                ctx.fillText('レベル選択', canvas.width/2, 90);
+                ctx.fillText('レベル選択', 400/2, 90);
                 
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 16px sans-serif';
                 ctx.shadowBlur = 4;
-                ctx.fillText('レベルを選んでダイブ開始！', canvas.width/2, 120);
+                ctx.fillText('レベルを選んでダイブ開始！', 400/2, 120);
                 if (isAllLevelsCleared()) {
                     ctx.fillStyle = '#FF4500'; ctx.font = 'bold 12px sans-serif';
-                    ctx.fillText('！裏ステージが解禁されました！', canvas.width/2, 135);
+                    ctx.fillText('！裏ステージが解禁されました！', 400/2, 135);
                 }
                 ctx.shadowBlur = 0;
 
@@ -5068,7 +5079,7 @@
                 let numTabs = allCleared ? 4 : 3;
                 let tabW = 88; let tabG = 8;
                 let totalW = numTabs * tabW + (numTabs - 1) * tabG;
-                let startX = (canvas.width - totalW) / 2;
+                let startX = (400 - totalW) / 2;
 
                 for (let i = 0; i < numTabs; i++) {
                     let tx = startX + i * (tabW + tabG);
@@ -5133,8 +5144,8 @@
                 // --- カルーセル形式のレベル選択 ---
                 let btnW = 180;
                 let btnH = 120;
-                let btnX = canvas.width/2 - btnW/2;
-                let btnY = canvas.height/2 - 50;
+                let btnX = 400/2 - btnW/2;
+                let btnY = 600/2 - 50;
 
                 // レベル表示 (2色を混ぜたグラデーション)
                 let grad = ctx.createLinearGradient(btnX, btnY, btnX + btnW, btnY + btnH);
@@ -5151,21 +5162,21 @@
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 40px "Righteous", sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText(lev.name, canvas.width/2, btnY + 70);
+                ctx.fillText(lev.name, 400/2, btnY + 70);
                 
                 ctx.font = 'bold 16px sans-serif';
-                ctx.fillText('クリックで開始', canvas.width/2, btnY + 105);
+                ctx.fillText('クリックで開始', 400/2, btnY + 105);
 
                 // レベルのハイスコア表示
                 let best = highScores[currentLevelIndex] || 0;
                 ctx.fillStyle = 'rgba(255,255,255,0.7)';
                 ctx.font = '14px sans-serif';
-                ctx.fillText(`最高記録: 残り ${Math.max(0, goalDistance - best)}m`, canvas.width/2, btnY + btnH + 55);
+                ctx.fillText(`最高記録: 残り ${Math.max(0, goalDistance - best)}m`, 400/2, btnY + btnH + 55);
 
                 // 星の進行状況
                 let levelCoins = savedCoins[currentLevelIndex] || [false, false, false];
                 for (let c = 0; c < 3; c++) {
-                    let cx = canvas.width/2 - 30 + c * 30;
+                    let cx = 400/2 - 30 + c * 30;
                     let cy = btnY + btnH + 30;
                     if (levelCoins[c]) {
                         drawGoldCoin(ctx, cx, cy, 10);
@@ -5187,32 +5198,32 @@
 
                 // 右の三角ボタン
                 ctx.beginPath();
-                ctx.moveTo(canvas.width - 40, btnY + btnH/2 - 20);
-                ctx.lineTo(canvas.width - 20, btnY + btnH/2);
-                ctx.lineTo(canvas.width - 40, btnY + btnH/2 + 20);
+                ctx.moveTo(400 - 40, btnY + btnH/2 - 20);
+                ctx.lineTo(400 - 20, btnY + btnH/2);
+                ctx.lineTo(400 - 40, btnY + btnH/2 + 20);
                 ctx.fill();
 
                 ctx.textAlign = 'left';
             } else if (gameState === 'GAMEOVER') {
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(0, 0, 400, 600);
                 
                 ctx.fillStyle = '#E74C3C';
                 ctx.font = 'bold 50px sans-serif';
                 ctx.textAlign = 'center';
                 ctx.shadowColor = 'black';
                 ctx.shadowBlur = 5;
-                ctx.fillText('ゲームオーバー', canvas.width/2, canvas.height/2 - 40);
+                ctx.fillText('ゲームオーバー', 400/2, 600/2 - 40);
                 ctx.shadowBlur = 0;
                 
                 if (isEndlessMode) {
                     ctx.fillStyle = '#F1C40F';
                     ctx.font = 'bold 44px sans-serif';
-                    ctx.fillText(`${Math.floor(endlessTime)} 秒生存`, canvas.width/2, canvas.height/2 + 20);
+                    ctx.fillText(`${Math.floor(endlessTime)} 秒生存`, 400/2, 600/2 + 20);
                 } else {
                     ctx.fillStyle = 'white';
                     ctx.font = 'bold 70px sans-serif';
-                    ctx.fillText(`${retryCountdown}`, canvas.width/2, canvas.height/2 + 20);
+                    ctx.fillText(`${retryCountdown}`, 400/2, 600/2 + 20);
                 }
 
                 // ハイスコア表示
@@ -5223,110 +5234,110 @@
                 
                 ctx.fillStyle = 'rgba(255,255,255,0.8)';
                 ctx.font = '18px sans-serif';
-                ctx.fillText(recordText, canvas.width/2, canvas.height/2 + 65);
+                ctx.fillText(recordText, 400/2, 600/2 + 65);
                 
                 if (isNewRecord) {
                     ctx.fillStyle = '#F1C40F';
                     ctx.font = 'bold 28px "Righteous", sans-serif';
                     ctx.shadowBlur = 10; ctx.shadowColor = 'yellow';
-                    ctx.fillText('新記録達成！', canvas.width/2, canvas.height/2 - 100);
+                    ctx.fillText('新記録達成！', 400/2, 600/2 - 100);
                     ctx.shadowBlur = 0;
                 }
 
                 ctx.fillStyle = 'white';
                 ctx.font = '16px sans-serif';
                 if (isEndlessMode) {
-                    ctx.fillText(`獲得 : ${lastSilverBirdsEarned} 枚`, canvas.width/2 + 15, canvas.height/2 + 95);
-                    drawBirdCoin(ctx, canvas.width/2 - 50, canvas.height/2 + 88, 11);
+                    ctx.fillText(`獲得 : ${lastSilverBirdsEarned} 枚`, 400/2 + 15, 600/2 + 95);
+                    drawBirdCoin(ctx, 400/2 - 50, 600/2 + 88, 11);
                 }
 
                 ctx.font = '16px sans-serif';
                 ctx.fillStyle = '#ccc';
                 if (isEndlessMode) {
-                    ctx.fillText('クリックでタイトルに戻る', canvas.width/2, canvas.height/2 + 125);
+                    ctx.fillText('クリックでタイトルに戻る', 400/2, 600/2 + 125);
                     
                     // ランキングボタン
                     let btnW = 160; let btnH = 40;
-                    let btnX = canvas.width / 2 - btnW / 2;
-                    let btnY = canvas.height / 2 + 140;
+                    let btnX = 400 / 2 - btnW / 2;
+                    let btnY = 600 / 2 + 140;
                     ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
                     ctx.beginPath(); ctx.roundRect(btnX, btnY, btnW, btnH, 10); ctx.fill();
                     ctx.strokeStyle = 'white'; ctx.lineWidth = 1; ctx.stroke();
                     ctx.fillStyle = 'white'; ctx.font = 'bold 14px sans-serif';
-                    ctx.fillText('🌍 ランキングを見る', canvas.width / 2, btnY + 25);
+                    ctx.fillText('🌍 ランキングを見る', 400 / 2, btnY + 25);
                 } else {
-                    ctx.fillText('[← →] でリトライ  /  [↑] でスローモード', canvas.width / 2, canvas.height / 2 + 100);
-                    ctx.fillText('クリックで戻る', canvas.width / 2, canvas.height / 2 + 125);
+                    ctx.fillText('[← →] でリトライ  /  [↑] でスローモード', 400 / 2, 600 / 2 + 100);
+                    ctx.fillText('クリックで戻る', 400 / 2, 600 / 2 + 125);
                 }
                 
                 // スマホ用リトライボタン (エンドレス以外)
                 if (!isEndlessMode) {
                     ctx.fillStyle = '#2ECC71';
-                    ctx.beginPath(); ctx.roundRect(canvas.width / 2 - 50, canvas.height / 2 + 150, 100, 35, 5); ctx.fill();
+                    ctx.beginPath(); ctx.roundRect(400 / 2 - 50, 600 / 2 + 150, 100, 35, 5); ctx.fill();
                     ctx.fillStyle = 'white'; ctx.font = 'bold 16px sans-serif'; ctx.textAlign = 'center';
-                    ctx.fillText('リトライ', canvas.width / 2, canvas.height / 2 + 173);
+                    ctx.fillText('リトライ', 400 / 2, 600 / 2 + 173);
                     ctx.textAlign = 'left';
                 }
                 ctx.textAlign = 'left';
             } else if (gameState === 'CLEAR') {
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(0, 0, 400, 600);
                 ctx.fillStyle = '#2ECC71';
                 ctx.font = 'bold 40px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('着地成功！', canvas.width/2, canvas.height/2 - 40);
+                ctx.fillText('着地成功！', 400/2, 600/2 - 40);
                 
                 if (isPracticeUsed) {
                     ctx.fillStyle = '#E74C3C';
                     ctx.font = 'bold 20px sans-serif';
-                    ctx.fillText('練習モード使用のため報酬なし', canvas.width/2, canvas.height/2 + 20);
+                    ctx.fillText('練習モード使用のため報酬なし', 400/2, 600/2 + 20);
                 } else if (isCustomLevel) {
                     // 自作ステージ：メッセージも報酬も出さない（スッキリさせる）
                 } else {
                     ctx.fillStyle = '#333';
                     ctx.font = '18px sans-serif';
                     let best = highScores[currentLevelIndex] || 0;
-                    ctx.fillText(`最高記録: 残り ${Math.max(0, goalDistance - best)}m`, canvas.width/2, canvas.height/2 - 90);
+                    ctx.fillText(`最高記録: 残り ${Math.max(0, goalDistance - best)}m`, 400/2, 600/2 - 90);
 
                     if (isNewRecord) {
                         ctx.fillStyle = '#F1C40F';
                         ctx.font = 'bold 24px "Righteous", sans-serif';
-                        ctx.fillText('新記録達成！', canvas.width/2, canvas.height/2 - 120);
+                        ctx.fillText('新記録達成！', 400/2, 600/2 - 120);
                     }
 
                     ctx.fillStyle = '#333';
                     ctx.font = '20px sans-serif';
-                    ctx.fillText(`ゴールドコイン獲得: ${starsCollected} 枚`, canvas.width/2, canvas.height/2);
+                    ctx.fillText(`ゴールドコイン獲得: ${starsCollected} 枚`, 400/2, 600/2);
                     
                     // ゴールドコインを描画
                     for (let i = 0; i < starsCollected; i++) {
-                        let cx = canvas.width/2 - ((starsCollected - 1) * 45) + (i * 90);
-                        let cy = canvas.height/2 + 60;
+                        let cx = 400/2 - ((starsCollected - 1) * 45) + (i * 90);
+                        let cy = 600/2 + 60;
                         drawGoldCoin(ctx, cx, cy, 36);
                     }
                     
                     // 銀の鳥コインの計算と描画
-                    let by = canvas.height/2 + 95;
+                    let by = 600/2 + 95;
                     ctx.fillStyle = '#555';
                     ctx.font = 'bold 18px sans-serif';
                     ctx.textAlign = 'center';
                     let boostText = lastClearHadBoost ? ` (ボーナス+${lastBoostPercent}%!)` : '';
-                    ctx.fillText(`獲得 : ${lastSilverBirdsEarned} 枚` + boostText, canvas.width/2 + 15, by);
-                    drawBirdCoin(ctx, canvas.width/2 - 90, by - 6, 11);
+                    ctx.fillText(`獲得 : ${lastSilverBirdsEarned} 枚` + boostText, 400/2 + 15, by);
+                    drawBirdCoin(ctx, 400/2 - 90, by - 6, 11);
                     
                     ctx.font = '12px sans-serif';
                     ctx.fillStyle = '#777';
-                    ctx.fillText('※何度クリアしても報酬がもらえます！', canvas.width/2, by + 25);
+                    ctx.fillText('※何度クリアしても報酬がもらえます！', 400/2, by + 25);
                 }
                 ctx.textBaseline = 'alphabetic'; // リセット
                 
                 ctx.fillStyle = '#333';
                 ctx.font = '18px sans-serif';
-                ctx.fillText('クリックで戻る', canvas.width/2, canvas.height/2 + 150);
+                ctx.fillText('クリックで戻る', 400/2, 600/2 + 150);
                 ctx.textAlign = 'left';
             } else if (gameState === 'SETTINGS') {
                 ctx.fillStyle = 'rgba(30, 30, 30, 0.9)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillRect(0, 0, 400, 600);
 
                 ctx.fillStyle = '#F1C40F';
                 ctx.font = '36px "Righteous", sans-serif';
@@ -5344,7 +5355,7 @@
                 // 強制的な更新ボタン (キャッシュクリア) - 画面中央上部に配置
                 let updateBtnW = 160;
                 let updateBtnH = 35;
-                let updateBtnX = canvas.width / 2 - updateBtnW / 2;
+                let updateBtnX = 400 / 2 - updateBtnW / 2;
                 let updateBtnY = 20; 
                 ctx.fillStyle = 'rgba(231, 76, 60, 0.4)';
                 ctx.strokeStyle = '#E74C3C';
@@ -5355,18 +5366,18 @@
                 ctx.stroke();
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 13px sans-serif';
-                ctx.fillText('🔄 最新の状態に更新', canvas.width/2, updateBtnY + 22);
+                ctx.fillText('🔄 最新の状態に更新', 400/2, updateBtnY + 22);
 
                 // タイトル「設定」- ボタンの下に配置
                 ctx.fillStyle = '#F1C40F';
                 ctx.font = 'bold 28px "Righteous", sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('設定', canvas.width/2, 105);
+                ctx.fillText('設定', 400/2, 105);
 
                 // BGMセレクト
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 18px sans-serif';
-                ctx.fillText('BGMの雰囲気', canvas.width/2, 155);
+                ctx.fillText('BGMの雰囲気', 400/2, 155);
 
                 let bgmOptions = [
                     { id: 'pop', name: 'ポップ', desc: 'いつもの楽しい曲' },
@@ -5378,7 +5389,7 @@
                     let opt = bgmOptions[i];
                     let btnX = 50;
                     let btnY = 180 + i * 62;
-                    let btnW = canvas.width - 100;
+                    let btnW = 400 - 100;
                     let btnH = 55;
 
                     ctx.fillStyle = currentBGMType === opt.id ? 'rgba(46, 204, 113, 0.4)' : 'rgba(255, 255, 255, 0.1)';
@@ -5391,23 +5402,23 @@
 
                     ctx.fillStyle = 'white';
                     ctx.font = 'bold 17px sans-serif';
-                    ctx.fillText(opt.name, canvas.width/2, btnY + 23);
+                    ctx.fillText(opt.name, 400/2, btnY + 23);
                     ctx.font = '11px sans-serif';
                     ctx.fillStyle = '#ccc';
-                    ctx.fillText(opt.desc, canvas.width/2, btnY + 44);
+                    ctx.fillText(opt.desc, 400/2, btnY + 44);
                 }
 
                 // スローモードの強さ設定
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 18px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('スローモード倍率 (0.1x - 2.0x)', canvas.width/2, 380);
+                ctx.fillText('スローモード倍率 (0.1x - 2.0x)', 400/2, 380);
 
                 let sBtnY = 400;
                 let sBtnW = 50;
                 let sBtnH = 40;
-                let decBtnX = canvas.width / 2 - 80;
-                let incBtnX = canvas.width / 2 + 30;
+                let decBtnX = 400 / 2 - 80;
+                let incBtnX = 400 / 2 + 30;
 
                 // マイナスボタン
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
@@ -5418,7 +5429,7 @@
                 // 現在の値
                 ctx.fillStyle = '#F1C40F';
                 ctx.font = 'bold 22px "Righteous", sans-serif';
-                ctx.fillText(slowModeStrength.toFixed(1) + 'x', canvas.width/2, sBtnY + 28);
+                ctx.fillText(slowModeStrength.toFixed(1) + 'x', 400/2, sBtnY + 28);
 
                 // プラスボタン
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
@@ -5428,7 +5439,7 @@
 
                 ctx.fillStyle = '#ccc';
                 ctx.font = '11px sans-serif';
-                ctx.fillText('※プレイ中に ↑キー で切り替わります', canvas.width/2, 447);
+                ctx.fillText('※プレイ中に ↑キー で切り替わります', 400/2, 447);
 
                 // 各種ON/OFFトグル
                 let toggles = [
@@ -5464,18 +5475,18 @@
 
                 ctx.textAlign = 'left';
             } else if (gameState === 'CUSTOM_LEVEL_SELECT') {
-                ctx.fillStyle = '#2C3E50'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#2C3E50'; ctx.fillRect(0, 0, 400, 600);
                 ctx.fillStyle = '#F1C40F'; ctx.font = '28px "Righteous", sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText('自作ステージ一覧', canvas.width/2, 50);
+                ctx.fillText('自作ステージ一覧', 400/2, 50);
 
                 ctx.fillStyle = '#555'; ctx.beginPath(); ctx.roundRect(10, 10, 80, 35, 5); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = '14px sans-serif'; ctx.fillText('戻る', 50, 33);
 
                 if (customLevels.length === 0) {
                     ctx.fillStyle = 'white'; ctx.font = '16px sans-serif';
-                    ctx.fillText('まだステージがありません', canvas.width/2, 200);
+                    ctx.fillText('まだステージがありません', 400/2, 200);
                     ctx.font = '12px sans-serif';
-                    ctx.fillText('CREATEボタンで作ってみよう！', canvas.width/2, 230);
+                    ctx.fillText('CREATEボタンで作ってみよう！', 400/2, 230);
                 } else {
                     let itemW = 110; let itemH = 60;
                     for (let i = 0; i < customLevels.length; i++) {
@@ -5491,54 +5502,54 @@
                     }
                 }
             } else if (gameState === 'EDITOR_MENU') {
-                ctx.fillStyle = 'rgba(0,0,0,0.85)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(0,0,0,0.85)'; ctx.fillRect(0, 0, 400, 600);
                 ctx.fillStyle = '#F1C40F'; ctx.font = '32px "Righteous", sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText('エディター', canvas.width/2, 100);
+                ctx.fillText('エディター', 400/2, 100);
 
                 // ボタン1: 新規
                 ctx.fillStyle = '#E67E22'; ctx.beginPath(); ctx.roundRect(50, 150, 300, 70, 15); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = 'bold 20px sans-serif';
-                ctx.fillText('新しくステージを作る', canvas.width/2, 192);
+                ctx.fillText('新しくステージを作る', 400/2, 192);
 
                 // ボタン2: 一覧（ある場合のみ）
                 if (customLevels.length > 0) {
                     ctx.fillStyle = '#9B59B6'; ctx.beginPath(); ctx.roundRect(50, 240, 300, 70, 15); ctx.fill();
                     ctx.fillStyle = 'white';
-                    ctx.fillText('保存したステージで遊ぶ', canvas.width/2, 282);
+                    ctx.fillText('保存したステージで遊ぶ', 400/2, 282);
                 }
 
                 // もどる
                 ctx.fillStyle = '#7f8c8d'; ctx.font = 'bold 18px sans-serif';
-                ctx.fillText('もどる', canvas.width/2, 380);
+                ctx.fillText('もどる', 400/2, 380);
             } else if (gameState === 'CUSTOM_ACTION_MENU') {
-                ctx.fillStyle = 'rgba(0,0,0,0.85)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(0,0,0,0.85)'; ctx.fillRect(0, 0, 400, 600);
                 let level = customLevels[selectedCustomIdx];
                 ctx.fillStyle = '#F1C40F'; ctx.font = '24px "Righteous", sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText(level.name || 'STAGE', canvas.width/2, 100);
+                ctx.fillText(level.name || 'STAGE', 400/2, 100);
 
                 let btnW = 200; let btnH = 60;
-                let centerX = canvas.width / 2 - btnW / 2;
+                let centerX = 400 / 2 - btnW / 2;
 
                 // 遊ぶボタン
                 ctx.fillStyle = '#2ECC71'; ctx.beginPath(); ctx.roundRect(centerX, 150, btnW, btnH, 10); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = 'bold 20px sans-serif';
-                ctx.fillText('遊ぶ', canvas.width/2, 187);
+                ctx.fillText('遊ぶ', 400/2, 187);
 
                 // 編集ボタン
                 ctx.fillStyle = '#E67E22'; ctx.beginPath(); ctx.roundRect(centerX, 230, btnW, btnH, 10); ctx.fill();
                 ctx.fillStyle = 'white';
-                ctx.fillText('編集する', canvas.width/2, 267);
+                ctx.fillText('編集する', 400/2, 267);
 
                 // 削除ボタン
                 ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.roundRect(centerX, 310, btnW, btnH, 10); ctx.fill();
                 ctx.fillStyle = 'white';
-                ctx.fillText('削除する', canvas.width/2, 347);
+                ctx.fillText('削除する', 400/2, 347);
 
 
             // もどるボタン
                 ctx.fillStyle = '#95a5a6'; ctx.beginPath(); ctx.roundRect(centerX, 390, btnW, btnH, 10); ctx.fill();
                 ctx.fillStyle = 'white';
-                ctx.fillText('もどる', canvas.width/2, 427);
+                ctx.fillText('もどる', 400/2, 427);
             }
             ctx.restore();
 
@@ -5560,7 +5571,7 @@
                 ctx.save();
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
                 ctx.beginPath();
-                ctx.roundRect(canvas.width/2 - 140, 20, 280, 40, 20);
+                ctx.roundRect(400/2 - 140, 20, 280, 40, 20);
                 ctx.fill();
                 ctx.strokeStyle = '#F1C40F';
                 ctx.lineWidth = 2;
@@ -5570,7 +5581,7 @@
                 ctx.font = 'bold 14px sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText('エンドレスモードが解放されました！', canvas.width/2, 40);
+                ctx.fillText('エンドレスモードが解放されました！', 400/2, 40);
                 ctx.restore();
             }
         }
