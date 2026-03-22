@@ -3754,17 +3754,23 @@
                 else if (types[i] === 'start') { ctx.fillStyle = 'white'; ctx.globalAlpha = 0.6; ctx.fillRect(-10*sc, -10*sc, 20*sc, 20*sc); }
                 ctx.restore();
 
-                if (types[i] === 'setBG') {
-                    let bgNames = ['夕焼け', '青空', '宇宙', '紫暮', '猛毒', '朝焼け'];
+                if (types[i].startsWith('len')) {
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                    ctx.fillText(typeNames[i], btnX + 25, btnY + 20);
+                } else {
+                    if (types[i] === 'setBG') {
+                        let bgNames = ['夕焼け', '青空', '宇宙', '紫暮', '猛毒', '朝焼け'];
+                        ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
+                        ctx.fillText(bgNames[editorLevel.bgIdx || 0], btnX + 25, btnY + 18);
+                    } else if (types[i] === 'setTheme') {
+                        ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
+                        ctx.fillText('テーマ' + ((editorLevel.bgmThemeIdx || 0) + 1), btnX + 25, btnY + 18);
+                    }
+                    
                     ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
-                    ctx.fillText(bgNames[editorLevel.bgIdx || 0], btnX + 25, btnY + 18);
-                } else if (types[i] === 'setTheme') {
-                    ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
-                    ctx.fillText('テーマ' + ((editorLevel.bgmThemeIdx || 0) + 1), btnX + 25, btnY + 18);
+                    ctx.fillText(typeNames[i], btnX + 25, btnY + 35);
                 }
-                
-                ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText(typeNames[i], btnX + 25, btnY + 35);
+                ctx.textBaseline = 'alphabetic'; 
             }
 
             // スクロールバーの描画
@@ -4596,7 +4602,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.6.0-ranking-active', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.6.1-editor-ui', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
