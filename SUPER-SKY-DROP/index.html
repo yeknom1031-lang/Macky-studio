@@ -1005,9 +1005,12 @@
         }
 
         function updateBackgroundColors() {
-            let targetIdx = 0;
-            if (gameState === 'LEVEL_SELECT' || gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR') {
-                targetIdx = currentLevelIndex % themeBgData.length;
+            if (gameState === 'LEVEL_SELECT' || gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR' || gameState === 'EDITOR') {
+                if ((isCustomLevel || gameState === 'EDITOR') && editorLevel && editorLevel.bgIdx !== undefined) {
+                    targetIdx = editorLevel.bgIdx % themeBgData.length;
+                } else {
+                    targetIdx = currentLevelIndex % themeBgData.length;
+                }
             }
 
             if (targetIdx !== lastTargetIdx) {
@@ -1552,6 +1555,8 @@
                             else { editorSelectedIndex = -1; }
                         }
                     } else {
+                        let bgmTypes = ['pop', 'techno', 'chill'];
+                        let bgNames = ['夕焼け', '青空', '宇宙', '紫暮', '猛毒', '朝焼け'];
                         for(let i=0; i<types.length; i++) {
                             let col = i % 5; let row = Math.floor(i / 5);
                             let btnX = 10 + col * 55; let btnY = canvas.height - 140 + row * 45;
@@ -1560,8 +1565,16 @@
                                 else if (types[i] === 'len-100') { editorLevel.totalDist = Math.max(100, (editorLevel.totalDist || 4000) - 100); playTapSound(); }
                                 else if (types[i] === 'len+10') { editorLevel.totalDist = (editorLevel.totalDist || 4000) + 10; playTapSound(); }
                                 else if (types[i] === 'len-10') { editorLevel.totalDist = Math.max(10, (editorLevel.totalDist || 4000) - 10); playTapSound(); }
+                                else if (types[i] === 'setBGM') { 
+                                    editorLevel.bgmType = ((editorLevel.bgmType || 0) + 1) % bgmTypes.length;
+                                    playTapSound();
+                                }
+                                else if (types[i] === 'setBG') { 
+                                    editorLevel.bgIdx = ((editorLevel.bgIdx || 0) + 1) % themeBgData.length;
+                                    playTapSound();
+                                }
                                 else { editorSelectedType = types[i]; }
-                                draw(); // 数値更新を即座に反映
+                                draw();
                             }
                         }
                         if (x > canvas.width - 80 && y > canvas.height - 145) {
@@ -2219,6 +2232,8 @@
             
             if (isCustomLevel) {
                 speedMultiplier = editorLevel.speed || 1.0;
+                let bgmTypes = ['pop', 'techno', 'chill'];
+                currentBGMType = bgmTypes[editorLevel.bgmType || 0];
                 seed = 999;
             } else if (isEndlessMode) {
                 let randomBgIdx = Math.floor(Math.random() * backgroundThemes.length);
@@ -3629,8 +3644,8 @@
                 ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(`開始地点: ${sD}m`, sX + 15, startLocY + 45); ctx.globalAlpha = 1.0;
             }
             ctx.fillStyle = '#34495e'; ctx.fillRect(0, canvas.height - 150, canvas.width, 150);
-            let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10'];
-            let typeNames = ['通常', '高速', '動く', '線', '追跡', '火球', 'コイン', 'ゴール', 'スタート', '距離+100', '距離-100', '距離+10', '距離-10'];
+            let types = ['normal', 'fast', 'moving', 'laser', 'seeker', 'fireball', 'item', 'goal', 'start', 'len+100', 'len-100', 'len+10', 'len-10', 'setBGM', 'setBG'];
+            let typeNames = ['通常', '高速', '動く', '線', '追跡', '火球', 'コイン', 'ゴール', 'スタート', '距離+100', '距離-100', '距離+10', '距離-10', 'BGM', '背景'];
             for(let i=0; i<types.length; i++) {
                 let col = i % 5; let row = Math.floor(i / 5);
                 let btnX = 10 + col * 55; let btnY = canvas.height - 140 + row * 45;
@@ -3656,6 +3671,16 @@
                 else if (types[i] === 'start') { ctx.fillStyle = 'white'; ctx.globalAlpha = 0.6; ctx.fillRect(-10*sc, -10*sc, 20*sc, 20*sc); }
                 ctx.restore();
 
+                if (types[i] === 'setBGM') {
+                    let bgmTypes = ['pop', 'techno', 'chill'];
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
+                    ctx.fillText(bgmTypes[editorLevel.bgmType || 0].toUpperCase(), btnX + 25, btnY + 18);
+                } else if (types[i] === 'setBG') {
+                    let bgNames = ['夕焼け', '青空', '宇宙', '紫暮', '猛毒', '朝焼け'];
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
+                    ctx.fillText(bgNames[editorLevel.bgIdx || 0], btnX + 25, btnY + 18);
+                }
+                
                 ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
                 ctx.fillText(typeNames[i], btnX + 25, btnY + 35);
             }
