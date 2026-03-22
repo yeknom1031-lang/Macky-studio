@@ -3590,7 +3590,17 @@
 
         function drawEditor() {
             const GRID = 20; const TOTAL = editorLevel.totalDist || 4000; const MAX_SCROLL = 20000;
-            ctx.fillStyle = '#2c3e50'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // 背景テーマの描画 (単色からグラデーションへ変更)
+            let bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            let c1 = currentBgColors.c1;
+            let c2 = currentBgColors.c2;
+            let c3 = currentBgColors.c3;
+            bgGrad.addColorStop(0, `rgb(${c1[0]},${c1[1]},${c1[2]})`);
+            bgGrad.addColorStop(0.5, `rgb(${c2[0]},${c2[1]},${c2[2]})`);
+            bgGrad.addColorStop(1, `rgb(${c3[0]},${c3[1]},${c3[2]})`);
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1;
             for(let i=0; i<canvas.width; i+=GRID){ ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height - 150); ctx.stroke(); }
             // マス目の起点を150px(自機位置)に合わせて、0.5マスのズレを解消
