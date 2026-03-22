@@ -1420,7 +1420,7 @@
                     }
                     return;
                 }
-                // 設定
+                // 設定 (右上)
                 if (x > canvas.width - 60 && x < canvas.width - 10 && y > 10 && y < 60) {
                     playTapSound(); gameState = 'SETTINGS'; draw(); return;
                 }
@@ -1784,22 +1784,44 @@
                     }
                 }
 
+                // 強制的な更新ボタン (キャッシュクリア) - タイトル「設定」よりも上に配置
+                let updateBtnX = canvas.width / 2 - 80;
+                let updateBtnY = 40; 
+                let updateBtnW = 160;
+                let updateBtnH = 35;
+                if (x > updateBtnX && x < updateBtnX + updateBtnW && y > updateBtnY && y < updateBtnY + updateBtnH) {
+                    playTapSound();
+                    const v = Date.now();
+                    location.href = location.pathname + '?v=' + v;
+                    return;
+                }
+                
+                // BGMセレクト
+                for (let i = 0; i < bgmOptions.length; i++) {
+                    let btnY = 180 + i * 62;
+                    let btnH = 55;
+                    if (x > 50 && x < canvas.width - 50 && y > btnY && y < btnY + btnH) {
+                        playTapSound();
+                        currentBGMType = bgmOptions[i].id;
+                        localStorage.setItem('superSkyDropBGMType', currentBGMType);
+                        stopLevelSelectBGM();
+                        playLevelSelectBGM();
+                        draw();
+                        return;
+                    }
+                }
+                
                 // スローモード設定
-                let decBtnX = canvas.width / 2 - 80;
-                let incBtnX = canvas.width / 2 + 30;
-                let btnY = 375;
+                let btnY = 400;
                 let btnW = 50;
                 let btnH = 40;
-
-                // マイナスボタン (-)
-                if (x > decBtnX && x < decBtnX + btnW && y > btnY && y < btnY + btnH) {
+                if (x > canvas.width / 2 - 80 && x < canvas.width / 2 - 30 && y > btnY && y < btnY + btnH) {
                     playTapSound();
                     slowModeStrength = Math.max(0.1, Math.round((slowModeStrength - 0.1) * 10) / 10);
                     localStorage.setItem('superSkyDropSlowStrength', slowModeStrength);
                     draw(); return;
                 }
-                // プラスボタン (+)
-                if (x > incBtnX && x < incBtnX + btnW && y > btnY && y < btnY + btnH) {
+                if (x > canvas.width / 2 + 30 && x < canvas.width / 2 + 80 && y > btnY && y < btnY + btnH) {
                     playTapSound();
                     slowModeStrength = Math.min(2.0, Math.round((slowModeStrength + 0.1) * 10) / 10);
                     localStorage.setItem('superSkyDropSlowStrength', slowModeStrength);
@@ -1807,58 +1829,22 @@
                 }
 
                 // トグル設定
-                let toggleList = [
-                    { key: 'se', label: 'SE' },
-                    { key: 'bgm', label: 'BGM' },
-                    { key: 'wind', label: '風' },
-                    { key: 'tilt', label: '傾き' },
-                    { key: 'part', label: '煙' },
-                    { key: 'zoom', label: '演出' },
-                    { key: 'shad', label: '影' },
-                    { key: 'hit', label: '判定' }
-                ];
-
                 for (let i = 0; i < toggleList.length; i++) {
-                    let col = i % 4;
-                    let row = Math.floor(i / 4);
-                    let btnW = 85;
-                    let btnH = 35;
-                    let btnX = 15 + col * 95;
-                    let btnY = 435 + row * 45;
-
-                    if (x > btnX && x < btnX + btnW && y > btnY && y < btnY + btnH) {
+                    let col = i % 4; let row = Math.floor(i / 4);
+                    let bW = 85; let bH = 35;
+                    let bX = 15 + col * 95; let bY = 460 + row * 45;
+                    if (x > bX && x < bX + bW && y > bY && y < bY + bH) {
                         playTapSound();
                         if (i === 0) isSEEnabled = !isSEEnabled;
-                        if (i === 1) {
-                            isIngameBGMEnabled = !isIngameBGMEnabled;
-                            if (!isIngameBGMEnabled) stopIngameBGM();
-                        }
-                        if (i === 2) {
-                            isWindEnabled = !isWindEnabled;
-                            if (!isWindEnabled) stopIngameWind();
-                        }
+                        if (i === 1) { isIngameBGMEnabled = !isIngameBGMEnabled; if (!isIngameBGMEnabled) stopIngameBGM(); }
+                        if (i === 2) { isWindEnabled = !isWindEnabled; if (!isWindEnabled) stopIngameWind(); }
                         if (i === 3) isTiltEnabled = !isTiltEnabled;
                         if (i === 4) isParticlesEnabled = !isParticlesEnabled;
                         if (i === 5) isIntroEnabled = !isIntroEnabled;
                         if (i === 6) isShadowsEnabled = !isShadowsEnabled;
                         if (i === 7) isDebugHitboxEnabled = !isDebugHitboxEnabled;
-                        savePlayerData();
-                        draw();
-                        return;
+                        savePlayerData(); draw(); return;
                     }
-                }
-
-                // 強制的な更新ボタン (キャッシュクリア) - 最上部に移動
-                let updateBtnX = canvas.width / 2 - 80;
-                let updateBtnY = 85; 
-                let updateBtnW = 160;
-                let updateBtnH = 35;
-                if (x > updateBtnX && x < updateBtnX + updateBtnW && y > updateBtnY && y < updateBtnY + updateBtnH) {
-                    playTapSound();
-                    const v = Date.now();
-                    console.log('Forced Refreshing via Settings to v=' + v);
-                    location.href = location.pathname + '?v=' + v;
-                    return;
                 }
             } else if (gameState === 'TUTORIAL') {
                 if (x > canvas.width/2 - 80 && x < canvas.width/2 + 80 && y > canvas.height - 100 && y < canvas.height - 50) {
@@ -4244,7 +4230,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.4.19-name-tap-fix', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.4.20-settings-top', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
@@ -4981,31 +4967,31 @@
                 ctx.fillStyle = '#555';
                 ctx.beginPath();
                 ctx.roundRect(10, 10, 80, 35, 5);
-                ctx.fill();
-                ctx.fillStyle = 'white';
-                ctx.font = '16px sans-serif';
-                ctx.fillText('戻る', 50, 33);
-
-                // 強制的な更新ボタン (キャッシュクリア)
+                // 強制的な更新ボタン (キャッシュクリア) - 最初の方に表示
                 let updateBtnX = canvas.width / 2 - 80;
-                let updateBtnY = 85; 
+                let updateBtnY = 25; 
                 let updateBtnW = 160;
                 let updateBtnH = 35;
                 ctx.fillStyle = 'rgba(231, 76, 60, 0.4)';
                 ctx.strokeStyle = '#E74C3C';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
-                ctx.roundRect(updateBtnX, updateBtnY, updateBtnW, updateBtnH, 5);
+                ctx.roundRect(updateBtnX, updateBtnY, updateBtnW, updateBtnH, 18); // 角を丸く
                 ctx.fill();
                 ctx.stroke();
                 ctx.fillStyle = 'white';
-                ctx.font = 'bold 14px sans-serif';
+                ctx.font = 'bold 13px sans-serif';
                 ctx.fillText('🔄 最新の状態に更新', canvas.width/2, updateBtnY + 22);
+
+                ctx.fillStyle = '#F1C40F';
+                ctx.font = '28px "Righteous", sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('設定', canvas.width/2, 100);
 
                 // BGMセレクト
                 ctx.fillStyle = 'white';
-                ctx.font = 'bold 20px sans-serif';
-                ctx.fillText('BGMの雰囲気', canvas.width/2, 135);
+                ctx.font = 'bold 18px sans-serif';
+                ctx.fillText('BGMの雰囲気', canvas.width/2, 155);
 
                 let bgmOptions = [
                     { id: 'pop', name: 'ポップ', desc: 'いつもの楽しい曲' },
@@ -5016,7 +5002,7 @@
                 for (let i = 0; i < bgmOptions.length; i++) {
                     let opt = bgmOptions[i];
                     let btnX = 50;
-                    let btnY = 155 + i * 62;
+                    let btnY = 180 + i * 62;
                     let btnW = canvas.width - 100;
                     let btnH = 55;
 
@@ -5029,9 +5015,9 @@
                     if (currentBGMType === opt.id) ctx.stroke();
 
                     ctx.fillStyle = 'white';
-                    ctx.font = 'bold 18px sans-serif';
+                    ctx.font = 'bold 17px sans-serif';
                     ctx.fillText(opt.name, canvas.width/2, btnY + 23);
-                    ctx.font = '12px sans-serif';
+                    ctx.font = '11px sans-serif';
                     ctx.fillStyle = '#ccc';
                     ctx.fillText(opt.desc, canvas.width/2, btnY + 44);
                 }
@@ -5040,9 +5026,9 @@
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 18px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('スローモード倍率 (0.1x - 2.0x)', canvas.width/2, 355);
+                ctx.fillText('スローモード倍率 (0.1x - 2.0x)', canvas.width/2, 380);
 
-                let sBtnY = 375;
+                let sBtnY = 400;
                 let sBtnW = 50;
                 let sBtnH = 40;
                 let decBtnX = canvas.width / 2 - 80;
@@ -5066,8 +5052,8 @@
                 ctx.fillText('+', incBtnX + sBtnW/2, sBtnY + 28);
 
                 ctx.fillStyle = '#ccc';
-                ctx.font = '12px sans-serif';
-                ctx.fillText('※プレイ中に ↑キー で切り替わります', canvas.width/2, 422);
+                ctx.font = '11px sans-serif';
+                ctx.fillText('※プレイ中に ↑キー で切り替わります', canvas.width/2, 447);
 
                 // 各種ON/OFFトグル
                 let toggles = [
@@ -5086,7 +5072,7 @@
                     let row = Math.floor(i / 4);
                     let t = toggles[i];
                     let btnX = 15 + col * 95;
-                    let btnY = 435 + row * 45;
+                    let btnY = 460 + row * 45;
                     let btnW = 85;
                     let btnH = 35;
 
