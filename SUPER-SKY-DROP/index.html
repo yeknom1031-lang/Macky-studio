@@ -1419,10 +1419,7 @@
                 }
                 // エンドレス
                 if (x > 20 && x < 100 && y > canvas.height - 60 && y < canvas.height - 20) {
-                    let now = Date.now();
-                    if (now - lastEndlessPlayTime >= 30 * 60 * 1000) {
-                        playTapSound(); startEndlessMode();
-                    }
+                    playTapSound(); startEndlessMode();
                     return;
                 }
                 // 設定 (右上)
@@ -4576,44 +4573,21 @@
                 ctx.font = '10px sans-serif';
                 ctx.fillText('作ってみる', creX + 40, creY + 65);
                 
-                // PRAY (エンドレス) ボタンを描画
+                // PLAY (エンドレス) ボタンを描画
                 ctx.save();
                 let prayX = 20; let prayY = canvas.height - 60;
                 let prayW = 80; let prayH = 40;
                 
-                let now = Date.now();
-                let cooldown = 30 * 60 * 1000; // 30分
-                let timeSinceLastPlay = now - lastEndlessPlayTime;
-                let canPray = timeSinceLastPlay >= cooldown;
-                
-                if (canPray) {
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-                } else {
-                    ctx.fillStyle = 'rgba(100, 100, 100, 0.4)';
-                }
-                
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
                 ctx.beginPath(); ctx.roundRect(prayX, prayY, prayW, prayH, 10); ctx.fill();
-                ctx.strokeStyle = canPray ? 'white' : '#666'; 
+                ctx.strokeStyle = 'white';
                 ctx.lineWidth = 1; ctx.stroke();
                 
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-
-                if (canPray) {
-                    ctx.fillStyle = 'white';
-                    ctx.font = 'bold 16px "Righteous", sans-serif';
-                    ctx.fillText('PLAY', prayX + prayW/2, prayY + 20);
-                } else {
-                    ctx.fillStyle = '#888';
-                    ctx.font = 'bold 12px "Righteous", sans-serif';
-                    ctx.fillText('PLAY', prayX + prayW/2, prayY + 12);
-                    let remaining = (30 * 60 * 1000) - (Date.now() - lastEndlessPlayTime);
-                    let m = Math.floor(remaining / 60000);
-                    let s = Math.floor((remaining % 60000) / 1000);
-                    ctx.fillStyle = '#F1C40F';
-                    ctx.font = 'bold 14px sans-serif';
-                    ctx.fillText(`${m}:${s.toString().padStart(2, '0')}`, prayX + prayW/2, prayY + 28);
-                }
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px "Righteous", sans-serif';
+                ctx.fillText('PLAY', prayX + prayW/2, prayY + 20);
                 ctx.restore();
 
                 // RANKING ボタン (ワールドランキング)
