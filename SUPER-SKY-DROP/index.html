@@ -4982,12 +4982,15 @@
                 }
                 draw();
             } catch (e) {
-                const debugInfo = document.getElementById('debug-info');
-                if (debugInfo) {
-                    debugInfo.style.display = 'block';
-                    debugInfo.innerHTML = `[CRITICAL] ${e.message}<br>Check the blackhole logic!`;
+                if (window.debugOverlay) {
+                    window.debugOverlay.style.display = 'block';
+                    window.debugOverlay.innerHTML += `[CRITICAL LOOP ERROR] ${e.message}<br>`;
+                } else {
+                    alert(`🚨 ERROR: ${e.message}`);
                 }
                 console.error(e);
+                // 永久ループでブラウザが固まるのを防ぐため、致命的エラー時はアニメーションを止める
+                return; 
             }
             requestAnimationFrame(gameLoop);
         }
