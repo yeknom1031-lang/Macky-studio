@@ -1979,29 +1979,32 @@
                     return;
                 }
 
-                // 章切り替えボタン
-                if (y > 140 && y < 180) {
-                    if (x > 10 && x < 95 && currentChapter !== 1) {
-                        currentChapter = 1; currentLevelIndex = 0;
-                        playTapSound(); draw();
-                    } else if (x > 105 && x < 190 && currentChapter !== 2) {
-                        if (isChapter2Bought) {
-                            currentChapter = 2; currentLevelIndex = 20;
-                            playTapSound(); draw();
-                        } else {
-                            alert("第2章はロックされています。ショップで購入してください！");
+                // 章切り替えボタン (中央寄せ対応)
+                if (y > 140 && y < 185) {
+                    let allCleared = false; try { allCleared = isAllLevelsCleared(); } catch(e){}
+                    let numTabs = allCleared ? 4 : 3;
+                    let tabW = 88; let tabG = 8;
+                    let totalW = numTabs * tabW + (numTabs - 1) * tabG;
+                    let startX = (canvas.width - totalW) / 2;
+
+                    for (let i = 0; i < numTabs; i++) {
+                        let tx1 = startX + i * (tabW + tabG);
+                        let tx2 = tx1 + tabW;
+                        if (x > tx1 && x < tx2) {
+                            if (i === 0 && currentChapter !== 1) {
+                                currentChapter = 1; currentLevelIndex = 0; playTapSound(); draw(); return;
+                            } else if (i === 1 && currentChapter !== 2) {
+                                if (isChapter2Bought) {
+                                    currentChapter = 2; currentLevelIndex = 20; playTapSound(); draw(); return;
+                                } else { alert("第2章はロックされています。ショップで購入してください！"); return; }
+                            } else if (i === 2 && currentChapter !== 3) {
+                                if (isChapter3Bought) {
+                                    currentChapter = 3; currentLevelIndex = 40; playTapSound(); draw(); return;
+                                } else { alert("第3章はロックされています。ショップで購入してください！"); return; }
+                            } else if (i === 3 && currentChapter !== 4) {
+                                currentChapter = 4; currentLevelIndex = 60; playTapSound(); draw(); return;
+                            }
                         }
-                    } else if (x > 200 && x < 285 && currentChapter !== 3) {
-                        if (isChapter3Bought) {
-                            currentChapter = 3; currentLevelIndex = 40;
-                            playTapSound(); draw();
-                        } else {
-                            alert("第3章はロックされています。ショップで購入してください！");
-                        }
-                    } else if (x > 295 && x < 380 && isAllLevelsCleared()) {
-                        currentChapter = 4; // 裏ステージ用番号
-                        currentLevelIndex = 60;
-                        playTapSound(); draw();
                     }
                 }
 
@@ -4931,74 +4934,64 @@
                 }
                 ctx.shadowBlur = 0;
 
-                // 第1章 / 第2章 / 第3章 切り替えタブ
-                ctx.fillStyle = 'rgba(255,255,255,0.1)';
-                ctx.beginPath();
-                ctx.roundRect(10, 140, 85, 40, 5);
-                ctx.roundRect(105, 140, 85, 40, 5);
-                ctx.roundRect(200, 140, 85, 40, 5);
-                ctx.fill();
-                
-                ctx.font = 'bold 20px "Righteous", sans-serif';
-                ctx.fillStyle = currentChapter === 1 ? '#F1C40F' : 'white';
-                ctx.fillText('1', 52, 168);
-                
-                let totalStars = 0;
-                try {
-                    totalStars = getTotalGoldStars();
-                } catch(e) { totalStars = 0; }
-                
-                // チャプター2の表示
-                if (!isChapter2Bought) {
-                    ctx.fillStyle = 'rgba(255,255,255,0.4)';
-                    ctx.font = 'bold 11px sans-serif';
-                    ctx.fillText('🔒 ロック', 147, 168);
-                } else {
-                    ctx.fillStyle = currentChapter === 2 ? '#F1C40F' : 'white';
-                    ctx.font = 'bold 20px "Righteous", sans-serif';
-                    ctx.fillText('2', 147, 168);
-                }
+                // チャプター選択タブ (中央寄せ)
+                let allCleared = false; try { allCleared = isAllLevelsCleared(); } catch(e){}
+                let numTabs = allCleared ? 4 : 3;
+                let tabW = 88; let tabG = 8;
+                let totalW = numTabs * tabW + (numTabs - 1) * tabG;
+                let startX = (canvas.width - totalW) / 2;
 
-                // チャプター3の表示
-                if (!isChapter3Bought) {
-                    ctx.fillStyle = 'rgba(255,255,255,0.4)';
-                    ctx.font = 'bold 11px sans-serif';
-                    ctx.fillText('🔒 ロック', 242, 168);
-                } else {
-                    ctx.fillStyle = currentChapter === 3 ? '#F1C40F' : 'white';
-                    ctx.font = 'bold 20px "Righteous", sans-serif';
-                    ctx.fillText('3', 242, 168);
-                }
-
-                // 第3章の右に ??? ステージボタン
-                let allCleared = false;
-                try {
-                    allCleared = isAllLevelsCleared();
-                } catch(e) { allCleared = false; }
-
-                if (allCleared) {
-                    ctx.fillStyle = 'rgba(255,255,255,0.1)';
-                    ctx.beginPath(); ctx.roundRect(295, 140, 85, 40, 5); ctx.fill();
-                    ctx.fillStyle = currentChapter === 4 ? '#E74C3C' : 'white';
-                    ctx.font = 'bold 16px sans-serif'; ctx.fillText('???', 337, 168);
+                for (let i = 0; i < numTabs; i++) {
+                    let tx = startX + i * (tabW + tabG);
+                    let ty = 140; 
+                    let isCurrent = (currentChapter === (i + 1));
                     
-                    if (currentChapter === 4) {
-                         ctx.strokeStyle = '#E74C3C'; ctx.lineWidth = 2; ctx.strokeRect(295, 140, 85, 40);
+                    // タブの背景
+                    ctx.fillStyle = isCurrent ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 0.05)';
+                    ctx.beginPath(); ctx.roundRect(tx, ty, tabW, 40, 8); ctx.fill();
+                    
+                    // 選択中のハイライト
+                    if (isCurrent) {
+                        ctx.strokeStyle = '#F1C40F';
+                        ctx.lineWidth = 2;
+                        ctx.strokeRect(tx, ty, tabW, 40);
+                    }
+
+                    // テキスト/アイコン
+                    ctx.textAlign = 'center';
+                    if (i === 0) { // Ch. 1
+                         ctx.fillStyle = isCurrent ? '#F1C40F' : 'white';
+                         ctx.font = 'bold 20px "Righteous", sans-serif';
+                         ctx.fillText('1', tx + tabW/2, ty + 28);
+                    } else if (i === 1) { // Ch. 2
+                         if (!isChapter2Bought) {
+                             ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                             ctx.font = 'bold 11px sans-serif';
+                             ctx.fillText('🔒 ロック', tx + tabW/2, ty + 28);
+                         } else {
+                             ctx.fillStyle = isCurrent ? '#F1C40F' : 'white';
+                             ctx.font = 'bold 20px "Righteous", sans-serif';
+                             ctx.fillText('2', tx + tabW/2, ty + 28);
+                         }
+                    } else if (i === 2) { // Ch. 3
+                         if (!isChapter3Bought) {
+                             ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                             ctx.font = 'bold 11px sans-serif';
+                             ctx.fillText('🔒 ロック', tx + tabW/2, ty + 28);
+                         } else {
+                             ctx.fillStyle = isCurrent ? '#F1C40F' : 'white';
+                             ctx.font = 'bold 20px "Righteous", sans-serif';
+                             ctx.fillText('3', tx + tabW/2, ty + 28);
+                         }
+                    } else if (i === 3) { // ??? (Ch. 4)
+                         ctx.fillStyle = isCurrent ? '#E74C3C' : 'white';
+                         ctx.font = 'bold 16px sans-serif';
+                         ctx.fillText('???', tx + tabW/2, ty + 26);
+                         if (isCurrent) {
+                             ctx.strokeStyle = '#E74C3C'; ctx.lineWidth = 2; ctx.strokeRect(tx, ty, tabW, 40);
+                         }
                     }
                 }
-
-                // 合計スターを画面右上に表示
-                ctx.fillStyle = '#F1C40F';
-                ctx.font = 'bold 16px sans-serif';
-                ctx.textAlign = 'right';
-                ctx.fillText(`合計 ★${totalStars}`, canvas.width - 15, 30);
-                ctx.textAlign = 'center';
-                
-                ctx.strokeStyle = '#F1C40F';
-                ctx.lineWidth = 2;
-                if (currentChapter === 1) ctx.strokeRect(10, 140, 85, 40);
-                else if (currentChapter === 2) ctx.strokeRect(105, 140, 85, 40);
-                else if (currentChapter === 3) ctx.strokeRect(200, 140, 85, 40);
                 
                 // BACK ボタン (左上の三角)
                 ctx.fillStyle = 'white';
