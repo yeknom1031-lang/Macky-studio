@@ -845,6 +845,7 @@
         let editorMenuTab = 'place'; // place, settings, list
         let isEditorDragging = false; 
         let isObjectDragging = false; 
+        let justSelectedInMousedown = false; // 選択した瞬間にクリックイベントが重なるのを防ぐフラグ
         let lastEditorY = 0;
         let editorSelectedIndex = -1; // 選択中のオブジェクト
         let editorTab = 0; // 0: 障害物, 1: アイテム, 2: 設定
@@ -1368,13 +1369,15 @@
                         }
                     }
                     if (foundIdx !== -1) {
-                        editorSelectedIndex = foundIdx;
-                        isObjectDragging = true;
+                        // 未選択、または同じブロックを触った時のみドラッグ開始を許可
+                        if (editorSelectedIndex === -1 || editorSelectedIndex === foundIdx) {
+                            editorSelectedIndex = foundIdx;
+                            isObjectDragging = true;
+                            justSelectedInMousedown = true; // この後のclickイベントでの誤動作を防ぐ
+                        }
                         draw();
                     } else {
-                        // 空白地点クリックで選択解除
-                        editorSelectedIndex = -1;
-                        draw();
+                        // 空白地点クリック：ここでは何もしない（clickイベント＝handleInteraction に任せる）
                     }
                 }
             }
@@ -1533,6 +1536,11 @@
                 // もどる
                 if (y > 350 && y < 400) { playTapSound(); gameState = 'START'; draw(); return; }
             } else if (gameState === 'EDITOR') {
+                // mousedownで選択された直後のclickイベントなら無視する
+                if (justSelectedInMousedown) {
+                    justSelectedInMousedown = false;
+                    draw(); return;
+                }
                 const GRID = 20;
                 editorLevel.totalDist = editorLevel.totalDist || 4000;
                 if (y < 600 - 150) {
@@ -4620,7 +4628,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.6.7-editor-select-fix', 400/2, 600/2);
+                ctx.fillText('v1.6.8-editor-ux-fix', 400/2, 600/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
