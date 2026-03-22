@@ -1418,7 +1418,7 @@
                     playTapSound(); gameState = 'SHOP'; draw(); return;
                 }
                 // エンドレス
-                if (x > 20 && x < 100 && y > canvas.height - 60 && y < canvas.height - 20) {
+                if (x > 20 && x < 100 && y > canvas.height - 90 && y < canvas.height - 50) {
                     playTapSound(); startEndlessMode();
                     return;
                 }
@@ -1452,7 +1452,7 @@
                     playTapSound(); gameState = 'EDITOR_MENU'; draw(); return;
                 }
                 // ワールドランキングボタン
-                if (x > 110 && x < 240 && y > canvas.height - 60 && y < canvas.height - 20) {
+                if (x > 110 && x < 240 && y > canvas.height - 90 && y < canvas.height - 50) {
                     playTapSound();
                     gameState = 'RANKING';
                     fetchRanking();
@@ -4595,7 +4595,7 @@
                 
                 // PLAY (エンドレス) ボタンを描画
                 ctx.save();
-                let prayX = 20; let prayY = canvas.height - 60;
+                let prayX = 20; let prayY = canvas.height - 90;
                 let prayW = 80; let prayH = 40;
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
