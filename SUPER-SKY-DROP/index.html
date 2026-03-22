@@ -2703,7 +2703,8 @@
             updateMoveWindParams(isMoving);
 
 
-            let scrollInc = 6.0 * currentFrameSpeedMultiplier;
+            // 100m / 60fps = 約1.66ユニット/フレーム
+            let scrollInc = 1.66 * currentFrameSpeedMultiplier;
             distance += scrollInc;
 
             if (isEndlessMode) {
@@ -2853,11 +2854,11 @@
             for (let i = obstacles.length - 1; i >= 0; i--) {
                 let obs = obstacles[i];
                 let collided = false; // Moved declaration here
-                let moveSpeed = 6 * currentFrameSpeedMultiplier;
+                let moveSpeed = 1.66 * currentFrameSpeedMultiplier;
                 if (obs.type === 'fast') {
-                    moveSpeed = 10 * currentFrameSpeedMultiplier;
+                    moveSpeed = 2.8 * currentFrameSpeedMultiplier; // 1.66 * (10/6)
                 }
-                obs.y -= moveSpeed; 
+                obs.y -= moveSpeed;
 
                 if (obs.type === 'gear' || obs.type === 'thunderball') {
                     obs.rotation += obs.rotSpeed * timeFactor;
@@ -4093,9 +4094,9 @@
                 if (goal) displayDistance = 0;
                 
                 if (isEndlessMode) {
-                    ctx.fillText(`${Math.floor(endlessTime)}秒`, 15, 35);
+                    ctx.fillText(`${Math.floor(endlessTime)}秒`, 30, 45); // 所持ロゴとかぶらないように少し下げる
                 } else {
-                    ctx.fillText(`${displayDistance}m`, 15, 35);
+                    ctx.fillText(`${displayDistance}m`, 30, 45); 
                 }
                 
                 // 自作ステージ時の「エディターに戻る」ボタン
@@ -4264,7 +4265,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.4.28-opening-fixed', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.4.29-speed-fix', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
