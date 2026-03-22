@@ -5132,8 +5132,8 @@
                 ctx.fillStyle = 'white';
                 ctx.font = '16px sans-serif';
                 if (isEndlessMode) {
-                    ctx.fillText(`獲得       : ${lastSilverBirdsEarned} 枚`, canvas.width/2, canvas.height/2 + 95);
-                    drawBirdCoin(ctx, canvas.width/2 - 45, canvas.height/2 + 88, 12);
+                    ctx.fillText(`獲得 : ${lastSilverBirdsEarned} 枚`, canvas.width/2 + 15, canvas.height/2 + 95);
+                    drawBirdCoin(ctx, canvas.width/2 - 50, canvas.height/2 + 88, 11);
                 }
 
                 ctx.font = '16px sans-serif';
@@ -5207,8 +5207,8 @@
                     ctx.font = 'bold 18px sans-serif';
                     ctx.textAlign = 'center';
                     let boostText = lastClearHadBoost ? ` (ボーナス+${lastBoostPercent}%!)` : '';
-                    ctx.fillText(`銀の鳥コイン獲得: ${lastSilverBirdsEarned} 枚` + boostText, canvas.width/2 + 15, by);
-                    drawBirdCoin(ctx, canvas.width/2 - 100, by - 6, 11);
+                    ctx.fillText(`獲得 : ${lastSilverBirdsEarned} 枚` + boostText, canvas.width/2 + 15, by);
+                    drawBirdCoin(ctx, canvas.width/2 - 90, by - 6, 11);
                     
                     ctx.font = '12px sans-serif';
                     ctx.fillStyle = '#777';
