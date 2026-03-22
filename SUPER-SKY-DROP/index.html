@@ -3147,18 +3147,13 @@
                 ctx.clip();
                 ctx.fillStyle = mColor; ctx.fill();
             } else {
-                // 通常のマント - さらにバサバサーっと細かく激しく揺れるように
-                let mSwayIntense = 0;
-                if (gameState === 'PLAYING' || gameState === 'OPENING') {
-                    // 2つの波を合成して複雑な揺れを作る
-                    mSwayIntense = Math.sin(Date.now() / 30) * 15 + Math.sin(Date.now() / 15) * 6;
-                } else {
-                    mSwayIntense = Math.sin(Date.now() / 150) * 4;
-                }
+                // 通常のマント - 参考ファイルを参考に、ランダム値を用いた激しい「バサバサ」感を表現
+                let vY = (gameState === 'PLAYING' || gameState === 'OPENING') ? (Math.random() * 15) : (Math.sin(Date.now() / 150) * 4);
+                let vX = (gameState === 'PLAYING' || gameState === 'OPENING') ? (Math.random() - 0.5) * 10 : 0;
                 ctx.beginPath(); 
                 ctx.moveTo(5, 0); 
-                ctx.lineTo(-15 + mSwayIntense, -25); 
-                ctx.lineTo(player.width + 15 + mSwayIntense, -25); 
+                ctx.lineTo(-15 + vX, -25 - vY); 
+                ctx.lineTo(player.width + 15 + vX, -25 - vY); 
                 ctx.lineTo(player.width - 5, 0); 
                 ctx.closePath(); 
                 ctx.clip();
@@ -4263,7 +4258,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.4.26-restore-trail', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.4.27-reference-sway', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
