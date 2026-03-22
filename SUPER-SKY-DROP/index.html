@@ -3147,9 +3147,15 @@
                 ctx.clip();
                 ctx.fillStyle = mColor; ctx.fill();
             } else {
-                // 通常のマント - 参考ファイルを参考に、ランダム値を用いた激しい「バサバサ」感を表現
-                let vY = (gameState === 'PLAYING' || gameState === 'OPENING') ? (Math.random() * 15) : (Math.sin(Date.now() / 150) * 4);
-                let vX = (gameState === 'PLAYING' || gameState === 'OPENING') ? (Math.random() - 0.5) * 10 : 0;
+                // 通常のマント - プレイ中のみ激しく揺れる。オープニングでは揺らさない
+                let vY = 0; let vX = 0;
+                if (gameState === 'PLAYING') {
+                    vY = Math.random() * 15;
+                    vX = (Math.random() - 0.5) * 10;
+                } else if (gameState !== 'OPENING') {
+                    // 通常時（タイトル等）はゆったり
+                    vY = Math.sin(Date.now() / 150) * 4;
+                }
                 ctx.beginPath(); 
                 ctx.moveTo(5, 0); 
                 ctx.lineTo(-15 + vX, -25 - vY); 
@@ -4258,7 +4264,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.4.27-reference-sway', canvas.width/2, canvas.height/2);
+                ctx.fillText('v1.4.28-opening-fixed', canvas.width/2, canvas.height/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
