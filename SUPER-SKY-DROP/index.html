@@ -3772,15 +3772,15 @@
                     ctx.textBaseline = 'alphabetic';
                     if (types[i] === 'setBG') {
                         let bgNames = ['夕焼け', '青空', '宇宙', '紫暮', '猛毒', '朝焼け'];
-                        ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
-                        ctx.fillText(bgNames[editorLevel.bgIdx || 0], btnX + 25, btnY + 18);
+                        ctx.fillStyle = 'white'; ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center';
+                        ctx.fillText(bgNames[editorLevel.bgIdx || 0], btnX + 25, btnY + 20);
                     } else if (types[i] === 'setTheme') {
-                        ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
-                        ctx.fillText('テーマ' + ((editorLevel.bgmThemeIdx || 0) + 1), btnX + 25, btnY + 18);
+                        ctx.fillStyle = 'white'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+                        ctx.fillText('テーマ' + ((editorLevel.bgmThemeIdx || 0) + 1), btnX + 25, btnY + 20);
                     }
                     
-                    ctx.fillStyle = 'white'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
-                    ctx.fillText(typeNames[i], btnX + 25, btnY + 35);
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
+                    ctx.fillText(typeNames[i], btnX + 25, btnY + 36);
                 }
                 ctx.textBaseline = 'alphabetic'; 
             }
@@ -4614,7 +4614,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.6.3-retina-ready', 400/2, 600/2);
+                ctx.fillText('v1.6.4-editor-fx', 400/2, 600/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
