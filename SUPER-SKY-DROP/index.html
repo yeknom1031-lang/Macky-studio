@@ -5217,32 +5217,37 @@
                 ctx.fillStyle = '#F1C40F';
                 ctx.font = '36px "Righteous", sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('設定', canvas.width/2, 80);
 
                 // BACK ボタン
                 ctx.fillStyle = '#555';
                 ctx.beginPath();
                 ctx.roundRect(10, 10, 80, 35, 5);
-                // 強制的な更新ボタン (キャッシュクリア) - 最初の方に表示
-                let updateBtnX = canvas.width / 2 - 80;
-                let updateBtnY = 25; 
+                ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.font = '16px sans-serif';
+                ctx.fillText('戻る', 50, 33);
+
+                // 強制的な更新ボタン (キャッシュクリア) - 画面中央上部に配置
                 let updateBtnW = 160;
                 let updateBtnH = 35;
+                let updateBtnX = canvas.width / 2 - updateBtnW / 2;
+                let updateBtnY = 20; 
                 ctx.fillStyle = 'rgba(231, 76, 60, 0.4)';
                 ctx.strokeStyle = '#E74C3C';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
-                ctx.roundRect(updateBtnX, updateBtnY, updateBtnW, updateBtnH, 18); // 角を丸く
+                ctx.roundRect(updateBtnX, updateBtnY, updateBtnW, updateBtnH, 18);
                 ctx.fill();
                 ctx.stroke();
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 13px sans-serif';
                 ctx.fillText('🔄 最新の状態に更新', canvas.width/2, updateBtnY + 22);
 
+                // タイトル「設定」- ボタンの下に配置
                 ctx.fillStyle = '#F1C40F';
-                ctx.font = '28px "Righteous", sans-serif';
+                ctx.font = 'bold 28px "Righteous", sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText('設定', canvas.width/2, 100);
+                ctx.fillText('設定', canvas.width/2, 105);
 
                 // BGMセレクト
                 ctx.fillStyle = 'white';
