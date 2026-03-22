@@ -103,33 +103,6 @@
             cursor: pointer;
             margin-right: auto;
         }
-
-        /* Forced Refresh Button */
-        #refresh-btn {
-            position: fixed;
-            top: env(safe-area-inset-top, 20px);
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10001;
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            font-size: 20px;
-            transition: transform 0.3s, background 0.2s;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-        #refresh-btn:active { 
-            transform: rotate(180deg) scale(0.9); 
-            background: rgba(255, 255, 255, 0.4);
-        }
     </style>
 </head>
 <body>
@@ -149,9 +122,6 @@
             <span>下の <img src="https://developer.apple.com/design/human-interface-guidelines/foundations/images/icons/sharing/share.png" class="share-icon" style="height:20px; filter:invert(0.5);"> アイコンをタップして「ホーム画面に追加」を選択してください。</span>
         </div>
     </div>
-
-    <!-- Forced Refresh Button -->
-    <div id="refresh-btn" onclick="const v=Date.now(); console.log('Refreshing to v='+v); location.href=location.pathname + '?v=' + v;" title="強制更新">🔄</div>
 
     <canvas id="gameCanvas" width="400" height="600"></canvas>
 
@@ -1819,6 +1789,19 @@
                         draw();
                         return;
                     }
+                }
+
+                // 強制的な更新ボタン (キャッシュクリア)
+                let updateBtnX = canvas.width / 2 - 80;
+                let updateBtnY = 585; // 下の方に配置
+                let updateBtnW = 160;
+                let updateBtnH = 35;
+                if (x > updateBtnX && x < updateBtnX + updateBtnW && y > updateBtnY && y < updateBtnY + updateBtnH) {
+                    playTapSound();
+                    const v = Date.now();
+                    console.log('Forced Refreshing via Settings to v=' + v);
+                    location.href = location.pathname + '?v=' + v;
+                    return;
                 }
             } else if (gameState === 'TUTORIAL') {
                 if (x > canvas.width/2 - 80 && x < canvas.width/2 + 80 && y > canvas.height - 100 && y < canvas.height - 50) {
@@ -4256,7 +4239,6 @@
                 ctx.fillStyle = '#AED6F1';
                 ctx.fillRect(shpX + 18, stgY + 27, 18, 15); // +42から+27に上に移動
                 ctx.strokeStyle = '#2980B9';
-                ctx.lineWidth = 1;
                 ctx.strokeRect(shpX + 18, stgY + 27, 18, 15);
                 
                 // ドア
@@ -5038,6 +5020,24 @@
                     ctx.font = 'bold 10px sans-serif';
                     ctx.fillText(t.label + (t.val ? ':ON' : ':OFF'), btnX + btnW/2, btnY + btnH/2 + 4);
                 }
+
+                // 強制的な更新ボタン (キャッシュクリア)
+                let updateBtnX = canvas.width / 2 - 80;
+                let updateBtnY = 580; // 下の方に配置
+                let updateBtnW = 160;
+                let updateBtnH = 35;
+                ctx.fillStyle = 'rgba(231, 76, 60, 0.4)';
+                ctx.strokeStyle = '#E74C3C';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.roundRect(updateBtnX, updateBtnY, updateBtnW, updateBtnH, 5);
+                ctx.fill();
+                ctx.stroke();
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 14px sans-serif';
+                ctx.fillText('🔄 最新の状態に更新', canvas.width/2, updateBtnY + 22);
+
+                ctx.textAlign = 'left';
             } else if (gameState === 'CUSTOM_LEVEL_SELECT') {
                 ctx.fillStyle = '#2C3E50'; ctx.fillRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = '#F1C40F'; ctx.font = '28px "Righteous", sans-serif'; ctx.textAlign = 'center';

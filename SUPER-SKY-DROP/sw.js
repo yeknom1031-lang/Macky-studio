@@ -1,4 +1,4 @@
-const CACHE_NAME = 'supersky-v1';
+const CACHE_NAME = 'supersky-v2'; // バージョンアップでキャッシュを無効化
 const ASSETS = [
     './',
     './index.html',
@@ -9,11 +9,30 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', (event) => {
+    // 新しいSWがインストールされたらすぐにアクティブにする
+    self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll(ASSETS);
         })
     );
+});
+
+self.addEventListener('activate', (event) => {
+    // 古いキャッシュを削除
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if (cacheName !== CACHE_NAME) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+    // 制御下のすべてのクライアントにすぐに適用
+    self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
