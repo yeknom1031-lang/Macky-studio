@@ -3668,7 +3668,10 @@
             bgGrad.addColorStop(1, `rgb(${c3[0]},${c3[1]},${c3[2]})`);
             ctx.fillStyle = bgGrad;
             ctx.fillRect(0, 0, 400, 600);
-            ctx.strokeStyle = 'rgba(255,255,255,0.08)'; ctx.lineWidth = 1;
+            // 背景の明るさに応じてマス目の色を調整（見やすくする）
+            let brightness = (c2[0] * 299 + c2[1] * 587 + c2[2] * 114) / 1000;
+            let gridColor = brightness > 180 ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.12)';
+            ctx.strokeStyle = gridColor; ctx.lineWidth = 1;
             for(let i=0; i<400; i+=GRID){ ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 600 - 150); ctx.stroke(); }
             // マス目の起点を150px(自機位置)に合わせて、0.5マスのズレを解消
             let startY = (150 - Math.floor(editorScroll)) % GRID;
@@ -4614,7 +4617,7 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
                 ctx.font = '10px sans-serif';
-                ctx.fillText('v1.6.4-editor-fx', 400/2, 600/2);
+                ctx.fillText('v1.6.5-grid-fix', 400/2, 600/2);
 
                 ctx.textBaseline = 'alphabetic'; // 元に戻す
                 ctx.shadowBlur = 0;
