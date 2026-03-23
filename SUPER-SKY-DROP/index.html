@@ -254,52 +254,58 @@
         ];
         let noteIndex = 0;
 
-        // --- オープニング専用 SE (リアルな爆発音: ズドォォン！！) ---
+        // --- オープニング専用 SE (マイクラ風の本格爆発音: ドッカーン！) ---
         async function playOpeningSFX() {
             initAudio();
             if (typeof isSEEnabled !== 'undefined' && !isSEEnabled) return;
 
             const now = audioCtx.currentTime;
             
-            // 1. メインの爆発 (フィルタをかけたホワイトノイズ)
-            const bufferSize = audioCtx.sampleRate * 2.0; // 2秒分
+            // ノイズバッファの作成
+            const bufferSize = audioCtx.sampleRate * 2.0;
             const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
             const data = buffer.getChannelData(0);
             for (let i = 0; i < bufferSize; i++) {
                 data[i] = Math.random() * 2 - 1;
             }
-            const source = audioCtx.createBufferSource();
-            source.buffer = buffer;
 
-            // フィルター (低い音だけ残すことで電子音っぽさを消す)
-            const filter = audioCtx.createBiquadFilter();
-            filter.type = 'lowpass';
-            filter.frequency.setValueAtTime(400, now);
-            filter.frequency.exponentialRampToValueAtTime(40, now + 1.5);
-            
-            // 音量調節 (一気に立ち上がって、ゆっくり消える)
-            const gain = audioCtx.createGain();
-            gain.gain.setValueAtTime(0, now);
-            gain.gain.linearRampToValueAtTime(1.0, now + 0.05); // 最初の一撃を最大に！
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 2.0);
+            // 1. 鋭い破裂音 (クラック)
+            const sourceAttack = audioCtx.createBufferSource();
+            sourceAttack.buffer = buffer;
+            const filterAttack = audioCtx.createBiquadFilter();
+            filterAttack.type = 'highpass';
+            filterAttack.frequency.setValueAtTime(800, now);
+            const gainAttack = audioCtx.createGain();
+            gainAttack.gain.setValueAtTime(0, now);
+            gainAttack.gain.linearRampToValueAtTime(1.0, now + 0.01);
+            gainAttack.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+            sourceAttack.connect(filterAttack); filterAttack.connect(gainAttack); gainAttack.connect(audioCtx.destination);
+            sourceAttack.start(now); sourceAttack.stop(now + 0.2);
 
-            source.connect(filter);
-            filter.connect(gain);
-            gain.connect(audioCtx.destination);
+            // 2. 地響きの余韻 (ランブル)
+            const sourceRumble = audioCtx.createBufferSource();
+            sourceRumble.buffer = buffer;
+            const filterRumble = audioCtx.createBiquadFilter();
+            filterRumble.type = 'lowpass';
+            filterRumble.frequency.setValueAtTime(200, now);
+            filterRumble.frequency.exponentialRampToValueAtTime(40, now + 1.5);
+            const gainRumble = audioCtx.createGain();
+            gainRumble.gain.setValueAtTime(0, now);
+            gainRumble.gain.linearRampToValueAtTime(0.8, now + 0.02);
+            gainRumble.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
+            sourceRumble.connect(filterRumble); filterRumble.connect(gainRumble); gainRumble.connect(audioCtx.destination);
+            sourceRumble.start(now); sourceRumble.stop(now + 1.8);
 
-            source.start(now);
-            source.stop(now + 2.0);
-
-            // 2. 地響きの芯 (超低音をほんの少し足す)
-            const thump = audioCtx.createOscillator();
-            thump.type = 'sine';
-            thump.frequency.setValueAtTime(60, now); // 地響きのみ(60Hz)
-            thump.frequency.exponentialRampToValueAtTime(30, now + 1.0);
-            const thumpGain = audioCtx.createGain();
-            thumpGain.gain.setValueAtTime(0.3, now);
-            thumpGain.gain.exponentialRampToValueAtTime(0.001, now + 1.0);
-            thump.connect(thumpGain); thumpGain.connect(audioCtx.destination);
-            thump.start(now); thump.stop(now + 1.0);
+            // 3. サブベース (お腹に響く芯)
+            const boom = audioCtx.createOscillator();
+            boom.type = 'sine';
+            boom.frequency.setValueAtTime(80, now);
+            boom.frequency.exponentialRampToValueAtTime(30, now + 0.7);
+            const boomGain = audioCtx.createGain();
+            boomGain.gain.setValueAtTime(0.5, now);
+            boomGain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
+            boom.connect(boomGain); boomGain.connect(audioCtx.destination);
+            boom.start(now); boom.stop(now + 0.7);
         }
         function playLevelSelectBGM() {
             if (gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR') return;
