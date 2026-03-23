@@ -1072,8 +1072,10 @@
         // レベル設定 (1〜60まで)
         const levels = [];
         for (let i = 0; i < 60; i++) {
-            let speed = 0.7; 
-            let rate = 0.022 + ((i % 20) * 0.004) + (i >= 20 ? 0.015 : (i >= 40 ? 0.025 : 0)); 
+            // 基本スピードを1.1から開始し、後半チャプターではさらに高速化 (1.1 -> 1.4 -> 1.7)
+            let speed = 1.1 + Math.floor(i / 20) * 0.4; 
+            // 障害物出現率も大幅アップ (0.04から開始)
+            let rate = 0.042 + ((i % 20) * 0.005) + (i >= 20 ? 0.02 : (i >= 40 ? 0.03 : 0)); 
             
             let hue;
             if (i < 20) hue = (120 - (i * 6)); // 第1章: 緑→赤
@@ -3253,6 +3255,13 @@
                         obs.x = 400 - obs.width;
                         obs.vx *= -1;
                     }
+                }
+                
+                if (obs.type === 'seeker') {
+                    // 追跡者はプレイヤーにじわじわ寄ってくる
+                    let sSpeed = 2.0 * timeFactor;
+                    if (obs.x + obs.width / 2 < player.x + player.width / 2) obs.x += sSpeed;
+                    else if (obs.x + obs.width / 2 > player.x + player.width / 2) obs.x -= sSpeed;
                 }
 
                 // 画面外、または寿命が尽きた(active=false)障害物を削除
