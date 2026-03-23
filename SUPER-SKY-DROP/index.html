@@ -254,60 +254,52 @@
         ];
         let noteIndex = 0;
 
-        // --- オープニング専用 SE (ダイナマイト級の爆発音) ---
+        // --- オープニング専用 SE (リアルな爆発音: ズドォォン！！) ---
         async function playOpeningSFX() {
             initAudio();
             if (typeof isSEEnabled !== 'undefined' && !isSEEnabled) return;
 
             const now = audioCtx.currentTime;
             
-            // 1. 爆発の芯 (ドーン！という腹に響く低音)
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.type = 'sawtooth';
-            osc.frequency.setValueAtTime(150, now);
-            osc.frequency.exponentialRampToValueAtTime(0.01, now + 2.0);
-            gain.gain.setValueAtTime(0.8, now);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 2.0);
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            osc.start(now); osc.stop(now + 2.0);
-
-            // 2. 破裂音のザラつき (ホワイトノイズでドッ！！を表現)
-            const bufferSize = audioCtx.sampleRate * 1.5;
+            // 1. メインの爆発 (フィルタをかけたホワイトノイズ)
+            const bufferSize = audioCtx.sampleRate * 2.0; // 2秒分
             const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
             const data = buffer.getChannelData(0);
             for (let i = 0; i < bufferSize; i++) {
                 data[i] = Math.random() * 2 - 1;
             }
-            const noise = audioCtx.createBufferSource();
-            noise.buffer = buffer;
-            const noiseGain = audioCtx.createGain();
-            noiseGain.gain.setValueAtTime(0.6, now);
-            noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
-            noise.connect(noiseGain); noiseGain.connect(audioCtx.destination);
-            noise.start(now); noise.stop(now + 1.2);
+            const source = audioCtx.createBufferSource();
+            source.buffer = buffer;
 
-            // 3. 高音の破片感 (ピューい)
-            const pew = audioCtx.createOscillator();
-            pew.type = 'sine';
-            pew.frequency.setValueAtTime(600, now + 0.05);
-            pew.frequency.exponentialRampToValueAtTime(1800, now + 0.4);
-            const pewGain = audioCtx.createGain();
-            pewGain.gain.setValueAtTime(0.2, now + 0.05);
-            pewGain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
-            pew.connect(pewGain); pewGain.connect(audioCtx.destination);
-            pew.start(now + 0.05); pew.stop(now + 0.5);
+            // フィルター (低い音だけ残すことで電子音っぽさを消す)
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(400, now);
+            filter.frequency.exponentialRampToValueAtTime(40, now + 1.5);
+            
+            // 音量調節 (一気に立ち上がって、ゆっくり消える)
+            const gain = audioCtx.createGain();
+            gain.gain.setValueAtTime(0, now);
+            gain.gain.linearRampToValueAtTime(1.0, now + 0.05); // 最初の一撃を最大に！
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 2.0);
 
-            // 4. 深い地響き (プーん)
-            const poon = audioCtx.createOscillator();
-            poon.type = 'triangle';
-            poon.frequency.setValueAtTime(180, now + 0.3);
-            poon.frequency.exponentialRampToValueAtTime(30, now + 2.5);
-            const poonGain = audioCtx.createGain();
-            poonGain.gain.setValueAtTime(0.4, now + 0.3);
-            poonGain.gain.exponentialRampToValueAtTime(0.001, now + 2.5);
-            poon.connect(poonGain); poonGain.connect(audioCtx.destination);
-            poon.start(now + 0.3); poon.stop(now + 2.5);
+            source.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            source.start(now);
+            source.stop(now + 2.0);
+
+            // 2. 地響きの芯 (超低音をほんの少し足す)
+            const thump = audioCtx.createOscillator();
+            thump.type = 'sine';
+            thump.frequency.setValueAtTime(60, now); // 地響きのみ(60Hz)
+            thump.frequency.exponentialRampToValueAtTime(30, now + 1.0);
+            const thumpGain = audioCtx.createGain();
+            thumpGain.gain.setValueAtTime(0.3, now);
+            thumpGain.gain.exponentialRampToValueAtTime(0.001, now + 1.0);
+            thump.connect(thumpGain); thumpGain.connect(audioCtx.destination);
+            thump.start(now); thump.stop(now + 1.0);
         }
         function playLevelSelectBGM() {
             if (gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR') return;
