@@ -2051,8 +2051,11 @@
                 }
                 
                 if (gameState === 'GAMEOVER') {
-                    // スマホ用リトライボタン (エンドレス以外のみ表示・動作)
-                    if (!isEndlessMode && x > 400 / 2 - 50 && x < 400 / 2 + 50 && y > 600 / 2 + 150 && y < 600 / 2 + 185) {
+                    // スマホ用リトライボタン (特大当たり判定)
+                    let rW = 220; let rH = 65;
+                    let rX = 400 / 2 - rW / 2;
+                    let rY = 600 / 2 + 150;
+                    if (!isEndlessMode && x > rX && x < rX + rW && y > rY && y < rY + rH) {
                         playTapSound(); resetGame(); return;
                     }
 
@@ -5498,10 +5501,24 @@
                 
                 // スマホ用リトライボタン (エンドレス以外)
                 if (!isEndlessMode) {
-                    ctx.fillStyle = '#2ECC71';
-                    ctx.beginPath(); ctx.roundRect(400 / 2 - 50, 600 / 2 + 150, 100, 35, 5); ctx.fill();
-                    ctx.fillStyle = 'white'; ctx.font = 'bold 16px sans-serif'; ctx.textAlign = 'center';
-                    ctx.fillText('リトライ', 400 / 2, 600 / 2 + 173);
+                    let rW = 220; let rH = 65;
+                    let rX = 400 / 2 - rW / 2;
+                    let rY = 600 / 2 + 150;
+                    // ボタンの影
+                    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+                    ctx.beginPath(); ctx.roundRect(rX+3, rY+3, rW, rH, 15); ctx.fill();
+                    // ボタン本体 (グラデーション)
+                    let grad = ctx.createLinearGradient(rX, rY, rX, rY+rH);
+                    grad.addColorStop(0, '#2ECC71'); grad.addColorStop(1, '#27AE60');
+                    ctx.fillStyle = grad;
+                    ctx.beginPath(); ctx.roundRect(rX, rY, rW, rH, 15); ctx.fill();
+                    // 枠線
+                    ctx.strokeStyle = 'white'; ctx.lineWidth = 2; ctx.stroke();
+                    
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 24px sans-serif'; ctx.textAlign = 'center';
+                    ctx.shadowColor = 'rgba(0,0,0,0.5)'; ctx.shadowBlur = 4;
+                    ctx.fillText('RETRY', 400 / 2, rY + 41);
+                    ctx.shadowBlur = 0;
                     ctx.textAlign = 'left';
                 }
                 ctx.textAlign = 'left';
