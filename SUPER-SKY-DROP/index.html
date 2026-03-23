@@ -4924,9 +4924,15 @@
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillStyle = 'white';
-                ctx.font = 'bold 13px "Righteous", sans-serif';
+                ctx.font = 'bold 12px "Righteous", sans-serif';
                 ctx.fillText('エンドレス', prayX + prayW/2, prayY + 20);
                 
+                // エンドレスのベストスコア表示 (sではなく秒で)
+                let endBest = highScores['endless'] || 0;
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+                ctx.font = 'bold 10px sans-serif';
+                ctx.fillText(`ベスト: ${Math.floor(endBest)}秒`, prayX + prayW/2, prayY - 8);
+
                 // 残り時間を秒単位までボタンの下に表示
                 let now = Date.now();
                 let timeLeft = (30 * 60 * 1000) - (now - lastEndlessPlayTime);
