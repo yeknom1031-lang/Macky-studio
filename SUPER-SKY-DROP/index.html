@@ -254,40 +254,60 @@
         ];
         let noteIndex = 0;
 
-        // --- オープニング専用 SE (爆発 ＋ ピューい ＋ プーん) ---
+        // --- オープニング専用 SE (ダイナマイト級の爆発音) ---
         async function playOpeningSFX() {
             initAudio();
             if (typeof isSEEnabled !== 'undefined' && !isSEEnabled) return;
 
             const now = audioCtx.currentTime;
-            const mainGain = audioCtx.createGain();
-            mainGain.connect(audioCtx.destination);
-            mainGain.gain.setValueAtTime(0.6, now);
-            mainGain.gain.exponentialRampToValueAtTime(0.001, now + 2.5);
+            
+            // 1. 爆発の芯 (ドーン！という腹に響く低音)
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(150, now);
+            osc.frequency.exponentialRampToValueAtTime(0.01, now + 2.0);
+            gain.gain.setValueAtTime(0.8, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 2.0);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(now); osc.stop(now + 2.0);
 
-            // 1. 爆発音 (衝撃波)
-            const boom = audioCtx.createOscillator();
-            boom.type = 'sawtooth';
-            boom.frequency.setValueAtTime(100, now);
-            boom.frequency.exponentialRampToValueAtTime(0.01, now + 1.5);
-            boom.connect(mainGain);
-            boom.start(now); boom.stop(now + 1.5);
+            // 2. 破裂音のザラつき (ホワイトノイズでドッ！！を表現)
+            const bufferSize = audioCtx.sampleRate * 1.5;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+            const noiseGain = audioCtx.createGain();
+            noiseGain.gain.setValueAtTime(0.6, now);
+            noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+            noise.connect(noiseGain); noiseGain.connect(audioCtx.destination);
+            noise.start(now); noise.stop(now + 1.2);
 
-            // 2. 「ピューい」
+            // 3. 高音の破片感 (ピューい)
             const pew = audioCtx.createOscillator();
             pew.type = 'sine';
-            pew.frequency.setValueAtTime(400, now + 0.1);
-            pew.frequency.exponentialRampToValueAtTime(1200, now + 0.5);
-            pew.connect(mainGain);
-            pew.start(now + 0.1); pew.stop(now + 0.5);
+            pew.frequency.setValueAtTime(600, now + 0.05);
+            pew.frequency.exponentialRampToValueAtTime(1800, now + 0.4);
+            const pewGain = audioCtx.createGain();
+            pewGain.gain.setValueAtTime(0.2, now + 0.05);
+            pewGain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+            pew.connect(pewGain); pewGain.connect(audioCtx.destination);
+            pew.start(now + 0.05); pew.stop(now + 0.5);
 
-            // 3. 「プーん」 (ベースドロップ)
+            // 4. 深い地響き (プーん)
             const poon = audioCtx.createOscillator();
             poon.type = 'triangle';
-            poon.frequency.setValueAtTime(160, now + 0.4);
-            poon.frequency.exponentialRampToValueAtTime(40, now + 1.8);
-            poon.connect(mainGain);
-            poon.start(now + 0.4); poon.stop(now + 1.8);
+            poon.frequency.setValueAtTime(180, now + 0.3);
+            poon.frequency.exponentialRampToValueAtTime(30, now + 2.5);
+            const poonGain = audioCtx.createGain();
+            poonGain.gain.setValueAtTime(0.4, now + 0.3);
+            poonGain.gain.exponentialRampToValueAtTime(0.001, now + 2.5);
+            poon.connect(poonGain); poonGain.connect(audioCtx.destination);
+            poon.start(now + 0.3); poon.stop(now + 2.5);
         }
         function playLevelSelectBGM() {
             if (gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR') return;
