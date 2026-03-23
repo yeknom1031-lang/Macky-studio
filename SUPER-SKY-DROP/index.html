@@ -2118,12 +2118,12 @@
                 let wasEndless = isEndlessMode; 
                 isEndlessMode = false; // エンドレスを解除
                 
-                if (!wasEndless && !isCustomLevel) {
-                    gameState = 'LEVEL_SELECT'; // 通常ステージなら選択画面に戻る
+                if (wasEndless) {
+                    gameState = 'START'; // エンドレスはタイトルに戻る
                 } else if (isCustomLevel) {
-                    gameState = 'CUSTOM_LEVEL_SELECT'; // 自作ステージならリストに戻る
+                    gameState = 'CUSTOM_LEVEL_SELECT'; // 自作はリストに戻る
                 } else {
-                    gameState = 'START'; // その他（エンドレス等）はタイトルに戻る
+                    gameState = 'LEVEL_SELECT'; // 通常はステージ選択に戻る
                 }
                 
                 playLevelSelectBGM();
