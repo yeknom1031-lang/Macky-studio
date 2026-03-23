@@ -254,55 +254,40 @@
         ];
         let noteIndex = 0;
 
-        // --- オープニング専用 SE (ピューいプーん) ---
+        // --- オープニング専用 SE (爆発 ＋ ピューい ＋ プーん) ---
         async function playOpeningSFX() {
-            if (audioCtx.state === 'suspended') {
-                await audioCtx.resume();
-            }
+            initAudio();
             if (typeof isSEEnabled !== 'undefined' && !isSEEnabled) return;
 
             const now = audioCtx.currentTime;
             const mainGain = audioCtx.createGain();
             mainGain.connect(audioCtx.destination);
-            mainGain.gain.setValueAtTime(0, now);
-            mainGain.gain.linearRampToValueAtTime(0.5, now + 0.1);
-            mainGain.gain.exponentialRampToValueAtTime(0.001, now + 2.0);
+            mainGain.gain.setValueAtTime(0.6, now);
+            mainGain.gain.exponentialRampToValueAtTime(0.001, now + 2.5);
 
-            // 1. 「ピューい」 (高音のチャープ音)
+            // 1. 爆発音 (衝撃波)
+            const boom = audioCtx.createOscillator();
+            boom.type = 'sawtooth';
+            boom.frequency.setValueAtTime(100, now);
+            boom.frequency.exponentialRampToValueAtTime(0.01, now + 1.5);
+            boom.connect(mainGain);
+            boom.start(now); boom.stop(now + 1.5);
+
+            // 2. 「ピューい」
             const pew = audioCtx.createOscillator();
             pew.type = 'sine';
-            pew.frequency.setValueAtTime(600, now);
-            pew.frequency.exponentialRampToValueAtTime(1800, now + 0.3);
-            
-            const pewGain = audioCtx.createGain();
-            pewGain.gain.setValueAtTime(0, now);
-            pewGain.gain.linearRampToValueAtTime(0.3, now + 0.1);
-            pewGain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
-            
-            pew.connect(pewGain);
-            pewGain.connect(mainGain);
-            pew.start(now);
-            pew.stop(now + 0.5);
+            pew.frequency.setValueAtTime(400, now + 0.1);
+            pew.frequency.exponentialRampToValueAtTime(1200, now + 0.5);
+            pew.connect(mainGain);
+            pew.start(now + 0.1); pew.stop(now + 0.5);
 
-            // 2. 「プーん」 (深みのあるベースドロップ)
+            // 3. 「プーん」 (ベースドロップ)
             const poon = audioCtx.createOscillator();
-            const poonTri = audioCtx.createOscillator();
-            poon.type = 'sine';
-            poonTri.type = 'triangle';
-            
-            // 少し遅れて「プーん」
-            const poonStart = now + 0.4;
-            poon.frequency.setValueAtTime(160, poonStart);
-            poon.frequency.exponentialRampToValueAtTime(60, poonStart + 1.2);
-            poonTri.frequency.setValueAtTime(160, poonStart);
-            poonTri.frequency.exponentialRampToValueAtTime(60, poonStart + 1.2);
-            
-            poonGain.connect(mainGain);
-            
-            poon.start(poonStart);
-            poonTri.start(poonStart);
-            poon.stop(poonStart + 1.6);
-            poonTri.stop(poonStart + 1.6);
+            poon.type = 'triangle';
+            poon.frequency.setValueAtTime(160, now + 0.4);
+            poon.frequency.exponentialRampToValueAtTime(40, now + 1.8);
+            poon.connect(mainGain);
+            poon.start(now + 0.4); poon.stop(now + 1.8);
         }
         function playLevelSelectBGM() {
             if (gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR') return;
@@ -1463,7 +1448,7 @@
 
         function handleInteraction(x, y) {
             if (gameState === 'TITLE_TAP') {
-                playTapSound();
+                playOpeningSFX(); // 爆発ありのSEを再生
                 gameState = 'OPENING';
                 draw();
                 return;
