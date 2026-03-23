@@ -297,13 +297,6 @@
             poonTri.frequency.setValueAtTime(160, poonStart);
             poonTri.frequency.exponentialRampToValueAtTime(60, poonStart + 1.2);
             
-            const poonGain = audioCtx.createGain();
-            poonGain.gain.setValueAtTime(0, poonStart);
-            poonGain.gain.linearRampToValueAtTime(0.4, poonStart + 0.1);
-            poonGain.gain.exponentialRampToValueAtTime(0.001, poonStart + 1.5);
-            
-            poon.connect(poonGain);
-            poonTri.connect(poonGain);
             poonGain.connect(mainGain);
             
             poon.start(poonStart);
@@ -317,7 +310,8 @@
             initAudio();
             if (bgmInterval) return; 
             bgmInterval = setInterval(() => {
-                if (audioCtx.state !== 'running' || (gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR')) {
+                if (audioCtx.state !== 'running') return; // stateがsuspendedなら飛ばすだけで停止はさせない
+                if (gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR') {
                     stopLevelSelectBGM();
                     return;
                 }
@@ -1429,16 +1423,42 @@
         }, { passive: false });
 
         canvas.addEventListener('click', (e) => {
-            initAudio();
+            initAudio(); // 常に音声エンジンを復帰させる
             const pos = getMousePos(e);
-            lastClickX = pos.x;
-            lastClickY = pos.y;
-            lastClickTime = Date.now();
-            
-            // デバッグログ (非表示)
-            // console.log(`CLICK at (${Math.floor(pos.x)}, ${Math.floor(pos.y)}) State: ${gameState}`);
-            
             handleInteraction(pos.x, pos.y);
+        });
+        
+        canvas.addEventListener('mousedown', (e) => {
+            initAudio(); // mousedownでも早めに復帰をかける
+            if (gameState === 'EDITOR') {
+                const pos = getMousePos(e);
+                const x = pos.x; const y = pos.y;
+                if (x > 400 - 25 && y < 600 - 150) {
+                    isScrollbarDragging = true;
+                    let totalDist = editorLevel.totalDist || 4000;
+                    let ratio = y / (600 - 150);
+                    editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
+                    draw(); return;
+                }
+                if (y < 600 - 150) {
+                    let foundIdx = -1;
+                    let clickDist = editorScroll + y - 150;
+                    for(let i=0; i<editorLevel.objects.length; i++){
+                        let o = editorLevel.objects[i];
+                        if (Math.abs(o.d - clickDist) < 25 && x >= o.x && x <= o.x + o.w) {
+                            foundIdx = i; break;
+                        }
+                    }
+                    if (foundIdx !== -1) {
+                        if (editorSelectedIndex === -1 || editorSelectedIndex === foundIdx) {
+                            editorSelectedIndex = foundIdx;
+                            isObjectDragging = true;
+                            justSelectedInMousedown = true;
+                        }
+                    }
+                    draw();
+                }
+            }
         });
 
         function handleInteraction(x, y) {
