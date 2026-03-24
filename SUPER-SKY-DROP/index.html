@@ -1073,7 +1073,10 @@
             // 速度はご要望通り「0.7」のまま固定（変えない）
             let speed = 0.7; 
             // その代わり、出現率（密度）を大幅に上げて「避けづらさ」で難易度を出す
-            let rate = 0.045 + ((i % 20) * 0.006) + (i >= 20 ? 0.02 : (i >= 40 ? 0.03 : 0)); 
+            let extraRate = 0;
+            if (i >= 40) extraRate = 0.035;
+            else if (i >= 20) extraRate = 0.02;
+            let rate = 0.045 + ((i % 20) * 0.006) + extraRate; 
             
             let hue;
             if (i < 20) hue = (120 - (i * 6)); // 第1章: 緑→赤
@@ -2509,6 +2512,9 @@
         }
 
         function spawnObstacle() {
+            // 安全装置：障害物が多すぎる場合は生成をスキップしてフリーズを防ぐ
+            if (obstacles.length > 120) return;
+
             if (isSecretStage) {
                 // 隠しステージ：左右に大きな壁があり、一箇所だけ道がある（極限の狭い道）
                 const pathWidth = 36; // 自機(30px)に対して左右3pxずつの余裕しかない超極狭
@@ -2637,12 +2643,17 @@
                     let dy = (player.y + player.height/2) - (fy + 20);
                     let dist = Math.sqrt(dx*dx + dy*dy);
                     let speed = (seededRandom() * 1.5 + 2.5) * (isRush ? 1.2 : 1.0);
+                    let vx = (dx / (dist || 1)) * speed;
+                    let vy = (dy / (dist || 1)) * speed;
+                    if (!isFinite(vx)) vx = 0;
+                    if (!isFinite(vy)) vy = 0;
+                    
                     obstacles.push({
                         x: fx, y: fy,
                         width: 40, height: 40,
                         type: 'fireball', color: '#ff4400',
-                        vx: (dx / dist) * speed,
-                        vy: (dy / dist) * speed,
+                        vx: vx,
+                        vy: vy,
                         active: true, timer: 0
                     });
                 }
