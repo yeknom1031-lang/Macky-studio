@@ -3401,10 +3401,10 @@
                     if (obs.state === 'warning' && obs.type === 'bossLaser') {
                         // 予告線中は当たり判定なし
                     } else {
-                        // 2.5秒(150フレーム = timerが15.0進む)ごとに ON/OFF を切り替える
-                        // 全体サイクルは5.0秒 (30.0)
-                        let cyclePos = obs.timer % 30.0;
-                        let laserWide = (cyclePos < 15.0) ? 1.0 : 0.0;
+                        // 1.5秒(90フレーム = timerが9.0進む)ごとに ON/OFF を切り替える
+                        // 全体サイクルは3.0秒 (18.0)
+                        let cyclePos = obs.timer % 18.0;
+                        let laserWide = (cyclePos < 9.0) ? 1.0 : 0.0;
                         
                         if (laserWide > 0.5) {
                             let lW = obs.width * laserWide;
@@ -4458,30 +4458,26 @@
                         ctx.arc(0, 0, obs.width/6, 0, Math.PI*2);
                         ctx.fill();
                         
-                    } else if (obs.type === 'laser' || obs.type === 'laserH') {
-                        let laserWide = (Math.sin(obs.timer * 3) + 1) / 2;
-                        ctx.globalAlpha = 0.2 + (laserWide * 0.8);
-                        let lGrad;
-                        if (obs.type === 'laser') {
-                            lGrad = ctx.createLinearGradient(obs.x, 0, obs.x + obs.width, 0);
-                        } else {
-                            lGrad = ctx.createLinearGradient(0, obs.y, 0, obs.y + obs.height);
-                        }
-                        lGrad.addColorStop(0, '#ff0000');
-                        lGrad.addColorStop(0.5, '#ffffff');
-                        lGrad.addColorStop(1, '#ff0000');
-                        ctx.fillStyle = lGrad;
+                    } else if (obs.type === 'laser') {
+                        // 1.5秒(90フレーム = timerが9.0進む)ごとに ON/OFF を切り替える
+                        // 全体サイクルは3.0秒 (18.0)
+                        let cyclePos = obs.timer % 18.0;
+                        let laserWide = (cyclePos < 9.0) ? 1.0 : 0.0;
                         
-                        if (obs.type === 'laser') {
-                            ctx.fillRect(obs.x + (1 - laserWide) * (obs.width / 2), obs.y, obs.width * laserWide, obs.height);
-                        } else {
-                            ctx.fillRect(obs.x, obs.y + (1 - laserWide) * (obs.height / 2), obs.width, obs.height * laserWide);
+                        if (laserWide > 0.1) {
+                            ctx.globalAlpha = 0.5 + (Math.sin(Date.now() / 100) * 0.2); // ONの時は少し発光感を出す
+                            let lGrad = ctx.createLinearGradient(obs.x, 0, obs.x + obs.width, 0);
+                            lGrad.addColorStop(0, '#ff0000');
+                            lGrad.addColorStop(0.5, '#ffffff');
+                            lGrad.addColorStop(1, '#ff0000');
+                            ctx.fillStyle = lGrad;
+                            ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+                            ctx.globalAlpha = 1.0;
                         }
-                        ctx.globalAlpha = 1.0;
                         
+                        // 銃口パーツ（常に表示）
                         ctx.fillStyle = '#333';
-                        if (obs.type === 'laser') ctx.fillRect(obs.x - 5, obs.y, obs.width + 10, 10);
-                        else ctx.fillRect(obs.x, obs.y - 5, 10, obs.height + 10);
+                        ctx.fillRect(obs.x - 5, obs.y, obs.width + 10, 10);
                         
                     } else if (obs.type === 'bossLaser') {
                         // 第3章ボスの紫レーザー
