@@ -2190,11 +2190,51 @@
                             } else if (i === 1 && currentChapter !== 2) {
                                 if (isChapter2Bought) {
                                     currentChapter = 2; currentLevelIndex = 20; playTapSound(); draw(); return;
-                                } else { alert("第2章はロックされています。ショップで購入してください！"); return; }
+                                } else { 
+                                    let stars = getTotalGoldStars();
+                                    if (stars < 30) {
+                                        alert(`第2章のアンロックにはゴールドスターが 30個 必要です！\n(現在の星: ${stars}個)`);
+                                    } else {
+                                        if (confirm(`★ チャプター2 を解禁しますか？ ★\n\n必要: 100,000 枚 (30 スター)\n現在: ${totalSilverBirds} 枚\n\n「OK」で即時アンロックします！`)) {
+                                            if (totalSilverBirds >= 100000) {
+                                                totalSilverBirds -= 100000;
+                                                isChapter2Bought = true;
+                                                localStorage.setItem('superSkyDropChapter2Unlocked', 'true');
+                                                saveShopData();
+                                                playTapSound();
+                                                alert("おめでとうございます！\n第2章(21〜40)が解禁されました！");
+                                                draw();
+                                            } else {
+                                                alert("コインが足りません！\nもっとステージをクリアして集めよう！");
+                                            }
+                                        }
+                                    }
+                                    return; 
+                                }
                             } else if (i === 2 && currentChapter !== 3) {
                                 if (isChapter3Bought) {
                                     currentChapter = 3; currentLevelIndex = 40; playTapSound(); draw(); return;
-                                } else { alert("第3章はロックされています。ショップで購入してください！"); return; }
+                                } else { 
+                                    let stars = getTotalGoldStars();
+                                    if (stars < 70) {
+                                        alert(`第3章のアンロックにはゴールドスターが 70個 必要です！\n(現在の星: ${stars}個)`);
+                                    } else {
+                                        if (confirm(`★ チャプター3 を解禁しますか？ ★\n\n必要: 300,000 枚 (70 スター)\n現在: ${totalSilverBirds} 枚\n\n「OK」で即時アンロックします！`)) {
+                                            if (totalSilverBirds >= 300000) {
+                                                totalSilverBirds -= 300000;
+                                                isChapter3Bought = true;
+                                                localStorage.setItem('superSkyDropChapter3Unlocked', 'true');
+                                                saveShopData();
+                                                playTapSound();
+                                                alert("おめでとうございます！\n第3章(41〜60)が解禁されました！");
+                                                draw();
+                                            } else {
+                                                alert("コインが足りません！\nもっとステージをクリアして集めよう！");
+                                            }
+                                        }
+                                    }
+                                    return; 
+                                }
                             } else if (i === 3 && currentChapter !== 4) {
                                 currentChapter = 4; currentLevelIndex = 60; playTapSound(); draw(); return;
                             }
