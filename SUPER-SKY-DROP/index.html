@@ -3100,7 +3100,7 @@
             }
             
             let stepsNeeded = Math.floor(diff / 10);
-            stepsNeeded = Math.min(stepsNeeded, 10); // 1フレーム最大10ステップまでに制限
+            stepsNeeded = Math.min(stepsNeeded, 3); // 極限密度の第3章でもフリーズしないよう1フレーム最大3ステップに制限
             
             for (let s = 0; s < stepsNeeded; s++) {
                 lastSpawnDistance += 10;
@@ -3305,18 +3305,20 @@
                     let dy = (obs.y + obs.height/2) - (player.y + player.height/2);
                     let dist = Math.sqrt(dx*dx + dy*dy);
                     
-                    // 距離が近すぎる（10px以内）か、数値が壊れている場合は吸引を停止
-                    if (isFinite(dist) && dist < 200 && dist > 10) {
-                        let force = ((200 - dist) / 100) * timeFactor;
-                        let moveX = (dx / dist) * force;
-                        let moveY = (dy / dist) * force;
+                    // 1px以上の最小距離を保証して NaN を防止
+                    if (isFinite(dist) && dist < 200) {
+                        let safeDist = Math.max(1, dist);
+                        let force = ((200 - safeDist) / 100) * timeFactor;
+                        let moveX = (dx / safeDist) * force;
+                        let moveY = (dy / safeDist) * force;
                         
                         // 計算結果が正常な時だけ移動を適用
                         if (isFinite(moveX) && isFinite(moveY)) {
-                            player.x += moveX;
-                            player.y += moveY;
+                            player.x += moveX; player.y += moveY;
                         }
                     }
+                    // 重心に近すぎると死亡 (当たり判定をここに集約)
+                    if (dist < 25) collided = true;
                 }
 
                 // (重複していたプテラノドン処理を統合整理)
@@ -3425,11 +3427,7 @@
                         }
                     }
                 } else if (obs.type === 'blackhole') {
-                    // 重心に近いと死亡
-                    let dx = (player.x + player.width / 2) - (obs.x + obs.width / 2);
-                    let dy = (player.y + player.height / 2) - (obs.y + obs.height / 2);
-                    let dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 25) collided = true;
+                    // 上の処理で判定済み
                 } else if (obs.type === 'warp') {
                     // updateの中で既に処理済み（消滅フラグが立っている）
                 } else if (obs.type === 'fireball') {
