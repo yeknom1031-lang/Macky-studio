@@ -3100,7 +3100,8 @@
             }
             
             let stepsNeeded = Math.floor(diff / 10);
-            stepsNeeded = Math.min(stepsNeeded, 3); // 極限密度の第3章でもフリーズしないよう1フレーム最大3ステップに制限
+            // フリーズ防止のため、1フレームあたりのリカバリ計算を最大1回に制限 (究極の安全性)
+            stepsNeeded = Math.min(stepsNeeded, 1);
             
             for (let s = 0; s < stepsNeeded; s++) {
                 lastSpawnDistance += 10;
@@ -5962,12 +5963,19 @@
     function gameLoop() {
         try {
             if (typeof updateBackgroundColors === 'function') updateBackgroundColors();
-            // 致命的ミス：過去の整理で PLAYING の時しか update が呼ばれないようにしてしまっていた。
-            // update() 内部に OPENING など別の状態ごとの時計もあるため、無条件で呼ぶ必要がある。
             update();
             draw();
         } catch (e) {
             console.error(`🚨 CRITICAL LOOP ERROR: ${e.message}`, e);
+            window.lastCriticalError = e.message;
+            // エラーを画面に描画してフリーズした理由を可視化する
+            if (ctx) {
+                ctx.fillStyle = 'rgba(0,0,0,0.8)'; ctx.fillRect(0, 0, 400, 600);
+                ctx.fillStyle = 'red'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
+                ctx.fillText('CRITICAL ERROR - ゲームが停止しました', 200, 200);
+                ctx.fillStyle = 'white'; ctx.fillText(e.message, 200, 230);
+                ctx.fillText('設定を更新(再読み込み)してください', 200, 260);
+            }
             return; 
         }
         requestAnimationFrame(gameLoop);
