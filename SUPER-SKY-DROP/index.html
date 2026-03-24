@@ -3401,10 +3401,10 @@
                     if (obs.state === 'warning' && obs.type === 'bossLaser') {
                         // 予告線中は当たり判定なし
                     } else {
-                        // 1.5秒(90フレーム = timerが9.0進む)ごとに ON/OFF を切り替える
-                        // 全体サイクルは3.0秒 (18.0)
-                        let cyclePos = obs.timer % 18.0;
-                        let laserWide = (cyclePos < 9.0) ? 1.0 : 0.0;
+                        // 2.5秒(150フレーム = timerが15.0進む)ごとに ON/OFF を切り替える
+                        // 全体サイクルは5.0秒 (30.0)
+                        let cyclePos = obs.timer % 30.0;
+                        let laserWide = (cyclePos < 15.0) ? 1.0 : 0.0;
                         
                         if (laserWide > 0.5) {
                             let lW = obs.width * laserWide;
