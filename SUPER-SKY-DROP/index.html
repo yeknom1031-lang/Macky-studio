@@ -1557,10 +1557,30 @@
                     playLevelSelectBGM();
                     draw(); return;
                 }
-                // エディター
+                // エディター (直接新規作成画面へ)
                 let creX = 400 - 100; let creY = 600 - 100;
                 if (x > creX && x < creX + 80 && y > creY && y < creY + 80) {
-                    playTapSound(); gameState = 'EDITOR_MENU'; draw(); return;
+                    playTapSound(); 
+                    // 新しいステージの枠を自動生成してリストに追加
+                    let newStageName = `STAGE ${customLevels.length + 1}`;
+                    editorLevel = { 
+                        name: newStageName, 
+                        speed: 0.7, 
+                        objects: [], 
+                        bgText: 'linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d)', 
+                        totalDist: 4000, 
+                        startDist: 0, 
+                        startX: 400/2 - 15 
+                    };
+                    customLevels.push(JSON.parse(JSON.stringify(editorLevel)));
+                    editingCustomIndex = customLevels.length - 1;
+                    localStorage.setItem('superSkyDropCustom', JSON.stringify(customLevels));
+                    
+                    editorScroll = 0; 
+                    editorSelectedIndex = -1;
+                    gameState = 'EDITOR'; 
+                    draw(); 
+                    return;
                 }
                 // ワールドランキングボタン
                 if (x > 110 && x < 240 && y > 600 - 90 && y < 600 - 50) {
