@@ -2620,8 +2620,9 @@
             }
 
             // ボスステージの特別調整
-            if (levels[currentLevelIndex].isBossStage) {
-                let isRush = levels[currentLevelIndex].isBossRush;
+            let currentLevel = levels[currentLevelIndex];
+            if (currentLevel && currentLevel.isBossStage) {
+                let isRush = currentLevel.isBossRush;
                 let activeBoss = 1;
                 if (isRush) {
                     if (distance < 1300) activeBoss = 1;
@@ -3064,8 +3065,15 @@
 
             // 障害物・スター出現判定（安全装置付き絶対マイルストーン方式）
             // フリーズを100%防ぐため回数制限付きのforループに修正
-            let stepsNeeded = Math.floor((distance - lastSpawnDistance) / 10);
-            stepsNeeded = Math.min(stepsNeeded, 20); // 1フレーム最大20ステップまでに制限
+            let diff = distance - lastSpawnDistance;
+            // 距離が離れすぎている場合は、計算をスキップして強制的に同期(ラグ・フリーズ対策)
+            if (diff > 500) {
+                lastSpawnDistance = distance;
+                diff = 0;
+            }
+            
+            let stepsNeeded = Math.floor(diff / 10);
+            stepsNeeded = Math.min(stepsNeeded, 10); // 1フレーム最大10ステップまでに制限
             
             for (let s = 0; s < stepsNeeded; s++) {
                 lastSpawnDistance += 10;
@@ -3087,14 +3095,17 @@
                     );
 
                     if (!isCustomLevel && !isSafeZone) {
-                        // 出現率に基づいた判定を復活
-                        let spawnChance = levels[currentLevelIndex].rate * 4.5;
-                        if (seededRandom() < spawnChance) {
-                            spawnObstacle();
+                        // ステージデータが存在する場合のみ出現率を計算 (クラッシュ防止)
+                        let currentLevel = levels[currentLevelIndex];
+                        if (currentLevel) {
+                            let spawnChance = currentLevel.rate * 4.5;
+                            if (seededRandom() < spawnChance) {
+                                spawnObstacle();
+                            }
                         }
                         
                         // ボスラッシュ時の特殊出現
-                        if (levels[currentLevelIndex].isBossRush && seededRandom() < 0.1) {
+                        if (currentLevel && currentLevel.isBossRush && seededRandom() < 0.1) {
                             spawnPteranodon();
                         }
                     }
