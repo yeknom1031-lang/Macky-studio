@@ -256,56 +256,8 @@
 
         // --- オープニング専用 SE (マイクラ風の本格爆発音: ドッカーン！) ---
         async function playOpeningSFX() {
-            initAudio();
-            if (typeof isSEEnabled !== 'undefined' && !isSEEnabled) return;
-
-            const now = audioCtx.currentTime;
-            
-            // ノイズバッファの作成
-            const bufferSize = audioCtx.sampleRate * 2.0;
-            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-            const data = buffer.getChannelData(0);
-            for (let i = 0; i < bufferSize; i++) {
-                data[i] = Math.random() * 2 - 1;
-            }
-
-            // 1. 鋭い破裂音 (クラック)
-            const sourceAttack = audioCtx.createBufferSource();
-            sourceAttack.buffer = buffer;
-            const filterAttack = audioCtx.createBiquadFilter();
-            filterAttack.type = 'highpass';
-            filterAttack.frequency.setValueAtTime(800, now);
-            const gainAttack = audioCtx.createGain();
-            gainAttack.gain.setValueAtTime(0, now);
-            gainAttack.gain.linearRampToValueAtTime(1.0, now + 0.01);
-            gainAttack.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-            sourceAttack.connect(filterAttack); filterAttack.connect(gainAttack); gainAttack.connect(audioCtx.destination);
-            sourceAttack.start(now); sourceAttack.stop(now + 0.2);
-
-            // 2. 地響きの余韻 (ランブル)
-            const sourceRumble = audioCtx.createBufferSource();
-            sourceRumble.buffer = buffer;
-            const filterRumble = audioCtx.createBiquadFilter();
-            filterRumble.type = 'lowpass';
-            filterRumble.frequency.setValueAtTime(200, now);
-            filterRumble.frequency.exponentialRampToValueAtTime(40, now + 1.5);
-            const gainRumble = audioCtx.createGain();
-            gainRumble.gain.setValueAtTime(0, now);
-            gainRumble.gain.linearRampToValueAtTime(0.8, now + 0.02);
-            gainRumble.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
-            sourceRumble.connect(filterRumble); filterRumble.connect(gainRumble); gainRumble.connect(audioCtx.destination);
-            sourceRumble.start(now); sourceRumble.stop(now + 1.8);
-
-            // 3. サブベース (お腹に響く芯)
-            const boom = audioCtx.createOscillator();
-            boom.type = 'sine';
-            boom.frequency.setValueAtTime(80, now);
-            boom.frequency.exponentialRampToValueAtTime(30, now + 0.7);
-            const boomGain = audioCtx.createGain();
-            boomGain.gain.setValueAtTime(0.5, now);
-            boomGain.gain.exponentialRampToValueAtTime(0.001, now + 0.7);
-            boom.connect(boomGain); boomGain.connect(audioCtx.destination);
-            boom.start(now); boom.stop(now + 0.7);
+            // ゲーム起動時の爆発音を削除
+            return;
         }
         function playLevelSelectBGM() {
             if (gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR') return;
@@ -1610,7 +1562,7 @@
                     justSelectedInMousedown = false;
                     draw(); return;
                 }
-                const GRID = 20;
+                const GRID = 10;
                 editorLevel.totalDist = editorLevel.totalDist || 4000;
                 if (y < 600 - 150) {
                     if (x > 400 - 20) {
@@ -3885,7 +3837,7 @@
         function drawGoldCoin(ctx, x, y, size) { drawStar(ctx, x, y, size, '#F1C40F'); }
 
         function drawEditor() {
-            const GRID = 20; const TOTAL = editorLevel.totalDist || 4000; const MAX_SCROLL = 20000;
+            const GRID = 10; const TOTAL = editorLevel.totalDist || 4000; const MAX_SCROLL = 20000;
             
             // 背景テーマの描画 (単色からグラデーションへ変更)
             let bgGrad = ctx.createLinearGradient(0, 0, 0, 600);
