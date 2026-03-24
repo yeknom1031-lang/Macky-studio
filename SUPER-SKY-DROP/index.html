@@ -3394,10 +3394,9 @@
                         let laserWide = (cyclePos < 9.0) ? 1.0 : 0.0;
                         
                         if (laserWide > 0.5) {
-                            let lW = obs.width * laserWide;
-                            let lX = obs.x + (1 - laserWide) * (obs.width / 2);
-                            if (player.x + pMarginX < lX + lW &&
-                                player.x + player.width - pMarginX > lX &&
+                            // 当たり判定を固定幅(obs.width)と固定位置(obs.x)に完全に固定する
+                            if (player.x + pMarginX < obs.x + obs.width &&
+                                player.x + player.width - pMarginX > obs.x &&
                                 player.y + pMarginY < obs.y + obs.height &&
                                 player.y + player.height - pMarginY > obs.y) {
                                 collided = true;
