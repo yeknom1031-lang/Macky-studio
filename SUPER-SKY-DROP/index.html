@@ -5099,10 +5099,6 @@
                 ctx.textAlign = 'center';
                 ctx.fillText('ショップ', 400/2, 55);
 
-                ctx.fillStyle = 'white'; ctx.font = '16px sans-serif'; ctx.textAlign = 'right';
-                ctx.fillText(`所持 ${totalSilverBirds}`, 400 - 25, 35);
-                drawBirdCoin(ctx, 400 - 15, 30, 9);
-                
                 ctx.fillStyle = '#555';
                 ctx.beginPath(); ctx.roundRect(10, 10, 80, 35, 5); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = '16px sans-serif'; ctx.textAlign = 'center';
@@ -5183,6 +5179,14 @@
                         drawBirdCoin(ctx, btnX + btnW/2 + 20, btnY + 13, 6);
                     }
                 }
+                
+                // 所持コインを一番下に表示 (ステージ選択と統一)
+                ctx.fillStyle = 'white';
+                ctx.font = '16px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(`所持 : ${totalSilverBirds} 枚`, 400/2, 600 - 20);
+                drawBirdCoin(ctx, 400/2 - 18, 600 - 26, 10);
+                
                 ctx.textAlign = 'left';
             } else if (gameState === 'CHANGING_ROOM') {
                 let grad = ctx.createLinearGradient(0, 0, 0, 600);
