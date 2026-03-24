@@ -4452,7 +4452,7 @@
                         let laserWide = (cyclePos < 9.0) ? 1.0 : 0.0;
                         
                         if (laserWide > 0.1) {
-                            ctx.globalAlpha = 0.5 + (Math.sin(Date.now() / 100) * 0.2); // ONの時は少し発光感を出す
+                            ctx.globalAlpha = 0.8; // 固定透明度
                             let lGrad = ctx.createLinearGradient(obs.x, 0, obs.x + obs.width, 0);
                             lGrad.addColorStop(0, '#ff0000');
                             lGrad.addColorStop(0.5, '#ffffff');
@@ -4475,15 +4475,14 @@
                             ctx.strokeRect(obs.x, 0, obs.width, 600);
                         } else {
                             // 発射
-                            let pulse = (Math.sin(obs.timer * 4) + 1) / 2;
-                            let laserWide = pulse;
-                            ctx.globalAlpha = 0.4 + (pulse * 0.6);
+                            ctx.globalAlpha = 0.8;
                             let lGrad = ctx.createLinearGradient(obs.x, 0, obs.x + obs.width, 0);
                             lGrad.addColorStop(0, '#9B59B6'); // 紫
                             lGrad.addColorStop(0.5, '#ffffff'); // 白（芯）
                             lGrad.addColorStop(1, '#9B59B6');
                             ctx.fillStyle = lGrad;
-                            ctx.fillRect(obs.x + (1 - laserWide) * (obs.width / 2), 0, obs.width * laserWide, 600);
+                            // 太さを変えずに（laserWideを使わずに）常に最大幅で描画
+                            ctx.fillRect(obs.x, 0, obs.width, 600);
                             ctx.globalAlpha = 1.0;
                         }
                         
