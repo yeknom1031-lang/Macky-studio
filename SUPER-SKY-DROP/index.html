@@ -2623,10 +2623,9 @@
             if (currentLevelIndex >= 9) possibleTypes.push('large');
             if (currentLevelIndex >= 14) possibleTypes.push('moving');
             
-            // 第2章後半からレーザーや追跡者が出るように大幅に早める
+            // 第2章後半からレーザーが出るように大幅に早める
             if (currentLevelIndex >= 21) {
                 possibleTypes.push('laser');
-                possibleTypes.push('seeker');
             }
             if (currentLevelIndex >= 35) {
                 possibleTypes.push('blackhole');
@@ -3340,11 +3339,22 @@
                     }
                 }
                 
-                if (obs.type === 'seeker') {
-                    // 追跡者のスピードを 2.0 -> 3.2 にアップして手強くする
-                    let sSpeed = 3.2 * timeFactor;
-                    if (obs.x + obs.width / 2 < player.x + player.width / 2) obs.x += sSpeed;
-                    else if (obs.x + obs.width / 2 > player.x + player.width / 2) obs.x -= sSpeed;
+                if (obs.type === 'warp') {
+                    // ワープ判定（アイテムと同じ円形判定）
+                    let dx_p = (player.x + player.width/2) - (obs.x + obs.width/2);
+                    let dy_p = (player.y + player.height/2) - (obs.y + obs.height/2);
+                    let dist_p = Math.sqrt(dx_p * dx_p + dy_p * dy_p);
+                    if (dist_p < 30) {
+                        // ワープ発動！
+                        playLevelClearedSFX(); // 既存のSEを流用
+                        player.x = 400 - player.x - 30; // 左右反転
+                        distance += 200; // 200mスキップ
+                        obs.active = false; // 消滅
+                        
+                        // エフェクト
+                        createParticles(player.x + 15, player.y + 15, '#3498DB');
+                        createParticles(400 - (player.x + 15), player.y + 15, '#F1C40F');
+                    }
                 }
 
                 // 画面外、または寿命が尽きた(active=false)障害物を削除
@@ -3420,14 +3430,8 @@
                     let dy = (player.y + player.height / 2) - (obs.y + obs.height / 2);
                     let dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 25) collided = true;
-                } else if (obs.type === 'seeker') {
-                    // 追跡者は通常の矩形判定
-                    if (player.x < obs.x + obs.width &&
-                        player.x + player.width > obs.x &&
-                        player.y < obs.y + obs.height &&
-                        player.y + player.height > obs.y) {
-                        collided = true;
-                    }
+                } else if (obs.type === 'warp') {
+                    // updateの中で既に処理済み（消滅フラグが立っている）
                 } else if (obs.type === 'fireball') {
                     let dx = (player.x+player.width/2) - (obs.x+obs.width/2);
                     let dy = (player.y+player.height/2) - (obs.y+obs.height/2);
@@ -3954,7 +3958,11 @@
                         if (o.type === 'fast') { ctx.fillStyle='white'; ctx.fillRect(o.x+o.w/2-2, screenY, 4, o.h); }
                         else if (o.type === 'moving') { ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.fillRect(o.x, screenY+2, 4, o.h-4); ctx.fillRect(o.x+o.w-4, screenY+2, 4, o.h-4); }
                         else if (o.type === 'laser') { ctx.strokeStyle = 'red'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(o.x, screenY+o.h/2); ctx.lineTo(o.x+o.w, screenY+o.h/2); ctx.stroke(); }
-                        else if (o.type === 'seeker') { ctx.fillStyle='red'; ctx.beginPath(); ctx.moveTo(o.x+o.w/2, screenY); ctx.lineTo(o.x+o.w, screenY+o.h); ctx.lineTo(o.x, screenY+o.h); ctx.closePath(); ctx.fill(); }
+                        else if (o.type === 'warp') { 
+                            ctx.strokeStyle = '#3498DB'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(o.x+o.w/2, screenY+o.h/2, 15, 0, Math.PI*2); ctx.stroke();
+                            ctx.fillStyle='rgba(52, 152, 219, 0.3)'; ctx.fill();
+                            ctx.fillStyle='white'; ctx.font='bold 8px sans-serif'; ctx.fillText('WARP', o.x+o.w/2, screenY+o.h/2+3);
+                        }
                     }
 
                     // 選択枠は最後に重ねて描画する
@@ -3978,8 +3986,8 @@
             
             // タブの描画
             const categories = [
-                { name: '障害物', tools: ['normal', 'fast', 'moving', 'large', 'laser', 'seeker', 'fireball'], names: ['通常', '高速', '動く', '巨大', '線', '追跡', '火球'] },
-                { name: 'アイテム', tools: ['item'], names: ['コイン'] },
+                { name: '障害物', tools: ['normal', 'fast', 'moving', 'large', 'laser', 'fireball'], names: ['通常', '高速', '動く', '巨大', '線', '火球'] },
+                { name: 'アイテム', tools: ['item', 'warp'], names: ['コイン', 'ワープ'] },
                 { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'], names: ['＋100', '－100', '＋10', '－10', '背景', '曲調'] }
             ];
             let tabW = (400 - 85) / 3;
@@ -4014,6 +4022,10 @@
                     ctx.fillStyle = '#F1C40F'; ctx.beginPath(); ctx.arc(0, 0, 8*sc, 0, Math.PI*2); ctx.fill();
                 }
                 else if (types[i] === 'item') { drawGoldCoin(ctx, 0, 0, 18*sc); }
+                else if (types[i] === 'warp') { 
+                    ctx.strokeStyle = '#3498DB'; ctx.lineWidth = 4*sc; ctx.beginPath(); ctx.arc(0, 0, 15*sc, 0, Math.PI*2); ctx.stroke();
+                    ctx.fillStyle='rgba(52, 152, 219, 0.5)'; ctx.fill();
+                }
                 ctx.restore();
 
                 if (types[i].startsWith('len')) {
