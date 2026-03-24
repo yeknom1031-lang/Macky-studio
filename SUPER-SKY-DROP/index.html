@@ -1363,7 +1363,7 @@
                 else if (isObjectDragging && editorSelectedIndex !== -1) {
                     // オブジェクトのドラッグ
                     let o = editorLevel.objects[editorSelectedIndex];
-                    let GRID = 20;
+                    let GRID = 10;
                     
                     // X座標と距離dを更新
                     o.x = Math.max(0, Math.min(400 - o.w, Math.round((x - o.w / 2) / GRID) * GRID));
