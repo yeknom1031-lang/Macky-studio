@@ -1653,16 +1653,18 @@
                                 editorLevel.objects.splice(editorSelectedIndex, 1);
                                 editorSelectedIndex = -1; draw(); return;
                             } else if (x > editX + 38 && x < editX + 63) { // 回転 - (w=25)
-                                let current = self.rotation || 0;
-                                self.rotation = current - Math.PI / 12; draw(); return;
+                                let deg = Math.round((self.rotation || 0) * (180 / Math.PI));
+                                deg = (deg - 15) % 360;
+                                self.rotation = deg * (Math.PI / 180); draw(); return;
                             } else if (x > editX + 65 && x < editX + 90) { // OK (スナップ) (w=25)
-                                let deg = (self.rotation || 0) * (180 / Math.PI);
+                                let deg = Math.round((self.rotation || 0) * (180 / Math.PI));
                                 let snapDeg = Math.round(deg / 45) * 45;
-                                self.rotation = snapDeg * (Math.PI / 180);
+                                self.rotation = (snapDeg % 360) * (Math.PI / 180);
                                 draw(); return;
                             } else if (x > editX + 92 && x < editX + 117) { // 回転 + (w=25)
-                                let current = self.rotation || 0;
-                                self.rotation = current + Math.PI / 12; draw(); return;
+                                let deg = Math.round((self.rotation || 0) * (180 / Math.PI));
+                                deg = (deg + 15) % 360;
+                                self.rotation = deg * (Math.PI / 180); draw(); return;
                             }
                         }
                     }
