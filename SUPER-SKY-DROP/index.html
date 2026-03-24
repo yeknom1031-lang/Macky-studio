@@ -4963,12 +4963,20 @@
                 }
                 
 
-                // 所持コイン表示
+                // 所持コイン表示 (重なり防止のため幅を計算して配置)
                 ctx.fillStyle = 'white';
                 ctx.font = '16px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText(`所持           : ${totalSilverBirds} 枚`, 400/2, 600 - 20);
-                drawBirdCoin(ctx, 400/2 - 18, 600 - 26, 10);
+                let birdText = `所持 : ${totalSilverBirds} 枚`;
+                let birdWidth = ctx.measureText(birdText).width;
+                ctx.fillText(birdText, 400/2, 600 - 20);
+                drawBirdCoin(ctx, 400/2 - birdWidth/2 - 15, 600 - 26, 10);
+                
+                // 所持ゴールドスターも表示 (SHOPと同じデザインに)
+                let starCount = getTotalGoldStars();
+                ctx.fillStyle = '#F1C40F';
+                ctx.font = 'bold 16px sans-serif';
+                ctx.fillText(`★ ${starCount}`, 400/2 + birdWidth/2 + 25, 600 - 20);
 
                 // EDITOR ボタン
                 let creX = 400 - 100;
@@ -5180,12 +5188,20 @@
                     }
                 }
                 
-                // 所持コインを一番下に表示 (ステージ選択と統一)
+                // 所持コインを一番下に表示 (ステージ選択と統一し、重なりも防止)
                 ctx.fillStyle = 'white';
                 ctx.font = '16px sans-serif';
                 ctx.textAlign = 'center';
-                ctx.fillText(`所持 : ${totalSilverBirds} 枚`, 400/2, 600 - 20);
-                drawBirdCoin(ctx, 400/2 - 18, 600 - 26, 10);
+                let shopBirdText = `所持 : ${totalSilverBirds} 枚`;
+                let shopBirdWidth = ctx.measureText(shopBirdText).width;
+                ctx.fillText(shopBirdText, 400/2, 600 - 20);
+                drawBirdCoin(ctx, 400/2 - shopBirdWidth/2 - 15, 600 - 26, 10);
+
+                // 星の数も表示
+                let shopStarCount = getTotalGoldStars();
+                ctx.fillStyle = '#F1C40F';
+                ctx.font = 'bold 16px sans-serif';
+                ctx.fillText(`★ ${shopStarCount}`, 400/2 + shopBirdWidth/2 + 25, 600 - 20);
                 
                 ctx.textAlign = 'left';
             } else if (gameState === 'CHANGING_ROOM') {
