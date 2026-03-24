@@ -4616,10 +4616,8 @@
                             ctx.arc(0, 0, 25, 0, Math.PI * 2);
                             ctx.stroke();
                         } else if (obs.type === 'laser' || obs.type === 'bossLaser') {
-                            let laserWide = (obs.type === 'bossLaser') ? (Math.sin(obs.timer * 4) + 1) / 2 : (Math.sin(obs.timer * 3) + 1) / 2;
-                            let lW = obs.width * laserWide;
-                            let lX = obs.x + (1 - laserWide) * (obs.width / 2);
-                            ctx.strokeRect(lX, obs.y, lW, obs.height);
+                            // デバッグ表示用の判定枠も、常に固定の幅で描画する
+                            ctx.strokeRect(obs.x, obs.y, obs.width, obs.height);
                         } else {
                             ctx.strokeRect(obs.x, obs.y, obs.width, obs.height);
                         }
