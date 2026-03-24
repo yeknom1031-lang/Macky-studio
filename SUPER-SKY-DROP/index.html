@@ -3274,20 +3274,7 @@
                         }
                     }
 
-                    if (obs.state !== 'warning') {
-                        let laserWide = Math.max(0.1, (obs.type === 'bossLaser' ? Math.sin(obs.timer * 4) : Math.sin(obs.timer * 3)) + 1) / 2;
-                        if (laserWide > 0.6) {
-                            // 視覚的な太さに合わせて判定も伸縮させる
-                            let lW = obs.width * laserWide;
-                            let lX = obs.x + (1 - laserWide) * (obs.width / 2);
-                            if (player.x + pMarginX < lX + lW &&
-                                player.x + player.width - pMarginX > lX &&
-                                player.y + pMarginY < obs.y + obs.height &&
-                                player.y + player.height - pMarginY > obs.y) {
-                                collided = true;
-                            }
-                        }
-                    }
+
                 }
                 
                 if (obs.type === 'fireball') {
