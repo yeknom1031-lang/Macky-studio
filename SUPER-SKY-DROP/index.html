@@ -1626,36 +1626,40 @@
                         { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'] }
                     ];
 
-                    // 1. ブロック個別調整パネル (右側: 200〜400)
-                    if (editorSelectedIndex !== -1 && x > 200) {
+                    // 1. ブロック個別調整パネル (真ん中: 205〜320に収める)
+                    if (editorSelectedIndex !== -1 && x >= 200 && x < 320) {
                         let self = editorLevel.objects[editorSelectedIndex];
                         let editX = 205; 
                         if (y > 600 - 140 && y < 600 - 110) { // 1行目 (幅)
                             const delta = 10;
-                            if (x > editX && x < editX + 45) { // マイナス
+                            if (x > editX && x < editX + 35) { // マイナス (w=35)
                                 let oldW = self.w; self.w = Math.max(10, self.w - delta);
                                 self.x += (oldW - self.w) / 2; draw(); return;
-                            } else if (x > editX + 115) { // プラス
+                            } else if (x > editX + 80 && x < editX + 115) { // プラス (w=35)
                                 let oldW = self.w; self.w = Math.min(400, self.w + delta);
                                 self.x += (oldW - self.w) / 2; draw(); return;
                             }
-                        } else if (y > 600 - 110 && y < 600 - 75) { // 2行目 (高さ)
+                        } else if (y > 600 - 105 && y < 600 - 75) { // 2行目 (高さ)
                             const delta = 10;
-                            if (x > editX && x < editX + 45) {
+                            if (x > editX && x < editX + 35) { // マイナス
                                 let oldH = self.h; self.h = Math.max(10, self.h - delta);
                                 self.d += (oldH - self.h) / 2; draw(); return;
-                            } else if (x > editX + 115) {
+                            } else if (x > editX + 80 && x < editX + 115) { // プラス
                                 let oldH = self.h; self.h = Math.min(200, self.h + delta);
                                 self.d += (oldH - self.h) / 2; draw(); return;
                             }
                         } else if (y > 600 - 75 && y < 600 - 30) { // 3行目 (回転/削除)
-                            if (x > editX && x < editX + 50) { // 削除
+                            if (x > editX && x < editX + 35) { // 削除 (w=35)
                                 editorLevel.objects.splice(editorSelectedIndex, 1);
                                 editorSelectedIndex = -1; draw(); return;
-                            } else if (x > editX + 55 && x < editX + 85) { // 回転 -
-                                self.rotation = (self.rotation || 0) - 0.2; draw(); return;
-                            } else if (x > editX + 120) { // 回転 +
-                                self.rotation = (self.rotation || 0) + 0.2; draw(); return;
+                            } else if (x > editX + 40 && x < editX + 65) { // 回転 - (w=25)
+                                self.rotation = (self.rotation || 0) - Math.PI / 12; draw(); return;
+                            } else if (x > editX + 68 && x < editX + 93) { // OK (w=25)
+                                let deg = (self.rotation || 0) * (180 / Math.PI);
+                                let snapDeg = Math.round(deg / 45) * 45;
+                                self.rotation = snapDeg * (Math.PI / 180); draw(); return;
+                            } else if (x > editX + 95 && x < editX + 120) { // 回転 + (w=25)
+                                self.rotation = (self.rotation || 0) + Math.PI / 12; draw(); return;
                             }
                         }
                     }
@@ -3983,9 +3987,9 @@
 
             
             if (editorSelectedIndex !== -1) {
-                // セレクトパネルの背景（重なり防止）
+                // セレクトパネル
                 let editX = 205; 
-                ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(200, 600 - 145, 125, 140);
+                ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(200, 600 - 145, 120, 140);
                 let self = editorLevel.objects[editorSelectedIndex];
                 let props = ['幅', '高さ', '回転'];
                 let dist = Math.floor(self.d);
@@ -3993,19 +3997,19 @@
                 for (let i = 0; i < 3; i++) {
                     let py = 600 - 140 + i * 35;
                     if (i === 2) {
-                        ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.roundRect(editX, py, 50, 30, 5); ctx.fill();
-                        ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('削除', editX + 25, py + 19);
-                        ctx.fillStyle = '#2c3e50'; ctx.beginPath(); ctx.roundRect(editX + 55, py, 35, 30, 5); ctx.fill();
-                        ctx.beginPath(); ctx.roundRect(editX + 130, py, 35, 30, 5); ctx.fill();
-                        ctx.fillStyle = '#27AE60'; ctx.beginPath(); ctx.roundRect(editX + 92, py, 35, 30, 5); ctx.fill();
-                        ctx.fillStyle = 'white'; ctx.font = '9px sans-serif'; ctx.fillText('－', editX + 72.5, py + 19); ctx.fillText('＋', editX + 147.5, py + 19);
-                        ctx.font = 'bold 9px sans-serif'; ctx.fillText('OK', editX + 109.5, py + 19);
-                        ctx.fillStyle = 'white'; ctx.font = '10px sans-serif'; ctx.fillText('Dist: ' + dist + 'm', editX + 109.5, py + 40);
+                        ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.roundRect(editX, py, 35, 30, 5); ctx.fill();
+                        ctx.fillStyle = 'white'; ctx.font = 'bold 9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('消去', editX + 17.5, py + 19);
+                        ctx.fillStyle = '#2c3e50'; ctx.beginPath(); ctx.roundRect(editX + 40, py, 25, 30, 5); ctx.fill();
+                        ctx.beginPath(); ctx.roundRect(editX + 95, py, 25, 30, 5); ctx.fill();
+                        ctx.fillStyle = '#27AE60'; ctx.beginPath(); ctx.roundRect(editX + 68, py, 25, 30, 5); ctx.fill();
+                        ctx.fillStyle = 'white'; ctx.font = '8px sans-serif'; ctx.fillText('－', editX + 52.5, py + 19); ctx.fillText('＋', editX + 107.5, py + 19);
+                        ctx.font = 'bold 8px sans-serif'; ctx.fillText('OK', editX + 80.5, py + 19);
+                        ctx.fillStyle = 'white'; ctx.font = '9px sans-serif'; ctx.fillText('D:' + dist + 'm', editX + 60, py + 40);
                     } else {
-                        ctx.fillStyle = '#2c3e50'; ctx.beginPath(); ctx.roundRect(editX, py, 40, 30, 5); ctx.fill();
-                        ctx.beginPath(); ctx.roundRect(editX + 125, py, 40, 30, 5); ctx.fill();
-                        ctx.fillStyle = '#27AE60'; ctx.beginPath(); ctx.roundRect(editX + 45, py, 75, 30, 5); ctx.fill();
-                        ctx.fillStyle = 'white'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('-', editX + 20, py + 19); ctx.fillText('+', editX + 145, py + 19); ctx.fillText(props[i]+':'+vals[i], editX + 82.5, py + 19);
+                        ctx.fillStyle = '#2c3e50'; ctx.beginPath(); ctx.roundRect(editX, py, 35, 30, 5); ctx.fill();
+                        ctx.beginPath(); ctx.roundRect(editX + 80, py, 35, 30, 5); ctx.fill();
+                        ctx.fillStyle = '#27AE60'; ctx.beginPath(); ctx.roundRect(editX + 38, py, 40, 30, 5); ctx.fill();
+                        ctx.fillStyle = 'white'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('-', editX + 17.5, py + 19); ctx.fillText('+', editX + 97.5, py + 19); ctx.fillText(props[i][0]+vals[i], editX + 58, py + 19);
                     }
                 }
             }
