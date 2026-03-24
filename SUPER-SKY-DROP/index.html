@@ -809,6 +809,16 @@
         let lastClearHadBoost = false;
         let lastBoostPercent = 0;
         let playerName = localStorage.getItem('superSkyDropPlayerName') || "名無しのダイバー";
+        
+        // --- プレイヤー固有IDの発行 ---
+        let playerID = localStorage.getItem('superSkyDropPlayerID');
+        if (!playerID) {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // 読み間違いにくい文字
+            let res = '#';
+            for (let i = 0; i < 4; i++) res += chars.charAt(Math.floor(Math.random() * chars.length));
+            playerID = res;
+            localStorage.setItem('superSkyDropPlayerID', playerID);
+        }
         let hasSeenTutorial = localStorage.getItem('superSkyDropTutorial') === 'true';
         let currentBGMType = localStorage.getItem('superSkyDropBGMType') || 'pop';
         let slowModeStrength = parseFloat(localStorage.getItem('superSkyDropSlowStrength') || '0.5');
@@ -1074,9 +1084,9 @@
             let speed = 0.7; 
             // その代わり、出現率（密度）を大幅に上げて「避けづらさ」で難易度を出す
             let extraRate = 0;
-            if (i >= 40) extraRate = 0.035;
-            else if (i >= 20) extraRate = 0.02;
-            let rate = 0.045 + ((i % 20) * 0.006) + extraRate; 
+            if (i >= 40) extraRate = 0.05;
+            else if (i >= 20) extraRate = 0.03;
+            let rate = 0.055 + ((i % 20) * 0.007) + extraRate; 
             
             let hue;
             if (i < 20) hue = (120 - (i * 6)); // 第1章: 緑→赤
@@ -2595,12 +2605,12 @@
             if (currentLevelIndex >= 9) possibleTypes.push('large');
             if (currentLevelIndex >= 14) possibleTypes.push('moving');
             
-            // 第3章の限定ギミック
-            if (currentLevelIndex >= 42) {
+            // 第2章後半からレーザーや追跡者が出るように大幅に早める
+            if (currentLevelIndex >= 21) {
                 possibleTypes.push('laser');
                 possibleTypes.push('seeker');
             }
-            if (currentLevelIndex >= 45) {
+            if (currentLevelIndex >= 35) {
                 possibleTypes.push('blackhole');
             }
 
@@ -3086,8 +3096,8 @@
                     else if (currentPos > goalDistance * 0.75 - 5 && currentPos < goalDistance * 0.75 + 5 && starsSpawned === 2) { spawnStar(2); starsSpawned = 3; }
                 }
 
-                // 障害物の出現判定 (80mごと)
-                if (currentPos % 80 === 0) {
+                // 障害物の出現判定 (40mごとに短縮して密度を2倍にアップ！)
+                if (currentPos % 40 === 0) {
                     let isSafeZone = !isEndlessMode && (
                         (currentPos > goalDistance * 0.25 - 100 && currentPos < goalDistance * 0.25 + 100) ||
                         (currentPos > goalDistance * 0.5 - 100 && currentPos < goalDistance * 0.5 + 100) ||
@@ -3098,7 +3108,7 @@
                         // ステージデータが存在する場合のみ出現率を計算 (クラッシュ防止)
                         let currentLevel = levels[currentLevelIndex];
                         if (currentLevel) {
-                            let spawnChance = currentLevel.rate * 4.5;
+                            let spawnChance = currentLevel.rate * 5.0; // 出現確率倍率をアップ
                             if (seededRandom() < spawnChance) {
                                 spawnObstacle();
                             }
@@ -3313,8 +3323,8 @@
                 }
                 
                 if (obs.type === 'seeker') {
-                    // 追跡者はプレイヤーにじわじわ寄ってくる
-                    let sSpeed = 2.0 * timeFactor;
+                    // 追跡者のスピードを 2.0 -> 3.2 にアップして手強くする
+                    let sSpeed = 3.2 * timeFactor;
                     if (obs.x + obs.width / 2 < player.x + player.width / 2) obs.x += sSpeed;
                     else if (obs.x + obs.width / 2 > player.x + player.width / 2) obs.x -= sSpeed;
                 }
@@ -4077,13 +4087,15 @@
             if (!RANKING_GAS_URL) return;
             try {
                 // GASへはGETリクエストにパラメーターをつけて送信（CORS問題を回避）
+                // 名前(ID込み)を送信
+                let fullName = name + " " + playerID;
                 let url = RANKING_GAS_URL + 
                     '?action=post' +
-                    '&name=' + encodeURIComponent(name) + 
+                    '&name=' + encodeURIComponent(fullName) + 
                     '&score=' + encodeURIComponent(scoreVal);
                 // no-corsモードで送るだけ（レスポンスは読めないが保存はされる）
                 await fetch(url, { mode: 'no-cors' });
-                console.log("Score sent: " + name + " / " + scoreVal);
+                console.log("Score sent: " + fullName + " / " + scoreVal);
             } catch (e) {
                 console.error("Failed to send score:", e);
             }
@@ -4166,7 +4178,8 @@
 
             // 名前
             ctx.font = '16px sans-serif';
-            ctx.fillStyle = (r.name === playerName) ? '#F1C40F' : 'white';
+            // IDが含まれているかチェックしてハイライト
+            ctx.fillStyle = (r.name.includes(playerID)) ? '#F1C40F' : 'white';
             ctx.fillText(r.name || "名無しのダイバー", 85, y);
 
             // スコア
@@ -4177,8 +4190,8 @@
             ctx.textAlign = 'left';
         }
 
-        // 自分の順位が10位以下の場合の表示
-        let userRank = worldRankingData.findIndex(r => r.name === playerName) + 1;
+        // 自分の順位が10位以下の場合の表示 (IDで正確に検索)
+        let userRank = worldRankingData.findIndex(r => r.name.includes(playerID)) + 1;
         if (userRank > 10) {
             let ry = 150 + 10 * 42 + 20;
             ctx.fillStyle = 'rgba(241, 196, 15, 0.2)';
@@ -4187,7 +4200,7 @@
             ctx.font = 'bold 20px "Righteous", sans-serif';
             ctx.fillText(`${userRank}`, 35, ry);
             ctx.font = '16px sans-serif';
-            ctx.fillText(playerName, 85, ry);
+            ctx.fillText(playerName + " " + playerID, 85, ry);
             ctx.textAlign = 'right';
             ctx.font = 'bold 22px "Righteous", sans-serif';
             ctx.fillText(`${worldRankingData[userRank-1].score}秒`, 400 - 35, ry);
@@ -4881,9 +4894,11 @@
                 if (isShadowsEnabled) ctx.shadowBlur = 10;
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-                ctx.font = '18px "Righteous", sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText(`${playerName}さん、ようこそ！`, 400/2, 600/2 - 100);
+                ctx.fillText(`${playerName}さん、ようこそ！`, 400/2, 600/2 - 110);
+                
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.font = '14px sans-serif';
+                ctx.fillText(`ID : ${playerID}`, 400/2, 600/2 - 90);
 
                 ctx.fillStyle = titleColor;
                 ctx.font = '44px "Righteous", sans-serif';
