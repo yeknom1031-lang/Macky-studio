@@ -3984,17 +3984,17 @@
             
             if (editorSelectedIndex !== -1) {
                 // セレクトパネルの背景（重なり防止）
-                let editX = 400 - 245 + 5;
-                ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(400 - 245, 600 - 145, 170, 140);
+                let editX = 205; 
+                ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(200, 600 - 145, 125, 140);
                 let self = editorLevel.objects[editorSelectedIndex];
                 let props = ['幅', '高さ', '回転'];
-                let dist = self.d;
+                let dist = Math.floor(self.d);
                 let vals = [Math.floor(self.w), Math.floor((self.h || 0)), Math.floor((self.rotation || 0) * (180/Math.PI)) + '°'];
                 for (let i = 0; i < 3; i++) {
                     let py = 600 - 140 + i * 35;
                     if (i === 2) {
                         ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.roundRect(editX, py, 50, 30, 5); ctx.fill();
-                        ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.fillText('削除', editX + 25, py + 19);
+                        ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('削除', editX + 25, py + 19);
                         ctx.fillStyle = '#2c3e50'; ctx.beginPath(); ctx.roundRect(editX + 55, py, 35, 30, 5); ctx.fill();
                         ctx.beginPath(); ctx.roundRect(editX + 130, py, 35, 30, 5); ctx.fill();
                         ctx.fillStyle = '#27AE60'; ctx.beginPath(); ctx.roundRect(editX + 92, py, 35, 30, 5); ctx.fill();
@@ -4005,7 +4005,7 @@
                         ctx.fillStyle = '#2c3e50'; ctx.beginPath(); ctx.roundRect(editX, py, 40, 30, 5); ctx.fill();
                         ctx.beginPath(); ctx.roundRect(editX + 125, py, 40, 30, 5); ctx.fill();
                         ctx.fillStyle = '#27AE60'; ctx.beginPath(); ctx.roundRect(editX + 45, py, 75, 30, 5); ctx.fill();
-                        ctx.fillStyle = 'white'; ctx.font = '10px sans-serif'; ctx.fillText('-', editX + 20, py + 19); ctx.fillText('+', editX + 145, py + 19); ctx.fillText(props[i]+':'+vals[i], editX + 82.5, py + 19);
+                        ctx.fillStyle = 'white'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('-', editX + 20, py + 19); ctx.fillText('+', editX + 145, py + 19); ctx.fillText(props[i]+':'+vals[i], editX + 82.5, py + 19);
                     }
                 }
             }
