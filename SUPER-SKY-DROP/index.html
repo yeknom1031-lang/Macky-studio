@@ -737,11 +737,6 @@
         let savedCoins = JSON.parse(localStorage.getItem('superSkyDropCoins')) || {};
         let totalSilverBirds = parseInt(localStorage.getItem('superSkyDropTotalBirds') || '0', 10);
         if (isNaN(totalSilverBirds)) totalSilverBirds = 0; // NaN対策
-
-        // --- シールド（無敵）機能の追加 ---
-        let isShieldActive = false;
-        let shieldTimer = 0; // フレーム単位のカウントダウン
-        const SHIELD_DURATION = 300; // 5秒間（60fps想定）
         
         // 初回ボーナスは廃止しました
         if (!localStorage.getItem('superSkyDropGivenMillion')) {
@@ -754,7 +749,6 @@
         // エンドレスモードのタイマー用
         let lastEndlessPlayTime = parseInt(localStorage.getItem('superSkyDropLastEndlessPlayTime') || '0', 10);
         let ownedSkins = JSON.parse(localStorage.getItem('superSkyDropSkins')) || { 'default': true };
-        ownedSkins['antigravity'] = true; // AIからの贈り物として最初から解禁
         let equippedSkin = localStorage.getItem('superSkyDropEqSkin') || 'default';
         let ownedMantles = JSON.parse(localStorage.getItem('superSkyDropMantles')) || { 'default': true };
         let equippedMantle = localStorage.getItem('superSkyDropEqMantle') || 'default';
@@ -906,8 +900,7 @@
             'orange': '#E67E22',  // オレンジ
             'purple': '#8E44AD',  // 紫
             'chrome': 'gradient_chrome', // 録メッキ
-            'gold_metal': 'gradient_gold', // 金属光沢
-            'antigravity': 'special_antigravity' // アンチグラビティ特製スキン
+            'gold_metal': 'gradient_gold' // 金属光沢
         };
 
         const mantleColors = {
@@ -947,8 +940,7 @@
                 { type: 'skin', name: 'ラブリー・ピンク', price: 10000, id: 'pink', desc: 'とっても可愛いスキン' },
                 { type: 'skin', name: 'ピュア・ホワイト', price: 15000, id: 'white', desc: '輝く白のスキン' },
                 { type: 'skin', name: 'クロム・鎧', price: 30000, id: 'chrome', desc: '鏡のように光る金属スキン！' },
-                { type: 'skin', name: 'ゴールド・メタル', price: 50000, id: 'gold_metal', desc: '最強の金属光沢スキン！' },
-                { type: 'skin', name: 'Antigravity', price: 0, id: 'antigravity', desc: 'AIからの特別な贈り物！' }
+                { type: 'skin', name: 'ゴールド・メタル', price: 50000, id: 'gold_metal', desc: '最強の金属光沢スキン！' }
             ],
             // Tab 1: Mantles
             [
@@ -2622,11 +2614,6 @@
                 possibleTypes.push('blackhole');
             }
 
-            // シールドアイテムの超稀な出現判定 (1%以下)
-            if (seededRandom() < 0.005) {
-                spawnShieldItem();
-            }
-
             // --- 追加: コイン周囲の安全地帯 (クリア不可能な状況を防ぐ) ---
             if (!isEndlessMode) {
                 let coinNearby = false;
@@ -2857,18 +2844,6 @@
             });
         }
 
-        function spawnShieldItem() {
-            obstacles.push({
-                x: seededRandom() * (400 - 30),
-                y: 600 + 50,
-                width: 30,
-                height: 30,
-                type: 'shield',
-                active: true,
-                timer: 0
-            });
-        }
-
         function spawnStar(coinIndex) {
             // 星の配置を右か左かランダムに決める（シード値使用）
             let isLeft = seededRandom() > 0.5;
@@ -3026,15 +3001,6 @@
 
             timeFactor = (isSlowMode && !isEndlessMode) ? slowModeStrength : 1.0;
             let currentFrameSpeedMultiplier = speedMultiplier * timeFactor;
-
-            // シールドタイマーの更新
-            if (isShieldActive) {
-                shieldTimer--;
-                if (shieldTimer <= 0) {
-                    isShieldActive = false;
-                    shieldTimer = 0;
-                }
-            }
 
             if (introTimer > 0) {
                 introTimer -= 0.016; // 60FPS想定で約1秒で0に
@@ -3458,11 +3424,6 @@
                     let dy = (player.y+player.height/2) - (obs.y+obs.height/2);
                     let dist = Math.sqrt(dx*dx + dy*dy);
                     if (dist < 24) collided = true;
-                } else if (obs.type === 'shield') {
-                    let dx = (player.x+player.width/2) - (obs.x+obs.width/2);
-                    let dy = (player.y+player.height/2) - (obs.y+obs.height/2);
-                    let dist = Math.sqrt(dx*dx + dy*dy);
-                    if (dist < 30) collided = true;
                 } else {
                     if (player.x < obs.x + obs.width &&
                         player.x + player.width > obs.x &&
@@ -3482,24 +3443,8 @@
                         starsCollected++;
                         if (obs.coinIndex !== undefined && !isEndlessMode) currentCoins[obs.coinIndex] = true;
                         createParticles(obs.x + obs.width / 2, obs.y + obs.height / 2, '#F1C40F');
-                        playTapSound(); 
-                        obstacles.splice(i, 1); continue;
-                    } else if (obs.type === 'shield') {
-                        isShieldActive = true;
-                        shieldTimer = SHIELD_DURATION;
-                        createParticles(obs.x + obs.width / 2, obs.y + obs.height / 2, '#3498DB');
-                        playClearSound(); // シールド獲得時は特別な音（とりあえずクリア音で代用）
                         obstacles.splice(i, 1); continue;
                     } else {
-                        // シールド有効時は衝突を無効化
-                        if (isShieldActive) {
-                            // 障害物だけ消すか、そのまま通り抜けるか。
-                            // 通り抜ける方が「無敵感」があるのでそのままにするが、
-                            // 弾き飛ばす演出（パーティクル）だけ出す。
-                            createParticles(obs.x + obs.width / 2, obs.y + obs.height / 2, obs.color || '#FFF');
-                            obstacles.splice(i, 1); 
-                            continue; 
-                        }
                         if (isEndlessMode) {
                             lastClearHadBoost = coinBoostMultiplier > 1;
                             let baseReward = Math.floor(endlessTime) * 5;
@@ -3635,17 +3580,6 @@
                 let cg = ctx.createLinearGradient(0,0,player.width,player.height); cg.addColorStop(0,'#fff'); cg.addColorStop(0.5,'#a9a9a9'); cg.addColorStop(1,'#708090'); ctx.fillStyle = cg;
             } else if (skinId === 'gold_metal') {
                 let gg = ctx.createLinearGradient(0,0,player.width,player.height); gg.addColorStop(0,'#ffd700'); gg.addColorStop(1,'#8b6914'); ctx.fillStyle = gg;
-            } else if (skinId === 'antigravity') {
-                // アンチグラビティ用：宇宙のような深みのある特別な色
-                let ag = ctx.createLinearGradient(0,0,player.width,player.height); ag.addColorStop(0,'#1a2a6c'); ag.addColorStop(0.5,'#b21f1f'); ag.addColorStop(1,'#fdbb2d'); ctx.fillStyle = ag;
-                // 星のきらめき
-                ctx.fillRect(0, 0, player.width, player.height);
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-                for(let i=0; i<3; i++) {
-                    let rx = Math.random() * player.width;
-                    let ry = Math.random() * player.height;
-                    ctx.fillRect(rx, ry, 2, 2);
-                }
             } else { ctx.fillStyle = player.color; }
 
             ctx.beginPath();
@@ -3672,40 +3606,7 @@
                 ctx.fillStyle = 'white'; ctx.fillRect(5, eyeY, 8, 8); ctx.fillRect(17, eyeY, 8, 8);
                 ctx.fillStyle = 'black'; ctx.fillRect(7, eyeY + 3, 4, 4); ctx.fillRect(19, eyeY + 3, 4, 4);
             }
-
-            // --- シールドエフェクトの描画 ---
-            if (isShieldActive) {
-                ctx.restore(); // 一旦座標系を戻す（playerの中心に合わせるため）
-                ctx.save();
-                ctx.translate(player.x + player.width/2, player.y + player.height/2);
-                
-                let time = Date.now() / 150;
-                let shieldPulse = 1.0 + Math.sin(time) * 0.1;
-                let shieldAlpha = 0.4 + Math.sin(time * 2) * 0.1;
-                
-                // 外側のバリア
-                ctx.beginPath();
-                ctx.arc(0, 0, player.width * shieldPulse, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(52, 152, 219, ${shieldAlpha})`;
-                ctx.fill();
-                ctx.strokeStyle = `rgba(255, 255, 255, ${shieldAlpha + 0.2})`;
-                ctx.lineWidth = 3;
-                ctx.stroke();
-                
-                // 回転する光の粒子
-                for (let i = 0; i < 4; i++) {
-                    let angle = time + (i / 4) * Math.PI * 2;
-                    let px = Math.cos(angle) * player.width * 1.1;
-                    let py = Math.sin(angle) * player.width * 1.1;
-                    ctx.fillStyle = 'white';
-                    ctx.beginPath();
-                    ctx.arc(px, py, 4, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                ctx.restore();
-            } else {
-                ctx.restore();
-            }
+            ctx.restore();
         }
 
         function drawHorrorBoss(ctx, chapter) {
@@ -3993,41 +3894,6 @@
         }
         function drawBirdCoin(ctx, x, y, size) { drawStar(ctx, x, y, size, '#BDC3C7'); }
         function drawGoldCoin(ctx, x, y, size) { drawStar(ctx, x, y, size, '#F1C40F'); }
-
-        function drawShieldItem(ctx, x, y, size) {
-            ctx.save(); ctx.translate(x, y);
-            let time = Date.now() / 200;
-            let pulse = (Math.sin(time) + 1) / 2;
-            
-            // 外側の光輪 (青)
-            ctx.globalAlpha = 0.3 * pulse;
-            ctx.fillStyle = '#3498DB';
-            ctx.beginPath(); ctx.arc(0, 0, size * 1.5, 0, Math.PI * 2); ctx.fill();
-            ctx.globalAlpha = 1.0;
-
-            // シールドの形 (六角形っぽく)
-            ctx.fillStyle = '#3498DB';
-            ctx.beginPath();
-            for (let i = 0; i < 6; i++) {
-                let angle = (i / 6) * Math.PI * 2 + (time * 0.1);
-                let r = size * 0.8;
-                ctx.lineTo(Math.cos(angle) * r, Math.sin(angle) * r);
-            }
-            ctx.closePath();
-            ctx.fill();
-            
-            ctx.shadowBlur = 15 + pulse * 10; ctx.shadowColor = '#3498DB';
-            ctx.strokeStyle = 'white'; ctx.lineWidth = 1.5; ctx.stroke();
-            
-            // 中にSの文字
-            ctx.fillStyle = 'white';
-            ctx.font = `bold ${size * 0.8}px sans-serif`;
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('S', 0, 0);
-            
-            ctx.restore();
-        }
 
         function drawEditor() {
             const GRID = 20; const TOTAL = editorLevel.totalDist || 4000; const MAX_SCROLL = 20000;
@@ -4767,8 +4633,6 @@
                         ctx.fillRect(obs.x + obs.width/2 - 2, obs.y, 4, obs.height);
                     } else if (obs.type === 'item') {
                         drawGoldCoin(ctx, obs.x + obs.width/2, obs.y + obs.height/2, 24);
-                    } else if (obs.type === 'shield') {
-                        drawShieldItem(ctx, obs.x + obs.width/2, obs.y + obs.height/2, 24);
                     } else {
                         ctx.fillStyle = 'rgba(255,255,255,0.3)';
                         ctx.fillRect(obs.x, obs.y, obs.width, 5);
