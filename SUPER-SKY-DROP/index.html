@@ -2267,8 +2267,8 @@
                 if (x > 10 && x < 90 && y > 10 && y < 45) {
                     playTapSound(); gameState = 'START'; draw(); return;
                 }
-                // 新規作成ボタン (右上の判定)
-                if (x > 280 && x < 390 && y > 10 && y < 45) {
+                // 新規作成ボタン (右下の大きなボタン)
+                if (x > 260 && x < 390 && y > 520 && y < 580) {
                     playTapSound();
                     let newStageName = `STAGE ${customLevels.length + 1}`;
                     editorLevel = { 
@@ -5845,9 +5845,13 @@
                 ctx.fillStyle = '#555'; ctx.beginPath(); ctx.roundRect(10, 10, 80, 35, 5); ctx.fill();
                 ctx.fillStyle = 'white'; ctx.font = '14px sans-serif'; ctx.fillText('戻る', 50, 33);
 
-                // 右上に新規作成ボタンを追加
-                ctx.fillStyle = '#E67E22'; ctx.beginPath(); ctx.roundRect(280, 10, 110, 35, 5); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.fillText('＋ 新規作成', 335, 33);
+                // 右下に新規作成ボタンを移動 (FABスタイル)
+                ctx.fillStyle = '#E67E22'; 
+                ctx.shadowBlur = 10; ctx.shadowColor = 'rgba(0,0,0,0.5)';
+                ctx.beginPath(); ctx.roundRect(260, 520, 120, 55, 27.5); ctx.fill();
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = 'white'; ctx.font = 'bold 16px sans-serif'; ctx.textAlign = 'center';
+                ctx.fillText('＋作成', 320, 553);
 
                 if (customLevels.length === 0) {
                     ctx.fillStyle = 'white'; ctx.font = '16px sans-serif';
