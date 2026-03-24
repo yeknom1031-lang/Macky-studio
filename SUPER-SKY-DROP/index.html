@@ -3240,6 +3240,8 @@
 
             for (let i = obstacles.length - 1; i >= 0; i--) {
                 let obs = obstacles[i];
+                const pMarginX = 0; // 当たり判定を少し狭くして、ギリギリを通りやすくする
+                const pMarginY = 0; 
                 let collided = false; // Moved declaration here
                 let moveSpeed = 6.0 * currentFrameSpeedMultiplier;
                 if (obs.type === 'fast') {
@@ -3365,9 +3367,6 @@
                     obstacles.splice(i, 1);
                     continue;
                 }
-
-                const pMarginX = 0; // 当たり判定を少し狭くして、ギリギリを通りやすくする（Hの場所を狭くする）
-                const pMarginY = 0; 
 
                 // 起動時の2.5秒間、またはイントロ中、または開始直後は当たり判定を無効にする
                 if (globalOpeningInvincibility > 0 || introTimer > 0 || distance < 100) {
