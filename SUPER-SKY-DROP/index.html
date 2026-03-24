@@ -1557,22 +1557,23 @@
                 // もどる
                 if (y > 350 && y < 400) { playTapSound(); gameState = 'START'; draw(); return; }
             } else if (gameState === 'EDITOR') {
-                // mousedownで選択された直後のclickイベントなら無視する
                 if (justSelectedInMousedown) {
                     justSelectedInMousedown = false;
                     draw(); return;
                 }
                 const GRID = 10;
                 editorLevel.totalDist = editorLevel.totalDist || 4000;
+                
                 if (y < 600 - 150) {
+                    // スクロールバー
                     if (x > 400 - 20) {
                         isScrollbarDragging = true;
                         let ratio = y / (600 - 150);
                         editorScroll = Math.max(0, Math.min(editorLevel.totalDist, ratio * editorLevel.totalDist));
-                        draw();
-                        return;
+                        draw(); return;
                     }
                     if (isEditorDragging) return;
+                    
                     let clickDist = editorScroll + y - 150;
                     let snapX = Math.round(x / GRID) * GRID;
                     clickDist = Math.round(clickDist / GRID) * GRID;
@@ -1585,13 +1586,10 @@
                         }
                     }
                     if (editorSelectedIndex !== -1) {
-                        // すでに選択中の場合、画面のどこをタップしてもまずは「選択解除」のみを行う
                         editorSelectedIndex = -1;
                     } else if (foundIdx !== -1) {
-                        // 未選択の状態でオブジェクトをタップしたなら選択
                         editorSelectedIndex = foundIdx;
                     } else {
-                        // 何も選択されていない状態で空地をタップしたなら新規作成
                         let ow = 60, oh = 20;
                         if (editorSelectedType === 'laser') { ow = 400; snapX = 0; oh = 20; }
                         else if (editorSelectedType === 'item') {
@@ -1610,131 +1608,86 @@
                         editorSelectedIndex = editorLevel.objects.length - 1;
                     }
                 } else {
-                    // 下部パネル操作 (150px内)
+                    // 下部パネル操作 (y > 600 - 150)
                     const categories = [
-                        { name: '障害物', tools: ['normal', 'fast', 'moving', 'large', 'laser', 'seeker', 'fireball'] },
-                        { name: 'アイテム', tools: ['item'] },
+                        { name: '障害物', tools: ['normal', 'fast', 'moving', 'large', 'laser', 'fireball'] },
+                        { name: 'アイテム', tools: ['item', 'warp'] },
                         { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'] }
                     ];
 
-                    let tabW = (400 - 85) / 3;
-                    if (y > 600 - 145 && y < 600 - 110) {
-                        // タブ切り替え
-                        if (x > 10 && x < 400 - 75) {
-                            playTapSound();
+                    // 1. ブロック個別調整パネル (右側: 200〜400)
+                    if (editorSelectedIndex !== -1 && x > 200) {
+                        let self = editorLevel.objects[editorSelectedIndex];
+                        let editX = 205; 
+                        if (y > 600 - 140 && y < 600 - 110) { // 1行目 (幅)
+                            const delta = 10;
+                            if (x > editX && x < editX + 45) { // マイナス
+                                let oldW = self.w; self.w = Math.max(10, self.w - delta);
+                                self.x += (oldW - self.w) / 2; draw(); return;
+                            } else if (x > editX + 115) { // プラス
+                                let oldW = self.w; self.w = Math.min(400, self.w + delta);
+                                self.x += (oldW - self.w) / 2; draw(); return;
+                            }
+                        } else if (y > 600 - 110 && y < 600 - 75) { // 2行目 (高さ)
+                            const delta = 10;
+                            if (x > editX && x < editX + 45) {
+                                let oldH = self.h; self.h = Math.max(10, self.h - delta);
+                                self.d += (oldH - self.h) / 2; draw(); return;
+                            } else if (x > editX + 115) {
+                                let oldH = self.h; self.h = Math.min(200, self.h + delta);
+                                self.d += (oldH - self.h) / 2; draw(); return;
+                            }
+                        } else if (y > 600 - 75 && y < 600 - 30) { // 3行目 (回転/削除)
+                            if (x > editX && x < editX + 50) { // 削除
+                                editorLevel.objects.splice(editorSelectedIndex, 1);
+                                editorSelectedIndex = -1; draw(); return;
+                            } else if (x > editX + 55 && x < editX + 85) { // 回転 -
+                                self.rotation = (self.rotation || 0) - 0.2; draw(); return;
+                            } else if (x > editX + 120) { // 回転 +
+                                self.rotation = (self.rotation || 0) + 0.2; draw(); return;
+                            }
+                        }
+                    }
+
+                    // 2. タブ切り替え (左側: 10〜195)
+                    let tabAreaW = 185;
+                    let tabW = tabAreaW / 3;
+                    if (y > 600 - 145 && y < 600 - 110 && x < 200) {
+                        if (x >= 10 && x <= 10 + tabAreaW) {
                             editorTab = Math.floor((x - 10) / tabW);
                             editorTab = Math.max(0, Math.min(2, editorTab));
+                            playTapSound(); draw(); return;
+                        }
+                    }
+
+                    // 3. ツール選択 (下半分)
+                    let types = categories[editorTab].tools;
+                    for (let i = 0; i < types.length; i++) {
+                        let col = i % 5; let row = Math.floor(i / 5);
+                        let btnX = 10 + col * 55; let btnY = 600 - 110 + row * 45;
+                        if (x > btnX && x < btnX + 50 && y > btnY && y < btnY + 40 && x < 400 - 80) {
+                            playTapSound(); editorSelectedType = types[i];
+                            if (types[i].startsWith('len')) {
+                                let amt = parseInt(types[i].substring(3));
+                                editorLevel.totalDist = Math.max(200, Math.min(20000, (editorLevel.totalDist || 4000) + amt));
+                            } else if (types[i] === 'setBG') {
+                                editorLevel.bgIdx = ((editorLevel.bgIdx || 0) + 1) % 6;
+                                setBGTheme(editorLevel.bgIdx);
+                            } else if (types[i] === 'setTheme') {
+                                editorLevel.bgmThemeIdx = ((editorLevel.bgmThemeIdx || 0) + 1) % 3;
+                            }
                             draw(); return;
                         }
                     }
 
-                    if (y > 600 - 110) {
-                        // ツール選択
-                        let types = categories[editorTab].tools;
-                        for (let i = 0; i < types.length; i++) {
-                            let col = i % 5; let row = Math.floor(i / 5);
-                            let btnX = 10 + col * 55; let btnY = 600 - 110 + row * 45;
-                            if (x > btnX && x < btnX + 50 && y > btnY && y < btnY + 40) {
-                                playTapSound();
-                                editorSelectedType = types[i];
-                                
-                                // 設定系ツールの即時反映
-                                if (types[i].startsWith('len')) {
-                                    let amt = parseInt(types[i].substring(3));
-                                    editorLevel.totalDist = Math.max(200, Math.min(20000, (editorLevel.totalDist || 4000) + amt));
-                                } else if (types[i] === 'setBG') {
-                                    editorLevel.bgIdx = ((editorLevel.bgIdx || 0) + 1) % 6;
-                                    setBGTheme(editorLevel.bgIdx);
-                                } else if (types[i] === 'setTheme') {
-                                    editorLevel.bgmThemeIdx = ((editorLevel.bgmThemeIdx || 0) + 1) % 3;
-                                }
-                                draw(); return;
-                            }
-                        }
-                    }
-
-                    if (editorSelectedIndex !== -1 && x > 400 - 245 && x < 400 - 80) {
-                        // 編集パネルの操作
-                        let self = editorLevel.objects[editorSelectedIndex];
-                        let editX = 400 - 245;
-                        if (y > 600 - 140 && y < 600 - 110) { // 1行目 (幅)
-                            const delta = 10;
-                            if (x < editX + 45) {
-                                let oldW = self.w;
-                                self.w = Math.max(10, self.w - delta);
-                                self.x += (oldW - self.w) / 2; // 中心を維持
-                            }
-                            else if (x > editX + 130) {
-                                let oldW = self.w;
-                                self.w = Math.min(400, self.w + delta);
-                                self.x += (oldW - self.w) / 2; // 中心を維持
-                            }
-                            else editorSelectedIndex = -1;
-                        } else if (y > 600 - 105 && y < 600 - 75) { // 2行目 (高さ)
-                            const delta = 10;
-                            if (x < editX + 45) {
-                                let oldH = self.h;
-                                self.h = Math.max(10, self.h - delta);
-                                self.d += (oldH - self.h) / 2; // 中心を維持
-                            }
-                            else if (x > editX + 130) {
-                                let oldH = self.h;
-                                self.h = Math.min(200, self.h + delta);
-                                self.d += (oldH - self.h) / 2; // 中心を維持
-                            }
-                            else editorSelectedIndex = -1;
-                        } else if (y > 600 - 70 && y < 600 - 40) { // 3行目 (回転 or 削除)
-                            if (x < editX + 50) { editorLevel.objects.splice(editorSelectedIndex, 1); editorSelectedIndex = -1; }
-                            else if (x > editX + 55 && x < editX + 90) { self.rotation = (self.rotation || 0) - 0.2; }
-                            else if (x > editX + 135) { self.rotation = (self.rotation || 0) + 0.2; }
-                            else { editorSelectedIndex = -1; }
-                        }
-                    } else {
-                        // タブ切り替え
-                        if (y > 600 - 145 && y < 600 - 115) {
-                            let tabW = (400 - 85) / 3;
-                            for (let i = 0; i < 3; i++) {
-                                if (x > 10 + i * tabW && x < 10 + (i+1) * tabW) {
-                                    editorTab = i;
-                                    playTapSound();
-                                    draw();
-                                    return;
-                                }
-                            }
-                        }
-
-                        // ツール選択
-                        let types = categories[editorTab].tools;
-                        for(let i=0; i<types.length; i++) {
-                            let col = i % 5; let row = Math.floor(i / 5);
-                            let btnX = 10 + col * 55; let btnY = 600 - 110 + row * 45;
-                            if (x > btnX && x < btnX + 50 && y > btnY && y < btnY + 40) {
-                                if (types[i] === 'len+100') { editorLevel.totalDist = (editorLevel.totalDist || 4000) + 100; playTapSound(); }
-                                else if (types[i] === 'len-100') { editorLevel.totalDist = Math.max(100, (editorLevel.totalDist || 4000) - 100); playTapSound(); }
-                                else if (types[i] === 'len+10') { editorLevel.totalDist = (editorLevel.totalDist || 4000) + 10; playTapSound(); }
-                                else if (types[i] === 'len-10') { editorLevel.totalDist = Math.max(10, (editorLevel.totalDist || 4000) - 10); playTapSound(); }
-                                else if (types[i] === 'setBG') { 
-                                    editorLevel.bgIdx = ((editorLevel.bgIdx || 0) + 1) % themeBgData.length;
-                                    playTapSound();
-                                }
-                                else if (types[i] === 'setTheme') { 
-                                    editorLevel.bgmThemeIdx = ((editorLevel.bgmThemeIdx || 0) + 1) % 10;
-                                    playTapSound();
-                                }
-                                else { editorSelectedType = types[i]; }
-                                draw();
-                            }
-                        }
-                    }
-
+                    // 4. 右端のシステム系 (テスト/戻る)
                     if (x > 400 - 80 && y > 600 - 145) {
                         if (y < 600 - 105) {
-                            autoSaveCustomLevel();
-                            startCustomLevel(JSON.parse(JSON.stringify(editorLevel)));
+                            autoSaveCustomLevel(); startCustomLevel(JSON.parse(JSON.stringify(editorLevel)));
                         } else if (y < 600 - 65) {
-                            autoSaveCustomLevel();
-                            gameState = 'START';
+                            autoSaveCustomLevel(); gameState = 'START';
                         }
+                        draw(); return;
                     }
                 }
                 draw(); return;
