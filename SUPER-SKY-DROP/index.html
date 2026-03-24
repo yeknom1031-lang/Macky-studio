@@ -812,6 +812,8 @@
         let isScrollbarDragging = false;
         let editingCustomIndex = -1; // 現在編集中の自作ステージ番号 (-1は新規)
         let selectedCustomIdx = -1; // アクションメニューで選択されたステージ番号
+        let mouseDownPos = { x: 0, y: 0 }; // 追跡用
+        let isSwipeMode = false; // スワイプ検知
         
         // オープニング用ロゴ画像 (最初のお気に入り画像)
         let openingLogo = new Image();
@@ -1371,6 +1373,11 @@
                     
                     draw();
                 }
+
+                // 移動距離が大きければスワイプとみなす
+                if (!isSwipeMode && Math.hypot(x - mouseDownPos.x, y - mouseDownPos.y) > 10) {
+                    isSwipeMode = true;
+                }
             }
         });
 
@@ -1401,6 +1408,9 @@
             if (gameState === 'EDITOR') {
                 const pos = getMousePos(e);
                 const x = pos.x; const y = pos.y;
+                mouseDownPos = { x, y };
+                isSwipeMode = false; // リセット
+                
                 if (x > 400 - 25 && y < 600 - 150) {
                     isScrollbarDragging = true;
                     let totalDist = editorLevel.totalDist || 4000;
@@ -1557,6 +1567,7 @@
                 // もどる
                 if (y > 350 && y < 400) { playTapSound(); gameState = 'START'; draw(); return; }
             } else if (gameState === 'EDITOR') {
+                if (isSwipeMode) { isSwipeMode = false; return; } // スワイプなら配置しない
                 if (justSelectedInMousedown) {
                     justSelectedInMousedown = false;
                     draw(); return;
