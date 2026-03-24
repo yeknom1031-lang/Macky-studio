@@ -1360,15 +1360,11 @@
             const y = pos.y;
 
             if (gameState === 'EDITOR') {
-                if (x > 400 - 25 && y < 600 - 150) {
-                    isScrollbarDragging = true;
-                    let totalDist = editorLevel.totalDist || 4000;
-                    let ratio = y / (600 - 150);
-                    editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
-                    draw();
-                    return;
-                }
                 if (y < 600 - 150) {
+                    // 背景をクリックした場合：スクロール移動用の基準点設定
+                    window.editorLastTouchY = y;
+                    window.editorLastScroll = editorScroll;
+                    
                     // オブジェクトのクリック判定
                     let foundIdx = -1;
                     let clickDist = editorScroll + y - 150;
@@ -1387,10 +1383,11 @@
                             isObjectDragging = true;
                             justSelectedInMousedown = true; // この後のclickイベントでの誤動作を防ぐ
                         }
-                        draw();
                     } else {
-                        // 空白地点クリック：ここでは何もしない（clickイベント＝handleInteraction に任せる）
+                        // オブジェクトではない場所＝スライド移動開始
+                        isEditorDragging = true; 
                     }
+                    draw();
                 }
             }
         });
@@ -1401,12 +1398,15 @@
             const y = pos.y;
             
             if (gameState === 'EDITOR') {
-                if (isScrollbarDragging) {
-                    let totalDist = editorLevel.totalDist || 4000;
-                    let scrollAreaH = 600 - 150;
-                    let ratio = (y / scrollAreaH);
-                    editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
-                    draw();
+                if (isEditorDragging) {
+                    // 背景のドラッグで自由スクロール
+                    if (window.editorLastTouchY !== undefined) {
+                        let totalDist = editorLevel.totalDist || 4000;
+                        editorScroll -= (y - window.editorLastTouchY) * 1.5;
+                        editorScroll = Math.max(-150, Math.min(totalDist, editorScroll));
+                        window.editorLastTouchY = y;
+                        draw();
+                    }
                 }
                 else if (isObjectDragging && editorSelectedIndex !== -1) {
                     // オブジェクトのドラッグ
@@ -4036,18 +4036,10 @@
                 ctx.textBaseline = 'alphabetic'; 
             }
 
-            // スクロールバーの描画
-            let scrollAreaH = 600 - 150;
-            let totalDistScroll = editorLevel.totalDist || 4000;
-            let handleH = Math.max(30, scrollAreaH * (scrollAreaH / (totalDistScroll + scrollAreaH)));
-            let handleY = (editorScroll / totalDistScroll) * (scrollAreaH - handleH);
-            
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-            ctx.fillRect(400 - 15, 0, 15, scrollAreaH);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-            ctx.beginPath();
-            ctx.roundRect(400 - 12, handleY + 5, 9, handleH - 10, 4);
-            ctx.fill();
+            // スクロールバーの描画（廃止して背景ドラッグへ移行）
+            // let scrollAreaH = 600 - 150;
+            // ... (削除)
+
             
             if (editorSelectedIndex !== -1) {
                 // セレクトパネルの背景（重なり防止）
@@ -4925,6 +4917,7 @@
                 if (isShadowsEnabled) ctx.shadowBlur = 10;
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                ctx.textAlign = 'center';
                 ctx.fillText(`${playerName}さん、ようこそ！`, 400/2, 600/2 - 110);
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
