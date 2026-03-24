@@ -3098,16 +3098,11 @@
                         lastClearHadBoost = false;
                     } else {
                         // チャプター解禁チェック
+                        // チャプタークリア通知のみ（解禁自体はショップで行う）
                         if (currentLevelIndex === 19 && !isChapter2Bought) {
-                            isChapter2Bought = true;
-                            localStorage.setItem('superSkyDropChapter2Unlocked', 'true');
-                            gameState = 'CHAPTER_UNLOCKED';
-                            unlockedDetail = '第2章が解禁されました！\nレベル21〜40が遊べるようになります。';
+                            alert("★おめでとう！第1章をクリアしました★\n第2章を遊ぶには、ショップで「チャプター2」をアンロックしてください！");
                         } else if (currentLevelIndex === 39 && !isChapter3Bought) {
-                            isChapter3Bought = true;
-                            localStorage.setItem('superSkyDropChapter3Unlocked', 'true');
-                            gameState = 'CHAPTER_UNLOCKED';
-                            unlockedDetail = '第3章が解禁されました！\nレベル41〜60が遊べるようになります。';
+                            alert("★おめでとう！第2章をクリアしました★\n第3章を遊ぶには、ショップで「チャプター3」をアンロックしてください！");
                         }
 
                         // 裏ステージクリア報酬：イケメンの目
