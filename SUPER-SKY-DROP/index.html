@@ -3893,12 +3893,32 @@
                         drawGoldCoin(ctx, o.x + o.w/2, screenY + o.h/2, 12);
                     }
                     else if (o.type === 'fireball' || (o.rotation && o.rotation !== 0)) {
+                        // 回転または特殊な物体は中心を軸にして描画
                         ctx.translate(o.x + o.w/2, screenY + o.h/2);
                         ctx.rotate(o.rotation || 0);
-                        ctx.fillStyle = o.color || '#E74C3C';
-                        ctx.beginPath(); ctx.roundRect(-o.w/2, -o.h/2, o.w, o.h, 5); ctx.fill();
+                        
+                        // 選択枠（ハイライト）も回転に追従させる
+                        if (editorSelectedIndex === editorLevel.objects.indexOf(o)) {
+                            ctx.strokeStyle = '#00FFFF'; ctx.setLineDash([5, 5]); ctx.lineWidth = 2;
+                            ctx.strokeRect(-o.w/2 - 2, -o.h/2 - 2, o.w + 4, o.h + 4);
+                            ctx.setLineDash([]); // リセット
+                        }
+
+                        if (o.type === 'fireball') {
+                            ctx.fillStyle = '#E74C3C'; ctx.beginPath(); ctx.arc(0, 0, o.w/2, 0, Math.PI*2); ctx.fill(); 
+                            ctx.fillStyle = '#F1C40F'; ctx.beginPath(); ctx.arc(0, 0, o.w/4, 0, Math.PI*2); ctx.fill();
+                        } else if (o.type === 'laser') {
+                            ctx.strokeStyle = 'red'; ctx.lineWidth = 4; ctx.beginPath(); 
+                            ctx.moveTo(-o.w/2, 0); ctx.lineTo(o.w/2, 0); ctx.stroke();
+                        } else {
+                            ctx.fillStyle = o.color || '#E74C3C';
+                            ctx.beginPath(); ctx.roundRect(-o.w/2, -o.h/2, o.w, o.h, 4); ctx.fill();
+                            if (o.type === 'fast') { ctx.fillStyle='white'; ctx.fillRect(-2, -o.h/2, 4, o.h); }
+                            else if (o.type === 'moving') { ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.fillRect(-o.w/2, -o.h/2+2, 4, o.h-4); ctx.fillRect(o.w/2-4, -o.h/2+2, 4, o.h-4); }
+                        }
                     }
                     else { 
+                        // 回転なしの通常描画
                         ctx.fillStyle = o.color || '#E74C3C';
                         ctx.beginPath(); ctx.roundRect(o.x, screenY, o.w, o.h, 4); ctx.fill();
                         if (o.type === 'fast') { ctx.fillStyle='white'; ctx.fillRect(o.x+o.w/2-2, screenY, 4, o.h); }
@@ -3909,14 +3929,13 @@
                             ctx.fillStyle='rgba(52, 152, 219, 0.3)'; ctx.fill();
                             ctx.fillStyle='white'; ctx.font='bold 8px sans-serif'; ctx.fillText('WARP', o.x+o.w/2, screenY+o.h/2+3);
                         }
-                    }
-
-                    // 選択枠は最後に重ねて描画する
-                    if (editorSelectedIndex === editorLevel.objects.indexOf(o)) {
-                        ctx.strokeStyle = '#00FFFF';
-                        ctx.setLineDash([5, 5]);
-                        ctx.lineWidth = 2;
-                        ctx.strokeRect(o.x - 2, screenY - 2, o.w + 4, o.h + 4);
+                        
+                        // 回転なしの選択枠
+                        if (editorSelectedIndex === editorLevel.objects.indexOf(o)) {
+                            ctx.strokeStyle = '#00FFFF'; ctx.setLineDash([5, 5]); ctx.lineWidth = 2;
+                            ctx.strokeRect(o.x - 2, screenY - 2, o.w + 4, o.h + 4);
+                            ctx.setLineDash([]);
+                        }
                     }
                     ctx.restore();
                 }
