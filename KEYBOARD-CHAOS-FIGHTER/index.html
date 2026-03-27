@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Chaos Fighter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero-bar">
+            <div>
+                <p class="eyebrow">KEYBOARD VS VOCABULARY</p>
+                <h1>KEYBOARD CHAOS FIGHTER</h1>
+                <p class="hero-copy">
+                    文字・数字・記号キーは全部別技。`Tab` で詠唱モードに入り、単語を打ち込むと意味どおりの必殺技が爆発するカオス格ゲー。
+                </p>
+            </div>
+            <div class="hero-actions">
+                <button id="start-button" class="accent-button">BATTLE START</button>
+                <div class="hero-note">デスクトップキーボード推奨 / `Tab` で詠唱 / `Enter` で発動</div>
+            </div>
+        </header>
+
+        <main class="game-layout">
+            <section class="arena-panel">
+                <div class="hud-row top-row">
+                    <div class="fighter-card player-card">
+                        <div class="card-label">PLAYER</div>
+                        <div class="nameplate">YOU</div>
+                        <div class="bar-wrap">
+                            <div class="bar hp-bar"><div id="player-hp-fill" class="fill"></div></div>
+                            <span id="player-hp-text" class="bar-text">1000 / 1000</span>
+                        </div>
+                        <div class="bar-wrap">
+                            <div class="bar meter-bar"><div id="player-meter-fill" class="fill"></div></div>
+                            <span id="player-meter-text" class="bar-text">40 / 100</span>
+                        </div>
+                    </div>
+
+                    <div class="center-panel">
+                        <div id="timer-text" class="timer-text">90</div>
+                        <div id="round-state" class="round-state">PRESS START</div>
+                    </div>
+
+                    <div class="fighter-card cpu-card">
+                        <div class="card-label">CPU</div>
+                        <div class="nameplate">TYPE BREAKER</div>
+                        <div class="bar-wrap">
+                            <div class="bar hp-bar"><div id="cpu-hp-fill" class="fill"></div></div>
+                            <span id="cpu-hp-text" class="bar-text">1000 / 1000</span>
+                        </div>
+                        <div class="bar-wrap">
+                            <div class="bar meter-bar"><div id="cpu-meter-fill" class="fill"></div></div>
+                            <span id="cpu-meter-text" class="bar-text">40 / 100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="arena-canvas" width="1280" height="720" aria-label="Keyboard Chaos Fighter Arena"></canvas>
+
+                <div class="hud-row bottom-row">
+                    <div class="spell-panel glass-card">
+                        <div class="panel-heading">
+                            <span>詠唱モード</span>
+                            <span id="chant-state-pill" class="pill idle">IDLE</span>
+                        </div>
+                        <div class="spell-display">
+                            <span id="spell-preview" class="spell-preview">待機中</span>
+                        </div>
+                        <div class="spell-meta">
+                            <span id="spell-hint">`Tab` で詠唱モードへ</span>
+                            <span id="composition-state">IME: READY</span>
+                        </div>
+                    </div>
+
+                    <div class="log-panel glass-card">
+                        <div class="panel-heading">
+                            <span>Combat Log</span>
+                            <span class="pill info">LIVE</span>
+                        </div>
+                        <ul id="combat-log" class="combat-log"></ul>
+                    </div>
+                </div>
+
+                <div id="end-overlay" class="end-overlay hidden">
+                    <div class="overlay-card">
+                        <p class="eyebrow">ROUND RESULT</p>
+                        <h2 id="end-title">YOU WIN</h2>
+                        <p id="end-message">単語が世界を殴り倒した。</p>
+                        <button id="restart-button" class="accent-button">REMATCH</button>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <section class="glass-card side-section">
+                    <div class="panel-heading">
+                        <span>Key Arsenal</span>
+                        <span class="pill info">ALL LIVE</span>
+                    </div>
+                    <div id="keyboard-grid" class="keyboard-grid"></div>
+                </section>
+
+                <section class="glass-card side-section">
+                    <div class="panel-heading">
+                        <span>Spellbook</span>
+                        <span id="spell-count" class="pill info">0 WORDS</span>
+                    </div>
+                    <div id="spellbook-preview" class="spellbook-preview"></div>
+                </section>
+
+                <section class="glass-card side-section">
+                    <div class="panel-heading">
+                        <span>Controls</span>
+                        <span class="pill info">DESKTOP</span>
+                    </div>
+                    <ul class="control-list">
+                        <li>`文字・数字・記号キー` で通常技</li>
+                        <li>`Tab` で詠唱モード ON/OFF</li>
+                        <li>`Enter` で単語必殺技発動</li>
+                        <li>`Escape` で詠唱中止</li>
+                        <li>`Backspace` で文字削除</li>
+                    </ul>
+                </section>
+            </aside>
+        </main>
+    </div>
+
+    <input id="spell-input" class="spell-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-hidden="true">
+
+    <script src="key-moves.js"></script>
+    <script src="special-lexicon.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
