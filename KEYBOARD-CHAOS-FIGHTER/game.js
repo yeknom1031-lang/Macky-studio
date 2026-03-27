@@ -1431,16 +1431,22 @@ function updateSpellUi() {
         chantStatePill.textContent = game.player?.queuedActionKind === "special" ? "CASTING" : "CHANT";
         spellPreview.textContent = game.spellRaw || "入力待ち...";
         spellHint.textContent = "かな / ローマ字 / 英語 の完全一致で必殺技";
+        spellInput.disabled = false;
+        spellInput.placeholder = "単語を入力して Enter で発動";
     } else if (game.player?.queuedActionKind === "special") {
         chantStatePill.className = "pill casting";
         chantStatePill.textContent = "CASTING";
         spellPreview.textContent = game.player.queuedLabel || "詠唱中";
         spellHint.textContent = "詠唱発動中";
+        spellInput.disabled = true;
+        spellInput.placeholder = "詠唱発動中";
     } else {
         chantStatePill.className = "pill idle";
         chantStatePill.textContent = "IDLE";
         spellPreview.textContent = "待機中";
         spellHint.textContent = "`Tab` で詠唱モードへ";
+        spellInput.disabled = true;
+        spellInput.placeholder = "Tabで詠唱開始。ひらがな / ローマ字 / 英語で入力";
     }
     compositionState.textContent = `IME: ${game.isComposing ? "COMPOSING" : "READY"}`;
 }
@@ -1452,7 +1458,8 @@ function enterChantMode() {
     game.player.isChanting = true;
     game.spellRaw = "";
     spellInput.value = "";
-    spellInput.focus();
+    spellInput.disabled = false;
+    requestAnimationFrame(() => spellInput.focus({ preventScroll: true }));
     addLog("player", "CHANT MODE ON");
     setRoundState("SPELL READY", 1.4);
     updateSpellUi();
@@ -1505,6 +1512,16 @@ function syncSpellRaw() {
     updateSpellUi();
 }
 
+function appendSpellCharacter(char) {
+    spellInput.value += char;
+    syncSpellRaw();
+}
+
+function removeSpellCharacter() {
+    spellInput.value = spellInput.value.slice(0, -1);
+    syncSpellRaw();
+}
+
 function resolveCombatKey(event) {
     if (event.ctrlKey || event.metaKey || event.altKey) return null;
     if (/^Key[A-Z]$/.test(event.code)) {
@@ -1542,7 +1559,17 @@ function handleKeyDown(event) {
             submitSpell();
             return;
         }
-        spellInput.focus();
+        if (event.key === "Backspace" && !game.isComposing && document.activeElement !== spellInput) {
+            event.preventDefault();
+            removeSpellCharacter();
+            return;
+        }
+        if (!event.ctrlKey && !event.metaKey && !event.altKey && event.key.length === 1 && !game.isComposing && document.activeElement !== spellInput) {
+            event.preventDefault();
+            appendSpellCharacter(event.key);
+            return;
+        }
+        spellInput.focus({ preventScroll: true });
         return;
     }
 

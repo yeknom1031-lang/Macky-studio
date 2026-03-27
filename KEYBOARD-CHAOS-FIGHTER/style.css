@@ -312,10 +312,36 @@ h1 {
 
 .spell-preview {
     display: block;
-    min-height: 30px;
+    min-height: 24px;
+    margin-bottom: 12px;
     font-size: 1.3rem;
     font-weight: 900;
     letter-spacing: 0.05em;
+}
+
+.spell-input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px 14px;
+    background: rgba(7, 10, 24, 0.78);
+    color: var(--text);
+    outline: none;
+    transition: border-color 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+}
+
+.spell-input::placeholder {
+    color: rgba(156, 184, 210, 0.78);
+}
+
+.spell-input:focus {
+    border-color: rgba(255, 216, 107, 0.8);
+    box-shadow: 0 0 0 3px rgba(255, 216, 107, 0.15);
+}
+
+.spell-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .spell-meta {
@@ -488,16 +514,6 @@ h1 {
 
 .hidden {
     display: none;
-}
-
-.spell-input {
-    position: fixed;
-    left: -9999px;
-    top: -9999px;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
 }
 
 @media (max-width: 1260px) {
