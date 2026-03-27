@@ -29,6 +29,7 @@ body {
         radial-gradient(circle at top left, rgba(255, 143, 61, 0.22), transparent 28%),
         radial-gradient(circle at bottom right, rgba(53, 242, 255, 0.18), transparent 32%),
         linear-gradient(145deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
+    overflow-x: hidden;
 }
 
 button,
@@ -37,9 +38,10 @@ input {
 }
 
 .page-shell {
-    max-width: 1720px;
-    margin: 0 auto;
-    padding: 24px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 14px;
 }
 
 .hero-bar {
@@ -47,7 +49,8 @@ input {
     justify-content: space-between;
     gap: 24px;
     align-items: flex-end;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
+    padding: 10px 14px 0;
 }
 
 .eyebrow {
@@ -67,10 +70,10 @@ h1 {
 }
 
 .hero-copy {
-    max-width: 860px;
-    margin: 12px 0 0;
+    max-width: 1040px;
+    margin: 8px 0 0;
     color: var(--muted);
-    line-height: 1.7;
+    line-height: 1.55;
 }
 
 .hero-actions {
@@ -105,21 +108,23 @@ h1 {
 }
 
 .game-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.9fr) minmax(320px, 0.95fr);
-    gap: 18px;
+    display: block;
 }
 
 .arena-panel {
     position: relative;
-    padding: 18px;
-    border-radius: 28px;
+    padding: 14px;
+    border-radius: 32px;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
         rgba(8, 12, 25, 0.82);
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
     overflow: hidden;
+}
+
+.battle-fullscreen {
+    min-height: calc(100vh - 28px);
 }
 
 .arena-panel::before {
@@ -140,12 +145,12 @@ h1 {
 .top-row {
     grid-template-columns: 1fr 180px 1fr;
     align-items: center;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
 }
 
 .bottom-row {
     grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
-    margin-top: 16px;
+    margin-top: 10px;
 }
 
 .fighter-card,
@@ -245,7 +250,9 @@ h1 {
 #arena-canvas {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: calc(100vh - 330px);
+    min-height: 520px;
+    max-height: 76vh;
     border-radius: 24px;
     background:
         linear-gradient(180deg, rgba(86, 143, 255, 0.22), rgba(31, 15, 53, 0.22)),
@@ -356,20 +363,27 @@ h1 {
     gap: 18px;
 }
 
+.arena-dock {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(260px, 0.75fr);
+    margin-top: 14px;
+}
+
 .side-section {
     min-height: 0;
 }
 
 .keyboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+    gap: 8px;
+    max-height: 198px;
+    overflow: auto;
 }
 
 .keycap {
-    min-height: 84px;
-    padding: 10px;
-    border-radius: 18px;
+    min-height: 74px;
+    padding: 8px;
+    border-radius: 16px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.06);
     transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
@@ -396,27 +410,29 @@ h1 {
 
 .keycap-name {
     display: block;
-    font-size: 0.82rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    line-height: 1.35;
+    line-height: 1.25;
 }
 
 .keycap-type {
     display: block;
-    margin-top: 6px;
+    margin-top: 4px;
     color: var(--muted);
-    font-size: 0.72rem;
+    font-size: 0.66rem;
 }
 
 .spellbook-preview {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(122px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(114px, 1fr));
+    gap: 8px;
+    max-height: 198px;
+    overflow: auto;
 }
 
 .spell-chip {
-    padding: 10px 12px;
-    border-radius: 16px;
+    padding: 8px 10px;
+    border-radius: 14px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -437,7 +453,7 @@ h1 {
     margin: 0;
     padding-left: 18px;
     color: var(--muted);
-    line-height: 1.8;
+    line-height: 1.65;
 }
 
 .end-overlay {
@@ -485,12 +501,16 @@ h1 {
 }
 
 @media (max-width: 1260px) {
-    .game-layout {
-        grid-template-columns: 1fr;
+    #arena-canvas {
+        height: calc(100vh - 360px);
     }
 
-    .sidebar {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    .arena-dock {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .arena-dock .side-section:last-child {
+        grid-column: 1 / -1;
     }
 }
 
@@ -517,5 +537,11 @@ h1 {
 
     .center-panel {
         order: -1;
+    }
+
+    #arena-canvas {
+        height: auto;
+        min-height: 360px;
+        aspect-ratio: 16 / 9;
     }
 }
