@@ -2,6 +2,7 @@ const canvas = document.getElementById("arena-canvas");
 const ctx = canvas.getContext("2d");
 
 const startButton = document.getElementById("start-button");
+const practiceButton = document.getElementById("practice-button");
 const restartButton = document.getElementById("restart-button");
 const endOverlay = document.getElementById("end-overlay");
 const endTitle = document.getElementById("end-title");
@@ -189,6 +190,7 @@ const STATUS_LABELS = {
 
 const game = {
     state: "ready",
+    mode: "battle",
     timeLeft: ROUND_TIME,
     lastTimestamp: 0,
     player: null,
@@ -369,18 +371,31 @@ function resetRound() {
     game.beams = [];
     game.screenShake = 0;
     game.lastTimestamp = 0;
+    game.player.lastMoveLabel = game.mode === "practice" ? "練習中" : "待機";
+    game.cpu.lastMoveLabel = game.mode === "practice" ? "木人" : "待機";
+    if (game.mode === "practice") {
+        game.timeLeft = Infinity;
+        game.player.meter = 100;
+        game.cpu.meter = 0;
+    }
     exitChantMode("reset", true);
-    setRoundState("打って戦え", 2.6);
+    setRoundState(game.mode === "practice" ? "練習モード" : "打って戦え", 2.6);
     updateHud();
 }
 
-function startGame() {
+function startGame(mode = "battle") {
+    game.mode = mode;
     resetRound();
     game.logs = [];
     renderLogs();
     game.state = "running";
     endOverlay.classList.add("hidden");
-    addLog("system", "対戦開始。通常技でゲージを溜めて、単語必殺技で決めろ。");
+    if (game.mode === "practice") {
+        addLog("system", "練習モード開始。CPUは攻撃しません。時間無制限で自由に試せます。");
+        addLog("system", "ゲージは自動回復します。単語詠唱やキー技を落ち着いて試してください。");
+    } else {
+        addLog("system", "対戦開始。通常技でゲージを溜めて、単語必殺技で決めろ。");
+    }
 }
 
 function finishRound(winner, reason) {
@@ -510,10 +525,11 @@ function counterStrike(defender, attacker, sourceName) {
     defender.invuln = 0.24;
     attacker.hitstun = Math.max(attacker.hitstun, 0.32);
     attacker.vx += (defender.side === "player" ? 1 : -1) * 360;
-    attacker.hp = clamp(attacker.hp - damage, 0, attacker.maxHp);
+    const minHp = game.mode === "practice" ? 1 : 0;
+    attacker.hp = clamp(attacker.hp - damage, minHp, attacker.maxHp);
     createImpact(attacker.x, attacker.y - 80, "#fff1a0", 1.4);
     addLog(defender.side, `${defender.name} が ${sourceName} をカウンター`);
-    if (attacker.hp <= 0) {
+    if (game.mode !== "practice" && attacker.hp <= 0) {
         finishRound(defender, `${defender.name} が見切りカウンターで勝利。`);
     }
 }
@@ -547,7 +563,8 @@ function damageActor(attacker, target, amount, options = {}) {
     }
 
     if (damage > 0) {
-        target.hp = clamp(target.hp - damage, 0, target.maxHp);
+        const minHp = game.mode === "practice" ? 1 : 0;
+        target.hp = clamp(target.hp - damage, minHp, target.maxHp);
         if (!options.dot) {
             target.hitstun = Math.max(target.hitstun, options.hitstun ?? 0.18);
             target.vx += (attacker ? Math.sign(target.x - attacker.x) : (target.side === "player" ? -1 : 1)) * (options.knockback ?? 280);
@@ -569,7 +586,7 @@ function damageActor(attacker, target, amount, options = {}) {
         clearQueuedAction(target, "詠唱中断");
     }
 
-    if (target.hp <= 0) {
+    if (game.mode !== "practice" && target.hp <= 0) {
         const winner = attacker ?? getOpponent(target);
         finishRound(winner, `${winner.name} が ${options.sourceName ?? "一撃"} で勝利。`);
     }
@@ -1397,6 +1414,11 @@ function updateCpuAI(dt) {
     const cpu = game.cpu;
     const player = game.player;
     if (game.state !== "running") return;
+    if (game.mode === "practice") {
+        cpu.aiState = "practice";
+        cpu.vx *= Math.pow(0.0001, dt);
+        return;
+    }
     if (cpu.hitstun > 0 || cpu.queuedAction || cpu.recovery > 0) return;
 
     cpu.aiDecisionTimer -= dt;
@@ -1487,7 +1509,7 @@ function updateHud() {
     cpuHpText.textContent = `${Math.round(cpu.hp)} / ${cpu.maxHp}`;
     playerMeterText.textContent = `${Math.round(player.meter)} / ${player.maxMeter}`;
     cpuMeterText.textContent = `${Math.round(cpu.meter)} / ${cpu.maxMeter}`;
-    timerText.textContent = `${Math.ceil(game.timeLeft)}`;
+    timerText.textContent = game.mode === "practice" ? "∞" : `${Math.ceil(game.timeLeft)}`;
 }
 
 function updateSpellUi() {
@@ -1649,6 +1671,15 @@ function handleKeyDown(event) {
 
 function handleTimer(dt) {
     if (game.state !== "running") return;
+    if (game.mode === "practice") {
+        if (game.stateMessageTimer > 0) {
+            game.stateMessageTimer -= dt;
+            if (game.stateMessageTimer <= 0) {
+                roundState.textContent = game.isChantMode ? "詠唱モード" : "練習中";
+            }
+        }
+        return;
+    }
     game.timeLeft -= dt;
     if (game.stateMessageTimer > 0) {
         game.stateMessageTimer -= dt;
@@ -1888,6 +1919,16 @@ function tick(timestamp) {
     if (game.state === "running") {
         updateFighter(game.player, dt);
         updateFighter(game.cpu, dt);
+        if (game.mode === "practice") {
+            healActor(game.player, dt * 18);
+            healActor(game.cpu, dt * 30);
+            addMeter(game.player, dt * 30);
+            game.cpu.meter = 0;
+            game.cpu.counterWindow = 0;
+            game.cpu.queuedAction = null;
+            game.cpu.queuedActionKind = null;
+            game.cpu.queuedLabel = "";
+        }
         updateProjectiles(dt);
         updateZones(dt);
         updateWalls(dt);
@@ -1923,8 +1964,9 @@ window.addEventListener("mousedown", () => {
     if (game.isChantMode) spellInput.focus();
 });
 
-startButton.addEventListener("click", startGame);
-restartButton.addEventListener("click", startGame);
+startButton.addEventListener("click", () => startGame("battle"));
+practiceButton.addEventListener("click", () => startGame("practice"));
+restartButton.addEventListener("click", () => startGame(game.mode));
 
 buildSpellMap();
 populateKeyboardGrid();
