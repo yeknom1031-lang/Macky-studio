@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 
 const startButton = document.getElementById("start-button");
 const practiceButton = document.getElementById("practice-button");
+const fullscreenButton = document.getElementById("fullscreen-button");
 const restartButton = document.getElementById("restart-button");
 const endOverlay = document.getElementById("end-overlay");
 const endTitle = document.getElementById("end-title");
@@ -1693,6 +1694,24 @@ function handleTimer(dt) {
     }
 }
 
+async function toggleFullscreen() {
+    try {
+        if (!document.fullscreenElement) {
+            await document.documentElement.requestFullscreen();
+        } else {
+            await document.exitFullscreen();
+        }
+    } catch (error) {
+        addLog("system", "全画面表示に切り替えられませんでした。");
+        console.error(error);
+    }
+}
+
+function syncFullscreenButton() {
+    if (!fullscreenButton) return;
+    fullscreenButton.textContent = document.fullscreenElement ? "全画面終了" : "全画面表示";
+}
+
 function drawBackground() {
     const gradient = ctx.createLinearGradient(0, 0, 0, HEIGHT);
     gradient.addColorStop(0, "#182b49");
@@ -1966,7 +1985,9 @@ window.addEventListener("mousedown", () => {
 
 startButton.addEventListener("click", () => startGame("battle"));
 practiceButton.addEventListener("click", () => startGame("practice"));
+fullscreenButton.addEventListener("click", toggleFullscreen);
 restartButton.addEventListener("click", () => startGame(game.mode));
+document.addEventListener("fullscreenchange", syncFullscreenButton);
 
 buildSpellMap();
 populateKeyboardGrid();
@@ -1978,5 +1999,6 @@ if (game.duplicateAliases.length) {
     addLog("system", `必殺技辞書を読み込みました: ${SPECIAL_LEXICON.length}語`);
 }
 updateSpellUi();
+syncFullscreenButton();
 render();
 requestAnimationFrame(tick);
