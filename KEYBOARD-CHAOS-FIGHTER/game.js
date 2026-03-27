@@ -1,13 +1,22 @@
 const canvas = document.getElementById("arena-canvas");
 const ctx = canvas.getContext("2d");
 
+const preFightOverlay = document.getElementById("pre-fight-overlay");
+const matchHud = document.getElementById("match-hud");
+const pauseOverlay = document.getElementById("pause-overlay");
 const startButton = document.getElementById("start-button");
 const practiceButton = document.getElementById("practice-button");
 const fullscreenButton = document.getElementById("fullscreen-button");
+const pauseFullscreenButton = document.getElementById("pause-fullscreen-button");
+const pauseButton = document.getElementById("pause-button");
+const resumeButton = document.getElementById("resume-button");
 const restartButton = document.getElementById("restart-button");
 const endOverlay = document.getElementById("end-overlay");
 const endTitle = document.getElementById("end-title");
 const endMessage = document.getElementById("end-message");
+const pauseTitle = document.getElementById("pause-title");
+const pauseSubtitle = document.getElementById("pause-subtitle");
+const pauseModeText = document.getElementById("pause-mode-text");
 const timerText = document.getElementById("timer-text");
 const roundState = document.getElementById("round-state");
 const chantStatePill = document.getElementById("chant-state-pill");
@@ -16,6 +25,7 @@ const spellHint = document.getElementById("spell-hint");
 const compositionState = document.getElementById("composition-state");
 const spellInput = document.getElementById("spell-input");
 const combatLog = document.getElementById("combat-log");
+const compactLog = document.getElementById("compact-log");
 const keyboardGrid = document.getElementById("keyboard-grid");
 const spellbookPreview = document.getElementById("spellbook-preview");
 const spellCount = document.getElementById("spell-count");
@@ -191,6 +201,7 @@ const STATUS_LABELS = {
 
 const game = {
     state: "ready",
+    uiState: "menu",
     mode: "battle",
     timeLeft: ROUND_TIME,
     lastTimestamp: 0,
@@ -276,19 +287,69 @@ function addLog(side, text) {
     renderLogs();
 }
 
+function createLogElement(entry) {
+    const li = document.createElement("li");
+    li.className = entry.side;
+    li.textContent = entry.text;
+    return li;
+}
+
+function renderCompactLog() {
+    compactLog.innerHTML = "";
+    const compactEntries = game.logs.slice(0, 2);
+    compactEntries.forEach((entry) => {
+        compactLog.appendChild(createLogElement(entry));
+    });
+}
+
 function renderLogs() {
     combatLog.innerHTML = "";
     game.logs.forEach((entry) => {
-        const li = document.createElement("li");
-        li.className = entry.side;
-        li.textContent = entry.text;
-        combatLog.appendChild(li);
+        combatLog.appendChild(createLogElement(entry));
     });
+    renderCompactLog();
 }
 
 function setRoundState(text, timer = 2.2) {
     roundState.textContent = text;
     game.stateMessageTimer = timer;
+}
+
+function syncUiVisibility() {
+    document.body.dataset.uiState = game.uiState;
+    document.body.dataset.mode = game.mode;
+    preFightOverlay.classList.toggle("hidden", game.uiState !== "menu");
+    matchHud.classList.toggle("hidden", !["match", "pause", "result"].includes(game.uiState));
+    pauseOverlay.classList.toggle("hidden", game.uiState !== "pause");
+    endOverlay.classList.toggle("hidden", game.uiState !== "result");
+}
+
+function updatePauseCopy() {
+    pauseModeText.textContent = game.mode === "practice" ? "練習モード" : "対戦モード";
+    if (game.mode === "practice") {
+        pauseTitle.textContent = "練習メニュー";
+        pauseSubtitle.textContent = "木人相手に、技や詠唱を落ち着いて確認できます。";
+    } else {
+        pauseTitle.textContent = "一時停止";
+        pauseSubtitle.textContent = "試合を止めて、技表や必殺語録を確認できます。";
+    }
+}
+
+function setUiState(nextState) {
+    game.uiState = nextState;
+    if (game.uiState === "pause") {
+        spellInput.blur();
+    } else if (game.uiState === "match" && game.isChantMode) {
+        requestAnimationFrame(() => spellInput.focus({ preventScroll: true }));
+    }
+    updatePauseCopy();
+    syncUiVisibility();
+}
+
+function togglePauseOverlay(forceState = null) {
+    if (game.state !== "running") return;
+    const shouldOpen = forceState ?? game.uiState !== "pause";
+    setUiState(shouldOpen ? "pause" : "match");
 }
 
 function normalizeSpellInput(raw) {
@@ -382,6 +443,7 @@ function resetRound() {
     exitChantMode("reset", true);
     setRoundState(game.mode === "practice" ? "練習モード" : "打って戦え", 2.6);
     updateHud();
+    updatePauseCopy();
 }
 
 function startGame(mode = "battle") {
@@ -390,7 +452,7 @@ function startGame(mode = "battle") {
     game.logs = [];
     renderLogs();
     game.state = "running";
-    endOverlay.classList.add("hidden");
+    setUiState("match");
     if (game.mode === "practice") {
         addLog("system", "練習モード開始。CPUは攻撃しません。時間無制限で自由に試せます。");
         addLog("system", "ゲージは自動回復します。単語詠唱やキー技を落ち着いて試してください。");
@@ -403,7 +465,6 @@ function finishRound(winner, reason) {
     if (game.state !== "running") return;
     game.state = "finished";
     exitChantMode("finish", true);
-    endOverlay.classList.remove("hidden");
     if (winner.side === "player") {
         endTitle.textContent = "あなたの勝ち";
         endMessage.textContent = reason;
@@ -413,6 +474,7 @@ function finishRound(winner, reason) {
     }
     setRoundState("対戦終了", 99);
     addLog("system", reason);
+    setUiState("result");
 }
 
 function getOpponent(actor) {
@@ -1514,7 +1576,14 @@ function updateHud() {
 }
 
 function updateSpellUi() {
-    if (game.isChantMode) {
+    if (game.uiState === "pause") {
+        chantStatePill.className = "pill idle";
+        chantStatePill.textContent = "停止中";
+        spellPreview.textContent = game.spellRaw || "一時停止中";
+        spellHint.textContent = "`Esc` で試合へ戻る";
+        spellInput.disabled = true;
+        spellInput.placeholder = "一時停止中";
+    } else if (game.isChantMode) {
         chantStatePill.className = "pill active";
         chantStatePill.textContent = game.player?.queuedActionKind === "special" ? "発動中" : "詠唱中";
         spellPreview.textContent = game.spellRaw || "入力待ち...";
@@ -1624,6 +1693,14 @@ function resolveCombatKey(event) {
 }
 
 function handleKeyDown(event) {
+    if (game.uiState === "pause") {
+        if (event.key === "Escape") {
+            event.preventDefault();
+            togglePauseOverlay(false);
+        }
+        return;
+    }
+
     if (event.repeat && !game.isChantMode) return;
 
     if (event.key === "Tab") {
@@ -1662,6 +1739,12 @@ function handleKeyDown(event) {
     }
 
     if (game.state !== "running" || event.isComposing) return;
+
+    if (event.key === "Escape") {
+        event.preventDefault();
+        togglePauseOverlay(true);
+        return;
+    }
 
     const combatKey = resolveCombatKey(event);
     if (combatKey) {
@@ -1708,8 +1791,9 @@ async function toggleFullscreen() {
 }
 
 function syncFullscreenButton() {
-    if (!fullscreenButton) return;
-    fullscreenButton.textContent = document.fullscreenElement ? "全画面終了" : "全画面表示";
+    const label = document.fullscreenElement ? "全画面終了" : "全画面表示";
+    if (fullscreenButton) fullscreenButton.textContent = label;
+    if (pauseFullscreenButton) pauseFullscreenButton.textContent = label;
 }
 
 function drawBackground() {
@@ -1935,7 +2019,7 @@ function tick(timestamp) {
     const dt = Math.min(0.033, (timestamp - game.lastTimestamp) / 1000);
     game.lastTimestamp = timestamp;
 
-    if (game.state === "running") {
+    if (game.state === "running" && game.uiState !== "pause") {
         updateFighter(game.player, dt);
         updateFighter(game.cpu, dt);
         if (game.mode === "practice") {
@@ -1959,6 +2043,9 @@ function tick(timestamp) {
         handleTimer(dt);
         updateHud();
         updateSpellUi();
+    } else if (game.state === "running") {
+        updateHud();
+        updateSpellUi();
     } else {
         updateParticles(dt);
         updateBeams(dt);
@@ -1980,12 +2067,15 @@ spellInput.addEventListener("compositionend", () => {
 
 window.addEventListener("keydown", handleKeyDown);
 window.addEventListener("mousedown", () => {
-    if (game.isChantMode) spellInput.focus();
+    if (game.isChantMode && game.uiState === "match") spellInput.focus();
 });
 
 startButton.addEventListener("click", () => startGame("battle"));
 practiceButton.addEventListener("click", () => startGame("practice"));
 fullscreenButton.addEventListener("click", toggleFullscreen);
+pauseFullscreenButton.addEventListener("click", toggleFullscreen);
+pauseButton.addEventListener("click", () => togglePauseOverlay(true));
+resumeButton.addEventListener("click", () => togglePauseOverlay(false));
 restartButton.addEventListener("click", () => startGame(game.mode));
 document.addEventListener("fullscreenchange", syncFullscreenButton);
 
@@ -1993,6 +2083,7 @@ buildSpellMap();
 populateKeyboardGrid();
 populateSpellbookPreview();
 resetRound();
+setUiState("menu");
 if (game.duplicateAliases.length) {
     addLog("system", `必殺技の別名に重複があります: ${game.duplicateAliases.length}件`);
 } else {
@@ -2000,5 +2091,7 @@ if (game.duplicateAliases.length) {
 }
 updateSpellUi();
 syncFullscreenButton();
+syncUiVisibility();
+renderCompactLog();
 render();
 requestAnimationFrame(tick);

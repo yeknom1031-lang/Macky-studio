@@ -16,128 +16,176 @@
                 <div class="stage-frame">
                     <canvas id="arena-canvas" width="1280" height="720" aria-label="キーボードカオスファイターの対戦画面"></canvas>
 
-                    <div class="scene-header">
-                        <div class="brand-lockup">
+                    <div id="pre-fight-overlay" class="pre-fight-overlay">
+                        <div class="menu-card">
                             <p class="eyebrow">キーと単語の乱戦格闘</p>
                             <h1>キーボードカオスファイター</h1>
                             <p class="hero-copy">
-                                `Tab` で詠唱、`Enter` で必殺技。画面は対戦優先、補助情報は必要な時だけ開けます。
+                                キーで通常技、単語で必殺技。試合中の画面は対戦を最優先にして、補助情報は必要な時だけ開きます。
                             </p>
-                        </div>
-                        <div class="hero-actions">
-                            <div class="hero-buttons">
+                            <div class="menu-actions">
                                 <button id="start-button" class="accent-button">対戦開始</button>
                                 <button id="practice-button" class="subtle-button">練習モード</button>
                                 <button id="fullscreen-button" class="subtle-button">全画面表示</button>
                             </div>
-                            <div class="hero-note">キーボード推奨 / `Tab` で詠唱 / `Enter` で発動 / 練習モードは木人相手</div>
-                        </div>
-                    </div>
-
-                    <div class="hud-row top-row">
-                        <div class="fighter-card player-card">
-                            <div class="fighter-topline">
-                                <div class="card-label">プレイヤー</div>
-                                <div class="nameplate">あなた</div>
-                            </div>
-                            <div class="bar-wrap hp-wrap">
-                                <div class="bar hp-bar"><div id="player-hp-fill" class="fill"></div></div>
-                                <span id="player-hp-text" class="bar-text">1000 / 1000</span>
-                            </div>
-                            <div class="bar-wrap meter-wrap">
-                                <div class="bar meter-bar"><div id="player-meter-fill" class="fill"></div></div>
-                                <span id="player-meter-text" class="bar-text">40 / 100</span>
-                            </div>
-                        </div>
-
-                        <div class="center-panel">
-                            <div class="timer-shell">
-                                <div id="timer-text" class="timer-text">90</div>
-                            </div>
-                            <div id="round-state" class="round-state">開始を押してください</div>
-                        </div>
-
-                        <div class="fighter-card cpu-card">
-                            <div class="fighter-topline">
-                                <div class="card-label">CPU</div>
-                                <div class="nameplate">キー砕き</div>
-                            </div>
-                            <div class="bar-wrap hp-wrap">
-                                <div class="bar hp-bar"><div id="cpu-hp-fill" class="fill"></div></div>
-                                <span id="cpu-hp-text" class="bar-text">1000 / 1000</span>
-                            </div>
-                            <div class="bar-wrap meter-wrap">
-                                <div class="bar meter-bar"><div id="cpu-meter-fill" class="fill"></div></div>
-                                <span id="cpu-meter-text" class="bar-text">40 / 100</span>
+                            <div class="menu-strip">
+                                <span>キーボード推奨</span>
+                                <span>`Tab` で詠唱</span>
+                                <span>`Enter` で必殺技</span>
+                                <span>練習モードは木人相手</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="hud-row bottom-row">
-                        <div class="spell-panel glass-card">
-                            <div class="panel-heading">
-                                <span>詠唱モード</span>
-                                <span id="chant-state-pill" class="pill idle">待機中</span>
+                    <div id="match-hud" class="match-hud hidden">
+                        <div class="hud-top">
+                            <div class="fighter-hud player-hud">
+                                <div class="fighter-meta">
+                                    <span class="card-label">PLAYER</span>
+                                    <span class="nameplate">あなた</span>
+                                </div>
+                                <div class="life-track">
+                                    <div class="bar hp-bar"><div id="player-hp-fill" class="fill"></div></div>
+                                    <span id="player-hp-text" class="bar-text">1000 / 1000</span>
+                                </div>
+                                <div class="power-track">
+                                    <span class="meter-label">EX</span>
+                                    <div class="bar meter-bar"><div id="player-meter-fill" class="fill"></div></div>
+                                    <span id="player-meter-text" class="bar-text">40 / 100</span>
+                                </div>
                             </div>
-                            <div class="spell-display">
-                                <span id="spell-preview" class="spell-preview">待機中</span>
-                                <input id="spell-input" class="spell-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Tabで詠唱開始。ひらがな / ローマ字 / 英語で入力">
+
+                            <div class="center-hud">
+                                <button id="pause-button" class="hud-button" type="button">一時停止</button>
+                                <div class="timer-shell">
+                                    <div id="timer-text" class="timer-text">90</div>
+                                </div>
+                                <div id="round-state" class="round-state">開始を押してください</div>
                             </div>
-                            <div class="spell-meta">
-                                <span id="spell-hint">`Tab` で詠唱モードへ</span>
-                                <span id="composition-state">IME: 準備完了</span>
+
+                            <div class="fighter-hud cpu-hud">
+                                <div class="fighter-meta">
+                                    <span class="card-label">CPU</span>
+                                    <span class="nameplate">キー砕き</span>
+                                </div>
+                                <div class="life-track">
+                                    <div class="bar hp-bar"><div id="cpu-hp-fill" class="fill"></div></div>
+                                    <span id="cpu-hp-text" class="bar-text">1000 / 1000</span>
+                                </div>
+                                <div class="power-track">
+                                    <span class="meter-label">EX</span>
+                                    <div class="bar meter-bar"><div id="cpu-meter-fill" class="fill"></div></div>
+                                    <span id="cpu-meter-text" class="bar-text">40 / 100</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="log-panel glass-card">
-                            <div class="panel-heading">
-                                <span>戦闘ログ</span>
-                                <span class="pill info">記録中</span>
+                        <div class="hud-bottom">
+                            <div class="compact-log-wrap">
+                                <div class="compact-log-heading">最新ログ</div>
+                                <ul id="compact-log" class="compact-log"></ul>
                             </div>
-                            <ul id="combat-log" class="combat-log"></ul>
+
+                            <div class="command-band">
+                                <div class="command-main">
+                                    <div class="command-header">
+                                        <span class="command-title">詠唱</span>
+                                        <span id="chant-state-pill" class="pill idle">待機中</span>
+                                    </div>
+                                    <span id="spell-preview" class="spell-preview">待機中</span>
+                                    <input id="spell-input" class="spell-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Tabで詠唱開始。ひらがな / ローマ字 / 英語で入力">
+                                </div>
+                                <div class="command-meta">
+                                    <span id="spell-hint">`Tab` で詠唱モードへ</span>
+                                    <span id="composition-state">IME: 準備完了</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <aside class="utility-hub">
-                        <details class="utility-drawer utility-drawer-wide">
-                            <summary class="utility-summary">キー技一覧</summary>
-                            <section class="drawer-panel glass-card side-section">
-                                <div class="panel-heading">
-                                    <span>キー技一覧</span>
-                                    <span class="pill info">使用可能</span>
+                    <div id="pause-overlay" class="pause-overlay hidden">
+                        <div class="pause-card">
+                            <div class="pause-header">
+                                <div>
+                                    <p class="eyebrow">ポーズ / ヘルプ</p>
+                                    <h2 id="pause-title">一時停止</h2>
+                                    <p id="pause-subtitle" class="pause-copy">試合を止めて、技表や必殺語録を確認できます。</p>
                                 </div>
-                                <div id="keyboard-grid" class="keyboard-grid"></div>
-                            </section>
-                        </details>
+                                <div class="pause-actions">
+                                    <button id="resume-button" class="accent-button" type="button">対戦に戻る</button>
+                                    <button id="pause-fullscreen-button" class="subtle-button" type="button">全画面表示</button>
+                                </div>
+                            </div>
 
-                        <details class="utility-drawer utility-drawer-wide">
-                            <summary class="utility-summary">必殺語録</summary>
-                            <section class="drawer-panel glass-card side-section">
-                                <div class="panel-heading">
-                                    <span>必殺語録</span>
-                                    <span id="spell-count" class="pill info">0語</span>
+                            <div class="pause-summary">
+                                <div class="summary-chip">
+                                    <span class="summary-label">モード</span>
+                                    <strong id="pause-mode-text">対戦</strong>
                                 </div>
-                                <div id="spellbook-preview" class="spellbook-preview"></div>
-                            </section>
-                        </details>
+                                <div class="summary-chip">
+                                    <span class="summary-label">操作</span>
+                                    <strong>`Esc` で閉じる</strong>
+                                </div>
+                                <div class="summary-chip">
+                                    <span class="summary-label">詠唱例</span>
+                                    <strong>`fire` / `ice` / `cat` / `wall`</strong>
+                                </div>
+                            </div>
 
-                        <details class="utility-drawer utility-drawer-narrow">
-                            <summary class="utility-summary">操作方法</summary>
-                            <section class="drawer-panel glass-card side-section">
-                                <div class="panel-heading">
-                                    <span>操作方法</span>
-                                    <span class="pill info">キーボード向け</span>
-                                </div>
-                                <ul class="control-list">
-                                    <li>`文字・数字・記号キー` で通常技</li>
-                                    <li>`Tab` で詠唱モード ON/OFF</li>
-                                    <li>`Enter` で単語必殺技発動</li>
-                                    <li>`Escape` で詠唱中止</li>
-                                    <li>`Backspace` で文字削除</li>
-                                </ul>
-                            </section>
-                        </details>
-                    </aside>
+                            <div class="pause-grid">
+                                <section class="pause-panel">
+                                    <div class="panel-heading">
+                                        <span>キー技一覧</span>
+                                        <span class="pill info">使用可能</span>
+                                    </div>
+                                    <div id="keyboard-grid" class="keyboard-grid"></div>
+                                </section>
+
+                                <section class="pause-panel">
+                                    <div class="panel-heading">
+                                        <span>必殺語録</span>
+                                        <span id="spell-count" class="pill info">0語</span>
+                                    </div>
+                                    <div id="spellbook-preview" class="spellbook-preview"></div>
+                                </section>
+
+                                <section class="pause-panel pause-panel-narrow">
+                                    <div class="panel-heading">
+                                        <span>操作方法</span>
+                                        <span class="pill info">試合中は最小HUD</span>
+                                    </div>
+                                    <ul class="control-list">
+                                        <li>`文字・数字・記号キー` で通常技</li>
+                                        <li>`Tab` で詠唱モード ON / OFF</li>
+                                        <li>`Enter` で単語必殺技発動</li>
+                                        <li>`Escape` で詠唱中止 / ポーズ開閉</li>
+                                        <li>`Backspace` で文字削除</li>
+                                    </ul>
+                                    <div class="practice-tips">
+                                        <div class="panel-heading mini-heading">
+                                            <span>練習向けおすすめ単語</span>
+                                        </div>
+                                        <div class="tips-row">
+                                            <span class="tip-chip">ほのお / fire</span>
+                                            <span class="tip-chip">こおり / ice</span>
+                                            <span class="tip-chip">ねこ / cat</span>
+                                            <span class="tip-chip">かべ / wall</span>
+                                            <span class="tip-chip">すし / sushi</span>
+                                            <span class="tip-chip">かみなり / thunder</span>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="pause-panel pause-panel-narrow">
+                                    <div class="panel-heading">
+                                        <span>戦闘履歴</span>
+                                        <span class="pill info">詳細</span>
+                                    </div>
+                                    <ul id="combat-log" class="combat-log pause-log"></ul>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
 
                     <div id="end-overlay" class="end-overlay hidden">
                         <div class="overlay-card">
