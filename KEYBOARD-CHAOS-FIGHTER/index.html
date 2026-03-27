@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keyboard Chaos Fighter</title>
+    <title>キーボードカオスファイター</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -13,15 +13,15 @@
     <div class="page-shell">
         <header class="hero-bar">
             <div>
-                <p class="eyebrow">KEYBOARD VS VOCABULARY</p>
-                <h1>KEYBOARD CHAOS FIGHTER</h1>
+                <p class="eyebrow">キーと単語の乱戦格闘</p>
+                <h1>キーボードカオスファイター</h1>
                 <p class="hero-copy">
                     文字・数字・記号キーは全部別技。`Tab` で詠唱モードに入り、単語を打ち込むと意味どおりの必殺技が爆発するカオス格ゲー。
                 </p>
             </div>
             <div class="hero-actions">
-                <button id="start-button" class="accent-button">BATTLE START</button>
-                <div class="hero-note">デスクトップキーボード推奨 / `Tab` で詠唱 / `Enter` で発動</div>
+                <button id="start-button" class="accent-button">対戦開始</button>
+                <div class="hero-note">キーボード推奨 / `Tab` で詠唱 / `Enter` で発動</div>
             </div>
         </header>
 
@@ -29,8 +29,8 @@
             <section class="arena-panel battle-fullscreen">
                 <div class="hud-row top-row">
                     <div class="fighter-card player-card">
-                        <div class="card-label">PLAYER</div>
-                        <div class="nameplate">YOU</div>
+                        <div class="card-label">プレイヤー</div>
+                        <div class="nameplate">あなた</div>
                         <div class="bar-wrap">
                             <div class="bar hp-bar"><div id="player-hp-fill" class="fill"></div></div>
                             <span id="player-hp-text" class="bar-text">1000 / 1000</span>
@@ -43,12 +43,12 @@
 
                     <div class="center-panel">
                         <div id="timer-text" class="timer-text">90</div>
-                        <div id="round-state" class="round-state">PRESS START</div>
+                        <div id="round-state" class="round-state">開始を押してください</div>
                     </div>
 
                     <div class="fighter-card cpu-card">
                         <div class="card-label">CPU</div>
-                        <div class="nameplate">TYPE BREAKER</div>
+                        <div class="nameplate">キー砕き</div>
                         <div class="bar-wrap">
                             <div class="bar hp-bar"><div id="cpu-hp-fill" class="fill"></div></div>
                             <span id="cpu-hp-text" class="bar-text">1000 / 1000</span>
@@ -60,13 +60,13 @@
                     </div>
                 </div>
 
-                <canvas id="arena-canvas" width="1280" height="720" aria-label="Keyboard Chaos Fighter Arena"></canvas>
+                <canvas id="arena-canvas" width="1280" height="720" aria-label="キーボードカオスファイターの対戦画面"></canvas>
 
                 <div class="hud-row bottom-row">
                     <div class="spell-panel glass-card">
                         <div class="panel-heading">
                             <span>詠唱モード</span>
-                            <span id="chant-state-pill" class="pill idle">IDLE</span>
+                            <span id="chant-state-pill" class="pill idle">待機中</span>
                         </div>
                         <div class="spell-display">
                             <span id="spell-preview" class="spell-preview">待機中</span>
@@ -74,14 +74,14 @@
                         </div>
                         <div class="spell-meta">
                             <span id="spell-hint">`Tab` で詠唱モードへ</span>
-                            <span id="composition-state">IME: READY</span>
+                            <span id="composition-state">IME: 準備完了</span>
                         </div>
                     </div>
 
                     <div class="log-panel glass-card">
                         <div class="panel-heading">
-                            <span>Combat Log</span>
-                            <span class="pill info">LIVE</span>
+                            <span>戦闘ログ</span>
+                            <span class="pill info">記録中</span>
                         </div>
                         <ul id="combat-log" class="combat-log"></ul>
                     </div>
@@ -89,34 +89,34 @@
 
                 <div id="end-overlay" class="end-overlay hidden">
                     <div class="overlay-card">
-                        <p class="eyebrow">ROUND RESULT</p>
-                        <h2 id="end-title">YOU WIN</h2>
+                        <p class="eyebrow">対戦結果</p>
+                        <h2 id="end-title">あなたの勝ち</h2>
                         <p id="end-message">単語が世界を殴り倒した。</p>
-                        <button id="restart-button" class="accent-button">REMATCH</button>
+                        <button id="restart-button" class="accent-button">もう一戦</button>
                     </div>
                 </div>
 
                 <aside class="sidebar arena-dock">
                     <section class="glass-card side-section">
                     <div class="panel-heading">
-                        <span>Key Arsenal</span>
-                        <span class="pill info">ALL LIVE</span>
+                        <span>キー技一覧</span>
+                        <span class="pill info">使用可能</span>
                     </div>
                     <div id="keyboard-grid" class="keyboard-grid"></div>
                     </section>
 
                     <section class="glass-card side-section">
                     <div class="panel-heading">
-                        <span>Spellbook</span>
-                        <span id="spell-count" class="pill info">0 WORDS</span>
+                        <span>必殺語録</span>
+                        <span id="spell-count" class="pill info">0語</span>
                     </div>
                     <div id="spellbook-preview" class="spellbook-preview"></div>
                     </section>
 
                     <section class="glass-card side-section">
                     <div class="panel-heading">
-                        <span>Controls</span>
-                        <span class="pill info">DESKTOP</span>
+                        <span>操作方法</span>
+                        <span class="pill info">キーボード向け</span>
                     </div>
                     <ul class="control-list">
                         <li>`文字・数字・記号キー` で通常技</li>

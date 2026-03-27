@@ -122,6 +122,71 @@ const STATUS_DURATION = {
     soak: 3.4
 };
 
+const MOVE_TYPE_LABELS = {
+    jab: "打撃",
+    slash: "斬撃",
+    rush: "突進",
+    launcher: "打ち上げ",
+    low: "足払い",
+    wave: "衝撃波",
+    guardBreak: "崩し",
+    slide: "滑走",
+    hop: "跳躍",
+    projectile: "飛び道具",
+    backstep: "後退",
+    trap: "設置",
+    beam: "光線",
+    bomb: "爆弾",
+    rain: "降下",
+    shield: "防御",
+    dash: "加速",
+    counter: "返し技",
+    barrier: "防壁",
+    teleport: "瞬間移動",
+    taunt: "挑発",
+    heal: "回復",
+    haste: "加速",
+    evade: "回避",
+    summon: "召喚",
+    time: "時術",
+    orbit: "追尾"
+};
+
+const STATUS_LABELS = {
+    burn: "炎上",
+    freeze: "凍結",
+    shock: "感電",
+    poison: "毒",
+    slow: "鈍化",
+    root: "拘束",
+    curse: "呪い",
+    blind: "目くらまし",
+    rage: "激昂",
+    haste: "加速",
+    regen: "再生",
+    guard: "防御",
+    weaken: "弱体",
+    bleed: "裂傷",
+    armorbreak: "防御崩し",
+    thorns: "反撃棘",
+    mist: "霧隠れ",
+    evade: "見切り",
+    focus: "集中",
+    timewarp: "時歪み",
+    pull: "引力",
+    float: "浮遊",
+    stagger: "よろめき",
+    reflect: "反射",
+    analyze: "解析",
+    wealth: "満ち足り",
+    drain: "吸収",
+    radiant: "光輝",
+    fracture: "時裂き",
+    lift: "巻き上げ",
+    soak: "濡れ",
+    counter: "返し技"
+};
+
 const game = {
     state: "ready",
     timeLeft: ROUND_TIME,
@@ -181,7 +246,7 @@ function createFighter(name, side, x, colors) {
         aiDecisionTimer: 0,
         aiState: "observe",
         themeColors: colors,
-        lastMoveLabel: "STANDBY",
+        lastMoveLabel: "待機",
         activeOrbit: null
     };
 }
@@ -255,7 +320,7 @@ function buildSpellMap() {
     game.spellMap = spellMap;
     game.duplicateAliases = duplicates;
     if (duplicates.length) {
-        console.warn("Duplicate spell aliases detected", duplicates);
+        console.warn("必殺技の別名が重複しています", duplicates);
     }
 }
 
@@ -268,7 +333,7 @@ function populateKeyboardGrid() {
         item.innerHTML = `
             <span class="keycap-key">${move.key.toUpperCase()}</span>
             <span class="keycap-name">${move.label}</span>
-            <span class="keycap-type">${move.effect}</span>
+            <span class="keycap-type">${MOVE_TYPE_LABELS[move.effect] ?? move.effect}</span>
         `;
         keyboardGrid.appendChild(item);
     });
@@ -286,12 +351,12 @@ function populateSpellbookPreview() {
         `;
         spellbookPreview.appendChild(chip);
     });
-    spellCount.textContent = `${SPECIAL_LEXICON.length} WORDS`;
+    spellCount.textContent = `${SPECIAL_LEXICON.length}語`;
 }
 
 function resetRound() {
-    game.player = createFighter("YOU", "player", 290, { main: "#35f2ff", accent: "#b6faff" });
-    game.cpu = createFighter("TYPE BREAKER", "cpu", 990, { main: "#ff4b88", accent: "#ffc0d7" });
+    game.player = createFighter("あなた", "player", 290, { main: "#35f2ff", accent: "#b6faff" });
+    game.cpu = createFighter("キー砕き", "cpu", 990, { main: "#ff4b88", accent: "#ffc0d7" });
     game.player.meter = 42;
     game.cpu.meter = 38;
     game.timeLeft = ROUND_TIME;
@@ -305,7 +370,7 @@ function resetRound() {
     game.screenShake = 0;
     game.lastTimestamp = 0;
     exitChantMode("reset", true);
-    setRoundState("TYPE TO FIGHT", 2.6);
+    setRoundState("打って戦え", 2.6);
     updateHud();
 }
 
@@ -315,7 +380,7 @@ function startGame() {
     renderLogs();
     game.state = "running";
     endOverlay.classList.add("hidden");
-    addLog("system", "Round start. 通常技で meter を溜めて、単語必殺技で決めろ。");
+    addLog("system", "対戦開始。通常技でゲージを溜めて、単語必殺技で決めろ。");
 }
 
 function finishRound(winner, reason) {
@@ -324,13 +389,13 @@ function finishRound(winner, reason) {
     exitChantMode("finish", true);
     endOverlay.classList.remove("hidden");
     if (winner.side === "player") {
-        endTitle.textContent = "YOU WIN";
+        endTitle.textContent = "あなたの勝ち";
         endMessage.textContent = reason;
     } else {
-        endTitle.textContent = "YOU LOSE";
+        endTitle.textContent = "あなたの負け";
         endMessage.textContent = reason;
     }
-    setRoundState("ROUND OVER", 99);
+    setRoundState("対戦終了", 99);
     addLog("system", reason);
 }
 
@@ -350,7 +415,7 @@ function healActor(actor, amount) {
     actor.hp = clamp(actor.hp + amount, 0, actor.maxHp);
 }
 
-function addBarrier(actor, amount, label = "Barrier") {
+function addBarrier(actor, amount, label = "防壁") {
     actor.barrier = clamp(actor.barrier + amount, 0, 260);
     actor.stateText = `${label} +${Math.round(amount)}`;
     actor.stateTextTimer = 1.1;
@@ -374,7 +439,7 @@ function addEffect(actor, name, duration, potency = 1) {
         potency,
         tick: 0
     });
-    actor.stateText = name.toUpperCase();
+    actor.stateText = STATUS_LABELS[name] ?? name;
     actor.stateTextTimer = 0.8;
 }
 
@@ -501,7 +566,7 @@ function damageActor(attacker, target, amount, options = {}) {
     }
 
     if (target.queuedActionKind === "special" && !options.dot) {
-        clearQueuedAction(target, "SPELL BROKEN");
+        clearQueuedAction(target, "詠唱中断");
     }
 
     if (target.hp <= 0) {
@@ -533,7 +598,7 @@ function createProjectile(owner, config) {
         knockback: config.knockback ?? 320,
         life: config.life ?? 2.3,
         pierce: config.pierce ?? 0,
-        sourceName: config.sourceName ?? "Projectile",
+        sourceName: config.sourceName ?? "飛び道具",
         theme: config.theme ?? "neutral"
     });
 }
@@ -580,7 +645,7 @@ function createZone(owner, config) {
         color: config.color ?? owner.themeColors.main,
         damage: config.damage ?? 18,
         status: config.status ?? null,
-        sourceName: config.sourceName ?? "Zone",
+        sourceName: config.sourceName ?? "領域",
         kind: config.kind ?? "circle",
         pull: config.pull ?? 0,
         anchor: config.anchor ?? "ground",
@@ -602,7 +667,7 @@ function createWall(owner, config) {
         color: config.color ?? owner.themeColors.main,
         damage: config.damage ?? 20,
         status: config.status ?? null,
-        sourceName: config.sourceName ?? "Wall"
+        sourceName: config.sourceName ?? "防壁"
     });
 }
 
@@ -618,7 +683,7 @@ function createSummon(owner, config) {
         damage: config.damage ?? 48,
         status: config.status ?? null,
         life: config.life ?? 1.6,
-        sourceName: config.sourceName ?? "Summon",
+        sourceName: config.sourceName ?? "召喚体",
         homing: config.homing ?? false
     });
 }
@@ -642,7 +707,7 @@ function createRain(owner, config) {
                 knockback: config.knockback ?? 260,
                 life: config.life ?? 1.5,
                 pierce: 0,
-                sourceName: config.sourceName ?? "Rain",
+                sourceName: config.sourceName ?? "降下攻撃",
                 theme: config.theme ?? "neutral"
             });
         });
@@ -659,7 +724,7 @@ function createOrbit(owner, config) {
         color: config.color ?? owner.themeColors.main,
         damage: config.damage ?? 20,
         status: config.status ?? null,
-        sourceName: config.sourceName ?? "Orbit"
+        sourceName: config.sourceName ?? "追尾攻撃"
     });
 }
 
@@ -875,14 +940,14 @@ function specialShots(def) {
 function triggerSpecialMove(def, actor = game.player) {
     if (game.state !== "running") return;
     if (actor.meter < def.meterCost) {
-        addLog(actor.side, `${def.canonical} は meter が足りない`);
+        addLog(actor.side, `${def.canonical} を出すにはゲージが足りない`);
         return;
     }
     actor.meter -= def.meterCost;
     actor.recovery = Math.max(actor.recovery, def.castTime + 0.18);
     queueAction(actor, def.castTime, def.canonical, "special", () => executeSpecialMove(actor, def));
-    setRoundState(`${actor.side === "player" ? "SPELL" : "CPU SPELL"}: ${def.canonical}`, 1.6);
-    addLog(actor.side, `${actor.name} chants ${def.canonical} / ${def.aliases[0]}`);
+    setRoundState(`${actor.side === "player" ? "必殺技" : "CPU必殺技"}: ${def.canonical}`, 1.6);
+    addLog(actor.side, `${actor.name} が「${def.canonical}」を詠唱`);
 }
 
 function executeSpecialMove(actor, def) {
@@ -956,7 +1021,7 @@ function executeSpecialMove(actor, def) {
                 damage: 10,
                 status: null,
                 color,
-                sourceName: `${def.canonical} Aura`
+                sourceName: `${def.canonical} の気配`
             });
             break;
         }
@@ -1049,7 +1114,7 @@ function executeSpecialMove(actor, def) {
                 damage: 12,
                 status: def.status,
                 color,
-                sourceName: `${def.canonical} Wave`
+                sourceName: `${def.canonical} の衝撃波`
             });
             break;
         }
@@ -1428,27 +1493,27 @@ function updateHud() {
 function updateSpellUi() {
     if (game.isChantMode) {
         chantStatePill.className = "pill active";
-        chantStatePill.textContent = game.player?.queuedActionKind === "special" ? "CASTING" : "CHANT";
+        chantStatePill.textContent = game.player?.queuedActionKind === "special" ? "発動中" : "詠唱中";
         spellPreview.textContent = game.spellRaw || "入力待ち...";
         spellHint.textContent = "かな / ローマ字 / 英語 の完全一致で必殺技";
         spellInput.disabled = false;
         spellInput.placeholder = "単語を入力して Enter で発動";
     } else if (game.player?.queuedActionKind === "special") {
         chantStatePill.className = "pill casting";
-        chantStatePill.textContent = "CASTING";
+        chantStatePill.textContent = "発動中";
         spellPreview.textContent = game.player.queuedLabel || "詠唱中";
         spellHint.textContent = "詠唱発動中";
         spellInput.disabled = true;
         spellInput.placeholder = "詠唱発動中";
     } else {
         chantStatePill.className = "pill idle";
-        chantStatePill.textContent = "IDLE";
+        chantStatePill.textContent = "待機中";
         spellPreview.textContent = "待機中";
         spellHint.textContent = "`Tab` で詠唱モードへ";
         spellInput.disabled = true;
         spellInput.placeholder = "Tabで詠唱開始。ひらがな / ローマ字 / 英語で入力";
     }
-    compositionState.textContent = `IME: ${game.isComposing ? "COMPOSING" : "READY"}`;
+    compositionState.textContent = `IME: ${game.isComposing ? "変換中" : "準備完了"}`;
 }
 
 function enterChantMode() {
@@ -1460,8 +1525,8 @@ function enterChantMode() {
     spellInput.value = "";
     spellInput.disabled = false;
     requestAnimationFrame(() => spellInput.focus({ preventScroll: true }));
-    addLog("player", "CHANT MODE ON");
-    setRoundState("SPELL READY", 1.4);
+    addLog("player", "詠唱モード開始");
+    setRoundState("詠唱準備", 1.4);
     updateSpellUi();
 }
 
@@ -1498,7 +1563,7 @@ function submitSpell() {
     }
 
     if (game.player.meter < spell.meterCost) {
-        addLog("system", `${spell.canonical} には meter ${spell.meterCost} 必要`);
+        addLog("system", `${spell.canonical} にはゲージが ${spell.meterCost} 必要`);
         exitChantMode("fail", true);
         return;
     }
@@ -1588,7 +1653,7 @@ function handleTimer(dt) {
     if (game.stateMessageTimer > 0) {
         game.stateMessageTimer -= dt;
         if (game.stateMessageTimer <= 0) {
-            roundState.textContent = game.isChantMode ? "CHANT MODE" : "LIVE ROUND";
+            roundState.textContent = game.isChantMode ? "詠唱モード" : "対戦中";
         }
     }
     if (game.timeLeft <= 0) {
@@ -1809,7 +1874,7 @@ function render() {
 
     ctx.fillStyle = "rgba(255,255,255,0.82)";
     ctx.font = "700 18px Noto Sans JP";
-    ctx.fillText(`LAST: ${game.player.lastMoveLabel}`, 92, HEIGHT - 42);
+    ctx.fillText(`直前: ${game.player.lastMoveLabel}`, 92, HEIGHT - 42);
     ctx.textAlign = "right";
     ctx.fillText(`CPU: ${game.cpu.lastMoveLabel}`, WIDTH - 92, HEIGHT - 42);
     ctx.restore();
@@ -1866,9 +1931,9 @@ populateKeyboardGrid();
 populateSpellbookPreview();
 resetRound();
 if (game.duplicateAliases.length) {
-    addLog("system", `Alias collision detected: ${game.duplicateAliases.length}`);
+    addLog("system", `必殺技の別名に重複があります: ${game.duplicateAliases.length}件`);
 } else {
-    addLog("system", `Spell lexicon loaded: ${SPECIAL_LEXICON.length} words`);
+    addLog("system", `必殺技辞書を読み込みました: ${SPECIAL_LEXICON.length}語`);
 }
 updateSpellUi();
 render();
