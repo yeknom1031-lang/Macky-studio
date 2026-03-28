@@ -1481,8 +1481,8 @@
                     gameState = 'TUTORIAL'; draw(); return;
                 }
 
-                // 挨拶テキストのタップ判定（名前変更）
-                if (x > 400/2 - 120 && x < 400/2 + 120 && y > 600/2 - 125 && y < 600/2 - 80) {
+                // 挨拶テキストのタップ判定（名前変更） - 新しい表示位置に合わせて Y 座標を修正
+                if (x > 400/2 - 120 && x < 400/2 + 120 && y > 80 && y < 140) {
                     playTapSound();
                     let newName = prompt("新しい名前を入力（1〜15文字）：", playerName);
                     if (newName !== null) {
@@ -4762,23 +4762,23 @@
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
                 ctx.textAlign = 'center';
-                ctx.fillText(`${playerName}さん、ようこそ！`, 400/2, 600/2 - 110);
+                ctx.fillText(`${playerName}さん、ようこそ！`, 400/2, 100);
                 
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
                 ctx.font = '14px sans-serif';
-                ctx.fillText(`ID : ${playerID}`, 400/2, 600/2 - 90);
+                ctx.fillText(`ID : ${playerID}`, 400/2, 120);
 
-                // タイトル「SUPER SKY DROP」- もっと大きく、白く、影付きで豪華に
+                // タイトル「SUPER SKY DROP」- 位置を上に調整 (重なり解消)
                 ctx.save();
                 ctx.shadowColor = 'rgba(0,0,0,0.8)'; ctx.shadowBlur = 15;
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 44px "Righteous", sans-serif';
                 ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-                ctx.fillText('SUPER SKY DROP', 400/2, 600/2 - 40);
+                ctx.fillText('SUPER SKY DROP', 400/2, 160);
                 
                 ctx.font = '10px sans-serif'; ctx.shadowBlur = 0;
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-                ctx.fillText('v2.2.0 - Eternal Classic', 400/2, 600/2 - 5);
+                ctx.fillText('v2.2.1 - Eternal Classic', 400/2, 195);
                 ctx.restore();
 
                 let btnW = 280; let btnH = 55;
