@@ -2731,6 +2731,12 @@
             });
         }
         
+        function spawnItem() {
+            // エンドレスモードなどで呼び出される「ご褒美コイン」生成用のラッパー
+            // spawnStarを引数なしで呼ぶことで、セーブ対象外のコインとして配置します
+            spawnStar();
+        }
+        
         function spawnPteranodon() {
             let px = seededRandom() * (400 - 40) + 20;
              obstacles.push({
