@@ -1,4 +1,4 @@
-const CACHE_NAME = 'supersky-v2'; // バージョンアップでキャッシュを無効化
+const CACHE_NAME = 'supersky-v4'; // v1.9.0 エンドレスタイマー修正
 const ASSETS = [
     './',
     './index.html',

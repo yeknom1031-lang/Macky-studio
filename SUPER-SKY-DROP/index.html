@@ -791,6 +791,7 @@
         else if (titleColorRand < 50.0) titleColor = '#87CEEB'; // 水色 (33.8%)
 
         let isSecretStage = false;
+        const METER_SCALE = 3.6; // 1m = 3.6px
         let lastSecretPathX = 160; 
         let lastSecretSpawnDistance = 0;
         let lastSpawnDistance = 0; // 追加: 通常障害物の最終配置距離
@@ -801,6 +802,9 @@
         let customLevels = JSON.parse(localStorage.getItem('superSkyDropCustom')) || [];
         let editorLevel = { name: "MY STAGE", speed: 0.7, objects: [], bgText: 'linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d)' };
         let editorScroll = 0;
+        let targetEditorScroll = 0; // 目標地点
+        let editorVelocity = 0; // 慣性のための速度
+        let isStylePickerOpen = false;
         let editorSelectedType = 'normal';
         let editorMenuTab = 'place'; // place, settings, list
         let isEditorDragging = false; 
@@ -828,6 +832,73 @@
         let isIntroEnabled = localStorage.getItem('superSkyDropIntro') !== 'false';
         let isShadowsEnabled = localStorage.getItem('superSkyDropShadows') !== 'false';
         let isDebugHitboxEnabled = localStorage.getItem('superSkyDropHitbox') === 'true';
+
+        // 共通：特殊なスタイル（光沢・模様）を持つ矩形の描画関数 (グローバルに配置)
+        function drawStyledRect(ctx, x, y, w, h, color, glossy, pattern, corner, editorViewYLimit) {
+            ctx.save();
+            ctx.fillStyle = color || '#E74C3C';
+            ctx.beginPath();
+            if (corner) ctx.roundRect(x, y, w, h, corner);
+            else ctx.rect(x, y, w, h);
+            ctx.fill();
+
+            // 模様の描画 (画面内に見える範囲だけを描画して高速化)
+            if (pattern && pattern !== 'none') {
+                ctx.save();
+                ctx.beginPath();
+                if (corner) ctx.roundRect(x, y, w, h, corner);
+                else ctx.rect(x, y, w, h);
+                ctx.clip();
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.lineWidth = 2;
+
+                // 画面の表示範囲 (指定がない場合は600、エディターなら450)
+                let yMax = editorViewYLimit || 600;
+                let viewTop = -y; 
+                let viewBottom = yMax - y;
+                
+                if (pattern === 'stripe') {
+                    let start = Math.floor(viewTop - w);
+                    let end = Math.ceil(viewBottom + w);
+                    start = Math.max(-h, start);
+                    end = Math.min(w + h, end);
+                    for(let i=start; i<end; i+=10) { 
+                        ctx.beginPath(); ctx.moveTo(x+i, y); ctx.lineTo(x+i+h, y+h); ctx.stroke(); 
+                    }
+                } else if (pattern === 'dot') {
+                    ctx.fillStyle = 'rgba(255,255,255,0.2)';
+                    let startY = Math.max(5, Math.floor(viewTop / 10) * 10 + 5);
+                    let endY = Math.min(h, viewBottom + 10);
+                    for(let ix = 5; ix < w; ix+=10) { 
+                        for(let iy = startY; iy < endY; iy+=10) { 
+                            ctx.beginPath(); ctx.arc(x+ix, y+iy, 1.5, 0, Math.PI*2); ctx.fill(); 
+                        } 
+                    }
+                } else if (pattern === 'mesh') {
+                    let startY = Math.max(10, Math.floor(viewTop / 10) * 10);
+                    let endY = Math.min(h, viewBottom + 10);
+                    for(let i=10; i<w; i+=10) { ctx.beginPath(); ctx.moveTo(x+i, y); ctx.lineTo(x+i, y+h); ctx.stroke(); }
+                    for(let i=startY; i<endY; i+=10) { ctx.beginPath(); ctx.moveTo(x, y+i); ctx.lineTo(x+w, y+i); ctx.stroke(); }
+                }
+                ctx.restore();
+            }
+
+            // 光沢の描画
+            if (glossy) {
+                let grad = ctx.createLinearGradient(x, y, x, y + h);
+                grad.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+                grad.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)');
+                grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                if (corner) ctx.roundRect(x, y, w, h, corner);
+                else ctx.rect(x, y, w, h);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(255,255,255,0.5)'; ctx.lineWidth = 1;
+                ctx.beginPath(); ctx.moveTo(x+2, y+2); ctx.lineTo(x+w-4, y+2); ctx.stroke();
+            }
+            ctx.restore();
+        }
 
         function savePlayerData() {
             localStorage.setItem('superSkyDropPlayerName', playerName);
@@ -1228,74 +1299,35 @@
         canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
             initAudio();
-            const pos = getMousePos(e);
-            const x = pos.x;
-            const y = pos.y;
-
-
+            const pos = getMousePos(e), x = pos.x, y = pos.y;
             if (gameState === 'PLAYING') {
-                if (x > 400 - 70 && y < 50) {
-                    playTapSound(); stopAllSounds(); gameState = 'START'; draw(); return;
-                }
-                if (y < 600 * 0.25) {
-                    // 画面上部25%：スローモード切り替え
-                    if (!isEndlessMode) {
-                        isSlowMode = !isSlowMode;
-                        if (isSlowMode) isPracticeUsed = true;
-                        playTapSound();
-                    }
-                } else {
-                    // 画面下部75%：左右移動
-                    if (x < 400 / 2) {
-                        keys.ArrowLeft = true;
-                        keys.ArrowRight = false;
-                    } else {
-                        keys.ArrowRight = true;
-                        keys.ArrowLeft = false;
-                    }
-                }
+                if (x > 400 - 70 && y < 50) { playTapSound(); stopAllSounds(); gameState = 'START'; draw(); return; }
+                if (y < 600 * 0.25) { if (!isEndlessMode) { isSlowMode = !isSlowMode; if (isSlowMode) isPracticeUsed = true; playTapSound(); } }
+                else { if (x < 400 / 2) { keys.ArrowLeft = true; keys.ArrowRight = false; } else { keys.ArrowRight = true; keys.ArrowLeft = false; } }
             } else {
-                // プレイ中以外は既存のクリック処理を呼び出す
                 handleInteraction(x, y);
-                if (gameState === 'EDITOR') {
-                    window.editorLastTouchY = y;
+                if (gameState === 'EDITOR') { 
+                    window.editorLastTouchY = y; 
+                    window.editorLastScrollGoal = targetEditorScroll;
+                    editorVelocity = 0; // 触った瞬間に慣性を止める！
                 }
             }
         }, { passive: false });
 
         canvas.addEventListener('touchmove', (e) => {
             e.preventDefault();
-            const pos = getMousePos(e);
-            const x = pos.x;
-            const y = pos.y;
-
-            
+            const pos = getMousePos(e), x = pos.x, y = pos.y;
             if (gameState === 'PLAYING') {
-                if (y >= 600 * 0.25) {
-                    if (x < 400 / 2) {
-                        keys.ArrowLeft = true;
-                        keys.ArrowRight = false;
-                    } else {
-                        keys.ArrowRight = true;
-                        keys.ArrowLeft = false;
-                    }
-                }
+                if (y >= 600 * 0.25) { if (x < 400 / 2) { keys.ArrowLeft = true; keys.ArrowRight = false; } else { keys.ArrowRight = true; keys.ArrowLeft = false; } }
             } else if (gameState === 'EDITOR') {
-                if (isScrollbarDragging) {
-                    let totalDist = editorLevel.totalDist || 4000;
-                    let scrollAreaH = 600 - 150;
-                    let ratio = (y / scrollAreaH);
-                    editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
-                    draw();
-                    return;
-                }
                 if (y < 600 - 150) {
                     if (window.editorLastTouchY !== undefined) {
-                        editorScroll -= (y - window.editorLastTouchY) * 2;
-                        editorScroll = Math.max(0, editorScroll);
+                        let diff = (y - window.editorLastTouchY);
+                        targetEditorScroll -= diff * 1.5;
+                        editorVelocity = -diff * 1.5; // 指の速度を慣性にする！
+                        window.editorLastTouchY = y;
                         draw();
                     }
-                    window.editorLastTouchY = y;
                 }
             }
         }, { passive: false });
@@ -1309,74 +1341,64 @@
         }, { passive: false });
 
         canvas.addEventListener('mousedown', (e) => {
-            const pos = getMousePos(e);
-            const x = pos.x;
-            const y = pos.y;
-
+            initAudio(); 
+            const pos = getMousePos(e), x = pos.x, y = pos.y;
             if (gameState === 'EDITOR') {
-                if (y < 600 - 150) {
-                    // 背景をクリックした場合：スクロール移動用の基準点設定
-                    window.editorLastTouchY = y;
-                    window.editorLastScroll = editorScroll;
-                    
-                    // オブジェクトのクリック判定
-                    let foundIdx = -1;
-                    let clickDist = editorScroll + y - 150;
-                    let snapX = Math.round(x / 20) * 20;
+                mouseDownPos = { x, y };
+                isSwipeMode = false;
+                
+                // スクロールバーの判定
+                let TOTAL = editorLevel.totalDist || 4000;
+                if (x > 400 - 25 && y < 600 - 150) {
+                    isScrollbarDragging = true;
+                    let ratio = y / (600 - 150);
+                    targetEditorScroll = Math.max(0, Math.min(TOTAL * METER_SCALE, ratio * TOTAL * METER_SCALE));
+                    editorScroll = targetEditorScroll;
+                    draw(); return;
+                }
 
+                if (y < 600 - 150) {
+                    window.editorLastTouchY = y;
+                    window.editorLastScrollGoal = targetEditorScroll;
+                    editorVelocity = 0; 
+                    
+                    let foundIdx = -1;
+                    let clickDist_px = targetEditorScroll + y - 150;
                     for(let i=0; i<editorLevel.objects.length; i++){
                         let o = editorLevel.objects[i];
-                        if (Math.abs(o.d - clickDist) < 25 && x >= o.x && x <= o.x + o.w) {
-                            foundIdx = i; break;
-                        }
+                        let od_px = o.d * METER_SCALE;
+                        let oh_px = o.h || 20;
+                        if (clickDist_px >= od_px && clickDist_px <= od_px + oh_px && x >= o.x && x <= o.x + o.w) { foundIdx = i; break; }
                     }
-                    if (foundIdx !== -1) {
-                        // 未選択、または同じブロックを触った時のみドラッグ開始を許可
-                        if (editorSelectedIndex === -1 || editorSelectedIndex === foundIdx) {
-                            editorSelectedIndex = foundIdx;
-                            isObjectDragging = true;
-                            justSelectedInMousedown = true; // この後のclickイベントでの誤動作を防ぐ
-                        }
-                    } else {
-                        // オブジェクトではない場所＝スライド移動開始
-                        isEditorDragging = true; 
-                    }
+                    if (foundIdx !== -1) { editorSelectedIndex = foundIdx; isObjectDragging = true; justSelectedInMousedown = true; }
+                    else { isEditorDragging = true; }
                     draw();
                 }
             }
         });
 
         window.addEventListener('mousemove', (e) => {
-            const pos = getMousePos(e);
-            const x = pos.x;
-            const y = pos.y;
-            
+            const pos = getMousePos(e), x = pos.x, y = pos.y;
             if (gameState === 'EDITOR') {
-                if (isEditorDragging) {
-                    // 背景のドラッグで自由スクロール
+                if (isScrollbarDragging) {
+                    let TOTAL = editorLevel.totalDist || 4000;
+                    let ratio = Math.max(0, Math.min(1, y / (600 - 150)));
+                    targetEditorScroll = ratio * TOTAL * METER_SCALE;
+                    editorScroll = targetEditorScroll;
+                    draw();
+                } else if (isEditorDragging) {
                     if (window.editorLastTouchY !== undefined) {
-                        let totalDist = editorLevel.totalDist || 4000;
-                        editorScroll -= (y - window.editorLastTouchY) * 1.5;
-                        editorScroll = Math.max(-150, Math.min(totalDist, editorScroll));
+                        let diff = (y - window.editorLastTouchY);
+                        targetEditorScroll -= diff * 1.5;
+                        editorVelocity = -diff * 1.5; 
                         window.editorLastTouchY = y;
                         draw();
                     }
-                }
-                else if (isObjectDragging && editorSelectedIndex !== -1) {
-                    // オブジェクトのドラッグ
-                    let o = editorLevel.objects[editorSelectedIndex];
-                    let GRID = 10;
-                    
-                    // X座標と距離dを更新
+                } else if (isObjectDragging && editorSelectedIndex !== -1) {
+                    let o = editorLevel.objects[editorSelectedIndex], GRID = 10;
                     o.x = Math.max(0, Math.min(400 - o.w, Math.round((x - o.w / 2) / GRID) * GRID));
-                    o.d = Math.max(0, Math.min(20000, Math.round((editorScroll + y - 150) / GRID) * GRID));
-                    
+                    o.d = Math.max(0, Math.round(((targetEditorScroll + y - 150) / METER_SCALE) / 10) * 10);
                     draw();
-                }
-
-                // 移動距離が大きければスワイプとみなす
-                if (!isSwipeMode && Math.hypot(x - mouseDownPos.x, y - mouseDownPos.y) > 10) {
-                    isSwipeMode = true;
                 }
             }
         });
@@ -1388,69 +1410,31 @@
         });
 
         window.addEventListener('wheel', (e) => {
-            if (gameState === 'EDITOR') {
+            if (gameState === 'EDITOR' && !isStylePickerOpen) {
                 e.preventDefault();
-                let delta = e.deltaY;
-                let totalDist = editorLevel.totalDist || 4000;
-                editorScroll = Math.max(0, Math.min(totalDist, editorScroll + delta));
-                draw();
+                let TOTAL = editorLevel.totalDist || 4000;
+                targetEditorScroll = Math.max(0, Math.min(TOTAL * METER_SCALE, targetEditorScroll + e.deltaY));
             }
         }, { passive: false });
 
         canvas.addEventListener('click', (e) => {
-            initAudio(); // 常に音声エンジンを復帰させる
+            initAudio(); 
             const pos = getMousePos(e);
             handleInteraction(pos.x, pos.y);
-        });
-        
-        canvas.addEventListener('mousedown', (e) => {
-            initAudio(); // mousedownでも早めに復帰をかける
-            if (gameState === 'EDITOR') {
-                const pos = getMousePos(e);
-                const x = pos.x; const y = pos.y;
-                mouseDownPos = { x, y };
-                isSwipeMode = false; // リセット
-                
-                if (x > 400 - 25 && y < 600 - 150) {
-                    isScrollbarDragging = true;
-                    let totalDist = editorLevel.totalDist || 4000;
-                    let ratio = y / (600 - 150);
-                    editorScroll = Math.max(0, Math.min(totalDist, ratio * totalDist));
-                    draw(); return;
-                }
-                if (y < 600 - 150) {
-                    let foundIdx = -1;
-                    let clickDist = editorScroll + y - 150;
-                    for(let i=0; i<editorLevel.objects.length; i++){
-                        let o = editorLevel.objects[i];
-                        if (Math.abs(o.d - clickDist) < 25 && x >= o.x && x <= o.x + o.w) {
-                            foundIdx = i; break;
-                        }
-                    }
-                    if (foundIdx !== -1) {
-                        if (editorSelectedIndex === -1 || editorSelectedIndex === foundIdx) {
-                            editorSelectedIndex = foundIdx;
-                            isObjectDragging = true;
-                            justSelectedInMousedown = true;
-                        }
-                    }
-                    draw();
-                }
-            }
         });
 
         function handleInteraction(x, y) {
             if (gameState === 'TITLE_TAP') {
                 playOpeningSFX(); // 爆発ありのSEを再生
                 gameState = 'OPENING';
-                draw();
+               
                 return;
             }
             if (gameState === 'OPENING') {
                 playTapSound();
                 gameState = 'START';
                 playLevelSelectBGM(); // スキップ時にもBGMを開始！
-                draw();
+               
                 return;
             }
             if (gameState === 'START') {
@@ -1473,32 +1457,53 @@
                         draw();
                         return;
                     }
-                    isCustomLevel = false; gameState = 'LEVEL_SELECT'; playLevelSelectBGM(); draw(); return;
+                // ? 遊び方 (10, 10, 80, 30)
+                if (x > 10 && x < 90 && y > 10 && y < 40) {
+                    gameState = 'TUTORIAL'; draw(); return;
                 }
-                // SHOPボタン判定
-                if (x > shpX && x < shpX + btnW && y > stgY && y < stgY + btnH) {
+                
+                // STAGES (btnX=95, stgY=365, btnW=90, btnH=90)
+                if (x > 95 && x < 185 && y > 365 && y < 455) {
+                    playTapSound(); isCustomLevel = false; gameState = 'LEVEL_SELECT'; playLevelSelectBGM(); draw(); return;
+                }
+                
+                // SHOP (shpX=215, stgY=365, btnW=90, btnH=90)
+                if (x > 215 && x < 305 && y > 365 && y < 455) {
                     playTapSound(); gameState = 'SHOP'; draw(); return;
                 }
-                // エンドレス
-                if (x > 20 && x < 100 && y > 600 - 90 && y < 600 - 50) {
+
+                // 下部メニュー (subY=515, subH=55, subW=110)
+                // 1. エンドレス (20, 515, 110, 55)
+                if (x > 20 && x < 130 && y > 515 && y < 570) {
                     playTapSound();
-                    
-                    // 30分経っているかチェック
                     let now = Date.now();
-                    let timeLeft = (30 * 60 * 1000) - (now - lastEndlessPlayTime);
+                    let cooldown = 1 * 60 * 1000; // 30分から1分へ大幅短縮
+                    let timeLeft = cooldown - (now - lastEndlessPlayTime);
                     
                     if (timeLeft > 0) {
-                        let minutes = Math.ceil(timeLeft / (60 * 1000));
-                        alert(`エンドレスモードに再挑戦するには、あと ${minutes} 分待つ必要があります。`);
+                        let seconds = Math.ceil(timeLeft / 1000);
+                        alert(`エンドレス再挑戦まで : ${seconds} 秒`);
                     } else {
                         startEndlessMode();
                     }
                     return;
                 }
+                
+                // 2. ランキング (145, 515, 110, 55)
+                if (x > 145 && x < 255 && y > 515 && y < 570) {
+                    playTapSound(); gameState = 'RANKING'; fetchRanking(); draw(); return;
+                }
+
+                // 3. クリエイト (270, 515, 110, 55)
+                if (x > 270 && x < 380 && y > 515 && y < 570) {
+                    playTapSound(); gameState = 'CUSTOM_LEVEL_SELECT'; draw(); return;
+                }
+
                 // 設定 (右上) - 判定を大きく
                 if (x > 330 && x < 400 && y > 0 && y < 70) {
                     playTapSound(); gameState = 'SETTINGS'; draw(); return;
                 }
+
                 // 挨拶テキストのタップ判定（名前変更）
                 if (x > 400/2 - 120 && x < 400/2 + 120 && y > 600/2 - 125 && y < 600/2 - 80) {
                     playTapSound();
@@ -1520,15 +1525,15 @@
                     draw(); return;
                 }
                 // エディター (自作ステージ選択画面へ)
-                let creX = 400 - 100; let creY = 600 - 100;
-                if (x > creX && x < creX + 80 && y > creY && y < creY + 80) {
+                let creX = 400 - 85; 
+                if (x > creX && x < creX + 65 && y > 600 - 90 && y < 600 - 25) {
                     playTapSound(); 
                     gameState = 'CUSTOM_LEVEL_SELECT'; 
-                    draw(); 
+                   
                     return;
                 }
                 // ワールドランキングボタン
-                if (x > 110 && x < 240 && y > 600 - 90 && y < 600 - 50) {
+                if (x > 130 && x < 240 && y > 600 - 90 && y < 600 - 45) {
                     playTapSound();
                     gameState = 'RANKING';
                     fetchRanking();
@@ -1567,51 +1572,59 @@
                 // もどる
                 if (y > 350 && y < 400) { playTapSound(); gameState = 'START'; draw(); return; }
             } else if (gameState === 'EDITOR') {
-                if (isSwipeMode) { isSwipeMode = false; return; } // スワイプなら配置しない
-                if (justSelectedInMousedown) {
-                    justSelectedInMousedown = false;
-                    draw(); return;
-                }
-                const GRID = 10;
-                editorLevel.totalDist = editorLevel.totalDist || 4000;
-                
-                if (y < 600 - 150) {
-                    // スクロールバー
-                    if (x > 400 - 20) {
-                        isScrollbarDragging = true;
-                        let ratio = y / (600 - 150);
-                        editorScroll = Math.max(0, Math.min(editorLevel.totalDist, ratio * editorLevel.totalDist));
-                        draw(); return;
+                if (isStylePickerOpen) {
+                    // 1. スタイルパネルが開いている時の操作
+                    if (y > 600 - 150) {
+                        let s = editorLevel.objects[editorSelectedIndex];
+                        if (y < 600 - 70) { // カラーパレット
+                            const colors = ['#E74C3C','#C0392B','#E67E22','#D35400','#F1C40F','#F39C12','#2ECC71','#27AE60','#1ABC9C','#16A085','#3498DB','#2980B9','#9B59B6','#8E44AD','#34495E','#2C3E50','#ECF0F1','#BDC3C7','#FF69B4','#00FFFF'];
+                            for (let i = 0; i < colors.length; i++) {
+                                let c = i % 10, r = Math.floor(i / 10), bx = 10 + c * 38, by = 600 - 142 + r * 35;
+                                if (x > bx && x < bx + 30 && y > by && y < by + 30) {
+                                    playTapSound(); s.color = colors[i]; draw(); return;
+                                }
+                            }
+                        }
+                        // 光沢ボタン判定 (10, 600-68, 80, 40)
+                        if (x > 10 && x < 90 && y > 600 - 68 && y < 600 - 28) { playTapSound(); s.glossy = !s.glossy; draw(); return; }
+                        // 模様ボタン判定 (100, 600-68, 100, 40)
+                        if (x > 100 && x < 200 && y > 600 - 68 && y < 600 - 28) {
+                            playTapSound(); const patt = ['none', 'stripe', 'dot', 'mesh'];
+                            let idx = patt.indexOf(s.pattern || 'none'); s.pattern = patt[(idx + 1) % patt.length];
+                            draw(); return;
+                        }
+                        // 閉じるボタン判定 (300, 600-68, 90, 40)
+                        if (x > 300 && x < 390 && y > 600 - 68 && y < 600 - 28) { playTapSound(); isStylePickerOpen = false; draw(); return; }
+                        return;
                     }
+                    return;
+                }
+
+                if (isSwipeMode) { isSwipeMode = false; return; }
+                if (justSelectedInMousedown) { justSelectedInMousedown = false; }
+                
+                const GRID = 10;
+                if (y < 600 - 150) {
                     if (isEditorDragging) return;
-                    
-                    let clickDist = editorScroll + y - 150;
-                    let snapX = Math.round(x / GRID) * GRID;
-                    clickDist = Math.round(clickDist / GRID) * GRID;
-                    
+                    let clickDist = editorScroll + y - 150, snapX = Math.round(x / GRID) * GRID;
                     let foundIdx = -1;
                     for(let i=0; i<editorLevel.objects.length; i++){
                         let o = editorLevel.objects[i];
-                        if (Math.abs(o.d - clickDist) < 15 && snapX >= o.x && snapX <= o.x + o.w) {
+                        if (clickDist >= o.d && clickDist <= o.d + (o.h || 20) && snapX >= o.x && snapX <= o.x + o.w) {
                             foundIdx = i; break;
                         }
                     }
-                    if (editorSelectedIndex !== -1) {
-                        editorSelectedIndex = -1;
-                    } else if (foundIdx !== -1) {
-                        editorSelectedIndex = foundIdx;
-                    } else {
+                    if (foundIdx !== -1) { editorSelectedIndex = (editorSelectedIndex === foundIdx) ? -1 : foundIdx; }
+                    else {
                         let ow = 60, oh = 20;
-                        if (editorSelectedType === 'laser') { ow = 400; snapX = 0; oh = 20; }
+                        if (editorSelectedType === 'laser') { ow = 400; snapX = 0; }
                         else if (editorSelectedType === 'item') {
-                            ow = 20; oh = 20;
-                            let itemCount = editorLevel.objects.filter(o => o.type === 'item').length;
-                            if (itemCount >= 3) { alert("星は最大3枚までです！"); return; }
+                            ow = 20; oh = 20; if (editorLevel.objects.filter(o => o.type === 'item').length >= 3) { alert("星は最大3枚までです！"); return; }
                         } else if (editorSelectedType === 'fireball') { ow = 40; oh = 40; }
-                        else if (editorSelectedType === 'large') { ow = 120; oh = 30; }
+                        else if (editorSelectedType === 'large') { ow = 120; oh = 120; }
                         
                         editorLevel.objects.push({
-                            d: clickDist, x: snapX, y: 0, w: ow, h: oh, 
+                            d: Math.round(clickDist / GRID) * GRID, x: snapX, w: ow, h: oh, 
                             type: editorSelectedType, rotation: 0,
                             color: (editorSelectedType === 'item' ? '#F1C40F' : (editorSelectedType === 'fireball' ? '#FF5722' : '#E74C3C')),
                             spawned: false
@@ -1619,96 +1632,42 @@
                         editorSelectedIndex = editorLevel.objects.length - 1;
                     }
                 } else {
-                    // 下部パネル操作 (y > 600 - 150)
-                    const categories = [
-                        { name: '障害物', tools: ['normal', 'fast', 'moving', 'large', 'laser', 'fireball'] },
-                        { name: 'アイテム', tools: ['item', 'warp'] },
-                        { name: '設定', tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'] }
-                    ];
-
-                    // 1. ブロック個別調整パネル (右側: 195〜325)
                     if (editorSelectedIndex !== -1 && x >= 195 && x < 325) {
-                        let self = editorLevel.objects[editorSelectedIndex];
-                        let editX = 195; 
-                        if (y > 600 - 140 && y < 600 - 110) { // 1行目 (幅)
-                            const delta = 10;
-                            if (x > editX && x < editX + 30) { // マイナス (w=30)
-                                let oldW = self.w; self.w = Math.max(10, self.w - delta);
-                                self.x += (oldW - self.w) / 2; draw(); return;
-                            } else if (x > editX + 95 && x < editX + 125) { // プラス (w=30)
-                                let oldW = self.w; self.w = Math.min(400, self.w + delta);
-                                self.x += (oldW - self.w) / 2; draw(); return;
-                            }
-                        } else if (y > 600 - 105 && y < 600 - 75) { // 2行目 (高さ)
-                            const delta = 10;
-                            if (x > editX && x < editX + 30) { // マイナス
-                                let oldH = self.h; self.h = Math.max(10, self.h - delta);
-                                self.d += (oldH - self.h) / 2; draw(); return;
-                            } else if (x > editX + 95 && x < editX + 125) { // プラス
-                                let oldH = self.h; self.h = Math.min(200, self.h + delta);
-                                self.d += (oldH - self.h) / 2; draw(); return;
-                            }
-                        } else if (y > 600 - 75 && y < 600 - 30) { // 3行目 (回転/削除)
-                            if (x > editX && x < editX + 40) { // 削除 (w=40)
-                                editorLevel.objects.splice(editorSelectedIndex, 1);
-                                editorSelectedIndex = -1; draw(); return;
-                            } else if (x > editX + 45 && x < editX + 70) { // 回転 - (w=25)
-                                let current = self.rotation || 0;
-                                self.rotation = current - Math.PI / 12; draw(); return;
-                            } else if (x > editX + 75 && x < editX + 100) { // OK (スナップ) (w=25)
-                                let deg = (self.rotation || 0) * (180 / Math.PI);
-                                let snapDeg = Math.round(deg / 45) * 45;
-                                self.rotation = snapDeg * (Math.PI / 180);
-                                draw(); return;
-                            } else if (x > editX + 105 && x < editX + 130) { // 回転 + (w=25)
-                                let current = self.rotation || 0;
-                                self.rotation = current + Math.PI / 12; draw(); return;
-                            }
-                        }
+                        let s = editorLevel.objects[editorSelectedIndex], editX = 195;
+                        if (y > 600 - 147 && y < 600 - 110) {
+                            if (x < editX + 35) { s.w = Math.max(10, s.w - GRID); }
+                            else if (x > editX + 90) { s.w = Math.min(10000, s.w + GRID); }
+                            return;
+                        } else if (y > 600 - 110 && y < 600 - 73) {
+                            if (x < editX + 35) { s.h = Math.max(10, (s.h || 20) - GRID); }
+                            else if (x > editX + 90) { s.h = Math.min(10000, (s.h || 20) + GRID); }
+                            return;
+                        } else if (y > 600 - 70 && y < 600 - 35) { editorLevel.objects.splice(editorSelectedIndex, 1); editorSelectedIndex = -1; }
                     }
-
-                    // 2. タブ切り替え (左側: 10〜195)
-                    let tabAreaW = 185;
-                    let tabW = tabAreaW / 3;
-                    if (y > 600 - 145 && y < 600 - 110 && x < 200) {
-                        if (x >= 10 && x <= 10 + tabAreaW) {
-                            editorTab = Math.floor((x - 10) / tabW);
-                            editorTab = Math.max(0, Math.min(2, editorTab));
-                            playTapSound(); draw(); return;
-                        }
+                    if (editorSelectedIndex !== -1 && x > 400 - 75 && y > 600 - 65 && y < 600 - 30) { playTapSound(); isStylePickerOpen = true; }
+                    if (y > 600 - 145 && y < 600 - 110 && x < 190) {
+                        let tabW = (400 - 85) / 3; editorTab = Math.min(2, Math.floor((x - 10) / tabW));
+                        playTapSound(); return;
                     }
-
-                    // 3. ツール選択 (下半分)
+                    let categories = [{ tools: ['normal', 'fast', 'moving', 'large', 'laser', 'fireball'] }, { tools: ['item', 'warp'] }, { tools: ['len+100', 'len-100', 'len+10', 'len-10', 'setBG', 'setTheme'] }];
                     let types = categories[editorTab].tools;
                     for (let i = 0; i < types.length; i++) {
-                        let col = i % 5; let row = Math.floor(i / 5);
-                        let btnX = 10 + col * 55; let btnY = 600 - 110 + row * 45;
-                        if (x > btnX && x < btnX + 50 && y > btnY && y < btnY + 40 && x < 400 - 80) {
+                        let col = i % 5, row = Math.floor(i / 5), bx = 10 + col * 55, by = 600 - 110 + row * 45;
+                        if (x > bx && x < bx + 50 && y > by && y < by + 40 && x < 190) {
                             playTapSound(); editorSelectedType = types[i];
-                            if (types[i].startsWith('len')) {
-                                let amt = parseInt(types[i].substring(3));
-                                editorLevel.totalDist = Math.max(200, Math.min(20000, (editorLevel.totalDist || 4000) + amt));
-                            } else if (types[i] === 'setBG') {
-                                editorLevel.bgIdx = ((editorLevel.bgIdx || 0) + 1) % 6;
-                                setBGTheme(editorLevel.bgIdx);
-                            } else if (types[i] === 'setTheme') {
-                                editorLevel.bgmThemeIdx = ((editorLevel.bgmThemeIdx || 0) + 1) % 3;
-                            }
-                            draw(); return;
+                            if (types[i].startsWith('len')) { editorLevel.totalDist = Math.max(200, Math.min(100000, (editorLevel.totalDist || 4000) + parseInt(types[i].substring(3)))); }
+                            else if (types[i] === 'setBG') { editorLevel.bgIdx = ((editorLevel.bgIdx || 0) + 1) % 6; setBGTheme(editorLevel.bgIdx); }
+                            else if (types[i] === 'setTheme') { editorLevel.bgmThemeIdx = ((editorLevel.bgmThemeIdx || 0) + 1) % 3; }
+                            return;
                         }
                     }
-
-                    // 4. 右端のシステム系 (テスト/戻る)
                     if (x > 400 - 80 && y > 600 - 145) {
-                        if (y < 600 - 105) {
-                            autoSaveCustomLevel(); startCustomLevel(JSON.parse(JSON.stringify(editorLevel)));
-                        } else if (y < 600 - 65) {
-                            autoSaveCustomLevel(); gameState = 'START';
-                        }
-                        draw(); return;
+                        if (y < 600 - 105) { autoSaveCustomLevel(); startCustomLevel(JSON.parse(JSON.stringify(editorLevel))); }
+                        else if (y < 600 - 65) { autoSaveCustomLevel(); gameState = 'START'; }
+                        return;
                     }
                 }
-                draw(); return;
+                return;
             } else if (gameState === 'SHOP') {
                 // BACKボタン
                 if (x > 10 && x < 90 && y > 10 && y < 45) {
@@ -2528,23 +2487,26 @@
             }
 
             if (isCustomLevel) {
+                const METER_SCALE = 3.6;
                 // 自作ステージ：配置済みデータから指定距離に現れたらスポーン
                 for (let obj of editorLevel.objects) {
-                    if (!obj.spawned && distance >= obj.d - 600) {
+                    // 出現タイミングも3.6倍の内部距離に合わせる
+                    if (!obj.spawned && distance >= (obj.d * METER_SCALE) - 600) {
                         obj.spawned = true;
                         // スポーン時のy座標を、現在のdistanceとの差分に基づいて調整（150pxの基準点で完全同期）
-                        let spawnY = 150 + obj.d - distance;
+                        // 基準点(150px) + (配置地点の内部距離 - 現在の内部距離)
+                        let spawnY = 150 + (obj.d * METER_SCALE) - distance;
                         
                         if (obj.type === 'goal') {
                             goal = {
                                 x: obj.x, y: spawnY,
-                                width: obj.w, height: obj.h,
+                                width: obj.w, height: obj.h || 20,
                                 color: '#2ECC71'
                             };
                         } else {
                             obstacles.push({
                                 x: obj.x, y: spawnY,
-                                width: obj.w, height: obj.h,
+                                width: obj.w, height: obj.h || 20,
                                 color: obj.color, type: obj.type,
                                 rotation: obj.rotation || 0,
                                 vx: (obj.type === 'moving' ? 2 : 0),
@@ -2553,23 +2515,28 @@
                         }
                     }
                 }
-                return;
+                return; // 自作ステージの場合はここで完全に終了
             }
 
             if (!isEndlessMode && distance > goalDistance - 300) return; 
 
-            // レベルに応じて出現する種類を増やす
+            // レベル（または経過時間）に応じて出現する種類を増やす
             let possibleTypes = ['normal'];
-            if (currentLevelIndex >= 5) possibleTypes.push('fast');
-            if (currentLevelIndex >= 9) possibleTypes.push('large');
-            if (currentLevelIndex >= 14) possibleTypes.push('moving');
-            
-            // 第2章後半からレーザーが出るように大幅に早める
-            if (currentLevelIndex >= 21) {
-                possibleTypes.push('laser');
-            }
-            if (currentLevelIndex >= 35) {
-                possibleTypes.push('blackhole');
+            if (isEndlessMode) {
+                // エンドレスモード：時間経過で解禁
+                if (endlessTime >= 10) possibleTypes.push('fast');
+                if (endlessTime >= 25) possibleTypes.push('large');
+                if (endlessTime >= 40) possibleTypes.push('moving');
+                if (endlessTime >= 60) possibleTypes.push('laser');
+                if (endlessTime >= 85) possibleTypes.push('blackhole');
+                if (endlessTime >= 110) possibleTypes.push('fireball'); // ボス弾も現れる！
+            } else {
+                // 通常モード
+                if (currentLevelIndex >= 5) possibleTypes.push('fast');
+                if (currentLevelIndex >= 9) possibleTypes.push('large');
+                if (currentLevelIndex >= 14) possibleTypes.push('moving');
+                if (currentLevelIndex >= 21) possibleTypes.push('laser');
+                if (currentLevelIndex >= 35) possibleTypes.push('blackhole');
             }
 
             // --- 追加: コイン周囲の安全地帯 (クリア不可能な状況を防ぐ) ---
@@ -2881,8 +2848,21 @@
         }
 
         function update() {
+            // エディターのスクロール計算 (ここでの計算が滑らかさを決めます)
+            if (gameState === 'EDITOR') {
+                const TOTAL = editorLevel.totalDist || 4000;
+                if (!isEditorDragging && !isScrollbarDragging) {
+                    targetEditorScroll += editorVelocity;
+                    editorVelocity *= 0.92;
+                    if (Math.abs(editorVelocity) < 0.1) editorVelocity = 0;
+                    targetEditorScroll = Math.max(0, Math.min(TOTAL * METER_SCALE, targetEditorScroll));
+                }
+                if (Math.abs(targetEditorScroll - editorScroll) > 0.05) {
+                    editorScroll += (targetEditorScroll - editorScroll) * 0.15;
+                } else { editorScroll = targetEditorScroll; }
+            }
             // エンドレスモードの通知チェック
-            let isReadyNow = (Date.now() - lastEndlessPlayTime >= 30 * 60 * 1000);
+            let isReadyNow = (Date.now() - lastEndlessPlayTime >= 1 * 60 * 1000);
             if (isReadyNow && !wasEndlessReady) {
                 endlessNotificationTimer = 120; // 約2秒
             }
@@ -3009,13 +2989,21 @@
             distance += scrollInc;
 
             if (isEndlessMode) {
-                // 現実の時間から経過秒数を計算することで、ステージの速度アップにタイマーが影響されないように修正
-                endlessTime = (Date.now() - (endlessStartTime || Date.now())) / 1000;
+                // フレームベースで加算（1/60秒ずつ）。アプリがバックグラウンドの間はカウントされない
+                endlessTime += (1 / 60) * timeFactor;
                 score = Math.floor(endlessTime * 100); 
-                // 2秒ごとに1%ずつスピードアップ (speedMultiplierを直接更新)
-                speedMultiplier += (0.01 / 120) * timeFactor;
-                obsSpawnRate += 0.00004 * timeFactor; // 出現率も少し早めに上げる
-                if (obsSpawnRate > 0.15) obsSpawnRate = 0.15; 
+                
+                // 速度アップを少し加速 (60秒を超えるとさらに急成長)
+                let acceleration = (endlessTime > 60) ? 0.015 : 0.01;
+                speedMultiplier += (acceleration / 120) * timeFactor;
+                
+                obsSpawnRate += 0.00005 * timeFactor; // 出現率も少し早めに上げる
+                if (obsSpawnRate > 0.18) obsSpawnRate = 0.18; 
+
+                // 100秒超えの「ハイパーモード」演出用フラグ（描画側で色を激しくする等）
+                if (endlessTime > 100 && Math.floor(endlessTime) % 2 === 0) {
+                    screenShake = Math.max(screenShake, 0.5); // わずかに振動
+                }
             } else {
                 score = Math.floor(distance / 3.6);
             }
@@ -3059,18 +3047,29 @@
                     );
 
                     if (!isCustomLevel && !isSafeZone) {
-                        // ステージデータが存在する場合のみ出現率を計算 (クラッシュ防止)
-                        let currentLevel = levels[currentLevelIndex];
-                        if (currentLevel) {
-                            let spawnChance = currentLevel.rate * 5.0; // 出現確率倍率をアップ
-                            if (seededRandom() < spawnChance) {
-                                spawnObstacle();
-                            }
+                        // 出現率の計算（エンドレスの場合は obsSpawnRate を反映）
+                        let spawnChance = 0;
+                        if (isEndlessMode) {
+                            spawnChance = obsSpawnRate * 4.0; // 時間で増える
+                        } else {
+                            let currentLevel = levels[currentLevelIndex];
+                            if (currentLevel) spawnChance = currentLevel.rate * 5.0;
+                        }
+
+                        if (seededRandom() < spawnChance) {
+                            spawnObstacle();
                         }
                         
-                        // ボスラッシュ時の特殊出現
-                        if (currentLevel && currentLevel.isBossRush && seededRandom() < 0.1) {
+                        // ボスラッシュまたは高難易度エンドレスでの特殊出現
+                        let isHighEndless = isEndlessMode && endlessTime > 90;
+                        let currentLevel = levels[currentLevelIndex];
+                        if ((isHighEndless || (currentLevel && currentLevel.isBossRush)) && seededRandom() < 0.1) {
                             spawnPteranodon();
+                        }
+
+                        // エンドレスモードでもたまにコインをスポーン（ご褒美）
+                        if (isEndlessMode && seededRandom() < 0.05) {
+                            spawnItem();
                         }
                     }
                 }
@@ -3307,21 +3306,34 @@
                     let dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 28) collided = true;
                 } else if (obs.type === 'diagonal') {
-                    // 斜め棒判定: 5点でサンプリング
-                    for (let step = 0; step <= 1; step += 0.2) {
-                        let rx = obs.x + obs.width / 2 + (step - 0.5) * obs.width * Math.cos(obs.rotation);
-                        let ry = obs.y + obs.height / 2 + (step - 0.5) * obs.width * Math.sin(obs.rotation);
-                        if (rx > player.x && rx < player.x + player.width &&
-                            ry > player.y && ry < player.y + player.height) {
-                            collided = true;
-                            break;
+                    // 斜め棒判定: 縦横どちらか長い方に合わせてサンプリング密度を調整
+                    // 以前は線のみだったが、厚みも考慮するように2軸でチェック
+                    let w = obs.width;
+                    let h = obs.height || 20;
+                    let maxD = Math.max(w, h);
+                    let cosR = Math.cos(obs.rotation);
+                    let sinR = Math.sin(obs.rotation);
+                    
+                    for (let step = 0; step <= 1; step += (15 / maxD)) {
+                        for (let t = -0.5; t <= 0.5; t += 0.2) {
+                            // 主軸（中心線） + 垂直軸（厚み方向）
+                            let distW = (step - 0.5) * w;
+                            let distH = t * h;
+                            let rx = obs.x + w/2 + distW * cosR - distH * sinR;
+                            let ry = obs.y + h/2 + distW * sinR + distH * cosR;
+                            if (rx > player.x && rx < player.x + player.width &&
+                                ry > player.y && ry < player.y + player.height) {
+                                collided = true;
+                                break;
+                            }
                         }
+                        if (collided) break;
                     }
                 } else if (obs.type === 'spiky') {
                     // 棘付き
                     if (player.x < obs.x + obs.width &&
                         player.x + player.width > obs.x &&
-                        player.y < obs.y + obs.height + 5 &&
+                        player.y < obs.y + (obs.height || 20) + 5 &&
                         player.y + player.height > obs.y - 5) {
                         collided = true;
                     }
@@ -3338,7 +3350,7 @@
                             // 当たり判定を固定幅(obs.width)と固定位置(obs.x)に完全に固定する
                             if (player.x + pMarginX < obs.x + obs.width &&
                                 player.x + player.width - pMarginX > obs.x &&
-                                player.y + pMarginY < obs.y + obs.height &&
+                                player.y + pMarginY < obs.y + (obs.height || 20) &&
                                 player.y + player.height - pMarginY > obs.y) {
                                 collided = true;
                             }
@@ -3355,7 +3367,7 @@
                     if (dist < 20) collided = true; 
                 } else if (obs.type === 'pteranodon') {
                     if (obs.warningTimer <= 0) { // 警告中は当たり判定なし
-                        if (player.x < obs.x + obs.width && player.x + player.width > obs.x && player.y < obs.y + obs.height && player.y + player.height > obs.y) collided = true;
+                        if (player.x < obs.x + obs.width && player.x + player.width > obs.x && player.y < obs.y + (obs.height || 20) && player.y + player.height > obs.y) collided = true;
                     }
                 } else if (obs.type === 'item') {
                     let dx = (player.x+player.width/2) - (obs.x+obs.width/2);
@@ -3365,7 +3377,7 @@
                 } else {
                     if (player.x < obs.x + obs.width &&
                         player.x + player.width > obs.x &&
-                        player.y < obs.y + obs.height &&
+                        player.y < obs.y + (obs.height || 20) &&
                         player.y + player.height > obs.y) {
                         collided = true;
                     }
@@ -3826,101 +3838,90 @@
         function drawGoldCoin(ctx, x, y, size) { drawStar(ctx, x, y, size, '#F1C40F'); }
 
         function drawEditor() {
-            const GRID = 10; const TOTAL = editorLevel.totalDist || 4000; const MAX_SCROLL = 20000;
+            const TOTAL = editorLevel.totalDist || 4000;
             
-            // 背景テーマの描画 (単色からグラデーションへ変更)
+            // 2. 背景テーマの描画 (グラデーション)
             let bgGrad = ctx.createLinearGradient(0, 0, 0, 600);
-            let c1 = currentBgColors.c1;
-            let c2 = currentBgColors.c2;
-            let c3 = currentBgColors.c3;
+            let c1 = currentBgColors.c1, c2 = currentBgColors.c2, c3 = currentBgColors.c3;
             bgGrad.addColorStop(0, `rgb(${c1[0]},${c1[1]},${c1[2]})`);
             bgGrad.addColorStop(0.5, `rgb(${c2[0]},${c2[1]},${c2[2]})`);
             bgGrad.addColorStop(1, `rgb(${c3[0]},${c3[1]},${c3[2]})`);
-            ctx.fillStyle = bgGrad;
-            ctx.fillRect(0, 0, 400, 600);
-            // 背景の明るさに応じてマス目の色を調整（見やすくする）
+            ctx.fillStyle = bgGrad; ctx.fillRect(0, 0, 400, 600);
+
+            // 3. グリッドの描画 (10m = 36px 単位)
             let brightness = (c2[0] * 299 + c2[1] * 587 + c2[2] * 114) / 1000;
-            let gridColor = brightness > 180 ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.12)';
-            ctx.strokeStyle = gridColor; ctx.lineWidth = 1;
-            // 視覚的なグリッド線は元の見やすさ(20px)に戻す
-            for(let i=0; i<400; i+=20){ ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, 600 - 150); ctx.stroke(); }
-            // マス目の起点を150px(自機位置)に合わせて、0.5マスのズレを解消
-            let startY = (150 - Math.floor(editorScroll)) % 20;
-            if (startY > 0) startY -= 20;
-            for(let j=startY; j < 600-150; j+=20){ 
+            ctx.strokeStyle = brightness > 180 ? 'rgba(0,0,0,0.15)' : 'rgba(255,255,255,0.12)';
+            ctx.lineWidth = 1;
+            let GRID_H = 10 * METER_SCALE; // 10m単位
+            let startY = (150 - Math.floor(editorScroll)) % GRID_H;
+            if (startY > 0) startY -= GRID_H;
+            for(let j=startY; j < 600-150; j+=GRID_H){ 
                 if(j < 0) continue; 
                 ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(400, j); ctx.stroke(); 
             }
-            
+
+            // 4. 物体の描画
             for(let o of editorLevel.objects) {
-                let screenY = 150 + o.d - editorScroll;
-                if (screenY > -150 && screenY < 600 - 150) {
+                let screenY = 150 + (o.d * METER_SCALE) - editorScroll;
+                // 画面内に少しでも入っていれば描画
+                if (screenY + (o.h || 20) > -100 && screenY < 450 + 100) {
                     ctx.save();
                     if (o.type === 'goal') {
                         ctx.fillStyle = '#2ECC71'; ctx.fillRect(o.x, screenY, o.w, o.h);
                         ctx.fillStyle = 'white'; ctx.textAlign = 'center'; ctx.font = 'bold 12px sans-serif'; ctx.fillText('GOAL', o.x+o.w/2, screenY+14);
-                    }
-                    else if (o.type === 'item') {
+                    } else if (o.type === 'item') {
                         drawGoldCoin(ctx, o.x + o.w/2, screenY + o.h/2, 12);
-                    }
-                    else if (o.type === 'fireball' || (o.rotation && o.rotation !== 0)) {
-                        // 回転または特殊な物体は中心を軸にして描画
-                        ctx.translate(o.x + o.w/2, screenY + o.h/2);
-                        ctx.rotate(o.rotation || 0);
-                        
-                        // 選択枠（ハイライト）も回転に追従させる
+                    } else if (o.type === 'fireball' || (o.rotation && o.rotation !== 0)) {
+                        ctx.translate(o.x + o.w/2, screenY + o.h/2); ctx.rotate(o.rotation || 0);
                         if (editorSelectedIndex === editorLevel.objects.indexOf(o)) {
                             ctx.strokeStyle = '#00FFFF'; ctx.setLineDash([5, 5]); ctx.lineWidth = 2;
-                            ctx.strokeRect(-o.w/2 - 2, -o.h/2 - 2, o.w + 4, o.h + 4);
-                            ctx.setLineDash([]); // リセット
+                            ctx.strokeRect(-o.w/2 - 2, -o.h/2 - 2, o.w + 4, o.h + 4); ctx.setLineDash([]);
                         }
-
                         if (o.type === 'fireball') {
                             ctx.fillStyle = '#E74C3C'; ctx.beginPath(); ctx.arc(0, 0, o.w/2, 0, Math.PI*2); ctx.fill(); 
                             ctx.fillStyle = '#F1C40F'; ctx.beginPath(); ctx.arc(0, 0, o.w/4, 0, Math.PI*2); ctx.fill();
                         } else if (o.type === 'laser') {
-                            ctx.strokeStyle = 'red'; ctx.lineWidth = 4; ctx.beginPath(); 
-                            ctx.moveTo(-o.w/2, 0); ctx.lineTo(o.w/2, 0); ctx.stroke();
-                        } else {
-                            ctx.fillStyle = o.color || '#E74C3C';
-                            ctx.beginPath(); ctx.roundRect(-o.w/2, -o.h/2, o.w, o.h, 4); ctx.fill();
-                            if (o.type === 'fast') { ctx.fillStyle='white'; ctx.fillRect(-2, -o.h/2, 4, o.h); }
-                            else if (o.type === 'moving') { ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.fillRect(-o.w/2, -o.h/2+2, 4, o.h-4); ctx.fillRect(o.w/2-4, -o.h/2+2, 4, o.h-4); }
+                            ctx.strokeStyle = 'red'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(-o.w/2, 0); ctx.lineTo(o.w/2, 0); ctx.stroke();
+                        } else { drawStyledRect(ctx, -o.w/2, -o.h/2, o.w, o.h, o.color, o.glossy, o.pattern, 4, 450); }
+                    } else {
+                        if (o.type !== 'warp' && o.type !== 'laser') {
+                           drawStyledRect(ctx, o.x, screenY, o.w, o.h, o.color, o.glossy, o.pattern, 4, 450);
                         }
-                    }
-                    else { 
-                        // 回転なしの通常描画
-                        ctx.fillStyle = o.color || '#E74C3C';
-                        ctx.beginPath(); ctx.roundRect(o.x, screenY, o.w, o.h, 4); ctx.fill();
                         if (o.type === 'fast') { ctx.fillStyle='white'; ctx.fillRect(o.x+o.w/2-2, screenY, 4, o.h); }
                         else if (o.type === 'moving') { ctx.fillStyle='rgba(255,255,255,0.3)'; ctx.fillRect(o.x, screenY+2, 4, o.h-4); ctx.fillRect(o.x+o.w-4, screenY+2, 4, o.h-4); }
                         else if (o.type === 'laser') { ctx.strokeStyle = 'red'; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(o.x, screenY+o.h/2); ctx.lineTo(o.x+o.w, screenY+o.h/2); ctx.stroke(); }
                         else if (o.type === 'warp') { 
                             ctx.strokeStyle = '#3498DB'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(o.x+o.w/2, screenY+o.h/2, 15, 0, Math.PI*2); ctx.stroke();
-                            ctx.fillStyle='rgba(52, 152, 219, 0.3)'; ctx.fill();
-                            ctx.fillStyle='white'; ctx.font='bold 8px sans-serif'; ctx.fillText('WARP', o.x+o.w/2, screenY+o.h/2+3);
+                            ctx.fillStyle='rgba(52, 152, 219, 0.3)'; ctx.fill(); ctx.fillStyle='white'; ctx.font='bold 8px sans-serif'; ctx.textAlign='center'; ctx.fillText('WARP', o.x+o.w/2, screenY+o.h/2+3);
                         }
-                        
-                        // 回転なしの選択枠
                         if (editorSelectedIndex === editorLevel.objects.indexOf(o)) {
                             ctx.strokeStyle = '#00FFFF'; ctx.setLineDash([5, 5]); ctx.lineWidth = 2;
-                            ctx.strokeRect(o.x - 2, screenY - 2, o.w + 4, o.h + 4);
-                            ctx.setLineDash([]);
+                            ctx.strokeRect(o.x - 2, screenY - 2, o.w + 4, o.h + 4); ctx.setLineDash([]);
                         }
                     }
                     ctx.restore();
                 }
             }
-            let sX = editorLevel.startX !== undefined ? editorLevel.startX : 400/2 - 15;
-            let sD = editorLevel.startDist || 0;
-            let startLocY = 150 + sD - editorScroll;
-            if (startLocY > -50 && startLocY < 600 - 150) {
-                ctx.globalAlpha = 0.4; ctx.fillStyle = 'white'; ctx.fillRect(sX, startLocY, 30, 30);
-                ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(`開始地点: ${sD}m`, sX + 15, startLocY + 45); ctx.globalAlpha = 1.0;
+
+            // 5. ゴール地点の表示
+            let goalLocY = 150 + (TOTAL * METER_SCALE) - editorScroll;
+            if (goalLocY > -200 && goalLocY < 450) {
+                ctx.save();
+                ctx.fillStyle = '#27AE60'; ctx.globalAlpha = 0.3; ctx.fillRect(0, goalLocY, 400, 200);
+                ctx.globalAlpha = 1.0; ctx.strokeStyle = '#2ECC71'; ctx.lineWidth = 8;
+                ctx.setLineDash([20, 10]); ctx.beginPath(); ctx.moveTo(0, goalLocY); ctx.lineTo(400, goalLocY); ctx.stroke();
+                ctx.setLineDash([]); ctx.fillStyle = '#2ECC71'; ctx.font = 'bold 36px "Righteous"'; ctx.textAlign = 'center';
+                ctx.fillText('G O A L', 200, goalLocY + 60); ctx.restore();
             }
+
+            // スクロールバーの描画 (3.6倍スケール対応)
+            ctx.fillStyle = 'rgba(0,0,0,0.2)'; ctx.fillRect(400 - 10, 0, 10, 600 - 150);
+            let scrollRatio = editorScroll / (TOTAL * METER_SCALE);
+            let handleY = scrollRatio * (600 - 150);
+            ctx.fillStyle = '#2ECC71'; ctx.beginPath(); ctx.roundRect(400 - 8, handleY - 15, 6, 30, 3); ctx.fill();
+
+            // 6. UIパネル
             ctx.fillStyle = '#34495e'; ctx.fillRect(0, 600 - 150, 400, 150);
-            
-            // タブの描画
             const categories = [
                 { name: '障害物', tools: ['normal', 'fast', 'moving', 'large', 'laser', 'fireball'], names: ['通常', '高速', '動く', '巨大', '線', '火球'] },
                 { name: 'アイテム', tools: ['item', 'warp'], names: ['コイン', 'ワープ'] },
@@ -3929,105 +3930,79 @@
             let tabW = (400 - 85) / 3;
             for (let i = 0; i < 3; i++) {
                 let isActive = editorTab === i;
-                ctx.fillStyle = isActive ? '#2ECC71' : '#2c3e50';
-                ctx.beginPath(); ctx.roundRect(10 + i * tabW, 600 - 145, tabW - 5, 30, 5); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText(categories[i].name, 10 + i * tabW + (tabW-5)/2, 600 - 125);
+                ctx.fillStyle = isActive ? '#2ECC71' : '#2c3e50'; ctx.beginPath(); ctx.roundRect(10 + i * tabW, 600 - 145, tabW - 5, 30, 5); ctx.fill();
+                ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(categories[i].name, 10 + i * tabW + (tabW-5)/2, 600 - 125);
             }
 
-            let types = categories[editorTab].tools;
-            let typeNames = categories[editorTab].names;
+            let types = categories[editorTab].tools, typeNames = categories[editorTab].names;
             for(let i=0; i<types.length; i++) {
-                let col = i % 5; let row = Math.floor(i / 5);
-                let btnX = 10 + col * 55; let btnY = 600 - 110 + row * 45;
-                let isActive = editorSelectedType === types[i];
-                ctx.fillStyle = (isActive ? '#2ECC71' : (types[i].startsWith('len') ? '#3498DB' : '#7f8c8d'));
+                let col = i % 5, row = Math.floor(i / 5), btnX = 10 + col * 55, btnY = 600 - 110 + row * 45;
+                ctx.fillStyle = editorSelectedType === types[i] ? '#2ECC71' : (types[i].startsWith('len') ? '#3498DB' : '#7f8c8d');
                 ctx.beginPath(); ctx.roundRect(btnX, btnY, 50, 40, 5); ctx.fill();
-                
-                // アイコン描画
-                ctx.save();
-                ctx.translate(btnX + 25, btnY + 18);
-                let sc = 0.5; // スケールダウン
+                ctx.save(); ctx.translate(btnX + 25, btnY + 18); let sc = 0.5;
                 if (types[i] === 'normal') { ctx.fillStyle = '#E74C3C'; ctx.fillRect(-15*sc, -10*sc, 30*sc, 20*sc); }
                 else if (types[i] === 'fast') { ctx.fillStyle = '#F1C40F'; ctx.fillRect(-15*sc, -10*sc, 30*sc, 20*sc); ctx.fillStyle='white'; ctx.fillRect(-2*sc, -10*sc, 4*sc, 20*sc); }
                 else if (types[i] === 'moving') { ctx.fillStyle = '#9B59B6'; ctx.fillRect(-15*sc, -10*sc, 30*sc, 20*sc); ctx.fillStyle='#E8DAEF'; ctx.fillRect(-15*sc, -8*sc, 4*sc, 16*sc); ctx.fillRect(11*sc, -8*sc, 4*sc, 16*sc); }
-                else if (types[i] === 'laser') { ctx.strokeStyle = '#ff0000'; ctx.lineWidth = 4*sc; ctx.beginPath(); ctx.moveTo(-20*sc, 0); ctx.lineTo(20*sc, 0); ctx.stroke(); }
-                else if (types[i] === 'seeker') { ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.moveTo(0, -15*sc); ctx.lineTo(15*sc, 15*sc); ctx.lineTo(-15*sc, 15*sc); ctx.closePath(); ctx.fill(); }
-                else if (types[i] === 'fireball') { 
-                    ctx.fillStyle = '#E74C3C'; ctx.beginPath(); ctx.arc(0, 0, 15*sc, 0, Math.PI*2); ctx.fill(); 
-                    ctx.fillStyle = '#F1C40F'; ctx.beginPath(); ctx.arc(0, 0, 8*sc, 0, Math.PI*2); ctx.fill();
-                }
+                else if (types[i] === 'fireball') { ctx.fillStyle = '#E74C3C'; ctx.beginPath(); ctx.arc(0, 0, 15*sc, 0, Math.PI*2); ctx.fill(); ctx.fillStyle = '#F1C40F'; ctx.beginPath(); ctx.arc(0, 0, 8*sc, 0, Math.PI*2); ctx.fill(); }
                 else if (types[i] === 'item') { drawGoldCoin(ctx, 0, 0, 18*sc); }
-                else if (types[i] === 'warp') { 
-                    ctx.strokeStyle = '#3498DB'; ctx.lineWidth = 4*sc; ctx.beginPath(); ctx.arc(0, 0, 15*sc, 0, Math.PI*2); ctx.stroke();
-                    ctx.fillStyle='rgba(52, 152, 219, 0.5)'; ctx.fill();
-                }
+                else if (types[i] === 'warp') { ctx.strokeStyle = '#3498DB'; ctx.lineWidth = 4*sc; ctx.beginPath(); ctx.arc(0, 0, 15*sc, 0, Math.PI*2); ctx.stroke(); ctx.fillStyle='rgba(52, 152, 219, 0.5)'; ctx.fill(); }
                 ctx.restore();
-
-                if (types[i].startsWith('len')) {
-                    ctx.fillStyle = 'white'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-                    ctx.fillText(typeNames[i], btnX + 25, btnY + 22);
-                } else {
-                    ctx.textBaseline = 'alphabetic';
-                    if (types[i] === 'setBG') {
-                        let bgNames = ['夕焼け', '青空', '宇宙', '紫暮', '猛毒', '朝焼け'];
-                        ctx.fillStyle = 'white'; ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center';
-                        ctx.fillText(bgNames[editorLevel.bgIdx || 0], btnX + 25, btnY + 20);
-                    } else if (types[i] === 'setTheme') {
-                        ctx.fillStyle = 'white'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
-                        ctx.fillText('テーマ' + ((editorLevel.bgmThemeIdx || 0) + 1), btnX + 25, btnY + 20);
-                    }
-                    
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center';
-                    ctx.fillText(typeNames[i], btnX + 25, btnY + 36);
-                }
-                ctx.textBaseline = 'alphabetic'; 
+                if (types[i].startsWith('len')) { ctx.fillStyle = 'white'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(typeNames[i], btnX + 25, btnY + 22); }
+                else { ctx.fillStyle = 'rgba(255, 255, 255, 0.7)'; ctx.font = 'bold 7px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(typeNames[i], btnX + 25, btnY + 36); }
             }
 
-            // スクロールバーの描画（廃止して背景ドラッグへ移行）
-            // let scrollAreaH = 600 - 150;
-            // ... (削除)
-
-            
-            if (editorSelectedIndex !== -1) {
-                // セレクトパネルの背景（重なり防止）
-                let editX = 195; 
-                ctx.fillStyle = 'rgba(52, 73, 94, 0.9)'; ctx.fillRect(190, 600 - 145, 135, 140);
-                let self = editorLevel.objects[editorSelectedIndex];
-                let props = ['幅', '高さ', '回転'];
-                let dist = Math.floor(self.d);
-                let vals = [Math.floor(self.w), Math.floor((self.h || 0)), Math.floor((self.rotation || 0) * (180/Math.PI)) + '°'];
-                for (let i = 0; i < 3; i++) {
+            // 7. 物体調整パネル (スタイルピッカーが開いていない時のみ表示)
+            if (editorSelectedIndex !== -1 && !isStylePickerOpen) {
+                let s = editorLevel.objects[editorSelectedIndex], props = ['横幅', '高さ'], vals = [Math.round(s.w), Math.round(s.h || 20)];
+                for (let i = 0; i < 2; i++) {
                     let py = 600 - 140 + i * 35;
-                    if (i === 2) {
-                        ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.roundRect(editX, py, 40, 30, 5); ctx.fill();
-                        ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('削除', editX + 20, py + 19);
-                        ctx.fillStyle = '#2c3e50'; ctx.beginPath(); ctx.roundRect(editX + 45, py, 25, 30, 5); ctx.fill();
-                        ctx.beginPath(); ctx.roundRect(editX + 105, py, 25, 30, 5); ctx.fill();
-                        ctx.fillStyle = '#27AE60'; ctx.beginPath(); ctx.roundRect(editX + 75, py, 25, 30, 5); ctx.fill();
-                        ctx.fillStyle = 'white'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('－', editX + 57.5, py + 19); ctx.fillText('＋', editX + 117.5, py + 19);
-                        ctx.font = 'bold 8px sans-serif'; ctx.fillText('OK', editX + 87.5, py + 19);
-                        ctx.fillStyle = 'white'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Dist: ' + dist + 'm', editX + 70, py + 40);
-                    } else {
-                        ctx.fillStyle = '#2c3e50'; ctx.beginPath(); ctx.roundRect(editX, py, 30, 30, 5); ctx.fill();
-                        ctx.beginPath(); ctx.roundRect(editX + 95, py, 30, 30, 5); ctx.fill();
-                        ctx.fillStyle = '#27AE60'; ctx.beginPath(); ctx.roundRect(editX + 35, py, 55, 30, 5); ctx.fill();
-                        ctx.fillStyle = 'white'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('-', editX + 15, py + 19); ctx.fillText('+', editX + 110, py + 19); ctx.fillText(props[i]+':'+vals[i], editX + 62.5, py + 19);
-                    }
+                    ctx.fillStyle = '#2c3e50'; ctx.beginPath(); ctx.roundRect(editX, py, 30, 30, 5); ctx.fill(); ctx.beginPath(); ctx.roundRect(editX + 95, py, 30, 30, 5); ctx.fill();
+                    ctx.fillStyle = '#27AE60'; ctx.beginPath(); ctx.roundRect(editX + 35, py, 55, 30, 5); ctx.fill();
+                    ctx.fillStyle = 'white'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('-', editX + 15, py + 19); ctx.fillText('+', editX + 110, py + 19); ctx.fillText(props[i]+':'+vals[i], editX + 62.5, py + 19);
                 }
+                ctx.fillStyle = '#C0392B'; ctx.beginPath(); ctx.roundRect(editX, 600 - 70, 130, 25, 5); ctx.fill(); ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('削除', editX + 65, 600 - 54);
             }
+
+            // 8. アクション
             let actX = 400 - 75;
-            ctx.fillStyle = '#E67E22'; ctx.beginPath(); ctx.roundRect(actX, 600 - 145, 65, 35, 5); ctx.fill();
-            ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('テスト', actX + 32.5, 600 - 123);
+            ctx.fillStyle = '#E67E22'; ctx.beginPath(); ctx.roundRect(actX, 600 - 145, 65, 35, 5); ctx.fill(); ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('テスト', actX + 32.5, 600 - 123);
+            ctx.fillStyle = '#7f8c8d'; ctx.beginPath(); ctx.roundRect(actX, 600 - 105, 65, 35, 5); ctx.fill(); ctx.fillStyle = 'white'; ctx.fillText('戻る', actX + 32.5, 600 - 83);
             
-            ctx.fillStyle = '#7f8c8d'; ctx.beginPath(); ctx.roundRect(actX, 600 - 105, 65, 35, 5); ctx.fill();
-            ctx.fillStyle = 'white'; ctx.font = 'bold 14px sans-serif'; ctx.fillText('戻る', actX + 32.5, 600 - 83);
-            
-            ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'left';
-            ctx.fillText(`距離: ${Math.floor(editorScroll)}m`, 10, 20);
-            ctx.textAlign = 'right';
-            ctx.fillText(`目標距離 (全長): ${TOTAL}m`, 400 - 10, 20);
-            ctx.textAlign = 'left';
+            // 色 / 装飾ボタン (戻るの下に配置)
+            if (editorSelectedIndex !== -1) {
+                let s = editorLevel.objects[editorSelectedIndex];
+                ctx.fillStyle = s.color || '#E74C3C'; ctx.beginPath(); ctx.roundRect(actX, 600 - 65, 65, 35, 5); ctx.fill(); 
+                ctx.strokeStyle = 'white'; ctx.lineWidth = 1; ctx.stroke();
+                ctx.fillStyle = 'white'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('色 / 装飾', actX + 32.5, 600 - 43);
+            }
+            ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(`${Math.floor(editorScroll / METER_SCALE)}m`, 10, 20); ctx.textAlign = 'right'; ctx.fillText(`全長: ${TOTAL}m`, 390, 20); ctx.textAlign = 'left';
+
+            // 9. スタイルピッカー
+            if (isStylePickerOpen && editorSelectedIndex !== -1) {
+                let s = editorLevel.objects[editorSelectedIndex]; 
+                ctx.fillStyle = '#000000'; // 真っ黒で塗りつぶして後ろを隠す
+                ctx.fillRect(0, 600 - 150, 400, 150);
+                
+                const colors = ['#E74C3C','#C0392B','#E67E22','#D35400','#F1C40F','#F39C12','#2ECC71','#27AE60','#1ABC9C','#16A085','#3498DB','#2980B9','#9B59B6','#8E44AD','#34495E','#2C3E50','#ECF0F1','#BDC3C7','#FF69B4','#00FFFF'];
+                for (let i = 0; i < colors.length; i++) {
+                    let c = i % 10, r = Math.floor(i / 10), bx = 10 + c * 38, by = 600 - 142 + r * 35;
+                    ctx.fillStyle = colors[i]; ctx.lineWidth = (s.color === colors[i] ? 3 : 1); ctx.strokeStyle = 'white'; ctx.beginPath(); ctx.roundRect(bx, by, 30, 30, 5); ctx.fill(); ctx.stroke();
+                }
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                // 光沢ボタン
+                ctx.fillStyle = s.glossy ? '#F1C40F' : '#7F8C8D'; ctx.beginPath(); ctx.roundRect(10, 600 - 68, 80, 40, 5); ctx.fill(); 
+                ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif'; ctx.fillText(s.glossy ? '光沢:ON' : '光沢:OFF', 50, 600 - 48);
+                
+                // 模様ボタン
+                ctx.fillStyle = (s.pattern && s.pattern !== 'none') ? '#2ECC71' : '#7F8C8D'; ctx.beginPath(); ctx.roundRect(100, 600 - 68, 100, 40, 5); ctx.fill(); 
+                ctx.fillStyle = 'white'; ctx.fillText(`模様:${s.pattern || 'なし'}`, 150, 600 - 48);
+                
+                // 閉じるボタン
+                ctx.fillStyle = '#E74C3C'; ctx.beginPath(); ctx.roundRect(300, 600 - 68, 90, 40, 5); ctx.fill(); 
+                ctx.fillStyle = 'white'; ctx.font = 'bold 16px sans-serif'; ctx.fillText('閉じる', 345, 600 - 48);
+                
+                ctx.textBaseline = 'alphabetic'; // 元に戻す
+            }
         }
 
 
@@ -4126,36 +4101,36 @@
                     ctx.font = 'bold 20px "Righteous", sans-serif';
                     ctx.fillText(`${i + 1}`, 35, y);
 
-            // 名前
-            ctx.font = '16px sans-serif';
-            // IDが含まれているかチェックしてハイライト
-            ctx.fillStyle = (r.name.includes(playerID)) ? '#F1C40F' : 'white';
-            ctx.fillText(r.name || "名無しのダイバー", 85, y);
+                    // 名前
+                    ctx.font = '16px sans-serif';
+                    // IDが含まれているかチェックしてハイライト
+                    ctx.fillStyle = (r.name.includes(playerID)) ? '#F1C40F' : 'white';
+                    ctx.fillText(r.name || "名無しのダイバー", 85, y);
 
-            // スコア
-            ctx.textAlign = 'right';
-            ctx.font = 'bold 22px "Righteous", sans-serif';
-            ctx.fillStyle = (r.name === playerName) ? '#F1C40F' : 'white';
-            ctx.fillText(`${r.score}秒`, 400 - 35, y);
-            ctx.textAlign = 'left';
-        }
+                    // スコア
+                    ctx.textAlign = 'right';
+                    ctx.font = 'bold 22px "Righteous", sans-serif';
+                    ctx.fillStyle = (r.name === playerName) ? '#F1C40F' : 'white';
+                    ctx.fillText(`${r.score}秒`, 400 - 35, y);
+                    ctx.textAlign = 'left';
+                }
 
-        // 自分の順位が10位以下の場合の表示 (IDで正確に検索)
-        let userRank = worldRankingData.findIndex(r => r.name.includes(playerID)) + 1;
-        if (userRank > 10) {
-            let ry = 150 + 10 * 42 + 20;
-            ctx.fillStyle = 'rgba(241, 196, 15, 0.2)';
-            ctx.fillRect(20, ry - 28, 400 - 40, 36);
-            ctx.fillStyle = '#F1C40F';
-            ctx.font = 'bold 20px "Righteous", sans-serif';
-            ctx.fillText(`${userRank}`, 35, ry);
-            ctx.font = '16px sans-serif';
-            ctx.fillText(playerName + " " + playerID, 85, ry);
-            ctx.textAlign = 'right';
-            ctx.font = 'bold 22px "Righteous", sans-serif';
-            ctx.fillText(`${worldRankingData[userRank-1].score}秒`, 400 - 35, ry);
-            ctx.textAlign = 'left';
-        }
+                // 自分の順位が10位以下の場合の表示 (IDで正確に検索)
+                let userRank = worldRankingData.findIndex(r => r.name.includes(playerID)) + 1;
+                if (userRank > 10) {
+                    let ry = 150 + 10 * 42 + 20;
+                    ctx.fillStyle = 'rgba(241, 196, 15, 0.2)';
+                    ctx.fillRect(20, ry - 28, 400 - 40, 36);
+                    ctx.fillStyle = '#F1C40F';
+                    ctx.font = 'bold 20px "Righteous", sans-serif';
+                    ctx.fillText(`${userRank}`, 35, ry);
+                    ctx.font = '16px sans-serif';
+                    ctx.fillText(playerName + " " + playerID, 85, ry);
+                    ctx.textAlign = 'right';
+                    ctx.font = 'bold 22px "Righteous", sans-serif';
+                    ctx.fillText(`${worldRankingData[userRank-1].score}秒`, 400 - 35, ry);
+                    ctx.textAlign = 'left';
+                }
                 
                 if (!RANKING_GAS_URL) {
                     ctx.fillStyle = '#E74C3C';
@@ -4510,15 +4485,19 @@
                             ctx.beginPath(); ctx.moveTo(obs.x, obs.y+15); ctx.lineTo(obs.x-20, obs.y-10); ctx.lineTo(obs.x+10, obs.y+15); ctx.fill();
                             ctx.beginPath(); ctx.moveTo(obs.x+obs.width, obs.y+15); ctx.lineTo(obs.x+obs.width+20, obs.y-10); ctx.lineTo(obs.x+obs.width-10, obs.y+15); ctx.fill();
                         }
-                    } else if (obs.type === 'diagonal') {
-                        ctx.translate(obs.x + obs.width/2, obs.y + obs.height/2);
+                    } else if (obs.rotation && obs.rotation !== 0) {
+                        ctx.save();
+                        ctx.translate(obs.x + obs.width/2, obs.y + (obs.height||20)/2);
                         ctx.rotate(obs.rotation);
-                        ctx.fillStyle = obs.color;
-                        ctx.beginPath();
-                        ctx.roundRect(-obs.width/2, -obs.height/2, obs.width, obs.height, 5);
-                        ctx.fill();
-                        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-                        ctx.fillRect(-obs.width/2, -2, obs.width, 4);
+                        if (obs.type === 'diagonal' || obs.type === 'normal' || obs.type === 'large') {
+                            drawStyledRect(ctx, -obs.width/2, -(obs.height||20)/2, obs.width, obs.height || 20, obs.color, obs.glossy, obs.pattern, 4);
+                        } else {
+                            ctx.fillStyle = obs.color || '#E74C3C';
+                            ctx.fillRect(-obs.width/2, -(obs.height||20)/2, obs.width, obs.height || 20);
+                        }
+                        ctx.restore();
+                    } else if (obs.type === 'diagonal') {
+                         drawStyledRect(ctx, obs.x, obs.y, obs.width, obs.height || 20, obs.color, obs.glossy, obs.pattern, 4);
 
                     } else if (obs.type === 'spiky') {
                         ctx.fillStyle = obs.color;
@@ -4553,10 +4532,8 @@
                         ctx.strokeRect(obs.x, obs.y, obs.width, obs.height);
                         ctx.restore();
                     } else {
-                        ctx.fillStyle = obs.color;
-                        ctx.beginPath();
-                        ctx.roundRect(obs.x, obs.y, obs.width, obs.height, 4);
-                        ctx.fill();
+                        // エディターと同じ高品質な描画を使う
+                        drawStyledRect(ctx, obs.x, obs.y, obs.width, obs.height || 20, obs.color, obs.glossy, obs.pattern, 4);
                     }
                     
                     if (isDebugHitboxEnabled) {
@@ -4587,19 +4564,16 @@
                     
                     if (obs.type === 'moving') {
                         ctx.fillStyle = '#E8DAEF';
-                        ctx.fillRect(obs.x + 5, obs.y + 5, 5, obs.height - 10);
-                        ctx.fillRect(obs.x + obs.width - 10, obs.y + 5, 5, obs.height - 10);
+                        ctx.fillRect(obs.x + 5, obs.y + 5, 5, (obs.height || 20) - 10);
+                        ctx.fillRect(obs.x + obs.width - 10, obs.y + 5, 5, (obs.height || 20) - 10);
                     } else if (obs.type === 'large') {
                         ctx.fillStyle = 'rgba(0,0,0,0.3)';
-                        ctx.fillRect(obs.x, obs.y + obs.height/2 - 2, obs.width, 4);
+                        ctx.fillRect(obs.x, obs.y + (obs.height || 20)/2 - 2, obs.width, 4);
                     } else if (obs.type === 'fast') {
                         ctx.fillStyle = '#F1C40F';
-                        ctx.fillRect(obs.x + obs.width/2 - 2, obs.y, 4, obs.height);
+                        ctx.fillRect(obs.x + obs.width/2 - 2, obs.y, 4, (obs.height || 20));
                     } else if (obs.type === 'item') {
-                        drawGoldCoin(ctx, obs.x + obs.width/2, obs.y + obs.height/2, 24);
-                    } else {
-                        ctx.fillStyle = 'rgba(255,255,255,0.3)';
-                        ctx.fillRect(obs.x, obs.y, obs.width, 5);
+                        drawGoldCoin(ctx, obs.x + obs.width/2, obs.y + (obs.height || 20)/2, 24);
                     }
                 }
                 
@@ -4800,56 +4774,8 @@
                     let titleAlpha = Math.min(1, (150 - openingTimerValue - 30) / 60) * alpha;
                     ctx.save();
                     ctx.globalAlpha = titleAlpha;
-                    ctx.fillStyle = '#FFFFFF';
-                    ctx.font = 'bold 36px "Righteous", sans-serif';
-                    ctx.textAlign = 'center';
-                    ctx.shadowBlur = 20; ctx.shadowColor = '#3498DB';
-                    ctx.fillText('SUPER SKY DROP', 400/2, 600/2 + 100);
-                    ctx.shadowBlur = 0;
                     ctx.restore();
                 }
-
-                // 自機の描画（主役）
-                ctx.save();
-                let tempX = player.x, tempY = player.y;
-                let tempSkin = equippedSkin, tempMantle = equippedMantle, tempShape = equippedShape;
-                let tempColor = player.color;
-                player.x = 400 / 2 - 20; player.y = cubeY - 20;
-                equippedSkin = 'default'; equippedMantle = 'default'; equippedShape = 'square';
-                player.color = skinColors['default'];
-                
-                ctx.save();
-                ctx.translate(400 / 2, cubeY);
-                ctx.scale(1.8, 1.8);
-                ctx.translate(-(400 / 2), -cubeY);
-                
-                // 強烈な発光
-                if (openingTimerValue < 125 && openingTimerValue > 90) {
-                    ctx.shadowBlur = 60; ctx.shadowColor = '#FFFFFF';
-                }
-                drawPlayer();
-                ctx.restore();
-                
-                player.x = tempX; player.y = tempY; player.color = tempColor;
-                equippedSkin = tempSkin; equippedMantle = tempMantle; equippedShape = tempShape;
-                ctx.restore();
-                
-                ctx.restore();
-
-                // スキップ案内
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx.font = 'bold 14px sans-serif';
-                ctx.textAlign = 'right';
-                ctx.fillText('SKIP >>', 400 - 20, 600 - 20);
-                ctx.textAlign = 'left';
-            }
-
-            if (gameState === 'EDITOR') {
-                drawEditor();
-            }
-
-            if (gameState === 'RANKING') {
-                drawRanking();
             }
 
             if (gameState === 'START') {
@@ -4865,195 +4791,161 @@
                 ctx.font = '14px sans-serif';
                 ctx.fillText(`ID : ${playerID}`, 400/2, 600/2 - 90);
 
-                ctx.fillStyle = titleColor;
-                ctx.font = '44px "Righteous", sans-serif';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
+                // タイトル「SUPER SKY DROP」- もっと大きく、白く、影付きで豪華に
+                ctx.save();
+                ctx.shadowColor = 'rgba(0,0,0,0.8)'; ctx.shadowBlur = 15;
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 44px "Righteous", sans-serif';
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
                 ctx.fillText('SUPER SKY DROP', 400/2, 600/2 - 30);
                 
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.font = '10px sans-serif';
-                ctx.fillText('v1.7.0-complete-refine', 400/2, 600/2);
+                ctx.font = '10px sans-serif'; ctx.shadowBlur = 0;
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.fillText('v1.9.0', 400/2, 600/2 + 5);
+                ctx.restore();
 
-                ctx.textBaseline = 'alphabetic'; // 元に戻す
-                ctx.shadowBlur = 0;
+                // 中央のメインボタン (ステージ・ショップ) - もう少し上に配置
+                let stgY = 600/2 + 65;
+                let btnW = 90; let btnH = 90;
+                let btnX = 400/2 - btnW - 15;
+                
+                // STAGES
+                ctx.fillStyle = '#2ECC71'; ctx.beginPath(); ctx.roundRect(btnX, stgY, btnW, btnH, 20); ctx.fill();
+                ctx.fillStyle = 'white'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center';
+                ctx.fillText('ステージ', btnX + btnW/2, stgY + 82);
+                ctx.beginPath();
+                ctx.moveTo(btnX + 35, stgY + 25); ctx.lineTo(35 + btnX, stgY + 60); ctx.lineTo(65 + btnX, stgY + 42.5); ctx.closePath(); ctx.fill();
 
-                // ? 遊び方 ボタン (左上に移動して設定アイコンとの被りを防ぐ)
+                // SHOP
+                let shpX = 400/2 + 15;
+                ctx.fillStyle = '#9B59B6'; ctx.beginPath(); ctx.roundRect(shpX, stgY, btnW, btnH, 20); ctx.fill();
+                ctx.fillStyle = 'white'; ctx.fillText('ショップ', shpX + btnW/2, stgY + 82);
+                ctx.fillStyle = '#FFF'; ctx.fillRect(shpX + 20, stgY + 20, 50, 40);
+                for(let i=0; i<4; i++) {
+                    ctx.fillStyle = i % 2 === 0 ? '#E74C3C' : '#FFF';
+                    ctx.fillRect(shpX + 18 + i*13.5, stgY + 15, 13.5, 10);
+                }
+
+                // 下部メニューボタン (エンドレス・ランキング・クリエイト) - 横に並べる
+                let subY = 515;
+                let subW = 110; let subH = 55;
+                
+                // 1. エンドレス
+                let endX = 20;
+                ctx.fillStyle = '#F1C40F'; ctx.beginPath(); ctx.roundRect(endX, subY, subW, subH, 15); ctx.fill();
+                ctx.fillStyle = 'black'; ctx.font = 'bold 14px sans-serif'; 
+                ctx.fillText('エンドレス', endX + subW/2, subY + subH/2 + 6);
+
+                // 2. ランキング
+                let rnkX = 400/2 - subW/2;
+                ctx.fillStyle = '#3498DB'; ctx.beginPath(); ctx.roundRect(rnkX, subY, subW, subH, 15); ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.fillText('🌍 ランキング', rnkX + subW/2, subY + subH/2 + 6);
+
+                // 3. クリエイト
+                let creX = 400 - subW - 20;
+                ctx.fillStyle = '#E67E22'; ctx.beginPath(); ctx.roundRect(creX, subY, subW, subH, 15); ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.fillText('クリエイト', creX + subW/2, subY + subH/2 + 18);
+                // 鉛筆アイコン (クリエイトボタン内)
+                ctx.save();
+                ctx.translate(creX + subW/2, subY + 20);
+                ctx.rotate(-Math.PI/4);
+                ctx.fillStyle = 'white'; ctx.fillRect(-12, -3, 24, 6);
+                ctx.fillStyle = '#D35400'; ctx.beginPath(); ctx.moveTo(12, -3); ctx.lineTo(18, 0); ctx.lineTo(12, 3); ctx.fill();
+                ctx.restore();
+
+                // ? 遊び方
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
                 ctx.beginPath(); ctx.roundRect(10, 10, 80, 30, 5); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = '14px sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText('? 遊び方', 50, 30);
-                // ctx.textAlign = 'center'; のまま維持してボタンラベルを描画する
-                
-                // STAGES ボタン (再生マーク)
-                let btnW = 80; let btnH = 80;
-                let btnX = 400/2 - btnW - 20;
-                let stgY = 600/2 + 50; // 元の位置に戻す
-                ctx.fillStyle = '#2ECC71';
-                ctx.beginPath();
-                ctx.roundRect(btnX, stgY, btnW, btnH, 15);
-                ctx.fill();
-                
-                ctx.fillStyle = 'white';
-                ctx.font = 'bold 12px sans-serif';
-                ctx.fillText('ステージ', btnX + 40, stgY + 74);
-                
-                // 再生マーク（三角形）
-                ctx.beginPath();
-                ctx.moveTo(btnX + 33, stgY + 20);
-                ctx.lineTo(btnX + 33, stgY + 55);
-                ctx.lineTo(btnX + 58, stgY + 37);
-                ctx.closePath();
-                ctx.fill();
-                
-                // SHOP ボタン (お店のアイコン)
-                let shpX = 400/2 + 20;
-                ctx.fillStyle = '#9B59B6';
-                ctx.beginPath();
-                ctx.roundRect(shpX, stgY, btnW, btnH, 15);
-                ctx.fill();
-                
-                ctx.fillStyle = 'white';
-                ctx.font = 'bold 12px sans-serif';
-                ctx.fillText('ショップ', shpX + 40, stgY + 74);
-                
-                // 店の建物本体
-                ctx.fillStyle = '#FDFEFE'; 
-                ctx.fillRect(shpX + 15, stgY + 15, 50, 35); // +30から+15に上に移動
-                
-                // 屋根のひさし（赤白のストライプ）
-                for (let i = 0; i < 5; i++) {
-                    ctx.fillStyle = (i % 2 === 0) ? '#E74C3C' : '#FFFFFF';
-                    ctx.fillRect(shpX + 13 + (i * 11), stgY + 10, 11, 10); // +25から+10に上に移動
-                }
-                
-                // 窓
-                ctx.fillStyle = '#AED6F1';
-                ctx.fillRect(shpX + 18, stgY + 27, 18, 15); // +42から+27に上に移動
-                ctx.strokeStyle = '#2980B9';
-                ctx.strokeRect(shpX + 18, stgY + 27, 18, 15);
-                
-                // ドア
-                ctx.fillStyle = '#5D4037';
-                ctx.fillRect(shpX + 45, stgY + 27, 12, 23); // +42から+27に上に移動
-                // ドアノブ
-                ctx.fillStyle = '#F1C40F';
-                ctx.beginPath();
-                ctx.arc(shpX + 54, stgY + 39, 2, 0, Math.PI * 2); // +54から+39に上に移動
-                ctx.fill();
+                ctx.fillStyle = 'white'; ctx.font = '14px sans-serif'; ctx.fillText('? 遊び方', 50, 30);
 
-                // 隠しステージボタンの表示
-                if (playerName === 'super sky drop!') {
-                    let secX = 400/2 - 100;
-                    let secY = 600/2 + 150;
-                    let secW = 200;
-                    let secH = 50;
-                    
-                    // 虹色アニメーション
-                    let hue = (Date.now() / 15) % 360;
-                    ctx.fillStyle = `hsl(${hue}, 80%, 50%)`;
-                    ctx.beginPath();
-                    ctx.roundRect(secX, secY, secW, secH, 25);
-                    ctx.fill();
-                    
-                    ctx.fillStyle = 'white';
-                    ctx.font = 'bold 20px "Righteous", sans-serif';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('隠しステージ', 400/2, secY + 25);
-                    ctx.font = 'bold 10px sans-serif';
-                    ctx.fillText('〜 幻の世界へ 〜', 400/2, secY + 42);
-                }
-                
-
-                // 所持コイン表示 (重なり防止のため幅を計算して配置)
-                ctx.fillStyle = 'white';
-                ctx.font = '16px sans-serif';
-                ctx.textAlign = 'center';
-                let birdText = `所持 : ${totalSilverBirds} 枚`;
-                let birdWidth = ctx.measureText(birdText).width;
-                ctx.fillText(birdText, 400/2, 600 - 20);
-                drawBirdCoin(ctx, 400/2 - birdWidth/2 - 15, 600 - 26, 10);
-                
-                // 所持ゴールドスターも表示 (SHOPと同じデザインに)
-                let starCount = getTotalGoldStars();
-                ctx.fillStyle = '#F1C40F';
-                ctx.font = 'bold 16px sans-serif';
-                ctx.fillText(`★ ${starCount}`, 400/2 + birdWidth/2 + 25, 600 - 20);
-
-                // EDITOR ボタン
-                let creX = 400 - 100;
-                let creY = 600 - 100;
-                ctx.fillStyle = '#E67E22';
-                ctx.beginPath(); ctx.roundRect(creX, creY, 80, 80, 15); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = '14px bold sans-serif';
-                ctx.fillText('CREATE', creX + 40, creY + 45);
-                ctx.font = '10px sans-serif';
-                ctx.fillText('作ってみる', creX + 40, creY + 65);
-                
-                // PLAY (エンドレス) ボタンを描画
+                // 設定ボタン (歯車アイコン) を右上に描画 - もっと白く、押しやすく
                 ctx.save();
-                let prayX = 20; let prayY = 600 - 90;
-                let prayW = 80; let prayH = 40;
-                
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-                ctx.beginPath(); ctx.roundRect(prayX, prayY, prayW, prayH, 10); ctx.fill();
-                ctx.strokeStyle = 'white';
-                ctx.lineWidth = 1; ctx.stroke();
-                
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillStyle = 'white';
-                ctx.font = 'bold 12px "Righteous", sans-serif';
-                ctx.fillText('エンドレス', prayX + prayW/2, prayY + 20);
-                
-                // エンドレスのベストスコア表示 (sではなく秒で)
-                let endBest = highScores['endless'] || 0;
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-                ctx.font = 'bold 10px sans-serif';
-                ctx.fillText(`ベスト: ${Math.floor(endBest)}秒`, prayX + prayW/2, prayY - 8);
-
-                // 残り時間を秒単位までボタンの下に表示
-                let now = Date.now();
-                let timeLeft = (30 * 60 * 1000) - (now - lastEndlessPlayTime);
-                if (timeLeft > 0) {
-                    let totalSec = Math.floor(timeLeft / 1000);
-                    let m = Math.floor(totalSec / 60);
-                    let s = totalSec % 60;
-                    ctx.font = 'bold 11px sans-serif';
-                    ctx.fillStyle = '#E74C3C'; // 赤字で目立たせる
-                    ctx.fillText(`${m}:${s.toString().padStart(2, '0')}`, prayX + prayW/2, prayY + prayH + 13);
-                }
-                ctx.restore();
-
-                // RANKING ボタン (ワールドランキング)
-                let rnkX = 110; 
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-                ctx.beginPath(); ctx.roundRect(rnkX, prayY, 130, prayH, 10); ctx.fill();
-                ctx.strokeStyle = 'white'; ctx.lineWidth = 1; ctx.stroke();
-                ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText('🌍 ランキング', rnkX + 65, prayY + 20);
-
-                
-                // 設定ボタン (歯車アイコン) を右上に描画
-                ctx.save();
-                ctx.translate(400 - 35, 35);
-                ctx.fillStyle = '#95a5a6';
+                ctx.translate(400 - 40, 40);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
                 for (let i = 0; i < 8; i++) {
                     ctx.rotate(Math.PI / 4);
-                    ctx.fillRect(-12, -2, 24, 4);
+                    ctx.fillRect(-14, -2.5, 28, 5);
                 }
                 ctx.beginPath();
-                ctx.arc(0, 0, 8, 0, Math.PI * 2);
+                ctx.arc(0, 0, 10, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.fillStyle = '#ecf0f1';
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
                 ctx.beginPath();
-                ctx.arc(0, 0, 4, 0, Math.PI * 2);
+                ctx.arc(0, 0, 5, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.restore();
+            } else if (gameState === 'SETTINGS') {
+                ctx.fillStyle = 'rgba(30, 30, 30, 0.95)';
+                ctx.fillRect(0, 0, 400, 600);
                 
+                // BACK ボタン
+                ctx.fillStyle = '#555'; ctx.beginPath(); ctx.roundRect(10, 10, 80, 35, 5); ctx.fill();
+                ctx.fillStyle = 'white'; ctx.font = '16px sans-serif'; ctx.textAlign = 'center';
+                ctx.fillText('戻る', 50, 33);
+
+                ctx.fillStyle = '#F1C40F';
+                ctx.font = 'bold 28px "Righteous", sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('設定', 400/2, 105);
+
+                // 強制的な更新ボタン (キャッシュクリア)
+                let updateBtnW = 160; let updateBtnH = 35;
+                let updateBtnX = 400 / 2 - updateBtnW / 2; let updateBtnY = 20; 
+                ctx.fillStyle = 'rgba(231, 76, 60, 0.5)'; ctx.strokeStyle = '#E74C3C'; ctx.lineWidth = 1;
+                ctx.beginPath(); ctx.roundRect(updateBtnX, updateBtnY, updateBtnW, updateBtnH, 18); ctx.fill(); ctx.stroke();
+                ctx.fillStyle = 'white'; ctx.font = 'bold 13px sans-serif';
+                ctx.fillText('🔄 状態を更新', 400/2, updateBtnY + 22);
+
+                // BGMセレクト
+                ctx.fillStyle = 'white'; ctx.font = 'bold 18px sans-serif';
+                ctx.fillText('BGMの雰囲気', 400/2, 155);
+
+                let bgmOptions = [
+                    { id: 'pop', name: 'ポップ', desc: 'いつもの曲' },
+                    { id: 'techno', name: 'テクノ', desc: 'かっこいい電子音' },
+                    { id: 'chill', name: 'チル', desc: 'ゆったりした癒やし' }
+                ];
+
+                for (let i = 0; i < bgmOptions.length; i++) {
+                    let opt = bgmOptions[i];
+                    let btnY = 180 + i * 62;
+                    ctx.fillStyle = currentBGMType === opt.id ? 'rgba(46, 204, 113, 0.4)' : 'rgba(255, 255, 255, 0.1)';
+                    ctx.beginPath(); ctx.roundRect(50, btnY, 300, 55, 8); ctx.fill();
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 17px sans-serif';
+                    ctx.fillText(opt.name, 400/2, btnY + 23);
+                    ctx.font = '11px sans-serif'; ctx.fillStyle = '#ccc';
+                    ctx.fillText(opt.desc, 400/2, btnY + 44);
+                }
+
+                // 倍率設定
+                ctx.fillStyle = 'white'; ctx.font = 'bold 18px sans-serif';
+                ctx.fillText('スローモード倍率', 400/2, 380);
+                ctx.fillStyle = '#F1C40F'; ctx.font = 'bold 22px "Righteous", sans-serif';
+                ctx.fillText(slowModeStrength.toFixed(1) + 'x', 400/2, 428);
+                
+                // トグル (一部抜粋して重要なものだけをここで一旦描画)
+                let toggles = [{ label: '効果音', val: isSEEnabled }, { label: 'BGM', val: isIngameBGMEnabled }];
+                for (let i = 0; i < toggles.length; i++) {
+                    let btnX = 40 + i * 165;
+                    ctx.fillStyle = toggles[i].val ? '#2ECC71' : '#E74C3C';
+                    ctx.beginPath(); ctx.roundRect(btnX, 460, 150, 40, 5); ctx.fill();
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 12px sans-serif';
+                    ctx.fillText(toggles[i].label + (toggles[i].val ? ':ON' : ':OFF'), btnX + 75, 485);
+                }
                 ctx.textAlign = 'left';
-            } else if (gameState === 'TUTORIAL') {
+            }
+
+            if (gameState === 'EDITOR') {
+                drawEditor();
+            }
+
+            if (gameState === 'RANKING') {
+                drawRanking();
+            }
+
+            if (gameState === 'TUTORIAL') {
                 updateBackgroundColors();
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
                 ctx.fillRect(0, 0, 400, 600);
@@ -5632,144 +5524,6 @@
                 ctx.font = 'bold 18px sans-serif';
                 ctx.fillText('タップでタイトルへ', 400/2, 600/2 + 150);
                 ctx.textAlign = 'left';
-            } else if (gameState === 'SETTINGS') {
-                ctx.fillStyle = 'rgba(30, 30, 30, 0.9)';
-                ctx.fillRect(0, 0, 400, 600);
-
-                ctx.fillStyle = '#F1C40F';
-                ctx.font = '36px "Righteous", sans-serif';
-                ctx.textAlign = 'center';
-
-                // BACK ボタン
-                ctx.fillStyle = '#555';
-                ctx.beginPath();
-                ctx.roundRect(10, 10, 80, 35, 5);
-                ctx.fill();
-                ctx.fillStyle = 'white';
-                ctx.font = '16px sans-serif';
-                ctx.fillText('戻る', 50, 33);
-
-                // 強制的な更新ボタン (キャッシュクリア) - 画面中央上部に配置
-                let updateBtnW = 160;
-                let updateBtnH = 35;
-                let updateBtnX = 400 / 2 - updateBtnW / 2;
-                let updateBtnY = 20; 
-                ctx.fillStyle = 'rgba(231, 76, 60, 0.4)';
-                ctx.strokeStyle = '#E74C3C';
-                ctx.lineWidth = 1;
-                ctx.beginPath();
-                ctx.roundRect(updateBtnX, updateBtnY, updateBtnW, updateBtnH, 18);
-                ctx.fill();
-                ctx.stroke();
-                ctx.fillStyle = 'white';
-                ctx.font = 'bold 13px sans-serif';
-                ctx.fillText('🔄 最新の状態に更新', 400/2, updateBtnY + 22);
-
-                // タイトル「設定」- ボタンの下に配置
-                ctx.fillStyle = '#F1C40F';
-                ctx.font = 'bold 28px "Righteous", sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText('設定', 400/2, 105);
-
-                // BGMセレクト
-                ctx.fillStyle = 'white';
-                ctx.font = 'bold 18px sans-serif';
-                ctx.fillText('BGMの雰囲気', 400/2, 155);
-
-                let bgmOptions = [
-                    { id: 'pop', name: 'ポップ', desc: 'いつもの楽しい曲' },
-                    { id: 'techno', name: 'テクノ', desc: 'かっこいい電子音' },
-                    { id: 'chill', name: 'チル', desc: 'ゆったりした癒やし' }
-                ];
-
-                for (let i = 0; i < bgmOptions.length; i++) {
-                    let opt = bgmOptions[i];
-                    let btnX = 50;
-                    let btnY = 180 + i * 62;
-                    let btnW = 400 - 100;
-                    let btnH = 55;
-
-                    ctx.fillStyle = currentBGMType === opt.id ? 'rgba(46, 204, 113, 0.4)' : 'rgba(255, 255, 255, 0.1)';
-                    ctx.strokeStyle = currentBGMType === opt.id ? '#2ECC71' : 'transparent';
-                    ctx.lineWidth = 3;
-                    ctx.beginPath();
-                    ctx.roundRect(btnX, btnY, btnW, btnH, 8);
-                    ctx.fill();
-                    if (currentBGMType === opt.id) ctx.stroke();
-
-                    ctx.fillStyle = 'white';
-                    ctx.font = 'bold 17px sans-serif';
-                    ctx.fillText(opt.name, 400/2, btnY + 23);
-                    ctx.font = '11px sans-serif';
-                    ctx.fillStyle = '#ccc';
-                    ctx.fillText(opt.desc, 400/2, btnY + 44);
-                }
-
-                // スローモードの強さ設定
-                ctx.fillStyle = 'white';
-                ctx.font = 'bold 18px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.fillText('スローモード倍率 (0.1x - 2.0x)', 400/2, 380);
-
-                let sBtnY = 400;
-                let sBtnW = 50;
-                let sBtnH = 40;
-                let decBtnX = 400 / 2 - 80;
-                let incBtnX = 400 / 2 + 30;
-
-                // マイナスボタン
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-                ctx.beginPath(); ctx.roundRect(decBtnX, sBtnY, sBtnW, sBtnH, 5); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = 'bold 24px sans-serif';
-                ctx.fillText('-', decBtnX + sBtnW/2, sBtnY + 28);
-
-                // 現在の値
-                ctx.fillStyle = '#F1C40F';
-                ctx.font = 'bold 22px "Righteous", sans-serif';
-                ctx.fillText(slowModeStrength.toFixed(1) + 'x', 400/2, sBtnY + 28);
-
-                // プラスボタン
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
-                ctx.beginPath(); ctx.roundRect(incBtnX, sBtnY, sBtnW, sBtnH, 5); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = 'bold 24px sans-serif';
-                ctx.fillText('+', incBtnX + sBtnW/2, sBtnY + 28);
-
-                ctx.fillStyle = '#ccc';
-                ctx.font = '11px sans-serif';
-                ctx.fillText('※プレイ中に ↑キー で切り替わります', 400/2, 447);
-
-                // 各種ON/OFFトグル
-                let toggles = [
-                    { label: '効果音', val: isSEEnabled },
-                    { label: 'BGM', val: isIngameBGMEnabled },
-                    { label: '環境音', val: isWindEnabled },
-                    { label: '傾き', val: isTiltEnabled },
-                    { label: '煙', val: isParticlesEnabled },
-                    { label: '演出', val: isIntroEnabled },
-                    { label: '影', val: isShadowsEnabled },
-                    { label: '判定', val: isDebugHitboxEnabled }
-                ];
-
-                for (let i = 0; i < toggles.length; i++) {
-                    let col = i % 4;
-                    let row = Math.floor(i / 4);
-                    let t = toggles[i];
-                    let btnX = 15 + col * 95;
-                    let btnY = 460 + row * 45;
-                    let btnW = 85;
-                    let btnH = 35;
-
-                    ctx.fillStyle = t.val ? '#2ECC71' : '#E74C3C';
-                    ctx.beginPath();
-                    ctx.roundRect(btnX, btnY, btnW, btnH, 5);
-                    ctx.fill();
-
-                    ctx.fillStyle = 'white';
-                    ctx.font = 'bold 10px sans-serif';
-                    ctx.fillText(t.label + (t.val ? ':ON' : ':OFF'), btnX + btnW/2, btnY + btnH/2 + 4);
-                }
-
-
                 ctx.textAlign = 'left';
             } else if (gameState === 'CUSTOM_LEVEL_SELECT') {
                 ctx.fillStyle = '#2C3E50'; ctx.fillRect(0, 0, 400, 600);
@@ -5966,6 +5720,7 @@
                 });
             });
         }
+    }
     </script>
 </body>
 </html>
