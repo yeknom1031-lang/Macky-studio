@@ -4801,7 +4801,7 @@
                 
                 ctx.font = '10px sans-serif'; ctx.shadowBlur = 0;
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-                ctx.fillText('v1.9.0', 400/2, 600/2 + 5);
+                ctx.fillText('v2.0.0', 400/2, 600/2 + 5);
                 ctx.restore();
 
                 // 中央のメインボタン (ステージ・ショップ) - もう少し上に配置
@@ -5713,7 +5713,7 @@
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').then((reg) => {
+                navigator.serviceWorker.register('sw.js?v=200').then((reg) => {
                     console.log('Service Worker registered');
                 }).catch((err) => {
                     console.error('Service Worker registration failed:', err);
