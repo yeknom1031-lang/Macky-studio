@@ -1438,70 +1438,47 @@
                 return;
             }
             if (gameState === 'START') {
-                let btnW = 80; let btnH = 80;
-                let btnX = 400/2 - btnW - 20;
-                let shpX = 400/2 + 20;
-                let stgY = 600/2 + 50;
-                // ? 遊び方 (左上に移動)
-                if (x > 10 && x < 90 && y > 10 && y < 40) {
-                    playTapSound(); gameState = 'TUTORIAL'; draw(); return;
-                }
-                
-                // PLAYボタン判定
-                if (x > btnX && x < btnX + btnW && y > stgY && y < stgY + btnH) {
-                    playTapSound(); 
-                    if (!hasSeenTutorial) {
-                        hasSeenTutorial = true;
-                        localStorage.setItem('superSkyDropTutorial', 'true');
-                        gameState = 'TUTORIAL';
-                        draw();
-                        return;
-                    }
-                // ? 遊び方 (10, 10, 80, 30)
-                if (x > 10 && x < 90 && y > 10 && y < 40) {
-                    gameState = 'TUTORIAL'; draw(); return;
-                }
-                
-                // STAGES (btnX=95, stgY=365, btnW=90, btnH=90)
-                if (x > 95 && x < 185 && y > 365 && y < 455) {
+                // 恒例の5連垂直メニュー判定
+                let btnW = 280; let btnH = 55;
+                let centerX = 400 / 2 - btnW / 2;
+
+                // 1. STAGES (Y=240)
+                if (x > centerX && x < centerX + btnW && y > 240 && y < 240 + btnH) {
                     playTapSound(); isCustomLevel = false; gameState = 'LEVEL_SELECT'; playLevelSelectBGM(); draw(); return;
                 }
-                
-                // SHOP (shpX=215, stgY=365, btnW=90, btnH=90)
-                if (x > 215 && x < 305 && y > 365 && y < 455) {
-                    playTapSound(); gameState = 'SHOP'; draw(); return;
-                }
-
-                // 下部メニュー (subY=515, subH=55, subW=110)
-                // 1. エンドレス (20, 515, 110, 55)
-                if (x > 20 && x < 130 && y > 515 && y < 570) {
+                // 2. ENDLESS (Y=305)
+                if (x > centerX && x < centerX + btnW && y > 305 && y < 305 + btnH) {
                     playTapSound();
                     let now = Date.now();
-                    let cooldown = 1 * 60 * 1000; // 30分から1分へ大幅短縮
+                    let cooldown = 1 * 60 * 1000;
                     let timeLeft = cooldown - (now - lastEndlessPlayTime);
-                    
                     if (timeLeft > 0) {
-                        let seconds = Math.ceil(timeLeft / 1000);
-                        alert(`エンドレス再挑戦まで : ${seconds} 秒`);
+                        alert(`エンドレス再挑戦まで : ${Math.ceil(timeLeft / 1000)} 秒`);
                     } else {
                         startEndlessMode();
                     }
                     return;
                 }
-                
-                // 2. ランキング (145, 515, 110, 55)
-                if (x > 145 && x < 255 && y > 515 && y < 570) {
+                // 3. SHOP (Y=370)
+                if (x > centerX && x < centerX + btnW && y > 370 && y < 370 + btnH) {
+                    playTapSound(); gameState = 'SHOP'; draw(); return;
+                }
+                // 4. RANKING (Y=435)
+                if (x > centerX && x < centerX + btnW && y > 435 && y < 435 + btnH) {
                     playTapSound(); gameState = 'RANKING'; fetchRanking(); draw(); return;
                 }
-
-                // 3. クリエイト (270, 515, 110, 55)
-                if (x > 270 && x < 380 && y > 515 && y < 570) {
+                // 5. CREATE (Y=500)
+                if (x > centerX && x < centerX + btnW && y > 500 && y < 500 + btnH) {
                     playTapSound(); gameState = 'CUSTOM_LEVEL_SELECT'; draw(); return;
                 }
 
                 // 設定 (右上) - 判定を大きく
                 if (x > 330 && x < 400 && y > 0 && y < 70) {
                     playTapSound(); gameState = 'SETTINGS'; draw(); return;
+                }
+                // ? 遊び方
+                if (x > 10 && x < 90 && y > 10 && y < 40) {
+                    gameState = 'TUTORIAL'; draw(); return;
                 }
 
                 // 挨拶テキストのタップ判定（名前変更）
@@ -4797,80 +4774,52 @@
                 ctx.fillStyle = 'white';
                 ctx.font = 'bold 44px "Righteous", sans-serif';
                 ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-                ctx.fillText('SUPER SKY DROP', 400/2, 600/2 - 30);
+                ctx.fillText('SUPER SKY DROP', 400/2, 600/2 - 40);
                 
                 ctx.font = '10px sans-serif'; ctx.shadowBlur = 0;
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-                ctx.fillText('v2.0.0', 400/2, 600/2 + 5);
+                ctx.fillText('v2.2.0 - Eternal Classic', 400/2, 600/2 - 5);
                 ctx.restore();
 
-                // 中央のメインボタン (ステージ・ショップ) - もう少し上に配置
-                let stgY = 600/2 + 65;
-                let btnW = 90; let btnH = 90;
-                let btnX = 400/2 - btnW - 15;
-                
-                // STAGES
-                ctx.fillStyle = '#2ECC71'; ctx.beginPath(); ctx.roundRect(btnX, stgY, btnW, btnH, 20); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText('ステージ', btnX + btnW/2, stgY + 82);
-                ctx.beginPath();
-                ctx.moveTo(btnX + 35, stgY + 25); ctx.lineTo(35 + btnX, stgY + 60); ctx.lineTo(65 + btnX, stgY + 42.5); ctx.closePath(); ctx.fill();
+                let btnW = 280; let btnH = 55;
+                let centerX = 400/2 - btnW/2;
 
-                // SHOP
-                let shpX = 400/2 + 15;
-                ctx.fillStyle = '#9B59B6'; ctx.beginPath(); ctx.roundRect(shpX, stgY, btnW, btnH, 20); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.fillText('ショップ', shpX + btnW/2, stgY + 82);
-                ctx.fillStyle = '#FFF'; ctx.fillRect(shpX + 20, stgY + 20, 50, 40);
-                for(let i=0; i<4; i++) {
-                    ctx.fillStyle = i % 2 === 0 ? '#E74C3C' : '#FFF';
-                    ctx.fillRect(shpX + 18 + i*13.5, stgY + 15, 13.5, 10);
-                }
+                // 1. STAGES
+                drawStyledRect(ctx, centerX, 240, btnW, btnH, '#2ECC71', true, true, 12);
+                ctx.fillStyle = 'white'; ctx.font = 'bold 20px "Righteous", sans-serif'; ctx.textAlign = 'center';
+                ctx.fillText('▶ STAGES', 400/2, 240 + 35);
 
-                // 下部メニューボタン (エンドレス・ランキング・クリエイト) - 横に並べる
-                let subY = 515;
-                let subW = 110; let subH = 55;
-                
-                // 1. エンドレス
-                let endX = 20;
-                ctx.fillStyle = '#F1C40F'; ctx.beginPath(); ctx.roundRect(endX, subY, subW, subH, 15); ctx.fill();
-                ctx.fillStyle = 'black'; ctx.font = 'bold 14px sans-serif'; 
-                ctx.fillText('エンドレス', endX + subW/2, subY + subH/2 + 6);
+                // 2. ENDLESS
+                drawStyledRect(ctx, centerX, 305, btnW, btnH, '#F1C40F', true, true, 12);
+                ctx.fillStyle = 'black'; ctx.fillText('∞ ENDLESS', 400/2, 305 + 35);
 
-                // 2. ランキング
-                let rnkX = 400/2 - subW/2;
-                ctx.fillStyle = '#3498DB'; ctx.beginPath(); ctx.roundRect(rnkX, subY, subW, subH, 15); ctx.fill();
-                ctx.fillStyle = 'white';
-                ctx.fillText('🌍 ランキング', rnkX + subW/2, subY + subH/2 + 6);
+                // 3. ショップ
+                drawStyledRect(ctx, centerX, 370, btnW, btnH, '#9B59B6', true, true, 12);
+                ctx.fillStyle = 'white'; ctx.fillText('🛒 SHOP', 400/2, 370 + 35);
 
-                // 3. クリエイト
-                let creX = 400 - subW - 20;
-                ctx.fillStyle = '#E67E22'; ctx.beginPath(); ctx.roundRect(creX, subY, subW, subH, 15); ctx.fill();
-                ctx.fillStyle = 'white';
-                ctx.fillText('クリエイト', creX + subW/2, subY + subH/2 + 18);
-                // 鉛筆アイコン (クリエイトボタン内)
-                ctx.save();
-                ctx.translate(creX + subW/2, subY + 20);
-                ctx.rotate(-Math.PI/4);
-                ctx.fillStyle = 'white'; ctx.fillRect(-12, -3, 24, 6);
-                ctx.fillStyle = '#D35400'; ctx.beginPath(); ctx.moveTo(12, -3); ctx.lineTo(18, 0); ctx.lineTo(12, 3); ctx.fill();
-                ctx.restore();
+                // 4. RANKING
+                drawStyledRect(ctx, centerX, 435, btnW, btnH, '#3498DB', true, true, 12);
+                ctx.fillStyle = 'white'; ctx.fillText('🌍 RANKING', 400/2, 435 + 35);
+
+                // 5. CREATE
+                drawStyledRect(ctx, centerX, 500, btnW, btnH, '#E67E22', true, true, 12);
+                ctx.fillStyle = 'white'; ctx.fillText('✎ CREATE', 400/2, 500 + 35);
 
                 // ? 遊び方
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
                 ctx.beginPath(); ctx.roundRect(10, 10, 80, 30, 5); ctx.fill();
-                ctx.fillStyle = 'white'; ctx.font = '14px sans-serif'; ctx.fillText('? 遊び方', 50, 30);
+                ctx.fillStyle = 'white'; ctx.font = '12px sans-serif'; ctx.fillText('? 遊び方', 50, 30);
 
-                // 設定ボタン (歯車アイコン) を右上に描画 - もっと白く、押しやすく
+                // 設定ボタン (右上アイコン)
                 ctx.save();
-                ctx.translate(400 - 40, 40);
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.translate(400 - 35, 35);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
                 for (let i = 0; i < 8; i++) {
                     ctx.rotate(Math.PI / 4);
-                    ctx.fillRect(-14, -2.5, 28, 5);
+                    ctx.fillRect(-12, -2, 24, 4);
                 }
-                ctx.beginPath();
-                ctx.arc(0, 0, 10, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(0, 0, 5, 0, Math.PI*2); ctx.fill();
+                ctx.restore();
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
                 ctx.beginPath();
                 ctx.arc(0, 0, 5, 0, Math.PI * 2);
@@ -5720,7 +5669,6 @@
                 });
             });
         }
-    }
     </script>
 </body>
 </html>
