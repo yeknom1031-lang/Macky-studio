@@ -1,4 +1,4 @@
-const CACHE_NAME = 'supersky-v5'; // v2.0.0 メガキャッシュ更新
+const CACHE_NAME = 'supersky-v7'; // v2.2.4 強制更新
 const ASSETS = [
     './',
     './index.html',
