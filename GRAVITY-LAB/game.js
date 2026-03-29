@@ -163,13 +163,30 @@ function parseStage(stageIndex) {
     game.hazards = [];
     game.goal = null;
     game.spawn = null;
-    const rowCount = stage.map.length;
-    const colCount = stage.map[0].length;
-    const boardOffsetX = Math.round((canvas.width - colCount * TILE) / 2);
-    const boardOffsetY = Math.round((canvas.height - rowCount * TILE) / 2);
+    const sourceRows = stage.map.length;
+    const sourceCols = Math.max(...stage.map.map((row) => row.length));
+    const squareSize = Math.max(sourceRows, sourceCols);
+    const padTop = Math.floor((squareSize - sourceRows) / 2);
+    const padLeft = Math.floor((squareSize - sourceCols) / 2);
+    const boardOffsetX = Math.round((canvas.width - squareSize * TILE) / 2);
+    const boardOffsetY = Math.round((canvas.height - squareSize * TILE) / 2);
 
-    stage.map.forEach((row, rowIndex) => {
-        [...row].forEach((cell, colIndex) => {
+    for (let rowIndex = 0; rowIndex < squareSize; rowIndex += 1) {
+        for (let colIndex = 0; colIndex < squareSize; colIndex += 1) {
+            const sourceRowIndex = rowIndex - padTop;
+            const sourceColIndex = colIndex - padLeft;
+            const sourceRow = stage.map[sourceRowIndex];
+
+            let cell = '#';
+            if (
+                sourceRowIndex >= 0 &&
+                sourceRowIndex < sourceRows &&
+                sourceColIndex >= 0 &&
+                sourceColIndex < sourceCols
+            ) {
+                cell = sourceRow?.[sourceColIndex] ?? '#';
+            }
+
             const x = boardOffsetX + colIndex * TILE;
             const y = boardOffsetY + rowIndex * TILE;
 
@@ -185,8 +202,8 @@ function parseStage(stageIndex) {
                     y: y + (TILE - PLAYER_SIZE) / 2
                 };
             }
-        });
-    });
+        }
+    }
 }
 
 function setMessage(title, body, buttonText = 'START') {
