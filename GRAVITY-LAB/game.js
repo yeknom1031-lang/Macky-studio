@@ -18,7 +18,6 @@ const BOUNCE_DAMPING = 0.18;
 const PARTICLE_COUNT = 18;
 
 const DIRECTIONS = {
-    none: { x: 0, y: 0, label: 'ZERO', arrow: '○' },
     up: { x: 0, y: -1, label: 'UP', arrow: '↑' },
     down: { x: 0, y: 1, label: 'DOWN', arrow: '↓' },
     left: { x: -1, y: 0, label: 'LEFT', arrow: '←' },
@@ -139,7 +138,8 @@ const stages = [
 const game = {
     currentStageIndex: 0,
     state: 'intro',
-    gravity: 'down',
+    gravityX: 0,
+    gravityY: 1,
     lastTime: 0,
     particles: [],
     flashTimer: 0,
@@ -239,9 +239,24 @@ function hideMessage() {
     messageOverlay.classList.add('hidden');
 }
 
+function getGravityInfo() {
+    const x = game.gravityX;
+    const y = game.gravityY;
+
+    if (x === 0 && y === 0) return { label: 'ZERO', arrow: '○' };
+    if (x === 0 && y === -1) return { label: 'UP', arrow: '↑' };
+    if (x === 0 && y === 1) return { label: 'DOWN', arrow: '↓' };
+    if (x === -1 && y === 0) return { label: 'LEFT', arrow: '←' };
+    if (x === 1 && y === 0) return { label: 'RIGHT', arrow: '→' };
+    if (x === -1 && y === -1) return { label: 'UP-LEFT', arrow: '↖' };
+    if (x === 1 && y === -1) return { label: 'UP-RIGHT', arrow: '↗' };
+    if (x === -1 && y === 1) return { label: 'DOWN-LEFT', arrow: '↙' };
+    return { label: 'DOWN-RIGHT', arrow: '↘' };
+}
+
 function updateStatus() {
     stageNumber.textContent = `${game.currentStageIndex + 1} / ${stages.length}`;
-    gravityLabel.textContent = DIRECTIONS[game.gravity].label;
+    gravityLabel.textContent = getGravityInfo().label;
 
     if (game.state === 'playing') {
         stateLabel.textContent = stages[game.currentStageIndex].name;
@@ -258,7 +273,11 @@ function updateStatus() {
 
 function updateSwitchButtons() {
     switchButtons.forEach((button) => {
-        button.classList.toggle('active', button.dataset.direction === game.gravity);
+        const direction = DIRECTIONS[button.dataset.direction];
+        const isActive =
+            (direction.x !== 0 && game.gravityX === direction.x) ||
+            (direction.y !== 0 && game.gravityY === direction.y);
+        button.classList.toggle('active', isActive);
     });
 }
 
@@ -270,7 +289,8 @@ function resetPlayerVelocity() {
 function loadStage(stageIndex) {
     game.currentStageIndex = stageIndex;
     parseStage(stageIndex);
-    game.gravity = 'down';
+    game.gravityX = 0;
+    game.gravityY = 1;
     game.player.x = game.spawn.x;
     game.player.y = game.spawn.y;
     game.player.vx = 0;
@@ -309,12 +329,19 @@ function setGravity(direction) {
         return;
     }
 
-    game.gravity = game.gravity === direction ? 'none' : direction;
+    const vector = DIRECTIONS[direction];
+    if (vector.x !== 0) {
+        game.gravityX = game.gravityX === vector.x ? 0 : vector.x;
+    }
+    if (vector.y !== 0) {
+        game.gravityY = game.gravityY === vector.y ? 0 : vector.y;
+    }
+
     resetPlayerVelocity();
     spawnBurst(
         game.player.x + game.player.size / 2,
         game.player.y + game.player.size / 2,
-        game.gravity === 'none' ? '#d9ecff' : '#73f7ff'
+        game.gravityX === 0 && game.gravityY === 0 ? '#d9ecff' : '#73f7ff'
     );
     updateSwitchButtons();
     updateStatus();
@@ -389,9 +416,8 @@ function update(dt) {
         return;
     }
 
-    const gravityVector = DIRECTIONS[game.gravity];
-    game.player.vx += gravityVector.x * ACCELERATION * dt;
-    game.player.vy += gravityVector.y * ACCELERATION * dt;
+    game.player.vx += game.gravityX * ACCELERATION * dt;
+    game.player.vy += game.gravityY * ACCELERATION * dt;
     game.player.vx = Math.max(-MAX_SPEED, Math.min(MAX_SPEED, game.player.vx));
     game.player.vy = Math.max(-MAX_SPEED, Math.min(MAX_SPEED, game.player.vy));
 
@@ -582,7 +608,7 @@ function drawPlayer() {
 }
 
 function drawGravityArrow() {
-    const direction = DIRECTIONS[game.gravity];
+    const gravity = getGravityInfo();
     ctx.save();
     ctx.translate(canvas.width - 96, 86);
     ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
@@ -594,7 +620,7 @@ function drawGravityArrow() {
     ctx.font = '700 42px Chakra Petch';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(direction.arrow, 0, 4);
+    ctx.fillText(gravity.arrow, 0, 4);
     ctx.restore();
 }
 
@@ -671,6 +697,9 @@ function handleKeydown(event) {
 
     if (directionFromKey) {
         event.preventDefault();
+        if (event.repeat) {
+            return;
+        }
         if (game.state === 'playing') {
             setGravity(directionFromKey);
         }
