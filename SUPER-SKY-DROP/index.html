@@ -1058,8 +1058,10 @@
 
         function updateBackgroundColors() {
             let targetIdx = 0;
-            if (gameState === 'LEVEL_SELECT' || gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR' || gameState === 'EDITOR') {
-                if ((isCustomLevel || gameState === 'EDITOR') && editorLevel && editorLevel.bgIdx !== undefined) {
+            if (gameState === 'START' || gameState === 'LEVEL_SELECT' || gameState === 'PLAYING' || gameState === 'GAMEOVER' || gameState === 'CLEAR' || gameState === 'EDITOR') {
+                if (gameState === 'START') {
+                    targetIdx = 0; // メイン画面は常に最初のテーマ
+                } else if ((isCustomLevel || gameState === 'EDITOR') && editorLevel && editorLevel.bgIdx !== undefined) {
                     targetIdx = editorLevel.bgIdx % themeBgData.length;
                 } else {
                     targetIdx = currentLevelIndex % themeBgData.length;
@@ -2029,16 +2031,22 @@
                 playTapSound();
                 let wasEndless = isEndlessMode; 
                 isEndlessMode = false; // エンドレスを解除
+                isEndlessSubMenu = false; // サブメニューも必ずリセット
                 
                 if (wasEndless) {
-                    gameState = 'START'; // エンドレスはタイトルに戻る
+                    gameState = 'START'; 
                 } else if (isCustomLevel) {
-                    gameState = 'CUSTOM_LEVEL_SELECT'; // 自作はリストに戻る
+                    gameState = 'CUSTOM_LEVEL_SELECT';
                 } else {
-                    gameState = 'LEVEL_SELECT'; // 通常はステージ選択に戻る
+                    gameState = 'LEVEL_SELECT'; 
                 }
                 
-                playLevelSelectBGM();
+                // 一旦BGMを止めてから、メイン用BGMを再開させる
+                if (bgmInterval) {
+                   clearInterval(bgmInterval);
+                   bgmInterval = null;
+                }
+                playLevelSelectBGM(); 
                 draw();
                 return;
             } else if (gameState === 'LEVEL_SELECT') {
