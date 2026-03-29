@@ -12,7 +12,7 @@
     <meta http-equiv="Expires" content="0">
     
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json?v=224">
+    <link rel="manifest" href="manifest.json?v=225">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SkyDrop">
@@ -4827,7 +4827,7 @@
                 
                 ctx.font = '10px sans-serif'; ctx.shadowBlur = 0;
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-                ctx.fillText('v2.2.4 - Eternal Classic', 400/2, 195);
+                ctx.fillText('v2.2.5 - Eternal Classic', 400/2, 195);
                 ctx.restore();
 
                 let btnW = 280; let btnH = 55;
@@ -4857,7 +4857,7 @@
                 } else {
                     // --- エンドレスモード・サブメニュー ---
                     ctx.save();
-                    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+                    ctx.fillStyle = 'rgba(26, 42, 108, 0.85)';
                     ctx.beginPath(); ctx.roundRect(centerX - 15, 230, btnW + 30, 360, 20); ctx.fill();
                     ctx.strokeStyle = '#F1C40F'; ctx.lineWidth = 1.5; ctx.stroke();
                     ctx.restore();
@@ -5738,7 +5738,7 @@
         // Service Worker Registration (Force Update via Filename)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw-v224.js?v=224').then((reg) => {
+                navigator.serviceWorker.register('sw-v225.js?v=225').then((reg) => {
                     console.log('Service Worker registered');
                     // 更新検知時の処理
                     reg.onupdatefound = () => {
