@@ -777,6 +777,7 @@
         let isSlowMode = false;
         let isPracticeUsed = false; // 今回のランでスローモードを使ったか
         let isEndlessMode = false;
+        let isEndlessSubMenu = false; // エンドレスのサブメニュー(Start/Ranking)表示用フラグ
         let currentChapter = 1; // 1: 第一章(1-20), 2: 第二章(21-40)
         let endlessTime = 0;
         let endlessStartTime = 0;
@@ -1442,34 +1443,52 @@
                 let btnW = 280; let btnH = 55;
                 let centerX = 400 / 2 - btnW / 2;
 
-                // 1. STAGES (Y=240)
-                if (x > centerX && x < centerX + btnW && y > 240 && y < 240 + btnH) {
-                    playTapSound(); isCustomLevel = false; gameState = 'LEVEL_SELECT'; playLevelSelectBGM(); draw(); return;
-                }
-                // 2. ENDLESS (Y=305)
-                if (x > centerX && x < centerX + btnW && y > 305 && y < 305 + btnH) {
-                    playTapSound();
-                    let now = Date.now();
-                    let cooldown = 1 * 60 * 1000;
-                    let timeLeft = cooldown - (now - lastEndlessPlayTime);
-                    if (timeLeft > 0) {
-                        alert(`エンドレス再挑戦まで : ${Math.ceil(timeLeft / 1000)} 秒`);
-                    } else {
-                        startEndlessMode();
+                if (!isEndlessSubMenu) {
+                    // 1. STAGES (Y=240)
+                    if (x > centerX && x < centerX + btnW && y > 240 && y < 240 + btnH) {
+                        playTapSound(); isCustomLevel = false; gameState = 'LEVEL_SELECT'; playLevelSelectBGM(); draw(); return;
                     }
-                    return;
-                }
-                // 3. SHOP (Y=370)
-                if (x > centerX && x < centerX + btnW && y > 370 && y < 370 + btnH) {
-                    playTapSound(); gameState = 'SHOP'; draw(); return;
-                }
-                // 4. RANKING (Y=435)
-                if (x > centerX && x < centerX + btnW && y > 435 && y < 435 + btnH) {
-                    playTapSound(); gameState = 'RANKING'; fetchRanking(); draw(); return;
-                }
-                // 5. CREATE (Y=500)
-                if (x > centerX && x < centerX + btnW && y > 500 && y < 500 + btnH) {
-                    playTapSound(); gameState = 'CUSTOM_LEVEL_SELECT'; draw(); return;
+                    // 2. ENDLESS (Y=305)
+                    if (x > centerX && x < centerX + btnW && y > 305 && y < 305 + btnH) {
+                        playTapSound(); isEndlessSubMenu = true; draw(); return;
+                    }
+                    // 3. SHOP (Y=370)
+                    if (x > centerX && x < centerX + btnW && y > 370 && y < 370 + btnH) {
+                        playTapSound(); gameState = 'SHOP'; draw(); return;
+                    }
+                    // 4. RANKING (Y=435)
+                    if (x > centerX && x < centerX + btnW && y > 435 && y < 435 + btnH) {
+                        playTapSound(); gameState = 'RANKING'; fetchRanking(); draw(); return;
+                    }
+                    // 5. CREATE (Y=500)
+                    if (x > centerX && x < centerX + btnW && y > 500 && y < 500 + btnH) {
+                        playTapSound(); gameState = 'CUSTOM_LEVEL_SELECT'; draw(); return;
+                    }
+                } else {
+                    // --- エンドレスモード・サブメニュー判定 ---
+                    // A. スタート (Y=330)
+                    if (x > centerX && x < centerX + btnW && y > 330 && y < 330 + btnH) {
+                        playTapSound();
+                        let now = Date.now();
+                        let cooldown = 1 * 60 * 1000;
+                        let timeLeft = cooldown - (now - lastEndlessPlayTime);
+                        if (timeLeft > 0) {
+                            alert(`エンドレス再挑戦まで : ${Math.ceil(timeLeft / 1000)} 秒`);
+                        } else {
+                            isEndlessSubMenu = false;
+                            startEndlessMode();
+                        }
+                        return;
+                    }
+                    // B. ランキング (Y=400)
+                    if (x > centerX && x < centerX + btnW && y > 400 && y < 400 + btnH) {
+                        playTapSound();
+                        gameState = 'RANKING'; fetchRanking(); draw(); return;
+                    }
+                    // C. 戻る (Y=490)
+                    if (x > centerX && x < centerX + btnW && y > 490 && y < 490 + btnH) {
+                        playTapSound(); isEndlessSubMenu = false; draw(); return;
+                    }
                 }
 
                 // 設定 (右上) - 判定を大きく
@@ -4788,28 +4807,55 @@
                 ctx.restore();
 
                 let btnW = 280; let btnH = 55;
-                let centerX = 400/2 - btnW/2;
+                let centerX = 400/2 - btnW / 2;
 
-                // 1. STAGES
-                drawStyledRect(ctx, centerX, 240, btnW, btnH, '#2ECC71', true, true, 12);
-                ctx.fillStyle = 'white'; ctx.font = 'bold 20px "Righteous", sans-serif'; ctx.textAlign = 'center';
-                ctx.fillText('▶ STAGES', 400/2, 240 + 35);
+                if (!isEndlessSubMenu) {
+                    // 1. STAGES
+                    drawStyledRect(ctx, centerX, 240, btnW, btnH, '#2ECC71', true, true, 12);
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 20px "Righteous", sans-serif'; ctx.textAlign = 'center';
+                    ctx.fillText('▶ STAGES', 400/2, 240 + 35);
 
-                // 2. ENDLESS
-                drawStyledRect(ctx, centerX, 305, btnW, btnH, '#F1C40F', true, true, 12);
-                ctx.fillStyle = 'black'; ctx.fillText('∞ ENDLESS', 400/2, 305 + 35);
+                    // 2. ENDLESS
+                    drawStyledRect(ctx, centerX, 305, btnW, btnH, '#F1C40F', true, true, 12);
+                    ctx.fillStyle = 'black'; ctx.fillText('∞ ENDLESS', 400/2, 305 + 35);
 
-                // 3. ショップ
-                drawStyledRect(ctx, centerX, 370, btnW, btnH, '#9B59B6', true, true, 12);
-                ctx.fillStyle = 'white'; ctx.fillText('🛒 SHOP', 400/2, 370 + 35);
+                    // 3. ショップ
+                    drawStyledRect(ctx, centerX, 370, btnW, btnH, '#9B59B6', true, true, 12);
+                    ctx.fillStyle = 'white'; ctx.fillText('🛒 SHOP', 400/2, 370 + 35);
 
-                // 4. RANKING
-                drawStyledRect(ctx, centerX, 435, btnW, btnH, '#3498DB', true, true, 12);
-                ctx.fillStyle = 'white'; ctx.fillText('🌍 RANKING', 400/2, 435 + 35);
+                    // 4. RANKING
+                    drawStyledRect(ctx, centerX, 435, btnW, btnH, '#3498DB', true, true, 12);
+                    ctx.fillStyle = 'white'; ctx.fillText('🌍 RANKING', 400/2, 435 + 35);
 
-                // 5. CREATE
-                drawStyledRect(ctx, centerX, 500, btnW, btnH, '#E67E22', true, true, 12);
-                ctx.fillStyle = 'white'; ctx.fillText('✎ CREATE', 400/2, 500 + 35);
+                    // 5. CREATE
+                    drawStyledRect(ctx, centerX, 500, btnW, btnH, '#E67E22', true, true, 12);
+                    ctx.fillStyle = 'white'; ctx.fillText('✎ CREATE', 400/2, 500 + 35);
+                } else {
+                    // --- エンドレスモード・サブメニュー ---
+                    ctx.save();
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+                    ctx.beginPath(); ctx.roundRect(centerX - 15, 230, btnW + 30, 360, 20); ctx.fill();
+                    ctx.strokeStyle = '#F1C40F'; ctx.lineWidth = 1.5; ctx.stroke();
+                    ctx.restore();
+
+                    ctx.fillStyle = '#F1C40F'; ctx.font = 'bold 22px "Righteous", sans-serif'; ctx.textAlign = 'center';
+                    ctx.fillText('∞ ENDLESS MODE', 400/2, 280);
+
+                    // A. スタート
+                    drawStyledRect(ctx, centerX, 330, btnW, btnH, '#2ECC71', true, true, 12);
+                    ctx.fillStyle = 'white'; ctx.font = 'bold 20px "Righteous", sans-serif';
+                    ctx.fillText('▶ START GAME', 400/2, 330 + 35);
+
+                    // B. ランキング (エンドレス)
+                    drawStyledRect(ctx, centerX, 400, btnW, btnH, '#3498DB', true, true, 12);
+                    ctx.fillStyle = 'white';
+                    ctx.fillText('🌍 VIEW RANKING', 400/2, 400 + 35);
+
+                    // C. 戻る
+                    drawStyledRect(ctx, centerX, 490, btnW, btnH, '#555', true, true, 12);
+                    ctx.fillStyle = 'white';
+                    ctx.fillText('BACK TO MENU', 400/2, 490 + 35);
+                }
 
                 // ? 遊び方
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
