@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAVITY LAB</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="shell">
+        <header class="hud">
+            <div class="brand">
+                <p class="eyebrow">MACKY STUDIO</p>
+                <h1>GRAVITY LAB</h1>
+                <p class="tagline">上下左右のスイッチで重力を切り替え、コアへたどり着け。</p>
+            </div>
+            <div class="status-panel">
+                <div class="status-card">
+                    <span class="status-label">STAGE</span>
+                    <strong id="stage-number">1 / 6</strong>
+                </div>
+                <div class="status-card">
+                    <span class="status-label">GRAVITY</span>
+                    <strong id="gravity-label">DOWN</strong>
+                </div>
+                <div class="status-card">
+                    <span class="status-label">STATE</span>
+                    <strong id="state-label">READY</strong>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-panel">
+            <div class="canvas-frame">
+                <canvas id="gameCanvas" width="1280" height="720"></canvas>
+                <div id="message-overlay" class="message-overlay">
+                    <div class="message-card">
+                        <p class="message-kicker">GRAVITY CONTROL</p>
+                        <h2 id="message-title">スイッチで重力を切り替えよう</h2>
+                        <p id="message-body">青いキューブをゴールコアに運べばステージクリア。赤い危険物には触れないように進みます。</p>
+                        <button id="start-button" class="primary-button">START</button>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="control-panel">
+                <div class="controls-box">
+                    <h2>SWITCHES</h2>
+                    <p>矢印ボタンか WASD / 矢印キー で重力を変更</p>
+                    <div class="dpad">
+                        <button class="gravity-switch up" data-direction="up" aria-label="上に重力を切り替える">↑</button>
+                        <button class="gravity-switch left" data-direction="left" aria-label="左に重力を切り替える">←</button>
+                        <button class="gravity-switch right" data-direction="right" aria-label="右に重力を切り替える">→</button>
+                        <button class="gravity-switch down active" data-direction="down" aria-label="下に重力を切り替える">↓</button>
+                    </div>
+                </div>
+
+                <div class="controls-box compact">
+                    <h2>HOW TO PLAY</h2>
+                    <ul>
+                        <li>壁に当たるまでプレイヤーは重力方向へ加速します。</li>
+                        <li>金色のコアに触れると次のステージへ進みます。</li>
+                        <li>赤いスパイクに当たるとステージの最初からやり直しです。</li>
+                    </ul>
+                </div>
+
+                <div class="controls-box compact">
+                    <h2>SHORTCUTS</h2>
+                    <ul>
+                        <li>R で現在のステージをリスタート</li>
+                        <li>Enter でメッセージを進める</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
