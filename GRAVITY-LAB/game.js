@@ -198,7 +198,10 @@ function parseStage(stageIndex) {
                 ) {
                     cell = sourceRow?.[sourceColIndex] ?? '.';
                 } else {
-                    cell = '.';
+                    // Place extra blocks only in the expanded square area.
+                    const noise = (rowIndex * 19 + colIndex * 23 + stageIndex * 29) % 12;
+                    const checker = (rowIndex + colIndex + stageIndex) % 2 === 0;
+                    cell = noise < 6 && checker ? '#' : '.';
                 }
             }
 
