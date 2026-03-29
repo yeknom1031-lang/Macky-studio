@@ -12,7 +12,7 @@
     <meta http-equiv="Expires" content="0">
     
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json?v=225">
+    <link rel="manifest" href="manifest.json?v=226">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SkyDrop">
@@ -4082,7 +4082,7 @@
         }
 
         function drawRanking() {
-            ctx.fillStyle = 'rgba(0,0,0,0.85)';
+            ctx.fillStyle = 'rgba(48, 0, 107, 0.93)'; // 高貴な紫
             ctx.fillRect(0, 0, 400, 600);
 
             // ヘッダー
@@ -4827,7 +4827,7 @@
                 
                 ctx.font = '10px sans-serif'; ctx.shadowBlur = 0;
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-                ctx.fillText('v2.2.5 - Eternal Classic', 400/2, 195);
+                ctx.fillText('v2.2.6 - Eternal Classic', 400/2, 195);
                 ctx.restore();
 
                 let btnW = 280; let btnH = 55;
@@ -5006,9 +5006,9 @@
                 ctx.fillText('わかった！', 400/2, 600 - 48);
                 ctx.textAlign = 'left';
             } else if (gameState === 'SHOP') {
-                // --- ショップの背景（内装）を描画 ---
+                // --- ショップの背景（紺色のグラデーション） ---
                 let wallGrad = ctx.createLinearGradient(0, 0, 0, 600);
-                wallGrad.addColorStop(0, '#5D4037'); wallGrad.addColorStop(1, '#3E2723');
+                wallGrad.addColorStop(0, '#001F3F'); wallGrad.addColorStop(1, '#001020'); // 深い紺色
                 ctx.fillStyle = wallGrad; ctx.fillRect(0, 0, 400, 600);
 
                 ctx.fillStyle = '#4E342E';
@@ -5738,7 +5738,7 @@
         // Service Worker Registration (Force Update via Filename)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw-v225.js?v=225').then((reg) => {
+                navigator.serviceWorker.register('sw-v226.js?v=226').then((reg) => {
                     console.log('Service Worker registered');
                     // 更新検知時の処理
                     reg.onupdatefound = () => {
