@@ -101,12 +101,12 @@ body {
 }
 
 .game-panel {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 18px;
     flex: 1;
     min-height: 0;
-    align-items: start;
 }
 
 .canvas-frame {
@@ -114,9 +114,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: min(92vw, calc(100svh - 260px), 860px);
+    height: min(92vw, calc(100svh - 260px), 860px);
     aspect-ratio: 1 / 1;
-    align-self: start;
+    flex: 0 0 auto;
     border-radius: 28px;
     overflow: hidden;
 }
@@ -199,11 +200,15 @@ canvas {
 
 .control-panel {
     display: flex;
-    flex-direction: column;
+    width: min(100%, 860px);
+    flex-wrap: wrap;
     gap: 18px;
+    justify-content: center;
 }
 
 .controls-box {
+    flex: 1 1 260px;
+    max-width: 320px;
     border-radius: 24px;
     padding: 22px;
 }
@@ -274,13 +279,13 @@ canvas {
 .gravity-switch.down { grid-area: down; }
 
 @media (max-width: 1080px) {
-    .game-panel {
-        grid-template-columns: 1fr;
+    .canvas-frame {
+        width: min(94vw, calc(100svh - 240px));
+        height: min(94vw, calc(100svh - 240px));
     }
 
     .control-panel {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 100%;
     }
 }
 
@@ -302,11 +307,11 @@ canvas {
         flex: 1;
     }
 
-    .canvas-frame {
-        min-height: 0;
+    .control-panel {
+        width: 100%;
     }
 
-    .control-panel {
-        grid-template-columns: 1fr;
+    .controls-box {
+        max-width: none;
     }
 }
