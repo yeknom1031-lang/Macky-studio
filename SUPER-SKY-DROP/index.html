@@ -1904,15 +1904,26 @@
                     }
                 }
                 
-                // 強制的な更新ボタン (キャッシュクリア) - 描画と判定を一致
+                // 強制的な更新ボタン (キャッシュクリア) - 強化版
                 let updateBtnX = 400 / 2 - 80;
                 let updateBtnY = 20; 
                 let updateBtnW = 160;
                 let updateBtnH = 35;
                 if (x > updateBtnX && x < updateBtnX + updateBtnW && y > updateBtnY && y < updateBtnY + updateBtnH) {
                     playTapSound();
-                    const v = Date.now();
-                    location.href = location.pathname + '?v=' + v;
+                    if (confirm('最新の状態に更新（強制リロード）しますか？\n(セーブデータは消えません)')) {
+                        if ('serviceWorker' in navigator) {
+                            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                                for(let registration of registrations) { registration.unregister(); }
+                                caches.keys().then(names => {
+                                    for (let name of names) caches.delete(name);
+                                    window.location.href = window.location.pathname + '?v=' + Date.now();
+                                });
+                            });
+                        } else {
+                            window.location.href = window.location.pathname + '?v=' + Date.now();
+                        }
+                    }
                     return;
                 }
 
@@ -5719,11 +5730,23 @@
             }
         }
 
-        // Service Worker Registration
+        // Service Worker Registration (Cache Busting)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js?v=200').then((reg) => {
+                navigator.serviceWorker.register('sw.js?v=224').then((reg) => {
                     console.log('Service Worker registered');
+                    // 更新検知時の処理
+                    reg.onupdatefound = () => {
+                        const installingWorker = reg.installing;
+                        installingWorker.onstatechange = () => {
+                            if (installingWorker.state === 'installed') {
+                                if (navigator.serviceWorker.controller) {
+                                    // 新しいコンテンツがある場合は通知
+                                    console.log('New content available; please refresh.');
+                                }
+                            }
+                        };
+                    };
                 }).catch((err) => {
                     console.error('Service Worker registration failed:', err);
                 });
