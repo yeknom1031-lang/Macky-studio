@@ -198,10 +198,13 @@ function parseStage(stageIndex) {
                 ) {
                     cell = sourceRow?.[sourceColIndex] ?? '.';
                 } else {
-                    // Place extra blocks only in the expanded square area.
-                    const noise = (rowIndex * 19 + colIndex * 23 + stageIndex * 29) % 12;
-                    const checker = (rowIndex + colIndex + stageIndex) % 2 === 0;
-                    cell = noise < 6 && checker ? '#' : '.';
+                    // Fill expanded area by reusing the original wall rhythm.
+                    const templateRowIndex =
+                        ((squareInnerRow - padTop) % innerRows + innerRows) % innerRows + 1;
+                    const templateColIndex =
+                        ((squareInnerCol - padLeft) % innerCols + innerCols) % innerCols + 1;
+                    const templateCell = stage.map[templateRowIndex]?.[templateColIndex] ?? '.';
+                    cell = templateCell === '#' ? '#' : '.';
                 }
             }
 
