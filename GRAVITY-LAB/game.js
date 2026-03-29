@@ -16,8 +16,6 @@ const ACCELERATION = 1800;
 const MAX_SPEED = 620;
 const BOUNCE_DAMPING = 0.18;
 const PARTICLE_COUNT = 18;
-const BOARD_OFFSET_X = 80;
-const BOARD_OFFSET_Y = 24;
 
 const DIRECTIONS = {
     up: { x: 0, y: -1, label: 'UP', arrow: '↑' },
@@ -165,11 +163,15 @@ function parseStage(stageIndex) {
     game.hazards = [];
     game.goal = null;
     game.spawn = null;
+    const rowCount = stage.map.length;
+    const colCount = stage.map[0].length;
+    const boardOffsetX = Math.round((canvas.width - colCount * TILE) / 2);
+    const boardOffsetY = Math.round((canvas.height - rowCount * TILE) / 2);
 
     stage.map.forEach((row, rowIndex) => {
         [...row].forEach((cell, colIndex) => {
-            const x = BOARD_OFFSET_X + colIndex * TILE;
-            const y = BOARD_OFFSET_Y + rowIndex * TILE;
+            const x = boardOffsetX + colIndex * TILE;
+            const y = boardOffsetY + rowIndex * TILE;
 
             if (cell === '#') {
                 game.solids.push({ x, y, width: TILE, height: TILE });
@@ -663,7 +665,7 @@ function resizeCanvas() {
     const frame = canvas.parentElement;
     const availableWidth = frame.clientWidth;
     const availableHeight = frame.clientHeight;
-    const aspect = 16 / 9;
+    const aspect = 1;
 
     let width = availableWidth;
     let height = width / aspect;

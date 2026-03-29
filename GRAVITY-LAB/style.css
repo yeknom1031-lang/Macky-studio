@@ -106,6 +106,7 @@ body {
     gap: 18px;
     flex: 1;
     min-height: 0;
+    align-items: start;
 }
 
 .canvas-frame {
@@ -113,9 +114,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    align-self: start;
     border-radius: 28px;
     overflow: hidden;
-    min-height: 540px;
 }
 
 canvas {
@@ -300,7 +303,7 @@ canvas {
     }
 
     .canvas-frame {
-        min-height: 420px;
+        min-height: 0;
     }
 
     .control-panel {
