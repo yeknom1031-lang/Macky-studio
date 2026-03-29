@@ -165,39 +165,40 @@ function parseStage(stageIndex) {
     game.spawn = null;
     const sourceRows = stage.map.length;
     const sourceCols = Math.max(...stage.map.map((row) => row.length));
-    const squareSize = Math.max(sourceRows, sourceCols);
-    const padTop = Math.floor((squareSize - sourceRows) / 2);
-    const padLeft = Math.floor((squareSize - sourceCols) / 2);
-    const boardOffsetX = Math.round((canvas.width - squareSize * TILE) / 2);
-    const boardOffsetY = Math.round((canvas.height - squareSize * TILE) / 2);
+    const innerRows = Math.max(1, sourceRows - 2);
+    const innerCols = Math.max(1, sourceCols - 2);
+    const squareInnerSize = Math.max(innerRows, innerCols);
+    const boardSize = squareInnerSize + 2;
+    const padTop = Math.floor((squareInnerSize - innerRows) / 2);
+    const padLeft = Math.floor((squareInnerSize - innerCols) / 2);
+    const boardOffsetX = Math.round((canvas.width - boardSize * TILE) / 2);
+    const boardOffsetY = Math.round((canvas.height - boardSize * TILE) / 2);
 
-    for (let rowIndex = 0; rowIndex < squareSize; rowIndex += 1) {
-        for (let colIndex = 0; colIndex < squareSize; colIndex += 1) {
-            const sourceRowIndex = rowIndex - padTop;
-            const sourceColIndex = colIndex - padLeft;
-            const sourceRow = stage.map[sourceRowIndex];
+    for (let rowIndex = 0; rowIndex < boardSize; rowIndex += 1) {
+        for (let colIndex = 0; colIndex < boardSize; colIndex += 1) {
+            const isOuterBorder =
+                rowIndex === 0 ||
+                colIndex === 0 ||
+                rowIndex === boardSize - 1 ||
+                colIndex === boardSize - 1;
 
             let cell = '#';
-            if (
-                sourceRowIndex >= 0 &&
-                sourceRowIndex < sourceRows &&
-                sourceColIndex >= 0 &&
-                sourceColIndex < sourceCols
-            ) {
-                cell = sourceRow?.[sourceColIndex] ?? '#';
-            } else {
-                const isOuterBorder =
-                    rowIndex === 0 ||
-                    colIndex === 0 ||
-                    rowIndex === squareSize - 1 ||
-                    colIndex === squareSize - 1;
+            if (!isOuterBorder) {
+                const squareInnerRow = rowIndex - 1;
+                const squareInnerCol = colIndex - 1;
+                const sourceRowIndex = squareInnerRow - padTop + 1;
+                const sourceColIndex = squareInnerCol - padLeft + 1;
+                const sourceRow = stage.map[sourceRowIndex];
 
-                if (isOuterBorder) {
-                    cell = '#';
+                if (
+                    sourceRowIndex >= 1 &&
+                    sourceRowIndex <= sourceRows - 2 &&
+                    sourceColIndex >= 1 &&
+                    sourceColIndex <= sourceCols - 2
+                ) {
+                    cell = sourceRow?.[sourceColIndex] ?? '.';
                 } else {
-                    // Added square padding becomes mostly hollow, with a few wall fragments.
-                    const noise = (rowIndex * 31 + colIndex * 17 + stageIndex * 13) % 11;
-                    cell = noise < 9 ? '.' : '#';
+                    cell = '.';
                 }
             }
 
