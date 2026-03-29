@@ -18,6 +18,7 @@ const BOUNCE_DAMPING = 0.18;
 const PARTICLE_COUNT = 18;
 
 const DIRECTIONS = {
+    none: { x: 0, y: 0, label: 'ZERO', arrow: '○' },
     up: { x: 0, y: -1, label: 'UP', arrow: '↑' },
     down: { x: 0, y: 1, label: 'DOWN', arrow: '↓' },
     left: { x: -1, y: 0, label: 'LEFT', arrow: '←' },
@@ -308,12 +309,12 @@ function setGravity(direction) {
         return;
     }
 
-    game.gravity = direction;
+    game.gravity = game.gravity === direction ? 'none' : direction;
     resetPlayerVelocity();
     spawnBurst(
         game.player.x + game.player.size / 2,
         game.player.y + game.player.size / 2,
-        '#73f7ff'
+        game.gravity === 'none' ? '#d9ecff' : '#73f7ff'
     );
     updateSwitchButtons();
     updateStatus();
