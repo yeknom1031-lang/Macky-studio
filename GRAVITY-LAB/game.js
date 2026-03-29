@@ -185,6 +185,20 @@ function parseStage(stageIndex) {
                 sourceColIndex < sourceCols
             ) {
                 cell = sourceRow?.[sourceColIndex] ?? '#';
+            } else {
+                const isOuterBorder =
+                    rowIndex === 0 ||
+                    colIndex === 0 ||
+                    rowIndex === squareSize - 1 ||
+                    colIndex === squareSize - 1;
+
+                if (isOuterBorder) {
+                    cell = '#';
+                } else {
+                    // Added square padding becomes mostly hollow, with a few wall fragments.
+                    const noise = (rowIndex * 31 + colIndex * 17 + stageIndex * 13) % 11;
+                    cell = noise < 9 ? '.' : '#';
+                }
             }
 
             const x = boardOffsetX + colIndex * TILE;
