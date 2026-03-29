@@ -6,8 +6,13 @@
     <title>SUPER SKY DROP</title>
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     
+    <!-- キャッシュバースト (強制更新対策) -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json?v=224">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SkyDrop">
@@ -5730,10 +5735,10 @@
             }
         }
 
-        // Service Worker Registration (Cache Busting)
+        // Service Worker Registration (Force Update via Filename)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js?v=224').then((reg) => {
+                navigator.serviceWorker.register('sw-v224.js?v=224').then((reg) => {
                     console.log('Service Worker registered');
                     // 更新検知時の処理
                     reg.onupdatefound = () => {
