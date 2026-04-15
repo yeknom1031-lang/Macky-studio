@@ -4,6 +4,27 @@
     --player-color: #00ffff;
     --obstacle-color: #ff0055;
     --cell-size: 100px;
+    --game-speed: 700ms;
+}
+
+@keyframes scrollBgTop {
+    from { background-position: -2px -2px; }
+    to { background-position: -2px calc(var(--cell-size) - 2px); }
+}
+
+@keyframes scrollBgSide {
+    from { background-position: -2px -2px; }
+    to { background-position: calc(-1 * var(--cell-size) - 2px) -2px; }
+}
+
+@keyframes exhaustTop {
+    from { opacity: 1; height: 35px; }
+    to { opacity: 0.5; height: 15px; }
+}
+
+@keyframes exhaustSide {
+    from { opacity: 1; width: 35px; }
+    to { opacity: 0.5; width: 15px; }
 }
 
 body {
@@ -96,6 +117,14 @@ body {
     z-index: 1;
 }
 
+#screen-top .grid-bg {
+    animation: scrollBgTop var(--game-speed) linear infinite;
+}
+
+#screen-side .grid-bg {
+    animation: scrollBgSide var(--game-speed) linear infinite;
+}
+
 .entity {
     position: absolute;
     width: var(--cell-size);
@@ -109,6 +138,34 @@ body {
     background-color: rgba(0, 255, 255, 0.3);
     box-shadow: 0 0 20px var(--player-color), inset 0 0 15px var(--player-color);
     z-index: 10;
+}
+
+#screen-top .player::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -25px;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: linear-gradient(to bottom, var(--player-color), transparent);
+    animation: exhaustTop 0.1s infinite alternate;
+    filter: blur(2px);
+    border-radius: 50%;
+}
+
+#screen-side .player::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 20px;
+    background: linear-gradient(to left, var(--player-color), transparent);
+    animation: exhaustSide 0.1s infinite alternate;
+    filter: blur(2px);
+    border-radius: 50%;
 }
 
 .obstacle {

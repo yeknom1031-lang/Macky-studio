@@ -22,6 +22,10 @@ let obsSideElements = {};
 let playerTopEl = null;
 let playerSideEl = null;
 
+function updateSpeed() {
+    document.documentElement.style.setProperty('--game-speed', `${BASE_SPEED}ms`);
+}
+
 function init() {
     isGameOver = false;
     score = 0;
@@ -32,6 +36,7 @@ function init() {
     obsTopElements = {};
     obsSideElements = {};
     BASE_SPEED = 700;
+    updateSpeed();
 
     // Clear entities
     screenTopContainer.querySelectorAll('.entity').forEach(e => e.remove());
@@ -115,6 +120,7 @@ function gameStep() {
     // Speed up dynamically
     if (score % 20 === 0 && BASE_SPEED > 250) {
         BASE_SPEED -= 50;
+        updateSpeed();
         clearInterval(gameLoopInterval);
         gameLoopInterval = setInterval(gameStep, BASE_SPEED);
     }
