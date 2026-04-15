@@ -8,10 +8,9 @@ const restartBtn = document.getElementById('restart-btn');
 const CELL_SIZE = 100;
 
 // Game State
-let player = { x: 1, y: 1 }; // Player is fixed in Z=0 slice relative to camera
+let player = { x: 1, y: 1, z: 0 }; 
 let obstacles = []; // { id, x, y, z }
 let score = 0;
-let worldProgress = 0; // The actual depth we have travelled
 let isGameOver = false;
 let obstacleIdCounter = 0;
 
@@ -24,9 +23,8 @@ let playerSideEl = null;
 function init() {
     isGameOver = false;
     score = 0;
-    worldProgress = 0;
     scoreEl.innerText = score;
-    player = { x: 1, y: 1 };
+    player = { x: 1, y: 1, z: 0 };
     obstacles = [];
     obstacleIdCounter = 0;
     obsTopElements = {};
@@ -46,19 +44,12 @@ function init() {
     playerSideEl.className = 'entity player';
     screenSideContainer.appendChild(playerSideEl);
 
-    spawnInitialObstacles();
+    spawnSlice(3);
     render();
 }
 
-function spawnInitialObstacles() {
-    // Spawn some obstacles ahead
-    for (let z = 1; z <= 3; z++) {
-        spawnSlice(z);
-    }
-}
-
 function spawnSlice(z) {
-    const obstacleCount = Math.min(6, 2 + Math.floor(worldProgress / 10));
+    const obstacleCount = Math.min(6, 2 + Math.floor(score / 10));
     const positions = [];
     for(let x=0; x<3; x++) {
         for(let y=0; y<3; y++) {
@@ -90,33 +81,34 @@ function createObstacle(x, y, z) {
     obsSideElements[id] = sideEl;
 }
 
-function gameStep(direction = 1) {
+function gameStep(skipObstacleMove = false) {
     if (isGameOver) return;
-
-    worldProgress += direction;
-    if (worldProgress < 0) worldProgress = 0;
     
-    // Move existing obstacles
-    for (let i = obstacles.length - 1; i >= 0; i--) {
-        obstacles[i].z -= direction;
-        if (obstacles[i].z < -1) {
-            const id = obstacles[i].id;
-            if (obsTopElements[id]) obsTopElements[id].remove();
-            if (obsSideElements[id]) obsSideElements[id].remove();
-            delete obsTopElements[id];
-            delete obsSideElements[id];
-            obstacles.splice(i, 1);
+    // Default turn: obstacles move Z--
+    if (!skipObstacleMove) {
+        for (let i = obstacles.length - 1; i >= 0; i--) {
+            obstacles[i].z -= 1;
+            if (obstacles[i].z < -1) {
+                removeObstacle(i);
+            }
         }
     }
 
-    if (direction > 0) {
-        score++;
-        scoreEl.innerText = score;
-        spawnSlice(3); // Spawn new slice at the far end
-    }
-    
+    score++;
+    scoreEl.innerText = score;
+    spawnSlice(3); // Spawn at edge
+
     checkCollision();
     render();
+}
+
+function removeObstacle(index) {
+    const id = obstacles[index].id;
+    if (obsTopElements[id]) obsTopElements[id].remove();
+    if (obsSideElements[id]) obsSideElements[id].remove();
+    delete obsTopElements[id];
+    delete obsSideElements[id];
+    obstacles.splice(index, 1);
 }
 
 function checkCollision() {
@@ -138,16 +130,16 @@ function triggerGameOver() {
 function render() {
     // ----------------------------------
     // TOP VIEW (タテ) projection: X vs Z
-    // X -> left, Z -> top (Z=0 is bottom, Z=2 is top)
+    // X -> left, Z -> top (Z=2 is top, Z=0 is bottom)
     // ----------------------------------
     playerTopEl.style.left = `${player.x * CELL_SIZE}px`;
-    playerTopEl.style.top = `${2 * CELL_SIZE}px`; // Player fixed at Z=0 (bottom row)
+    playerTopEl.style.top = `${(2 - player.z) * CELL_SIZE}px`;
 
     // ----------------------------------
     // SIDE VIEW (ヨコ) projection: Z vs Y
     // Z -> left (Z=0 is left, Z=2 is right), Y -> top
     // ----------------------------------
-    playerSideEl.style.left = `0px`; // Player fixed at Z=0 (left column)
+    playerSideEl.style.left = `${player.z * CELL_SIZE}px`;
     playerSideEl.style.top = `${(2 - player.y) * CELL_SIZE}px`;
 
     for (let o of obstacles) {
@@ -173,29 +165,26 @@ window.addEventListener('keydown', (e) => {
     if (isGameOver) return;
 
     let moved = false;
+    let isZMove = false;
 
-    // LEFT SCREEN (タテ): A/D move X, W/S move Y
+    // TOP VIEW (タテ): WASD
+    // A/D move X. W/S move Z (Forward/Backward on the Top-down screen)
     if (e.key === 'a' || e.key === 'A') { player.x = Math.max(0, player.x - 1); moved = true; }
     if (e.key === 'd' || e.key === 'D') { player.x = Math.min(2, player.x + 1); moved = true; }
-    if (e.key === 'w' || e.key === 'W') { player.y = Math.min(2, player.y + 1); moved = true; }
-    if (e.key === 's' || e.key === 'S') { player.y = Math.max(0, player.y - 1); moved = true; }
+    if (e.key === 'w' || e.key === 'W') { player.z = Math.min(2, player.z + 1); moved = true; isZMove = true; }
+    if (e.key === 's' || e.key === 'S') { player.z = Math.max(0, player.z - 1); moved = true; isZMove = true; }
 
-    // RIGHT SCREEN (ヨコ): Up/Down move Y (shared), Left/Right move World Depth
+    // SIDE VIEW (ヨコ): Arrows
+    // Up/Down move Y. Left/Right move Z (Forward/Backward on the Side screen)
     if (e.key === 'ArrowUp') { player.y = Math.min(2, player.y + 1); moved = true; }
     if (e.key === 'ArrowDown') { player.y = Math.max(0, player.y - 1); moved = true; }
-    
-    if (e.key === 'ArrowLeft') { 
-        gameStep(-1); // Step back
-        return;
-    }
-    if (e.key === 'ArrowRight') { 
-        gameStep(1); // Step forward
-        return;
-    }
+    if (e.key === 'ArrowLeft') { player.z = Math.max(0, player.z - 1); moved = true; isZMove = true; }
+    if (e.key === 'ArrowRight') { player.z = Math.min(2, player.z + 1); moved = true; isZMove = true; }
 
     if (moved) {
-        checkCollision();
-        render();
+        // If player moved along the Z axis, we DON'T move the obstacles 
+        // to prevent double-stepping. If player dodged in X/Y, obstacles move closer.
+        gameStep(isZMove);
     }
 });
 
