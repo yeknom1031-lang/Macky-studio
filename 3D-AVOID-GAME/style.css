@@ -118,11 +118,11 @@ body {
 }
 
 #screen-top .grid-bg {
-    animation: scrollBgTop var(--game-speed) linear infinite;
+    transition: background-position 0.15s ease-out;
 }
 
 #screen-side .grid-bg {
-    animation: scrollBgSide var(--game-speed) linear infinite;
+    transition: background-position 0.15s ease-out;
 }
 
 .entity {

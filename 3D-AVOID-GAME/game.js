@@ -13,18 +13,12 @@ let obstacles = []; // { id, x, y, z }
 let score = 0;
 let isGameOver = false;
 let obstacleIdCounter = 0;
-let gameLoopInterval;
-let BASE_SPEED = 700;
 
 // DOM elements
 let obsTopElements = {};
 let obsSideElements = {};
 let playerTopEl = null;
 let playerSideEl = null;
-
-function updateSpeed() {
-    document.documentElement.style.setProperty('--game-speed', `${BASE_SPEED}ms`);
-}
 
 function init() {
     isGameOver = false;
@@ -35,8 +29,6 @@ function init() {
     obstacleIdCounter = 0;
     obsTopElements = {};
     obsSideElements = {};
-    BASE_SPEED = 700;
-    updateSpeed();
 
     // Clear entities
     screenTopContainer.querySelectorAll('.entity').forEach(e => e.remove());
@@ -53,9 +45,6 @@ function init() {
     screenSideContainer.appendChild(playerSideEl);
 
     render();
-
-    if(gameLoopInterval) clearInterval(gameLoopInterval);
-    gameLoopInterval = setInterval(gameStep, BASE_SPEED);
 }
 
 function spawnObstacles() {
@@ -116,18 +105,11 @@ function gameStep() {
     
     checkCollision();
     render();
-
-    // Speed up dynamically
-    if (score % 20 === 0 && BASE_SPEED > 250) {
-        BASE_SPEED -= 50;
-        updateSpeed();
-        clearInterval(gameLoopInterval);
-        gameLoopInterval = setInterval(gameStep, BASE_SPEED);
-    }
 }
 
 function checkCollision() {
     for (let o of obstacles) {
+        // Player & obstacle are in the same exact tile
         if (o.x === player.x && o.y === player.y && o.z === player.z) {
             triggerGameOver();
             return;
@@ -137,7 +119,6 @@ function checkCollision() {
 
 function triggerGameOver() {
     isGameOver = true;
-    clearInterval(gameLoopInterval);
     finalScoreEl.innerText = score;
     gameOverScreen.classList.remove('hidden');
 }
@@ -167,6 +148,13 @@ function render() {
             obsSideElements[o.id].style.top = `${(2 - o.y) * CELL_SIZE}px`;
         }
     }
+
+    // Advance backgrounds visually relative to the score progression step (1 turn = 1 move)
+    const scrTopBg = document.querySelector('#screen-top .grid-bg');
+    if(scrTopBg) scrTopBg.style.backgroundPosition = `-2px ${-2 + (score * CELL_SIZE)}px`;
+    
+    const scrSideBg = document.querySelector('#screen-side .grid-bg');
+    if(scrSideBg) scrSideBg.style.backgroundPosition = `${-2 - (score * CELL_SIZE)}px -2px`;
 }
 
 window.addEventListener('keydown', (e) => {
@@ -187,8 +175,8 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') { player.z = Math.min(2, player.z + 1); moved = true; }
 
     if (moved) {
-        checkCollision();
-        render();
+        // Evaluate logic per turn
+        gameStep();
     }
 });
 
