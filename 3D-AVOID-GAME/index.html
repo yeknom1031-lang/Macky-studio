@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D AVOID - DIMENSION DODGE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-ui">
+        <h1 class="main-title">DIMENSION DODGE</h1>
+        <div id="score-display">SCORE: <span id="score">0</span></div>
+        <div id="controls-help">
+            タテ: [W][A][S][D] &nbsp;&nbsp;|&nbsp;&nbsp; ヨコ: [↑][↓][←][→]
+        </div>
+    </div>
+    
+    <div id="screens-container">
+        <!-- TOP VIEW (タテ) -->
+        <div class="screen-wrapper">
+            <h2 class="screen-title">タテ <span class="subtitle">(Top View: W/A/S/D)</span></h2>
+            <div id="screen-top" class="screen">
+                <div class="grid-bg"></div>
+            </div>
+        </div>
+        
+        <!-- SIDE VIEW (ヨコ) -->
+        <div class="screen-wrapper">
+            <h2 class="screen-title">ヨコ <span class="subtitle">(Side View: Arrows)</span></h2>
+            <div id="screen-side" class="screen">
+                <div class="grid-bg"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="game-over-screen" class="hidden">
+        <h1>GAME OVER</h1>
+        <p>最終スコア: <span id="final-score">0</span></p>
+        <button id="restart-btn">もう一度プレイ</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

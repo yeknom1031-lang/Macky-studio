@@ -1,0 +1,170 @@
+:root {
+    --bg-color: #050510;
+    --grid-color: #222244;
+    --player-color: #00ffff;
+    --obstacle-color: #ff0055;
+    --cell-size: 100px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: white;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#game-ui {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.main-title {
+    margin: 0 0 10px 0;
+    font-size: 36px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    letter-spacing: 3px;
+}
+
+#score-display {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+#controls-help {
+    color: #8888aa;
+    font-size: 16px;
+    background: rgba(40, 40, 80, 0.5);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+#screens-container {
+    display: flex;
+    gap: 60px;
+}
+
+.screen-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.screen-title {
+    margin: 0 0 15px 0;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #ddddff;
+    text-shadow: 0 0 5px rgba(200, 200, 255, 0.5);
+}
+
+.screen-title .subtitle {
+    font-size: 14px;
+    color: #8888bb;
+    font-weight: normal;
+}
+
+.screen {
+    position: relative;
+    width: calc(var(--cell-size) * 3);
+    height: calc(var(--cell-size) * 3);
+    background-color: #0a0a1a;
+    border: 3px solid #444488;
+    box-shadow: 0 0 30px rgba(60, 60, 150, 0.5);
+    overflow: hidden;
+}
+
+.grid-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--grid-color) 2px, transparent 2px),
+        linear-gradient(90deg, var(--grid-color) 2px, transparent 2px);
+    background-size: var(--cell-size) var(--cell-size);
+    background-position: -2px -2px;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.entity {
+    position: absolute;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    box-sizing: border-box;
+    transition: left 0.15s ease-out, top 0.15s ease-out;
+}
+
+.player {
+    border: 4px solid var(--player-color);
+    background-color: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px var(--player-color), inset 0 0 15px var(--player-color);
+    z-index: 10;
+}
+
+.obstacle {
+    border: 3px solid var(--obstacle-color);
+    background-color: rgba(255, 0, 85, 0.4);
+    box-shadow: 0 0 15px var(--obstacle-color);
+    z-index: 5;
+}
+
+#game-over-screen {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+#game-over-screen.hidden {
+    display: none;
+}
+
+#game-over-screen h1 {
+    font-size: 72px;
+    color: var(--obstacle-color);
+    text-shadow: 0 0 30px var(--obstacle-color);
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+}
+
+#game-over-screen p {
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+#restart-btn {
+    padding: 15px 40px;
+    font-size: 22px;
+    background-color: transparent;
+    color: var(--player-color);
+    border: 2px solid var(--player-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 15px var(--player-color), inset 0 0 10px rgba(0, 255, 255, 0.2);
+    transition: all 0.2s;
+}
+
+#restart-btn:hover {
+    background-color: var(--player-color);
+    color: #000;
+    box-shadow: 0 0 30px var(--player-color);
+}
+
+#restart-btn:active {
+    transform: scale(0.95);
+}
