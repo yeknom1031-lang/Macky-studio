@@ -161,22 +161,27 @@ window.addEventListener('keydown', (e) => {
     if (isGameOver) return;
 
     let moved = false;
+    let isZMove = false;
 
     // TOP VIEW (タテ) Keys: W/S map to Z axis, A/D map to X axis
-    if (e.key === 'w' || e.key === 'W') { player.z = Math.min(2, player.z + 1); moved = true; }
-    if (e.key === 's' || e.key === 'S') { player.z = Math.max(0, player.z - 1); moved = true; }
+    if (e.key === 'w' || e.key === 'W') { player.z = Math.min(2, player.z + 1); moved = true; isZMove = true; }
+    if (e.key === 's' || e.key === 'S') { player.z = Math.max(0, player.z - 1); moved = true; isZMove = true; }
     if (e.key === 'a' || e.key === 'A') { player.x = Math.max(0, player.x - 1); moved = true; }
     if (e.key === 'd' || e.key === 'D') { player.x = Math.min(2, player.x + 1); moved = true; }
 
     // SIDE VIEW (ヨコ) Keys: Up/Down map to Y axis, Left/Right map to Z axis
     if (e.key === 'ArrowUp') { player.y = Math.min(2, player.y + 1); moved = true; }
     if (e.key === 'ArrowDown') { player.y = Math.max(0, player.y - 1); moved = true; }
-    if (e.key === 'ArrowLeft') { player.z = Math.max(0, player.z - 1); moved = true; }
-    if (e.key === 'ArrowRight') { player.z = Math.min(2, player.z + 1); moved = true; }
+    if (e.key === 'ArrowLeft') { player.z = Math.max(0, player.z - 1); moved = true; isZMove = true; }
+    if (e.key === 'ArrowRight') { player.z = Math.min(2, player.z + 1); moved = true; isZMove = true; }
 
     if (moved) {
-        // Evaluate logic per turn
-        gameStep();
+        if (isZMove) {
+            gameStep();
+        } else {
+            checkCollision();
+            render();
+        }
     }
 });
 
