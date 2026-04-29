@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONSTER HARVEST - 工業地帯の亡骸録</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- 背景の演出用 -->
+        <div class="background-effects"></div>
+        
+        <!-- キャンバス -->
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- UI オーバーレイ -->
+        <div id="ui-overlay">
+
+
+            <div class="corpse-container glass-panel">
+                <span class="corpse-label">収穫した亡骸:</span>
+                <span id="corpse-text" class="corpse-val">0</span>
+            </div>
+            <div id="weapon-status" class="glass-panel" style="border-left-color: #00f2ff;">
+                <span class="weapon-label">現在の装備:</span>
+                <span id="equipped-weapon-text" class="weapon-val">ハンドガン</span>
+            </div>
+            <div class="score-container glass-panel">
+                <span class="distance-label">到達距離:</span>
+                <span id="score-text" class="distance-val">0</span>
+            </div>
+        </div>
+
+        <!-- モンスターを殺すたびに表示可能（オプションとして残す、または削除） -->
+
+        <!-- スタート/ゲームオーバー画面 -->
+        <div id="menu-overlay" class="visible">
+            <div id="menu-content" class="glass-panel">
+                <h1 id="menu-title">MONSTER HARVEST</h1>
+                <p id="menu-description">
+                    果てしない大地を駆け抜け、モンスターを一掃せよ。<br>
+                    制限は一切ない。獲物を蹂躙し、より遠く、より多くの亡骸を収穫せよ。
+                </p>
+                <div class="button-group">
+                    <button id="start-btn" class="primary">作戦開始 (START)</button>
+                    <button id="shop-btn" class="secondary">ショップ</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="game-over-overlay">
+            <div class="glass-panel">
+                <h2>システム異常終了</h2>
+                <p id="death-reason">状態: 深刻な物理的損傷</p>
+                <div class="final-score">最終スコア: <span id="final-score-val">0</span></div>
+                <div class="button-group">
+                    <button id="restart-btn">システム再起動</button>
+                    <button id="to-title-btn" class="secondary">タイトルに戻る</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ショップ画面 -->
+        <div id="shop-overlay">
+            <div class="glass-panel shop-content">
+                <h2 style="color:#ff003c">命の等価交換所</h2>
+                <p>現在の亡骸: <span id="shop-corpse-val">0</span></p>
+                <div class="shop-grid">
+                    <!-- 武器セクション -->
+                    <div class="shop-item">
+                        <div class="item-icon">🔫</div>
+                        <div class="item-name">サブマシンガン</div>
+                        <button class="buy-btn" onclick="buyItem('サブマシンガン', 15)">15</button>
+                    </div>
+                    <div class="shop-item">
+                        <div class="item-icon">💥</div>
+                        <div class="item-name">ショットガン</div>
+                        <button class="buy-btn" onclick="buyItem('ショットガン', 30)">30</button>
+                    </div>
+                    <div class="shop-item">
+                        <div class="item-icon">⚛️</div>
+                        <div class="item-name">パルスキャノン</div>
+                        <button class="buy-btn" onclick="buyItem('パルスキャノン', 60)">60</button>
+                    </div>
+                    <div class="shop-item">
+                        <div class="item-icon">🎯</div>
+                        <div class="item-name">対物スナイパー</div>
+                        <button class="buy-btn" onclick="buyItem('対物スナイパー', 120)">120</button>
+                    </div>
+                    <div class="shop-item">
+                        <div class="item-icon">💣</div>
+                        <div class="item-name">重火器ランチャー</div>
+                        <button class="buy-btn" onclick="buyItem('重火器ランチャー', 200)">200</button>
+                    </div>
+                    <div class="shop-item">
+                        <div class="item-icon">⚡</div>
+                        <div class="item-name">プラズマレールガン</div>
+                        <button class="buy-btn" onclick="buyItem('プラズマレールガン', 500)">500</button>
+                    </div>
+                    
+                    <!-- 強化パーツセクション -->
+                    <div class="shop-item">
+                        <div class="item-icon">👟</div>
+                        <div class="item-name">高出力モーター</div>
+                        <button class="buy-btn" onclick="buyItem('高出力モーター', 100)">100</button>
+                    </div>
+                    <div class="shop-item">
+                        <div class="item-icon">🚀</div>
+                        <div class="item-name">2段ジャンプ機能</div>
+                        <button class="buy-btn" onclick="buyItem('2段ジャンプ機能', 250)">250</button>
+                    </div>
+                    <div class="shop-item">
+                        <div class="item-icon">🛡️</div>
+                        <div class="item-name">緊急バリア</div>
+                        <button class="buy-btn" onclick="buyItem('緊急バリア', 50)">50</button>
+                    </div>
+                </div>
+                <button id="shop-close-btn">下界に戻る</button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="player_data.js"></script>
+    <script src="enemy_data.js"></script>
+    <script src="corpse_data.js"></script>
+    <script src="horror_assets.js"></script>
+    <script src="assets.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

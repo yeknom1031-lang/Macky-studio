@@ -1,0 +1,364 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-family: 'Outfit', 'Hiragino Sans', 'Meiryo', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 画面の切り替え用クラス */
+.screen {
+    width: 100%;
+    height: 100%;
+    display: none; /* デフォルトは非表示 */
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0; left: 0;
+    animation: fadeIn 0.4s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* === UI / ボタンの基本デザイン === */
+.btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: inherit;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.btn:active {
+    transform: scale(0.95);
+}
+.btn.primary {
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    color: white;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+}
+.btn.primary:hover {
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+}
+.btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* === ホーム画面 === */
+.home-container {
+    text-align: center;
+    background: rgba(30, 41, 59, 0.7);
+    padding: 4rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.main-title {
+    font-size: 4rem;
+    margin: 0 0 0.5rem 0;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 4px;
+}
+.subtitle {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-bottom: 3rem;
+}
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* === ステージ選択画面 === */
+.stage-container {
+    text-align: center;
+    background: rgba(30, 41, 59, 0.9);
+    padding: 3rem;
+    border-radius: 20px;
+    width: 80vw;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.stage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 15px;
+    margin: 2rem 0;
+}
+.stage-btn {
+    aspect-ratio: 1 / 1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    background: #1e293b;
+    color: white;
+    transition: transform 0.1s, background 0.3s;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+.stage-btn:hover:not(:disabled) {
+    background: #38bdf8;
+    transform: scale(1.05);
+}
+.stage-btn:disabled {
+    background: #0f172a;
+    color: #475569;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.stage-btn.cleared {
+    background: #10b981;
+}
+
+/* 戻るボタンの配置 */
+.back-btn-game {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    z-index: 100;
+}
+
+/* === エディター画面 === */
+.palette-tool {
+    padding: 0.6rem 1rem;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+    opacity: 0.6;
+}
+
+.palette-tool.selected {
+    opacity: 1;
+    border-color: white;
+    transform: scale(1.1);
+}
+
+.palette-tool:hover {
+    opacity: 0.8;
+}
+
+#editor-grid .cell {
+    cursor: pointer;
+}
+
+/* 既存のゲームコンテナのスタイル */
+
+.game-container {
+    text-align: center;
+    background: rgba(30, 41, 59, 0.7);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.status {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #94a3b8;
+    height: 1.5rem; /* 高さを固定してガタつきを防ぐ */
+}
+
+.grid {
+    display: grid;
+    /* JSから受け取った変数をもとにマス目の数を決定します。デフォルトは3 */
+    grid-template-columns: repeat(var(--grid-size, 3), 1fr);
+    grid-template-rows: repeat(var(--grid-size, 3), 1fr);
+    gap: 2%; /* 隙間も相対サイズに変更 */
+    margin: 0 auto;
+    width: 80vmin; /* 画面サイズに合わせた可変幅 */
+    max-width: 500px;
+    aspect-ratio: 1 / 1; /* 正方形を維持 */
+    padding: 3%;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 16px;
+    position: relative; /* プレイヤーを絶対配置するための基準 */
+}
+
+.cell {
+    background-color: #1e293b;
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    position: relative;
+    transition: transform 0.15s ease, background-color 0.3s ease;
+    width: 100%;
+    height: 100%;
+}
+
+/* プレイヤーのスタイル（独立した要素になります） */
+.player {
+    position: absolute;
+    /* widthとheightはJavaScriptでマスの大きさに合わせて動的に計算されます */
+    background-color: #38bdf8;
+    box-shadow: 0 0 15px #38bdf8, inset 0 0 10px rgba(255,255,255,0.5);
+    border-radius: 12px;
+    z-index: 10;
+    top: 0; left: 0;
+    /* 移動アニメーション（0.2秒）。サイズ変更時もぬるっと動かす */
+    transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.3s ease, width 0.15s ease, height 0.15s ease;
+    pointer-events: none; /* クリック等を裏のマスに透過させる */
+}
+
+/* 障害物のスタイル */
+.cell.obstacle {
+    background-color: #ef4444;
+    box-shadow: 0 0 15px #ef4444, inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* ゴールのスタイル */
+.cell.goal {
+    background-color: #10b981;
+    box-shadow: 0 0 15px #10b981, inset 0 0 10px rgba(0,0,0,0.5);
+    animation: pulse 1.5s infinite;
+    display: flex; /* 追加: 旗を中央に配置するため */
+    justify-content: center;
+    align-items: center;
+    container-type: inline-size; /* マスの幅に応じてフォントサイズを変えるため */
+}
+
+/* ゴールマスの旗のマーク */
+.cell.goal::after {
+    content: "🚩";
+    font-size: 50cqw; /* マスの幅の50%のサイズで表示 */
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+}
+
+/* 操作反転アイテム（紫マス）のスタイル */
+.cell.reverse {
+    background-color: #a855f7;
+    box-shadow: 0 0 15px #a855f7, inset 0 0 10px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    container-type: inline-size;
+}
+
+.cell.reverse::after {
+    content: "🌀";
+    font-size: 50cqw;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+}
+
+/* 反転状態のプレイヤー */
+.player.reversed {
+    background-color: #a855f7 !important;
+    box-shadow: 0 0 15px #a855f7, inset 0 0 10px rgba(255,255,255,0.5) !important;
+}
+
+/* モード変更プレイヤーの色 */
+.player.mode-mini {
+    background-color: #fde047 !important; /* 黄色 */
+    box-shadow: 0 0 15px #fde047, inset 0 0 10px rgba(255,255,255,0.5) !important;
+}
+
+.player.mode-big {
+    background-color: #f97316 !important; /* 橙色 */
+    box-shadow: 0 0 30px #f97316, inset 0 0 15px rgba(255,255,255,0.5) !important;
+}
+
+/* 1/4サイズのミニ化アイテム */
+.cell.item-mini {
+    background-color: #fde047;
+    box-shadow: 0 0 15px #fde047, inset 0 0 10px rgba(0,0,0,0.5);
+    transform: scale(0.5); /* 縦半分x横半分 = 1/4サイズ */
+    border-radius: 50%;
+    z-index: 3;
+}
+
+/* 4倍サイズのビッグ化アイテム */
+.cell.item-big {
+    background-color: #f97316;
+    box-shadow: 0 0 15px #f97316, inset 0 0 10px rgba(0,0,0,0.5);
+    transform: scale(2); /* 縦2倍x横2倍 = 4倍サイズ */
+    z-index: 4;
+}
+
+/* 通常サイズに戻すアイテム */
+.cell.item-normal {
+    background-color: #38bdf8;
+    box-shadow: 0 0 15px #38bdf8, inset 0 0 10px rgba(0,0,0,0.5);
+    transform: scale(1);
+    border-radius: 8px;
+    z-index: 3;
+}
+
+.instructions {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.instructions p {
+    margin: 5px 0;
+}
+
+/* ゴールの点滅アニメーション */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 10px #10b981; }
+    50% { transform: scale(0.95); box-shadow: 0 0 20px #10b981; }
+    100% { transform: scale(1); box-shadow: 0 0 10px #10b981; }
+}
+
+/* ゲームオーバー時の画面揺れアニメーション */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-8px); }
+    80% { transform: translateX(8px); }
+}
+
+.game-over-shake {
+    animation: shake 0.5s ease-in-out;
+}

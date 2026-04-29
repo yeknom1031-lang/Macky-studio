@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMPLE RUNNER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="ui-layer">
+            <header>
+                <div class="score-display">DISTANCE: <span id="score-value">0</span>m</div>
+            </header>
+
+            <div id="start-screen" class="overlay active">
+                <div class="menu-card title-card">
+                    <div class="game-logo">🏃‍♂️</div>
+                    <h1>WORLD RUNNER</h1>
+                    <p class="subtitle">シンプル・ホワイト・ロード</p>
+                    <div class="instructions">
+                        <p>障害物を避けて、どこまでも走り続けよう。</p>
+                    </div>
+                    <button id="start-button">ゲーム開始</button>
+                </div>
+            </div>
+
+
+            <div id="game-over-screen" class="overlay">
+                <div class="menu-card">
+                    <h2>Game Over</h2>
+                    <p>記録: <span id="final-score">0</span>m</p>
+                    <button id="restart-button">もう一度</button>
+                </div>
+            </div>
+
+            <div id="countdown-screen" class="overlay">
+                <div id="countdown-number">3</div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js?v=2"></script>
+</body>
+</html>

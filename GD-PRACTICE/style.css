@@ -1,0 +1,232 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #001f3f;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    background-color: #0055ff; /* 明るい青 */
+    display: block;
+}
+
+#menu-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    letter-spacing: 5px;
+}
+
+p {
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.mode-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 600px;
+}
+
+.mode-btn {
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-transform: capitalize;
+}
+
+.mode-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.5);
+}
+
+.mode-btn:active {
+    transform: translateY(0);
+}
+
+#game-ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+#mode-display {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#back-to-menu {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#back-to-menu:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.ui-buttons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1000;
+    pointer-events: auto; /* ここを追加 */
+}
+
+#settings-btn {
+    background: rgba(0, 100, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 24px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+#settings-btn:hover {
+    background: rgba(0, 150, 255, 0.6);
+    transform: rotate(45deg);
+}
+
+/* 設定パネルのスタイル */
+#settings-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.settings-content {
+    background: rgba(10, 20, 40, 0.9);
+    border: 2px solid #00ffff;
+    border-radius: 15px;
+    padding: 30px;
+    width: 300px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    text-align: left;
+}
+
+.settings-content h2 {
+    margin-top: 0;
+    color: #00ffff;
+    text-align: center;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 18px;
+}
+
+.setting-item label {
+    font-weight: bold;
+}
+
+.setting-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.setting-item select {
+    background: #112244;
+    color: white;
+    border: 1px solid #00ffff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#close-settings {
+    width: 100%;
+    background: #00ffff;
+    color: #000;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#close-settings:hover {
+    background: #ffffff;
+}
+
+.hint {
+    position: absolute;
+    bottom: -80vh;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.5;
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: none !important;
+}

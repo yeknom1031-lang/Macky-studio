@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GD Practice Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- 背景のマス目はCanvasで描画しますが、CSSでも補助的に設定 -->
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- メニュースクリーン -->
+        <div id="menu-overlay">
+            <h1>GD PRACTICE v3</h1>
+            <p>練習したいモードを選んでください</p>
+            <div class="mode-grid">
+                <button class="mode-btn" data-mode="cube">Cube</button>
+                <button class="mode-btn" data-mode="ship">Ship</button>
+                <button class="mode-btn" data-mode="ball">Ball</button>
+                <button class="mode-btn" data-mode="ufo">UFO</button>
+                <button class="mode-btn" data-mode="wave">Wave</button>
+                <button class="mode-btn" data-mode="robot">Robot</button>
+                <button class="mode-btn" data-mode="spider">Spider</button>
+                <button class="mode-btn" data-mode="swing">Swing</button>
+            </div>
+        </div>
+
+        <!-- ゲーム中のUI -->
+        <div id="game-ui" class="hidden">
+            <div id="mode-display">Mode: Cube</div>
+            <div class="ui-buttons">
+                <button id="settings-btn" title="Settings">⚙</button>
+                <button id="back-to-menu">メニューに戻る</button>
+            </div>
+            <div class="hint">画面をクリックするかスペースキーで操作</div>
+        </div>
+
+        <!-- 設定パネル -->
+        <div id="settings-panel" class="hidden">
+            <div class="settings-content">
+                <h2>Settings</h2>
+                <div class="setting-item">
+                    <label>Mini Mode</label>
+                    <input type="checkbox" id="mini-toggle">
+                </div>
+                <div class="setting-item">
+                    <label>Start Inverted</label>
+                    <input type="checkbox" id="invert-toggle">
+                </div>
+                <div class="setting-item">
+                    <label>Dual Mode</label>
+                    <input type="checkbox" id="dual-toggle">
+                </div>
+                <div class="setting-item">
+                    <label>2-Player Mode</label>
+                    <input type="checkbox" id="p2-toggle">
+                </div>
+                <div class="setting-item">
+                    <label>Speed Multiplier</label>
+                    <select id="speed-select">
+                        <option value="0.7626">0.5x (Orange Portal)</option>
+                        <option value="1.0" selected>1.0x (Normal)</option>
+                        <option value="1.2435">2.0x (Pink Portal)</option>
+                        <option value="1.5020">3.0x (Red Portal)</option>
+                        <option value="1.8487">4.0x (Green Portal)</option>
+                    </select>
+                </div>
+                <button id="close-settings">閉じる</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js?v=3"></script>
+</body>
+</html>

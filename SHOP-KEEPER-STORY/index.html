@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>まちの店長ストーリー</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app" id="appRoot">
+      <section class="game-area">
+        <canvas id="gameCanvas" width="768" height="432" aria-label="2D shop game"></canvas>
+        <p class="help">
+          移動: WASD / 矢印キー
+          <span>入店/退店: E / Enter</span>
+          <span>店内ではレジ前で E / Enter を押して会計対応できます。</span>
+          <span>店の近くに立つと接客が速くなります。</span>
+          <span>お客さんは店内で商品を選び、レジで会計します。</span>
+          <span>町の店長ストーリーは右上の + ボタンで表示します。</span>
+        </p>
+      </section>
+
+      <button id="hudToggle" class="hud-toggle" type="button" aria-controls="hudPanel" aria-expanded="false">+</button>
+
+      <aside class="hud" id="hudPanel">
+        <h1>まちの店長ストーリー</h1>
+
+        <section class="stats">
+          <div class="stat">
+            <span>所持金</span>
+            <strong id="moneyValue">0</strong>
+          </div>
+          <div class="stat">
+            <span>営業日</span>
+            <strong id="dayValue">1日目</strong>
+          </div>
+          <div class="stat">
+            <span>来客数</span>
+            <strong id="customerValue">0人</strong>
+          </div>
+          <div class="stat">
+            <span>累計売上</span>
+            <strong id="salesValue">0</strong>
+          </div>
+        </section>
+
+        <section>
+          <h2>区画管理</h2>
+          <div id="lotsPanel" class="lots"></div>
+        </section>
+
+        <section class="log-block">
+          <h2>営業ログ</h2>
+          <ul id="logList"></ul>
+        </section>
+      </aside>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>

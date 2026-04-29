@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ネオンメイズ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ホーム画面 -->
+    <div id="home-screen" class="screen active">
+        <div class="home-container">
+            <h1 class="main-title">NEON MAZE</h1>
+            <p class="subtitle">無限に広がるパズル迷路</p>
+            <div class="home-buttons">
+                <button id="btn-start" class="btn primary">はじめから</button>
+                <button id="btn-stages" class="btn secondary">ステージ選択</button>
+                <button id="btn-editor" class="btn secondary">ステージを作る</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ステージ選択画面 -->
+    <div id="stage-select-screen" class="screen hidden">
+        <div class="stage-container">
+            <h2>STAGE SELECT</h2>
+            <div id="stage-grid" class="stage-grid">
+                <!-- JavaScriptでステージボタンが生成されます -->
+            </div>
+            <button id="btn-back-home" class="btn secondary back-btn">ホームに戻る</button>
+        </div>
+    </div>
+
+    <!-- エディター画面 -->
+    <div id="editor-screen" class="screen hidden">
+        <div class="stage-container" style="max-height: 90vh;">
+            <h2>LEVEL EDITOR</h2>
+            <div class="editor-controls" style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 1rem;">
+                <button id="btn-editor-size-down" class="btn secondary" style="padding: 0.5rem 1rem;">-</button>
+                <span id="editor-size-display" style="font-size: 1.2rem;">サイズ: 5x5</span>
+                <button id="btn-editor-size-up" class="btn secondary" style="padding: 0.5rem 1rem;">+</button>
+            </div>
+            
+            <div class="editor-palette" id="editor-palette" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 1.5rem;">
+                <button class="palette-tool selected" data-tool="obstacle" style="background-color: #ef4444;">障害物</button>
+                <button class="palette-tool" data-tool="reverse" style="background-color: #a855f7;">反転(紫)</button>
+                <button class="palette-tool" data-tool="item-mini" style="background-color: #fde047;">ミニ化(黄)</button>
+                <button class="palette-tool" data-tool="item-big" style="background-color: #f97316;">ビッグ化(橙)</button>
+                <button class="palette-tool" data-tool="item-normal" style="background-color: #38bdf8;">通常戻し</button>
+                <button class="palette-tool" data-tool="player" style="background-color: #38bdf8;">スタート</button>
+                <button class="palette-tool" data-tool="goal" style="background-color: #10b981;">ゴール</button>
+                <button class="palette-tool" data-tool="erase" style="background-color: #475569;">消しゴム</button>
+            </div>
+
+            <div class="grid" id="editor-grid" style="margin-bottom: 2rem;">
+                <!-- エディタ用のグリッド -->
+            </div>
+            
+            <div>
+                <button id="btn-editor-play" class="btn primary">テストプレイ</button>
+                <button id="btn-back-home-editor" class="btn secondary">戻る</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ゲーム画面 -->
+    <div id="game-screen" class="screen hidden">
+        <button id="btn-back-stage" class="btn secondary back-btn-game">戻る</button>
+        <div class="game-container">
+            <h1>NEON MAZE</h1>
+            <div class="status" id="status">レベル 1</div>
+            <div class="grid" id="grid">
+                <!-- マスのグリッドがJavaScriptで生成されます -->
+            </div>
+            <div class="instructions">
+                <p><strong>[操作方法]</strong> 矢印キー（↑ ↓ ← →）/ WASD / スワイプ</p>
+                <p><span style="color: #38bdf8;">■青いマス</span>：自分（スタート地点）</p>
+                <p><span style="color: #ef4444;">■赤いマス</span>：障害物（当たるとゲームオーバー）</p>
+                <p><span style="color: #10b981;">■緑のマス（🚩）</span>：ゴール</p>
+                <p><span style="color: #a855f7;">■紫のマス（🌀）</span>：当たると1回で消え、上下左右の操作が逆になる</p>
+                <p><span style="color: #fde047;">■1/4サイズのマス</span>：自分のサイズが1/4のミニモード（黄色）になる</p>
+                <p><span style="color: #f97316;">■4倍サイズのマス</span>：自分のサイズが4倍のビッグモード（橙色）になる</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

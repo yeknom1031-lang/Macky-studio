@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Geometry Dash - Perfect Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- メインメニュー -->
+        <div id="main-menu" class="overlay">
+            <div class="menu-content">
+                <h1 class="game-title">GEOMETRY<br><span>DASH</span></h1>
+                <div class="main-buttons">
+                    <button id="level-select-btn" class="big-btn">▶</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- レベル選択画面 -->
+        <div id="level-selector" class="overlay hidden">
+            <div class="selector-content">
+                <button id="prev-level" class="nav-btn">◀</button>
+                <div class="level-card">
+                    <div class="level-info">
+                        <h2>STEREO MADNESS</h2>
+                        <div class="difficulty-icon">⭐</div>
+                        <p>Difficulty: Easy</p>
+                    </div>
+                    <button id="play-level-btn" class="play-small-btn">PLAY</button>
+                </div>
+                <button id="next-level" class="nav-btn">▶</button>
+                <button id="back-to-main" class="back-btn">BACK</button>
+            </div>
+        </div>
+
+        <!-- ゲーム中UI -->
+        <div id="game-ui" class="overlay hidden">
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+            <div id="percentage">0%</div>
+            <div id="pause-btn">| |</div>
+        </div>
+
+        <!-- パーズメニュー -->
+        <div id="pause-menu" class="overlay hidden">
+            <div class="menu-content">
+                <h2>PAUSED</h2>
+                <div class="pause-buttons">
+                    <button id="resume-btn" class="mid-btn">▶</button>
+                    <button id="restart-btn" class="mid-btn">🔄</button>
+                    <button id="exit-btn" class="mid-btn">🏠</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js?ts=11"></script>
+</body>
+</html>
