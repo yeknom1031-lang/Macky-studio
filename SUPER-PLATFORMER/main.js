@@ -129,7 +129,7 @@ function update() {
     let colX = checkCollision(player.x, player.y);
     if (colX.collision) {
         if (colX.type === 'goal') {
-            gameState = "clear";
+            initGame(); // ゴールに触れたら最初から
         } else {
             // ブロックにぶつかったら、めり込まないように位置を戻す
             if (player.vx > 0) {
@@ -151,7 +151,7 @@ function update() {
     
     if (colY.collision) {
         if (colY.type === 'goal') {
-            gameState = "clear";
+            initGame(); // ゴールに触れたら最初から
         } else {
             if (player.vy > 0) { // 下に落ちていてぶつかった＝着地した
                 player.y = colY.row * TILE_SIZE - player.height;
@@ -164,9 +164,9 @@ function update() {
         }
     }
 
-    // 穴に落ちた場合のゲームオーバー判定
+    // 穴に落ちた場合のリセット判定
     if (player.y > levelData.length * TILE_SIZE) {
-        gameState = "gameover";
+        initGame(); // 落ちたら最初から
     }
 
     // カメラの更新（プレイヤーを中心に画面をスクロール）
@@ -224,29 +224,6 @@ function draw() {
     ctx.fillRect(player.x + 22, player.y + 7, 3, 3);
 
     ctx.restore(); // 画面のずれを元に戻す
-
-    // メッセージの描画
-    if (gameState === "clear") {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "yellow";
-        ctx.font = "bold 48px sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText("STAGE CLEAR!", canvas.width / 2, canvas.height / 2);
-        ctx.font = "24px sans-serif";
-        ctx.fillStyle = "white";
-        ctx.fillText("リロードしてもう一度遊んでね", canvas.width / 2, canvas.height / 2 + 50);
-    } else if (gameState === "gameover") {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "red";
-        ctx.font = "bold 48px sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText("GAME OVER...", canvas.width / 2, canvas.height / 2);
-        ctx.font = "24px sans-serif";
-        ctx.fillStyle = "white";
-        ctx.fillText("リロードしてもう一度遊んでね", canvas.width / 2, canvas.height / 2 + 50);
-    }
 }
 
 // ゲームのメインループ
