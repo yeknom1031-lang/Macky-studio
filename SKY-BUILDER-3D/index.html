@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#70cff4">
+  <title>SKY BUILDER 3D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <canvas id="game-canvas" aria-label="SKY BUILDER 3D ゲーム画面"></canvas>
+
+    <header id="topbar">
+      <div class="brand"><span class="brand-gem">◆</span><strong>SKY BUILDER</strong><small>3D</small></div>
+      <div class="mode-switch" role="group" aria-label="モード切替">
+        <button id="play-mode" class="active">▶ あそぶ</button>
+        <button id="edit-mode">✦ つくる</button>
+      </div>
+      <div class="top-actions">
+        <button id="sound-button" class="icon-button" title="サウンド">♪</button>
+        <button id="help-button" class="icon-button" title="あそびかた">?</button>
+      </div>
+    </header>
+
+    <section id="hud">
+      <div class="hud-chip"><span class="coin-icon">◆</span><b id="coin-count">0</b><span>/</span><span id="coin-total">0</span></div>
+      <div class="hud-chip"><span>♥</span><b id="life-count">3</b></div>
+      <div class="hud-chip time"><span>TIME</span><b id="time-count">0:00</b></div>
+    </section>
+
+    <aside id="editor-panel" aria-label="コース作成パネル">
+      <div class="editor-heading">
+        <div><small>BUILD PALETTE</small><strong>パーツをえらぶ</strong></div>
+        <button id="close-editor" aria-label="閉じる">×</button>
+      </div>
+      <div id="palette">
+        <button class="part active" data-type="block"><span class="part-icon grass">▰</span><span>草ブロック</span></button>
+        <button class="part" data-type="crate"><span class="part-icon crate">▣</span><span>木箱</span></button>
+        <button class="part" data-type="coin"><span class="part-icon coin">◆</span><span>コイン</span></button>
+        <button class="part" data-type="spike"><span class="part-icon spike">▲</span><span>トゲ</span></button>
+        <button class="part" data-type="spring"><span class="part-icon spring">↟</span><span>バネ</span></button>
+        <button class="part" data-type="tree"><span class="part-icon tree">♣</span><span>木</span></button>
+        <button class="part" data-type="goal"><span class="part-icon flag">⚑</span><span>ゴール</span></button>
+      </div>
+      <p class="editor-tip">地面をクリックで配置<br>パーツをクリックで重ねる<br><b>右クリック</b>で削除</p>
+      <div class="editor-actions">
+        <button id="undo-button">↶ もどす</button>
+        <button id="redo-button">↷ やりなおす</button>
+        <button id="save-button" class="primary">保存</button>
+        <button id="sample-button">サンプルに戻す</button>
+      </div>
+    </aside>
+
+    <div id="build-hint">クリックで配置・右クリックで削除　｜　ドラッグでカメラ移動</div>
+
+    <section id="mobile-controls" aria-label="タッチ操作">
+      <div id="joystick"><div id="stick"></div></div>
+      <button id="jump-button"><span>↑</span>JUMP</button>
+    </section>
+
+    <section id="start-screen" class="overlay active">
+      <div class="start-card">
+        <div class="sky-logo"><span class="mini-cloud c1"></span><span class="mini-cloud c2"></span><b>SKY<br>BUILDER</b><em>3D</em></div>
+        <p class="tagline">つくって、走って、空までジャンプ！</p>
+        <div class="feature-row">
+          <span>🏃 3Dアクション</span><span>🧱 コース作成</span><span>💾 自動保存</span>
+        </div>
+        <button id="start-button" class="big-button">ゲームスタート <span>▶</span></button>
+        <p class="start-help">移動 <kbd>WASD</kbd> / 矢印　ジャンプ <kbd>SPACE</kbd></p>
+        <small>Kenney CC0 assets</small>
+      </div>
+    </section>
+
+    <section id="help-screen" class="overlay">
+      <div class="modal-card">
+        <button class="modal-close" data-close="help-screen">×</button>
+        <h2>あそびかた</h2>
+        <div class="help-grid">
+          <div><span>⌨️</span><b>走る</b><p>WASD または矢印キー</p></div>
+          <div><span>☁️</span><b>ジャンプ</b><p>SPACE キー</p></div>
+          <div><span>🖱️</span><b>カメラ</b><p>ドラッグして向きを変更</p></div>
+          <div><span>✦</span><b>コース作成</b><p>上の「つくる」から編集</p></div>
+        </div>
+        <button class="big-button modal-ok" data-close="help-screen">わかった！</button>
+      </div>
+    </section>
+
+    <section id="clear-screen" class="overlay">
+      <div class="modal-card clear-card">
+        <div class="clear-stars">★ ★ ★</div>
+        <h2>COURSE CLEAR!</h2>
+        <p>空のコースをクリアした！</p>
+        <div class="result"><span>コイン <b id="result-coins">0 / 0</b></span><span>タイム <b id="result-time">0:00</b></span></div>
+        <button id="retry-button" class="big-button">もう一度あそぶ</button>
+        <button id="clear-edit-button" class="sub-button">コースをつくり直す</button>
+      </div>
+    </section>
+
+    <div id="toast" role="status"></div>
+    <div id="flash"></div>
+  </main>
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/GLTFLoader.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
