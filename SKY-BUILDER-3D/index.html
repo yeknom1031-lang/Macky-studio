@@ -31,28 +31,40 @@
 
     <aside id="editor-panel" aria-label="コース作成パネル">
       <div class="editor-heading">
-        <div><small>BUILD PALETTE</small><strong>パーツをえらぶ</strong></div>
+        <div><small>SIDE VIEW BUILDER</small><strong>ステージをつくる</strong></div>
         <button id="close-editor" aria-label="閉じる">×</button>
       </div>
+      <div class="tool-switch" role="group" aria-label="編集ツール">
+        <button id="paint-tool" class="active">✎ かく</button>
+        <button id="erase-tool">⌫ けす</button>
+      </div>
       <div id="palette">
-        <button class="part active" data-type="block"><span class="part-icon grass">▰</span><span>草ブロック</span></button>
+        <button class="part active" data-type="block"><span class="part-icon grass">▰</span><span>足場</span></button>
         <button class="part" data-type="crate"><span class="part-icon crate">▣</span><span>木箱</span></button>
         <button class="part" data-type="coin"><span class="part-icon coin">◆</span><span>コイン</span></button>
         <button class="part" data-type="spike"><span class="part-icon spike">▲</span><span>トゲ</span></button>
+        <button class="part" data-type="saw"><span class="part-icon saw">✹</span><span>ノコギリ</span></button>
         <button class="part" data-type="spring"><span class="part-icon spring">↟</span><span>バネ</span></button>
         <button class="part" data-type="tree"><span class="part-icon tree">♣</span><span>木</span></button>
+        <button class="part" data-type="start"><span class="part-icon start">▶</span><span>スタート</span></button>
         <button class="part" data-type="goal"><span class="part-icon flag">⚑</span><span>ゴール</span></button>
       </div>
-      <p class="editor-tip">地面をクリックで配置<br>パーツをクリックで重ねる<br><b>右クリック</b>で削除</p>
+      <div id="brush-options">
+        <span>足場の幅</span>
+        <div><button data-brush="1" class="active">1</button><button data-brush="3">3</button><button data-brush="5">5</button></div>
+      </div>
+      <p class="editor-tip"><b>ドラッグ</b>で連続配置・連続削除<br><b>Shift＋ドラッグ</b>で画面移動<br>ホイールで拡大・縮小</p>
+      <div id="stage-check"><span class="check-dot"></span><span id="stage-check-text">スタートとゴールを確認中</span></div>
       <div class="editor-actions">
         <button id="undo-button">↶ もどす</button>
         <button id="redo-button">↷ やりなおす</button>
+        <button id="clear-button">新しくつくる</button>
         <button id="save-button" class="primary">保存</button>
         <button id="sample-button">サンプルに戻す</button>
       </div>
     </aside>
 
-    <div id="build-hint">クリックで配置・右クリックで削除　｜　ドラッグでカメラ移動</div>
+    <div id="build-hint">ドラッグで描く　｜　右クリックで消す　｜　Shift＋ドラッグで画面移動</div>
 
     <section id="mobile-controls" aria-label="タッチ操作">
       <div id="joystick"><div id="stick"></div></div>
@@ -79,8 +91,8 @@
         <div class="help-grid">
           <div><span>⌨️</span><b>走る</b><p>WASD または矢印キー</p></div>
           <div><span>☁️</span><b>ジャンプ</b><p>SPACE キー</p></div>
-          <div><span>🖱️</span><b>カメラ</b><p>ドラッグして向きを変更</p></div>
-          <div><span>✦</span><b>コース作成</b><p>上の「つくる」から編集</p></div>
+          <div><span>🖱️</span><b>カメラ</b><p>横から自動で追いかけます</p></div>
+          <div><span>✦</span><b>コース作成</b><p>ドラッグで足場を描けます</p></div>
         </div>
         <button class="big-button modal-ok" data-close="help-screen">わかった！</button>
       </div>
