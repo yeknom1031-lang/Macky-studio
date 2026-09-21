@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#172f37" />
+    <meta
+      name="description"
+      content="仲間と、生きる島へ。無料素材でつくられた3Dサバイバル・アドベンチャー。"
+    />
+    <title>SURVIVAL ANIMALS — 仲間と、生きる島へ。</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231b4147'/%3E%3Cpath d='M12 44 26 17l9 16 7-9 12 20z' fill='%23b2dfc8'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="importmap">
+      { "imports": { "three": "./vendor/three.module.js" } }
+    </script>
+  </head>
+  <body>
+    <canvas
+      id="world"
+      aria-label="サバイバル・アニマルズの3Dフィールド"
+    ></canvas>
+    <div id="vignette"></div>
+    <div id="hurt"></div>
+    <div id="loading">
+      <div class="loading-mark">◇</div>
+      <p class="eyebrow">SURVIVAL ANIMALS</p>
+      <h2>島が、目を覚ます。</h2>
+      <div class="load-track"><i id="load-fill"></i></div>
+      <p id="load-status">海と森を準備しています…</p>
+    </div>
+    <section id="title" hidden>
+      <header class="masthead">
+        <span class="wordmark"
+          ><span class="mountain">◬</span> SURVIVAL ANIMALS</span
+        ><span class="edition">EXPLORER’S EDITION <i>01</i></span>
+      </header>
+      <div class="title-copy">
+        <p class="eyebrow">
+          <span class="line"></span> A WILD WORLD. A SHARED JOURNEY.
+        </p>
+        <h1>SURVIVAL<br /><span>ANIMALS</span></h1>
+        <p class="title-jp">仲間と、生きる島へ。</p>
+        <p class="intro">
+          見知らぬ島。小さな出会い。<br />焚き火の温もりから、嵐の向こうまで。<br />あなたと獣たちの冒険がはじまる。
+        </p>
+        <div class="title-actions">
+          <button id="start" class="primary">新しい冒険 <span>↗</span></button
+          ><button id="continue" class="secondary" hidden>
+            旅をつづける <span>→</span>
+          </button>
+        </div>
+        <button id="title-options" class="text-button">設定・操作方法</button>
+      </div>
+      <footer class="title-footer">
+        <div>
+          <span class="tiny">THE ARCHIPELAGO</span><b>三つの島。ひとつの絆。</b>
+        </div>
+        <span
+          >HEADPHONES RECOMMENDED <span class="dot"></span> PC / KEYBOARD +
+          MOUSE</span
+        >
+      </footer>
+    </section>
+    <main id="hud" hidden>
+      <div class="top-left">
+        <div class="island-label">
+          <span>◬</span>
+          <div>
+            <small id="island-en">SUNBREAK ISLE</small
+            ><strong id="island-name">陽だまりの島</strong>
+          </div>
+        </div>
+        <div class="quest">
+          <small>JOURNEY <span id="quest-no">01 / 07</span></small>
+          <h3 id="quest-title"></h3>
+          <p id="quest-detail"></p>
+        </div>
+      </div>
+      <div id="compass">
+        <span>W</span><span>·</span><b id="bearing">N</b><span>·</span
+        ><span>E</span>
+      </div>
+      <div class="top-right">
+        <div class="clock">
+          <span id="time-icon">☀</span>
+          <div>
+            <strong id="time">08:30</strong><small id="day">DAY 01</small>
+          </div>
+        </div>
+        <div id="weather">潮風 · 24°C</div>
+        <button id="pause-button" aria-label="ポーズ">Ⅱ</button>
+      </div>
+      <div id="target" hidden>
+        <small id="target-element"></small><strong id="target-name"></strong>
+        <div class="bar enemy"><i id="target-fill"></i></div>
+        <p id="target-status"></p>
+      </div>
+      <div id="boss" hidden>
+        <small>GUARDIAN OF THE STORM</small>
+        <h2>テンペスト</h2>
+        <div class="bar"><i id="boss-fill"></i></div>
+      </div>
+      <div id="warning" hidden>攻撃の気配 — <kbd>Space</kbd> 回避</div>
+      <div id="discovery" hidden>
+        <small>NEW HORIZON</small>
+        <h2></h2>
+        <div class="line"></div>
+      </div>
+      <div class="bottom-left">
+        <div id="ally" hidden>
+          <div class="ally-emblem">♧</div>
+          <div>
+            <small id="ally-title"></small><strong id="ally-name"></strong>
+            <div class="bar"><i id="ally-fill"></i></div>
+          </div>
+          <span id="skill-status">F</span>
+        </div>
+        <div class="vitals">
+          <div>
+            <span>♥</span>
+            <div class="bar health"><i id="health-fill"></i></div>
+            <strong id="health">100</strong>
+          </div>
+          <div>
+            <span>ϟ</span>
+            <div class="bar stamina"><i id="stamina-fill"></i></div>
+            <strong id="stamina">100</strong>
+          </div>
+          <div>
+            <span>◉</span>
+            <div class="bar hunger"><i id="hunger-fill"></i></div>
+            <strong id="hunger">100</strong>
+          </div>
+        </div>
+        <div id="status-tags"></div>
+      </div>
+      <div class="bottom-center">
+        <div id="interaction" hidden><kbd>E</kbd><span></span></div>
+        <div id="capture-progress" hidden>
+          <small>絆を結ぶ</small>
+          <div class="bar"><i></i></div>
+        </div>
+        <div class="hotbar">
+          <button data-key="attack">
+            <kbd>J</kbd><span>↟</span><small>攻撃</small></button
+          ><button data-key="eat">
+            <kbd>1</kbd><span>●</span
+            ><small id="food-count">食べる</small></button
+          ><button data-key="capture">
+            <kbd>Q</kbd><span>◇</span
+            ><small id="rune-count">捕獲</small></button
+          ><button data-key="mount">
+            <kbd>R</kbd><span>♧</span><small>騎乗</small>
+          </button>
+        </div>
+      </div>
+      <div class="bottom-right">
+        <div class="minimap-wrap">
+          <canvas
+            id="minimap"
+            width="180"
+            height="180"
+            aria-label="周辺地図"
+          ></canvas
+          ><span>N</span>
+        </div>
+        <div class="nav-buttons">
+          <button data-panel="bag"><kbd>Tab</kbd> バッグ</button
+          ><button data-panel="build"><kbd>B</kbd> 建築</button
+          ><button data-panel="map"><kbd>M</kbd> 地図</button>
+        </div>
+      </div>
+      <div id="build-hint" hidden></div>
+      <div id="controls-hint">
+        WASD 移動 <span>·</span> 右ドラッグ 視点 <span>·</span> Shift 走る
+        <span>·</span> Space 回避 <span>·</span> C しゃがむ
+      </div>
+    </main>
+    <div id="toasts" aria-live="polite"></div>
+    <section
+      id="modal"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal-shell">
+        <header>
+          <div>
+            <small class="eyebrow" id="modal-eyebrow">FIELD JOURNAL</small>
+            <h2 id="modal-title"></h2>
+          </div>
+          <button id="close-modal" aria-label="閉じる">×</button>
+        </header>
+        <nav id="tabs"></nav>
+        <div id="modal-body"></div>
+      </div>
+    </section>
+    <input id="save-file" type="file" accept=".json,application/json" hidden />
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

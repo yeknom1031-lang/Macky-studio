@@ -41,7 +41,7 @@ The downloaded archive includes its original `License.txt`. The full archive and
 - Imported selection: Fox, Stag, Bull, and Wolf
 - Format: Embedded-buffer glTF 2.0
 - Animation count: Fox 12, Stag 13, Bull 13, Wolf 12
-- Intended use: temporary animated bases for Emberfox, Leafhorn, the moss creature, and nocturnal enemies
+- Runtime use: animated bases for six species, customized through materials, procedural decorations and wings; original glTF files are preserved unchanged.
 
 Selected-file SHA-256 values:
 
@@ -61,3 +61,10 @@ Wolf.gltf  cc02e9d128b5715f352ee8bea086f97a35f1d875d240de99b0f9f2775c37d415
 - Treat third-party creatures as base meshes: customize materials, silhouettes, attachments, effects, and names before final release.
 - Keep raw downloads out of Git and version only the assets actually used by the game.
 
+## Runtime additions
+
+- Kenney Survival Kit `Textures/colormap.png` is included in `runtime/props/Textures/`. The prop GLBs reference this file; it is covered by the same CC0 license.
+- Original Kenney license notices are included in `assets/licenses/`.
+- Three.js 0.180.0 and its GLTFLoader, SkeletonUtils and BufferGeometryUtils are vendored in `vendor/`. License: MIT; original notice is `vendor/THREE-LICENSE.txt`. Source: <https://github.com/mrdoob/three.js/tree/r180>.
+- Terrain, ocean shader, sky, humanoid meshes, ruins, monster attachments, particles and UI are project-specific code. Audio is synthesized through Web Audio; no external sound recording is used.
+- Concept images in `concept-art/` are references, not textures or runtime assets.
