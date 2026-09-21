@@ -1,7 +1,16 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { Game, newState, validateSave, WORLD, makeWorld } from "../src/core.js";
-import { SPECIES, RECIPES, BUILDINGS, ISLANDS, heightAt } from "../src/data.js";
+import {
+  SPECIES,
+  RECIPES,
+  BUILDINGS,
+  ISLANDS,
+  heightAt,
+  CAVES,
+  caveAt,
+  caveWallAt,
+} from "../src/data.js";
 const step = (g, seconds, input = {}) => {
   for (let t = 0; t < seconds; t += 0.025) g.tick(0.025, input);
 };
@@ -24,6 +33,89 @@ test("world is deterministic and each island has resources", () => {
       WORLD.resources.filter((r) => r.island === i.id).length,
       i.id === 0 ? 38 : 30,
     );
+});
+test("six islands include three real cave bosses; five islands are open from the start", () => {
+  const g = new Game();
+  assert.equal(ISLANDS.length, 6);
+  assert.equal(CAVES.length, 3);
+  for (const id of [0, 1, 3, 4, 5]) assert.equal(g.canTravel(id), true);
+  assert.equal(g.canTravel(2), false);
+  assert.equal(g.canTravel(999), false);
+  for (const c of CAVES) {
+    const e = g.wild.find((e) => e.id === c.id);
+    assert.ok(SPECIES[e.type].boss);
+    assert.ok(SPECIES[e.type].size > 5);
+    assert.equal(caveAt(e.x, e.z), c);
+  }
+});
+test("older saves receive a boat without losing captured animals or materials", () => {
+  const s = newState();
+  s.gear = {};
+  s.inventory.wood = 31;
+  s.companions.ember = { hp: 80, level: 3, bond: 18 };
+  s.active = "ember";
+  s.captured = ["fox1"];
+  const v = validateSave(s);
+  assert.equal(v.gear.raft, true);
+  assert.equal(v.inventory.wood, 31);
+  assert.equal(v.companions.ember.level, 3);
+  assert.deepEqual(v.captured, ["fox1"]);
+});
+test("cave walls block movement, entrance is open, and entry/exit work", () => {
+  const g = new Game(),
+    c = CAVES[0];
+  assert.equal(caveWallAt(c.x, c.z + 16), false);
+  assert.equal(caveWallAt(c.x + 14, c.z), true);
+  Object.assign(g.s.player, { x: c.x, z: c.z + 20 });
+  assert.equal(g.context().type, "cave");
+  g.interact();
+  assert.equal(g.cave, c);
+  Object.assign(g.s.player, { x: c.x + 11.9, z: c.z });
+  step(g, 1, { x: 1 });
+  assert.ok(g.s.player.x < c.x + 12.5);
+  assert.equal(g.canBuild("campfire", c.x, c.z), false);
+  Object.assign(g.s.player, { x: c.x, z: c.z + 14 });
+  g.interact();
+  assert.equal(g.cave, null);
+});
+test("cave guardian stays inside and cannot attack a visitor outside", () => {
+  const g = new Game(),
+    c = CAVES[0],
+    e = g.wild.find((e) => e.id === c.id);
+  Object.assign(g.s.player, { x: c.x, z: c.z + 20 });
+  step(g, 5);
+  assert.equal(e.mode, "idle");
+  assert.equal(g.s.player.hp, 100);
+  Object.assign(g.s.player, { x: c.x, z: c.z });
+  step(g, 2);
+  assert.ok(["chase", "windup", "recover"].includes(e.mode));
+  assert.ok(e.z < c.z + 6);
+});
+test("all cave bosses can be captured and remain captured after reload", () => {
+  const g = new Game();
+  for (const c of CAVES) {
+    capture(g, c.id);
+    assert.ok(g.s.companions[c.boss]);
+    assert.ok(g.s.inventory.meal >= 4);
+  }
+  const restored = new Game(validateSave(JSON.parse(JSON.stringify(g.s))));
+  for (const c of CAVES)
+    assert.equal(
+      restored.wild.some((e) => e.id === c.id),
+      false,
+    );
+});
+test("boat can reach the new southern and western islands within world bounds", () => {
+  const g = new Game();
+  for (const id of [3, 4, 5]) {
+    g.travel(id);
+    step(g, 3.2);
+    assert.equal(g.island.id, id);
+    const x = g.s.player.x;
+    step(g, 0.5, { x: 1 });
+    assert.ok(g.s.player.x > x);
+  }
+  assert.deepEqual(validateSave(g.s).visited, [0, 3, 4, 5]);
 });
 test("new state validates and round-trips without data loss", () => {
   const s = newState();
@@ -101,6 +193,7 @@ test("gathering depletes a node until the following day", () => {
 });
 test("crafting costs exact materials, never negative, cannot duplicate equipment", () => {
   const g = new Game();
+  g.s.gear.raft = false;
   assert.equal(g.craft("raft"), false);
   rich(g);
   const before = { ...g.s.inventory };
@@ -199,8 +292,7 @@ test("feeding heals, levels and caps; cooldown cannot spend repeatedly", () => {
 });
 test("world travel enforces progression and arrives on valid ground", () => {
   const g = new Game();
-  assert.equal(g.travel(1), false);
-  g.s.gear.raft = true;
+  assert.equal(g.s.gear.raft, true);
   assert.equal(g.travel(1), true);
   step(g, 3.2);
   assert.equal(g.transit, null);
@@ -294,7 +386,7 @@ test("main campaign reaches ending using actual capture, craft, build and travel
     for (let z = 21; z < 29 && !built; z++)
       if (g.canBuild("campfire", x, z)) built = g.build("campfire", x, z);
   assert.ok(built);
-  assert.ok(g.craft("raft"));
+  assert.ok(g.s.gear.raft);
   g.travel(1);
   step(g, 3.2);
   capture(g, "frost1");

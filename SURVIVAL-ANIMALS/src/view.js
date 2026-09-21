@@ -5,6 +5,8 @@ import {
   ISLANDS,
   SPECIES,
   BUILDINGS,
+  CAVES,
+  caveAt,
   rng,
   clamp,
   heightAt,
@@ -204,6 +206,7 @@ export class View {
     this.makeDecor();
     this.makeResources();
     this.makeLandmarks();
+    this.makeCaves();
     this.makeOcean();
     this.makeSky();
     this.boatModel = this.prop("environment/canoe.glb", 0.6);
@@ -308,6 +311,7 @@ export class View {
           x = i.x + Math.sin(a) * r,
           z = i.z + Math.cos(a) * r;
         if (i.id === 2 && Math.hypot(x - i.x, z - i.z + 9) < 14) continue;
+        if (caveAt(x, z)) continue;
         spots.push({
           x,
           z,
@@ -460,6 +464,7 @@ export class View {
         cz = i.z - 17,
         y = heightAt(cx, cz);
       const ruin = new T.Group();
+      ruin.visible = i.id < 3;
       ruin.position.set(cx, y, cz);
       this.islandRoots[i.id].add(ruin);
       const sm = i.id === 2 ? darkStone : stone;
@@ -497,6 +502,8 @@ export class View {
       );
       box(0.15, 2.4, 0.15, mat(0x775438), post, 0, 1.2);
       box(1.6, 0.65, 0.14, mat(0xd3b178), post, 0, 1.9);
+      const flag = box(1, 0.65, 0.05, mat(0x88e5d1), post, 0, 2.7);
+      flag.rotation.y = 0.2;
       this.islandRoots[i.id].add(post);
     }
     // A small welcome camp uses downloaded models; craftable structures remain separate.
@@ -553,6 +560,104 @@ export class View {
       );
       m.castShadow = false;
       cone(10, 6, mat(0x6e9483), this.world, x, h - 3, z);
+    }
+  }
+  makeCaves() {
+    this.caveRoofs = [];
+    this.caveGroups = [];
+    const rand = rng(440);
+    for (const c of CAVES) {
+      const root = new T.Group();
+      root.position.set(c.x, 2, c.z);
+      this.world.add(root);
+      this.caveGroups.push({ root, c });
+      const rock = mat(c.color, { flatShading: true }),
+        floor = mat(c.island === 5 ? 0x593c35 : 0x56576a),
+        glow = mat(c.glow, { emissive: c.glow, emissiveIntensity: 1.4 });
+      box(26, 0.12, 39, floor, root, 0, -0.02, -3.5);
+      for (const side of [-1, 1]) {
+        box(3, 12, 43, rock, root, side * 14, 5.5, -3.5);
+        for (let j = 0; j < 9; j++) {
+          const lump = sphere(
+            2.7 + rand(),
+            rock,
+            root,
+            side * (13 + rand()),
+            3 + rand() * 3,
+            -22 + j * 5,
+          );
+          lump.scale.set(1, 1.8, 1.3);
+        }
+        box(9, 10, 4, rock, root, side * 10, 4.5, 16);
+      }
+      box(31, 13, 4, rock, root, 0, 5.5, -24);
+      box(10, 4, 5, rock, root, 0, 10, 16);
+      const roof = box(31, 3, 44, rock, root, 0, 12, -3.5);
+      this.caveRoofs.push({ roof, island: c.island });
+      // The visible entrance, corridor, walls, ceiling and boss room are all real meshes.
+      const seal = mesh(
+        new T.TorusGeometry(1.1, 0.14, 5, 9),
+        glow,
+        root,
+        0,
+        10.5,
+        18.55,
+      );
+      for (let j = 0; j < 22; j++) {
+        const side = j % 2 ? 1 : -1,
+          x = side * (10 + rand() * 1.3),
+          z = -20 + rand() * 34;
+        const crystal = mesh(
+          new T.OctahedronGeometry(0.45 + rand() * 0.4),
+          glow,
+          root,
+          x,
+          0.8,
+          z,
+        );
+        crystal.scale.y = 2.3;
+      }
+      for (const z of [10, 0, -12]) {
+        const light = new T.PointLight(c.glow, 25, 20, 2);
+        light.position.set(0, 7, z);
+        root.add(light);
+      }
+      for (let j = 0; j < 8; j++) {
+        const stalactite = cone(
+          0.6,
+          2 + rand() * 2,
+          rock,
+          root,
+          (rand() - 0.5) * 21,
+          10,
+          -20 + rand() * 32,
+        );
+        stalactite.rotation.z = Math.PI;
+      }
+      for (let j = 0; j < 18; j++) {
+        const a = rand() * 6.28,
+          r = 24 + rand() * 12,
+          x = Math.sin(a) * r,
+          z = Math.cos(a) * r;
+        if (z > 18 && Math.abs(x) < 8) continue;
+        const stem = mat(0xd7cbab),
+          cap = mat(
+            c.island === 4 ? 0xb992d9 : c.island === 5 ? 0xd78256 : 0x839dbc,
+            { emissive: c.glow, emissiveIntensity: 0.18 },
+          );
+        const y = heightAt(c.x + x, c.z + z) - 2;
+        box(0.25, 1, 0.25, stem, root, x, y + 0.5, z);
+        const top = sphere(1, cap, root, x, y + 1.1, z);
+        top.scale.set(1.25, 0.45, 1.25);
+      }
+      const dock = this.prop("environment/canoe.glb", 0.6);
+      const i = ISLANDS[c.island];
+      dock.position.set(
+        i.spawn[0] + 6,
+        heightAt(i.spawn[0] + 6, i.spawn[1]),
+        i.spawn[1],
+      );
+      this.world.add(dock);
     }
   }
   makeOcean() {
@@ -969,12 +1074,11 @@ export class View {
       }
       ring.visible = e.mode === "windup" && !e.down;
       const pos = e.aim || e,
-        r =
-          e.type === "tempest"
-            ? e.hp / SPECIES.tempest.hp < 0.5
-              ? 6
-              : 4.5
-            : 3;
+        r = SPECIES[e.type].boss
+          ? e.hp / SPECIES[e.type].hp < 0.5
+            ? 6
+            : 4.5
+          : 3;
       ring.position.set(pos.x, heightAt(pos.x, pos.z) + 0.12, pos.z);
       ring.scale.setScalar(r);
       ring.material.opacity = 0.45 + Math.sin(this.elapsed * 12) * 0.25;
@@ -1111,6 +1215,17 @@ export class View {
     this.sun.target.updateMatrixWorld();
     this.clouds.position.x = Math.sin(t * 0.015) * 5;
     this.clouds.visible = this.nightMix < 0.8;
+    const inCave = !!game.cave && !title;
+    for (const { root, c } of this.caveGroups) root.visible = dist(c, p) < 100;
+    for (const c of this.caveRoofs)
+      c.roof.visible = !inCave || game.cave.island !== c.island;
+    if (inCave) {
+      this.hemi.intensity = 0.68;
+      this.sun.intensity = 0.3;
+      this.heroLight.intensity = 13;
+      this.scene.fog.density = 0.016;
+      this.scene.fog.color.set("#24283c");
+    } else this.scene.fog.density = 0.005;
     for (const core of this.ruinCores) core.rotation.y = t * 0.5;
     for (const root of this.buildings.values())
       if (root.userData.fire)
@@ -1168,6 +1283,12 @@ export class View {
           ),
         );
       want.y = Math.max(want.y, heightAt(want.x, want.z) + 1.3);
+      if (inCave) {
+        const c = game.cave;
+        want.x = clamp(want.x, c.x - 11.5, c.x + 11.5);
+        want.z = clamp(want.z, c.z - 21, c.z + 30);
+        want.y = Math.min(want.y, 11);
+      }
     }
     this.camera.position.lerp(
       want,

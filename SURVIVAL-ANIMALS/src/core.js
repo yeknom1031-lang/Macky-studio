@@ -12,6 +12,9 @@ import {
   rng,
   islandAt,
   heightAt,
+  CAVES,
+  caveAt,
+  caveWallAt,
 } from "./data.js";
 
 export function makeWorld() {
@@ -43,7 +46,8 @@ export function makeWorld() {
         Math.hypot(x - i.spawn[0], z - i.spawn[1]) < 8 ||
         (Math.abs(x - i.x) < 3.5 && z > i.z - 22 && z < i.z + 30) ||
         encounters.some(([ex, ez]) => Math.hypot(x - ex, z - ez) < 6.5) ||
-        (i.id === 2 && Math.hypot(x - i.x, z - i.z + 9) < 14)
+        (i.id === 2 && Math.hypot(x - i.x, z - i.z + 9) < 14) ||
+        (i.id >= 3 && Math.abs(x - i.x) < 19 && z > i.z - 28 && z < i.z + 23)
       )
         continue;
       const tree = n % 3 !== 0,
@@ -103,6 +107,16 @@ export function makeWorld() {
   add("wolf3", "night", 197, -114, 2);
   add("bull2", "moss", 232, -106, 2);
   add("boss", "tempest", 214, -129, 2);
+  for (const c of CAVES) {
+    add(c.id, c.boss, c.x, c.z - 15, c.island);
+    add(
+      `scout${c.island}`,
+      c.island === 5 ? "ember" : "moss",
+      c.x + 24,
+      c.z + 5,
+      c.island,
+    );
+  }
   return { decor, resources, wild };
 }
 export const WORLD = makeWorld();
@@ -124,7 +138,7 @@ export function newState() {
       pelt: 0,
       crystal: 0,
     },
-    gear: {},
+    gear: { raft: true },
     companions: {},
     active: null,
     buildings: [],
@@ -140,7 +154,7 @@ export function newState() {
 const finite = (v) => typeof v === "number" && Number.isFinite(v);
 export function validateSave(input) {
   if (!input || input.version !== VERSION || !input.player || !input.inventory)
-    throw Error("対応していないセーブデータです。");
+    throw Error("この きろくは つかえないよ。");
   const s = newState(),
     p = input.player;
   if (
@@ -159,7 +173,7 @@ export function validateSave(input) {
     input.day < 1 ||
     input.day > 100000
   )
-    throw Error("座標または数値が壊れています。");
+    throw Error("きろくの 数が こわれているよ。");
   s.player = {
     x: p.x,
     z: p.z,
@@ -177,7 +191,7 @@ export function validateSave(input) {
       input.inventory[k] < 0 ||
       input.inventory[k] > 99999
     )
-      throw Error("所持品データが壊れています。");
+      throw Error("もちものの きろくが こわれているよ。");
     s.inventory[k] = input.inventory[k];
   }
   for (const r of RECIPES)
@@ -186,7 +200,7 @@ export function validateSave(input) {
     const c = input.companions?.[k];
     if (c) {
       if (![c.hp, c.level, c.bond].every(finite))
-        throw Error("仲間データが壊れています。");
+        throw Error("なかまの きろくが こわれているよ。");
       s.companions[k] = {
         hp: clamp(c.hp, 0, 100),
         level: clamp(Math.floor(c.level), 1, 8),
@@ -198,7 +212,7 @@ export function validateSave(input) {
     ? input.active
     : Object.keys(s.companions)[0] || null;
   if (!Array.isArray(input.buildings) || input.buildings.length > 120)
-    throw Error("建築データが壊れています。");
+    throw Error("家の きろくが こわれているよ。");
   s.buildings = input.buildings.map((b, n) => {
     if (
       !b ||
@@ -207,7 +221,7 @@ export function validateSave(input) {
       !finite(b.z) ||
       heightAt(b.x, b.z) < 0.8
     )
-      throw Error("建築の位置が壊れています。");
+      throw Error("家の ばしょが 正しくないよ。");
     return {
       id: `b${n}`,
       kind: b.kind,
@@ -221,11 +235,17 @@ export function validateSave(input) {
     if (Number.isInteger(d) && d >= 1 && d <= s.day) s.harvested[r.id] = d;
   }
   if (!Array.isArray(input.captured) || !Array.isArray(input.visited))
-    throw Error("冒険の記録が壊れています。");
+    throw Error("たびの きろくが こわれているよ。");
   s.captured = WORLD.wild
     .filter((e) => input.captured.includes(e.id))
     .map((e) => e.id);
-  s.visited = [0, ...[1, 2].filter((i) => input.visited.includes(i))];
+  s.visited = [
+    0,
+    ...ISLANDS.slice(1)
+      .map((i) => i.id)
+      .filter((i) => input.visited.includes(i)),
+  ];
+  s.gear.raft = true;
   s.flags = { met: input.flags?.met === true, won: !!s.companions.tempest };
   s.settings = {
     sound: input.settings?.sound !== false,
@@ -295,6 +315,9 @@ export class Game {
   get companion() {
     return this.s.companions[this.s.active];
   }
+  get cave() {
+    return caveAt(this.s.player.x, this.s.player.z);
+  }
   get warm() {
     return this.s.buildings.some(
       (b) =>
@@ -305,7 +328,7 @@ export class Game {
     return this.island.id === 1 && !this.s.gear.coat && !this.warm;
   }
   get fly() {
-    return this.mount && this.s.gear.sky;
+    return this.mount && this.s.gear.sky && !this.cave;
   }
   get boat() {
     return (
@@ -366,7 +389,18 @@ export class Game {
   context() {
     const p = this.s.player;
     if (dist(p, { x: 3, z: 22 }) < 3.6)
-      return { type: "npc", name: "ミナと話す", x: 3, z: 22 };
+      return { type: "npc", name: "みなと話す", x: 3, z: 22 };
+    const c = CAVES.find((c) => dist(p, { x: c.x, z: c.z + 17 }) < 4);
+    if (c)
+      return {
+        type: "cave",
+        name: caveAt(p.x, p.z) ? "どうくつの 外へ出る" : "どうくつに 入る",
+        cave: c,
+      };
+    const dock = ISLANDS.find(
+      (i) => dist(p, { x: i.spawn[0] + 4, z: i.spawn[1] }) < 3.2,
+    );
+    if (dock) return { type: "dock", name: "ふねで ほかのしまへ 行く" };
     const b = this.s.buildings
       .filter((b) => dist(p, b) < 3.3)
       .sort((a, b) => dist(a, p) - dist(b, p))[0];
@@ -374,13 +408,17 @@ export class Game {
       .filter((r) => this.s.harvested[r.id] !== this.s.day && dist(p, r) < 3.3)
       .sort((a, b) => dist(a, p) - dist(b, p))[0];
     if (r)
-      return { type: "resource", name: `${ITEMS[r.kind].name}を採集`, ...r };
+      return {
+        type: "resource",
+        name: `${ITEMS[r.kind].name}をあつめる`,
+        ...r,
+      };
     if (b)
       return {
         type: "building",
         name:
           b.kind === "campfire"
-            ? "焚き火で休息"
+            ? "たき火で休む"
             : `${BUILDINGS[b.kind].name}を使う`,
         ...b,
       };
@@ -390,6 +428,24 @@ export class Game {
     if (this.dead || this.capture || this.transit) return;
     const c = this.context();
     if (!c) return;
+    if (c.type === "dock") {
+      this.emit("menu", "map");
+      return;
+    }
+    if (c.type === "cave") {
+      const inside = !!this.cave;
+      this.mount = false;
+      this.s.player.x = c.cave.x;
+      this.s.player.z = c.cave.z + (inside ? 22 : 11);
+      this.invulnerable = 2;
+      this.emit(
+        "toast",
+        inside
+          ? "外に 出たよ。"
+          : `${c.cave.name}に 入ったよ。おくを さがそう！`,
+      );
+      return;
+    }
     if (c.type === "npc") {
       if (!this.s.flags.met) {
         this.s.flags.met = true;
@@ -397,8 +453,8 @@ export class Game {
       }
       this.emit(
         "dialog",
-        "島の獣たちは、きっと旅の仲間になる。狐を弱らせて Q で絆を結んでみて。資源は毎朝戻るよ。焚き火を置いていかだを作れば、霧氷の島へ進める。",
-        { speaker: "ミナ / 島の案内人" },
+        "このしまの どうぶつを なかまにしよう！ きつねを よわらせて Q をおしてね。ふねは もう あるよ。M のちずから となりのしまへ 行けるよ。どうくつの おくには 大きなぼすも いるよ。",
+        { speaker: "みな / しまのあんない人" },
       );
     }
     if (c.type === "resource") {
@@ -422,21 +478,22 @@ export class Game {
   craft(id) {
     const r = RECIPES.find((r) => r.id === id);
     if (!r) return false;
-    if (r.gear && this.s.gear[r.gear]) return this.fail("すでに製作済みです。");
+    if (r.gear && this.s.gear[r.gear])
+      return this.fail("それは もう 作ったよ。");
     if (r.unlock && !this.s.companions[r.unlock])
-      return this.fail("霧氷の守護獣と絆を結ぶと解放されます。");
+      return this.fail("こおりのしかを なかまにすると 作れるよ。");
     if (
       r.station &&
       !this.s.buildings.some(
         (b) => b.kind === r.station && dist(b, this.s.player) < 10,
       )
     )
-      return this.fail("近くに焚き火が必要です。");
+      return this.fail("近くにたき火がひつようです。");
     if (!this.pay(r.cost))
-      return this.fail("材料が足りません。採集してから再挑戦しよう。");
+      return this.fail("ざいりょうが 足りないよ。木や石を あつめよう。");
     if (r.out) this.add(r.out);
     if (r.gear) this.s.gear[r.gear] = true;
-    this.emit("craft", `${r.name} を製作しました`);
+    this.emit("craft", `${r.name}を 作ったよ`);
     return true;
   }
   canBuild(kind, x, z) {
@@ -448,17 +505,19 @@ export class Game {
       dist(this.s.player, { x, z }) < 9 &&
       this.s.buildings.every((b) => dist(b, { x, z }) > 2.2) &&
       WORLD.decor.every((d) => dist(d, { x, z }) > d.radius + 1.1) &&
+      !caveAt(x, z) &&
+      !caveWallAt(x, z) &&
       dist({ x, z }, { x: 3, z: 22 }) > 2.5 &&
       !(islandAt(x, z)?.id === 2 && dist({ x, z }, { x: 214, z: -129 }) < 14)
     );
   }
   build(kind, x, z) {
     if (this.s.buildings.length >= 120)
-      return this.fail("建築上限です。不要な建物を撤去してください。");
+      return this.fail("もう おけないよ。いらない家を かたづけよう。");
     if (!this.canBuild(kind, x, z))
-      return this.fail("この場所には置けません。平らな空き地へ移動しよう。");
+      return this.fail("ここには おけないよ。何もない ひろいところへ 行こう。");
     if (!this.pay(BUILDINGS[kind].cost))
-      return this.fail("建築材料が足りません。");
+      return this.fail("ざいりょうが 足りないよ。");
     this.s.buildings.push({
       id: `b${Date.now()}-${this.s.buildings.length}`,
       kind,
@@ -466,7 +525,7 @@ export class Game {
       z,
       angle: this.s.player.angle,
     });
-    this.emit("build", `${BUILDINGS[kind].name}を設置しました`);
+    this.emit("build", `${BUILDINGS[kind].name}を おいたよ`);
     return true;
   }
   removeBuilding(id) {
@@ -475,13 +534,13 @@ export class Game {
     const b = this.s.buildings.splice(n, 1)[0];
     for (const [k, v] of Object.entries(BUILDINGS[b.kind].cost))
       this.s.inventory[k] += Math.ceil(v * 0.5);
-    this.emit("build", "撤去して資材の半分を回収しました");
+    this.emit("build", "かたづけたよ。ざいりょうが 半分もどった。");
     return true;
   }
   eat() {
     const inv = this.s.inventory,
       kind = inv.meal > 0 ? "meal" : inv.berry > 0 ? "berry" : null;
-    if (!kind) return this.fail("食料がありません。実を採集しよう。");
+    if (!kind) return this.fail("ごはんが ないよ。木の実を あつめよう。");
     inv[kind]--;
     const p = this.s.player;
     p.hp = clamp(p.hp + (kind === "meal" ? 45 : 16), 0, 100);
@@ -491,12 +550,12 @@ export class Game {
   }
   feed(type = this.s.active) {
     const c = this.s.companions[type];
-    if (!c) return this.fail("先に仲間を捕獲しよう。");
+    if (!c) return this.fail("先に どうぶつを なかまにしよう。");
     if (this.feedCooldown > 0)
-      return this.fail("お腹が落ち着くまで、少し待とう。");
+      return this.fail("おなかが いっぱい。少し まとう。");
     const food = this.s.inventory.meal > 0 ? "meal" : "berry";
     if (this.s.inventory[food] < 1)
-      return this.fail("仲間にあげる食料がありません。");
+      return this.fail("なかまにあげる食べものがありません。");
     this.s.inventory[food]--;
     c.hp = clamp(c.hp + 40, 0, 100);
     c.bond = clamp(c.bond + 18, 0, 100);
@@ -505,7 +564,10 @@ export class Game {
       c.level++;
     }
     this.feedCooldown = 3;
-    this.emit("heal", `${SPECIES[type].name}と絆が深まった · Lv.${c.level}`);
+    this.emit(
+      "heal",
+      `${SPECIES[type].name}ともっと なかよくなった · つよさ ${c.level}`,
+    );
     return true;
   }
   select(type) {
@@ -514,24 +576,28 @@ export class Game {
     this.s.active = type;
     this.ally.x = this.s.player.x - 2;
     this.ally.z = this.s.player.z;
-    this.emit("select", `${SPECIES[type].name}が同行します`);
+    this.emit("select", `${SPECIES[type].name}が いっしょに 行くよ`);
     return true;
   }
   toggleMount() {
+    if (this.cave) return this.fail("どうくつでは なかまから おりて 歩こう。");
     if (this.mount) {
       this.mount = false;
       return true;
     }
     if (!this.s.gear.saddle && !this.s.gear.sky)
-      return this.fail("サドルを製作すると騎乗できます。");
+      return this.fail("くらを 作ると なかまに のれるよ。");
     if (!this.companion || this.companion.hp <= 0)
-      return this.fail("元気な仲間を同行させてください。");
+      return this.fail("元気な なかまを えらんでね。");
     this.mount = true;
-    this.emit("mount", this.fly ? "空へ！ WASDで飛行します" : "騎乗しました");
+    this.emit(
+      "mount",
+      this.fly ? "空へ！ WASD で うごこう" : "なかまに のったよ",
+    );
     return true;
   }
   attack() {
-    if (this.fly) return this.fail("Rで地上に降りてから戦おう。");
+    if (this.fly) return this.fail("Rでじめんにおりてからたたかおう。");
     if (
       this.dead ||
       this.capture ||
@@ -562,7 +628,7 @@ export class Game {
       e.down = true;
       e.mode = "down";
       this.add({ pelt: e.type === "tempest" ? 6 : 2, berry: 2 });
-      this.emit("toast", "疲労状態！ 近づいて Q で捕獲できます。");
+      this.emit("toast", "つかれているよ！ 近くで Q をおして なかまにしよう。");
     } else if (e.mode === "idle") e.mode = "chase";
     this.emit("hit", `${Math.round(amount)}`, {
       x: e.x,
@@ -571,31 +637,35 @@ export class Game {
     });
   }
   command() {
-    if (this.fly) return this.fail("仲間の技は地上で使おう。");
+    if (this.fly) return this.fail("なかまのわざはじめんで使おう。");
     if (!this.companion || this.companion.hp <= 0)
-      return this.fail("元気な仲間が必要です。");
-    if (this.companionCooldown > 0) return this.fail("仲間の技を準備中です。");
+      return this.fail("元気ななかまがひつようです。");
+    if (this.companionCooldown > 0)
+      return this.fail("大わざを よういしているよ。少し まってね。");
     const e = this.nearestEnemy(16);
-    if (!e) return this.fail("近くに敵がいません。");
+    if (!e) return this.fail("近くにあいてがいません。");
     this.companionCooldown = 7;
     this.hit(e, 24 + this.companion.level * 7);
-    this.emit("skill", "仲間の技！", { x: e.x, z: e.z, color: "#72eed7" });
+    this.emit("skill", "なかまのわざ！", { x: e.x, z: e.z, color: "#72eed7" });
     return true;
   }
   startCapture() {
-    if (this.fly) return this.fail("Rで地上に降りてから絆を結ぼう。");
+    if (this.fly) return this.fail("Rでじめんにおりてからなかまにしよう。");
     if (this.dead || this.transit || this.capture) return false;
     const e = this.nearestCreature(6);
-    if (!e) return this.fail("捕獲できる獣の近くへ。");
-    if (this.s.companions[e.type]) return this.fail("この種はすでに仲間です。");
-    const threshold = e.type === "tempest" ? 0.2 : 0.35;
+    if (!e) return this.fail("なかまにしたい どうぶつに 近づこう。");
+    if (this.s.companions[e.type])
+      return this.fail("このしゅるいはすでになかまです。");
+    const threshold = SPECIES[e.type].boss ? 0.2 : 0.35;
     if (e.hp / SPECIES[e.type].hp > threshold)
-      return this.fail(`体力を${threshold * 100}%以下に弱らせよう。`);
+      return this.fail(`体力を${threshold * 100}%より 下によわらせよう。`);
     if (this.s.inventory.rune < 1)
-      return this.fail("ルーン石が必要です。Tabから製作できます。");
+      return this.fail(
+        "なかまの石がひつようです。Tab の「ものを作る」で 作れるよ。",
+      );
     this.s.inventory.rune--;
     this.capture = { id: e.id, time: 0 };
-    this.emit("captureStart", "絆を結んでいます…近くにとどまろう。");
+    this.emit("captureStart", "なかまに しているよ…近くにとどまろう。");
     return true;
   }
   finishCapture(e) {
@@ -609,12 +679,16 @@ export class Game {
     this.ally.z = e.z;
     this.wild = this.wild.filter((w) => w !== e);
     this.capture = null;
-    this.emit("captured", `${SPECIES[e.type].name}が仲間になった！`, {
+    this.emit("captured", `${SPECIES[e.type].name}が なかまになった！`, {
       typeId: e.type,
       x: e.x,
       z: e.z,
     });
     if (e.type === "frost") this.add({ crystal: 5, fiber: 4 });
+    if (SPECIES[e.type].boss && e.type !== "tempest") {
+      this.add({ crystal: 8, meal: 4, rune: 3 });
+      this.emit("toast", "大きな なかまが できた！ ごはんと 石も もらえたよ。");
+    }
     if (e.type === "tempest") {
       this.s.flags.won = true;
       this.emit("win");
@@ -622,17 +696,16 @@ export class Game {
   }
   canTravel(id) {
     return (
-      id === 0 ||
-      (id === 1 && this.s.gear.raft) ||
-      (id === 2 && this.s.gear.sky && !!this.s.companions.frost)
+      !!ISLANDS[id] &&
+      (id !== 2 || !!(this.s.gear.sky && this.s.companions.frost))
     );
   }
   travel(id) {
     if (!ISLANDS[id] || !this.canTravel(id))
       return this.fail(
         id === 1
-          ? "いかだを製作してから出航しよう。"
-          : "空のサドルと霧氷の守護獣との絆が必要です。",
+          ? "このしまには まだ 行けないよ。"
+          : "空のくらとこおりの 大きなしかとのきずながひつようです。",
       );
     if (this.capture) return false;
     this.mount = false;
@@ -647,11 +720,11 @@ export class Game {
   visit(id) {
     if (!this.s.visited.includes(id)) {
       this.s.visited.push(id);
-      this.emit("discovery", `${ISLANDS[id].name}を発見`);
+      this.emit("discovery", `${ISLANDS[id].name}を見つけた`);
     }
   }
   rest() {
-    if (!this.warm) return this.fail("焚き火か住居の近くで休もう。");
+    if (!this.warm) return this.fail("たき火か家の近くで休もう。");
     this.s.day++;
     this.s.time = 80;
     this.s.player.hp = 100;
@@ -667,7 +740,7 @@ export class Game {
         e.timer = 1;
       }
     });
-    this.emit("rest", "朝になりました。資源が再び採集できます。");
+    this.emit("rest", "朝だよ。木や石を また あつめられるよ。");
     return true;
   }
   damage(amount, environment = false) {
@@ -679,7 +752,7 @@ export class Game {
       if (this.capture) {
         this.capture = null;
         this.s.inventory.rune++;
-        this.emit("toast", "集中が途切れた。ルーン石は戻りました。");
+        this.emit("toast", "とちゅうで やめたよ。なかまの石は もどったよ。");
       }
       this.emit("damage");
     }
@@ -708,7 +781,10 @@ export class Game {
       e.z = e.homeZ;
       e.mode = e.down ? "down" : "idle";
     });
-    this.emit("toast", "浜辺で救助された。仲間と装備は無事です。");
+    this.emit(
+      "toast",
+      "海のそばで たすけてもらったよ。なかまと どうぐは ぶじだよ。",
+    );
   }
   fail(text) {
     this.emit("toast", text);
@@ -719,12 +795,13 @@ export class Game {
     if (this.paused || this.dead) return;
     const s = this.s,
       p = s.player;
+    if (this.cave) this.mount = false;
     s.playtime += dt;
     s.time += dt;
     if (s.time >= DAY_SECONDS) {
       s.time -= DAY_SECONDS;
       s.day++;
-      this.emit("toast", "新しい朝の資源が島に戻りました。");
+      this.emit("toast", "新しい朝の木や石がしまにもどったよ。");
     }
     this.cooldown = Math.max(0, this.cooldown - dt);
     this.attackPose = Math.max(0, this.attackPose - dt);
@@ -744,7 +821,7 @@ export class Game {
         this.transit = null;
         this.visit(i.id);
         this.invulnerable = 3;
-        this.emit("arrive", `${i.name}に到着しました`);
+        this.emit("arrive", `${i.name}に ついたよ`);
       }
       this.ally.x = p.x - 2;
       this.ally.z = p.z;
@@ -769,7 +846,7 @@ export class Game {
       if (!e || dist(e, p) > 6.8) {
         this.capture = null;
         s.inventory.rune++;
-        this.emit("toast", "離れすぎました。ルーン石は戻りました。");
+        this.emit("toast", "はなれすぎたよ。なかまの石は もどったよ。");
       } else {
         this.capture.time += dt;
         if (this.capture.time >= 2) this.finishCapture(e);
@@ -796,10 +873,13 @@ export class Game {
       (!ni || this.canTravel(ni.id)) &&
       Math.abs(nx) < 320 &&
       nz > -220 &&
-      nz < 95;
+      nz < 225;
     const collide = (x, z) =>
-      !this.fly &&
-      WORLD.decor.some((d) => Math.hypot(x - d.x, z - d.z) < d.radius + 0.38);
+      caveWallAt(x, z) ||
+      (!this.fly &&
+        WORLD.decor.some(
+          (d) => Math.hypot(x - d.x, z - d.z) < d.radius + 0.38,
+        ));
     if (allowed) {
       if (!collide(nx, p.z)) p.x = nx;
       if (!collide(p.x, nz)) p.z = nz;
@@ -844,7 +924,11 @@ export class Game {
         d = dist(e, p);
       if (this.sleeping(e) && d > 1.8) continue;
       e.timer -= dt;
-      if (d > (e.type === "tempest" ? 21 : 17) || this.fly) {
+      if (
+        d > (sp.boss ? 24 : 17) ||
+        this.fly ||
+        (e.island >= 3 && sp.boss && this.cave?.island !== e.island)
+      ) {
         e.mode = "idle";
         const a = Math.atan2(e.homeX - e.x, e.homeZ - e.z);
         e.walking = Math.hypot(e.x - e.homeX, e.z - e.homeZ) > 2;
@@ -852,7 +936,7 @@ export class Game {
           e.x += Math.sin(a) * dt * 1.5;
           e.z += Math.cos(a) * dt * 1.5;
           e.angle = a;
-        } else if (e.type !== "tempest" && !this.sleeping(e)) {
+        } else if (!sp.boss && !this.sleeping(e)) {
           const phase = s.playtime * 0.15 + e.homeX;
           e.x = e.homeX + Math.sin(phase) * 1.7;
           e.z = e.homeZ + Math.cos(phase) * 1.7;
@@ -862,33 +946,34 @@ export class Game {
         continue;
       }
       e.walking = false;
-      if (
-        e.mode === "idle" &&
-        d < (this.stealth ? 2.8 : e.type === "tempest" ? 17 : 8)
-      ) {
+      if (e.mode === "idle" && d < (this.stealth ? 2.8 : sp.boss ? 20 : 8)) {
         e.mode = "chase";
         e.timer = 0.3;
       }
       if (e.mode === "chase") {
         e.angle = Math.atan2(p.x - e.x, p.z - e.z);
-        if (d > (e.type === "tempest" ? 5 : 2.7)) {
+        if (d > (sp.boss ? 5 : 2.7)) {
           e.x += Math.sin(e.angle) * sp.speed * dt;
           e.z += Math.cos(e.angle) * sp.speed * dt;
+          const cave = CAVES.find((c) => c.island === e.island);
+          if (cave && sp.boss) {
+            e.x = clamp(e.x, cave.x - 9, cave.x + 9);
+            e.z = clamp(e.z, cave.z - 19, cave.z + 5);
+          }
         } else {
           e.mode = "windup";
-          e.timer = e.type === "tempest" ? 1.2 : 0.95;
+          e.timer = sp.boss ? 1.5 : 0.95;
           e.aim = { x: p.x, z: p.z };
-          this.emit("warning", "攻撃予告！ Spaceで回避", { id: e.id });
+          this.emit("warning", "赤いまる！ Spaceでよける", { id: e.id });
         }
       } else if (e.mode === "windup" && e.timer <= 0) {
-        const radius =
-          e.type === "tempest" ? (e.hp / sp.hp < 0.5 ? 6 : 4.5) : 3;
+        const radius = sp.boss ? (e.hp / sp.hp < 0.5 ? 6 : 4.5) : 3;
         if (dist(p, e.aim || e) < radius)
           this.damage(sp.damage * (this.night ? 1.1 : 1));
         if (this.companion && dist(this.ally, e) < radius)
           this.companion.hp = Math.max(0, this.companion.hp - 8);
         e.mode = "recover";
-        e.timer = e.type === "tempest" ? 1.8 : 1.4;
+        e.timer = sp.boss ? 2 : 1.4;
         this.emit("impact", "", {
           x: e.x,
           z: e.z,

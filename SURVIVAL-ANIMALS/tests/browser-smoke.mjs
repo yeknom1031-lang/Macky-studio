@@ -1,6 +1,7 @@
 import { createRequire } from "node:module";
 import fs from "node:fs/promises";
 import assert from "node:assert/strict";
+import { EARLY_KANJI } from "./early-kanji.mjs";
 const require = createRequire(import.meta.url);
 const { chromium } = require(
   process.env.PLAYWRIGHT_MODULE ||
@@ -48,6 +49,133 @@ try {
   await page.screenshot({
     path: new URL("../test-results/gameplay.png", import.meta.url).pathname,
   });
+  if (process.argv.includes("--caves")) {
+    const shot = async (name) =>
+      page.screenshot({
+        path: new URL(`../test-results/${name}.png`, import.meta.url).pathname,
+      });
+    const audit = async () => {
+      const content = await page.locator("body").innerText();
+      assert.deepEqual(
+        [...new Set(content.match(/\p{Script=Han}/gu) || [])].filter(
+          (c) => !EARLY_KANJI.includes(c),
+        ),
+        [],
+      );
+      assert.equal(/[\u30a1-\u30fa]/u.test(content), false);
+    };
+    const close = async () => {
+      if (await page.locator("#modal").isVisible())
+        await page.click("#close-modal");
+    };
+    for (const tab of [
+      "bag",
+      "craft",
+      "companions",
+      "build",
+      "map",
+      "journal",
+      "settings",
+    ]) {
+      await page.evaluate((tab) => __SA.openPanel(tab), tab);
+      await audit();
+      if (tab === "map") await shot("six-islands");
+      await close();
+    }
+    const caves = await page.evaluate(
+      async () => (await import("./src/data.js")).CAVES,
+    );
+    for (const c of caves) {
+      await page.keyboard.press("m");
+      await page.click(`button[data-action="travel"][data-id="${c.island}"]`);
+      await page.waitForFunction(
+        (id) => !__SA.game.transit && __SA.game.island.id === id,
+        c.island,
+      );
+      await page.evaluate(() => (__SA.view.theta = 0));
+      await page.keyboard.down("w");
+      await page.waitForTimeout(1900);
+      await page.keyboard.up("w");
+      await page.waitForTimeout(300);
+      await shot(`cave-${c.island}-entrance`);
+      assert.equal(
+        await page.evaluate(() => __SA.game.context()?.type),
+        "cave",
+      );
+      await page.keyboard.press("e");
+      await page.waitForFunction(
+        (id) => __SA.game.cave?.island === id,
+        c.island,
+      );
+      await page.waitForTimeout(500);
+      await shot(`cave-${c.island}-inside`);
+      await audit();
+      for (let n = 0; n < 65; n++) {
+        const status = await page.evaluate((id) => {
+          const g = __SA.game,
+            e = g.wild.find((e) => e.id === id);
+          Object.assign(g.s.player, { x: e.x, z: e.z + 3.3 });
+          return {
+            hp: e.hp,
+            health: g.s.player.hp,
+            food: g.s.inventory.meal + g.s.inventory.berry,
+            paused: g.paused,
+            dead: g.dead,
+            cooldown: g.cooldown,
+          };
+        }, c.id);
+        if (n % 10 === 0) console.log("combat", c.id, n, status);
+        const maxHp = await page.evaluate(
+          async (type) => (await import("./src/data.js")).SPECIES[type].hp,
+          c.boss,
+        );
+        if (status.hp <= maxHp * 0.2) break;
+        if (status.health < 70) await page.keyboard.press("1");
+        await page.keyboard.press("j");
+        await page.keyboard.press("f");
+        await page.waitForTimeout(570);
+      }
+      assert.equal(await page.evaluate(() => __SA.game.dead), false);
+      await shot(`cave-${c.island}-battle`);
+      await page.keyboard.press("q");
+      await page.waitForFunction(
+        (type) => !!__SA.game.s.companions[type],
+        c.boss,
+        { timeout: 8000 },
+      );
+      assert.equal(await page.evaluate(() => __SA.game.s.flags.won), undefined);
+      await audit();
+      console.log("PASS cave boss", c.boss);
+      // Walk back out through the same corridor and entrance.
+      await page.evaluate(
+        (c) => Object.assign(__SA.game.s.player, { x: c.x, z: c.z + 11 }),
+        c,
+      );
+      await page.keyboard.down("s");
+      await page.waitForTimeout(600);
+      await page.keyboard.up("s");
+      await page.keyboard.press("e");
+      assert.equal(await page.evaluate(() => __SA.game.cave), null);
+    }
+    await page.evaluate(() => __SA.save());
+    await page.reload();
+    await page.waitForFunction(() => window.__SA?.view.loaded);
+    await page.click("#continue");
+    for (const c of caves)
+      assert.equal(
+        await page.evaluate((type) => !!__SA.game.s.companions[type], c.boss),
+        true,
+      );
+    await page.setViewportSize({ width: 1024, height: 720 });
+    await page.keyboard.press("m");
+    await audit();
+    await shot("six-islands-small");
+    assert.equal(await page.locator('button[data-action="travel"]').count(), 6);
+    assert.deepEqual(errors, []);
+    console.log(
+      "PASS: six islands, walking cave entrances/exits, three giant boss fights/captures, persisted progress, readable UI, map at 1024px",
+    );
+  }
   if (process.argv.includes("--full")) {
     const screenshot = async (name) => {
       await page.waitForTimeout(450);
@@ -82,7 +210,7 @@ try {
     };
     const travel = async (id) => {
       await key("m");
-      await page.click(`[data-action="travel"][data-id="${id}"]`);
+      await page.click(`button[data-action="travel"][data-id="${id}"]`);
       await page.waitForFunction(
         (id) => !__SA.game.transit && __SA.game.island.id === id,
         id,
@@ -164,7 +292,7 @@ try {
     );
     await screenshot("camp");
     await craft("spear");
-    await craft("raft");
+    assert.equal(await page.evaluate(() => __SA.game.s.gear.raft), true);
     await craft("saddle");
     await craft("coat");
     await key("r");
@@ -196,7 +324,7 @@ try {
     assert.equal(await page.evaluate(() => __SA.game.s.flags.won), true);
     assert.equal(
       await page.locator("#modal-title").innerText(),
-      "嵐の、その先に。",
+      "あらしの むこうへ。",
     );
     await screenshot("ending");
     await page.click('[data-action="close"]');

@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#172f37" />
     <meta
       name="description"
-      content="仲間と、生きる島へ。無料素材でつくられた3Dサバイバル・アドベンチャー。"
+      content="なかまと、生きるしまへ。6つのしまを めぐる どうぶつの あそび。"
     />
-    <title>SURVIVAL ANIMALS — 仲間と、生きる島へ。</title>
+    <title>どうぶつと しまのたび — なかまと、生きるしまへ。</title>
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231b4147'/%3E%3Cpath d='M12 44 26 17l9 16 7-9 12 20z' fill='%23b2dfc8'/%3E%3C/svg%3E"
@@ -19,49 +19,48 @@
     </script>
   </head>
   <body>
-    <canvas
-      id="world"
-      aria-label="サバイバル・アニマルズの3Dフィールド"
-    ></canvas>
+    <canvas id="world" aria-label="どうぶつと しまのたび"></canvas>
     <div id="vignette"></div>
     <div id="hurt"></div>
     <div id="loading">
       <div class="loading-mark">◇</div>
-      <p class="eyebrow">SURVIVAL ANIMALS</p>
-      <h2>島が、目を覚ます。</h2>
+      <p class="eyebrow">どうぶつと しまのたび</p>
+      <h2>しまを よういしているよ。</h2>
       <div class="load-track"><i id="load-fill"></i></div>
-      <p id="load-status">海と森を準備しています…</p>
+      <p id="load-status">海と森をよういしています…</p>
     </div>
     <section id="title" hidden>
       <header class="masthead">
         <span class="wordmark"
-          ><span class="mountain">◬</span> SURVIVAL ANIMALS</span
-        ><span class="edition">EXPLORER’S EDITION <i>01</i></span>
+          ><span class="mountain">◬</span> どうぶつと しまのたび</span
+        ><span class="edition">あそびに 行こう <i>01</i></span>
       </header>
       <div class="title-copy">
         <p class="eyebrow">
-          <span class="line"></span> A WILD WORLD. A SHARED JOURNEY.
+          <span class="line"></span> しまを めぐって なかまを ふやそう
         </p>
-        <h1>SURVIVAL<br /><span>ANIMALS</span></h1>
-        <p class="title-jp">仲間と、生きる島へ。</p>
+        <h1>どうぶつと<br /><span>しまのたび</span></h1>
+        <p class="title-jp">なかまと、生きるしまへ。</p>
         <p class="intro">
-          見知らぬ島。小さな出会い。<br />焚き火の温もりから、嵐の向こうまで。<br />あなたと獣たちの冒険がはじまる。
+          はじめてのしま。小さななかま。<br />たき火のあたたかさから、あらしの
+          むこうまで。<br />あなたとどうぶつたちのたびがはじまる。
         </p>
         <div class="title-actions">
-          <button id="start" class="primary">新しい冒険 <span>↗</span></button
+          <button id="start" class="primary">新しいたび <span>↗</span></button
           ><button id="continue" class="secondary" hidden>
-            旅をつづける <span>→</span>
+            たびをつづける <span>→</span>
           </button>
         </div>
-        <button id="title-options" class="text-button">設定・操作方法</button>
+        <button id="title-options" class="text-button">
+          せってい・あそびかた
+        </button>
       </div>
       <footer class="title-footer">
         <div>
-          <span class="tiny">THE ARCHIPELAGO</span><b>三つの島。ひとつの絆。</b>
+          <span class="tiny">6つのしま</span><b>6つのしま。ひとつのきずな。</b>
         </div>
         <span
-          >HEADPHONES RECOMMENDED <span class="dot"></span> PC / KEYBOARD +
-          MOUSE</span
+          >音も きいてみよう <span class="dot"></span> ぱそこんで あそぼう</span
         >
       </footer>
     </section>
@@ -70,29 +69,27 @@
         <div class="island-label">
           <span>◬</span>
           <div>
-            <small id="island-en">SUNBREAK ISLE</small
-            ><strong id="island-name">陽だまりの島</strong>
+            <small id="island-en">はじめのしま</small
+            ><strong id="island-name">ひだまりのしま</strong>
           </div>
         </div>
         <div class="quest">
-          <small>JOURNEY <span id="quest-no">01 / 07</span></small>
+          <small>つぎに やること <span id="quest-no">01 / 07</span></small>
           <h3 id="quest-title"></h3>
           <p id="quest-detail"></p>
         </div>
       </div>
       <div id="compass">
-        <span>W</span><span>·</span><b id="bearing">N</b><span>·</span
-        ><span>E</span>
+        <span>にし</span><span>·</span><b id="bearing">きた</b><span>·</span
+        ><span>ひがし</span>
       </div>
       <div class="top-right">
         <div class="clock">
           <span id="time-icon">☀</span>
-          <div>
-            <strong id="time">08:30</strong><small id="day">DAY 01</small>
-          </div>
+          <div><strong id="time">08:30</strong><small id="day">01</small></div>
         </div>
-        <div id="weather">潮風 · 24°C</div>
-        <button id="pause-button" aria-label="ポーズ">Ⅱ</button>
+        <div id="weather">海のかぜ · 24°C</div>
+        <button id="pause-button" aria-label="お休み">Ⅱ</button>
       </div>
       <div id="target" hidden>
         <small id="target-element"></small><strong id="target-name"></strong>
@@ -100,13 +97,15 @@
         <p id="target-status"></p>
       </div>
       <div id="boss" hidden>
-        <small>GUARDIAN OF THE STORM</small>
-        <h2>テンペスト</h2>
+        <small>大きなぼす</small>
+        <h2>あらしのおおかみ</h2>
         <div class="bar"><i id="boss-fill"></i></div>
       </div>
-      <div id="warning" hidden>攻撃の気配 — <kbd>Space</kbd> 回避</div>
+      <div id="warning" hidden>
+        赤いまるから にげよう — <kbd>Space</kbd> よける
+      </div>
       <div id="discovery" hidden>
-        <small>NEW HORIZON</small>
+        <small>新しいしま</small>
         <h2></h2>
         <div class="line"></div>
       </div>
@@ -141,20 +140,20 @@
       <div class="bottom-center">
         <div id="interaction" hidden><kbd>E</kbd><span></span></div>
         <div id="capture-progress" hidden>
-          <small>絆を結ぶ</small>
+          <small>なかまになる</small>
           <div class="bar"><i></i></div>
         </div>
         <div class="hotbar">
           <button data-key="attack">
-            <kbd>J</kbd><span>↟</span><small>攻撃</small></button
+            <kbd>J</kbd><span>↟</span><small>こうげき</small></button
           ><button data-key="eat">
             <kbd>1</kbd><span>●</span
             ><small id="food-count">食べる</small></button
           ><button data-key="capture">
             <kbd>Q</kbd><span>◇</span
-            ><small id="rune-count">捕獲</small></button
+            ><small id="rune-count">なかまにする</small></button
           ><button data-key="mount">
-            <kbd>R</kbd><span>♧</span><small>騎乗</small>
+            <kbd>R</kbd><span>♧</span><small>のる</small>
           </button>
         </div>
       </div>
@@ -164,20 +163,21 @@
             id="minimap"
             width="180"
             height="180"
-            aria-label="周辺地図"
+            aria-label="近くのちず"
           ></canvas
-          ><span>N</span>
+          ><span>きた</span>
         </div>
         <div class="nav-buttons">
-          <button data-panel="bag"><kbd>Tab</kbd> バッグ</button
-          ><button data-panel="build"><kbd>B</kbd> 建築</button
-          ><button data-panel="map"><kbd>M</kbd> 地図</button>
+          <button data-panel="bag"><kbd>Tab</kbd> もちもの</button
+          ><button data-panel="build"><kbd>B</kbd> 家づくり</button
+          ><button data-panel="map"><kbd>M</kbd> ちず</button>
         </div>
       </div>
       <div id="build-hint" hidden></div>
       <div id="controls-hint">
-        WASD 移動 <span>·</span> 右ドラッグ 視点 <span>·</span> Shift 走る
-        <span>·</span> Space 回避 <span>·</span> C しゃがむ
+        WASD うごく <span>·</span> 右をおしたまま うごかす 見まわす
+        <span>·</span> Shift 走る <span>·</span> Space よける <span>·</span> C
+        しゃがむ
       </div>
     </main>
     <div id="toasts" aria-live="polite"></div>
@@ -191,10 +191,10 @@
       <div class="modal-shell">
         <header>
           <div>
-            <small class="eyebrow" id="modal-eyebrow">FIELD JOURNAL</small>
+            <small class="eyebrow" id="modal-eyebrow">たびの のーと</small>
             <h2 id="modal-title"></h2>
           </div>
-          <button id="close-modal" aria-label="閉じる">×</button>
+          <button id="close-modal" aria-label="とじる">×</button>
         </header>
         <nav id="tabs"></nav>
         <div id="modal-body"></div>

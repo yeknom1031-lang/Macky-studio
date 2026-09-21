@@ -13,6 +13,7 @@ import {
   clamp,
   dist,
   heightAt,
+  CAVES,
 } from "./data.js";
 
 const $ = (s) => document.querySelector(s),
@@ -46,23 +47,23 @@ let dodge = false,
   drag = null,
   previousFocus = null;
 const tabs = {
-  bag: "持ち物",
-  craft: "製作",
-  companions: "仲間",
-  build: "建築",
-  map: "海図",
-  journal: "冒険日誌",
-  settings: "設定",
+  bag: "もちもの",
+  craft: "ものを作る",
+  companions: "なかま",
+  build: "家づくり",
+  map: "ちず",
+  journal: "たびのめも",
+  settings: "せってい",
 };
 const titleNames = {
   ...tabs,
   pause: "ひと息、つこう。",
-  rest: "焚き火のそばで",
-  dialog: "島の案内人",
-  death: "もう一度、潮風の中へ。",
-  win: "嵐の、その先に。",
-  new: "新しい冒険をはじめますか？",
-  import: "セーブデータを読み込みますか？",
+  rest: "たき火のそばで",
+  dialog: "しまのあんない人",
+  death: "もう一度、海のかぜの中へ。",
+  win: "あらしの むこうへ。",
+  new: "新しいたびをはじめますか？",
+  import: "たびのきろくをひらきますか？",
 };
 let pendingImport = null;
 
@@ -82,7 +83,7 @@ function readSave() {
       if (raw) {
         const s = validateSave(JSON.parse(raw));
         if (key.endsWith(".backup"))
-          toast("前回のバックアップから復元できます。");
+          toast("ひとつ前の きろくから つづけられるよ。");
         return s;
       }
     } catch (e) {
@@ -112,11 +113,11 @@ function save(manual = false) {
     saved = state;
     saveError = false;
     lastSave = game.s.playtime;
-    if (manual) toast("冒険を保存しました。", true);
+    if (manual) toast("たびをきろくしました。", true);
     return true;
   } catch (e) {
     if (manual || !saveError)
-      toast("端末への保存ができません。設定からセーブを書き出してください。");
+      toast("きろくできないよ。「せってい」で「外に のこす」を えらんでね。");
     saveError = true;
     return false;
   }
@@ -131,7 +132,7 @@ function exportSave() {
   a.download = `survival-animals-day${game.s.day}.json`;
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  toast("セーブデータを書き出しました。", true);
+  toast("たびのきろくを外に のこしたよ。", true);
 }
 function applySettings() {
   sound.enabled = game.s.settings.sound;
@@ -151,7 +152,7 @@ function launch(state) {
   sound.start();
   view.target.set(game.s.player.x, 2, game.s.player.z);
   view.camera.position.set(game.s.player.x + 3, 9, game.s.player.z + 12);
-  toast("WASD で移動。浜辺のミナに近づいて E で話そう。");
+  toast("WASD でうごく。海のそばのみなに近づいて E で話そう。");
   if (game.dead) openPanel("death");
   else save();
 }
@@ -177,10 +178,10 @@ function openPanel(name, html = null) {
   txt(
     "#modal-eyebrow",
     name === "win"
-      ? "JOURNEY COMPLETE"
+      ? "おめでとう！"
       : name === "death"
-        ? "THE ISLAND REMEMBERS YOU"
-        : "FIELD JOURNAL",
+        ? "もう一回 やってみよう"
+        : "たびの のーと",
   );
   $("#close-modal").hidden = name === "death";
   $("#tabs").innerHTML =
@@ -211,7 +212,7 @@ const cost = (c) =>
 function panelContent(name) {
   const s = game.s;
   if (name === "bag")
-    return `<p class="section-note">${s.day}日目の豊作：${ITEMS[game.sleepBonus].name}。採集した資源は翌日に戻ります。所持品の重量制限はありません。</p><div class="inventory-grid">${Object.entries(
+    return `<p class="section-note">${s.day}日目のたくさん とれるもの：${ITEMS[game.sleepBonus].name}。木や石は 次の日に またとれるよ。いくつでも もてるよ。</p><div class="inventory-grid">${Object.entries(
       ITEMS,
     )
       .map(
@@ -220,13 +221,14 @@ function panelContent(name) {
       )
       .join(
         "",
-      )}</div><h3 class="section-title">旅の装備</h3><div class="equipment">${
+      )}</div><h3 class="section-title">たびのどうぐ</h3><div class="equipment">${
       RECIPES.filter((r) => r.gear && s.gear[r.gear])
         .map((r) => `<span>${r.icon} ${r.name}</span>`)
-        .join("") || "<small>まだありません。製作タブから作れます。</small>"
-    }</div><div class="menu-actions">${button("食べて回復", "eat")}${button("冒険を保存", "save", "", "secondary")}${button("データを書き出す", "export", "", "secondary")}</div>`;
+        .join("") ||
+      "<small>まだありません。ものを作るのところから作れます。</small>"
+    }</div><div class="menu-actions">${button("食べて元気になる", "eat")}${button("たびをきろく", "save", "", "secondary")}${button("きろくを外に のこす", "export", "", "secondary")}</div>`;
   if (name === "craft")
-    return `<p class="section-note">装備は製作すると自動で有効になります。料理は設置した焚き火の近くで作れます。</p><div class="grid">${RECIPES.map(
+    return `<p class="section-note">作った どうぐは すぐ つかえるよ。ごはんは たき火の近くで 作ろう。</p><div class="grid">${RECIPES.map(
       (r) => {
         const made = r.gear && s.gear[r.gear],
           locked = r.unlock && !s.companions[r.unlock],
@@ -235,54 +237,62 @@ function panelContent(name) {
             !s.buildings.some(
               (b) => b.kind === r.station && dist(s.player, b) < 10,
             );
-        return `<article class="card"><span class="symbol">${r.icon}</span><h3>${r.name}</h3><p>${r.description}</p>${cost(r.cost)}${button(made ? "製作済み" : locked ? "守護獣との絆が必要" : station ? "焚き火の近くで製作" : "製作する", "craft", r.id, "primary", made || locked || station || !game.canPay(r.cost))}</article>`;
+        return `<article class="card"><span class="symbol">${r.icon}</span><h3>${r.name}</h3><p>${r.description}</p>${cost(r.cost)}${button(made ? "もう 作ったよ" : locked ? "大きなぼすとのきずながひつよう" : station ? "たき火の近くでものを作る" : "作る", "craft", r.id, "primary", made || locked || station || !game.canPay(r.cost))}</article>`;
       },
     ).join("")}</div>`;
   if (name === "companions")
-    return `<p class="section-note">同行する仲間は自動で加勢します。F で大技、2 で食事、R で騎乗。仲間は倒れても失われず、食事や焚き火で回復します。</p><div class="grid">${Object.entries(
+    return `<p class="section-note">なかまは いっしょに たたかってくれるよ。F で大わざ、2 でごはん、R で のる。元気が なくなったら ごはんや たき火で 休もう。</p><div class="grid">${Object.entries(
       SPECIES,
     )
       .map(([id, sp]) => {
         const c = s.companions[id];
-        return `<article class="card"><span class="symbol">${c ? "♧" : "◇"}</span><h3>${sp.name}${s.active === id ? '<span class="badge">同行中</span>' : ""}</h3><small>${sp.element} / ${c ? `Lv.${c.level} · 体力 ${Math.ceil(c.hp)}%` : "未発見の絆"}</small><p>${sp.description}</p>${c ? `<div class="bar"><i style="width:${c.hp}%"></i></div>${button("同行する", "select", id, "secondary", s.active === id)}${button("ごはんをあげる", "feed", id, "primary", s.inventory.berry + s.inventory.meal === 0)}` : "<small>弱らせて、近くで Q を押そう。</small>"}</article>`;
+        return `<article class="card"><span class="symbol">${c ? "♧" : "◇"}</span><h3>${sp.name}${s.active === id ? '<span class="badge">いっしょにいる</span>' : ""}</h3><small>${sp.element} / ${c ? `つよさ ${c.level} · 体力 ${Math.ceil(c.hp)}%` : "まだ なかまではないよ"}</small><p>${sp.description}</p>${c ? `<div class="bar"><i style="width:${c.hp}%"></i></div>${button("いっしょに行く", "select", id, "secondary", s.active === id)}${button("ごはんをあげる", "feed", id, "primary", s.inventory.berry + s.inventory.meal === 0)}` : "<small>よわらせて、近くで Q をおそう。</small>"}</article>`;
       })
       .join("")}</div>`;
   if (name === "build")
-    return `<p class="section-note">設計図を選ぶと配置モードへ。緑色の場所に E / 左クリックで設置、Esc でキャンセル。建物の近くでは E で利用できます。</p><div class="grid">${Object.entries(
+    return `<p class="section-note">作るものを えらぼう。みどりのところで E をおすと おけるよ。Esc で やめる。作ったものの近くで E をおすと つかえるよ。</p><div class="grid">${Object.entries(
       BUILDINGS,
     )
       .map(
         ([id, b]) =>
-          `<article class="card"><span class="symbol">${b.icon}</span><h3>${b.name}</h3><p>${b.description}</p>${cost(b.cost)}${button("設置場所を選ぶ", "blueprint", id, "primary", !game.canPay(b.cost))}</article>`,
+          `<article class="card"><span class="symbol">${b.icon}</span><h3>${b.name}</h3><p>${b.description}</p>${cost(b.cost)}${button("おくところを えらぶ", "blueprint", id, "primary", !game.canPay(b.cost))}</article>`,
       )
-      .join("")}</div><h3 class="section-title">近くの建物</h3>${
+      .join("")}</div><h3 class="section-title">近くの作ったもの</h3>${
       s.buildings
         .filter((b) => dist(b, s.player) < 10)
         .map(
           (b) =>
-            `<div class="list-row"><span>${BUILDINGS[b.kind].name}</span>${button("撤去 / 資材を半分回収", "remove", b.id, "text-button")}</div>`,
+            `<div class="list-row"><span>${BUILDINGS[b.kind].name}</span>${button("かたづける / ざいりょうを半分もどる", "remove", b.id, "text-button")}</div>`,
         )
-        .join("") || "<small>近くに建物はありません。</small>"
+        .join("") || "<small>近くに作ったものはありません。</small>"
     }`;
   if (name === "map")
-    return `<p class="section-note">島々は同じ3D世界につながっています。地図からの移動も可能。海ではいかだに自動乗船します。嵐冠の島は空のサドルで解放されます。</p><div class="map-layout"><div class="world-map">${worldMap()}</div><div>${ISLANDS.map((i) => `<article class="island-card"><small>${i.en}</small><h3>${i.name} ${s.visited.includes(i.id) ? '<span class="badge">発見済み</span>' : ""}</h3><p>${["温かな森と、最初の出会い。", "冷たい風の先に、角を輝かせる守護獣。", "嵐を越えた旅人を待つ、最後の絆。"][i.id]}</p>${button(game.island.id === i.id ? "浜辺へ戻る" : game.canTravel(i.id) ? "この島へ出発" : i.id === 1 ? "いかだが必要" : "空のサドルが必要", "travel", i.id, "secondary", !game.canTravel(i.id))}</article>`).join("")}</div></div>`;
+    return `<p class="section-note">行きたいしまを おしてね。ふねは はじめから つかえるよ！ どうくつの おくには 大きなぼすが いるよ。</p><div class="map-layout"><div class="world-map">${worldMap()}</div><div class="island-list">${[
+      ...ISLANDS,
+    ]
+      .sort((a, b) => Number(b.id >= 3) - Number(a.id >= 3))
+      .map((i) => {
+        const c = CAVES.find((c) => c.island === i.id);
+        return `<article class="island-card"><small>${c ? "どうくつと 大きなぼす" : i.en}</small><h3>${i.name}</h3><p>${i.description}</p>${c ? `<small>${s.companions[c.boss] ? "★ ぼすと なかまになった！" : "◇ どうくつを さがそう"}</small><br>` : ""}${button(game.island.id === i.id ? "海のそばに もどる" : game.canTravel(i.id) ? "このしまへ 行く" : "空のくらが ひつよう", "travel", i.id, "primary", !game.canTravel(i.id))}</article>`;
+      })
+      .join("")}</div></div>`;
   if (name === "journal")
-    return `<p class="section-note">勝利条件はテンペストとの絆。すべての行動は後から取り戻せます。困ったら浜辺のミナへ。</p>${QUESTS.slice(
+    return `<p class="section-note">あらしのおおかみを なかまにするのが さいしょの めあてだよ。ほかのしまの どうくつにも 行ってみよう。こまったら みなに 話そう。</p>${QUESTS.slice(
       0,
       7,
     )
       .map(
         (q, n) =>
-          `<div class="list-row"><div><small>${String(n + 1).padStart(2, "0")} ${q.test(s) ? "✓ COMPLETE" : n === game.questIndex ? "→ NEXT" : ""}</small><h3>${q.title}</h3><p class="section-note">${q.detail}</p></div></div>`,
+          `<div class="list-row"><div><small>${String(n + 1).padStart(2, "0")} ${q.test(s) ? "✓ できた" : n === game.questIndex ? "→ つぎ" : ""}</small><h3>${q.title}</h3><p class="section-note">${q.detail}</p></div></div>`,
       )
       .join(
         "",
-      )}<h3 class="section-title">旅の記録</h3><p class="section-note">${Math.floor(s.playtime / 60)}分 / ${s.stats.gathered}個採集 / ${Object.keys(s.companions).length}種と絆 / 救助 ${s.stats.deaths}回</p>`;
+      )}<h3 class="section-title">たびのきろく</h3><p class="section-note">${Math.floor(s.playtime / 60)}分 / ${s.stats.gathered}こあつめる / ${Object.keys(s.companions).length}しゅるいときずな / たすけてもらった ${s.stats.deaths}回</p>`;
   if (name === "settings")
-    return `<div class="settings-row"><label for="sound-setting">音楽・効果音</label><input id="sound-setting" type="checkbox" ${s.settings.sound ? "checked" : ""}></div><div class="settings-row"><label for="quality-setting">描画品質</label><select id="quality-setting">${[
-      ["low", "軽量 / 影なし"],
-      ["medium", "標準"],
-      ["high", "高画質"],
+    return `<div class="settings-row"><label for="sound-setting">おんがくと 音</label><input id="sound-setting" type="checkbox" ${s.settings.sound ? "checked" : ""}></div><div class="settings-row"><label for="quality-setting">がめんの きれいさ</label><select id="quality-setting">${[
+      ["low", "かるい / かげなし"],
+      ["medium", "ふつう"],
+      ["high", "とても きれい"],
     ]
       .map(
         ([id, label]) =>
@@ -290,40 +300,43 @@ function panelContent(name) {
       )
       .join(
         "",
-      )}</select></div><div class="settings-row"><label for="sensitivity-setting">視点の感度</label><input id="sensitivity-setting" type="range" min="0.4" max="2" step="0.1" value="${s.settings.sensitivity}"></div><h3 class="section-title">操作方法</h3><div class="controls-grid">${[
-      ["WASD / ↑↓←→", "移動"],
-      ["右ドラッグ / ホイール", "視点回転 / 距離"],
-      ["J / 左クリック", "近接攻撃"],
-      ["Space / Shift", "回避 / 走る"],
-      ["C 長押し", "しゃがみ・不意打ち"],
-      ["E / Q", "話す・採集 / 捕獲"],
-      ["F / R", "仲間の大技 / 騎乗"],
-      ["1 / 2", "食べる / 仲間にごはん"],
-      ["Tab / B / M", "バッグ / 建築 / 海図"],
-      ["Esc", "一時停止 / 閉じる"],
+      )}</select></div><div class="settings-row"><label for="sensitivity-setting">見まわす はやさ</label><input id="sensitivity-setting" type="range" min="0.4" max="2" step="0.1" value="${s.settings.sensitivity}"></div><h3 class="section-title">あそびかた</h3><div class="controls-grid">${[
+      ["WASD / ↑↓←→", "うごく"],
+      [
+        "右をおしたまま うごかす / まんなかの くるくる",
+        "見まわす / 近くや とおく",
+      ],
+      ["J / 左をおす", "近くでこうげき"],
+      ["Space / Shift", "よける / 走る"],
+      ["C 長くおす", "しゃがみ・こっそりこうげき"],
+      ["E / Q", "話す・あつめる / なかまにする"],
+      ["F / R", "なかまの大わざ / のる"],
+      ["1 / 2", "食べる / なかまにごはん"],
+      ["Tab / B / M", "もちもの / 家づくり / ちず"],
+      ["Esc", "お休み / とじる"],
     ]
       .map(([k, v]) => `<div><kbd>${k}</kbd>${v}</div>`)
       .join(
         "",
-      )}</div><p class="section-note" style="margin-top:20px">敵の攻撃予告中は横へ回避。捕獲は体力35%以下、テンペストは20%以下。倒し切っても捕獲できます。C で眠った獣に近づくと不意打ちダメージが上昇します。</p><h3 class="section-title">セーブ管理</h3><p class="section-note">${s.lastSaved ? "最終保存：" + escape(new Date(s.lastSaved).toLocaleString("ja-JP")) : "まだ保存されていません。"}<br>同じブラウザ・同じURLに自動保存。ブラウザのデータ削除に備え、書き出したファイルも保管してください。</p><div class="menu-actions">${started ? button("保存", "save") + button("書き出す", "export", "", "secondary") : ""}${button("読み込む", "importFile", "", "secondary")}</div><h3 class="section-title">CREDITS</h3><p class="credits">3D environment & props: <a href="https://kenney.nl/assets" target="_blank" rel="noopener">Kenney</a> · CC0<br>Animated animals: <a href="https://quaternius.com/packs/ultimateanimatedanimals.html" target="_blank" rel="noopener">Quaternius</a> · CC0<br>Engine: <a href="https://threejs.org/" target="_blank" rel="noopener">Three.js</a> · MIT<br>地形・海・主人公・装飾・UI・効果音は本ゲーム用に制作。外部の有料サービス、広告、課金、アカウントは使用しません。</p>`;
+      )}</div><p class="section-note" style="margin-top:20px">赤いまるが 出たら Space で よこへにげよう。体力を35%までへらすと なかまにできるよ。大きなぼすは20%まで。体力が0でも だいじょうぶ。ねている どうぶつには C でそっと近づこう。</p><h3 class="section-title">きろくを のこす</h3><p class="section-note">${s.lastSaved ? "さいごのきろく：" + escape(new Date(s.lastSaved).toLocaleString("ja-JP")) : "まだきろくされていません。"}<br>いつもと 同じがめんで つづきから あそべるよ。大人と いっしょに、きろくを 外にも のこしておこう。</p><div class="menu-actions">${started ? button("きろく", "save") + button("外に のこす", "export", "", "secondary") : ""}${button("きろくを ひらく", "importFile", "", "secondary")}</div><h3 class="section-title">つくったひと</h3><p class="credits">木や家を つくったひと： <a href="https://kenney.nl/assets" target="_blank" rel="noopener">けにー</a><br>どうぶつを つくったひと： <a href="https://quaternius.com/packs/ultimateanimatedanimals.html" target="_blank" rel="noopener">くあてにうす</a><br>あそびを うごかすしくみ： <a href="https://threejs.org/" target="_blank" rel="noopener">すりー じぇいえす</a><br>海や山、人、音などは このあそびのために 作りました。お金は かかりません。</p>`;
   if (name === "pause")
-    return `<p class="dialog-text">冒険は一時停止しています。<br>あなたのペースで、島を歩こう。</p><div class="menu-actions">${button("冒険に戻る", "close")}${button("保存する", "save", "", "secondary")}${button("設定・操作方法", "panel", "settings", "secondary")}${button("タイトルへ", "title", "", "secondary")}</div>`;
+    return `<p class="dialog-text">いまは たびを お休みしているよ。<br>じぶんの はやさで、しまを 歩こう。</p><div class="menu-actions">${button("たびにもどる", "close")}${button("きろくする", "save", "", "secondary")}${button("せってい・あそびかた", "panel", "settings", "secondary")}${button("はじめのがめんへ", "title", "", "secondary")}</div>`;
   if (name === "rest")
-    return `<p class="dialog-text">火のそばなら、寒さも少しやわらぐ。<br>朝まで休むと体力と仲間が全回復し、島の資源が戻ります。</p><div class="menu-actions">${button("朝まで休む", "rest")}${button("料理をつくる", "panel", "craft", "secondary")}${button("冒険に戻る", "close", "", "secondary")}</div>`;
+    return `<p class="dialog-text">火のそばなら、さむさも少しやわらぐ。<br>朝まで休むと体力となかまがぜんぶ もどり、しまの木や石がもどるよ。</p><div class="menu-actions">${button("朝まで休む", "rest")}${button("ごはんをつくる", "panel", "craft", "secondary")}${button("たびにもどる", "close", "", "secondary")}</div>`;
   if (name === "death")
-    return `<p class="dialog-text">島の案内人に救助されました。<br>資源の一部（20%）を失いますが、仲間・装備・建物は残ります。</p><div class="menu-actions">${button("浜辺から再開する", "respawn")}</div>`;
+    return `<p class="dialog-text">みなが たすけてくれたよ。<br>木や石が 少しへるけど、なかま・どうぐ・家は なくならないよ。</p><div class="menu-actions">${button("海のそばからもう一回 はじめる", "respawn")}</div>`;
   if (name === "win")
-    return `<div class="ending"><div class="seal">✧</div><p class="eyebrow">YOU ARE NOT ALONE.</p><h3>最強の獣は、最後の仲間に。</h3><p>あなたの差し出した手に、嵐の守護獣が応えた。<br>支配ではなく、共に生きること。<br>この島で見つけた、本当の強さ。</p><div class="record"><div><strong>${s.day}</strong><small>生き抜いた日</small></div><div><strong>${Object.keys(s.companions).length}</strong><small>結んだ絆</small></div><div><strong>${Math.floor(s.playtime / 60)}</strong><small>冒険の分数</small></div></div>${button("仲間たちと旅をつづける", "close")}<p class="credits">THE END — AND A NEW BEGINNING<br>探索・育成・拠点づくりは、この先も続けられます。</p></div>`;
+    return `<div class="ending"><div class="seal">✧</div><p class="eyebrow">もう ひとりじゃない。</p><h3>いちばん 大きなあいてが、なかまになった。</h3><p>あらしのおおかみが、あなたの手に ふれた。<br>いっしょに たすけあって、生きていこう。<br>それが このしまの 大切なたからもの。</p><div class="record"><div><strong>${s.day}</strong><small>あそんだ日</small></div><div><strong>${Object.keys(s.companions).length}</strong><small>なかまの数</small></div><div><strong>${Math.floor(s.playtime / 60)}</strong><small>あそんだ時間</small></div></div>${button("なかまたちとたびをつづける", "close")}<p class="credits">おしまい。そして、つぎのたびへ。<br>ほかのしまや どうくつにも 行ってみよう。たびは まだまだ つづくよ。</p></div>`;
   if (name === "new")
-    return `<p class="dialog-text">現在の冒険は新しいデータに置き換わります。残しておきたい場合は、先に書き出してください。</p><div class="menu-actions">${button("新しい冒険をはじめる", "newConfirmed")}${button("戻る", "close", "", "secondary")}</div>`;
+    return `<p class="dialog-text">いまの たびのきろくが 新しくなるよ。のこしたいときは、先に「外に のこす」を えらんでね。</p><div class="menu-actions">${button("新しいたびをはじめる", "newConfirmed")}${button("もどる", "close", "", "secondary")}</div>`;
   if (name === "import")
-    return `<p class="dialog-text">${pendingImport.day}日目、${Object.keys(pendingImport.companions).length}種の仲間がいる冒険です。現在の冒険をこのデータに置き換えます。</p><div class="menu-actions">${button("この冒険を読み込む", "importConfirmed")}${button("キャンセル", "close", "", "secondary")}</div>`;
+    return `<p class="dialog-text">${pendingImport.day}日目、${Object.keys(pendingImport.companions).length}しゅるいのなかまがいるたびです。いまの たびを このきろくに かえるよ。</p><div class="menu-actions">${button("このきろくで あそぶ", "importConfirmed")}${button("やめる", "close", "", "secondary")}</div>`;
   return "";
 }
 function worldMap() {
-  const mx = (x) => 60 + x * 1.08,
-    my = (z) => 245 + z * 1.12;
-  return `<svg viewBox="0 0 370 340" role="img" aria-label="陽だまり・霧氷・嵐冠の三島を結ぶ海図"><defs><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#c2e2d4" stroke-opacity=".07"/></pattern></defs><rect width="370" height="340" fill="url(#grid)"/><path d="M60 245 Q130 205 196 225 T291 111" fill="none" stroke="#c5d8b0" stroke-width="1" stroke-dasharray="4 5"/>${ISLANDS.map((i) => `<g><ellipse cx="${mx(i.x)}" cy="${my(i.z)}" rx="${i.r * 0.73}" ry="${i.r * 0.6}" fill="${i.color}" fill-opacity="${game.canTravel(i.id) ? ".46" : ".13"}" stroke="${i.color}"/><text x="${mx(i.x)}" y="${my(i.z) + i.r * 0.9}" fill="#d4e6d7" text-anchor="middle" font-size="10">${i.name}</text><text x="${mx(i.x)}" y="${my(i.z) + 5}" fill="#f4ddac" text-anchor="middle" font-size="20">${game.canTravel(i.id) ? "◬" : "◇"}</text></g>`).join("")}<circle cx="${mx(game.s.player.x)}" cy="${my(game.s.player.z)}" r="5" fill="#f6e1a4" stroke="#18333a" stroke-width="2"/><text x="20" y="25" fill="#b9d3cd" font-size="10" letter-spacing="3">THE ARCHIPELAGO</text><text x="333" y="38" fill="#c7d5bc" font-size="12">N ↑</text><text x="20" y="322" fill="#94b9b5" font-size="9">● 現在地　 ┄ 航路</text></svg>`;
+  const mx = (x) => 173 + x * 0.73,
+    my = (z) => 155 + z * 0.77;
+  return `<svg viewBox="0 0 400 310" role="img" aria-label="6つのしまの ちず"><rect width="400" height="310" fill="#123641"/><path d="M86 155H173L265 141 329 63 M173 155V249L265 240 265 141" fill="none" stroke="#d0d9a5" stroke-dasharray="5 6" opacity=".6"/>${ISLANDS.map((i) => `<g role="button" tabindex="0" data-action="travel" data-id="${i.id}" aria-label="${i.name}へ 行く" style="cursor:pointer"><ellipse cx="${mx(i.x)}" cy="${my(i.z)}" rx="${i.r * 0.65}" ry="${i.r * 0.5}" fill="${i.color}" fill-opacity="${game.canTravel(i.id) ? ".65" : ".2"}" stroke="${i.color}"/><text x="${mx(i.x)}" y="${my(i.z) + 4}" fill="#fff5cf" text-anchor="middle" font-size="17">${i.id >= 3 ? "◠" : game.canTravel(i.id) ? "◬" : "◇"}</text><text x="${mx(i.x)}" y="${my(i.z) + i.r * 0.5 + 15}" fill="#e4f3dd" text-anchor="middle" font-size="12">${i.name}</text></g>`).join("")}<circle cx="${mx(game.s.player.x)}" cy="${my(game.s.player.z)}" r="4" fill="#fff5b0" stroke="#263b35"/><text x="16" y="22" fill="#d6e5da" font-size="12">行きたいしまを おしてね</text><text x="348" y="23" fill="#d6e5da" font-size="12">きた ↑</text><text x="16" y="301" fill="#bad4c7" font-size="11">● いま いるところ　◠ どうくつ</text></svg>`;
 }
 function place() {
   if (!build) return;
@@ -349,7 +362,7 @@ function act(action, id) {
     case "blueprint":
       build = id;
       closePanel();
-      toast("緑の場所に E / 左クリックで設置。Esc でキャンセル。");
+      toast("みどりのところで E をおすと おけるよ。Esc でやめる。");
       return;
     case "remove":
       game.removeBuilding(id);
@@ -375,7 +388,7 @@ function act(action, id) {
     case "importConfirmed":
       launch(pendingImport);
       pendingImport = null;
-      toast("冒険を読み込みました。", true);
+      toast("たびをきろくの よみこみました。", true);
       return;
     case "travel":
       if (game.travel(Number(id))) closePanel();
@@ -438,11 +451,11 @@ $("#save-file").onchange = async (e) => {
   e.target.value = "";
   if (!file) return;
   try {
-    if (file.size > 1000000) throw Error("ファイルが大きすぎます。");
+    if (file.size > 1000000) throw Error("きろくの ふくろが大きすぎます。");
     pendingImport = validateSave(JSON.parse(await file.text()));
     openPanel("import");
   } catch (err) {
-    toast("読み込めませんでした：" + err.message);
+    toast("きろくを ひらけなかったよ。正しい きろくを えらんでね。");
   }
 };
 document.addEventListener("change", (e) => {
@@ -475,7 +488,7 @@ function processEvents() {
     if (e.type === "dialog") {
       openPanel(
         "dialog",
-        `<p class="eyebrow">${escape(e.speaker)}</p><p class="dialog-text">${escape(e.text)}</p><div class="menu-actions">${button("冒険へ", "close")}</div>`,
+        `<p class="eyebrow">${escape(e.speaker)}</p><p class="dialog-text">${escape(e.text)}</p><div class="menu-actions">${button("たびへ", "close")}</div>`,
       );
       save();
     } else if (e.type === "menu") openPanel(e.text);
@@ -486,7 +499,7 @@ function processEvents() {
       save();
       openPanel("win");
     } else if (e.type === "discovery") {
-      txt("#discovery h2", e.text.replace("を発見", ""));
+      txt("#discovery h2", e.text.replace("を見つけた", ""));
       show("#discovery");
       setTimeout(() => show("#discovery", false), 3500);
       save();
@@ -506,31 +519,50 @@ function updateHud() {
     i = game.island,
     q = game.quest;
   txt("#island-en", i.en);
-  txt("#island-name", i.name);
+  txt("#island-name", game.cave?.name || i.name);
   txt(
     "#quest-no",
     game.questIndex === 7
-      ? "COMPLETE"
+      ? "できた！"
       : `${String(game.questIndex + 1).padStart(2, "0")} / 07`,
   );
-  txt("#quest-title", q.title);
-  txt("#quest-detail", q.detail);
+  const cave = CAVES.find((c) => c.island === i.id);
+  txt(
+    "#quest-title",
+    cave
+      ? game.s.companions[cave.boss]
+        ? "大きな なかまが できた！"
+        : game.cave
+          ? "どうくつの おくへ"
+          : "どうくつに 行こう"
+      : q.title,
+  );
+  txt(
+    "#quest-detail",
+    cave
+      ? game.s.companions[cave.boss]
+        ? "M のちずで、つぎのしまにも 行ってみよう。"
+        : game.cave
+          ? `${SPECIES[cave.boss].name}が いるよ。赤いまるから にげよう！`
+          : "しまのまん中の 大きな入口へ。E で 入れるよ。"
+      : q.detail,
+  );
   const minutes = Math.floor((s.time / DAY_SECONDS) * 1440);
   txt(
     "#time",
     `${String(Math.floor(minutes / 60)).padStart(2, "0")}:${String(minutes % 60).padStart(2, "0")}`,
   );
-  txt("#day", `DAY ${String(s.day).padStart(2, "0")}`);
+  txt("#day", `${s.day}日目`);
   txt("#time-icon", game.night ? "☾" : "☀");
   txt(
     "#weather",
     i.id === 1
-      ? "霧氷 · −3°C"
+      ? "こおり · −3°C"
       : i.id === 2
-        ? "嵐の気配 · 14°C"
+        ? "あらしのようす · 14°C"
         : game.night
           ? "星明かり · 16°C"
-          : "潮風 · 24°C",
+          : "海のかぜ · 24°C",
   );
   for (const [id, value] of [
     ["health", p.hp],
@@ -540,24 +572,24 @@ function updateHud() {
     txt(`#${id}`, Math.ceil(value));
     fill(`#${id}-fill`, value);
   }
-  txt("#food-count", `食料 ${s.inventory.meal + s.inventory.berry}`);
-  txt("#rune-count", `ルーン ${s.inventory.rune}`);
+  txt("#food-count", `食べもの ${s.inventory.meal + s.inventory.berry}`);
+  txt("#rune-count", `なかま ${s.inventory.rune}`);
   txt(
     "#status-tags",
     [
       game.cold
-        ? "❄ 寒さ：防寒マントか焚き火を"
+        ? "❄ さむさ：あたたかい ふくかたき火を"
         : game.warm
-          ? "♨ 温もりで回復中"
+          ? "♨ あたたかさで元気になる中"
           : "",
-      p.hunger < 25 ? "食料が必要です" : "",
-      game.stealth ? "しゃがみ / 不意打ち" : "",
+      p.hunger < 25 ? "食べものがひつようです" : "",
+      game.stealth ? "しゃがみ / こっそりこうげき" : "",
       game.fly
-        ? "飛行中"
+        ? "空を とんでいる"
         : game.mount
-          ? "騎乗中"
+          ? "のる中"
           : game.boat
-            ? "いかだで航行中"
+            ? "いかだで海を すすむ"
             : "",
     ]
       .filter(Boolean)
@@ -570,7 +602,7 @@ function updateHud() {
   if (game.capture) fill("#capture-progress i", (game.capture.time / 2) * 100);
   show("#ally", !!game.companion);
   if (game.companion) {
-    txt("#ally-title", `COMPANION / Lv.${game.companion.level}`);
+    txt("#ally-title", `なかま / つよさ ${game.companion.level}`);
     txt("#ally-name", SPECIES[s.active].name);
     fill("#ally-fill", game.companion.hp);
     txt(
@@ -600,32 +632,40 @@ function updateHud() {
       $("#target").style.top = pos.y + "px";
       txt(
         "#target-element",
-        sp.element + " / " + (game.sleeping(enemy) ? "SLEEPING" : "WILD"),
+        sp.element +
+          " / " +
+          (game.sleeping(enemy) ? "ねている" : "しまの どうぶつ"),
       );
       txt("#target-name", sp.name);
       fill("#target-fill", (enemy.hp / sp.hp) * 100);
       txt(
         "#target-status",
         s.companions[enemy.type]
-          ? "すでに絆を結んだ種"
-          : enemy.hp / sp.hp <= (enemy.type === "tempest" ? 0.2 : 0.35)
-            ? "Q · 捕獲できる"
+          ? "すでになかまにした どうぶつ"
+          : enemy.hp / sp.hp <= (sp.boss ? 0.2 : 0.35)
+            ? "Q · なかまに できるよ"
             : game.sleeping(enemy)
-              ? "C で接近 → J 不意打ち"
-              : "弱らせて捕獲",
+              ? "C でそっと近づく → J こっそりこうげき"
+              : "よわらせてなかまにする",
       );
     }
   }
-  show("#target", visible && !panel && enemy?.type !== "tempest");
-  const boss = game.wild.find((e) => e.type === "tempest" && dist(e, p) < 26);
+  show("#target", visible && !panel && !SPECIES[enemy?.type]?.boss);
+  const boss = game.wild.find(
+    (e) =>
+      SPECIES[e.type].boss &&
+      dist(e, p) < 27 &&
+      (e.island < 3 || game.cave?.island === e.island),
+  );
   show("#boss", !!boss);
   if (boss) {
-    fill("#boss-fill", (boss.hp / SPECIES.tempest.hp) * 100);
+    txt("#boss h2", SPECIES[boss.type].name);
+    fill("#boss-fill", (boss.hp / SPECIES[boss.type].hp) * 100);
     txt(
       "#boss small",
-      boss.hp / SPECIES.tempest.hp <= 0.2
-        ? "Q · 捕獲できる / GUARDIAN OF THE STORM"
-        : "GUARDIAN OF THE STORM",
+      boss.hp / SPECIES[boss.type].hp <= 0.2
+        ? "Q · なかまに できるよ"
+        : "大きなぼす",
     );
   }
   show(
@@ -636,11 +676,11 @@ function updateHud() {
   if (build)
     txt(
       "#build-hint",
-      `${BUILDINGS[build].name}を配置 · E / 左クリックで設置 · Escで戻る`,
+      `${BUILDINGS[build].name}をおく · E で おく · Escでもどる`,
     );
   txt(
     "#bearing",
-    ["N", "NE", "E", "SE", "S", "SW", "W", "NW"][
+    ["きた", "北東", "ひがし", "南東", "みなみ", "南西", "にし", "北西"][
       ((Math.round(-view.theta / (Math.PI / 4)) % 8) + 8) % 8
     ],
   );
@@ -673,7 +713,8 @@ function drawMinimap() {
   for (const b of game.s.buildings) point(b, 2.4, "#fae4ac");
   point({ x: 3, z: 22 }, 3, "#9be9d3");
   for (const e of game.wild)
-    point(e, 2.3, e.type === "tempest" ? "#ffb666" : "#e5a37e");
+    point(e, 2.3, SPECIES[e.type].boss ? "#ffb666" : "#e5a37e");
+  for (const c of CAVES) point({ x: c.x, z: c.z + 17 }, 4, "#99f1df");
   if (game.quest.at)
     point({ x: game.quest.at[0], z: game.quest.at[1] }, 4, "#ffdd88");
   ctx.rotate(-p.angle);
@@ -688,6 +729,14 @@ function drawMinimap() {
 }
 window.addEventListener("keydown", (e) => {
   if (panel) {
+    if (
+      (e.code === "Enter" || e.code === "Space") &&
+      e.target.matches('[role="button"][data-action="travel"]')
+    ) {
+      e.preventDefault();
+      act("travel", e.target.dataset.id);
+      return;
+    }
     if (e.code === "Escape") {
       e.preventDefault();
       closePanel();
@@ -695,7 +744,7 @@ window.addEventListener("keydown", (e) => {
     if (e.code === "Tab") {
       const els = [
         ...$("#modal").querySelectorAll(
-          "button:not([disabled]):not([hidden]),input:not([hidden]),select,a[href]",
+          'button:not([disabled]):not([hidden]),input:not([hidden]),select,a[href],[role="button"][tabindex="0"]',
         ),
       ];
       if (els.length) {
@@ -847,7 +896,7 @@ async function boot() {
     view = new View($("#world"));
     await view.load((progress) => {
       fill("#load-fill", progress * 100);
-      txt("#load-status", `島の準備 ${Math.round(progress * 100)}%`);
+      txt("#load-status", `しまのようい ${Math.round(progress * 100)}%`);
     });
     saved = readSave();
     if (saved) {
@@ -883,15 +932,15 @@ async function boot() {
     console.error(err);
     txt(
       "#load-status",
-      "読み込みに失敗しました。起動用ファイルから開き直してください。",
+      "うまく はじめられなかったよ。大人と いっしょに ひらきなおしてね。",
     );
     const p = document.createElement("p");
     p.className = "section-note";
-    p.textContent = err.message;
+    p.textContent = "もう一回 ひらいてみよう。こまったら 大人に きいてね。";
     $("#loading").append(p);
     const b = document.createElement("button");
     b.className = "primary";
-    b.textContent = "再読み込み";
+    b.textContent = "もう一回 ひらく";
     b.onclick = () => location.reload();
     $("#loading").append(b);
   }
