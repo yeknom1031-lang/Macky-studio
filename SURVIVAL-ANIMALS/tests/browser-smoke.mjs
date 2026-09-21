@@ -49,6 +49,28 @@ try {
   await page.screenshot({
     path: new URL("../test-results/gameplay.png", import.meta.url).pathname,
   });
+  const cameraBefore = await page.evaluate(() => ({
+    theta: __SA.view.theta,
+    pitch: __SA.view.pitch,
+    x: __SA.game.s.player.x,
+    z: __SA.game.s.player.z,
+  }));
+  await page.keyboard.down("ArrowRight");
+  await page.waitForTimeout(300);
+  await page.keyboard.up("ArrowRight");
+  await page.keyboard.down("ArrowUp");
+  await page.waitForTimeout(300);
+  await page.keyboard.up("ArrowUp");
+  const cameraAfter = await page.evaluate(() => ({
+    theta: __SA.view.theta,
+    pitch: __SA.view.pitch,
+    x: __SA.game.s.player.x,
+    z: __SA.game.s.player.z,
+  }));
+  assert.ok(cameraAfter.theta < cameraBefore.theta - 0.2);
+  assert.ok(cameraAfter.pitch > cameraBefore.pitch + 0.1);
+  assert.equal(cameraAfter.x, cameraBefore.x);
+  assert.equal(cameraAfter.z, cameraBefore.z);
   if (process.argv.includes("--caves")) {
     const shot = async (name) =>
       page.screenshot({

@@ -152,7 +152,7 @@ function launch(state) {
   sound.start();
   view.target.set(game.s.player.x, 2, game.s.player.z);
   view.camera.position.set(game.s.player.x + 3, 9, game.s.player.z + 12);
-  toast("WASD でうごく。海のそばのみなに近づいて E で話そう。");
+  toast("WASD でうごく。↑↓←→で 見まわせるよ。");
   if (game.dead) openPanel("death");
   else save();
 }
@@ -301,7 +301,8 @@ function panelContent(name) {
       .join(
         "",
       )}</select></div><div class="settings-row"><label for="sensitivity-setting">見まわす はやさ</label><input id="sensitivity-setting" type="range" min="0.4" max="2" step="0.1" value="${s.settings.sensitivity}"></div><h3 class="section-title">あそびかた</h3><div class="controls-grid">${[
-      ["WASD / ↑↓←→", "うごく"],
+      ["WASD", "うごく"],
+      ["↑↓←→", "見まわす"],
       [
         "右をおしたまま うごかす / まんなかの くるくる",
         "見まわす / 近くや とおく",
@@ -864,12 +865,25 @@ function frame(now) {
   lastFrame = now;
   if (view?.loaded) {
     game.paused = !started || !!panel;
-    const x =
-        (keys.has("KeyD") || keys.has("ArrowRight") ? 1 : 0) -
-        (keys.has("KeyA") || keys.has("ArrowLeft") ? 1 : 0),
-      z =
-        (keys.has("KeyS") || keys.has("ArrowDown") ? 1 : 0) -
-        (keys.has("KeyW") || keys.has("ArrowUp") ? 1 : 0);
+    if (started && !panel) {
+      const sensitivity = game.s.settings.sensitivity;
+      view.theta +=
+        ((keys.has("ArrowLeft") ? 1 : 0) - (keys.has("ArrowRight") ? 1 : 0)) *
+        dt *
+        1.65 *
+        sensitivity;
+      view.pitch = clamp(
+        view.pitch +
+          ((keys.has("ArrowUp") ? 1 : 0) - (keys.has("ArrowDown") ? 1 : 0)) *
+            dt *
+            0.95 *
+            sensitivity,
+        0.12,
+        1.15,
+      );
+    }
+    const x = (keys.has("KeyD") ? 1 : 0) - (keys.has("KeyA") ? 1 : 0),
+      z = (keys.has("KeyS") ? 1 : 0) - (keys.has("KeyW") ? 1 : 0);
     game.tick(dt, {
       x: x * Math.cos(view.theta) + z * Math.sin(view.theta),
       z: -x * Math.sin(view.theta) + z * Math.cos(view.theta),
