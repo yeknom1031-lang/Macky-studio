@@ -5,3 +5,14 @@ body.reduced .gacha-cinema .capsule-wrap{transform:translate(-50%,-50%);opacity:
 @media(prefers-reduced-motion:reduce){.gacha-cinema .capsule-wrap{transform:translate(-50%,-50%);opacity:1}.summon-flash{display:none}}
 .gacha-cinema[data-phase="ready"] .capsule-wrap{animation:none}.gacha-cinema[data-phase="ready"] .capsule-button img{animation:capsule-art-float 2.3s infinite ease-in-out}@keyframes capsule-art-float{50%{transform:translateY(-8px) rotate(3deg)}}
 .summary-grid{grid-template-columns:repeat(6,1fr);gap:8px}.summary-grid article{grid-column:span 2;padding:10px 5px}.summary-grid article:nth-child(-n+2){grid-column:span 3}.summary-grid article:last-child:nth-child(odd){grid-column:span 2;max-width:none;justify-self:stretch}.summary-grid img{height:95px}.summary-grid h3{font-size:11px}.summary-grid article>span{font-size:7px;letter-spacing:1px}.summary-grid button{font-size:9px;padding:8px 2px}.summon-summary{display:flex;flex-direction:column;overflow:hidden}.summon-summary .summary-grid{overflow:auto;min-height:0}.summon-summary>.primary{flex-shrink:0}.summon-summary h2{font-size:23px;margin:8px 0 17px}.summon-summary>.small-note{flex-shrink:0;font-size:9px}
+.capsule-button .capsule-energy{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.gacha-cinema:not([data-phase="opening"]) .capsule-button img{visibility:hidden}
+.gacha-cinema[data-phase="opening"] .capsule-energy{visibility:hidden}
+.gacha-cinema[data-phase="ready"] .capsule-energy{animation:capsule-art-float 2.3s infinite ease-in-out}
+.gacha-cinema[data-phase="reveal"] .capsule-wrap{display:none}
+.summary-art{display:block;width:100%;height:95px;object-fit:contain}
+.battle-arena canvas.battle-enemy{width:180px;height:180px;animation:none}
+.battle-arena.hit canvas.battle-enemy{animation:none}
+.reward-art-stage canvas.reward-art{object-fit:contain}
+body.reduced .capsule-energy{animation:none!important}
+@media(prefers-reduced-motion:reduce){.capsule-energy{animation:none!important}}

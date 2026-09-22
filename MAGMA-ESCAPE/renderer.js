@@ -1,4 +1,5 @@
 import {W,H,METER,AURAS,clamp,encounterPosition} from './core.js';
+import {drawAnimation} from './animation.js';
 
 export class Renderer {
   constructor(canvas,assets,atlas){this.canvas=canvas;this.ctx=canvas.getContext('2d',{alpha:false});this.assets=assets;this.atlas=atlas;this.effects=[];this.labels=[];this.rings=[];this.shake=0;this.squash=0;this.reduced=false;this.resize();}
@@ -50,7 +51,7 @@ export class Renderer {
       if(s.encounter&&!s.encounter.used){
         const e=s.encounter,pos=encounterPosition(s,t),ey=sy(pos.y),armed=t>=game.nextEventAllowed;
         c.save();c.globalAlpha=armed?1:.6;c.shadowColor=e.type==='quiz'?'#bca5ff':'#ff9764';c.shadowBlur=14;
-        if(e.type==='battle'){c.drawImage(this.assets.enemy,pos.x-27,ey-29,54,57);}
+        if(e.type==='battle'){drawAnimation(c,this.assets['anim-enemy-idle'],t+s.id*.17,pos.x-30,ey-32,60,60,{fps:4,reduced:save.reduced||matchMedia('(prefers-reduced-motion: reduce)').matches});}
         else{c.fillStyle='#303356';c.strokeStyle='#d8c1ff';c.lineWidth=2;c.beginPath();c.arc(pos.x,ey,14,0,Math.PI*2);c.fill();c.stroke();c.shadowBlur=0;c.fillStyle='#f0e6ff';c.font='bold 19px system-ui';c.textAlign='center';c.fillText('?',pos.x,ey+7);}
         c.shadowBlur=0;c.textAlign='center';c.font='bold 7px system-ui';c.fillStyle=e.type==='quiz'?'#ead7ff':'#ffdab9';c.strokeStyle='#0c1b30';c.lineWidth=3;const label=e.type==='quiz'?'QUIZ +25':'BATTLE +40';c.strokeText(label,pos.x,ey-34);c.fillText(label,pos.x,ey-34);c.restore();
       }

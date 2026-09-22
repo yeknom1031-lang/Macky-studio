@@ -1,12 +1,13 @@
 import {AURAS,clamp} from './core.js';
+import {animatedArt,paintArt} from './animation.js';
 
 // One clock owns the entire presentation. Rewards are already committed by core.rollGacha.
 export class GachaScene {
-  constructor({host,entries,sound,reduced=false,preview=false,onEquip,onFinish}){
-    Object.assign(this,{host,entries,sound,reduced,preview,onEquip,onFinish});
+  constructor({host,entries,sound,assets,reduced=false,preview=false,onEquip,onFinish}){
+    Object.assign(this,{host,entries,sound,assets,reduced,preview,onEquip,onFinish});
     this.index=0;this.elapsed=0;this.age=0;this.phase='charge';this.particles=[];this.disposed=false;
     this.el=document.createElement('section');this.el.className='gacha-cinema';this.el.setAttribute('role','dialog');this.el.setAttribute('aria-modal','true');this.el.setAttribute('aria-label','オーラ開封');this.el.tabIndex=-1;
-    this.el.innerHTML=`<div class="summon-world"></div><div class="summon-vignette"></div><canvas class="summon-particles" aria-hidden="true"></canvas><div class="summon-rays"></div><div class="summon-flash"></div><header class="summon-header"><span>${preview?'PREVIEW / コイン消費なし':'AURA SUMMONING'}<small class="summon-count"></small></span><button class="summon-skip" data-cinema="skip">演出スキップ ›</button></header><div class="summon-machine"><div class="summon-ring"></div><div class="summon-ring ring-two"></div><div class="summon-beam"></div></div><div class="capsule-wrap"><button class="capsule-button" data-cinema="open" aria-label="カプセルを開ける" disabled><img class="capsule-top" src="assets/capsule.webp" alt=""><img class="capsule-bottom" src="assets/capsule.webp" alt=""></button></div><div class="summon-status" aria-live="polite"><p class="summon-status-title">火山のエネルギーを集めています</p><div class="summon-meter"><i></i></div><small>一粒の光が、冒険を変える。</small></div><div class="summon-reward" hidden></div><div class="summon-summary" hidden></div>`;
+    this.el.innerHTML=`<div class="summon-world"></div><div class="summon-vignette"></div><canvas class="summon-particles" aria-hidden="true"></canvas><div class="summon-rays"></div><div class="summon-flash"></div><header class="summon-header"><span>${preview?'PREVIEW / コイン消費なし':'AURA SUMMONING'}<small class="summon-count"></small></span><button class="summon-skip" data-cinema="skip">演出スキップ ›</button></header><div class="summon-machine"><div class="summon-ring"></div><div class="summon-ring ring-two"></div><div class="summon-beam"></div></div><div class="capsule-wrap"><button class="capsule-button" data-cinema="open" aria-label="カプセルを開ける" disabled>${animatedArt('capsule','エネルギーが渦巻くカプセル','capsule-energy')}<img class="capsule-top" src="assets/capsule.webp" alt=""><img class="capsule-bottom" src="assets/capsule.webp" alt=""></button></div><div class="summon-status" aria-live="polite"><p class="summon-status-title">火山のエネルギーを集めています</p><div class="summon-meter"><i></i></div><small>一粒の光が、冒険を変える。</small></div><div class="summon-reward" hidden></div><div class="summon-summary" hidden></div>`;
     host.append(this.el);this.canvas=this.el.querySelector('canvas');this.ctx=this.canvas.getContext('2d');this.canvas.width=450;this.canvas.height=900;
     this.el.addEventListener('click',e=>{const b=e.target.closest('[data-cinema]');if(!b||b.disabled)return;e.stopPropagation();this.action(b.dataset.cinema,b.dataset.id);});
     this.el.addEventListener('keydown',e=>{if(e.code==='Escape'){e.preventDefault();e.stopPropagation();this.skip();}if(e.code==='Tab'){const buttons=[...this.el.querySelectorAll('button:not(:disabled)')].filter(b=>b.getClientRects().length);const first=buttons[0],last=buttons.at(-1);if(e.shiftKey&&(document.activeElement===first||document.activeElement===this.el)){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}});
@@ -30,6 +31,8 @@ export class GachaScene {
       this.setPhase('ready');this.q('.capsule-button').disabled=false;this.q('.summon-status-title').textContent='タップして、解き放とう';this.q('.summon-status small').textContent='TAP THE CAPSULE';this.q('.capsule-button').focus({preventScroll:true});
     }else if(this.phase==='opening'&&this.elapsed>(this.reduced?.18:this.aura.rarity==='LEGENDARY'?1.45:.85))this.reveal();
     this.drawParticles(dt);
+    const visible=this.phase==='reveal'?this.q('.summon-reward'):this.phase==='summary'?this.q('.summon-summary'):this.q('.capsule-button');
+    for(const canvas of visible.querySelectorAll('[data-animation]'))paintArt(canvas,this.assets,this.elapsed,{fps:canvas.dataset.animation==='capsule'?7:5,reduced:this.reduced});
   }
   action(action,id){
     if(action==='open'&&this.phase==='ready'){this.setPhase('opening');this.q('.capsule-button').disabled=true;this.q('.summon-status-title').textContent=this.aura.rarity==='LEGENDARY'?'伝説の光が、目を覚ます。':'新しい光が、生まれる。';this.sound.play('open');}
@@ -42,14 +45,16 @@ export class GachaScene {
   reveal(){
     if(this.phase==='reveal')return;this.setPhase('reveal');const a=this.aura,e=this.entry;
     this.q('.summon-reward').hidden=false;
-    this.q('.summon-reward').innerHTML=`<div class="reward-art-stage"><div class="reward-orbit"></div><img class="reward-art" src="assets/aura-${a.id}.webp" alt="${a.name}のオーラをまとった冒険者"></div><div class="reward-copy"><span class="reward-rarity">${a.rarity}</span><h2>${a.name}</h2><span class="new-badge">${this.preview?'演出プレビュー / 報酬はありません':e.isNew?'NEW AURA UNLOCKED':'重複ボーナス +30 COINS'}</span><p>${a.detail}</p></div><footer class="reward-actions">${this.preview?'':`<button class="primary" data-cinema="equip" data-id="${a.id}">このオーラを装備する</button>`}<button class="secondary" data-cinema="next">${this.index+1<this.entries.length?'次のカプセルへ →':this.entries.length>1?'獲得結果を見る':'ガチャに戻る'}</button></footer>`;
+    this.q('.summon-reward').innerHTML=`<div class="reward-art-stage"><div class="reward-orbit"></div>${animatedArt('aura-'+a.id,a.name+'のオーラをまとった冒険者','reward-art')}</div><div class="reward-copy"><span class="reward-rarity">${a.rarity}</span><h2>${a.name}</h2><span class="new-badge">${this.preview?'演出プレビュー / 報酬はありません':e.isNew?'NEW AURA UNLOCKED':'重複ボーナス +30 COINS'}</span><p>${a.detail}</p></div><footer class="reward-actions">${this.preview?'':`<button class="primary" data-cinema="equip" data-id="${a.id}">このオーラを装備する</button>`}<button class="secondary" data-cinema="next">${this.index+1<this.entries.length?'次のカプセルへ →':this.entries.length>1?'獲得結果を見る':'ガチャに戻る'}</button></footer>`;
+    paintArt(this.q('.reward-art'),this.assets,0,{reduced:this.reduced});
     this.q('.summon-skip').textContent=this.entries.length>1?'すべての結果へ ›':'閉じる ×';this.sound.reveal(AURAS.indexOf(a));this.explode(a.color);this.q('.reward-actions button').focus({preventScroll:true});
   }
   summary(){
     this.setPhase('summary');this.q('.summon-reward').hidden=true;this.q('.summon-summary').hidden=false;
     this.q('.summon-count').textContent='5 / 5 COMPLETE';
     this.q('.summon-skip').hidden=true;
-    this.q('.summon-summary').innerHTML=`<p class="section-kicker">YOUR NEW LITTLE MAGIC</p><h2>5つの光を、あなたに。</h2><div class="summary-grid">${this.entries.map(e=>{const a=AURAS.find(a=>a.id===e.id);return `<article style="--aura:${a.color}"><span>${a.rarity}</span><img src="assets/aura-${a.id}.webp" alt="${a.name}"><h3>${a.name}</h3><small>${e.isNew?'NEW!':'+30 COINS'}</small><button data-cinema="equip" data-id="${a.id}">装備する</button></article>`;}).join('')}</div><p class="small-note">獲得したオーラとコインは保存済みです。</p><button class="primary" data-cinema="finish">ガチャに戻る</button>`;
+    this.q('.summon-summary').innerHTML=`<p class="section-kicker">YOUR NEW LITTLE MAGIC</p><h2>5つの光を、あなたに。</h2><div class="summary-grid">${this.entries.map(e=>{const a=AURAS.find(a=>a.id===e.id);return `<article style="--aura:${a.color}"><span>${a.rarity}</span>${animatedArt('aura-'+a.id,a.name,'summary-art',240)}<h3>${a.name}</h3><small>${e.isNew?'NEW!':'+30 COINS'}</small><button data-cinema="equip" data-id="${a.id}">装備する</button></article>`;}).join('')}</div><p class="small-note">獲得したオーラとコインは保存済みです。</p><button class="primary" data-cinema="finish">ガチャに戻る</button>`;
+    for(const canvas of this.q('.summon-summary').querySelectorAll('[data-animation]'))paintArt(canvas,this.assets,0,{reduced:this.reduced});
     this.sound.play('good');this.q('[data-cinema="finish"]').focus({preventScroll:true});
   }
   explode(color){if(this.reduced)return;const count=this.aura.rarity==='LEGENDARY'?130:75;for(let i=0;i<count;i++){const angle=Math.random()*Math.PI*2,speed=70+Math.random()*330;this.particles.push({x:225,y:385,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:1.5+Math.random()*2,max:3.5,size:1+Math.random()*3,color});}}

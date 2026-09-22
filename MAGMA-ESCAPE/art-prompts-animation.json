@@ -1,0 +1,50 @@
+[
+  {
+    "id": "enemy-idle",
+    "ref": "enemy",
+    "action": "Same cute basalt lava golem as reference. Four subtle breathing loop key poses: neutral guard, raised chest and fists slightly, exhale slightly lowered fists, return half-way. Glowing lava cracks gently vary, orange crystals gleam. Keep feet planted and body scale identical.",
+    "prompt": "Use case: stylized-concept. Asset type: production transparent game animation sprite sheet. Input image is character/style REFERENCE, not a background. Create exactly FOUR sequential animation frames in an exact 2 by 2 grid, read left-to-right then top-to-bottom, on a square 1024x1024 canvas with REAL transparent alpha. Each cell exactly512x512, no borders, no labels, no text. Fixed orthographic camera, lighting, scale, character identity. Each full silhouette confined within its own cell with 35px transparent gutters, no crossing cells. All frames anchored at same local center x256 and ground y460; whole body and effect visible. Polished detailed colorful 3D mobile game render matching reference. Same cute basalt lava golem as reference. Four subtle breathing loop key poses: neutral guard, raised chest and fists slightly, exhale slightly lowered fists, return half-way. Glowing lava cracks gently vary, orange crystals gleam. Keep feet planted and body scale identical."
+  },
+  {
+    "id": "enemy-attack",
+    "ref": "enemy",
+    "action": "Same cute basalt lava golem as reference. Four strongly readable punch action poses: wind up one fist behind head; swing fist forward; oversized foreshortened fist punching toward viewer with bright orange crescent trail; retract fist to guard. Keep full body grounded, safe cartoon action, no opponents.",
+    "prompt": "Use case: stylized-concept. Asset type: production transparent game animation sprite sheet. Input image is character/style REFERENCE, not a background. Create exactly FOUR sequential animation frames in an exact 2 by 2 grid, read left-to-right then top-to-bottom, on a square 1024x1024 canvas with REAL transparent alpha. Each cell exactly512x512, no borders, no labels, no text. Fixed orthographic camera, lighting, scale, character identity. Each full silhouette confined within its own cell with 35px transparent gutters, no crossing cells. All frames anchored at same local center x256 and ground y460; whole body and effect visible. Polished detailed colorful 3D mobile game render matching reference. Same cute basalt lava golem as reference. Four strongly readable punch action poses: wind up one fist behind head; swing fist forward; oversized foreshortened fist punching toward viewer with bright orange crescent trail; retract fist to guard. Keep full body grounded, safe cartoon action, no opponents."
+  },
+  {
+    "id": "enemy-hit",
+    "ref": "enemy",
+    "action": "Same cute basalt lava golem as reference. Four hit reaction action poses: surprised wide eyes and arms apart; recoil leaning sideways with small sparks; crouch dazed with cute stars circling head; recover guard. No violence or injury, no enemy, no white flash background. Keep full body visible and feet grounded.",
+    "prompt": "Use case: stylized-concept. Asset type: production transparent game animation sprite sheet. Input image is character/style REFERENCE, not a background. Create exactly FOUR sequential animation frames in an exact 2 by 2 grid, read left-to-right then top-to-bottom, on a square 1024x1024 canvas with REAL transparent alpha. Each cell exactly512x512, no borders, no labels, no text. Fixed orthographic camera, lighting, scale, character identity. Each full silhouette confined within its own cell with 35px transparent gutters, no crossing cells. All frames anchored at same local center x256 and ground y460; whole body and effect visible. Polished detailed colorful 3D mobile game render matching reference. Same cute basalt lava golem as reference. Four hit reaction action poses: surprised wide eyes and arms apart; recoil leaning sideways with small sparks; crouch dazed with cute stars circling head; recover guard. No violence or injury, no enemy, no white flash background. Keep full body visible and feet grounded."
+  },
+  {
+    "id": "aura-ember",
+    "ref": "aura-ember",
+    "prompt": "Use case: stylized-concept. Production animation sprite sheet for game. Reference image establishes EXACT character identity, outfit, aura design, polished 3D style. Create FOUR coherent frames of same character and aura, 2x2 equal grid on square1024x1024 transparent-alpha canvas. No text, labels, borders or background. Each frame isolated inside its512x512cell with35px transparent gutters. Full body and entire aura visible. Character body center, scale, camera, ground baseline identical allframes. Very subtle hero breathing with scarf waving. Orange flame ribbons curl around the body in four successive swirling phases. Real pose/effect differences, not4duplicates. Keep hero face and body consistent, avoid major body rotation. Same lighting. Actual transparent background, not checkerboard."
+  },
+  {
+    "id": "aura-mint",
+    "ref": "aura-mint",
+    "prompt": "Use case: stylized-concept. Production animation sprite sheet for game. Reference image establishes EXACT character identity, outfit, aura design, polished 3D style. Create FOUR coherent frames of same character and aura, 2x2 equal grid on square1024x1024 transparent-alpha canvas. No text, labels, borders or background. Each frame isolated inside its512x512cell with35px transparent gutters. Full body and entire aura visible. Character body center, scale, camera, ground baseline identical allframes. Very subtle hero breathing with scarf waving. Mint wisps and glowing leaves orbit the body in four successive swirling phases. Real pose/effect differences, not4duplicates. Keep hero face and body consistent, avoid major body rotation. Same lighting. Actual transparent background, not checkerboard."
+  },
+  {
+    "id": "aura-violet",
+    "ref": "aura-violet",
+    "prompt": "Use case: stylized-concept. Production animation sprite sheet for game. Reference image establishes EXACT character identity, outfit, aura design, polished 3D style. Create FOUR coherent frames of same character and aura, 2x2 equal grid on square1024x1024 transparent-alpha canvas. No text, labels, borders or background. Each frame isolated inside its512x512cell with35px transparent gutters. Full body and entire aura visible. Character body center, scale, camera, ground baseline identical allframes. Very subtle hero breathing with scarf waving. Violet galaxy rings and small planets orbit the body in four successive swirling phases. Real pose/effect differences, not4duplicates. Keep hero face and body consistent, avoid major body rotation. Same lighting. Actual transparent background, not checkerboard."
+  },
+  {
+    "id": "aura-ice",
+    "ref": "aura-ice",
+    "prompt": "Use case: stylized-concept. Production animation sprite sheet for game. Reference image establishes EXACT character identity, outfit, aura design, polished 3D style. Create FOUR coherent frames of same character and aura, 2x2 equal grid on square1024x1024 transparent-alpha canvas. No text, labels, borders or background. Each frame isolated inside its512x512cell with35px transparent gutters. Full body and entire aura visible. Character body center, scale, camera, ground baseline identical allframes. Very subtle hero breathing with scarf waving. Ice crystal wings tilt and frost ribbons swirl in four successive phases. Real pose/effect differences, not4duplicates. Keep hero face and body consistent, avoid major body rotation. Same lighting. Actual transparent background, not checkerboard."
+  },
+  {
+    "id": "aura-phoenix",
+    "ref": "aura-phoenix",
+    "prompt": "Use case: stylized-concept. Production animation sprite sheet for game. Reference image establishes EXACT character identity, outfit, aura design, polished 3D style. Create FOUR coherent frames of same character and aura, 2x2 equal grid on square1024x1024 transparent-alpha canvas. No text, labels, borders or background. Each frame isolated inside its512x512cell with35px transparent gutters. Full body and entire aura visible. Character body center, scale, camera, ground baseline identical allframes. Very subtle hero breathing with scarf waving. Golden phoenix wings flap gracefully: raised spread, halfway down, down spread, halfway raised. Golden feather tips bend and trail sparks. Real pose/effect differences, not4duplicates. Keep hero face and body consistent, avoid major body rotation. Same lighting. Actual transparent background, not checkerboard."
+  },
+  {
+    "id": "capsule",
+    "ref": "capsule",
+    "prompt": "Use case: stylized-concept. Production game sprite sheet, FOUR sequential animation frames in a 2x2 equal square grid, actual transparent alpha background. Reference image is design/style reference: same CLOSED teal glass and gold equator / basalt lava base capsule. Internal teal spiral turns through four consecutive phases, flowing light filaments and sparks move inside glass, lava veins gently pulse. Outer capsule silhouette EXACTLY identical placement, scale and orientation in all frames. No opening. Each cell has full capsule and 40px transparent margin. Square1024x1024, eachcell512x512. No border labels text background. Polished3D render matching reference."
+  }
+]
