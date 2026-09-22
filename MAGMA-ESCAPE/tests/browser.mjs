@@ -27,7 +27,7 @@ try{
   await page.getByRole('button',{name:'戻る',exact:true}).click();
   await page.evaluate(()=>{window.__magma.save.coins=500;window.__magma.persist();});
   await page.getByRole('button',{name:'ガチャ',exact:true}).click();await screenshot('04-gacha');await page.getByRole('button',{name:'1回まわす'}).click();
-  const coins=await page.evaluate(()=>window.__magma.save.coins);assert(coins===400||coins===430);await screenshot('05-gacha-result');await page.getByRole('button',{name:'装備する',exact:true}).click();
+  const coins=await page.evaluate(()=>window.__magma.save.coins);assert(coins===400||coins===430);await page.getByRole('button',{name:'カプセルを開ける'}).waitFor();await page.waitForFunction(()=>window.__magma.cinema?.phase==='ready');await screenshot('05a-gacha-capsule');await page.getByRole('button',{name:'カプセルを開ける'}).click();await page.waitForFunction(()=>window.__magma.cinema?.phase==='reveal');await screenshot('05-gacha-result');await page.getByRole('button',{name:'このオーラを装備する',exact:true}).click();await page.getByRole('button',{name:'ガチャに戻る',exact:true}).click();
   await page.getByRole('button',{name:'戻る',exact:true}).click();await page.getByRole('button',{name:'コレクション',exact:true}).click();await screenshot('06-collection');
   await page.evaluate(()=>window.__magma.start());
   await page.evaluate(()=>{window.__magma.game.pause();window.__magma.game.hunger=30;window.__magma.showShop();});
@@ -36,7 +36,7 @@ try{
   await page.evaluate(()=>window.dispatchEvent(new Event('blur')));const timer=await page.locator('#quiz-timer').getAttribute('style');await page.waitForTimeout(250);assert.equal(await page.locator('#quiz-timer').getAttribute('style'),timer);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
   await page.locator('[data-action="answer"]').first().click();assert.equal(await page.evaluate(()=>window.__magma.dialog),'quiz-result');await page.getByRole('button',{name:'冒険をつづける'}).click();
   await page.evaluate(()=>{window.__magma.game.pause();window.__magma.showBattle();});await screenshot('09-battle');
-  for(let i=0;i<3;i++)await page.evaluate(()=>{window.__magma.battle.cursor=.5;window.__magma.battle.cooldown=0;window.__magma.attack();});assert.equal(await page.evaluate(()=>window.__magma.dialog),'battle-result');await page.getByRole('button',{name:'上を目指そう'}).click();
+  for(let i=0;i<3;i++)await page.evaluate(()=>{window.__magma.battle.cursor=.5;window.__magma.battle.cooldown=0;window.__magma.attack();});await page.waitForFunction(()=>window.__magma.dialog==='battle-result');await page.getByRole('button',{name:'上を目指そう'}).click();
   await page.evaluate(()=>{window.__magma.game.lava=window.__magma.game.player.y+40;});await page.waitForFunction(()=>window.__magma.dialog==='result');await screenshot('10-result');
   const saved=await page.evaluate(()=>JSON.stringify(window.__magma.save));await page.reload();await page.waitForFunction(()=>window.__magma);assert.equal(await page.evaluate(()=>JSON.stringify(window.__magma.save)),saved);
   await page.evaluate(()=>navigator.serviceWorker.ready);await page.reload();await page.waitForFunction(()=>window.__magma);assert(await page.evaluate(()=>!!navigator.serviceWorker.controller));
