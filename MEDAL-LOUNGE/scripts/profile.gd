@@ -35,7 +35,7 @@ func _init(is_test: bool = false, storage_path: String = "user://medal_lounge_v3
 		jackpots = maxi(0,int(data.get("jackpots",0)))
 		refill_at = int(data.get("refill_at",0))
 		tutorial_seen = bool(data.get("tutorial",false))
-		machine = clampi(int(data.get("machine",0)),0,1)
+		machine = clampi(int(data.get("machine",0)),0,2)
 		tables = data.get("tables",{}) if data.get("tables",{}) is Dictionary else {}
 		audio = data.get("audio",audio) if data.get("audio",audio) is Dictionary else audio
 		for key in ["music","room","effects"]: audio[key] = clampf(float(audio.get(key,0.5)),0,1)

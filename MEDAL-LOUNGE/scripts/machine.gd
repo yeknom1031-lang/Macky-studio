@@ -72,8 +72,8 @@ func setup(machine_kind: int, audio: Node, snapshot: Dictionary = {}) -> void:
 	rng.seed = 82231 + kind*972
 	build_environment()
 	build_cabinet()
-	build_roulette()
-	bonus_show = preload("res://scripts/bonus_show.gd").new()
+	if kind != 2: build_roulette()
+	bonus_show = preload("res://scripts/party_slot.gd").new() if kind == 2 else preload("res://scripts/bonus_show.gd").new()
 	add_child(bonus_show)
 	bonus_show.setup(self)
 	Art.batch_static(self,[pusher,hopper,tower_layer]+progress_lights+press_caps)
@@ -128,6 +128,9 @@ func build_environment() -> void:
 		l.look_at(Vector3(0,0,2.0 if i == 3 else -0.3))
 		l.light_color = [Color("fff4e6"),Color("e5edff"),Color("ffd8a1"),Color("ecf2ff")][i]
 		l.light_energy = [0.90,0.75,0.85,0.7][i]
+		if kind == 2 and i >= 2:
+			l.light_color = Color("ff62cf") if i == 2 else Color("5ccfff")
+			l.light_energy = 0.65 if i == 2 else 0.45
 		l.spot_range = 12
 		l.spot_angle = 62
 		l.shadow_enabled = i < 2
@@ -304,14 +307,21 @@ func select_rail(side: int) -> void:
 
 func insert(side: int) -> bool:
 	if not playing or guided.size() >= 14: return false
-	var visual := Art.coin_visual(self)
-	var start := rail_starts[side]+Vector3(0,0.147,0)
-	var end := rail_ends[side]+Vector3(0,0.147,0)
-	guided.append({"node":visual,"t":0.0,"start":start,"end":end,"side":side})
+	add_guided(side,0.0)
 	sound.play("button",0.4,-0.5 if side == 0 else 0.5)
 	sound.play("insert",0.8,-0.5 if side == 0 else 0.5)
 	sound.play("launch",0.45,-0.5 if side == 0 else 0.5)
 	return true
+
+func add_guided(side: int, travel_time: float) -> void:
+	var visual := Art.coin_visual(self)
+	var start := rail_starts[side]+Vector3(0,0.147,0)
+	var end := rail_ends[side]+Vector3(0,0.147,0)
+	var t := clampf(pow(travel_time/0.90,1.5),0,1)
+	var d := (end-start).normalized()
+	visual.position = start.lerp(end,t)
+	visual.basis = Basis(Vector3.UP,atan2(-d.x,-d.z))*Basis(Vector3.FORWARD,PI/2)*Basis(Vector3.UP,t*start.distance_to(end)/0.145)
+	guided.append({"node":visual,"t":travel_time,"start":start,"end":end,"side":side})
 
 func _physics_process(delta: float) -> void:
 	if not playing: return
@@ -334,6 +344,7 @@ func _physics_process(delta: float) -> void:
 			g.node.queue_free()
 			guided.erase(g)
 			audit.rail_exits += 1
+			if kind == 2: bonus_show.medal_arrived()
 	audio_tick += 1
 	for i in range(coins.size()-1,-1,-1):
 		var b := coins[i]
@@ -373,6 +384,7 @@ func _physics_process(delta: float) -> void:
 	process_transit(delta)
 	process_roulette(delta)
 	process_builder(delta)
+	if kind == 2: bonus_show.advance(delta)
 
 func capture_ball(color_id: int) -> void:
 	audit.balls += 1
@@ -412,12 +424,16 @@ func process_transit(delta: float) -> void:
 		if kind == 0: royal_colors[roulette_color] = true
 		refresh_lights()
 		bonus_changed.emit()
-		if kind == 1 or (royal_colors[0] and royal_colors[1] and royal_colors[2]):
+		if kind == 2:
+			bonus_show.add_spins(3)
+			message.emit("PARTY BALL  •  スロット3回追加！")
+		elif kind == 1 or (royal_colors[0] and royal_colors[1] and royal_colors[2]):
 			start_roulette()
 		else:
 			message.emit("カラー獲得  •  3色をそろえるとポケット抽選！")
 
 func start_roulette() -> void:
+	if kind == 2: return
 	if is_instance_valid(roulette_ball): return
 	roulette_clock = 0
 	sound.roulette_start(round_stage if kind == 1 else 0)
@@ -469,6 +485,7 @@ func process_roulette(delta: float) -> void:
 	roulette_ball.apply_central_force(roulette_root.guide_force(offset,roulette_clock))
 
 func resolve_roulette(sector: int) -> void:
+	if kind == 2: return
 	var resolved_stage := round_stage if kind == 1 else 0
 	var is_advance := kind == 1 and sector == 4 and round_stage < 2
 	var is_jp := sector == 4 and not is_advance
@@ -520,6 +537,9 @@ func refresh_lights() -> void:
 	for i in progress_lights.size():
 		var lit: bool = royal_colors[i] if kind == 0 else i < round_stage
 		var color: Color = BALL_COLORS[i] if kind == 0 else Color("eac271")
+		if kind == 2:
+			lit = bonus_show.mode == "spin" or i < bonus_show.medal_count
+			color = Color("ff43c9") if i%2 == 0 else Color("36dfff")
 		progress_lights[i].material_override = Art.mat("progress%d_%d_%s" % [kind,i,str(lit)],color,0.45,0.2,1.8 if lit else 0.0)
 
 func process_builder(delta: float) -> void:
@@ -570,8 +590,10 @@ func serialize() -> Dictionary:
 	var entries: Array = []
 	for b in coins:
 		entries.append({"p":vec(b.position),"r":vec(b.rotation),"v":vec(b.linear_velocity),"w":vec(b.angular_velocity),"stack":b.get_meta("stack_id",-1)})
+	var party_guided: Array = []
 	for g in guided:
-		entries.append({"p":vec(g.end),"r":[0,0,PI/2],"v":[0,0,-2],"w":[0,0,0]})
+		if kind == 2: party_guided.append({"side":g.side,"t":g.t})
+		else: entries.append({"p":vec(g.end),"r":[0,0,PI/2],"v":[0,0,-2],"w":[0,0,0]})
 	var bs: Array = []
 	for b in balls: bs.append({"p":vec(b.position),"color":b.get_meta("color")})
 	var pending := pending_colors.duplicate()
@@ -580,10 +602,13 @@ func serialize() -> Dictionary:
 	for stack in stacks:
 		if is_instance_valid(stack) and not stack.released: groups.append(stack.snapshot())
 	return {"layout":3,"stacks":groups,"coins":entries,"balls":bs,"phase":phase,"angles":angles,"payout":payout_left,
+		"party":bonus_show.snapshot() if kind == 2 else {},
+		"party_guided":party_guided,
 		"pending":pending,"royal":royal_colors,"multiplier":payout_multiplier,"ball_count":ball_count,"round":round_stage,
 		"tower_left":tower_left+tower_visuals.size()}
 
 func restore(data: Dictionary) -> void:
+	if kind == 2: bonus_show.restore(data.get("party",{}))
 	var grouped: Dictionary = {}
 	for entry in data.get("coins",[]):
 		if not entry is Dictionary: continue
@@ -623,6 +648,9 @@ func restore(data: Dictionary) -> void:
 	var a = data.get("angles",[0,0])
 	if a is Array and a.size() == 2:
 		for i in 2: set_angle(i,float(a[i]))
+	if kind == 2:
+		for g in data.get("party_guided",[]).slice(0,14):
+			if g is Dictionary: add_guided(clampi(int(g.get("side",0)),0,1),clampf(float(g.get("t",0)),0,0.9))
 
 func restore_position(value: Variant, data: Dictionary) -> Vector3:
 	var pos := vector(value)

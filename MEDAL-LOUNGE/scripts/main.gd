@@ -39,6 +39,7 @@ func _ready() -> void:
 			auto_capture = true
 		if arg == "--tower": startup_machine = 1
 		if arg == "--royal": startup_machine = 0
+		if arg == "--party": startup_machine = 2
 		if arg.begins_with("--screen="): capture_screen = arg.trim_prefix("--screen=")
 	profile = Profile.new(test_mode or auto_capture or isolated_session)
 	sound = Sound.new()
@@ -85,6 +86,7 @@ func _ready() -> void:
 	elif auto_capture: capture_run.call_deferred()
 
 func load_machine(which: int) -> void:
+	sound.set_party_mode(which == 2)
 	table = Machine.new()
 	add_child(table)
 	table.setup(which,sound,profile.tables.get(str(which),{}))
@@ -184,6 +186,7 @@ func update_hud() -> void:
 			if collected: colors += 1
 		table.status_label.text = "COLORS  %d / 3"%colors if table.kind == 0 else "STAGE  %d / 3"%(table.round_stage+1)
 		if table.kind == 0 and table.payout_multiplier == 2: table.status_label.text += "  ×2"
+		if table.kind == 2: table.status_label.text = "START %d / 5  •  STOCK %d"%[table.bonus_show.medal_count,table.bonus_show.queued]
 
 func new_modal(title: String, subtitle: String) -> VBoxContainer:
 	reset_inputs()
@@ -217,9 +220,9 @@ func new_modal(title: String, subtitle: String) -> VBoxContainer:
 func show_lobby() -> void:
 	persist()
 	var v := new_modal("台を選んでください","FREE PLAY ・ メダルの消費、補充待ちはありません。")
-	for i in 2:
-		label(v,"ROYAL PUSHER" if i == 0 else "IMPERIAL TOWER",22,GOLD)
-		label(v,"二段プッシャー・3色ボール" if i == 0 else "銀メダルタワー・連続抽選",14,Color("a4b4bc"))
+	for i in 3:
+		label(v,["ROYAL PUSHER","IMPERIAL TOWER","PARTY FEVER"][i],22,Color("ff8cde") if i == 2 else GOLD)
+		label(v,["二段プッシャー・3色ボール","銀メダルタワー・連続抽選","NEW ・ 3リールスロット・ディスコフィーバー"][i],14,Color("a4b4bc"))
 		var actions := HBoxContainer.new()
 		actions.add_theme_constant_override("separation",12)
 		v.add_child(actions)
@@ -299,6 +302,9 @@ func start_play(tutorial: bool = false) -> void:
 	else: notify_player("黒いレバーをドラッグして狙う・赤い実機ボタンで投入")
 
 func show_help() -> void:
+	if table.kind == 2:
+		show_party_help()
+		return
 	var v := new_modal("レールを狙う。山を崩す。","メダルは縦向きでレールを転がり、奥の上段へ落ちます。")
 	for item in [
 		"01  筐体の黒いレバーを左右にドラッグして狙う。",
@@ -313,6 +319,15 @@ func show_help() -> void:
 		profile.tutorial_seen = true
 		start_play(),58,true)
 	label(v,"Mac: A / Dで投入、← / →で選択レールを調整",12,Color("8797a4"))
+
+func show_party_help() -> void:
+	var v := new_modal("PARTY FEVER","5枚で回る。そろって降り注ぐ。")
+	for text in ["左右レバーで狙い、赤いボタンで投入。長押しもOK。","レールを5枚通過するごとにスロットを1回ストック。","ボールを手前に落として搬送すると、さらに3回。","777＝300枚。ディスコ3個＝120枚＋3回の2倍抽選。","星80・ダイヤ50・ベル30・チェリー20枚。","当たりは盤面に払い出し。手前に落ちた分を獲得。","無料・無制限。スロットは自動抽選で目押しではありません。"]:
+		var l := label(v,text,16)
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	button(v,"パーティーを始める",func():
+		profile.tutorial_seen = true
+		start_play(),56,true)
 
 func show_settings() -> void:
 	var v := new_modal("音と画質","音楽・店内の環境音・機械音を個別に調整できます。")
@@ -768,8 +783,19 @@ func capture_run() -> void:
 		for i in 70: await get_tree().physics_frame
 	elif capture_screen == "jackpot":
 		# Isolated presentation QA only: never invoked by normal play.
-		if table.kind == 1: table.round_stage = 2
-		table.resolve_roulette(4)
+		if table.kind == 2:
+			table.bonus_show.queued = 1
+			table.bonus_show.start_spin()
+			table.bonus_show.result = [0,0,0]
+			table.bonus_show.reward = 300
+			table.bonus_show.clock = 4.0
+		elif table.kind == 1:
+			table.round_stage = 2
+			table.resolve_roulette(4)
+		else: table.resolve_roulette(4)
+	elif capture_screen == "slot":
+		table.bonus_show.add_spins(1)
+		for i in 180: await get_tree().physics_frame
 	elif capture_screen == "progress":
 		table.royal_colors = [true,false,true]
 		table.payout_multiplier = 2

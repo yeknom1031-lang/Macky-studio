@@ -27,6 +27,8 @@ var spin_tick := 0.0
 var gate_open := false
 var last_roll := -1
 var scene_stage := 0
+var normal_music: AudioStream
+var party_music: AudioStream
 var audit := {"starts":0,"gates":0,"results":0,"room_events":0,"played":0,"dropped":0}
 
 func _ready() -> void:
@@ -45,6 +47,7 @@ func _ready() -> void:
 	music = player("ML_Music")
 	room = player("ML_Room")
 	music.stream = music_loop()
+	normal_music = music.stream
 	room.stream = ambience()
 	loops.assign([music,room])
 	var crowd := player("ML_Room")
@@ -74,6 +77,35 @@ func player(bus: String) -> AudioStreamPlayer:
 	p.bus = bus
 	add_child(p)
 	return p
+
+func set_party_mode(enabled: bool) -> void:
+	if not ready_audio: return
+	if enabled and party_music == null: party_music = party_music_loop()
+	var next: AudioStream = party_music if enabled else normal_music
+	if music.stream == next: return
+	music.stream = next
+	music.play()
+
+func party_music_loop() -> AudioStreamWAV:
+	# Original 120-BPM disco groove, no commercial game/song recording.
+	var data := PackedByteArray()
+	var n := 22050*8
+	data.resize(n*2)
+	var noise := RandomNumberGenerator.new()
+	noise.seed = 66123
+	var notes := [130.81,130.81,155.56,196.0,116.54,116.54,155.56,174.61]
+	for i in n:
+		var t := i/22050.0
+		var beat := fmod(t,0.5)
+		var eighth := fmod(t,0.25)
+		var note: float = notes[int(t/0.5)%8]
+		var bass := (sin(TAU*note*t)+sin(TAU*note*2*t)*0.25)*exp(-eighth*12)*0.18
+		var kick := sin(TAU*(46*beat+1.8*(1-exp(-beat*35))))*exp(-beat*19)*0.34
+		var hat := noise.randf_range(-1,1)*exp(-fmod(t,0.125)*110)*0.055
+		var snare := noise.randf_range(-1,1)*exp(-beat*45)*0.09 if int(t/0.5)%2 == 1 else 0.0
+		var chord := (sin(TAU*note*4*t)+sin(TAU*note*5*t)+sin(TAU*note*6*t))*exp(-eighth*18)*0.024
+		write_sample(data,i,bass+kick+hat+snare+chord)
+	return wav(data,true)
 
 func bus(name: String, send: String = "Master") -> int:
 	var idx := AudioServer.get_bus_index(name)
@@ -385,3 +417,5 @@ func shutdown() -> void:
 			p.stream = null
 	clips.clear()
 	banks.clear()
+	normal_music = null
+	party_music = null

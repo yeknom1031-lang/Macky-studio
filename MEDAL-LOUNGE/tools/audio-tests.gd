@@ -26,6 +26,16 @@ func run() -> void:
 	var first = s.choose("coin")
 	check(s.choose("coin") != first,"consecutive medal hits vary sample")
 	check(s.voices.size() == 24 and s.distant.size() == 8 and s.cues.size() == 4,"bounded pools reserve fanfare channels")
+	var voice_nodes: int = s.get_child_count()
+	s.set_party_mode(true)
+	check(s.music.stream == s.party_music and is_equal_approx(s.party_music.get_length(),8.0),"party has original eight-second dance loop")
+	s.set_party_mode(false)
+	check(s.music.stream == s.normal_music,"switching away restores original BGM")
+	for i in 4:
+		s.set_party_mode(true)
+		s.set_party_mode(false)
+	check(s.get_child_count() == voice_nodes,"music switching reuses audio players")
+	if "--party-audio" in OS.get_cmdline_user_args(): s.set_party_mode(true)
 	var recorder := AudioEffectRecord.new()
 	recorder.format = AudioStreamWAV.FORMAT_16_BITS
 	var idx := AudioServer.get_bus_index("ML_Master")
@@ -71,7 +81,7 @@ func run() -> void:
 		print("AUDIO METRICS: peak=",peak," RMS=",rms," seconds=",recording.get_length())
 		check(peak > 0.02 and peak < 0.95,"recorded mix is audible without digital clipping")
 		check(rms > 0.008,"mix has sustained ambience, not only sparse clicks")
-		recording.save_to_wav("res://docs/audio-preview-v4.wav")
+		recording.save_to_wav("res://docs/audio-preview-party.wav" if "--party-audio" in OS.get_cmdline_user_args() else "res://docs/audio-preview-v4.wav")
 	s.roulette_start(1)
 	s.set_machine_active(false)
 	check(s.spin.stream_paused and s.tension.stream_paused,"modal pauses roulette loops")
@@ -90,5 +100,9 @@ func run() -> void:
 	check(s.audit.room_events >= 10,"distant cabinets create varied ongoing activity")
 	s.shutdown()
 	check(not s.ready_audio and not s.music.playing,"shutdown stops all streams")
+	AudioServer.remove_bus_effect(idx,1)
+	s.queue_free()
+	await process_frame
+	await process_frame
 	print("AUDIO TEST RESULT: ",passes," passes, ",failures," failures")
 	quit(0 if failures == 0 else 1)

@@ -3,13 +3,15 @@ const A = preload("res://scripts/art.gd")
 const INLAY := "res://assets/generated/cabinet-inlay-v3.png"
 
 static func build(m) -> void:
+	var party: bool = m.kind == 2
+	var inlay := "res://assets/generated/party/inlay.png" if party else INLAY
 	var brass := A.gold()
 	var chrome := A.chrome()
 	var steel := A.steel()
 	var enamel := A.mat("enamel",Color("160e16"),0.32,0.23)
 	var black := A.mat("cabinet_black",Color("090e14"),0.35,0.30)
 	var rubber := A.mat("rubber",Color("080a0d"),0.05,0.70)
-	var wine := A.mat("wine",Color("371321"),0.28,0.23)
+	var wine := A.mat("party_wine" if party else "wine",Color("290748") if party else Color("371321"),0.28,0.23)
 	var led := A.mat("warm_lamp",Color("ffe1a0"),0.15,0.32,1.7)
 	var glass := A.mat("clear_acrylic",Color(0.72,0.81,0.88,0.045),0.08,0.10)
 	glass.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
@@ -49,19 +51,21 @@ static func build(m) -> void:
 			lamp(m,Vector3(side*2.12,y,-2.91),0.041,led)
 	# Back enclosure and broad engraved crown, without a black empty hole.
 	A.box(m,Vector3(0,1.92,-3.54),Vector3(4.50,4.35,0.32),enamel)
-	A.panel(m,Vector3(0,2.08,-3.36),Vector2(4.13,3.6),INLAY,Color("88775f"))
+	A.panel(m,Vector3(0,2.08,-3.36),Vector2(4.13,3.6),inlay,Color.WHITE if party else Color("88775f"))
 	for x in [-2.13,2.13]:
 		A.tube(m,Vector3(x,0.65,-3.2),Vector3(x,4.12,-3.2),0.061,brass)
 	for x in [-1.75,-1.45,-1.15,1.15,1.45,1.75]:
 		A.tube(m,Vector3(x,1.45,-3.22),Vector3(x,3.64,-3.22),0.015,chrome)
-	A.box(m,Vector3(0,3.92,-3.18),Vector3(4.36,0.65,0.26),brass)
-	A.box(m,Vector3(0,3.92,-3.03),Vector3(4.18,0.52,0.04),wine)
-	var plaque := A.panel(m,Vector3(0,3.92,-2.999),Vector2(4.06,0.43),INLAY,Color("a68962"))
+	A.box(m,Vector3(0,3.92,-3.18),Vector3(4.36,1.05 if party else 0.65,0.26),brass)
+	A.box(m,Vector3(0,3.92,-3.03),Vector3(4.18,0.99 if party else 0.52,0.04),wine)
+	var plaque := A.panel(m,Vector3(0,3.92,-2.999),Vector2(4.06,0.94 if party else 0.43),"res://assets/generated/party/marquee.png" if party else inlay,Color.WHITE if party else Color("a68962"))
 	plaque.material_override.roughness = 0.45
+	if party:
+		plaque.material_override.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	var font := SystemFont.new()
 	font.font_names = PackedStringArray(["Baskerville","Georgia","Times New Roman"])
 	font.font_weight = 600
-	var title := A.label(m,"ROYAL PUSHER" if m.kind == 0 else "IMPERIAL TOWER",Vector3(0,3.915,-2.96),90,Color("e6c987"))
+	var title := A.label(m,"" if party else ("ROYAL PUSHER" if m.kind == 0 else "IMPERIAL TOWER"),Vector3(0,3.915,-2.96),90,Color("e6c987"))
 	title.font = font
 	title.pixel_size = 0.0030
 	for side in [-1,1]:
@@ -74,11 +78,11 @@ static func build(m) -> void:
 	# Fixed sweeper and physical progress display beneath the roulette.
 	A.box(m,Vector3(0,0.6,-2.10),Vector3(4.2,1.1,0.1),steel,true)
 	A.box(m,Vector3(0,0.83,-2.03),Vector3(3.94,0.46,0.035),brass)
-	A.panel(m,Vector3(0,0.83,-2.0),Vector2(3.85,0.38),INLAY)
+	A.panel(m,Vector3(0,0.83,-2.0),Vector2(3.85,0.38),inlay)
 	m.status_label = A.label(m,"",Vector3(0,0.53,3.50),24,Color("ffe5a6"))
 	m.status_label.rotation.x = -PI/2
-	for i in 3:
-		var x := -0.43+i*0.43
+	for i in (5 if party else 3):
+		var x := -0.60+i*0.30 if party else -0.43+i*0.43
 		A.ring(m,Vector3(x,0.52,3.70),0.086,0.013,brass)
 		var orb := A.ball_visual(m,0.073,m.BALL_COLORS[i] if m.kind == 0 else Color("c6aa70"))
 		orb.position = Vector3(x,0.55,3.70)
@@ -96,7 +100,7 @@ static func build(m) -> void:
 	A.box(m,Vector3(0,0.21,3.89),Vector3(4.45,0.34,1.20),wine)
 	A.box(m,Vector3(0,0.405,3.88),Vector3(4.38,0.075,1.12),brass)
 	A.box(m,Vector3(0,0.45,3.87),Vector3(4.23,0.016,0.99),black)
-	var deck := A.panel(m,Vector3(0,0.461,3.87),Vector2(4.20,0.96),INLAY)
+	var deck := A.panel(m,Vector3(0,0.461,3.87),Vector2(4.20,0.96),inlay)
 	deck.rotation.x = -PI/2
 	A.tube(m,Vector3(-2.15,0.44,4.44),Vector3(2.15,0.44,4.44),0.055,brass)
 	for side in 2:
@@ -159,7 +163,7 @@ static func build(m) -> void:
 			stored.position = cup
 			stored.set_meta("dynamic",true)
 			m.collection_balls.append(stored)
-	else:
+	elif m.kind == 1:
 		A.tube(m,Vector3(0,2.36,-1.80),Vector3(2.28,2.36,-2.64),0.115,tube_glass)
 		for stage in [1,2]:
 			A.tube(m,Vector3(2.28,3.12,-2.64),m.draw_outlets[stage],0.115,tube_glass)
