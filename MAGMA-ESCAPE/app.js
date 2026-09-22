@@ -1,4 +1,4 @@
-import {Game,AURAS,FOOD,QUESTIONS,MILESTONES,freshSave,normalizeSave,rollGacha,awardMilestones,transact,upgradeCost,clamp,METER} from './core.js';
+import {Game,AURAS,FOOD,QUESTIONS,MILESTONES,freshSave,normalizeSave,rollGacha,awardMilestones,transact,upgradeCost,clamp,METER,routeSection} from './core.js';
 import {Renderer} from './renderer.js';
 import {Sound} from './audio.js';
 import {GachaScene} from './gacha-scene.js';
@@ -32,16 +32,18 @@ function panel(type){
   }else if(type==='help'){
     $('#panel').innerHTML=header('遊び方')+`<div class="panel-content"><p class="section-kicker">YOUR FIRST ADVENTURE</p><h3>あと1m。その先へ。</h3><p class="lede">下から迫るマグマをかわしながら、<br>足場を飛び移って、どこまでも登ろう。</p>${[
       ['‹ ›','左右に移動','画面左下のボタン、または ← → / A D キー。'],
-      ['↑','ジャンプ','画面右下の JUMP、または Space / ↑。長押しすると着地後に連続ジャンプ。'],
+      ['↑','ジャンプ','画面右下の JUMP、または Space / ↑。空中で押し直すと二段ジャンプ。長押しは着地後に連続ジャンプ。'],
+      ['↗','壁キック','左右の壁でJUMPを押すと反対側へ蹴り上がる。壁へ移動を押し続けると滑り降りる。同じ壁からの連続キックは着地か反対側の壁で回復。'],
       ['⇡','ジェットパック','JET ボタン、または E / Shift を長押し。燃料は足場に立つと回復。'],
       ['◈','コインを集めよう','1枚で5コイン。獲得したコインはすぐに保存されます。'],
       ['✧','着地をつなごう','新しい足場の中央に着地で+2コイン。素早く5連続着地すると+10コイン。10・25・50・100・200mには初回報酬も。'],
       ['↔','3つの特殊な足場','青い金属は動く、氷は点滅、ひび割れは0.5秒で崩れる。'],
-      ['♨','道中でひと休み','15mごとにショップ、12mからクイズ、22mからバトル。イベント中はマグマが止まります。'],
+      ['♨','道中でひと休み','SHOP足場で食事。紫の「？」を取るとクイズ、見えているゴーレムに触れるとバトル。避けて通ることもできます。イベント中はマグマが止まります。'],
+      ['▲','マグマの緩急','高度・プレイ時間で加速。3秒の予告後に6秒の噴き上がり、その後は小休止。素早い階段・横移動・広い休憩足場を使い分けよう。'],
       ['△','空腹に気をつけて','空腹20以下で移動と体力回復が低下。ご飯を食べて回復しよう。'],
     ].map(([icon,title,desc])=>`<div class="help-row"><div class="help-symbol">${icon}</div><div><h4>${title}</h4><p>${desc}</p></div></div>`).join('')}<div class="help-footer">${button('help-done',returnToPause?'ゲームに戻る':'さあ、登ろう！')}</div></div>`;
   }else if(type==='settings'){
-    $('#panel').innerHTML=header('設定')+`<div class="panel-content"><p class="section-kicker">MAKE YOURSELF AT HOME</p><h3>心地よい冒険を。</h3><div class="toggle-row"><div><b>サウンド</b><small>BGMと効果音</small></div><button class="toggle ${save.sound?'on':''}" role="switch" aria-checked="${save.sound}" aria-label="サウンド" data-action="toggle-sound"></button></div><div class="toggle-row"><div><b>演出を控えめに</b><small>粒子・画面振動・開封の光を控えめに</small></div><button class="toggle ${save.reduced?'on':''}" role="switch" aria-checked="${save.reduced}" aria-label="演出を控えめに" data-action="toggle-reduced"></button></div><div class="settings-box"><h4>iPhoneのホーム画面に追加</h4><p>Safariの共有メニューから「ホーム画面に追加」を選ぶと、アプリとして起動できます。</p><p class="small-note">オフライン対応にはHTTPS、またはlocalhostでの初回読み込みが必要です。</p></div><div class="settings-box"><h4>冒険の記録</h4><p>最高記録 ${save.best}m ・ 挑戦 ${save.runs}回<br>このブラウザにコイン・強化・オーラを保存します。進行中のステージは再読み込みで終了します。</p><p class="small-note">${storageOK?'自動保存は有効です。ブラウザのデータ削除で記録も削除されます。':'現在このブラウザでは保存できません。データはこの画面を閉じると失われます。'}</p></div>${button('help','操作ガイド','secondary')}<p class="small-note" style="margin-top:24px;text-align:center">MAGMA ESCAPE 2.0.1<br>Made with imagination. / MACKY STUDIO</p></div>`;
+    $('#panel').innerHTML=header('設定')+`<div class="panel-content"><p class="section-kicker">MAKE YOURSELF AT HOME</p><h3>心地よい冒険を。</h3><div class="toggle-row"><div><b>サウンド</b><small>BGMと効果音</small></div><button class="toggle ${save.sound?'on':''}" role="switch" aria-checked="${save.sound}" aria-label="サウンド" data-action="toggle-sound"></button></div><div class="toggle-row"><div><b>演出を控えめに</b><small>粒子・画面振動・開封の光を控えめに</small></div><button class="toggle ${save.reduced?'on':''}" role="switch" aria-checked="${save.reduced}" aria-label="演出を控えめに" data-action="toggle-reduced"></button></div><div class="settings-box"><h4>iPhoneのホーム画面に追加</h4><p>Safariの共有メニューから「ホーム画面に追加」を選ぶと、アプリとして起動できます。</p><p class="small-note">オフライン対応にはHTTPS、またはlocalhostでの初回読み込みが必要です。</p></div><div class="settings-box"><h4>冒険の記録</h4><p>最高記録 ${save.best}m ・ 挑戦 ${save.runs}回<br>このブラウザにコイン・強化・オーラを保存します。進行中のステージは再読み込みで終了します。</p><p class="small-note">${storageOK?'自動保存は有効です。ブラウザのデータ削除で記録も削除されます。':'現在このブラウザでは保存できません。データはこの画面を閉じると失われます。'}</p></div>${button('help','操作ガイド','secondary')}<p class="small-note" style="margin-top:24px;text-align:center">MAGMA ESCAPE 2.1.0<br>Made with imagination. / MACKY STUDIO</p></div>`;
   }
   $('#panel').scrollTop=0;
 }
@@ -49,8 +51,8 @@ function leavePanel(){if(returnToPause&&game?.alive){returnToPause=false;showVie
 function start(){
   if(!assetsReady){toast('素材を読み込んでいます');return;}
   if(cinema)return;closeDialog();resetInput();returnToPause=false;quiz=null;battle=null;gameOverHandled=false;deathDelay=0;
-  runStartBest=save.best;game=new Game({speed:save.speed,jet:save.jet,onEvent:handleGameEvent});save.runs++;persist();showView('game');tipUntil=7;$('#game-tip').textContent='JUMP長押しで連続ジャンプ！';$('#game-tip').style.opacity='1';renderer.effects=[];renderer.labels=[];renderer.rings=[];accumulator=0;sound.unlock();
-  if(!save.tutorial){game.pause();openDialog('tutorial',`<p class="section-kicker">READY TO CLIMB?</p><h2>1m先へ、飛び出そう。</h2><p class="lede">足場をジャンプでつないで、<br>迫るマグマから逃げよう。</p><div class="help-row"><div class="help-symbol">‹ ›</div><div><h4>左手で移動</h4><p>パソコンは ← → キー</p></div></div><div class="help-row"><div class="help-symbol">↑</div><div><h4>右手でジャンプ</h4><p>パソコンは Space キー</p></div></div><div class="help-row"><div class="help-symbol">⇡</div><div><h4>ピンチはジェット</h4><p>JET / E を長押し。足場で充電。</p></div></div>${button('tutorial-go','わかった、出発！')}`);}
+  runStartBest=save.best;game=new Game({speed:save.speed,jet:save.jet,onEvent:handleGameEvent});save.runs++;persist();showView('game');tipUntil=7;$('#game-tip').textContent='空中で再タップ＝二段 / 壁でJUMP＝壁キック';$('#game-tip').style.opacity='1';renderer.effects=[];renderer.labels=[];renderer.rings=[];accumulator=0;sound.unlock();
+  if(!save.tutorial){game.pause();openDialog('tutorial',`<p class="section-kicker">READY TO CLIMB?</p><h2>1m先へ、飛び出そう。</h2><p class="lede">足場をジャンプでつないで、<br>迫るマグマから逃げよう。</p><div class="help-row"><div class="help-symbol">‹ ›</div><div><h4>左手で移動</h4><p>パソコンは ← → キー</p></div></div><div class="help-row"><div class="help-symbol">↑</div><div><h4>二段ジャンプ ＋ 壁キック</h4><p>空中でJUMPを押し直すと二段目。<br>左右の壁に寄せてJUMPで壁キック。<br>パソコンは Space キー。</p></div></div><div class="help-row"><div class="help-symbol">⇡</div><div><h4>ピンチはジェット</h4><p>JET / E を長押し。足場で充電。</p></div></div>${button('tutorial-go','わかった、出発！')}`);}
   updateHUD();renderer.render(game,save,0);
 }
 function resume(){closeDialog();quiz=null;battle=null;game?.resume();accumulator=0;resetInput();}
@@ -65,18 +67,20 @@ function handleGameEvent(e){
   if(e.type==='coins'){save.coins+=e.amount;persist();sound.play('coin');}
   if(e.type==='pickup'){renderer?.burst(e.x,e.y,'#ffdc7c',8);renderer?.label(e.x,e.y+20,'+5','#ffdc7c');}
   if(e.type==='land'){renderer?.land(e);sound.play(e.perfect?'coin':'land');const earned=awardMilestones(save,game.highestLanded);if(earned.length){game.coins+=earned.reduce((n,m)=>n+m.reward,0);persist();sound.play('milestone');const m=earned.at(-1);toast(`${m.height}m 達成！ 初回報酬 +${earned.reduce((n,m)=>n+m.reward,0)} コイン`);}}
-  if(e.type==='jump')sound.play('jump');
+  if(e.type==='jump'){sound.play('jump');if(e.kind==='double'||e.kind==='wall'){renderer?.burst(e.x,e.y,e.kind==='wall'?'#ffcf8f':'#a5ffe0',16);renderer?.label(e.x,e.y+82,e.kind==='wall'?'WALL KICK':'DOUBLE JUMP',e.kind==='wall'?'#ffcf8f':'#a5ffe0');}}
   if(e.type==='death'){deathDelay=.75;resetInput();renderer?.burst(game.player.x,game.player.y,'#ffad5c',35);sound.play('bad');}
   if(e.type==='shop')showShop();
   if(e.type==='quiz')showQuiz();
   if(e.type==='battle')showBattle();
+  if(e.type==='encounter'){renderer?.burst(e.x,e.y,e.kind==='quiz'?'#c3a4ff':'#ffa870',18);sound.play(e.kind==='quiz'?'coin':'hit');}
+  if(e.type==='pressure'&&(e.phase==='warning'||e.phase==='surge'||e.phase==='breather')){tipUntil=game.time+2.5;$('#game-tip').textContent=e.phase==='warning'?'▲ まもなくマグマが噴き上がる！':e.phase==='surge'?'MAGMA RUSH / 二段ジャンプで急げ！':'小休止 / 足場で燃料を回復しよう';if(e.phase==='warning')sound.play('bad');}
   if(e.type==='zone'){tipUntil=game.time+4;$('#game-tip').textContent=e.zone===1?'ZONE 02 / 揺らぐ火山壁':'ZONE 03 / 天空の試練';sound.play('milestone');}
   if(e.type==='summit'){save.best=Math.max(save.best,game.height);persist();sound.reveal(4);openDialog('summit',`<p class="section-kicker">VOLCANIC TOWER CLEARED</p><h2>100m、その先の空へ。</h2><img class="summit-art" src="assets/aura-phoenix.webp" alt="火山塔の踏破を祝う冒険者"><p class="lede">おめでとう！ 火山塔を踏破しました。<br>この先は、終わりのない天空の試練。<br>空腹・体力・燃料を全回復して進もう。</p><div class="result-combo"><span>最高 ${game.maxCombo} COMBO</span><span>獲得 ${game.coins} COINS</span></div>${button('endless','無限エリアに挑戦する →')}${button('summit-finish','今回の冒険を終える','secondary')}`);}
 }
 function showShop(){openDialog('shop',`<p class="section-kicker">CHECKPOINT / ${Math.floor(game.player.y/METER)}m</p><h2>いただきます、冒険飯。</h2><p class="lede">ここではマグマもひと休み。<br>ご飯を食べて、元気に出発しよう。</p><div class="shop-hunger">空腹 <strong id="shop-hunger">${Math.round(game.hunger)}%</strong> <span style="padding:0 12px">/</span> <i class="coin-icon"></i> <b data-coins>${save.coins}</b></div>${FOOD.map(f=>`<article class="food-card"><div class="card-top"><span class="sprite-icon item-${f.sprite}"></span><div><h4>${f.name}</h4><p>${f.caption}</p><p style="color:#a0e2c6;margin-top:7px">${f.heal===100?'空腹を全回復':'空腹 +'+f.heal+'%'}</p></div></div><button class="purchase" data-action="buy-food" data-id="${f.id}">食べる <i class="coin-icon"></i> ${f.price}</button></article>`).join('')}${button('resume','元気に出発する')}`);}
-function showQuiz(){const q=QUESTIONS[Math.floor(Math.random()*QUESTIONS.length)];quiz={q,remaining:10,answered:false};openDialog('quiz',`<p class="section-kicker">QUICK QUIZ / BONUS +25</p><h2>冒険の知恵だめし。</h2><p class="question">${q.q}</p>${q.a.map((a,i)=>`<button class="quiz-choice" data-action="answer" data-index="${i}"><strong>${'ABC'[i]}</strong>${a}</button>`).join('')}<div class="timer-bar"><i id="quiz-timer"></i></div><p class="small-note">10秒で答えよう。マグマは止まっています。</p>`);}
+function showQuiz(){const q=QUESTIONS[Math.floor(Math.random()*QUESTIONS.length)];quiz={q,remaining:10,answered:false};openDialog('quiz',`<p class="section-kicker">QUICK QUIZ / BONUS +25</p><h2>クイズオーブを手に入れた！</h2><p class="question">${q.q}</p>${q.a.map((a,i)=>`<button class="quiz-choice" data-action="answer" data-index="${i}"><strong>${'ABC'[i]}</strong>${a}</button>`).join('')}<div class="timer-bar"><i id="quiz-timer"></i></div><p class="small-note">10秒で答えよう。マグマは止まっています。</p>`);}
 function answer(index){if(!quiz||quiz.answered)return;quiz.answered=true;const success=index===quiz.q.correct;if(success){game.addCoins(25);game.hunger=Math.min(100,game.hunger+10);}sound.play(success?'good':'bad');openDialog('quiz-result',`<p class="section-kicker">${success?'BRILLIANT!':'A LITTLE WISDOM'}</p><h2>${success?'大正解！':'次はきっと、わかる。'}</h2><p class="lede">正解は「${quiz.q.a[quiz.q.correct]}」<br>${quiz.q.note}</p>${success?'<div class="pause-stats"><b>+25 コイン</b><b>空腹 +10</b></div>':''}${button('resume','冒険をつづける')}`);}
-function showBattle(){battle={time:0,hits:0,lives:3,cooldown:0,remaining:20,cursor:.5,ending:false};openDialog('battle',`<p class="section-kicker">GOLEM CHALLENGE / BONUS +40</p><h2>マグマゴーレムが現れた！</h2><div class="battle-arena"><img class="battle-enemy" src="assets/enemy.webp" alt="マグマゴーレム"><span class="battle-impact">HIT!</span></div><div class="enemy-health" aria-label="ゴーレムの体力"><i></i><i></i><i></i></div><div class="battle-lives" id="battle-lives">♥ ♥ ♥</div><div class="battle-score" id="battle-score">ヒット 0 / 3 ・ のこり20秒</div><div class="battle-track"><i class="target"></i><i id="battle-needle" class="needle"></i></div><p id="battle-message" class="battle-message">白いバーが緑のゾーンに来たらタップ！</p>${button('attack','タイミングアタック！')}<p class="small-note">3回成功で勝利。失敗3回で空腹 −15。<br>この間、マグマは止まっています。</p>`);}
+function showBattle(){battle={time:0,hits:0,lives:3,cooldown:0,remaining:20,cursor:.5,ending:false};openDialog('battle',`<p class="section-kicker">GOLEM CHALLENGE / BONUS +40</p><h2>ゴーレムとぶつかった！</h2><div class="battle-arena"><img class="battle-enemy" src="assets/enemy.webp" alt="マグマゴーレム"><span class="battle-impact">HIT!</span></div><div class="enemy-health" aria-label="ゴーレムの体力"><i></i><i></i><i></i></div><div class="battle-lives" id="battle-lives">♥ ♥ ♥</div><div class="battle-score" id="battle-score">ヒット 0 / 3 ・ のこり20秒</div><div class="battle-track"><i class="target"></i><i id="battle-needle" class="needle"></i></div><p id="battle-message" class="battle-message">白いバーが緑のゾーンに来たらタップ！</p>${button('attack','タイミングアタック！')}<p class="small-note">3回成功で勝利。失敗3回で空腹 −15。<br>この間、マグマは止まっています。</p>`);}
 function attack(){if(!battle||battle.cooldown>0||battle.ending)return;const ok=battle.cursor>=.35&&battle.cursor<=.65;battle.cooldown=.65;const arena=$('.battle-arena');arena.classList.remove('hit','miss');void arena.offsetWidth;arena.classList.add(ok?'hit':'miss');if(ok){battle.hits++;sound.play('hit');$('.battle-impact').textContent=Math.abs(battle.cursor-.5)<.055?'PERFECT!':'HIT!';$('#battle-message').textContent='ナイス！ ゴーレムにヒット！';$$('.enemy-health i').forEach((e,i)=>e.classList.toggle('empty',i<battle.hits));}else{battle.lives--;sound.play('bad');$('#battle-message').textContent='惜しい！ 緑のゾーンを狙おう。';}if(battle.hits>=3||battle.lives<=0)battle.ending=true;}
 function endBattle(won){if(!battle)return;battle=null;if(won)game.addCoins(40);else game.hunger=Math.max(0,game.hunger-15);openDialog('battle-result',`<p class="section-kicker">${won?'GOLEM DEFEATED':'KEEP ON CLIMBING'}</p><h2>${won?'道が、ひらけた！':'なんとか逃げ切った！'}</h2><img class="battle-enemy" src="assets/enemy.webp" alt="ゴーレム"><p class="lede">${won?'ゴーレムからの贈りもの。<br>40コインを手に入れた！':'逃げるのも、冒険の知恵。<br>空腹が15減りました。'}</p>${button('resume','上を目指そう')}`);}
 function gacha(count=1){if(cinema)return;if(save.pending){launchGacha(save.pending.entries);return;}const result=rollGacha(save,count);if(!result){toast('コインが足りません。冒険で集めよう！');return;}persist();launchGacha(result.entries);}
@@ -105,7 +109,7 @@ document.addEventListener('click',e=>{
   }else if(action==='draw')gacha(Number(b.dataset.count)||1);
   else if(action==='preview-select')previewSelect();
   else if(action==='preview'){if(AURAS.some(a=>a.id===b.dataset.id))launchGacha([{id:b.dataset.id,isNew:true,refund:0}],true);}
-  else if(action==='endless'){game.hunger=100;game.stamina=100;game.fuel=game.maxFuel;game.nextShop=Math.max(game.nextShop,game.highestLanded+15);game.nextQuiz=Math.max(game.nextQuiz,game.highestLanded+12);game.nextBattle=Math.max(game.nextBattle,game.highestLanded+22);resume();}
+  else if(action==='endless'){game.hunger=100;game.stamina=100;game.fuel=game.maxFuel;game.nextShop=Math.max(game.nextShop,game.highestLanded+15);resume();}
   else if(action==='summit-finish')finish();
   else if(action==='equip'||action==='equip-drawn'){
     if(!save.owned.includes(b.dataset.id))return;save.equipped=b.dataset.id;persist();if(action==='equip-drawn')closeDialog();else panel('collection');toast('オーラを装備しました');
@@ -143,6 +147,13 @@ function updateHUD(){if(!game)return;$('#height').innerHTML=`${game.height}<span
   const gap=(game.player.y-game.lava)/METER;$('#lava-gap').textContent=gap.toFixed(1)+'m';$('.lava-distance').style.color=gap<2?'#ffc07e':'';
   $('#zone-label').textContent=game.height>100?'03 / 天空の試練':game.height>50?'02 / 揺らぐ火山壁':'01 / はじまりの峡谷';
   $('#game-tip').style.opacity=game.time<tipUntil?'1':'0';
+  const phase=game.pressure.phase;$('#pressure-panel').dataset.phase=phase;
+  $('#pressure-label').textContent=phase==='start'?'スタート猶予':phase==='warning'?`噴き上がりまで ${game.pressure.warning}秒`:phase==='surge'?'▲ MAGMA RUSH':phase==='breather'?'小休止 / RECOVER':'マグマ接近中';
+  const route={intro:'ウォームアップ',flow:'リズム区間',sprint:'連続ジャンプ区間',traverse:'横移動区間',rest:'広い休憩足場'}[routeSection(Math.max(1,game.height))];
+  $('#pressure-speed').textContent=`${(game.lavaSpeed/METER).toFixed(1)}m/s ・ ${route}`;
+  const wallReady=game.wallSide&&game.lastWall!==game.wallSide;
+  $('#air-jump-status').textContent=wallReady?'壁でJUMP ↗':game.airJumpAvailable?'空中JUMP ●':'空中JUMP ○ 着地で回復';
+  $('#air-jump-status').classList.toggle('spent',!game.airJumpAvailable);$('#air-jump-status').classList.toggle('wall-ready',!!wallReady);
 }
 function tick(now){
   const dt=last?Math.min((now-last)/1000,.1):0;last=now;

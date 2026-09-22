@@ -1,4 +1,4 @@
-import {W,H,METER,AURAS,clamp} from './core.js';
+import {W,H,METER,AURAS,clamp,encounterPosition} from './core.js';
 
 export class Renderer {
   constructor(canvas,assets,atlas){this.canvas=canvas;this.ctx=canvas.getContext('2d',{alpha:false});this.assets=assets;this.atlas=atlas;this.effects=[];this.labels=[];this.rings=[];this.shake=0;this.squash=0;this.reduced=false;this.resize();}
@@ -14,6 +14,8 @@ export class Renderer {
     drawWorld('world');if(game.height>48)drawWorld('world-mid',clamp((game.height-48)/5,0,1));if(game.height>98)drawWorld('world-sky',clamp((game.height-98)/5,0,1));
     c.fillStyle='rgba(8,21,38,.2)';c.fillRect(0,0,W,H);
     const sy=y=>H-155-(y-game.camera);
+    // Physical side walls are readable independently from the decorative background.
+    for(const side of [-1,1]){const x=side<0?0:W-10;c.save();c.fillStyle='#142e3de0';c.fillRect(x,0,10,H);c.fillStyle=game.wallSide===side?'#adffe5':'#82b6bc88';c.fillRect(side<0?9:W-10,0,2,H);for(let y=-32+(game.camera*.7)%32;y<H;y+=32){c.strokeStyle='#8bcfc33b';c.beginPath();c.moveTo(x,y+10);c.lineTo(x+10,y);c.stroke();}c.restore();}
     // Distant embers are screen-space, while platforms and effects remain in world-space.
     if(!save.reduced)for(let i=0;i<25;i++){
       const x=((i*71.7+Math.sin(t*.7+i)*15)%W),y=(H-((t*12+i*93)%H));
@@ -42,7 +44,19 @@ export class Renderer {
       if(s.id===game.nextShop){c.save();c.textAlign='center';c.font='bold 8px system-ui';c.fillStyle='#c7ffdf';c.fillText('SHOP',s.x,y-46);c.restore();}
       else if([10,25,50,100,200].includes(s.id)){c.save();c.textAlign='center';c.font='bold 9px system-ui';c.fillStyle='#ffdc9b';c.fillText(s.id===100?'100m / SUMMIT':`${s.id}m / MILESTONE`,s.x,y-46);c.restore();}
     }
+    // Draw encounter actors after all platforms so the next ledge cannot hide their faces or labels.
+    for(const s of game.platforms){
+      const y=sy(s.y);if(y<-60||y>H+60)continue;
+      if(s.encounter&&!s.encounter.used){
+        const e=s.encounter,pos=encounterPosition(s,t),ey=sy(pos.y),armed=t>=game.nextEventAllowed;
+        c.save();c.globalAlpha=armed?1:.6;c.shadowColor=e.type==='quiz'?'#bca5ff':'#ff9764';c.shadowBlur=14;
+        if(e.type==='battle'){c.drawImage(this.assets.enemy,pos.x-27,ey-29,54,57);}
+        else{c.fillStyle='#303356';c.strokeStyle='#d8c1ff';c.lineWidth=2;c.beginPath();c.arc(pos.x,ey,14,0,Math.PI*2);c.fill();c.stroke();c.shadowBlur=0;c.fillStyle='#f0e6ff';c.font='bold 19px system-ui';c.textAlign='center';c.fillText('?',pos.x,ey+7);}
+        c.shadowBlur=0;c.textAlign='center';c.font='bold 7px system-ui';c.fillStyle=e.type==='quiz'?'#ead7ff':'#ffdab9';c.strokeStyle='#0c1b30';c.lineWidth=3;const label=e.type==='quiz'?'QUIZ +25':'BATTLE +40';c.strokeText(label,pos.x,ey-34);c.fillText(label,pos.x,ey-34);c.restore();
+      }
+    }
     const py=sy(p.y);
+    if(game.wallSliding&&!save.reduced&&Math.random()<dt*35)this.burst(p.x, p.y+14,'#b3ffe9',1);
     const aura=AURAS.find(a=>a.id===save.equipped)||AURAS[0];
     c.save();c.translate(p.x,py-27);
     if(aura.id!=='ember'){
@@ -76,5 +90,6 @@ export class Renderer {
       if(!save.reduced){c.strokeStyle='#ffcb6477';c.lineWidth=1.5;for(let i=0;i<9;i++){const x=(i*67+t*7)%W,y=ly+26+(i*37)%(Math.max(30,H-ly));c.beginPath();c.ellipse(x,y,17+i%3*8,3,Math.sin(t+i)*.3,0,Math.PI*2);c.stroke();}}
     }
     if(game.hunger<20){c.fillStyle='#df693022';c.fillRect(0,0,W,H);}
+    if(game.pressure.phase==='surge'||game.pressure.phase==='warning'){const g=c.createLinearGradient(0,H-210,0,H);g.addColorStop(0,'#ff572000');g.addColorStop(1,game.pressure.phase==='surge'?'#ff602e44':'#ffb32a22');c.fillStyle=g;c.fillRect(0,H-210,W,210);}
   }
 }

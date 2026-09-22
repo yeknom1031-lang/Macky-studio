@@ -1,5 +1,18 @@
 export const W = 420, H = 760, METER = 64;
 export const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
+export function lavaPressure(time,height){
+  if(time<4)return {phase:'start',speed:0,warning:0};
+  const base=Math.min(96,22+height*.42+Math.max(0,time-20)*.18);
+  if(time<14)return {phase:'climb',speed:base,warning:0};
+  const cycle=(time-14)%26;
+  const phase=cycle<7?'climb':cycle<10?'warning':cycle<16?'surge':'breather';
+  return {phase,speed:base*(phase==='surge'?1.8:phase==='breather'?.65:1),warning:phase==='warning'?Math.ceil(10-cycle):0};
+}
+export const routeSection=n=>n<=8?'intro':['flow','sprint','traverse','rest'][Math.floor((n-9)/8)%4];
+export function encounterPosition(platform,time){
+  const e=platform.encounter;
+  return {x:platform.x+e.offset+(e.type==='battle'?Math.sin(time*1.8+platform.phase)*6:0),y:platform.y+28};
+}
 export const AURAS = [
   { id: 'ember', name: 'エンバー', rarity: 'N', color: '#ffab5c', weight: 40, detail: '小さな火花をまとって。' },
   { id: 'mint', name: 'ウィスプ', rarity: 'R', color: '#79efdd', weight: 25, detail: 'ふわり、風のような光。' },
@@ -72,26 +85,35 @@ export class Game {
     this.platforms=[{id:0,x:210,baseX:210,y:0,baseY:0,w:310,type:'normal',phase:0,touched:-1,solid:true,coin:false}];
     this.generated=0;this.lastX=210;this.time=0;this.height=0;this.peak=0;this.camera=0;this.lava=-150;
     this.hunger=100;this.stamina=100;this.fuel=this.maxFuel;this.coins=0;this.alive=true;this.paused=false;this.event=null;
-    this.nextShop=15;this.nextQuiz=12;this.nextBattle=22;this.jumpBuffer=0;this.wasJump=false;this.jetting=false;this.particles=[];
+    this.nextShop=15;this.jumpBuffer=0;this.wasJump=false;this.jetting=false;this.particles=[];
+    this.airJumpAvailable=true;this.wallSide=0;this.lastWall=0;this.wallLock=0;this.wallSliding=false;
+    this.lavaSpeed=0;this.pressure=lavaPressure(0,0);this.resumeGrace=0;
     this.highestLanded=0;this.combo=0;this.maxCombo=0;this.perfects=0;this.lastLanding=0;this.cleared=false;this.nextEventAllowed=0;this.zone=0;
     this.generate(18);
   }
   get maxFuel(){return 1.8+this.levels.jet*0.35;}
   generate(to){
     while(this.generated<to){
-      const n=++this.generated; const r=this.random(); const w=n<=50?138:n<=100?110:Math.max(76,106-(n-100)*0.12);
+      const n=++this.generated; const r=this.random(); let w=n<=50?138:n<=100?110:Math.max(76,106-(n-100)*0.12);
+      const section=routeSection(n);
       const reach=n<=50?95:105;
       const direction=Math.floor((n-1)/3)%2===0?-1:1;
-      const target=clamp(this.lastX+direction*(35+this.random()*55),80,340);
+      const stride=section==='sprint'?25+this.random()*20:section==='traverse'?85+this.random()*20:35+this.random()*55;
+      const target=clamp(this.lastX+direction*stride,80,340);
       const next=clamp(target,this.lastX-reach,this.lastX+reach);this.lastX=next;
       let type='normal';
       if(n>8){const special=n<=50?0.23:0.67;if(r<special)type=['moving','blink','crumble'][Math.floor(this.random()*3)];}
-      if(n%5===0||n===12||n===22||n===100)type='normal';
-      this.platforms.push({id:n,x:next,baseX:next,y:n*METER,baseY:n*METER,w,type,phase:this.random()*6.28,touched:-1,solid:true,coin:true,vertical:type==='moving'&&n%2===0});
+      if(section==='sprint'){type=n%3===0?'crumble':'normal';w=Math.max(100,w-10);}
+      if(section==='rest'){type='normal';w=Math.min(170,w+24);}
+      const encounterType=n>=22&&(n-22)%30===0?'battle':n>=12&&(n-12)%22===0?'quiz':null;
+      if(n%5===0||encounterType||n===100)type='normal';
+      if(encounterType)w=Math.max(w,146);
+      const encounter=encounterType?{type:encounterType,offset:(n%4<2?-1:1)*(w*.32),used:false,revealedAt:null}:null;
+      this.platforms.push({id:n,x:next,baseX:next,y:n*METER,baseY:n*METER,w,type,section,encounter,phase:this.random()*6.28,touched:-1,solid:true,coin:true,vertical:type==='moving'&&n%2===0});
     }
   }
   pause(){this.paused=true;this.wasJump=false;this.jumpBuffer=0;this.jetting=false;}
-  resume(){this.paused=false;this.event=null;this.wasJump=false;this.jumpBuffer=0;this.nextEventAllowed=this.time+2.5;}
+  resume(){this.resumeGrace=this.event ? .8 : 0;this.paused=false;this.event=null;this.wasJump=false;this.jumpBuffer=0;this.nextEventAllowed=this.time+2.5;}
   trigger(type){const ground=this.platforms.find(s=>s.id===this.player.ground);if(ground){ground.type='normal';ground.solid=true;}this.event=type;this.pause();this.onEvent({type});}
   die(){if(!this.alive)return;this.alive=false;this.onEvent({type:'death',height:this.height,coins:this.coins,time:this.time});}
   addCoins(amount){this.coins+=amount;this.onEvent({type:'coins',amount});}
@@ -99,6 +121,7 @@ export class Game {
     if(!this.alive||this.paused)return;
     dt=Math.min(dt,1/30);this.time+=dt;
     const p=this.player,previousGround=p.ground;
+    this.wallLock=Math.max(0,this.wallLock-dt);this.resumeGrace=Math.max(0,this.resumeGrace-dt);
     this.hunger=Math.max(0,this.hunger-dt*0.6);
     this.stamina=Math.min(100,this.stamina+dt*(p.ground!==null?26:5)*(this.hunger<20?.5:1));
     this.fuel=Math.min(this.maxFuel,this.fuel+(p.ground!==null?dt*2:0));
@@ -117,25 +140,36 @@ export class Game {
       }
     }
     if(p.ground!==null)p.coyote=.105;else p.coyote=Math.max(0,p.coyote-dt);
-    if(input.jump&&!this.wasJump)this.jumpBuffer=.14;
+    const pressed=input.jump&&!this.wasJump;
+    if(pressed)this.jumpBuffer=.14;
     if(input.jump&&p.ground!==null)this.jumpBuffer=.14;
     this.wasJump=!!input.jump;this.jumpBuffer=Math.max(0,this.jumpBuffer-dt);
-    if(this.jumpBuffer>0&&p.coyote>0){
-      p.vy=590;p.ground=null;p.coyote=0;this.jumpBuffer=0;this.stamina=Math.max(0,this.stamina-9);this.onEvent({type:'jump'});
-    }
+    this.wallSide=p.ground===null?(p.x<=24?-1:p.x>=W-24?1:0):0;
+    if(this.wallSide&&this.lastWall&&this.wallSide!==this.lastWall)this.lastWall=0;
+    let jumpKind=null;
+    if(this.jumpBuffer>0&&p.coyote>0){p.vy=590;this.airJumpAvailable=true;jumpKind='ground';}
+    else if(pressed&&this.wallSide&&this.lastWall!==this.wallSide&&this.wallLock===0){
+      p.vy=610;p.vx=-this.wallSide*310;p.face=-this.wallSide;this.lastWall=this.wallSide;this.wallLock=.2;this.airJumpAvailable=true;jumpKind='wall';
+    }else if(pressed&&p.ground===null&&this.airJumpAvailable){p.vy=555;this.airJumpAvailable=false;jumpKind='double';}
+    if(jumpKind){p.ground=null;p.coyote=0;this.jumpBuffer=0;this.stamina=Math.max(0,this.stamina-(jumpKind==='ground'?9:6));this.onEvent({type:'jump',kind:jumpKind,x:p.x,y:p.y});}
     const direction=(input.right?1:0)-(input.left?1:0);
     const moveSpeed=(205+this.levels.speed*11)*(this.hunger<20?.8:1)*(this.stamina<10?.87:1);
-    p.vx+=(direction*moveSpeed-p.vx)*Math.min(1,dt*18);
-    if(direction)p.face=direction;
+    if(this.wallLock===0)p.vx+=(direction*moveSpeed-p.vx)*Math.min(1,dt*18);
+    if(direction&&this.wallLock===0)p.face=direction;
     p.x=clamp(p.x+p.vx*dt,18,W-18);
     this.jetting=!!input.jet&&this.fuel>0;
     if(this.jetting){p.vy=Math.min(345,Math.max(180,p.vy)+dt*950);p.ground=null;p.coyote=0;this.fuel=Math.max(0,this.fuel-dt);}
     const prevY=p.y;
-    p.vy-=1450*dt;p.y+=p.vy*dt;
+    p.vy-=1450*dt;
+    this.wallSide=p.ground===null?(p.x<=24?-1:p.x>=W-24?1:0):0;
+    this.wallSliding=!!(this.wallSide&&direction===this.wallSide&&p.vy<0&&!this.jetting&&this.wallLock===0);
+    if(this.wallSliding)p.vy=Math.max(p.vy,-115);
+    p.y+=p.vy*dt;
     p.ground=null;
     if(p.vy<=0){
       const possible=this.platforms.filter(s=>s.solid&&prevY>=s.y-.8&&p.y<=s.y&&Math.abs(p.x-s.x)<s.w/2+11).sort((a,b)=>b.y-a.y);
       if(possible.length){const s=possible[0];const impact=-p.vy;p.y=s.y;p.vy=0;p.ground=s.id;
+        this.airJumpAvailable=true;this.lastWall=0;this.wallSide=0;this.wallSliding=false;
         if(s.touched<0)s.touched=this.time;
         if(previousGround!==s.id&&impact>80){
           const isNew=s.id>this.highestLanded;let perfect=false;
@@ -148,18 +182,31 @@ export class Game {
     for(const s of this.platforms)if(s.coin&&Math.abs(p.x-s.x)<32&&Math.abs(p.y+25-(s.y+38))<38){s.coin=false;this.addCoins(5);this.onEvent({type:'pickup',x:s.x,y:s.y+38});}
     this.peak=Math.max(this.peak,p.y);this.height=Math.floor(this.peak/METER);
     this.camera+=Math.max(0,p.y-275-this.camera)*Math.min(1,dt*7);
-    if(this.time>4)this.lava=Math.max(this.lava+dt*Math.min(24,10+this.height*.07),this.peak-610);
+    const pressure=lavaPressure(this.time,this.height);
+    if(pressure.phase!==this.pressure.phase)this.onEvent({type:'pressure',phase:pressure.phase});
+    this.pressure=pressure;
+    const catchup=clamp((this.peak-this.lava-350)*.55,0,100);
+    this.lavaSpeed=this.time>4?(pressure.speed+catchup)*(this.resumeGrace>0?.3:1):0;
+    this.lava+=this.lavaSpeed*dt;
     if(p.y<this.lava+10||p.y<this.camera-200){this.die();return;}
     this.generate(Math.floor((this.camera+H)/METER)+6);
     this.platforms=this.platforms.filter(s=>s.y>this.lava-140||s.id===p.ground);
     const zone=this.height>100?2:this.height>50?1:0;
     if(zone!==this.zone){this.zone=zone;this.onEvent({type:'zone',zone});}
+    // Encounters exist in the world first; height alone never queues a quiz or battle.
+    for(const s of this.platforms){
+      const e=s.encounter;if(!e||e.used)continue;
+      const pos=encounterPosition(s,this.time),screenY=H-155-(pos.y-this.camera);
+      if(e.revealedAt===null&&screenY>165&&screenY<H-110)e.revealedAt=this.time;
+      if(e.revealedAt===null||this.time-e.revealedAt<.4||this.time<this.nextEventAllowed)continue;
+      if(Math.abs(p.x-pos.x)<(e.type==='battle'?32:27)&&Math.abs(p.y+29-pos.y)<(e.type==='battle'?39:30)){
+        e.used=true;this.onEvent({type:'encounter',kind:e.type,x:pos.x,y:pos.y});this.trigger(e.type);return;
+      }
+    }
     if(p.ground!==null&&this.time>=this.nextEventAllowed){
       const landed=p.ground;
       if(landed>=100&&!this.cleared){this.cleared=true;this.trigger('summit');}
       else if(landed>=this.nextShop){this.nextShop=landed+15;this.trigger('shop');}
-      else if(landed>=this.nextQuiz){this.nextQuiz=landed+22;this.trigger('quiz');}
-      else if(landed>=this.nextBattle){this.nextBattle=landed+30;this.trigger('battle');}
     }
   }
 }
