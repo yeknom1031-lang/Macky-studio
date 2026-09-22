@@ -1,0 +1,7 @@
+export class Sound {
+  constructor(){this.enabled=true;this.ctx=null;this.beat=0;this.note=0;}
+  unlock(){if(!this.enabled)return;try{this.ctx??=new(window.AudioContext||window.webkitAudioContext)();if(this.ctx.state==='suspended')this.ctx.resume().catch(()=>{});}catch{}}
+  tone(freq,duration=.12,volume=.035,type='sine',end=null){if(!this.enabled||!this.ctx||this.ctx.state!=='running')return;const t=this.ctx.currentTime,o=this.ctx.createOscillator(),g=this.ctx.createGain();o.type=type;o.frequency.setValueAtTime(freq,t);if(end)o.frequency.exponentialRampToValueAtTime(end,t+duration);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(volume,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+duration);o.connect(g);g.connect(this.ctx.destination);o.start(t);o.stop(t+duration+.02);}
+  play(name){if(name==='jump')this.tone(290,.12,.025,'sine',580);else if(name==='coin')this.tone(1046,.16,.025,'sine',1568);else if(name==='click')this.tone(620,.055,.015);else if(name==='good'){this.tone(523,.2);setTimeout(()=>this.tone(784,.3),100);}else if(name==='bad')this.tone(220,.25,.03,'triangle',100);else if(name==='gacha'){[523,659,784,1046].forEach((n,i)=>setTimeout(()=>this.tone(n,.4,.025),i*110));}}
+  update(dt){this.beat+=dt;if(this.beat>.52){this.beat=0;const notes=[164.81,0,246.94,329.63,196,0,293.66,392,130.81,0,196,261.63,146.83,0,220,293.66];const n=notes[this.note++%notes.length];if(n)this.tone(n,.42,.006);}}
+}

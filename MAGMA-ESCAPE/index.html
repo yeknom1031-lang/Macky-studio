@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101820">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="マグマから逃げろ。1m先へ、もう一度。画像生成アートで彩るサバイバル・アスレチック。">
+  <title>MAGMA ESCAPE — マグマ・エスケープ・アスレチック</title>
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <aside class="desktop-caption"><span class="mini-mark">M<span>↗</span></span><p>MACKY STUDIO</p><h2>あと1mの、<br>その先へ。</h2><p class="desktop-sub">A LITTLE COURAGE.<br>AN ENDLESS ADVENTURE.</p><div class="desktop-line"></div><p class="edition">MAGMA ESCAPE<br>VOL. 01 / SURVIVAL ATHLETIC</p></aside>
+  <main id="app" aria-label="マグマ・エスケープ・アスレチック">
+    <div id="home" class="screen home active">
+      <header class="home-header"><a class="studio" href="#" aria-label="ホーム">M<span>↗</span> <small>MACKY<br>STUDIO</small></a><div class="header-right"><span class="balance"><i class="coin-icon"></i><b data-coins>150</b></span><button class="icon-button" data-action="settings" aria-label="設定">⚙</button></div></header>
+      <section class="title-block"><span class="eyebrow"><i></i> SURVIVAL ATHLETIC</span><h1>MAGMA<br><span>ESCAPE</span><sup>↗</sup></h1><p>マグマ・エスケープ・アスレチック</p><div class="title-rule"></div><p class="tagline">迫るマグマ。目指すは、もっと上。</p></section>
+      <div class="world-tag"><span class="live-dot"></span> VOLCANIC TOWER <span>01</span></div>
+      <section class="home-bottom"><div class="record"><div><span class="record-label">YOUR PERSONAL BEST</span><strong><span data-best>0</span><small>m</small></strong></div><div class="record-note">次の1mが、<br>新しい冒険。</div><span class="record-arrow">↗</span></div><button class="play-button" data-action="play"><span class="play-triangle">▶</span><span>冒険をはじめる<small>LET'S CLIMB</small></span><b>→</b></button><button class="how-link" data-action="help">はじめての方へ <span>操作ガイド ↗</span></button></section>
+      <nav class="bottom-nav" aria-label="メニュー"><button class="selected" data-action="home" aria-label="ホーム"><span aria-hidden="true">⌂</span>ホーム</button><button data-action="upgrades" aria-label="強化"><span aria-hidden="true">⇧</span>強化</button><button data-action="gacha" aria-label="ガチャ"><span aria-hidden="true">◈</span>ガチャ</button><button data-action="collection" aria-label="コレクション"><span aria-hidden="true">✧</span>コレクション</button></nav>
+    </div>
+    <div id="game-screen" class="screen">
+      <canvas id="game" width="840" height="1520" aria-label="左右キーで移動、スペースでジャンプ、Eでジェットパック。タッチ操作も使えます。"></canvas>
+      <div class="game-vignette"></div>
+      <header class="game-hud"><button class="icon-button" data-action="pause" aria-label="ポーズ">Ⅱ</button><div class="height-pill"><small>ALTITUDE</small><b id="height">0<span>m</span></b></div><div class="run-coins"><i class="coin-icon"></i><b id="run-coins">0</b></div></header>
+      <div class="status-bars"><div class="stat-row"><span>空腹</span><div class="meter"><i id="hunger-fill"></i></div><b id="hunger-value">100</b></div><div class="stat-row cyan"><span>体力</span><div class="meter"><i id="stamina-fill"></i></div><b id="stamina-value">100</b></div></div>
+      <div class="zone-pill" id="zone-label">01 / はじまりの峡谷</div>
+      <div id="game-tip" class="game-tip">左右で移動、ジャンプで上へ！</div>
+      <div class="lava-distance"><span>▲ MAGMA</span><b id="lava-gap">3.6m</b></div>
+      <div class="touch-controls"><div class="movement"><button data-control="left" aria-label="左へ移動">‹</button><button data-control="right" aria-label="右へ移動">›</button></div><div class="actions"><button data-control="jet" class="jet-control" aria-label="ジェットパック"><span>⇡</span><small>JET</small><i id="fuel-fill"></i></button><button data-control="jump" class="jump-control" aria-label="ジャンプ"><span>↑</span><small>JUMP</small></button></div></div>
+    </div>
+    <section id="panel" class="screen panel" aria-label="メニュー"></section>
+    <div id="modal" class="modal-backdrop" hidden></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <div id="loading" class="loading"><span class="loader-mark">M↗</span><h2>冒険の準備中</h2><p>火山の向こうに、新しい世界。</p><div><i id="load-fill"></i></div><small id="load-status">0 / 8</small></div>
+  </main>
+  <aside class="desktop-controls"><span class="tiny-label">HOW TO PLAY</span><div><kbd>←</kbd><kbd>→</kbd><span>移動</span></div><div><kbd class="wide">SPACE</kbd><span>ジャンプ</span></div><div><kbd>E</kbd><span>ジェット</span></div><div><kbd>ESC</kbd><span>一時停止</span></div><p>スマートフォンでは<br>画面のボタンで操作できます。</p><span class="connection-status"><i></i> READY FOR ADVENTURE</span></aside>
+  <noscript>このゲームを遊ぶにはJavaScriptを有効にしてください。</noscript>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
