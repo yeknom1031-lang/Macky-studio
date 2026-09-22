@@ -300,6 +300,7 @@ func set_angle(side: int, value: float) -> void:
 
 func select_rail(side: int) -> void:
 	selected_side = side
+	for i in rails.size(): rails[i].set_selected(i == side)
 
 func insert(side: int) -> bool:
 	if not playing or guided.size() >= 14: return false
@@ -504,7 +505,12 @@ func resolve_roulette(sector: int) -> void:
 	var prize := payout_left-payout_before
 	sound.roulette_result("advance" if is_advance else ("jackpot" if is_jp else "win"))
 	roulette_root.last_hit = sector
-	bonus_show.finish(sector,resolved_stage,"NEXT STAGE!" if is_advance else ("JACKPOT!" if is_jp else "%d MEDALS"%prize),"ROUND %d / 3"%(round_stage+1) if is_advance else "実機ホッパーから払い出し",is_jp)
+	var title := "NEXT STAGE!" if is_advance else ("JACKPOT!" if is_jp else "%d MEDALS"%prize)
+	var detail := "第%d段階へ進出"%(round_stage+1) if is_advance else "%d枚を盤面へ払い出し"%prize
+	if sector == 3: detail = "ボール追加 ＋ %d枚"%prize
+	elif kind == 0 and sector == 2: detail = "次回の払い出し ×2"
+	elif is_jp and kind == 1: detail = "260枚 ＋ 新タワー98枚"
+	bonus_show.finish(sector,resolved_stage,title,detail,is_jp)
 	bonus_changed.emit()
 	refresh_lights()
 

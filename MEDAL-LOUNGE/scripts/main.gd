@@ -50,6 +50,7 @@ func _ready() -> void:
 	add_child(backdrop_layer)
 	var backdrop := TextureRect.new()
 	backdrop.texture = load("res://assets/generated/arcade-background.png")
+	backdrop.modulate = Color(0.58,0.62,0.68,1.0)
 	backdrop.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	backdrop.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -185,8 +186,7 @@ func update_hud() -> void:
 		if table.kind == 0 and table.payout_multiplier == 2: table.status_label.text += "  ×2"
 
 func new_modal(title: String, subtitle: String) -> VBoxContainer:
-	held_sides = [false,false]
-	pointers.clear()
+	reset_inputs()
 	active = false
 	table.set_simulation(false)
 	if is_instance_valid(modal): modal.free()
@@ -281,7 +281,7 @@ func restore_archive(path: String) -> void:
 	persist()
 
 func switch_machine(which: int) -> void:
-	held_sides = [false,false]
+	reset_inputs()
 	profile.tables[str(profile.machine)] = table.serialize()
 	table.free()
 	profile.machine = which
@@ -370,14 +370,7 @@ func on_win(count: int) -> void:
 func on_jackpot() -> void:
 	profile.jackpots += 1
 	if profile.haptics: Input.vibrate_handheld(240,0.8)
-	var flash := ColorRect.new()
-	flash.color = Color(0.9,0.68,0.28,0.22)
-	flash.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hud.add_child(flash)
-	flash.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var tween := create_tween()
-	tween.tween_property(flash,"color:a",0.0,1.4)
-	tween.tween_callback(flash.queue_free)
+	# Celebration belongs to the physical cabinet; keep the medal field unobscured.
 	persist()
 
 func notify_player(text: String) -> void:
@@ -405,7 +398,6 @@ func _process(delta: float) -> void:
 			persist()
 		if event_clock > 0:
 			event_clock -= delta
-			if event_clock <= 0: event_text.text = ""
 		var dir := float(Input.is_physical_key_pressed(KEY_RIGHT))-float(Input.is_physical_key_pressed(KEY_LEFT))
 		if dir != 0:
 			var s: int = table.selected_side
@@ -416,8 +408,9 @@ func _process(delta: float) -> void:
 		if hud_clock > 0.2:
 			hud_clock = 0.0
 			update_hud()
-	if is_instance_valid(fps_text):
-		fps_text.text = "%d FPS  •  %s  •  %d MEDALS ON FIELD" % [Engine.get_frames_per_second(),"METAL" if OS.get_name() in ["macOS","iOS"] else "3D",table.coins.size()]
+			if event_clock <= 0: event_text.text = table.bonus_show.player_hint()
+			if is_instance_valid(fps_text) and fps_text.visible:
+				fps_text.text = "%d FPS  •  %s  •  %d MEDALS ON FIELD" % [Engine.get_frames_per_second(),"METAL" if OS.get_name() in ["macOS","iOS"] else "3D",table.coins.size()]
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -432,27 +425,40 @@ func _notification(what: int) -> void:
 		persist()
 		get_tree().quit()
 	if what == NOTIFICATION_APPLICATION_PAUSED:
-		held_sides = [false,false]
+		reset_inputs()
 		persist()
 		if active: show_settings()
 	if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
-		held_sides = [false,false]
-		pointers.clear()
+		reset_inputs()
+
+func reset_inputs() -> void:
+	held_sides = [false,false]
+	hold_clocks = [0.0,0.0]
+	pointers.clear()
+	if not is_instance_valid(table): return
+	for cap in table.press_caps: cap.position.y = 0.59
+
+func _input(event: InputEvent) -> void:
+	# GUI controls may consume releases before _unhandled_input sees them.
+	# Release ownership here, including OS-cancelled touches, without consuming UI input.
+	if event is InputEventScreenTouch and (not event.pressed or event.canceled):
+		pointer_up(event.index)
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+		pointer_up(-100)
+	elif event is InputEventScreenDrag:
+		pointer_move(event.index,event.position)
+	elif event is InputEventMouseMotion:
+		pointer_move(-100,event.position)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not active: return
 	if event is InputEventScreenTouch:
-		if event.pressed: pointer_down(event.index,event.position)
-		else: pointer_up(event.index)
-	elif event is InputEventScreenDrag:
-		pointer_move(event.index,event.position)
+		if event.pressed and not event.canceled: pointer_down(event.index,event.position)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed: pointer_down(-100,event.position)
-		else: pointer_up(-100)
-	elif event is InputEventMouseMotion and pointers.has(-100):
-		pointer_move(-100,event.position)
 
 func pointer_down(id: int, pos: Vector2) -> void:
+	if not active or pointers.has(id): return
 	var radius := get_viewport().get_visible_rect().size.x*0.066
 	for side in 2:
 		var cap: Vector2 = table.camera.unproject_position(table.press_caps[side].global_position)
@@ -465,6 +471,9 @@ func pointer_down(id: int, pos: Vector2) -> void:
 	for side in 2:
 		var knob: Vector2 = table.camera.unproject_position(table.rails[side].handle.global_position)
 		if pos.distance_to(knob) <= radius:
+			# One owner per lever avoids jumps when a second finger touches it.
+			for action in pointers.values():
+				if action.mode == "rail" and action.side == side: return
 			pointers[id] = {"side":side,"mode":"rail","x":pos.x,"angle":table.angles[side]}
 			table.select_rail(side)
 			return
@@ -472,6 +481,11 @@ func pointer_down(id: int, pos: Vector2) -> void:
 func pointer_move(id: int, pos: Vector2) -> void:
 	if not pointers.has(id): return
 	var action: Dictionary = pointers[id]
+	if action.mode == "button":
+		var cap: Vector2 = table.camera.unproject_position(table.press_caps[action.side].global_position)
+		# Hysteresis keeps small finger movement comfortable; a deliberate slide cancels.
+		if pos.distance_to(cap) > get_viewport().get_visible_rect().size.x*0.10:
+			pointer_up(id)
 	if action.mode == "rail":
 		var width := get_viewport().get_visible_rect().size.x
 		table.set_angle(action.side,action.angle+(pos.x-action.x)/width*4.5)
@@ -633,8 +647,108 @@ func run_tests() -> void:
 	pointer_move(11,knob+Vector2(70,0))
 	check(table.angles[1] > 0.2,"dragging physical handle changes rail angle")
 	pointer_up(11)
+	run_interaction_checks()
 	print("TEST RESULT: %d failures" % fatal_count)
 	finish_run(0 if fatal_count == 0 else 1)
+
+func run_interaction_checks() -> void:
+	# Focused input/UX regressions, executed in the existing isolated QA session.
+	reset_inputs()
+	var left: Vector2 = table.camera.unproject_position(table.press_caps[0].global_position)
+	var right: Vector2 = table.camera.unproject_position(table.press_caps[1].global_position)
+	pointer_down(20,left)
+	pointer_down(21,right)
+	check(held_sides[0] and held_sides[1],"both physical buttons support simultaneous fingers")
+	var cancel := InputEventScreenTouch.new()
+	cancel.index = 20
+	cancel.pressed = true
+	cancel.canceled = true
+	_input(cancel)
+	check(not held_sides[0] and held_sides[1],"OS touch cancellation releases only the owning side")
+	var release := InputEventScreenTouch.new()
+	release.index = 21
+	release.position = Vector2(520,20)
+	release.pressed = false
+	_input(release)
+	check(not held_sides[1] and pointers.is_empty(),"release over GUI clears hold before GUI consumption")
+	pointer_down(-100,left)
+	var mouse_release := InputEventMouseButton.new()
+	mouse_release.button_index = MOUSE_BUTTON_LEFT
+	mouse_release.pressed = false
+	_input(mouse_release)
+	check(not held_sides[0],"mouse release follows the same global release path")
+	pointer_down(22,left)
+	pointer_down(23,left)
+	pointer_up(22)
+	check(held_sides[0],"releasing one of two fingers on a button keeps the other owner")
+	pointer_move(23,left+Vector2(3,2))
+	check(held_sides[0],"small finger movement retains the held button")
+	pointer_move(23,left+Vector2(180,0))
+	check(not held_sides[0] and pointers.is_empty(),"sliding away from a button cancels continuous insertion")
+	var knob: Vector2 = table.camera.unproject_position(table.rails[0].handle.global_position)
+	pointer_down(24,knob)
+	pointer_down(25,knob)
+	check(pointers.has(24) and not pointers.has(25),"lever has one drag owner")
+	pointer_move(24,knob+Vector2(3000,0))
+	check(table.angles[0] == 1.0,"lever dragging clamps at mechanical stop")
+	pointer_move(24,knob-Vector2(3000,0))
+	check(table.angles[0] == -1.0,"lever clamps at opposite stop")
+	pointer_up(24)
+	table.select_rail(1)
+	check(table.rails[1].selected_ring.visible and not table.rails[0].selected_ring.visible,"physical collar identifies the selected rail")
+	table.set_angle(1,0.7)
+	check(is_equal_approx(table.rails[1].dial_pointer.rotation.y,0.595),"mechanical dial follows rail setting")
+	pointer_down(26,left)
+	table.press_caps[0].position.y = 0.555
+	_notification(NOTIFICATION_WM_WINDOW_FOCUS_OUT)
+	check(pointers.is_empty() and not held_sides.has(true),"focus loss clears all pointer ownership")
+	check(is_equal_approx(table.press_caps[0].position.y,0.59),"focus loss releases visible physical button")
+	pointer_down(27,left)
+	show_settings()
+	check(pointers.is_empty() and not held_sides.has(true),"opening modal cancels hold and lever gestures")
+	var shots_before: int = profile.shots
+	pointer_down(28,left)
+	check(profile.shots == shots_before and pointers.is_empty(),"modal blocks physical input")
+	start_play(false)
+	var display = table.bonus_show
+	table.pending_colors.clear()
+	table.transit_t = -1
+	table.payout_left = 0
+	table.royal_colors = [true,false,true]
+	table.payout_multiplier = 1
+	display.mode = "idle"
+	display.reset_display()
+	check(display.sign_title.text == "COLOR  2 / 3" and display.sign_detail.text == "あと 青","cabinet identifies exactly the missing color")
+	table.payout_multiplier = 2
+	display.reset_display()
+	check(display.sign_detail.text.contains("×2"),"stored next-draw multiplier remains visible")
+	table.payout_left = 57
+	display.reset_display()
+	check(display.sign_title.text == "PAYOUT  057","cabinet shows actual remaining payout")
+	table.payout_left = 56
+	display.reset_display()
+	check(display.sign_title.text == "PAYOUT  056","payout countdown follows simulation rather than a timer")
+	table.payout_left = 0
+	table.pending_colors.append(1)
+	display.reset_display()
+	check(display.sign_title.text == "BALL TRANSFER","queued ball transport is explained")
+	table.pending_colors.clear()
+	table.resolve_roulette(2)
+	check(display.sign_detail.text.contains("×2"),"80 pocket announces next-draw benefit")
+	table.resolve_roulette(3)
+	check(display.sign_detail.text.contains("ボール追加"),"ball pocket describes the extra ball")
+	var hud_children := hud.get_child_count()
+	table.resolve_roulette(4)
+	check(hud.get_child_count() == hud_children,"jackpot adds no full-screen flash overlay")
+	check(display.sign_title.text == "JACKPOT!" and display.winner.visible,"jackpot retains cabinet lights and winning pocket")
+	table.set_simulation(false)
+	var result_time: float = display.result_left
+	display._process(1.0)
+	check(display.result_left == result_time,"pause preserves result display time")
+	table.set_simulation(true)
+	display._process(7.0)
+	check(display.mode == "idle" and display.sign_title.text.begins_with("PAYOUT"),"result transitions back to live payout display")
+	check(not display.player_hint().is_empty(),"persistent guidance remains after temporary messages expire")
 
 func capture_run() -> void:
 	for i in 270: await get_tree().physics_frame
@@ -654,19 +768,31 @@ func capture_run() -> void:
 		for i in 70: await get_tree().physics_frame
 	elif capture_screen == "jackpot":
 		# Isolated presentation QA only: never invoked by normal play.
+		if table.kind == 1: table.round_stage = 2
 		table.resolve_roulette(4)
+	elif capture_screen == "progress":
+		table.royal_colors = [true,false,true]
+		table.payout_multiplier = 2
+		table.refresh_lights()
+		event_clock = 0
+	elif capture_screen == "payout":
+		table.payout_left = 120
+		event_clock = 0
 	elif capture_screen == "builder":
 		table.tower_left = 98
 		for i in 790: await get_tree().physics_frame
 	else: insert(0)
 	for i in 36: await get_tree().physics_frame
+	print("CAPTURE: preparing frame for ",capture_screen)
+	# QA must not wait forever when macOS suppresses presentation for an occluded window.
+	RenderingServer.force_draw.call_deferred(false,0.0)
 	await RenderingServer.frame_post_draw
 	var img := get_viewport().get_texture().get_image()
 	var err := img.save_png(capture_path)
 	var flying := 0
 	for b in table.coins:
 		if b.position.y > 1.8: flying += 1
-	print("DIAGNOSTIC: high coins=",flying," audit=",table.audit," FPS=",Engine.get_frames_per_second())
+	print("DIAGNOSTIC: high coins=",flying," audit=",table.audit," elapsed=",table.elapsed," FPS=",Engine.get_frames_per_second())
 	print("CAPTURE: ",capture_path," ",error_string(err))
 	finish_run(0 if err == OK else 1)
 
