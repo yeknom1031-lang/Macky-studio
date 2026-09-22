@@ -1,5 +1,7 @@
 # 改訂版V2 検証記録 — 2026-09-22
 
+V3の検証は `QA-V3.md` を参照。この文書はV2の履歴を保持している。
+
 ## 実行環境
 
 - Apple M2 / macOS / Godot 4.7.2 stable / Metal 4.0 / Forward Mobile / Jolt Physics。

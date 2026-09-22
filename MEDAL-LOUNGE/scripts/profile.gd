@@ -1,5 +1,5 @@
 extends RefCounted
-var path := "user://medal_lounge_v2.json"
+var path := "user://medal_lounge_v3.json"
 var balance := 600
 var earned := 0
 var shots := 0
@@ -16,12 +16,13 @@ var test_mode := false
 var archive_dir := "user://medal_lounge_archives"
 var last_archive := ""
 
-func _init(is_test: bool = false, storage_path: String = "user://medal_lounge_v2.json") -> void:
+func _init(is_test: bool = false, storage_path: String = "user://medal_lounge_v3.json") -> void:
 	test_mode = is_test
 	path = storage_path
 	if test_mode: return
 	var candidates := [path,path+".bak"]
-	if path == "user://medal_lounge_v2.json" and not FileAccess.file_exists(path): candidates.append("user://medal_lounge_v1.json")
+	if path == "user://medal_lounge_v3.json" and not FileAccess.file_exists(path):
+		candidates.append_array(["user://medal_lounge_v2.json","user://medal_lounge_v2.json.bak","user://medal_lounge_v1.json"])
 	for candidate in candidates:
 		if not FileAccess.file_exists(candidate): continue
 		var json := JSON.new()

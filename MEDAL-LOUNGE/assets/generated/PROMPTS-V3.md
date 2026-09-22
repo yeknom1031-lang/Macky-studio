@@ -1,0 +1,15 @@
+# 改訂V3 / imagegen
+
+## arcade-reflection-v3.png
+
+Use case: photorealistic-natural. Asset type: 360-degree equirectangular reflection environment panorama for PBR metal inside a realistic Japanese arcade medal-pusher cabinet. Full spherical panoramic projection, exactly 2:1 width-to-height, seamless left-right horizon. A dim mature Japanese arcade interior, low contrast dark burgundy and navy cabinets in the equatorial band, real fluorescent ceiling light strips and rectangular warm white soft lights in the upper hemisphere, dark carpet lower hemisphere. Photographic realism, modest warm brass reflections, strong but NOT blown-out rectangular ceiling highlights, moderately underexposed room. No people, no recognizable brands, no readable signage, no foreground objects, no watermark. Not a flat wide-angle photo: accurate equirectangular environmental reflection map with distorted zenith ceiling and nadir floor. Detail should be softly out of focus, useful reflection shapes not a distracting scene.
+
+## silver-star-v3.png
+
+Use case: product-mockup. Asset type: a single front-face texture for a 3D silver arcade medal, readable at small screen sizes. Exactly one circular nickel-silver medal viewed perfectly front-on, centered, diameter 92 percent of square image, neutral dark gray background. Match a classic real Japanese amusement token: a LARGE raised five-point star occupying the central 55 percent, dark deeply engraved outline around the star, broad flat silver fields, sharply cut fine laurel wreath around it, beaded inner ring, double machined rim, tiny engraved 'MEDAL' at top and 'AMUSEMENT' bottom. Strong legible relief shadows within the engraving, not glossy glare. Subtle realistic fine wear but no noisy scratches overwhelming the motif. Soft diffuse cross polarized scan, uniform illumination, NO perspective, NO thickness visible, NO cast shadow, NO gold, NO gemstone, NO extra objects, NO watermark. Keep star and wreath substantially bolder and cleaner than a photographed low-contrast worn coin so the engraved motif stays visible in the 3D game at 32 pixels across.
+
+組み込み image_gen で生成。元画像をそのまま `cabinet-inlay-v3.png` へコピーし、3D筐体の印刷化粧板として使用。
+
+## cabinet-inlay-v3.png
+
+Use case: photorealistic-natural. Asset type: seamless game texture, lacquered arcade cabinet printed inlay, PBR base color. Primary request: extremely detailed black navy polished marble with subtle warm thin gold mineral veins and very restrained antique engraved arabesque filigree in fine brass ink, designed for an adult Japanese medal pusher cabinet influenced by a classic casino. Edge-to-edge square flat orthographic scanned material. Dark center, delicate organic swirling engraving distributed evenly, NO border frames, NO text, NO logo, NO crown, NO object, NO machine, NO perspective, NO reflections or baked lighting, NO vignette. High definition natural stone grain and shallow engraving, elegant restrained gold against almost-black midnight navy. Seamless across edges, uniform diffuse illumination. This is a texture to apply on actual 3D cabinet panels, not a concept scene.

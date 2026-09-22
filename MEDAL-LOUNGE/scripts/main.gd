@@ -148,8 +148,8 @@ func build_hud() -> void:
 	top.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
 	top.offset_left = 16
 	top.offset_right = -16
-	top.offset_top = 44
-	top.offset_bottom = 82
+	top.offset_top = 8
+	top.offset_bottom = 44
 	button(top,"台選択",show_lobby,36).add_theme_font_size_override("font_size",14)
 	var spacer := Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -176,6 +176,13 @@ func build_hud() -> void:
 func update_hud() -> void:
 	if not is_instance_valid(table) or not is_instance_valid(table.counter_label): return
 	table.counter_label.text = "FREE PLAY\nOUT  %05d" % session_wins
+
+	if is_instance_valid(table.status_label):
+		var colors := 0
+		for collected in table.royal_colors:
+			if collected: colors += 1
+		table.status_label.text = "COLORS  %d / 3"%colors if table.kind == 0 else "STAGE  %d / 3"%(table.round_stage+1)
+		if table.kind == 0 and table.payout_multiplier == 2: table.status_label.text += "  ×2"
 
 func new_modal(title: String, subtitle: String) -> VBoxContainer:
 	held_sides = [false,false]
@@ -211,7 +218,7 @@ func show_lobby() -> void:
 	persist()
 	var v := new_modal("台を選んでください","FREE PLAY ・ メダルの消費、補充待ちはありません。")
 	for i in 2:
-		label(v,"ROYAL MEDAL" if i == 0 else "IMPERIAL TOWER",22,GOLD)
+		label(v,"ROYAL PUSHER" if i == 0 else "IMPERIAL TOWER",22,GOLD)
 		label(v,"二段プッシャー・3色ボール" if i == 0 else "銀メダルタワー・連続抽選",14,Color("a4b4bc"))
 		var actions := HBoxContainer.new()
 		actions.add_theme_constant_override("separation",12)
@@ -261,7 +268,7 @@ func restore_archive(path: String) -> void:
 		notify_player(profile.last_error)
 		return
 	var restored = Profile.new(false,path)
-	restored.path = "user://medal_lounge_v2.json"
+	restored.path = "user://medal_lounge_v3.json"
 	profile = restored
 	sound.levels = profile.audio.duplicate()
 	sound.apply_levels()
@@ -297,8 +304,8 @@ func show_help() -> void:
 		"01  筐体の黒いレバーを左右にドラッグして狙う。",
 		"02  赤いMEDALボタンを押す。長押しで連続投入。",
 		"03  手前に落ちたメダルを獲得。横の溝は回収外。",
-		"04  ボールを手前へ落とすと、リフトから物理抽選へ。",
-		"05  ROYALは3色でJP。IMPERIALはJP枠を3回突破。",
+		"04  ボールを手前へ落とすと、回収レーン・リフトへ。",
+		"05  ROYALは3色で抽選。IMPERIALはJP枠を3回突破。",
 		"06  メダルは無制限。補充や購入は不要です。"]:
 		var l := label(v,item,17)
 		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -404,7 +411,7 @@ func _process(delta: float) -> void:
 			var s: int = table.selected_side
 			table.set_angle(s,table.angles[s]+dir*delta*0.7)
 		for side in 2:
-			table.press_caps[side].position.y = lerpf(table.press_caps[side].position.y,0.835 if held_sides[side] else 0.87,minf(1,delta*24))
+			table.press_caps[side].position.y = lerpf(table.press_caps[side].position.y,0.555 if held_sides[side] else 0.59,minf(1,delta*24))
 		hud_clock += delta
 		if hud_clock > 0.2:
 			hud_clock = 0.0
@@ -505,7 +512,7 @@ func run_tests() -> void:
 	check(table.guided.back().end.is_equal_approx(table.rail_ends[1]+Vector3(0,0.147,0)),"rolling medal follows adjusted rail")
 	for i in 100: await get_tree().physics_frame
 	var collected_before: int = table.audit.wins
-	table.spawn_coin(Vector3(0,-0.3,2.1))
+	table.spawn_coin(Vector3(0,-0.3,table.FRONT_EDGE+0.4))
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	check(table.audit.wins == collected_before+1,"front collection awards one medal")
@@ -514,7 +521,7 @@ func run_tests() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	check(profile.balance == balance_before,"side gutter does not award")
-	table.spawn_ball(Vector3(1.5,-0.3,2.05),0)
+	table.spawn_ball(Vector3(1.5,-0.3,table.FRONT_EDGE+0.4),0)
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	check(table.audit.balls > 0,"front ball is detected")
@@ -538,7 +545,7 @@ func run_tests() -> void:
 	table.pending_colors.clear()
 	check(table.tower_left >= 98,"jackpot queues tower builder")
 	table.tower_left = 7
-	for i in 270: await get_tree().physics_frame
+	for i in 630: await get_tree().physics_frame
 	check(table.audit.towers > 0,"builder transfers physical tower into field")
 	var snapshot: Dictionary = table.serialize()
 	switch_machine(0)
@@ -642,6 +649,12 @@ func capture_run() -> void:
 	if capture_screen == "lobby": show_lobby()
 	elif capture_screen == "settings": show_settings()
 	elif capture_screen == "help": show_help()
+	elif capture_screen == "roulette":
+		table.start_roulette()
+		for i in 220: await get_tree().physics_frame
+	elif capture_screen == "builder":
+		table.tower_left = 98
+		for i in 790: await get_tree().physics_frame
 	else: insert(0)
 	for i in 36: await get_tree().physics_frame
 	await RenderingServer.frame_post_draw

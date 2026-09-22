@@ -32,7 +32,10 @@ func _process(_delta: float) -> void:
 	if not enabled: return
 	for i in bodies.size():
 		var body := bodies[i]
-		var resting := body.sleeping or not body.visible
+		var resting := body.sleeping or body.freeze or not body.visible
+		if body.get_meta("stack_motion",false):
+			resting = false
+			body.set_meta("stack_motion",false)
 		if resting and sleeping_state[i]: continue
 		multimesh.set_instance_transform(i,body.get_global_transform_interpolated() if body.visible else HIDDEN)
 		sleeping_state[i] = resting
