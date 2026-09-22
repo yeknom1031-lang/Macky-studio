@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -eu
 medal_project_dir="${0:A:h}"
-medal_app="$medal_project_dir/build/v3/MEDAL LOUNGE.app"
+medal_app="$medal_project_dir/build/v4/MEDAL LOUNGE.app"
 if [[ -d "$medal_app" ]]; then
   open "$medal_app"
   exit 0

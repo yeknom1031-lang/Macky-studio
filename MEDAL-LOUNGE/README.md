@@ -4,7 +4,7 @@
 
 ## すぐ遊ぶ（このMac）
 
-`Play.command`、または `build/v3/MEDAL LOUNGE.app` をダブルクリックしてください。配布用は `build/MEDAL-LOUNGE-v3.zip` です。Godotなしでもアプリ版は起動できます。V1・V2のビルドは上書きせず残しています。
+`Play.command`、または `build/v4/MEDAL LOUNGE.app` をダブルクリックしてください。配布用は `build/MEDAL-LOUNGE-v4.zip` です。Godotなしでもアプリ版は起動できます。V1〜V3のビルドは上書きせず残しています。
 
 起動後、好きな台の「新規でプレイ」を選びます。メダルは無制限のFREE PLAYです。課金・広告・換金・通信はありません。「続きから」は盤面を再開、「保存したプレイ」は新規プレイ前に保管した盤面を復元します。
 
@@ -37,7 +37,8 @@
 - 12秒間隔、台選択、終了、アプリ中断時に自動保存。ファイル破損時は前回のバックアップを読みます。
 - 「新規でプレイ」は現在の両台の盤面を保管してから初期化。音量・画質設定は維持します。保管ファイルは消さず、画面から直近6件を再開できます。
 - 中断した抽選は再開時にやり直し。組み立て途中のタワーは素材へ戻して再生成します。
-- BGM・ゲームセンター環境音・機械音を個別調整。すべてオリジナルの合成音です。
+- BGM・ゲームセンター環境音・機械音を個別調整。66個のCC0音素材とオリジナル合成音を組み合わせ、金属音・電子音・遠い台のジングル・店内のざわめきを重ねます。投入音は左右に定位し、同じ音の連続を避けます。
+- ルーレットは開始→転がり→穴の開放→通常当選／次段階／JPで音が変化。抽選中はBGMと環境音を控えめにし、走る筐体ランプと当選ポケットの光を連動させます。全画面フラッシュはありません。
 - 高画質＝4x MSAA・60fps上限、最高画質＝8x MSAA・30fps上限。**上限は目標でありiPhone実測値ではありません。**
 - 画像生成したゲームセンター背景、ステンレス、星と月桂樹の銀メダル面、濃紺・真鍮の装飾パネル、反射用パノラマを実ゲームへ組み込みました。元画像・生成プロンプトは `assets/generated/` にあります。
 - 金属用シェーダー、面取り付き銀メダル、環境反射、動的影、ガラス、発光を使用。オフライン画像のパストレーシングではなくMobileレンダラーによるリアルタイム描画です。
@@ -66,9 +67,12 @@ Godot **4.7.2** で `project.godot` を開き、F6ではなくF5で起動。物�
 
 ```sh
 GODOT_BIN=/Applications/Godot.app/Contents/MacOS/Godot sh tools/check.sh
+GODOT_BIN=/Applications/Godot.app/Contents/MacOS/Godot sh tools/check-audio.sh
 GODOT_BIN=/Applications/Godot.app/Contents/MacOS/Godot sh tools/build-mac.sh
 ```
 
-テストはプレイヤーの保存を変更しません。主な実装は `scripts/main.gd`（画面・進行）、`scripts/machine.gd`（盤面・物理・抽選）、`scripts/art.gd`（3D形状）、`scripts/sound.gd`（合成音）、`scripts/profile.gd`（保存）です。
+テストはプレイヤーの保存を変更しません。音テストはスピーカーをミュートしてゲーム内部の音だけを録音し、`docs/audio-preview-v4.wav` を更新します。主な実装は `scripts/main.gd`（画面・進行）、`scripts/machine.gd`（盤面・物理・抽選）、`scripts/art.gd`（3D形状）、`scripts/sound.gd`（音素材とミキサー）、`scripts/bonus_show.gd`（抽選演出）、`scripts/profile.gd`（保存）です。
+
+V4の音素材・検証結果は [docs/AUDIO-V4.md](docs/AUDIO-V4.md)、出典は [assets/audio/CREDITS.md](assets/audio/CREDITS.md)。保存形式はV3と共通で、続きから遊べます。
 
 詳細は `docs/QA-V3.md`、`docs/IMPLEMENTATION.md`、`docs/PERFORMANCE-V3.md`、`docs/IMPROVEMENT-LOOP.md`。`screenshots/v3-*.png` がV3の実ゲームキャプチャです。生成した完成予想図ではありません。

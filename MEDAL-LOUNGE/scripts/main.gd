@@ -651,7 +651,10 @@ func capture_run() -> void:
 	elif capture_screen == "help": show_help()
 	elif capture_screen == "roulette":
 		table.start_roulette()
-		for i in 220: await get_tree().physics_frame
+		for i in 70: await get_tree().physics_frame
+	elif capture_screen == "jackpot":
+		# Isolated presentation QA only: never invoked by normal play.
+		table.resolve_roulette(4)
 	elif capture_screen == "builder":
 		table.tower_left = 98
 		for i in 790: await get_tree().physics_frame

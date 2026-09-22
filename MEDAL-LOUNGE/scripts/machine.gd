@@ -40,6 +40,7 @@ var royal_colors := [false,false,false]
 var payout_multiplier := 1
 var round_stage := 0
 var roulette_root: Node3D
+var bonus_show: Node3D
 var roulette_ball: RigidBody3D
 var roulette_clock := -1.0
 var roulette_color := 0
@@ -72,6 +73,9 @@ func setup(machine_kind: int, audio: Node, snapshot: Dictionary = {}) -> void:
 	build_environment()
 	build_cabinet()
 	build_roulette()
+	bonus_show = preload("res://scripts/bonus_show.gd").new()
+	add_child(bonus_show)
+	bonus_show.setup(self)
 	Art.batch_static(self,[pusher,hopper,tower_layer]+progress_lights+press_caps)
 	coin_batch = preload("res://scripts/coin_batch.gd").new()
 	add_child(coin_batch)
@@ -303,8 +307,9 @@ func insert(side: int) -> bool:
 	var start := rail_starts[side]+Vector3(0,0.147,0)
 	var end := rail_ends[side]+Vector3(0,0.147,0)
 	guided.append({"node":visual,"t":0.0,"start":start,"end":end,"side":side})
-	sound.play("insert",0.8)
-	sound.play("launch",0.7)
+	sound.play("button",0.4,-0.5 if side == 0 else 0.5)
+	sound.play("insert",0.8,-0.5 if side == 0 else 0.5)
+	sound.play("launch",0.45,-0.5 if side == 0 else 0.5)
 	return true
 
 func _physics_process(delta: float) -> void:
@@ -363,6 +368,7 @@ func _physics_process(delta: float) -> void:
 				b.linear_velocity = Vector3(0,-0.2,0.6)
 				b.angular_velocity = Vector3(rng.randf_range(-2,2),0,rng.randf_range(-2,2))
 				payout_left -= 1
+				if payout_left%4 == 0: sound.play("tower",0.27,hopper.position.x*0.4)
 	process_transit(delta)
 	process_roulette(delta)
 	process_builder(delta)
@@ -411,7 +417,10 @@ func process_transit(delta: float) -> void:
 			message.emit("カラー獲得  •  3色をそろえるとポケット抽選！")
 
 func start_roulette() -> void:
+	if is_instance_valid(roulette_ball): return
 	roulette_clock = 0
+	sound.roulette_start(round_stage if kind == 1 else 0)
+	bonus_show.begin(round_stage if kind == 1 else 0)
 	audit.rounds += 1
 	roulette_root.set_stage(round_stage if kind == 1 else 0)
 	roulette_root.set_shutters(0.0)
@@ -440,6 +449,7 @@ func process_roulette(delta: float) -> void:
 	roulette_clock += delta
 	roulette_root.set_shutters(clampf((roulette_clock-2.2)/0.35,0,1))
 	var offset := roulette_ball.position-ROULETTE_CENTER
+	sound.roulette_update(delta,roulette_clock,roulette_ball.linear_velocity.length(),atan2(offset.x,offset.z))
 	var hit: int = roulette_root.hit_index(offset)
 	if hit >= 0:
 		return_start = roulette_ball.position-Vector3(0,0.15,0)
@@ -458,6 +468,10 @@ func process_roulette(delta: float) -> void:
 	roulette_ball.apply_central_force(roulette_root.guide_force(offset,roulette_clock))
 
 func resolve_roulette(sector: int) -> void:
+	var resolved_stage := round_stage if kind == 1 else 0
+	var is_advance := kind == 1 and sector == 4 and round_stage < 2
+	var is_jp := sector == 4 and not is_advance
+	var payout_before := payout_left
 	var multiplier := payout_multiplier if kind == 0 else 1
 	if kind == 0:
 		royal_colors = [false,false,false]
@@ -474,7 +488,6 @@ func resolve_roulette(sector: int) -> void:
 			royal_colors = [false,false,false]
 			jackpot.emit()
 			message.emit("JACKPOT  •  大量払い出し！")
-			sound.play("win")
 	elif sector == 3:
 		if kind == 1: round_stage = 0
 		spawn_ball(Vector3(rng.randf_range(-1.2,1.2),0.9,-1.7),rng.randi_range(0,2))
@@ -488,7 +501,10 @@ func resolve_roulette(sector: int) -> void:
 			tower_left += 21+sector*14
 			round_stage = 0
 		message.emit("%d MEDALS  •  %s" % [reward,"次の抽選の払出し ×2！" if payout_multiplier == 2 else "フィールドへ払い出し"])
-		sound.play("win",0.65)
+	var prize := payout_left-payout_before
+	sound.roulette_result("advance" if is_advance else ("jackpot" if is_jp else "win"))
+	roulette_root.last_hit = sector
+	bonus_show.finish(sector,resolved_stage,"NEXT STAGE!" if is_advance else ("JACKPOT!" if is_jp else "%d MEDALS"%prize),"ROUND %d / 3"%(round_stage+1) if is_advance else "実機ホッパーから払い出し",is_jp)
 	bonus_changed.emit()
 	refresh_lights()
 
@@ -616,6 +632,7 @@ func vector(a: Variant) -> Vector3:
 	return Vector3(float(a[0]),float(a[1]),float(a[2]))
 
 func set_simulation(enabled: bool) -> void:
+	sound.set_machine_active(enabled)
 	var was_playing := playing
 	playing = enabled
 	coin_batch.enabled = enabled
@@ -630,3 +647,6 @@ func set_simulation(enabled: bool) -> void:
 	for stack in stacks:
 		if is_instance_valid(stack): stack.freeze = not enabled
 	if is_instance_valid(roulette_ball): roulette_ball.freeze = not enabled
+
+func _exit_tree() -> void:
+	if is_instance_valid(sound): sound.cancel_roulette()
