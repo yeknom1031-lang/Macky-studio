@@ -1,5 +1,5 @@
 extends RefCounted
-var path := "user://medal_lounge_v1.json"
+var path := "user://medal_lounge_v2.json"
 var balance := 600
 var earned := 0
 var shots := 0
@@ -13,12 +13,16 @@ var haptics := true
 var quality := 0
 var last_error := ""
 var test_mode := false
+var archive_dir := "user://medal_lounge_archives"
+var last_archive := ""
 
-func _init(is_test: bool = false, storage_path: String = "user://medal_lounge_v1.json") -> void:
+func _init(is_test: bool = false, storage_path: String = "user://medal_lounge_v2.json") -> void:
 	test_mode = is_test
 	path = storage_path
 	if test_mode: return
-	for candidate in [path, path+".bak"]:
+	var candidates := [path,path+".bak"]
+	if path == "user://medal_lounge_v2.json" and not FileAccess.file_exists(path): candidates.append("user://medal_lounge_v1.json")
+	for candidate in candidates:
 		if not FileAccess.file_exists(candidate): continue
 		var json := JSON.new()
 		if json.parse(FileAccess.get_file_as_string(candidate)) != OK: continue
@@ -57,8 +61,7 @@ func save() -> bool:
 	return err == OK
 
 func spend() -> bool:
-	if balance <= 0: return false
-	balance -= 1
+	# Free play: count inserted medals, never charge or gate on the old wallet.
 	shots += 1
 	return true
 
@@ -67,8 +70,28 @@ func award(count: int) -> void:
 	earned += count
 
 func refill() -> bool:
-	var now := int(Time.get_unix_time_from_system())
-	if balance >= 100 or now < refill_at: return false
-	balance += 300
-	refill_at = now + 60
 	return true
+
+func archive_current() -> bool:
+	if test_mode: return true
+	if not save(): return false
+	var folder_error := DirAccess.make_dir_recursive_absolute(archive_dir)
+	if folder_error != OK:
+		last_error = "前のプレイを保管できません: "+error_string(folder_error)
+		return false
+	var name := archive_dir+"/run_%d_%d.json" % [int(Time.get_unix_time_from_system()),Time.get_ticks_usec()]
+	var err := DirAccess.copy_absolute(path,name)
+	if err != OK: last_error = "前のプレイを保管できません: "+error_string(err)
+	else: last_archive = name
+	return err == OK
+
+func new_game(which: int) -> bool:
+	if not archive_current(): return false
+	tables = {}
+	balance = 600
+	earned = 0
+	shots = 0
+	jackpots = 0
+	machine = which
+	refill_at = 0
+	return save()

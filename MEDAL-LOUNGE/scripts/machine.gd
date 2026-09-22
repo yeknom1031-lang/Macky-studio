@@ -20,6 +20,10 @@ var pusher: AnimatableBody3D
 var hopper: Node3D
 var camera: Camera3D
 var world_environment: WorldEnvironment
+var coin_batch: MultiMeshInstance3D
+var press_caps: Array[Node3D] = []
+var counter_label: Label3D
+var audio_tick := 0
 var phase := 0.0
 var elapsed := 0.0
 var payout_left := 0
@@ -47,7 +51,7 @@ var selected_side := 0
 var audit := {"rail_exits":0,"wins":0,"losses":0,"balls":0,"rounds":0,"towers":0}
 var loss_samples: Array = []
 const BALL_COLORS := [Color("bf2948"),Color("198fbf"),Color("29a887")]
-const COIN_LIMIT := 850
+const PAYOUT_SOFT_DENSITY := 1200
 const ROULETTE_CENTER := Vector3(0,1.75,-3.0)
 
 func setup(machine_kind: int, audio: Node, snapshot: Dictionary = {}) -> void:
@@ -57,22 +61,27 @@ func setup(machine_kind: int, audio: Node, snapshot: Dictionary = {}) -> void:
 	build_environment()
 	build_cabinet()
 	build_roulette()
+	Art.batch_static(self,[pusher,hopper,tower_layer]+progress_lights+press_caps)
+	coin_batch = preload("res://scripts/coin_batch.gd").new()
+	add_child(coin_batch)
 	for i in 2:
-		var root := Node3D.new()
+		var root := preload("res://scripts/rail.gd").new()
 		add_child(root)
 		rails.append(root)
-		rail_starts.append(Vector3(-1.82 if i == 0 else 1.82,1.48,2.08))
+		rail_starts.append(Vector3(-1.72 if i == 0 else 1.72,1.24,2.08))
 		rail_ends.append(Vector3.ZERO)
 		set_angle(i,0.0)
 	if snapshot.is_empty(): seed_field()
 	else: restore(snapshot)
 	select_rail(0)
 	refresh_lights()
+	coin_batch.sync_all()
 
 func build_environment() -> void:
 	world_environment = WorldEnvironment.new()
 	var e := Environment.new()
-	e.background_mode = Environment.BG_COLOR
+	e.background_mode = Environment.BG_CANVAS
+	e.background_canvas_max_layer = -1
 	e.background_color = Color("070c13")
 	var sky := Sky.new()
 	var sm := ShaderMaterial.new()
@@ -91,8 +100,8 @@ func build_environment() -> void:
 	add_child(world_environment)
 	camera = Camera3D.new()
 	add_child(camera)
-	camera.position = Vector3(0,7.2,10.6)
-	camera.look_at(Vector3(0,0.55,-0.3))
+	camera.position = Vector3(0,7.9,10.8)
+	camera.look_at(Vector3(0,0.60,0))
 	camera.fov = 43
 	camera.current = true
 	camera.near = 0.05
@@ -101,7 +110,7 @@ func build_environment() -> void:
 		add_child(l)
 		l.position = [Vector3(-2,4,1),Vector3(2,4,-1),Vector3(0,4,-3)][i]
 		l.look_at(Vector3(0,0,-0.3))
-		l.light_color = [Color("ffdfb0"),Color("bddeff"),Color("fff3dc")][i]
+		l.light_color = [Color("e5f0ff"),Color("fff2e0"),Color("ffffff")][i]
 		l.light_energy = [1.8,1.3,1.3][i]
 		l.spot_range = 12
 		l.spot_angle = 62
@@ -109,80 +118,16 @@ func build_environment() -> void:
 		l.shadow_bias = 0.04
 
 func build_cabinet() -> void:
-	Art.box(self,Vector3(0,-0.25,0),Vector3(4.8,0.4,5.4),Art.dark())
-	Art.box(self,Vector3(0,-0.11,-0.22),Vector3(3.84,0.22,3.84),Art.steel(),true)
-	# The upper shelf moves toward the player (+Z), carrying and pushing real rigid bodies.
-	pusher = AnimatableBody3D.new()
-	pusher.sync_to_physics = false
-	pusher.position = Vector3(0,0.32,-1.65)
-	add_child(pusher)
-	Art.box(pusher,Vector3(0,-0.13,0),Vector3(3.84,0.50,1.65),Art.steel())
-	var col := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = Vector3(3.84,0.50,1.65)
-	col.shape = shape
-	col.position.y = -0.13
-	pusher.add_child(col)
-	Art.box(pusher,Vector3(0,0.105,0.825),Vector3(3.84,0.024,0.018),Art.gold())
-	for s in [-1,1]:
-		Art.box(self,Vector3(s*2.22,0.35,-0.2),Vector3(0.22,1.2,4.6),Art.burgundy(),true)
-		Art.box(self,Vector3(s*2.06,-0.23,-0.15),Vector3(0.20,0.1,4.0),Art.dark())
-		Art.box(self,Vector3(s*2.21,0.96,-0.2),Vector3(0.07,0.035,4.6),Art.gold())
-		Art.box(self,Vector3(s*1.95,0.02,-0.2),Vector3(0.025,0.04,3.84),Art.gold())
-		var glass := Art.mat("glass",Color(0.35,0.55,0.62,0.13),0.15,0.1)
-		glass.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-		Art.box(self,Vector3(s*2.2,1.42,-0.7),Vector3(0.025,0.9,3.45),glass)
-		for z in [-2.6,0.0,2.15]:
-			Art.cylinder(self,Vector3(s*2.24,0.9,z),0.045,1.8,Art.gold())
-		var strip := Art.mat("amber",Color("f4b65c"),0.1,0.4,2.0)
-		Art.box(self,Vector3(s*2.13,0.72,-0.4),Vector3(0.026,0.025,4.2),strip)
-	Art.box(self,Vector3(0,1.45,-3.72),Vector3(4.8,3.5,0.28),Art.dark())
-	Art.box(self,Vector3(0,2.8,-3.50),Vector3(4.35,0.50,0.08),Art.burgundy())
-	Art.label(self,"ROYAL PUSHER" if kind == 0 else "IMPERIAL TOWER",Vector3(0,2.8,-3.43),75,Color("e7cc93"))
-	for y in [2.51,3.09]: Art.box(self,Vector3(0,y,-3.47),Vector3(4.4,0.024,0.035),Art.gold())
-	# Fixed rear sweeper overlaps the moving shelf throughout its entire stroke.
-	# There is no inaccessible gap behind the shelf for inserted medals to fall into.
-	Art.box(self,Vector3(0,0.6,-2.10),Vector3(4.2,1.1,0.1),Art.burgundy(),true)
-	Art.box(self,Vector3(0,0.78,-2.035),Vector3(3.85,0.42,0.025),Art.dark())
-	Art.label(self,"COLLECT THREE COLORS" if kind == 0 else "THREE STAGE CHALLENGE",Vector3(0,1.03,-2.0),22,Color("cbb482"))
-	for i in 3:
-		var orb := Art.ball_visual(self,0.085,BALL_COLORS[i] if kind == 0 else Color("cdab65"))
-		orb.position = Vector3(-0.40+i*0.40,0.78,-1.98)
-		progress_lights.append(orb)
-	Art.label(self,"180 MEDALS" if kind == 0 else "260 MEDALS + TOWER",Vector3(0,0.59,-1.995),22,Color("cbb482"))
-	Art.box(self,Vector3(0,-0.32,2.22),Vector3(4.38,0.12,0.75),Art.dark())
-	Art.box(self,Vector3(0,-0.24,2.62),Vector3(4.4,0.05,0.05),Art.gold())
-	Art.label(self,"M E D A L   C O L L E C T",Vector3(0,-0.13,2.57),29,Color("cebd94"))
-	# Decorative ball-return rail and elevator, separate from the medal trough.
-	for x in [1.32,1.65]: Art.bar(self,Vector3(x,-0.08,1.93),Vector3(x,-0.20,2.45),0.023,0.023,Art.gold())
-	for z in [2.3,-3.0]:
-		for x in [2.34,2.47]: Art.bar(self,Vector3(x,-0.15,z),Vector3(x,2.4,z),0.018,0.018,Art.gold())
-	Art.bar(self,Vector3(2.39,-0.1,2.3),Vector3(2.39,-0.1,-3),0.018,0.018,Art.gold())
-	Art.bar(self,Vector3(2.39,2.3,-3),Vector3(0.82,2.1,-3),0.023,0.023,Art.gold())
-	Art.label(self,"BALL RETURN",Vector3(1.6,0.05,2.5),23,Color("81c8bb"))
-	# A visible overhead payout hopper.
-	hopper = Node3D.new()
-	add_child(hopper)
-	hopper.position = Vector3(-1.35,1.25,-2.30)
-	Art.box(hopper,Vector3.ZERO,Vector3(0.65,0.18,0.54),Art.gold())
-	Art.box(hopper,Vector3(0,0.19,-0.23),Vector3(0.65,0.4,0.05),Art.steel())
-	Art.label(hopper,"PAYOUT",Vector3(0,0.13,0.08),27,Color("f0dcb0"))
-	Art.bar(self,Vector3(-1.85,1.48,-2.58),Vector3(1.85,1.48,-2.58),0.024,0.024,Art.steel())
-	if kind == 1:
-		tower_layer = Node3D.new()
-		add_child(tower_layer)
-		tower_layer.position = Vector3(0,0.5,-1.70)
-		Art.box(self,Vector3(0,0.48,-1.70),Vector3(1.04,0.09,0.96),Art.gold())
-		Art.label(self,"TOWER BUILDER",Vector3(0,1.52,-2.40),30,Color("e8cb91"))
+	preload("res://scripts/cabinet.gd").build(self)
 
 func build_roulette() -> void:
 	roulette_root = Node3D.new()
 	add_child(roulette_root)
 	roulette_root.position = ROULETTE_CENTER
 	roulette_root.scale = Vector3(1.32,1,1.32)
-	Art.cylinder(roulette_root,Vector3(0,-0.07,0),0.96,0.12,Art.gold())
+	Art.cylinder(roulette_root,Vector3(0,-0.07,0),0.96,0.12,Art.chrome())
 	Art.ring(roulette_root,Vector3(0,-0.01,0),0.94,0.025,Art.steel())
-	Art.ring(roulette_root,Vector3(0,0.26,0),0.92,0.018,Art.gold())
+	Art.ring(roulette_root,Vector3(0,0.145,0),0.92,0.018,Art.chrome())
 	Art.ring(roulette_root,Vector3(0,-0.09,0),0.96,0.014,Art.mat("roulette_glow",Color("e2ba6e"),0.3,0.3,1.3))
 	# A real ball rolls on this surface. Five perimeter dividers determine its sector.
 	var floor_body := StaticBody3D.new()
@@ -197,7 +142,7 @@ func build_roulette() -> void:
 	Art.cylinder(roulette_root,Vector3(0,-0.015,0),0.90,0.03,Art.burgundy())
 	for i in 32:
 		var a := TAU*i/32.0
-		var wall := Art.box(roulette_root,Vector3(sin(a)*0.92,0.12,cos(a)*0.92),Vector3(0.20,0.26,0.045),Art.gold(),true)
+		var wall := Art.box(roulette_root,Vector3(sin(a)*0.92,0.06,cos(a)*0.92),Vector3(0.20,0.14,0.045),Art.chrome(),true)
 		wall.rotation.y = a
 	for i in 5:
 		var a := TAU*i/5.0
@@ -223,9 +168,11 @@ func seed_field() -> void:
 			spawn_coin(Vector3(-1.66+column*0.3,0.48,-1.895+row*0.295+(column%2)*0.05),false)
 	for row in 5:
 		for column in 9:
-			var p := Vector3(-1.38+column*0.31,0.081,0.05+row*0.32)
+			var p := Vector3(-1.38+column*0.31+rng.randf_range(-0.09,0.09),0.09,0.05+row*0.32+rng.randf_range(-0.10,0.10))
 			if kind == 1 and under_tower(p): continue
-			spawn_coin(p,false)
+			var medal := spawn_coin(p,false)
+			medal.rotation.x = rng.randf_range(-0.08,0.08)
+			medal.rotation.z = rng.randf_range(-0.08,0.08)
 	if kind == 1:
 		make_tower(Vector3(0,0.001,0.55),28,true)
 		make_tower(Vector3(-1.22,0.001,0.83),18,false)
@@ -240,8 +187,8 @@ func under_tower(p: Vector3) -> bool:
 	return Vector2(absf(p.x)-1.22,p.z-0.83).length() < 0.32
 
 func spawn_coin(pos: Vector3, sound_contact: bool = true) -> RigidBody3D:
-	if coins.size() >= COIN_LIMIT: return null
 	var b: RigidBody3D
+	var fresh := spare_coins.is_empty()
 	if not spare_coins.is_empty():
 		b = spare_coins.pop_back()
 		b.visible = true
@@ -253,7 +200,7 @@ func spawn_coin(pos: Vector3, sound_contact: bool = true) -> RigidBody3D:
 		b.mass = 0.032
 		b.linear_damp = 0.26
 		b.angular_damp = 0.35
-		b.continuous_cd = true
+		b.continuous_cd = sound_contact
 		var pm := PhysicsMaterial.new()
 		pm.friction = 0.43
 		pm.bounce = 0.06
@@ -261,19 +208,19 @@ func spawn_coin(pos: Vector3, sound_contact: bool = true) -> RigidBody3D:
 		var c := CollisionShape3D.new()
 		c.shape = Art.coin_collision()
 		b.add_child(c)
-		Art.coin_visual(b)
-		b.contact_monitor = true
-		b.max_contacts_reported = 2
-		b.body_entered.connect(func(_other):
-			if playing and b.get_meta("audible",false): sound.contact(b.linear_velocity.length()))
+		b.contact_monitor = false
+		b.max_contacts_reported = 0
 		add_child(b)
 	b.set_meta("audible",sound_contact)
+	b.continuous_cd = sound_contact
 	b.position = pos
 	b.rotation = Vector3(0,rng.randf_range(0,TAU),0)
 	b.linear_velocity = Vector3.ZERO
 	b.angular_velocity = Vector3.ZERO
 	b.sleeping = false
 	coins.append(b)
+	if fresh: coin_batch.register(b)
+	b.reset_physics_interpolation()
 	return b
 
 func retire_coin(b: RigidBody3D) -> void:
@@ -327,29 +274,13 @@ func set_angle(side: int, value: float) -> void:
 		if g.side == side:
 			g.start = start+Vector3(0,0.147,0)
 			g.end = end+Vector3(0,0.147,0)
-	for child in rails[side].get_children():
-		child.free()
-	var side_vec := (end-start).cross(Vector3.UP).normalized()
-	Art.bar(rails[side],start,end,0.022,0.022,Art.steel())
-	# The narrow groove touches the rim, leaving both coin faces visible.
-	for sign_value in [-1,1]:
-		Art.bar(rails[side],start+side_vec*0.026+Vector3(0,0.036,0) if sign_value == 1 else start-side_vec*0.026+Vector3(0,0.036,0),end+side_vec*0.026+Vector3(0,0.036,0) if sign_value == 1 else end-side_vec*0.026+Vector3(0,0.036,0),0.012,0.04,Art.gold())
-	Art.cylinder(rails[side],start-Vector3(0,0.07,0),0.16,0.1,Art.gold())
-	var lever_end := start+Vector3(angles[side]*0.19,-0.12,0.3)
-	Art.bar(rails[side],start-Vector3(0,0.08,0),lever_end,0.038,0.038,Art.gold())
-	Art.ball_visual(rails[side],0.074,Color("63253b")).position = lever_end
-	# A vertical slot at the player's end, not a pipe or a gun.
-	Art.box(rails[side],start+Vector3(0,0.12,0.065),Vector3(0.19,0.30,0.06),Art.dark())
-	Art.box(rails[side],start+Vector3(0,0.12,0.098),Vector3(0.037,0.245,0.006),Art.mat("slot",Color("020305")))
+	rails[side].configure(start,end,angles[side])
 
 func select_rail(side: int) -> void:
 	selected_side = side
 
 func insert(side: int) -> bool:
 	if not playing or guided.size() >= 14: return false
-	if coins.size()+guided.size()+tower_visuals.size() >= COIN_LIMIT:
-		message.emit("盤面がいっぱいです。押し出しを少し待ちましょう")
-		return false
 	var visual := Art.coin_visual(self)
 	var start := rail_starts[side]+Vector3(0,0.147,0)
 	var end := rail_ends[side]+Vector3(0,0.147,0)
@@ -379,7 +310,12 @@ func _physics_process(delta: float) -> void:
 			g.node.queue_free()
 			guided.erase(g)
 			audit.rail_exits += 1
-	for b in coins.duplicate():
+	audio_tick += 1
+	for i in range(coins.size()-1,-1,-1):
+		var b := coins[i]
+		if not b.sleeping and i%12 == audio_tick%12:
+			var speed := b.linear_velocity.length()
+			if speed > 0.35 and b.position.y < 0.60: sound.contact(speed)
 		if b.position.y < -0.20:
 			if b.position.z > 1.67 and absf(b.position.x) < 1.94:
 				medal_won.emit(1)
@@ -401,7 +337,7 @@ func _physics_process(delta: float) -> void:
 		hopper.position.x = sin(elapsed*1.9)*1.30
 		payout_clock -= delta
 		# Reserve room for the player's rails while a large prize is dispensed.
-		if payout_clock <= 0 and coins.size()+guided.size()+tower_visuals.size() < COIN_LIMIT-80:
+		if payout_clock <= 0 and coins.size()+guided.size()+tower_visuals.size() < PAYOUT_SOFT_DENSITY:
 			payout_clock = 0.065
 			var b := spawn_coin(Vector3(hopper.position.x+rng.randf_range(-0.12,0.12),1.30,-1.86))
 			if b:
@@ -534,7 +470,7 @@ func process_builder(delta: float) -> void:
 			sound.play("tower",0.8)
 			message.emit("NEW TOWER  •  メダルタワー搬入！")
 		return
-	if tower_left <= 0 or coins.size()+guided.size()+tower_visuals.size() >= COIN_LIMIT-20: return
+	if tower_left <= 0 or coins.size()+guided.size()+tower_visuals.size() >= PAYOUT_SOFT_DENSITY: return
 	tower_clock -= delta
 	if tower_clock <= 0:
 		tower_clock = 0.09
@@ -564,7 +500,7 @@ func serialize() -> Dictionary:
 		"tower_left":tower_left+tower_visuals.size()}
 
 func restore(data: Dictionary) -> void:
-	for entry in data.get("coins",[]).slice(0,COIN_LIMIT):
+	for entry in data.get("coins",[]):
 		if not entry is Dictionary: continue
 		var b := spawn_coin(vector(entry.get("p",[0,1,0])),false)
 		if b:
@@ -595,6 +531,8 @@ func vector(a: Variant) -> Vector3:
 
 func set_simulation(enabled: bool) -> void:
 	playing = enabled
+	coin_batch.enabled = enabled
+	coin_batch.sync_all()
 	for b in coins: b.freeze = not enabled
 	for b in balls: b.freeze = not enabled
 	if is_instance_valid(roulette_ball): roulette_ball.freeze = not enabled

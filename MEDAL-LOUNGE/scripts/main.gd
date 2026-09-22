@@ -12,12 +12,8 @@ var canvas: CanvasLayer
 var ui: Control
 var hud: Control
 var modal: Control
-var balance_text: Label
 var event_text: Label
-var bonus_text: Label
-var win_text: Label
 var fps_text: Label
-var rail_sliders: Array[HSlider] = []
 var session_wins := 0
 var save_clock := 0.0
 var held_sides := [false,false]
@@ -31,6 +27,8 @@ var auto_capture := false
 var isolated_session := false
 var capture_screen := "game"
 var fatal_count := 0
+var pointers: Dictionary = {}
+var hud_clock := 0.0
 
 func _ready() -> void:
 	for arg in OS.get_cmdline_user_args():
@@ -47,6 +45,16 @@ func _ready() -> void:
 	add_child(sound)
 	sound.levels = profile.audio.duplicate()
 	sound.apply_levels()
+	var backdrop_layer := CanvasLayer.new()
+	backdrop_layer.layer = -2
+	add_child(backdrop_layer)
+	var backdrop := TextureRect.new()
+	backdrop.texture = load("res://assets/generated/arcade-background.png")
+	backdrop.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	backdrop.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	backdrop_layer.add_child(backdrop)
+	backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	canvas = CanvasLayer.new()
 	add_child(canvas)
 	ui = Control.new()
@@ -131,96 +139,47 @@ func panel(parent: Node, anchor: int, offsets: Rect2) -> PanelContainer:
 
 func build_hud() -> void:
 	if is_instance_valid(hud): hud.queue_free()
-	rail_sliders.clear()
 	hud = Control.new()
 	ui.add_child(hud)
 	hud.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var top := panel(hud,Control.PRESET_TOP_WIDE,Rect2(14,44,-28,73))
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation",10)
-	top.add_child(row)
-	button(row,"‹",show_lobby,45)
-	var box := VBoxContainer.new()
-	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(box)
-	label(box,"MEDAL LOUNGE",12,GOLD)
-	balance_text = label(box,"◉  %s" % profile.balance,28)
-	button(row,"設定",show_settings,44)
-	var bonus := panel(hud,Control.PRESET_TOP_WIDE,Rect2(14,127,-28,49))
-	var br := HBoxContainer.new()
-	bonus.add_child(br)
-	bonus_text = label(br,"",14,GOLD)
-	bonus_text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	win_text = label(br,"WIN  0",16,Color("9fdfc5"))
-	event_text = label(hud,"",18,Color("fff1c5"))
+	var top := HBoxContainer.new()
+	hud.add_child(top)
+	top.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
+	top.offset_left = 16
+	top.offset_right = -16
+	top.offset_top = 44
+	top.offset_bottom = 82
+	button(top,"台選択",show_lobby,36).add_theme_font_size_override("font_size",14)
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	top.add_child(spacer)
+	button(top,"遊び方",show_help,36).add_theme_font_size_override("font_size",14)
+	button(top,"設定",show_settings,36).add_theme_font_size_override("font_size",14)
+	event_text = label(hud,"",15,Color("e4eceb"))
 	event_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	event_text.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
 	event_text.offset_left = 20
 	event_text.offset_right = -20
-	event_text.offset_top = -280
-	event_text.offset_bottom = -235
+	event_text.offset_top = -75
+	event_text.offset_bottom = -25
 	event_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	var lower := panel(hud,Control.PRESET_BOTTOM_WIDE,Rect2(14,-230,-28,198))
-	var stack := VBoxContainer.new()
-	lower.add_child(stack)
-	var controls := HBoxContainer.new()
-	controls.add_theme_constant_override("separation",22)
-	stack.add_child(controls)
-	for side in 2:
-		var col := VBoxContainer.new()
-		col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		col.add_theme_constant_override("separation",9)
-		controls.add_child(col)
-		var title := label(col,"LEFT RAIL" if side == 0 else "RIGHT RAIL",13,GOLD)
-		title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		var slider := HSlider.new()
-		slider.min_value = -1
-		slider.max_value = 1
-		slider.step = 0.015
-		slider.value = table.angles[side]
-		slider.custom_minimum_size = Vector2(170,40)
-		slider.add_theme_stylebox_override("slider",style(Color("32414b"),Color("53626a"),4))
-		slider.value_changed.connect(func(v):
-			table.set_angle(side,v)
-			table.select_rail(side)
-			if active: sound.play("lever",0.18))
-		col.add_child(slider)
-		rail_sliders.append(slider)
-		var b := button(col,"◉  1枚投入",func(): pass,62,true)
-		b.button_down.connect(func():
-			held_sides[side] = true
-			hold_clocks[side] = 0.40
-			insert(side))
-		b.button_up.connect(func(): held_sides[side] = false)
-	var help_row := HBoxContainer.new()
-	stack.add_child(help_row)
-	var note := label(help_row,"レバーを動かして狙う  •  長押しで連続投入",12,Color("a4afba"))
-	note.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	button(help_row,"?",show_help,30)
-	fps_text = label(hud,"",10,Color("78848e"))
-	fps_text.visible = OS.is_debug_build()
+	event_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	fps_text = label(hud,"",10,Color("879398"))
+	fps_text.visible = "--diagnostics" in OS.get_cmdline_user_args()
 	fps_text.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
 	fps_text.offset_left = 20
-	fps_text.offset_top = -26
-	fps_text.offset_bottom = -10
+	fps_text.offset_top = -20
 	update_hud()
 
 func update_hud() -> void:
-	if not is_instance_valid(balance_text): return
-	balance_text.text = "◉  %s" % profile.balance
-	win_text.text = "WIN  %d" % session_wins
-	if table.kind == 0:
-		var n := 0
-		for found in table.royal_colors:
-			if found: n += 1
-		bonus_text.text = "ROYAL  •  3色ボーナス  %d / 3" % n
-	else:
-		bonus_text.text = "IMPERIAL  •  ROUND %d / 3" % (table.round_stage+1)
-	if table.payout_left > 0: bonus_text.text += "  /  払出 %d" % table.payout_left
+	if not is_instance_valid(table) or not is_instance_valid(table.counter_label): return
+	table.counter_label.text = "FREE PLAY\nOUT  %05d" % session_wins
 
 func new_modal(title: String, subtitle: String) -> VBoxContainer:
 	held_sides = [false,false]
+	pointers.clear()
 	active = false
 	table.set_simulation(false)
 	if is_instance_valid(modal): modal.free()
@@ -250,23 +209,69 @@ func new_modal(title: String, subtitle: String) -> VBoxContainer:
 
 func show_lobby() -> void:
 	persist()
-	var v := new_modal("銀の音が、夜を満たす。","2台のメダルマシン。レールを狙い、山を崩す。")
-	label(v,"◉  %d MEDALS" % profile.balance,25,GOLD)
+	var v := new_modal("台を選んでください","FREE PLAY ・ メダルの消費、補充待ちはありません。")
 	for i in 2:
-		var name_text := "01  ROYAL PUSHER" if i == 0 else "02  IMPERIAL TOWER"
-		var description := "二段プッシャー × カラーボール抽選" if i == 0 else "積層タワー × 連続ルーレット"
-		var card := button(v,name_text+"\n"+description,func():
+		label(v,"ROYAL MEDAL" if i == 0 else "IMPERIAL TOWER",22,GOLD)
+		label(v,"二段プッシャー・3色ボール" if i == 0 else "銀メダルタワー・連続抽選",14,Color("a4b4bc"))
+		var actions := HBoxContainer.new()
+		actions.add_theme_constant_override("separation",12)
+		v.add_child(actions)
+		button(actions,"新規でプレイ",func(): new_game(i),56,true).size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button(actions,"続きから",func():
 			if profile.machine != i: switch_machine(i)
-			start_play(not profile.tutorial_seen),104,i == profile.machine)
-		card.add_theme_font_size_override("font_size",20)
+			start_play(not profile.tutorial_seen),56).size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation",12)
 	v.add_child(row)
-	button(row,"遊び方",show_help).size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	button(row,"設定",show_settings).size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	button(v,"無料メダル補充 ＋300",refill,50)
-	label(v,"累計獲得 %d  /  投入 %d  /  JP %d" % [profile.earned,profile.shots,profile.jackpots],13,Color("8797a4"))
-	label(v,"ゲーム内メダルのみ・購入不要・自動保存",13,Color("8797a4"))
+	button(row,"遊び方",show_help,44).size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	button(row,"保存したプレイ",show_archives,44).size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	label(v,"新規プレイ時、これまでのデータは別に保管します。",13,Color("91a0aa"))
+
+func new_game(which: int) -> void:
+	persist()
+	if not profile.new_game(which):
+		notify_player(profile.last_error)
+		return
+	table.free()
+	session_wins = 0
+	load_machine(which)
+	build_hud()
+	start_play(not profile.tutorial_seen)
+
+func show_archives() -> void:
+	var v := new_modal("保存したプレイ","以前の盤面を読み込めます。現在のプレイも保管されます。")
+	var folder := "user://medal_lounge_archives"
+	var files := DirAccess.get_files_at(folder) if DirAccess.dir_exists_absolute(folder) else PackedStringArray()
+	files.sort()
+	files.reverse()
+	var displayed := 0
+	for filename in files:
+		if not filename.begins_with("run_") or not filename.ends_with(".json"): continue
+		var timestamp := int(filename.split("_")[1])
+		var date := Time.get_datetime_string_from_unix_time(timestamp+9*3600).replace("T"," ")
+		button(v,date,func(): restore_archive(folder+"/"+filename),44)
+		displayed += 1
+		if displayed >= 6: break
+	if displayed == 0: label(v,"保管されたプレイはまだありません。",16)
+	button(v,"台選択へ",show_lobby,48)
+
+func restore_archive(path: String) -> void:
+	persist()
+	if not profile.archive_current():
+		notify_player(profile.last_error)
+		return
+	var restored = Profile.new(false,path)
+	restored.path = "user://medal_lounge_v2.json"
+	profile = restored
+	sound.levels = profile.audio.duplicate()
+	sound.apply_levels()
+	apply_quality()
+	table.free()
+	session_wins = 0
+	load_machine(profile.machine)
+	build_hud()
+	start_play()
+	persist()
 
 func switch_machine(which: int) -> void:
 	held_sides = [false,false]
@@ -284,17 +289,17 @@ func start_play(tutorial: bool = false) -> void:
 	active = true
 	table.set_simulation(true)
 	if tutorial: show_help()
-	else: notify_player("レールを左右に振って、奥の上段を狙おう")
+	else: notify_player("黒いレバーをドラッグして狙う・赤い実機ボタンで投入")
 
 func show_help() -> void:
 	var v := new_modal("レールを狙う。山を崩す。","メダルは縦向きでレールを転がり、奥の上段へ落ちます。")
 	for item in [
-		"01  左右のレバーをスライドして、投入方向を調整。",
-		"02  「1枚投入」をタップ。長押しで連続投入。",
+		"01  筐体の黒いレバーを左右にドラッグして狙う。",
+		"02  赤いMEDALボタンを押す。長押しで連続投入。",
 		"03  手前に落ちたメダルを獲得。横の溝は回収外。",
 		"04  ボールを手前へ落とすと、リフトから物理抽選へ。",
 		"05  ROYALは3色でJP。IMPERIALはJP枠を3回突破。",
-		"06  払い出されたメダルとタワーも、手前へ落として獲得。"]:
+		"06  メダルは無制限。補充や購入は不要です。"]:
 		var l := label(v,item,17)
 		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button(v,"プレイを始める",func():
@@ -343,31 +348,11 @@ func apply_quality() -> void:
 
 func insert(side: int) -> void:
 	if not active: return
-	if profile.balance <= 0:
-		held_sides = [false,false]
-		show_empty()
-		return
 	if table.insert(side):
 		profile.spend()
 		table.select_rail(side)
 		if profile.haptics: Input.vibrate_handheld(12,0.2)
 		update_hud()
-
-func show_empty() -> void:
-	var v := new_modal("メダルを補充しましょう","盤面はそのまま保存されています。無料で続けて遊べます。")
-	button(v,"＋300 メダルを補充",refill,58,true)
-	button(v,"台選択へ",show_lobby)
-
-func refill() -> void:
-	if profile.refill():
-		persist()
-		update_hud()
-		start_play()
-		notify_player("300枚を補充しました")
-	else:
-		var remaining := maxi(0,profile.refill_at-int(Time.get_unix_time_from_system()))
-		var v := new_modal("無料メダル補充",("あと %d 秒で再補充できます。" % remaining) if remaining > 0 else "メダルが100枚未満になると300枚補充できます。")
-		button(v,"ゲームへ戻る",func(): start_play(),54,true)
 
 func on_win(count: int) -> void:
 	profile.award(count)
@@ -417,8 +402,13 @@ func _process(delta: float) -> void:
 		var dir := float(Input.is_physical_key_pressed(KEY_RIGHT))-float(Input.is_physical_key_pressed(KEY_LEFT))
 		if dir != 0:
 			var s: int = table.selected_side
-			rail_sliders[s].value += dir*delta*0.7
-		update_hud()
+			table.set_angle(s,table.angles[s]+dir*delta*0.7)
+		for side in 2:
+			table.press_caps[side].position.y = lerpf(table.press_caps[side].position.y,0.835 if held_sides[side] else 0.87,minf(1,delta*24))
+		hud_clock += delta
+		if hud_clock > 0.2:
+			hud_clock = 0.0
+			update_hud()
 	if is_instance_valid(fps_text):
 		fps_text.text = "%d FPS  •  %s  •  %d MEDALS ON FIELD" % [Engine.get_frames_per_second(),"METAL" if OS.get_name() in ["macOS","iOS"] else "3D",table.coins.size()]
 
@@ -438,6 +428,54 @@ func _notification(what: int) -> void:
 		held_sides = [false,false]
 		persist()
 		if active: show_settings()
+	if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+		held_sides = [false,false]
+		pointers.clear()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not active: return
+	if event is InputEventScreenTouch:
+		if event.pressed: pointer_down(event.index,event.position)
+		else: pointer_up(event.index)
+	elif event is InputEventScreenDrag:
+		pointer_move(event.index,event.position)
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed: pointer_down(-100,event.position)
+		else: pointer_up(-100)
+	elif event is InputEventMouseMotion and pointers.has(-100):
+		pointer_move(-100,event.position)
+
+func pointer_down(id: int, pos: Vector2) -> void:
+	var radius := get_viewport().get_visible_rect().size.x*0.066
+	for side in 2:
+		var cap: Vector2 = table.camera.unproject_position(table.press_caps[side].global_position)
+		if pos.distance_to(cap) <= radius:
+			pointers[id] = {"side":side,"mode":"button"}
+			held_sides[side] = true
+			hold_clocks[side] = 0.40
+			insert(side)
+			return
+	for side in 2:
+		var knob: Vector2 = table.camera.unproject_position(table.rails[side].handle.global_position)
+		if pos.distance_to(knob) <= radius:
+			pointers[id] = {"side":side,"mode":"rail","x":pos.x,"angle":table.angles[side]}
+			table.select_rail(side)
+			return
+
+func pointer_move(id: int, pos: Vector2) -> void:
+	if not pointers.has(id): return
+	var action: Dictionary = pointers[id]
+	if action.mode == "rail":
+		var width := get_viewport().get_visible_rect().size.x
+		table.set_angle(action.side,action.angle+(pos.x-action.x)/width*4.5)
+
+func pointer_up(id: int) -> void:
+	if not pointers.has(id): return
+	var side: int = pointers[id].side
+	pointers.erase(id)
+	held_sides[side] = false
+	for action in pointers.values():
+		if action.side == side and action.mode == "button": held_sides[side] = true
 
 func check(ok: bool, title: String) -> void:
 	if not ok:
@@ -457,7 +495,7 @@ func run_tests() -> void:
 	check(table.rail_ends[0].x > original.x,"angle changes landing position")
 	var before: int = profile.balance
 	insert(0)
-	check(profile.balance == before-1,"one medal charged per insert")
+	check(profile.balance == before and profile.shots == 1,"free play records insert without wallet consumption")
 	for i in 130: await get_tree().physics_frame
 	check(table.audit.rail_exits > 0,"upright guided medal released into physics")
 	check(is_equal_approx(table.pusher.position.y,0.32),"pusher retains correct tier elevation")
@@ -487,6 +525,11 @@ func run_tests() -> void:
 	switch_machine(1)
 	start_play(false)
 	check(table.coins.size() >= 350,"tower machine contains real stacked medals")
+	for i in 270: await get_tree().physics_frame
+	var stacked := 0
+	for medal in table.coins:
+		if medal.position.y > 0.65 and absf(medal.position.x) < 0.5: stacked += 1
+	check(stacked > 20,"central tower remains stacked during initial three second pusher cycle")
 	table.resolve_roulette(4)
 	check(table.round_stage == 1,"first tower jackpot gate advances")
 	table.resolve_roulette(4)
@@ -503,8 +546,11 @@ func run_tests() -> void:
 	check(table.coins.size() > 0 and table.pending_colors.size() > 0,"switch restores table and pending bonus")
 	profile.balance = 0
 	profile.refill_at = 0
-	check(profile.refill() and profile.balance == 300,"free refill recovers empty balance")
-	check(not profile.refill(),"refill cannot repeat immediately")
+	var shots_before: int = profile.shots
+	insert(0)
+	check(profile.balance == 0 and profile.shots == shots_before+1,"zero balance never blocks insert")
+	profile.refill_at = int(Time.get_unix_time_from_system())+99999
+	check(profile.spend(),"old refill cooldown does not limit free play")
 	check(snapshot.coins.size() > 300,"tower snapshot captures bodies")
 	table.pending_colors.clear()
 	if is_instance_valid(table.transit): table.transit.queue_free()
@@ -527,6 +573,17 @@ func run_tests() -> void:
 	corrupt.close()
 	var backup := Profile.new(false,test_path)
 	check(backup.balance == 417,"corrupt primary recovers previous backup")
+	disk.archive_dir = "user://qa_archives_%d" % Time.get_ticks_usec()
+	disk.shots = 123
+	disk.audio.music = 0.24
+	check(disk.new_game(1),"new game archives previous play on disk")
+	var archived := Profile.new(false,disk.last_archive)
+	check(archived.shots == 123 and archived.tables.has("0"),"archived play preserves previous table and counters")
+	var fresh_disk := Profile.new(false,test_path)
+	check(fresh_disk.shots == 0 and fresh_disk.tables.is_empty() and fresh_disk.machine == 1,"new disk save contains a fresh game")
+	check(is_equal_approx(fresh_disk.audio.music,0.24),"new game preserves sound settings")
+	if FileAccess.file_exists(disk.last_archive): DirAccess.remove_absolute(disk.last_archive)
+	if DirAccess.dir_exists_absolute(disk.archive_dir): DirAccess.remove_absolute(disk.archive_dir)
 	for suffix in ["",".bak",".tmp"]:
 		if FileAccess.file_exists(test_path+suffix): DirAccess.remove_absolute(test_path+suffix)
 	# Continuous play, payouts, physics and switch/resume under load.
@@ -538,7 +595,7 @@ func run_tests() -> void:
 		if frame%18 == 0: insert((frame/18)%2)
 		if frame%180 == 0: table.set_angle((frame/180)%2,sin(frame*0.03))
 		await get_tree().physics_frame
-	check(table.coins.size() <= table.COIN_LIMIT,"30 second load test respects body limit")
+	check(table.coin_batch.multimesh.instance_count >= table.coins.size(),"shared renderer grows to fit all medals")
 	check(table.audit.rail_exits > 50,"continuous play releases over 50 medals")
 	check(table.audit.wins > 0,"natural pusher motion produces collectable medals")
 	var stable := true
@@ -547,11 +604,33 @@ func run_tests() -> void:
 	check(stable,"all rigid bodies remain finite under load")
 	print("LOAD AUDIT: ",table.audit," active=",table.coins.size()," pool=",table.spare_coins.size())
 	print("LOSS SAMPLES: ",table.loss_samples)
+	while table.coins.size() < 860:
+		var extra = table.spawn_coin(Vector3(0,4,0),false)
+		extra.freeze = true
+	check(table.insert(0),"manual insertion continues beyond the former 850 medal ceiling")
+	var ui_nodes_before: int = table.rails[0].get_child_count()
+	for i in 60: table.set_angle(0,sin(i))
+	check(table.rails[0].get_child_count() == ui_nodes_before,"rail aiming reuses geometry without rebuilding nodes")
+	new_game(0)
+	check(table.kind == 0 and table.phase == 0 and profile.shots == 0,"new game starts a clean machine and counters")
+	check(profile.tables.size() == 0,"new game clears active tables after archiving")
+	start_play(false)
+	var pressed_before: int = profile.shots
+	var cap: Vector2 = table.camera.unproject_position(table.press_caps[0].global_position)
+	pointer_down(10,cap)
+	check(held_sides[0] and profile.shots == pressed_before+1,"physical cabinet button accepts touch")
+	pointer_up(10)
+	check(not held_sides[0],"physical button releases without stuck auto insert")
+	var knob: Vector2 = table.camera.unproject_position(table.rails[1].handle.global_position)
+	pointer_down(11,knob)
+	pointer_move(11,knob+Vector2(70,0))
+	check(table.angles[1] > 0.2,"dragging physical handle changes rail angle")
+	pointer_up(11)
 	print("TEST RESULT: %d failures" % fatal_count)
 	finish_run(0 if fatal_count == 0 else 1)
 
 func capture_run() -> void:
-	for i in 180: await get_tree().physics_frame
+	for i in 270: await get_tree().physics_frame
 	if capture_screen == "stress":
 		profile.balance = 1000
 		table.payout_left = 100

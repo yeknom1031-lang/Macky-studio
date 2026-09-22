@@ -3,6 +3,8 @@ extends RefCounted
 static var materials: Dictionary = {}
 static var medal_mesh: ArrayMesh
 static var medal_shape: CylinderShape3D
+static var unit_box: BoxMesh
+static var unit_cylinder: CylinderMesh
 
 static func mat(key: String, color: Color, metallic: float = 0.0, rough: float = 0.4, emission: float = 0.0) -> StandardMaterial3D:
 	if materials.has(key):
@@ -22,7 +24,19 @@ static func gold() -> Material:
 	return mat("brass", Color("b79b61"), 0.83, 0.26)
 
 static func steel() -> Material:
-	return mat("steel", Color("79858f"), 0.85, 0.29)
+	var m := mat("steel", Color("c1c6cb"), 0.90, 0.24)
+	if ResourceLoader.exists("res://assets/generated/brushed-steel.png"):
+		m.albedo_texture = load("res://assets/generated/brushed-steel.png")
+		m.uv1_triplanar = true
+		m.uv1_scale = Vector3(1.5,1.5,1.5)
+		m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+	return m
+
+static func chrome() -> Material:
+	return mat("chrome",Color("c7ced5"),0.96,0.14)
+
+static func ivory() -> Material:
+	return mat("ivory",Color("cbd1d4"),0.32,0.23)
 
 static func dark() -> Material:
 	return mat("dark", Color("101b28"), 0.52, 0.27)
@@ -35,9 +49,9 @@ static func box(parent: Node3D, pos: Vector3, size: Vector3, material: Material,
 	parent.add_child(root)
 	root.position = pos
 	var mesh := MeshInstance3D.new()
-	var shape := BoxMesh.new()
-	shape.size = size
-	mesh.mesh = shape
+	if unit_box == null: unit_box = BoxMesh.new()
+	mesh.mesh = unit_box
+	mesh.scale = size
 	mesh.material_override = material
 	root.add_child(mesh)
 	if solid:
@@ -50,12 +64,14 @@ static func box(parent: Node3D, pos: Vector3, size: Vector3, material: Material,
 
 static func cylinder(parent: Node3D, pos: Vector3, radius: float, height: float, material: Material) -> MeshInstance3D:
 	var mesh := MeshInstance3D.new()
-	var shape := CylinderMesh.new()
-	shape.top_radius = radius
-	shape.bottom_radius = radius
-	shape.height = height
-	shape.radial_segments = 48
-	mesh.mesh = shape
+	if unit_cylinder == null:
+		unit_cylinder = CylinderMesh.new()
+		unit_cylinder.top_radius = 1.0
+		unit_cylinder.bottom_radius = 1.0
+		unit_cylinder.height = 1.0
+		unit_cylinder.radial_segments = 64
+	mesh.mesh = unit_cylinder
+	mesh.scale = Vector3(radius,height,radius)
 	mesh.material_override = material
 	parent.add_child(mesh)
 	mesh.position = pos
@@ -111,6 +127,8 @@ static func coin_mesh() -> ArrayMesh:
 		medal_mesh = surface.commit()
 		var shader := ShaderMaterial.new()
 		shader.shader = load("res://shaders/coin.gdshader")
+		if ResourceLoader.exists("res://assets/generated/silver-medal.png"):
+			shader.set_shader_parameter("face_texture",load("res://assets/generated/silver-medal.png"))
 		medal_mesh.surface_set_material(0,shader)
 	return medal_mesh
 
@@ -138,3 +156,30 @@ static func ball_visual(parent: Node3D, radius: float, color: Color) -> MeshInst
 	m.material_override = mat("ball"+color.to_html(),color,0.6,0.18)
 	parent.add_child(m)
 	return m
+
+static func batch_static(parent: Node3D, exceptions: Array) -> void:
+	var buckets := {}
+	collect_static(parent,parent,exceptions,buckets)
+	for key in buckets:
+		var items: Array = buckets[key]
+		var multi := MultiMesh.new()
+		multi.transform_format = MultiMesh.TRANSFORM_3D
+		multi.mesh = items[0].mesh
+		multi.instance_count = items.size()
+		var draw := MultiMeshInstance3D.new()
+		draw.multimesh = multi
+		draw.material_override = items[0].material_override
+		parent.add_child(draw)
+		for i in items.size():
+			multi.set_instance_transform(i,parent.global_transform.affine_inverse()*items[i].global_transform)
+			items[i].queue_free()
+
+static func collect_static(root: Node3D, node: Node, exceptions: Array, buckets: Dictionary) -> void:
+	if node != root and (node in exceptions or node.get_meta("dynamic",false)): return
+	if node is MeshInstance3D and node.material_override:
+		var material = node.material_override
+		if material is StandardMaterial3D and material.transparency != BaseMaterial3D.TRANSPARENCY_DISABLED: return
+		var key := "%d_%d" % [node.mesh.get_instance_id(),material.get_instance_id()]
+		if not buckets.has(key): buckets[key] = []
+		buckets[key].append(node)
+	for child in node.get_children(): collect_static(root,child,exceptions,buckets)
