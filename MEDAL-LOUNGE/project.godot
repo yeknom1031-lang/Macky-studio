@@ -1,0 +1,41 @@
+; Medal Lounge — Godot 4.7
+config_version=5
+
+[application]
+config/name="MEDAL LOUNGE"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.7", "Mobile")
+config/icon="res://assets/icon.svg"
+
+[display]
+window/size/viewport_width=540
+window/size/viewport_height=1080
+window/size/window_width_override=400
+window/size/window_height_override=800
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+
+[rendering]
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+rendering_device/driver.macos="metal"
+rendering_device/driver.ios="metal"
+textures/default_filters/use_nearest_mipmap_filter=false
+anti_aliasing/quality/msaa_3d=2
+textures/default_filters/anisotropic_filtering_level=3
+textures/vram_compression/import_etc2_astc=true
+textures/vram_compression/import_s3tc_bptc=true
+lights_and_shadows/directional_shadow/size=2048
+lights_and_shadows/positional_shadow/atlas_size=4096
+environment/defaults/default_clear_color=Color(0.012, 0.016, 0.025, 1)
+
+[physics]
+3d/physics_engine="Jolt Physics"
+common/physics_ticks_per_second=90
+3d/default_gravity=9.8
+
+[audio]
+driver/enable_input=false
+
+[input_devices]
+pointing/emulate_touch_from_mouse=true
