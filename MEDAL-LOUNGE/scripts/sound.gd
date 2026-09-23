@@ -74,11 +74,16 @@ func _ready() -> void:
 	tension.volume_db = -18
 	tension.play()
 	tension.stream_paused = true
-	music.volume_db = -5
+	music.volume_db = 0
 	room.volume_db = -12
 	for loop in loops: loop.play()
+	# Start the BGM explicitly as well as with the other ambient loops.
+	music.play()
 	ready_audio = true
 	apply_levels()
+	if "--diagnostics" in OS.get_cmdline_user_args():
+		var music_bus := AudioServer.get_bus_index("ML_Music")
+		print("AUDIO: BGM playback=",music.playing," bus_muted=",AudioServer.is_bus_mute(music_bus)," bus_db=",AudioServer.get_bus_volume_db(music_bus))
 
 func player(bus: String) -> AudioStreamPlayer:
 	var p := AudioStreamPlayer.new()
@@ -255,6 +260,7 @@ func set_machine_active(value: bool) -> void:
 
 func _process(delta: float) -> void:
 	if not ready_audio: return
+	if music.stream != null and not music.playing: music.play()
 	if machine_active: result_hold = maxf(0,result_hold-delta)
 	var focus := machine_active and (spinning or result_hold > 0)
 	duck = lerpf(duck,0.32 if focus else 1.0,minf(1,delta*3))
