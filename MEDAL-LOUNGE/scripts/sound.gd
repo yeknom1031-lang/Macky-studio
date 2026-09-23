@@ -29,6 +29,7 @@ var last_roll := -1
 var scene_stage := 0
 var normal_music: AudioStream
 var party_music: AudioStream
+var party_mode := false
 var audit := {"starts":0,"gates":0,"results":0,"room_events":0,"played":0,"dropped":0}
 
 func _ready() -> void:
@@ -46,8 +47,15 @@ func _ready() -> void:
 	for i in 4: cues.append(player("ML_Effects"))
 	music = player("ML_Music")
 	room = player("ML_Room")
-	music.stream = music_loop()
-	normal_music = music.stream
+	normal_music = load(ROOT+"music/game-theme.ogg") as AudioStreamOggVorbis
+	if normal_music is AudioStreamOggVorbis:
+		(normal_music as AudioStreamOggVorbis).loop = true
+	else:
+		push_error("Game BGM could not be loaded: "+ROOT+"music/game-theme.ogg")
+	party_music = normal_music
+	music.stream = normal_music
+	if "--diagnostics" in OS.get_cmdline_user_args() and normal_music != null:
+		print("AUDIO: shared Game theme loaded; duration=",snappedf(normal_music.get_length(),0.01),"s; looping")
 	room.stream = ambience()
 	loops.assign([music,room])
 	var crowd := player("ML_Room")
@@ -80,32 +88,7 @@ func player(bus: String) -> AudioStreamPlayer:
 
 func set_party_mode(enabled: bool) -> void:
 	if not ready_audio: return
-	if enabled and party_music == null: party_music = party_music_loop()
-	var next: AudioStream = party_music if enabled else normal_music
-	if music.stream == next: return
-	music.stream = next
-	music.play()
-
-func party_music_loop() -> AudioStreamWAV:
-	# Original 120-BPM disco groove, no commercial game/song recording.
-	var data := PackedByteArray()
-	var n := 22050*8
-	data.resize(n*2)
-	var noise := RandomNumberGenerator.new()
-	noise.seed = 66123
-	var notes := [130.81,130.81,155.56,196.0,116.54,116.54,155.56,174.61]
-	for i in n:
-		var t := i/22050.0
-		var beat := fmod(t,0.5)
-		var eighth := fmod(t,0.25)
-		var note: float = notes[int(t/0.5)%8]
-		var bass := (sin(TAU*note*t)+sin(TAU*note*2*t)*0.25)*exp(-eighth*12)*0.18
-		var kick := sin(TAU*(46*beat+1.8*(1-exp(-beat*35))))*exp(-beat*19)*0.34
-		var hat := noise.randf_range(-1,1)*exp(-fmod(t,0.125)*110)*0.055
-		var snare := noise.randf_range(-1,1)*exp(-beat*45)*0.09 if int(t/0.5)%2 == 1 else 0.0
-		var chord := (sin(TAU*note*4*t)+sin(TAU*note*5*t)+sin(TAU*note*6*t))*exp(-eighth*18)*0.024
-		write_sample(data,i,bass+kick+hat+snare+chord)
-	return wav(data,true)
+	party_mode = enabled
 
 func bus(name: String, send: String = "Master") -> int:
 	var idx := AudioServer.get_bus_index(name)
@@ -373,26 +356,6 @@ func effect(kind: String) -> AudioStreamWAV:
 				value = (rng.randf_range(-1,1)*0.35+sin(t*18900)*0.07)*pow(maxf(0,1-t/duration),0.5)*(0.5+0.5*sin(t*183))
 		write_sample(data,i,value)
 	return wav(data)
-
-func music_loop() -> AudioStreamWAV:
-	var duration := 8.0
-	var data := PackedByteArray()
-	data.resize(int(duration*22050)*2)
-	var scale := [57,60,64,67,55,59,62,67,53,57,60,64,52,56,59,64]
-	for i in int(duration*22050):
-		var t := i/22050.0
-		var note: int = scale[int(t/0.25)%16]
-		var freq := 440.0*pow(2.0,(note-69)/12.0)
-		var phase := fmod(t,0.25)
-		var bell := (sin(TAU*freq*t)+sin(TAU*freq*2*t)*0.35)*exp(-phase*14)*0.13
-		var bass_note: int = [33,31,29,28][int(t/2.0)%4]
-		var bass_f := 440.0*pow(2.0,(bass_note-69)/12.0)
-		var bass := sin(TAU*bass_f*t)*0.14*exp(-fmod(t,0.5)*5)
-		var beat := fmod(t,0.5)
-		var kick := sin(380*beat+20*(1-exp(-beat*30)))*exp(-beat*30)*0.22
-		var hat := rng.randf_range(-1,1)*exp(-phase*100)*0.07
-		write_sample(data,i,bell+bass+kick+hat)
-	return wav(data,true)
 
 func ambience() -> AudioStreamWAV:
 	var duration := 6.0
