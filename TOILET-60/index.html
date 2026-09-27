@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#146d70">
+<meta name="description" content="あと60秒で限界です。棒人間のトイレ探索サバイバル。ネット接続不要、48ステージとランダムマップ。">
+<title>あと60秒で限界です。 — トイレ探索サバイバル</title>
+<style>:root{--ink:#213d42;--muted:#708185;--teal:#167e80;--teal-dark:#10686c;--pale:#dcece7;--cream:#f8f5ec;--line:#d6ded7;--coral:#ee6c5e;--yellow:#edca57;--shadow:0 10px 30px #203c4110;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;color:var(--ink);background:var(--cream);font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer;color:inherit}button:disabled{cursor:default;opacity:.4}button:focus-visible,input:focus-visible{outline:3px solid #e9b829;outline-offset:4px}button{touch-action:manipulation}h1,h2,h3,p{margin:0}button{border:0}a{color:var(--teal)}#app{max-width:1440px;margin:auto;padding:0 44px}.topbar{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:12px}.brand{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:900;background:none;padding:0}.brand-icon{display:grid;place-items:center;width:38px;height:40px;background:var(--teal);color:white;border-radius:10px;font:800 15px system-ui;letter-spacing:-1px}.coral{color:var(--coral)}.top-tools{display:flex;align-items:center;gap:10px}.offline{font:650 10px system-ui;letter-spacing:1.8px;color:var(--teal);margin-right:14px}.icon-button{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;background:transparent;font-weight:800;font-size:17px}.icon-button:hover{background:var(--pale)}.site-footer{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:1px;padding:20px 0 24px;border-top:1px solid var(--line);margin-top:24px}.site-footer b{color:var(--teal);margin-left:10px}main{min-height:620px}.eyebrow{font:750 10px system-ui;letter-spacing:2.8px;color:var(--teal);display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:22px;height:2px;background:currentColor}.hero{display:grid;grid-template-columns:1fr 1.12fr;gap:28px;align-items:center;min-height:600px;padding:36px 0 18px}.hero h1{font-size:clamp(40px,4.4vw,66px);font-weight:900;line-height:1.3;letter-spacing:-3px;margin:25px 0 22px}.hero h1 .sixty{font:850 1.4em system-ui;letter-spacing:-6px;color:var(--coral);display:inline-block;transform:rotate(-4deg);margin:0 5px 0 0}.lead{font-size:14px;line-height:2;color:#60757a}.hero-buttons{margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}.button{padding:14px 23px;border:1px solid var(--line);border-radius:9px;background:#fffdfa;font-weight:750;font-size:13px;transition:background .15s,transform .15s;display:inline-flex;align-items:center;justify-content:center;gap:13px;min-height:46px}.button:hover{background:#e9efea;transform:translateY(-1px)}.button.primary{background:var(--teal);color:white;border-color:var(--teal)}.button.primary:hover{background:var(--teal-dark)}.button.secondary{background:transparent}.button.small{padding:9px 13px;min-height:36px;font-size:11px}.hero-buttons>.primary{width:260px;font-size:15px;justify-content:space-between;padding:18px 22px}.button-row{display:flex;gap:10px;flex-wrap:wrap}.text-button{padding:12px 0;background:none;color:var(--teal);font-size:12px;font-weight:750}.hero-note{font-size:10px;color:var(--muted);margin-top:22px;letter-spacing:.5px}.hero-art{position:relative;min-width:0}.hero-art canvas{width:100%;aspect-ratio:1.02;display:block;border-radius:18px;background:#e6ebe2;border:1px solid #cbd7d0}.art-label{position:absolute;left:20px;top:20px;border:1px solid #ffffff80;background:#fffdf3eb;padding:9px 13px;border-radius:7px;font-size:10px;letter-spacing:1px}.art-caption{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);padding:12px 2px}.feature-strip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;margin:6px 0 25px;background:#fffdf680}.feature{padding:20px 24px;display:flex;align-items:center;gap:18px}.feature+.feature{border-left:1px solid var(--line)}.feature>strong{font:750 27px system-ui;color:var(--teal)}.feature p{font-size:11px;line-height:1.9;color:var(--muted)}.feature p b{display:block;color:var(--ink);font-size:12px}.page-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:32px 0 25px}.page-heading h1{font-size:29px;letter-spacing:-1px;margin-top:9px}.page-heading p{font-size:11px;color:var(--muted);margin-top:8px}.count{font:700 12px system-ui;color:var(--muted)}.count strong{font-size:27px;color:var(--teal);padding-right:3px}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px}.tab{background:none;border:1px solid var(--line);border-radius:25px;padding:8px 19px;font-size:11px;font-weight:700}.tab.selected{background:var(--ink);border-color:var(--ink);color:white}.select-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:25px}.stage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stage-card{text-align:left;background:#fffdf7;border:1px solid var(--line);border-radius:10px;padding:7px;overflow:hidden;position:relative}.stage-card.selected{outline:2px solid var(--teal);border-color:var(--teal)}.stage-card:hover{box-shadow:var(--shadow)}.stage-card canvas{width:100%;height:122px;display:block;border-radius:5px;background:#e8ebe1}.card-title{display:flex;align-items:center;gap:8px;padding:12px 5px 4px;font-size:11px;font-weight:800}.card-title span{font:700 13px system-ui;color:var(--teal)}.card-meta{font-size:9px;color:var(--muted);padding:0 5px 6px;display:flex;justify-content:space-between}.check{color:var(--teal);font-weight:800}.selected-panel{background:#ebeede;border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:15px}.selected-panel .number{font:800 42px system-ui;color:var(--teal);letter-spacing:-2px}.selected-panel h2{font-size:19px}.selected-panel canvas{width:100%;height:135px;border-radius:6px}.selected-panel p{font-size:11px;line-height:1.9;color:#64756b}.difficulty{display:flex;border:1px solid #c5d2c7;padding:4px;border-radius:8px;gap:3px}.difficulty button{flex:1;font:750 9px system-ui;background:transparent;padding:10px 3px;border-radius:5px}.difficulty button.selected{color:white;background:var(--teal)}.difficulty-note{font-size:10px;color:var(--muted);min-height:28px;line-height:1.7}.selected-panel .primary{margin-top:auto;width:100%}.page-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0 0;font:650 11px system-ui}.pagination{display:flex;align-items:center;gap:15px}.game-header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:17px 0 13px;gap:12px}.game-stage{font-size:12px;font-weight:800}.game-stage small{display:block;margin-top:5px;color:var(--muted);font:700 9px system-ui;letter-spacing:1px}.timer-wrap{min-width:175px;text-align:center}.timer-label{font-size:9px;letter-spacing:3px;color:var(--muted)}.timer{font:800 40px system-ui;font-variant-numeric:tabular-nums;line-height:1.1;letter-spacing:-1px}.timer.urgent{color:var(--coral)}.time-track{height:3px;width:150px;background:#e2e2d7;border-radius:4px;margin:6px auto 0;overflow:hidden}.time-track i{height:100%;background:var(--teal);display:block}.game-actions{justify-self:end;display:flex;gap:8px}.game-board{position:relative;border:1px solid #bcc9c4;border-radius:12px;overflow:hidden;background:#344f51;touch-action:none}.game-board>canvas#world{display:block;width:100%;height:clamp(350px,61vh,620px);outline:none}.minimap{position:absolute;right:14px;top:14px;background:#fffcf0e8;border:1px solid #becfbd;border-radius:8px;width:146px;height:107px;padding:5px;pointer-events:none}.map-caption{position:absolute;left:15px;top:14px;background:#fffdf0e8;padding:8px 12px;border-radius:7px;font-size:10px;color:#496568;pointer-events:none}.context-bar{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);min-width:320px;max-width:90%;background:#fffcf3f5;box-shadow:0 5px 20px #142f4120;border:1px solid #bdcfc5;border-radius:10px;padding:12px 16px;text-align:center}.context-hint{font-size:11px;color:#617873;margin-bottom:8px}.context-buttons{display:flex;gap:6px;justify-content:center}.context-buttons .button{font-size:11px;min-height:36px;padding:9px 14px}.context-buttons kbd{border:0;background:#ffffff30;color:inherit}.relief-track{height:7px;width:230px;max-width:100%;background:#dbe6dc;border-radius:4px;margin:10px auto 3px;overflow:hidden}.relief-track i{display:block;height:100%;background:var(--teal)}.toast{position:absolute;top:16px;left:50%;transform:translateX(-50%);max-width:60%;font-size:11px;font-weight:700;line-height:1.7;padding:9px 15px;background:#213d42e8;border-radius:25px;color:white;pointer-events:none}.toast.bad{background:#b5544bec}.toast.good{background:#167e80ee}.game-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:12px;font-size:10px;color:var(--muted)}.key-guide{display:flex;gap:14px;align-items:center;flex-wrap:wrap}kbd{display:inline-block;padding:3px 5px;border:1px solid #ccd5ce;border-bottom-width:2px;border-radius:4px;font:700 10px system-ui;color:var(--ink);background:#fffdf7;margin-right:3px}.buddy-status{color:var(--teal);font-weight:700}.touch-controls{display:none;justify-content:space-between;padding:13px 2px;user-select:none}.dpad{display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(2,40px);gap:5px}.dpad button,.touch-actions button{border-radius:8px;background:#e6ece1;border:1px solid #c4d2c4;touch-action:none;font-weight:800}.dpad [data-key="up"]{grid-column:2}.dpad [data-key="left"]{grid-column:1;grid-row:2}.dpad [data-key="down"]{grid-column:2;grid-row:2}.dpad [data-key="right"]{grid-column:3;grid-row:2}.touch-actions{display:flex;gap:8px;align-items:center}.touch-actions button{height:60px;padding:12px;font-size:12px}.touch-actions .act{background:var(--teal);color:white}.modal-backdrop{position:fixed;inset:0;background:#153d4166;backdrop-filter:blur(6px);z-index:30;display:grid;place-items:center;padding:24px}.modal{background:var(--cream);border:1px solid #d1dacf;border-radius:18px;padding:30px;max-width:550px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 20px 80px #153d4133}.modal.wide{max-width:880px}.modal h2{font-size:26px;letter-spacing:-1px;margin:10px 0}.modal .lead{font-size:12px}.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:25px;flex-wrap:wrap}.modal-actions.vertical{flex-direction:column}.settings-row{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);font-size:13px}.settings-row small{font-size:10px;color:var(--muted);display:block;margin-top:5px}.settings-row input[type=checkbox]{width:20px;height:20px;accent-color:var(--teal)}.settings-row input[type=range]{width:130px;accent-color:var(--teal)}.help-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}.help-card{border:1px solid var(--line);border-radius:10px;background:#fffdf6;padding:20px}.help-card .step{font:750 12px system-ui;background:var(--teal);border-radius:50%;display:grid;place-items:center;color:white;width:27px;height:27px;margin-bottom:18px}.help-card h3{font-size:16px;margin:12px 0}.help-card p{font-size:11px;line-height:2;color:var(--muted)}.help-symbol{font:800 32px system-ui;color:var(--teal);height:48px;display:flex;align-items:center}.result{padding:30px 0}.result-heading{text-align:center;padding:10px 0 28px}.result-heading .eyebrow{justify-content:center}.result-heading .eyebrow:before{display:none}.result-heading h1{font-size:40px;letter-spacing:-2px;margin:12px 0}.result-heading p{font-size:11px;color:var(--muted)}.result-layout{display:grid;grid-template-columns:1fr 1fr;gap:30px;max-width:1000px;margin:auto;align-items:center}.result-art{width:100%;height:300px;display:block}.result-panel{border:1px solid var(--line);border-radius:12px;background:#fffdf8;padding:24px}.stat{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}.stat strong{font:750 25px system-ui;color:var(--ink)}.stat strong small{font:700 11px system-ui;margin-left:5px}.award{padding:18px 0 0;display:flex;gap:14px;align-items:center}.award>span{display:grid;place-items:center;width:45px;height:45px;background:#f4e5b2;border:1px solid #e5d397;border-radius:50%;font-size:22px}.award small{font-size:9px;color:var(--muted)}.award b{display:block;margin-top:5px;font-size:15px}.result-buttons{display:flex;justify-content:center;gap:12px;margin:30px 0 8px;flex-wrap:wrap}.recap{width:100%;height:200px;background:#e9ede3;border-radius:7px;display:block;margin:16px 0 12px}.legend{font-size:10px;color:var(--muted);display:flex;gap:16px}.hint{background:#e8f0e4;padding:12px;font-size:11px;line-height:1.8;border-radius:6px;margin-top:15px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.ready-info{display:flex;gap:10px;margin:20px 0}.chip{background:#e7eddf;border:1px solid #cfdbc9;border-radius:6px;padding:8px 11px;font-size:11px}.controls-info{font-size:11px;color:var(--muted);line-height:2.1}.save-warning{font-size:10px;color:#ad5838;padding:8px 0}.hidden{display:none!important}@media(prefers-reduced-motion:reduce){*{transition:none!important}}body.reduced-motion *{transition:none!important}
+@media(min-width:1600px){#app{max-width:1470px}.hero h1{font-size:70px}}
+@media(max-width:1050px){#app{padding:0 24px}.hero{gap:20px}.hero h1{font-size:45px}.select-layout{grid-template-columns:minmax(0,1fr) 255px;gap:16px}.stage-grid{grid-template-columns:repeat(2,1fr)}.stage-card canvas{height:110px}.hero-art canvas{aspect-ratio:.88}.offline{display:none}.feature{padding:17px}}
+@media(max-width:700px){#app{padding:0 16px}.topbar{height:68px}.brand{font-size:11px;gap:7px}.brand-icon{width:30px;height:32px;font-size:12px}.top-tools{gap:5px}.icon-button{width:30px;height:30px;font-size:14px}.hero{grid-template-columns:1fr;padding-top:28px;gap:24px}.hero h1{font-size:46px;margin:18px 0;letter-spacing:-2px}.hero-art canvas{aspect-ratio:1.4}.hero-buttons{margin-top:20px}.hero-buttons>.primary{width:100%}.hero-buttons{align-items:stretch}.hero-note{margin-top:12px}.feature-strip{grid-template-columns:1fr;margin-top:10px}.feature+.feature{border-left:0;border-top:1px solid var(--line)}.feature{padding:14px 20px}.page-heading{padding:25px 0 20px}.page-heading h1{font-size:24px}.tabs{gap:5px}.tab{padding:7px 12px;font-size:10px}.select-layout{grid-template-columns:1fr}.selected-panel{order:-1;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.selected-panel .number{font-size:24px}.selected-panel h2{font-size:16px}.selected-panel>canvas{display:none}.selected-panel>.difficulty,.selected-panel>.difficulty-note,.selected-panel>.primary{grid-column:2}.selected-panel>.difficulty{grid-row:1}.selected-panel>.difficulty-note{grid-row:2}.selected-panel>.primary{grid-row:3 / 5}.selected-panel>p{grid-column:1}.stage-grid{gap:10px}.stage-card canvas{height:112px}.page-nav{gap:8px}.page-nav .button{font-size:10px;padding:8px 10px}.game-stage{font-size:10px}.game-stage small{font-size:8px}.game-header{grid-template-columns:1fr auto 1fr}.timer-wrap{min-width:105px}.timer{font-size:31px}.time-track{width:90px}.timer-label{font-size:8px;letter-spacing:1px}.game-actions .button{font-size:10px;padding:8px;min-height:33px}.game-board>canvas#world{height:51vh;min-height:330px}.minimap{width:102px;height:78px;right:8px;top:8px}.map-caption{left:8px;top:8px;font-size:8px;padding:6px 8px}.toast{top:94px;max-width:90%;width:max-content;font-size:10px}.context-bar{min-width:260px;padding:10px;bottom:9px}.context-hint{font-size:10px}.context-buttons .button{font-size:10px;padding:8px}.game-bottom{font-size:9px}.key-guide{display:none}.touch-controls{display:flex}.game-actions{gap:3px}.site-footer{font-size:8px;margin-top:16px}.modal-backdrop{padding:15px}.modal{padding:22px;max-height:90dvh}.help-grid{grid-template-columns:1fr;gap:8px}.help-card{padding:14px}.help-card .step{float:left;margin-right:12px;margin-bottom:4px}.help-symbol{display:none}.help-card h3{margin:4px 0 10px;font-size:15px}.help-card p{font-size:11px}.result-heading h1{font-size:29px}.result-layout{grid-template-columns:1fr;gap:8px}.result-art{height:190px}.result-panel{padding:17px}.result-buttons{gap:8px}.result-buttons .button{font-size:11px;padding:12px}.stat{padding:11px 0}.recap{height:180px}}
+@media(pointer:coarse){.touch-controls{display:flex}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <button class="brand" data-action="home" aria-label="タイトルへ"><span class="brand-icon">WC</span><span>あと<span class="coral">60</span>秒で限界です<span class="coral">。</span></span></button>
+    <div class="top-tools"><span class="offline">● OFFLINE GAME</span><button class="icon-button" data-action="help" aria-label="あそびかた">?</button><button class="icon-button" id="sound-button" data-action="sound" aria-label="音の切り替え">♪</button><button class="icon-button" data-action="settings" aria-label="設定">⚙</button></div>
+  </header>
+  <main id="main"></main>
+  <footer class="site-footer"><span>ひと息つくまでが、冒険です。</span><span>LOCAL EDITION <b>01</b></span></footer>
+</div>
+<div id="modal-root"></div>
+<div id="announcer" class="sr-only" aria-live="polite"></div>
+<script>/* Deterministic game rules, shared by the browser and Node's test runner. */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.ToiletCore = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  const DIFFICULTIES = {
+    easy: { label: 'EASY', time: 90, cols: 5, rows: 4 },
+    normal: { label: 'NORMAL', time: 60, cols: 6, rows: 4 },
+    hard: { label: 'HARD', time: 30, cols: 5, rows: 3 }
+  };
+  const THEMES = [
+    { name: '公共施設', tag: 'CIVIC', wall: '#659596', dark: '#355e65', floor: '#eee9d9', prop: 'plant' },
+    { name: '学校', tag: 'SCHOOL', wall: '#92a997', dark: '#49675b', floor: '#ede3ca', prop: 'desk' },
+    { name: '駅', tag: 'STATION', wall: '#7e97ad', dark: '#405e76', floor: '#e6e9e7', prop: 'bench' },
+    { name: 'モール', tag: 'MALL', wall: '#c19388', dark: '#8a5e58', floor: '#f3e8de', prop: 'plant' },
+    { name: '公園', tag: 'PARK', wall: '#88a16d', dark: '#486747', floor: '#e6dec3', prop: 'tree' },
+    { name: 'オフィス', tag: 'OFFICE', wall: '#a29cb5', dark: '#635c7a', floor: '#e9e6ee', prop: 'desk' }
+  ];
+  const NAMES = ['はじめての廊下', '分かれ道', '待つか、走るか', '遠回りの近道', '人混みを抜けて', 'となりの気配', 'もうひとつ先へ', '最後の曲がり角'];
+  const STAGES = Array.from({ length: 48 }, (_, i) => ({ id: i + 1, theme: Math.floor(i / 8), name: NAMES[i % 8], seed: 60317 + i * 7919 + (i === 47 ? 1 : 0) }));
+  const key = (x, y) => `${x},${y}`;
+  const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+  function rng(seed) {
+    let a = seed >>> 0;
+    return () => { a += 0x6D2B79F5; let t = a; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  }
+  function floor(map, x, y) { return x >= 0 && y >= 0 && x < map.w && y < map.h && map.grid[y][x] === 0; }
+  function path(map, start, goal, allowed) {
+    const sx = Math.floor(start.x), sy = Math.floor(start.y), gx = Math.floor(goal.x), gy = Math.floor(goal.y);
+    if (!floor(map, sx, sy) || !floor(map, gx, gy)) return [];
+    const queue = [[sx, sy]], parents = new Map([[key(sx, sy), null]]);
+    for (let i = 0; i < queue.length; i++) {
+      const [x, y] = queue[i];
+      if (x === gx && y === gy) {
+        const out = []; let p = [x, y];
+        while (p) { out.push({ x: p[0] + .5, y: p[1] + .5 }); p = parents.get(key(...p)); }
+        return out.reverse();
+      }
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const nx = x + dx, ny = y + dy, k = key(nx, ny);
+        if (floor(map, nx, ny) && !parents.has(k) && (!allowed || allowed[ny * map.w + nx])) { parents.set(k, [x, y]); queue.push([nx, ny]); }
+      }
+    }
+    return [];
+  }
+  function generate(seed, difficulty = 'normal', theme = 0, practice = false) {
+    const random = rng(seed), cfg = DIFFICULTIES[difficulty] || DIFFICULTIES.normal;
+    const cols = practice ? 3 : cfg.cols, rows = practice ? 2 : cfg.rows;
+    const w = cols * 5 + 2, h = rows * 5 + 2;
+    const grid = Array.from({ length: h }, () => Array(w).fill(1));
+    const nodes = Array.from({ length: cols * rows }, (_, i) => ({ x: 3 + (i % cols) * 5, y: 3 + Math.floor(i / cols) * 5, id: i }));
+    const carve = (x, y) => { for (let yy = y - 1; yy <= y + 1; yy++) for (let xx = x - 1; xx <= x + 1; xx++) grid[yy][xx] = 0; };
+    nodes.forEach(n => carve(n.x, n.y));
+    const neighbors = id => [id % cols > 0 ? id - 1 : -1, id % cols < cols - 1 ? id + 1 : -1, id >= cols ? id - cols : -1, id < cols * (rows - 1) ? id + cols : -1].filter(i => i >= 0);
+    const link = (a, b) => {
+      let { x, y } = nodes[a]; const end = nodes[b];
+      while (x !== end.x || y !== end.y) { carve(x, y); x += Math.sign(end.x - x); y += Math.sign(end.y - y); }
+      carve(x, y);
+    };
+    const visited = new Set([0]), stack = [0];
+    while (stack.length) {
+      const a = stack[stack.length - 1], options = neighbors(a).filter(b => !visited.has(b));
+      if (!options.length) { stack.pop(); continue; }
+      const b = options[Math.floor(random() * options.length)]; link(a, b); visited.add(b); stack.push(b);
+    }
+    nodes.forEach(n => neighbors(n.id).forEach(b => { if (b > n.id && random() < .16) link(n.id, b); }));
+    const startNode = nodes[Math.floor(rows / 2) * cols + Math.floor(cols / 2)];
+    const start = { x: startNode.x + .5, y: startNode.y + .5 };
+    const map = { w, h, grid, nodes, start, theme: THEMES[theme % THEMES.length], seed, difficulty };
+    const candidates = nodes.filter(n => n.id !== startNode.id).map(n => ({ ...n, steps: path(map, start, { x: n.x + .5, y: n.y + .5 }).length - 1 })).sort((a, b) => a.steps - b.steps);
+    const picked = [];
+    const targets = practice ? [5, 12, 18] : [12, 24, 36, 48];
+    for (const target of targets) {
+      const choices = candidates.filter(n => !picked.includes(n)).sort((a, b) => Math.abs(a.steps - target) - Math.abs(b.steps - target));
+      if (choices[0]) picked.push(choices[0]);
+    }
+    map.toilets = picked.map((n, i) => ({ id: i, x: n.x + .5, y: n.y - .5, openAt: i === 0 ? (practice ? 6 : 18 + random() * (difficulty === 'hard' ? 5 : 18)) : (i === 1 ? 0 : 4 + random() * 22), discovered: false, initial: true }));
+    // Guarantee at least one reachable opening with enough time for the 3s finish.
+    const safe = map.toilets[1] || map.toilets[0];
+    const maxSteps = path(map, start, safe).length - 1;
+    if (maxSteps / 3.2 + 7 >= cfg.time) { safe.x = picked[0].x + .5; safe.y = picked[0].y + .5; }
+    safe.openAt = 0;
+    map.safeId = safe.id;
+    const toiletKeys = new Set(map.toilets.map(t => key(Math.floor(t.x), Math.floor(t.y))));
+    const spare = nodes.filter(n => n.id !== startNode.id && !toiletKeys.has(key(n.x, n.y - 1)));
+    const staffNode = spare[Math.floor(random() * spare.length)] || nodes[0];
+    map.staff = { x: staffNode.x + .5, y: staffNode.y + .5, talked: false };
+    map.buddy = { x: start.x + 1.1, y: start.y, active: false, done: false, busy: false, useDuration: 4 + Math.floor(random() * 4), path: [] };
+    map.shoppers = Array.from({ length: practice ? 0 : 2 + (seed % 3) }, (_, i) => {
+      const n = spare[(i * 7 + Math.floor(random() * spare.length)) % spare.length] || nodes[0];
+      const goal = nodes[(n.id + 3) % nodes.length];
+      return { x: n.x + .5, y: n.y + .5, path: path(map, { x: n.x, y: n.y }, goal), goal: goal.id, speed: .65 + random() * .4, cooldown: 0, bag: i % 2 === 0 };
+    });
+    return map;
+  }
+  class Game {
+    constructor({ seed = 60317, difficulty = 'normal', theme = 0, practice = false, stageId = 1 } = {}) {
+      this.options = { seed, difficulty, theme, practice, stageId };
+      this.map = generate(seed, difficulty, theme, practice);
+      this.player = { ...this.map.start, facing: 1, walk: 0 };
+      this.limit = practice ? 90 : DIFFICULTIES[difficulty].time;
+      this.remaining = this.limit; this.elapsed = 0; this.state = 'playing'; this.paused = false;
+      this.mode = 'explore'; this.door = null; this.relief = 0; this.waited = 0; this.moved = 0;
+      this.penalties = 0; this.events = []; this.recruited = false; this.shared = false;
+      this.seen = new Uint8Array(this.map.w * this.map.h); this.route = [{ ...this.player }];
+      this.autoPath = []; this.autoDoor = null; this.buddyCheck = 0; this.reveal();
+    }
+    event(text, kind = 'info') { this.events.push({ text, kind, at: this.elapsed }); if (this.events.length > 10) this.events.shift(); }
+    reveal() {
+      const { x, y } = this.player, m = this.map, radius = this.options.difficulty === 'easy' || this.options.practice ? 9 : (this.options.difficulty === 'hard' ? 6 : 7);
+      for (let yy = Math.max(0, Math.floor(y) - radius); yy < Math.min(m.h, y + radius); yy++) for (let xx = Math.max(0, Math.floor(x) - radius); xx < Math.min(m.w, x + radius); xx++) if (Math.hypot(xx + .5 - x, yy + .5 - y) <= radius) this.seen[yy * m.w + xx] = 1;
+      m.toilets.forEach(t => { if (!t.discovered && this.seen[Math.floor(t.y) * m.w + Math.floor(t.x)]) { t.discovered = true; this.event('トイレを発見！ 近づいて E', 'discover'); } });
+    }
+    nearDoor() { return this.map.toilets.find(t => distance(this.player, t) < 1.45); }
+    context() {
+      if (this.mode === 'relief') return { type: 'relief', label: 'あと少し…', hint: '3秒間でクリア' };
+      const t = this.nearDoor();
+      if (t) return { type: 'door', target: t, label: this.elapsed >= t.openAt ? 'トイレに入る' : (this.mode === 'wait' ? '待機をやめる' : 'ここで待つ'), hint: this.clue(t) };
+      if (distance(this.player, this.map.staff) < 1.7 && !this.map.staff.talked) return { type: 'staff', label: '案内を聞く', hint: '2秒使って、全トイレの場所が分かる' };
+      const b = this.map.buddy;
+      if (distance(this.player, b) < 1.6 && !b.active && !b.done) return { type: 'buddy', label: '仲間を誘う', hint: '一緒に探そう！ 励ましで +3秒' };
+      return null;
+    }
+    clue(t) {
+      const left = t.openAt - this.elapsed;
+      if (left <= 0) return '空いている！ 入ってから3秒でクリア';
+      if (left < 4) return 'ジャー… 水を流す音！';
+      if (left < 9) return 'ガサゴソ… 荷物をまとめている';
+      if (left < 15) return '「あとちょっと！」';
+      return '♪ 動画の音… 長くなりそう';
+    }
+    interact() {
+      if (this.state !== 'playing' || this.paused || this.mode === 'relief') return;
+      const c = this.context(); if (!c) return;
+      this.autoPath = []; this.autoDoor = null;
+      if (c.type === 'door') {
+        this.door = c.target;
+        if (this.elapsed >= this.door.openAt) this.enter();
+        else { this.mode = this.mode === 'wait' ? 'explore' : 'wait'; this.event(this.mode === 'wait' ? '耳をすまして待機中。移動で中断できます' : '別のトイレを探そう'); }
+      } else if (c.type === 'staff') {
+        this.map.staff.talked = true; this.remaining = Math.max(0, this.remaining - 2);
+        this.map.toilets.forEach(t => { t.discovered = true; });
+        this.event('案内を聞いた！ ミニマップに全トイレを表示 −2秒', 'info');
+        if (this.remaining <= 0) this.finish(false);
+      } else if (c.type === 'buddy') {
+        this.map.buddy.active = true; this.recruited = true;
+        this.remaining = Math.min(this.limit, this.remaining + 3); this.event('「一緒なら大丈夫！」 仲間が同行 +3秒', 'good');
+      }
+    }
+    yieldBuddy() {
+      const b = this.map.buddy, t = this.nearDoor();
+      if (this.state !== 'playing' || this.paused || !t || !b.active || b.done || b.busy || this.mode === 'relief') return;
+      b.busy = true; b.target = t; b.finishAt = Math.max(t.openAt, this.elapsed) + b.useDuration;
+      t.openAt = b.finishAt; this.door = t; this.mode = 'wait'; this.autoPath = [];
+      this.event(`仲間に譲った。「${b.useDuration}秒で出るよ！」 待つか、移動しよう`, 'info');
+    }
+    enter() {
+      this.mode = 'relief'; this.relief = 0; this.autoPath = []; this.autoDoor = null;
+      this.player.x = this.door.x; this.player.y = this.door.y; this.event('間に合って…！ あと3秒', 'enter');
+    }
+    setDestination(point) {
+      if (this.state !== 'playing' || this.paused || this.mode === 'relief') return false;
+      const x = Math.floor(point.x), y = Math.floor(point.y);
+      if (!this.seen[y * this.map.w + x]) return false;
+      const route = path(this.map, this.player, point, this.seen);
+      if (!route.length) return false;
+      this.mode = 'explore'; this.autoPath = route.slice(1);
+      this.autoDoor = this.map.toilets.find(t => Math.floor(t.x) === x && Math.floor(t.y) === y) || null;
+      return true;
+    }
+    fits(x, y) {
+      const r = .22;
+      return [[-r, -r], [r, -r], [-r, r], [r, r]].every(([dx, dy]) => floor(this.map, Math.floor(x + dx), Math.floor(y + dy)));
+    }
+    move(dx, dy) {
+      const p = this.player, ox = p.x, oy = p.y;
+      if (this.fits(p.x + dx, p.y)) p.x += dx;
+      if (this.fits(p.x, p.y + dy)) p.y += dy;
+      const d = Math.hypot(p.x - ox, p.y - oy);
+      this.moved += d; p.walk += d * 3; if (Math.abs(dx) > .001) p.facing = Math.sign(dx);
+      if (d > 0 && distance(p, this.route[this.route.length - 1]) > .5) this.route.push({ x: p.x, y: p.y });
+      return d;
+    }
+    finish(won) {
+      if (this.state !== 'playing') return;
+      this.state = won ? 'won' : 'lost'; this.remaining = Math.max(0, this.remaining); this.autoPath = [];
+      this.title = !won ? 'あと少しだった…' : this.shared ? '誰も置いていかない' : this.remaining < 2 ? '残り1秒の奇跡' : this.waited >= 4 ? '待った甲斐があった' : this.penalties === 0 ? 'スマートな生還' : '無事に到着！';
+      this.event(won ? '間に合った！' : 'タイムアップ…', won ? 'win' : 'lose');
+    }
+    update(dt, input = {}) {
+      if (this.paused || this.state !== 'playing') return;
+      // Split long frames; collisions and the three-second finish remain consistent.
+      const steps = Math.ceil(Math.max(0, dt) / .04);
+      for (let i = 0; i < steps && this.state === 'playing'; i++) this.step(dt / steps, input);
+    }
+    step(dt, input) {
+      let dx = Number(input.x) || 0, dy = Number(input.y) || 0, moving = false;
+      if (this.mode !== 'relief') {
+        if (dx || dy) { this.autoPath = []; this.autoDoor = null; this.mode = 'explore'; }
+        else if (this.autoPath.length) {
+          const target = this.autoPath[0]; const d = distance(this.player, target);
+          if (d < .08) { this.autoPath.shift(); }
+          else { dx = (target.x - this.player.x) / d; dy = (target.y - this.player.y) / d; }
+        }
+        if (dx || dy) {
+          const norm = Math.hypot(dx, dy), speed = input.sprint ? 5.1 : 3.2;
+          let stride = speed * dt;
+          if (this.autoPath.length) stride = Math.min(stride, distance(this.player, this.autoPath[0]));
+          moving = this.move(dx / norm * stride, dy / norm * stride) > .0001;
+        }
+        if (this.autoDoor && this.autoPath.length === 0 && distance(this.player, this.autoDoor) < 1.45) this.interact();
+      }
+      const rate = moving && input.sprint ? 1.35 : 1;
+      // Resolve at the exact countdown boundary; a simultaneous 3s finish wins.
+      const active = Math.min(dt, this.remaining / rate);
+      this.elapsed += active; this.remaining = Math.max(0, this.remaining - active * rate);
+      if (this.mode === 'relief') { this.relief += active; if (this.relief >= 3 - 1e-7) { this.finish(true); return; } }
+      const b = this.map.buddy;
+      if (b.busy && this.elapsed >= b.finishAt) { b.busy = false; b.done = true; b.active = false; this.shared = true; this.event('仲間も間に合った！ 次はあなたの番', 'good'); }
+      if (this.mode === 'wait') { this.waited += active; if (this.elapsed >= this.door.openAt && this.remaining > 0) this.enter(); }
+      if (this.remaining <= 0) { this.finish(false); return; }
+      for (const n of this.map.shoppers) {
+        n.cooldown = Math.max(0, n.cooldown - dt);
+        if (!n.path.length) { n.goal = (n.goal + 7) % this.map.nodes.length; n.path = path(this.map, n, this.map.nodes[n.goal]).slice(1); }
+        if (n.path.length) { const target = n.path[0], d = distance(n, target), amount = Math.min(d, dt * n.speed); if (d < .03) n.path.shift(); else { n.x += (target.x - n.x) / d * amount; n.y += (target.y - n.y) / d * amount; } }
+        if (moving && input.sprint && distance(n, this.player) < .65 && n.cooldown <= 0 && this.mode !== 'relief') { n.cooldown = 6; this.remaining = Math.max(0, this.remaining - 2); this.penalties++; this.event('ぶつかって焦った！ −2秒', 'bad'); }
+      }
+      if (b.active && !b.busy && this.mode !== 'relief') {
+        this.buddyCheck -= dt;
+        if (this.buddyCheck <= 0) { b.path = path(this.map, b, this.player).slice(1); this.buddyCheck = .45; }
+        if (distance(b, this.player) > .85 && b.path.length) { const target = b.path[0], d = distance(b, target); if (d < .05) b.path.shift(); else { const m = Math.min(dt * 4.8, d); b.x += (target.x - b.x) / d * m; b.y += (target.y - b.y) / d * m; } }
+      }
+      this.reveal();
+      if (this.remaining <= 0) this.finish(false);
+    }
+  }
+  return { Game, generate, path, floor, rng, distance, DIFFICULTIES, THEMES, STAGES };
+});
+</script>
+<script>(function () {
+  'use strict';
+  const C = window.ToiletCore;
+  const INK = '#203b3f', TEAL = '#167e80', CORAL = '#ec7365';
+  function rr(ctx, x, y, w, h, r, fill, stroke) {
+    ctx.beginPath(); ctx.roundRect(x, y, w, h, r);
+    if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+    if (stroke) { ctx.strokeStyle = stroke; ctx.stroke(); }
+  }
+  function text(ctx, value, x, y, size = 12, color = INK, align = 'center', weight = 700) {
+    ctx.fillStyle = color; ctx.font = `${weight} ${size}px "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif`; ctx.textAlign = align; ctx.textBaseline = 'middle'; ctx.fillText(value, x, y);
+  }
+  function line(ctx, pts, color = INK, width = 2.5) { ctx.strokeStyle = color; ctx.lineWidth = width; ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(...p) : ctx.moveTo(...p)); ctx.stroke(); }
+  function stick(ctx, x, y, s = 1, opts = {}) {
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.fillStyle = '#203b3f1c'; ctx.beginPath(); ctx.ellipse(0, 2, 13, 4, 0, 0, Math.PI * 2); ctx.fill();
+    const walk = opts.walk ? Math.sin(opts.walk) * 5 : 0, panic = opts.panic, happy = opts.happy, sad = opts.sad;
+    if (opts.player) { ctx.fillStyle = '#f1cf5980'; ctx.beginPath(); ctx.ellipse(0, 1, 16, 7, 0, 0, Math.PI * 2); ctx.fill(); }
+    const headY = sad ? -28 : -39;
+    if (sad) {
+      line(ctx, [[0, -16], [-5, -5], [9, -3]], INK, 3); line(ctx, [[-5, -5], [-15, 1], [-21, -4]], INK, 3); line(ctx, [[-1, -16], [13, -6], [17, 0]], INK, 3);
+    } else {
+      line(ctx, [[0, -27], [0, -14]], INK, 3);
+      if (panic && !opts.walk) { line(ctx, [[0, -14], [5, -7], [-5, 0]], INK, 3); line(ctx, [[0, -14], [-5, -7], [5, 0]], INK, 3); line(ctx, [[-1, -25], [-8, -17], [0, -13], [8, -17], [1, -25]], INK, 2.6); }
+      else { line(ctx, [[0, -14], [-6 - walk, 0]], INK, 3); line(ctx, [[0, -14], [6 + walk, -Math.abs(walk) * .7]], INK, 3); if (happy) { line(ctx, [[-1, -25], [-14, -36]], INK, 3); line(ctx, [[1, -25], [14, -36]], INK, 3); } else { line(ctx, [[0, -25], [-8 + walk, -13]], INK, 2.6); line(ctx, [[0, -25], [8 - walk, -14]], INK, 2.6); } }
+    }
+    ctx.lineWidth = 2.7; ctx.fillStyle = '#fffef7'; ctx.strokeStyle = INK; ctx.beginPath(); ctx.arc(0, headY, 12.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    if (panic) { line(ctx, [[-6, headY - 2], [-3, headY], [-6, headY + 2]], INK, 1.7); line(ctx, [[6, headY - 2], [3, headY], [6, headY + 2]], INK, 1.7); line(ctx, [[-3, headY + 7], [0, headY + 5], [3, headY + 7]], INK, 1.6); }
+    else if (sad) { line(ctx, [[-7, headY], [-5, headY + 2], [-3, headY]], INK, 1.6); line(ctx, [[3, headY], [5, headY + 2], [7, headY]], INK, 1.6); }
+    else if (happy) { line(ctx, [[-7, headY + 1], [-5, headY - 1], [-3, headY + 1]], INK, 1.6); line(ctx, [[3, headY + 1], [5, headY - 1], [7, headY + 1]], INK, 1.6); ctx.beginPath(); ctx.arc(0, headY + 3, 4, 0, Math.PI); ctx.fillStyle = INK; ctx.fill(); }
+    else { ctx.fillStyle = INK; for (const v of [-4, 4]) { ctx.beginPath(); ctx.arc(v, headY, 1.5, 0, Math.PI * 2); ctx.fill(); } line(ctx, [[-2, headY + 6], [2, headY + 6]], INK, 1.4); }
+    if (opts.buddy) { line(ctx, [[-9, -27], [7, -27], [13, -19]], '#4c9fc4', 5); }
+    if (opts.staff) { rr(ctx, -11, headY - 16, 22, 7, 2, TEAL); text(ctx, 'i', 0, headY - 13, 6, '#fff'); }
+    if (opts.bag) { rr(ctx, 6, -17, 10, 11, 2, '#bf9c7c', INK); }
+    if (panic) { ctx.fillStyle = '#62b4cb'; ctx.beginPath(); ctx.ellipse(16, headY - 5, 2, 4, .5, 0, Math.PI * 2); ctx.fill(); }
+    if (opts.player) { ctx.fillStyle = '#f4cf45'; ctx.strokeStyle = INK; ctx.lineWidth = 1.7; ctx.beginPath(); ctx.moveTo(-5, headY - 25); ctx.lineTo(5, headY - 25); ctx.lineTo(0, headY - 17); ctx.closePath(); ctx.fill(); ctx.stroke(); }
+    ctx.restore();
+  }
+  function plant(ctx, x, y, s = 1, tree = false) {
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+    if (tree) { rr(ctx, -3, -10, 6, 15, 2, '#947f5a'); ctx.fillStyle = '#71966a'; for (const [xx, yy, r] of [[-8, -18, 12], [8, -18, 12], [0, -29, 13]]) { ctx.beginPath(); ctx.arc(xx, yy, r, 0, Math.PI * 2); ctx.fill(); } }
+    else { rr(ctx, -9, -5, 18, 15, 2, '#c0c7b7', '#52696a'); for (const [angle, height] of [[-.7, 13], [.65, 16], [0, 20]]) { ctx.save(); ctx.rotate(angle); ctx.fillStyle = angle === 0 ? '#487858' : '#679b68'; ctx.beginPath(); ctx.ellipse(0, -height / 2 - 7, 4, height / 2, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore(); } }
+    ctx.restore();
+  }
+  function door(ctx, x, y, s, occupied, number, used = false) {
+    ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.lineWidth = 1.5;
+    rr(ctx, -20, -44, 40, 48, 3, '#fffdf2', '#49666a');
+    rr(ctx, -16, -39, 32, 42, 2, used ? '#b2d4cb' : '#d6dfd8', '#7b9190');
+    rr(ctx, -8, -38, 16, 5, 2, occupied ? CORAL : '#5aaf82');
+    text(ctx, 'WC', 0, -23, 10, INK); rr(ctx, 9, -11, 3, 6, 1, '#6e8381');
+    if (number !== undefined) text(ctx, String(number + 1).padStart(2, '0'), -24, -23, 6, '#6c837f');
+    ctx.restore();
+  }
+  function sizeCanvas(canvas, width, height) {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.max(1, Math.round(width * dpr)), h = Math.max(1, Math.round(height * dpr));
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    const ctx = canvas.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); return ctx;
+  }
+  function thumbnail(canvas, map, opts = {}) {
+    const width = canvas.clientWidth || 260, height = canvas.clientHeight || 130, ctx = sizeCanvas(canvas, width, height);
+    ctx.clearRect(0, 0, width, height);
+    const s = Math.min((width - 18) / map.w, (height - 12) / map.h), ox = (width - map.w * s) / 2, oy = (height - map.h * s) / 2;
+    ctx.fillStyle = map.theme.dark; ctx.fillRect(0, 0, width, height);
+    for (let y = 0; y < map.h; y++) for (let x = 0; x < map.w; x++) {
+      const seen = !opts.game || opts.full || opts.game.seen[y * map.w + x];
+      ctx.fillStyle = seen ? (map.grid[y][x] ? map.theme.wall : map.theme.floor) : '#365457';
+      ctx.fillRect(ox + x * s, oy + y * s, s + .2, s + .2);
+    }
+    if (opts.route) { ctx.beginPath(); opts.route.forEach((p, i) => i ? ctx.lineTo(ox + p.x * s, oy + p.y * s) : ctx.moveTo(ox + p.x * s, oy + p.y * s)); ctx.strokeStyle = CORAL; ctx.lineWidth = Math.max(2, s * .32); ctx.lineJoin = 'round'; ctx.stroke(); }
+    for (const t of map.toilets) {
+      if (opts.game && !opts.full && !t.discovered) continue;
+      const open = opts.game ? opts.game.elapsed >= t.openAt : true;
+      rr(ctx, ox + t.x * s - 4, oy + t.y * s - 5, 8, 9, 2, open ? '#1a8b73' : CORAL, '#fff');
+      if (s > 7) text(ctx, 'WC', ox + t.x * s, oy + t.y * s, 5, '#fff');
+    }
+    const p = opts.game ? opts.game.player : map.start;
+    ctx.beginPath(); ctx.arc(ox + p.x * s, oy + p.y * s, opts.game ? 3 : 3.5, 0, Math.PI * 2); ctx.fillStyle = '#f3cd46'; ctx.fill(); ctx.strokeStyle = INK; ctx.lineWidth = 1.2; ctx.stroke();
+    if (opts.route && opts.game?.state === 'lost') { const px = ox + p.x * s, py = oy + p.y * s; line(ctx, [[px - 4, py - 4], [px + 4, py + 4]], CORAL, 2); line(ctx, [[px - 4, py + 4], [px + 4, py - 4]], CORAL, 2); }
+  }
+  class World {
+    constructor(canvas, minimap, game, reduced = false) {
+      this.canvas = canvas; this.minimap = minimap; this.game = game; this.reduced = reduced; this.tile = 60; this.camera = { x: 0, y: 0 }; this.minimapTick = 0;
+      this.static = document.createElement('canvas'); this.cacheMap();
+    }
+    cacheMap() {
+      const { map } = this.game, s = this.tile, c = this.static; c.width = map.w * s; c.height = map.h * s;
+      const ctx = c.getContext('2d'); const theme = map.theme;
+      for (let y = 0; y < map.h; y++) for (let x = 0; x < map.w; x++) {
+        const px = x * s, py = y * s;
+        ctx.fillStyle = map.grid[y][x] ? theme.dark : theme.floor; ctx.fillRect(px, py, s, s);
+        if (!map.grid[y][x]) {
+          ctx.fillStyle = (x + y) % 3 === 0 ? '#ffffff13' : '#253d3805'; ctx.fillRect(px + 1, py + 1, s - 1, s - 1);
+          ctx.strokeStyle = '#53746a12'; ctx.lineWidth = 1; ctx.strokeRect(px + .5, py + .5, s, s);
+          if (y > 0 && map.grid[y - 1][x]) { ctx.fillStyle = '#203d3914'; ctx.fillRect(px, py, s, 10); }
+        } else {
+          ctx.fillStyle = theme.wall; ctx.fillRect(px, py, s, s);
+          if (C.floor(map, x, y + 1)) { ctx.fillStyle = '#ffffff22'; ctx.fillRect(px, py + 4, s, 3); ctx.fillStyle = theme.dark; ctx.fillRect(px, py + s - 10, s, 10); }
+          if ((x * 7 + y * 11 + map.seed) % 31 === 0 && x > 1 && y > 1) {
+            if (theme.prop === 'plant' || theme.prop === 'tree') plant(ctx, px + s / 2, py + s / 2 + 10, .85, theme.prop === 'tree');
+            else if (theme.prop === 'desk') { rr(ctx, px + 6, py + 11, s - 12, 19, 2, '#d7bd94', '#876f56'); rr(ctx, px + 14, py + 5, 14, 8, 2, '#597d75'); }
+            else { rr(ctx, px + 5, py + 15, s - 10, 15, 3, '#b8c6cb', '#516d79'); }
+          }
+        }
+      }
+      // Reusable floor arrows provide local direction, without revealing availability.
+      map.nodes.forEach((n, i) => {
+        if (i % 3 !== 0) return;
+        const nearest = [...map.toilets].sort((a, b) => C.path(map, n, a).length - C.path(map, n, b).length)[0];
+        const p = C.path(map, n, nearest);
+        if (p.length < 4) return;
+        const next = p[3], dx = next.x - n.x - .5, dy = next.y - n.y - .5;
+        text(ctx, `WC ${Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? '→' : '←') : (dy > 0 ? '↓' : '↑')}`, (n.x + .5) * s, (n.y + 1.5) * s, 10, theme.dark);
+      });
+    }
+    point(clientX, clientY) {
+      const r = this.canvas.getBoundingClientRect(), s = this.tile;
+      const x = clientX - r.left + this.camera.x, y = clientY - r.top + this.camera.y;
+      // The door artwork extends above its floor tile. Clicking the artwork
+      // should still select the entrance, rather than the wall behind it.
+      const target = this.game.map.toilets.find(t => this.game.seen[Math.floor(t.y) * this.game.map.w + Math.floor(t.x)] && Math.abs(x - t.x * s) < 25 * s / 43 && y >= t.y * s - 55 * s / 43 && y <= t.y * s + 8);
+      return target ? { x: target.x, y: target.y } : { x: x / s, y: y / s };
+    }
+    draw(time = 0) {
+      const canvas = this.canvas, game = this.game, map = game.map, s = this.tile;
+      const w = canvas.clientWidth, h = canvas.clientHeight, ctx = sizeCanvas(canvas, w, h);
+      const cx = Math.max(0, Math.min(map.w * s - w, game.player.x * s - w / 2));
+      const cy = Math.max(0, Math.min(map.h * s - h, game.player.y * s - h * .57));
+      this.camera = { x: cx, y: cy };
+      ctx.fillStyle = map.theme.dark; ctx.fillRect(0, 0, w, h);
+      ctx.save(); ctx.translate(-cx, -cy); ctx.drawImage(this.static, 0, 0);
+      if (game.autoPath.length) {
+        ctx.beginPath(); ctx.moveTo(game.player.x * s, game.player.y * s); game.autoPath.forEach(p => ctx.lineTo(p.x * s, p.y * s));
+        ctx.strokeStyle = '#20938a66'; ctx.lineWidth = 3; ctx.setLineDash([4, 8]); ctx.stroke(); ctx.setLineDash([]);
+        const end = game.autoPath[game.autoPath.length - 1]; ctx.beginPath(); ctx.arc(end.x * s, end.y * s, 9, 0, Math.PI * 2); ctx.stroke();
+      }
+      const objects = [];
+      map.toilets.forEach(t => objects.push({ y: t.y, fn: () => {
+        const open = game.elapsed >= t.openAt;
+        ctx.fillStyle = open ? '#70b39725' : '#e88a7e22'; ctx.beginPath(); ctx.ellipse(t.x * s, t.y * s + 8, 30, 15, 0, 0, Math.PI * 2); ctx.fill();
+        door(ctx, t.x * s, t.y * s, 1.25 * s / 43, !open, t.id, game.mode === 'relief' && game.door === t);
+        if (C.distance(game.player, t) < 4) { const label = open ? '空き' : '使用中'; rr(ctx, t.x * s - 22, t.y * s - 101, 44, 17, 4, open ? '#e7f5e9' : '#fff2ed', open ? '#74a88d' : '#d69081'); text(ctx, label, t.x * s, t.y * s - 92, 9, open ? '#26715c' : '#b25447'); }
+      } }));
+      map.shoppers.forEach(n => objects.push({ y: n.y, fn: () => stick(ctx, n.x * s, n.y * s, .86 * s / 43, { bag: n.bag, walk: this.reduced ? 0 : game.elapsed * 3 }) }));
+      objects.push({ y: map.staff.y, fn: () => { stick(ctx, map.staff.x * s, map.staff.y * s, .9 * s / 43, { staff: true }); text(ctx, map.staff.talked ? 'ありがとう！' : '案内係', map.staff.x * s, map.staff.y * s - 92, 10, INK); } });
+      const b = map.buddy;
+      if (!b.busy) objects.push({ y: b.y, fn: () => stick(ctx, b.x * s, b.y * s, .88 * s / 43, { buddy: true, panic: !b.done, happy: b.done, walk: b.active && !this.reduced ? game.player.walk : 0 }) });
+      if (game.mode !== 'relief') objects.push({ y: game.player.y, fn: () => stick(ctx, game.player.x * s, game.player.y * s, s / 43, { player: true, panic: true, walk: !this.reduced && game._moving ? game.player.walk : 0 }) });
+      objects.sort((a, b) => a.y - b.y).forEach(o => o.fn());
+      // An opaque fog keeps unreached passages unknown, while persisting explored tiles.
+      for (let y = Math.max(0, Math.floor(cy / s)); y < Math.min(map.h, (cy + h) / s); y++) for (let x = Math.max(0, Math.floor(cx / s)); x < Math.min(map.w, (cx + w) / s); x++) if (!game.seen[y * map.w + x]) { ctx.fillStyle = '#314e51'; ctx.fillRect(x * s, y * s, s + .3, s + .3); ctx.fillStyle = '#ffffff04'; ctx.fillRect(x * s + 1, y * s + 1, s - 2, s - 2); }
+      if (game.mode === 'relief') {
+        const t = game.door; text(ctx, '…！', t.x * s, t.y * s - 118, 20, TEAL);
+      }
+      ctx.restore();
+      if (game.remaining < 10 && !this.reduced) { ctx.strokeStyle = `rgba(236,115,101,${.25 + .15 * Math.sin(time * 5)})`; ctx.lineWidth = 6; ctx.strokeRect(3, 3, w - 6, h - 6); }
+      if (this.minimap && time - this.minimapTick > .12) { thumbnail(this.minimap, map, { game }); this.minimapTick = time; }
+    }
+  }
+  function illustration(canvas, mode = 'title') {
+    const w = canvas.clientWidth || 560, h = canvas.clientHeight || 490, ctx = sizeCanvas(canvas, w, h);
+    const scale = Math.min(w / 560, h / 480);
+    ctx.fillStyle = '#e8eee2'; ctx.fillRect(0, 0, w, h);
+    ctx.save(); ctx.translate((w - 560 * scale) / 2, (h - 480 * scale) / 2); ctx.scale(scale, scale);
+    ctx.fillStyle = '#e8eee2'; ctx.fillRect(0, 0, 560, 480);
+    ctx.fillStyle = '#f0ecdc'; ctx.fillRect(0, 240, 560, 240);
+    ctx.strokeStyle = '#6c8c7b16'; ctx.lineWidth = 1;
+    for (let x = 0; x < 560; x += 48) { ctx.beginPath(); ctx.moveTo(x, 240); ctx.lineTo(x, 480); ctx.stroke(); }
+    for (let y = 240; y < 480; y += 48) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(560, y); ctx.stroke(); }
+    rr(ctx, 38, 95, 484, 161, 4, '#97b5a6'); ctx.fillStyle = '#6b9185'; ctx.fillRect(38, 223, 484, 33);
+    door(ctx, 408, 262, 2.8, mode === 'title', undefined, mode === 'won');
+    plant(ctx, 70, 258, 1.9); plant(ctx, 506, 264, 1.7);
+    rr(ctx, 66, 129, 133, 41, 6, '#fffcf1'); text(ctx, 'WC →', 131, 151, 21, TEAL);
+    if (mode === 'title') {
+      stick(ctx, 234, 371, 2.65, { player: true, panic: true }); stick(ctx, 330, 385, 1.85, { buddy: true, panic: true });
+      rr(ctx, 73, 303, 110, 35, 18, '#fffdf7', '#9aafa0'); text(ctx, 'あと、少し…！', 128, 321, 12);
+      rr(ctx, 291, 56, 167, 43, 10, '#fffdf5', '#c7d2c2'); text(ctx, '00:18', 375, 78, 28, CORAL);
+      text(ctx, '使用中', 408, 105, 12, CORAL);
+    } else if (mode === 'won') {
+      stick(ctx, 210, 365, 2.7, { player: true, happy: true }); stick(ctx, 326, 370, 2.2, { buddy: true, happy: true });
+      for (let i = 0; i < 16; i++) { ctx.fillStyle = i % 2 ? '#eecf68' : '#e8917d'; ctx.save(); ctx.translate(93 + (i * 73 % 350), 73 + (i * 51 % 200)); ctx.rotate(i); ctx.fillRect(0, 0, 6, 13); ctx.restore(); }
+    } else { stick(ctx, 230, 358, 3, { sad: true }); stick(ctx, 328, 360, 2.3, { buddy: true }); text(ctx, '00:00', 188, 118, 28, CORAL); }
+    ctx.restore();
+  }
+  window.ToiletRender = { World, thumbnail, illustration, stick, sizeCanvas };
+})();
+</script>
+<script>(function () {
+  'use strict';
+  const C = window.ToiletCore, R = window.ToiletRender;
+  const $ = s => document.querySelector(s), main = $('#main'), modalRoot = $('#modal-root');
+  const STORAGE = 'toilet60-save-v1';
+  const defaults = { records: {}, sound: true, volume: .35, reduced: window.matchMedia('(prefers-reduced-motion: reduce)').matches, difficulty: 'normal' };
+  let saved = { ...defaults }, canSave = true;
+  try {
+    const raw = JSON.parse(localStorage.getItem(STORAGE) || 'null');
+    if (raw && typeof raw === 'object') {
+      if (raw.records && typeof raw.records === 'object' && !Array.isArray(raw.records)) {
+        saved.records = Object.fromEntries(Object.entries(raw.records).filter(([k, v]) => /^\d+-(easy|normal|hard)$/.test(k) && v && typeof v === 'object' && Number.isFinite(v.best) && v.best >= 0 && v.best <= 90).map(([k, v]) => [k, { best: v.best, wins: Math.max(1, Math.floor(Number(v.wins) || 1)) }]));
+      }
+      if (typeof raw.sound === 'boolean') saved.sound = raw.sound;
+      if (Number.isFinite(raw.volume)) saved.volume = Math.max(0, Math.min(1, raw.volume));
+      if (typeof raw.reduced === 'boolean') saved.reduced = raw.reduced;
+      if (C.DIFFICULTIES[raw.difficulty]) saved.difficulty = raw.difficulty;
+    }
+  } catch (_) { /* Corrupt/unavailable saves never prevent playing. */ }
+  function save() { try { localStorage.setItem(STORAGE, JSON.stringify(saved)); } catch (_) { canSave = false; } }
+  let screen = 'title', game = null, world = null, stage = C.STAGES[0], difficulty = saved.difficulty;
+  let filter = -1, page = 0, modal = null, returnFocus = null, lastTime = performance.now(), lastHud = 0, lastEvent = null, lastTickSecond = -1;
+  let audioContext = null, practice = false, currentOptions = null, resultSaved = false;
+  let lastFootstep = 0;
+  const flushed = new Set();
+  const keys = new Set(), held = new Set();
+  function unlockAudio() {
+    if (!saved.sound) return;
+    try { audioContext ||= new (window.AudioContext || window.webkitAudioContext)(); if (audioContext.state === 'suspended') audioContext.resume().catch(() => {}); } catch (_) { /* Audio is optional. */ }
+  }
+  function tone(frequency = 520, duration = .08, delay = 0, gain = .13, type = 'sine') {
+    if (!saved.sound || !audioContext || audioContext.state !== 'running') return;
+    try { const osc = audioContext.createOscillator(), vol = audioContext.createGain(), at = audioContext.currentTime + delay;
+      osc.type = type; osc.frequency.value = frequency; vol.gain.setValueAtTime(0, at); vol.gain.linearRampToValueAtTime(saved.volume * gain, at + .01); vol.gain.exponentialRampToValueAtTime(.0001, at + duration);
+      osc.connect(vol); vol.connect(audioContext.destination); osc.start(at); osc.stop(at + duration + .01);
+    } catch (_) {}
+  }
+  function chime(won) { (won ? [523, 659, 784, 1046] : [392, 330, 262]).forEach((f, i) => tone(f, .25, i * .1, .16)); }
+  function waterSound() {
+    if (!saved.sound || !audioContext || audioContext.state !== 'running') return;
+    try {
+      const buffer = audioContext.createBuffer(1, audioContext.sampleRate * .65, audioContext.sampleRate), data = buffer.getChannelData(0);
+      for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
+      const source = audioContext.createBufferSource(), filter = audioContext.createBiquadFilter(), gain = audioContext.createGain();
+      source.buffer = buffer; filter.type = 'lowpass'; filter.frequency.value = 1250; gain.gain.value = saved.volume * .13;
+      source.connect(filter); filter.connect(gain); gain.connect(audioContext.destination); source.start(); source.stop(audioContext.currentTime + .65);
+    } catch (_) {}
+  }
+  function syncSettings() { document.body.classList.toggle('reduced-motion', saved.reduced); $('#sound-button').textContent = saved.sound ? '♪' : '♩'; $('#sound-button').setAttribute('aria-label', saved.sound ? '音をオフにする' : '音をオンにする'); }
+  function announce(message) { $('#announcer').textContent = message; }
+  function recordCount() { return C.STAGES.filter(s => Object.keys(C.DIFFICULTIES).some(d => saved.records[`${s.id}-${d}`])).length; }
+  function setScreen(value) { screen = value; keys.clear(); held.clear(); document.body.dataset.screen = value; lastEvent = null; window.scrollTo(0, 0); }
+  function renderTitle() {
+    closeModal(false); game = null; world = null; setScreen('title');
+    main.innerHTML = `<section class="hero"><div><div class="eyebrow">A VERY URGENT LITTLE ADVENTURE</div><h1>あと<span class="sixty">60</span>秒で<br>限界です<span class="coral">。</span></h1><p class="lead">トイレまで、あと少し。<br>待つか、走るか。その一瞬が、運命を変える。</p><div class="hero-buttons"><button class="button primary" data-action="quick-start">はじめる <span>↗</span></button><div class="button-row"><button class="button secondary" data-action="stages">ステージ選択</button><button class="button secondary" data-action="help">あそびかた <span>?</span></button></div><button class="text-button" data-action="random">↻ 気ままにランダムマップ</button></div><p class="hero-note">キーボード・クリック・タッチで遊べます。<br>ダウンロード後は、ずっとオフラインで。</p></div><div class="hero-art"><canvas id="title-art" aria-label="使用中のトイレの前で焦る棒人間と仲間"></canvas><div class="art-label">SMALL WORLD. BIG EMERGENCY.</div><div class="art-caption"><span>待っている間も、時計は進む。</span><span>01 / PUBLIC SPACE</span></div></div></section><section class="feature-strip"><div class="feature"><strong>48</strong><p><b>小さな場所、大きな冒険</b>6つのエリア × 8ステージ</p></div><div class="feature"><strong>3</strong><p><b>あなたのペースで</b>90秒 / 60秒 / 30秒</p></div><div class="feature"><strong>∞</strong><p><b>毎回、違う曲がり角</b>ランダム生成でもっと遊ぶ</p></div></section>`;
+    requestAnimationFrame(() => { if (screen === 'title') R.illustration($('#title-art')); });
+  }
+  function difficultyButtons() { return `<div class="difficulty" aria-label="難易度">${Object.entries(C.DIFFICULTIES).map(([id, d]) => `<button data-difficulty="${id}" class="${difficulty === id ? 'selected' : ''}" aria-pressed="${difficulty === id}">${d.label}</button>`).join('')}</div>`; }
+  function difficultyNote() { return `${C.DIFFICULTIES[difficulty].time}秒 · ${difficulty === 'easy' ? '広く見えて、じっくり探索' : difficulty === 'normal' ? '待つか、探すか。基本の難易度' : 'コンパクトなマップで即断即決'}`; }
+  function renderStages() {
+    closeModal(false); game = null; world = null; setScreen('stages');
+    const list = C.STAGES.filter(s => filter < 0 || s.theme === filter), pages = Math.ceil(list.length / 6); page = Math.min(page, pages - 1);
+    const visible = list.slice(page * 6, page * 6 + 6), theme = C.THEMES[stage.theme];
+    main.innerHTML = `<div class="page-heading"><div><div class="eyebrow">CHOOSE YOUR NEXT EMERGENCY</div><h1>ステージ選択</h1><p>どのステージからでも。気になる場所を選ぼう。</p></div><div class="count"><strong>${recordCount()}</strong> / 48 CLEAR</div></div><nav class="tabs" aria-label="エリアで絞り込む">${[{ name: 'すべて', id: -1 }, ...C.THEMES.map((t, id) => ({ name: t.name, id }))].map(t => `<button class="tab ${filter === t.id ? 'selected' : ''}" data-filter="${t.id}" aria-pressed="${filter === t.id}">${t.name}</button>`).join('')}</nav><div class="select-layout"><div><div class="stage-grid">${visible.map(s => { const rec = saved.records[`${s.id}-${difficulty}`]; return `<button class="stage-card ${s.id === stage.id ? 'selected' : ''}" data-stage="${s.id}" aria-label="ステージ${s.id} ${s.name}" aria-pressed="${s.id === stage.id}"><canvas data-preview="${s.id}" aria-hidden="true"></canvas><div class="card-title"><span>${String(s.id).padStart(2, '0')}</span>${s.name}</div><div class="card-meta"><span>${C.THEMES[s.theme].name}</span><span class="check">${rec ? '✓ CLEAR' : '未クリア'}</span></div></button>`; }).join('')}</div><div class="page-nav"><button class="button small secondary" data-action="home">← タイトルへ</button><div class="pagination"><button class="icon-button" data-action="prev-page" aria-label="前のページ" ${page === 0 ? 'disabled' : ''}>‹</button><span>${page + 1} / ${pages}</span><button class="icon-button" data-action="next-page" aria-label="次のページ" ${page >= pages - 1 ? 'disabled' : ''}>›</button></div><button class="button small secondary" data-action="random">↻ ランダム</button></div></div><aside class="selected-panel"><div class="eyebrow">${theme.tag}</div><div class="number">${String(stage.id).padStart(2, '0')}</div><h2>${stage.name}</h2><canvas id="selected-map" aria-label="選択したステージのマップ"></canvas><p>${theme.name} · トイレ4か所<br>同じステージは、同じ配置で再挑戦。</p>${difficultyButtons()}<div class="difficulty-note">${difficultyNote()}</div><button class="button primary" data-action="play-selected">このステージで遊ぶ ↗</button></aside></div>`;
+    requestAnimationFrame(() => {
+      if (screen !== 'stages') return;
+      $$('canvas[data-preview]').forEach(c => { const s = C.STAGES[Number(c.dataset.preview) - 1]; R.thumbnail(c, C.generate(s.seed, difficulty, s.theme)); });
+      R.thumbnail($('#selected-map'), C.generate(stage.seed, difficulty, stage.theme));
+    });
+  }
+  function $$(s) { return Array.from(document.querySelectorAll(s)); }
+  function openModal(kind, html, wide = false) {
+    if (!modal) returnFocus = document.activeElement;
+    modal = kind; $('#app').inert = true; keys.clear(); held.clear(); if (game && game.state === 'playing') game.paused = true;
+    modalRoot.innerHTML = `<div class="modal-backdrop"><section class="modal ${wide ? 'wide' : ''}" role="dialog" aria-modal="true" aria-labelledby="modal-title">${html}</section></div>`;
+    const first = modalRoot.querySelector('button,input'); if (first) first.focus();
+  }
+  function closeModal(resume = true) {
+    modal = null; modalRoot.innerHTML = ''; $('#app').inert = false; keys.clear(); held.clear(); lastTime = performance.now();
+    if (game && resume && game.state === 'playing') game.paused = false;
+    if (returnFocus && returnFocus.isConnected) returnFocus.focus({ preventScroll: true }); returnFocus = null;
+  }
+  function showHelp() {
+    openModal('help', `<div class="eyebrow">HOW TO PLAY</div><h2 id="modal-title">空いているトイレを見つけよう。</h2><p class="lead">残り時間は「我慢できる時間」。入ってから3秒でクリアです。</p><div class="help-grid"><div class="help-card"><span class="step">1</span><div class="help-symbol">↑ ← ↓ →</div><h3>移動する</h3><p><kbd>WASD</kbd> / 矢印キーで移動。<br><kbd>Shift</kbd> で急ぐと、時計も少し早く進みます。見えている床をクリックしても移動できます。</p></div><div class="help-card"><span class="step">2</span><div class="help-symbol">WC ♫</div><h3>音を聞いて、決める</h3><p>近づいて <kbd>E</kbd> で入る・待つ。水を流す音なら、もうすぐ空くかも。待機中も移動すれば中断できます。</p></div><div class="help-card"><span class="step">3</span><div class="help-symbol">+ 3 sec.</div><h3>仲間と探す</h3><p><kbd>E</kbd> で仲間を誘うと +3秒。トイレ前で <kbd>Q</kbd> を押すと先に譲れます。案内係は2秒で場所を教えてくれます。</p></div></div><p class="controls-info" style="margin-top:18px">人に走ってぶつかると −2秒。<kbd>Esc</kbd> / <kbd>P</kbd> で一時停止。画面を離れると自動で止まります。<br>スマートフォンでは下の方向ボタンと「E アクション」で操作できます。</p><div class="modal-actions"><button class="button secondary" data-action="close-modal">閉じる</button><button class="button primary" data-action="practice">練習してみる →</button></div>`, true);
+  }
+  function showSettings() {
+    openModal('settings', `<div class="eyebrow">SETTINGS</div><h2 id="modal-title">遊びやすく、整える。</h2><label class="settings-row"><span>効果音<small>足音・発見音・残り時間の音</small></span><input id="setting-sound" type="checkbox" ${saved.sound ? 'checked' : ''}></label><label class="settings-row"><span>音量</span><input id="setting-volume" type="range" min="0" max="1" step=".05" value="${saved.volume}"></label><label class="settings-row"><span>動きを控えめに<small>歩行アニメーション・点滅を抑えます</small></span><input id="setting-reduced" type="checkbox" ${saved.reduced ? 'checked' : ''}></label><p class="controls-info" style="margin-top:15px">記録はこのブラウザに自動保存します。<br>HTMLの場所やブラウザを変えると、記録が引き継がれない場合があります。</p>${!canSave ? '<p class="save-warning">現在のブラウザでは保存できません。ゲームはそのまま遊べます。</p>' : ''}<div class="modal-actions"><button class="button primary" data-action="close-modal">完了</button></div>`);
+  }
+  function ready(options) {
+    currentOptions = options; const s = C.STAGES.find(s => s.id === options.stageId), label = options.practice ? '練習用の小さなマップ' : s ? `${String(s.id).padStart(2, '0')} ${s.name}` : '気ままにランダムマップ';
+    openModal('ready', `<div class="eyebrow">READY WHEN YOU ARE</div><h2 id="modal-title">${label}</h2><p class="lead">トイレに入って、3秒。<br>音を聞くか、次の角へ進むか。あなた次第です。</p><div class="ready-info"><span class="chip">${C.THEMES[options.theme].name}</span><span class="chip">${options.practice ? '練習 · 90秒' : `${C.DIFFICULTIES[options.difficulty].label} · ${C.DIFFICULTIES[options.difficulty].time}秒`}</span></div><p class="controls-info"><kbd>WASD</kbd> 移動 <kbd>Shift</kbd> 急ぐ <kbd>E</kbd> アクション<br>近くの仲間を誘うと +3秒。黄色のマークがあなたです。</p><div class="modal-actions"><button class="button secondary" data-action="close-modal">戻る</button><button class="button primary" data-action="begin">準備OK、スタート →</button></div>`);
+  }
+  function startGame(options) {
+    closeModal(false); setScreen('game'); currentOptions = { ...options }; practice = !!options.practice;
+    game = new C.Game(options); resultSaved = false; lastTickSecond = -1; lastHud = 0; lastFootstep = 0; flushed.clear();
+    const s = C.STAGES.find(s => s.id === options.stageId), label = practice ? 'PRACTICE' : s ? `STAGE ${String(s.id).padStart(2, '0')}` : 'RANDOM';
+    main.innerHTML = `<div class="game-header"><div class="game-stage">${label} <span style="color:var(--muted)">/ ${C.THEMES[options.theme].name}</span><small>${practice ? 'ひと息つくまで、練習しよう' : s?.name || `SEED ${options.seed}`} · ${C.DIFFICULTIES[options.difficulty].label}</small></div><div class="timer-wrap"><div class="timer-label">限界まで</div><div class="timer" id="timer">${game.limit}:00</div><div class="time-track"><i id="time-fill"></i></div></div><div class="game-actions"><button class="button small secondary" data-action="pause">Ⅱ 一時停止</button></div></div><div class="game-board"><canvas id="world" tabindex="0" aria-label="ゲーム画面。WASDか矢印キーで移動、Eでアクション、Escで一時停止"></canvas><div class="map-caption" id="map-caption">見つけたトイレ 0 / ${game.map.toilets.length}</div><canvas class="minimap" id="minimap" aria-label="探索済みのミニマップ"></canvas><div class="toast hidden" id="toast" role="status"></div><div id="context" class="context-bar hidden"></div></div><div class="game-bottom"><div class="key-guide"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> 移動</span><span><kbd>Shift</kbd> 急ぐ</span><span><kbd>E</kbd> 調べる</span><span>床をクリックでも移動</span></div><span class="buddy-status" id="buddy-status">ひとりで探索中</span></div><div class="touch-controls"><div class="dpad"><button data-key="up" aria-label="上に移動">↑</button><button data-key="left" aria-label="左に移動">←</button><button data-key="down" aria-label="下に移動">↓</button><button data-key="right" aria-label="右に移動">→</button></div><div class="touch-actions"><button data-key="sprint">急ぐ</button><button class="act" data-action="interact">E アクション</button></div></div>`;
+    world = new R.World($('#world'), $('#minimap'), game, saved.reduced);
+    $('#world').addEventListener('pointerdown', e => { if (modal) return; e.preventDefault(); unlockAudio(); const point = world.point(e.clientX, e.clientY); if (!game.setDestination(point)) game.event('見えている通路を選んでください'); });
+    $$('[data-key]').forEach(button => {
+      button.addEventListener('pointerdown', e => { if (modal) return; e.preventDefault(); button.setPointerCapture(e.pointerId); held.add(button.dataset.key); unlockAudio(); });
+      ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev => button.addEventListener(ev, () => held.delete(button.dataset.key)));
+    });
+    lastTime = performance.now(); updateHud(true); world.draw(performance.now() / 1000); announce('スタート。空いているトイレを探してください。');
+  }
+  function pause() {
+    if (!game || game.state !== 'playing' || modal) return;
+    openModal('pause', `<div class="eyebrow">TAKE A BREATH</div><h2 id="modal-title">ひと休み。</h2><p class="lead">時計は止まっています。深呼吸して、次の一歩へ。</p><div class="modal-actions vertical"><button class="button primary" data-action="close-modal">続ける →</button><button class="button secondary" data-action="retry">同じマップでやり直す</button><button class="button secondary" data-action="stages">ステージ選択へ</button><button class="text-button" data-action="home">タイトルへ</button></div>`);
+  }
+  function updateHud(force = false) {
+    if (!game || screen !== 'game') return;
+    const rem = Math.max(0, game.remaining), whole = Math.floor(rem), cents = Math.floor((rem - whole) * 100);
+    const time = $('#timer'); time.textContent = `${String(whole).padStart(2, '0')}.${String(cents).padStart(2, '0')}`; time.classList.toggle('urgent', rem < 10);
+    $('#time-fill').style.width = `${rem / game.limit * 100}%`; $('#time-fill').style.background = rem < 10 ? 'var(--coral)' : 'var(--teal)';
+    $('#map-caption').textContent = `見つけたトイレ ${game.map.toilets.filter(t => t.discovered).length} / ${game.map.toilets.length}`;
+    $('#buddy-status').textContent = game.shared ? '✓ 仲間は無事に到着！' : game.map.buddy.busy ? '仲間を先に案内中' : game.recruited ? '青いスカーフの仲間と探索中' : 'ひとりで探索中';
+    const c = game.context(), box = $('#context');
+    if (c?.type === 'door' && c.target.openAt - game.elapsed > 0 && c.target.openAt - game.elapsed < 4 && !flushed.has(c.target.id)) { waterSound(); flushed.add(c.target.id); }
+    let html = '';
+    if (c?.type === 'relief') html = `<div class="context-hint">間に合って…！ あと ${Math.max(0, 3 - game.relief).toFixed(1)} 秒</div><div class="relief-track"><i style="width:${Math.min(100, game.relief / 3 * 100)}%"></i></div>`;
+    else if (c) html = `<div class="context-hint">${c.hint}</div><div class="context-buttons"><button class="button primary" data-action="interact"><kbd>E</kbd> ${c.label}</button>${c.type === 'door' && game.map.buddy.active && !game.map.buddy.busy && !game.map.buddy.done ? '<button class="button secondary" data-action="yield"><kbd>Q</kbd> 仲間に譲る</button>' : ''}</div>`;
+    if (box.dataset.html !== html) { box.innerHTML = html; box.dataset.html = html; box.classList.toggle('hidden', !html); }
+    const event = game.events[game.events.length - 1], toast = $('#toast');
+    if (event && game.elapsed - event.at < 3.2) { toast.textContent = event.text; toast.className = `toast ${event.kind}`; if (event !== lastEvent) { announce(event.text); if (event.kind === 'discover') tone(750, .12); if (event.kind === 'bad') tone(165, .14, 0, .15, 'triangle'); if (event.kind === 'good') tone(660, .12); lastEvent = event; } } else toast.classList.add('hidden');
+    if (whole < 10 && whole !== lastTickSecond && !game.paused && game.state === 'playing') { tone(whole < 4 ? 620 : 420, .07, 0, .08); lastTickSecond = whole; }
+  }
+  function renderResult() {
+    const won = game.state === 'won'; setScreen('result'); world = null; closeModal(false);
+    if (won && !resultSaved && !practice && game.options.stageId) {
+      const k = `${game.options.stageId}-${game.options.difficulty}`, old = saved.records[k];
+      saved.records[k] = { best: Math.max(old?.best || 0, game.remaining), wins: (old?.wins || 0) + 1 }; save(); resultSaved = true;
+    }
+    chime(won); announce(won ? '間に合った！ ステージクリア。' : '間に合わなかった。再挑戦できます。');
+    const s = C.STAGES.find(s => s.id === game.options.stageId);
+    main.innerHTML = `<section class="result"><div class="result-heading"><div class="eyebrow">${won ? 'STAGE CLEAR — BREATHE OUT.' : 'TIME UP — ONE MORE TRY.'}</div><h1>${won ? '間に合った！' : '間に合わなかった…'}</h1><p>${practice ? '練習マップ' : s ? `${String(s.id).padStart(2, '0')} ${s.name}` : 'ランダムマップ'} / ${C.DIFFICULTIES[game.options.difficulty].label}</p></div><div class="result-layout"><canvas class="result-art" id="result-art" aria-label="${won ? '喜ぶ棒人間' : '落ち込む棒人間を励ます仲間'}"></canvas><div class="result-panel">${won ? `<div class="stat"><span>残り時間</span><strong style="color:var(--coral)">${game.remaining.toFixed(2)}<small>秒</small></strong></div><div class="stat"><span>移動距離</span><strong>${Math.round(game.moved * 1.2)}<small>m</small></strong></div><div class="stat"><span>待った時間</span><strong>${game.waited.toFixed(1)}<small>秒</small></strong></div><div class="award"><span>✦</span><div><small>獲得した称号</small><b>${game.title}</b></div></div>${!canSave ? '<p class="save-warning">ブラウザの制限により、記録は今回の起動中のみ保持されます。</p>' : ''}` : `<h3 style="font-size:15px">今回のルート</h3><canvas id="recap" class="recap" aria-label="通った道とタイムアップ時のトイレの空き状況"></canvas><div class="legend"><span style="color:var(--coral)">━ 通った道</span><span style="color:var(--teal)">■ 空き</span><span>× タイムアップ</span></div><p class="hint">${failureHint()}</p>`}</div></div><div class="result-buttons">${won ? `<button class="button primary" data-action="next-stage">${practice ? '本番へ進む' : game.options.stageId === 48 ? 'ランダムマップに挑戦' : '次のステージへ'} →</button><button class="button secondary" data-action="retry">もう一度</button>` : '<button class="button primary" data-action="retry">↻ 同じマップで再挑戦</button><button class="button secondary" data-action="random">別のマップへ</button>'}<button class="button secondary" data-action="stages">ステージ選択</button></div></section>`;
+    requestAnimationFrame(() => { if (screen !== 'result') return; R.illustration($('#result-art'), won ? 'won' : 'lost'); if (!won) R.thumbnail($('#recap'), game.map, { game, full: true, route: game.route }); });
+  }
+  function failureHint() {
+    if (game.mode === 'relief') return '入口に着いてから、あと3秒必要です。少し余裕を残して駆け込もう。';
+    if (game.penalties > 1) return '人混みでは歩くと安心。走ってぶつかると、1回につき2秒減ります。';
+    if (game.waited > 10) return '長居の気配がしたら別のトイレへ。水を流す音なら、もうすぐです。';
+    return '緑のマークは、タイムアップ時に空いていたトイレ。次はこの道も探してみよう。';
+  }
+  function optionsFor(s, d = difficulty) { return { seed: s.seed, difficulty: d, theme: s.theme, stageId: s.id }; }
+  function randomReady() {
+    const a = new Uint32Array(1); if (window.crypto?.getRandomValues) window.crypto.getRandomValues(a); else a[0] = Date.now();
+    const seed = a[0] % 1000000000; ready({ seed, difficulty, theme: seed % C.THEMES.length, stageId: 0 });
+  }
+  const actions = {
+    home: renderTitle,
+    stages: () => { stage = C.STAGES.find(s => s.id === game?.options.stageId) || stage; renderStages(); },
+    help: showHelp, settings: showSettings,
+    sound: () => { saved.sound = !saved.sound; save(); syncSettings(); unlockAudio(); tone(); },
+    'close-modal': () => closeModal(true),
+    'quick-start': () => { const next = C.STAGES.find(s => !saved.records[`${s.id}-${difficulty}`]) || C.STAGES[0]; ready(optionsFor(next)); },
+    'play-selected': () => ready(optionsFor(stage)),
+    begin: () => startGame(currentOptions),
+    practice: () => ready({ seed: 60317, difficulty: 'easy', theme: 0, practice: true, stageId: 0 }),
+    pause,
+    interact: () => { if (game && !modal) { game.interact(); updateHud(true); } },
+    yield: () => { if (game && !modal) { game.yieldBuddy(); updateHud(true); } },
+    retry: () => ready({ ...game.options }),
+    random: randomReady,
+    'next-stage': () => { const id = game.options.stageId; if (practice) ready(optionsFor(C.STAGES[0])); else if (!id || id >= 48) randomReady(); else { stage = C.STAGES[id]; ready(optionsFor(stage, game.options.difficulty)); } },
+    'prev-page': () => { page = Math.max(0, page - 1); renderStages(); },
+    'next-page': () => { page++; renderStages(); }
+  };
+  document.addEventListener('click', event => {
+    const button = event.target.closest('button'); if (!button || button.disabled) return;
+    unlockAudio();
+    if (button.dataset.action && actions[button.dataset.action]) { tone(510, .025, 0, .04); actions[button.dataset.action](); }
+    else if (button.dataset.stage) { stage = C.STAGES[Number(button.dataset.stage) - 1]; renderStages(); }
+    else if (button.dataset.filter !== undefined) { filter = Number(button.dataset.filter); page = 0; stage = C.STAGES.find(s => filter < 0 || s.theme === filter); renderStages(); }
+    else if (button.dataset.difficulty) { difficulty = button.dataset.difficulty; saved.difficulty = difficulty; save(); renderStages(); }
+  });
+  document.addEventListener('input', event => {
+    const el = event.target;
+    if (el.id === 'setting-sound') { saved.sound = el.checked; unlockAudio(); }
+    if (el.id === 'setting-volume') { saved.volume = Number(el.value); tone(); }
+    if (el.id === 'setting-reduced') { saved.reduced = el.checked; if (world) world.reduced = saved.reduced; }
+    if (el.id.startsWith('setting-')) { save(); syncSettings(); }
+  });
+  const movementKeys = ['KeyW', 'KeyA', 'KeyS', 'KeyD', 'ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ShiftLeft', 'ShiftRight'];
+  document.addEventListener('keydown', e => {
+    if (modal) {
+      if (e.code === 'Escape') { e.preventDefault(); closeModal(true); return; }
+      if (e.code === 'Tab') { const list = Array.from(modalRoot.querySelectorAll('button:not(:disabled),input')); const first = list[0], last = list[list.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
+      return;
+    }
+    if (screen !== 'game' || !game) return;
+    if (movementKeys.includes(e.code) || ['KeyE', 'KeyQ', 'Escape', 'KeyP', 'Space'].includes(e.code)) e.preventDefault();
+    unlockAudio(); if (movementKeys.includes(e.code)) keys.add(e.code);
+    if (!e.repeat) { if (e.code === 'KeyE' || e.code === 'Space') actions.interact(); if (e.code === 'KeyQ') actions.yield(); if (e.code === 'Escape' || e.code === 'KeyP') pause(); }
+  });
+  document.addEventListener('keyup', e => keys.delete(e.code));
+  function focusLost() { keys.clear(); held.clear(); if (screen === 'game' && game?.state === 'playing' && !modal) pause(); }
+  window.addEventListener('blur', focusLost);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) focusLost(); });
+  window.addEventListener('resize', () => {
+    if (screen === 'title' && $('#title-art')) R.illustration($('#title-art'));
+    if (screen === 'stages') { $$('canvas[data-preview]').forEach(c => { const s = C.STAGES[Number(c.dataset.preview) - 1]; R.thumbnail(c, C.generate(s.seed, difficulty, s.theme)); }); R.thumbnail($('#selected-map'), C.generate(stage.seed, difficulty, stage.theme)); }
+    if (screen === 'result') { R.illustration($('#result-art'), game.state === 'won' ? 'won' : 'lost'); if ($('#recap')) R.thumbnail($('#recap'), game.map, { game, full: true, route: game.route }); }
+  });
+  function frame(now) {
+    const dt = Math.min(.15, Math.max(0, (now - lastTime) / 1000)); lastTime = now;
+    if (screen === 'game' && game) {
+      const input = { x: Number(keys.has('KeyD') || keys.has('ArrowRight') || held.has('right')) - Number(keys.has('KeyA') || keys.has('ArrowLeft') || held.has('left')), y: Number(keys.has('KeyS') || keys.has('ArrowDown') || held.has('down')) - Number(keys.has('KeyW') || keys.has('ArrowUp') || held.has('up')), sprint: keys.has('ShiftLeft') || keys.has('ShiftRight') || held.has('sprint') };
+      const movedBefore = game.moved; game.update(dt, input); game._moving = game.moved > movedBefore;
+      if (game._moving && game.moved - lastFootstep > .85) { tone(input.sprint ? 170 : 125, .025, 0, .025, 'triangle'); lastFootstep = game.moved; }
+      if (game.state !== 'playing' && !modal) renderResult();
+      else if (world) { world.draw(now / 1000); if (now - lastHud > 60) { updateHud(); lastHud = now; } }
+    }
+    requestAnimationFrame(frame);
+  }
+  // Read-only diagnostics make automated browser checks independent of canvas pixels.
+  window.ToiletApp = {
+    snapshot: () => game ? ({ screen, modal, state: game.state, paused: game.paused, mode: game.mode, remaining: game.remaining, elapsed: game.elapsed, player: { ...game.player }, seed: game.options.seed, stageId: game.options.stageId, difficulty: game.options.difficulty, relief: game.relief, waited: game.waited, penalties: game.penalties, shared: game.shared, buddy: { active: game.map.buddy.active, done: game.map.buddy.done }, toilets: game.map.toilets.map(t => ({ ...t })), map: { w: game.map.w, h: game.map.h, grid: game.map.grid.map(row => row.slice()) }, camera: world ? { ...world.camera, tile: world.tile } : null, records: JSON.parse(JSON.stringify(saved.records)) }) : ({ screen, modal, records: JSON.parse(JSON.stringify(saved.records)) }),
+    version: '1.0.0'
+  };
+  save(); syncSettings(); renderTitle(); requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

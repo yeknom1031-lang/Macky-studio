@@ -1,0 +1,20 @@
+✔ 48 authored seeds and all difficulty settings produce distinct, repeatable layouts (311.083792ms)
+✔ 500 random seeds per difficulty always connect every toilet and preserve a feasible finish (1663.569333ms)
+✔ every one of the 144 stage/difficulty combinations can be won using movement and interaction (332.477ms)
+✔ wall collisions, normalized diagonal movement and sprint consumption (4.133875ms)
+✔ occupied toilet clues transition, waiting can be cancelled and then auto-enters (3.281292ms)
+✔ three-second relief wins at boundary but loses when less time remains (6.542666ms)
+✔ pausing freezes time, NPCs and player; finished games never update (7.732083ms)
+✔ companion bonus cannot be farmed; yield completes both rescues without a random loss (6.27725ms)
+✔ staff reveals locations at a one-time 2 second cost including fatal boundary (2.736875ms)
+✔ walking near shoppers is safe, sprint collisions have a cooldown (1.426541ms)
+✔ click movement refuses hidden destinations, follows visible paths and pauses safely (1.546458ms)
+✔ practice generates a small connected map; rebuilding a seed resets all events (1.090708ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2387.654583
