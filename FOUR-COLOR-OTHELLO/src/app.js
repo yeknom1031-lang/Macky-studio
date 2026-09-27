@@ -1,17 +1,18 @@
 import { initialBoard, PLAYERS, playMove, nextTurn, scores, winners } from './engine.js';
+import { chooseAIMove } from './ai.js';
 
 const $ = s => document.querySelector(s);
 const ui = { home: $('#home'), game: $('#game'), board: $('#board'), turn: $('#turn'), scores: $('#scores'), notice: $('#notice'), live: $('#live'), result: $('#result-dialog') };
-const preferences = { sound: true, reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches };
-try { const saved = JSON.parse(localStorage.getItem('four-color-othello.preferences')); if (saved && typeof saved.sound === 'boolean') preferences.sound = saved.sound; if (saved && typeof saved.reducedMotion === 'boolean') preferences.reducedMotion = saved.reducedMotion; } catch { /* Storage is optional. */ }
-let state = { board: initialBoard(), player: 0, phase: 'home' };
+const preferences = { sound: true, reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches, mode: 'solo' };
+try { const saved = JSON.parse(localStorage.getItem('four-color-othello.preferences')); if (saved && typeof saved.sound === 'boolean') preferences.sound = saved.sound; if (saved && typeof saved.reducedMotion === 'boolean') preferences.reducedMotion = saved.reducedMotion; if (['solo', 'friends'].includes(saved?.mode)) preferences.mode = saved.mode; } catch { /* Storage is optional. */ }
+let state = { board: initialBoard(), player: 0, phase: 'home', mode: preferences.mode };
 let epoch = 0, focusIndex = 27, noticeTimer, audio;
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const stone = player => `<i aria-hidden="true" class="disc ${PLAYERS[player].color}"></i>`;
 const active = run => run === epoch && state.phase !== 'home';
 
 $('#home-board').innerHTML = initialBoard().filter(v => v !== null).map(p => `<span class="demo-cell">${stone(p)}</span>`).join('');
-document.querySelectorAll('.rack').forEach(rack => { rack.innerHTML = '<i class="reserve"></i>'.repeat(28); });
+document.querySelectorAll('.rack').forEach(rack => { rack.innerHTML = '<i class="reserve"><i class="reserve-face"></i></i>'.repeat(24); });
 for (let row = 0; row < 8; row++) {
   const line = document.createElement('div'); line.className = 'board-row'; line.setAttribute('role', 'row');
   for (let col = 0; col < 8; col++) {
@@ -41,14 +42,15 @@ function updateCell(index) {
 function renderBoard() { cells.forEach((_, index) => updateCell(index)); }
 function renderStatus() {
   const player = PLAYERS[state.player], counts = scores(state.board);
-  ui.turn.innerHTML = `${stone(player.id)}<span>${player.name}の番</span>`;
+  const who = state.mode === 'solo' ? (player.id === 0 ? 'あなた' : state.phase === 'thinking' ? 'AI・考え中' : 'AI') : '';
+  ui.turn.innerHTML = `${stone(player.id)}<span>${player.name}の番${who ? `<small class="turn-who">${who}</small>` : ''}</span>`;
   ui.turn.dataset.player = String(player.id);
   ui.scores.innerHTML = PLAYERS.map(p => `<div class="score" data-player="${p.id}" aria-label="${p.name} ${counts[p.id]}枚">${stone(p.id)}<span>${p.name} <b>${counts[p.id]}</b><small>枚</small></span></div>`).join('');
   updateInputState();
 }
 function updateInputState() {
   ui.game.dataset.phase = state.phase;
-  ui.board.setAttribute('aria-busy', String(state.phase === 'animating'));
+  ui.board.setAttribute('aria-busy', String(['animating', 'thinking'].includes(state.phase)));
   cells.forEach((cell, i) => cell.setAttribute('aria-disabled', String(state.phase !== 'playing' || state.board[i] !== null)));
 }
 function announce(text) { ui.live.textContent = text; }
@@ -84,8 +86,10 @@ async function flipStone(index, delay, run) {
   const into = cells[index].firstElementChild.animate([{ transform: 'rotateY(-90deg)' }, { transform: 'rotateY(0deg)' }], { duration: 190, easing: 'ease-out' });
   await into.finished.catch(() => {});
 }
-async function moveAt(index) {
-  if (state.phase !== 'playing') return { ok: false, reason: '手番の切り替え中です' };
+async function moveAt(index, actor = 'human') {
+  const ai = state.mode === 'solo' && state.player !== 0;
+  if (actor === 'human' && ai) return { ok: false, reason: 'AIの手番です' };
+  if (state.phase !== (actor === 'ai' ? 'thinking' : 'playing') || (actor === 'ai' && !ai)) return { ok: false, reason: '手番の切り替え中です' };
   const result = playMove(state.board, state.player, index);
   if (!result) {
     showNotice('ここには置けません', '相手の石をはさめるマスに置いてください');
@@ -116,8 +120,23 @@ async function advanceTurn(player, run) {
   if (!active(run)) return;
   hideNotice();
   if (next.ended) { finish(); return; }
-  state.player = next.player; state.phase = 'playing'; renderStatus();
+  state.player = next.player;
+  beginTurn(run);
   announce(`${PLAYERS[state.player].name}の番です。`);
+}
+function beginTurn(run) {
+  if (!active(run)) return;
+  const isAI = state.mode === 'solo' && state.player !== 0;
+  state.phase = isAI ? 'thinking' : 'playing'; renderStatus();
+  if (isAI) void takeAITurn(run);
+}
+async function takeAITurn(run) {
+  await pause(preferences.reducedMotion ? 400 : 650);
+  if (!active(run) || state.phase !== 'thinking') return;
+  const index = chooseAIMove(state.board, state.player);
+  if (!active(run)) return;
+  if (index === null) { await advanceTurn(state.player, run); return; }
+  await moveAt(index, 'ai');
 }
 function finish() {
   state.phase = 'ended'; hideNotice(); updateInputState();
@@ -129,7 +148,7 @@ function finish() {
 }
 function closeDialogs() { document.querySelectorAll('dialog[open]').forEach(d => d.close()); }
 function startGame() {
-  ++epoch; hideNotice(); closeDialogs(); state = { board: initialBoard(), player: 0, phase: 'playing' };
+  ++epoch; hideNotice(); closeDialogs(); state = { board: initialBoard(), player: 0, phase: 'playing', mode: preferences.mode };
   ui.home.hidden = true; ui.game.hidden = false; document.body.classList.add('playing');
   renderBoard(); renderStatus(); setFocus(27, false); announce('ゲーム開始。赤の番です。');
 }
@@ -154,7 +173,11 @@ for (const [id, key] of [['sound-setting', 'sound'], ['motion-setting', 'reduced
   $('#' + id).checked = preferences[key];
   $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; try { localStorage.setItem('four-color-othello.preferences', JSON.stringify(preferences)); } catch { /* Optional persistence. */ } });
 }
-function snapshot() { return { phase: state.phase, player: state.player, board: state.board.slice(), scores: scores(state.board) }; }
+for (const option of document.querySelectorAll('input[name="mode"]')) {
+  option.checked = option.value === preferences.mode;
+  option.addEventListener('change', () => { if (option.checked) { preferences.mode = option.value; try { localStorage.setItem('four-color-othello.preferences', JSON.stringify(preferences)); } catch { /* Offline/private storage is optional. */ } } });
+}
+function snapshot() { return { phase: state.phase, player: state.player, mode: state.mode, board: state.board.slice(), scores: scores(state.board) }; }
 function registerTools() {
   const context = document.modelContext;
   if (!context?.registerTool) return;
@@ -162,7 +185,7 @@ function registerTools() {
   window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });
   const tools = [
     { name: 'read_othello_game', title: '盤面を読む', description: '現在の盤面と手番と枚数を読む。色は0=赤、1=青、2=黄、3=緑、空きはnull。', inputSchema: { type: 'object', properties: {}, additionalProperties: false }, annotations: { readOnlyHint: true }, execute: () => snapshot() },
-    { name: 'place_othello_stone', title: '石を置く', description: '進行中のゲームで1枚置く。行・列は1〜8。はさめない場所には置けない。演出と自動パス後に結果を返す。', inputSchema: { type: 'object', properties: { row: { type: 'integer', minimum: 1, maximum: 8 }, column: { type: 'integer', minimum: 1, maximum: 8 } }, required: ['row', 'column'], additionalProperties: false }, annotations: { readOnlyHint: false }, execute: input => { if (!input || Object.keys(input).some(k => !['row', 'column'].includes(k)) || ![input.row, input.column].every(v => Number.isInteger(v) && v >= 1 && v <= 8)) throw new Error('行と列は1〜8の整数で指定してください'); return moveAt((input.row - 1) * 8 + input.column - 1); } },
+    { name: 'place_othello_stone', title: '石を置く', description: '人間の手番に1枚置く。行・列は1〜8。はさめない場所やAIの手番には置けない。自分の演出とパス後に結果を返し、AIの手番はその後自動で進む。', inputSchema: { type: 'object', properties: { row: { type: 'integer', minimum: 1, maximum: 8 }, column: { type: 'integer', minimum: 1, maximum: 8 } }, required: ['row', 'column'], additionalProperties: false }, annotations: { readOnlyHint: false }, execute: input => { if (!input || Object.keys(input).some(k => !['row', 'column'].includes(k)) || ![input.row, input.column].every(v => Number.isInteger(v) && v >= 1 && v <= 8)) throw new Error('行と列は1〜8の整数で指定してください'); return moveAt((input.row - 1) * 8 + input.column - 1); } },
   ];
   for (const tool of tools) { try { Promise.resolve(context.registerTool(tool, { signal: lifecycle.signal })).catch(() => {}); } catch { /* Optional browser integration. */ } }
 }

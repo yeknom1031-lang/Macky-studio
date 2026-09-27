@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#183e2b">
+  <meta name="description" content="AI3人とひとりで遊ぶか、4人で交代して遊ぶ4色オセロ。オフラインでも遊べます。">
+  <title>4色オセロ</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23183e2b'/%3E%3Ccircle cx='21' cy='21' r='11' fill='%23e93c37'/%3E%3Ccircle cx='44' cy='21' r='11' fill='%232485fa'/%3E%3Ccircle cx='44' cy='44' r='11' fill='%23f4c323'/%3E%3Ccircle cx='21' cy='44' r='11' fill='%2327c45e'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main id="home" class="home">
+    <h1 class="logo"><span>4</span><span>色</span>オセロ</h1>
+    <p class="tagline">みんなで、はさんで、ひっくり返そう。</p>
+    <div id="home-board" class="home-board" aria-hidden="true"></div>
+    <div class="home-menu">
+      <fieldset class="mode-picker">
+        <legend class="sr-only">遊ぶモード</legend>
+        <label class="mode-option"><input type="radio" name="mode" value="solo" checked><span><b>ひとりで遊ぶ</b><small>あなたは赤 / AI3人</small></span></label>
+        <label class="mode-option"><input type="radio" name="mode" value="friends"><span><b>4人で遊ぶ</b><small>みんなで交代プレイ</small></span></label>
+      </fieldset>
+      <button id="start" class="primary">ゲームをはじめる <span aria-hidden="true">▶</span></button>
+      <div class="secondary-menu"><button id="rules-open">あそびかた</button><button id="settings-open">設定</button></div>
+      <div class="turn-order" aria-label="手番は赤、青、黄、緑の順"><i class="disc red"></i><span>→</span><i class="disc blue"></i><span>→</span><i class="disc yellow"></i><span>→</span><i class="disc green"></i></div>
+    </div>
+  </main>
+  <main id="game" class="game" hidden>
+    <header class="scorebar"><div id="turn" class="turn"></div><div id="scores" class="scores"></div></header>
+    <div id="board-shell" class="board-shell">
+      <div class="rack rack-top red" aria-hidden="true"></div><div class="rack rack-right blue" aria-hidden="true"></div>
+      <div class="rack rack-bottom yellow" aria-hidden="true"></div><div class="rack rack-left green" aria-hidden="true"></div>
+      <div id="board" class="board" role="grid" aria-label="4色オセロの盤面、8行8列"></div>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+    </div>
+  </main>
+  <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-content"><button class="close" data-close aria-label="閉じる">×</button><h2 id="rules-title">あそびかた</h2><p class="mode-explanation">ひとりで遊ぶときは、あなたが赤。青・黄・緑はAIが自動で打ちます。4人モードでは全員で交代して操作します。</p><ol><li>赤 → 青 → 黄 → 緑の順に、1人ずつ石を置きます。</li><li>自分の石ではさめるマスに置きます。縦・横・斜めの8方向ではさめます。</li><li>間にある自分以外の石は、色が混ざっていてもすべて自分の色になります。</li><li>置ける場所がない人は、自動でスキップします。</li><li>全員が続けて置けなくなったら終了。一番石の多い人が勝ち。同じ枚数なら引き分けです。</li></ol><p class="small-note">置ける場所の目印はありません。自分で見つけてみよう。<br>4辺の石は予備の石のイメージです。枚数の制限はありません。</p><p class="small-note">キーボード：矢印でマスを選択、Enterで置く。<br>ホームへ戻るときはブラウザの「戻る」を使えます。</p><button class="primary" data-close>わかった</button></div></dialog>
+  <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content"><button class="close" data-close aria-label="閉じる">×</button><h2 id="settings-title">設定</h2><label class="setting"><span>石を置く音</span><input id="sound-setting" type="checkbox" role="switch" checked></label><label class="setting"><span>動きを少なくする</span><input id="motion-setting" type="checkbox" role="switch"></label><button class="primary" data-close>できた</button></div></dialog>
+  <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><p class="eyebrow">ゲーム終了</p><h2 id="result-title"></h2><div id="result-scores"></div><button id="again" class="primary">もう一度あそぶ</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
+  <div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <noscript>このゲームで遊ぶには、ブラウザのJavaScriptを有効にしてください。</noscript>
+</body>
+</html>

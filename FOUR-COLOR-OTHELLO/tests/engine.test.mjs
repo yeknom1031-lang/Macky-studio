@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { initialBoard, captures, legalMoves, playMove, nextTurn, scores, winners } from '../dist/engine.js';
+import { initialBoard, captures, legalMoves, playMove, nextTurn, scores, winners } from '../src/engine.js';
 const blank = () => Array(64).fill(null);
 
 test('中央4x4は各色4個、合計16個で始まる', () => {
