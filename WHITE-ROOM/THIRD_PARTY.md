@@ -1,6 +1,6 @@
 # Third-party notices
 
-Godot Engine is distributed under the MIT license. See https://godotengine.org/license/ for additional engine dependency notices. Fonts are provided by the macOS system and are not redistributed in this project. All room geometry, shaders, interface artwork, and WAV recordings in this project were authored for WHITE ROOM; the WAV files are synthesized by `tools_generate_audio.py`.
+Godot Engine is distributed under the MIT license. See https://godotengine.org/license/ for additional engine dependency notices. Fonts are provided by the macOS system and are not redistributed in this project. Room geometry, shaders, interface artwork, and WAV audio were authored for WHITE ROOM; WAV files are synthesized by `tools_generate_audio.py`. The two v2 material images were generated using the built-in OpenAI image-generation tool, then copied into `assets/materials/` and used as 3D surface textures. Prompts and provenance are recorded in `docs/MATERIALS.md`.
 
 ## Godot Engine — MIT License
 

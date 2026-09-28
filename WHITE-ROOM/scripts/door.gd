@@ -9,6 +9,7 @@ var knob:Node3D
 var frame:Node3D
 var concealed=false
 var openness=0.0
+var mouldings=[]
 
 func make(p_side:int,exit_door:bool=false) -> void:
 	side=p_side
@@ -31,9 +32,23 @@ func make(p_side:int,exit_door:bool=false) -> void:
 	hinge.position.x=-0.68
 	add_child(hinge)
 	slab=block(hinge,Vector3(0.68,1.16,0),Vector3(1.36,2.32,0.075),wood)
+	# Painted wooden moulding and recessed fields catch real grazing shadows.
+	for y in [0.58,1.68]:
+		mouldings.append(block(hinge,Vector3(0.68,y,0.048),Vector3(1.06,0.88,0.03),paint))
+		mouldings.append(block(hinge,Vector3(0.68,y,0.068),Vector3(0.96,0.78,0.018),wood))
 	knob=Node3D.new()
 	knob.position=Vector3(1.15,1.04,0.05)
 	hinge.add_child(knob)
+	var rose=MeshInstance3D.new()
+	var rose_mesh=CylinderMesh.new()
+	rose_mesh.top_radius=0.08
+	rose_mesh.bottom_radius=0.08
+	rose_mesh.height=0.012
+	rose_mesh.radial_segments=32
+	rose.mesh=rose_mesh
+	rose.material_override=metal
+	rose.rotation.x=PI/2
+	knob.add_child(rose)
 	for z in [0.08,-0.18]:
 		var sphere=MeshInstance3D.new()
 		var mesh=SphereMesh.new()
@@ -65,6 +80,7 @@ func set_hidden(value:bool) -> void:
 	concealed=value
 	frame.visible=not value
 	knob.visible=not value
+	for moulding in mouldings:moulding.visible=not value
 	barrier.set_meta("action","sealed" if value else ("exit" if is_exit else "door"))
 
 func set_open(value:float) -> void:

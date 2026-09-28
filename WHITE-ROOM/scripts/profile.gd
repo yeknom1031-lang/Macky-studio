@@ -1,13 +1,17 @@
 extends RefCounted
 
+const Catalog=preload("res://scripts/anomaly_catalog.gd")
 const PATH = "user://white_room_v1.json"
 var path = PATH
 var state = {}
-var settings = {"volume":0.48,"sensitivity":0.11,"fov":78.0,"brightness":1.0,"bob":false,"fullscreen":false}
+var settings = {"volume":0.48,"sensitivity":0.11,"fov":78.0,"brightness":1.0,"bob":false,"fullscreen":false,"gi":true}
 var error_message = ""
 
 func fresh() -> void:
 	state = {"room":0,"position":[0.0,0.05,22.0],"yaw":0.0,"pitch":0.0,"clues":[],"notes":[],"visits":[0],"cipher":false,"key":false,"relay_unlocked":false,"powered":false,"escaped":false,"seconds":0.0,"crossings":0}
+	Catalog.ensure(state)
+	state.anomaly_index=0
+	Catalog.enter(state,0)
 
 func load_profile() -> bool:
 	for candidate in [path,path+".bak"]:
@@ -50,6 +54,9 @@ func load_profile() -> bool:
 			state.relay_unlocked=true
 			state.key=true
 			state.cipher=true
+		for key in ["anomaly_seed","anomaly_index","current_event"]:
+			state[key]=int(value.state.get(key,state[key]))
+		state.current_event=posmod(int(state.current_event),Catalog.NAMES.size())
 		return true
 	fresh()
 	return false

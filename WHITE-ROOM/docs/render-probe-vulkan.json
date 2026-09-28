@@ -1,0 +1,20 @@
+{
+  "engine": "4.7.2-stable (official)",
+  "driver": "vulkan",
+  "samples": [
+    {
+      "frame_interval_ms": 56.8224137931034,
+      "gi": true,
+      "gpu_ms": 32.6327586338438,
+      "render_cpu_ms": 0.569758623156054,
+      "gpu_timer_available": true
+    },
+    {
+      "frame_interval_ms": 132.705597701149,
+      "gi": false,
+      "gpu_ms": 75.8716204413052,
+      "render_cpu_ms": 1.0289999955276,
+      "gpu_timer_available": true
+    }
+  ]
+}

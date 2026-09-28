@@ -32,4 +32,13 @@ write('key',.5,lambda t,i:(math.sin(2*math.pi*1800*t)*.14+math.sin(2*math.pi*270
 write('confirm',.7,lambda t,i:(math.sin(2*math.pi*440*t)+math.sin(2*math.pi*660*t))*.12*math.sin(math.pi*min(t/.7,1))**2*math.exp(-t*3))
 # Frequencies complete whole cycles over 12 seconds for a seamless air-tone loop.
 write('room',12,lambda t,i: .06*math.sin(2*math.pi*60*t)+.025*math.sin(2*math.pi*120*t)+.009*math.sin(2*math.pi*179.5*t))
-print('Generated 8 original WAV files')
+
+# v2: band-limited ventilation air with a quiet mechanical fundamental.
+air_memory=0.0
+def ventilation(t,i):
+    global air_memory
+    air_memory += (rng.uniform(-1,1)-air_memory)*0.026
+    envelope=min(1.0,t/0.06,(12.0-t)/0.06)
+    return envelope*(air_memory*.42 + math.sin(2*math.pi*60*t)*.023 + math.sin(2*math.pi*119*t)*.008)
+write('air-v2',12,ventilation)
+print('Generated 9 original WAV files')

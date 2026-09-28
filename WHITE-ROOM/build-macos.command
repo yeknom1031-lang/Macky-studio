@@ -19,6 +19,7 @@ if [[ -z "$engine_path" || ! -x "$engine_path" ]]; then
   exit 1
 fi
 mkdir -p build
+touch build/.gdignore
 "$engine_path" --headless --path "$game_dir" --editor --import
 if [[ "${1:-}" == '--test' ]]; then
   "$engine_path" --headless --path "$game_dir" -- --self-test

@@ -42,7 +42,7 @@ func run(g) -> void:
 	game.begin_game(true)
 	await frames(4)
 	check(game.room.doors.size()==4,"Each room has four human-scale hinged doors")
-	check(game.room.exit_door.concealed,"Exit starts concealed")
+	check(game.room.exit_door.concealed and game.room.exit_door.mouldings.all(func(m):return not m.visible),"Exit and decorative mouldings start concealed")
 	check(not game.open_door(3,true),"Exit cannot open before the circuit is restored")
 	check(not game.take_key(),"A key cannot be taken before solving the cipher")
 	check(not game.relay_press(0),"The circuit cannot be solved without the key")
@@ -150,6 +150,7 @@ func run(g) -> void:
 	await frames(45)
 	game.player.test_input=Vector2.ZERO
 	check(game.profile.state.escaped and game.mode=="end","Walking through the unlocked hidden door completes the game")
+	await test_phenomena()
 	for suffix in ["",".bak",".tmp"]:
 		DirAccess.remove_absolute(game.profile.path+suffix)
 	var report={"engine":Engine.get_version_info().string,"checks":checks,"failed":failed,"passed":checks.size()-failed,"coverage":"Actual player collision and door traversal, interaction rays, all puzzle stages, save reload and backup recovery, ending"}
@@ -158,3 +159,62 @@ func run(g) -> void:
 	file.close()
 	print("TEST RESULT: ",checks.size()-failed," passed; ",failed," failed")
 	await game.quit_game(0 if failed==0 else 1)
+
+func test_phenomena() -> void:
+	var sample=game.Profile.new()
+	sample.fresh()
+	var catalog=game.Catalog
+	var events=[int(sample.state.current_event)]
+	for i in range(15):
+		var pending_event=catalog.peek(sample.state)
+		check(catalog.peek(sample.state)==pending_event,"Previewing a room does not consume phenomenon %d"%i)
+		catalog.enter(sample.state,i%9)
+		events.append(int(sample.state.current_event))
+	var unique={}
+	for id in events:unique[id]=true
+	check(unique.size()==16,"Every phenomenon occurs once before the shuffled cycle repeats")
+	var second=game.Profile.new()
+	second.fresh()
+	second.state.anomaly_seed=sample.state.anomaly_seed+719
+	check(catalog.order(int(second.state.anomaly_seed))!=catalog.order(int(sample.state.anomaly_seed)),"New seeds produce different phenomenon orders")
+	# Exercise each actual effect and every architectural layout, preserving puzzle access.
+	for id in range(16):
+		game.profile.state.current_event=id
+		await relocate(id%9,Vector3(0,0.03,24))
+		var built=game.room
+		var effect=built.phenomenon
+		built.tick(8,game.player)
+		check(is_instance_valid(effect) and effect.event_id==id,"Phenomenon %02d is built and advances without replacing the gameplay room"%id)
+		check(built.doors.all(func(d):return is_zero_approx(d.openness)),"Phenomenon %02d leaves the four traversable wooden doors closed"%id)
+		for side in range(4):
+			var p=game.DIRECTIONS[side]*28.5
+			game.player.position=Vector3(p.x,0.03,p.z)
+			game.player.rotation.y=-side*PI/2.0
+			game.player.camera.rotation.x=0
+			await frames(2)
+			var hit=game.player.aim_query()
+			check(hit.has("collider") and hit.collider.get_meta("action","")=="door","Phenomenon %02d preserves reachable exit direction %d"%[id,side])
+		var stopped_time=effect.elapsed
+		game.show_pause()
+		await frames(5)
+		check(is_equal_approx(effect.elapsed,stopped_time),"Phenomenon %02d stops during pause"%id)
+		if id==1:check(built.ceiling_root.position.y<0 and built.ceiling_height+built.ceiling_root.position.y>6,"Descending ceiling moves visibly while keeping safe headroom")
+		if id==7:check(effect.rain.speed_scale==0,"Indoor rain pauses with the game")
+		if id==8:check(absf(effect.hands[0].rotation.z)>0,"Clock hands really run backwards")
+		if id==11:
+			effect.footstep_echo()
+			effect.tick(1.1,game.player)
+			check(effect.echoes_heard==1,"A real footstep is replayed after its delay even when the player stops")
+		if id==12:
+			game.player.position=Vector3(0,0.03,10)
+			game.player.rotation.y=PI
+			effect.tick(1,game.player)
+			game.player.rotation.y=0
+			effect.tick(0.1,game.player)
+			check(effect.turns>0,"The suspended column changes orientation only after looking away")
+	game.profile.state.observed_anomalies=[0,3,8,12]
+	game.profile.save()
+	var saved=game.Profile.new()
+	saved.path=game.profile.path
+	check(saved.load_profile() and saved.state.observed_anomalies.size()==4,"Observed phenomena survive a real save/load")
+	check(catalog.peek(saved.state)==catalog.peek(game.profile.state),"Save/load preserves the next phenomenon instead of rerolling it")

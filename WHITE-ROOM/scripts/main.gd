@@ -4,6 +4,7 @@ const Room=preload("res://scripts/room.gd")
 const Player=preload("res://scripts/player.gd")
 const Profile=preload("res://scripts/profile.gd")
 const Sound=preload("res://scripts/sound.gd")
+const Catalog=preload("res://scripts/anomaly_catalog.gd")
 const DIRECTIONS=[Vector3(0,0,-1),Vector3(1,0,0),Vector3(0,0,1),Vector3(-1,0,0)]
 const DELTAS=[Vector2i(0,-1),Vector2i(1,0),Vector2i(0,1),Vector2i(-1,0)]
 const INK=Color(0.16,0.24,0.29)
@@ -63,11 +64,14 @@ func _ready() -> void:
 	sound=Sound.new()
 	add_child(sound)
 	player.footstep.connect(sound.footstep)
+	player.footstep.connect(func(_speed):
+		if mode=="game" and is_instance_valid(room):room.phenomenon.footstep_echo()
+	)
 	setup_ui()
 	apply_settings()
 	build_room(0)
-	player.position=Vector3(-19,0.06,21)
-	player.rotation.y=-0.32
+	player.position=Vector3(-25,0.06,17)
+	player.rotation.y=-0.75
 	player.pitch=10.0
 	player.camera.rotation.x=deg_to_rad(10)
 	show_title()
@@ -93,44 +97,39 @@ func setup_environment() -> void:
 	world_environment=WorldEnvironment.new()
 	var env=Environment.new()
 	env.background_mode=Environment.BG_COLOR
-	env.background_color=Color(0.83,0.88,0.92)
+	env.background_color=Color(0.025,0.03,0.035)
 	env.ambient_light_source=Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color=Color(0.97,0.98,1.0)
-	env.ambient_light_energy=0.32
-	env.tonemap_mode=Environment.TONE_MAPPER_FILMIC
-	env.tonemap_exposure=0.95
-	env.fog_enabled=true
-	env.fog_light_color=Color(0.94,0.96,0.98)
-	env.fog_light_energy=0.32
-	env.fog_density=0.0014
-	if RenderingServer.get_current_rendering_method()=="gl_compatibility":
-		env.tonemap_mode=Environment.TONE_MAPPER_LINEAR
-	else:
+	env.ambient_light_color=Color(0.80,0.88,1.0)
+	env.ambient_light_energy=0.055
+	env.tonemap_mode=Environment.TONE_MAPPER_ACES
+	env.tonemap_exposure=1.12
+	env.fog_enabled=false
+	if RenderingServer.get_current_rendering_method()!="gl_compatibility":
+		env.sdfgi_enabled=bool(profile.settings.get("gi",true))
+		env.sdfgi_cascades=2
+		env.sdfgi_min_cell_size=0.65
+		env.sdfgi_read_sky_light=false
+		env.sdfgi_use_occlusion=true
+		env.sdfgi_bounce_feedback=0.35
+		env.sdfgi_energy=1.0
 		env.ssao_enabled=true
-		env.ssao_radius=1.8
-		env.ssao_intensity=2.3
+		env.ssao_radius=1.4
+		env.ssao_intensity=2.7
+		env.ssao_light_affect=0.55
+		env.ssao_detail=0.8
 		env.glow_enabled=true
-		env.glow_intensity=0.18
-		env.glow_hdr_threshold=1.6
+		env.glow_intensity=0.22
+		env.glow_hdr_threshold=1.7
 		env.ssr_enabled=true
-		env.ssr_max_steps=32
-	var sky=Sky.new()
-	var sky_material=ProceduralSkyMaterial.new()
-	sky_material.sky_top_color=Color(0.93,0.97,1)
-	sky_material.sky_horizon_color=Color(0.78,0.84,0.89)
-	sky_material.ground_bottom_color=Color(0.55,0.6,0.65)
-	sky_material.ground_horizon_color=Color(0.8,0.85,0.9)
-	sky.sky_material=sky_material
-	env.sky=sky
-	env.reflected_light_source=Environment.REFLECTION_SOURCE_SKY
+		env.ssr_max_steps=64
+		env.volumetric_fog_enabled=true
+		env.volumetric_fog_density=0.003
+		env.volumetric_fog_length=75
+		env.volumetric_fog_albedo=Color(0.88,0.91,0.96)
+		env.volumetric_fog_ambient_inject=0.08
+		env.volumetric_fog_anisotropy=0.25
 	world_environment.environment=env
 	add_child(world_environment)
-	var fill=DirectionalLight3D.new()
-	fill.rotation_degrees=Vector3(-58,-28,0)
-	fill.light_color=Color(0.96,0.985,1)
-	fill.light_energy=0.28
-	fill.shadow_enabled=false
-	add_child(fill)
 
 func build_room(id:int) -> void:
 	close_door(true)
@@ -140,6 +139,7 @@ func build_room(id:int) -> void:
 	room=Room.new()
 	add_child(room)
 	room.make(id,profile.state)
+	if is_instance_valid(sound):sound.set_space(id)
 
 static func neighbor(id:int,side:int) -> int:
 	var d=DELTAS[side]
@@ -206,7 +206,7 @@ func _unhandled_input(event:InputEvent) -> void:
 func _process(delta:float) -> void:
 	time+=delta
 	if mode=="title":
-		player.rotation.y=-0.32+sin(time*0.055)*0.08
+		player.rotation.y=-0.75+sin(time*0.055)*0.06
 	if toast_time>0:
 		toast_time-=delta
 		toast_label.modulate.a=minf(1.0,toast_time)
@@ -218,6 +218,10 @@ func _process(delta:float) -> void:
 		return
 	var facing=posmod(roundi(-player.rotation.y/(PI/2)),4)
 	compass.text=["N  北","E  東","S  南","W  西"][facing]
+	room.tick(delta,player)
+	if room.phenomenon.has_been_seen(player) and not room.event_id in profile.state.observed_anomalies:
+		profile.state.observed_anomalies.append(room.event_id)
+		save_game()
 	profile.state.seconds+=delta
 	save_clock+=delta
 	if save_clock>15:
@@ -289,7 +293,9 @@ func cross_threshold() -> void:
 	room=next_room
 	next_room=null
 	room.position=Vector3.ZERO
+	Catalog.enter(profile.state,destination)
 	room.activate()
+	sound.set_space(destination)
 	player.position-=next_offset
 	old.visible=false
 	remove_child(old)
@@ -505,8 +511,21 @@ func _notification(what:int) -> void:
 func quit_game(exit_code:int=0) -> void:
 	if quitting:return
 	quitting=true
+	mode="quitting"
 	player.enabled=false
 	sound.stop_all()
+	if is_instance_valid(room):room.phenomenon.stop_audio()
+	if is_instance_valid(next_room):next_room.phenomenon.stop_audio()
+	world_environment.environment.sdfgi_enabled=false
+	world_environment.environment.volumetric_fog_enabled=false
+	if is_instance_valid(room):
+		remove_child(room)
+		room.queue_free()
+	if is_instance_valid(next_room):
+		remove_child(next_room)
+		next_room.queue_free()
+	await get_tree().process_frame
+	RenderingServer.force_draw(false)
 	# Let the audio mixer release active playbacks before destroying the tree.
 	await get_tree().create_timer(0.3).timeout
 	get_tree().quit(exit_code)
@@ -574,6 +593,12 @@ func setup_ui() -> void:
 	fade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	fade.mouse_filter=Control.MOUSE_FILTER_IGNORE
 	ui.add_child(fade)
+	for label in hud.get_children():
+		if label is Label:
+			label.add_theme_color_override("font_color",Color(0.9,0.95,0.98))
+			label.add_theme_color_override("font_shadow_color",Color(0.025,0.04,0.05,0.85))
+			label.add_theme_constant_override("shadow_offset_x",1)
+			label.add_theme_constant_override("shadow_offset_y",1)
 
 func text_label(text:String,size:int=18,color:Color=INK) -> Label:
 	var label=Label.new()
@@ -619,6 +644,7 @@ func button(parent:Control,text:String,callback:Callable,primary:bool=false,min_
 	return b
 
 func clear_modal(new_mode:String) -> void:
+	if is_instance_valid(room):room.suspend(true)
 	if is_instance_valid(modal):
 		ui.remove_child(modal)
 		modal.queue_free()
@@ -724,6 +750,7 @@ func resume_game() -> void:
 		modal.queue_free()
 	modal=null
 	mode="game"
+	if is_instance_valid(room):room.suspend(false)
 	player.enabled=true
 	if not automated:Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 	hud.visible=true
@@ -765,10 +792,27 @@ func show_journal(show_hint:bool=false) -> void:
 	var description="     ".join(found)+"\n\n"+objective.text+"。\n扉の脇の記号で、区画を見分けられる。"
 	if "origin" in profile.state.notes:
 		description+="\n保全記録：入力順は ○ → △ → □。鍵は ◇ の回路盤へ。"
+	if not profile.state.observed_anomalies.is_empty():
+		description+="\n\n異常観測  %d / 16"%profile.state.observed_anomalies.size()
+		var latest=int(profile.state.observed_anomalies[-1])
+		description+="\n"+Catalog.NAMES[latest]+"："+Catalog.DESCRIPTIONS[latest]
 	if hint_level>0:description+="\n\nヒント "+str(hint_level)+" / 3\n"+hint_text()
 	var box=dialog("FIELD NOTES / 観測記録","白の中で、覚えておく。",description,"journal")
 	button(box,"次のヒントを見る",func():hint_level=mini(3,hint_level+1);show_journal())
+	if not profile.state.observed_anomalies.is_empty():button(box,"異常観測の一覧",show_anomaly_log)
 	button(box,"探索へ戻る",resume_game,true)
+
+func show_anomaly_log() -> void:
+	var box=dialog("ANOMALY ARCHIVE / 異常観測","白い世界が、変わった。","観測済み  %d / 16"%profile.state.observed_anomalies.size(),"journal")
+	var scroll=ScrollContainer.new()
+	scroll.custom_minimum_size=Vector2(580,360)
+	box.add_child(scroll)
+	var list=VBoxContainer.new()
+	list.add_theme_constant_override("separation",15)
+	scroll.add_child(list)
+	for id in profile.state.observed_anomalies:
+		paragraph(list,"%02d  %s\n%s"%[int(id)+1,Catalog.NAMES[int(id)],Catalog.DESCRIPTIONS[int(id)]],16)
+	button(box,"観測記録へ戻る",show_journal,true)
 
 func hint_text() -> String:
 	if profile.state.powered:
@@ -785,6 +829,12 @@ func show_settings() -> void:
 	slider(box,"マウス感度",float(profile.settings.sensitivity),0.04,0.3,0.01,func(v):profile.settings.sensitivity=v;apply_settings())
 	slider(box,"視野角",float(profile.settings.fov),65,100,1,func(v):profile.settings.fov=v;apply_settings())
 	slider(box,"明るさ",float(profile.settings.brightness),0.8,1.25,0.025,func(v):profile.settings.brightness=v;apply_settings())
+	var gi=CheckButton.new()
+	gi.text="高品質な間接光（動作が重い場合は OFF）"
+	gi.button_pressed=bool(profile.settings.get("gi",true))
+	gi.add_theme_color_override("font_color",INK)
+	gi.toggled.connect(func(v):profile.settings.gi=v;apply_settings())
+	box.add_child(gi)
 	var bob=CheckButton.new()
 	bob.text="歩行時の視点の揺れ"
 	bob.button_pressed=bool(profile.settings.bob)
@@ -822,6 +872,8 @@ func apply_settings() -> void:
 	player.sensitivity=float(profile.settings.sensitivity)
 	player.head_bob=bool(profile.settings.bob)
 	player.camera.fov=float(profile.settings.fov)
+	world_environment.environment.sdfgi_enabled=bool(profile.settings.get("gi",true))
+	world_environment.environment.ambient_light_energy=0.055 if bool(profile.settings.get("gi",true)) else 0.19
 	world_environment.environment.adjustment_enabled=true
 	world_environment.environment.adjustment_brightness=float(profile.settings.brightness)
 	if is_instance_valid(sound):sound.volume(0.0 if automated else float(profile.settings.volume))
@@ -847,6 +899,7 @@ func toast(message:String,duration:float=4.0) -> void:
 
 func capture_run(args:PackedStringArray) -> void:
 	print("CAPTURE START ",args)
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	var path="res://screenshots/game.png"
 	var shot="explore"
 	for arg in args:
@@ -879,8 +932,26 @@ func capture_run(args:PackedStringArray) -> void:
 			player.position=Vector3(-22,0.05,22)
 			player.rotation.y=-0.27
 			player.camera.rotation.x=deg_to_rad(14)
+	var forced_room=-1
+	var forced_event=-1
+	var moment=8.0
+	for arg in args:
+		if arg.begins_with("--room="):forced_room=int(arg.trim_prefix("--room="))
+		if arg.begins_with("--anomaly="):forced_event=int(arg.trim_prefix("--anomaly="))
+		if arg.begins_with("--moment="):moment=float(arg.trim_prefix("--moment="))
+	if forced_event>=0:profile.state.current_event=forced_event
+	if forced_room>=0:
+		profile.state.room=forced_room
+		build_room(forced_room)
+		player.position=Vector3(-21,0.05,22)
+		player.rotation.y=-0.32
+		player.camera.rotation.x=deg_to_rad(10)
+		update_hud()
+	if "--no-hud" in args:hud.visible=false
+	room.elapsed=moment
+	room.phenomenon.elapsed=moment
 	var frames=[]
-	for i in range(150):
+	for i in range(180):
 		await get_tree().process_frame
 		RenderingServer.force_draw(false)
 		if i>30:frames.append(get_process_delta_time()*1000)

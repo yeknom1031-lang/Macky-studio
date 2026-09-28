@@ -1,0 +1,20 @@
+{
+  "engine": "4.7.2-stable (official)",
+  "driver": "metal",
+  "samples": [
+    {
+      "frame_interval_ms": 66.1505517241379,
+      "gi": true,
+      "gpu_ms": null,
+      "render_cpu_ms": 2.05958621975471,
+      "gpu_timer_available": false
+    },
+    {
+      "frame_interval_ms": 117.879310344828,
+      "gi": false,
+      "gpu_ms": null,
+      "render_cpu_ms": 1.31186206590718,
+      "gpu_timer_available": false
+    }
+  ]
+}

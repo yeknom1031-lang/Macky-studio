@@ -1,6 +1,9 @@
 extends Node3D
 
 const Door=preload("res://scripts/door.gd")
+const Catalog=preload("res://scripts/anomaly_catalog.gd")
+const Architecture=preload("res://scripts/architecture.gd")
+const Phenomena=preload("res://scripts/phenomena.gd")
 const SYMBOLS=["∅","○","◇","△","□","∅","∅","∅","∅"]
 const DIGITS={1:4,3:7,4:2}
 var room_id=0
@@ -15,31 +18,38 @@ var font:Font
 var status_lamps=[]
 var preview=false
 var ceiling_lights=[]
+var ceiling_height=26.0
+var ceiling_root:Node3D
+var reflection_probe:ReflectionProbe
+var event_id=0
+var elapsed=0.0
+var phenomenon
+var floaters=[]
+var water_materials=[]
 
 func make(id:int,state:Dictionary,is_preview:bool=false) -> void:
 	room_id=id
 	preview=is_preview
+	Catalog.ensure(state)
+	event_id=Catalog.peek(state) if is_preview else int(state.current_event)
+	ceiling_height=44.0 if id==6 else 26.0
 	font=SystemFont.new()
 	font.font_names=PackedStringArray(["Hiragino Sans","Arial"])
-	for entry in [["wall",Color(0.84,0.87,0.89),0.68],["panel",Color(0.94,0.956,0.96),0.62],["seam",Color(0.58,0.65,0.68),0.82],["metal",Color(0.42,0.5,0.55),0.23],["ink",Color(0.16,0.22,0.25),0.85],["light",Color(0.92,0.98,1.0),0.28]]:
+	for entry in [["wall",Color(0.63,0.65,0.66),0.74],["panel",Color(0.84,0.84,0.80),0.48],["seam",Color(0.18,0.22,0.23),0.82],["metal",Color(0.32,0.36,0.37),0.27],["ink",Color(0.08,0.13,0.15),0.85],["light",Color(0.87,0.94,1.0),0.28],["warm_light",Color(1.0,0.87,0.66),0.28]]:
 		var mat=StandardMaterial3D.new()
 		mat.albedo_color=entry[1]
 		mat.roughness=entry[2]
-		if entry[0]=="light":
+		if "light" in entry[0]:
 			mat.emission_enabled=true
-			mat.emission=Color(0.83,0.92,1)
-			mat.emission_energy_multiplier=2.2
-		if entry[0]=="metal":
-			mat.metallic=0.8
+			mat.emission=entry[1]
+			mat.emission_energy_multiplier=3.0
+		if entry[0]=="metal":mat.metallic=0.85
 		mats[entry[0]]=mat
-	var floor_mat=ShaderMaterial.new()
-	floor_mat.shader=load("res://shaders/ceramic.gdshader")
-	floor_mat.set_shader_parameter("floor_surface",true)
-	floor_mat.set_shader_parameter("tint",Color(0.79,0.8,0.81))
-	mats.floor=floor_mat
-	box(Vector3(0,-0.2,0),Vector3(60.9,0.4,60.9),"floor")
-	solid(Vector3(0,-0.2,0),Vector3(61,0.4,61))
-	box(Vector3(0,26.22,0),Vector3(61,0.45,61),"wall")
+	mats.floor=surface_material("ivory-terrazzo-v2.png",Color(0.94,0.94,0.93),0.3,0.44,true)
+	mats.plaster=surface_material("chalk-concrete-v2.png",Color(0.86,0.87,0.85),0.64,0.5)
+	box(Vector3(0,-0.25,0),Vector3(61,0.5,61),"floor")
+	solid(Vector3(0,-0.25,0),Vector3(61,0.5,61))
+	box(Vector3(0,ceiling_height+0.3,0),Vector3(61,0.6,61),"plaster")
 	for side in range(4):
 		build_wall(side)
 		var door=Door.new()
@@ -48,44 +58,50 @@ func make(id:int,state:Dictionary,is_preview:bool=false) -> void:
 		door.rotation.y=-side*PI/2.0
 		door.make(side)
 		doors.append(door)
-		label(SYMBOLS[id],wall_at(side,Vector3(1.26,1.52,0.3)),0.0038,-side*PI/2.0,Color(0.28,0.36,0.4))
+		label(SYMBOLS[id],wall_at(side,Vector3(1.26,1.52,0.3)),0.0038,-side*PI/2.0,Color(0.12,0.18,0.20))
 		label("SECTOR",wall_at(side,Vector3(1.26,1.14,0.3)),0.0009,-side*PI/2.0)
-	for x in range(-25,30,10):
-		for z in range(-25,30,10):
-			box(Vector3(x,25.7,z),Vector3(9.8,0.5,9.8),"wall")
-			box(Vector3(x,25.15,z-4.85),Vector3(9.8,1.0,0.3),"panel")
-			box(Vector3(x+4.85,25.15,z),Vector3(0.3,1.0,9.8),"panel")
-			box(Vector3(x,25.39,z),Vector3(6.8,0.06,0.19),"light")
-	if id in [1,4,5,7]:
-		for x in [-16.0,16.0]:
-			for z in [-16.0,16.0]:
-				column(Vector3(x,0,z))
-	# White ceiling sources, with a small number of real shadow maps.
-	for p in [Vector3(-14,25,-14),Vector3(14,25,14),Vector3(-14,25,14),Vector3(14,25,-14)]:
-		var light=SpotLight3D.new()
-		light.position=p
-		light.rotation.x=-PI/2.0
-		light.light_color=Color(0.975,0.985,1.0)
-		light.light_energy=0.74
-		light.spot_range=58.0
-		light.spot_angle=63.0
-		light.spot_attenuation=0.65
-		light.shadow_enabled=not is_preview and p.x<0
-		light.shadow_bias=0.025
-		add_child(light)
-		ceiling_lights.append(light)
-	if id in DIGITS:
-		observation(id)
-	if id==0:
-		build_origin(state)
-	if id==2:
-		build_relay(state)
 	flush()
+	Architecture.build(self)
+	if id in DIGITS:observation(id)
+	if id==0:build_origin(state)
+	if id==2:build_relay(state)
+	flush()
+	phenomenon=Phenomena.new()
+	add_child(phenomenon)
+	phenomenon.setup(self,event_id)
+	if event_id==1:
+		for part in ceiling_root.get_children():
+			if part is GeometryInstance3D:part.gi_mode=GeometryInstance3D.GI_MODE_DYNAMIC
+
+func surface_material(file:String,tint:Color,roughness:float,scale_value:float,is_floor:bool=false) -> ShaderMaterial:
+	var mat=ShaderMaterial.new()
+	mat.shader=load("res://shaders/surface_v2.gdshader")
+	mat.set_shader_parameter("surface_texture",load("res://assets/materials/"+file))
+	mat.set_shader_parameter("tint",tint)
+	mat.set_shader_parameter("roughness_base",roughness)
+	mat.set_shader_parameter("texture_scale",scale_value)
+	mat.set_shader_parameter("floor_surface",is_floor)
+	return mat
 
 func activate() -> void:
 	preview=false
-	for light in ceiling_lights:
-		light.shadow_enabled=light.position.x<0
+	for i in range(ceiling_lights.size()):ceiling_lights[i].shadow_enabled=i in [0,2,4]
+	if is_instance_valid(reflection_probe):reflection_probe.update_mode=ReflectionProbe.UPDATE_ONCE
+
+func tick(delta:float,player:Node3D) -> void:
+	elapsed+=delta
+	phenomenon.tick(delta,player)
+	for i in range(floaters.size()):
+		var f=floaters[i]
+		f.position.y=float(f.get_meta("rest_y"))+sin(elapsed*0.24+i)*0.6
+		f.rotation.y=sin(elapsed*0.12+i)*0.09
+	for mat in water_materials:mat.set_shader_parameter("phase",elapsed*0.4)
+
+func suspend(paused:bool) -> void:
+	if is_instance_valid(phenomenon):phenomenon.suspend(paused)
+
+func _exit_tree() -> void:
+	if is_instance_valid(phenomenon):phenomenon.stop_audio()
 
 func wall_at(side:int,p:Vector3) -> Vector3:
 	return Basis(Vector3.UP,-side*PI/2.0)*(Vector3(0,0,-30)+p)
@@ -96,43 +112,49 @@ func wall_box(side:int,p:Vector3,size:Vector3,mat:String) -> void:
 func build_wall(side:int) -> void:
 	var basis=Basis(Vector3.UP,-side*PI/2.0)
 	var cuts=[Vector2(-0.83,0.83)]
-	if room_id==0 and side==3:
-		cuts.append(Vector2(11.17,12.83))
+	if room_id==0 and side==3:cuts.append(Vector2(11.17,12.83))
 	var start=-30.3
 	for cut in cuts:
 		var width=cut.x-start
-		var at=wall_at(side,Vector3(start+width/2,1.22,-0.23))
-		box(at,Vector3(width,2.44,0.46),"wall",basis)
-		solid(at,Vector3(width,2.44,0.46),basis)
+		var at=wall_at(side,Vector3(start+width/2,1.22,-0.35))
+		box(at,Vector3(width,2.44,0.7),"plaster",basis)
+		solid(at,Vector3(width,2.44,0.7),basis)
 		start=cut.y
 	var remaining=30.3-start
-	var end=wall_at(side,Vector3(start+remaining/2,1.22,-0.23))
-	box(end,Vector3(remaining,2.44,0.46),"wall",basis)
-	solid(end,Vector3(remaining,2.44,0.46),basis)
-	var upper=wall_at(side,Vector3(0,14.3,-0.23))
-	box(upper,Vector3(60.6,23.8,0.46),"wall",basis)
-	solid(upper,Vector3(60.6,23.8,0.46),basis)
-	for x in range(-30,31,6):
-		wall_box(side,Vector3(x,14.4,0.012),Vector3(0.012,23.2,0.012),"seam")
-	for y in [5.0,11.0,17.0,23.0]:
-		wall_box(side,Vector3(0,y,0.013),Vector3(60,0.012,0.013),"seam")
-	for x in [-21.0,-7.0,7.0,21.0]:
-		for y in [9.0,20.0]:
-			# Deep square recesses read clearly at a human viewpoint.
-			wall_box(side,Vector3(x,y,0.1),Vector3(6.7,6.7,0.16),"panel")
-			wall_box(side,Vector3(x,y,0.2),Vector3(5.7,5.7,0.08),"wall")
-			for dx in [-3.05,3.05]:
-				wall_box(side,Vector3(x+dx,y,0.26),Vector3(0.16,6.1,0.32),"panel")
-			for dy in [-3.05,3.05]:
-				wall_box(side,Vector3(x,y+dy,0.26),Vector3(6.1,0.16,0.32),"panel")
-	wall_box(side,Vector3(0,25.3,0.3),Vector3(57,0.08,0.15),"light")
+	var end=wall_at(side,Vector3(start+remaining/2,1.22,-0.35))
+	box(end,Vector3(remaining,2.44,0.7),"plaster",basis)
+	solid(end,Vector3(remaining,2.44,0.7),basis)
+	var upper=wall_at(side,Vector3(0,(ceiling_height+2.44)/2,-0.35))
+	box(upper,Vector3(60.6,ceiling_height-2.44,0.7),"plaster",basis)
+	solid(upper,Vector3(60.6,ceiling_height-2.44,0.7),basis)
 
-func column(at:Vector3) -> void:
-	box(at+Vector3(0,13,0),Vector3(2.8,26,2.8),"panel")
-	solid(at+Vector3(0,13,0),Vector3(2.8,26,2.8))
-	for y in [6.0,12.0,18.0,24.0]:
-		box(at+Vector3(0,y,0),Vector3(2.811,0.014,2.811),"seam")
-	box(at+Vector3(0,0.08,0),Vector3(2.86,0.16,2.86),"wall")
+func column(at:Vector3,size:Vector3=Vector3(2.8,26,2.8)) -> void:
+	box(at+Vector3(0,size.y/2,0),size,"plaster")
+	solid(at+Vector3(0,size.y/2,0),size)
+	for y in range(6,int(size.y),6):box(at+Vector3(0,y,0),Vector3(size.x+0.015,0.018,size.z+0.015),"seam")
+	box(at+Vector3(0,0.08,0),Vector3(size.x+0.12,0.16,size.z+0.12),"panel")
+
+func actor(at:Vector3,size:Vector3,mat:String) -> MeshInstance3D:
+	var node=MeshInstance3D.new()
+	var mesh=BoxMesh.new()
+	mesh.size=size
+	node.mesh=mesh
+	node.material_override=mats[mat]
+	node.position=at
+	node.set_meta("rest_y",at.y)
+	node.gi_mode=GeometryInstance3D.GI_MODE_DYNAMIC
+	add_child(node)
+	return node
+
+func false_door(side:int,x:float,y:float) -> void:
+	var door=Door.new()
+	add_child(door)
+	door.position=wall_at(side,Vector3(x,y,0.16))
+	door.rotation.y=-side*PI/2
+	door.make(side)
+	# Unreachable, decorative closed doors never join the traversal system.
+	door.barrier.collision_layer=0
+	door.barrier.remove_meta("action")
 
 func observation(id:int) -> void:
 	var at=Vector3(9,0,-10)
@@ -249,7 +271,7 @@ func box(at:Vector3,size:Vector3,material:String,basis:Basis=Basis.IDENTITY) -> 
 		batches[material]=[]
 	batches[material].append(Transform3D(basis*Basis.from_scale(size),at))
 
-func flush() -> void:
+func flush(parent:Node3D=null) -> void:
 	for key in batches:
 		var mm=MultiMesh.new()
 		mm.transform_format=MultiMesh.TRANSFORM_3D
@@ -262,5 +284,5 @@ func flush() -> void:
 		var node=MultiMeshInstance3D.new()
 		node.multimesh=mm
 		node.material_override=mats[key]
-		add_child(node)
+		(parent if parent else self).add_child(node)
 	batches.clear()
