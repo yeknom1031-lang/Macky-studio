@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#070f10">
-  <meta name="description" content="AI3人とひとりで遊ぶか、4人で交代して遊ぶ4色オセロ。オフラインでも遊べます。">
-  <title>4色オセロ</title>
+  <meta name="description" content="AI3人とひとりで遊ぶか、4人で交代して遊ぶ４色オセロ「Irodory」。オフラインでも遊べます。">
+  <title>Irodory — ４色で彩るオセロ</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23183e2b'/%3E%3Ccircle cx='21' cy='21' r='11' fill='%23e93c37'/%3E%3Ccircle cx='44' cy='21' r='11' fill='%232485fa'/%3E%3Ccircle cx='44' cy='44' r='11' fill='%23f4c323'/%3E%3Ccircle cx='21' cy='44' r='11' fill='%2327c45e'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./style.css">
   <script type="module" src="./app.js"></script>
 </head>
 <body>
   <main id="home" class="home">
-    <div class="home-topline"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>FOUR COLOR OTHELLO</span><span class="home-edition">４つの色。ひとつの勝負。</span></div>
+    <div class="home-topline"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Irodory</span><span class="home-edition">４つの色。ひとつの勝負。</span></div>
     <div class="home-content">
       <p class="eyebrow">THE NEXT MOVE IS YOURS</p>
-      <h1 class="logo"><span>4</span>色オセロ<span class="logo-line" aria-hidden="true"></span></h1>
+      <h1 class="logo"><span class="brand-art" role="img" aria-label="Irodory"></span><span class="logo-line" aria-hidden="true"></span></h1>
       <div class="home-menu">
         <button id="start" class="primary play-button"><span><b>ひとりで遊ぶ</b><small>コンピューター３人と対戦</small></span><span class="play-arrow" aria-hidden="true">▶</span></button>
         <button id="friends-open" class="secondary wide"><span>4人で遊ぶ</span><small>ひとつの画面で交代</small></button>
@@ -26,12 +26,12 @@
     <div class="home-scene" aria-hidden="true"><div class="scene-orbit"></div><div id="home-board" class="board-shell home-board"></div><div class="scene-caption"><span id="home-theme-name">CLASSIC</span><span>FOUR COLOR COLLECTION</span></div></div>
   </main>
   <main id="game" class="game" hidden>
-    <header class="scorebar"><button id="turn" class="turn" title="対局メニューを開く" aria-haspopup="dialog"></button><div id="scores" class="scores"></div></header>
+    <header class="scorebar"><span class="brand-art game-logo" role="img" aria-label="Irodory"></span><button id="turn" class="turn" title="対局メニューを開く" aria-haspopup="dialog"></button><div id="scores" class="scores"></div></header>
     <div id="board-shell" class="board-shell">
       <div class="rack rack-top red" aria-hidden="true"></div><div class="rack rack-right blue" aria-hidden="true"></div>
       <div class="rack rack-bottom yellow" aria-hidden="true"></div><div class="rack rack-left green" aria-hidden="true"></div>
-      <div id="board" class="board" role="grid" aria-label="4色オセロの盤面"></div>
-      <div id="match-intro" class="match-intro" aria-hidden="true" hidden><span>FOUR COLOR OTHELLO</span><strong>対局開始</strong><div id="intro-pieces"></div></div>
+      <div id="board" class="board" role="grid" aria-label="Irodoryの盤面"></div>
+      <div id="match-intro" class="match-intro" aria-hidden="true" hidden><span class="brand-art intro-logo" role="img" aria-label="Irodory"></span><strong>対局開始</strong><div id="intro-pieces"></div></div>
       <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
     </div>
   </main>

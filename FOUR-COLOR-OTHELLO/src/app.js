@@ -47,7 +47,7 @@ function renderHome() {
 function buildBoard() {
   const n = state.size; focusIndex = (n / 2 - 1) * n + n / 2 - 1;
   ui.board.replaceChildren(); ui.board.style.setProperty('--grid-size', n);
-  ui.board.setAttribute('aria-label', `4色オセロの盤面、${n}行${n}列`); ui.board.setAttribute('aria-rowcount', n); ui.board.setAttribute('aria-colcount', n);
+  ui.board.setAttribute('aria-label', `Irodoryの盤面、${n}行${n}列`); ui.board.setAttribute('aria-rowcount', n); ui.board.setAttribute('aria-colcount', n);
   for (let row = 0; row < n; row++) {
     const line = document.createElement('div'); line.className = 'board-row'; line.setAttribute('role', 'row');
     for (let col = 0; col < n; col++) {
@@ -261,7 +261,7 @@ document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('c
 for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; syncSettings(); persist(); updateInputState(); });
 $('#export-save').addEventListener('click', () => {
   const blob = new Blob([JSON.stringify({ format: 'four-color-othello', version: 1, profile, preferences }, null, 2)], { type: 'application/json' }), url = URL.createObjectURL(blob), link = document.createElement('a');
-  link.href = url; link.download = '4色オセロ-セーブデータ.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 30000); $('#save-message').textContent = 'セーブデータを書き出しました。安全な場所に残してください。';
+  link.href = url; link.download = 'Irodory-セーブデータ.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 30000); $('#save-message').textContent = 'セーブデータを書き出しました。安全な場所に残してください。';
 });
 $('#import-save').addEventListener('click', () => { if (state.phase !== 'home') { $('#save-message').textContent = 'ホームに戻ってから読み込んでください。'; return; } $('#save-file').click(); });
 $('#save-file').addEventListener('change', async event => {

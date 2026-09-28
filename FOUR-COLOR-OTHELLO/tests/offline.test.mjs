@@ -2,8 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
-const html=await readFile(new URL('../4色オセロ.html',import.meta.url),'utf8');
-test('配布HTMLと公開版は同一',async()=>assert.equal(html,await readFile(new URL('../dist/index.html',import.meta.url),'utf8')));
+const html=await readFile(new URL('../Irodory.html',import.meta.url),'utf8');
+test('配布HTML・旧名ファイル・公開版は同一',async()=>{
+ for(const path of ['../dist/index.html','../4色オセロ.html']) assert.equal(html,await readFile(new URL(path,import.meta.url),'utf8'));
+});
 test('単体HTMLは外部JS・CSS・画像やモジュールを読み込まない',()=>{
  assert.doesNotMatch(html,/<script\b[^>]*\bsrc\s*=/i);
  assert.doesNotMatch(html,/<script\b[^>]*type=["']module/i);

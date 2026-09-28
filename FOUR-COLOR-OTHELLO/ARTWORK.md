@@ -20,3 +20,26 @@ Color palette: deep charcoal, obsidian black and emerald with restrained warm ch
 Materials/textures: extremely fine tactile grain, soft matte felt-leather texture, clean pristine surface, restrained low contrast.
 Constraints: exactly one image. The whole image must remain an empty surface. No board, no discs, no game pieces, no objects, no characters, no symbols, no text, no logos, no borders, no UI, no watermark.
 ```
+
+## Irodory ロゴ（2026-09-28）
+
+- 保存ファイル: `src/assets/irodory-logo.png`（2172 × 724 px、透過PNG）。
+- 内蔵 ImageGen で１枚生成。４色の駒とシャンパンゴールドのワードマーク。
+- 正確な表記 `Irodory` と透明な背景を確認。生成結果をそのまま使用しています。
+- ホーム・対局ヘッダー・開始演出で共用。HTML内のCSSに画像を１回だけ埋め込み、ネット接続なしで表示します。
+
+### ロゴの生成プロンプト
+
+```text
+Use case: logo-brand
+Asset type: one transparent PNG logo for a premium four-color Othello browser game.
+Primary request: A premium cinematic tabletop game brand logo, a sophisticated highly legible custom wordmark reading exactly "Irodory".
+Text (verbatim): "Irodory" — capital I followed by lowercase r o d o r y. Spell exactly I-r-o-d-o-r-y. No other text.
+Scene/backdrop: Genuine fully transparent alpha background. Output an isolated logo cutout with actual transparent pixels surrounding and between the logo elements; no rendered checkerboard and no opaque backdrop.
+Subject: A horizontal lockup with a compact emblem on the left and the Irodory wordmark on the right. The emblem consists of exactly four polished Othello discs: one deep red, one sapphire blue, one warm yellow/gold, and one emerald green.
+Style/medium: Sophisticated modern game logo with clean silhouette, luxurious but restrained. Ivory/champagne-metal lettering with subtle refined bevel, polished game discs with controlled highlights.
+Composition/framing: Wide horizontal approximately 3:1 visual ratio, tightly composed with modest clear padding around the entire mark. Strong letter shapes and clear spacing readable both large and very small on a dark emerald screen or dark gameplay HUD.
+Lighting/mood: Refined cinematic tabletop lighting on the logo objects only, understated premium finish.
+Constraints: Exact spelling and capitalization, emblem left, wordmark right, four colored discs only, genuine transparent alpha background.
+Avoid: Childish design, excessive glow, ornate details that hurt small-size legibility, slogan, additional text, watermarks, UI, mockup, frame, opaque dark backdrop, checkerboard background.
+```
