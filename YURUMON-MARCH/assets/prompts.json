@@ -1,0 +1,31 @@
+{
+  "generator": "OpenAI built-in image_gen",
+  "generated_count": 6,
+  "previous_concepts": 8,
+  "prompts": [
+    {
+      "file": "characters.png",
+      "prompt": "Use case: stylized-concept. Asset type: production sprite atlas for a side-view lane defense game. Handmade Japanese picture book game art, tactile cut paper with wool felt and crayon textures, adorable small monsters, warm cream and earthy teal, muted coral, soft morning light, high-quality cohesive diorama illustration. No text, no letters, no UI, no watermark. Create ONE exact 4-column by 3-row sprite atlas on genuinely TRANSPARENT background, all 12 cells equal size, evenly aligned centers, generous 12% empty transparent padding around EACH character, no grid lines. Each cell contains exactly one full-body isolated character, all facing RIGHT in three-quarter side view, standing pose. Row 1 from left: cheerful blue water slime; cream mushroom knight with red spotted cap, wooden shield and short sword; little white ghost with lavender flame; chubby sleepy sage-green dragon with gold horns. Row 2: woolly cream ram with a sprout; mossy stone golem with flower; tiny orange fox carrying a maple leaf; lavender star wizard with pointed hat and wand. Row 3: dark plum fuzzy shadow ball with yellow eyes; purple bat with yellow eyes and spread wings; tiny charcoal hooded wizard with purple flame; large dark mushroom king with coral cap and little crown. Entire bodies and weapons fit in each cell. All characters fully disconnected. Uniform orthographic scale by cell. Keep background genuinely transparent, no scenery, no floor or shadow below figures. Square image."
+    },
+    {
+      "file": "meadow.png",
+      "prompt": "Use case: stylized-concept. Asset type: horizontal 16:9 game battlefield background. Handmade Japanese picture book game art, tactile cut paper with wool felt and crayon textures, adorable small monsters, warm cream and earthy teal, muted coral, soft morning light, high-quality cohesive diorama illustration. No text, no letters, no UI, no watermark. Empty sunny meadow environment for side-view battle, distant layered green forest, soft blue sky and puffy clouds, tiny paper flower clusters, distant stone arch bridge over a winding stream. Clear HORIZONTAL uninterrupted pale sand walking lane across full width at 75% height; 25% bottom is grass foreground. Upper half airy for UI. Side-on landscape, stage/set view, not a path receding into depth. No characters, no buildings in foreground, no castles, no UI."
+    },
+    {
+      "file": "night.png",
+      "prompt": "Use case: stylized-concept. Asset type: horizontal 16:9 game battlefield background. Handmade Japanese picture book game art, tactile cut paper with wool felt and crayon textures, adorable small monsters, warm cream and earthy teal, muted coral, soft morning light, high-quality cohesive diorama illustration. No text, no letters, no UI, no watermark. Empty magical moonlit mushroom forest, deep teal and indigo sky, glowing warm amber fireflies, lavender mushrooms, soft paper crescent moon, distant layered trees, pond reflecting starlight. Clear HORIZONTAL uninterrupted pale blue walking lane across full width at 75% height; 25% bottom is moss foreground. Side-on landscape stage/set, not path receding into distance. Keep scene readable and inviting. No characters, no foreground castles, no UI."
+    },
+    {
+      "file": "sunset.png",
+      "prompt": "Use case: stylized-concept. Asset type: horizontal 16:9 game battlefield background. Handmade Japanese picture book game art, tactile cut paper with wool felt and crayon textures, adorable small monsters, warm cream and earthy teal, muted coral, soft morning light, high-quality cohesive diorama illustration. No text, no letters, no UI, no watermark. Empty golden autumn valley at sunset, amber and coral trees, distant craggy purple mountains, floating tiny leaves, rolling hills and glowing peach sky. Clear HORIZONTAL uninterrupted ochre walking lane across full width at 75% height, 25% bottom is grassy foreground. Side-on landscape stage/set, not a path receding into distance. No characters, no castles, no UI."
+    },
+    {
+      "file": "castles.png",
+      "prompt": "Use case: stylized-concept. Asset type: production transparent two-sprite atlas. Handmade Japanese picture book game art, tactile cut paper with wool felt and crayon textures, adorable small monsters, warm cream and earthy teal, muted coral, soft morning light, high-quality cohesive diorama illustration. No text, no letters, no UI, no watermark. Wide 2:1 image with TWO isolated game base buildings in two exact equal square cells on genuinely TRANSPARENT background. Left cell: friendly cream paper castle with three teal conical roofs, wooden front door, tiny coral leaf flag, small magical brass cannon mounted on roof pointing right, moss at base. Right cell: mischievous dark plum tower with thorny branches, purple flags, warm amber windows, moon ornament, door facing left. Front side view, full building visible, each occupies 80% cell height, 15% horizontal padding per cell, bases share same baseline. Disconnected cutouts. No characters, no landscape, no ground, no shadows, no text."
+    },
+    {
+      "file": "home.png",
+      "prompt": "Use case: illustration-story. Asset type: horizontal 16:9 home page hero background for a game. Handmade Japanese picture book game art, tactile cut paper with wool felt and crayon textures, adorable small monsters, warm cream and earthy teal, muted coral, soft morning light, high-quality cohesive diorama illustration. No text, no letters, no UI, no watermark. Beautiful cozy monster village around a friendly small walking castle with teal roofs and coral flags, winding woodland path, a round blue slime, red-cap mushroom knight, white ghost and sleepy sage-green dragon in foreground relaxing together. Entire scene on RIGHT TWO THIRDS of frame. LEFT THIRD is quiet softly lit pale cream sky and light hazy woodland with open space for typography added later. Rich little details, leaf pennants, glowing windows, paper daisies, soft afternoon light. No title, no letters, no buttons, no interface."
+    }
+  ]
+}
