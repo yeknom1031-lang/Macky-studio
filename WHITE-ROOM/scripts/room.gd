@@ -7,6 +7,7 @@ const Phenomena=preload("res://scripts/phenomena.gd")
 const SYMBOLS=["∅","○","◇","△","□","∅","∅","∅","∅"]
 const Puzzles=preload("res://scripts/puzzle_catalog.gd")
 const DIGITS={1:4,3:7,4:2}
+var floor_root:Node3D
 var room_id=0
 var doors=[]
 var exit_door
@@ -51,8 +52,24 @@ func make(id:int,state:Dictionary,is_preview:bool=false) -> void:
 		mats[entry[0]]=mat
 	mats.floor=surface_material("ivory-terrazzo-v2.png",Color(0.94,0.94,0.93),0.3,0.44,true)
 	mats.plaster=surface_material("chalk-concrete-v2.png",Color(0.86,0.87,0.85),0.64,0.5)
-	box(Vector3(0,-0.25,0),Vector3(61,0.5,61),"floor")
-	solid(Vector3(0,-0.25,0),Vector3(61,0.5,61))
+	floor_root=Node3D.new()
+	floor_root.position.y=-0.25
+	add_child(floor_root)
+	var floor_mesh=MeshInstance3D.new()
+	var slab=BoxMesh.new()
+	slab.size=Vector3(61,0.5,61)
+	floor_mesh.mesh=slab
+	floor_mesh.material_override=mats.floor
+	floor_root.add_child(floor_mesh)
+	var floor_body=StaticBody3D.new()
+	floor_body.collision_layer=1
+	floor_body.collision_mask=0
+	var floor_shape=CollisionShape3D.new()
+	var floor_box=BoxShape3D.new()
+	floor_box.size=slab.size
+	floor_shape.shape=floor_box
+	floor_body.add_child(floor_shape)
+	floor_root.add_child(floor_body)
 	box(Vector3(0,ceiling_height+0.3,0),Vector3(61,0.6,61),"plaster")
 	for side in range(4):
 		build_wall(side)

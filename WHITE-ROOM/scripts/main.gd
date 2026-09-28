@@ -1,5 +1,14 @@
 extends Node3D
 
+const Failure=preload("res://scripts/failure_rules.gd")
+var failure_sequence=preload("res://scripts/failure_sequence.gd").new()
+var failure_return_mode="game"
+var failure_pause_mode="hazard"
+var failure_saved_modal:Control
+var danger_label:Label
+var danger_shade:ColorRect
+var death_countdown:Label
+var death_elapsed=0.0
 const Room=preload("res://scripts/room.gd")
 const Player=preload("res://scripts/player.gd")
 const Profile=preload("res://scripts/profile.gd")
@@ -71,6 +80,7 @@ func _ready() -> void:
 		if mode=="game" and is_instance_valid(room):room.phenomenon.footstep_echo()
 	)
 	setup_ui()
+	add_child(failure_sequence)
 	apply_settings()
 	build_room(0)
 	player.position=Vector3(-25,0.06,17)
@@ -149,6 +159,9 @@ static func neighbor(id:int,side:int) -> int:
 	return posmod(int(id/3)+d.y,3)*3+posmod(id%3+d.x,3)
 
 func begin_game(fresh:bool=false) -> void:
+	if failure_sequence.active:failure_sequence.reset()
+	mode="starting"
+	death_elapsed=0
 	if fresh:
 		if FileAccess.file_exists(profile.path) and not automated:
 			DirAccess.copy_absolute(profile.path,profile.path+".archive-"+str(int(Time.get_unix_time_from_system())))
@@ -163,10 +176,12 @@ func begin_game(fresh:bool=false) -> void:
 	player.velocity=Vector3.ZERO
 	resume_game()
 	sound.enter_space(int(profile.state.current_audio),player)
-	if profile.state.escaped:
+	if profile.state.dead:
+		show_death()
+	elif profile.state.escaped:
 		show_ending()
 	else:
-		toast("同じ景色の中に、手がかりがある。  Tab：記録",5.0)
+		toast("誤答5回で死亡して最初から。正解は危険度 −2。確定前にヒントを。",9.0)
 	update_hud()
 	save_game()
 
@@ -190,6 +205,11 @@ func _unhandled_input(event:InputEvent) -> void:
 	if event.is_action_pressed("fullscreen"):
 		profile.settings.fullscreen=not profile.settings.fullscreen
 		apply_settings()
+	if mode in ["hazard","death","failure_pause"]:
+		if event.is_action_pressed("pause"):
+			if mode=="failure_pause":resume_failure()
+			else:pause_failure()
+		return
 	if mode=="game":
 		if event.is_action_pressed("pause"):
 			show_pause()
@@ -218,6 +238,10 @@ func _process(delta:float) -> void:
 		toast_label.modulate.a=0
 	fade_amount=move_toward(fade_amount,0,delta*2)
 	fade.color.a=fade_amount
+	apply_danger(delta)
+	if mode in ["hazard","death"]:
+		advance_failure(delta)
+		return
 	if mode!="game":
 		return
 	var facing=posmod(roundi(-player.rotation.y/(PI/2)),4)
@@ -274,6 +298,7 @@ static func door_aperture(seconds:float) -> float:
 	return 1.0-smoothstep(0.70,1.0,seconds)
 
 func open_door(side:int,is_exit:bool=false) -> bool:
+	if failure_busy():return false
 	if is_instance_valid(active_door):
 		return false
 	if is_exit and not profile.state.powered:
@@ -400,7 +425,7 @@ func show_cipher() -> void:
 			if digit=="確認":submit_cipher(number_input)
 			else:enter_digit(digit)
 		,false,Vector2(180,48))
-	puzzle_feedback=text_label("数字キーでも入力できます。",15,MUTED)
+	puzzle_feedback=text_label("誤答で危険度＋1、5で死亡。数字キーでも入力できます。",15,MUTED)
 	box.add_child(puzzle_feedback)
 	button(box,"戻る",resume_game)
 
@@ -416,10 +441,16 @@ func enter_digit(value:String) -> void:
 		code_label.text="   ".join(display)
 
 func submit_cipher(code:String) -> bool:
-	if code!=Puzzles.code(profile.state) or (profile.state.campaign and profile.state.clues.size()<3):
-		if is_instance_valid(puzzle_feedback):
-			puzzle_feedback.text="一致しない。○・△・□ の観測記録を確かめよう。"
+	if failure_busy() or profile.state.cipher:return false
+	if code.length()!=3 or (profile.state.campaign and profile.state.clues.size()<3):
+		if is_instance_valid(puzzle_feedback):puzzle_feedback.text="3つの観測値を記録してから、3桁すべてを入力しよう。"
 		return false
+	if code!=Puzzles.code(profile.state):
+		if is_instance_valid(puzzle_feedback):
+			puzzle_feedback.text="一致しない。○・△・□ の記録を確認。"
+		register_failure("暗号盤に異なる観測値を入力した")
+		return false
+	Failure.success(profile.state)
 	profile.state.cipher=true
 	if room.room_id==0:
 		room.key_visual.visible=not profile.state.key
@@ -431,6 +462,7 @@ func submit_cipher(code:String) -> bool:
 	return true
 
 func take_key() -> bool:
+	if failure_busy():return false
 	if not profile.state.cipher or profile.state.key:
 		return false
 	profile.state.key=true
@@ -465,11 +497,12 @@ func show_relay() -> void:
 	for i in range(4):
 		var index=i
 		button(row,["○","△","□","◇"][i],func():relay_press(index),false,Vector2(132,72))
-	puzzle_feedback=text_label("接続： —  —  —",20,INK)
+	puzzle_feedback=text_label("接続： —  —  —　誤接続で危険度＋1",17,INK)
 	box.add_child(puzzle_feedback)
 	button(box,"戻る",resume_game)
 
 func relay_press(index:int) -> bool:
+	if failure_busy() or index<0 or index>3:return false
 	if not profile.state.key or not profile.state.relay_unlocked or profile.state.powered or (profile.state.campaign and profile.state.solved_stations.size()<6):
 		return false
 	var expected=[0,2,1]
@@ -477,9 +510,11 @@ func relay_press(index:int) -> bool:
 		relay_input.clear()
 		if is_instance_valid(puzzle_feedback):
 			puzzle_feedback.text="接続が戻った。刻印の順番を確かめよう。"
+		register_failure("境界回路を刻印と異なる順につないだ")
 		return false
 	relay_input.append(index)
 	if relay_input.size()==3:
+		Failure.success(profile.state)
 		profile.state.powered=true
 		sound.play("confirm",-17)
 		save_game()
@@ -494,6 +529,7 @@ func relay_press(index:int) -> bool:
 	return false
 
 func complete_escape() -> void:
+	if failure_busy():return
 	if not profile.state.powered or not profile.state.key:
 		return
 	profile.state.escaped=true
@@ -514,9 +550,10 @@ func complete_escape() -> void:
 func save_game() -> void:
 	if mode=="title" or mode=="new":
 		return
-	profile.state.position=[player.position.x,0.05,player.position.z]
-	profile.state.yaw=player.rotation.y
-	profile.state.pitch=player.pitch
+	if not mode in ["hazard","death","failure_pause"]:
+		profile.state.position=[player.position.x,0.05,player.position.z]
+		profile.state.yaw=player.rotation.y
+		profile.state.pitch=player.pitch
 	if not profile.save():
 		toast(profile.error_message,6)
 	else:
@@ -526,8 +563,9 @@ func _notification(what:int) -> void:
 	if what==NOTIFICATION_WM_CLOSE_REQUEST:
 		if is_instance_valid(player) and mode!="title":save_game()
 		quit_game()
-	if what==NOTIFICATION_APPLICATION_FOCUS_OUT and mode=="game" and not automated:
-		show_pause()
+	if what==NOTIFICATION_APPLICATION_FOCUS_OUT and not automated:
+		if mode=="game":show_pause()
+		elif mode in ["hazard","death"]:pause_failure()
 
 func quit_game(exit_code:int=0) -> void:
 	if quitting:return
@@ -614,6 +652,14 @@ func setup_ui() -> void:
 	fade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	fade.mouse_filter=Control.MOUSE_FILTER_IGNORE
 	ui.add_child(fade)
+	danger_shade=ColorRect.new()
+	danger_shade.color=Color(0.005,0.008,0.014,0)
+	danger_shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	danger_shade.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	ui.add_child(danger_shade)
+	danger_label=text_label("",16,Color(0.94,0.77,0.65))
+	danger_label.position=Vector2(34,62)
+	hud.add_child(danger_label)
 	for label in hud.get_children():
 		if label is Label:
 			label.add_theme_color_override("font_color",Color(0.9,0.95,0.98))
@@ -736,7 +782,7 @@ func show_title() -> void:
 	button(box,"はじめから",request_new_game,not has_save)
 	button(box,"設定",func():return_mode="title";show_settings())
 	button(box,"終了",quit_game)
-	box.add_child(text_label("一人称・探索と謎解き / 自動保存",12,MUTED))
+	box.add_child(text_label("誤答5回で死亡・最初から / 自動保存",12,MUTED))
 	var credits=LinkButton.new()
 	credits.text="クレジット・ライセンス"
 	credits.add_theme_font_size_override("font_size",12)
@@ -767,6 +813,7 @@ func request_new_game() -> void:
 		begin_game(true)
 
 func resume_game() -> void:
+	if failure_busy():return
 	if is_instance_valid(modal):
 		ui.remove_child(modal)
 		modal.queue_free()
@@ -791,6 +838,8 @@ func show_pause() -> void:
 
 func update_hud() -> void:
 	if not is_instance_valid(sector):return
+	danger_label.text=Failure.status(profile.state)
+	danger_label.add_theme_color_override("font_color",Color(1,0.59,0.4) if profile.state.danger>=4 else Color(0.9,0.95,0.98))
 	sector.text="WHITE ROOM   /   %02d  %s"%[int(profile.state.room),Room.SYMBOLS[int(profile.state.room)]]
 	var marks=[]
 	for id in [1,3,4]:
@@ -821,6 +870,7 @@ func show_journal(show_hint:bool=false) -> void:
 		description+="\n\n空間の観測  %d / 30"%profile.state.observed_anomalies.size()
 		var latest=int(profile.state.observed_anomalies[-1])
 		description+="\n"+Catalog.title(latest)+"："+Catalog.description(latest)
+	description+="\n"+Failure.status(profile.state)+"。誤答で＋1、正解で−2。5で死亡。"
 	if profile.state.campaign:description+="\n校正済 %d / 8（6台で復旧）　音の記録 %d / 12"%[profile.state.solved_stations.size(),profile.state.heard_audio.size()]
 	if hint_level>0:description+="\n\nヒント "+str(hint_level)+" / 3\n"+hint_text()
 	var box=dialog("FIELD NOTES / 観測記録","白の中で、覚えておく。","","journal")
@@ -997,6 +1047,24 @@ func capture_run(args:PackedStringArray) -> void:
 	if shot=="map":
 		profile.state.visits=[0,1,2,3,4,6]
 		show_map()
+	if shot in ["threat","death"]:
+		var stage=4
+		var cause=0
+		for arg in args:
+			if arg.begins_with("--stage="):stage=int(arg.trim_prefix("--stage="))
+			if arg.begins_with("--cause="):cause=int(arg.trim_prefix("--cause="))
+		player.position=Vector3(0,0.03,18)
+		player.rotation.y=0
+		player.pitch=0
+		player.camera.rotation.x=0
+		profile.state.danger=stage-1
+		profile.state.deaths=0
+		profile.state.anomaly_seed=cause+3000
+		register_failure("観測器の校正を繰り返し誤った")
+		failure_sequence.tick(moment)
+		apply_danger(10)
+		if shot=="death":show_death()
+		set_process(false)
 	if "--no-hud" in args:hud.visible=false
 	room.elapsed=moment
 	room.phenomenon.elapsed=moment
@@ -1015,9 +1083,11 @@ func capture_run(args:PackedStringArray) -> void:
 	await quit_game(0 if err==OK else 1)
 
 func finish_station(id:int,controls:Array) -> bool:
+	if failure_busy() or id in profile.state.solved_stations:return false
 	if not profile.state.campaign or id<1 or id>8:return false
 	var puzzle=Puzzles.make(profile.state,id)
 	if not Puzzles.correct(puzzle,controls):return false
+	Failure.success(profile.state)
 	if not id in profile.state.solved_stations:profile.state.solved_stations.append(id)
 	profile.state.station_controls[str(id)]=controls.duplicate()
 	if room.room_id==id and is_instance_valid(room.observation_display):room.observation_display.text=room.observation_text(id)
@@ -1087,3 +1157,113 @@ func show_map() -> void:
 		grid.add_child(label)
 	button(box,"観測記録へ",show_journal)
 	button(box,"探索に戻る",resume_game,true)
+
+func failure_busy() -> bool:
+	return bool(profile.state.get("dead",false)) or mode in ["hazard","death","failure_pause"]
+
+func register_failure(reason:String) -> bool:
+	if failure_busy() or mode in ["title","new","end","quitting"]:return false
+	if not Failure.mistake(profile.state,reason):return false
+	close_door(true)
+	# Persist the terminal state before showing the lethal animation.
+	save_game()
+	failure_return_mode=mode
+	if is_instance_valid(modal):modal.visible=false
+	mode="hazard"
+	player.enabled=false
+	player.velocity=Vector3.ZERO
+	player.test_input=Vector2.ZERO
+	room.suspend(true)
+	sound.suspend(false)
+	sound.play_threat(int(profile.state.danger),int(profile.state.death_cause))
+	hud.visible=true
+	prompt.text=""
+	toast_label.add_theme_color_override("font_color",Color(1,0.83,0.67))
+	toast_label.add_theme_color_override("font_shadow_color",Color(0.01,0.015,0.02))
+	toast_label.add_theme_constant_override("shadow_offset_x",1)
+	toast_label.add_theme_constant_override("shadow_offset_y",1)
+	toast(Failure.WARNINGS[int(profile.state.danger)],6)
+	failure_sequence.start(self,int(profile.state.danger),int(profile.state.death_cause))
+	update_hud()
+	return true
+
+func apply_danger(delta:float) -> void:
+	if not is_instance_valid(danger_shade):return
+	var value=int(profile.state.get("danger",0))
+	var factor=[1.0,0.78,0.55,0.36,0.2,0.11][value]
+	if mode in ["title","new","credits","end"]:factor=1.0
+	world_environment.environment.tonemap_exposure=lerpf(world_environment.environment.tonemap_exposure,1.12*factor,minf(1,delta*2.5))
+	var blackout=0.0
+	if mode=="hazard" and value==5:blackout=smoothstep(0.7,1.0,failure_sequence.elapsed/failure_sequence.duration)
+	danger_shade.color.a=blackout
+
+func advance_failure(delta:float) -> void:
+	if mode=="hazard":
+		if failure_sequence.tick(delta):
+			if profile.state.dead:
+				show_death()
+			else:
+				failure_sequence.reset()
+				mode=failure_return_mode
+				if is_instance_valid(modal):modal.visible=true
+				hud.visible=mode=="game"
+				player.enabled=mode=="game"
+				room.suspend(mode!="game")
+				sound.suspend(mode!="game")
+				if is_instance_valid(puzzle_feedback) and mode in ["cipher","relay"]:puzzle_feedback.text=Failure.status(profile.state)+"。記録を確かめよう。"
+				if mode=="station" and is_instance_valid(station_ui.feedback):station_ui.feedback.text=Failure.status(profile.state)+"。確定前にヒントを。"
+	elif mode=="death":
+		death_elapsed+=delta
+		if is_instance_valid(death_countdown):death_countdown.text="%d 秒後、始まりの部屋へ戻る。"%maxi(0,ceili(8-death_elapsed))
+		if death_elapsed>=8:restart_after_death()
+
+func show_death() -> void:
+	if failure_sequence.active:failure_sequence.reset(false)
+	death_elapsed=0
+	danger_shade.color.a=0
+	toast_time=0
+	var cause=Failure.CAUSES[posmod(int(profile.state.death_cause),3)]
+	var description=cause+"。\n\n"+str(profile.state.last_failure)+"。\n誤答を重ねた結果、危険度が5に達した。\n\n鍵・校正・探索の進行は失われる。\n同じ謎に戻る。次は、確定する前に手掛かりとヒントを。"
+	var box=dialog("BOUNDARY REJECTED / %d 回目の死"%int(profile.state.deaths),"死亡",description,"death")
+	modal.get_child(0).color=Color(0.008,0.012,0.02,0.98)
+	var panel=box.get_parent()
+	var style=panel.get_theme_stylebox("panel").duplicate()
+	style.bg_color=Color(0.035,0.05,0.065)
+	style.border_color=Color(0.17,0.21,0.23)
+	panel.add_theme_stylebox_override("panel",style)
+	for child in box.get_children():
+		if child is Label:child.add_theme_color_override("font_color",Color(0.79,0.84,0.87))
+	death_countdown=text_label("8 秒後、始まりの部屋へ戻る。",17,Color(0.92,0.68,0.53))
+	box.add_child(death_countdown)
+	button(box,"今すぐ最初からやり直す",restart_after_death,true)
+	button(box,"中断",pause_failure)
+	save_game()
+
+func restart_after_death() -> void:
+	if mode!="death" or not profile.state.dead:return
+	profile.retry_after_death()
+	mode="restart"
+	begin_game(false)
+	toast("最初の部屋に戻った。同じ謎に、覚えたことを生かそう。",8)
+
+func pause_failure() -> void:
+	if not mode in ["hazard","death"]:return
+	failure_pause_mode=mode
+	failure_saved_modal=modal
+	if is_instance_valid(failure_saved_modal):failure_saved_modal.visible=false
+	modal=null
+	var box=dialog("PAUSED","中断中","演出と再開までの時間は止まっています。","failure_pause")
+	button(box,"続ける",resume_failure,true)
+	button(box,"保存して終了",func():save_game();quit_game())
+	save_game()
+
+func resume_failure() -> void:
+	if mode!="failure_pause":return
+	ui.remove_child(modal)
+	modal.queue_free()
+	modal=failure_saved_modal
+	failure_saved_modal=null
+	mode=failure_pause_mode
+	if is_instance_valid(modal):modal.visible=mode=="death"
+	hud.visible=mode=="hazard"
+	sound.suspend(mode!="hazard")

@@ -1819,10 +1819,210 @@
 		{
 			"check": "Pausing in the same frame as room entry also pauses the deferred 3D playback",
 			"passed": true
+		},
+		{
+			"check": "Incomplete cipher entry and missing observations are not counted as wrong answers",
+			"passed": true
+		},
+		{
+			"check": "Incomplete sequences, selections, resets and hints do not increase danger",
+			"passed": true
+		},
+		{
+			"check": "A confirmed wrong station answer starts danger stage one and blocks movement",
+			"passed": true
+		},
+		{
+			"check": "Repeated callbacks during one warning cannot stack extra mistakes",
+			"passed": true
+		},
+		{
+			"check": "The room's rendered exposure actually decreases after a wrong answer",
+			"passed": true
+		},
+		{
+			"check": "Pause freezes the hazard animation instead of returning to gameplay",
+			"passed": true
+		},
+		{
+			"check": "A warning returns to the same puzzle and restores the floor",
+			"passed": true
+		},
+		{
+			"check": "The second mistake produces a visible approaching shadow",
+			"passed": true
+		},
+		{
+			"check": "The warning shadow physically approaches the first-person camera",
+			"passed": true
+		},
+		{
+			"check": "The third mistake lowers both the actual floor slab and the first-person viewpoint",
+			"passed": true
+		},
+		{
+			"check": "A nonlethal floor drop restores the original player position",
+			"passed": true
+		},
+		{
+			"check": "The fourth mistake brings two monuments close without killing the player",
+			"passed": true
+		},
+		{
+			"check": "The last warning explicitly says that the next error is fatal",
+			"passed": true
+		},
+		{
+			"check": "Danger and mistakes persist across real save/reload",
+			"passed": true
+		},
+		{
+			"check": "Solving the threatened puzzle reduces danger by two",
+			"passed": true
+		},
+		{
+			"check": "Replaying an already solved station cannot repeatedly lower danger",
+			"passed": true
+		},
+		{
+			"check": "Fatal error selects and persists death variant 0",
+			"passed": true
+		},
+		{
+			"check": "Quitting during fatal variant 0 cannot restore a living save",
+			"passed": true
+		},
+		{
+			"check": "Fatal variant 0 cannot be escaped through resume or door input",
+			"passed": true
+		},
+		{
+			"check": "The fatal shadow reaches the camera",
+			"passed": true
+		},
+		{
+			"check": "Death variant 0 reaches the death screen without free movement",
+			"passed": true
+		},
+		{
+			"check": "Pausing the death screen stops the automatic restart countdown",
+			"passed": true
+		},
+		{
+			"check": "Death variant 0 automatically restarts at the first room",
+			"passed": true
+		},
+		{
+			"check": "Death variant 0 resets all escape progress",
+			"passed": true
+		},
+		{
+			"check": "Death variant 0 preserves the world and answers so learned clues remain useful",
+			"passed": true
+		},
+		{
+			"check": "Death history persists while the new attempt starts safely",
+			"passed": true
+		},
+		{
+			"check": "Fatal error selects and persists death variant 1",
+			"passed": true
+		},
+		{
+			"check": "Quitting during fatal variant 1 cannot restore a living save",
+			"passed": true
+		},
+		{
+			"check": "Fatal variant 1 cannot be escaped through resume or door input",
+			"passed": true
+		},
+		{
+			"check": "The fatal floor drop descends beyond normal rescue height",
+			"passed": true
+		},
+		{
+			"check": "The player's ordinary fall recovery cannot cancel a scripted fatal fall",
+			"passed": true
+		},
+		{
+			"check": "Death variant 1 reaches the death screen without free movement",
+			"passed": true
+		},
+		{
+			"check": "Loading a fatal save resumes at the death screen",
+			"passed": true
+		},
+		{
+			"check": "Death variant 1 automatically restarts at the first room",
+			"passed": true
+		},
+		{
+			"check": "Death variant 1 resets all escape progress",
+			"passed": true
+		},
+		{
+			"check": "Death variant 1 preserves the world and answers so learned clues remain useful",
+			"passed": true
+		},
+		{
+			"check": "Death history persists while the new attempt starts safely",
+			"passed": true
+		},
+		{
+			"check": "Fatal error selects and persists death variant 2",
+			"passed": true
+		},
+		{
+			"check": "Quitting during fatal variant 2 cannot restore a living save",
+			"passed": true
+		},
+		{
+			"check": "Fatal variant 2 cannot be escaped through resume or door input",
+			"passed": true
+		},
+		{
+			"check": "The monuments close to a lethal gap around the viewpoint",
+			"passed": true
+		},
+		{
+			"check": "Death variant 2 reaches the death screen without free movement",
+			"passed": true
+		},
+		{
+			"check": "Death variant 2 automatically restarts at the first room",
+			"passed": true
+		},
+		{
+			"check": "Death variant 2 resets all escape progress",
+			"passed": true
+		},
+		{
+			"check": "Death variant 2 preserves the world and answers so learned clues remain useful",
+			"passed": true
+		},
+		{
+			"check": "Death history persists while the new attempt starts safely",
+			"passed": true
+		},
+		{
+			"check": "A wrong final-circuit switch also increases danger",
+			"passed": true
+		},
+		{
+			"check": "A correct partial circuit cannot be farmed for recovery",
+			"passed": true
+		},
+		{
+			"check": "Completing the final circuit restores safety and still permits escape",
+			"passed": true
+		},
+		{
+			"check": "The penalty system preserves a successful ending after recovery",
+			"passed": true
 		}
 	],
 	"coverage": "Actual player collision and door traversal, interaction rays, all puzzle stages, save reload and backup recovery, ending",
 	"engine": "4.7.2-stable (official)",
 	"failed": 0,
-	"passed": 455
+	"passed": 505
 }

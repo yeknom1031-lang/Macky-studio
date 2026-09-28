@@ -1,5 +1,6 @@
 extends RefCounted
 
+const Failure=preload("res://scripts/failure_rules.gd")
 const Catalog=preload("res://scripts/anomaly_catalog.gd")
 const PATH = "user://white_room_v1.json"
 var path = PATH
@@ -15,7 +16,9 @@ func fresh(previous:Dictionary={}) -> void:
 	state.campaign=true
 	state.run_number=int(old.get("run_number",0))+1
 	state.anomaly_index=0
+	state.room_entries={}
 	Catalog.enter(state,0)
+	Failure.ensure(state)
 
 func load_profile() -> bool:
 	for candidate in [path,path+".bak"]:
@@ -59,7 +62,7 @@ func load_profile() -> bool:
 			state.relay_unlocked=true
 			state.key=true
 			state.cipher=true
-		for key in ["anomaly_seed","anomaly_index","current_event","current_audio","run_number"]:
+		for key in ["anomaly_seed","anomaly_index","current_event","current_audio","run_number","danger","mistakes","deaths","death_cause"]:
 			state[key]=int(value.state.get(key,state[key]))
 		state.campaign=bool(value.state.get("campaign",false))
 		if not value.state.has("visual_pool"):
@@ -71,6 +74,10 @@ func load_profile() -> bool:
 		for key in state.station_controls:
 			if state.station_controls[key] is Array:
 				state.station_controls[key]=state.station_controls[key].map(func(v):return int(v))
+		Failure.ensure(state)
+		state.danger=clampi(int(state.danger),0,5)
+		if state.danger==5:state.dead=true
+		if state.dead:state.death_cause=posmod(int(state.death_cause),3)
 		state.current_event=posmod(int(state.current_event),40)
 		return true
 	fresh()
@@ -92,3 +99,11 @@ func save() -> bool:
 	if result!=OK:
 		error_message="進行状況を保存できませんでした。"
 	return result==OK
+
+func retry_after_death() -> void:
+	var previous=state.duplicate(true)
+	fresh()
+	for key in ["anomaly_seed","visual_pool","audio_pool","puzzle_pool","run_number","deaths","campaign"]:state[key]=previous[key]
+	state.anomaly_index=0
+	state.room_entries={}
+	Catalog.enter(state,0)

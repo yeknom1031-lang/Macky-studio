@@ -105,6 +105,7 @@ func run(g) -> void:
 	await relocate(0,Vector3(-2.1,0.03,-27.5),0,-8)
 	game.show_cipher()
 	check(not game.submit_cipher("123") and not game.profile.state.cipher,"Wrong cipher leaves the puzzle retryable")
+	game.advance_failure(10)
 	# A focused button must not swallow Enter after keyboard entry.
 	var keypad_buttons=game.modal.find_children("*","Button",true,false)
 	keypad_buttons[0].grab_focus()
@@ -129,6 +130,7 @@ func run(g) -> void:
 	check(game.profile.state.relay_unlocked,"The collected key unlocks the circuit")
 	game.relay_press(1)
 	check(game.relay_input.is_empty() and not game.profile.state.powered,"Wrong circuit order resets safely")
+	game.advance_failure(10)
 	game.relay_press(0)
 	game.relay_press(2)
 	check(game.relay_press(1) and game.profile.state.powered,"The correct switch order restores boundary power")
@@ -155,6 +157,7 @@ func run(g) -> void:
 	check(game.profile.state.escaped and game.mode=="end","Walking through the unlocked hidden door completes the game")
 	await test_phenomena()
 	await preload("res://tests/run_variations.gd").new().run(game,self)
+	await preload("res://tests/failure_progression.gd").new().run(game,self)
 	for suffix in ["",".bak",".tmp"]:
 		DirAccess.remove_absolute(game.profile.path+suffix)
 	var report={"engine":Engine.get_version_info().string,"checks":checks,"failed":failed,"passed":checks.size()-failed,"coverage":"Actual player collision and door traversal, interaction rays, all puzzle stages, save reload and backup recovery, ending"}

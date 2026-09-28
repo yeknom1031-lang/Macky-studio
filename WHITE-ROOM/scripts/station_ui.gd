@@ -33,7 +33,7 @@ func open(owner_game,id:int) -> void:
 	for i in range(puzzle.buttons.size()):
 		var index=i
 		buttons.append(game.button(grid,puzzle.buttons[i],func():change(index),false,Vector2(570.0/grid.columns,40)))
-	feedback=game.text_label("操作後に「校正を実行」を押す。失敗してもやり直せる。",15)
+	feedback=game.text_label("確定した誤答で危険度＋1。5で死亡。正解で−2。",15)
 	box.add_child(feedback)
 	hint=game.paragraph(box,"",15)
 	var row=HBoxContainer.new()
@@ -57,16 +57,19 @@ func refresh() -> void:
 	game.save_game()
 
 func change(index:int) -> void:
+	if game.mode!="station":return
 	controls=Puzzles.change(puzzle,controls,index)
 	feedback.text="入力中。確認できたら校正を実行。"
 	refresh()
 
 func reset() -> void:
+	if game.mode!="station":return
 	controls=Puzzles.initial(puzzle)
-	feedback.text="初期状態に戻した。何度でも試せる。"
+	feedback.text="初期状態に戻した。確定する前の操作は安全。"
 	refresh()
 
 func next_hint() -> void:
+	if game.mode!="station":return
 	var key=str(puzzle.id)
 	game.profile.state.station_hints[key]=mini(2,int(game.profile.state.station_hints.get(key,0))+1)
 	show_hint()
@@ -77,7 +80,12 @@ func show_hint() -> void:
 	hint.text="ヒントは2段階。最後は操作の答えまで確認できます。" if level==0 else (puzzle.hint if level==1 else Puzzles.solution_text(puzzle))
 
 func submit() -> bool:
+	if game.mode!="station" or game.failure_busy():return false
+	if (puzzle.mode=="sequence" and controls.size()<puzzle.answer.size()) or (puzzle.mode=="select" and controls[0]<0):
+		feedback.text="選択を完成させてから確定しよう。危険度は増えていない。"
+		return false
 	if not Puzzles.correct(puzzle,controls):
-		feedback.text="基準と一致しない。手掛かりを確認し、再調整しよう。"
+		feedback.text="基準と一致しない。手掛かりを確認しよう。"
+		game.register_failure("観測器「"+str(puzzle.title)+"」の校正を誤った")
 		return false
 	return game.finish_station(int(puzzle.id),controls)

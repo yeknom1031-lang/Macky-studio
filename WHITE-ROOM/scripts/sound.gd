@@ -128,3 +128,13 @@ func suspend(paused:bool) -> void:
 	suspended=paused
 	if is_instance_valid(entry_source):entry_source.stream_paused=paused
 	for voice in effects:voice.stream_paused=paused
+
+func play_threat(stage:int,cause:int) -> void:
+	var voice=effects[next_voice]
+	next_voice=(next_voice+1)%effects.size()
+	var choice=[3,3,0,12,13,12][stage]
+	if stage==5:choice=[17,12,13][posmod(cause,3)]
+	voice.stream=variation_streams[choice]
+	voice.volume_db=-8 if stage==5 else -13
+	voice.pitch_scale=0.72 if stage>=3 else 0.85
+	voice.play()

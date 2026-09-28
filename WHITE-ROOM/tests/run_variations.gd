@@ -113,6 +113,7 @@ func run(g,t) -> void:
 		game.interact()
 		var panel=game.station_ui
 		check(game.mode=="station" and not panel.submit(),"Puzzle family %d opens and safely rejects its initial state"%kind)
+		game.advance_failure(10)
 		panel.next_hint()
 		panel.next_hint()
 		check(not panel.hint.text.is_empty(),"Puzzle family %d supplies a full recovery hint"%kind)
