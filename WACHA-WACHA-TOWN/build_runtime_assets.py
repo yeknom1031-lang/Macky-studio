@@ -1,11 +1,11 @@
-"""Bake a low-resolution atlas of distinct bases; recolor variants in the GPU shader."""
+"""Bake a compact higher-resolution atlas of distinct bases; recolor variants in the GPU shader."""
 from pathlib import Path
 import json,hashlib
 import numpy as np
 from PIL import Image,ImageDraw
 ROOT=Path(__file__).resolve().parent
-CW=CH=64
-COLUMNS=2
+CW=CH=80
+COLUMNS=48
 
 def isolate_cell(image):
  # Remove disconnected remnants of an adjacent atlas cell; keep nearby held props.
@@ -46,29 +46,38 @@ def make_runtime(meta):
  if stamp.exists() and json.loads(stamp.read_text()).get('signature')==signature:
   atlas_meta=json.loads(stamp.read_text())
  else:
-  count=meta['base_count'];width=CW*15*COLUMNS;prop_y=((count+COLUMNS-1)//COLUMNS)*CH
-  atlas=Image.new('RGBA',(width,prop_y+128));loaded={str(p.relative_to(ROOT/'assets').with_suffix('')):Image.open(p).convert('RGBA') for p in sources}
+  count=meta['base_count'];width=CW*COLUMNS
+  loaded={str(p.relative_to(ROOT/'assets').with_suffix('')):Image.open(p).convert('RGBA') for p in sources}
+  tiles=[];rects=[]
   for base,entry in enumerate(meta['characters']):
-   # Keep the same scale through walking, gesturing and activities. Seated poses remain shorter.
-   frames=entry['frames'];sprites=[isolate_cell(loaded[entry['source']].crop((f['x'],f['y'],f['x']+f['w'],f['y']+f['h']))) for f in frames]
-   scale=min(44/float(np.median([im.height for im in sprites[:5]])),60/max(im.width for im in sprites),59/max(im.height for im in sprites))
-   strip=Image.new('RGBA',(CW*15,CH))
-   for i,im in enumerate(sprites):
+   frames=entry['frames'];unique={};sprites=[];indices=[]
+   for f in frames:
+    key=tuple(f.values())
+    if key not in unique:
+     unique[key]=len(sprites);sprites.append(isolate_cell(loaded[entry['source']].crop((f['x'],f['y'],f['x']+f['w'],f['y']+f['h']))))
+    indices.append(unique[key])
+   walk_heights=[sprites[indices[i]].height for i in range(5)]
+   scale=min(60/float(np.median(walk_heights)),76/max(im.width for im in sprites),75/max(im.height for im in sprites))
+   positions=[]
+   for im in sprites:
     sprite=im.resize((max(1,round(im.width*scale)),max(1,round(im.height*scale))),Image.Resampling.LANCZOS)
-    ImageDraw.Draw(strip).ellipse((i*CW+CW/2-6,CH-4,i*CW+CW/2+6,CH-1),fill=(67,48,33,35))
-    strip.alpha_composite(sprite,(i*CW+(CW-sprite.width)//2,CH-3-sprite.height))
-   atlas.alpha_composite(strip,((base%COLUMNS)*CW*15,(base//COLUMNS)*CH))
+    tile=Image.new('RGBA',(CW,CH));ImageDraw.Draw(tile).ellipse((CW/2-8,CH-4,CW/2+8,CH-1),fill=(67,48,33,35));tile.alpha_composite(sprite,((CW-sprite.width)//2,CH-3-sprite.height))
+    k=len(tiles);positions.append(dict(x=k%COLUMNS*CW,y=k//COLUMNS*CH,w=CW,h=CH));tiles.append(tile)
+   rects.append([positions[i] for i in indices])
+  prop_y=((len(tiles)+COLUMNS-1)//COLUMNS)*CH
+  atlas=Image.new('RGBA',(width,prop_y+128))
+  for i,tile in enumerate(tiles):atlas.alpha_composite(tile,(i%COLUMNS*CW,i//COLUMNS*CH))
   props=[];sheet=loaded['town-props'];cw,ch=sheet.width/4,sheet.height/2
   for index in range(8):
    cell=sheet.crop((round(index%4*cw),round(index//4*ch),round((index%4+1)*cw),round((index//4+1)*ch)))
    box=cell.getchannel('A').point(lambda a:255 if a>170 else 0).getbbox();cell=cell.crop(box);factor=120/max(cell.size)
    cell=cell.resize((round(cell.width*factor),round(cell.height*factor)),Image.Resampling.LANCZOS)
    px=index*128+(128-cell.width)//2;py=prop_y+128-cell.height-3;atlas.alpha_composite(cell,(px,py));props.append(dict(x=px,y=py,w=cell.width,h=cell.height))
-  atlas.save(out/'crowd-atlas.webp','WEBP',quality=88,method=6)
-  atlas_meta=dict(signature=signature,width=atlas.width,height=atlas.height,cw=CW,ch=CH,typeCount=count*4,baseCount=count,palettes=4,columns=COLUMNS,frames=15,props=props)
+  atlas.save(out/'crowd-atlas.webp','WEBP',quality=94,method=6)
+  atlas_meta=dict(signature=signature,width=atlas.width,height=atlas.height,cw=CW,ch=CH,typeCount=count*4,baseCount=count,palettes=4,columns=COLUMNS,frames=15,props=props,rects=rects,uniqueFrames=len(tiles))
   stamp.write_text(json.dumps(atlas_meta,separators=(',',':')))
  for p in (ROOT/'assets').glob('*.png'):
   if p.stem.startswith(('walk-','town-props')):continue
   target=out/(p.stem+'.webp')
-  if not target.exists() or target.stat().st_mtime<p.stat().st_mtime:Image.open(p).convert('RGB').save(target,'WEBP',quality=83,method=6)
+  if not target.exists() or target.stat().st_mtime<max(p.stat().st_mtime,Path(__file__).stat().st_mtime):Image.open(p).convert('RGB').save(target,'WEBP',quality=92,method=6)
  return atlas_meta

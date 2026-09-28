@@ -59,7 +59,8 @@ def main():
     metadata_path = ROOT / 'assets' / 'sprite-meta.json'
     from measure_diversity import measure
     original = json.loads(metadata_path.read_text()) if metadata_path.exists() else measure_sprites()
-    meta = measure(original)
+    from measure_expansion import extend
+    meta = extend(measure(original))
     metadata_path.write_text(json.dumps(meta,ensure_ascii=False,indent=2))
     from build_runtime_assets import make_runtime
     atlas_meta=make_runtime(meta)
@@ -71,7 +72,7 @@ def main():
         'STYLE': (ROOT / 'src' / 'style.css').read_text(),
         'ASSETS': 'const WACHA_ASSETS=' + json.dumps(assets, ensure_ascii=False, separators=(',', ':')) + ';',
         'CORE': (ROOT / 'src' / 'core.js').read_text(),
-        'LIFE': (ROOT / 'src' / 'life.js').read_text(),
+        'LIFE': (ROOT / 'src' / 'space.js').read_text()+'\n'+(ROOT / 'src' / 'life.js').read_text(),
         'RENDER': (ROOT / 'src' / 'render.js').read_text(),
         'APP': (ROOT / 'src' / 'app.js').read_text()
     }

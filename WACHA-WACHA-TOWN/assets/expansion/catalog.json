@@ -1,0 +1,1532 @@
+[
+  {
+    "name": "時計職人",
+    "action": "repair",
+    "height": 0.92,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 0,
+    "group": "街の職人"
+  },
+  {
+    "name": "鍵屋さん",
+    "action": "keys",
+    "height": 1.04,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 1,
+    "group": "街の職人"
+  },
+  {
+    "name": "靴職人",
+    "action": "polish",
+    "height": 0.99,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 2,
+    "group": "街の職人"
+  },
+  {
+    "name": "ガラス職人",
+    "action": "glass",
+    "height": 1.1,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 3,
+    "group": "街の職人"
+  },
+  {
+    "name": "仕立て屋さん",
+    "action": "sew",
+    "height": 1.02,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 4,
+    "group": "街の職人"
+  },
+  {
+    "name": "かご職人",
+    "action": "weave",
+    "height": 0.86,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 5,
+    "group": "街の職人"
+  },
+  {
+    "name": "革職人",
+    "action": "stitch",
+    "height": 1.15,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 6,
+    "group": "街の職人"
+  },
+  {
+    "name": "和傘職人",
+    "action": "umbrella",
+    "height": 1.05,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 7,
+    "group": "街の職人"
+  },
+  {
+    "name": "提灯職人",
+    "action": "lantern",
+    "height": 0.97,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 8,
+    "group": "街の職人"
+  },
+  {
+    "name": "石工さん",
+    "action": "carve",
+    "height": 1.25,
+    "animal": false,
+    "source": "expansion-01.png",
+    "row": 9,
+    "group": "街の職人"
+  },
+  {
+    "name": "クレープ屋さん",
+    "action": "crepe",
+    "height": 0.95,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 0,
+    "group": "おいしい街"
+  },
+  {
+    "name": "寿司職人",
+    "action": "sushi",
+    "height": 1.09,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 1,
+    "group": "おいしい街"
+  },
+  {
+    "name": "アイス屋さん",
+    "action": "icecream",
+    "height": 1.06,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 2,
+    "group": "おいしい街"
+  },
+  {
+    "name": "たこ焼き屋さん",
+    "action": "cook",
+    "height": 1.0,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 3,
+    "group": "おいしい街"
+  },
+  {
+    "name": "ピザ職人",
+    "action": "pizza",
+    "height": 1.2,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 4,
+    "group": "おいしい街"
+  },
+  {
+    "name": "チョコ職人",
+    "action": "chocolate",
+    "height": 0.88,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 5,
+    "group": "おいしい街"
+  },
+  {
+    "name": "お茶屋さん",
+    "action": "tea",
+    "height": 1.02,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 6,
+    "group": "おいしい街"
+  },
+  {
+    "name": "果物屋さん",
+    "action": "fruit",
+    "height": 1.13,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 7,
+    "group": "おいしい街"
+  },
+  {
+    "name": "たい焼き屋さん",
+    "action": "waffle",
+    "height": 0.91,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 8,
+    "group": "おいしい街"
+  },
+  {
+    "name": "ドーナツ屋さん",
+    "action": "donut",
+    "height": 1.07,
+    "animal": false,
+    "source": "expansion-02.png",
+    "row": 9,
+    "group": "おいしい街"
+  },
+  {
+    "name": "魚屋さん",
+    "action": "fishbox",
+    "height": 1.18,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 0,
+    "group": "市場のひと"
+  },
+  {
+    "name": "八百屋さん",
+    "action": "vegetables",
+    "height": 1.03,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 1,
+    "group": "市場のひと"
+  },
+  {
+    "name": "古道具屋さん",
+    "action": "antique",
+    "height": 0.91,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 2,
+    "group": "市場のひと"
+  },
+  {
+    "name": "帽子屋さん",
+    "action": "hat",
+    "height": 1.2,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 3,
+    "group": "市場のひと"
+  },
+  {
+    "name": "ぬいぐるみ屋さん",
+    "action": "toy",
+    "height": 0.95,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 4,
+    "group": "市場のひと"
+  },
+  {
+    "name": "レコード屋さん",
+    "action": "record",
+    "height": 1.1,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 5,
+    "group": "市場のひと"
+  },
+  {
+    "name": "花束のおじさん",
+    "action": "bouquet",
+    "height": 1.15,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 6,
+    "group": "市場のひと"
+  },
+  {
+    "name": "新聞屋さん",
+    "action": "newspaper",
+    "height": 0.84,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 7,
+    "group": "市場のひと"
+  },
+  {
+    "name": "ジャム屋さん",
+    "action": "jam",
+    "height": 0.98,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 8,
+    "group": "市場のひと"
+  },
+  {
+    "name": "せっけん屋さん",
+    "action": "soap",
+    "height": 1.06,
+    "animal": false,
+    "source": "expansion-03.png",
+    "row": 9,
+    "group": "市場のひと"
+  },
+  {
+    "name": "消防士さん",
+    "action": "hose",
+    "height": 1.17,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 0,
+    "group": "町の仕事"
+  },
+  {
+    "name": "郵便屋さん",
+    "action": "letter",
+    "height": 0.93,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 1,
+    "group": "町の仕事"
+  },
+  {
+    "name": "車掌さん",
+    "action": "ticket",
+    "height": 1.12,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 2,
+    "group": "町の仕事"
+  },
+  {
+    "name": "救急隊員さん",
+    "action": "bag",
+    "height": 1.03,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 3,
+    "group": "町の仕事"
+  },
+  {
+    "name": "研究者さん",
+    "action": "science",
+    "height": 1.09,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 4,
+    "group": "町の仕事"
+  },
+  {
+    "name": "先生",
+    "action": "teach",
+    "height": 1.05,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 5,
+    "group": "町の仕事"
+  },
+  {
+    "name": "司書さん",
+    "action": "books",
+    "height": 0.92,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 6,
+    "group": "町の仕事"
+  },
+  {
+    "name": "配管工さん",
+    "action": "wrench",
+    "height": 1.14,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 7,
+    "group": "町の仕事"
+  },
+  {
+    "name": "電気屋さん",
+    "action": "bulb",
+    "height": 0.99,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 8,
+    "group": "町の仕事"
+  },
+  {
+    "name": "獣医さん",
+    "action": "vet",
+    "height": 1.1,
+    "animal": false,
+    "source": "expansion-04.png",
+    "row": 9,
+    "group": "町の仕事"
+  },
+  {
+    "name": "サックスの人",
+    "action": "sax",
+    "height": 1.16,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 0,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "チェロの人",
+    "action": "cello",
+    "height": 1.19,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 1,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "フルートの人",
+    "action": "flute",
+    "height": 0.97,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 2,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "トランペットの人",
+    "action": "trumpet",
+    "height": 1.09,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 3,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "ハープの人",
+    "action": "harp",
+    "height": 1.04,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 4,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "三味線の人",
+    "action": "shamisen",
+    "height": 1.01,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 5,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "マラカスの人",
+    "action": "maracas",
+    "height": 0.92,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 6,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "木琴の人",
+    "action": "xylophone",
+    "height": 0.87,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 7,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "チューバの人",
+    "action": "tuba",
+    "height": 1.27,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 8,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "ハーモニカの人",
+    "action": "harmonica",
+    "height": 0.95,
+    "animal": false,
+    "source": "expansion-05.png",
+    "row": 9,
+    "group": "音楽の時間"
+  },
+  {
+    "name": "凧あげの子",
+    "action": "kite",
+    "height": 0.75,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 0,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "こま回しの子",
+    "action": "top",
+    "height": 0.7,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 1,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "けん玉の子",
+    "action": "kendama",
+    "height": 0.77,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 2,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "竹馬の人",
+    "action": "stilts",
+    "height": 1.31,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 3,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "竹とんぼの子",
+    "action": "rotor",
+    "height": 0.71,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 4,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "紙飛行機の人",
+    "action": "paperplane",
+    "height": 1.05,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 5,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "シャボンの老人",
+    "action": "bubbles",
+    "height": 0.89,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 6,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "お手玉のおばさん",
+    "action": "beanbag",
+    "height": 1.0,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 7,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "将棋のおじいさん",
+    "action": "boardgame",
+    "height": 0.88,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 8,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "ブーメランの人",
+    "action": "boomerang",
+    "height": 1.14,
+    "animal": false,
+    "source": "expansion-06.png",
+    "row": 9,
+    "group": "公園の遊び"
+  },
+  {
+    "name": "卓球の人",
+    "action": "tabletennis",
+    "height": 1.0,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 0,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "テニスの人",
+    "action": "tennis",
+    "height": 1.22,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 1,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "バドミントンの人",
+    "action": "badminton",
+    "height": 1.08,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 2,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "フェンシングの人",
+    "action": "fencing",
+    "height": 1.18,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 3,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "ボウリングの人",
+    "action": "bowling",
+    "height": 1.07,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 4,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "ラグビーの人",
+    "action": "rugby",
+    "height": 1.29,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 5,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "サーファー",
+    "action": "surf",
+    "height": 1.14,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 6,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "ローラースケートの人",
+    "action": "rollers",
+    "height": 0.99,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 7,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "太極拳のおばあちゃん",
+    "action": "taichi",
+    "height": 0.87,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 8,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "体操のおじいちゃん",
+    "action": "stretch",
+    "height": 1.13,
+    "animal": false,
+    "source": "expansion-07.png",
+    "row": 9,
+    "group": "いろいろな運動"
+  },
+  {
+    "name": "養蜂家さん",
+    "action": "bees",
+    "height": 1.1,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 0,
+    "group": "庭と自然"
+  },
+  {
+    "name": "きのこ博士",
+    "action": "mushroom",
+    "height": 0.94,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 1,
+    "group": "庭と自然"
+  },
+  {
+    "name": "盆栽のおじいさん",
+    "action": "bonsai",
+    "height": 0.85,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 2,
+    "group": "庭と自然"
+  },
+  {
+    "name": "蝶をみる人",
+    "action": "butterfly",
+    "height": 1.07,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 3,
+    "group": "庭と自然"
+  },
+  {
+    "name": "双眼鏡の人",
+    "action": "binoculars",
+    "height": 1.21,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 4,
+    "group": "庭と自然"
+  },
+  {
+    "name": "種まきの人",
+    "action": "seeds",
+    "height": 0.98,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 5,
+    "group": "庭と自然"
+  },
+  {
+    "name": "落ち葉のおじさん",
+    "action": "rake",
+    "height": 1.15,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 6,
+    "group": "庭と自然"
+  },
+  {
+    "name": "虫めがねの子",
+    "action": "inspect",
+    "height": 0.69,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 7,
+    "group": "庭と自然"
+  },
+  {
+    "name": "植木鉢の人",
+    "action": "plant",
+    "height": 1.06,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 8,
+    "group": "庭と自然"
+  },
+  {
+    "name": "バラの庭師",
+    "action": "prune",
+    "height": 1.03,
+    "animal": false,
+    "source": "expansion-08.png",
+    "row": 9,
+    "group": "庭と自然"
+  },
+  {
+    "name": "折り紙の人",
+    "action": "origami",
+    "height": 0.96,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 0,
+    "group": "ものづくり"
+  },
+  {
+    "name": "模型の人",
+    "action": "model",
+    "height": 1.12,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 1,
+    "group": "ものづくり"
+  },
+  {
+    "name": "刺しゅうの人",
+    "action": "embroider",
+    "height": 1.02,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 2,
+    "group": "ものづくり"
+  },
+  {
+    "name": "人形師さん",
+    "action": "puppet",
+    "height": 1.08,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 3,
+    "group": "ものづくり"
+  },
+  {
+    "name": "書道の人",
+    "action": "calligraphy",
+    "height": 1.13,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 4,
+    "group": "ものづくり"
+  },
+  {
+    "name": "スケッチの人",
+    "action": "sketch",
+    "height": 0.95,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 5,
+    "group": "ものづくり"
+  },
+  {
+    "name": "折りたたみ椅子の人",
+    "action": "chair",
+    "height": 1.2,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 6,
+    "group": "ものづくり"
+  },
+  {
+    "name": "風車を作る子",
+    "action": "pinwheel",
+    "height": 0.73,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 7,
+    "group": "ものづくり"
+  },
+  {
+    "name": "ビーズの人",
+    "action": "beads",
+    "height": 0.93,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 8,
+    "group": "ものづくり"
+  },
+  {
+    "name": "ラジコンの人",
+    "action": "remote",
+    "height": 1.04,
+    "animal": false,
+    "source": "expansion-09.png",
+    "row": 9,
+    "group": "ものづくり"
+  },
+  {
+    "name": "旅行のおばあちゃん",
+    "action": "suitcase",
+    "height": 0.87,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 0,
+    "group": "おでかけ"
+  },
+  {
+    "name": "登山のおじさん",
+    "action": "hike",
+    "height": 1.22,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 1,
+    "group": "おでかけ"
+  },
+  {
+    "name": "カメラのおばさん",
+    "action": "photo",
+    "height": 1.01,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 2,
+    "group": "おでかけ"
+  },
+  {
+    "name": "スケッチ旅行者",
+    "action": "map",
+    "height": 1.15,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 3,
+    "group": "おでかけ"
+  },
+  {
+    "name": "ピクニックの人",
+    "action": "picnic",
+    "height": 0.97,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 4,
+    "group": "おでかけ"
+  },
+  {
+    "name": "おみやげの青年",
+    "action": "souvenir",
+    "height": 1.09,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 5,
+    "group": "おでかけ"
+  },
+  {
+    "name": "双眼鏡のおばあさん",
+    "action": "binoculars",
+    "height": 0.89,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 6,
+    "group": "おでかけ"
+  },
+  {
+    "name": "海辺の子",
+    "action": "shell",
+    "height": 0.74,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 7,
+    "group": "おでかけ"
+  },
+  {
+    "name": "虫よけの人",
+    "action": "fan",
+    "height": 1.03,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 8,
+    "group": "おでかけ"
+  },
+  {
+    "name": "水筒の人",
+    "action": "drink",
+    "height": 1.16,
+    "animal": false,
+    "source": "expansion-10.png",
+    "row": 9,
+    "group": "おでかけ"
+  },
+  {
+    "name": "ロングコートの紳士",
+    "action": "watch",
+    "height": 1.27,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 0,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "ベレーの女性",
+    "action": "read",
+    "height": 1.1,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 1,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "モードな青年",
+    "action": "phone",
+    "height": 1.19,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 2,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "虹色のスカーフの人",
+    "action": "dance",
+    "height": 1.06,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 3,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "大きなイヤリングの人",
+    "action": "earrings",
+    "height": 1.02,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 4,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "花柄スーツの人",
+    "action": "bouquet",
+    "height": 1.18,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 5,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "和モダンの人",
+    "action": "fan",
+    "height": 1.14,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 6,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "リボンの紳士",
+    "action": "bowtie",
+    "height": 1.07,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 7,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "フリルの人",
+    "action": "parasol",
+    "height": 1.04,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 8,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "スニーカーの人",
+    "action": "laces",
+    "height": 0.96,
+    "animal": false,
+    "source": "expansion-11.png",
+    "row": 9,
+    "group": "おしゃれな住人"
+  },
+  {
+    "name": "おんぶのおばあちゃん",
+    "action": "cradle",
+    "height": 0.94,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 0,
+    "group": "街の家族"
+  },
+  {
+    "name": "絵本のパパ",
+    "action": "read",
+    "height": 1.18,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 1,
+    "group": "街の家族"
+  },
+  {
+    "name": "おやつのママ",
+    "action": "snack",
+    "height": 1.05,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 2,
+    "group": "街の家族"
+  },
+  {
+    "name": "肩車のお父さん",
+    "action": "shoulder",
+    "height": 1.26,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 3,
+    "group": "街の家族"
+  },
+  {
+    "name": "赤い長靴の子",
+    "action": "puddle",
+    "height": 0.68,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 4,
+    "group": "街の家族"
+  },
+  {
+    "name": "工作の子",
+    "action": "paper",
+    "height": 0.72,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 5,
+    "group": "街の家族"
+  },
+  {
+    "name": "しゃがむおじいちゃん",
+    "action": "crouch",
+    "height": 0.91,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 6,
+    "group": "街の家族"
+  },
+  {
+    "name": "手袋のおばさん",
+    "action": "knit",
+    "height": 1.01,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 7,
+    "group": "街の家族"
+  },
+  {
+    "name": "お菓子の兄ちゃん",
+    "action": "snack",
+    "height": 1.1,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 8,
+    "group": "街の家族"
+  },
+  {
+    "name": "リュックのお姉ちゃん",
+    "action": "pack",
+    "height": 0.87,
+    "animal": false,
+    "source": "expansion-12.png",
+    "row": 9,
+    "group": "街の家族"
+  },
+  {
+    "name": "大きな騎士",
+    "action": "knight",
+    "height": 1.28,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 0,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "小さな妖精",
+    "action": "fairy",
+    "height": 0.84,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 1,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "かぼちゃの人",
+    "action": "pumpkin",
+    "height": 1.05,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 2,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "きのこの人",
+    "action": "mushroom",
+    "height": 0.96,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 3,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "ゆきだるまの人",
+    "action": "snowman",
+    "height": 1.14,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 4,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "ねこの仮装の人",
+    "action": "catdance",
+    "height": 1.01,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 5,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "王冠のおじいさん",
+    "action": "royal",
+    "height": 0.9,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 6,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "天使のお姉さん",
+    "action": "angel",
+    "height": 1.12,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 7,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "カラフルな怪獣",
+    "action": "monster",
+    "height": 1.2,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 8,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "本の妖精",
+    "action": "bookfairy",
+    "height": 1.08,
+    "animal": false,
+    "source": "expansion-13.png",
+    "row": 9,
+    "group": "物語の仮装"
+  },
+  {
+    "name": "バナナの人",
+    "action": "banana",
+    "height": 1.24,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 0,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "いちごの人",
+    "action": "strawberry",
+    "height": 0.92,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 1,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "宇宙人の人",
+    "action": "alien",
+    "height": 1.17,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 2,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "パンダの人",
+    "action": "panda",
+    "height": 1.07,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 3,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "トラの人",
+    "action": "tiger",
+    "height": 1.12,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 4,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "うさぎの人",
+    "action": "rabbit",
+    "height": 1.16,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 5,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "カニの人",
+    "action": "crab",
+    "height": 0.93,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 6,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "ハチの人",
+    "action": "bee",
+    "height": 1.02,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 7,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "恐竜博士",
+    "action": "dinosaur",
+    "height": 1.19,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 8,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "星の人",
+    "action": "star",
+    "height": 1.0,
+    "animal": false,
+    "source": "expansion-14.png",
+    "row": 9,
+    "group": "楽しい衣装"
+  },
+  {
+    "name": "ビーグル",
+    "action": "sniff",
+    "height": 0.65,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 0,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "コーギー",
+    "action": "fetch",
+    "height": 0.56,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 1,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "ハスキー",
+    "action": "shake",
+    "height": 0.79,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 2,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "ダルメシアン",
+    "action": "stretch",
+    "height": 0.81,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 3,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "垂れ耳うさぎ",
+    "action": "hop",
+    "height": 0.43,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 4,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "白うさぎ",
+    "action": "groom",
+    "height": 0.42,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 5,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "ハリネズミ",
+    "action": "curl",
+    "height": 0.36,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 6,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "アヒル",
+    "action": "waddle",
+    "height": 0.5,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 7,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "ミニブタ",
+    "action": "sniff",
+    "height": 0.57,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 8,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "リス",
+    "action": "acorn",
+    "height": 0.37,
+    "animal": true,
+    "source": "expansion-15.png",
+    "row": 9,
+    "group": "動物の仲間"
+  },
+  {
+    "name": "自転車整備士",
+    "action": "bikefix",
+    "height": 1.09,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 0,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "船長さん",
+    "action": "captain",
+    "height": 1.23,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 1,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "パイロットさん",
+    "action": "pilot",
+    "height": 1.15,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 2,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "バスの運転手",
+    "action": "driver",
+    "height": 1.08,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 3,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "鉄道模型の人",
+    "action": "train",
+    "height": 0.96,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 4,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "宇宙好きの子",
+    "action": "rocket",
+    "height": 0.74,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 5,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "消防好きの子",
+    "action": "firetoy",
+    "height": 0.71,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 6,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "車いすのダンサー",
+    "action": "dance",
+    "height": 0.84,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 7,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "車いすの読書家",
+    "action": "read",
+    "height": 0.89,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 8,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "ベビーカーの人",
+    "action": "stroller",
+    "height": 1.08,
+    "animal": false,
+    "source": "expansion-16.png",
+    "row": 9,
+    "group": "働く乗りもの好き"
+  },
+  {
+    "name": "りんご飴の人",
+    "action": "candy",
+    "height": 0.9,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 0,
+    "group": "夜のお祭り"
+  },
+  {
+    "name": "金魚すくいの人",
+    "action": "goldfish",
+    "height": 1.07,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 1,
+    "group": "夜のお祭り"
+  },
+  {
+    "name": "お面のおばさん",
+    "action": "mask",
+    "height": 1.02,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 2,
+    "group": "夜のお祭り"
+  },
+  {
+    "name": "星を見る人",
+    "action": "stars",
+    "height": 1.21,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 3,
+    "group": "夜のお祭り"
+  },
+  {
+    "name": "灯りのおじいさん",
+    "action": "lantern",
+    "height": 0.91,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 4,
+    "group": "夜のお祭り"
+  },
+  {
+    "name": "太鼓の子",
+    "action": "drum",
+    "height": 0.76,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 5,
+    "group": "夜のお祭り"
+  },
+  {
+    "name": "踊る花笠の人",
+    "action": "dance",
+    "height": 1.14,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 6,
+    "group": "夜のお祭り"
+  },
+  {
+    "name": "わたあめの人",
+    "action": "cottoncandy",
+    "height": 1.04,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 7,
+    "group": "夜のお祭り"
+  },
+  {
+    "name": "扇子の青年",
+    "action": "fan",
+    "height": 1.16,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 8,
+    "group": "夜のお祭り"
+  },
+  {
+    "name": "花火柄の人",
+    "action": "sparkle",
+    "height": 0.99,
+    "animal": false,
+    "source": "expansion-17.png",
+    "row": 9,
+    "group": "夜のお祭り"
+  }
+]

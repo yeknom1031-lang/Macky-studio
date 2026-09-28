@@ -1,15 +1,15 @@
 {
   "results": [
     {
-      "name": "Offline home opens with 80 archetypes and 320 visual variants",
+      "name": "Offline home opens with 250 archetypes and 1000 visual variants",
       "passed": true
     },
     {
-      "name": "Seven scenes and all character groups are available; 320 portraits are visually distinct",
+      "name": "Seven scenes and all character groups are available; 1000 portraits are visually distinct",
       "passed": true
     },
     {
-      "name": "600 residents start with many activities and a three-minute limit; search has no visible UI",
+      "name": "500 residents start with many activities and a three-minute limit; search has no visible UI",
       "passed": true
     },
     {
@@ -17,11 +17,15 @@
       "passed": true
     },
     {
-      "name": "Wrong target, pause-menu hint and correct capture preserve rules and save the result",
+      "name": "Photo pixels omit every other person and reveal nothing when the target is outside the crop",
       "passed": true
     },
     {
-      "name": "All seven scenes retain 600 agents, 320 looks, and a full-viewport world",
+      "name": "Wrong taps cost three seconds; three photos each develop after three seconds and capture the selected region",
+      "passed": true
+    },
+    {
+      "name": "All seven scenes retain 500 agents, 500 looks, and a full-viewport world",
       "passed": true
     },
     {
@@ -34,6 +38,10 @@
     },
     {
       "name": "Portrait mobile search fills the viewport and supports pinch zoom without buttons",
+      "passed": true
+    },
+    {
+      "name": "Mobile camera supports choosing a frame, taking a photo, and returning to the live town",
       "passed": true
     },
     {

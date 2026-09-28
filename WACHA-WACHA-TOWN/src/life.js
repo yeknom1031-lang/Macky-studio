@@ -1,5 +1,6 @@
 (function(root,factory){const api=factory();if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.WachaLife=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
  'use strict';
+ const Space=typeof module!=='undefined'&&module.exports?require('./space.js'):WachaSpace;
  const NAMES={walk:'おさんぽ',going:'おでかけ',queue:'順番待ち',shopping:'買い物',vendor:'お店番',chat:'おしゃべり',fishing:'釣り',music:'演奏',dance:'ダンス',watch:'鑑賞',rest:'読書・休憩',eat:'おやつ',ride:'乗り物',play:'ボール遊び',tag:'鬼ごっこ',police:'見回り',pursue:'追跡',flee:'逃走',caught:'つかまった',delivery:'配達'};
  const WATER=[[[.65,.43,.72,.43],[.29,.78,.22,.80],[.79,.59,.82,.61]],[[.42,.46,.49,.49],[.26,.49,.21,.49],[.65,.86,.67,.85]],[[.21,.13,.22,.035],[.49,.11,.5,.035],[.78,.14,.78,.035]],[[.44,.47,.48,.45],[.84,.20,.88,.18],[.17,.89,.1,.88]],[[.44,.48,.49,.48],[.79,.19,.86,.16],[.20,.79,.15,.81]],[[.46,.16,.40,.15],[.78,.18,.72,.19],[.8,.85,.87,.84]],[[.43,.23,.49,.21],[.72,.51,.67,.5],[.25,.88,.30,.9]]];
  function bubble(s,p,text,seconds=2.5){p.gesturingUntil=s.elapsed+seconds;}
@@ -58,9 +59,9 @@
   for(let k=0;k<5;k++){const p=take(p=>C.typeInfo(p.type).base===11);p.role='thief';p.activity='walk';put(p,l.shops[k%4],55,20);}
   for(let k=0;k<7;k++){const p=take();p.role='delivery';p.activity='delivery';p.inventory='parcel';p.nextThink=4+s.rng()*8;}
   const tram=station(.2,.65),tramEnd=station(.79,.32);const driver={id:-1,type:0,speed:46,phase:0,lane:0,facing:1};C.place(s,driver,tram.node);C.route(s,driver,tramEnd.node);
-  l.rides.push({id:0,kind:'tram',driver,stops:[tram.node,tramEnd.node],stopIndex:1,passengers:[],departAt:0,swapAt:999,x:tram.x,y:tram.y,prop:0,height:82});
-  const cup=station(.48,.67);l.rides.push({id:1,kind:'cup',x:cup.x,y:cup.y,centerX:cup.x,centerY:cup.y,passengers:[],swapAt:20,prop:2,height:53});
-  const water=l.fishing[0];l.rides.push({id:2,kind:'boat',x:water.waterX,y:water.waterY,centerX:water.waterX,centerY:water.waterY,passengers:[],swapAt:28,prop:1,height:48,bank:water.node});
+  l.rides.push({id:0,kind:'tram',driver,stops:[tram.node,tramEnd.node],stopIndex:1,passengers:[],departAt:0,swapAt:999,x:tram.x,y:tram.y,prop:0,height:140});
+  const cup=station(.48,.67);l.rides.push({id:1,kind:'cup',x:cup.x,y:cup.y,centerX:cup.x,centerY:cup.y,passengers:[],swapAt:20,prop:2,height:76});
+  const water=l.fishing[0];l.rides.push({id:2,kind:'boat',x:water.waterX,y:water.waterY,centerX:water.waterX,centerY:water.waterY,passengers:[],swapAt:28,prop:1,height:70,bank:water.node});
   l.rides.forEach((ride,i)=>{for(let k=0;k<(i===0?4:2);k++){const p=take();p.activity='ride';p.rideId=i;p.seat=k;ride.passengers.push(p.id);l.stats.boardings++;}});
   // Most residents start doing something; activities are spread across the existing streets.
   for(const p of s.people){
@@ -73,7 +74,7 @@
   // A few nearby pairs wave and talk, rather than forming one large crowd.
   for(const p of s.people){if(p.animal||p.role!=='resident'||p.activity!=='walk'||s.rng()>.45)continue;const q=s.people.find(q=>q.id!==p.id&&!q.animal&&q.role==='resident'&&q.activity==='walk'&&Math.hypot(q.x-p.x,q.y-p.y)<50);if(q)startChat(s,p,q);}
   log(s,'開店しました！ お店も遊び場も、にぎわっています。','town');
-  delete l.used;updateRides(s,0,C);updateCounts(s);updateCrowd(s,C);
+  delete l.used;updateRides(s,0,C);Space.after(s,0,C,true);updateCounts(s);updateCrowd(s,C);
  }
  function updateCounts(s){const counts={};for(const p of s.people)counts[p.activity]=(counts[p.activity]||0)+1;s.life.counts=counts;}
  function arrive(s,p,C){const activity=p.pending;stationary(s,p,activity,12+s.rng()*24);
@@ -108,9 +109,9 @@
    if(ride.kind==='boat'){ride.x=ride.centerX+Math.sin(s.elapsed*.14)*26;ride.y=ride.centerY+Math.cos(s.elapsed*.14)*7;}
    if(s.elapsed>ride.swapAt){ride.swapAt=s.elapsed+(ride.kind==='tram'?999:28);const ids=[...ride.passengers];ride.passengers=[];for(const id of ids){const p=s.people[id];C.place(s,p,C.nearest(s,ride.x,ride.y,s.graph.largest));free(s,p,15);bubble(s,p,'たのしかった！',2);}
     const candidates=s.people.filter(p=>p.activity==='walk'&&s.graph.nodes[p.from].component===s.graph.largest&&Math.hypot(p.x-ride.x,p.y-ride.y)<100).slice(0,ride.kind==='tram'?4:2);
-    for(const p of candidates){p.activity='ride';p.rideId=ride.id;p.seat=ride.passengers.length;ride.passengers.push(p.id);s.life.stats.boardings++;}
+    for(const p of candidates){p.separationX=0;p.separationY=0;p.activity='ride';p.rideId=ride.id;p.seat=ride.passengers.length;ride.passengers.push(p.id);s.life.stats.boardings++;}
    }
-   for(const id of ride.passengers){const p=s.people[id];p.x=ride.x+(p.seat-(ride.passengers.length-1)/2)*13;p.y=ride.y-(ride.kind==='tram'?18:15);p.phase=(p.phase+dt*.25)%1;p.facing=ride.kind==='tram'?ride.driver.facing:Math.cos(s.elapsed*.7)>0?1:-1;}
+   for(const id of ride.passengers){const p=s.people[id];p.x=ride.x+(p.seat-(ride.passengers.length-1)/2)*31;p.y=ride.y-(ride.kind==='tram'?18:15);p.phase=(p.phase+dt*.25)%1;p.facing=ride.kind==='tram'?ride.driver.facing:Math.cos(s.elapsed*.7)>0?1:-1;}
   }
  }
  function naturalWalk(s,p,dt,mult,C){
@@ -129,7 +130,7 @@
   C.walk(s,p,dt,mult*p.pace);
  }
  function update(s,dt,C){
-  const l=s.life;
+  const l=s.life;Space.before(s,C);
   if(s.elapsed>=l.crowd.next)updateCrowd(s,C);
   for(const shop of l.shops){
    shop.queue=shop.queue.filter(id=>['queue','shopping'].includes(s.people[id].activity));
@@ -160,7 +161,7 @@
    if(Math.hypot(cop.x-thief.x,cop.y-thief.y)<24){stationary(s,thief,'caught',5);thief.inventory=null;stationary(s,cop,'caught',5);bubble(s,thief,'ごめんなさい',4);bubble(s,cop,'みつけた！',4);l.stats.arrests++;log(s,'ドロボーをつかまえた！ バッグは持ち主のもとへ。','police');l.crime=null;l.nextRobbery=s.elapsed+22;}
    else if(s.elapsed-event.started>35){free(s,cop,4);free(s,thief,10);l.crime=null;l.nextRobbery=s.elapsed+8;log(s,'警察は見回りを続けています。','police');}}
   if(s.elapsed>=l.nextParty){l.nextParty=s.elapsed+32;log(s,'広場で小さな演奏会。手拍子が聞こえてきます。','music');for(const p of s.people)if(p.activity==='dance'||p.activity==='watch')bubble(s,p,'♪',3);}
-  updateRides(s,dt,C);
+  updateRides(s,dt,C);Space.after(s,dt,C);
  }
  return{setup,update,NAMES};
 });

@@ -1,5 +1,5 @@
 {
-  "mobile": "passed; no overlapping text; map fills entire viewport; no gameplay UI",
+  "mobile": "passed; no overlapping text; map fills entire viewport; minimal camera control only",
   "layout": {
     "title": {
       "top": 140,
@@ -42,10 +42,10 @@
   },
   "performance": {
     "frames": 120,
-    "fps": 60.00100842030958,
-    "drawFps": 30.756819442343566,
+    "fps": 60.001008420309596,
+    "drawFps": 30.252609287551056,
     "p95FrameMs": 16.700000000000273,
-    "count": 600,
-    "rendered": 600
+    "count": 500,
+    "rendered": 500
   }
 }
