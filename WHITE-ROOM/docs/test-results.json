@@ -361,6 +361,62 @@
 			"passed": true
 		},
 		{
+			"check": "Previewing a room does not consume phenomenon 15",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 16",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 17",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 18",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 19",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 20",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 21",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 22",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 23",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 24",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 25",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 26",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 27",
+			"passed": true
+		},
+		{
+			"check": "Previewing a room does not consume phenomenon 28",
+			"passed": true
+		},
+		{
 			"check": "Every phenomenon occurs once before the shuffled cycle repeats",
 			"passed": true
 		},
@@ -837,16 +893,936 @@
 			"passed": true
 		},
 		{
+			"check": "Phenomenon 16 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 16 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 16 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 16 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 16 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 16 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 16 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 17 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 17 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 17 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 17 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 17 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 17 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 17 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 18 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 18 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 18 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 18 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 18 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 18 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 18 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 19 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 19 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 19 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 19 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 19 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 19 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 19 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 20 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 20 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 20 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 20 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 20 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 20 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 20 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 21 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 21 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 21 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 21 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 21 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 21 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 21 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 22 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 22 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 22 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 22 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 22 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 22 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 22 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 23 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 23 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 23 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 23 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 23 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 23 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 23 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 24 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 24 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 24 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 24 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 24 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 24 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 24 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 25 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 25 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 25 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 25 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 25 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 25 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 25 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 26 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 26 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 26 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 26 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 26 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 26 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 26 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 27 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 27 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 27 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 27 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 27 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 27 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 27 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 28 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 28 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 28 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 28 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 28 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 28 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 28 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 29 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 29 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 29 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 29 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 29 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 29 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 29 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 30 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 30 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 30 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 30 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 30 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 30 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 30 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 31 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 31 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 31 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 31 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 31 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 31 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 31 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 32 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 32 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 32 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 32 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 32 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 32 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 32 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 33 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 33 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 33 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 33 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 33 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 33 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 33 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 34 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 34 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 34 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 34 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 34 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 34 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 34 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 35 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 35 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 35 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 35 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 35 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 35 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 35 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 36 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 36 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 36 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 36 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 36 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 36 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 36 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 37 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 37 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 37 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 37 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 37 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 37 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 37 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 38 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 38 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 38 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 38 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 38 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 38 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 38 stops during pause",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 39 is built and advances without replacing the gameplay room",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 39 leaves the four traversable wooden doors closed",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 39 preserves reachable exit direction 0",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 39 preserves reachable exit direction 1",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 39 preserves reachable exit direction 2",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 39 preserves reachable exit direction 3",
+			"passed": true
+		},
+		{
+			"check": "Phenomenon 39 stops during pause",
+			"passed": true
+		},
+		{
 			"check": "Observed phenomena survive a real save/load",
 			"passed": true
 		},
 		{
 			"check": "Save/load preserves the next phenomenon instead of rerolling it",
 			"passed": true
+		},
+		{
+			"check": "300 runs each contain exactly 30 spatial, 12 acoustic and 8 distinct puzzle families",
+			"passed": true
+		},
+		{
+			"check": "All 299 consecutive new runs exchange exactly 20 of the 50 families",
+			"passed": true
+		},
+		{
+			"check": "2400 seeded puzzles have reachable solutions consistent with their rules; all ten families covered",
+			"passed": true
+		},
+		{
+			"check": "A genuine pre-v1.2 save retains its original cipher and requires no new calibrations",
+			"passed": true
+		},
+		{
+			"check": "The actual New Game action exchanges exactly 20 families",
+			"passed": true
+		},
+		{
+			"check": "The boundary cipher cannot bypass uncollected calibrated observations",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 0 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 0 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 0 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 0 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 1 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 1 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 1 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 1 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 2 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 2 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 2 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 2 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 3 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 3 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 3 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 3 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 4 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 4 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 4 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 4 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 5 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 5 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 5 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 5 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 6 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 6 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 6 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 6 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 7 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 7 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 7 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 7 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 8 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 8 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 8 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 8 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 9 has a reachable physical observation station",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 9 opens and safely rejects its initial state",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 9 supplies a full recovery hint",
+			"passed": true
+		},
+		{
+			"check": "Puzzle family 9 is solvable through actual UI controls",
+			"passed": true
+		},
+		{
+			"check": "Partially adjusted station controls survive a real save/reload",
+			"passed": true
+		},
+		{
+			"check": "All three run rosters survive a real save/reload without rerolling",
+			"passed": true
+		},
+		{
+			"check": "Generated campaign calibrates station 01",
+			"passed": true
+		},
+		{
+			"check": "Generated campaign calibrates station 03",
+			"passed": true
+		},
+		{
+			"check": "Generated campaign calibrates station 04",
+			"passed": true
+		},
+		{
+			"check": "Generated campaign calibrates station 02",
+			"passed": true
+		},
+		{
+			"check": "Generated campaign calibrates station 05",
+			"passed": true
+		},
+		{
+			"check": "Generated campaign calibrates station 06",
+			"passed": true
+		},
+		{
+			"check": "Six calibrations include all three cipher observations",
+			"passed": true
+		},
+		{
+			"check": "The generated observation code opens the physical key compartment",
+			"passed": true
+		},
+		{
+			"check": "The new campaign awards its physical key",
+			"passed": true
+		},
+		{
+			"check": "Six calibrations plus the key allow the final boundary circuit",
+			"passed": true
+		},
+		{
+			"check": "Calibrated stations and final circuit survive reload",
+			"passed": true
+		},
+		{
+			"check": "A generated campaign reaches the ending by physically crossing its hidden exit",
+			"passed": true
+		},
+		{
+			"check": "All 20 original audio designs load and pause correctly",
+			"passed": true
+		},
+		{
+			"check": "Pausing in the same frame as room entry also pauses the deferred 3D playback",
+			"passed": true
 		}
 	],
 	"coverage": "Actual player collision and door traversal, interaction rays, all puzzle stages, save reload and backup recovery, ending",
 	"engine": "4.7.2-stable (official)",
 	"failed": 0,
-	"passed": 211
+	"passed": 455
 }

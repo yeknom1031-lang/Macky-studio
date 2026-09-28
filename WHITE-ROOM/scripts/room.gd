@@ -5,11 +5,14 @@ const Catalog=preload("res://scripts/anomaly_catalog.gd")
 const Architecture=preload("res://scripts/architecture.gd")
 const Phenomena=preload("res://scripts/phenomena.gd")
 const SYMBOLS=["∅","○","◇","△","□","∅","∅","∅","∅"]
+const Puzzles=preload("res://scripts/puzzle_catalog.gd")
 const DIGITS={1:4,3:7,4:2}
 var room_id=0
 var doors=[]
 var exit_door
 var clue_target
+var observation_display:Label3D
+var saved_state={}
 var key_visual:Node3D
 var key_target:StaticBody3D
 var batches={}
@@ -29,6 +32,7 @@ var water_materials=[]
 
 func make(id:int,state:Dictionary,is_preview:bool=false) -> void:
 	room_id=id
+	saved_state=state
 	preview=is_preview
 	Catalog.ensure(state)
 	event_id=Catalog.peek(state) if is_preview else int(state.current_event)
@@ -59,10 +63,10 @@ func make(id:int,state:Dictionary,is_preview:bool=false) -> void:
 		door.make(side)
 		doors.append(door)
 		label(SYMBOLS[id],wall_at(side,Vector3(1.26,1.52,0.3)),0.0038,-side*PI/2.0,Color(0.12,0.18,0.20))
-		label("SECTOR",wall_at(side,Vector3(1.26,1.14,0.3)),0.0009,-side*PI/2.0)
+		label("SECTOR / %02d"%id,wall_at(side,Vector3(1.26,1.14,0.3)),0.0009,-side*PI/2.0)
 	flush()
 	Architecture.build(self)
-	if id in DIGITS:observation(id)
+	if id in DIGITS or (state.get("campaign",false) and id>0):observation(id)
 	if id==0:build_origin(state)
 	if id==2:build_relay(state)
 	flush()
@@ -161,12 +165,12 @@ func observation(id:int) -> void:
 	box(at+Vector3(0,0.61,0),Vector3(0.82,1.22,0.65),"panel")
 	box(at+Vector3(0,1.235,0),Vector3(0.76,0.03,0.59),"metal")
 	box(at+Vector3(0,1.05,0.335),Vector3(0.55,0.24,0.025),"ink")
-	label(SYMBOLS[id]+"   "+str(DIGITS[id]),at+Vector3(0,1.05,0.36),0.0019,0,Color(0.87,0.94,0.96))
+	observation_display=label(observation_text(id),at+Vector3(0,1.05,0.36),0.0019,0,Color(0.87,0.94,0.96))
 	label("OBSERVATION",at+Vector3(0,0.76,0.345),0.0007,0)
-	clue_target=target(at+Vector3(0,0.8,0),Vector3(0.86,1.5,0.7),"clue",{"id":id})
+	clue_target=target(at+Vector3(0,0.8,0),Vector3(0.86,1.5,0.7),"station" if saved_state.get("campaign",false) else "clue",{"id":id})
 	solid(at+Vector3(0,0.61,0),Vector3(0.82,1.22,0.65))
 	# A remote human-scale object makes the huge space tangible.
-	label(SYMBOLS[id],Vector3(9,1.85,-10),0.006,0)
+	label("%02d / %s"%[id,SYMBOLS[id]],Vector3(9,1.85,-10),0.0035,0)
 
 func build_origin(state:Dictionary) -> void:
 	box(Vector3(-2.1,1.28,-29.79),Vector3(0.72,0.94,0.14),"panel")
@@ -286,3 +290,7 @@ func flush(parent:Node3D=null) -> void:
 		node.material_override=mats[key]
 		(parent if parent else self).add_child(node)
 	batches.clear()
+
+func observation_text(id:int) -> String:
+	if saved_state.get("campaign",false) and not id in saved_state.solved_stations:return "CAL / —"
+	return SYMBOLS[id]+"   "+str(Puzzles.digit(saved_state,id)) if id in DIGITS else "CAL / OK"

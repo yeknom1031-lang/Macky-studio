@@ -31,6 +31,7 @@ func _ready() -> void:
 	ambient.volume_db=-20
 	add_child(ambient)
 	ambient.play()
+	prepare_variations()
 
 func set_space(id:int) -> void:
 	if is_instance_valid(reverb):
@@ -47,15 +48,83 @@ func play(name:String,level:float=-12.0) -> void:
 	voice.play()
 
 func footstep(_speed:float) -> void:
+	if acoustic_active and acoustic_id in [7,8,9]:
+		heard_variation=true
+		var voice=effects[next_voice]
+		next_voice=(next_voice+1)%effects.size()
+		voice.stream=variation_streams[acoustic_id]
+		voice.volume_db=-11
+		voice.pitch_scale=randf_range(0.95,1.05)
+		voice.play()
+		return
 	play("step"+str(randi_range(1,3)),-15.0)
 
 func volume(value:float) -> void:
 	AudioServer.set_bus_volume_db(0,linear_to_db(maxf(value,0.0001)))
 
 func stop_all() -> void:
+	if is_instance_valid(entry_source):
+		entry_source.stop()
+		entry_source.stream=null
 	ambient.stop()
 	ambient.stream=null
 	for voice in effects:
 		voice.stop()
 		voice.stream=null
 	streams.clear()
+
+var entry_source:AudioStreamPlayer3D
+var variation_streams=[]
+var acoustic_id=0
+var acoustic_time=0.0
+var acoustic_cycle=0
+var acoustic_active=false
+var heard_variation=false
+var suspended=false
+
+func _process(_delta:float) -> void:
+	# A 3D play request starts on the next physics tick. Keep a pause requested
+	# in that same frame applied once its playback actually exists.
+	if suspended:
+		if is_instance_valid(entry_source) and entry_source.playing:entry_source.stream_paused=true
+		for voice in effects:
+			if voice.playing:voice.stream_paused=true
+
+func prepare_variations() -> void:
+	for i in range(20):variation_streams.append(load("res://assets/audio/variations/%02d.wav"%i))
+	entry_source=AudioStreamPlayer3D.new()
+	entry_source.bus="Room"
+	entry_source.max_distance=75
+	entry_source.unit_size=22
+	entry_source.volume_db=-12
+	add_child(entry_source)
+
+func enter_space(id:int,listener:Node3D) -> void:
+	acoustic_id=id
+	acoustic_time=0
+	acoustic_cycle=0
+	acoustic_active=true
+	heard_variation=not id in [7,8,9]
+	entry_source.stop()
+	entry_source.stream=variation_streams[id]
+	entry_source.global_position=listener.global_position+Vector3(0,1,-5)
+	if not id in [7,8,9]:entry_source.play()
+	ambient.volume_db=-26 if id==17 else -20
+	if is_instance_valid(reverb):
+		reverb.damping=0.82 if id in [8,17] else 0.48
+		reverb.wet=0.12 if id==8 else (0.55 if id in [0,9,16] else 0.3)
+
+func tick(delta:float,listener:Node3D) -> void:
+	if not acoustic_active:return
+	acoustic_time+=delta
+	if acoustic_id==10 or acoustic_id==19:
+		entry_source.global_position=Vector3(sin(acoustic_time*0.25)*20,5,cos(acoustic_time*0.25)*20)
+	if acoustic_time>float(acoustic_cycle+1)*16 and not acoustic_id in [6,7,8,9,16]:
+		acoustic_cycle+=1
+		entry_source.global_position=Vector3(-18 if acoustic_cycle%2==0 else 18,7,-15)
+		entry_source.play()
+
+func suspend(paused:bool) -> void:
+	suspended=paused
+	if is_instance_valid(entry_source):entry_source.stream_paused=paused
+	for voice in effects:voice.stream_paused=paused

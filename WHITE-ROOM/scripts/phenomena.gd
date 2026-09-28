@@ -1,6 +1,7 @@
 extends Node3D
 
 var room
+var extra
 var event_id=0
 var elapsed=0.0
 var actors=[]
@@ -17,6 +18,10 @@ var echoes_heard=0
 func setup(owner_room,id:int) -> void:
 	room=owner_room
 	event_id=id
+	if id>=16:
+		extra=load("res://scripts/spatial_variations.gd").new()
+		add_child(extra)
+		extra.setup(room,id)
 	match id:
 		2:
 			for i in range(5):
@@ -131,6 +136,7 @@ func make_rain() -> void:
 
 func tick(delta:float,player:Node3D) -> void:
 	elapsed+=delta
+	if is_instance_valid(extra):extra.tick(delta)
 	var t=maxf(0,elapsed-2.0)
 	match event_id:
 		0:
@@ -175,6 +181,7 @@ func tick(delta:float,player:Node3D) -> void:
 			for i in range(actors.size()):actors[i].position.y=actors[i].get_meta("rest_position").y+sin(t*0.5+i*0.35)*0.3
 
 func suspend(paused:bool) -> void:
+	if is_instance_valid(extra):extra.suspend(paused)
 	if is_instance_valid(rain):rain.speed_scale=0.0 if paused else 1.0
 	if is_instance_valid(source):source.stream_paused=paused
 
@@ -183,6 +190,12 @@ func footstep_echo() -> void:
 
 func has_been_seen(player:Node3D) -> bool:
 	if elapsed<6:return false
+	if event_id>=16:
+		if event_id in [32,36,37]:return true
+		if not extra.pieces.is_empty():
+			var d=player.camera.global_position.direction_to(extra.pieces[0].global_position)
+			return (-player.camera.global_basis.z).dot(d)>0.4
+		return false
 	if event_id in [0,6,7,13]:return true
 	if event_id==11:return echoes_heard>0
 	if event_id==12:return turns>0

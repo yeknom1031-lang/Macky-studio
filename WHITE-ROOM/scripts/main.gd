@@ -4,6 +4,9 @@ const Room=preload("res://scripts/room.gd")
 const Player=preload("res://scripts/player.gd")
 const Profile=preload("res://scripts/profile.gd")
 const Sound=preload("res://scripts/sound.gd")
+const Puzzles=preload("res://scripts/puzzle_catalog.gd")
+const Runs=preload("res://scripts/run_catalog.gd")
+var station_ui=preload("res://scripts/station_ui.gd").new()
 const Catalog=preload("res://scripts/anomaly_catalog.gd")
 const DIRECTIONS=[Vector3(0,0,-1),Vector3(1,0,0),Vector3(0,0,1),Vector3(-1,0,0)]
 const DELTAS=[Vector2i(0,-1),Vector2i(1,0),Vector2i(0,1),Vector2i(-1,0)]
@@ -159,6 +162,7 @@ func begin_game(fresh:bool=false) -> void:
 	player.camera.rotation.x=deg_to_rad(player.pitch)
 	player.velocity=Vector3.ZERO
 	resume_game()
+	sound.enter_space(int(profile.state.current_audio),player)
 	if profile.state.escaped:
 		show_ending()
 	else:
@@ -219,6 +223,9 @@ func _process(delta:float) -> void:
 	var facing=posmod(roundi(-player.rotation.y/(PI/2)),4)
 	compass.text=["N  北","E  東","S  南","W  西"][facing]
 	room.tick(delta,player)
+	sound.tick(delta,player)
+	if sound.heard_variation and sound.acoustic_time>4 and not int(profile.state.current_audio) in profile.state.heard_audio:
+		profile.state.heard_audio.append(int(profile.state.current_audio))
 	if room.phenomenon.has_been_seen(player) and not room.event_id in profile.state.observed_anomalies:
 		profile.state.observed_anomalies.append(room.event_id)
 		save_game()
@@ -235,6 +242,7 @@ func _process(delta:float) -> void:
 			"door":text="E    ノブを回して開ける"
 			"exit":text="E    境界の扉を開ける"
 			"clue":text="E    観測記録を読む"
+			"station":text="E    観測器を調べる"
 			"cipher":text="E    暗号盤を調べる"
 			"record":text="E    保全記録を読む"
 			"relay":text="E    回路を調べる"
@@ -297,6 +305,7 @@ func cross_threshold() -> void:
 	room.activate()
 	sound.set_space(destination)
 	player.position-=next_offset
+	sound.enter_space(int(profile.state.current_audio),player)
 	old.visible=false
 	remove_child(old)
 	old.queue_free()
@@ -344,24 +353,31 @@ func interact_target(target:Node) -> void:
 		"exit":open_door(3,true)
 		"record":show_record()
 		"clue":read_clue(int(target.get_meta("id")))
+		"station":station_ui.open(self,int(target.get_meta("id")))
 		"cipher":show_cipher()
 		"key":take_key()
 		"relay":show_relay()
 
 func read_clue(id:int) -> void:
+	if profile.state.campaign and not id in profile.state.solved_stations:
+		station_ui.open(self,id)
+		return
 	if not id in profile.state.clues:
 		profile.state.clues.append(id)
 		sound.play("confirm",-20)
 		save_game()
 	update_hud()
-	var box=dialog("OBSERVATION / 記録",Room.SYMBOLS[id]+"  =  "+str(Room.DIGITS[id]),"壁の記号と、観測器の数字が対応している。\n記録は Tab でいつでも読み返せる。","record")
+	var box=dialog("OBSERVATION / 記録",Room.SYMBOLS[id]+"  =  "+str(Puzzles.digit(profile.state,id)),"壁の記号と、観測器の数字が対応している。\n記録は Tab でいつでも読み返せる。","record")
 	button(box,"記録して戻る",resume_game,true)
 
 func show_record() -> void:
 	if not "origin" in profile.state.notes:
 		profile.state.notes.append("origin")
 		save_game()
-	var box=dialog("MAINTENANCE / 保全記録","境界は、初めからここにある。","部屋の形は同じでも、扉の脇の記号は異なる。\n○・△・□ の部屋に残された観測器の数字を集めよ。\n\n暗号盤の順番は   ○ → △ → □\n\n手に入れた保全キーは、◇ の回路盤に適合する。\n回路を復旧すると、始まりの部屋の西壁に継ぎ目が現れる。","record")
+	var box=dialog("MAINTENANCE / 保全記録","境界は、初めからここにある。","部屋の形は同じでも、扉の脇の記号は異なる。\n各区画の観測器を校正し、○・△・□ の数字を集めよ。\n8台中6台の校正で、境界回路が安定する。\n\n暗号盤の順番は   ○ → △ → □\n\n手に入れた保全キーは、◇ の回路盤に適合する。\n回路を復旧すると、始まりの部屋の西壁に継ぎ目が現れる。","record")
+	if not profile.state.campaign:
+		for child in box.get_children():
+			if child is Label and "8台中6台" in child.text:child.text=child.text.replace("各区画の観測器を校正し、○・△・□ の数字を集めよ。\n8台中6台の校正で、境界回路が安定する。","○・△・□ の部屋に残された観測器の数字を集めよ。")
 	button(box,"記録して戻る",resume_game,true)
 
 func show_cipher() -> void:
@@ -400,7 +416,7 @@ func enter_digit(value:String) -> void:
 		code_label.text="   ".join(display)
 
 func submit_cipher(code:String) -> bool:
-	if code!="472":
+	if code!=Puzzles.code(profile.state) or (profile.state.campaign and profile.state.clues.size()<3):
 		if is_instance_valid(puzzle_feedback):
 			puzzle_feedback.text="一致しない。○・△・□ の観測記録を確かめよう。"
 		return false
@@ -434,6 +450,11 @@ func show_relay() -> void:
 		var locked=dialog("CIRCUIT / ◇","保全キーが必要","∅ の区画にある暗号箱を解くと、この回路を操作できる。","relay")
 		button(locked,"戻る",resume_game,true)
 		return
+	if profile.state.campaign and profile.state.solved_stations.size()<6:
+		var pending=dialog("CIRCUIT / ◇","観測器の校正が足りない","安定した給電には6台の校正が必要。現在 %d / 6。\n記録の案内図から、未校正の区画を探そう。"%profile.state.solved_stations.size(),"relay")
+		button(pending,"記録・案内図",show_journal,true)
+		button(pending,"戻る",resume_game)
+		return
 	profile.state.relay_unlocked=true
 	relay_input=[]
 	save_game()
@@ -449,7 +470,7 @@ func show_relay() -> void:
 	button(box,"戻る",resume_game)
 
 func relay_press(index:int) -> bool:
-	if not profile.state.key or not profile.state.relay_unlocked or profile.state.powered:
+	if not profile.state.key or not profile.state.relay_unlocked or profile.state.powered or (profile.state.campaign and profile.state.solved_stations.size()<6):
 		return false
 	var expected=[0,2,1]
 	if index!=expected[relay_input.size()]:
@@ -644,6 +665,7 @@ func button(parent:Control,text:String,callback:Callable,primary:bool=false,min_
 	return b
 
 func clear_modal(new_mode:String) -> void:
+	if is_instance_valid(sound):sound.suspend(true)
 	if is_instance_valid(room):room.suspend(true)
 	if is_instance_valid(modal):
 		ui.remove_child(modal)
@@ -738,7 +760,7 @@ func show_credits() -> void:
 
 func request_new_game() -> void:
 	if has_save:
-		var box=dialog("NEW JOURNEY","新しく探索を始める","これまでの記録はバックアップに残し、新しい探索を開始します。","new")
+		var box=dialog("NEW JOURNEY","新しく探索を始める","これまでの記録はバックアップに残します。\n新しい探索では50種類のうち20種類が入れ替わります。","new")
 		button(box,"新しく始める",func():begin_game(true),true)
 		button(box,"戻る",show_title)
 	else:
@@ -750,6 +772,7 @@ func resume_game() -> void:
 		modal.queue_free()
 	modal=null
 	mode="game"
+	if is_instance_valid(sound):sound.suspend(false)
 	if is_instance_valid(room):room.suspend(false)
 	player.enabled=true
 	if not automated:Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
@@ -768,13 +791,15 @@ func show_pause() -> void:
 
 func update_hud() -> void:
 	if not is_instance_valid(sector):return
-	sector.text="WHITE ROOM   /   "+Room.SYMBOLS[int(profile.state.room)]
+	sector.text="WHITE ROOM   /   %02d  %s"%[int(profile.state.room),Room.SYMBOLS[int(profile.state.room)]]
 	var marks=[]
 	for id in [1,3,4]:
-		marks.append(Room.SYMBOLS[id]+" "+(str(Room.DIGITS[id]) if id in profile.state.clues else "—"))
+		marks.append(Room.SYMBOLS[id]+" "+(str(Puzzles.digit(profile.state,id)) if id in profile.state.clues else "—"))
 	inventory.text="   ".join(marks)+("    KEY" if profile.state.key else "")
 	if profile.state.powered:
 		objective.text="始まりの区画で、隠された扉を探す"
+	elif profile.state.key and profile.state.campaign and profile.state.solved_stations.size()<6:
+		objective.text="観測器を校正する  %d / 6"%profile.state.solved_stations.size()
 	elif profile.state.key:
 		objective.text="◇ の区画で境界回路を復旧する"
 	elif profile.state.cipher:
@@ -782,28 +807,35 @@ func update_hud() -> void:
 	elif profile.state.clues.size()==3:
 		objective.text="∅ の区画へ戻り、観測値を入力する"
 	else:
-		objective.text="○・△・□ の観測記録を探す"
+		objective.text="観測器を校正し、○・△・□ の数字を集める" if profile.state.campaign else "○・△・□ の観測記録を探す"
 
 func show_journal(show_hint:bool=false) -> void:
 	if show_hint:hint_level=mini(3,hint_level+1)
 	var found=[]
 	for id in [1,3,4]:
-		found.append(Room.SYMBOLS[id]+"  =  "+(str(Room.DIGITS[id]) if id in profile.state.clues else "未記録"))
+		found.append(Room.SYMBOLS[id]+"  =  "+(str(Puzzles.digit(profile.state,id)) if id in profile.state.clues else "未記録"))
 	var description="     ".join(found)+"\n\n"+objective.text+"。\n扉の脇の記号で、区画を見分けられる。"
 	if "origin" in profile.state.notes:
 		description+="\n保全記録：入力順は ○ → △ → □。鍵は ◇ の回路盤へ。"
 	if not profile.state.observed_anomalies.is_empty():
-		description+="\n\n異常観測  %d / 16"%profile.state.observed_anomalies.size()
+		description+="\n\n空間の観測  %d / 30"%profile.state.observed_anomalies.size()
 		var latest=int(profile.state.observed_anomalies[-1])
-		description+="\n"+Catalog.NAMES[latest]+"："+Catalog.DESCRIPTIONS[latest]
+		description+="\n"+Catalog.title(latest)+"："+Catalog.description(latest)
+	if profile.state.campaign:description+="\n校正済 %d / 8（6台で復旧）　音の記録 %d / 12"%[profile.state.solved_stations.size(),profile.state.heard_audio.size()]
 	if hint_level>0:description+="\n\nヒント "+str(hint_level)+" / 3\n"+hint_text()
-	var box=dialog("FIELD NOTES / 観測記録","白の中で、覚えておく。",description,"journal")
+	var box=dialog("FIELD NOTES / 観測記録","白の中で、覚えておく。","","journal")
+	var scroll=ScrollContainer.new()
+	scroll.custom_minimum_size=Vector2(580,260)
+	box.add_child(scroll)
+	var notes=paragraph(scroll,description,17)
+	notes.custom_minimum_size.x=550
+	button(box,"区画の案内図・次の目的地",show_map)
 	button(box,"次のヒントを見る",func():hint_level=mini(3,hint_level+1);show_journal())
-	if not profile.state.observed_anomalies.is_empty():button(box,"異常観測の一覧",show_anomaly_log)
+	if not profile.state.observed_anomalies.is_empty() or not profile.state.heard_audio.is_empty() or not profile.state.solved_stations.is_empty():button(box,"異常観測の一覧",show_anomaly_log)
 	button(box,"探索へ戻る",resume_game,true)
 
 func show_anomaly_log() -> void:
-	var box=dialog("ANOMALY ARCHIVE / 異常観測","白い世界が、変わった。","観測済み  %d / 16"%profile.state.observed_anomalies.size(),"journal")
+	var box=dialog("ANOMALY ARCHIVE / 異常観測","白い世界が、変わった。","今回の50種類：空間30・音12・謎8。すべての観測は脱出の必須条件ではありません。","journal")
 	var scroll=ScrollContainer.new()
 	scroll.custom_minimum_size=Vector2(580,360)
 	box.add_child(scroll)
@@ -811,10 +843,14 @@ func show_anomaly_log() -> void:
 	list.add_theme_constant_override("separation",15)
 	scroll.add_child(list)
 	for id in profile.state.observed_anomalies:
-		paragraph(list,"%02d  %s\n%s"%[int(id)+1,Catalog.NAMES[int(id)],Catalog.DESCRIPTIONS[int(id)]],16)
+		paragraph(list,"%02d  %s\n%s"%[int(id)+1,Catalog.title(int(id)),Catalog.description(int(id))],16)
+	for id in profile.state.heard_audio:paragraph(list,"音 / "+Runs.AUDIO_NAMES[int(id)],16)
+	for id in profile.state.solved_stations:paragraph(list,"校正 / %02d  %s"%[int(id),Puzzles.make(profile.state,int(id)).title],16)
 	button(box,"観測記録へ戻る",show_journal,true)
 
 func hint_text() -> String:
+	if profile.state.campaign and not profile.state.powered:
+		return next_objective()+"\n道順："+route_to(next_destination())+"。\n観測器は室内の北東寄り、床の小さな台。操作画面にも2段階のヒントがある。"
 	if profile.state.powered:
 		return ["∅ の始まりの区画へ戻ろう。", "復旧した回路は、始まりの区画の西壁につながっている。", "始まりの区画で、暗号盤を正面に見て左の壁へ。中央の扉より北に12mずれた白い扉が出口。"] [hint_level-1]
 	if profile.state.key:
@@ -888,7 +924,8 @@ func settings_back() -> void:
 func show_ending() -> void:
 	var minutes=int(profile.state.seconds/60)
 	var box=dialog("BOUNDARY CROSSED","境界を、越えた。","白い世界の規則を見つけ、隠された扉を開いた。\n\n探索時間  %d 分    /    通過した扉  %d\n\nその先にも白は続く。けれど、もう閉じ込められてはいない。"%[minutes,int(profile.state.crossings)],"end")
-	button(box,"タイトルへ",show_title,true)
+	button(box,"20種類を入れ替えて新しい探索へ",func():begin_game(true),true)
+	button(box,"タイトルへ",show_title)
 	button(box,"終了",quit_game)
 
 func toast(message:String,duration:float=4.0) -> void:
@@ -943,10 +980,23 @@ func capture_run(args:PackedStringArray) -> void:
 	if forced_room>=0:
 		profile.state.room=forced_room
 		build_room(forced_room)
-		player.position=Vector3(-21,0.05,22)
-		player.rotation.y=-0.32
+		player.position=Vector3(-25,0.05,17)
+		player.rotation.y=-0.55
 		player.camera.rotation.x=deg_to_rad(10)
 		update_hud()
+	if shot=="station":
+		for arg in args:
+			if arg.begins_with("--puzzle="):profile.state.puzzle_pool[maxi(1,forced_room)-1]=int(arg.trim_prefix("--puzzle="))
+		station_ui.open(self,maxi(1,forced_room))
+	if shot=="journal-rich":
+		profile.state.clues=[1,3,4]
+		profile.state.observed_anomalies=[39]
+		profile.state.notes=["origin"]
+		hint_level=3
+		show_journal()
+	if shot=="map":
+		profile.state.visits=[0,1,2,3,4,6]
+		show_map()
 	if "--no-hud" in args:hud.visible=false
 	room.elapsed=moment
 	room.phenomenon.elapsed=moment
@@ -963,3 +1013,77 @@ func capture_run(args:PackedStringArray) -> void:
 	for ms in frames:sum+=ms
 	print("CAPTURE ",shot," path=",path," status=",err," mean_ms=",sum/maxi(frames.size(),1)," p95_ms=",frames[int(frames.size()*0.95)]," renderer=",RenderingServer.get_current_rendering_method())
 	await quit_game(0 if err==OK else 1)
+
+func finish_station(id:int,controls:Array) -> bool:
+	if not profile.state.campaign or id<1 or id>8:return false
+	var puzzle=Puzzles.make(profile.state,id)
+	if not Puzzles.correct(puzzle,controls):return false
+	if not id in profile.state.solved_stations:profile.state.solved_stations.append(id)
+	profile.state.station_controls[str(id)]=controls.duplicate()
+	if room.room_id==id and is_instance_valid(room.observation_display):room.observation_display.text=room.observation_text(id)
+	sound.play("confirm",-16)
+	save_game()
+	if id in [1,3,4]:read_clue(id)
+	else:
+		resume_game()
+		toast("観測器 %02d を校正。給電の安定まで %d / 6。"%[id,mini(6,profile.state.solved_stations.size())],5)
+	update_hud()
+	return true
+
+func next_destination() -> int:
+	if profile.state.powered or (profile.state.clues.size()==3 and not profile.state.key):return 0
+	for id in [1,3,4]:
+		if not id in profile.state.clues:return id
+	if profile.state.campaign and profile.state.solved_stations.size()<6:
+		var best=-1
+		var shortest=99
+		for id in range(1,9):
+			if not id in profile.state.solved_stations:
+				var distance=route_sides(id).size()
+				if distance<shortest:best=id;shortest=distance
+		return best
+	return 2
+
+func next_objective() -> String:
+	if profile.state.powered:return "00 の区画、西壁の隠された扉を探す。"
+	if profile.state.cipher and not profile.state.key:return "00 の暗号盤の下にある鍵を取る。"
+	if profile.state.clues.size()==3 and not profile.state.cipher:return "00 の北壁の暗号盤へ、○ → △ → □ の観測値を入力する。"
+	if profile.state.clues.size()<3:return "区画 %02d の観測器を校正し、数字を記録する。"%next_destination()
+	if profile.state.campaign and profile.state.solved_stations.size()<6:return "あと%d台の観測器を校正する。"%(6-profile.state.solved_stations.size())
+	return "02 / ◇ の北壁で鍵を使い、○ → □ → △ の順に回路をつなぐ。"
+
+func route_sides(destination:int) -> Array:
+	var start=int(profile.state.room)
+	var queue=[[start,[]]]
+	var seen={start:true}
+	while not queue.is_empty():
+		var item=queue.pop_front()
+		if item[0]==destination:return item[1]
+		for side in range(4):
+			var other=neighbor(item[0],side)
+			if not seen.has(other):
+				seen[other]=true
+				queue.append([other,item[1]+[side]])
+	return []
+
+func route_to(destination:int) -> String:
+	var route=route_sides(destination)
+	return "この部屋" if route.is_empty() else " → ".join(route.map(func(i):return ["北","東","南","西"][i]))
+
+func show_map() -> void:
+	var description=next_objective()+"\n道順："+route_to(next_destination())+"\n外周を越えると反対側へ戻る。扉の区画番号は変わらない。"
+	var box=dialog("SURVEY / 区画案内","同じ景色の、つながり。",description,"journal")
+	var grid=GridContainer.new()
+	grid.columns=3
+	grid.add_theme_constant_override("h_separation",10)
+	grid.add_theme_constant_override("v_separation",10)
+	box.add_child(grid)
+	for id in range(9):
+		var known=id in profile.state.visits
+		var status="現在地" if int(profile.state.room)==id else ("校正済" if id in profile.state.solved_stations else ("訪問済" if known else "未訪問"))
+		var label=text_label("%02d  %s\n%s"%[id,Room.SYMBOLS[id] if known else "?",status],21)
+		label.custom_minimum_size=Vector2(180,74)
+		label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+		grid.add_child(label)
+	button(box,"観測記録へ",show_journal)
+	button(box,"探索に戻る",resume_game,true)

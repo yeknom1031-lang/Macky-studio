@@ -7,9 +7,13 @@ var state = {}
 var settings = {"volume":0.48,"sensitivity":0.11,"fov":78.0,"brightness":1.0,"bob":false,"fullscreen":false,"gi":true}
 var error_message = ""
 
-func fresh() -> void:
+func fresh(previous:Dictionary={}) -> void:
+	var old=previous if not previous.is_empty() else state.duplicate(true)
 	state = {"room":0,"position":[0.0,0.05,22.0],"yaw":0.0,"pitch":0.0,"clues":[],"notes":[],"visits":[0],"cipher":false,"key":false,"relay_unlocked":false,"powered":false,"escaped":false,"seconds":0.0,"crossings":0}
 	Catalog.ensure(state)
+	state.merge(Catalog.Runs.generate(int(state.anomaly_seed),old),true)
+	state.campaign=true
+	state.run_number=int(old.get("run_number",0))+1
 	state.anomaly_index=0
 	Catalog.enter(state,0)
 
@@ -36,6 +40,7 @@ func load_profile() -> bool:
 		settings.brightness=clampf(float(settings.brightness),0.8,1.25)
 		if not value.get("state") is Dictionary:
 			continue
+		state={}
 		fresh()
 		for key in state:
 			if value.state.has(key) and typeof(value.state[key]) == typeof(state[key]):
@@ -54,9 +59,19 @@ func load_profile() -> bool:
 			state.relay_unlocked=true
 			state.key=true
 			state.cipher=true
-		for key in ["anomaly_seed","anomaly_index","current_event"]:
+		for key in ["anomaly_seed","anomaly_index","current_event","current_audio","run_number"]:
 			state[key]=int(value.state.get(key,state[key]))
-		state.current_event=posmod(int(state.current_event),Catalog.NAMES.size())
+		state.campaign=bool(value.state.get("campaign",false))
+		if not value.state.has("visual_pool"):
+			state.merge(Catalog.Runs.generate(int(state.anomaly_seed)),true)
+		Catalog.ensure(state)
+		# JSON numbers are floats; normalize identity and control arrays as well.
+		for key in ["visual_pool","audio_pool","puzzle_pool","clues","visits","solved_stations","observed_anomalies","heard_audio"]:
+			state[key]=state[key].map(func(v):return int(v))
+		for key in state.station_controls:
+			if state.station_controls[key] is Array:
+				state.station_controls[key]=state.station_controls[key].map(func(v):return int(v))
+		state.current_event=posmod(int(state.current_event),40)
 		return true
 	fresh()
 	return false

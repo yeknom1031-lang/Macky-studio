@@ -40,6 +40,9 @@ func run(g) -> void:
 	game=g
 	game.profile.path="user://white_room_test_"+str(Time.get_ticks_usec())+".json"
 	game.begin_game(true)
+	game.profile.state.campaign=false
+	game.profile.state.clues=[]
+	game.build_room(0)
 	await frames(4)
 	check(game.room.doors.size()==4,"Each room has four human-scale hinged doors")
 	check(game.room.exit_door.concealed and game.room.exit_door.mouldings.all(func(m):return not m.visible),"Exit and decorative mouldings start concealed")
@@ -151,6 +154,7 @@ func run(g) -> void:
 	game.player.test_input=Vector2.ZERO
 	check(game.profile.state.escaped and game.mode=="end","Walking through the unlocked hidden door completes the game")
 	await test_phenomena()
+	await preload("res://tests/run_variations.gd").new().run(game,self)
 	for suffix in ["",".bak",".tmp"]:
 		DirAccess.remove_absolute(game.profile.path+suffix)
 	var report={"engine":Engine.get_version_info().string,"checks":checks,"failed":failed,"passed":checks.size()-failed,"coverage":"Actual player collision and door traversal, interaction rays, all puzzle stages, save reload and backup recovery, ending"}
@@ -165,20 +169,20 @@ func test_phenomena() -> void:
 	sample.fresh()
 	var catalog=game.Catalog
 	var events=[int(sample.state.current_event)]
-	for i in range(15):
+	for i in range(29):
 		var pending_event=catalog.peek(sample.state)
 		check(catalog.peek(sample.state)==pending_event,"Previewing a room does not consume phenomenon %d"%i)
 		catalog.enter(sample.state,i%9)
 		events.append(int(sample.state.current_event))
 	var unique={}
 	for id in events:unique[id]=true
-	check(unique.size()==16,"Every phenomenon occurs once before the shuffled cycle repeats")
+	check(unique.size()==30,"Every phenomenon occurs once before the shuffled cycle repeats")
 	var second=game.Profile.new()
 	second.fresh()
 	second.state.anomaly_seed=sample.state.anomaly_seed+719
 	check(catalog.order(int(second.state.anomaly_seed))!=catalog.order(int(sample.state.anomaly_seed)),"New seeds produce different phenomenon orders")
 	# Exercise each actual effect and every architectural layout, preserving puzzle access.
-	for id in range(16):
+	for id in range(40):
 		game.profile.state.current_event=id
 		await relocate(id%9,Vector3(0,0.03,24))
 		var built=game.room
