@@ -1,5 +1,6 @@
 extends Node3D
 
+const Routes=preload("res://scripts/route_rules.gd")
 const Door=preload("res://scripts/door.gd")
 const Catalog=preload("res://scripts/anomaly_catalog.gd")
 const Architecture=preload("res://scripts/architecture.gd")
@@ -36,7 +37,8 @@ func make(id:int,state:Dictionary,is_preview:bool=false) -> void:
 	saved_state=state
 	preview=is_preview
 	Catalog.ensure(state)
-	event_id=Catalog.peek(state) if is_preview else int(state.current_event)
+	Routes.ensure(state)
+	event_id=(Catalog.peek(state) if is_preview and not state.get("route_preview_same",false) else int(state.current_event)) if int(state.danger)>0 else -1
 	ceiling_height=44.0 if id==6 else 26.0
 	font=SystemFont.new()
 	font.font_names=PackedStringArray(["Hiragino Sans","Arial"])
@@ -81,6 +83,11 @@ func make(id:int,state:Dictionary,is_preview:bool=false) -> void:
 		doors.append(door)
 		label(SYMBOLS[id],wall_at(side,Vector3(1.26,1.52,0.3)),0.0038,-side*PI/2.0,Color(0.12,0.18,0.20))
 		label("SECTOR / %02d"%id,wall_at(side,Vector3(1.26,1.14,0.3)),0.0009,-side*PI/2.0)
+		label(Routes.mark(state,side),wall_at(side,Vector3(0,2.58,0.22)),0.0024,-side*PI/2.0)
+		wall_box(side,Vector3(-3.25,1.48,0.2),Vector3(0.65,0.65,0.09),"panel")
+		label("ROUTE / %02d"%(int(state.route_index)+1),wall_at(side,Vector3(-3.25,1.67,0.28)),0.0007,-side*PI/2.0)
+		label("進路の記録",wall_at(side,Vector3(-3.25,1.45,0.28)),0.00065,-side*PI/2.0)
+		target(wall_at(side,Vector3(-3.25,1.5,0.3)),Vector3(0.7,0.75,0.2) if side%2==0 else Vector3(0.2,0.75,0.7),"route_record")
 	flush()
 	Architecture.build(self)
 	if id in DIGITS or (state.get("campaign",false) and id>0):observation(id)

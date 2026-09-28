@@ -100,6 +100,13 @@ func prepare_variations() -> void:
 	add_child(entry_source)
 
 func enter_space(id:int,listener:Node3D) -> void:
+	if id<0:
+		acoustic_active=false
+		heard_variation=false
+		entry_source.stop()
+		ambient.volume_db=-20
+		if is_instance_valid(reverb):reverb.damping=0.48
+		return
 	acoustic_id=id
 	acoustic_time=0
 	acoustic_cycle=0

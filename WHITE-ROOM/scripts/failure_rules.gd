@@ -2,7 +2,7 @@ extends RefCounted
 
 const LIMIT=5
 const CAUSES=["黒い影に飲み込まれた","足元の床が崩落した","二つのモニュメントに押し潰された"]
-const WARNINGS=["","照明が弱まった。誤答は部屋に蓄積する。","影が近づいている。確定する前に手掛かりを見直そう。","床が沈んだ。正解すれば危険度が2下がる。","次の誤答で死亡する。装置のヒントを確認しよう。","境界が、あなたを拒んだ。"]
+const WARNINGS=["","照明が弱まった。扉の選択を間違えるたび、部屋が歪む。","影が近づいている。次の扉を開く前に、進路の記録を読もう。","床が沈んだ。新しい順路へ進むと危険度が2下がる。","次に誤った扉を開けると死亡する。進路の記録を確認しよう。","境界が、あなたを拒んだ。"]
 
 static func ensure(state:Dictionary) -> void:
 	for key in ["danger","mistakes","deaths"]:
@@ -29,4 +29,4 @@ static func success(state:Dictionary) -> void:
 
 static func status(state:Dictionary) -> String:
 	ensure(state)
-	return "危険度 %d / 5%s"%[int(state.danger),"　次の誤答で死亡" if state.danger==4 else ""]
+	return "危険度 %d / 5%s"%[int(state.danger),"　次の誤った扉で死亡" if state.danger==4 else ""]

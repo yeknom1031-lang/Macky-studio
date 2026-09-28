@@ -189,7 +189,7 @@ func footstep_echo() -> void:
 	if event_id==11 and echo_queue.size()<4:echo_queue.append(0.9)
 
 func has_been_seen(player:Node3D) -> bool:
-	if elapsed<6:return false
+	if event_id<0 or elapsed<6:return false
 	if event_id>=16:
 		if event_id in [32,36,37]:return true
 		if not extra.pieces.is_empty():

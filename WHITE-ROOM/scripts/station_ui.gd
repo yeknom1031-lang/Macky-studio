@@ -33,7 +33,7 @@ func open(owner_game,id:int) -> void:
 	for i in range(puzzle.buttons.size()):
 		var index=i
 		buttons.append(game.button(grid,puzzle.buttons[i],func():change(index),false,Vector2(570.0/grid.columns,40)))
-	feedback=game.text_label("確定した誤答で危険度＋1。5で死亡。正解で−2。",15)
+	feedback=game.text_label("装置は何度でも試せます。危険を増やすのは誤った扉です。",15)
 	box.add_child(feedback)
 	hint=game.paragraph(box,"",15)
 	var row=HBoxContainer.new()
@@ -86,6 +86,5 @@ func submit() -> bool:
 		return false
 	if not Puzzles.correct(puzzle,controls):
 		feedback.text="基準と一致しない。手掛かりを確認しよう。"
-		game.register_failure("観測器「"+str(puzzle.title)+"」の校正を誤った")
 		return false
 	return game.finish_station(int(puzzle.id),controls)

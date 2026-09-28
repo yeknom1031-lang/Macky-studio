@@ -21,151 +21,7 @@
 			"passed": true
 		},
 		{
-			"check": "Door graph is reversible: 0/0",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 0/1",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 0/2",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 0/3",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 6/0",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 6/1",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 6/2",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 6/3",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 1/0",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 1/1",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 1/2",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 1/3",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 3/0",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 3/1",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 3/2",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 3/3",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 2/0",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 2/1",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 2/2",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 2/3",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 7/0",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 7/1",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 7/2",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 7/3",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 8/0",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 8/1",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 8/2",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 8/3",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 4/0",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 4/1",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 4/2",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 4/3",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 5/0",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 5/1",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 5/2",
-			"passed": true
-		},
-		{
-			"check": "Door graph is reversible: 5/3",
-			"passed": true
-		},
-		{
-			"check": "All nine rooms and all puzzle locations are reachable",
+			"check": "The escape route has eleven finite checkpoints",
 			"passed": true
 		},
 		{
@@ -185,7 +41,7 @@
 			"passed": true
 		},
 		{
-			"check": "Walking through the north door reaches the connected room",
+			"check": "Walking through the marked forward door reaches the next checkpoint",
 			"passed": true
 		},
 		{
@@ -1821,79 +1677,143 @@
 			"passed": true
 		},
 		{
-			"check": "Incomplete cipher entry and missing observations are not counted as wrong answers",
+			"check": "300 seeded routes are finite, visit every required room and keep every wrong door in the same checkpoint",
 			"passed": true
 		},
 		{
-			"check": "Incomplete sequences, selections, resets and hints do not increase danger",
+			"check": "300 routes have exactly one clue-matching forward door until the final hidden exit",
 			"passed": true
 		},
 		{
-			"check": "A confirmed wrong station answer starts danger stage one and blocks movement",
+			"check": "Every forward transition has a matching safe return door at its physical entrance",
 			"passed": true
 		},
 		{
-			"check": "Repeated callbacks during one warning cannot stack extra mistakes",
+			"check": "New seeds vary both room order and correct door directions",
 			"passed": true
 		},
 		{
-			"check": "The room's rendered exposure actually decreases after a wrong answer",
+			"check": "A fresh route starts without random visual or acoustic anomalies",
 			"passed": true
 		},
 		{
-			"check": "Pause freezes the hazard animation instead of returning to gameplay",
+			"check": "A real first-person ray can read the route plaque beside a door",
 			"passed": true
 		},
 		{
-			"check": "A warning returns to the same puzzle and restores the floor",
+			"check": "The route plaque opens the clue through normal interaction",
 			"passed": true
 		},
 		{
-			"check": "The second mistake produces a visible approaching shadow",
+			"check": "Opening a wrong door immediately charges one error before crossing",
 			"passed": true
 		},
 		{
-			"check": "The warning shadow physically approaches the first-person camera",
+			"check": "Repeated input during one door opening cannot stack mistakes",
 			"passed": true
 		},
 		{
-			"check": "The third mistake lowers both the actual floor slab and the first-person viewpoint",
+			"check": "Journal input cannot interrupt an unresolved wrong-door opening",
 			"passed": true
 		},
 		{
-			"check": "A nonlethal floor drop restores the original player position",
+			"check": "Peeking without crossing still triggers the warning after the door closes",
 			"passed": true
 		},
 		{
-			"check": "The fourth mistake brings two monuments close without killing the player",
+			"check": "A wrong route visibly darkens the rendered room",
 			"passed": true
 		},
 		{
-			"check": "The last warning explicitly says that the next error is fatal",
+			"check": "Pause freezes a route warning",
 			"passed": true
 		},
 		{
-			"check": "Danger and mistakes persist across real save/reload",
+			"check": "The first wrong door activates spatial and acoustic anomalies in the same room",
 			"passed": true
 		},
 		{
-			"check": "Solving the threatened puzzle reduces danger by two",
+			"check": "The wrong door can be physically crossed",
 			"passed": true
 		},
 		{
-			"check": "Replaying an already solved station cannot repeatedly lower danger",
+			"check": "Crossing a wrong door loops to the same checkpoint without advancing exploration",
 			"passed": true
 		},
 		{
-			"check": "Fatal error selects and persists death variant 0",
+			"check": "A second wrong route escalates the warning",
 			"passed": true
 		},
 		{
-			"check": "Quitting during fatal variant 0 cannot restore a living save",
+			"check": "The second route error sends a black shadow toward the camera",
 			"passed": true
 		},
 		{
-			"check": "Fatal variant 0 cannot be escaped through resume or door input",
+			"check": "The third wrong door lowers the real floor and first-person viewpoint",
+			"passed": true
+		},
+		{
+			"check": "A nonfatal sinking floor returns the player to the original height",
+			"passed": true
+		},
+		{
+			"check": "The fourth wrong door brings monuments close to the player",
+			"passed": true
+		},
+		{
+			"check": "The last safe stage explicitly warns that another wrong door is fatal",
+			"passed": true
+		},
+		{
+			"check": "The finite route, marks and accumulated danger survive a real save/reload",
+			"passed": true
+		},
+		{
+			"check": "Peeking through the correct door cannot farm recovery",
+			"passed": true
+		},
+		{
+			"check": "Crossing a new correct route checkpoint lowers danger by two",
+			"passed": true
+		},
+		{
+			"check": "An unfinished local observation blocks forward travel without counting an error",
+			"passed": true
+		},
+		{
+			"check": "Safe backtracking does not add danger",
+			"passed": true
+		},
+		{
+			"check": "Returning to an already reached checkpoint cannot repeatedly heal danger",
+			"passed": true
+		},
+		{
+			"check": "A confirmed wrong device answer leaves route danger unchanged",
+			"passed": true
+		},
+		{
+			"check": "Solving a device does not replace the need to choose the right route",
+			"passed": true
+		},
+		{
+			"check": "An unclosed wrong door saves its pending warning immediately",
+			"passed": true
+		},
+		{
+			"check": "Reloading a pending wrong door resumes one warning without another penalty",
+			"passed": true
+		},
+		{
+			"check": "Wrong door persists fatal variant 0 as soon as the knob is turned",
+			"passed": true
+		},
+		{
+			"check": "Quitting in the fatal door window cannot restore a living save for variant 0",
+			"passed": true
+		},
+		{
+			"check": "Fatal variant 0 cannot be bypassed with resume or another door",
 			"passed": true
 		},
 		{
@@ -1901,128 +1821,304 @@
 			"passed": true
 		},
 		{
-			"check": "Death variant 0 reaches the death screen without free movement",
+			"check": "Fatal variant 0 reaches the death screen",
 			"passed": true
 		},
 		{
-			"check": "Pausing the death screen stops the automatic restart countdown",
+			"check": "Pausing the death screen stops automatic restart",
 			"passed": true
 		},
 		{
-			"check": "Death variant 0 automatically restarts at the first room",
+			"check": "Fatal variant 0 restarts safely at the first checkpoint",
 			"passed": true
 		},
 		{
-			"check": "Death variant 0 resets all escape progress",
+			"check": "Fatal variant 0 clears all escape progress",
 			"passed": true
 		},
 		{
-			"check": "Death variant 0 preserves the world and answers so learned clues remain useful",
+			"check": "Fatal variant 0 preserves routes, door marks and answers for learning",
 			"passed": true
 		},
 		{
-			"check": "Death history persists while the new attempt starts safely",
+			"check": "Death history persists while the new attempt resets route errors",
 			"passed": true
 		},
 		{
-			"check": "Fatal error selects and persists death variant 1",
+			"check": "Wrong door persists fatal variant 1 as soon as the knob is turned",
 			"passed": true
 		},
 		{
-			"check": "Quitting during fatal variant 1 cannot restore a living save",
+			"check": "Quitting in the fatal door window cannot restore a living save for variant 1",
 			"passed": true
 		},
 		{
-			"check": "Fatal variant 1 cannot be escaped through resume or door input",
+			"check": "Fatal variant 1 cannot be bypassed with resume or another door",
 			"passed": true
 		},
 		{
-			"check": "The fatal floor drop descends beyond normal rescue height",
+			"check": "The fatal floor drops beyond normal rescue height",
 			"passed": true
 		},
 		{
-			"check": "The player's ordinary fall recovery cannot cancel a scripted fatal fall",
+			"check": "Ordinary fall recovery cannot cancel a scripted fatal fall",
 			"passed": true
 		},
 		{
-			"check": "Death variant 1 reaches the death screen without free movement",
+			"check": "Fatal variant 1 reaches the death screen",
 			"passed": true
 		},
 		{
-			"check": "Loading a fatal save resumes at the death screen",
+			"check": "Loading the fatal door save resumes the death screen",
 			"passed": true
 		},
 		{
-			"check": "Death variant 1 automatically restarts at the first room",
+			"check": "Fatal variant 1 restarts safely at the first checkpoint",
 			"passed": true
 		},
 		{
-			"check": "Death variant 1 resets all escape progress",
+			"check": "Fatal variant 1 clears all escape progress",
 			"passed": true
 		},
 		{
-			"check": "Death variant 1 preserves the world and answers so learned clues remain useful",
+			"check": "Fatal variant 1 preserves routes, door marks and answers for learning",
 			"passed": true
 		},
 		{
-			"check": "Death history persists while the new attempt starts safely",
+			"check": "Death history persists while the new attempt resets route errors",
 			"passed": true
 		},
 		{
-			"check": "Fatal error selects and persists death variant 2",
+			"check": "Wrong door persists fatal variant 2 as soon as the knob is turned",
 			"passed": true
 		},
 		{
-			"check": "Quitting during fatal variant 2 cannot restore a living save",
+			"check": "Quitting in the fatal door window cannot restore a living save for variant 2",
 			"passed": true
 		},
 		{
-			"check": "Fatal variant 2 cannot be escaped through resume or door input",
+			"check": "Fatal variant 2 cannot be bypassed with resume or another door",
 			"passed": true
 		},
 		{
-			"check": "The monuments close to a lethal gap around the viewpoint",
+			"check": "The monuments close around the viewpoint",
 			"passed": true
 		},
 		{
-			"check": "Death variant 2 reaches the death screen without free movement",
+			"check": "Fatal variant 2 reaches the death screen",
 			"passed": true
 		},
 		{
-			"check": "Death variant 2 automatically restarts at the first room",
+			"check": "Fatal variant 2 restarts safely at the first checkpoint",
 			"passed": true
 		},
 		{
-			"check": "Death variant 2 resets all escape progress",
+			"check": "Fatal variant 2 clears all escape progress",
 			"passed": true
 		},
 		{
-			"check": "Death variant 2 preserves the world and answers so learned clues remain useful",
+			"check": "Fatal variant 2 preserves routes, door marks and answers for learning",
 			"passed": true
 		},
 		{
-			"check": "Death history persists while the new attempt starts safely",
+			"check": "Death history persists while the new attempt resets route errors",
 			"passed": true
 		},
 		{
-			"check": "A wrong final-circuit switch also increases danger",
+			"check": "Physical route reaches checkpoint 01",
 			"passed": true
 		},
 		{
-			"check": "A correct partial circuit cannot be farmed for recovery",
+			"check": "The marked forward door is usable at checkpoint 01",
 			"passed": true
 		},
 		{
-			"check": "Completing the final circuit restores safety and still permits escape",
+			"check": "Following the correct route avoids random anomalies at checkpoint 01",
 			"passed": true
 		},
 		{
-			"check": "The penalty system preserves a successful ending after recovery",
+			"check": "Physical route reaches checkpoint 02",
+			"passed": true
+		},
+		{
+			"check": "Checkpoint 02 device remains solvable",
+			"passed": true
+		},
+		{
+			"check": "The marked forward door is usable at checkpoint 02",
+			"passed": true
+		},
+		{
+			"check": "Following the correct route avoids random anomalies at checkpoint 02",
+			"passed": true
+		},
+		{
+			"check": "Physical route reaches checkpoint 03",
+			"passed": true
+		},
+		{
+			"check": "Checkpoint 03 device remains solvable",
+			"passed": true
+		},
+		{
+			"check": "The marked forward door is usable at checkpoint 03",
+			"passed": true
+		},
+		{
+			"check": "Following the correct route avoids random anomalies at checkpoint 03",
+			"passed": true
+		},
+		{
+			"check": "Physical route reaches checkpoint 04",
+			"passed": true
+		},
+		{
+			"check": "Checkpoint 04 device remains solvable",
+			"passed": true
+		},
+		{
+			"check": "The marked forward door is usable at checkpoint 04",
+			"passed": true
+		},
+		{
+			"check": "Following the correct route avoids random anomalies at checkpoint 04",
+			"passed": true
+		},
+		{
+			"check": "Physical route reaches checkpoint 05",
+			"passed": true
+		},
+		{
+			"check": "Wrong cipher input does not affect route danger",
+			"passed": true
+		},
+		{
+			"check": "The middle origin checkpoint yields the key",
+			"passed": true
+		},
+		{
+			"check": "The marked forward door is usable at checkpoint 05",
+			"passed": true
+		},
+		{
+			"check": "Following the correct route avoids random anomalies at checkpoint 05",
+			"passed": true
+		},
+		{
+			"check": "Physical route reaches checkpoint 06",
+			"passed": true
+		},
+		{
+			"check": "The marked forward door is usable at checkpoint 06",
+			"passed": true
+		},
+		{
+			"check": "Following the correct route avoids random anomalies at checkpoint 06",
+			"passed": true
+		},
+		{
+			"check": "Physical route reaches checkpoint 07",
+			"passed": true
+		},
+		{
+			"check": "The marked forward door is usable at checkpoint 07",
+			"passed": true
+		},
+		{
+			"check": "Following the correct route avoids random anomalies at checkpoint 07",
+			"passed": true
+		},
+		{
+			"check": "Physical route reaches checkpoint 08",
+			"passed": true
+		},
+		{
+			"check": "The marked forward door is usable at checkpoint 08",
+			"passed": true
+		},
+		{
+			"check": "Following the correct route avoids random anomalies at checkpoint 08",
+			"passed": true
+		},
+		{
+			"check": "Physical route reaches checkpoint 09",
+			"passed": true
+		},
+		{
+			"check": "The marked forward door is usable at checkpoint 09",
+			"passed": true
+		},
+		{
+			"check": "Following the correct route avoids random anomalies at checkpoint 09",
+			"passed": true
+		},
+		{
+			"check": "Physical route reaches checkpoint 10",
+			"passed": true
+		},
+		{
+			"check": "Checkpoint 10 device remains solvable",
+			"passed": true
+		},
+		{
+			"check": "Insufficient calibrations block the last forward door without punishment",
+			"passed": true
+		},
+		{
+			"check": "Safe return reaches a previously skipped calibration",
+			"passed": true
+		},
+		{
+			"check": "A skipped observation remains solvable after backtracking",
+			"passed": true
+		},
+		{
+			"check": "Safe return reaches a previously skipped calibration",
+			"passed": true
+		},
+		{
+			"check": "A skipped observation remains solvable after backtracking",
+			"passed": true
+		},
+		{
+			"check": "Six calibrations are sufficient after a safe return to the circuit",
+			"passed": true
+		},
+		{
+			"check": "Wrong circuit input does not affect route danger",
+			"passed": true
+		},
+		{
+			"check": "The penultimate checkpoint restores power",
+			"passed": true
+		},
+		{
+			"check": "The marked forward door is usable at checkpoint 10",
+			"passed": true
+		},
+		{
+			"check": "Following the correct route avoids random anomalies at checkpoint 10",
+			"passed": true
+		},
+		{
+			"check": "Physical route reaches checkpoint 11",
+			"passed": true
+		},
+		{
+			"check": "The finite route reaches the exit with exactly six of eight calibrations",
+			"passed": true
+		},
+		{
+			"check": "The last route clue directs the player to the hidden exit",
+			"passed": true
+		},
+		{
+			"check": "An entire generated finite route ends by physically walking through the hidden door",
 			"passed": true
 		}
 	],
 	"coverage": "Actual player collision and door traversal, interaction rays, all puzzle stages, save reload and backup recovery, ending",
 	"engine": "4.7.2-stable (official)",
 	"failed": 0,
-	"passed": 505
+	"passed": 529
 }

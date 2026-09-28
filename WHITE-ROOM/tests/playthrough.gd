@@ -26,6 +26,9 @@ func press_key(code:Key) -> void:
 
 func relocate(id:int,at:Vector3,yaw:float=0.0,pitch:float=0.0) -> void:
 	game.profile.state.room=id
+	game.profile.state.route_index=game.profile.state.route_rooms.find(id)
+	if id==0:
+		game.profile.state.route_index=10 if game.profile.state.powered else (4 if game.profile.state.clues.size()==3 else 0)
 	game.build_room(id)
 	game.player.position=at
 	game.player.rotation.y=yaw
@@ -35,6 +38,24 @@ func relocate(id:int,at:Vector3,yaw:float=0.0,pitch:float=0.0) -> void:
 	game.player.test_input=Vector2.ZERO
 	game.resume_game()
 	await frames(3)
+
+func face_door(side:int) -> void:
+	game.player.position=game.DIRECTIONS[side]*28.5+Vector3(0,0.03,0)
+	game.player.rotation.y=-side*PI/2.0
+	game.player.pitch=0
+	game.player.camera.rotation.x=0
+	game.player.velocity=Vector3.ZERO
+	game.player.test_input=Vector2.ZERO
+	await frames(3)
+
+func walk_door(side:int) -> bool:
+	await face_door(side)
+	if not game.open_door(side):return false
+	game.player.test_input=Vector2(0,-1)
+	await frames(37)
+	game.player.test_input=Vector2.ZERO
+	await frames(34)
+	return true
 
 func run(g) -> void:
 	game=g
@@ -49,17 +70,9 @@ func run(g) -> void:
 	check(not game.open_door(3,true),"Exit cannot open before the circuit is restored")
 	check(not game.take_key(),"A key cannot be taken before solving the cipher")
 	check(not game.relay_press(0),"The circuit cannot be solved without the key")
-	var reached={0:true}
-	var pending=[0]
-	while not pending.is_empty():
-		var id=int(pending.pop_front())
-		for side in range(4):
-			var other=game.neighbor(id,side)
-			check(game.neighbor(other,(side+2)%4)==id,"Door graph is reversible: %d/%d"%[id,side])
-			if not reached.has(other):
-				reached[other]=true
-				pending.append(other)
-	check(reached.size()==9,"All nine rooms and all puzzle locations are reachable")
+	check(game.profile.state.route_rooms.size()==11,"The escape route has eleven finite checkpoints")
+	var first_side=int(game.profile.state.route_forward[0])
+	var first_room=int(game.profile.state.route_rooms[1])
 	await relocate(0,Vector3(0,0.03,-28.5))
 	var hit=game.player.aim_query()
 	check(hit.has("collider") and hit.collider.get_meta("action","")=="door","The real first-person ray detects the closed door")
@@ -67,31 +80,31 @@ func run(g) -> void:
 	await frames(35)
 	check(game.player.position.z> -29.8 and game.profile.state.room==0,"A closed door blocks actual player motion")
 	game.player.test_input=Vector2.ZERO
-	game.player.position=Vector3(0,0.03,-28.5)
-	check(game.open_door(0),"The first door opens")
-	check(not game.open_door(1),"A second door cannot open simultaneously")
+	await face_door(first_side)
+	check(game.open_door(first_side),"The first door opens")
+	check(not game.open_door((first_side+1)%4),"A second door cannot open simultaneously")
 	game.player.test_input=Vector2(0,-1)
 	await frames(37)
 	game.player.test_input=Vector2.ZERO
-	check(game.profile.state.room==6,"Walking through the north door reaches the connected room")
-	check(game.player.position.z>20 and game.player.position.z<30.4,"Portal traversal keeps the player inside the next room")
+	check(game.profile.state.room==first_room,"Walking through the marked forward door reaches the next checkpoint")
+	check(game.DIRECTIONS[(first_side+2)%4].dot(game.player.position)>20 and game.DIRECTIONS[(first_side+2)%4].dot(game.player.position)<30.4,"Portal traversal keeps the player inside the next room")
 	await frames(34)
 	check(not is_instance_valid(game.active_door),"The opened door is closed after one second")
 	check(game.room.doors.all(func(d):return is_zero_approx(d.openness)),"Every visible door is closed after its timer")
-	await relocate(6,Vector3(0,0.03,28.5),PI)
-	game.open_door(2)
+	await face_door((first_side+2)%4)
+	game.open_door((first_side+2)%4)
 	game.player.test_input=Vector2(0,-1)
 	await frames(37)
 	game.player.test_input=Vector2.ZERO
 	check(game.profile.state.room==0,"Physically returning through a door reaches the original room")
 	await frames(35)
 	# Pause at an open threshold: closing must resolve penetration on the safe side.
-	await relocate(0,Vector3(0,0.03,-28.5))
-	game.open_door(0)
+	await face_door(first_side)
+	game.open_door(first_side)
 	await frames(16)
-	game.player.position=Vector3(0,0.03,-30.1)
+	game.player.position=game.DIRECTIONS[first_side]*30.1+Vector3(0,0.03,0)
 	game.show_pause()
-	check(game.player.position.z> -29.5,"Closing while paused at a threshold cannot trap the player")
+	check(game.DIRECTIONS[first_side].dot(game.player.position)<29.5,"Closing while paused at a threshold cannot trap the player")
 	check(game.mode=="pause" and not game.player.enabled,"Pause releases gameplay input")
 	game.resume_game()
 	for id in [1,3,4]:
@@ -168,6 +181,7 @@ func run(g) -> void:
 	await game.quit_game(0 if failed==0 else 1)
 
 func test_phenomena() -> void:
+	game.profile.state.danger=1
 	var sample=game.Profile.new()
 	sample.fresh()
 	var catalog=game.Catalog

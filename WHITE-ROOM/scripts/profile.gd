@@ -1,5 +1,6 @@
 extends RefCounted
 
+const Routes=preload("res://scripts/route_rules.gd")
 const Failure=preload("res://scripts/failure_rules.gd")
 const Catalog=preload("res://scripts/anomaly_catalog.gd")
 const PATH = "user://white_room_v1.json"
@@ -19,6 +20,7 @@ func fresh(previous:Dictionary={}) -> void:
 	state.room_entries={}
 	Catalog.enter(state,0)
 	Failure.ensure(state)
+	Routes.ensure(state)
 
 func load_profile() -> bool:
 	for candidate in [path,path+".bak"]:
@@ -62,7 +64,7 @@ func load_profile() -> bool:
 			state.relay_unlocked=true
 			state.key=true
 			state.cipher=true
-		for key in ["anomaly_seed","anomaly_index","current_event","current_audio","run_number","danger","mistakes","deaths","death_cause"]:
+		for key in ["anomaly_seed","anomaly_index","current_event","current_audio","run_number","danger","mistakes","deaths","death_cause","route_index","route_furthest","route_errors"]:
 			state[key]=int(value.state.get(key,state[key]))
 		state.campaign=bool(value.state.get("campaign",false))
 		if not value.state.has("visual_pool"):
@@ -74,6 +76,14 @@ func load_profile() -> bool:
 		for key in state.station_controls:
 			if state.station_controls[key] is Array:
 				state.station_controls[key]=state.station_controls[key].map(func(v):return int(v))
+		if not value.state.has("route_rooms"):
+			for key in ["route_rooms","route_forward","route_clues","route_marks","route_index","route_furthest"]:state.erase(key)
+		Routes.ensure(state)
+		for key in ["route_rooms","route_forward","route_clues"]:state[key]=state[key].map(func(v):return int(v))
+		for i in range(state.route_marks.size()):state.route_marks[i]=state.route_marks[i].map(func(v):return int(v))
+		state.route_index=clampi(int(state.route_index),0,state.route_rooms.size()-1)
+		state.route_furthest=maxi(state.route_index,int(state.route_furthest))
+		state.room=int(state.route_rooms[state.route_index])
 		Failure.ensure(state)
 		state.danger=clampi(int(state.danger),0,5)
 		if state.danger==5:state.dead=true
@@ -103,7 +113,7 @@ func save() -> bool:
 func retry_after_death() -> void:
 	var previous=state.duplicate(true)
 	fresh()
-	for key in ["anomaly_seed","visual_pool","audio_pool","puzzle_pool","run_number","deaths","campaign"]:state[key]=previous[key]
+	for key in ["anomaly_seed","visual_pool","audio_pool","puzzle_pool","run_number","deaths","campaign","route_rooms","route_forward","route_clues","route_marks"]:state[key]=previous[key]
 	state.anomaly_index=0
 	state.room_entries={}
 	Catalog.enter(state,0)

@@ -1,5 +1,9 @@
 extends Node3D
 
+const Routes=preload("res://scripts/route_rules.gd")
+var active_route_choice=""
+var active_route_destination=0
+var route_presenting=false
 const Failure=preload("res://scripts/failure_rules.gd")
 var failure_sequence=preload("res://scripts/failure_sequence.gd").new()
 var failure_return_mode="game"
@@ -18,7 +22,6 @@ const Runs=preload("res://scripts/run_catalog.gd")
 var station_ui=preload("res://scripts/station_ui.gd").new()
 const Catalog=preload("res://scripts/anomaly_catalog.gd")
 const DIRECTIONS=[Vector3(0,0,-1),Vector3(1,0,0),Vector3(0,0,1),Vector3(-1,0,0)]
-const DELTAS=[Vector2i(0,-1),Vector2i(1,0),Vector2i(0,1),Vector2i(-1,0)]
 const INK=Color(0.16,0.24,0.29)
 const MUTED=Color(0.37,0.46,0.51)
 var profile=Profile.new()
@@ -154,10 +157,6 @@ func build_room(id:int) -> void:
 	room.make(id,profile.state)
 	if is_instance_valid(sound):sound.set_space(id)
 
-static func neighbor(id:int,side:int) -> int:
-	var d=DELTAS[side]
-	return posmod(int(id/3)+d.y,3)*3+posmod(id%3+d.x,3)
-
 func begin_game(fresh:bool=false) -> void:
 	if failure_sequence.active:failure_sequence.reset()
 	mode="starting"
@@ -167,6 +166,8 @@ func begin_game(fresh:bool=false) -> void:
 			DirAccess.copy_absolute(profile.path,profile.path+".archive-"+str(int(Time.get_unix_time_from_system())))
 		profile.fresh()
 		hint_level=0
+	var pending_route=bool(profile.state.route_pending_wrong)
+	profile.state.route_pending_wrong=false
 	build_room(int(profile.state.room))
 	var p=profile.state.position
 	player.position=Vector3(clampf(float(p[0]),-28.8,28.8),0.08,clampf(float(p[2]),-28.8,28.8))
@@ -175,13 +176,15 @@ func begin_game(fresh:bool=false) -> void:
 	player.camera.rotation.x=deg_to_rad(player.pitch)
 	player.velocity=Vector3.ZERO
 	resume_game()
-	sound.enter_space(int(profile.state.current_audio),player)
+	sound.enter_space(int(profile.state.current_audio) if profile.state.danger>0 else -1,player)
 	if profile.state.dead:
 		show_death()
+	elif pending_route:
+		present_failure()
 	elif profile.state.escaped:
 		show_ending()
 	else:
-		toast("誤答5回で死亡して最初から。正解は危険度 −2。確定前にヒントを。",9.0)
+		toast("扉の左に進路の記録。刻印で選ぶ。誤った扉は同じ部屋へ戻り、異変を強める。",9.0)
 	update_hud()
 	save_game()
 
@@ -205,6 +208,11 @@ func _unhandled_input(event:InputEvent) -> void:
 	if event.is_action_pressed("fullscreen"):
 		profile.settings.fullscreen=not profile.settings.fullscreen
 		apply_settings()
+	if profile.state.get("route_pending_wrong",false):
+		if event.is_action_pressed("pause"):
+			close_door()
+			pause_failure()
+		return
 	if mode in ["hazard","death","failure_pause"]:
 		if event.is_action_pressed("pause"):
 			if mode=="failure_pause":resume_failure()
@@ -269,6 +277,7 @@ func _process(delta:float) -> void:
 			"station":text="E    観測器を調べる"
 			"cipher":text="E    暗号盤を調べる"
 			"record":text="E    保全記録を読む"
+			"route_record":text="E    進路の記録を読む"
 			"relay":text="E    回路を調べる"
 			"key":text="E    保全キーを取る"
 			"sealed":text=""
@@ -298,11 +307,21 @@ static func door_aperture(seconds:float) -> float:
 	return 1.0-smoothstep(0.70,1.0,seconds)
 
 func open_door(side:int,is_exit:bool=false) -> bool:
-	if failure_busy():return false
+	if failure_busy() or side<0 or side>3:return false
 	if is_instance_valid(active_door):
 		return false
 	if is_exit and not profile.state.powered:
 		return false
+	active_route_choice="exit" if is_exit else Routes.choice(profile.state,side)
+	if active_route_choice=="forward" and not Routes.task(profile.state).is_empty():
+		toast(Routes.task(profile.state),6)
+		return false
+	if active_route_choice=="wrong":
+		Failure.mistake(profile.state,"進路の記録と異なる「%s」の扉を開けた"%Routes.mark(profile.state,side))
+		profile.state.route_errors=int(profile.state.route_errors)+1
+		profile.state.route_pending_wrong=true
+		save_game()
+	active_route_destination=int(profile.state.route_index) if is_exit else Routes.destination_index(profile.state,side)
 	active_door=room.exit_door if is_exit else room.doors[side]
 	exit_crossing=is_exit
 	door_elapsed=0
@@ -313,24 +332,31 @@ func open_door(side:int,is_exit:bool=false) -> bool:
 	next_room=Room.new()
 	add_child(next_room)
 	next_room.position=next_offset
-	var destination=0 if is_exit else neighbor(int(profile.state.room),side)
-	next_room.make(destination,profile.state,true)
+	var preview_state=profile.state.duplicate(true) if is_exit else Routes.preview(profile.state,side)
+	var destination=0 if is_exit else int(profile.state.route_rooms[active_route_destination])
+	next_room.make(destination,preview_state,true)
 	next_room.doors[(side+2)%4].preview_entrance()
 	sound.play("handle",-12)
 	return true
 
 func cross_threshold() -> void:
 	var side=int(active_door.side)
-	var destination=neighbor(int(profile.state.room),side)
+	var destination=int(profile.state.route_rooms[active_route_destination])
 	var old=room
 	room=next_room
 	next_room=null
 	room.position=Vector3.ZERO
-	Catalog.enter(profile.state,destination)
+	if active_route_choice=="forward":
+		Catalog.enter(profile.state,destination)
+		if active_route_destination>int(profile.state.route_furthest):
+			Failure.success(profile.state)
+			profile.state.route_furthest=active_route_destination
+	profile.state.route_index=active_route_destination
+	room.saved_state=profile.state
 	room.activate()
 	sound.set_space(destination)
 	player.position-=next_offset
-	sound.enter_space(int(profile.state.current_audio),player)
+	sound.enter_space(int(profile.state.current_audio) if profile.state.danger>0 else -1,player)
 	old.visible=false
 	remove_child(old)
 	old.queue_free()
@@ -346,6 +372,7 @@ func cross_threshold() -> void:
 	save_game()
 
 func close_door(silent:bool=false) -> void:
+	var show_route_failure=bool(profile.state.get("route_pending_wrong",false)) and not route_presenting and mode!="starting"
 	if is_instance_valid(active_door):
 		# A closing leaf never traps or hurts the player at the threshold.
 		var outward=DIRECTIONS[int(active_door.side)]
@@ -361,6 +388,9 @@ func close_door(silent:bool=false) -> void:
 		next_room.queue_free()
 	next_room=null
 	exit_crossing=false
+	if show_route_failure:
+		profile.state.route_pending_wrong=false
+		present_failure()
 
 func interact() -> void:
 	if mode!="game" or is_instance_valid(active_door):
@@ -377,6 +407,7 @@ func interact_target(target:Node) -> void:
 		"door":open_door(int(target.get_meta("side")))
 		"exit":open_door(3,true)
 		"record":show_record()
+		"route_record":show_route_record()
 		"clue":read_clue(int(target.get_meta("id")))
 		"station":station_ui.open(self,int(target.get_meta("id")))
 		"cipher":show_cipher()
@@ -425,7 +456,7 @@ func show_cipher() -> void:
 			if digit=="確認":submit_cipher(number_input)
 			else:enter_digit(digit)
 		,false,Vector2(180,48))
-	puzzle_feedback=text_label("誤答で危険度＋1、5で死亡。数字キーでも入力できます。",15,MUTED)
+	puzzle_feedback=text_label("装置の誤答では危険度は増えません。数字キーでも入力できます。",15,MUTED)
 	box.add_child(puzzle_feedback)
 	button(box,"戻る",resume_game)
 
@@ -448,9 +479,7 @@ func submit_cipher(code:String) -> bool:
 	if code!=Puzzles.code(profile.state):
 		if is_instance_valid(puzzle_feedback):
 			puzzle_feedback.text="一致しない。○・△・□ の記録を確認。"
-		register_failure("暗号盤に異なる観測値を入力した")
 		return false
-	Failure.success(profile.state)
 	profile.state.cipher=true
 	if room.room_id==0:
 		room.key_visual.visible=not profile.state.key
@@ -476,7 +505,7 @@ func take_key() -> bool:
 
 func show_relay() -> void:
 	if profile.state.powered:
-		toast("境界回路は復旧している。始まりの ∅ の区画へ。")
+		toast("境界回路は復旧している。進路の記録に従い、始まりの ∅ の区画へ。")
 		return
 	if not profile.state.key:
 		var locked=dialog("CIRCUIT / ◇","保全キーが必要","∅ の区画にある暗号箱を解くと、この回路を操作できる。","relay")
@@ -497,7 +526,7 @@ func show_relay() -> void:
 	for i in range(4):
 		var index=i
 		button(row,["○","△","□","◇"][i],func():relay_press(index),false,Vector2(132,72))
-	puzzle_feedback=text_label("接続： —  —  —　誤接続で危険度＋1",17,INK)
+	puzzle_feedback=text_label("接続： —  —  —　何度でも再調整できます",17,INK)
 	box.add_child(puzzle_feedback)
 	button(box,"戻る",resume_game)
 
@@ -510,11 +539,9 @@ func relay_press(index:int) -> bool:
 		relay_input.clear()
 		if is_instance_valid(puzzle_feedback):
 			puzzle_feedback.text="接続が戻った。刻印の順番を確かめよう。"
-		register_failure("境界回路を刻印と異なる順につないだ")
 		return false
 	relay_input.append(index)
 	if relay_input.size()==3:
-		Failure.success(profile.state)
 		profile.state.powered=true
 		sound.play("confirm",-17)
 		save_game()
@@ -564,7 +591,10 @@ func _notification(what:int) -> void:
 		if is_instance_valid(player) and mode!="title":save_game()
 		quit_game()
 	if what==NOTIFICATION_APPLICATION_FOCUS_OUT and not automated:
-		if mode=="game":show_pause()
+		if profile.state.get("route_pending_wrong",false):
+			close_door()
+			pause_failure()
+		elif mode=="game":show_pause()
 		elif mode in ["hazard","death"]:pause_failure()
 
 func quit_game(exit_code:int=0) -> void:
@@ -782,7 +812,7 @@ func show_title() -> void:
 	button(box,"はじめから",request_new_game,not has_save)
 	button(box,"設定",func():return_mode="title";show_settings())
 	button(box,"終了",quit_game)
-	box.add_child(text_label("誤答5回で死亡・最初から / 自動保存",12,MUTED))
+	box.add_child(text_label("扉の選択が世界を変える / 自動保存",12,MUTED))
 	var credits=LinkButton.new()
 	credits.text="クレジット・ライセンス"
 	credits.add_theme_font_size_override("font_size",12)
@@ -840,7 +870,7 @@ func update_hud() -> void:
 	if not is_instance_valid(sector):return
 	danger_label.text=Failure.status(profile.state)
 	danger_label.add_theme_color_override("font_color",Color(1,0.59,0.4) if profile.state.danger>=4 else Color(0.9,0.95,0.98))
-	sector.text="WHITE ROOM   /   %02d  %s"%[int(profile.state.room),Room.SYMBOLS[int(profile.state.room)]]
+	sector.text="ROUTE %02d / %02d   ·   SECTOR %02d"%[int(profile.state.route_index)+1,profile.state.route_rooms.size(),int(profile.state.room)]
 	var marks=[]
 	for id in [1,3,4]:
 		marks.append(Room.SYMBOLS[id]+" "+(str(Puzzles.digit(profile.state,id)) if id in profile.state.clues else "—"))
@@ -863,14 +893,14 @@ func show_journal(show_hint:bool=false) -> void:
 	var found=[]
 	for id in [1,3,4]:
 		found.append(Room.SYMBOLS[id]+"  =  "+(str(Puzzles.digit(profile.state,id)) if id in profile.state.clues else "未記録"))
-	var description="     ".join(found)+"\n\n"+objective.text+"。\n扉の脇の記号で、区画を見分けられる。"
+	var description="     ".join(found)+"\n\n"+objective.text+"。\n扉の上の刻印で進路を選ぶ。↶ は安全に戻る扉。"
 	if "origin" in profile.state.notes:
 		description+="\n保全記録：入力順は ○ → △ → □。鍵は ◇ の回路盤へ。"
 	if not profile.state.observed_anomalies.is_empty():
 		description+="\n\n空間の観測  %d / 30"%profile.state.observed_anomalies.size()
 		var latest=int(profile.state.observed_anomalies[-1])
 		description+="\n"+Catalog.title(latest)+"："+Catalog.description(latest)
-	description+="\n"+Failure.status(profile.state)+"。誤答で＋1、正解で−2。5で死亡。"
+	description+="\n"+Failure.status(profile.state)+"。誤った扉で＋1、新しい順路へ進むと−2。5で死亡。"
 	if profile.state.campaign:description+="\n校正済 %d / 8（6台で復旧）　音の記録 %d / 12"%[profile.state.solved_stations.size(),profile.state.heard_audio.size()]
 	if hint_level>0:description+="\n\nヒント "+str(hint_level)+" / 3\n"+hint_text()
 	var box=dialog("FIELD NOTES / 観測記録","白の中で、覚えておく。","","journal")
@@ -899,15 +929,22 @@ func show_anomaly_log() -> void:
 	button(box,"観測記録へ戻る",show_journal,true)
 
 func hint_text() -> String:
-	if profile.state.campaign and not profile.state.powered:
-		return next_objective()+"\n道順："+route_to(next_destination())+"。\n観測器は室内の北東寄り、床の小さな台。操作画面にも2段階のヒントがある。"
-	if profile.state.powered:
-		return ["∅ の始まりの区画へ戻ろう。", "復旧した回路は、始まりの区画の西壁につながっている。", "始まりの区画で、暗号盤を正面に見て左の壁へ。中央の扉より北に12mずれた白い扉が出口。"] [hint_level-1]
-	if profile.state.key:
-		return ["◇ の記号がある部屋に、回路盤がある。", "始まりの区画から東の扉を2回進むと ◇ の区画。", "◇ の部屋の北壁にある回路盤で、○ → □ → △ の順に押す。"] [hint_level-1]
-	if profile.state.cipher:
-		return "暗号盤のすぐ下を見て、保全キーを E で取る。"
-	return ["○・△・□ の部屋には、床に小さな観測器が置かれている。", "始まりの部屋から東で○、南で△、南→東で□。同じ道を戻れば帰れる。", "観測値は ○=4、△=7、□=2。始まりの区画の北壁にある暗号盤へ 472 を入力する。"] [hint_level-1]
+	var state=profile.state
+	var text=Routes.clue(state)
+	if hint_level>=2:
+		text+="\n"+next_objective()
+		if not Routes.task(state).is_empty():text+="\n"+Routes.task(state)
+	if hint_level>=3:
+		if int(state.route_index)<state.route_rooms.size()-1:
+			var side=int(state.route_forward[int(state.route_index)])
+			text+="\n進む扉は "+Routes.DIRECTIONS[side]+" / "+Routes.mark(state,side)+"。"
+		if int(state.room)>0 and not int(state.room) in state.solved_stations:
+			text+="\n観測器は北東寄り、床の小さな台。装置内のヒントを2回押すと答えを確認できる。"
+		if int(state.room)==0 and state.clues.size()==3 and not state.key:
+			text+="\n北壁の暗号は "+Puzzles.code(state)+"。解錠後、下のキーを E で取る。"
+		if int(state.room)==2 and state.key:
+			text+="\n回路は ○ → □ → △。校正が足りなければ ↶ から戻れる。"
+	return text
 
 func show_settings() -> void:
 	var box=dialog("SETTINGS","自分に合う感覚に。","","settings")
@@ -998,6 +1035,7 @@ func capture_run(args:PackedStringArray) -> void:
 		toast_time=0
 		if shot=="columns":
 			profile.state.room=1
+			profile.state.route_index=profile.state.route_rooms.find(1)
 			build_room(1)
 			player.position=Vector3(-23,0.05,24)
 			player.rotation.y=-0.2
@@ -1026,9 +1064,13 @@ func capture_run(args:PackedStringArray) -> void:
 		if arg.begins_with("--room="):forced_room=int(arg.trim_prefix("--room="))
 		if arg.begins_with("--anomaly="):forced_event=int(arg.trim_prefix("--anomaly="))
 		if arg.begins_with("--moment="):moment=float(arg.trim_prefix("--moment="))
-	if forced_event>=0:profile.state.current_event=forced_event
+	if forced_event>=0:
+		profile.state.current_event=forced_event
+		profile.state.danger=1
 	if forced_room>=0:
 		profile.state.room=forced_room
+		profile.state.route_index=profile.state.route_rooms.find(forced_room)
+		profile.state.route_furthest=profile.state.route_index
 		build_room(forced_room)
 		player.position=Vector3(-25,0.05,17)
 		player.rotation.y=-0.55
@@ -1044,6 +1086,11 @@ func capture_run(args:PackedStringArray) -> void:
 		profile.state.notes=["origin"]
 		hint_level=3
 		show_journal()
+	if shot in ["route","route-door"]:
+		player.position=Vector3(-1.2,0.03,-24.2)
+		player.rotation.y=0
+		player.camera.rotation.x=deg_to_rad(3)
+		if shot=="route":show_route_record()
 	if shot=="map":
 		profile.state.visits=[0,1,2,3,4,6]
 		show_map()
@@ -1060,7 +1107,9 @@ func capture_run(args:PackedStringArray) -> void:
 		profile.state.danger=stage-1
 		profile.state.deaths=0
 		profile.state.anomaly_seed=cause+3000
-		register_failure("観測器の校正を繰り返し誤った")
+		var wrong=range(4).filter(func(side):return Routes.choice(profile.state,side)=="wrong")[0]
+		open_door(wrong)
+		close_door(true)
 		failure_sequence.tick(moment)
 		apply_danger(10)
 		if shot=="death":show_death()
@@ -1087,7 +1136,6 @@ func finish_station(id:int,controls:Array) -> bool:
 	if not profile.state.campaign or id<1 or id>8:return false
 	var puzzle=Puzzles.make(profile.state,id)
 	if not Puzzles.correct(puzzle,controls):return false
-	Failure.success(profile.state)
 	if not id in profile.state.solved_stations:profile.state.solved_stations.append(id)
 	profile.state.station_controls[str(id)]=controls.duplicate()
 	if room.room_id==id and is_instance_valid(room.observation_display):room.observation_display.text=room.observation_text(id)
@@ -1100,71 +1148,52 @@ func finish_station(id:int,controls:Array) -> bool:
 	update_hud()
 	return true
 
-func next_destination() -> int:
-	if profile.state.powered or (profile.state.clues.size()==3 and not profile.state.key):return 0
-	for id in [1,3,4]:
-		if not id in profile.state.clues:return id
-	if profile.state.campaign and profile.state.solved_stations.size()<6:
-		var best=-1
-		var shortest=99
-		for id in range(1,9):
-			if not id in profile.state.solved_stations:
-				var distance=route_sides(id).size()
-				if distance<shortest:best=id;shortest=distance
-		return best
-	return 2
-
 func next_objective() -> String:
-	if profile.state.powered:return "00 の区画、西壁の隠された扉を探す。"
-	if profile.state.cipher and not profile.state.key:return "00 の暗号盤の下にある鍵を取る。"
-	if profile.state.clues.size()==3 and not profile.state.cipher:return "00 の北壁の暗号盤へ、○ → △ → □ の観測値を入力する。"
-	if profile.state.clues.size()<3:return "区画 %02d の観測器を校正し、数字を記録する。"%next_destination()
-	if profile.state.campaign and profile.state.solved_stations.size()<6:return "あと%d台の観測器を校正する。"%(6-profile.state.solved_stations.size())
-	return "02 / ◇ の北壁で鍵を使い、○ → □ → △ の順に回路をつなぐ。"
+	var state=profile.state
+	if state.powered:return "進路の記録に従い、00の西壁の隠された扉を探す。"
+	if int(state.room)==0 and int(state.route_index)==4:
+		return "北壁で ○ → △ → □ の暗号を解き、箱の下のキーを取る。" if not state.key else "進路の刻印に従い、次の区画へ進む。"
+	if int(state.room)>0 and not int(state.room) in state.solved_stations and state.campaign:
+		return "この部屋の観測器を校正する。現在 %d / 6台。"%state.solved_stations.size()
+	if int(state.room)==2 and not state.powered:
+		return "6台の校正とキーを確認し、北壁の回路を ○ → □ → △ につなぐ。"
+	return "扉の左の進路の記録を読み、対応する刻印の扉へ進む。"
 
-func route_sides(destination:int) -> Array:
-	var start=int(profile.state.room)
-	var queue=[[start,[]]]
-	var seen={start:true}
-	while not queue.is_empty():
-		var item=queue.pop_front()
-		if item[0]==destination:return item[1]
-		for side in range(4):
-			var other=neighbor(item[0],side)
-			if not seen.has(other):
-				seen[other]=true
-				queue.append([other,item[1]+[side]])
-	return []
-
-func route_to(destination:int) -> String:
-	var route=route_sides(destination)
-	return "この部屋" if route.is_empty() else " → ".join(route.map(func(i):return ["北","東","南","西"][i]))
+func show_route_record() -> void:
+	var task=Routes.task(profile.state)
+	var description=Routes.clue(profile.state)+"\n\n↶ は戻る扉。戻っても危険度は増えない。\n違う刻印の扉を開けると、同じ区画に戻り異変が強まる。"
+	if not task.is_empty():description+="\n\n"+task
+	var box=dialog("ROUTE / %02d"%(int(profile.state.route_index)+1),"進路の記録",description,"record")
+	button(box,"扉の位置を確認する",show_map)
+	button(box,"探索に戻る",resume_game,true)
 
 func show_map() -> void:
-	var description=next_objective()+"\n道順："+route_to(next_destination())+"\n外周を越えると反対側へ戻る。扉の区画番号は変わらない。"
-	var box=dialog("SURVEY / 区画案内","同じ景色の、つながり。",description,"journal")
-	var grid=GridContainer.new()
-	grid.columns=3
-	grid.add_theme_constant_override("h_separation",10)
-	grid.add_theme_constant_override("v_separation",10)
-	box.add_child(grid)
-	for id in range(9):
-		var known=id in profile.state.visits
-		var status="現在地" if int(profile.state.room)==id else ("校正済" if id in profile.state.solved_stations else ("訪問済" if known else "未訪問"))
-		var label=text_label("%02d  %s\n%s"%[id,Room.SYMBOLS[id] if known else "?",status],21)
-		label.custom_minimum_size=Vector2(180,74)
-		label.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-		grid.add_child(label)
+	var state=profile.state
+	var description="進路 %02d / %02d\n"%[int(state.route_index)+1,state.route_rooms.size()]+Routes.clue(state)
+	var back=Routes.back_side(state)
+	if back>=0:description+="\n戻る扉："+Routes.DIRECTIONS[back]+" / ↶（安全）"
+	if int(state.route_index)<state.route_rooms.size()-1:
+		var side=int(state.route_forward[int(state.route_index)])
+		description+="\n進む扉："+Routes.DIRECTIONS[side]+" / "+Routes.mark(state,side)
+	description+="\n\n"+next_objective()
+	if not Routes.task(state).is_empty():description+="\n"+Routes.task(state)
+	var box=dialog("ROUTE NOTES / 進路の記録","先へ進むか、引き返すか。",description,"journal")
+	var steps=[]
+	for i in range(state.route_rooms.size()):
+		steps.append("●" if i==int(state.route_index) else ("○" if i<=int(state.route_furthest) else "·"))
+	paragraph(box," ― ".join(steps),16)
+	paragraph(box,"誤った扉の先は同じ区画。遠くの別世界へ進んではいない。\n新しい順路へ進むと危険度 −2。装置の試行錯誤は自由。",16)
 	button(box,"観測記録へ",show_journal)
 	button(box,"探索に戻る",resume_game,true)
 
 func failure_busy() -> bool:
-	return bool(profile.state.get("dead",false)) or mode in ["hazard","death","failure_pause"]
+	return bool(profile.state.get("dead",false)) or bool(profile.state.get("route_pending_wrong",false)) or mode in ["hazard","death","failure_pause"]
 
-func register_failure(reason:String) -> bool:
-	if failure_busy() or mode in ["title","new","end","quitting"]:return false
-	if not Failure.mistake(profile.state,reason):return false
+func present_failure() -> void:
+	route_presenting=true
+	profile.state.route_pending_wrong=false
 	close_door(true)
+	route_presenting=false
 	# Persist the terminal state before showing the lethal animation.
 	save_game()
 	failure_return_mode=mode
@@ -1185,7 +1214,6 @@ func register_failure(reason:String) -> bool:
 	toast(Failure.WARNINGS[int(profile.state.danger)],6)
 	failure_sequence.start(self,int(profile.state.danger),int(profile.state.death_cause))
 	update_hud()
-	return true
 
 func apply_danger(delta:float) -> void:
 	if not is_instance_valid(danger_shade):return
@@ -1205,6 +1233,9 @@ func advance_failure(delta:float) -> void:
 			else:
 				failure_sequence.reset()
 				mode=failure_return_mode
+				if mode=="game":
+					build_room(int(profile.state.room))
+					sound.enter_space(int(profile.state.current_audio) if profile.state.danger>0 else -1,player)
 				if is_instance_valid(modal):modal.visible=true
 				hud.visible=mode=="game"
 				player.enabled=mode=="game"
@@ -1223,7 +1254,7 @@ func show_death() -> void:
 	danger_shade.color.a=0
 	toast_time=0
 	var cause=Failure.CAUSES[posmod(int(profile.state.death_cause),3)]
-	var description=cause+"。\n\n"+str(profile.state.last_failure)+"。\n誤答を重ねた結果、危険度が5に達した。\n\n鍵・校正・探索の進行は失われる。\n同じ謎に戻る。次は、確定する前に手掛かりとヒントを。"
+	var description=cause+"。\n\n"+str(profile.state.last_failure)+"。\n誤った扉を開け続け、危険度が5に達した。\n\n鍵・校正・探索の進行は失われる。\n同じ順路に戻る。次は、進路の記録と扉の刻印を確かめよう。"
 	var box=dialog("BOUNDARY REJECTED / %d 回目の死"%int(profile.state.deaths),"死亡",description,"death")
 	modal.get_child(0).color=Color(0.008,0.012,0.02,0.98)
 	var panel=box.get_parent()
@@ -1244,7 +1275,7 @@ func restart_after_death() -> void:
 	profile.retry_after_death()
 	mode="restart"
 	begin_game(false)
-	toast("最初の部屋に戻った。同じ謎に、覚えたことを生かそう。",8)
+	toast("最初の部屋に戻った。同じ順路で、覚えた刻印を生かそう。",8)
 
 func pause_failure() -> void:
 	if not mode in ["hazard","death"]:return
