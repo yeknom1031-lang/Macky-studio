@@ -1,0 +1,16 @@
+{
+  "passed": 8,
+  "failed": 0,
+  "results": [
+    "All six generated atlases decode offline from the single HTML",
+    "A broad dungeon and map overlay are playable with the timer paused while reading",
+    "Real keyboard pickup and E interaction unlock a shortcut",
+    "Reload and a new browser tab resume the same exact run including opened gates",
+    "Same-map retry preserves seed and new-layout retry changes it",
+    "All six location themes render distinct generated materials at dungeon size",
+    "Reshuffle option changes stage layout on each fresh attempt",
+    "No script errors or external network dependencies"
+  ],
+  "errors": [],
+  "requests": []
+}

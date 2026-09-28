@@ -32,11 +32,11 @@ async function routeTo(page, target) {
   const route = C.path(s.map, s.player, target).slice(1);
   for (const p of route) {
     for (const axis of ['x', 'y']) {
-      for (let tries = 0; tries < 5; tries++) {
+      for (let tries = 0; tries < 12; tries++) {
         s = await state(page); if (s.state !== 'playing') throw Error('Game ended before reaching target');
         const delta = p[axis] - s.player[axis]; if (Math.abs(delta) < .055) break;
         const key = axis === 'x' ? delta > 0 ? 'ArrowRight' : 'ArrowLeft' : delta > 0 ? 'ArrowDown' : 'ArrowUp';
-        await page.keyboard.down(key); await advance(page, Math.max(17, Math.round(Math.abs(delta) / 3.2 * 1000))); await page.keyboard.up(key);
+        await page.keyboard.down(key); await advance(page, Math.max(17, Math.round(Math.abs(delta) / s.speeds[key] * 1000))); await page.keyboard.up(key);
       }
     }
   }
@@ -50,7 +50,7 @@ async function routeTo(page, target) {
     assert.equal((await state(page)).screen, 'title'); await snap(page, '01-title'); assert.equal(requests.length, 0);
   });
   await check('Stage pages, area filters, all 48 stages and difficulty selection', async () => {
-    await click(page, 'ステージ選択', true); await advance(page, 32);
+    await click(page, 'ステージ選択', true); await page.locator('#map-variation').uncheck(); await advance(page, 32);
     assert.equal(await page.locator('.stage-card').count(), 6);
     await click(page, '次のページ'); await advance(page, 32); assert.ok(await page.locator('[data-stage="7"]').isVisible());
     await click(page, 'オフィス', true); await advance(page, 32); assert.ok(await page.locator('[data-stage="41"]').isVisible());
@@ -89,7 +89,7 @@ async function routeTo(page, target) {
   });
   await check('Clear record survives reload; replay resets exact seed and timers', async () => {
     const seed = (await state(page)).seed; await click(page, 'もう一度', true); await begin(page);
-    let s = await state(page); assert.equal(s.seed, seed); assert.ok(s.remaining > 59); assert.equal(s.waited, 0);
+    let s = await state(page); assert.equal(s.seed, seed); assert.ok(s.remaining > 119); assert.equal(s.waited, 0);
     await page.reload(); await advance(page, 40); s = await state(page); assert.ok(s.records['1-normal']); assert.equal(s.screen, 'title');
   });
   await check('Companion recruitment, yielding, and both characters rescued via real inputs', async () => {
@@ -101,17 +101,17 @@ async function routeTo(page, target) {
   });
   await check('Hard timeout, defeat route recap, retry and next-stage transitions', async () => {
     await click(page, 'ステージ選択', true); await click(page, 'HARD', true); await click(page, 'このステージで遊ぶ'); await begin(page);
-    assert.ok((await state(page)).remaining <= 30); await advance(page, 31000);
+    assert.ok((await state(page)).remaining <= 75); await advance(page, 76000);
     assert.equal((await state(page)).state, 'lost'); assert.ok(await page.locator('#recap').isVisible()); await snap(page, '08-game-over');
     await click(page, '同じマップで再挑戦'); await begin(page);
-    let s = await state(page); assert.ok(s.remaining > 29); await routeTo(page, s.toilets[1]); await page.keyboard.press('e'); await advance(page, 3200);
+    let s = await state(page); assert.ok(s.remaining > 74); await routeTo(page, s.toilets[1]); await page.keyboard.press('e'); await advance(page, 3200);
     assert.equal((await state(page)).state, 'won'); await click(page, '次のステージへ'); await begin(page); assert.equal((await state(page)).stageId, 2);
   });
   await check('Random map, practice mode and click-to-walk', async () => {
     await page.keyboard.press('Escape'); await click(page, 'タイトルへ', true); await click(page, '気ままにランダムマップ'); await begin(page);
     assert.equal((await state(page)).stageId, 0);
     await page.keyboard.press('Escape'); await click(page, 'タイトルへ', true); await click(page, 'あそびかた', true); await click(page, '練習してみる'); await begin(page);
-    let s = await state(page); assert.ok(s.remaining > 89); assert.ok(s.map.w < 20);
+    let s = await state(page); assert.ok(s.remaining > 89); assert.ok(s.map.w < 25);
     const box = await page.locator('#world').boundingBox(); const dest = { x: s.player.x + 1, y: s.player.y };
     await page.mouse.click(box.x + dest.x * s.camera.tile - s.camera.x, box.y + dest.y * s.camera.tile - s.camera.y); await advance(page, 450);
     assert.ok(C.distance((await state(page)).player, dest) < .15);

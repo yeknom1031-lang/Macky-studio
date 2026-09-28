@@ -7,57 +7,57 @@
     {
       "name": "Standalone file opens offline with title and no external requests",
       "passed": true,
-      "ms": 66
+      "ms": 72
     },
     {
       "name": "Stage pages, area filters, all 48 stages and difficulty selection",
       "passed": true,
-      "ms": 594
+      "ms": 746
     },
     {
       "name": "Help and settings dialogs have keyboard focus containment",
       "passed": true,
-      "ms": 233
+      "ms": 244
     },
     {
       "name": "Keyboard movement, pause/resume and automatic blur pause preserve time",
       "passed": true,
-      "ms": 1217
+      "ms": 1609
     },
     {
       "name": "Occupied toilet: wait, cancel by walking, wait for opening and finish",
       "passed": true,
-      "ms": 11554
+      "ms": 32508
     },
     {
       "name": "Clear record survives reload; replay resets exact seed and timers",
       "passed": true,
-      "ms": 95
+      "ms": 565
     },
     {
       "name": "Companion recruitment, yielding, and both characters rescued via real inputs",
       "passed": true,
-      "ms": 6428
+      "ms": 18317
     },
     {
       "name": "Hard timeout, defeat route recap, retry and next-stage transitions",
       "passed": true,
-      "ms": 13555
+      "ms": 42383
     },
     {
       "name": "Random map, practice mode and click-to-walk",
       "passed": true,
-      "ms": 5888
+      "ms": 5877
     },
     {
       "name": "Mobile title, stage selection, gameplay and touch controls fit without overflow",
       "passed": true,
-      "ms": 419
+      "ms": 502
     },
     {
       "name": "Blocked browser storage does not prevent playing",
       "passed": true,
-      "ms": 103
+      "ms": 161
     },
     {
       "name": "No JavaScript errors and no external network dependencies",

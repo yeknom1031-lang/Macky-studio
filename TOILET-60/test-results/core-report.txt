@@ -1,20 +1,29 @@
-✔ 48 authored seeds and all difficulty settings produce distinct, repeatable layouts (311.083792ms)
-✔ 500 random seeds per difficulty always connect every toilet and preserve a feasible finish (1663.569333ms)
-✔ every one of the 144 stage/difficulty combinations can be won using movement and interaction (332.477ms)
-✔ wall collisions, normalized diagonal movement and sprint consumption (4.133875ms)
-✔ occupied toilet clues transition, waiting can be cancelled and then auto-enters (3.281292ms)
-✔ three-second relief wins at boundary but loses when less time remains (6.542666ms)
-✔ pausing freezes time, NPCs and player; finished games never update (7.732083ms)
-✔ companion bonus cannot be farmed; yield completes both rescues without a random loss (6.27725ms)
-✔ staff reveals locations at a one-time 2 second cost including fatal boundary (2.736875ms)
-✔ walking near shoppers is safe, sprint collisions have a cooldown (1.426541ms)
-✔ click movement refuses hidden destinations, follows visible paths and pauses safely (1.546458ms)
-✔ practice generates a small connected map; rebuilding a seed resets all events (1.090708ms)
-ℹ tests 12
+✔ 48 authored seeds and all difficulty settings produce distinct, repeatable layouts (919.821292ms)
+✔ 500 random seeds per difficulty always connect every toilet and preserve a feasible finish (4799.193208ms)
+✔ every one of the 144 stage/difficulty combinations can be won using movement and interaction (2229.263042ms)
+✔ wall collisions, normalized diagonal movement and sprint consumption (9.747708ms)
+✔ occupied toilet clues transition, waiting can be cancelled and then auto-enters (11.064291ms)
+✔ three-second relief wins at boundary but loses when less time remains (13.419417ms)
+✔ pausing freezes time, NPCs and player; finished games never update (28.243709ms)
+✔ companion bonus cannot be farmed; yield completes both rescues without a random loss (29.455ms)
+✔ staff reveals locations at a one-time 2 second cost including fatal boundary (6.343958ms)
+✔ walking near shoppers is safe, sprint collisions have a cooldown (3.482209ms)
+✔ click movement refuses hidden destinations, follows visible paths and pauses safely (4.033083ms)
+✔ practice generates a small connected map; rebuilding a seed resets all events (1.680541ms)
+✔ dungeons are over seven times the old area, and contain 130 nodes on Normal (40.616709ms)
+✔ gates only add shortcuts; all rooms and every feature are reachable before unlocking (241.406667ms)
+✔ clock, keys, shoes and medals collect once, with capped time and real speed change (4.380208ms)
+✔ locked shortcuts consume one key or respond to their numbered switch (9.161125ms)
+✔ mystery lockers have deterministic rewards; benches and maps are one-use (7.066541ms)
+✔ elevators move the player and companion, respect cooldown, and stop click paths (5.586875ms)
+✔ wet floors penalize sprinting but not walking; moving walkways change speed by direction (3.91625ms)
+✔ resume restores used items, opened gates, explored map, position and exact remaining time (18.566333ms)
+✔ invalid, expired or old saves fail closed without breaking a fresh game (10.483625ms)
+ℹ tests 21
 ℹ suites 0
-ℹ pass 12
+ℹ pass 21
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 2387.654583
+ℹ duration_ms 8114.359833

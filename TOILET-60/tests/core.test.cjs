@@ -8,7 +8,7 @@ function walkRoute(game, goal, sprint = false) {
     let steps = 0;
     while (C.distance(game.player, p) > .035 && game.state === 'playing') {
       const dx = p.x - game.player.x, dy = p.y - game.player.y, d = Math.hypot(dx, dy);
-      game.update(Math.min(.02, d / (sprint ? 5.1 : 3.2)), { x: dx / d, y: dy / d, sprint });
+      game.update(Math.min(.02, d / game.speed(sprint,dx,dy)), { x: dx / d, y: dy / d, sprint });
       assert.ok(++steps < 200, 'Player can follow a walkable route');
     }
   }
@@ -20,7 +20,7 @@ test('48 authored seeds and all difficulty settings produce distinct, repeatable
     for (const s of C.STAGES) {
       const a = C.generate(s.seed, d, s.theme), b = C.generate(s.seed, d, s.theme);
       assert.deepEqual(a, b); shapes.add(JSON.stringify(a.grid));
-      assert.equal(a.toilets.length, 4);
+      assert.equal(a.toilets.length, 8);
       assert.ok(C.floor(a, Math.floor(a.start.x), Math.floor(a.start.y)));
       for (const t of a.toilets) assert.ok(C.path(a, a.start, t).length > 0);
       const safe = a.toilets[a.safeId], route = C.path(a, a.start, safe);
@@ -76,7 +76,7 @@ test('three-second relief wins at boundary but loses when less time remains', ()
 test('pausing freezes time, NPCs and player; finished games never update', () => {
   const g = new C.Game(); g.paused = true; const initial = JSON.stringify(g);
   g.update(20, { x: 1 }); g.interact(); assert.equal(JSON.stringify(g), initial);
-  g.paused = false; g.update(100); assert.equal(g.state, 'lost');
+  g.paused = false; g.update(g.limit+1); assert.equal(g.state, 'lost');
   const ended = JSON.stringify(g); g.update(100, { x: 1 }); g.interact(); assert.equal(JSON.stringify(g), ended);
 });
 test('companion bonus cannot be farmed; yield completes both rescues without a random loss', () => {
@@ -105,6 +105,6 @@ test('click movement refuses hidden destinations, follows visible paths and paus
   g.paused = true; assert.equal(g.setDestination(g.player), false);
 });
 test('practice generates a small connected map; rebuilding a seed resets all events', () => {
-  const g = new C.Game({ practice: true, difficulty: 'easy' }); assert.equal(g.limit, 90); assert.ok(g.map.w < 20); assert.equal(g.map.shoppers.length, 0);
+  const g = new C.Game({ practice: true, difficulty: 'easy' }); assert.equal(g.limit, 90); assert.ok(g.map.w < 25); assert.equal(g.map.shoppers.length, 0);
   g.update(10); const newGame = new C.Game(g.options); assert.equal(newGame.remaining, 90); assert.equal(newGame.elapsed, 0); assert.equal(newGame.waited, 0);
 });
