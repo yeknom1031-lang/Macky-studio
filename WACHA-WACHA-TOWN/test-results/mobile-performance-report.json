@@ -1,0 +1,51 @@
+{
+  "mobile": "passed; no overlapping text; map fills portrait viewport; fit works",
+  "layout": {
+    "title": {
+      "top": 140,
+      "bottom": 231.796875,
+      "left": 27.296875,
+      "right": 362.703125
+    },
+    "lead": {
+      "top": 249.796875,
+      "bottom": 319.078125,
+      "left": 27.296875,
+      "right": 362.703125
+    },
+    "copy": {
+      "top": 331.078125,
+      "bottom": 372.859375,
+      "left": 27.296875,
+      "right": 362.703125
+    },
+    "stats": {
+      "top": 392.859375,
+      "bottom": 438.859375,
+      "left": 27.296875,
+      "right": 362.703125
+    },
+    "button": {
+      "top": 458.859375,
+      "bottom": 524.859375,
+      "left": 27.296875,
+      "right": 362.703125
+    },
+    "paper": {
+      "top": 68,
+      "bottom": 658,
+      "left": 0,
+      "right": 390
+    },
+    "width": 390,
+    "scroll": 390
+  },
+  "performance": {
+    "frames": 120,
+    "fps": 60.001008420309596,
+    "drawFps": 30.252609287551056,
+    "p95FrameMs": 16.799999999999727,
+    "count": 600,
+    "rendered": 600
+  }
+}

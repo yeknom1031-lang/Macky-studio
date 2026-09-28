@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7f3e9"><title>わちゃわちゃタウン — 600人の中の、きみを探そう。</title><style>/*STYLE*/</style></head>
+<body>
+<header class="header"><button class="brand" data-action="home" aria-label="わちゃわちゃタウン ホーム"><span class="brand-icon">⌕</span><span>わちゃわちゃ<span class="brand-small">TOWN</span></span></button><nav aria-label="メイン"><button data-action="stages">7つの街</button><button data-action="collection">住人ずかん</button><button data-action="help">あそびかた</button></nav><span class="header-tag">ちいさな街の、さがしもの。</span></header>
+<main id="main">
+<section id="home" class="screen home-screen">
+ <div class="hero-art" role="img" aria-label="たくさんの住人が集まる、かわいいお祭りの街"></div>
+ <div class="hero-paper"><span class="eyebrow">A LITTLE HIDE & SEEK ADVENTURE</span><div class="small-flower">✳</div><h1>わちゃわちゃ<br><span>タウン</span><i>！</i></h1><p class="hero-lead">600人の中の、<br>きみを探そう。</p><p class="hero-copy">おしゃべりも、追いかけっこも。<br>にぎやかな7つの街で、3分間の人さがし。</p><div class="hero-stats"><span><strong>600</strong>人が暮らす</span><span><strong>320</strong>種類の住人</span><span><strong>7</strong>つの街</span></div><button class="primary hero-cta" data-action="play">さがしにいこう <span>↗</span></button><p class="hero-foot">クリック・タッチでつかまえよう</p></div>
+ <div class="postcard"><span class="tiny">TODAY'S LITTLE ADVENTURE</span><strong>「いた！」のあとも、目を離さないで。</strong><span>みんな、ずっと動いてる。</span></div>
+</section>
+<section id="stages" class="screen page hidden"><div class="page-heading"><div><span class="eyebrow">CHOOSE YOUR LITTLE TOWN</span><h2>今日は、どの街へ？</h2><p>どの街も600人。見つける時間は、3分間。</p></div><span class="progress-stamp" id="progress-label">0 / 7<br>みつけた！</span></div><div id="stage-grid" class="stage-grid"></div></section>
+<section id="collection" class="screen page hidden"><div class="page-heading"><div><span class="eyebrow">MEET THE NEIGHBORS</span><h2>320種類の、すれ違い。</h2><p>16人の住人 × 20通りの衣装カラー。街では一人ずつ歩いています。</p></div><span class="progress-stamp">320<br>LOOKS</span></div><div id="character-tabs" class="character-tabs" aria-label="住人の種類"></div><div id="collection-grid" class="collection-grid"></div></section>
+<section id="game" class="screen game-screen hidden">
+ <div class="game-top"><button class="text-button" data-action="exit">← 街をえらぶ</button><span id="stage-title"></span><span class="live-count"><i></i>600人が暮らす街</span></div>
+ <div class="game-hud"><div class="target-box"><canvas id="target-portrait" width="96" height="108" aria-label="探す住人の見本"></canvas><div><span class="eyebrow">この子をさがして！</span><strong id="target-name"></strong><small id="target-color"></small></div></div><div class="clock-box"><span class="eyebrow">TIME LEFT</span><strong id="timer">03:00</strong><div class="time-track"><div id="time-fill"></div></div></div><div class="hud-buttons"><button class="soft-button" id="hint-button" data-action="hint">⌕ ヒント <small>−10秒・1回</small></button><button class="icon-button" data-action="pause" aria-label="一時停止">Ⅱ</button></div></div>
+ <div id="world-wrap" class="world-wrap"><img id="world-backdrop" alt="" draggable="false"><canvas id="world" tabindex="0" aria-label="600人が動く街。ドラッグで移動、ホイールやボタンで拡大。見本と同じ住人をタッチしてください。"></canvas><canvas id="life-overlay" aria-hidden="true"></canvas><div class="world-label"><span id="map-number">01</span><span id="map-english"></span></div><div class="zoom-controls"><button data-action="zoom-out" aria-label="縮小">−</button><button data-action="fit" id="zoom-label" aria-label="全体表示に戻す">100%</button><button data-action="zoom-in" aria-label="拡大">＋</button></div><div id="toast" class="toast" role="status"></div></div>
+ <div class="life-strip"><div><span class="eyebrow">街のいま</span><span id="life-feed">お店も遊び場も、にぎわっています。</span></div><div id="life-counts"></div></div>
+ <div class="game-bottom"><span><b>タッチ</b> でつかまえる <i>·</i> <b>ドラッグ</b> で街をうごかす <i>·</i> <b>＋ / −</b> で拡大・縮小</span><span>お手つきは −3秒</span></div>
+</section>
+</main>
+<footer id="footer"><span>WACHA WACHA TOWN</span><span>ひとりひとりに、小さなおさんぽ。</span><span>✳ MADE FOR CURIOUS EYES</span></footer>
+<div id="loading" class="loading"><div class="loading-flower">✳</div><strong>街の支度をしています</strong><span id="load-progress">住人たちが集まっています…</span><progress id="load-bar" max="320" value="0"></progress></div>
+<dialog id="dialog" aria-labelledby="dialog-title"><div id="dialog-body"></div></dialog>
+<script>/*ASSETS*/</script><script>/*CORE*/</script><script>/*LIFE*/</script><script>/*RENDER*/</script><script>/*APP*/</script>
+</body></html>

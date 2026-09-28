@@ -1,0 +1,46 @@
+{
+  "results": [
+    {
+      "name": "Offline standalone home opens with all 320 cached sprite variants",
+      "passed": true
+    },
+    {
+      "name": "All seven distinct scenes are selectable",
+      "passed": true
+    },
+    {
+      "name": "Collection displays all 16 archetypes and 20 color variants",
+      "passed": true
+    },
+    {
+      "name": "Scene 1 starts with exactly 600 moving people and 180-second limit",
+      "passed": true
+    },
+    {
+      "name": "Zoom, pan, fit and pause/resume work",
+      "passed": true
+    },
+    {
+      "name": "Wrong target and hint apply penalties, correct target clears and saves result",
+      "passed": true
+    },
+    {
+      "name": "Every other scene renders 600 residents; next/retry navigation works",
+      "passed": true
+    },
+    {
+      "name": "Timer expires in browser at three minutes, and result offers restart",
+      "passed": true
+    },
+    {
+      "name": "Record persists after reload",
+      "passed": true
+    },
+    {
+      "name": "Mobile home and gameplay fit screen with touch zoom controls",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "externalRequests": []
+}
