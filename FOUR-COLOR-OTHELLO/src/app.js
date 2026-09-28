@@ -1,6 +1,7 @@
 import { initialBoard, PLAYERS, BOARD_SIZES, legalMoves, playMove, nextTurn, scores, winners } from './engine.js';
 import { chooseAIMove, DIFFICULTIES } from './ai.js';
-import { CATALOG, normalizeProfile, ownsItem, purchaseItem, equipItem, matchReward, awardMatch, playerColors } from './progression.js';
+import { canResign, endByResignation } from './match.js';
+import { CATALOG, normalizeProfile, ownsItem, purchaseItem, equipItem, matchReward, awardMatch, recordResignation, playerColors } from './progression.js';
 
 const $ = s => document.querySelector(s);
 const ui = { home: $('#home'), game: $('#game'), board: $('#board'), turn: $('#turn'), scores: $('#scores'), notice: $('#notice'), live: $('#live'), result: $('#result-dialog') };
@@ -19,7 +20,11 @@ const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const piece = color => `<i aria-hidden="true" class="disc ${color}"></i>`;
 const stone = player => piece(state.colors[player].id);
 const nameOf = player => state.colors[player].name;
-const active = run => run === epoch && state.phase !== 'home';
+const active = run => run === epoch && !['home', 'ended'].includes(state.phase);
+function cancelRun() {
+  ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
+  ui.board.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel());
+}
 const isPaused = () => state.phase !== 'home' && !!document.querySelector('dialog[open]');
 function persist() {
   try { localStorage.setItem(STORAGE.prefs, JSON.stringify(preferences)); localStorage.setItem(STORAGE.profile, JSON.stringify(profile)); $('#storage-message').hidden = true; storageWorking = true; }
@@ -27,12 +32,14 @@ function persist() {
 }
 function wake() { if (!isPaused()) { const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve()); } updateInputState(); }
 async function ready(run) { while (active(run) && isPaused()) await new Promise(resolve => resumeWaiters.push(resolve)); return active(run); }
-function openDialog(id) { if (!$(id).open) $(id).showModal(); updateInputState(); }
+function openDialog(id) { if (!$(id).open) { $(id).showModal(); $(id).scrollTop = 0; } updateInputState(); }
 function closeDialogs() { document.querySelectorAll('dialog[open]').forEach(d => d.close()); }
 function announce(text) { ui.live.textContent = text; }
 function renderHome() {
   const palette = playerColors(profile.equippedColor).colors;
-  $('#home-board').innerHTML = initialBoard().filter(v => v !== null).map(p => `<span class="demo-cell">${piece(palette[p].id)}</span>`).join('');
+  const rack = p => `<div class="rack rack-${['top','right','bottom','left'][p]} ${palette[p].id}">${'<i class="reserve"><i class="reserve-face"></i></i>'.repeat(48)}</div>`;
+  $('#home-board').innerHTML = [0,1,2,3].map(rack).join('') + `<div class="board hero-grid">${initialBoard().map(p => `<span class="cell">${p === null ? '' : piece(palette[p].id)}</span>`).join('')}</div>`;
+  $('#home-theme-name').textContent = CATALOG.find(item => item.id === profile.equippedBoard).name;
   $('#home-board').dataset.theme = profile.equippedBoard;
   document.querySelectorAll('.coin-balance').forEach(el => { el.textContent = `${profile.coins.toLocaleString('ja-JP')} コイン`; });
   $('#home-record').textContent = profile.stats.played ? `${profile.stats.wins} 勝 · ${profile.stats.draws} 引き分け · ${profile.stats.played} 対局` : '好きな色で、じっくり一局。';
@@ -56,7 +63,7 @@ function buildBoard() {
     } ui.board.append(line);
   }
   cells = [...ui.board.querySelectorAll('.cell')];
-  document.querySelectorAll('.rack').forEach((rack, p) => { rack.className = `rack rack-${['top','right','bottom','left'][p]} ${state.colors[p].id}`; rack.innerHTML = '<i class="reserve"><i class="reserve-face"></i></i>'.repeat(24); });
+  $('#board-shell').querySelectorAll('.rack').forEach((rack, p) => { rack.className = `rack rack-${['top','right','bottom','left'][p]} ${state.colors[p].id}`; rack.innerHTML = '<i class="reserve"><i class="reserve-face"></i></i>'.repeat(48); });
   $('#board-shell').dataset.theme = state.theme;
 }
 function setFocus(index, focus) { if (cells[focusIndex]) cells[focusIndex].tabIndex = -1; focusIndex = index; cells[index].tabIndex = 0; if (focus) cells[index].focus({ preventScroll: true }); }
@@ -68,12 +75,13 @@ function renderStatus() {
   const counts = scores(state.board), p = state.player;
   const who = state.mode === 'solo' ? (p === state.human ? 'あなた' : state.phase === 'thinking' ? 'AI・考え中' : 'AI') : '';
   ui.turn.innerHTML = `${stone(p)}<span>${nameOf(p)}の番${who ? `<small class="turn-who">${who}</small>` : ''}</span><span class="menu-chevron" aria-hidden="true">⌄</span>`;
+  ui.turn.className = `turn ${state.colors[p].id}`;
   ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。対局メニューを開く`);
-  ui.scores.innerHTML = PLAYERS.map(p => `<div class="score" data-player="${p.id}" aria-label="${nameOf(p.id)} ${counts[p.id]}枚">${stone(p.id)}<span><span class="score-name">${nameOf(p.id)}</span> <b>${counts[p.id]}</b><small>枚</small></span></div>`).join(''); updateInputState();
+  ui.scores.innerHTML = PLAYERS.map(p => `<div class="score ${state.colors[p.id].id}${p.id === state.player ? ' is-current' : ''}" data-player="${p.id}" aria-label="${nameOf(p.id)} ${counts[p.id]}枚">${stone(p.id)}<span><span class="score-name">${nameOf(p.id)}</span> <b>${counts[p.id]}</b><small>枚</small></span></div>`).join(''); updateInputState();
 }
 function updateInputState() {
   ui.game.dataset.phase = state.phase;
-  ui.board.setAttribute('aria-busy', String(['animating', 'thinking'].includes(state.phase)));
+  ui.board.setAttribute('aria-busy', String(['intro', 'animating', 'thinking'].includes(state.phase)));
   const canPlay = state.phase === 'playing' && !isPaused();
   const hints = new Set(canPlay && preferences.hints ? legalMoves(state.board, state.player) : []);
   cells.forEach((cell, i) => { cell.setAttribute('aria-disabled', String(!canPlay || state.board[i] !== null)); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', 'ここに置けます'); else cell.removeAttribute('aria-description'); });
@@ -139,7 +147,11 @@ async function takeAITurn(run) {
 }
 function finish() {
   if (state.phase === 'ended') return;
-  state.phase = 'ended'; hideNotice(); renderStatus();
+  state.phase = 'ended'; state.ending = 'completed'; hideNotice(); renderStatus();
+  const humanWon = winners(state.board).includes(state.human), draw = winners(state.board).length > 1;
+  const outcome = state.mode === 'friends' ? (draw ? 'draw' : 'win') : humanWon ? (draw ? 'draw' : 'win') : 'loss';
+  decorateResult(outcome);
+  $('#result-context').textContent = '最終スコア';
   const counts = scores(state.board), winning = winners(state.board), label = winning.map(nameOf).join('・');
   $('#result-title').textContent = winning.length === 1 ? `${label}の勝ち！` : `${label}の引き分け！`;
   $('#result-scores').innerHTML = [...PLAYERS].sort((a, b) => counts[b.id] - counts[a.id]).map(p => `<div class="result-row${winning.includes(p.id) ? ' winner' : ''}">${stone(p.id)}<span>${nameOf(p.id)}${state.mode === 'solo' && p.id === state.human ? '<small>（あなた）</small>' : ''}</span><b>${counts[p.id]}<small>枚</small></b></div>`).join('');
@@ -149,16 +161,43 @@ function finish() {
   $('#result-reward').textContent = state.mode === 'friends' ? 'みんなで対戦、ありがとう！' : awarded.earned ? `${winning.length > 1 ? '引き分け' : '勝利'}ボーナス ＋${awarded.earned} コイン！　合計 ${profile.coins} コイン` : `次の一局で勝利をめざそう！　所持 ${profile.coins} コイン`;
   openDialog('#result-dialog'); announce(`${$('#result-title').textContent} ${$('#result-reward').textContent}`);
 }
+function decorateResult(outcome) {
+  ui.result.dataset.outcome = outcome;
+  $('#result-eyebrow').textContent = { win:'VICTORY', draw:'DRAW', loss:'MATCH FINISHED', resigned:'RESIGNED' }[outcome];
+  const flag = '<path d="M14 34V8m0 1c8-7 12 7 20 0v16c-8 7-12-7-20 0M9 36h10"/>';
+  const trophy = '<path d="M15 8h18v9c0 8-4 12-9 12s-9-4-9-12V8Zm0 3H8v6c0 5 4 8 9 8m16-14h7v6c0 5-4 8-9 8M24 29v8m-8 2h16"/>';
+  $('#result-symbol').innerHTML = `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${outcome === 'resigned' ? flag : trophy}</svg>`;
+}
+function resignGame() {
+  const ended = endByResignation(state);
+  if (!ended) { $('#resign-dialog').close(); return; }
+  cancelRun(); state = ended; hideNotice(); $('#match-intro').hidden = true; closeDialogs();
+  cells.forEach((_, i) => updateCell(i)); renderStatus();
+  if (storageWorking) profile = normalizeProfile(readSave(STORAGE.profile) ?? profile);
+  profile = recordResignation(profile, state).profile; persist(); renderHome(); decorateResult('resigned');
+  $('#result-title').textContent = `${nameOf(state.resigned)}が降参しました`;
+  $('#result-context').textContent = '降参時の枚数（最終順位ではありません）';
+  const counts = scores(state.board);
+  $('#result-scores').innerHTML = PLAYERS.map(p => `<div class="result-row">${stone(p.id)}<span>${nameOf(p.id)}${p.id === state.resigned ? '<small>（降参）</small>' : ''}</span><b>${counts[p.id]}<small>枚</small></b></div>`).join('');
+  $('#result-reward').textContent = state.mode === 'solo' ? '負けとして１対局を記録しました。コインは増減しません。' : 'この対局を終了しました。コインは増減しません。';
+  openDialog('#result-dialog'); announce(`${nameOf(state.resigned)}が降参しました。対局終了です。`);
+}
 function startGame(config = lastConfig) {
-  ++epoch; hideNotice(); closeDialogs();
+  cancelRun(); hideNotice(); closeDialogs();
   const palette = playerColors(config.color, config.mode); lastConfig = { ...config };
   state = { ...config, ...palette, id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`, board: initialBoard(config.size), player: 0, phase: 'playing' };
   ui.home.hidden = true; ui.game.hidden = false; document.body.classList.add('playing');
-  buildBoard(); cells.forEach((_, i) => updateCell(i)); beginTurn(epoch); wake(); setFocus(focusIndex, true); announce(`ゲーム開始。${nameOf(0)}の番です。`);
+  buildBoard(); cells.forEach((_, i) => updateCell(i));
+  if (preferences.reducedMotion) { $('#match-intro').hidden = true; beginTurn(epoch); }
+  else { state.phase = 'intro'; renderStatus(); $('#intro-pieces').innerHTML = [0,1,2,3].map(stone).join(''); $('#match-intro').hidden = false; void enterGame(epoch); }
+  wake(); setFocus(focusIndex, true); announce(`ゲーム開始。${nameOf(0)}の番です。`);
   if (location.hash !== '#play') history.pushState(null, '', '#play');
 }
+async function enterGame(run) {
+  await pause(1000); if (!await ready(run)) return; $('#match-intro').hidden = true; beginTurn(run);
+}
 function goHome() {
-  ++epoch; state.phase = 'home'; hideNotice(); closeDialogs(); wake();
+  cancelRun(); state.phase = 'home'; $('#match-intro').hidden = true; hideNotice(); closeDialogs(); wake();
   ui.home.hidden = false; ui.game.hidden = true; document.body.classList.remove('playing'); renderHome();
   if (location.hash) history.replaceState(null, '', location.pathname + location.search); $('#start').focus({ preventScroll: true });
 }
@@ -176,7 +215,7 @@ function setupNotes() {
   $('#color-note').textContent = `あなたは${selected.name}。${ordinal}に打ちます。新しい色はショップで増やせます。`;
   $('#setup-reward').textContent = setupMode === 'solo' ? `勝つと ${matchReward(difficulty, size)} コイン。最多で引き分けると半分。` : '赤 → 青 → 黄 → 緑の順に、みんなで交代します。';
 }
-function syncSettings() { for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
+function syncSettings() { document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
 function renderShop() {
   renderHome();
   for (const kind of ['board', 'color']) {
@@ -209,7 +248,13 @@ window.addEventListener('hashchange', () => { if (location.hash !== '#play' && s
 ui.result.addEventListener('cancel', event => { event.preventDefault(); goHome(); });
 for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => openDialog(`#${name}-dialog`));
 $('#shop-open').addEventListener('click', () => { renderShop(); $('#shop-message').textContent = ''; openDialog('#shop-dialog'); });
-ui.turn.addEventListener('click', () => { $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : '4人で交代'} · ${state.size} × ${state.size}`; openDialog('#menu-dialog'); });
+ui.turn.addEventListener('click', () => { $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : '4人で交代'} · ${state.size} × ${state.size}`; openDialog('#menu-dialog'); });
+$('#resign-open').addEventListener('click', () => {
+  if (!canResign(state)) return;
+  $('#resign-description').textContent = state.mode === 'solo' ? `${nameOf(state.human)}のあなたが降参し、負けとして１対局を記録します。コインは増減しません。` : `${nameOf(state.player)}が降参し、４人全員のこの対局を終了します。途中の枚数で勝者は決めません。`;
+  openDialog('#resign-dialog');
+});
+$('#resign-confirm').addEventListener('click', resignGame);
 $('#game-rules').addEventListener('click', () => openDialog('#rules-dialog')); $('#game-settings').addEventListener('click', () => openDialog('#settings-dialog'));
 document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
 document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', wake));
@@ -230,7 +275,7 @@ $('#save-file').addEventListener('change', async event => {
   } catch (error) { $('#save-message').textContent = `読み込めませんでした。${error instanceof SyntaxError ? 'JSON形式のセーブデータを選んでください。' : error.message}`; }
   event.target.value = '';
 });
-function snapshot() { return { phase: state.phase, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
+function snapshot() { return { phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
 function registerTools() {
   const context = document.modelContext; if (!context?.registerTool) return;
   const lifecycle = new AbortController(); window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });
