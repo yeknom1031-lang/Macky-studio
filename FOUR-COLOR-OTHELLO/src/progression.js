@@ -59,6 +59,20 @@ export function playerColors(colorId, mode = 'solo') {
   return { colors, human: selected.seat };
 }
 
+// Human color and seat are independent draws. Player IDs still follow 0 → 3,
+// so rule, AI and reward calculations do not depend on a particular color.
+export function randomSoloLineup(value, random = Math.random) {
+  const profile = normalizeProfile(value);
+  const pick = length => Math.min(length - 1, Math.max(0, Math.floor(random() * length)));
+  const selectedId = profile.ownedColors[pick(profile.ownedColors.length)];
+  const selected = CATALOG.find(i => i.id === selectedId);
+  const human = pick(4);
+  const opponents = CATALOG.filter(i => i.kind === 'color' && i.price === 0 && i.id !== selected.id);
+  for (let i = opponents.length - 1; i > 0; i--) { const j = pick(i + 1); [opponents[i], opponents[j]] = [opponents[j], opponents[i]]; }
+  const colors = Array.from({ length:4 }, (_,seat) => ({ ...(seat === human ? selected : opponents.shift()), seat }));
+  return { human, colors };
+}
+
 export function recordResignation(value, match) {
   const profile = normalizeProfile(value);
   if (!match || match.mode !== 'solo' || match.phase !== 'ended' || match.ending !== 'resigned'

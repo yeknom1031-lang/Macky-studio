@@ -1,28 +1,31 @@
 import { initialBoard, PLAYERS, BOARD_SIZES, legalMoves, playMove, nextTurn, scores, winners } from './engine.js';
 import { chooseAIMove, DIFFICULTIES } from './ai.js';
 import { canResign, endByResignation } from './match.js';
-import { CATALOG, normalizeProfile, ownsItem, purchaseItem, equipItem, matchReward, awardMatch, recordResignation, playerColors } from './progression.js';
+import { CATALOG, normalizeProfile, ownsItem, purchaseItem, equipItem, matchReward, awardMatch, recordResignation, playerColors, randomSoloLineup } from './progression.js';
+
+import { createStoneAudio } from './audio.js';
 
 const $ = s => document.querySelector(s);
 const ui = { home: $('#home'), game: $('#game'), board: $('#board'), turn: $('#turn'), scores: $('#scores'), notice: $('#notice'), live: $('#live'), result: $('#result-dialog') };
 const STORAGE = { prefs: 'four-color-othello.preferences', profile: 'four-color-othello.profile' };
 function normalizePreferences(raw = {}) {
   raw = raw && typeof raw === 'object' ? raw : {};
-  return { sound: typeof raw.sound === 'boolean' ? raw.sound : true, reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : matchMedia('(prefers-reduced-motion: reduce)').matches, hints: raw.hints === true, difficulty: Object.hasOwn(DIFFICULTIES, raw.difficulty) ? raw.difficulty : 'normal', size: BOARD_SIZES.includes(raw.size) ? raw.size : 8 };
+  return { volume: typeof raw.volume === 'number' && Number.isFinite(raw.volume) ? Math.min(1,Math.max(0,raw.volume)) : .75, sound: typeof raw.sound === 'boolean' ? raw.sound : true, reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : matchMedia('(prefers-reduced-motion: reduce)').matches, hints: raw.hints === true, difficulty: Object.hasOwn(DIFFICULTIES, raw.difficulty) ? raw.difficulty : 'normal', size: BOARD_SIZES.includes(raw.size) ? raw.size : 8 };
 }
 function readSave(key) { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } }
 let preferences = normalizePreferences(readSave(STORAGE.prefs));
 let profile = normalizeProfile(readSave(STORAGE.profile));
 let state = { board: initialBoard(), player: 0, phase: 'home', mode: 'solo', size: 8, human: 0, colors: playerColors('red').colors };
+const stoneAudio = createStoneAudio(() => preferences, () => new (window.AudioContext || window.webkitAudioContext)());
 let storageWorking = true;
-let epoch = 0, cells = [], focusIndex = 0, noticeTimer, audio, setupMode = 'solo', lastConfig, resumeWaiters = [];
+let epoch = 0, cells = [], focusIndex = 0, noticeTimer, setupMode = 'solo', lastConfig, resumeWaiters = [];
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const piece = color => `<i aria-hidden="true" class="disc ${color}"></i>`;
 const stone = player => piece(state.colors[player].id);
 const nameOf = player => state.colors[player].name;
 const active = run => run === epoch && !['home', 'ended'].includes(state.phase);
 function cancelRun() {
-  ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
+  stoneAudio.stop(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
   ui.board.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel());
 }
 const isPaused = () => state.phase !== 'home' && !!document.querySelector('dialog[open]');
@@ -42,7 +45,7 @@ function renderHome() {
   $('#home-theme-name').textContent = CATALOG.find(item => item.id === profile.equippedBoard).name;
   $('#home-board').dataset.theme = profile.equippedBoard;
   document.querySelectorAll('.coin-balance').forEach(el => { el.textContent = `${profile.coins.toLocaleString('ja-JP')} コイン`; });
-  $('#home-record').textContent = profile.stats.played ? `${profile.stats.wins} 勝 · ${profile.stats.draws} 引き分け · ${profile.stats.played} 対局` : '好きな色で、じっくり一局。';
+  $('#home-record').textContent = profile.stats.played ? `${profile.stats.wins} 勝 · ${profile.stats.draws} 引き分け · ${profile.stats.played} 対局` : '次の色は、対局が始まるお楽しみ。';
 }
 function buildBoard() {
   const n = state.size; focusIndex = (n / 2 - 1) * n + n / 2 - 1;
@@ -73,11 +76,12 @@ function updateCell(index) {
 }
 function renderStatus() {
   const counts = scores(state.board), p = state.player;
+  const previous = [...ui.scores.querySelectorAll('.score b')].map(el => Number(el.textContent));
   const who = state.mode === 'solo' ? (p === state.human ? 'あなた' : state.phase === 'thinking' ? 'AI・考え中' : 'AI') : '';
   ui.turn.innerHTML = `${stone(p)}<span>${nameOf(p)}の番${who ? `<small class="turn-who">${who}</small>` : ''}</span><span class="menu-chevron" aria-hidden="true">⌄</span>`;
   ui.turn.className = `turn ${state.colors[p].id}`;
   ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。対局メニューを開く`);
-  ui.scores.innerHTML = PLAYERS.map(p => `<div class="score ${state.colors[p.id].id}${p.id === state.player ? ' is-current' : ''}" data-player="${p.id}" aria-label="${nameOf(p.id)} ${counts[p.id]}枚">${stone(p.id)}<span><span class="score-name">${nameOf(p.id)}</span> <b>${counts[p.id]}</b><small>枚</small></span></div>`).join(''); updateInputState();
+  ui.scores.innerHTML = PLAYERS.map(p => `<div class="score ${state.colors[p.id].id}${p.id === state.player ? ' is-current' : ''}" data-player="${p.id}" aria-label="${nameOf(p.id)} ${counts[p.id]}枚">${stone(p.id)}<span><span class="score-name">${nameOf(p.id)}</span> <b class="${previous[p.id] !== undefined && previous[p.id] !== counts[p.id] ? 'score-updated' : ''}">${counts[p.id]}</b><small>枚</small></span>${state.mode === 'solo' && p.id === state.human ? '<em class="score-owner">あなた</em>' : ''}</div>`).join(''); updateInputState();
 }
 function updateInputState() {
   ui.game.dataset.phase = state.phase;
@@ -91,22 +95,40 @@ function showNotice(text, detail = '') {
   hideNotice(); const title = document.createElement('strong'); title.textContent = text; ui.notice.append(title);
   if (detail) { const line = document.createElement('span'); line.textContent = detail; ui.notice.append(line); } ui.notice.hidden = false;
 }
-function sound(kind = 'place') {
-  if (!preferences.sound) return;
-  try { audio ??= new (window.AudioContext || window.webkitAudioContext)(); if (audio.state === 'suspended') void audio.resume().catch(() => {});
-    const oscillator = audio.createOscillator(), gain = audio.createGain(), now = audio.currentTime;
-    oscillator.type = 'sine'; oscillator.frequency.setValueAtTime(kind === 'place' ? 390 : 620, now); oscillator.frequency.exponentialRampToValueAtTime(100, now + .07);
-    gain.gain.setValueAtTime(.075, now); gain.gain.exponentialRampToValueAtTime(.001, now + .09); oscillator.connect(gain); gain.connect(audio.destination); oscillator.start(now); oscillator.stop(now + .1);
-  } catch { /* Audio support never blocks gameplay. */ }
+function sound(kind = 'place', index = Math.floor(state.board.length / 2)) {
+  if (isPaused() || document.hidden) return;
+  stoneAudio.hit(kind, ((index % state.size) / (state.size - 1) - .5) * .8);
+}
+async function landStone(index, run) {
+  const disc = cells[index].firstElementChild;
+  if (!preferences.reducedMotion && disc?.animate) {
+    const drop = disc.animate([
+      { transform:'translateY(-16px) scale(1.08)', opacity:.25 },
+      { transform:'translateY(0) scale(1.025,.97)', opacity:1, offset:.72 },
+      { transform:'translateY(-2px) scale(1)', offset:.86 },
+      { transform:'translateY(0) scale(1)' }
+    ], { duration:205, easing:'cubic-bezier(.22,.7,.3,1)' });
+    await pause(145); if (active(run)) sound('place',index);
+    await drop.finished.catch(() => {});
+  } else if (active(run)) sound('place',index);
 }
 async function flipStone(index, delay, run) {
   if (preferences.reducedMotion) { if (active(run)) updateCell(index); return; }
   await pause(delay); if (!active(run)) return;
-  const disc = cells[index].firstElementChild; if (!disc?.animate) { updateCell(index); return; }
-  const out = disc.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(90deg)' }], { duration: 160, easing: 'ease-in', fill: 'forwards' });
+  const disc = cells[index].firstElementChild;
+  if (!disc?.animate) { updateCell(index); sound('flip',index); return; }
+  const out = disc.animate([{ transform:'translateY(0) rotateY(0deg)' }, { transform:'translateY(-7px) rotateY(90deg)' }], { duration:130, easing:'ease-in', fill:'forwards' });
   await out.finished.catch(() => {}); if (!active(run)) return;
   out.cancel(); updateCell(index);
-  const into = cells[index].firstElementChild.animate([{ transform: 'rotateY(-90deg)' }, { transform: 'rotateY(0deg)' }], { duration: 190, easing: 'ease-out' }); await into.finished.catch(() => {});
+  const into = cells[index].firstElementChild.animate([
+    { transform:'translateY(-7px) rotateY(-90deg)' },
+    { transform:'translateY(0) rotateY(0deg) scale(1.025,.97)', offset:.78 },
+    { transform:'translateY(-1px) scale(1)', offset:.9 },
+    { transform:'translateY(0) rotateY(0deg)' }
+  ], { duration:220, easing:'ease-out' });
+  await pause(172); if (active(run)) { sound('flip',index); cells[index].classList.add('capture-flash'); }
+  await into.finished.catch(() => {});
+  if (active(run)) cells[index].addEventListener('animationend', () => cells[index]?.classList.remove('capture-flash'), { once:true });
 }
 async function moveAt(index, actor = 'human') {
   const ai = state.mode === 'solo' && state.player !== state.human;
@@ -116,11 +138,11 @@ async function moveAt(index, actor = 'human') {
   const result = playMove(state.board, state.player, index);
   if (!result) { showNotice('ここには置けません', '相手の石をはさめるマスに置いてください'); noticeTimer = setTimeout(hideNotice, 1300); return { ok: false, reason: 'ここでは石をはさめません' }; }
   hideNotice(); const run = epoch, player = state.player, n = state.size;
-  state.phase = 'animating'; state.board = result.board; updateInputState(); updateCell(index); sound();
-  if (!preferences.reducedMotion) cells[index].firstElementChild.animate?.([{ transform: 'translateY(-10px) scale(1.07)', opacity: .4 }, { transform: 'translateY(0) scale(1)', opacity: 1 }], { duration: 180, easing: 'ease-out' });
-  await Promise.all(result.flips.map(i => flipStone(i, 100 + 60 * Math.max(Math.abs(Math.floor(i / n) - Math.floor(index / n)), Math.abs(i % n - index % n)), run)));
+  state.phase = 'animating'; state.board = result.board; updateInputState(); updateCell(index);
+  if (!preferences.reducedMotion) { cells[index].classList.add('just-placed'); cells[index].addEventListener('animationend', () => cells[index]?.classList.remove('just-placed'), { once:true }); }
+  await Promise.all([landStone(index,run), ...result.flips.map(i => flipStone(i, 175 + 55 * Math.max(Math.abs(Math.floor(i / n) - Math.floor(index / n)), Math.abs(i % n - index % n)), run))]);
   if (!active(run)) return { ok: false, reason: 'ゲームが終了しました' };
-  renderStatus(); sound('flip'); announce(`${nameOf(player)}が${result.flips.length}枚ひっくり返しました。`); await advanceTurn(player, run);
+  renderStatus(); if (preferences.reducedMotion) sound('flip',index); announce(`${nameOf(player)}が${result.flips.length}枚ひっくり返しました。`); await advanceTurn(player, run);
   return { ok: true, flipped: result.flips.length, ...snapshot() };
 }
 async function advanceTurn(player, run) {
@@ -150,7 +172,7 @@ function finish() {
   state.phase = 'ended'; state.ending = 'completed'; hideNotice(); renderStatus();
   const humanWon = winners(state.board).includes(state.human), draw = winners(state.board).length > 1;
   const outcome = state.mode === 'friends' ? (draw ? 'draw' : 'win') : humanWon ? (draw ? 'draw' : 'win') : 'loss';
-  decorateResult(outcome);
+  decorateResult(outcome); if (outcome === 'win') stoneAudio.celebrate();
   $('#result-context').textContent = '最終スコア';
   const counts = scores(state.board), winning = winners(state.board), label = winning.map(nameOf).join('・');
   $('#result-title').textContent = winning.length === 1 ? `${label}の勝ち！` : `${label}の引き分け！`;
@@ -163,6 +185,7 @@ function finish() {
 }
 function decorateResult(outcome) {
   ui.result.dataset.outcome = outcome;
+  $('#result-sparks').innerHTML = outcome === 'win' && !preferences.reducedMotion ? Array.from({length:22},(_,i) => `<i style="--x:${(i * 47) % 100}%;--delay:${(i % 7) * .075}s;--spin:${(i % 2 ? 1 : -1) * (120 + i * 13)}deg"></i>`).join('') : '';
   $('#result-eyebrow').textContent = { win:'VICTORY', draw:'DRAW', loss:'MATCH FINISHED', resigned:'RESIGNED' }[outcome];
   const flag = '<path d="M14 34V8m0 1c8-7 12 7 20 0v16c-8 7-12-7-20 0M9 36h10"/>';
   const trophy = '<path d="M15 8h18v9c0 8-4 12-9 12s-9-4-9-12V8Zm0 3H8v6c0 5 4 8 9 8m16-14h7v6c0 5-4 8-9 8M24 29v8m-8 2h16"/>';
@@ -175,26 +198,30 @@ function resignGame() {
   cells.forEach((_, i) => updateCell(i)); renderStatus();
   if (storageWorking) profile = normalizeProfile(readSave(STORAGE.profile) ?? profile);
   profile = recordResignation(profile, state).profile; persist(); renderHome(); decorateResult('resigned');
-  $('#result-title').textContent = `${nameOf(state.resigned)}が降参しました`;
-  $('#result-context').textContent = '降参時の枚数（最終順位ではありません）';
+  $('#result-title').textContent = `${nameOf(state.resigned)}が降参`;
+  $('#result-context').textContent = '降参時の枚数・順位なし';
   const counts = scores(state.board);
   $('#result-scores').innerHTML = PLAYERS.map(p => `<div class="result-row">${stone(p.id)}<span>${nameOf(p.id)}${p.id === state.resigned ? '<small>（降参）</small>' : ''}</span><b>${counts[p.id]}<small>枚</small></b></div>`).join('');
-  $('#result-reward').textContent = state.mode === 'solo' ? '負けとして１対局を記録しました。コインは増減しません。' : 'この対局を終了しました。コインは増減しません。';
+  $('#result-reward').textContent = state.mode === 'solo' ? '敗北を記録。コインは変わりません。' : '対局を終了。コインは変わりません。';
   openDialog('#result-dialog'); announce(`${nameOf(state.resigned)}が降参しました。対局終了です。`);
 }
 function startGame(config = lastConfig) {
   cancelRun(); hideNotice(); closeDialogs();
-  const palette = playerColors(config.color, config.mode); lastConfig = { ...config };
+  stoneAudio.unlock();
+  const palette = config.mode === 'solo' ? randomSoloLineup(profile) : playerColors('red','friends'); lastConfig = { ...config };
   state = { ...config, ...palette, id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`, board: initialBoard(config.size), player: 0, phase: 'playing' };
   ui.home.hidden = true; ui.game.hidden = false; document.body.classList.add('playing');
   buildBoard(); cells.forEach((_, i) => updateCell(i));
-  if (preferences.reducedMotion) { $('#match-intro').hidden = true; beginTurn(epoch); }
-  else { state.phase = 'intro'; renderStatus(); $('#intro-pieces').innerHTML = [0,1,2,3].map(stone).join(''); $('#match-intro').hidden = false; void enterGame(epoch); }
-  wake(); setFocus(focusIndex, true); announce(`ゲーム開始。${nameOf(0)}の番です。`);
+  state.phase = 'intro'; renderStatus();
+  $('#intro-title').textContent = state.mode === 'solo' ? `あなたは${nameOf(state.human)}` : '対局開始';
+  $('#intro-detail').textContent = state.mode === 'solo' ? `${state.human + 1}番目の手番です` : '４つの色で、勝負。';
+  $('#intro-pieces').innerHTML = state.colors.map((color,p) => `<span class="intro-seat${state.mode === 'solo' && p === state.human ? ' is-you' : ''}">${stone(p)}<small>${p + 1}${state.mode === 'solo' && p === state.human ? ' · あなた' : ''}</small></span>`).join('');
+  $('#match-intro').hidden = false; void enterGame(epoch);
+  wake(); setFocus(focusIndex, true); announce(state.mode === 'solo' ? `あなたは${nameOf(state.human)}、${state.human + 1}番目です。${nameOf(0)}から開始します。` : `ゲーム開始。${nameOf(0)}から開始します。`);
   if (location.hash !== '#play') history.pushState(null, '', '#play');
 }
 async function enterGame(run) {
-  await pause(1000); if (!await ready(run)) return; $('#match-intro').hidden = true; beginTurn(run);
+  await pause(preferences.reducedMotion ? 1600 : 2500); if (!await ready(run)) return; $('#match-intro').hidden = true; beginTurn(run);
 }
 function goHome() {
   cancelRun(); state.phase = 'home'; $('#match-intro').hidden = true; hideNotice(); closeDialogs(); wake();
@@ -205,25 +232,24 @@ function setup(mode) {
   setupMode = mode; $('#setup-title').textContent = mode === 'solo' ? 'ひとりで遊ぶ' : '4人で遊ぶ'; $('#difficulty-field').hidden = $('#color-field').hidden = mode !== 'solo';
   $('#difficulty-options').innerHTML = Object.entries(DIFFICULTIES).map(([id, d]) => `<label class="choice"><input type="radio" name="difficulty" value="${id}" ${id === preferences.difficulty ? 'checked' : ''}><span>${d.label}</span></label>`).join('');
   $('#size-options').innerHTML = BOARD_SIZES.map(n => `<label class="choice"><input type="radio" name="size" value="${n}" ${n === preferences.size ? 'checked' : ''}><span>${n} × ${n}</span></label>`).join('');
-  $('#color-options').innerHTML = CATALOG.filter(i => i.kind === 'color' && ownsItem(profile, i)).map(i => `<label class="choice color-choice"><input type="radio" name="color" value="${i.id}" ${i.id === profile.equippedColor ? 'checked' : ''}><span>${piece(i.id)}<b>${i.name}</b></span></label>`).join('');
+  $('#color-options').innerHTML = profile.ownedColors.map(id => `<span class="draw-color">${piece(id)}</span>`).join('');
   $('#setup-hints').checked = preferences.hints; setupNotes(); openDialog('#setup-dialog');
 }
 function setupNotes() {
-  const difficulty = $('#difficulty-options input:checked')?.value ?? preferences.difficulty, size = Number($('#size-options input:checked')?.value ?? preferences.size), color = $('#color-options input:checked')?.value ?? profile.equippedColor;
-  const selected = CATALOG.find(i => i.id === color), ordinal = ['最初','２番目','３番目','４番目'][selected.seat];
+  const difficulty = $('#difficulty-options input:checked')?.value ?? preferences.difficulty, size = Number($('#size-options input:checked')?.value ?? preferences.size);
   $('#difficulty-description').textContent = DIFFICULTIES[difficulty].description;
-  $('#color-note').textContent = `あなたは${selected.name}。${ordinal}に打ちます。新しい色はショップで増やせます。`;
+  $('#color-note').textContent = '持っている色から１色、手番は１〜４番目から毎回抽選。購入した色も候補に加わります。';
   $('#setup-reward').textContent = setupMode === 'solo' ? `勝つと ${matchReward(difficulty, size)} コイン。最多で引き分けると半分。` : '赤 → 青 → 黄 → 緑の順に、みんなで交代します。';
 }
-function syncSettings() { document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
+function syncSettings() { stoneAudio.sync(); $('#sound-volume').value = String(Math.round(preferences.volume * 100)); $('#volume-value').textContent = `${Math.round(preferences.volume * 100)}%`; $('#sound-volume').disabled = $('#sound-preview').disabled = !preferences.sound; document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
 function renderShop() {
   renderHome();
   for (const kind of ['board', 'color']) {
     const items = CATALOG.filter(i => i.kind === kind);
     $('#' + kind + '-products').innerHTML = items.map(item => {
-      const owned = ownsItem(profile, item), equipped = profile[kind === 'board' ? 'equippedBoard' : 'equippedColor'] === item.id;
+      const owned = ownsItem(profile, item), equipped = kind === 'board' && profile.equippedBoard === item.id;
       const preview = kind === 'board' ? `<div class="board-swatch" data-theme="${item.id}"><div>${piece('red')}${piece('blue')}${piece('green')}${piece('yellow')}</div></div>` : `<div class="color-swatch">${piece(item.id)}</div>`;
-      return `<article class="product${equipped ? ' equipped' : ''}">${preview}<h4>${item.name}</h4><p>${item.description ?? '最初から使える基本の色。'}</p><button class="product-action" data-item="${item.id}" ${equipped || (!owned && profile.coins < item.price) ? 'disabled' : ''}>${equipped ? '使用中' : owned ? '使う' : `${item.price} コインで購入`}</button>${!owned && profile.coins < item.price ? `<small>あと ${item.price - profile.coins} コイン</small>` : '<small> </small>'}</article>`;
+      return `<article class="product${equipped ? ' equipped' : ''}">${preview}<h4>${item.name}</h4><p>${item.description ?? '最初から使える基本の色。'}</p><button class="product-action" data-item="${item.id}" ${(kind === 'color' && owned) || (kind === 'board' && equipped) || (!owned && profile.coins < item.price) ? 'disabled' : ''}>${kind === 'color' && owned ? '抽選の対象' : equipped ? '使用中' : owned ? '使う' : `${item.price} コインで購入`}</button>${!owned && profile.coins < item.price ? `<small>あと ${item.price - profile.coins} コイン</small>` : '<small> </small>'}</article>`;
     }).join('');
   }
 }
@@ -232,23 +258,23 @@ $('#shop-dialog').addEventListener('click', event => {
   const item = CATALOG.find(i => i.id === button.dataset.item); if (!item) return;
   if (storageWorking) profile = normalizeProfile(readSave(STORAGE.profile) ?? profile);
   let result = ownsItem(profile, item) ? { ok: true, profile } : purchaseItem(profile, item.id);
-  if (result.ok) result = equipItem(result.profile, item.id);
-  if (result.ok) { profile = result.profile; persist(); renderShop(); $('#shop-message').textContent = `${item.name}を選びました。次の対局から使えます。`; $('#shop-dialog [data-item="' + item.id + '"]')?.closest('.product')?.scrollIntoView({ block: 'nearest' }); }
+  if (result.ok && item.kind === 'board') result = equipItem(result.profile, item.id);
+  if (result.ok) { profile = result.profile; persist(); renderShop(); $('#shop-message').textContent = item.kind === 'color' ? `${item.name}が色の抽選に加わりました。` : `${item.name}を選びました。次の対局から使えます。`; $('#shop-dialog [data-item="' + item.id + '"]')?.closest('.product')?.scrollIntoView({ block: 'nearest' }); }
   else $('#shop-message').textContent = result.reason;
 });
 $('#start').addEventListener('click', () => setup('solo')); $('#friends-open').addEventListener('click', () => setup('friends'));
 $('#setup-dialog').addEventListener('change', setupNotes);
 $('#launch').addEventListener('click', () => {
   preferences.difficulty = $('#difficulty-options input:checked').value; preferences.size = Number($('#size-options input:checked').value); preferences.hints = $('#setup-hints').checked;
-  profile = equipItem(profile, $('#color-options input:checked').value).profile; syncSettings(); persist();
-  startGame({ mode: setupMode, difficulty: preferences.difficulty, size: preferences.size, color: profile.equippedColor, theme: profile.equippedBoard });
+  syncSettings(); persist();
+  startGame({ mode: setupMode, difficulty: preferences.difficulty, size: preferences.size, theme: profile.equippedBoard });
 });
 $('#again').addEventListener('click', () => startGame()); $('#home-button').addEventListener('click', goHome); $('#leave-game').addEventListener('click', goHome);
 window.addEventListener('hashchange', () => { if (location.hash !== '#play' && state.phase !== 'home') goHome(); });
 ui.result.addEventListener('cancel', event => { event.preventDefault(); goHome(); });
 for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => openDialog(`#${name}-dialog`));
 $('#shop-open').addEventListener('click', () => { renderShop(); $('#shop-message').textContent = ''; openDialog('#shop-dialog'); });
-ui.turn.addEventListener('click', () => { $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : '4人で交代'} · ${state.size} × ${state.size}`; openDialog('#menu-dialog'); });
+ui.turn.addEventListener('click', () => { $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : '4人で交代'} · ${state.size} × ${state.size}${state.mode === 'solo' ? ` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => c.name).join(' → ')}`; openDialog('#menu-dialog'); });
 $('#resign-open').addEventListener('click', () => {
   if (!canResign(state)) return;
   $('#resign-description').textContent = state.mode === 'solo' ? `${nameOf(state.human)}のあなたが降参し、負けとして１対局を記録します。コインは増減しません。` : `${nameOf(state.player)}が降参し、４人全員のこの対局を終了します。途中の枚数で勝者は決めません。`;
@@ -259,6 +285,17 @@ $('#game-rules').addEventListener('click', () => openDialog('#rules-dialog')); $
 document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
 document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', wake));
 for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; syncSettings(); persist(); updateInputState(); });
+document.addEventListener('pointerdown', () => stoneAudio.unlock(), { passive:true });
+document.addEventListener('keydown', () => stoneAudio.unlock());
+document.addEventListener('visibilitychange', () => { if (document.hidden) stoneAudio.stop(); });
+$('#sound-volume').addEventListener('input', event => { preferences.volume = Number(event.target.value) / 100; syncSettings(); persist(); });
+$('#sound-preview').addEventListener('click', async () => {
+  stoneAudio.unlock(); await pause(30);
+  if (!$('#settings-dialog').open) return;
+  stoneAudio.hit('place',-.2); await pause(330);
+  if (!$('#settings-dialog').open) return;
+  stoneAudio.hit('flip',.2); $('#sound-status').textContent = stoneAudio.status().state === 'running' ? '置く音、返す音の順に再生しました。' : '音の準備中です。もう一度お試しください。';
+});
 $('#export-save').addEventListener('click', () => {
   const blob = new Blob([JSON.stringify({ format: 'four-color-othello', version: 1, profile, preferences }, null, 2)], { type: 'application/json' }), url = URL.createObjectURL(blob), link = document.createElement('a');
   link.href = url; link.download = 'Irodory-セーブデータ.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 30000); $('#save-message').textContent = 'セーブデータを書き出しました。安全な場所に残してください。';
@@ -275,7 +312,7 @@ $('#save-file').addEventListener('change', async event => {
   } catch (error) { $('#save-message').textContent = `読み込めませんでした。${error instanceof SyntaxError ? 'JSON形式のセーブデータを選んでください。' : error.message}`; }
   event.target.value = '';
 });
-function snapshot() { return { phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
+function snapshot() { return { sound: { enabled:preferences.sound, volume:preferences.volume, ...stoneAudio.status() }, phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
 function registerTools() {
   const context = document.modelContext; if (!context?.registerTool) return;
   const lifecycle = new AbortController(); window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });
