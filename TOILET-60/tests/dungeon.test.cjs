@@ -25,7 +25,7 @@ test('mystery lockers have deterministic rewards; benches and maps are one-use',
   const map=g.map.features.find(f=>f.type==='terminal');near(g,map);g.interact();assert.equal(g.mapKnown,true);assert.ok(g.map.toilets.every(t=>t.discovered));assert.ok(g.seen.every(Boolean));
 });
 test('elevators move the player and companion, respect cooldown, and stop click paths',()=>{
-  const g=new C.Game(),f=g.map.features.find(f=>f.type==='warp'),target=g.map.features.find(t=>t.id===f.targetId);g.map.buddy.active=true;near(g,f);g.interact();assert.ok(C.distance(g.player,target)<.001);assert.ok(C.distance(g.map.buddy,target)<1.1);assert.equal(g.autoPath.length,0);
+  const g=new C.Game(),f=g.map.features.find(f=>f.type==='warp'),target=g.map.features.find(t=>t.id===f.targetId);g.map.shoppers=[];g.map.buddy.active=true;near(g,f);g.interact();assert.ok(C.distance(g.player,target)<.001);assert.ok(C.distance(g.map.buddy,target)<1.1);assert.equal(g.autoPath.length,0);
   g.interact();assert.ok(C.distance(g.player,target)<.001);g.update(3.1);g.interact();assert.ok(C.distance(g.player,f)<.001);
 });
 test('wet floors penalize sprinting but not walking; moving walkways change speed by direction',()=>{

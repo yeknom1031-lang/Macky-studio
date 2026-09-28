@@ -7,6 +7,7 @@ function walkRoute(game, goal, sprint = false) {
   for (const p of route) {
     let steps = 0;
     while (C.distance(game.player, p) > .035 && game.state === 'playing') {
+      if(game.mode==='talk'){game.update(game.talk.remaining+.01);continue;}
       const dx = p.x - game.player.x, dy = p.y - game.player.y, d = Math.hypot(dx, dy);
       game.update(Math.min(.02, d / game.speed(sprint,dx,dy)), { x: dx / d, y: dy / d, sprint });
       assert.ok(++steps < 200, 'Player can follow a walkable route');
@@ -20,7 +21,7 @@ test('48 authored seeds and all difficulty settings produce distinct, repeatable
     for (const s of C.STAGES) {
       const a = C.generate(s.seed, d, s.theme), b = C.generate(s.seed, d, s.theme);
       assert.deepEqual(a, b); shapes.add(JSON.stringify(a.grid));
-      assert.equal(a.toilets.length, 8);
+      assert.equal(a.toilets.length, C.DIFFICULTIES[d].toilets);
       assert.ok(C.floor(a, Math.floor(a.start.x), Math.floor(a.start.y)));
       for (const t of a.toilets) assert.ok(C.path(a, a.start, t).length > 0);
       const safe = a.toilets[a.safeId], route = C.path(a, a.start, safe);
@@ -34,16 +35,23 @@ test('500 random seeds per difficulty always connect every toilet and preserve a
     const map = C.generate(seed * 10103, d, seed % 6);
     for (const t of map.toilets) assert.ok(C.path(map, map.start, t).length > 1, `${d}/${seed} connected`);
     const safe = map.toilets[map.safeId];
-    assert.equal(safe.openAt, 0);
-    assert.ok((C.path(map, map.start, safe).length - 1) / 3.2 + 3 < C.DIFFICULTIES[d].time, `${d}/${seed} feasible`);
+    assert.ok(safe.openAt>0);assert.ok(map.toilets.every(t=>t.openAt>0));
+    const arrival=(C.path(map,map.start,safe).length-1)/3.2,status=C.Game.prototype.toiletStatus.call({},safe,arrival);
+    assert.ok(arrival+(status.open?0:status.left)+3<C.DIFFICULTIES[d].time,`${d}/${seed} feasible including occupancy`);
   }
 });
 test('every one of the 144 stage/difficulty combinations can be won using movement and interaction', () => {
   for (const d of Object.keys(C.DIFFICULTIES)) for (const s of C.STAGES) {
-    const g = new C.Game({ seed: s.seed, theme: s.theme, difficulty: d });
-    walkRoute(g, g.map.toilets[g.map.safeId]);
-    g.interact(); assert.equal(g.mode, 'relief'); g.update(3.05);
-    assert.equal(g.state, 'won', `stage ${s.id}/${d}`);
+    let won=false;
+    // The shorter-looking route may lose to a crowd or cleaning window. Retry the
+    // other real entrance, using only walking, listening, waiting and interaction.
+    for(const toiletId of [1,0]){
+      const g = new C.Game({ seed: s.seed, theme: s.theme, difficulty: d });
+      walkRoute(g,g.map.toilets[toiletId]);
+      while(g.state==='playing'&&g.mode!=='relief'){if(g.mode==='talk')g.update(g.talk.remaining+.01);else{g.interact();g.update(.08);}}
+      g.update(3.05);if(g.state==='won'){won=true;break;}
+    }
+    assert.ok(won,`stage ${s.id}/${d} has a verified walking solution`);
   }
 });
 test('wall collisions, normalized diagonal movement and sprint consumption', () => {
@@ -58,7 +66,7 @@ test('wall collisions, normalized diagonal movement and sprint consumption', () 
 });
 test('occupied toilet clues transition, waiting can be cancelled and then auto-enters', () => {
   const g = new C.Game(); const t = g.map.toilets[0]; walkRoute(g, t);
-  t.openAt = g.elapsed + 20; assert.match(g.clue(t), /動画/);
+  t.openFor=0;g.map.shoppers=[];t.openAt = g.elapsed + 20; assert.match(g.clue(t), /動画/);
   t.openAt = g.elapsed + 12; assert.match(g.clue(t), /あとちょっと/);
   t.openAt = g.elapsed + 6; assert.match(g.clue(t), /ガサゴソ/);
   t.openAt = g.elapsed + 2; assert.match(g.clue(t), /ジャー/);
@@ -69,7 +77,7 @@ test('occupied toilet clues transition, waiting can be cancelled and then auto-e
 });
 test('three-second relief wins at boundary but loses when less time remains', () => {
   for (const [remaining, expected] of [[3, 'won'], [2.99, 'lost'], [3.1, 'won']]) {
-    const g = new C.Game(); const t = g.map.toilets[g.map.safeId]; g.player = { ...t, walk: 0 }; g.remaining = remaining;
+    const g = new C.Game(); const t = g.map.toilets[g.map.safeId]; t.openAt=0;t.openFor=0;g.player = { ...t, walk: 0 }; g.remaining = remaining;
     g.interact(); g.update(4); assert.equal(g.state, expected);
   }
 });
@@ -84,7 +92,7 @@ test('companion bonus cannot be farmed; yield completes both rescues without a r
   assert.equal(g.map.buddy.active, true); assert.ok(Math.abs(g.remaining - before - 3) < 1e-6);
   g.interact(); assert.ok(Math.abs(g.remaining - before - 3) < 1e-6);
   walkRoute(g, g.map.toilets[g.map.safeId]); g.yieldBuddy(); assert.equal(g.mode, 'wait');
-  g.update(g.map.buddy.useDuration + 3.2); assert.equal(g.state, 'won'); assert.equal(g.shared, true); assert.equal(g.title, '誰も置いていかない');
+  g.map.shoppers=[];g.update(g.map.buddy.finishAt-g.elapsed + 3.2); assert.equal(g.state, 'won'); assert.equal(g.shared, true); assert.equal(g.title, '誰も置いていかない');
 });
 test('staff reveals locations at a one-time 2 second cost including fatal boundary', () => {
   const g = new C.Game(); g.player.x = g.map.staff.x; g.player.y = g.map.staff.y;
@@ -92,11 +100,11 @@ test('staff reveals locations at a one-time 2 second cost including fatal bounda
   g.interact(); assert.equal(g.remaining, before - 2);
   const fatal = new C.Game(); fatal.player.x = fatal.map.staff.x; fatal.player.y = fatal.map.staff.y; fatal.remaining = 1; fatal.interact(); assert.equal(fatal.state, 'lost');
 });
-test('walking near shoppers is safe, sprint collisions have a cooldown', () => {
-  const g = new C.Game(); g.map.shoppers = [{ ...g.player, path: [], goal: 0, speed: 0, cooldown: 0 }];
-  g.update(.02, { x: 1 }); assert.equal(g.penalties, 0);
-  g.update(.02, { x: 1, sprint: true }); assert.equal(g.penalties, 1);
-  g.update(.02, { x: 1, sprint: true }); assert.equal(g.penalties, 1);
+test('walking collisions start timed conversations and cannot immediately repeat', () => {
+  const g=new C.Game();g.map.shoppers=[{id:0,kind:'chatter',...g.player,path:[],goal:0,speed:0,cooldown:0}];
+  g.update(.02,{x:1});assert.equal(g.mode,'talk');assert.equal(g.talkCount,1);
+  g.update(g.talk.remaining+.05,{x:1,sprint:true});assert.equal(g.mode,'explore');assert.equal(g.talkCount,1);
+  g.update(.1,{x:1});assert.equal(g.talkCount,1);
 });
 test('click movement refuses hidden destinations, follows visible paths and pauses safely', () => {
   const g = new C.Game(); assert.equal(g.setDestination({ x: 0, y: 0 }), false);

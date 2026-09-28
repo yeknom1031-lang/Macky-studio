@@ -22,18 +22,28 @@ async function load(page) {
   page.on('pageerror', e => errors.push(e.message));
   page.on('request', r => { if (/^https?:/.test(r.url())) requests.push(r.url()); });
   await page.clock.install({ time: new Date('2026-09-27T12:00:00Z') });
-  await page.goto(url);
   await page.clock.pauseAt(new Date('2026-09-27T12:00:01Z'));
+  await page.goto(url);
   await advance(page, 50);
 }
 async function begin(page) { await click(page, '準備OK、スタート'); await advance(page, 32); }
+async function finishAtDoor(page) {
+  for(let i=0;i<180;i++){
+    const s=await state(page);if(s.state!=='playing')return;
+    if(s.mode==='talk')await advance(page,Math.ceil(s.talk.remaining*1000)+32);
+    else if(s.mode==='relief')await advance(page,3100);
+    else {if(s.mode==='explore')await page.keyboard.press('e');await advance(page,300);}
+  }
+  throw Error('Waiting at the toilet did not finish');
+}
 async function routeTo(page, target) {
   let s = await state(page);
   const route = C.path(s.map, s.player, target).slice(1);
   for (const p of route) {
     for (const axis of ['x', 'y']) {
-      for (let tries = 0; tries < 12; tries++) {
+      for (let tries = 0; tries < 24; tries++) {
         s = await state(page); if (s.state !== 'playing') throw Error('Game ended before reaching target');
+        if(s.mode==='talk'){await advance(page,Math.ceil(s.talk.remaining*1000)+32);continue;}
         const delta = p[axis] - s.player[axis]; if (Math.abs(delta) < .055) break;
         const key = axis === 'x' ? delta > 0 ? 'ArrowRight' : 'ArrowLeft' : delta > 0 ? 'ArrowDown' : 'ArrowUp';
         await page.keyboard.down(key); await advance(page, Math.max(17, Math.round(Math.abs(delta) / s.speeds[key] * 1000))); await page.keyboard.up(key);
@@ -96,7 +106,7 @@ async function routeTo(page, target) {
     await click(page, 'ステージ選択', true); await click(page, 'ステージ1 はじめての廊下', true); await click(page, 'このステージで遊ぶ'); await begin(page);
     await advance(page, 1200); await page.keyboard.press('e'); assert.equal((await state(page)).buddy.active, true);
     let s = await state(page); const free = s.toilets[1]; await routeTo(page, free); await page.keyboard.press('q');
-    assert.equal((await state(page)).mode, 'wait'); await advance(page, 11500);
+    assert.equal((await state(page)).mode, 'wait');const afterYield=await state(page);await advance(page,Math.ceil((afterYield.toilets[1].reservedUntil-afterYield.elapsed)*1000)+3200);
     s = await state(page); assert.equal(s.state, 'won'); assert.equal(s.shared, true);
   });
   await check('Hard timeout, defeat route recap, retry and next-stage transitions', async () => {
@@ -104,7 +114,7 @@ async function routeTo(page, target) {
     assert.ok((await state(page)).remaining <= 75); await advance(page, 76000);
     assert.equal((await state(page)).state, 'lost'); assert.ok(await page.locator('#recap').isVisible()); await snap(page, '08-game-over');
     await click(page, '同じマップで再挑戦'); await begin(page);
-    let s = await state(page); assert.ok(s.remaining > 74); await routeTo(page, s.toilets[1]); await page.keyboard.press('e'); await advance(page, 3200);
+    let s = await state(page); assert.ok(s.remaining > 74); await routeTo(page, s.toilets[1]); await finishAtDoor(page);
     assert.equal((await state(page)).state, 'won'); await click(page, '次のステージへ'); await begin(page); assert.equal((await state(page)).stageId, 2);
   });
   await check('Random map, practice mode and click-to-walk', async () => {

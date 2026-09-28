@@ -74,7 +74,7 @@
     if (opts.route) { ctx.beginPath(); opts.route.forEach((p, i) => i && !p.jump ? ctx.lineTo(ox + p.x * s, oy + p.y * s) : ctx.moveTo(ox + p.x * s, oy + p.y * s)); ctx.strokeStyle = CORAL; ctx.lineWidth = Math.max(2, s * .32); ctx.lineJoin = 'round'; ctx.stroke(); }
     for (const t of map.toilets) {
       if (opts.game && !opts.full && !t.discovered) continue;
-      const open = opts.game ? opts.game.elapsed >= t.openAt : true;
+      const open = opts.game ? opts.game.toiletStatus(t).open : true;
       rr(ctx, ox + t.x * s - 4, oy + t.y * s - 5, 8, 9, 2, open ? '#1a8b73' : CORAL, '#fff');
       if (s > 7) text(ctx, 'WC', ox + t.x * s, oy + t.y * s, 5, '#fff');
     }
@@ -134,6 +134,8 @@
       map.features.filter(f=>!f.used&&visible(f)).forEach(f=>{
         const info=C.FEATURE_INFO[f.type],x=f.x*s,y=f.y*s;
         if(f.type==='puddle'){ctx.fillStyle='#6aacc17d';ctx.beginPath();ctx.ellipse(x,y,43,23,-.2,0,Math.PI*2);ctx.fill();text(ctx,'≈',x,y,27,'#e5faff');return;}
+        if(f.type==='rubble'){rr(ctx,x-48,y-24,96,48,5,'#a1835d55','#ad8b60');for(const[ox,oy]of[[-28,4],[0,-4],[25,6]]){ctx.fillStyle='#b59469';ctx.beginPath();ctx.moveTo(x+ox-11,y+oy+10);ctx.lineTo(x+ox,y+oy-13);ctx.lineTo(x+ox+11,y+oy+10);ctx.closePath();ctx.fill();line(ctx,[[x+ox-5,y+oy],[x+ox+5,y+oy]],'#f7e3a4',4);}text(ctx,'工事中',x,y+32,10,'#745537');return;}
+        if(f.type==='alarm'){rr(ctx,x-40,y-27,80,54,4,'#f0cb6188','#ba7354');for(let q=-30;q<40;q+=15)line(ctx,[[x+q,y-23],[x+q-12,y+23]],'#c5785c66',4);text(ctx,'歩いて',x,y,14,'#6c4339');return;}
         if(f.type==='conveyor'){rr(ctx,x-56,y-22,112,44,4,'#647c79','#d4e1d7');text(ctx,f.dx>0?'❯ ❯ ❯':'❮ ❮ ❮',x,y,20,'#eff7df');return;}
         objects.push({y:f.y,fn:()=>{const bob=this.reduced?0:Math.sin(time*2+f.id)*2;ctx.fillStyle='#162c3a22';ctx.beginPath();ctx.ellipse(x,y+5,20,7,0,0,Math.PI*2);ctx.fill();rr(ctx,x-22,y-34+bob,44,36,8,info.color,'#ffffffcb');text(ctx,info.icon,x,y-16+bob,f.type==='key'||f.type==='terminal'?12:18,'#fff');
           if(f.type==='switch'||f.type==='warp')text(ctx,String(f.type==='switch'?f.gateId+1:f.pair),x+19,y-39,11,info.color);
@@ -142,12 +144,18 @@
       });
       map.gates.filter(g=>visible(g)).forEach(g=>{if(g.open){text(ctx,'OPEN',g.x*s,g.y*s,11,TEAL);return;}const x=g.x*s,y=g.y*s;ctx.save();ctx.translate(x,y);if(g.horizontal)ctx.rotate(Math.PI/2);rr(ctx,-s*1.5,-10,s*3,20,3,'#526b72','#d1b05f');for(let q=-s*1.4;q<s*1.4;q+=14){line(ctx,[[q,-9],[q+8,9]],'#e4bd60',4);}ctx.restore();rr(ctx,x-19,y-26,38,22,4,'#2b464b','#dfbd5d');text(ctx,`鍵 ${g.id+1}`,x,y-15,11,'#fff');});
       map.toilets.filter(visible).forEach(t => objects.push({ y: t.y, fn: () => {
-        const open = game.elapsed >= t.openAt;
+        const status=game.toiletStatus(t),open = status.open;
         ctx.fillStyle = open ? '#70b39725' : '#e88a7e22'; ctx.beginPath(); ctx.ellipse(t.x * s, t.y * s + 8, 30, 15, 0, 0, Math.PI * 2); ctx.fill();
         door(ctx, t.x * s, t.y * s, 1.25 * s / 43, !open, t.id, game.mode === 'relief' && game.door === t);
-        if (C.distance(game.player, t) < 4) { const label = open ? '空き' : '使用中'; rr(ctx, t.x * s - 22, t.y * s - 101, 44, 17, 4, open ? '#e7f5e9' : '#fff2ed', open ? '#74a88d' : '#d69081'); text(ctx, label, t.x * s, t.y * s - 92, 9, open ? '#26715c' : '#b25447'); }
+        if (C.distance(game.player, t) < 4) { const label = open ? '空き' : status.reason; rr(ctx, t.x * s - 22, t.y * s - 101, 44, 17, 4, open ? '#e7f5e9' : '#fff2ed', open ? '#74a88d' : '#d69081'); text(ctx, label, t.x * s, t.y * s - 92, 9, open ? '#26715c' : '#b25447'); }
       } }));
-      map.shoppers.filter(visible).forEach(n => objects.push({ y: n.y, fn: () => stick(ctx, n.x * s, n.y * s, .86 * s / 43, { bag: n.bag, walk: this.reduced ? 0 : game.elapsed * 3 }) }));
+      map.shoppers.filter(visible).forEach(n=>objects.push({y:n.y,fn:()=>{
+        const info=C.NPC_INFO[n.kind],talking=game.talk?.npcId===n.id;
+        ctx.fillStyle=n.cooldown>0?'#5ca38a30':info.color+'44';ctx.beginPath();ctx.ellipse(n.x*s,n.y*s+2,.68*s,.32*s,0,0,Math.PI*2);ctx.fill();
+        stick(ctx,n.x*s,n.y*s,.86*s/43,{bag:n.bag,staff:n.kind==='guard',walk:this.reduced||talking?0:game.elapsed*3});
+        rr(ctx,n.x*s-11,n.y*s-77,22,20,6,info.color);text(ctx,talking?'…':info.icon,n.x*s,n.y*s-67,13,'#fff');
+        if(C.distance(game.player,n)<4.3){rr(ctx,n.x*s-48,n.y*s-102,96,18,4,'#fffcf2ef');text(ctx,n.cooldown>0&&!talking?'会話済み':info.name,n.x*s,n.y*s-93,10,info.color);}
+      }}));
       objects.push({ y: map.staff.y, fn: () => { stick(ctx, map.staff.x * s, map.staff.y * s, .9 * s / 43, { staff: true }); text(ctx, map.staff.talked ? 'ありがとう！' : '案内係', map.staff.x * s, map.staff.y * s - 92, 10, INK); } });
       const b = map.buddy;
       if (!b.busy) objects.push({ y: b.y, fn: () => stick(ctx, b.x * s, b.y * s, .88 * s / 43, { buddy: true, panic: !b.done, happy: b.done, walk: b.active && !this.reduced ? game.player.walk : 0 }) });

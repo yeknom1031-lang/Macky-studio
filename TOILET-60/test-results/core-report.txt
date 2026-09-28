@@ -1,29 +1,39 @@
-✔ 48 authored seeds and all difficulty settings produce distinct, repeatable layouts (919.821292ms)
-✔ 500 random seeds per difficulty always connect every toilet and preserve a feasible finish (4799.193208ms)
-✔ every one of the 144 stage/difficulty combinations can be won using movement and interaction (2229.263042ms)
-✔ wall collisions, normalized diagonal movement and sprint consumption (9.747708ms)
-✔ occupied toilet clues transition, waiting can be cancelled and then auto-enters (11.064291ms)
-✔ three-second relief wins at boundary but loses when less time remains (13.419417ms)
-✔ pausing freezes time, NPCs and player; finished games never update (28.243709ms)
-✔ companion bonus cannot be farmed; yield completes both rescues without a random loss (29.455ms)
-✔ staff reveals locations at a one-time 2 second cost including fatal boundary (6.343958ms)
-✔ walking near shoppers is safe, sprint collisions have a cooldown (3.482209ms)
-✔ click movement refuses hidden destinations, follows visible paths and pauses safely (4.033083ms)
-✔ practice generates a small connected map; rebuilding a seed resets all events (1.680541ms)
-✔ dungeons are over seven times the old area, and contain 130 nodes on Normal (40.616709ms)
-✔ gates only add shortcuts; all rooms and every feature are reachable before unlocking (241.406667ms)
-✔ clock, keys, shoes and medals collect once, with capped time and real speed change (4.380208ms)
-✔ locked shortcuts consume one key or respond to their numbered switch (9.161125ms)
-✔ mystery lockers have deterministic rewards; benches and maps are one-use (7.066541ms)
-✔ elevators move the player and companion, respect cooldown, and stop click paths (5.586875ms)
-✔ wet floors penalize sprinting but not walking; moving walkways change speed by direction (3.91625ms)
-✔ resume restores used items, opened gates, explored map, position and exact remaining time (18.566333ms)
-✔ invalid, expired or old saves fail closed without breaking a fresh game (10.483625ms)
-ℹ tests 21
+✔ scarce toilets start occupied, crowds scale, and recovery is less abundant (435.179959ms)
+✔ toilets alternate between open, cleaning, and occupied without interrupting entry (215.101458ms)
+✔ contact while walking locks movement and actions, costs real time, and ends automatically (148.088ms)
+✔ sprint collisions add two seconds; people can also approach an idle player (172.011042ms)
+✔ conversation pause freezes the timer; expiry can lose during dialogue (166.590542ms)
+✔ conversation immunity prevents another person chaining an immediate interruption (133.787625ms)
+✔ stamina exhaustion falls back to walking and recovers above the restart threshold (131.186375ms)
+✔ rubble slows movement and no-running zones only punish actual sprinting with a cooldown (129.438125ms)
+✔ conversation and stamina survive reload without freeing the player or charging offline time (175.7365ms)
+✔ a real version 2 save migrates with position, clock, inventory and opened shortcuts (261.477ms)
+✔ 48 authored seeds and all difficulty settings produce distinct, repeatable layouts (7047.52025ms)
+✔ 500 random seeds per difficulty always connect every toilet and preserve a feasible finish (22583.816375ms)
+✔ every one of the 144 stage/difficulty combinations can be won using movement and interaction (11476.270792ms)
+✔ wall collisions, normalized diagonal movement and sprint consumption (33.519667ms)
+✔ occupied toilet clues transition, waiting can be cancelled and then auto-enters (38.944084ms)
+✔ three-second relief wins at boundary but loses when less time remains (53.834416ms)
+✔ pausing freezes time, NPCs and player; finished games never update (81.374083ms)
+✔ companion bonus cannot be farmed; yield completes both rescues without a random loss (85.000459ms)
+✔ staff reveals locations at a one-time 2 second cost including fatal boundary (25.70325ms)
+✔ walking collisions start timed conversations and cannot immediately repeat (13.61625ms)
+✔ click movement refuses hidden destinations, follows visible paths and pauses safely (11.411625ms)
+✔ practice generates a small connected map; rebuilding a seed resets all events (3.852708ms)
+✔ dungeons are over seven times the old area, and contain 130 nodes on Normal (531.96275ms)
+✔ gates only add shortcuts; all rooms and every feature are reachable before unlocking (3238.06575ms)
+✔ clock, keys, shoes and medals collect once, with capped time and real speed change (18.314917ms)
+✔ locked shortcuts consume one key or respond to their numbered switch (48.1995ms)
+✔ mystery lockers have deterministic rewards; benches and maps are one-use (37.897125ms)
+✔ elevators move the player and companion, respect cooldown, and stop click paths (28.0745ms)
+✔ wet floors penalize sprinting but not walking; moving walkways change speed by direction (21.959917ms)
+✔ resume restores used items, opened gates, explored map, position and exact remaining time (97.051958ms)
+✔ invalid, expired or old saves fail closed without breaking a fresh game (119.570792ms)
+ℹ tests 31
 ℹ suites 0
-ℹ pass 21
+ℹ pass 31
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 8114.359833
+ℹ duration_ms 41694.312958

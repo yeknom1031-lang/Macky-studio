@@ -1,0 +1,15 @@
+{
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    "Normal starts with only two occupied toilets and four kinds of patrols",
+    "Real walking contact starts a visible countdown and blocks keyboard, click and E escape",
+    "Reload during a conversation preserves its countdown; pause consumes neither clock",
+    "Conversation fits a phone viewport and releases the player after listening",
+    "Sustained real sprint input exhausts stamina and walking time restores it",
+    "A previously empty stall returns to cleaning and then opens again",
+    "No JavaScript exceptions or external requests"
+  ],
+  "errors": [],
+  "requests": []
+}
