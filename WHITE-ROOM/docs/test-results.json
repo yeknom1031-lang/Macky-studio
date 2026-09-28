@@ -1,0 +1,308 @@
+{
+	"checks": [
+		{
+			"check": "Each room has four human-scale hinged doors",
+			"passed": true
+		},
+		{
+			"check": "Exit starts concealed",
+			"passed": true
+		},
+		{
+			"check": "Exit cannot open before the circuit is restored",
+			"passed": true
+		},
+		{
+			"check": "A key cannot be taken before solving the cipher",
+			"passed": true
+		},
+		{
+			"check": "The circuit cannot be solved without the key",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 0/0",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 0/1",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 0/2",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 0/3",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 6/0",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 6/1",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 6/2",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 6/3",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 1/0",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 1/1",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 1/2",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 1/3",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 3/0",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 3/1",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 3/2",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 3/3",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 2/0",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 2/1",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 2/2",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 2/3",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 7/0",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 7/1",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 7/2",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 7/3",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 8/0",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 8/1",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 8/2",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 8/3",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 4/0",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 4/1",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 4/2",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 4/3",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 5/0",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 5/1",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 5/2",
+			"passed": true
+		},
+		{
+			"check": "Door graph is reversible: 5/3",
+			"passed": true
+		},
+		{
+			"check": "All nine rooms and all puzzle locations are reachable",
+			"passed": true
+		},
+		{
+			"check": "The real first-person ray detects the closed door",
+			"passed": true
+		},
+		{
+			"check": "A closed door blocks actual player motion",
+			"passed": true
+		},
+		{
+			"check": "The first door opens",
+			"passed": true
+		},
+		{
+			"check": "A second door cannot open simultaneously",
+			"passed": true
+		},
+		{
+			"check": "Walking through the north door reaches the connected room",
+			"passed": true
+		},
+		{
+			"check": "Portal traversal keeps the player inside the next room",
+			"passed": true
+		},
+		{
+			"check": "The opened door is closed after one second",
+			"passed": true
+		},
+		{
+			"check": "Every visible door is closed after its timer",
+			"passed": true
+		},
+		{
+			"check": "Physically returning through a door reaches the original room",
+			"passed": true
+		},
+		{
+			"check": "Closing while paused at a threshold cannot trap the player",
+			"passed": true
+		},
+		{
+			"check": "Pause releases gameplay input",
+			"passed": true
+		},
+		{
+			"check": "Observation 1 can be read through the real interaction ray",
+			"passed": true
+		},
+		{
+			"check": "Observation 1 is saved in the journal",
+			"passed": true
+		},
+		{
+			"check": "Observation 3 can be read through the real interaction ray",
+			"passed": true
+		},
+		{
+			"check": "Observation 3 is saved in the journal",
+			"passed": true
+		},
+		{
+			"check": "Observation 4 can be read through the real interaction ray",
+			"passed": true
+		},
+		{
+			"check": "Observation 4 is saved in the journal",
+			"passed": true
+		},
+		{
+			"check": "All three clues collected",
+			"passed": true
+		},
+		{
+			"check": "Wrong cipher leaves the puzzle retryable",
+			"passed": true
+		},
+		{
+			"check": "Keyboard digits and Backspace work with a focused keypad button",
+			"passed": true
+		},
+		{
+			"check": "Enter submits the correct code through normal input dispatch",
+			"passed": true
+		},
+		{
+			"check": "The key appears in the 3D scene after unlocking",
+			"passed": true
+		},
+		{
+			"check": "The revealed physical key can be targeted separately from the cipher panel",
+			"passed": true
+		},
+		{
+			"check": "The key is picked up through normal interaction",
+			"passed": true
+		},
+		{
+			"check": "The collected key unlocks the circuit",
+			"passed": true
+		},
+		{
+			"check": "Wrong circuit order resets safely",
+			"passed": true
+		},
+		{
+			"check": "The correct switch order restores boundary power",
+			"passed": true
+		},
+		{
+			"check": "Progress reloads from a real save file",
+			"passed": true
+		},
+		{
+			"check": "Reload preserves the full puzzle state",
+			"passed": true
+		},
+		{
+			"check": "A corrupted primary save recovers from its backup",
+			"passed": true
+		},
+		{
+			"check": "Returning to the origin reveals the hidden wooden door",
+			"passed": true
+		},
+		{
+			"check": "The revealed exit is reachable by the normal interaction ray",
+			"passed": true
+		},
+		{
+			"check": "Walking through the unlocked hidden door completes the game",
+			"passed": true
+		}
+	],
+	"coverage": "Actual player collision and door traversal, interaction rays, all puzzle stages, save reload and backup recovery, ending",
+	"engine": "4.7.2-stable (official)",
+	"failed": 0,
+	"passed": 75
+}
