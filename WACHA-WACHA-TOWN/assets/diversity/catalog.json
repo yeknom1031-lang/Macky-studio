@@ -1,0 +1,514 @@
+[
+  {
+    "name": "杖のおじいちゃん",
+    "action": "cane",
+    "height": 0.9,
+    "animal": false,
+    "source": "people-a",
+    "row": 0
+  },
+  {
+    "name": "編み物のおばあちゃん",
+    "action": "knit",
+    "height": 0.84,
+    "animal": false,
+    "source": "people-a",
+    "row": 1
+  },
+  {
+    "name": "玉乗りピエロ",
+    "action": "juggle",
+    "height": 0.99,
+    "animal": false,
+    "source": "people-a",
+    "row": 2
+  },
+  {
+    "name": "カメラの青年",
+    "action": "photo",
+    "height": 1.12,
+    "animal": false,
+    "source": "people-a",
+    "row": 3
+  },
+  {
+    "name": "体操のお姉さん",
+    "action": "stretch",
+    "height": 1.04,
+    "animal": false,
+    "source": "people-a",
+    "row": 4
+  },
+  {
+    "name": "バスケのお兄さん",
+    "action": "basketball",
+    "height": 1.24,
+    "animal": false,
+    "source": "people-a",
+    "row": 5
+  },
+  {
+    "name": "レインボーのダンサー",
+    "action": "dance",
+    "height": 1.02,
+    "animal": false,
+    "source": "people-a",
+    "row": 6
+  },
+  {
+    "name": "本好きの人",
+    "action": "read",
+    "height": 1.05,
+    "animal": false,
+    "source": "people-a",
+    "row": 7
+  },
+  {
+    "name": "柴犬",
+    "action": "sniff",
+    "height": 0.65,
+    "animal": true,
+    "source": "animals",
+    "row": 0
+  },
+  {
+    "name": "ダックス",
+    "action": "fetch",
+    "height": 0.48,
+    "animal": true,
+    "source": "animals",
+    "row": 1
+  },
+  {
+    "name": "ふわふわプードル",
+    "action": "roll",
+    "height": 0.7,
+    "animal": true,
+    "source": "animals",
+    "row": 2
+  },
+  {
+    "name": "大きな牧羊犬",
+    "action": "shake",
+    "height": 0.82,
+    "animal": true,
+    "source": "animals",
+    "row": 3
+  },
+  {
+    "name": "三毛猫",
+    "action": "groom",
+    "height": 0.5,
+    "animal": true,
+    "source": "animals",
+    "row": 4
+  },
+  {
+    "name": "黒ねこ",
+    "action": "pounce",
+    "height": 0.51,
+    "animal": true,
+    "source": "animals",
+    "row": 5
+  },
+  {
+    "name": "ふとっちょ茶トラ",
+    "action": "sleep",
+    "height": 0.6,
+    "animal": true,
+    "source": "animals",
+    "row": 6
+  },
+  {
+    "name": "ふわふわ白ねこ",
+    "action": "groom",
+    "height": 0.63,
+    "animal": true,
+    "source": "animals",
+    "row": 7
+  },
+  {
+    "name": "パン職人",
+    "action": "bake",
+    "height": 1.07,
+    "animal": false,
+    "source": "workers",
+    "row": 0
+  },
+  {
+    "name": "大工さん",
+    "action": "hammer",
+    "height": 1.1,
+    "animal": false,
+    "source": "workers",
+    "row": 1
+  },
+  {
+    "name": "庭師さん",
+    "action": "water",
+    "height": 0.96,
+    "animal": false,
+    "source": "workers",
+    "row": 2
+  },
+  {
+    "name": "ペンキ屋さん",
+    "action": "paint",
+    "height": 1.02,
+    "animal": false,
+    "source": "workers",
+    "row": 3
+  },
+  {
+    "name": "清掃員さん",
+    "action": "sweep",
+    "height": 0.98,
+    "animal": false,
+    "source": "workers",
+    "row": 4
+  },
+  {
+    "name": "画家さん",
+    "action": "easel",
+    "height": 1.12,
+    "animal": false,
+    "source": "workers",
+    "row": 5
+  },
+  {
+    "name": "陶芸家さん",
+    "action": "pottery",
+    "height": 1,
+    "animal": false,
+    "source": "workers",
+    "row": 6
+  },
+  {
+    "name": "花屋さん",
+    "action": "flowers",
+    "height": 0.92,
+    "animal": false,
+    "source": "workers",
+    "row": 7
+  },
+  {
+    "name": "太鼓のおじさん",
+    "action": "drum",
+    "height": 1.08,
+    "animal": false,
+    "source": "festival",
+    "row": 0
+  },
+  {
+    "name": "バイオリンの人",
+    "action": "violin",
+    "height": 1.14,
+    "animal": false,
+    "source": "festival",
+    "row": 1
+  },
+  {
+    "name": "アコーディオン奏者",
+    "action": "accordion",
+    "height": 0.91,
+    "animal": false,
+    "source": "festival",
+    "row": 2
+  },
+  {
+    "name": "大道芸人",
+    "action": "juggle",
+    "height": 1.14,
+    "animal": false,
+    "source": "festival",
+    "row": 3
+  },
+  {
+    "name": "風船屋さん",
+    "action": "balloon",
+    "height": 1.01,
+    "animal": false,
+    "source": "festival",
+    "row": 4
+  },
+  {
+    "name": "シャボン玉の子",
+    "action": "bubbles",
+    "height": 0.73,
+    "animal": false,
+    "source": "festival",
+    "row": 5
+  },
+  {
+    "name": "パントマイムの人",
+    "action": "mime",
+    "height": 1.19,
+    "animal": false,
+    "source": "festival",
+    "row": 6
+  },
+  {
+    "name": "リボンの踊り子",
+    "action": "ribbon",
+    "height": 1.05,
+    "animal": false,
+    "source": "festival",
+    "row": 7
+  },
+  {
+    "name": "ヨガの人",
+    "action": "yoga",
+    "height": 1.03,
+    "animal": false,
+    "source": "sports",
+    "row": 0
+  },
+  {
+    "name": "フラフープの人",
+    "action": "hoop",
+    "height": 0.98,
+    "animal": false,
+    "source": "sports",
+    "row": 1
+  },
+  {
+    "name": "スケーター",
+    "action": "skate",
+    "height": 0.94,
+    "animal": false,
+    "source": "sports",
+    "row": 2
+  },
+  {
+    "name": "なわとびの子",
+    "action": "skip",
+    "height": 0.7,
+    "animal": false,
+    "source": "sports",
+    "row": 3
+  },
+  {
+    "name": "ダンベルのおじさん",
+    "action": "weights",
+    "height": 1.21,
+    "animal": false,
+    "source": "sports",
+    "row": 4
+  },
+  {
+    "name": "空手家",
+    "action": "karate",
+    "height": 1.09,
+    "animal": false,
+    "source": "sports",
+    "row": 5
+  },
+  {
+    "name": "サッカー少年",
+    "action": "football",
+    "height": 0.75,
+    "animal": false,
+    "source": "sports",
+    "row": 6
+  },
+  {
+    "name": "バレリーナ",
+    "action": "ballet",
+    "height": 1.13,
+    "animal": false,
+    "source": "sports",
+    "row": 7
+  },
+  {
+    "name": "和服のおばあちゃん",
+    "action": "fan",
+    "height": 0.9,
+    "animal": false,
+    "source": "neighbors",
+    "row": 0
+  },
+  {
+    "name": "サリーの女性",
+    "action": "tea",
+    "height": 1.12,
+    "animal": false,
+    "source": "neighbors",
+    "row": 1
+  },
+  {
+    "name": "ターバンのおじさん",
+    "action": "read",
+    "height": 1.19,
+    "animal": false,
+    "source": "neighbors",
+    "row": 2
+  },
+  {
+    "name": "車いすの画家",
+    "action": "sketch",
+    "height": 0.83,
+    "animal": false,
+    "source": "neighbors",
+    "row": 3
+  },
+  {
+    "name": "補聴器の女の子",
+    "action": "clap",
+    "height": 0.71,
+    "animal": false,
+    "source": "neighbors",
+    "row": 4
+  },
+  {
+    "name": "ひげの紳士",
+    "action": "tea",
+    "height": 1.1,
+    "animal": false,
+    "source": "neighbors",
+    "row": 5
+  },
+  {
+    "name": "スーツの女性",
+    "action": "phone",
+    "height": 1.16,
+    "animal": false,
+    "source": "neighbors",
+    "row": 6
+  },
+  {
+    "name": "パンクのお姉さん",
+    "action": "guitar",
+    "height": 1.03,
+    "animal": false,
+    "source": "neighbors",
+    "row": 7
+  },
+  {
+    "name": "赤ちゃんとパパ",
+    "action": "cradle",
+    "height": 1.14,
+    "animal": false,
+    "source": "families",
+    "row": 0
+  },
+  {
+    "name": "赤ちゃんとママ",
+    "action": "cradle",
+    "height": 1.04,
+    "animal": false,
+    "source": "families",
+    "row": 1
+  },
+  {
+    "name": "双子のお姉ちゃん",
+    "action": "clap",
+    "height": 0.78,
+    "animal": false,
+    "source": "families",
+    "row": 2
+  },
+  {
+    "name": "ぬいぐるみの子",
+    "action": "hug",
+    "height": 0.68,
+    "animal": false,
+    "source": "families",
+    "row": 3
+  },
+  {
+    "name": "大きなリュックの人",
+    "action": "map",
+    "height": 1.1,
+    "animal": false,
+    "source": "families",
+    "row": 4
+  },
+  {
+    "name": "おしゃれな紳士",
+    "action": "photo",
+    "height": 1.2,
+    "animal": false,
+    "source": "families",
+    "row": 5
+  },
+  {
+    "name": "レインボーの女性",
+    "action": "dance",
+    "height": 1.08,
+    "animal": false,
+    "source": "families",
+    "row": 6
+  },
+  {
+    "name": "日傘のおばさん",
+    "action": "fan",
+    "height": 1.02,
+    "animal": false,
+    "source": "families",
+    "row": 7
+  },
+  {
+    "name": "宇宙飛行士",
+    "action": "float",
+    "height": 1.06,
+    "animal": false,
+    "source": "costumes",
+    "row": 0
+  },
+  {
+    "name": "小さな魔女",
+    "action": "magic",
+    "height": 0.88,
+    "animal": false,
+    "source": "costumes",
+    "row": 1
+  },
+  {
+    "name": "大きなロボット",
+    "action": "robot",
+    "height": 1.26,
+    "animal": false,
+    "source": "costumes",
+    "row": 2
+  },
+  {
+    "name": "カエルの人",
+    "action": "hop",
+    "height": 0.91,
+    "animal": false,
+    "source": "costumes",
+    "row": 3
+  },
+  {
+    "name": "ペンギンの人",
+    "action": "waddle",
+    "height": 0.86,
+    "animal": false,
+    "source": "costumes",
+    "row": 4
+  },
+  {
+    "name": "ドラゴンの人",
+    "action": "flap",
+    "height": 1.04,
+    "animal": false,
+    "source": "costumes",
+    "row": 5
+  },
+  {
+    "name": "探偵さん",
+    "action": "inspect",
+    "height": 1.13,
+    "animal": false,
+    "source": "costumes",
+    "row": 6
+  },
+  {
+    "name": "海賊のおじいさん",
+    "action": "dance",
+    "height": 1,
+    "animal": false,
+    "source": "costumes",
+    "row": 7
+  }
+]

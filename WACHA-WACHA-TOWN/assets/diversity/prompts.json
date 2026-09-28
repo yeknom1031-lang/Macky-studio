@@ -1,0 +1,274 @@
+[
+  {
+    "file": "people-a",
+    "names": [
+      "杖のおじいちゃん",
+      "編み物のおばあちゃん",
+      "玉乗りピエロ",
+      "カメラの青年",
+      "体操のお姉さん",
+      "バスケのお兄さん",
+      "レインボーのダンサー",
+      "本好きの人"
+    ],
+    "actions": [
+      "cane",
+      "knit",
+      "juggle",
+      "photo",
+      "stretch",
+      "basketball",
+      "dance",
+      "read"
+    ],
+    "heights": [
+      0.9,
+      0.84,
+      0.99,
+      1.12,
+      1.04,
+      1.24,
+      1.02,
+      1.05
+    ],
+    "prompt": "Use case: stylized-concept. Asset type: production transparent 2D game animation sprite atlas. Cute warm hand-drawn Japanese miniature-town characters, thick dark brown outlines, soft pastel flat colors, clean readable silhouettes, 2.5 heads tall, three-quarter front facing right. Real transparent RGBA background, absolutely no scenery, no floor, no text, no numbers, no grid lines. Layout STRICT EXACTLY 8 horizontal rows and 15 equal columns, 120 separate full-body sprites, regular evenly spaced cells with generous transparent gaps. Each row ONE distinct character, identity and clothes perfectly consistent across 15 frames. Columns 1–5: five consecutive WALK cycle keyframes (changing legs and arms); columns 6–10: five consecutive friendly idle/conversation gestures with feet still and hands moving; columns 11–15: five consecutive keyframes of the specified unique action. Clear significant motion between frames, especially hands and legs. Keep each sprite inside its cell, no touching adjacent sprites. Preserve each body's distinctive proportions: short elders, wide plus-size adults, tall adults, children. No color-swap clones. No speech bubbles or symbols floating over heads. 15 columns, 8 rows, wide landscape sheet ideally 3000x1600.\nRows top to bottom: 1 very elderly balding man white mustache, hunched back, tan cardigan, wooden cane; action leaning on cane slowly and waving. 2 tiny plump elderly woman silver hair bun round glasses purple cardigan; action seated on her small stool knitting yarn. 3 unmistakable colorful circus clown orange curly hair red round nose, giant shoes, patchwork costume; action juggling THREE balls. 4 handsome slim adult man dark swept hair, long cream coat, teal trousers and camera; action lifting camera to take photos. 5 plus-size adult woman with truly wide round body, dark skin, pink curly bob, orange tracksuit; action stretching her arms above head. 6 very tall broad-shouldered Black adult man with high-top hair in yellow basketball jersey; action dribbling orange basketball. 7 androgynous adult with short mint hair, purple dungarees and small rainbow striped chest patch; action dancing expressive hands and hips, ordinary respectful representation. 8 adult with blue undercut, round spectacles, long skirt, turquoise jacket; action opening and reading a big book."
+  },
+  {
+    "file": "animals",
+    "names": [
+      "柴犬",
+      "ダックス",
+      "ふわふわプードル",
+      "大きな牧羊犬",
+      "三毛猫",
+      "黒ねこ",
+      "ふとっちょ茶トラ",
+      "ふわふわ白ねこ"
+    ],
+    "actions": [
+      "sniff",
+      "fetch",
+      "roll",
+      "shake",
+      "groom",
+      "pounce",
+      "sleep",
+      "groom"
+    ],
+    "heights": [
+      0.65,
+      0.48,
+      0.7,
+      0.82,
+      0.5,
+      0.51,
+      0.6,
+      0.63
+    ],
+    "prompt": "Use case: stylized-concept. Asset type: production transparent 2D game animation sprite atlas. Cute warm hand-drawn Japanese miniature-town characters, thick dark brown outlines, soft pastel flat colors, clean readable silhouettes, 2.5 heads tall, three-quarter front facing right. Real transparent RGBA background, absolutely no scenery, no floor, no text, no numbers, no grid lines. Layout STRICT EXACTLY 8 horizontal rows and 15 equal columns, 120 separate full-body sprites, regular evenly spaced cells with generous transparent gaps. Each row ONE distinct character, identity and clothes perfectly consistent across 15 frames. Columns 1–5: five consecutive WALK cycle keyframes (changing legs and arms); columns 6–10: five consecutive friendly idle/conversation gestures with feet still and hands moving; columns 11–15: five consecutive keyframes of the specified unique action. Clear significant motion between frames, especially hands and legs. Keep each sprite inside its cell, no touching adjacent sprites. Preserve each body's distinctive proportions: short elders, wide plus-size adults, tall adults, children. No color-swap clones. No speech bubbles or symbols floating over heads. 15 columns, 8 rows, wide landscape sheet ideally 3000x1600.\nEvery row is a REAL CUTE QUADRUPED ANIMAL, not an anthropomorphic human. Keep animals four-legged, side three-quarter view right. Columns1–5 walking/trotting, columns6–10 sitting with head turns/tail wags, columns11–15 special action. 1 tan Shiba Inu curled tail red bandana sniffing ground. 2 long low brown dachshund blue collar playing fetch with red ball. 3 cream curly poodle pink collar rolling onto its back. 4 large shaggy black-and-white sheepdog shaking fur. 5 tiny calico cat washing its paw and face. 6 slender black cat green eyes crouching and pouncing. 7 very round fat orange tabby curling up and sleeping. 8 large fluffy white cat blue scarf grooming its tail. No humans."
+  },
+  {
+    "file": "workers",
+    "names": [
+      "パン職人",
+      "大工さん",
+      "庭師さん",
+      "ペンキ屋さん",
+      "清掃員さん",
+      "画家さん",
+      "陶芸家さん",
+      "花屋さん"
+    ],
+    "actions": [
+      "bake",
+      "hammer",
+      "water",
+      "paint",
+      "sweep",
+      "easel",
+      "pottery",
+      "flowers"
+    ],
+    "heights": [
+      1.07,
+      1.1,
+      0.96,
+      1.02,
+      0.98,
+      1.12,
+      1,
+      0.92
+    ],
+    "prompt": "Use case: stylized-concept. Asset type: production transparent 2D game animation sprite atlas. Cute warm hand-drawn Japanese miniature-town characters, thick dark brown outlines, soft pastel flat colors, clean readable silhouettes, 2.5 heads tall, three-quarter front facing right. Real transparent RGBA background, absolutely no scenery, no floor, no text, no numbers, no grid lines. Layout STRICT EXACTLY 8 horizontal rows and 15 equal columns, 120 separate full-body sprites, regular evenly spaced cells with generous transparent gaps. Each row ONE distinct character, identity and clothes perfectly consistent across 15 frames. Columns 1–5: five consecutive WALK cycle keyframes (changing legs and arms); columns 6–10: five consecutive friendly idle/conversation gestures with feet still and hands moving; columns 11–15: five consecutive keyframes of the specified unique action. Clear significant motion between frames, especially hands and legs. Keep each sprite inside its cell, no touching adjacent sprites. Preserve each body's distinctive proportions: short elders, wide plus-size adults, tall adults, children. No color-swap clones. No speech bubbles or symbols floating over heads. 15 columns, 8 rows, wide landscape sheet ideally 3000x1600.\nRows: 1 very broad rotund baker woman dark curly hair white chef hat and red apron kneading bread on small waist-high table. 2 muscular older carpenter thick beard yellow hardhat green overalls hammering wood on small workbench. 3 elderly Japanese gardener straw hat blue smock watering flowers with green watering can. 4 tall slim painter woman violet ponytail paint-spattered overalls painting a small red board with brush. 5 cheerful short city cleaner round glasses orange jumpsuit sweeping with broom. 6 slender handsome long-haired adult man burgundy beret cream shirt painting on small easel. 7 stocky short-haired woman brown apron shaping clay on little pottery wheel. 8 small freckled florist curly red hair green apron arranging yellow and pink flowers. Props only in action columns11–15, walking cols1–5 and greeting cols6–10 without large tables."
+  },
+  {
+    "file": "festival",
+    "names": [
+      "太鼓のおじさん",
+      "バイオリンの人",
+      "アコーディオン奏者",
+      "大道芸人",
+      "風船屋さん",
+      "シャボン玉の子",
+      "パントマイムの人",
+      "リボンの踊り子"
+    ],
+    "actions": [
+      "drum",
+      "violin",
+      "accordion",
+      "juggle",
+      "balloon",
+      "bubbles",
+      "mime",
+      "ribbon"
+    ],
+    "heights": [
+      1.08,
+      1.14,
+      0.91,
+      1.14,
+      1.01,
+      0.73,
+      1.19,
+      1.05
+    ],
+    "prompt": "Use case: stylized-concept. Asset type: production transparent 2D game animation sprite atlas. Cute warm hand-drawn Japanese miniature-town characters, thick dark brown outlines, soft pastel flat colors, clean readable silhouettes, 2.5 heads tall, three-quarter front facing right. Real transparent RGBA background, absolutely no scenery, no floor, no text, no numbers, no grid lines. Layout STRICT EXACTLY 8 horizontal rows and 15 equal columns, 120 separate full-body sprites, regular evenly spaced cells with generous transparent gaps. Each row ONE distinct character, identity and clothes perfectly consistent across 15 frames. Columns 1–5: five consecutive WALK cycle keyframes (changing legs and arms); columns 6–10: five consecutive friendly idle/conversation gestures with feet still and hands moving; columns 11–15: five consecutive keyframes of the specified unique action. Clear significant motion between frames, especially hands and legs. Keep each sprite inside its cell, no touching adjacent sprites. Preserve each body's distinctive proportions: short elders, wide plus-size adults, tall adults, children. No color-swap clones. No speech bubbles or symbols floating over heads. 15 columns, 8 rows, wide landscape sheet ideally 3000x1600.\nRows: 1 stout elderly man gray ponytail blue festival coat playing a strapped Japanese drum with two sticks. 2 tall woman dark skin large curly afro purple dress playing violin. 3 little elderly man huge white eyebrows green flat cap rust trousers playing accordion. 4 lanky jester in yellow and turquoise diamond suit and pointed hat juggling clubs. 5 cheerful plus-size woman pink hair double buns striped blue apron holding colorful helium balloons. 6 small child with two pigtails yellow raincoat blowing soap bubbles with a wand. 7 tall slender mime black bob white face paint striped black-and-white shirt gesturing with white gloves. 8 adult nonbinary ribbon dancer silver buzzcut rainbow belt violet loose costume swirling long pink ribbon. No speech bubbles. Only action cols11–15 show large accessories; walk and gesture columns have compact held props."
+  },
+  {
+    "file": "sports",
+    "names": [
+      "ヨガの人",
+      "フラフープの人",
+      "スケーター",
+      "なわとびの子",
+      "ダンベルのおじさん",
+      "空手家",
+      "サッカー少年",
+      "バレリーナ"
+    ],
+    "actions": [
+      "yoga",
+      "hoop",
+      "skate",
+      "skip",
+      "weights",
+      "karate",
+      "football",
+      "ballet"
+    ],
+    "heights": [
+      1.03,
+      0.98,
+      0.94,
+      0.7,
+      1.21,
+      1.09,
+      0.75,
+      1.13
+    ],
+    "prompt": "Use case: stylized-concept. Asset type: production transparent 2D game animation sprite atlas. Cute warm hand-drawn Japanese miniature-town characters, thick dark brown outlines, soft pastel flat colors, clean readable silhouettes, 2.5 heads tall, three-quarter front facing right. Real transparent RGBA background, absolutely no scenery, no floor, no text, no numbers, no grid lines. Layout STRICT EXACTLY 8 horizontal rows and 15 equal columns, 120 separate full-body sprites, regular evenly spaced cells with generous transparent gaps. Each row ONE distinct character, identity and clothes perfectly consistent across 15 frames. Columns 1–5: five consecutive WALK cycle keyframes (changing legs and arms); columns 6–10: five consecutive friendly idle/conversation gestures with feet still and hands moving; columns 11–15: five consecutive keyframes of the specified unique action. Clear significant motion between frames, especially hands and legs. Keep each sprite inside its cell, no touching adjacent sprites. Preserve each body's distinctive proportions: short elders, wide plus-size adults, tall adults, children. No color-swap clones. No speech bubbles or symbols floating over heads. 15 columns, 8 rows, wide landscape sheet ideally 3000x1600.\nRows: 1 adult woman with tall red hair bun purple leggings green yoga top doing tree yoga pose. 2 plus-size joyful adult man with short black beard coral shorts twirling yellow hula hoop. 3 teenager with blue helmet green hoodie riding red skateboard. 4 little girl dark skin two afro puff buns striped orange romper skipping rope. 5 huge muscular grandfather gray beard teal singlet exercising with two small red dumbbells. 6 middle-aged woman short gray hair white karate gi brown belt practicing karate punches. 7 small blond boy blue soccer shirt kicking black-and-white football. 8 tall graceful adult man pink ballet tutu black top bun doing ballet spins. Full body varied silhouettes, props inside cells.\nCount carefully: eight distinct characters in exactly EIGHT rows, do not omit or merge any. Three groups of five columns make fifteen frames."
+  },
+  {
+    "file": "neighbors",
+    "names": [
+      "和服のおばあちゃん",
+      "サリーの女性",
+      "ターバンのおじさん",
+      "車いすの画家",
+      "補聴器の女の子",
+      "ひげの紳士",
+      "スーツの女性",
+      "パンクのお姉さん"
+    ],
+    "actions": [
+      "fan",
+      "tea",
+      "read",
+      "sketch",
+      "clap",
+      "tea",
+      "phone",
+      "guitar"
+    ],
+    "heights": [
+      0.9,
+      1.12,
+      1.19,
+      0.83,
+      0.71,
+      1.1,
+      1.16,
+      1.03
+    ],
+    "prompt": "Use case: stylized-concept. Asset type: production transparent 2D game animation sprite atlas. Cute warm hand-drawn Japanese miniature-town characters, thick dark brown outlines, soft pastel flat colors, clean readable silhouettes, 2.5 heads tall, three-quarter front facing right. Real transparent RGBA background, absolutely no scenery, no floor, no text, no numbers, no grid lines. Layout STRICT EXACTLY 8 horizontal rows and 15 equal columns, 120 separate full-body sprites, regular evenly spaced cells with generous transparent gaps. Each row ONE distinct character, identity and clothes perfectly consistent across 15 frames. Columns 1–5: five consecutive WALK cycle keyframes (changing legs and arms); columns 6–10: five consecutive friendly idle/conversation gestures with feet still and hands moving; columns 11–15: five consecutive keyframes of the specified unique action. Clear significant motion between frames, especially hands and legs. Keep each sprite inside its cell, no touching adjacent sprites. Preserve each body's distinctive proportions: short elders, wide plus-size adults, tall adults, children. No color-swap clones. No speech bubbles or symbols floating over heads. 15 columns, 8 rows, wide landscape sheet ideally 3000x1600.\nRespectful varied everyday fictional neighbors, no stereotypes or caricature. Rows: 1 short elderly Japanese woman silver bob rose kimono cooling herself with folding fan. 2 South Asian adult woman long black braid teal sari pouring tea from small pot. 3 tall adult Sikh man navy turban neat beard cream kurta reading book. 4 adult woman light brown skin curly black hair yellow cardigan in a manual wheelchair sketching in notebook; WALK columns show pushing wheels, gesture columns waving seated, action columns sketching. 5 child with visible hearing aids, brown skin short violet hair green jumper clapping hands. 6 broad adult gentleman dark skin full gray beard burgundy waistcoat sipping tea. 7 tall professional woman ash-blonde pixie haircut navy pantsuit checking smartphone. 8 stocky punk adult woman red mohawk black boots tartan skirt playing electric guitar. Props small, safe playful family game.\nCount carefully: eight distinct characters in exactly EIGHT rows, do not omit or merge any. Three groups of five columns make fifteen frames."
+  },
+  {
+    "file": "families",
+    "names": [
+      "赤ちゃんとパパ",
+      "赤ちゃんとママ",
+      "双子のお姉ちゃん",
+      "ぬいぐるみの子",
+      "大きなリュックの人",
+      "おしゃれな紳士",
+      "レインボーの女性",
+      "日傘のおばさん"
+    ],
+    "actions": [
+      "cradle",
+      "cradle",
+      "clap",
+      "hug",
+      "map",
+      "photo",
+      "dance",
+      "fan"
+    ],
+    "heights": [
+      1.14,
+      1.04,
+      0.78,
+      0.68,
+      1.1,
+      1.2,
+      1.08,
+      1.02
+    ],
+    "prompt": "Use case: stylized-concept. Asset type: production transparent 2D game animation sprite atlas. Cute warm hand-drawn Japanese miniature-town characters, thick dark brown outlines, soft pastel flat colors, clean readable silhouettes, 2.5 heads tall, three-quarter front facing right. Real transparent RGBA background, absolutely no scenery, no floor, no text, no numbers, no grid lines. Layout STRICT EXACTLY 8 horizontal rows and 15 equal columns, 120 separate full-body sprites, regular evenly spaced cells with generous transparent gaps. Each row ONE distinct character, identity and clothes perfectly consistent across 15 frames. Columns 1–5: five consecutive WALK cycle keyframes (changing legs and arms); columns 6–10: five consecutive friendly idle/conversation gestures with feet still and hands moving; columns 11–15: five consecutive keyframes of the specified unique action. Clear significant motion between frames, especially hands and legs. Keep each sprite inside its cell, no touching adjacent sprites. Preserve each body's distinctive proportions: short elders, wide plus-size adults, tall adults, children. No color-swap clones. No speech bubbles or symbols floating over heads. 15 columns, 8 rows, wide landscape sheet ideally 3000x1600.\nRows: 1 big bearded father mustard sweater with baby in front carrier, gently rocking baby. 2 short plus-size mother purple pixie haircut green dress holding infant, gently rocking baby. 3 freckled child red braids striped lavender shirt with blue dungarees playing clapping game. 4 tiny child blue curly hair yellow romper hugging a huge brown teddy bear. 5 outdoorsy elderly woman weathered face white short hair red boots giant green backpack unfolding map. 6 handsome tall adult gentleman slick black hair fitted plum suit gold glasses taking a photo. 7 lesbian adult woman brown skin wavy black hair white tee with rainbow heart small patch and denim overalls dancing, ordinary joyful respectful design. 8 rotund middle-aged woman long pink dress very wide sunhat holding lavender parasol and cooling face with fan.\nCount carefully: eight distinct characters in exactly EIGHT rows, do not omit any."
+  },
+  {
+    "file": "costumes",
+    "names": [
+      "宇宙飛行士",
+      "小さな魔女",
+      "大きなロボット",
+      "カエルの人",
+      "ペンギンの人",
+      "ドラゴンの人",
+      "探偵さん",
+      "海賊のおじいさん"
+    ],
+    "actions": [
+      "float",
+      "magic",
+      "robot",
+      "hop",
+      "waddle",
+      "flap",
+      "inspect",
+      "dance"
+    ],
+    "heights": [
+      1.06,
+      0.88,
+      1.26,
+      0.91,
+      0.86,
+      1.04,
+      1.13,
+      1
+    ],
+    "prompt": "Use case: stylized-concept. Asset type: production transparent 2D game animation sprite atlas. Cute warm hand-drawn Japanese miniature-town characters, thick dark brown outlines, soft pastel flat colors, clean readable silhouettes, 2.5 heads tall, three-quarter front facing right. Real transparent RGBA background, absolutely no scenery, no floor, no text, no numbers, no grid lines. Layout STRICT EXACTLY 8 horizontal rows and 15 equal columns, 120 separate full-body sprites, regular evenly spaced cells with generous transparent gaps. Each row ONE distinct character, identity and clothes perfectly consistent across 15 frames. Columns 1–5: five consecutive WALK cycle keyframes (changing legs and arms); columns 6–10: five consecutive friendly idle/conversation gestures with feet still and hands moving; columns 11–15: five consecutive keyframes of the specified unique action. Clear significant motion between frames, especially hands and legs. Keep each sprite inside its cell, no touching adjacent sprites. Preserve each body's distinctive proportions: short elders, wide plus-size adults, tall adults, children. No color-swap clones. No speech bubbles or symbols floating over heads. 15 columns, 8 rows, wide landscape sheet ideally 3000x1600.\nRows: 1 round adult astronaut in white suit and large glass helmet gently floating/bouncing. 2 small elderly witch gray curls purple pointed hat starry cloak waving wooden wand; no text. 3 very large boxy friendly retro robot rusty orange steel round blue eyes doing robot dance. 4 adult in wide green frog mascot costume squatting and hopping. 5 short adult in plump black-and-white penguin mascot costume waddling and flapping flippers. 6 person in purple dragon suit with small wings orange belly flapping wings. 7 slim middle-aged detective curly brown hair tweed cap long tan trench coat peering through magnifying glass. 8 short stocky elderly pirate grandpa white beard tricorn hat teal coat wooden peg leg dancing. Playful, nonthreatening costumes.\nCount carefully: eight distinct characters in exactly EIGHT rows, do not omit any."
+  }
+]

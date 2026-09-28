@@ -11,7 +11,7 @@ test('7 scenes always start with 600 people, all 320 looks, and exactly one matc
   assert.equal(s.people.filter(p=>p.type===s.targetType).length,1);assert.equal(s.remaining,180);assert.equal(s.status,'ready');
  }
 });
-test('All 600 people move, take connected routes and remain inside the scene',()=>{
+test('Raw navigation moves all agents along connected routes inside the scene',()=>{
  for(let stage=0;stage<7;stage++){
   const s=C.create(stage,423+stage),initial=s.people.map(p=>[p.x,p.y]),moved=new Set();C.start(s);
   for(let frame=0;frame<20;frame++){C.step(s,.05);for(const p of s.people)if(Math.hypot(p.x-initial[p.id][0],p.y-initial[p.id][1])>.05)moved.add(p.id);}
@@ -29,7 +29,13 @@ test('Ready and pause freeze the clock, expiry happens at exactly 180 seconds',(
 test('Touching target clears; a wrong person costs 3 seconds; hint is single-use and costs 10',()=>{
  const s=C.create(3,8);C.start(s);const wrong=s.people.find(p=>p.id!==s.targetId);assert.equal(C.touch(s,wrong.id),false);assert.equal(s.remaining,177);assert.equal(s.mistakes,1);assert.equal(C.hint(s),true);assert.equal(s.remaining,167);assert.equal(C.hint(s),false);assert.equal(s.remaining,167);assert.equal(C.touch(s,s.targetId),true);assert.equal(s.status,'won');C.step(s,999);assert.equal(s.remaining,167);
 });
-test('Actual generated sprite data provides 16 bases, 20 palettes and 15 real frames per base',()=>{
- assert.equal(meta.characters.length,16);assert.equal(meta.palette_count*meta.base_count,320);assert.equal(meta.frame_count,15);
- for(const c of meta.characters){assert.equal(c.frames.length,15);for(const f of c.frames){assert.ok(f.w>35&&f.h>60);assert.ok(f.x>=0&&f.y>=0&&f.x+f.w<=2172&&f.y+f.h<=724);}}
+test('80 distinct archetypes include 64 new action designs, with four palettes and 15 playback slots',()=>{
+ const fs=require('node:fs'),path=require('node:path');
+ assert.equal(C.CHARACTERS.length,80);assert.equal(meta.characters.length,80);assert.equal(meta.palette_count*meta.base_count,320);assert.equal(meta.frame_count,15);
+ for(const [i,c] of meta.characters.entries()){
+  assert.equal(c.frames.length,15);const bytes=fs.readFileSync(path.join(__dirname,'../assets',c.source+'.png')),w=bytes.readUInt32BE(16),h=bytes.readUInt32BE(20);
+  for(const f of c.frames){assert.ok(f.w>8&&f.h>20);assert.ok(f.x>=0&&f.y>=0&&f.x+f.w<=w&&f.y+f.h<=h);}
+  if(i>=16){assert.ok(c.clips.walk&&c.clips.gesture&&c.clips.action);assert.ok(c.source_frames>=14);}
+ }
+ for(let seed=0;seed<25;seed++){const s=C.create(0,seed);assert.ok(s.people.filter(p=>!C.typeInfo(p.type).animal).length>=520);}
 });

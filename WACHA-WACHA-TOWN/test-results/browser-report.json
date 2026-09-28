@@ -1,43 +1,43 @@
 {
   "results": [
     {
-      "name": "Offline standalone home opens with all 320 cached sprite variants",
+      "name": "Offline home opens with 80 archetypes and 320 visual variants",
       "passed": true
     },
     {
-      "name": "All seven distinct scenes are selectable",
+      "name": "Seven scenes and all character groups are available; 320 portraits are visually distinct",
       "passed": true
     },
     {
-      "name": "Collection displays all 16 archetypes and 20 color variants",
+      "name": "600 residents start with many activities and a three-minute limit; search has no visible UI",
       "passed": true
     },
     {
-      "name": "Scene 1 starts with exactly 600 moving people and 180-second limit",
+      "name": "Keyboard zoom, drag, reset and pause keep the screen clear",
       "passed": true
     },
     {
-      "name": "Zoom, pan, fit and pause/resume work",
+      "name": "Wrong target, pause-menu hint and correct capture preserve rules and save the result",
       "passed": true
     },
     {
-      "name": "Wrong target and hint apply penalties, correct target clears and saves result",
+      "name": "All seven scenes retain 600 agents, 320 looks, and a full-viewport world",
       "passed": true
     },
     {
-      "name": "Every other scene renders 600 residents; next/retry navigation works",
+      "name": "Browser timer expires at three minutes and restart resets the game",
       "passed": true
     },
     {
-      "name": "Timer expires in browser at three minutes, and result offers restart",
+      "name": "Clear record persists after reload",
       "passed": true
     },
     {
-      "name": "Record persists after reload",
+      "name": "Portrait mobile search fills the viewport and supports pinch zoom without buttons",
       "passed": true
     },
     {
-      "name": "Mobile home and gameplay fit screen with touch zoom controls",
+      "name": "Two-finger hold opens pause and target reference on mobile",
       "passed": true
     }
   ],
