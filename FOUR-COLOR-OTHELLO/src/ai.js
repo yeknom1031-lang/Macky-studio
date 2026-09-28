@@ -1,13 +1,13 @@
-import { PLAYERS, legalMoves, playMove, nextTurn, scores } from './engine.js';
-
-const CORNERS = [0, 7, 56, 63];
-const NEIGHBORS = [[1, 8, 9], [6, 14, 15], [48, 49, 57], [54, 55, 62]];
-
-// Each player optimizes their own position (MaxN), rather than treating the
-// other three colors as a single collaborating opponent.
+import { PLAYERS, boardSize, legalMoves, playMove, nextTurn, scores } from './engine.js';
+export const DIFFICULTIES = Object.freeze({
+  easy: { label: 'やさしい', description: '気軽に練習。いろいろな手を打ちます。', depth: 0, width: 1, reward: 30 },
+  normal: { label: 'ふつう', description: '角と次の一手を考える相手。', depth: 2, width: 4, reward: 50 },
+  hard: { label: 'つよい', description: '3手先まで考える手ごわい相手。', depth: 3, width: 5, reward: 80 },
+});
 function evaluate(board, terminal = false) {
-  const counts = scores(board), empty = board.filter(v => v === null).length;
-  const values = counts.map(count => count * (empty < 12 ? 7 : empty < 28 ? 2 : .35));
+  const size = boardSize(board), last = size - 1, counts = scores(board), empty = board.filter(v => v === null).length;
+  const ratio = empty / board.length;
+  const values = counts.map(count => count * (ratio < .2 ? 7 : ratio < .45 ? 2 : .35));
   if (terminal) {
     const top = Math.max(...counts), tied = counts.filter(n => n === top).length;
     return counts.map(n => n * 100 + (n === top ? (tied === 1 ? 100000 : 50000) : 0));
@@ -16,33 +16,32 @@ function evaluate(board, terminal = false) {
     if (!counts[p]) { values[p] = -100000; continue; }
     values[p] += legalMoves(board, p).length * 5;
   }
-  for (let i = 0; i < 64; i++) {
-    const p = board[i];
-    if (p === null) continue;
-    const row = Math.floor(i / 8), col = i % 8;
-    if (row === 0 || row === 7 || col === 0 || col === 7) values[p] += 9;
-    // Exposed discs give the other colors more opportunities to capture.
+  for (let i = 0; i < board.length; i++) {
+    const p = board[i]; if (p === null) continue;
+    const row = Math.floor(i / size), col = i % size;
+    if (row === 0 || row === last || col === 0 || col === last) values[p] += 9;
     let frontier = false;
     for (let dr = -1; dr <= 1 && !frontier; dr++) for (let dc = -1; dc <= 1; dc++) {
       const r = row + dr, c = col + dc;
-      if ((dr || dc) && r >= 0 && r < 8 && c >= 0 && c < 8 && board[r * 8 + c] === null) { frontier = true; break; }
+      if ((dr || dc) && r >= 0 && r < size && c >= 0 && c < size && board[r * size + c] === null) { frontier = true; break; }
     }
-    if (frontier) values[p] -= empty > 12 ? 2 : .5;
+    if (frontier) values[p] -= ratio > .2 ? 2 : .5;
   }
-  CORNERS.forEach((corner, k) => {
+  for (const [r, c] of [[0, 0], [0, last], [last, 0], [last, last]]) {
+    const corner = r * size + c;
     if (board[corner] !== null) values[board[corner]] += 150;
-    else for (const i of NEIGHBORS[k]) if (board[i] !== null) values[board[i]] -= (i % 8 !== 0 && i % 8 !== 7 && i > 7 && i < 56) ? 60 : 35;
-  });
+    else for (const [dr, dc] of [[r === 0 ? 1 : -1, 0], [0, c === 0 ? 1 : -1], [r === 0 ? 1 : -1, c === 0 ? 1 : -1]]) {
+      const p = board[(r + dr) * size + c + dc]; if (p !== null) values[p] -= dr && dc ? 60 : 35;
+    }
+  }
   return values;
 }
-
 function candidates(board, player, width) {
   return legalMoves(board, player).map(index => {
     const result = playMove(board, player, index);
     return { index, board: result.board, score: evaluate(result.board)[player] };
   }).sort((a, b) => b.score - a.score || a.index - b.index).slice(0, width);
 }
-
 function search(board, previous, depth, width) {
   const next = nextTurn(board, previous);
   if (next.ended) return evaluate(board, true);
@@ -54,11 +53,16 @@ function search(board, previous, depth, width) {
   }
   return best ?? evaluate(board);
 }
-
-export function chooseAIMove(board, player, { depth = 3, width = 5 } = {}) {
+export function chooseAIMove(board, player, { difficulty = 'hard', depth, width, random = Math.random } = {}) {
   if (!PLAYERS.some(p => p.id === player)) return null;
-  const levels = Math.max(1, Math.min(3, Math.trunc(depth) || 3));
-  const breadth = Math.max(1, Math.min(8, Math.trunc(width) || 5));
+  const level = DIFFICULTIES[difficulty] ?? DIFFICULTIES.normal;
+  if (difficulty === 'easy') {
+    const moves = legalMoves(board, player);
+    const sample = Math.max(0, Math.min(.999999, Number(random()) || 0));
+    return moves.length ? moves[Math.floor(sample * moves.length)] : null;
+  }
+  const levels = Math.max(1, Math.min(3, Math.trunc(depth ?? level.depth) || 2));
+  const breadth = Math.max(1, Math.min(8, Math.trunc(width ?? level.width) || 4));
   let bestIndex = null, bestValue = -Infinity;
   for (const candidate of candidates(board, player, breadth)) {
     const value = search(candidate.board, player, levels - 1, breadth)[player];

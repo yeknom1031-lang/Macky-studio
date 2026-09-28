@@ -663,61 +663,222 @@ dialog::backdrop {
   .turn-order { margin-top: 15px; }
 }
 
+/* Setup, collection, and accessible in-game settings. */
+.violet { --stone:#863dd1; --bright:#c28af5; --dark:#371264; --rim:#64239d; }
+.coral { --stone:#e774a0; --bright:#ffc0d7; --dark:#93254e; --rim:#c34a7b; }
+.pearl { --stone:#eee9dc; --bright:#fffef7; --dark:#8d8b80; --rim:#c6c2b4; }
+.board { grid-template-columns:repeat(var(--grid-size,8),1fr); grid-template-rows:repeat(var(--grid-size,8),1fr); }
+.turn { background:transparent; color:inherit; border:0; border-right:1px solid #ffffff25; text-align:left; }
+.menu-chevron { font-size:1rem; color:#b3c3b5; margin-left:2px; }
+.turn:hover { background:#ffffff08; border-radius:6px; }
+.cell.legal-hint::after { content:''; width:22%; aspect-ratio:1; border:1px solid #fff9; border-radius:50%; background:#ffefb580; box-shadow:0 1px 4px #0005; pointer-events:none; }
+.home .wide { width:100%; display:block; padding:13px; margin-top:12px; font-size:1.1rem; }
+.wide small { font-size:.75rem; color:#65715f; margin-left:10px; font-weight:500; }
+.home-record { font-size:.8rem; color:#6c785f; margin:19px 0 0; }
+.secondary-menu { gap:8px; }
+.secondary-menu button { font-size:.9rem; }
+.coin-balance { color:#9b6b17; white-space:nowrap; }
+.secondary-menu .coin-balance { display:block; margin-top:3px; font-size:.75rem; }
+.dialog-content p { line-height:1.8; }
+.dialog-content h3 { margin:26px 0 10px; font-size:1rem; }
+.dialog-content h3 small { font-size:.75rem; font-weight:500; }
+#setup-dialog { width:580px; max-width:calc(100vw - 24px); }
+#rules-dialog,#shop-dialog { width:720px; max-width:calc(100vw - 24px); }
+.choice-field { border:0; padding:0; margin:24px 0; min-width:0; }
+.choice-field legend { padding:0; margin-bottom:12px; font-size:.95rem; font-weight:700; }
+.choices { display:flex; gap:8px; }
+.choice { flex:1; position:relative; cursor:pointer; min-width:0; }
+.choice input { position:absolute; width:1px; height:1px; opacity:0; }
+.choice>span { display:flex; align-items:center; justify-content:center; min-height:47px; padding:11px 7px; border:1px solid #d3d9c5; background:#fffdf7; border-radius:10px; color:#4c5b43; font-size:.9rem; text-align:center; }
+.choice input:checked+span { border-color:#3e6947; background:#e8efd9; box-shadow:0 0 0 1px #3e6947; color:#244a2d; }
+.choice input:focus-visible+span { outline:3px solid #308ee7; outline-offset:3px; }
+.field-note { font-size:.8rem; color:#69745e; margin:10px 0 0; }
+.color-options { display:flex; flex-wrap:wrap; gap:9px; }
+.color-choice { flex:0 0 calc(25% - 7px); }
+.color-choice>span { min-height:90px; flex-direction:column; gap:13px; }
+.color-choice .disc { width:30px; }
+.color-choice b { font-size:.73rem; font-weight:500; }
+.setting { gap:18px; padding:17px 0; margin:0; border-bottom:1px solid #d6d9c8; }
+.setting small { display:block; font-size:.75rem; color:#6c785e; margin-top:6px; line-height:1.6; }
+.setting input { flex-shrink:0; }
+.setting.compact { font-size:.9rem; }
+.reward-note { background:#f4ecd1; padding:13px 16px; border:1px solid #e9d8a6; border-radius:10px; color:#836021; font-size:.875rem; }
+.rule-intro { font-size:1.15rem; color:#31693f; }
+#rules-dialog .dialog-content>p:not(.eyebrow):not(.rule-intro) { font-size:.9rem; }
+.capture-example { border-radius:14px; padding:20px; background:#edf0e2; text-align:center; color:#637155; font-size:.75rem; }
+.capture-example>div { display:flex; justify-content:center; gap:12px; margin:9px 0 16px; }
+.capture-example .disc { width:32px; }
+.capture-example>div:last-child { margin-bottom:5px; }
+.save-actions { display:flex; gap:8px; margin-top:15px; }
+.save-actions button { padding:12px; flex:1; font-size:.8rem; border-radius:10px; }
+.storage-message { position:fixed; left:12px; bottom:12px; right:12px; padding:12px; z-index:100; background:#fff3cf; color:#79581c; border:1px solid #dcc285; border-radius:9px; font-size:.8rem; text-align:center; }
+.game-menu { min-width:min(380px,85vw); text-align:center; }
+.game-menu h2 { margin-right:0; }
+.game-menu .secondary { display:block; width:100%; margin-top:12px; }
+.text-button { background:none; border:0; color:#786046; padding:15px 0 0; font-size:.8rem; }
+#shop-title .coin-balance { font-size:.85rem; display:inline-block; margin-left:10px; }
+.shop-message { font-size:.875rem; color:#366443; min-height:1.8em; margin:12px 0; }
+.products { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+.products.colors { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.product { padding:16px 13px 10px; background:#f2f1e6; border:1px solid #d9ddcc; border-radius:15px; text-align:center; display:flex; flex-direction:column; align-items:stretch; }
+.product.equipped { border-color:#75905e; box-shadow:inset 0 0 0 1px #8ba76b; }
+.product h4 { margin:16px 0 5px; font-size:.9rem; }
+.product p { margin:0 0 12px; font-size:.75rem; color:#6e775f; flex:1; }
+.product>small { font-size:.7rem; color:#7b795f; margin-top:6px; min-height:1em; }
+.product-action { font-size:.75rem; padding:10px 5px; border:1px solid #72855f; border-radius:8px; color:#f9f7ea; background:#3f6445; }
+.product-action:disabled { cursor:default; color:#788369; background:#e3e8d9; border-color:#c9d1bc; }
+.color-swatch { display:grid; place-items:center; height:64px; }
+.color-swatch .disc { width:49px; }
+.board-swatch { width:100%; height:110px; display:grid; place-items:center; border-radius:8px; background:linear-gradient(135deg,#3d4c40,#1b261e); box-shadow:inset 0 1px 1px #fff7,0 3px 0 #19221a,0 6px 9px #0003; padding:12px; }
+.board-swatch>div { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; background:#08663e; width:90px; height:90px; padding:10px; border:2px solid #162b1c; }
+.board-swatch .disc { width:28px; }
+[data-theme="walnut"].board-shell,[data-theme="walnut"].home-board,[data-theme="walnut"].board-swatch { border-color:#a08455; background:repeating-linear-gradient(8deg,#502a1600 0 3px,#1d0e092c 4px,#dea5681a 5px,#20110b22 7px),linear-gradient(130deg,#af7c48,#654329 35%,#8e603b 68%,#4f3424); }
+[data-theme="walnut"] .cell,[data-theme="walnut"] .demo-cell,[data-theme="walnut"].board-swatch>div { background:radial-gradient(ellipse at 15% 10%,#ffffff0d,transparent),linear-gradient(130deg,#5f6a39,#48532c); }
+[data-theme="walnut"] .board { background:#33351a; border-color:#382314; }
+[data-theme="ocean"].board-shell,[data-theme="ocean"].home-board,[data-theme="ocean"].board-swatch { border-color:#9eafb7; background:repeating-linear-gradient(0deg,#d3ebf916 0 1px,transparent 1px 3px),linear-gradient(135deg,#b8c8d2,#677d89 30%,#435861 65%,#9eadb3); }
+[data-theme="ocean"] .cell,[data-theme="ocean"] .demo-cell,[data-theme="ocean"].board-swatch>div { background:linear-gradient(135deg,#347681,#266370); }
+[data-theme="ocean"] .board { background:#173f49; border-color:#12363e; }
+[data-theme="midnight"].board-shell,[data-theme="midnight"].home-board,[data-theme="midnight"].board-swatch { border-color:#aa9161; background:linear-gradient(140deg,#3c3a38,#1c1c21 35%,#303038 70%,#15151c); box-shadow:inset 0 0 0 3px #9b855b,inset 0 0 0 5px #3a3327,0 6px 0 #0c0c10,0 16px 25px #0007; }
+[data-theme="midnight"] .cell,[data-theme="midnight"] .demo-cell,[data-theme="midnight"].board-swatch>div { background:linear-gradient(130deg,#474452,#38353f); }
+[data-theme="midnight"] .board { background:#888068; border-color:#262226; }
+@media(min-width:601px) { .score-name { font-size:.8rem; } }
+@media(max-width:600px) {
+  .turn { border:0; justify-content:center; width:100%; padding:0; }
+  .score-name { display:none; }
+  .score { gap:5px; }
+  .scorebar { padding:9px; }
+  .dialog-content { padding:24px 20px; }
+  .choices { gap:6px; }
+  .choice>span { font-size:.8rem; padding:10px 4px; }
+  .home .wide { margin-top:10px; }
+  .secondary-menu button { padding:12px 4px; font-size:.8rem; }
+  .home-board { width:clamp(145px,24svh,220px); }
+  .products.colors { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #shop-title .coin-balance { display:block; margin:9px 0 0; }
+  .result-row { gap:10px; padding:12px 9px; }
+  .result-row>span { font-size:.9rem; }
+  .result-row>span small { display:block; font-size:.7rem; }
+}
+@media(max-height:650px) and (max-width:600px) {
+  .home-board { width:130px; margin-bottom:16px; }
+  .logo { font-size:2.9rem; }
+  .home-record { margin-top:13px; }
+}
+@media(max-height:530px) and (min-width:601px) {
+  .home { grid-template-rows:auto auto 1fr; }
+  .home-board { grid-row:3; }
+  .home-menu { grid-row:1 / span 3; }
+  .scorebar { width:max-content; max-width:100%; }
+}
+#setup-dialog .dialog-content { padding:24px; }
+#setup-dialog .eyebrow { margin-bottom:6px; font-size:.75rem; }
+#setup-dialog h2 { margin-bottom:14px; }
+#setup-dialog .choice-field { margin:16px 0; }
+#setup-dialog legend { margin-bottom:8px; }
+#setup-dialog .field-note { line-height:1.6; margin-top:8px; }
+#setup-dialog .choice>span { min-height:40px; padding:9px 5px; }
+#setup-dialog .color-choice>span { min-height:72px; gap:10px; }
+#setup-dialog .setting { padding:10px 0; }
+#setup-dialog .reward-note { padding:9px 12px; margin:12px 0 0; }
+#setup-dialog .primary { margin-top:14px; padding:12px; }
+.score-name { display:none; }
+@media(min-width:601px) { .turn { font-size:clamp(1rem,2vw,1.3rem); gap:10px; padding-right:12px; } .score { gap:6px; } }
+@media(min-width:601px) { .color-choice { flex:1 0 58px; } }
+.setup-footer { position:sticky; bottom:-24px; background:#fffaf0; padding:1px 0 24px; margin-bottom:-24px; box-shadow:0 -8px 10px #fffaf0; z-index:1; }
+.setup-footer { position:static; padding:0; margin-bottom:0; box-shadow:none; }
+#setup-dialog .eyebrow { display:none; }
+#setup-dialog .choice-field { margin:12px 0; }
+#setup-dialog .color-choice>span { min-height:64px; gap:8px; }
+#setup-dialog .color-choice .disc { width:26px; }
+#setup-dialog .primary { padding:10px; margin-top:10px; }
+#setup-dialog .reward-note { margin-top:8px; }
+
 </style>
-  
+
 </head>
 <body>
   <main id="home" class="home">
     <h1 class="logo"><span>4</span><span>色</span>オセロ</h1>
-    <p class="tagline">みんなで、はさんで、ひっくり返そう。</p>
+    <p class="tagline">ひとつの盤で、４つの色が動きだす。</p>
     <div id="home-board" class="home-board" aria-hidden="true"></div>
     <div class="home-menu">
-      <fieldset class="mode-picker">
-        <legend class="sr-only">遊ぶモード</legend>
-        <label class="mode-option"><input type="radio" name="mode" value="solo" checked><span><b>ひとりで遊ぶ</b><small>あなたは赤 / AI3人</small></span></label>
-        <label class="mode-option"><input type="radio" name="mode" value="friends"><span><b>4人で遊ぶ</b><small>みんなで交代プレイ</small></span></label>
-      </fieldset>
-      <button id="start" class="primary">ゲームをはじめる <span aria-hidden="true">▶</span></button>
-      <div class="secondary-menu"><button id="rules-open">あそびかた</button><button id="settings-open">設定</button></div>
-      <div class="turn-order" aria-label="手番は赤、青、黄、緑の順"><i class="disc red"></i><span>→</span><i class="disc blue"></i><span>→</span><i class="disc yellow"></i><span>→</span><i class="disc green"></i></div>
+      <button id="start" class="primary">ひとりで遊ぶ <span aria-hidden="true">▶</span></button>
+      <button id="friends-open" class="secondary wide">4人で遊ぶ <small>ひとつの画面で交代</small></button>
+      <div class="secondary-menu"><button id="shop-open">ショップ <small class="coin-balance">0 コイン</small></button><button id="rules-open">ルールブック</button><button id="settings-open">設定</button></div>
+      <p id="home-record" class="home-record">好きな色で、じっくり一局。</p>
     </div>
   </main>
   <main id="game" class="game" hidden>
-    <header class="scorebar"><div id="turn" class="turn"></div><div id="scores" class="scores"></div></header>
+    <header class="scorebar"><button id="turn" class="turn" title="対局メニューを開く" aria-haspopup="dialog"></button><div id="scores" class="scores"></div></header>
     <div id="board-shell" class="board-shell">
       <div class="rack rack-top red" aria-hidden="true"></div><div class="rack rack-right blue" aria-hidden="true"></div>
       <div class="rack rack-bottom yellow" aria-hidden="true"></div><div class="rack rack-left green" aria-hidden="true"></div>
-      <div id="board" class="board" role="grid" aria-label="4色オセロの盤面、8行8列"></div>
+      <div id="board" class="board" role="grid" aria-label="4色オセロの盤面"></div>
       <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
     </div>
   </main>
-  <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-content"><button class="close" data-close aria-label="閉じる">×</button><h2 id="rules-title">あそびかた</h2><p class="mode-explanation">ひとりで遊ぶときは、あなたが赤。青・黄・緑はAIが自動で打ちます。4人モードでは全員で交代して操作します。</p><ol><li>赤 → 青 → 黄 → 緑の順に、1人ずつ石を置きます。</li><li>自分の石ではさめるマスに置きます。縦・横・斜めの8方向ではさめます。</li><li>間にある自分以外の石は、色が混ざっていてもすべて自分の色になります。</li><li>置ける場所がない人は、自動でスキップします。</li><li>全員が続けて置けなくなったら終了。一番石の多い人が勝ち。同じ枚数なら引き分けです。</li></ol><p class="small-note">置ける場所の目印はありません。自分で見つけてみよう。<br>4辺の石は予備の石のイメージです。枚数の制限はありません。</p><p class="small-note">キーボード：矢印でマスを選択、Enterで置く。<br>ホームへ戻るときはブラウザの「戻る」を使えます。</p><button class="primary" data-close>わかった</button></div></dialog>
-  <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content"><button class="close" data-close aria-label="閉じる">×</button><h2 id="settings-title">設定</h2><label class="setting"><span>石を置く音</span><input id="sound-setting" type="checkbox" role="switch" checked></label><label class="setting"><span>動きを少なくする</span><input id="motion-setting" type="checkbox" role="switch"></label><button class="primary" data-close>できた</button></div></dialog>
-  <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><p class="eyebrow">ゲーム終了</p><h2 id="result-title"></h2><div id="result-scores"></div><button id="again" class="primary">もう一度あそぶ</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
-  <div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="setup-dialog" aria-labelledby="setup-title"><div class="dialog-content">
+    <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">NEW GAME</p><h2 id="setup-title">ひとりで遊ぶ</h2>
+    <fieldset id="difficulty-field" class="choice-field"><legend>コンピューターの強さ</legend><div id="difficulty-options" class="choices"></div><p id="difficulty-description" class="field-note"></p></fieldset>
+    <fieldset class="choice-field"><legend>ボードの広さ</legend><div id="size-options" class="choices"></div><p class="field-note">8 × 8 が基本。どの広さも中央の16枚からスタート。</p></fieldset>
+    <fieldset id="color-field" class="choice-field"><legend>あなたの駒の色</legend><div id="color-options" class="color-options"></div><p id="color-note" class="field-note"></p></fieldset>
+    <label class="setting compact"><span>置ける場所を表示する<small>あなたの番に、目印が出ます</small></span><input id="setup-hints" type="checkbox" role="switch"></label>
+    <div class="setup-footer"><p id="setup-reward" class="reward-note"></p><button id="launch" class="primary">この設定で遊ぶ</button></div>
+  </div></dialog>
+  <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-content">
+    <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">HOW TO PLAY</p><h2 id="rules-title">ルールブック</h2>
+    <p class="rule-intro">自分の色ではさんで、いちばん多く。</p>
+    <ol><li><b>４色で交代。</b>赤 → 青 → 黄 → 緑の順です。ひとりモードは選んだ色があなた、残りの３色がコンピューターです。</li><li><b>相手の石をはさむ場所に置く。</b>縦・横・斜めの８方向で、１枚以上はさめる空きマスに置けます。はさめないマスには置けません。</li><li><b>間の色は全部ひっくり返る。</b>自分以外の色が混ざっていても、途切れずにはさんだ石はすべて自分の色になります。空きマスを越えてはさむことはできません。</li><li><b>置けなければ自動でスキップ。</b>「置ける場所がありません」と表示して、次の人に進みます。０枚になった色もスキップします。</li><li><b>石の数で勝負。</b>盤が埋まるか、全員が置けなくなると終了。いちばん多い人が勝ち。最多の人が複数なら引き分けです。</li></ol>
+    <div class="capture-example" aria-label="赤、青、黄、緑、赤とはさむと、すべて赤になります"><div><i class="disc red"></i><i class="disc blue"></i><i class="disc yellow"></i><i class="disc green"></i><i class="disc red"></i></div><span>↓ はさんだ色に変わる</span><div><i class="disc red"></i><i class="disc red"></i><i class="disc red"></i><i class="disc red"></i><i class="disc red"></i></div></div>
+    <h3>最初の配置</h3><p>どの広さでも中央４×４に、各色４枚ずつ置きます。左上が赤、右上が青、右下が黄、左下が緑。ひとりモードの特別な色は赤の位置で、最初に打ちます。</p>
+    <h3>勝利とコイン</h3><p>ひとりモードで勝つとコインがもらえます。強さ・広さによって30〜120コイン。最多で引き分けた場合は半分です。４人モードや途中で終了した対局は対象外。ショップの見た目は一度買えばずっと使え、強さには影響しません。</p>
+    <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。対局中は上の「○の番」を押すとメニューが開き、次の手まで一時停止します。</p>
+    <p class="small-note">４辺のストックは本物の予備の石をイメージした飾りです。使用枚数の制限はありません。<br>キーボード：矢印でマスを移動、Enter / Space で置く。<br>設定・コイン・購入品はこのブラウザに保存。別の端末やローカルHTMLとは自動同期されません。設定からデータを持ち運べます。</p><button class="primary" data-close>わかった</button>
+  </div></dialog>
+  <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content">
+    <button class="close" data-close aria-label="閉じる">×</button><h2 id="settings-title">設定</h2>
+    <label class="setting"><span>置ける場所を表示する<small>人が打つ番だけ、置けるマスに目印</small></span><input id="hints-setting" type="checkbox" role="switch"></label>
+    <label class="setting"><span>石を置く音</span><input id="sound-setting" type="checkbox" role="switch" checked></label>
+    <label class="setting"><span>動きを少なくする</span><input id="motion-setting" type="checkbox" role="switch"></label>
+    <div class="save-section"><h3>遊んだデータを持ち運ぶ</h3><p class="field-note">コイン・購入品・設定を保存します。読み込むと現在の保存データを置き換えます。対局中の盤面は含みません。</p><div class="save-actions"><button id="export-save" class="secondary">データを書き出す</button><button id="import-save" class="secondary">データを読み込む</button></div><input id="save-file" type="file" accept="application/json,.json" hidden><p id="save-message" class="field-note" role="status"></p></div>
+    <button class="primary" data-close>できた</button>
+  </div></dialog>
+  <dialog id="shop-dialog" aria-labelledby="shop-title"><div class="dialog-content">
+    <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">YOUR COLLECTION</p><h2 id="shop-title">ショップ <small class="coin-balance">0 コイン</small></h2><p class="field-note">ひとりで勝って、あなたの一局を彩ろう。購入後はいつでも着せ替え。</p><p id="shop-message" class="shop-message" role="status"></p>
+    <h3>ボードの見た目</h3><div id="board-products" class="products"></div><h3>あなたの駒の色 <small>ひとりモード専用</small></h3><div id="color-products" class="products colors"></div><button class="primary" data-close>ホームに戻る</button>
+  </div></dialog>
+  <dialog id="menu-dialog" aria-labelledby="menu-title"><div class="dialog-content game-menu">
+    <h2 id="menu-title">対局メニュー</h2><p id="match-info" class="field-note"></p><button class="primary" data-close>対局に戻る</button><button id="game-rules" class="secondary">ルールブック</button><button id="game-settings" class="secondary">設定</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
+  </div></dialog>
+  <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><p class="eyebrow">ゲーム終了</p><h2 id="result-title"></h2><div id="result-scores"></div><p id="result-reward" class="reward-note"></p><button id="again" class="primary">同じ設定でもう一局</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
+  <div id="storage-message" class="storage-message" role="status" hidden></div><div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
   <noscript>このゲームで遊ぶには、ブラウザのJavaScriptを有効にしてください。</noscript>
 <script>
 (() => {
 'use strict';
 const SIZE = 8;
+const BOARD_SIZES = Object.freeze([6, 8, 10, 12]);
 const PLAYERS = Object.freeze([
   { id: 0, name: '赤', color: 'red' }, { id: 1, name: '青', color: 'blue' },
   { id: 2, name: '黄', color: 'yellow' }, { id: 3, name: '緑', color: 'green' },
 ]);
 const DIRECTIONS = [-1, 0, 1].flatMap(r => [-1, 0, 1].filter(c => r || c).map(c => [r, c]));
-function initialBoard() {
-  const board = Array(64).fill(null);
-  for (let r = 2; r < 6; r++) for (let c = 2; c < 6; c++) board[r * 8 + c] = r < 4 ? (c < 4 ? 0 : 1) : (c < 4 ? 3 : 2);
+function boardSize(board) { const n = Math.sqrt(board.length); return BOARD_SIZES.includes(n) ? n : 0; }
+function initialBoard(size = SIZE) {
+  if (!BOARD_SIZES.includes(size)) throw new RangeError('盤は6・8・10・12のいずれかです');
+  const board = Array(size * size).fill(null), start = size / 2 - 2;
+  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) board[(start + r) * size + start + c] = r < 2 ? (c < 2 ? 0 : 1) : (c < 2 ? 3 : 2);
   return board;
 }
 function captures(board, player, index) {
-  if (!Number.isInteger(index) || index < 0 || index >= 64 || board[index] !== null || !Number.isInteger(player) || player < 0 || player > 3) return [];
+  const size = boardSize(board);
+  if (!size || !Number.isInteger(index) || index < 0 || index >= board.length || board[index] !== null || !Number.isInteger(player) || player < 0 || player > 3) return [];
   const flips = [];
   for (const [dr, dc] of DIRECTIONS) {
-    let r = Math.floor(index / 8) + dr, c = index % 8 + dc;
+    let r = Math.floor(index / size) + dr, c = index % size + dc;
     const line = [];
-    while (r >= 0 && r < 8 && c >= 0 && c < 8) {
-      const i = r * 8 + c;
+    while (r >= 0 && r < size && c >= 0 && c < size) {
+      const i = r * size + c;
       if (board[i] === null) break;
       if (board[i] === player) { if (line.length) flips.push(...line); break; }
       line.push(i); r += dr; c += dc;
@@ -727,8 +888,7 @@ function captures(board, player, index) {
 }
 function legalMoves(board, player) { return board.flatMap((_, index) => captures(board, player, index).length ? [index] : []); }
 function playMove(board, player, index) {
-  const flips = captures(board, player, index);
-  if (!flips.length) return null;
+  const flips = captures(board, player, index); if (!flips.length) return null;
   const next = board.slice(); next[index] = player;
   for (const i of flips) next[i] = player;
   return { board: next, flips };
@@ -746,14 +906,15 @@ function nextTurn(board, current) {
 function winners(board) { const counts = scores(board), max = Math.max(...counts); return PLAYERS.filter(p => counts[p.id] === max).map(p => p.id); }
 
 
-const CORNERS = [0, 7, 56, 63];
-const NEIGHBORS = [[1, 8, 9], [6, 14, 15], [48, 49, 57], [54, 55, 62]];
-
-// Each player optimizes their own position (MaxN), rather than treating the
-// other three colors as a single collaborating opponent.
+const DIFFICULTIES = Object.freeze({
+  easy: { label: 'やさしい', description: '気軽に練習。いろいろな手を打ちます。', depth: 0, width: 1, reward: 30 },
+  normal: { label: 'ふつう', description: '角と次の一手を考える相手。', depth: 2, width: 4, reward: 50 },
+  hard: { label: 'つよい', description: '3手先まで考える手ごわい相手。', depth: 3, width: 5, reward: 80 },
+});
 function evaluate(board, terminal = false) {
-  const counts = scores(board), empty = board.filter(v => v === null).length;
-  const values = counts.map(count => count * (empty < 12 ? 7 : empty < 28 ? 2 : .35));
+  const size = boardSize(board), last = size - 1, counts = scores(board), empty = board.filter(v => v === null).length;
+  const ratio = empty / board.length;
+  const values = counts.map(count => count * (ratio < .2 ? 7 : ratio < .45 ? 2 : .35));
   if (terminal) {
     const top = Math.max(...counts), tied = counts.filter(n => n === top).length;
     return counts.map(n => n * 100 + (n === top ? (tied === 1 ? 100000 : 50000) : 0));
@@ -762,33 +923,32 @@ function evaluate(board, terminal = false) {
     if (!counts[p]) { values[p] = -100000; continue; }
     values[p] += legalMoves(board, p).length * 5;
   }
-  for (let i = 0; i < 64; i++) {
-    const p = board[i];
-    if (p === null) continue;
-    const row = Math.floor(i / 8), col = i % 8;
-    if (row === 0 || row === 7 || col === 0 || col === 7) values[p] += 9;
-    // Exposed discs give the other colors more opportunities to capture.
+  for (let i = 0; i < board.length; i++) {
+    const p = board[i]; if (p === null) continue;
+    const row = Math.floor(i / size), col = i % size;
+    if (row === 0 || row === last || col === 0 || col === last) values[p] += 9;
     let frontier = false;
     for (let dr = -1; dr <= 1 && !frontier; dr++) for (let dc = -1; dc <= 1; dc++) {
       const r = row + dr, c = col + dc;
-      if ((dr || dc) && r >= 0 && r < 8 && c >= 0 && c < 8 && board[r * 8 + c] === null) { frontier = true; break; }
+      if ((dr || dc) && r >= 0 && r < size && c >= 0 && c < size && board[r * size + c] === null) { frontier = true; break; }
     }
-    if (frontier) values[p] -= empty > 12 ? 2 : .5;
+    if (frontier) values[p] -= ratio > .2 ? 2 : .5;
   }
-  CORNERS.forEach((corner, k) => {
+  for (const [r, c] of [[0, 0], [0, last], [last, 0], [last, last]]) {
+    const corner = r * size + c;
     if (board[corner] !== null) values[board[corner]] += 150;
-    else for (const i of NEIGHBORS[k]) if (board[i] !== null) values[board[i]] -= (i % 8 !== 0 && i % 8 !== 7 && i > 7 && i < 56) ? 60 : 35;
-  });
+    else for (const [dr, dc] of [[r === 0 ? 1 : -1, 0], [0, c === 0 ? 1 : -1], [r === 0 ? 1 : -1, c === 0 ? 1 : -1]]) {
+      const p = board[(r + dr) * size + c + dc]; if (p !== null) values[p] -= dr && dc ? 60 : 35;
+    }
+  }
   return values;
 }
-
 function candidates(board, player, width) {
   return legalMoves(board, player).map(index => {
     const result = playMove(board, player, index);
     return { index, board: result.board, score: evaluate(result.board)[player] };
   }).sort((a, b) => b.score - a.score || a.index - b.index).slice(0, width);
 }
-
 function search(board, previous, depth, width) {
   const next = nextTurn(board, previous);
   if (next.ended) return evaluate(board, true);
@@ -800,11 +960,16 @@ function search(board, previous, depth, width) {
   }
   return best ?? evaluate(board);
 }
-
-function chooseAIMove(board, player, { depth = 3, width = 5 } = {}) {
+function chooseAIMove(board, player, { difficulty = 'hard', depth, width, random = Math.random } = {}) {
   if (!PLAYERS.some(p => p.id === player)) return null;
-  const levels = Math.max(1, Math.min(3, Math.trunc(depth) || 3));
-  const breadth = Math.max(1, Math.min(8, Math.trunc(width) || 5));
+  const level = DIFFICULTIES[difficulty] ?? DIFFICULTIES.normal;
+  if (difficulty === 'easy') {
+    const moves = legalMoves(board, player);
+    const sample = Math.max(0, Math.min(.999999, Number(random()) || 0));
+    return moves.length ? moves[Math.floor(sample * moves.length)] : null;
+  }
+  const levels = Math.max(1, Math.min(3, Math.trunc(depth ?? level.depth) || 2));
+  const breadth = Math.max(1, Math.min(8, Math.trunc(width ?? level.width) || 4));
   let bestIndex = null, bestValue = -Infinity;
   for (const candidate of candidates(board, player, breadth)) {
     const value = search(candidate.board, player, levels - 1, breadth)[player];
@@ -815,196 +980,311 @@ function chooseAIMove(board, player, { depth = 3, width = 5 } = {}) {
 
 
 
+const CATALOG = Object.freeze([
+  { id: 'classic', kind: 'board', name: 'クラシック', price: 0, description: '深緑の定番ボード。' },
+  { id: 'walnut', kind: 'board', name: 'ウォールナット', price: 80, description: '木目のフレームと暖かなフェルト。' },
+  { id: 'ocean', kind: 'board', name: 'オーシャン', price: 120, description: '涼やかなブルーとシルバー。' },
+  { id: 'midnight', kind: 'board', name: 'ミッドナイト', price: 180, description: '黒い盤に、落ち着いた金の縁。' },
+  { id: 'red', kind: 'color', name: '赤', price: 0, seat: 0 },
+  { id: 'blue', kind: 'color', name: '青', price: 0, seat: 1 },
+  { id: 'yellow', kind: 'color', name: '黄', price: 0, seat: 2 },
+  { id: 'green', kind: 'color', name: '緑', price: 0, seat: 3 },
+  { id: 'violet', kind: 'color', name: 'アメジスト', price: 50, seat: 0, description: 'つややかな紫色の駒。' },
+  { id: 'coral', kind: 'color', name: 'ローズ', price: 70, seat: 0, description: '明るいピンク色の駒。' },
+  { id: 'pearl', kind: 'color', name: 'パール', price: 90, seat: 0, description: 'やわらかな光沢の白い駒。' },
+]);
+function normalizeProfile(value) {
+  const raw = value && typeof value === 'object' ? value : {};
+  const valid = kind => CATALOG.filter(i => i.kind === kind).map(i => i.id);
+  const owned = (kind, values) => [...new Set([...CATALOG.filter(i => i.kind === kind && i.price === 0).map(i => i.id), ...(Array.isArray(values) ? values.filter(v => valid(kind).includes(v)) : [])])];
+  const ownedBoards = owned('board', raw.ownedBoards), ownedColors = owned('color', raw.ownedColors);
+  const integer = v => Number.isSafeInteger(v) && v >= 0 ? Math.min(v, 1000000000) : 0;
+  return { version: 1, coins: integer(raw.coins), ownedBoards, ownedColors,
+    equippedBoard: ownedBoards.includes(raw.equippedBoard) ? raw.equippedBoard : 'classic',
+    equippedColor: ownedColors.includes(raw.equippedColor) ? raw.equippedColor : 'red',
+    claimed: [...new Set(Array.isArray(raw.claimed) ? raw.claimed.filter(v => typeof v === 'string' && v.length <= 120).slice(-2000) : [])],
+    stats: { played: integer(raw.stats?.played), wins: integer(raw.stats?.wins), draws: integer(raw.stats?.draws) } };
+}
+function ownsItem(profile, item) { return (item.kind === 'board' ? profile.ownedBoards : profile.ownedColors).includes(item.id); }
+function purchaseItem(value, id) {
+  const profile = normalizeProfile(value), item = CATALOG.find(i => i.id === id);
+  if (!item) return { ok: false, profile, reason: '商品が見つかりません' };
+  if (ownsItem(profile, item)) return { ok: false, profile, reason: '購入済みです' };
+  if (profile.coins < item.price) return { ok: false, profile, reason: `あと${item.price - profile.coins}コイン必要です` };
+  profile.coins -= item.price; (item.kind === 'board' ? profile.ownedBoards : profile.ownedColors).push(id);
+  return { ok: true, profile, item };
+}
+function equipItem(value, id) {
+  const profile = normalizeProfile(value), item = CATALOG.find(i => i.id === id);
+  if (!item || !ownsItem(profile, item)) return { ok: false, profile, reason: '未購入のアイテムです' };
+  profile[item.kind === 'board' ? 'equippedBoard' : 'equippedColor'] = id;
+  return { ok: true, profile, item };
+}
+function matchReward(difficulty, size) { return (DIFFICULTIES[difficulty] ?? DIFFICULTIES.normal).reward + ({ 6: 0, 8: 10, 10: 25, 12: 40 }[size] ?? 10); }
+function awardMatch(value, match) {
+  const profile = normalizeProfile(value), { id, board, human, mode, difficulty } = match;
+  if (mode !== 'solo' || typeof id !== 'string' || !id || id.length > 120 || profile.claimed.includes(id) || !Array.isArray(board) || !BOARD_SIZES.includes(boardSize(board)) || !board.every(v => v === null || PLAYERS.some(p => p.id === v)) || !PLAYERS.some(p => p.id === human) || !nextTurn(board, 0).ended) return { profile, earned: 0, awarded: false };
+  const top = winners(board), won = top.includes(human), tied = top.length > 1;
+  const earned = won ? Math.floor(matchReward(difficulty, boardSize(board)) / (tied ? 2 : 1)) : 0;
+  profile.coins = Math.min(1000000000, profile.coins + earned);
+  profile.claimed.push(id); profile.claimed = profile.claimed.slice(-2000);
+  profile.stats.played++; if (won) profile.stats[tied ? 'draws' : 'wins']++;
+  return { profile, earned, awarded: true };
+}
+function playerColors(colorId, mode = 'solo') {
+  const selected = CATALOG.find(i => i.kind === 'color' && i.id === colorId) ?? CATALOG.find(i => i.id === 'red');
+  const colors = PLAYERS.map(p => ({ id: p.color, name: p.name, seat: p.id }));
+  if (mode === 'solo') colors[selected.seat] = selected;
+  return { colors, human: selected.seat };
+}
+
+
+
+
 const $ = s => document.querySelector(s);
 const ui = { home: $('#home'), game: $('#game'), board: $('#board'), turn: $('#turn'), scores: $('#scores'), notice: $('#notice'), live: $('#live'), result: $('#result-dialog') };
-const preferences = { sound: true, reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches, mode: 'solo' };
-try { const saved = JSON.parse(localStorage.getItem('four-color-othello.preferences')); if (saved && typeof saved.sound === 'boolean') preferences.sound = saved.sound; if (saved && typeof saved.reducedMotion === 'boolean') preferences.reducedMotion = saved.reducedMotion; if (['solo', 'friends'].includes(saved?.mode)) preferences.mode = saved.mode; } catch { /* Storage is optional. */ }
-let state = { board: initialBoard(), player: 0, phase: 'home', mode: preferences.mode };
-let epoch = 0, focusIndex = 27, noticeTimer, audio;
+const STORAGE = { prefs: 'four-color-othello.preferences', profile: 'four-color-othello.profile' };
+function normalizePreferences(raw = {}) {
+  raw = raw && typeof raw === 'object' ? raw : {};
+  return { sound: typeof raw.sound === 'boolean' ? raw.sound : true, reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : matchMedia('(prefers-reduced-motion: reduce)').matches, hints: raw.hints === true, difficulty: Object.hasOwn(DIFFICULTIES, raw.difficulty) ? raw.difficulty : 'normal', size: BOARD_SIZES.includes(raw.size) ? raw.size : 8 };
+}
+function readSave(key) { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } }
+let preferences = normalizePreferences(readSave(STORAGE.prefs));
+let profile = normalizeProfile(readSave(STORAGE.profile));
+let state = { board: initialBoard(), player: 0, phase: 'home', mode: 'solo', size: 8, human: 0, colors: playerColors('red').colors };
+let storageWorking = true;
+let epoch = 0, cells = [], focusIndex = 0, noticeTimer, audio, setupMode = 'solo', lastConfig, resumeWaiters = [];
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
-const stone = player => `<i aria-hidden="true" class="disc ${PLAYERS[player].color}"></i>`;
+const piece = color => `<i aria-hidden="true" class="disc ${color}"></i>`;
+const stone = player => piece(state.colors[player].id);
+const nameOf = player => state.colors[player].name;
 const active = run => run === epoch && state.phase !== 'home';
-
-$('#home-board').innerHTML = initialBoard().filter(v => v !== null).map(p => `<span class="demo-cell">${stone(p)}</span>`).join('');
-document.querySelectorAll('.rack').forEach(rack => { rack.innerHTML = '<i class="reserve"><i class="reserve-face"></i></i>'.repeat(24); });
-for (let row = 0; row < 8; row++) {
-  const line = document.createElement('div'); line.className = 'board-row'; line.setAttribute('role', 'row');
-  for (let col = 0; col < 8; col++) {
-    const cell = document.createElement('button'), index = row * 8 + col;
-    cell.className = 'cell'; cell.type = 'button'; cell.dataset.index = index;
-    cell.setAttribute('role', 'gridcell'); cell.tabIndex = index === focusIndex ? 0 : -1;
-    cell.addEventListener('click', () => { setFocus(index, false); void moveAt(index); });
-    cell.addEventListener('keydown', event => {
-      const keys = { ArrowUp: [-1, 0], ArrowDown: [1, 0], ArrowLeft: [0, -1], ArrowRight: [0, 1] };
-      if (!keys[event.key]) return;
-      event.preventDefault();
-      const [dr, dc] = keys[event.key];
-      setFocus(Math.max(0, Math.min(7, row + dr)) * 8 + Math.max(0, Math.min(7, col + dc)), true);
-    });
-    line.append(cell);
+const isPaused = () => state.phase !== 'home' && !!document.querySelector('dialog[open]');
+function persist() {
+  try { localStorage.setItem(STORAGE.prefs, JSON.stringify(preferences)); localStorage.setItem(STORAGE.profile, JSON.stringify(profile)); $('#storage-message').hidden = true; storageWorking = true; }
+  catch { storageWorking = false; $('#storage-message').textContent = 'このブラウザでは保存できません。設定の「データを書き出す」で残せます。'; $('#storage-message').hidden = false; }
+}
+function wake() { if (!isPaused()) { const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve()); } updateInputState(); }
+async function ready(run) { while (active(run) && isPaused()) await new Promise(resolve => resumeWaiters.push(resolve)); return active(run); }
+function openDialog(id) { if (!$(id).open) $(id).showModal(); updateInputState(); }
+function closeDialogs() { document.querySelectorAll('dialog[open]').forEach(d => d.close()); }
+function announce(text) { ui.live.textContent = text; }
+function renderHome() {
+  const palette = playerColors(profile.equippedColor).colors;
+  $('#home-board').innerHTML = initialBoard().filter(v => v !== null).map(p => `<span class="demo-cell">${piece(palette[p].id)}</span>`).join('');
+  $('#home-board').dataset.theme = profile.equippedBoard;
+  document.querySelectorAll('.coin-balance').forEach(el => { el.textContent = `${profile.coins.toLocaleString('ja-JP')} コイン`; });
+  $('#home-record').textContent = profile.stats.played ? `${profile.stats.wins} 勝 · ${profile.stats.draws} 引き分け · ${profile.stats.played} 対局` : '好きな色で、じっくり一局。';
+}
+function buildBoard() {
+  const n = state.size; focusIndex = (n / 2 - 1) * n + n / 2 - 1;
+  ui.board.replaceChildren(); ui.board.style.setProperty('--grid-size', n);
+  ui.board.setAttribute('aria-label', `4色オセロの盤面、${n}行${n}列`); ui.board.setAttribute('aria-rowcount', n); ui.board.setAttribute('aria-colcount', n);
+  for (let row = 0; row < n; row++) {
+    const line = document.createElement('div'); line.className = 'board-row'; line.setAttribute('role', 'row');
+    for (let col = 0; col < n; col++) {
+      const cell = document.createElement('button'), index = row * n + col;
+      cell.className = 'cell'; cell.type = 'button'; cell.dataset.index = index; cell.setAttribute('role', 'gridcell'); cell.tabIndex = index === focusIndex ? 0 : -1;
+      cell.addEventListener('click', () => { setFocus(index, false); void moveAt(index); });
+      cell.addEventListener('keydown', event => {
+        const keys = { ArrowUp: [-1, 0], ArrowDown: [1, 0], ArrowLeft: [0, -1], ArrowRight: [0, 1] };
+        if (!keys[event.key]) return;
+        event.preventDefault(); const [dr, dc] = keys[event.key];
+        setFocus(Math.max(0, Math.min(n - 1, row + dr)) * n + Math.max(0, Math.min(n - 1, col + dc)), true);
+      }); line.append(cell);
+    } ui.board.append(line);
   }
-  ui.board.append(line);
+  cells = [...ui.board.querySelectorAll('.cell')];
+  document.querySelectorAll('.rack').forEach((rack, p) => { rack.className = `rack rack-${['top','right','bottom','left'][p]} ${state.colors[p].id}`; rack.innerHTML = '<i class="reserve"><i class="reserve-face"></i></i>'.repeat(24); });
+  $('#board-shell').dataset.theme = state.theme;
 }
-const cells = [...ui.board.querySelectorAll('.cell')];
-function setFocus(index, focus) { cells[focusIndex].tabIndex = -1; focusIndex = index; cells[index].tabIndex = 0; if (focus) cells[index].focus({ preventScroll: true }); }
+function setFocus(index, focus) { if (cells[focusIndex]) cells[focusIndex].tabIndex = -1; focusIndex = index; cells[index].tabIndex = 0; if (focus) cells[index].focus({ preventScroll: true }); }
 function updateCell(index) {
-  const player = state.board[index], cell = cells[index];
-  cell.innerHTML = player === null ? '' : stone(player);
-  cell.dataset.player = player === null ? '' : String(player);
-  cell.setAttribute('aria-label', `${Math.floor(index / 8) + 1}行${index % 8 + 1}列、${player === null ? '空きマス' : PLAYERS[player].name + 'の石'}`);
+  const player = state.board[index], cell = cells[index]; cell.innerHTML = player === null ? '' : stone(player); cell.dataset.player = player === null ? '' : String(player);
+  cell.setAttribute('aria-label', `${Math.floor(index / state.size) + 1}行${index % state.size + 1}列、${player === null ? '空きマス' : nameOf(player) + 'の石'}`);
 }
-function renderBoard() { cells.forEach((_, index) => updateCell(index)); }
 function renderStatus() {
-  const player = PLAYERS[state.player], counts = scores(state.board);
-  const who = state.mode === 'solo' ? (player.id === 0 ? 'あなた' : state.phase === 'thinking' ? 'AI・考え中' : 'AI') : '';
-  ui.turn.innerHTML = `${stone(player.id)}<span>${player.name}の番${who ? `<small class="turn-who">${who}</small>` : ''}</span>`;
-  ui.turn.dataset.player = String(player.id);
-  ui.scores.innerHTML = PLAYERS.map(p => `<div class="score" data-player="${p.id}" aria-label="${p.name} ${counts[p.id]}枚">${stone(p.id)}<span>${p.name} <b>${counts[p.id]}</b><small>枚</small></span></div>`).join('');
-  updateInputState();
+  const counts = scores(state.board), p = state.player;
+  const who = state.mode === 'solo' ? (p === state.human ? 'あなた' : state.phase === 'thinking' ? 'AI・考え中' : 'AI') : '';
+  ui.turn.innerHTML = `${stone(p)}<span>${nameOf(p)}の番${who ? `<small class="turn-who">${who}</small>` : ''}</span><span class="menu-chevron" aria-hidden="true">⌄</span>`;
+  ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。対局メニューを開く`);
+  ui.scores.innerHTML = PLAYERS.map(p => `<div class="score" data-player="${p.id}" aria-label="${nameOf(p.id)} ${counts[p.id]}枚">${stone(p.id)}<span><span class="score-name">${nameOf(p.id)}</span> <b>${counts[p.id]}</b><small>枚</small></span></div>`).join(''); updateInputState();
 }
 function updateInputState() {
   ui.game.dataset.phase = state.phase;
   ui.board.setAttribute('aria-busy', String(['animating', 'thinking'].includes(state.phase)));
-  cells.forEach((cell, i) => cell.setAttribute('aria-disabled', String(state.phase !== 'playing' || state.board[i] !== null)));
+  const canPlay = state.phase === 'playing' && !isPaused();
+  const hints = new Set(canPlay && preferences.hints ? legalMoves(state.board, state.player) : []);
+  cells.forEach((cell, i) => { cell.setAttribute('aria-disabled', String(!canPlay || state.board[i] !== null)); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', 'ここに置けます'); else cell.removeAttribute('aria-description'); });
 }
-function announce(text) { ui.live.textContent = text; }
 function hideNotice() { clearTimeout(noticeTimer); ui.notice.hidden = true; ui.notice.textContent = ''; }
 function showNotice(text, detail = '') {
-  hideNotice();
-  const title = document.createElement('strong'); title.textContent = text; ui.notice.append(title);
-  if (detail) { const line = document.createElement('span'); line.textContent = detail; ui.notice.append(line); }
-  ui.notice.hidden = false;
+  hideNotice(); const title = document.createElement('strong'); title.textContent = text; ui.notice.append(title);
+  if (detail) { const line = document.createElement('span'); line.textContent = detail; ui.notice.append(line); } ui.notice.hidden = false;
 }
 function sound(kind = 'place') {
   if (!preferences.sound) return;
-  try {
-    audio ??= new (window.AudioContext || window.webkitAudioContext)();
-    if (audio.state === 'suspended') void audio.resume().catch(() => {});
+  try { audio ??= new (window.AudioContext || window.webkitAudioContext)(); if (audio.state === 'suspended') void audio.resume().catch(() => {});
     const oscillator = audio.createOscillator(), gain = audio.createGain(), now = audio.currentTime;
-    oscillator.type = 'sine'; oscillator.frequency.setValueAtTime(kind === 'place' ? 390 : 620, now);
-    oscillator.frequency.exponentialRampToValueAtTime(100, now + .07);
-    gain.gain.setValueAtTime(.075, now); gain.gain.exponentialRampToValueAtTime(.001, now + .09);
-    oscillator.connect(gain); gain.connect(audio.destination); oscillator.start(now); oscillator.stop(now + .1);
+    oscillator.type = 'sine'; oscillator.frequency.setValueAtTime(kind === 'place' ? 390 : 620, now); oscillator.frequency.exponentialRampToValueAtTime(100, now + .07);
+    gain.gain.setValueAtTime(.075, now); gain.gain.exponentialRampToValueAtTime(.001, now + .09); oscillator.connect(gain); gain.connect(audio.destination); oscillator.start(now); oscillator.stop(now + .1);
   } catch { /* Audio support never blocks gameplay. */ }
 }
 async function flipStone(index, delay, run) {
   if (preferences.reducedMotion) { if (active(run)) updateCell(index); return; }
-  await pause(delay);
-  if (!active(run)) return;
-  const disc = cells[index].firstElementChild;
-  if (!disc?.animate) { updateCell(index); return; }
+  await pause(delay); if (!active(run)) return;
+  const disc = cells[index].firstElementChild; if (!disc?.animate) { updateCell(index); return; }
   const out = disc.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(90deg)' }], { duration: 160, easing: 'ease-in', fill: 'forwards' });
-  await out.finished.catch(() => {});
-  if (!active(run)) return;
+  await out.finished.catch(() => {}); if (!active(run)) return;
   out.cancel(); updateCell(index);
-  const into = cells[index].firstElementChild.animate([{ transform: 'rotateY(-90deg)' }, { transform: 'rotateY(0deg)' }], { duration: 190, easing: 'ease-out' });
-  await into.finished.catch(() => {});
+  const into = cells[index].firstElementChild.animate([{ transform: 'rotateY(-90deg)' }, { transform: 'rotateY(0deg)' }], { duration: 190, easing: 'ease-out' }); await into.finished.catch(() => {});
 }
 async function moveAt(index, actor = 'human') {
-  const ai = state.mode === 'solo' && state.player !== 0;
+  const ai = state.mode === 'solo' && state.player !== state.human;
+  if (isPaused()) return { ok: false, reason: 'メニューを閉じると対局に戻ります' };
   if (actor === 'human' && ai) return { ok: false, reason: 'AIの手番です' };
   if (state.phase !== (actor === 'ai' ? 'thinking' : 'playing') || (actor === 'ai' && !ai)) return { ok: false, reason: '手番の切り替え中です' };
   const result = playMove(state.board, state.player, index);
-  if (!result) {
-    showNotice('ここには置けません', '相手の石をはさめるマスに置いてください');
-    noticeTimer = setTimeout(hideNotice, 1300);
-    return { ok: false, reason: 'ここでは石をはさめません' };
-  }
-  hideNotice();
-  const run = epoch, player = state.player;
+  if (!result) { showNotice('ここには置けません', '相手の石をはさめるマスに置いてください'); noticeTimer = setTimeout(hideNotice, 1300); return { ok: false, reason: 'ここでは石をはさめません' }; }
+  hideNotice(); const run = epoch, player = state.player, n = state.size;
   state.phase = 'animating'; state.board = result.board; updateInputState(); updateCell(index); sound();
-  const placed = cells[index].firstElementChild;
-  if (!preferences.reducedMotion) placed.animate?.([{ transform: 'translateY(-10px) scale(1.07)', opacity: .4 }, { transform: 'translateY(0) scale(1)', opacity: 1 }], { duration: 180, easing: 'ease-out' });
-  await Promise.all(result.flips.map(i => flipStone(i, 100 + 60 * Math.max(Math.abs(Math.floor(i / 8) - Math.floor(index / 8)), Math.abs(i % 8 - index % 8)), run)));
+  if (!preferences.reducedMotion) cells[index].firstElementChild.animate?.([{ transform: 'translateY(-10px) scale(1.07)', opacity: .4 }, { transform: 'translateY(0) scale(1)', opacity: 1 }], { duration: 180, easing: 'ease-out' });
+  await Promise.all(result.flips.map(i => flipStone(i, 100 + 60 * Math.max(Math.abs(Math.floor(i / n) - Math.floor(index / n)), Math.abs(i % n - index % n)), run)));
   if (!active(run)) return { ok: false, reason: 'ゲームが終了しました' };
-  renderStatus(); sound('flip');
-  announce(`${PLAYERS[player].name}が${result.flips.length}枚ひっくり返しました。`);
-  await advanceTurn(player, run);
+  renderStatus(); sound('flip'); announce(`${nameOf(player)}が${result.flips.length}枚ひっくり返しました。`); await advanceTurn(player, run);
   return { ok: true, flipped: result.flips.length, ...snapshot() };
 }
 async function advanceTurn(player, run) {
+  if (!await ready(run)) return;
   const next = nextTurn(state.board, player);
   if (next.ended && !state.board.includes(null)) { finish(); return; }
   for (const skipped of next.skipped) {
-    if (!active(run)) return;
-    state.player = skipped; state.phase = 'skipping'; renderStatus();
-    showNotice(`${PLAYERS[skipped].name}は置ける場所がありません`, 'スキップします');
-    await pause(1500);
+    if (!await ready(run)) return;
+    state.player = skipped; state.phase = 'skipping'; renderStatus(); showNotice(`${nameOf(skipped)}は置ける場所がありません`, 'スキップします'); await pause(1500);
   }
-  if (!active(run)) return;
-  hideNotice();
-  if (next.ended) { finish(); return; }
-  state.player = next.player;
-  beginTurn(run);
-  announce(`${PLAYERS[state.player].name}の番です。`);
+  if (!await ready(run)) return;
+  hideNotice(); if (next.ended) { finish(); return; } state.player = next.player; beginTurn(run); announce(`${nameOf(state.player)}の番です。`);
 }
 function beginTurn(run) {
   if (!active(run)) return;
-  const isAI = state.mode === 'solo' && state.player !== 0;
-  state.phase = isAI ? 'thinking' : 'playing'; renderStatus();
-  if (isAI) void takeAITurn(run);
+  const ai = state.mode === 'solo' && state.player !== state.human; state.phase = ai ? 'thinking' : 'playing'; renderStatus(); if (ai) void takeAITurn(run);
 }
 async function takeAITurn(run) {
-  await pause(preferences.reducedMotion ? 400 : 650);
-  if (!active(run) || state.phase !== 'thinking') return;
-  const index = chooseAIMove(state.board, state.player);
+  await pause(preferences.reducedMotion ? 300 : 600);
+  if (!await ready(run) || state.phase !== 'thinking') return;
+  const index = chooseAIMove(state.board, state.player, { difficulty: state.difficulty });
   if (!active(run)) return;
-  if (index === null) { await advanceTurn(state.player, run); return; }
-  await moveAt(index, 'ai');
+  if (index === null) { await advanceTurn(state.player, run); return; } await moveAt(index, 'ai');
 }
 function finish() {
-  state.phase = 'ended'; hideNotice(); updateInputState();
-  const counts = scores(state.board), winning = winners(state.board);
-  const label = winning.map(id => PLAYERS[id].name).join('・');
+  if (state.phase === 'ended') return;
+  state.phase = 'ended'; hideNotice(); renderStatus();
+  const counts = scores(state.board), winning = winners(state.board), label = winning.map(nameOf).join('・');
   $('#result-title').textContent = winning.length === 1 ? `${label}の勝ち！` : `${label}の引き分け！`;
-  $('#result-scores').innerHTML = [...PLAYERS].sort((a, b) => counts[b.id] - counts[a.id]).map(p => `<div class="result-row${winning.includes(p.id) ? ' winner' : ''}">${stone(p.id)}<span>${p.name}</span><b>${counts[p.id]}<small>枚</small></b></div>`).join('');
-  ui.result.showModal(); announce(`${$('#result-title').textContent} ゲーム終了です。`);
+  $('#result-scores').innerHTML = [...PLAYERS].sort((a, b) => counts[b.id] - counts[a.id]).map(p => `<div class="result-row${winning.includes(p.id) ? ' winner' : ''}">${stone(p.id)}<span>${nameOf(p.id)}${state.mode === 'solo' && p.id === state.human ? '<small>（あなた）</small>' : ''}</span><b>${counts[p.id]}<small>枚</small></b></div>`).join('');
+  // Merge the latest profile if another local tab finished a game or bought an item.
+  if (storageWorking) profile = normalizeProfile(readSave(STORAGE.profile) ?? profile);
+  const awarded = awardMatch(profile, state); profile = awarded.profile; persist(); renderHome();
+  $('#result-reward').textContent = state.mode === 'friends' ? 'みんなで対戦、ありがとう！' : awarded.earned ? `${winning.length > 1 ? '引き分け' : '勝利'}ボーナス ＋${awarded.earned} コイン！　合計 ${profile.coins} コイン` : `次の一局で勝利をめざそう！　所持 ${profile.coins} コイン`;
+  openDialog('#result-dialog'); announce(`${$('#result-title').textContent} ${$('#result-reward').textContent}`);
 }
-function closeDialogs() { document.querySelectorAll('dialog[open]').forEach(d => d.close()); }
-function startGame() {
-  ++epoch; hideNotice(); closeDialogs(); state = { board: initialBoard(), player: 0, phase: 'playing', mode: preferences.mode };
+function startGame(config = lastConfig) {
+  ++epoch; hideNotice(); closeDialogs();
+  const palette = playerColors(config.color, config.mode); lastConfig = { ...config };
+  state = { ...config, ...palette, id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`, board: initialBoard(config.size), player: 0, phase: 'playing' };
   ui.home.hidden = true; ui.game.hidden = false; document.body.classList.add('playing');
-  renderBoard(); renderStatus(); setFocus(27, false); announce('ゲーム開始。赤の番です。');
+  buildBoard(); cells.forEach((_, i) => updateCell(i)); beginTurn(epoch); wake(); setFocus(focusIndex, true); announce(`ゲーム開始。${nameOf(0)}の番です。`);
+  if (location.hash !== '#play') history.pushState(null, '', '#play');
 }
 function goHome() {
-  ++epoch; state.phase = 'home'; hideNotice(); closeDialogs();
-  ui.home.hidden = false; ui.game.hidden = true; document.body.classList.remove('playing');
-  $('#start').focus({ preventScroll: true });
+  ++epoch; state.phase = 'home'; hideNotice(); closeDialogs(); wake();
+  ui.home.hidden = false; ui.game.hidden = true; document.body.classList.remove('playing'); renderHome();
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search); $('#start').focus({ preventScroll: true });
 }
-$('#start').addEventListener('click', () => { if (location.hash !== '#play') location.hash = 'play'; else startGame(); });
-$('#again').addEventListener('click', startGame);
-$('#home-button').addEventListener('click', () => { location.hash = ''; });
-window.addEventListener('hashchange', () => { if (location.hash === '#play') startGame(); else goHome(); });
-ui.result.addEventListener('cancel', event => { event.preventDefault(); location.hash = ''; });
-for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => $(`#${name}-dialog`).showModal());
+function setup(mode) {
+  setupMode = mode; $('#setup-title').textContent = mode === 'solo' ? 'ひとりで遊ぶ' : '4人で遊ぶ'; $('#difficulty-field').hidden = $('#color-field').hidden = mode !== 'solo';
+  $('#difficulty-options').innerHTML = Object.entries(DIFFICULTIES).map(([id, d]) => `<label class="choice"><input type="radio" name="difficulty" value="${id}" ${id === preferences.difficulty ? 'checked' : ''}><span>${d.label}</span></label>`).join('');
+  $('#size-options').innerHTML = BOARD_SIZES.map(n => `<label class="choice"><input type="radio" name="size" value="${n}" ${n === preferences.size ? 'checked' : ''}><span>${n} × ${n}</span></label>`).join('');
+  $('#color-options').innerHTML = CATALOG.filter(i => i.kind === 'color' && ownsItem(profile, i)).map(i => `<label class="choice color-choice"><input type="radio" name="color" value="${i.id}" ${i.id === profile.equippedColor ? 'checked' : ''}><span>${piece(i.id)}<b>${i.name}</b></span></label>`).join('');
+  $('#setup-hints').checked = preferences.hints; setupNotes(); openDialog('#setup-dialog');
+}
+function setupNotes() {
+  const difficulty = $('#difficulty-options input:checked')?.value ?? preferences.difficulty, size = Number($('#size-options input:checked')?.value ?? preferences.size), color = $('#color-options input:checked')?.value ?? profile.equippedColor;
+  const selected = CATALOG.find(i => i.id === color), ordinal = ['最初','２番目','３番目','４番目'][selected.seat];
+  $('#difficulty-description').textContent = DIFFICULTIES[difficulty].description;
+  $('#color-note').textContent = `あなたは${selected.name}。${ordinal}に打ちます。新しい色はショップで増やせます。`;
+  $('#setup-reward').textContent = setupMode === 'solo' ? `勝つと ${matchReward(difficulty, size)} コイン。最多で引き分けると半分。` : '赤 → 青 → 黄 → 緑の順に、みんなで交代します。';
+}
+function syncSettings() { for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
+function renderShop() {
+  renderHome();
+  for (const kind of ['board', 'color']) {
+    const items = CATALOG.filter(i => i.kind === kind);
+    $('#' + kind + '-products').innerHTML = items.map(item => {
+      const owned = ownsItem(profile, item), equipped = profile[kind === 'board' ? 'equippedBoard' : 'equippedColor'] === item.id;
+      const preview = kind === 'board' ? `<div class="board-swatch" data-theme="${item.id}"><div>${piece('red')}${piece('blue')}${piece('green')}${piece('yellow')}</div></div>` : `<div class="color-swatch">${piece(item.id)}</div>`;
+      return `<article class="product${equipped ? ' equipped' : ''}">${preview}<h4>${item.name}</h4><p>${item.description ?? '最初から使える基本の色。'}</p><button class="product-action" data-item="${item.id}" ${equipped || (!owned && profile.coins < item.price) ? 'disabled' : ''}>${equipped ? '使用中' : owned ? '使う' : `${item.price} コインで購入`}</button>${!owned && profile.coins < item.price ? `<small>あと ${item.price - profile.coins} コイン</small>` : '<small> </small>'}</article>`;
+    }).join('');
+  }
+}
+$('#shop-dialog').addEventListener('click', event => {
+  const button = event.target.closest('[data-item]'); if (!button || button.disabled) return;
+  const item = CATALOG.find(i => i.id === button.dataset.item); if (!item) return;
+  if (storageWorking) profile = normalizeProfile(readSave(STORAGE.profile) ?? profile);
+  let result = ownsItem(profile, item) ? { ok: true, profile } : purchaseItem(profile, item.id);
+  if (result.ok) result = equipItem(result.profile, item.id);
+  if (result.ok) { profile = result.profile; persist(); renderShop(); $('#shop-message').textContent = `${item.name}を選びました。次の対局から使えます。`; $('#shop-dialog [data-item="' + item.id + '"]')?.closest('.product')?.scrollIntoView({ block: 'nearest' }); }
+  else $('#shop-message').textContent = result.reason;
+});
+$('#start').addEventListener('click', () => setup('solo')); $('#friends-open').addEventListener('click', () => setup('friends'));
+$('#setup-dialog').addEventListener('change', setupNotes);
+$('#launch').addEventListener('click', () => {
+  preferences.difficulty = $('#difficulty-options input:checked').value; preferences.size = Number($('#size-options input:checked').value); preferences.hints = $('#setup-hints').checked;
+  profile = equipItem(profile, $('#color-options input:checked').value).profile; syncSettings(); persist();
+  startGame({ mode: setupMode, difficulty: preferences.difficulty, size: preferences.size, color: profile.equippedColor, theme: profile.equippedBoard });
+});
+$('#again').addEventListener('click', () => startGame()); $('#home-button').addEventListener('click', goHome); $('#leave-game').addEventListener('click', goHome);
+window.addEventListener('hashchange', () => { if (location.hash !== '#play' && state.phase !== 'home') goHome(); });
+ui.result.addEventListener('cancel', event => { event.preventDefault(); goHome(); });
+for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => openDialog(`#${name}-dialog`));
+$('#shop-open').addEventListener('click', () => { renderShop(); $('#shop-message').textContent = ''; openDialog('#shop-dialog'); });
+ui.turn.addEventListener('click', () => { $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : '4人で交代'} · ${state.size} × ${state.size}`; openDialog('#menu-dialog'); });
+$('#game-rules').addEventListener('click', () => openDialog('#rules-dialog')); $('#game-settings').addEventListener('click', () => openDialog('#settings-dialog'));
 document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
-document.querySelectorAll('dialog:not(#result-dialog)').forEach(dialog => dialog.addEventListener('click', event => {
-  if (event.target !== dialog) return;
-  const rect = dialog.getBoundingClientRect();
-  if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
-}));
-for (const [id, key] of [['sound-setting', 'sound'], ['motion-setting', 'reducedMotion']]) {
-  $('#' + id).checked = preferences[key];
-  $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; try { localStorage.setItem('four-color-othello.preferences', JSON.stringify(preferences)); } catch { /* Optional persistence. */ } });
-}
-for (const option of document.querySelectorAll('input[name="mode"]')) {
-  option.checked = option.value === preferences.mode;
-  option.addEventListener('change', () => { if (option.checked) { preferences.mode = option.value; try { localStorage.setItem('four-color-othello.preferences', JSON.stringify(preferences)); } catch { /* Offline/private storage is optional. */ } } });
-}
-function snapshot() { return { phase: state.phase, player: state.player, mode: state.mode, board: state.board.slice(), scores: scores(state.board) }; }
+document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', wake));
+for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; syncSettings(); persist(); updateInputState(); });
+$('#export-save').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify({ format: 'four-color-othello', version: 1, profile, preferences }, null, 2)], { type: 'application/json' }), url = URL.createObjectURL(blob), link = document.createElement('a');
+  link.href = url; link.download = '4色オセロ-セーブデータ.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 30000); $('#save-message').textContent = 'セーブデータを書き出しました。安全な場所に残してください。';
+});
+$('#import-save').addEventListener('click', () => { if (state.phase !== 'home') { $('#save-message').textContent = 'ホームに戻ってから読み込んでください。'; return; } $('#save-file').click(); });
+$('#save-file').addEventListener('change', async event => {
+  const file = event.target.files?.[0]; if (!file) return;
+  try {
+    if (file.size > 1000000) throw new Error('大きすぎるファイルです');
+    const saved = JSON.parse(await file.text());
+    if (saved?.format !== 'four-color-othello' || saved.version !== 1 || !saved.profile || typeof saved.profile !== 'object' || !saved.preferences) throw new Error('このゲームのセーブデータを選んでください');
+    if (state.phase !== 'home') throw new Error('ホームに戻ってから読み込んでください');
+    profile = normalizeProfile(saved.profile); preferences = normalizePreferences(saved.preferences); persist(); syncSettings(); renderHome(); $('#save-message').textContent = 'コイン・購入品・設定を読み込みました。';
+  } catch (error) { $('#save-message').textContent = `読み込めませんでした。${error instanceof SyntaxError ? 'JSON形式のセーブデータを選んでください。' : error.message}`; }
+  event.target.value = '';
+});
+function snapshot() { return { phase: state.phase, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
 function registerTools() {
-  const context = document.modelContext;
-  if (!context?.registerTool) return;
-  const lifecycle = new AbortController();
-  window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });
+  const context = document.modelContext; if (!context?.registerTool) return;
+  const lifecycle = new AbortController(); window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });
   const tools = [
-    { name: 'read_othello_game', title: '盤面を読む', description: '現在の盤面と手番と枚数を読む。色は0=赤、1=青、2=黄、3=緑、空きはnull。', inputSchema: { type: 'object', properties: {}, additionalProperties: false }, annotations: { readOnlyHint: true }, execute: () => snapshot() },
-    { name: 'place_othello_stone', title: '石を置く', description: '人間の手番に1枚置く。行・列は1〜8。はさめない場所やAIの手番には置けない。自分の演出とパス後に結果を返し、AIの手番はその後自動で進む。', inputSchema: { type: 'object', properties: { row: { type: 'integer', minimum: 1, maximum: 8 }, column: { type: 'integer', minimum: 1, maximum: 8 } }, required: ['row', 'column'], additionalProperties: false }, annotations: { readOnlyHint: false }, execute: input => { if (!input || Object.keys(input).some(k => !['row', 'column'].includes(k)) || ![input.row, input.column].every(v => Number.isInteger(v) && v >= 1 && v <= 8)) throw new Error('行と列は1〜8の整数で指定してください'); return moveAt((input.row - 1) * 8 + input.column - 1); } },
+    { name: 'read_othello_game', title: '盤面を読む', description: '盤面、手番、設定を読む。boardの値はプレイヤー番号0〜3、空きはnull。colorsが対応する色。', inputSchema: { type: 'object', properties: {}, additionalProperties: false }, annotations: { readOnlyHint: true }, execute: () => snapshot() },
+    { name: 'place_othello_stone', title: '石を置く', description: '人間の手番に1枚置く。行・列は1始まり、設定した盤の広さ以内。はさめない場所・AIの番・メニュー表示中には置けない。', inputSchema: { type: 'object', properties: { row: { type: 'integer', minimum: 1, maximum: 12 }, column: { type: 'integer', minimum: 1, maximum: 12 } }, required: ['row','column'], additionalProperties: false }, annotations: { readOnlyHint: false }, execute: input => { if (!input || Object.keys(input).some(k => !['row','column'].includes(k)) || ![input.row,input.column].every(v => Number.isInteger(v) && v >= 1 && v <= state.size)) throw new Error(`行と列は1〜${state.size}の整数で指定してください`); return moveAt((input.row - 1) * state.size + input.column - 1); } },
   ];
   for (const tool of tools) { try { Promise.resolve(context.registerTool(tool, { signal: lifecycle.signal })).catch(() => {}); } catch { /* Optional browser integration. */ } }
 }
-registerTools();
-if (location.hash === '#play') startGame();
+window.addEventListener('storage', event => {
+  if (event.key === STORAGE.profile) { profile = normalizeProfile(readSave(STORAGE.profile)); renderHome(); if ($('#shop-dialog').open) renderShop(); }
+});
+renderHome(); syncSettings(); registerTools();
+// Opening a saved URL always returns to the setup, never starts an unwanted game.
+if (location.hash === '#play') history.replaceState(null, '', location.pathname + location.search);
 
 })();
 </script>
