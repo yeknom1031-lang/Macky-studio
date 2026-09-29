@@ -621,15 +621,22 @@ function stoneWave(sampleRate = 48000, kind = 'place', seed = 1) {
 
 function createStoneAudio(options, contextFactory) {
   let context, master, musicGain, limiter, count = 0, lastFlip = -1, chordGeneration = 0, musicTimer = 0, chordIndex = 0;
-  const voices = new Set(), musicVoices = new Set(), cache = new Map();
+  const voices = new Set(), musicVoices = new Map(), cache = new Map();
   const progression = [
     [261.63,329.63,392,493.88,587.33], [220,261.63,329.63,392,493.88],
     [174.61,220,261.63,329.63,392], [196,246.94,293.66,349.23,440]
   ];
   function stopMusic() {
     clearTimeout(musicTimer); musicTimer = 0;
-    for (const source of musicVoices) { try { source.stop(); } catch {} }
-    musicVoices.clear();
+    for (const [source,gain] of musicVoices) {
+      try {
+        if (context?.state === 'running') {
+          gain.gain.cancelScheduledValues(context.currentTime);
+          gain.gain.setTargetAtTime(.0001,context.currentTime,.025);
+          source.stop(context.currentTime + .14);
+        } else source.stop();
+      } catch {}
+    }
   }
   function scheduleChord() {
     if (!options().music || context?.state !== 'running') return;
@@ -647,7 +654,7 @@ function createStoneAudio(options, contextFactory) {
       gain.gain.exponentialRampToValueAtTime(.0001,at + 8.25);
       oscillator.connect(gain); gain.connect(musicGain);
       oscillator.start(at); oscillator.stop(at + 8.4);
-      musicVoices.add(oscillator);
+      musicVoices.set(oscillator,gain);
       oscillator.onended = () => { musicVoices.delete(oscillator); oscillator.disconnect(); gain.disconnect(); };
     }
     musicTimer = setTimeout(scheduleChord,8500);
