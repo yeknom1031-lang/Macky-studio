@@ -58,7 +58,7 @@ Node.js 22以降。外部パッケージ不要。
 
 ```sh
 node scripts/build.mjs
-node --test tests/*.test.mjs
+node --test --test-concurrency=1 tests/*.test.mjs
 ```
 
 `src/` が編集元です。ビルドすると同一内容の `Irodory.html`、旧名互換の `4色オセロ.html`、`dist/index.html` を生成します。生成HTMLは直接編集せず、編集後は再ビルドしてください。

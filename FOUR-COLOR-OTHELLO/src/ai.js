@@ -62,7 +62,10 @@ export function chooseAIMove(board, player, { difficulty = 'hard', depth, width,
     return moves.length ? moves[Math.floor(sample * moves.length)] : null;
   }
   const levels = Math.max(1, Math.min(3, Math.trunc(depth ?? level.depth) || 2));
-  const breadth = Math.max(1, Math.min(8, Math.trunc(width ?? level.width) || 4));
+  // Bound the search tree on larger boards: the old 5×5×5 beam could take
+  // tens of seconds once a 10×10 position had many legal moves.
+  const maxWidth = boardSize(board) >= 10 ? (difficulty === 'hard' ? 2 : 3) : 3;
+  const breadth = Math.max(1, Math.min(maxWidth, Math.trunc(width ?? level.width) || maxWidth));
   let bestIndex = null, bestValue = -Infinity;
   for (const candidate of candidates(board, player, breadth, allowedMoves)) {
     const value = search(candidate.board, player, levels - 1, breadth)[player];

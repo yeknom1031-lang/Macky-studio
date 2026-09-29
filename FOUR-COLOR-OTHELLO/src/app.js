@@ -158,11 +158,11 @@ async function moveAt(index, actor = 'human') {
   state.movedPlayers[player] = true;
   state.phase = 'animating'; state.board = result.board; updateInputState(); updateCell(index);
   if (!preferences.reducedMotion) { cells[index].classList.add('just-placed'); cells[index].addEventListener('animationend', () => cells[index]?.classList.remove('just-placed'), { once:true }); }
-  const animatedFlips=result.flips.length>12?[]:result.flips;
-  if(result.flips.length>12) result.flips.forEach(updateCell);
+  const animatedFlips=result.flips.length>8?[]:result.flips;
+  if(result.flips.length>8) result.flips.forEach(updateCell);
   await Promise.all([landStone(index,run), ...animatedFlips.map(i => flipStone(i, 175 + 55 * Math.max(Math.abs(Math.floor(i / n) - Math.floor(index / n)), Math.abs(i % n - index % n)), run))]);
   if (!active(run)) return { ok: false, reason: 'ゲームが終了しました' };
-  renderStatus(); if (preferences.reducedMotion || result.flips.length>12) sound('flip',index); announce(`${nameOf(player)}が${result.flips.length}枚ひっくり返しました。`); await advanceTurn(player, run);
+  renderStatus(); if (preferences.reducedMotion || result.flips.length>8) sound('flip',index); announce(`${nameOf(player)}が${result.flips.length}枚ひっくり返しました。`); await advanceTurn(player, run);
   return { ok: true, flipped: result.flips.length, ...snapshot() };
 }
 async function advanceTurn(player, run) {
@@ -187,7 +187,7 @@ async function takeAITurn(run) {
   await pause(preferences.reducedMotion ? 300 : 600);
   if (!await ready(run) || state.phase !== 'thinking') return;
   const allowedMoves=turnMoves(state.board,state.player);
-  const width=state.size>=12?(state.difficulty==='hard'?2:3):state.size>=10?3:undefined;
+  const width=state.size>=10 && state.difficulty==='hard' ? 2 : 3;
   const index = chooseAIMove(state.board, state.player, { difficulty: state.difficulty, width, allowedMoves });
   if (!active(run)) return;
   if (index === null) { await advanceTurn(state.player, run); return; } await moveAt(index, 'ai');
