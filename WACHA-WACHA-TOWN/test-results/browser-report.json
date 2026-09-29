@@ -9,11 +9,19 @@
       "passed": true
     },
     {
-      "name": "500 residents start with many activities and a three-minute limit; search has no visible UI",
+      "name": "500 residents start with many activities and a three-minute limit; search keeps the full viewport",
+      "passed": true
+    },
+    {
+      "name": "Target reference stays visible and expands without pausing or leaving full screen",
       "passed": true
     },
     {
       "name": "Keyboard zoom, drag, reset and pause keep the screen clear",
+      "passed": true
+    },
+    {
+      "name": "Camera drags clamp at screen edges and cancel releases the pointer cleanly",
       "passed": true
     },
     {
