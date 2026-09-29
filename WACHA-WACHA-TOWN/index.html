@@ -354,10 +354,17 @@ body.searching .toast[data-kind="mistake"]{background:#b94338f5}
  const images={},M=WACHA_ASSETS.atlas,CW=M.cw,CH=M.ch;
  const moving=new Set(['walk','going','tag','police','pursue','flee','delivery']);
  async function init(progress){let loaded=0;const entries=Object.entries(WACHA_ASSETS.images);await Promise.all(entries.map(([key,url])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{images[key]=im;progress(Math.round(++loaded/entries.length*M.typeCount));resolve();};im.onerror=()=>reject(Error('画像を読み込めません: '+key));im.src=url;})));}
- const variantFrames=new Map(),TINTS=[[0,0,0],[.91,.32,.25],[.19,.64,.51],[.57,.39,.78]];
+ const variantFrames=new Map(),PALETTE_HUES=[0,.99,.43,.76];
+ function recolor(rgb,palette){
+  if(!palette)return rgb;const max=Math.max(...rgb),min=Math.min(...rgb),d=max-min;let h=0;
+  if(d){if(max===rgb[0])h=((rgb[1]-rgb[2])/d%6)/6;else if(max===rgb[1])h=((rgb[2]-rgb[0])/d+2)/6;else h=((rgb[0]-rgb[1])/d+4)/6;h=(h+1)%1;}
+  const delta=((PALETTE_HUES[palette]-h+.5)%1+1)%1-.5;h=(h+delta*.94+1)%1;
+  const s=Math.max(d/(max||1),.62),v=max,c=v*s,x=c*(1-Math.abs((h*6)%2-1)),m=v-c;let q;
+  if(h<1/6)q=[c,x,0];else if(h<2/6)q=[x,c,0];else if(h<3/6)q=[0,c,x];else if(h<4/6)q=[0,x,c];else if(h<5/6)q=[x,0,c];else q=[c,0,x];return q.map(n=>n+m);
+ }
  function rect(type,frame){return {...M.rects[Math.floor(type/M.palettes)][Math.max(0,Math.min(14,frame))]};}
  function variant(type,frame){const key=type*15+frame;if(variantFrames.has(key))return variantFrames.get(key);const r=rect(type,frame),c=document.createElement('canvas');c.width=CW;c.height=CH;const ctx=c.getContext('2d');ctx.drawImage(images['crowd-atlas'],r.x,r.y,CW,CH,0,0,CW,CH);const palette=type%M.palettes;
-  if(palette){const im=ctx.getImageData(0,0,CW,CH),a=im.data,tint=TINTS[palette];for(let i=0;i<a.length;i+=4){if(!a[i+3])continue;const r=a[i]/255,g=a[i+1]/255,b=a[i+2]/255,l=(Math.max(r,g,b)+Math.min(r,g,b))/2,y=Math.floor(i/4/CW)/CH;if(l<.1||(r>g*1.07&&g>b*1.06&&y<.68))continue;for(let k=0;k<3;k++)a[i+k]=Math.round(Math.min(1,Math.max(0,a[i+k]/255*.4+(tint[k]*(.25+l*1.3)+Math.max(l-.55,0)*.7)*.6))*255);}ctx.putImageData(im,0,0);}
+  if(palette){const im=ctx.getImageData(0,0,CW,CH),a=im.data;for(let i=0;i<a.length;i+=4){if(a[i+3]<8)continue;const r=a[i]/255,g=a[i+1]/255,b=a[i+2]/255,y=Math.floor(i/4/CW)/CH;if(Math.max(r,g,b)<.1||(r>g*1.07&&g>b*1.06&&y<.68))continue;const rgb=recolor([r,g,b],palette);for(let k=0;k<3;k++)a[i+k]=Math.round(rgb[k]*255);}ctx.putImageData(im,0,0);}
   if(variantFrames.size>1500)variantFrames.delete(variantFrames.keys().next().value);variantFrames.set(key,c);return c;
  }
  function sprite(ctx,type,frame,x,y,height=51,facing=1,crop=1){const w=height*CW/CH;ctx.save();ctx.translate(x,y);ctx.scale(facing,1);ctx.drawImage(variant(type,frame),0,0,CW,CH*crop,-w/2,-height*crop,w,height*crop);ctx.restore();}
@@ -385,9 +392,11 @@ body.searching .toast[data-kind="mistake"]{background:#b94338f5}
    void main(){vec2 q=vec2((corner.x-.5)*box.z,(corner.y-1.)*box.w);float a=shape.x;vec2 p=box.xy+vec2(q.x*cos(a)-q.y*sin(a),q.x*sin(a)+q.y*cos(a));vec2 pixel=(p-camera.xy)*camera.z+resolution*.5;gl_Position=vec4(pixel.x/resolution.x*2.-1.,1.-pixel.y/resolution.y*2.,0.,1.);localUv=vec2(extra.x<0.?1.-corner.x:corner.x,corner.y);uv=uvBox.xy+localUv*uvBox.zw;effect=vec4(extra.yzw,shape.y);nextY=shape.z;}`;
    const fs=`#version 300 es
    precision highp float;uniform sampler2D atlas;in vec2 uv;in vec2 localUv;in vec4 effect;in float nextY;out vec4 color;
+   vec3 rgb2hsv(vec3 c){vec4 k=vec4(0.,-1./3.,2./3.,-1.);vec4 p=mix(vec4(c.bg,k.wz),vec4(c.gb,k.xy),step(c.b,c.g));vec4 q=mix(vec4(p.xyw,c.r),vec4(c.r,p.yzx),step(p.x,c.r));float d=q.x-min(q.w,q.y);return vec3(abs(q.z+(q.w-q.y)/(6.*d+1e-10)),d/(q.x+1e-10),q.x);}
+   vec3 hsv2rgb(vec3 c){vec3 p=abs(fract(c.xxx+vec3(0.,2./3.,1./3.))*6.-3.);return c.z*mix(vec3(1.),clamp(p-1.,0.,1.),c.y);}
    void main(){vec4 first=texture(atlas,uv),second=texture(atlas,uv+vec2(effect.z,nextY));float alpha=mix(first.a,second.a,effect.y);color=vec4(mix(first.rgb*first.a,second.rgb*second.a,effect.y)/max(alpha,.001),alpha*effect.w);if(color.a<.015)discard;
-    if(effect.x>.5){vec3 rgb=color.rgb;float l=(max(max(rgb.r,rgb.g),rgb.b)+min(min(rgb.r,rgb.g),rgb.b))*.5;bool skin=rgb.r>rgb.g*1.07&&rgb.g>rgb.b*1.06&&localUv.y<.68;
-     if(l>=.1&&!skin){vec3 tint=effect.x<1.5?vec3(.91,.32,.25):effect.x<2.5?vec3(.19,.64,.51):vec3(.57,.39,.78);color.rgb=clamp(mix(rgb,tint*(.25+l*1.3)+max(l-.55,0.)*.7,.6),0.,1.);}
+    if(effect.x>.5){vec3 rgb=color.rgb;bool skin=rgb.r>rgb.g*1.07&&rgb.g>rgb.b*1.06&&localUv.y<.68;
+     if(max(max(rgb.r,rgb.g),rgb.b)>=.1&&!skin){vec3 hsv=rgb2hsv(rgb);float target=effect.x<1.5?.99:effect.x<2.5?.43:.76;float delta=fract(target-hsv.x+.5)-.5;hsv.x=fract(hsv.x+delta*.94);hsv.y=max(hsv.y,.62);color.rgb=hsv2rgb(hsv);}
     }
    }`;
    const shader=(kind,src)=>{const sh=g.createShader(kind);g.shaderSource(sh,src);g.compileShader(sh);if(!g.getShaderParameter(sh,g.COMPILE_STATUS))throw Error(g.getShaderInfoLog(sh));return sh;};
