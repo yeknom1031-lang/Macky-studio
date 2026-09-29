@@ -36,8 +36,8 @@ function evaluate(board, terminal = false) {
   }
   return values;
 }
-function candidates(board, player, width) {
-  return legalMoves(board, player).map(index => {
+function candidates(board, player, width, allowedMoves) {
+  return (allowedMoves ? legalMoves(board,player).filter(index => allowedMoves.includes(index)) : legalMoves(board, player)).map(index => {
     const result = playMove(board, player, index);
     return { index, board: result.board, score: evaluate(result.board)[player] };
   }).sort((a, b) => b.score - a.score || a.index - b.index).slice(0, width);
@@ -53,18 +53,18 @@ function search(board, previous, depth, width) {
   }
   return best ?? evaluate(board);
 }
-export function chooseAIMove(board, player, { difficulty = 'hard', depth, width, random = Math.random } = {}) {
+export function chooseAIMove(board, player, { difficulty = 'hard', depth, width, random = Math.random, allowedMoves } = {}) {
   if (!PLAYERS.some(p => p.id === player)) return null;
   const level = DIFFICULTIES[difficulty] ?? DIFFICULTIES.normal;
   if (difficulty === 'easy') {
-    const moves = legalMoves(board, player);
+    const moves = allowedMoves ? legalMoves(board,player).filter(index => allowedMoves.includes(index)) : legalMoves(board, player);
     const sample = Math.max(0, Math.min(.999999, Number(random()) || 0));
     return moves.length ? moves[Math.floor(sample * moves.length)] : null;
   }
   const levels = Math.max(1, Math.min(3, Math.trunc(depth ?? level.depth) || 2));
   const breadth = Math.max(1, Math.min(8, Math.trunc(width ?? level.width) || 4));
   let bestIndex = null, bestValue = -Infinity;
-  for (const candidate of candidates(board, player, breadth)) {
+  for (const candidate of candidates(board, player, breadth, allowedMoves)) {
     const value = search(candidate.board, player, levels - 1, breadth)[player];
     if (value > bestValue) { bestIndex = candidate.index; bestValue = value; }
   }

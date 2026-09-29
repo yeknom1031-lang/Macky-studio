@@ -48,7 +48,7 @@
     <p class="rule-intro">自分の色ではさんで、いちばん多く。</p>
     <ol><li><b>４色で交代。</b>ひとりモードでは、自分の色と１〜４番目の手番を毎回抽選します。残りの３色がコンピューターです。順番はその対局中は変わりません。４人モードは赤 → 青 → 黄 → 緑の順です。</li><li><b>相手の石をはさむ場所に置く。</b>縦・横・斜めの８方向で、１枚以上はさめる空きマスに置けます。はさめないマスには置けません。</li><li><b>間の色は全部ひっくり返る。</b>自分以外の色が混ざっていても、途切れずにはさんだ石はすべて自分の色になります。空きマスを越えてはさむことはできません。</li><li><b>置けなければ自動でスキップ。</b>「置ける場所がありません」と表示して、次の人に進みます。０枚になった色もスキップします。</li><li><b>石の数で勝負。</b>盤が埋まるか、全員が置けなくなると終了。いちばん多い人が勝ち。最多の人が複数なら引き分けです。</li></ol>
     <div class="capture-example" aria-label="赤、青、黄、緑、赤とはさむと、すべて赤になります"><div><i class="disc red"></i><i class="disc blue"></i><i class="disc yellow"></i><i class="disc green"></i><i class="disc red"></i></div><span>↓ はさんだ色に変わる</span><div><i class="disc red"></i><i class="disc red"></i><i class="disc red"></i><i class="disc red"></i><i class="disc red"></i></div></div>
-    <h3>最初の配置</h3><p>どの広さでも中央４×４に、各色４枚ずつ置きます。１番目の色が左上、２番目が右上、３番目が右下、４番目が左下です。ひとりモードは色の並びもランダム。自分の色は購入済みの色を含めて抽選し、特別な色でも先手になるとは限りません。同じ色や順番が続くこともあります。</p>
+    <h3>最初の配置</h3><p>どの広さでも中央４×４に、各色４枚ずつ置きます。１番目の色が左上、２番目が右上、３番目が右下、４番目が左下です。ひとりモードは色の並びもランダム。自分の色は購入済みの色を含めて抽選し、特別な色でも先手になるとは限りません。同じ色や順番が続くこともあります。全員が初めて打つまでは、まだ打っていない色を１枚もなくす手は置けません。</p>
     <h3>勝利とコイン</h3><p>ひとりモードで勝つとコインがもらえます。強さ・広さによって30〜120コイン。最多で引き分けた場合は半分です。４人モードや途中で終了した対局は対象外。ボードは購入後に選んで着せ替えできます。購入した駒の色は次の対局から抽選候補に加わります。見た目は強さに影響しません。</p>
     <h3>途中で降参する</h3><p>対局メニューの「降参する」から確認すると、その対局を終了します。ひとりモードでは負けとして１対局を記録し、コインは増えません。４人モードでは現在の手番の色が降参し、卓全体の対局を終了します。途中の枚数で勝者は決めません。</p>
     <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。対局中は上の「○の番」を押すとメニューが開き、次の手まで一時停止します。</p>
@@ -58,6 +58,7 @@
     <button class="close" data-close aria-label="閉じる">×</button><h2 id="settings-title">設定</h2>
     <label class="setting"><span>置ける場所を表示する<small>人が打つ番だけ、置けるマスに目印</small></span><input id="hints-setting" type="checkbox" role="switch"></label>
     <label class="setting"><span>石と盤の音<small>置く音・返す音・勝利の音</small></span><input id="sound-setting" type="checkbox" role="switch" checked></label>
+    <label class="setting"><span>静かなBGM<small>操作後に流れ、タブを離れると止まります</small></span><input id="music-setting" type="checkbox" role="switch" checked></label>
     <div class="sound-controls"><label for="sound-volume">音量 <output id="volume-value" for="sound-volume">75%</output></label><input id="sound-volume" type="range" min="0" max="100" step="5" value="75"><button id="sound-preview" class="secondary">音を試す</button><p id="sound-status" class="field-note" role="status">短い着手音と、石を返す音を確かめられます。</p></div>
     <label class="setting"><span>動きを少なくする</span><input id="motion-setting" type="checkbox" role="switch"></label>
     <div class="save-section"><h3>遊んだデータを持ち運ぶ</h3><p class="field-note">コイン・購入品・設定を保存します。読み込むと現在の保存データを置き換えます。対局中の盤面は含みません。</p><div class="save-actions"><button id="export-save" class="secondary">データを書き出す</button><button id="import-save" class="secondary">データを読み込む</button></div><input id="save-file" type="file" accept="application/json,.json" hidden><p id="save-message" class="field-note" role="status"></p></div>

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { initialBoard, captures, legalMoves, playMove, nextTurn, scores, winners } from '../src/engine.js';
+import { initialBoard, captures, legalMoves, firstRoundMoves, playMove, nextTurn, scores, winners } from '../src/engine.js';
 const blank = () => Array(64).fill(null);
 
 test('中央4x4は各色4個、合計16個で始まる', () => {
@@ -15,6 +15,14 @@ test('各色の初手は対称で、赤の置き場所は9つ', () => {
     assert.equal(legalMoves(b, p).length, 9);
     for (const i of legalMoves(b, p)) assert.ok(scores(playMove(b, p, i).board).every(c => c > 0));
   }
+});
+test('全色が一度打つまでは、未着手の色を０枚にする手だけを禁止する', () => {
+  const b = blank(); b[26] = 0; b[27] = 1; b[28] = 1; b[35] = 0;
+  assert.deepEqual(legalMoves(b,0), [19,21,29]);
+  assert.deepEqual(firstRoundMoves(b,0,[true,false,true,true]), [19,21]);
+  assert.deepEqual(firstRoundMoves(b,0,[true,true,true,true]), [19,21,29]);
+  assert.deepEqual(scores(playMove(b,0,21).board), [4,1,0,0]);
+  assert.deepEqual(scores(playMove(b,0,29).board), [5,0,0,0]);
 });
 for (let p = 0; p < 4; p++) test(`色${p}: 他の3色が混ざった列をすべて返す`, () => {
   const b = blank(); b[24] = p; b[25] = (p + 1) % 4; b[26] = (p + 2) % 4; b[27] = (p + 3) % 4;

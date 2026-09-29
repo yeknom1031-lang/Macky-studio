@@ -29,6 +29,15 @@ export function captures(board, player, index) {
   return flips;
 }
 export function legalMoves(board, player) { return board.flatMap((_, index) => captures(board, player, index).length ? [index] : []); }
+export function firstRoundMoves(board, player, movedPlayers) {
+  const legal = legalMoves(board, player);
+  if (!Array.isArray(movedPlayers) || movedPlayers.length !== 4 || movedPlayers.every(Boolean)) return legal;
+  return legal.filter(index => {
+    const result = playMove(board, player, index);
+    const remaining = scores(result.board);
+    return movedPlayers.every((hasMoved, color) => hasMoved || remaining[color] > 0);
+  });
+}
 export function playMove(board, player, index) {
   const flips = captures(board, player, index); if (!flips.length) return null;
   const next = board.slice(); next[index] = player;
