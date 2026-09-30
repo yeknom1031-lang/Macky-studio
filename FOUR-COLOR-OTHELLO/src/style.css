@@ -68,8 +68,8 @@ button:disabled { cursor:default; }
 .home-board { width:min(100%,550px); flex-shrink:0; transform:rotateX(22deg) rotateZ(-13deg); margin:0; }
 .board { grid-column:2; grid-row:2; display:grid; grid-template-columns:repeat(var(--grid-size,8),1fr); grid-template-rows:repeat(var(--grid-size,8),1fr); min-width:0; min-height:0; gap:1px; padding:2px; background:var(--groove); border:3px solid #060f0c; border-radius:3px; box-shadow:0 1px 0 #bcc9a659,inset 0 0 10px #0009; overflow:hidden; }
 .board-row { display:contents; }
-.cell { position:relative; display:grid; place-items:center; padding:0; border:0; border-radius:0; min-width:0; min-height:0; background:radial-gradient(ellipse at 25% 10%,#ffffff05,transparent),linear-gradient(135deg,var(--felt-top),var(--felt-bottom)); box-shadow:inset 0 1px #efffec15,inset 1px 0 #fff1,inset 0 -1px #001b1640; perspective:350px; }
-.cell .disc { width:80%; pointer-events:none; transform-style:preserve-3d; }
+.cell { position:relative; display:grid; place-items:center; padding:0; border:0; border-radius:0; min-width:0; min-height:0; background:radial-gradient(ellipse at 25% 10%,#ffffff05,transparent),linear-gradient(135deg,var(--felt-top),var(--felt-bottom)); box-shadow:inset 0 1px #efffec15,inset 1px 0 #fff1,inset 0 -1px #001b1640; }
+.cell .disc { width:80%; pointer-events:none; }
 .cell:focus-visible { outline:2px solid #f4dfa3; outline-offset:-3px; z-index:1; }
 @media(hover:hover) { .cell:hover { outline:2px solid #fff; outline-offset:-2px; z-index:2; } }
 .cell.legal-hint::after { content:''; width:20%; aspect-ratio:1; border-radius:50%; border:1px solid #fff7; background:#efdcab88; box-shadow:0 0 10px #dfdba62a; pointer-events:none; }
@@ -215,7 +215,7 @@ dialog::backdrop { background:#030b0bba; backdrop-filter:blur(10px); }
 @keyframes contact-ring { 0%,15% { opacity:0; transform:scale(.55); } 35% { opacity:.55; } 100% { opacity:0; transform:scale(1.1); } }
 .cell.just-placed::after { content:''; position:absolute; inset:7%; border:1px solid #f9e8bbaa; border-radius:50%; pointer-events:none; animation:contact-ring .62s ease-out both; }
 @keyframes capture-light { 0% { filter:brightness(1.4); } 100% { filter:brightness(1); } }
-.cell.capture-flash { animation:capture-light .38s ease-out; }
+
 @keyframes score-tick { 0% { color:#ffe8ae; transform:translateY(-3px) scale(1.13); } 100% { transform:none; } }
 .score-updated { display:inline-block; animation:score-tick .35s ease-out; }
 .score { padding-top:5px; padding-bottom:17px; }
@@ -275,3 +275,12 @@ dialog::backdrop { background:#030b0bba; backdrop-filter:blur(10px); }
   #result-reward { padding:12px; margin:13px 0; }
   .result .primary { padding:13px; margin-top:12px; }.result .secondary { padding:13px; }
 }
+
+/* Static stones are one shared bitmap, with no per-stone 3D surface or layered shadows. */
+.stone-textures .disc { background:var(--disc-image) center / contain no-repeat; border:0; box-shadow:none; isolation:auto; }
+.stone-textures .disc::before,.stone-textures .disc::after { content:none; }
+.cell.is-flipping { perspective:350px; }
+
+.black { --stone:#252a2b; --bright:#62686b; --dark:#060809; --rim:#181e20; }
+.white { --stone:#f3f1e8; --bright:#ffffff; --dark:#a3a8a4; --rim:#c6cac6; }
+.game[data-player-count="2"] .scores { grid-template-columns:repeat(2,minmax(0,1fr)); }

@@ -6,9 +6,16 @@ export const PLAYERS = Object.freeze([
 ]);
 const DIRECTIONS = [-1, 0, 1].flatMap(r => [-1, 0, 1].filter(c => r || c).map(c => [r, c]));
 export function boardSize(board) { const n = Math.sqrt(board.length); return BOARD_SIZES.includes(n) ? n : 0; }
-export function initialBoard(size = SIZE) {
+export function initialBoard(size = SIZE, playerCount = 4) {
   if (!BOARD_SIZES.includes(size)) throw new RangeError('盤は6・8・10・12のいずれかです');
+  if (![2,4].includes(playerCount)) throw new RangeError('色数は2または4です');
   const board = Array(size * size).fill(null), start = size / 2 - 2;
+  if (playerCount === 2) {
+    const c = size / 2 - 1;
+    board[c * size + c] = board[(c + 1) * size + c + 1] = 1;
+    board[c * size + c + 1] = board[(c + 1) * size + c] = 0;
+    return board;
+  }
   for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) board[(start + r) * size + start + c] = r < 2 ? (c < 2 ? 0 : 1) : (c < 2 ? 3 : 2);
   return board;
 }
@@ -45,13 +52,13 @@ export function playMove(board, player, index) {
   return { board: next, flips };
 }
 export function scores(board) { const result = [0, 0, 0, 0]; for (const v of board) if (v !== null) result[v]++; return result; }
-export function nextTurn(board, current) {
+export function nextTurn(board, current, playerCount = 4) {
   const skipped = [];
-  for (let step = 1; step <= 4; step++) {
-    const player = (current + step) % 4;
+  for (let step = 1; step <= playerCount; step++) {
+    const player = (current + step) % playerCount;
     if (legalMoves(board, player).length) return { player, skipped, ended: false };
     skipped.push(player);
   }
   return { player: null, skipped, ended: true };
 }
-export function winners(board) { const counts = scores(board), max = Math.max(...counts); return PLAYERS.filter(p => counts[p.id] === max).map(p => p.id); }
+export function winners(board, playerCount = 4) { const counts = scores(board).slice(0, playerCount), max = Math.max(...counts); return PLAYERS.slice(0, playerCount).filter(p => counts[p.id] === max).map(p => p.id); }

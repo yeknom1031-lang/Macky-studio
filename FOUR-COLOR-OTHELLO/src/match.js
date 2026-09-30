@@ -5,10 +5,10 @@ import { PLAYERS, boardSize, nextTurn } from './engine.js';
 export function canResign(match) {
   return !!match && ['intro', 'playing', 'thinking', 'animating', 'skipping'].includes(match.phase)
     && ['solo', 'friends'].includes(match.mode)
-    && PLAYERS.some(p => p.id === (match.mode === 'solo' ? match.human : match.player))
+    && PLAYERS.slice(0,match.playerCount ?? 4).some(p => p.id === (match.mode === 'solo' ? match.human : match.player))
     && Array.isArray(match.board) && !!boardSize(match.board)
-    && match.board.every(v => v === null || PLAYERS.some(p => p.id === v))
-    && !nextTurn(match.board, 0).ended;
+    && match.board.every(v => v === null || PLAYERS.slice(0,match.playerCount ?? 4).some(p => p.id === v))
+    && !nextTurn(match.board, 0, match.playerCount ?? 4).ended;
 }
 export function endByResignation(match) {
   if (!canResign(match)) return null;

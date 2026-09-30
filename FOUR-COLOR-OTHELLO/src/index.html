@@ -19,6 +19,7 @@
       <div class="home-menu">
         <button id="start" class="primary play-button"><span><b>ひとりで遊ぶ</b><small>コンピューター３人と対戦</small></span><span class="play-arrow" aria-hidden="true">▶</span></button>
         <button id="friends-open" class="secondary wide"><span>4人で遊ぶ</span><small>ひとつの画面で交代</small></button>
+        <button id="classic-open" class="secondary wide"><span>通常の２色オセロ</span><small>黒と白 · AI対戦 / ２人対戦</small></button>
         <div class="secondary-menu"><button id="shop-open"><span aria-hidden="true">◇</span>ショップ <small class="coin-balance">0 コイン</small></button><button id="rules-open"><span aria-hidden="true">▤</span>ルールブック</button><button id="settings-open"><span aria-hidden="true">⚙</span>設定</button></div>
         <p id="home-record" class="home-record">好きな色で、じっくり一局。</p>
       </div>
@@ -37,15 +38,17 @@
   </main>
   <dialog id="setup-dialog" aria-labelledby="setup-title"><div class="dialog-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">NEW GAME</p><h2 id="setup-title">ひとりで遊ぶ</h2>
+    <fieldset id="classic-mode-field" class="choice-field" hidden><legend>遊び方</legend><div class="choices"><label class="choice"><input type="radio" name="classic-mode" value="solo" checked><span>ひとりでAIと対戦</span></label><label class="choice"><input type="radio" name="classic-mode" value="friends"><span>２人で交代</span></label></div></fieldset>
     <fieldset id="difficulty-field" class="choice-field"><legend>コンピューターの強さ</legend><div id="difficulty-options" class="choices"></div><p id="difficulty-description" class="field-note"></p></fieldset>
-    <fieldset class="choice-field"><legend>ボードの広さ</legend><div id="size-options" class="choices"></div><p class="field-note">8 × 8 が基本。どの広さも中央の16枚からスタート。</p></fieldset>
+    <fieldset class="choice-field"><legend>ボードの広さ</legend><div id="size-options" class="choices"></div><p id="size-note" class="field-note">8 × 8 が基本。どの広さも中央の16枚からスタート。</p></fieldset>
     <fieldset id="color-field" class="choice-field"><legend>色と手番はランダム</legend><div id="color-options" class="color-options"></div><p id="color-note" class="field-note"></p></fieldset>
     <label class="setting compact"><span>置ける場所を表示する<small>あなたの番に、目印が出ます</small></span><input id="setup-hints" type="checkbox" role="switch"></label>
     <div class="setup-footer"><p id="setup-reward" class="reward-note"></p><button id="launch" class="primary">この設定で遊ぶ</button></div>
   </div></dialog>
   <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">HOW TO PLAY</p><h2 id="rules-title">ルールブック</h2>
-    <p class="rule-intro">自分の色ではさんで、いちばん多く。</p>
+    <h3>通常の２色オセロ</h3><p>ホームの「通常の２色オセロ」から、AI１人と対戦・２人で交代を選べます。基本は８×８、中央に黒２枚・白２枚を斜めに置き、黒から交互に打ちます。ひとりモードのあなたの色は毎回抽選します。縦・横・斜めにはさんだ相手の石を返し、置けなければ自動パス。双方が置けなければ終了し、石の多い色が勝ち、同数は引き分けです。２色では初手の保護ルールや特別色の抽選を使いません。ボードの着せ替え、強さ、ヒント、降参、ひとり対戦のコインは４色と共通です。</p>
+    <h3>４色オセロ</h3><p class="rule-intro">自分の色ではさんで、いちばん多く。</p>
     <ol><li><b>４色で交代。</b>ひとりモードでは、自分の色と１〜４番目の手番を毎回抽選します。残りの３色がコンピューターです。順番はその対局中は変わりません。４人モードは赤 → 青 → 黄 → 緑の順です。</li><li><b>相手の石をはさむ場所に置く。</b>縦・横・斜めの８方向で、１枚以上はさめる空きマスに置けます。はさめないマスには置けません。</li><li><b>間の色は全部ひっくり返る。</b>自分以外の色が混ざっていても、途切れずにはさんだ石はすべて自分の色になります。空きマスを越えてはさむことはできません。</li><li><b>置けなければ自動でスキップ。</b>「置ける場所がありません」と表示して、次の人に進みます。０枚になった色もスキップします。</li><li><b>石の数で勝負。</b>盤が埋まるか、全員が置けなくなると終了。いちばん多い人が勝ち。最多の人が複数なら引き分けです。</li></ol>
     <div class="capture-example" aria-label="赤、青、黄、緑、赤とはさむと、すべて赤になります"><div><i class="disc red"></i><i class="disc blue"></i><i class="disc yellow"></i><i class="disc green"></i><i class="disc red"></i></div><span>↓ はさんだ色に変わる</span><div><i class="disc red"></i><i class="disc red"></i><i class="disc red"></i><i class="disc red"></i><i class="disc red"></i></div></div>
     <h3>最初の配置</h3><p>どの広さでも中央４×４に、各色４枚ずつ置きます。１番目の色が左上、２番目が右上、３番目が右下、４番目が左下です。ひとりモードは色の並びもランダム。自分の色は購入済みの色を含めて抽選し、特別な色でも先手になるとは限りません。同じ色や順番が続くこともあります。全員が初めて打つまでは、まだ打っていない色を１枚もなくす手は置けません。</p>

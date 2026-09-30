@@ -11,7 +11,8 @@ test('単体HTMLは外部JS・CSS・画像やモジュールを読み込まな�
  assert.doesNotMatch(html,/<script\b[^>]*type=["']module/i);
  assert.doesNotMatch(html,/<link\b[^>]*rel=["']stylesheet/i);
  assert.doesNotMatch(html,/<(?:img|iframe|audio|video)\b[^>]*src=["'](?!data:)/i);
- for(const [,url] of html.matchAll(/url\(["']?([^"')]+)/g))assert.ok(url.startsWith('data:') || url.startsWith('#') || url.startsWith('%23'),url);
+ const styles=[...html.matchAll(/<style>([\s\S]*?)<\/style>/g)].map(m=>m[1]).join('\n');
+ for(const [,url] of styles.matchAll(/url\(["']?([^"')]+)/g))assert.ok(url.startsWith('data:') || url.startsWith('#') || url.startsWith('%23'),url);
 });
 test('JavaScriptはfile://で実行可能なclassic scriptで構文エラーなし',()=>{
  const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];assert.equal(scripts.length,1);

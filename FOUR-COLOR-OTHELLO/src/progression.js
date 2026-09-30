@@ -44,8 +44,9 @@ export function equipItem(value, id) {
 export function matchReward(difficulty, size) { return (DIFFICULTIES[difficulty] ?? DIFFICULTIES.normal).reward + ({ 6: 0, 8: 10, 10: 25, 12: 40 }[size] ?? 10); }
 export function awardMatch(value, match) {
   const profile = normalizeProfile(value), { id, board, human, mode, difficulty } = match;
-  if (match.ending === 'resigned' || mode !== 'solo' || typeof id !== 'string' || !id || id.length > 120 || profile.claimed.includes(id) || !Array.isArray(board) || !BOARD_SIZES.includes(boardSize(board)) || !board.every(v => v === null || PLAYERS.some(p => p.id === v)) || !PLAYERS.some(p => p.id === human) || !nextTurn(board, 0).ended) return { profile, earned: 0, awarded: false };
-  const top = winners(board), won = top.includes(human), tied = top.length > 1;
+  const playerCount = match.playerCount ?? 4;
+  if (![2,4].includes(playerCount) || match.ending === 'resigned' || mode !== 'solo' || typeof id !== 'string' || !id || id.length > 120 || profile.claimed.includes(id) || !Array.isArray(board) || !BOARD_SIZES.includes(boardSize(board)) || !board.every(v => v === null || PLAYERS.slice(0,playerCount).some(p => p.id === v)) || !PLAYERS.slice(0,playerCount).some(p => p.id === human) || !nextTurn(board, 0, playerCount).ended) return { profile, earned: 0, awarded: false };
+  const top = winners(board, playerCount), won = top.includes(human), tied = top.length > 1;
   const earned = won ? Math.floor(matchReward(difficulty, boardSize(board)) / (tied ? 2 : 1)) : 0;
   profile.coins = Math.min(1000000000, profile.coins + earned);
   profile.claimed.push(id); profile.claimed = profile.claimed.slice(-2000);

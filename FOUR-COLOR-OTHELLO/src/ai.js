@@ -4,15 +4,15 @@ export const DIFFICULTIES = Object.freeze({
   normal: { label: 'ふつう', description: '角と次の一手を考える相手。', depth: 2, width: 4, reward: 50 },
   hard: { label: 'つよい', description: '3手先まで考える手ごわい相手。', depth: 3, width: 5, reward: 80 },
 });
-function evaluate(board, terminal = false) {
-  const size = boardSize(board), last = size - 1, counts = scores(board), empty = board.filter(v => v === null).length;
+function evaluate(board, terminal = false, playerCount = 4) {
+  const size = boardSize(board), last = size - 1, counts = scores(board).slice(0,playerCount), empty = board.filter(v => v === null).length;
   const ratio = empty / board.length;
   const values = counts.map(count => count * (ratio < .2 ? 7 : ratio < .45 ? 2 : .35));
   if (terminal) {
     const top = Math.max(...counts), tied = counts.filter(n => n === top).length;
     return counts.map(n => n * 100 + (n === top ? (tied === 1 ? 100000 : 50000) : 0));
   }
-  for (let p = 0; p < 4; p++) {
+  for (let p = 0; p < playerCount; p++) {
     if (!counts[p]) { values[p] = -100000; continue; }
     values[p] += legalMoves(board, p).length * 5;
   }
@@ -36,25 +36,25 @@ function evaluate(board, terminal = false) {
   }
   return values;
 }
-function candidates(board, player, width, allowedMoves) {
+function candidates(board, player, width, allowedMoves, playerCount = 4) {
   return (allowedMoves ? legalMoves(board,player).filter(index => allowedMoves.includes(index)) : legalMoves(board, player)).map(index => {
     const result = playMove(board, player, index);
-    return { index, board: result.board, score: evaluate(result.board)[player] };
+    return { index, board: result.board, score: evaluate(result.board,false,playerCount)[player] };
   }).sort((a, b) => b.score - a.score || a.index - b.index).slice(0, width);
 }
-function search(board, previous, depth, width) {
-  const next = nextTurn(board, previous);
-  if (next.ended) return evaluate(board, true);
-  if (depth === 0) return evaluate(board);
+function search(board, previous, depth, width, playerCount) {
+  const next = nextTurn(board, previous, playerCount);
+  if (next.ended) return evaluate(board, true, playerCount);
+  if (depth === 0) return evaluate(board,false,playerCount);
   let best = null;
-  for (const candidate of candidates(board, next.player, width)) {
-    const value = search(candidate.board, next.player, depth - 1, width);
+  for (const candidate of candidates(board, next.player, width, undefined, playerCount)) {
+    const value = search(candidate.board, next.player, depth - 1, width, playerCount);
     if (best === null || value[next.player] > best[next.player]) best = value;
   }
-  return best ?? evaluate(board);
+  return best ?? evaluate(board,false,playerCount);
 }
-export function chooseAIMove(board, player, { difficulty = 'hard', depth, width, random = Math.random, allowedMoves } = {}) {
-  if (!PLAYERS.some(p => p.id === player)) return null;
+export function chooseAIMove(board, player, { difficulty = 'hard', depth, width, random = Math.random, allowedMoves, playerCount = 4 } = {}) {
+  if (![2,4].includes(playerCount) || !PLAYERS.slice(0,playerCount).some(p => p.id === player)) return null;
   const level = DIFFICULTIES[difficulty] ?? DIFFICULTIES.normal;
   if (difficulty === 'easy') {
     const moves = allowedMoves ? legalMoves(board,player).filter(index => allowedMoves.includes(index)) : legalMoves(board, player);
@@ -67,8 +67,8 @@ export function chooseAIMove(board, player, { difficulty = 'hard', depth, width,
   const maxWidth = boardSize(board) >= 10 ? (difficulty === 'hard' ? 2 : 3) : 3;
   const breadth = Math.max(1, Math.min(maxWidth, Math.trunc(width ?? level.width) || maxWidth));
   let bestIndex = null, bestValue = -Infinity;
-  for (const candidate of candidates(board, player, breadth, allowedMoves)) {
-    const value = search(candidate.board, player, levels - 1, breadth)[player];
+  for (const candidate of candidates(board, player, breadth, allowedMoves, playerCount)) {
+    const value = search(candidate.board, player, levels - 1, breadth, playerCount)[player];
     if (value > bestValue) { bestIndex = candidate.index; bestValue = value; }
   }
   return bestIndex;

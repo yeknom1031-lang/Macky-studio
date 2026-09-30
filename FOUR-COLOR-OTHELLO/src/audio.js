@@ -30,24 +30,28 @@ export function stoneWave(sampleRate = 48000, kind = 'place', seed = 1) {
   return wave;
 }
 
-export function createStoneAudio(options, contextFactory) {
+export function createStoneAudio(options, contextFactory, { schedule = setTimeout, unschedule = clearTimeout } = {}) {
   let context, master, musicGain, limiter, count = 0, lastFlip = -1, chordGeneration = 0, musicTimer = 0, chordIndex = 0;
-  const voices = new Set(), musicVoices = new Map(), cache = new Map();
+  const voices = new Map(), musicVoices = new Map(), cache = new Map();
   const progression = [
     [261.63,329.63,392,493.88,587.33], [220,261.63,329.63,392,493.88],
     [174.61,220,261.63,329.63,392], [196,246.94,293.66,349.23,440]
   ];
   function stopMusic() {
-    clearTimeout(musicTimer); musicTimer = 0;
-    for (const [source,gain] of musicVoices) {
-      try {
-        if (context?.state === 'running') {
-          gain.gain.cancelScheduledValues(context.currentTime);
-          gain.gain.setTargetAtTime(.0001,context.currentTime,.025);
-          source.stop(context.currentTime + .14);
-        } else source.stop();
-      } catch {}
-    }
+    unschedule(musicTimer); musicTimer = 0;
+    for (const release of musicVoices.values()) release();
+  }
+  function releaseAfter(source, outputs, pool, lifetime) {
+    let timer, released = false;
+    const release = () => {
+      if (released) return; released = true;
+      unschedule(timer); pool.delete(source); source.onended = null;
+      try { source.stop(); } catch {}
+      source.disconnect(); outputs.forEach(output => output.disconnect());
+    };
+    pool.set(source, release); source.onended = release;
+    timer = schedule(release, lifetime);
+    return release;
   }
   function scheduleChord() {
     if (!options().music || context?.state !== 'running') return;
@@ -65,10 +69,10 @@ export function createStoneAudio(options, contextFactory) {
       gain.gain.exponentialRampToValueAtTime(.0001,at + 8.25);
       oscillator.connect(gain); gain.connect(musicGain);
       oscillator.start(at); oscillator.stop(at + 8.4);
-      musicVoices.set(oscillator,gain);
-      oscillator.onended = () => { musicVoices.delete(oscillator); oscillator.disconnect(); gain.disconnect(); };
+      releaseAfter(oscillator,[gain],musicVoices,Math.ceil((at-now+8.6)*1000));
+      while (musicVoices.size > 10) musicVoices.values().next().value();
     }
-    musicTimer = setTimeout(scheduleChord,8500);
+    musicTimer = schedule(scheduleChord,8500);
   }
   function startMusic() {
     if (!options().music || context?.state !== 'running' || musicTimer) return;
@@ -90,9 +94,9 @@ export function createStoneAudio(options, contextFactory) {
       else startMusic();
     } catch { /* Audio must never prevent playing. */ }
   }
-  function track(source, output) {
-    voices.add(source);
-    source.onended = () => { voices.delete(source); source.disconnect(); output?.disconnect(); };
+  function track(source, outputs, lifetime = 350) {
+    releaseAfter(source,outputs,voices,lifetime);
+    while (voices.size > 16) voices.values().next().value();
   }
   function hit(kind = 'place', pan = 0, intensity = 1) {
     if (!options().sound || !options().volume) return false;
@@ -114,16 +118,14 @@ export function createStoneAudio(options, contextFactory) {
       source.connect(gain);
       if (context.createStereoPanner) {
         const stereo = context.createStereoPanner(); stereo.pan.value = Math.max(-.55, Math.min(.55,pan));
-        gain.connect(stereo); stereo.connect(master); track(source,stereo);
-        source.addEventListener('ended', () => gain.disconnect(), { once:true });
-      } else { gain.connect(master); track(source,gain); }
+        gain.connect(stereo); stereo.connect(master); track(source,[gain,stereo]);
+      } else { gain.connect(master); track(source,[gain]); }
       source.start(now); count++; return true;
     } catch { return false; }
   }
   function stop() {
     chordGeneration++; lastFlip = -1;
-    for (const source of voices) { try { source.stop(); } catch {} }
-    voices.clear();
+    for (const release of voices.values()) release();
   }
   function suspend() { stop(); stopMusic(); }
   function celebrate() {
@@ -135,7 +137,7 @@ export function createStoneAudio(options, contextFactory) {
       const source = context.createOscillator(), gain = context.createGain(), at = context.currentTime + i * .1;
       source.type = 'sine'; source.frequency.value = frequency;
       gain.gain.setValueAtTime(0,at); gain.gain.linearRampToValueAtTime(.035,at + .012); gain.gain.exponentialRampToValueAtTime(.0001,at + .65);
-      source.connect(gain); gain.connect(master); track(source,gain); source.start(at); source.stop(at + .7);
+      source.connect(gain); gain.connect(master); track(source,[gain],1200); source.start(at); source.stop(at + .7);
     }
   }
   function sync() {
