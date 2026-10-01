@@ -5,7 +5,7 @@ import { canResign, endByResignation } from './match.js';
 import { CATALOG, normalizeProfile, ownsItem, purchaseItem, equipItem, matchReward, awardMatch, recordResignation, playerColors, randomSoloLineup } from './progression.js';
 
 import { createStoneAudio } from './audio.js';
-import { installStoneTextures, paintStone, createCellEffects } from './rendering.js';
+import { installStoneTextures, paintStone, createCellEffects, createHeldStonePointer } from './rendering.js';
 
 const $ = s => document.querySelector(s);
 const ui = { home: $('#home'), game: $('#game'), board: $('#board'), turn: $('#turn'), scores: $('#scores'), notice: $('#notice'), live: $('#live'), result: $('#result-dialog') };
@@ -19,6 +19,19 @@ let preferences = normalizePreferences(readSave(STORAGE.prefs));
 let profile = normalizeProfile(readSave(STORAGE.profile));
 let state = { board: initialBoard(), player: 0, phase: 'home', mode: 'solo', size: 8, human: 0, colors: playerColors('red').colors };
 const stoneAudio = createStoneAudio(() => preferences, () => new (window.AudioContext || window.webkitAudioContext)());
+const heldElement = document.createElement('i');
+heldElement.hidden=true;heldElement.setAttribute('aria-hidden','true');document.body.append(heldElement);
+const heldPointer = createHeldStonePointer(ui.board,heldElement);
+let heldSize=40;
+function syncHeldPointer() {
+  const humanTurn=state.phase==='playing'&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
+  heldPointer.sync(humanTurn?state.colors[state.player].id:null,heldSize);
+}
+function measureHeldStone() { heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
+if(window.ResizeObserver)new ResizeObserver(measureHeldStone).observe(ui.board);
+window.addEventListener('resize',measureHeldStone,{passive:true});
+window.addEventListener('scroll',()=>heldPointer.hide(),{passive:true});
+window.addEventListener('blur',()=>heldPointer.hide());
 const cellEffects = createCellEffects();
 const oniRunner = createOniRunner();
 let aiAnalysis = null;
@@ -32,7 +45,7 @@ const matchPlayers = () => PLAYERS.slice(0,state.colors.length);
 const winningPlayers = () => winners(state.board,state.colors.length);
 const active = run => run === epoch && !['home', 'ended'].includes(state.phase);
 function cancelRun() {
-  stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
+  heldPointer.hide(); stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
   ui.board.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel());
   cells.forEach(cell => cell.classList.remove('is-flipping'));
 }
@@ -109,6 +122,7 @@ function renderStatus() {
   updateInputState();
 }
 function updateInputState() {
+  syncHeldPointer();
   ui.game.dataset.phase = state.phase;
   ui.board.setAttribute('aria-busy', String(['intro', 'animating', 'thinking'].includes(state.phase)));
   const canPlay = state.phase === 'playing' && !isPaused();
@@ -273,7 +287,7 @@ function startGame(config = lastConfig) {
   state = { ...config, ...palette, id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`, board: initialBoard(config.size, config.playerCount ?? 4), player: 0, phase: 'playing', movedPlayers:Array(config.playerCount ?? 4).fill(false) };
   ui.home.hidden = true; ui.game.hidden = false; document.body.classList.add('playing');
   ui.game.dataset.playerCount = String(state.colors.length);
-  buildBoard(); cells.forEach((_, i) => updateCell(i));
+  buildBoard(); measureHeldStone(); cells.forEach((_, i) => updateCell(i));
   state.phase = 'intro'; renderStatus();
   $('#intro-title').textContent = state.mode === 'solo' ? `あなたは${nameOf(state.human)}` : '対局開始';
   $('#intro-detail').textContent = state.mode === 'solo' ? `${state.human + 1}番目の手番です` : state.colors.length === 2 ? '黒と白で、勝負。' : '４つの色で、勝負。';
@@ -357,7 +371,7 @@ document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('c
 for (const [id,key] of [['sound-setting','sound'],['music-setting','music'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; stoneAudio.unlock(); syncSettings(); persist(); updateInputState(); });
 document.addEventListener('pointerdown', () => stoneAudio.unlock(), { passive:true });
 document.addEventListener('keydown', () => stoneAudio.unlock());
-document.addEventListener('visibilitychange', () => { if (document.hidden) stoneAudio.suspend(); else stoneAudio.unlock(); });
+document.addEventListener('visibilitychange', () => { if (document.hidden) {heldPointer.hide();stoneAudio.suspend();} else stoneAudio.unlock(); });
 $('#sound-volume').addEventListener('input', event => { preferences.volume = Number(event.target.value) / 100; syncSettings(); persist(); });
 $('#sound-preview').addEventListener('click', async () => {
   stoneAudio.unlock(); await pause(30);

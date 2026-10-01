@@ -287,3 +287,6 @@ dialog::backdrop { background:#030b0bba; backdrop-filter:blur(10px); }
 
 .choice:has(input[value="oni"]) span { color:#e9badf; border-color:#b776a6; }
 .choice:has(input[value="oni"]:checked) span { background:#503147; border-color:#dda3ce; box-shadow:inset 0 0 0 1px #dda3ce40; }
+
+.held-stone { position:fixed; left:0; top:0; z-index:50; pointer-events:none; height:auto; margin:0; opacity:.96; will-change:transform; }
+.board.holding-stone,.board.holding-stone .cell { cursor:none; }

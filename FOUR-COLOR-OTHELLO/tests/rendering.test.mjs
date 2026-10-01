@@ -39,3 +39,29 @@ test('音のended通知が届かない環境でも音声ノードは16個以内�
  for(const fn of [...tasks.values()])fn();assert.equal(audio.status().active,0);assert.equal(tasks.size,0);assert.ok(disconnected>=900);
  audio.celebrate();assert.equal(audio.status().active,4);audio.stop();assert.equal(tasks.size,0);assert.equal(audio.status().active,0);
 });
+
+import { createHeldStonePointer } from '../src/rendering.js';
+test('持った石は大量のpointermoveでも１フレームだけ予約し、最後の座標と現在の色を描画する',()=>{
+ const handlers=new Map(),queue=new Map();let id=0;
+ const surface={classList:effectCell().classList,addEventListener:(type,handler)=>handlers.set(type,handler),removeEventListener:type=>handlers.delete(type)};
+ const element={hidden:true,style:{}};
+ const pointer=createHeldStonePointer(surface,element,{frame:fn=>{queue.set(++id,fn);return id;},cancelFrame:id=>queue.delete(id)});
+ pointer.sync('red',42);
+ for(let i=0;i<1000;i++)handlers.get('pointermove')({pointerType:'mouse',clientX:i,clientY:100});
+ assert.equal(queue.size,1);const fn=queue.values().next().value;queue.clear();fn();
+ assert.equal(element.style.transform,'translate3d(1011px,72px,0)');assert.equal(element.className,'held-stone disc red');assert.equal(element.hidden,false);
+ pointer.sync('white',35);assert.equal(queue.size,1);queue.values().next().value();queue.clear();assert.equal(element.className,'held-stone disc white');
+ pointer.sync(null,35);assert.equal(element.hidden,true);assert.equal(queue.size,0);assert.equal(surface.classList.values.size,0);
+ pointer.destroy();assert.equal(handlers.size,0);
+});
+test('盤面外・タッチ入力・手番終了ではポインター石と予約済み描画を解除する',()=>{
+ const handlers=new Map(),queue=new Map();let id=0;
+ const surface={classList:effectCell().classList,addEventListener:(type,handler)=>handlers.set(type,handler),removeEventListener:type=>handlers.delete(type)};
+ const element={hidden:true,style:{}};
+ const pointer=createHeldStonePointer(surface,element,{frame:fn=>{queue.set(++id,fn);return id;},cancelFrame:id=>queue.delete(id)});
+ pointer.sync('black',42);handlers.get('pointerenter')({pointerType:'mouse',clientX:50,clientY:60});assert.equal(queue.size,1);
+ handlers.get('pointerleave')();assert.equal(queue.size,0);assert.equal(element.hidden,true);
+ handlers.get('pointermove')({pointerType:'touch',clientX:50,clientY:60});assert.equal(queue.size,0);
+ handlers.get('pointermove')({pointerType:'pen',clientX:50,clientY:60});assert.equal(queue.size,1);
+ pointer.sync(null,42);assert.equal(queue.size,0);assert.equal(element.hidden,true);
+});

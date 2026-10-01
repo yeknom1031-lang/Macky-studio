@@ -298,6 +298,9 @@ dialog::backdrop { background:#030b0bba; backdrop-filter:blur(10px); }
 .choice:has(input[value="oni"]) span { color:#e9badf; border-color:#b776a6; }
 .choice:has(input[value="oni"]:checked) span { background:#503147; border-color:#dda3ce; box-shadow:inset 0 0 0 1px #dda3ce40; }
 
+.held-stone { position:fixed; left:0; top:0; z-index:50; pointer-events:none; height:auto; margin:0; opacity:.96; will-change:transform; }
+.board.holding-stone,.board.holding-stone .cell { cursor:none; }
+
 </style>
 
 </head>
@@ -1001,6 +1004,40 @@ function createCellEffects(schedule = setTimeout, unschedule = clearTimeout) {
   };
 }
 
+// One reused stone and at most one queued frame, never a continuous render loop.
+function createHeldStonePointer(surface, element, { frame = requestAnimationFrame, cancelFrame = cancelAnimationFrame } = {}) {
+  let color=null, inside=false, queued=null, x=0, y=0;
+  function hide() {
+    element.hidden=true;surface.classList.remove('holding-stone');
+    if(queued!==null){cancelFrame(queued);queued=null;}
+  }
+  function paint() {
+    queued=null;
+    if(!inside||!color){hide();return;}
+    element.style.transform=`translate3d(${x+12}px,${y-28}px,0)`;
+    element.hidden=false;surface.classList.add('holding-stone');
+  }
+  function move(event) {
+    if(event.pointerType==='touch'){inside=false;hide();return;}
+    inside=true;x=event.clientX;y=event.clientY;
+    if(color&&queued===null)queued=frame(paint);
+  }
+  function leave(){inside=false;hide();}
+  surface.addEventListener('pointerenter',move,{passive:true});
+  surface.addEventListener('pointermove',move,{passive:true});
+  surface.addEventListener('pointerleave',leave,{passive:true});
+  surface.addEventListener('pointercancel',leave,{passive:true});
+  return {
+    sync(nextColor,size) {
+      color=nextColor;
+      if(nextColor){element.className=`held-stone disc ${nextColor}`;element.style.width=`${Math.max(20,Math.min(80,size))}px`;}
+      if(!color)hide();else if(inside&&queued===null)queued=frame(paint);
+    },
+    hide:leave,
+    destroy(){leave();for(const [type,handler] of [['pointerenter',move],['pointermove',move],['pointerleave',leave],['pointercancel',leave]])surface.removeEventListener(type,handler);}
+  };
+}
+
 
 
 
@@ -1020,6 +1057,19 @@ let preferences = normalizePreferences(readSave(STORAGE.prefs));
 let profile = normalizeProfile(readSave(STORAGE.profile));
 let state = { board: initialBoard(), player: 0, phase: 'home', mode: 'solo', size: 8, human: 0, colors: playerColors('red').colors };
 const stoneAudio = createStoneAudio(() => preferences, () => new (window.AudioContext || window.webkitAudioContext)());
+const heldElement = document.createElement('i');
+heldElement.hidden=true;heldElement.setAttribute('aria-hidden','true');document.body.append(heldElement);
+const heldPointer = createHeldStonePointer(ui.board,heldElement);
+let heldSize=40;
+function syncHeldPointer() {
+  const humanTurn=state.phase==='playing'&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
+  heldPointer.sync(humanTurn?state.colors[state.player].id:null,heldSize);
+}
+function measureHeldStone() { heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
+if(window.ResizeObserver)new ResizeObserver(measureHeldStone).observe(ui.board);
+window.addEventListener('resize',measureHeldStone,{passive:true});
+window.addEventListener('scroll',()=>heldPointer.hide(),{passive:true});
+window.addEventListener('blur',()=>heldPointer.hide());
 const cellEffects = createCellEffects();
 const oniRunner = createOniRunner();
 let aiAnalysis = null;
@@ -1033,7 +1083,7 @@ const matchPlayers = () => PLAYERS.slice(0,state.colors.length);
 const winningPlayers = () => winners(state.board,state.colors.length);
 const active = run => run === epoch && !['home', 'ended'].includes(state.phase);
 function cancelRun() {
-  stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
+  heldPointer.hide(); stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
   ui.board.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel());
   cells.forEach(cell => cell.classList.remove('is-flipping'));
 }
@@ -1110,6 +1160,7 @@ function renderStatus() {
   updateInputState();
 }
 function updateInputState() {
+  syncHeldPointer();
   ui.game.dataset.phase = state.phase;
   ui.board.setAttribute('aria-busy', String(['intro', 'animating', 'thinking'].includes(state.phase)));
   const canPlay = state.phase === 'playing' && !isPaused();
@@ -1274,7 +1325,7 @@ function startGame(config = lastConfig) {
   state = { ...config, ...palette, id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`, board: initialBoard(config.size, config.playerCount ?? 4), player: 0, phase: 'playing', movedPlayers:Array(config.playerCount ?? 4).fill(false) };
   ui.home.hidden = true; ui.game.hidden = false; document.body.classList.add('playing');
   ui.game.dataset.playerCount = String(state.colors.length);
-  buildBoard(); cells.forEach((_, i) => updateCell(i));
+  buildBoard(); measureHeldStone(); cells.forEach((_, i) => updateCell(i));
   state.phase = 'intro'; renderStatus();
   $('#intro-title').textContent = state.mode === 'solo' ? `あなたは${nameOf(state.human)}` : '対局開始';
   $('#intro-detail').textContent = state.mode === 'solo' ? `${state.human + 1}番目の手番です` : state.colors.length === 2 ? '黒と白で、勝負。' : '４つの色で、勝負。';
@@ -1358,7 +1409,7 @@ document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('c
 for (const [id,key] of [['sound-setting','sound'],['music-setting','music'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; stoneAudio.unlock(); syncSettings(); persist(); updateInputState(); });
 document.addEventListener('pointerdown', () => stoneAudio.unlock(), { passive:true });
 document.addEventListener('keydown', () => stoneAudio.unlock());
-document.addEventListener('visibilitychange', () => { if (document.hidden) stoneAudio.suspend(); else stoneAudio.unlock(); });
+document.addEventListener('visibilitychange', () => { if (document.hidden) {heldPointer.hide();stoneAudio.suspend();} else stoneAudio.unlock(); });
 $('#sound-volume').addEventListener('input', event => { preferences.volume = Number(event.target.value) / 100; syncSettings(); persist(); });
 $('#sound-preview').addEventListener('click', async () => {
   stoneAudio.unlock(); await pause(30);

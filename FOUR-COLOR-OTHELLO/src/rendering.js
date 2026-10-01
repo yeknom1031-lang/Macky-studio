@@ -49,3 +49,37 @@ export function createCellEffects(schedule = setTimeout, unschedule = clearTimeo
     size() { return pending.size; }
   };
 }
+
+// One reused stone and at most one queued frame, never a continuous render loop.
+export function createHeldStonePointer(surface, element, { frame = requestAnimationFrame, cancelFrame = cancelAnimationFrame } = {}) {
+  let color=null, inside=false, queued=null, x=0, y=0;
+  function hide() {
+    element.hidden=true;surface.classList.remove('holding-stone');
+    if(queued!==null){cancelFrame(queued);queued=null;}
+  }
+  function paint() {
+    queued=null;
+    if(!inside||!color){hide();return;}
+    element.style.transform=`translate3d(${x+12}px,${y-28}px,0)`;
+    element.hidden=false;surface.classList.add('holding-stone');
+  }
+  function move(event) {
+    if(event.pointerType==='touch'){inside=false;hide();return;}
+    inside=true;x=event.clientX;y=event.clientY;
+    if(color&&queued===null)queued=frame(paint);
+  }
+  function leave(){inside=false;hide();}
+  surface.addEventListener('pointerenter',move,{passive:true});
+  surface.addEventListener('pointermove',move,{passive:true});
+  surface.addEventListener('pointerleave',leave,{passive:true});
+  surface.addEventListener('pointercancel',leave,{passive:true});
+  return {
+    sync(nextColor,size) {
+      color=nextColor;
+      if(nextColor){element.className=`held-stone disc ${nextColor}`;element.style.width=`${Math.max(20,Math.min(80,size))}px`;}
+      if(!color)hide();else if(inside&&queued===null)queued=frame(paint);
+    },
+    hide:leave,
+    destroy(){leave();for(const [type,handler] of [['pointerenter',move],['pointermove',move],['pointerleave',leave],['pointercancel',leave]])surface.removeEventListener(type,handler);}
+  };
+}
