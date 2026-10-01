@@ -1,8 +1,10 @@
 import { PLAYERS, boardSize, legalMoves, playMove, nextTurn, scores } from './engine.js';
+import { analyzeOniMove } from './oni.js';
 export const DIFFICULTIES = Object.freeze({
   easy: { label: 'やさしい', description: '気軽に練習。いろいろな手を打ちます。', depth: 0, width: 1, reward: 30 },
   normal: { label: 'ふつう', description: '角と次の一手を考える相手。', depth: 2, width: 4, reward: 50 },
   hard: { label: 'つよい', description: '3手先まで考える手ごわい相手。', depth: 3, width: 5, reward: 80 },
+  oni: { label: '鬼', description: '最強の挑戦。１手に最大５秒を使い、先を深く読みます。終盤は最後までの読み切りを狙います。', depth: 20, width: 8, reward: 160 },
 });
 function evaluate(board, terminal = false, playerCount = 4) {
   const size = boardSize(board), last = size - 1, counts = scores(board).slice(0,playerCount), empty = board.filter(v => v === null).length;
@@ -53,8 +55,9 @@ function search(board, previous, depth, width, playerCount) {
   }
   return best ?? evaluate(board,false,playerCount);
 }
-export function chooseAIMove(board, player, { difficulty = 'hard', depth, width, random = Math.random, allowedMoves, playerCount = 4 } = {}) {
+export function chooseAIMove(board, player, { difficulty = 'hard', depth, width, random = Math.random, allowedMoves, playerCount = 4, timeMs, maxNodes, movedPlayers } = {}) {
   if (![2,4].includes(playerCount) || !PLAYERS.slice(0,playerCount).some(p => p.id === player)) return null;
+  if(difficulty==='oni')return analyzeOniMove(board,player,{playerCount,allowedMoves,timeMs,maxNodes,movedPlayers}).index;
   const level = DIFFICULTIES[difficulty] ?? DIFFICULTIES.normal;
   if (difficulty === 'easy') {
     const moves = allowedMoves ? legalMoves(board,player).filter(index => allowedMoves.includes(index)) : legalMoves(board, player);

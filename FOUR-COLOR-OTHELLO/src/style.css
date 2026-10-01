@@ -284,3 +284,6 @@ dialog::backdrop { background:#030b0bba; backdrop-filter:blur(10px); }
 .black { --stone:#252a2b; --bright:#62686b; --dark:#060809; --rim:#181e20; }
 .white { --stone:#f3f1e8; --bright:#ffffff; --dark:#a3a8a4; --rim:#c6cac6; }
 .game[data-player-count="2"] .scores { grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+.choice:has(input[value="oni"]) span { color:#e9badf; border-color:#b776a6; }
+.choice:has(input[value="oni"]:checked) span { background:#503147; border-color:#dda3ce; box-shadow:inset 0 0 0 1px #dda3ce40; }

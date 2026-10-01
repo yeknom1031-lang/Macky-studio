@@ -1,4 +1,5 @@
 import { initialBoard, PLAYERS, BOARD_SIZES, legalMoves, firstRoundMoves, playMove, nextTurn, scores, winners } from './engine.js';
+import { createOniRunner } from './ai-runner.js';
 import { chooseAIMove, DIFFICULTIES } from './ai.js';
 import { canResign, endByResignation } from './match.js';
 import { CATALOG, normalizeProfile, ownsItem, purchaseItem, equipItem, matchReward, awardMatch, recordResignation, playerColors, randomSoloLineup } from './progression.js';
@@ -19,6 +20,8 @@ let profile = normalizeProfile(readSave(STORAGE.profile));
 let state = { board: initialBoard(), player: 0, phase: 'home', mode: 'solo', size: 8, human: 0, colors: playerColors('red').colors };
 const stoneAudio = createStoneAudio(() => preferences, () => new (window.AudioContext || window.webkitAudioContext)());
 const cellEffects = createCellEffects();
+const oniRunner = createOniRunner();
+let aiAnalysis = null;
 let storageWorking = true;
 let epoch = 0, cells = [], focusIndex = 0, noticeTimer, setupMode = 'solo', setupCount = 4, lastConfig, resumeWaiters = [];
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -29,7 +32,7 @@ const matchPlayers = () => PLAYERS.slice(0,state.colors.length);
 const winningPlayers = () => winners(state.board,state.colors.length);
 const active = run => run === epoch && !['home', 'ended'].includes(state.phase);
 function cancelRun() {
-  stoneAudio.stop(); cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
+  stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
   ui.board.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel());
   cells.forEach(cell => cell.classList.remove('is-flipping'));
 }
@@ -82,7 +85,7 @@ function updateCell(index) {
 let scoreKey = '', turnKey = '', scoreNodes = [];
 function renderStatus() {
   const counts = scores(state.board), p = state.player;
-  const who = state.mode === 'solo' ? (p === state.human ? 'あなた' : state.phase === 'thinking' ? 'AI・考え中' : 'AI') : '';
+  const who = state.mode === 'solo' ? (p === state.human ? 'あなた' : state.phase === 'thinking' ? state.difficulty === 'oni' ? '鬼・深く思考中' : 'AI・考え中' : 'AI') : '';
   const nextTurnKey = `${state.colors[p].id}:${who}`;
   if (turnKey !== nextTurnKey) {
     turnKey = nextTurnKey;
@@ -213,7 +216,15 @@ async function takeAITurn(run) {
   if (!await ready(run) || state.phase !== 'thinking') return;
   const allowedMoves=turnMoves(state.board,state.player);
   const width=state.size>=10 && state.difficulty==='hard' ? 2 : 3;
-  const index = chooseAIMove(state.board, state.player, { difficulty: state.difficulty, width, allowedMoves, playerCount:state.colors.length });
+  let index;
+  if(state.difficulty === 'oni') {
+    aiAnalysis = { depth:0,nodes:0,backend:'worker' };
+    const result = await oniRunner.think(state.board,state.player,{playerCount:state.colors.length,allowedMoves,movedPlayers:state.movedPlayers.slice(),timeMs:state.colors.length===2?5000:4000,onProgress:progress=>{if(active(run))aiAnalysis={...progress,backend:'worker'};}});
+    if(!active(run))return;
+    if(!await ready(run) || state.phase!=='thinking')return;
+    if(result){aiAnalysis=result;index=result.index;}
+    else {aiAnalysis={backend:'fallback',depth:3};index=chooseAIMove(state.board,state.player,{difficulty:'hard',width,allowedMoves,playerCount:state.colors.length});}
+  } else index = chooseAIMove(state.board, state.player, { difficulty: state.difficulty, width, allowedMoves, playerCount:state.colors.length });
   if (!active(run)) return;
   if (index === null) { await advanceTurn(state.player, run); return; } await moveAt(index, 'ai');
 }
@@ -371,7 +382,7 @@ $('#save-file').addEventListener('change', async event => {
   } catch (error) { $('#save-message').textContent = `読み込めませんでした。${error instanceof SyntaxError ? 'JSON形式のセーブデータを選んでください。' : error.message}`; }
   event.target.value = '';
 });
-function snapshot() { return { rendering:{ stones:ui.board.querySelectorAll('.disc').length, animations:ui.board.getAnimations?.({subtree:true}).length ?? 0, effects:cellEffects.size(), flipping:ui.board.querySelectorAll('.is-flipping').length }, sound: { enabled:preferences.sound, volume:preferences.volume, ...stoneAudio.status() }, firstMoves:state.movedPlayers?.slice() ?? [false,false,false,false], phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, playerCount:state.colors.length, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board).slice(0,state.colors.length), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
+function snapshot() { return { ai:aiAnalysis ? {...aiAnalysis,active:oniRunner.active()} : null, rendering:{ stones:ui.board.querySelectorAll('.disc').length, animations:ui.board.getAnimations?.({subtree:true}).length ?? 0, effects:cellEffects.size(), flipping:ui.board.querySelectorAll('.is-flipping').length }, sound: { enabled:preferences.sound, volume:preferences.volume, ...stoneAudio.status() }, firstMoves:state.movedPlayers?.slice() ?? [false,false,false,false], phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, playerCount:state.colors.length, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board).slice(0,state.colors.length), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
 function registerTools() {
   const context = document.modelContext; if (!context?.registerTool) return;
   const lifecycle = new AbortController(); window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });

@@ -20,7 +20,7 @@ test('購入済み・不足・未知の商品を二重課金しない', () => {
 test('所有アイテムの着せ替えは無料、未購入品は拒否', () => {
  const p=normalizeProfile({coins:50,ownedColors:['violet']});assert.equal(equipItem(p,'violet').profile.equippedColor,'violet');assert.equal(equipItem(p,'violet').profile.coins,50);assert.equal(equipItem(p,'ocean').ok,false);
 });
-test('勝利報酬は難易度と盤サイズを反映し、最大120', () => {
+test('勝利報酬は難易度と盤サイズを反映する', () => {
  assert.equal(matchReward('easy',6),30);assert.equal(matchReward('normal',8),60);assert.equal(matchReward('hard',12),120);
  const p=awardMatch(null,won());assert.equal(p.earned,60);assert.equal(p.profile.stats.wins,1);assert.equal(p.profile.stats.played,1);
 });
