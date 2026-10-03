@@ -27,7 +27,7 @@
     <div class="home-scene" aria-hidden="true"><div class="scene-orbit"></div><div id="home-board" class="board-shell home-board"></div><div class="scene-caption"><span id="home-theme-name">CLASSIC</span><span>FOUR COLOR COLLECTION</span></div></div>
   </main>
   <main id="game" class="game" hidden>
-    <header class="scorebar"><span class="brand-art game-logo" role="img" aria-label="Irodory"></span><button id="turn" class="turn" title="対局メニューを開く" aria-haspopup="dialog"></button><div id="scores" class="scores"></div></header>
+    <header class="scorebar"><span class="brand-art game-logo" role="img" aria-label="Irodory"></span><button id="turn" class="turn" title="ポーズ（Esc）" aria-haspopup="dialog"></button><div id="scores" class="scores"></div></header>
     <div id="board-shell" class="board-shell">
       <div class="rack rack-top red" aria-hidden="true"></div><div class="rack rack-right blue" aria-hidden="true"></div>
       <div class="rack rack-bottom yellow" aria-hidden="true"></div><div class="rack rack-left green" aria-hidden="true"></div>
@@ -55,7 +55,7 @@
     <h3>勝利とコイン</h3><p>ひとりモードで勝つとコインがもらえます。強さ・広さによって30〜200コイン。最多で引き分けた場合は半分です。４人モードや途中で終了した対局は対象外。ボードは購入後に選んで着せ替えできます。購入した駒の色は次の対局から抽選候補に加わります。見た目は強さに影響しません。</p>
     <h3>途中で降参する</h3><p>対局メニューの「降参する」から確認すると、その対局を終了します。ひとりモードでは負けとして１対局を記録し、コインは増えません。４人モードでは現在の手番の色が降参し、卓全体の対局を終了します。途中の枚数で勝者は決めません。</p>
     <h3>鬼レベル</h3><p>ひとり対戦で「鬼」を選ぶと、１手に最大５秒を使って深く考えます。２色は相手の最善手を見込み、４色はそれぞれの色の利益を見込んで読みます。終盤では最後まで読むことを狙います。思考中もメニューを開いて降参・終了できます。鬼に勝つと160〜200コイン。</p>
-    <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。対局中は上の「○の番」を押すとメニューが開き、次の手まで一時停止します。</p>
+    <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
     <p class="small-note">４辺のストックは本物の予備の石をイメージした飾りです。使用枚数の制限はありません。<br>キーボード：矢印でマスを移動、Enter / Space で置く。<br>設定・コイン・購入品はこのブラウザに保存。別の端末やローカルHTMLとは自動同期されません。設定からデータを持ち運べます。</p><button class="primary" data-close>わかった</button>
   </div></dialog>
   <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content">
@@ -73,7 +73,7 @@
     <h3>ボードの見た目</h3><div id="board-products" class="products"></div><h3>あなたの駒の色 <small>ひとりモード専用</small></h3><div id="color-products" class="products colors"></div><button class="primary" data-close>ホームに戻る</button>
   </div></dialog>
   <dialog id="menu-dialog" aria-labelledby="menu-title"><div class="dialog-content game-menu">
-    <h2 id="menu-title">対局メニュー</h2><p id="match-info" class="field-note"></p><button class="primary" data-close>対局に戻る</button><button id="game-rules" class="secondary">ルールブック</button><button id="game-settings" class="secondary">設定</button><button id="resign-open" class="danger">降参する</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
+    <span class="pause-emblem" aria-hidden="true">Ⅱ</span><p class="eyebrow">PAUSED</p><h2 id="menu-title">ポーズ</h2><p class="pause-note">ゲームの時間が止まっています</p><p id="match-info" class="field-note"></p><button class="primary" data-close>ゲームを続ける <kbd>Esc</kbd></button><button id="game-rules" class="secondary">ルールブック</button><button id="game-settings" class="secondary">設定</button><button id="resign-open" class="danger">降参する</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
   </div></dialog>
   <dialog id="resign-dialog" aria-labelledby="resign-title" aria-describedby="resign-description"><div class="dialog-content resign-confirm"><p class="eyebrow">RESIGN MATCH</p><h2 id="resign-title">降参しますか？</h2><p id="resign-description"></p><button class="primary" data-close autofocus>対局を続ける</button><button id="resign-confirm" class="danger">降参して対局を終了する</button></div></dialog>
   <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><div id="result-sparks" aria-hidden="true"></div><div id="result-symbol" class="result-symbol" aria-hidden="true"></div><p id="result-eyebrow" class="eyebrow">ゲーム終了</p><h2 id="result-title" tabindex="-1" autofocus></h2><p id="result-context" class="field-note"></p><div id="result-scores"></div><p id="result-reward" class="reward-note"></p><button id="again" class="primary">同じ設定でもう一局</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>

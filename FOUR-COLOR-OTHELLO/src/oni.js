@@ -136,7 +136,7 @@ export function analyzeOniMove(input, player, options = {}) {
         if(result>value){value=result;candidate=move.index;}alpha=Math.max(alpha,result);
       }
       best=candidate;completed=depth;score=value;solved=exact&&depth>=empty;
-      options.onProgress?.({depth,nodes,solved});
+      options.onProgress?.({index:best,depth,nodes,solved,score:value,elapsedMs:now()-start});
       if(solved)break;
     } catch(error){if(error!==timeout)throw error;break;}
   }

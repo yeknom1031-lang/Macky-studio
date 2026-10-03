@@ -49,8 +49,9 @@ test('持った石は大量のpointermoveでも１フレームだけ予約し、
  pointer.sync('red',42);
  for(let i=0;i<1000;i++)handlers.get('pointermove')({pointerType:'mouse',clientX:i,clientY:100});
  assert.equal(queue.size,1);const fn=queue.values().next().value;queue.clear();fn();
- assert.equal(element.style.transform,'translate3d(1011px,72px,0)');assert.equal(element.className,'held-stone disc red');assert.equal(element.hidden,false);
+ assert.equal(element.style.transform,'translate3d(999px,100px,0) translate(-50%,-50%)');assert.equal(element.className,'held-stone disc red');assert.equal(element.hidden,false);
  pointer.sync('white',35);assert.equal(queue.size,1);queue.values().next().value();queue.clear();assert.equal(element.className,'held-stone disc white');
+ assert.equal(element.style.transform,'translate3d(999px,100px,0) translate(-50%,-50%)');assert.equal(element.style.width,'35px');
  pointer.sync(null,35);assert.equal(element.hidden,true);assert.equal(queue.size,0);assert.equal(surface.classList.values.size,0);
  pointer.destroy();assert.equal(handlers.size,0);
 });

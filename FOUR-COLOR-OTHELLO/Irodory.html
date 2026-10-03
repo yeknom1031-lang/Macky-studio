@@ -301,6 +301,11 @@ dialog::backdrop { background:#030b0bba; backdrop-filter:blur(10px); }
 .held-stone { position:fixed; left:0; top:0; z-index:50; pointer-events:none; height:auto; margin:0; opacity:.96; will-change:transform; }
 .board.holding-stone,.board.holding-stone .cell { cursor:none; }
 
+.game.is-paused,.game.is-paused *,.game.is-paused *::before,.game.is-paused *::after { animation-play-state:paused!important; }
+.pause-emblem { display:grid; place-items:center; width:58px; height:58px; margin:0 auto 16px; border:1px solid #d6bd8050; border-radius:50%; color:var(--gold); font-size:28px; font-weight:300; }
+.game-menu .eyebrow { margin:0 0 9px; }.game-menu h2 { margin-bottom:8px; }.pause-note { margin:0 0 12px; color:#b8c8bc; font-size:.875rem; }
+.game-menu kbd { margin-left:12px; padding:3px 7px; border:1px solid #51462c50; border-radius:4px; font-family:inherit; font-size:11px; opacity:.65; }
+
 </style>
 
 </head>
@@ -321,7 +326,7 @@ dialog::backdrop { background:#030b0bba; backdrop-filter:blur(10px); }
     <div class="home-scene" aria-hidden="true"><div class="scene-orbit"></div><div id="home-board" class="board-shell home-board"></div><div class="scene-caption"><span id="home-theme-name">CLASSIC</span><span>FOUR COLOR COLLECTION</span></div></div>
   </main>
   <main id="game" class="game" hidden>
-    <header class="scorebar"><span class="brand-art game-logo" role="img" aria-label="Irodory"></span><button id="turn" class="turn" title="対局メニューを開く" aria-haspopup="dialog"></button><div id="scores" class="scores"></div></header>
+    <header class="scorebar"><span class="brand-art game-logo" role="img" aria-label="Irodory"></span><button id="turn" class="turn" title="ポーズ（Esc）" aria-haspopup="dialog"></button><div id="scores" class="scores"></div></header>
     <div id="board-shell" class="board-shell">
       <div class="rack rack-top red" aria-hidden="true"></div><div class="rack rack-right blue" aria-hidden="true"></div>
       <div class="rack rack-bottom yellow" aria-hidden="true"></div><div class="rack rack-left green" aria-hidden="true"></div>
@@ -349,7 +354,7 @@ dialog::backdrop { background:#030b0bba; backdrop-filter:blur(10px); }
     <h3>勝利とコイン</h3><p>ひとりモードで勝つとコインがもらえます。強さ・広さによって30〜200コイン。最多で引き分けた場合は半分です。４人モードや途中で終了した対局は対象外。ボードは購入後に選んで着せ替えできます。購入した駒の色は次の対局から抽選候補に加わります。見た目は強さに影響しません。</p>
     <h3>途中で降参する</h3><p>対局メニューの「降参する」から確認すると、その対局を終了します。ひとりモードでは負けとして１対局を記録し、コインは増えません。４人モードでは現在の手番の色が降参し、卓全体の対局を終了します。途中の枚数で勝者は決めません。</p>
     <h3>鬼レベル</h3><p>ひとり対戦で「鬼」を選ぶと、１手に最大５秒を使って深く考えます。２色は相手の最善手を見込み、４色はそれぞれの色の利益を見込んで読みます。終盤では最後まで読むことを狙います。思考中もメニューを開いて降参・終了できます。鬼に勝つと160〜200コイン。</p>
-    <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。対局中は上の「○の番」を押すとメニューが開き、次の手まで一時停止します。</p>
+    <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
     <p class="small-note">４辺のストックは本物の予備の石をイメージした飾りです。使用枚数の制限はありません。<br>キーボード：矢印でマスを移動、Enter / Space で置く。<br>設定・コイン・購入品はこのブラウザに保存。別の端末やローカルHTMLとは自動同期されません。設定からデータを持ち運べます。</p><button class="primary" data-close>わかった</button>
   </div></dialog>
   <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content">
@@ -367,7 +372,7 @@ dialog::backdrop { background:#030b0bba; backdrop-filter:blur(10px); }
     <h3>ボードの見た目</h3><div id="board-products" class="products"></div><h3>あなたの駒の色 <small>ひとりモード専用</small></h3><div id="color-products" class="products colors"></div><button class="primary" data-close>ホームに戻る</button>
   </div></dialog>
   <dialog id="menu-dialog" aria-labelledby="menu-title"><div class="dialog-content game-menu">
-    <h2 id="menu-title">対局メニュー</h2><p id="match-info" class="field-note"></p><button class="primary" data-close>対局に戻る</button><button id="game-rules" class="secondary">ルールブック</button><button id="game-settings" class="secondary">設定</button><button id="resign-open" class="danger">降参する</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
+    <span class="pause-emblem" aria-hidden="true">Ⅱ</span><p class="eyebrow">PAUSED</p><h2 id="menu-title">ポーズ</h2><p class="pause-note">ゲームの時間が止まっています</p><p id="match-info" class="field-note"></p><button class="primary" data-close>ゲームを続ける <kbd>Esc</kbd></button><button id="game-rules" class="secondary">ルールブック</button><button id="game-settings" class="secondary">設定</button><button id="resign-open" class="danger">降参する</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
   </div></dialog>
   <dialog id="resign-dialog" aria-labelledby="resign-title" aria-describedby="resign-description"><div class="dialog-content resign-confirm"><p class="eyebrow">RESIGN MATCH</p><h2 id="resign-title">降参しますか？</h2><p id="resign-description"></p><button class="primary" data-close autofocus>対局を続ける</button><button id="resign-confirm" class="danger">降参して対局を終了する</button></div></dialog>
   <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><div id="result-sparks" aria-hidden="true"></div><div id="result-symbol" class="result-symbol" aria-hidden="true"></div><p id="result-eyebrow" class="eyebrow">ゲーム終了</p><h2 id="result-title" tabindex="-1" autofocus></h2><p id="result-context" class="field-note"></p><div id="result-scores"></div><p id="result-reward" class="reward-note"></p><button id="again" class="primary">同じ設定でもう一局</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
@@ -657,7 +662,7 @@ function analyzeOniMove(input, player, options = {}) {
         if(result>value){value=result;candidate=move.index;}alpha=Math.max(alpha,result);
       }
       best=candidate;completed=depth;score=value;solved=exact&&depth>=empty;
-      options.onProgress?.({depth,nodes,solved});
+      options.onProgress?.({index:best,depth,nodes,solved,score:value,elapsedMs:now()-start});
       if(solved)break;
     } catch(error){if(error!==timeout)throw error;break;}
   }
@@ -665,7 +670,7 @@ function analyzeOniMove(input, player, options = {}) {
 }
 
 
-const oniWorkerSource = "const SIZE = 8;\nconst BOARD_SIZES = Object.freeze([6, 8, 10, 12]);\nconst PLAYERS = Object.freeze([\n  { id: 0, name: '赤', color: 'red' }, { id: 1, name: '青', color: 'blue' },\n  { id: 2, name: '黄', color: 'yellow' }, { id: 3, name: '緑', color: 'green' },\n]);\nconst DIRECTIONS = [-1, 0, 1].flatMap(r => [-1, 0, 1].filter(c => r || c).map(c => [r, c]));\nfunction boardSize(board) { const n = Math.sqrt(board.length); return BOARD_SIZES.includes(n) ? n : 0; }\nfunction initialBoard(size = SIZE, playerCount = 4) {\n  if (!BOARD_SIZES.includes(size)) throw new RangeError('盤は6・8・10・12のいずれかです');\n  if (![2,4].includes(playerCount)) throw new RangeError('色数は2または4です');\n  const board = Array(size * size).fill(null), start = size / 2 - 2;\n  if (playerCount === 2) {\n    const c = size / 2 - 1;\n    board[c * size + c] = board[(c + 1) * size + c + 1] = 1;\n    board[c * size + c + 1] = board[(c + 1) * size + c] = 0;\n    return board;\n  }\n  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) board[(start + r) * size + start + c] = r < 2 ? (c < 2 ? 0 : 1) : (c < 2 ? 3 : 2);\n  return board;\n}\nfunction captures(board, player, index) {\n  const size = boardSize(board);\n  if (!size || !Number.isInteger(index) || index < 0 || index >= board.length || board[index] !== null || !Number.isInteger(player) || player < 0 || player > 3) return [];\n  const flips = [];\n  for (const [dr, dc] of DIRECTIONS) {\n    let r = Math.floor(index / size) + dr, c = index % size + dc;\n    const line = [];\n    while (r >= 0 && r < size && c >= 0 && c < size) {\n      const i = r * size + c;\n      if (board[i] === null) break;\n      if (board[i] === player) { if (line.length) flips.push(...line); break; }\n      line.push(i); r += dr; c += dc;\n    }\n  }\n  return flips;\n}\nfunction legalMoves(board, player) { return board.flatMap((_, index) => captures(board, player, index).length ? [index] : []); }\nfunction firstRoundMoves(board, player, movedPlayers) {\n  const legal = legalMoves(board, player);\n  if (!Array.isArray(movedPlayers) || movedPlayers.length !== 4 || movedPlayers.every(Boolean)) return legal;\n  return legal.filter(index => {\n    const result = playMove(board, player, index);\n    const remaining = scores(result.board);\n    return movedPlayers.every((hasMoved, color) => hasMoved || remaining[color] > 0);\n  });\n}\nfunction playMove(board, player, index) {\n  const flips = captures(board, player, index); if (!flips.length) return null;\n  const next = board.slice(); next[index] = player;\n  for (const i of flips) next[i] = player;\n  return { board: next, flips };\n}\nfunction scores(board) { const result = [0, 0, 0, 0]; for (const v of board) if (v !== null) result[v]++; return result; }\nfunction nextTurn(board, current, playerCount = 4) {\n  const skipped = [];\n  for (let step = 1; step <= playerCount; step++) {\n    const player = (current + step) % playerCount;\n    if (legalMoves(board, player).length) return { player, skipped, ended: false };\n    skipped.push(player);\n  }\n  return { player: null, skipped, ended: true };\n}\nfunction winners(board, playerCount = 4) { const counts = scores(board).slice(0, playerCount), max = Math.max(...counts); return PLAYERS.slice(0, playerCount).filter(p => counts[p.id] === max).map(p => p.id); }\n\n\nconst oniGeometry = new Map();\nfunction oniRays(size) {\n  if (!oniGeometry.has(size)) {\n    oniGeometry.set(size, Array.from({length:size*size}, (_,i) => {\n      const rays=[];\n      for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++)if(dr||dc){\n        const ray=[];\n        for(let r=Math.floor(i/size)+dr,c=i%size+dc;r>=0&&c>=0&&r<size&&c<size;r+=dr,c+=dc)ray.push(r*size+c);\n        if(ray.length>1)rays.push(ray);\n      }\n      return rays;\n    }));\n  }\n  return oniGeometry.get(size);\n}\n\n// Iterative deepening always returns the last fully completed iteration.\n// Two players: full-width negamax / alpha-beta, bounded transposition table.\n// Four players: Max-N (each opponent maximizes its own score), a wider beam,\n// and exhaustive endgame search. Opening protection is part of the search.\nfunction analyzeOniMove(input, player, options = {}) {\n  const size=boardSize(input), count=options.playerCount ?? 4;\n  if(!size || ![2,4].includes(count) || !Number.isInteger(player) || player<0 || player>=count || !input.every(p=>p===null||Number.isInteger(p)&&p>=0&&p<count))return {index:null,depth:0,nodes:0,solved:false};\n  const now=options.now ?? (()=>performance.now()), start=now();\n  const budget=Math.max(1,Math.min(10000,Number(options.timeMs) || (count===2?5000:4000)));\n  const deadline=start+budget, maxNodes=Math.max(1,Math.min(2000000,options.maxNodes ?? 1000000));\n  const maxDepth=Math.max(1,Math.min(input.length,options.maxDepth ?? (count===2?20:10)));\n  const rays=oniRays(size), last=size-1, corners=[0,last,last*size,input.length-1];\n  const fullMask=(1<<count)-1;\n  const initialMask=count===2?fullMask:(options.movedPlayers ?? Array(4).fill(true)).reduce((mask,done,p)=>mask|(done?1<<p:0),0);\n  const table=new Map(), timeout={};\n  let nodes=0, cutoffs=0, hits=0;\n  function check() { nodes++; if(nodes>maxNodes || now()>=deadline)throw timeout; }\n  function counts(board) { const totals=Array(count).fill(0);for(const p of board)if(p!==null)totals[p]++;return totals; }\n  function moves(board,p,mask) {\n    const result=[], totals=mask===fullMask?null:counts(board);\n    for(let i=0;i<board.length;i++)if(board[i]===null){\n      const flips=[];\n      for(const ray of rays[i]){\n        let length=0;\n        for(const j of ray){if(board[j]===null)break;if(board[j]===p){if(length)flips.push(...ray.slice(0,length));break;}length++;}\n      }\n      if(!flips.length)continue;\n      if(totals){const lost=Array(count).fill(0);for(const j of flips)lost[board[j]]++;\n        if(totals.some((total,id)=>id!==p && !(mask&(1<<id)) && total-lost[id]===0))continue;\n      }\n      result.push({index:i,flips});\n    }\n    return result;\n  }\n  function apply(board,move,p) {const next=board.slice();next[move.index]=p;for(const j of move.flips)next[j]=p;return next;}\n  function terminal(board) {\n    const total=counts(board), top=Math.max(...total), tied=total.filter(n=>n===top).length;\n    if(count===2)return [total[0]-total[1],total[1]-total[0]].map(diff=>diff*100+(diff>0?100000:diff<0?-100000:0));\n    return total.map(n=>(n===top?(tied===1?100000:50000):-100000)+(n-Math.max(...total))*100+n);\n  }\n  function evaluate(board) {\n    const total=counts(board), empty=board.filter(p=>p===null).length, ratio=empty/board.length;\n    const value=total.map(n=>n*(ratio<.18?12:ratio<.4?2:.15));\n    for(let p=0;p<count;p++) {\n      if(!total[p]){value[p]=-30000;continue;}\n      value[p]+=moves(board,p,fullMask).length*(ratio<.15?3:10);\n    }\n    const frontier=Array(count).fill(0), potential=Array.from({length:count},()=>new Set());\n    for(let i=0;i<board.length;i++)if(board[i]!==null){\n      const p=board[i],r=Math.floor(i/size),c=i%size;let exposed=false;\n      for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++)if(dr||dc){\n        const nr=r+dr,nc=c+dc;\n        if(nr>=0&&nc>=0&&nr<size&&nc<size&&board[nr*size+nc]===null){exposed=true;for(let other=0;other<count;other++)if(other!==p)potential[other].add(nr*size+nc);}\n      }\n      if(exposed)frontier[p]++;\n    }\n    for(let p=0;p<count;p++)value[p]+=(potential[p].size*1.5-frontier[p]*5)*(ratio<.15?.2:1);\n    for(const corner of corners){\n      const p=board[corner],r=Math.floor(corner/size),c=corner%size;\n      const dr=r===0?1:-1,dc=c===0?1:-1;\n      if(p===null){for(const [offset,penalty] of [[dr*size,45],[dc,45],[dr*size+dc,110]])if(board[corner+offset]!==null)value[board[corner+offset]]-=penalty;}\n      else {value[p]+=260;for(const step of [dr*size,dc])for(let k=1;k<size&&board[corner+k*step]===p;k++)value[p]+=28;}\n    }\n    if(count===2){const diff=value[0]-value[1];return [diff,-diff];}\n    return value.map((v,p)=>v-Math.max(...value.filter((_,id)=>id!==p))*.8);\n  }\n  function order(list,board,p,preferred) {\n    const endgame=board.filter(v=>v===null).length<12;\n    return list.map(move=>{\n      const i=move.index,r=Math.floor(i/size),c=i%size;\n      let priority=i===preferred?100000:0;\n      if(corners.includes(i))priority+=10000;\n      for(const corner of corners)if(board[corner]===null){const cr=Math.floor(corner/size),cc=corner%size;if(Math.abs(r-cr)<=1&&Math.abs(c-cc)<=1)priority-=r!==cr&&c!==cc?700:300;}\n      if(r===0||c===0||r===last||c===last)priority+=35;\n      priority+=move.flips.length*(endgame?3:-1);\n      return {...move,priority};\n    }).sort((a,b)=>b.priority-a.priority||a.index-b.index);\n  }\n  function key(board,p,mask,passes=0){return `${p}:${mask}:${passes}:${board.map(v=>v===null?'.':v).join('')}`;}\n  function put(k,value){if(table.size>=60000)table.clear();table.set(k,value);}\n  function negamax(board,p,depth,alpha,beta,passes) {\n    check();const k=key(board,p,fullMask,passes),entry=table.get(k), originalAlpha=alpha,originalBeta=beta;\n    if(entry?.depth>=depth){hits++;if(entry.flag==='exact')return entry.value;if(entry.flag==='lower')alpha=Math.max(alpha,entry.value);else beta=Math.min(beta,entry.value);if(alpha>=beta)return entry.value;}\n    const list=moves(board,p,fullMask);\n    if(!list.length)return passes?terminal(board)[p]:-negamax(board,1-p,depth,-beta,-alpha,1);\n    if(!depth)return evaluate(board)[p];\n    let best=-Infinity,bestMove=null;\n    for(const move of order(list,board,p,entry?.move)){\n      const value=-negamax(apply(board,move,p),1-p,depth-1,-beta,-alpha,0);\n      if(value>best){best=value;bestMove=move.index;}alpha=Math.max(alpha,best);\n      if(alpha>=beta){cutoffs++;break;}\n    }\n    put(k,{depth,value:best,move:bestMove,flag:best<=originalAlpha?'upper':best>=originalBeta?'lower':'exact'});return best;\n  }\n  function maxn(board,p,mask,depth,passes,exact) {\n    check();const k=key(board,p,mask,passes)+`:${exact}`,entry=table.get(k);\n    if(entry?.depth===depth){hits++;return entry.value;}\n    let list=moves(board,p,mask);\n    if(!list.length)return passes===count-1?terminal(board):maxn(board,(p+1)%count,mask,depth,passes+1,exact);\n    if(!depth)return evaluate(board);\n    list=order(list,board,p,entry?.move);\n    if(!exact)list=list.slice(0,8);\n    let best=null,bestMove=null;\n    for(const move of list){const value=maxn(apply(board,move,p),(p+1)%count,mask|(1<<p),depth-1,0,exact);if(!best||value[p]>best[p]){best=value;bestMove=move.index;}}\n    put(k,{depth,value:best,move:bestMove});return best;\n  }\n  let legal=moves(input,player,initialMask);\n  if(options.allowedMoves)legal=legal.filter(move=>options.allowedMoves.includes(move.index));\n  if(!legal.length)return {index:null,depth:0,nodes,solved:true,elapsedMs:now()-start};\n  let best=order(legal,input,player)[0].index,completed=0,solved=false,score=null;\n  const empty=input.filter(v=>v===null).length,exact=count===2||empty<=8;\n  for(let depth=1;depth<=Math.min(maxDepth,empty);depth++){\n    let candidate=best,value=-Infinity,alpha=-Infinity;\n    try {\n      for(const move of order(legal,input,player,best)){\n        check();const board=apply(input,move,player);\n        const result=count===2?-negamax(board,1-player,depth-1,-Infinity,-alpha,0):maxn(board,(player+1)%count,initialMask|(1<<player),depth-1,0,exact)[player];\n        if(result>value){value=result;candidate=move.index;}alpha=Math.max(alpha,result);\n      }\n      best=candidate;completed=depth;score=value;solved=exact&&depth>=empty;\n      options.onProgress?.({depth,nodes,solved});\n      if(solved)break;\n    } catch(error){if(error!==timeout)throw error;break;}\n  }\n  return {index:best,depth:completed,nodes,cutoffs,hits,solved,score,elapsedMs:now()-start};\n}\n\nonmessage = ({data}) => { try { const result=analyzeOniMove(data.board,data.player,{...data.options,onProgress:result=>postMessage({type:'progress',result})}); postMessage({type:'result',result}); } catch { postMessage({type:'error'}); } };";
+const oniWorkerSource = "const SIZE = 8;\nconst BOARD_SIZES = Object.freeze([6, 8, 10, 12]);\nconst PLAYERS = Object.freeze([\n  { id: 0, name: '赤', color: 'red' }, { id: 1, name: '青', color: 'blue' },\n  { id: 2, name: '黄', color: 'yellow' }, { id: 3, name: '緑', color: 'green' },\n]);\nconst DIRECTIONS = [-1, 0, 1].flatMap(r => [-1, 0, 1].filter(c => r || c).map(c => [r, c]));\nfunction boardSize(board) { const n = Math.sqrt(board.length); return BOARD_SIZES.includes(n) ? n : 0; }\nfunction initialBoard(size = SIZE, playerCount = 4) {\n  if (!BOARD_SIZES.includes(size)) throw new RangeError('盤は6・8・10・12のいずれかです');\n  if (![2,4].includes(playerCount)) throw new RangeError('色数は2または4です');\n  const board = Array(size * size).fill(null), start = size / 2 - 2;\n  if (playerCount === 2) {\n    const c = size / 2 - 1;\n    board[c * size + c] = board[(c + 1) * size + c + 1] = 1;\n    board[c * size + c + 1] = board[(c + 1) * size + c] = 0;\n    return board;\n  }\n  for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) board[(start + r) * size + start + c] = r < 2 ? (c < 2 ? 0 : 1) : (c < 2 ? 3 : 2);\n  return board;\n}\nfunction captures(board, player, index) {\n  const size = boardSize(board);\n  if (!size || !Number.isInteger(index) || index < 0 || index >= board.length || board[index] !== null || !Number.isInteger(player) || player < 0 || player > 3) return [];\n  const flips = [];\n  for (const [dr, dc] of DIRECTIONS) {\n    let r = Math.floor(index / size) + dr, c = index % size + dc;\n    const line = [];\n    while (r >= 0 && r < size && c >= 0 && c < size) {\n      const i = r * size + c;\n      if (board[i] === null) break;\n      if (board[i] === player) { if (line.length) flips.push(...line); break; }\n      line.push(i); r += dr; c += dc;\n    }\n  }\n  return flips;\n}\nfunction legalMoves(board, player) { return board.flatMap((_, index) => captures(board, player, index).length ? [index] : []); }\nfunction firstRoundMoves(board, player, movedPlayers) {\n  const legal = legalMoves(board, player);\n  if (!Array.isArray(movedPlayers) || movedPlayers.length !== 4 || movedPlayers.every(Boolean)) return legal;\n  return legal.filter(index => {\n    const result = playMove(board, player, index);\n    const remaining = scores(result.board);\n    return movedPlayers.every((hasMoved, color) => hasMoved || remaining[color] > 0);\n  });\n}\nfunction playMove(board, player, index) {\n  const flips = captures(board, player, index); if (!flips.length) return null;\n  const next = board.slice(); next[index] = player;\n  for (const i of flips) next[i] = player;\n  return { board: next, flips };\n}\nfunction scores(board) { const result = [0, 0, 0, 0]; for (const v of board) if (v !== null) result[v]++; return result; }\nfunction nextTurn(board, current, playerCount = 4) {\n  const skipped = [];\n  for (let step = 1; step <= playerCount; step++) {\n    const player = (current + step) % playerCount;\n    if (legalMoves(board, player).length) return { player, skipped, ended: false };\n    skipped.push(player);\n  }\n  return { player: null, skipped, ended: true };\n}\nfunction winners(board, playerCount = 4) { const counts = scores(board).slice(0, playerCount), max = Math.max(...counts); return PLAYERS.slice(0, playerCount).filter(p => counts[p.id] === max).map(p => p.id); }\n\n\nconst oniGeometry = new Map();\nfunction oniRays(size) {\n  if (!oniGeometry.has(size)) {\n    oniGeometry.set(size, Array.from({length:size*size}, (_,i) => {\n      const rays=[];\n      for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++)if(dr||dc){\n        const ray=[];\n        for(let r=Math.floor(i/size)+dr,c=i%size+dc;r>=0&&c>=0&&r<size&&c<size;r+=dr,c+=dc)ray.push(r*size+c);\n        if(ray.length>1)rays.push(ray);\n      }\n      return rays;\n    }));\n  }\n  return oniGeometry.get(size);\n}\n\n// Iterative deepening always returns the last fully completed iteration.\n// Two players: full-width negamax / alpha-beta, bounded transposition table.\n// Four players: Max-N (each opponent maximizes its own score), a wider beam,\n// and exhaustive endgame search. Opening protection is part of the search.\nfunction analyzeOniMove(input, player, options = {}) {\n  const size=boardSize(input), count=options.playerCount ?? 4;\n  if(!size || ![2,4].includes(count) || !Number.isInteger(player) || player<0 || player>=count || !input.every(p=>p===null||Number.isInteger(p)&&p>=0&&p<count))return {index:null,depth:0,nodes:0,solved:false};\n  const now=options.now ?? (()=>performance.now()), start=now();\n  const budget=Math.max(1,Math.min(10000,Number(options.timeMs) || (count===2?5000:4000)));\n  const deadline=start+budget, maxNodes=Math.max(1,Math.min(2000000,options.maxNodes ?? 1000000));\n  const maxDepth=Math.max(1,Math.min(input.length,options.maxDepth ?? (count===2?20:10)));\n  const rays=oniRays(size), last=size-1, corners=[0,last,last*size,input.length-1];\n  const fullMask=(1<<count)-1;\n  const initialMask=count===2?fullMask:(options.movedPlayers ?? Array(4).fill(true)).reduce((mask,done,p)=>mask|(done?1<<p:0),0);\n  const table=new Map(), timeout={};\n  let nodes=0, cutoffs=0, hits=0;\n  function check() { nodes++; if(nodes>maxNodes || now()>=deadline)throw timeout; }\n  function counts(board) { const totals=Array(count).fill(0);for(const p of board)if(p!==null)totals[p]++;return totals; }\n  function moves(board,p,mask) {\n    const result=[], totals=mask===fullMask?null:counts(board);\n    for(let i=0;i<board.length;i++)if(board[i]===null){\n      const flips=[];\n      for(const ray of rays[i]){\n        let length=0;\n        for(const j of ray){if(board[j]===null)break;if(board[j]===p){if(length)flips.push(...ray.slice(0,length));break;}length++;}\n      }\n      if(!flips.length)continue;\n      if(totals){const lost=Array(count).fill(0);for(const j of flips)lost[board[j]]++;\n        if(totals.some((total,id)=>id!==p && !(mask&(1<<id)) && total-lost[id]===0))continue;\n      }\n      result.push({index:i,flips});\n    }\n    return result;\n  }\n  function apply(board,move,p) {const next=board.slice();next[move.index]=p;for(const j of move.flips)next[j]=p;return next;}\n  function terminal(board) {\n    const total=counts(board), top=Math.max(...total), tied=total.filter(n=>n===top).length;\n    if(count===2)return [total[0]-total[1],total[1]-total[0]].map(diff=>diff*100+(diff>0?100000:diff<0?-100000:0));\n    return total.map(n=>(n===top?(tied===1?100000:50000):-100000)+(n-Math.max(...total))*100+n);\n  }\n  function evaluate(board) {\n    const total=counts(board), empty=board.filter(p=>p===null).length, ratio=empty/board.length;\n    const value=total.map(n=>n*(ratio<.18?12:ratio<.4?2:.15));\n    for(let p=0;p<count;p++) {\n      if(!total[p]){value[p]=-30000;continue;}\n      value[p]+=moves(board,p,fullMask).length*(ratio<.15?3:10);\n    }\n    const frontier=Array(count).fill(0), potential=Array.from({length:count},()=>new Set());\n    for(let i=0;i<board.length;i++)if(board[i]!==null){\n      const p=board[i],r=Math.floor(i/size),c=i%size;let exposed=false;\n      for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++)if(dr||dc){\n        const nr=r+dr,nc=c+dc;\n        if(nr>=0&&nc>=0&&nr<size&&nc<size&&board[nr*size+nc]===null){exposed=true;for(let other=0;other<count;other++)if(other!==p)potential[other].add(nr*size+nc);}\n      }\n      if(exposed)frontier[p]++;\n    }\n    for(let p=0;p<count;p++)value[p]+=(potential[p].size*1.5-frontier[p]*5)*(ratio<.15?.2:1);\n    for(const corner of corners){\n      const p=board[corner],r=Math.floor(corner/size),c=corner%size;\n      const dr=r===0?1:-1,dc=c===0?1:-1;\n      if(p===null){for(const [offset,penalty] of [[dr*size,45],[dc,45],[dr*size+dc,110]])if(board[corner+offset]!==null)value[board[corner+offset]]-=penalty;}\n      else {value[p]+=260;for(const step of [dr*size,dc])for(let k=1;k<size&&board[corner+k*step]===p;k++)value[p]+=28;}\n    }\n    if(count===2){const diff=value[0]-value[1];return [diff,-diff];}\n    return value.map((v,p)=>v-Math.max(...value.filter((_,id)=>id!==p))*.8);\n  }\n  function order(list,board,p,preferred) {\n    const endgame=board.filter(v=>v===null).length<12;\n    return list.map(move=>{\n      const i=move.index,r=Math.floor(i/size),c=i%size;\n      let priority=i===preferred?100000:0;\n      if(corners.includes(i))priority+=10000;\n      for(const corner of corners)if(board[corner]===null){const cr=Math.floor(corner/size),cc=corner%size;if(Math.abs(r-cr)<=1&&Math.abs(c-cc)<=1)priority-=r!==cr&&c!==cc?700:300;}\n      if(r===0||c===0||r===last||c===last)priority+=35;\n      priority+=move.flips.length*(endgame?3:-1);\n      return {...move,priority};\n    }).sort((a,b)=>b.priority-a.priority||a.index-b.index);\n  }\n  function key(board,p,mask,passes=0){return `${p}:${mask}:${passes}:${board.map(v=>v===null?'.':v).join('')}`;}\n  function put(k,value){if(table.size>=60000)table.clear();table.set(k,value);}\n  function negamax(board,p,depth,alpha,beta,passes) {\n    check();const k=key(board,p,fullMask,passes),entry=table.get(k), originalAlpha=alpha,originalBeta=beta;\n    if(entry?.depth>=depth){hits++;if(entry.flag==='exact')return entry.value;if(entry.flag==='lower')alpha=Math.max(alpha,entry.value);else beta=Math.min(beta,entry.value);if(alpha>=beta)return entry.value;}\n    const list=moves(board,p,fullMask);\n    if(!list.length)return passes?terminal(board)[p]:-negamax(board,1-p,depth,-beta,-alpha,1);\n    if(!depth)return evaluate(board)[p];\n    let best=-Infinity,bestMove=null;\n    for(const move of order(list,board,p,entry?.move)){\n      const value=-negamax(apply(board,move,p),1-p,depth-1,-beta,-alpha,0);\n      if(value>best){best=value;bestMove=move.index;}alpha=Math.max(alpha,best);\n      if(alpha>=beta){cutoffs++;break;}\n    }\n    put(k,{depth,value:best,move:bestMove,flag:best<=originalAlpha?'upper':best>=originalBeta?'lower':'exact'});return best;\n  }\n  function maxn(board,p,mask,depth,passes,exact) {\n    check();const k=key(board,p,mask,passes)+`:${exact}`,entry=table.get(k);\n    if(entry?.depth===depth){hits++;return entry.value;}\n    let list=moves(board,p,mask);\n    if(!list.length)return passes===count-1?terminal(board):maxn(board,(p+1)%count,mask,depth,passes+1,exact);\n    if(!depth)return evaluate(board);\n    list=order(list,board,p,entry?.move);\n    if(!exact)list=list.slice(0,8);\n    let best=null,bestMove=null;\n    for(const move of list){const value=maxn(apply(board,move,p),(p+1)%count,mask|(1<<p),depth-1,0,exact);if(!best||value[p]>best[p]){best=value;bestMove=move.index;}}\n    put(k,{depth,value:best,move:bestMove});return best;\n  }\n  let legal=moves(input,player,initialMask);\n  if(options.allowedMoves)legal=legal.filter(move=>options.allowedMoves.includes(move.index));\n  if(!legal.length)return {index:null,depth:0,nodes,solved:true,elapsedMs:now()-start};\n  let best=order(legal,input,player)[0].index,completed=0,solved=false,score=null;\n  const empty=input.filter(v=>v===null).length,exact=count===2||empty<=8;\n  for(let depth=1;depth<=Math.min(maxDepth,empty);depth++){\n    let candidate=best,value=-Infinity,alpha=-Infinity;\n    try {\n      for(const move of order(legal,input,player,best)){\n        check();const board=apply(input,move,player);\n        const result=count===2?-negamax(board,1-player,depth-1,-Infinity,-alpha,0):maxn(board,(player+1)%count,initialMask|(1<<player),depth-1,0,exact)[player];\n        if(result>value){value=result;candidate=move.index;}alpha=Math.max(alpha,result);\n      }\n      best=candidate;completed=depth;score=value;solved=exact&&depth>=empty;\n      options.onProgress?.({index:best,depth,nodes,solved,score:value,elapsedMs:now()-start});\n      if(solved)break;\n    } catch(error){if(error!==timeout)throw error;break;}\n  }\n  return {index:best,depth:completed,nodes,cutoffs,hits,solved,score,elapsedMs:now()-start};\n}\n\nonmessage = ({data}) => { try { const result=analyzeOniMove(data.board,data.player,{...data.options,onProgress:result=>postMessage({type:'progress',result})}); postMessage({type:'result',result}); } catch { postMessage({type:'error'}); } };";
 function createOniRunner({ workerFactory = source => { const url=URL.createObjectURL(new Blob([source], {type:'text/javascript'})); try { const worker=new Worker(url); worker.releaseSource=()=>URL.revokeObjectURL(url); return worker; } catch(error) { URL.revokeObjectURL(url); throw error; } }, schedule = setTimeout, unschedule = clearTimeout } = {}) {
   let pending=null, serial=0;
   function cancel() {
@@ -1014,7 +1019,7 @@ function createHeldStonePointer(surface, element, { frame = requestAnimationFram
   function paint() {
     queued=null;
     if(!inside||!color){hide();return;}
-    element.style.transform=`translate3d(${x+12}px,${y-28}px,0)`;
+    element.style.transform=`translate3d(${x}px,${y}px,0) translate(-50%,-50%)`;
     element.hidden=false;surface.classList.add('holding-stone');
   }
   function move(event) {
@@ -1037,6 +1042,30 @@ function createHeldStonePointer(surface, element, { frame = requestAnimationFram
     destroy(){leave();for(const [type,handler] of [['pointerenter',move],['pointermove',move],['pointerleave',leave],['pointercancel',leave]])surface.removeEventListener(type,handler);}
   };
 }
+
+// Only game-time work belongs here; menu controls keep using ordinary timers.
+function createGameClock({ now = () => performance.now(), schedule = setTimeout, unschedule = clearTimeout } = {}) {
+  const jobs = new Map();
+  let sequence=0, frozen=false, origin=now(), frozenAt=0, excluded=0;
+  function time(){return (frozen?frozenAt:now())-origin-excluded;}
+  function arm(job){
+    job.started=now();
+    job.timer=schedule(()=>{if(!jobs.has(job.id))return;jobs.delete(job.id);job.callback();},job.remaining);
+  }
+  function later(callback,ms,onCancel){
+    const job={id:++sequence,callback,onCancel,remaining:Math.max(0,ms),timer:null,started:0};
+    jobs.set(job.id,job);if(!frozen)arm(job);return job.id;
+  }
+  function clear(id){const job=jobs.get(id);if(!job)return;unschedule(job.timer);jobs.delete(id);job.onCancel?.();}
+  function setPaused(value){
+    if(value===frozen)return;
+    if(value){frozenAt=now();frozen=true;for(const job of jobs.values()){unschedule(job.timer);job.timer=null;job.remaining=Math.max(0,job.remaining-(frozenAt-job.started));}}
+    else {excluded+=now()-frozenAt;frozen=false;for(const job of jobs.values())arm(job);}
+  }
+  function reset(){for(const id of [...jobs.keys()])clear(id);frozen=false;origin=now();excluded=0;}
+  return {schedule:later,clear,setPaused,reset,time,wait:ms=>new Promise(resolve=>later(()=>resolve(true),ms,()=>resolve(false))),pending:()=>jobs.size,paused:()=>frozen};
+}
+
 
 
 
@@ -1070,12 +1099,16 @@ if(window.ResizeObserver)new ResizeObserver(measureHeldStone).observe(ui.board);
 window.addEventListener('resize',measureHeldStone,{passive:true});
 window.addEventListener('scroll',()=>heldPointer.hide(),{passive:true});
 window.addEventListener('blur',()=>heldPointer.hide());
-const cellEffects = createCellEffects();
+const gameClock = createGameClock();
+const cellEffects = createCellEffects(gameClock.schedule,gameClock.clear);
+const pausedAnimations = new Set(), dialogStack = [];
+let gamePaused=false, pauseVersion=0;
 const oniRunner = createOniRunner();
 let aiAnalysis = null;
 let storageWorking = true;
 let epoch = 0, cells = [], focusIndex = 0, noticeTimer, setupMode = 'solo', setupCount = 4, lastConfig, resumeWaiters = [];
-const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+const pause = ms => gameClock.wait(ms);
+const wallDelay = ms => new Promise(resolve => setTimeout(resolve,ms));
 const piece = color => `<i aria-hidden="true" class="disc ${color}"></i>`;
 const stone = player => piece(state.colors[player].id);
 const nameOf = player => state.colors[player].name;
@@ -1086,15 +1119,29 @@ function cancelRun() {
   heldPointer.hide(); stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
   ui.board.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel());
   cells.forEach(cell => cell.classList.remove('is-flipping'));
+  pausedAnimations.clear();gameClock.reset();gamePaused=false;ui.game.classList.remove('is-paused');
 }
-const isPaused = () => state.phase !== 'home' && !!document.querySelector('dialog[open]');
+const isPaused = () => !['home','ended'].includes(state.phase) && !!document.querySelector('dialog[open]');
 function persist() {
   try { localStorage.setItem(STORAGE.prefs, JSON.stringify(preferences)); localStorage.setItem(STORAGE.profile, JSON.stringify(profile)); $('#storage-message').hidden = true; storageWorking = true; }
   catch { storageWorking = false; $('#storage-message').textContent = 'このブラウザでは保存できません。設定の「データを書き出す」で残せます。'; $('#storage-message').hidden = false; }
 }
-function wake() { if (!isPaused()) { const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve()); } updateInputState(); }
+function syncGamePause() {
+  const paused=isPaused();if(paused===gamePaused)return;
+  gamePaused=paused;gameClock.setPaused(paused);
+  if(paused){
+    pauseVersion++;heldPointer.hide();stoneAudio.stop();oniRunner.cancel();
+    for(const animation of ui.board.getAnimations?.({subtree:true}) ?? [])if(animation.playState==='running' || animation.pending){animation.pause();pausedAnimations.add(animation);}
+    ui.game.classList.add('is-paused');
+  } else {
+    ui.game.classList.remove('is-paused');
+    for(const animation of pausedAnimations)if(animation.playState==='paused')animation.play();
+    pausedAnimations.clear();
+  }
+}
+function wake() { syncGamePause(); if (!isPaused()) { const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve()); } updateInputState(); }
 async function ready(run) { while (active(run) && isPaused()) await new Promise(resolve => resumeWaiters.push(resolve)); return active(run); }
-function openDialog(id) { if (!$(id).open) { $(id).showModal(); $(id).scrollTop = 0; } updateInputState(); }
+function openDialog(id) { if (!$(id).open) { $(id).showModal(); $(id).scrollTop = 0; dialogStack.push($(id)); } syncGamePause(); updateInputState(); }
 function closeDialogs() { document.querySelectorAll('dialog[open]').forEach(d => d.close()); }
 function announce(text) { ui.live.textContent = text; }
 function renderHome() {
@@ -1142,7 +1189,7 @@ function renderStatus() {
     turnKey = nextTurnKey;
     ui.turn.innerHTML = `${stone(p)}<span>${nameOf(p)}の番${who ? `<small class="turn-who">${who}</small>` : ''}</span><span class="menu-chevron" aria-hidden="true">⌄</span>`;
     ui.turn.className = `turn ${state.colors[p].id}`;
-    ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。対局メニューを開く`);
+    ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。ポーズを開く（Esc）`);
   }
   const nextScoreKey = `${state.mode}:${state.human}:${state.colors.map(c => c.id).join(',')}`;
   if (scoreKey !== nextScoreKey) {
@@ -1168,7 +1215,7 @@ function updateInputState() {
   const hints = new Set(canPlay && preferences.hints ? available : []);
   cells.forEach((cell, i) => { const disabled = String(!canPlay || state.board[i] !== null); if (cell.getAttribute('aria-disabled') !== disabled) cell.setAttribute('aria-disabled', disabled); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', 'ここに置けます'); else cell.removeAttribute('aria-description'); });
 }
-function hideNotice() { clearTimeout(noticeTimer); ui.notice.hidden = true; ui.notice.textContent = ''; }
+function hideNotice() { gameClock.clear(noticeTimer); ui.notice.hidden = true; ui.notice.textContent = ''; }
 function showNotice(text, detail = '') {
   hideNotice(); const title = document.createElement('strong'); title.textContent = text; ui.notice.append(title);
   if (detail) { const line = document.createElement('span'); line.textContent = detail; ui.notice.append(line); } ui.notice.hidden = false;
@@ -1198,20 +1245,21 @@ async function landStone(index, run) {
       { transform:'translateY(-2px) scale(1)', offset:.86 },
       { transform:'translateY(0) scale(1)' }
     ], { duration:205, easing:'cubic-bezier(.22,.7,.3,1)' });
-    await pause(145); if (active(run)) sound('place',index);
-    try { await drop.finished.catch(() => {}); } finally { drop.cancel(); }
+    const landed=drop.finished.catch(() => {});
+    await pause(145); if (await ready(run)) sound('place',index);
+    try { await landed; } finally { drop.cancel(); }
   } else if (active(run)) sound('place',index);
 }
 async function flipStone(index, delay, run) {
   if (preferences.reducedMotion) { if (active(run)) updateCell(index); return; }
-  await pause(delay); if (!active(run)) return;
+  await pause(delay); if (!await ready(run)) return;
   const cell = cells[index], disc = cell.firstElementChild;
   if (!disc?.animate) { updateCell(index); sound('flip',index); return; }
   let out, into;
   cell.classList.add('is-flipping');
   try {
     out = disc.animate([{ transform:'translateY(0) rotateY(0deg)' }, { transform:'translateY(-7px) rotateY(90deg)' }], { duration:130, easing:'ease-in', fill:'forwards' });
-    await out.finished.catch(() => {}); if (!active(run)) return;
+    await out.finished.catch(() => {}); if (!await ready(run)) return;
     out.cancel(); updateCell(index);
     into = disc.animate([
       { transform:'translateY(-7px) rotateY(-90deg)' },
@@ -1219,8 +1267,9 @@ async function flipStone(index, delay, run) {
       { transform:'translateY(-1px) scale(1)', offset:.9 },
       { transform:'translateY(0) rotateY(0deg)' }
     ], { duration:220, easing:'ease-out' });
-    await pause(172); if (active(run)) sound('flip',index);
-    await into.finished.catch(() => {});
+    const flipped=into.finished.catch(() => {});
+    await pause(172); if (await ready(run)) sound('flip',index);
+    await flipped;
   } finally { out?.cancel(); into?.cancel(); cell.classList.remove('is-flipping'); }
 }
 async function moveAt(index, actor = 'human') {
@@ -1229,10 +1278,10 @@ async function moveAt(index, actor = 'human') {
   if (actor === 'human' && ai) return { ok: false, reason: 'AIの手番です' };
   if (state.phase !== (actor === 'ai' ? 'thinking' : 'playing') || (actor === 'ai' && !ai)) return { ok: false, reason: '手番の切り替え中です' };
   const result = playMove(state.board, state.player, index);
-  if (!result) { showNotice('ここには置けません', '相手の石をはさめるマスに置いてください'); noticeTimer = setTimeout(hideNotice, 1300); return { ok: false, reason: 'ここでは石をはさめません' }; }
+  if (!result) { showNotice('ここには置けません', '相手の石をはさめるマスに置いてください'); noticeTimer = gameClock.schedule(hideNotice, 1300); return { ok: false, reason: 'ここでは石をはさめません' }; }
   if (!turnMoves(state.board,state.player).includes(index)) {
     showNotice('まだ最初の手番中です','まだ一度も打っていない色が０枚になる手は置けません');
-    noticeTimer = setTimeout(hideNotice, 1650); return {ok:false,reason:'初手の保護中は未着手の色を０枚にできません'};
+    noticeTimer = gameClock.schedule(hideNotice, 1650); return {ok:false,reason:'初手の保護中は未着手の色を０枚にできません'};
   }
   hideNotice(); const run = epoch, player = state.player, n = state.size;
   state.movedPlayers[player] = true;
@@ -1241,7 +1290,7 @@ async function moveAt(index, actor = 'human') {
   const animatedFlips=result.flips.length>8?[]:result.flips;
   if(result.flips.length>8) result.flips.forEach(updateCell);
   await Promise.all([landStone(index,run), ...animatedFlips.map(i => flipStone(i, 175 + 55 * Math.max(Math.abs(Math.floor(i / n) - Math.floor(index / n)), Math.abs(i % n - index % n)), run))]);
-  if (!active(run)) return { ok: false, reason: 'ゲームが終了しました' };
+  if (!await ready(run)) return { ok: false, reason: 'ゲームが終了しました' };
   renderStatus(); if (preferences.reducedMotion || result.flips.length>8) sound('flip',index); announce(`${nameOf(player)}が${result.flips.length}枚ひっくり返しました。`); await advanceTurn(player, run);
   return { ok: true, flipped: result.flips.length, ...snapshot() };
 }
@@ -1271,10 +1320,23 @@ async function takeAITurn(run) {
   let index;
   if(state.difficulty === 'oni') {
     aiAnalysis = { depth:0,nodes:0,backend:'worker' };
-    const result = await oniRunner.think(state.board,state.player,{playerCount:state.colors.length,allowedMoves,movedPlayers:state.movedPlayers.slice(),timeMs:state.colors.length===2?5000:4000,onProgress:progress=>{if(active(run))aiAnalysis={...progress,backend:'worker'};}});
-    if(!active(run))return;
-    if(!await ready(run) || state.phase!=='thinking')return;
-    if(result){aiAnalysis=result;index=result.index;}
+    let remaining=state.colors.length===2?5000:4000, best=null;
+    do {
+      if(!await ready(run) || state.phase!=='thinking')return;
+      const version=pauseVersion, started=gameClock.time();
+      const result = await oniRunner.think(state.board,state.player,{playerCount:state.colors.length,allowedMoves,movedPlayers:state.movedPlayers.slice(),timeMs:Math.max(1,remaining),onProgress:progress=>{
+        if(active(run)&&version===pauseVersion){
+          if(Number.isInteger(progress.index)&&(!best||progress.depth>=best.depth))best={...progress,backend:'worker'};
+          aiAnalysis=best ?? {...progress,backend:'worker'};
+        }
+      }});
+      remaining-=Math.max(0,gameClock.time()-started);
+      if(!active(run))return;
+      if(result&&(!best||result.depth>=best.depth))best=result;
+      if(!await ready(run) || state.phase!=='thinking')return;
+      if(version===pauseVersion || remaining<=0)break;
+    } while(true);
+    if(best){aiAnalysis=best;index=best.index;}
     else {aiAnalysis={backend:'fallback',depth:3};index=chooseAIMove(state.board,state.player,{difficulty:'hard',width,allowedMoves,playerCount:state.colors.length});}
   } else index = chooseAIMove(state.board, state.player, { difficulty: state.difficulty, width, allowedMoves, playerCount:state.colors.length });
   if (!active(run)) return;
@@ -1396,7 +1458,17 @@ window.addEventListener('hashchange', () => { if (location.hash !== '#play' && s
 ui.result.addEventListener('cancel', event => { event.preventDefault(); goHome(); });
 for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => openDialog(`#${name}-dialog`));
 $('#shop-open').addEventListener('click', () => { renderShop(); $('#shop-message').textContent = ''; openDialog('#shop-dialog'); });
-ui.turn.addEventListener('click', () => { $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : `${state.colors.length}人で交代`} · ${state.size} × ${state.size}${state.mode === 'solo' ? ` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => c.name).join(' → ')}`; openDialog('#menu-dialog'); });
+function openPause() {
+  if(['home','ended'].includes(state.phase))return;
+  $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : `${state.colors.length}人で交代`} · ${state.size} × ${state.size}${state.mode === 'solo' ? ` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => c.name).join(' → ')}`; openDialog('#menu-dialog');
+}
+ui.turn.addEventListener('click', openPause);
+document.addEventListener('keydown',event=>{
+  if(event.key!=='Escape'||['home','ended'].includes(state.phase))return;
+  event.preventDefault();event.stopPropagation();if(event.repeat)return;
+  const top=[...dialogStack].reverse().find(dialog=>dialog.open);
+  if(top){top.close();wake();}else openPause();
+},true);
 $('#resign-open').addEventListener('click', () => {
   if (!canResign(state)) return;
   $('#resign-description').textContent = state.mode === 'solo' ? `${nameOf(state.human)}のあなたが降参し、負けとして１対局を記録します。コインは増減しません。` : `${nameOf(state.player)}が降参し、${state.colors.length}人全員のこの対局を終了します。途中の枚数で勝者は決めません。`;
@@ -1405,16 +1477,16 @@ $('#resign-open').addEventListener('click', () => {
 $('#resign-confirm').addEventListener('click', resignGame);
 $('#game-rules').addEventListener('click', () => openDialog('#rules-dialog')); $('#game-settings').addEventListener('click', () => openDialog('#settings-dialog'));
 document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
-document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', wake));
+document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', () => { const i=dialogStack.indexOf(dialog);if(i>=0)dialogStack.splice(i,1);wake(); }));
 for (const [id,key] of [['sound-setting','sound'],['music-setting','music'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; stoneAudio.unlock(); syncSettings(); persist(); updateInputState(); });
 document.addEventListener('pointerdown', () => stoneAudio.unlock(), { passive:true });
 document.addEventListener('keydown', () => stoneAudio.unlock());
 document.addEventListener('visibilitychange', () => { if (document.hidden) {heldPointer.hide();stoneAudio.suspend();} else stoneAudio.unlock(); });
 $('#sound-volume').addEventListener('input', event => { preferences.volume = Number(event.target.value) / 100; syncSettings(); persist(); });
 $('#sound-preview').addEventListener('click', async () => {
-  stoneAudio.unlock(); await pause(30);
+  stoneAudio.unlock(); await wallDelay(30);
   if (!$('#settings-dialog').open) return;
-  stoneAudio.hit('place',-.2); await pause(330);
+  stoneAudio.hit('place',-.2); await wallDelay(330);
   if (!$('#settings-dialog').open) return;
   stoneAudio.hit('flip',.2); $('#sound-status').textContent = stoneAudio.status().state === 'running' ? '置く音、返す音の順に再生しました。' : '音の準備中です。もう一度お試しください。';
 });
@@ -1434,7 +1506,7 @@ $('#save-file').addEventListener('change', async event => {
   } catch (error) { $('#save-message').textContent = `読み込めませんでした。${error instanceof SyntaxError ? 'JSON形式のセーブデータを選んでください。' : error.message}`; }
   event.target.value = '';
 });
-function snapshot() { return { ai:aiAnalysis ? {...aiAnalysis,active:oniRunner.active()} : null, rendering:{ stones:ui.board.querySelectorAll('.disc').length, animations:ui.board.getAnimations?.({subtree:true}).length ?? 0, effects:cellEffects.size(), flipping:ui.board.querySelectorAll('.is-flipping').length }, sound: { enabled:preferences.sound, volume:preferences.volume, ...stoneAudio.status() }, firstMoves:state.movedPlayers?.slice() ?? [false,false,false,false], phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, playerCount:state.colors.length, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board).slice(0,state.colors.length), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
+function snapshot() { return { clock:{timeMs:Math.floor(gameClock.time()),paused:gameClock.paused(),pending:gameClock.pending()}, ai:aiAnalysis ? {...aiAnalysis,active:oniRunner.active()} : null, rendering:{ stones:ui.board.querySelectorAll('.disc').length, animations:ui.board.getAnimations?.({subtree:true}).length ?? 0, effects:cellEffects.size(), flipping:ui.board.querySelectorAll('.is-flipping').length }, sound: { enabled:preferences.sound, volume:preferences.volume, ...stoneAudio.status() }, firstMoves:state.movedPlayers?.slice() ?? [false,false,false,false], phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, playerCount:state.colors.length, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board).slice(0,state.colors.length), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
 function registerTools() {
   const context = document.modelContext; if (!context?.registerTool) return;
   const lifecycle = new AbortController(); window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });

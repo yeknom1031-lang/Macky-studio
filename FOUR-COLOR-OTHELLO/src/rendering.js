@@ -60,7 +60,7 @@ export function createHeldStonePointer(surface, element, { frame = requestAnimat
   function paint() {
     queued=null;
     if(!inside||!color){hide();return;}
-    element.style.transform=`translate3d(${x+12}px,${y-28}px,0)`;
+    element.style.transform=`translate3d(${x}px,${y}px,0) translate(-50%,-50%)`;
     element.hidden=false;surface.classList.add('holding-stone');
   }
   function move(event) {

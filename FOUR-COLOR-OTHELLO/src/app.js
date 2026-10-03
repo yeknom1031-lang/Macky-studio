@@ -1,4 +1,5 @@
 import { initialBoard, PLAYERS, BOARD_SIZES, legalMoves, firstRoundMoves, playMove, nextTurn, scores, winners } from './engine.js';
+import { createGameClock } from './game-clock.js';
 import { createOniRunner } from './ai-runner.js';
 import { chooseAIMove, DIFFICULTIES } from './ai.js';
 import { canResign, endByResignation } from './match.js';
@@ -32,12 +33,16 @@ if(window.ResizeObserver)new ResizeObserver(measureHeldStone).observe(ui.board);
 window.addEventListener('resize',measureHeldStone,{passive:true});
 window.addEventListener('scroll',()=>heldPointer.hide(),{passive:true});
 window.addEventListener('blur',()=>heldPointer.hide());
-const cellEffects = createCellEffects();
+const gameClock = createGameClock();
+const cellEffects = createCellEffects(gameClock.schedule,gameClock.clear);
+const pausedAnimations = new Set(), dialogStack = [];
+let gamePaused=false, pauseVersion=0;
 const oniRunner = createOniRunner();
 let aiAnalysis = null;
 let storageWorking = true;
 let epoch = 0, cells = [], focusIndex = 0, noticeTimer, setupMode = 'solo', setupCount = 4, lastConfig, resumeWaiters = [];
-const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+const pause = ms => gameClock.wait(ms);
+const wallDelay = ms => new Promise(resolve => setTimeout(resolve,ms));
 const piece = color => `<i aria-hidden="true" class="disc ${color}"></i>`;
 const stone = player => piece(state.colors[player].id);
 const nameOf = player => state.colors[player].name;
@@ -48,15 +53,29 @@ function cancelRun() {
   heldPointer.hide(); stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
   ui.board.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel());
   cells.forEach(cell => cell.classList.remove('is-flipping'));
+  pausedAnimations.clear();gameClock.reset();gamePaused=false;ui.game.classList.remove('is-paused');
 }
-const isPaused = () => state.phase !== 'home' && !!document.querySelector('dialog[open]');
+const isPaused = () => !['home','ended'].includes(state.phase) && !!document.querySelector('dialog[open]');
 function persist() {
   try { localStorage.setItem(STORAGE.prefs, JSON.stringify(preferences)); localStorage.setItem(STORAGE.profile, JSON.stringify(profile)); $('#storage-message').hidden = true; storageWorking = true; }
   catch { storageWorking = false; $('#storage-message').textContent = 'このブラウザでは保存できません。設定の「データを書き出す」で残せます。'; $('#storage-message').hidden = false; }
 }
-function wake() { if (!isPaused()) { const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve()); } updateInputState(); }
+function syncGamePause() {
+  const paused=isPaused();if(paused===gamePaused)return;
+  gamePaused=paused;gameClock.setPaused(paused);
+  if(paused){
+    pauseVersion++;heldPointer.hide();stoneAudio.stop();oniRunner.cancel();
+    for(const animation of ui.board.getAnimations?.({subtree:true}) ?? [])if(animation.playState==='running' || animation.pending){animation.pause();pausedAnimations.add(animation);}
+    ui.game.classList.add('is-paused');
+  } else {
+    ui.game.classList.remove('is-paused');
+    for(const animation of pausedAnimations)if(animation.playState==='paused')animation.play();
+    pausedAnimations.clear();
+  }
+}
+function wake() { syncGamePause(); if (!isPaused()) { const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve()); } updateInputState(); }
 async function ready(run) { while (active(run) && isPaused()) await new Promise(resolve => resumeWaiters.push(resolve)); return active(run); }
-function openDialog(id) { if (!$(id).open) { $(id).showModal(); $(id).scrollTop = 0; } updateInputState(); }
+function openDialog(id) { if (!$(id).open) { $(id).showModal(); $(id).scrollTop = 0; dialogStack.push($(id)); } syncGamePause(); updateInputState(); }
 function closeDialogs() { document.querySelectorAll('dialog[open]').forEach(d => d.close()); }
 function announce(text) { ui.live.textContent = text; }
 function renderHome() {
@@ -104,7 +123,7 @@ function renderStatus() {
     turnKey = nextTurnKey;
     ui.turn.innerHTML = `${stone(p)}<span>${nameOf(p)}の番${who ? `<small class="turn-who">${who}</small>` : ''}</span><span class="menu-chevron" aria-hidden="true">⌄</span>`;
     ui.turn.className = `turn ${state.colors[p].id}`;
-    ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。対局メニューを開く`);
+    ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。ポーズを開く（Esc）`);
   }
   const nextScoreKey = `${state.mode}:${state.human}:${state.colors.map(c => c.id).join(',')}`;
   if (scoreKey !== nextScoreKey) {
@@ -130,7 +149,7 @@ function updateInputState() {
   const hints = new Set(canPlay && preferences.hints ? available : []);
   cells.forEach((cell, i) => { const disabled = String(!canPlay || state.board[i] !== null); if (cell.getAttribute('aria-disabled') !== disabled) cell.setAttribute('aria-disabled', disabled); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', 'ここに置けます'); else cell.removeAttribute('aria-description'); });
 }
-function hideNotice() { clearTimeout(noticeTimer); ui.notice.hidden = true; ui.notice.textContent = ''; }
+function hideNotice() { gameClock.clear(noticeTimer); ui.notice.hidden = true; ui.notice.textContent = ''; }
 function showNotice(text, detail = '') {
   hideNotice(); const title = document.createElement('strong'); title.textContent = text; ui.notice.append(title);
   if (detail) { const line = document.createElement('span'); line.textContent = detail; ui.notice.append(line); } ui.notice.hidden = false;
@@ -160,20 +179,21 @@ async function landStone(index, run) {
       { transform:'translateY(-2px) scale(1)', offset:.86 },
       { transform:'translateY(0) scale(1)' }
     ], { duration:205, easing:'cubic-bezier(.22,.7,.3,1)' });
-    await pause(145); if (active(run)) sound('place',index);
-    try { await drop.finished.catch(() => {}); } finally { drop.cancel(); }
+    const landed=drop.finished.catch(() => {});
+    await pause(145); if (await ready(run)) sound('place',index);
+    try { await landed; } finally { drop.cancel(); }
   } else if (active(run)) sound('place',index);
 }
 async function flipStone(index, delay, run) {
   if (preferences.reducedMotion) { if (active(run)) updateCell(index); return; }
-  await pause(delay); if (!active(run)) return;
+  await pause(delay); if (!await ready(run)) return;
   const cell = cells[index], disc = cell.firstElementChild;
   if (!disc?.animate) { updateCell(index); sound('flip',index); return; }
   let out, into;
   cell.classList.add('is-flipping');
   try {
     out = disc.animate([{ transform:'translateY(0) rotateY(0deg)' }, { transform:'translateY(-7px) rotateY(90deg)' }], { duration:130, easing:'ease-in', fill:'forwards' });
-    await out.finished.catch(() => {}); if (!active(run)) return;
+    await out.finished.catch(() => {}); if (!await ready(run)) return;
     out.cancel(); updateCell(index);
     into = disc.animate([
       { transform:'translateY(-7px) rotateY(-90deg)' },
@@ -181,8 +201,9 @@ async function flipStone(index, delay, run) {
       { transform:'translateY(-1px) scale(1)', offset:.9 },
       { transform:'translateY(0) rotateY(0deg)' }
     ], { duration:220, easing:'ease-out' });
-    await pause(172); if (active(run)) sound('flip',index);
-    await into.finished.catch(() => {});
+    const flipped=into.finished.catch(() => {});
+    await pause(172); if (await ready(run)) sound('flip',index);
+    await flipped;
   } finally { out?.cancel(); into?.cancel(); cell.classList.remove('is-flipping'); }
 }
 async function moveAt(index, actor = 'human') {
@@ -191,10 +212,10 @@ async function moveAt(index, actor = 'human') {
   if (actor === 'human' && ai) return { ok: false, reason: 'AIの手番です' };
   if (state.phase !== (actor === 'ai' ? 'thinking' : 'playing') || (actor === 'ai' && !ai)) return { ok: false, reason: '手番の切り替え中です' };
   const result = playMove(state.board, state.player, index);
-  if (!result) { showNotice('ここには置けません', '相手の石をはさめるマスに置いてください'); noticeTimer = setTimeout(hideNotice, 1300); return { ok: false, reason: 'ここでは石をはさめません' }; }
+  if (!result) { showNotice('ここには置けません', '相手の石をはさめるマスに置いてください'); noticeTimer = gameClock.schedule(hideNotice, 1300); return { ok: false, reason: 'ここでは石をはさめません' }; }
   if (!turnMoves(state.board,state.player).includes(index)) {
     showNotice('まだ最初の手番中です','まだ一度も打っていない色が０枚になる手は置けません');
-    noticeTimer = setTimeout(hideNotice, 1650); return {ok:false,reason:'初手の保護中は未着手の色を０枚にできません'};
+    noticeTimer = gameClock.schedule(hideNotice, 1650); return {ok:false,reason:'初手の保護中は未着手の色を０枚にできません'};
   }
   hideNotice(); const run = epoch, player = state.player, n = state.size;
   state.movedPlayers[player] = true;
@@ -203,7 +224,7 @@ async function moveAt(index, actor = 'human') {
   const animatedFlips=result.flips.length>8?[]:result.flips;
   if(result.flips.length>8) result.flips.forEach(updateCell);
   await Promise.all([landStone(index,run), ...animatedFlips.map(i => flipStone(i, 175 + 55 * Math.max(Math.abs(Math.floor(i / n) - Math.floor(index / n)), Math.abs(i % n - index % n)), run))]);
-  if (!active(run)) return { ok: false, reason: 'ゲームが終了しました' };
+  if (!await ready(run)) return { ok: false, reason: 'ゲームが終了しました' };
   renderStatus(); if (preferences.reducedMotion || result.flips.length>8) sound('flip',index); announce(`${nameOf(player)}が${result.flips.length}枚ひっくり返しました。`); await advanceTurn(player, run);
   return { ok: true, flipped: result.flips.length, ...snapshot() };
 }
@@ -233,10 +254,23 @@ async function takeAITurn(run) {
   let index;
   if(state.difficulty === 'oni') {
     aiAnalysis = { depth:0,nodes:0,backend:'worker' };
-    const result = await oniRunner.think(state.board,state.player,{playerCount:state.colors.length,allowedMoves,movedPlayers:state.movedPlayers.slice(),timeMs:state.colors.length===2?5000:4000,onProgress:progress=>{if(active(run))aiAnalysis={...progress,backend:'worker'};}});
-    if(!active(run))return;
-    if(!await ready(run) || state.phase!=='thinking')return;
-    if(result){aiAnalysis=result;index=result.index;}
+    let remaining=state.colors.length===2?5000:4000, best=null;
+    do {
+      if(!await ready(run) || state.phase!=='thinking')return;
+      const version=pauseVersion, started=gameClock.time();
+      const result = await oniRunner.think(state.board,state.player,{playerCount:state.colors.length,allowedMoves,movedPlayers:state.movedPlayers.slice(),timeMs:Math.max(1,remaining),onProgress:progress=>{
+        if(active(run)&&version===pauseVersion){
+          if(Number.isInteger(progress.index)&&(!best||progress.depth>=best.depth))best={...progress,backend:'worker'};
+          aiAnalysis=best ?? {...progress,backend:'worker'};
+        }
+      }});
+      remaining-=Math.max(0,gameClock.time()-started);
+      if(!active(run))return;
+      if(result&&(!best||result.depth>=best.depth))best=result;
+      if(!await ready(run) || state.phase!=='thinking')return;
+      if(version===pauseVersion || remaining<=0)break;
+    } while(true);
+    if(best){aiAnalysis=best;index=best.index;}
     else {aiAnalysis={backend:'fallback',depth:3};index=chooseAIMove(state.board,state.player,{difficulty:'hard',width,allowedMoves,playerCount:state.colors.length});}
   } else index = chooseAIMove(state.board, state.player, { difficulty: state.difficulty, width, allowedMoves, playerCount:state.colors.length });
   if (!active(run)) return;
@@ -358,7 +392,17 @@ window.addEventListener('hashchange', () => { if (location.hash !== '#play' && s
 ui.result.addEventListener('cancel', event => { event.preventDefault(); goHome(); });
 for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => openDialog(`#${name}-dialog`));
 $('#shop-open').addEventListener('click', () => { renderShop(); $('#shop-message').textContent = ''; openDialog('#shop-dialog'); });
-ui.turn.addEventListener('click', () => { $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : `${state.colors.length}人で交代`} · ${state.size} × ${state.size}${state.mode === 'solo' ? ` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => c.name).join(' → ')}`; openDialog('#menu-dialog'); });
+function openPause() {
+  if(['home','ended'].includes(state.phase))return;
+  $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : `${state.colors.length}人で交代`} · ${state.size} × ${state.size}${state.mode === 'solo' ? ` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => c.name).join(' → ')}`; openDialog('#menu-dialog');
+}
+ui.turn.addEventListener('click', openPause);
+document.addEventListener('keydown',event=>{
+  if(event.key!=='Escape'||['home','ended'].includes(state.phase))return;
+  event.preventDefault();event.stopPropagation();if(event.repeat)return;
+  const top=[...dialogStack].reverse().find(dialog=>dialog.open);
+  if(top){top.close();wake();}else openPause();
+},true);
 $('#resign-open').addEventListener('click', () => {
   if (!canResign(state)) return;
   $('#resign-description').textContent = state.mode === 'solo' ? `${nameOf(state.human)}のあなたが降参し、負けとして１対局を記録します。コインは増減しません。` : `${nameOf(state.player)}が降参し、${state.colors.length}人全員のこの対局を終了します。途中の枚数で勝者は決めません。`;
@@ -367,16 +411,16 @@ $('#resign-open').addEventListener('click', () => {
 $('#resign-confirm').addEventListener('click', resignGame);
 $('#game-rules').addEventListener('click', () => openDialog('#rules-dialog')); $('#game-settings').addEventListener('click', () => openDialog('#settings-dialog'));
 document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
-document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', wake));
+document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', () => { const i=dialogStack.indexOf(dialog);if(i>=0)dialogStack.splice(i,1);wake(); }));
 for (const [id,key] of [['sound-setting','sound'],['music-setting','music'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; stoneAudio.unlock(); syncSettings(); persist(); updateInputState(); });
 document.addEventListener('pointerdown', () => stoneAudio.unlock(), { passive:true });
 document.addEventListener('keydown', () => stoneAudio.unlock());
 document.addEventListener('visibilitychange', () => { if (document.hidden) {heldPointer.hide();stoneAudio.suspend();} else stoneAudio.unlock(); });
 $('#sound-volume').addEventListener('input', event => { preferences.volume = Number(event.target.value) / 100; syncSettings(); persist(); });
 $('#sound-preview').addEventListener('click', async () => {
-  stoneAudio.unlock(); await pause(30);
+  stoneAudio.unlock(); await wallDelay(30);
   if (!$('#settings-dialog').open) return;
-  stoneAudio.hit('place',-.2); await pause(330);
+  stoneAudio.hit('place',-.2); await wallDelay(330);
   if (!$('#settings-dialog').open) return;
   stoneAudio.hit('flip',.2); $('#sound-status').textContent = stoneAudio.status().state === 'running' ? '置く音、返す音の順に再生しました。' : '音の準備中です。もう一度お試しください。';
 });
@@ -396,7 +440,7 @@ $('#save-file').addEventListener('change', async event => {
   } catch (error) { $('#save-message').textContent = `読み込めませんでした。${error instanceof SyntaxError ? 'JSON形式のセーブデータを選んでください。' : error.message}`; }
   event.target.value = '';
 });
-function snapshot() { return { ai:aiAnalysis ? {...aiAnalysis,active:oniRunner.active()} : null, rendering:{ stones:ui.board.querySelectorAll('.disc').length, animations:ui.board.getAnimations?.({subtree:true}).length ?? 0, effects:cellEffects.size(), flipping:ui.board.querySelectorAll('.is-flipping').length }, sound: { enabled:preferences.sound, volume:preferences.volume, ...stoneAudio.status() }, firstMoves:state.movedPlayers?.slice() ?? [false,false,false,false], phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, playerCount:state.colors.length, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board).slice(0,state.colors.length), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
+function snapshot() { return { clock:{timeMs:Math.floor(gameClock.time()),paused:gameClock.paused(),pending:gameClock.pending()}, ai:aiAnalysis ? {...aiAnalysis,active:oniRunner.active()} : null, rendering:{ stones:ui.board.querySelectorAll('.disc').length, animations:ui.board.getAnimations?.({subtree:true}).length ?? 0, effects:cellEffects.size(), flipping:ui.board.querySelectorAll('.is-flipping').length }, sound: { enabled:preferences.sound, volume:preferences.volume, ...stoneAudio.status() }, firstMoves:state.movedPlayers?.slice() ?? [false,false,false,false], phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, playerCount:state.colors.length, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board).slice(0,state.colors.length), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
 function registerTools() {
   const context = document.modelContext; if (!context?.registerTool) return;
   const lifecycle = new AbortController(); window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });

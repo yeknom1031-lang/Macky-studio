@@ -59,7 +59,9 @@ test('配布HTMLに埋め込んだ実Workerのスクリプトが単独実行で�
  const literal=html.match(/const oniWorkerSource = ("(?:[^"\\]|\\.)*");/)[1];
  const messages=[],scope={performance,postMessage:m=>messages.push(m)};vm.createContext(scope);
  vm.runInContext(JSON.parse(literal),scope);scope.onmessage({data:{board:initialBoard(8,2),player:0,options:{playerCount:2,timeMs:30}}});
- assert.ok(messages.some(m=>m.type==='progress'));const result=messages.at(-1);assert.equal(result.type,'result');assert.ok(legalMoves(initialBoard(8,2),0).includes(result.result.index));
+ const progress=messages.filter(m=>m.type==='progress');assert.ok(progress.length);
+ for(const {result} of progress){assert.ok(legalMoves(initialBoard(8,2),0).includes(result.index));assert.ok(result.depth>0);assert.ok(Number.isFinite(result.elapsedMs));}
+ const result=messages.at(-1);assert.equal(result.type,'result');assert.ok(legalMoves(initialBoard(8,2),0).includes(result.result.index));
 });
 
  test('浅いAIが16枚差で負ける終盤で、鬼は8枚差で勝つ手を読み切る',()=>{
