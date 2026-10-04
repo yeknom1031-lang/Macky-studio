@@ -1,7 +1,16 @@
 {
-  "name": "kuku-jackpot",
+  "name": "kuku-beat-festival",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "scripts": { "start": "node server.mjs", "test": "node --test tests/*.test.mjs" }
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "node scripts/build_festival.mjs",
+    "preview": "KUKU_SERVE_DIST=1 node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "deploy": "node scripts/build_festival.mjs && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.147.0"
+  }
 }

@@ -1,0 +1,158 @@
+{
+  "title": "九九ビートフェスティバル 統合・公開実装計画",
+  "version": 1,
+  "updatedAt": "2026-10-04",
+  "release": {
+    "status": "published",
+    "statusLabel": "全21ゲームをCloudflareで公開中",
+    "publicUrl": "https://kuku-beat-festival.yeknom1031.workers.dev/",
+    "buildVersion": null,
+    "assetCount": null,
+    "assetBytes": null,
+    "cloudflareWorker": "kuku-beat-festival",
+    "manifestUrl": "../../assets-manifest.json",
+    "buildMetadataPolicy": "公開中の版・ファイル数・容量はビルドが生成するassets-manifest.jsonを表示時に参照する。自身のハッシュを計画JSONへ書き戻して版が際限なく変わることを避ける。"
+  },
+  "goal": "21種類の九九ミニゲームを一つのゲームとして遊べるようにし、スマートフォン横画面を主対象に、iPhoneのホーム画面から起動できるPWAとしてCloudflareへ公開する。",
+  "budget": {
+    "maximumImageGenerationCalls": 500,
+    "existingProvisionalCalls": 26,
+    "historicalCallsFullyAudited": false,
+    "observedCallsThisImplementation": 4,
+    "newAssets": "15キャラクターの3ポーズを3シート、数字0〜9の3テーマを1シートとして画像生成。実装担当が現物を確認して素材化する。",
+    "policy": "500回は上限であり、使い切る目標ではない。既存素材も再利用し、動かす部品を生成してコードでアニメーションする。過去26回は現存素材からの暫定値。失敗・不採用を含む実際の呼び出し数を台帳で管理する。",
+    "originalBudgetPlan": "production-plan.json"
+  },
+  "experience": [
+    "21種類を順番に巡るフェスティバルと、好きなゲームを選ぶ単独練習を、一つのホーム画面から始める。",
+    "覚える段を選び、正誤の結果とリズムの結果を分ける。操作タイミングがずれても、正しい九九は正しいと伝える。",
+    "間違えたときも必ず正しい式と九九の声を示す。苦手な式を次の練習へつなげる。",
+    "答え・数字・選択肢はプログラム上の値を正とし、生成した数字の絵を組み合わせる。",
+    "スロットはマスク内を数字が流れて減速・停止する。長押し、選択、拍に合わせた操作など、各ゲームの企画に対応する。"
+  ],
+  "workstreams": [
+    {
+      "id": "integration",
+      "name": "統合・操作・画面",
+      "owner": "メインエージェント",
+      "scope": "ホーム、段選択、21本の連続進行、結果、保存、横画面、安全域、PC表示、生成素材、統合検証",
+      "status": "complete"
+    },
+    {
+      "id": "minigames",
+      "name": "21種類のミニゲーム",
+      "owner": "ミニゲーム担当サブエージェント",
+      "scope": "各ゲーム固有の入力・見せ方・正答生成・リズム判定との接続",
+      "status": "complete"
+    },
+    {
+      "id": "audio",
+      "name": "音楽・九九・掛け声",
+      "owner": "音声担当サブエージェント",
+      "scope": "場面に合うBGM、九九の問題と正答、100台詞の掛け声、同時発話の抑制、音量、停止・再開",
+      "status": "complete"
+    },
+    {
+      "id": "pwa",
+      "name": "PWA・ビルド・公開準備",
+      "owner": "配信担当サブエージェント",
+      "scope": "manifest、Service Worker、オフライン保存、素材一覧、Cloudflare構成、配信テスト",
+      "status": "complete"
+    }
+  ],
+  "platform": {
+    "primary": "iPhone・Androidスマートフォンの横画面",
+    "layout": "横844×390を基準に、左右の切り欠き・ホームインジケーターの安全域と小さい横画面を考慮。PCは大画面に合わせて舞台を収める。",
+    "orientation": "PWA manifestにlandscapeを指定し、縦向き時には端末を横にする案内を表示する。iPhoneでの横固定を保証せず、端末の回転に合わせて表示を調整する。",
+    "iphoneInstall": "Safariで公開URLを開き、共有から『ホーム画面に追加』。そのアイコンから単独画面で起動する。",
+    "sound": "最初の開始タップで音声を有効化。バックグラウンドへ移った場合は進行を止め、再開操作後に音とゲームを再同期する。",
+    "save": "進み具合と設定を端末のローカル保存に保持。アカウントや対戦サーバーは使用しない。",
+    "offline": "最初は基本画面を保存し、設定の『オフライン保存』で全画像・音源を保存する。実際の完了数と総量を表示し、失敗時は完了と表示しない。保存済みの素材は次回の再試行で再利用する。",
+    "updates": "プレイ中は新バージョンへ強制更新しない。更新待機中のバージョンはゲームを閉じた後、またはメニューで明示的に更新したときに切り替える。"
+  },
+  "soundRules": [
+    "九九の問題・正しい答えを最優先とし、掛け声は同時に重ねない。",
+    "掛け声100種は正解、連続成功、応援、惜しい、次へ、キャラ固有などの使用条件を持つ。条件を満たした音声だけを選ぶ。",
+    "音声ファイルの実際の長さで再生可能な余白を判定し、入らなければ掛け声を省く。九九を掛け声のために遅らせない。",
+    "音楽・九九・掛け声・効果音を調整可能にする。出題終了、画面遷移、一時停止で古い発話予約を破棄する。"
+  ],
+  "hosting": {
+    "provider": "Cloudflare Workers Static Assets",
+    "reference": "四色オセロと同じCloudflareアカウント・Wranglerで、独立した新しいWorkerを作成。既存のオセロは変更しない。",
+    "flow": "必要素材だけをdistへ収集 → 内容のハッシュから配信バージョンを発行 → 統合テスト → dry-run → 本番公開 → 公開URLの確認",
+    "limits": "単体25 MiB以下、配信ファイル数20,000以下をビルドで確認。原本PNG・ZIP・制作ツール・テスト・ローカル設定は公開物から除外する。",
+    "access": "Cloudflareの新しいWorkerへ本番公開済み。主要7URLと配信一覧に載る560素材の全件200応答、存在しないURLの404、manifestとService Workerの配信ヘッダーを確認。既存の四色オセロは変更していない。"
+  },
+  "verification": [
+    {
+      "id": "pwa-unit",
+      "label": "PWAの自動テスト",
+      "status": "passed",
+      "detail": "単体テスト7件通過。小型の検証ページでChromeとWebKitの実Service Workerを使い、全保存・配信元停止中の再読込・音声Range・更新待機・明示更新を確認。完成ゲーム全素材の確認は別項目。"
+    },
+    {
+      "id": "math",
+      "label": "全21ゲームの正誤・九九",
+      "status": "passed",
+      "detail": "Chrome・WebKitそれぞれで全21ゲーム×5問（計105問）を操作し、正解・誤答・時間切れを確認。全21ステージを巡る63問ツアーが結果へ到達することも確認。"
+    },
+    {
+      "id": "browser",
+      "label": "Chrome・WebKitでの統合確認",
+      "status": "passed",
+      "detail": "Chrome・WebKitで全ゲーム、100掛け声コレクション、一時停止を確認。出題中の停止・再開、読み込み中の声一覧を閉じる操作、画像読み込み失敗からの再試行も両ブラウザで回帰確認済み。JavaScriptエラー・HTTPエラーは0件。"
+    },
+    {
+      "id": "viewport",
+      "label": "スマホ横画面とPCの表示",
+      "status": "passed",
+      "detail": "844×390、667×375、932×430、1280×800、390×844で横のはみ出しと主操作が画面内に収まることを確認。縦画面の操作継続も確認。"
+    },
+    {
+      "id": "offline",
+      "label": "公開ビルドのオフライン起動",
+      "status": "passed",
+      "detail": "Chrome・WebKitでホームの保存ボタンから全560素材（57,229,136 bytes）を保存し、完了表示を確認。配信元サーバーを停止して再起動し、音楽6曲など32サンプルを通信なしで取得。確認版c6caaa4caf2adf39。"
+    },
+    {
+      "id": "live",
+      "label": "Cloudflare公開URL",
+      "status": "passed",
+      "detail": "Cloudflare公開URLで主要7ページ・PWAファイルと全560素材の存在を確認。本番のChromeスマホ横画面で21ゲームの入口を確認し、ジャックポットと九九の森を自然な時計で遊んで正解表示まで確認。公開版に開発用操作ブリッジはない。"
+    },
+    {
+      "id": "iphone-hardware",
+      "label": "実機iPhoneのSafari・ホーム画面起動",
+      "status": "not_verified",
+      "detail": "この作業環境では実機に触れられないため未確認。WebKitの自動検証とは分けて扱う。"
+    }
+  ],
+  "definitionOfDone": [
+    "21本を一つの入口から遊べ、各ミニゲームに入力・正誤・結果・次への進行がある。",
+    "九九の正答を誤表示しない。誤答・未回答も進行が止まらず、正しい九九を確認できる。",
+    "主対象のスマートフォン横画面で操作でき、PCでも主要操作が画面内に収まる。",
+    "九九の音声と掛け声が衝突せず、開始・停止・再開で音と進行が破綻しない。",
+    "PWAがインストール用メタデータとオフライン保存を持ち、進行を端末に保存できる。",
+    "Cloudflareの実URLでゲームを開ける。検証済み・未確認の範囲を分けて報告する。"
+  ],
+  "references": [
+    {
+      "title": "Cloudflare Static Assets 構成",
+      "url": "https://developers.cloudflare.com/workers/static-assets/binding/"
+    },
+    {
+      "title": "Cloudflare 配信ヘッダー",
+      "url": "https://developers.cloudflare.com/workers/static-assets/headers/"
+    },
+    {
+      "title": "Cloudflare ファイル制限",
+      "url": "https://developers.cloudflare.com/workers/platform/limits/"
+    }
+  ],
+  "soundAssetInventory": {
+    "voiceFiles": 424,
+    "musicTracks": 6,
+    "cheerPatterns": 100,
+    "credit": "VOICEVOX:ずんだもん"
+  }
+}

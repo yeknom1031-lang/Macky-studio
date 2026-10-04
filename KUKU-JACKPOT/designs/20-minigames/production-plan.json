@@ -1,8 +1,8 @@
 {
   "title": "九九ビート大放送 動く素材と掛け声の制作計画",
-  "version": 2,
+  "version": 3,
   "date": "2026-10-04",
-  "status": "計画更新。今回の画像生成は0回、掛け声は100台詞を定義。アニメーション素材と掛け声音声の量産・ゲーム組み込みは未実施。",
+  "status": "素材・アニメーション・掛け声の設計基準。全21本統合PWAを実装しCloudflareで公開済み。Chrome・WebKitで自動検証、本番でも主要操作を確認済み。実機iPhoneは未確認。最新状況はrelease-plan.jsonを参照。",
   "scope": {
     "games": 21,
     "gameViewport": {
@@ -21,7 +21,7 @@
     "historicalCallCountVerified": false,
     "newProductionCalls": 354,
     "reserveCalls": 120,
-    "spentThisUpdate": 0,
+    "spentThisUpdate": 4,
     "countingRules": [
       "1回の画像生成・画像編集のツール呼び出しを1回と数える。採用しなかった案や再生成も数える。",
       "1回で複数コマのシートが出ても1回。切り抜き、位置合わせ、圧縮、コードによる再生は生成回数に含めない。",
@@ -429,5 +429,11 @@
       "gate": "全体のテンポと学習内容が成立し、必要な修正が500回の上限内に収まる。"
     }
   ],
-  "qualityGate": "生成回数は完成度の保証ではない。各段階で動く場面を試遊し、形の一貫性・数字の正しさ・音声の明瞭さを確認してから量産する。"
+  "qualityGate": "生成回数は完成度の保証ではない。各段階で動く場面を試遊し、形の一貫性・数字の正しさ・音声の明瞭さを確認してから量産する。",
+  "releasePlan": {
+    "page": "release-plan.html",
+    "spec": "release-plan.json",
+    "target": "21ミニゲーム統合・スマホ横画面・iPhone PWA・Cloudflare公開",
+    "publicUrl": "https://kuku-beat-festival.yeknom1031.workers.dev/"
+  }
 }

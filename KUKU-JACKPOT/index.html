@@ -1,78 +1,54 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#fff7df"><meta name="description" content="えらんで、リズムで、ぴたっ！声と音楽で7の段を覚える、九九ジャックポット。">
-  <title>九九ジャックポット — 九九ビート大放送</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ffc83d'/%3E%3Ctext x='32' y='49' text-anchor='middle' font-size='48' font-weight='900' fill='%23182b43'%3E7%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css">
-  <link rel="preload" href="assets/art/beat-bird.webp" as="image">
-  <link rel="preload" href="assets/art/stage.webp" as="image">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#18394a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="九九ビート">
+  <meta name="description" content="スロット、ロケット、九九の森。21のリズムミニゲームで、うたって・あそんで九九を覚えよう！ スマートフォン横画面に対応。">
+  <title>九九ビート大放送！ — 21のリズムミニゲーム</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./assets/runtime/icon-192.png">
+  <link rel="icon" href="./assets/runtime/icon-192.png" type="image/png">
+  <link rel="preload" href="./assets/fonts/kuku-maru-black.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./src/festival.css">
+  <script type="module" src="./src/festival-app.js"></script>
 </head>
 <body>
-  <div class="page-shell">
-    <header class="site-header">
-      <a class="brand" href="./" aria-label="九九ビート大放送 ホーム"><span class="brand-icon">♫</span><span><small>ノリノリ、おぼえる。</small><b>九九ビート<span>大放送</span></b></span></a>
-      <div class="episode"><span class="live-dot"></span> STAGE 01 <i></i> 7のだん</div>
-      <nav class="header-actions" aria-label="ゲームメニュー"><button class="round-button" id="help-button" aria-label="あそびかた">?</button><button class="round-button" id="settings-button" aria-label="音とタイミングの設定"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M9 4v6M15 14v6"/></svg></button><button class="round-button" id="pause-button" aria-label="一時停止" hidden>Ⅱ</button></nav>
+  <main id="home" class="screen home-screen">
+    <header class="home-header wrap">
+      <a class="brand" href="./" aria-label="九九ビート ホーム"><span class="brand-mark" aria-hidden="true">♪</span><span>KUKU<span class="brand-dot">•</span>BEAT<small>まいにちが、九九フェス。</small></span></a>
+      <nav class="header-actions" aria-label="メニュー"><button id="records-btn" class="quiet" type="button"><span aria-hidden="true">★</span> きろく</button><button id="settings-btn" class="quiet" type="button"><span aria-hidden="true">⚙</span> せってい</button></nav>
     </header>
+    <section class="hero wrap" aria-labelledby="home-title">
+      <div class="hero-copy"><p class="eyebrow"><span class="live-dot"></span>21 の世界へ、オンエア！</p><h1 id="home-title">九九ビート<br><span>大放送<span class="title-bang">!</span></span></h1><p class="hero-lead">きいて、えらんで、リズムにのって。<br>九九がわかると、世界がおどりだす。</p><div class="hero-tags"><span>１〜９の段</span><span>声とリズムで覚える</span><span>スマホ横画面</span></div></div>
+      <div class="hero-world" aria-hidden="true"><span class="world-orbit orbit-one"></span><span class="world-orbit orbit-two"></span><span class="hero-note note-one">♫</span><span class="hero-note note-two">♪</span><span class="hero-spark spark-one">✦</span><span class="hero-spark spark-two">✦</span><div class="world-floor"></div><span class="speech speech-left">ほんと？ うそ？</span><img class="hero-friend hero-wolf" src="./assets/runtime/wolf-talk.webp" alt="" fetchpriority="high"><img class="hero-friend hero-bird" src="./assets/runtime/bird-win.webp" alt="" fetchpriority="high"><img class="hero-friend hero-rabbit" src="./assets/runtime/rabbit-win.webp" alt="" fetchpriority="high"><span class="speech speech-right">やったー！</span><span class="world-sticker"><b>21</b> MINI GAMES</span></div>
+    </section>
+    <section class="play-dock wrap" aria-label="あそびかたをえらぶ"><div class="table-picker"><label for="table">きょうの九九</label><select id="table"><option value="0">ぜんぶの段</option><option value="1">１の段</option><option value="2">２の段</option><option value="3">３の段</option><option value="4">４の段</option><option value="5">５の段</option><option value="6">６の段</option><option value="7" selected>７の段</option><option value="8">８の段</option><option value="9">９の段</option></select></div><button id="mix-btn" class="primary play-choice" type="button"><span class="choice-icon" aria-hidden="true">▶</span><span>おまかせで あそぶ<small>いろんなゲームが 次々でるよ</small></span><span class="button-arrow" aria-hidden="true">→</span></button><button id="tour-btn" class="secondary play-choice" type="button"><span class="choice-icon" aria-hidden="true">★</span><span>21 の世界を めぐる<small>ぜんぶのゲームに チャレンジ</small></span></button><button id="browse-btn" class="text-button browse-shortcut" type="button">ゲームをえらぶ <span aria-hidden="true">↓</span></button></section>
+    <div class="home-meta wrap"><p id="home-record">さあ、最初の１問から！</p><button id="install-btn" class="text-button" type="button">＋ ホーム画面に追加</button></div>
+    <section id="library" class="library wrap" aria-labelledby="library-title"><div class="section-heading"><div><p class="eyebrow">PICK YOUR STAGE</p><h2 id="library-title">どの世界で あそぶ？</h2></div><p>好きなゲームを、何度でも。</p></div><div id="game-grid" class="game-grid"></div></section>
+    <footer class="home-footer wrap"><span class="footer-brand">KUKU<span>•</span>BEAT</span><p>音声：VOICEVOX ずんだもん<br>音が出るよ。まずは小さめの音量でどうぞ。</p><a href="./designs/20-minigames/production-plan.html">制作計画・素材について <span aria-hidden="true">↗</span></a></footer>
+  </main>
 
-    <main>
-      <section id="home" class="home-screen" aria-labelledby="game-title">
-        <div class="hero-stage">
-          <div class="hero-copy">
-            <span class="eyebrow">あたまも、からだも、おどりだす。</span>
-            <h1 id="game-title"><span>九九</span><br>ジャックポット<span class="title-spark">✦</span></h1>
-            <p class="hero-description">えらんで、リズムで、ぴたっ！<span class="hero-extra"><br>きみの「わかった！」が、音になる。</span></p>
-            <div class="course-ticket"><b>7</b><span>のだん<span>9もん ・ 約70秒</span></span><i>★</i></div>
-          </div>
-          <div class="hero-art"><span class="sticker sticker-top">LET’S<br>GROOVE!</span><img src="assets/art/beat-bird.webp" alt="オレンジ色のとりのDJ、ビートくん" width="640" height="600"><span class="bird-name">MC ビートくん</span></div>
-          <div class="stage-label">KUKU JACKPOT <span>✦</span> EVERY ANSWER IS A BEAT</div>
-        </div>
-        <div class="launch-panel">
-          <div class="mode-selector" role="group" aria-label="あそぶモード">
-            <button class="mode active" data-mode="learn" aria-pressed="true"><span class="mode-symbol">♪</span><span><b>いっしょに練習</b><small>順番に・ヒントつき</small></span><span class="mode-check">✓</span></button>
-            <button class="mode" data-mode="challenge" aria-pressed="false"><span class="mode-symbol">★</span><span><b>チャレンジ</b><small>順番がシャッフル！</small></span><span class="mode-check">✓</span></button>
-          </div>
-          <div class="launch-actions"><button id="start-button" class="primary-button">あそぶ <span>▶</span></button><button id="watch-button" class="text-button">♪ お手本をみて覚える</button></div>
-          <p id="load-status" role="status" class="load-status" hidden></p>
-        </div>
-        <div class="how-strip"><span><i>1</i> こたえをえらぶ</span><b>→</b><span><i>2</i> 3・2・1 をきく</span><b>→</b><span><i>3</i> <strong>ぴたっ！</strong>で とめる</span></div>
-      </section>
+  <main id="play" class="screen play-screen" hidden>
+    <div class="game-shell">
+      <header class="game-header"><div class="game-identity"><span id="game-no" class="game-number">01</span><div><small id="play-mode">おまかせミックス</small><h1 id="game-title">九九ジャックポット</h1></div></div><div class="game-status"><span id="round-count">1 / 6</span><span class="live-score"><span aria-hidden="true">★</span> <b id="score-live">0</b></span><button id="pause-btn" class="pause-button" type="button" aria-label="いちじていし">Ⅱ</button></div></header>
+      <div class="question-row"><div id="equation" class="equation" aria-live="polite">7 × 7 = ?</div><div class="instruction-copy"><span id="phase-label" class="phase-label">きいてね</span><p id="instruction">九九をきいて、答えをえらぼう！</p></div></div>
+      <div class="stage-wrap"><canvas id="stage" width="1000" height="440" tabindex="0" aria-label="ミニゲームの画面。下の答えを選び、アクションボタンでも操作できます。"></canvas><div id="game-intro" class="game-intro" hidden><small>つぎのステージ</small><h3>九九ジャックポット</h3><p>答えをえらんで、リールをタップ！</p></div><div id="feedback" class="feedback" aria-live="polite" hidden></div></div>
+      <div class="beat-lane" aria-label="リズムの合図"><span id="rhythm-message">リズムに のって！</span><div class="beat-track"><div id="beat-fill"></div><span class="beat-tick tick-one"></span><span class="beat-tick tick-two"></span><span class="beat-tick tick-three"></span></div><b id="beat-count">♪</b></div>
+      <div class="controls"><div id="answers" class="answers" role="group" aria-label="答えをえらぶ"></div><button id="action-btn" class="action-button" type="button">ぴたっ！<small>タップして とめる</small></button></div>
+      <div class="play-caption"><span id="round-hint">九九の答えと、リズムを楽しもう</span><span id="progress-caption">1 / 6</span></div>
+    </div>
+  </main>
 
-      <section id="game" class="game-screen" aria-label="九九ジャックポット ゲーム" hidden>
-        <div class="game-hud"><div class="round-info"><span id="play-mode">PRACTICE</span><strong id="round-number">01 <small>/ 09</small></strong></div><div class="round-dots" id="round-dots" aria-label="9問の進みぐあい"></div><div class="score-pill"><span>せいかい</span><b id="correct-count">0</b><small>/9</small></div></div>
-        <div class="play-stage" id="play-stage">
-          <div class="host"><div class="speech-bubble" id="host-line">いっしょに<br>ノリノリ！</div><img id="game-bird" src="assets/art/beat-bird.webp" alt="ビートくん" width="300" height="300"><span class="host-tag">MC BEAT</span></div>
-          <div class="slot-area">
-            <div class="machine-label"><span>★</span><b id="question-label">ななのだん、いくよ！</b><span>★</span></div>
-            <div class="slot-machine" id="slot-machine"><span class="machine-screw left">✦</span><div class="reel"><span>7</span></div><span class="multiply">×</span><div class="reel" id="number-reel"><span id="factor">?</span></div><span class="equals">=</span><div class="answer-reel"><span id="slot-answer">?</span></div><span class="machine-screw right">✦</span></div>
-            <div class="answer-caption" id="answer-caption">まずは音をきいてね</div>
-            <div class="answers" id="answers" role="group" aria-label="こたえをえらぶ"><button class="answer-button" data-index="0" disabled><kbd>1</kbd><b>?</b><span>えらぶ</span></button><button class="answer-button" data-index="1" disabled><kbd>2</kbd><b>?</b><span>えらぶ</span></button><button class="answer-button" data-index="2" disabled><kbd>3</kbd><b>?</b><span>えらぶ</span></button></div>
-            <div class="hint-row"><button id="hint-button" class="hint-button" disabled>✦ ヒントをみる</button><span id="hint-text"></span></div>
-          </div>
-          <div class="rhythm-sticker"><span>FEEL THE</span><b>BEAT!</b><span>144 BPM</span></div>
-          <div id="feedback" class="feedback" aria-live="polite"></div>
-          <div class="confetti" id="confetti" aria-hidden="true"></div>
-        </div>
-        <div class="control-deck">
-          <div class="timing-panel"><div class="timing-heading"><span id="timing-instruction">こたえをえらんで、まってね</span><span id="rhythm-count">リズム ★ 0</span></div><div class="beat-track" id="beat-track"><div class="beat-line"></div><div class="beat-fill" id="beat-fill"></div><span class="count-node" data-count="3">3</span><span class="count-node" data-count="2">2</span><span class="count-node" data-count="1">1</span><span class="count-node target" data-count="0">ぴたっ!</span><span class="beat-cursor" id="beat-cursor">♪</span></div></div>
-          <button id="stop-button" class="stop-button" disabled><span id="stop-title">ぴたっ！</span><small>タップ / SPACE</small></button>
-        </div>
-        <div class="game-footer"><span id="game-footer-text">こたえ：1・2・3 キー ／ とめる：スペース</span><span id="remaining">約70秒</span></div>
-      </section>
+  <main id="results" class="screen results-screen" hidden><div class="results-wrap"><div class="result-celebration" aria-hidden="true"><span>✦</span><img src="./assets/runtime/bird-win.webp" alt=""><span>♪</span></div><p class="eyebrow">NICE SESSION!</p><h1 id="result-title">やったね！</h1><p id="result-note" class="result-note">きょうも九九が、ひとつ仲良しになったね。</p><div class="result-scores"><div><span>九九のせいかい</span><strong id="result-correct">0 / 6</strong><small>よく考えたね！</small></div><div><span>ナイスリズム</span><strong id="result-rhythm">0</strong><small>いいタイミング！</small></div></div><section class="review-section"><h2>きょうの九九</h2><div id="review-list" class="review-list"></div></section><div class="result-actions"><button id="again-btn" class="primary" type="button">もういっかい あそぶ</button><button id="review-btn" class="secondary" type="button">にがてを れんしゅう</button><button id="home-btn" class="quiet" type="button">ホームへ</button></div></div></main>
 
-      <section id="results" class="results-screen" aria-labelledby="result-title" hidden>
-        <div class="result-banner"><span class="eyebrow">YOU DID IT!</span><h2 id="result-title">ナイス・グルーヴ！</h2><p id="result-message">7のだん、さいごまでできたね。</p><img src="assets/art/beat-bird-win.webp" alt="よろこぶビートくん" class="result-bird"></div>
-        <div class="result-content"><div class="result-scores"><div><span>九九のせいかい</span><strong id="result-correct">0<small>/9</small></strong><p>答えをおぼえた数</p></div><div><span>リズムにぴたっ！</span><strong id="result-rhythm">0<small>/9</small></strong><p>合図にあわせられた数</p></div></div><p class="review-title" id="review-title">声に出して、もういちど！ <small>タップすると声がきけるよ</small></p><div id="review-grid" class="review-grid"></div><div class="result-actions"><button id="replay-button" class="primary-button">もういっかい！ <span>↻</span></button><button id="home-button" class="secondary-button">もどる</button></div><p class="saved-note" id="saved-note">きろくは、このブラウザに保存されます。</p></div>
-      </section>
-    </main>
-    <footer class="site-footer"><span>音をONにして、あそぼう。<span class="footer-note"> まちがえても、つぎのビートへ！</span></span><button id="credits-button" class="text-button">クレジット</button></footer>
-  </div>
-
-  <dialog id="help-dialog"><button class="dialog-close" data-close aria-label="とじる">×</button><span class="eyebrow">HOW TO PLAY</span><h2>3・2・1、ぴたっ！</h2><ol class="help-steps"><li><b>九九をきいて、答えをえらぼう。</b><p>数字をタップ。パソコンなら 1・2・3 キーでもOK。</p></li><li><b>3・2・1 の音をきこう。</b><p>音と一緒に、下の丸が光るよ。</p></li><li><b>つぎの拍で「ぴたっ！」を押そう。</b><p>大きなボタンをタップ、またはスペースキー。</p></li></ol><div class="help-note">リズムがずれても、答えがあっていれば正解！<br>最後に九九をいっしょに言ってみよう。</div><button class="primary-button" data-close>わかった！</button></dialog>
-  <dialog id="settings-dialog"><button class="dialog-close" data-close aria-label="とじる">×</button><span class="eyebrow">SOUND CHECK</span><h2>音とあそびやすさ</h2><label class="setting"><span>おんがく <output id="music-value">70%</output></span><input id="music-volume" type="range" min="0" max="100" value="70"></label><label class="setting"><span>九九のこえ <output id="voice-value">100%</output></span><input id="voice-volume" type="range" min="0" max="100" value="100"></label><label class="setting"><span>こうかおん <output id="sfx-value">65%</output></span><input id="sfx-volume" type="range" min="0" max="100" value="65"></label><label class="setting"><span>タイミング調整 <output id="offset-value">0 ms</output></span><input id="timing-offset" type="range" min="-250" max="250" step="5" value="0"></label><p class="setting-note">音に合わせて押しても「おそめ」になるときは、＋方向へ。スピーカーや有線イヤホンがおすすめ。</p><label class="check-setting"><input id="reduce-motion" type="checkbox">動きをひかえめにする</label><button class="primary-button" data-close>これでOK！</button></dialog>
-  <dialog id="pause-dialog"><span class="eyebrow">TAKE A BREATH</span><h2>ちょっと、ひとやすみ。</h2><p>曲も九九も、ここでまっているよ。</p><button id="resume-button" class="primary-button">つづける <span>▶</span></button><button id="quit-button" class="secondary-button">はじめにもどる</button></dialog>
-  <dialog id="credits-dialog"><button class="dialog-close" data-close aria-label="とじる">×</button><span class="eyebrow">THE BAND</span><h2>九九ジャックポット</h2><p>企画・ゲーム・楽曲制作：Macky Studio × Codex<br>イラスト：OpenAI Image Generation<br><b>音声：VOICEVOX:ずんだもん</b></p><p>オリジナル曲「Seven on the Floor」<br>144 BPM / 7の段のためのエレクトロ・ファンク</p><p class="setting-note">キャラクター「ビートくん」は本作品のオリジナルです。プレイ中にマイクや音声認識は使いません。</p><a href="https://zunko.jp/con_ongen_kiyaku.html" target="_blank" rel="noreferrer">音声の利用規約 ↗</a></dialog>
-  <script type="module" src="app.js"></script>
-</body></html>
+  <dialog id="dialog"><form method="dialog" class="dialog-close-form"><button class="dialog-close" aria-label="とじる" value="close">×</button></form><div id="dialog-content"></div></dialog>
+  <div id="loading" class="loading-screen" role="status" aria-live="polite" hidden><div><img src="./assets/runtime/bird-idle.webp" alt=""><p class="eyebrow">GET READY TO PLAY</p><h2>ステージを じゅんび中！</h2><progress max="1" value="0"></progress><p>九九と音楽を つれてくるよ…</p></div></div>
+  <div id="rotate" class="rotate-screen" hidden><div><div class="rotate-phone" aria-hidden="true">♪</div><p class="eyebrow">READY? ROTATE!</p><h2>スマホを よこにしてね</h2><p>画面いっぱいに、ゲームがひろがるよ。</p><button id="portrait-continue" class="secondary" type="button">この向きで つづける</button></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">ゲームを遊ぶには、ブラウザのJavaScriptを有効にしてください。</p></noscript>
+</body>
+</html>

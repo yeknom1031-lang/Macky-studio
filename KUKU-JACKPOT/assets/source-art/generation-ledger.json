@@ -1,0 +1,42 @@
+{
+  "limit": 500,
+  "historicalProvisionalCalls": 26,
+  "historicalNote": "22 design outputs have one-attempt records; four prior concept/prototype outputs exist. Earlier unsaved attempts cannot be verified. Keep 120-call reserve.",
+  "method": "built-in image_gen",
+  "calls": [
+    {
+      "id": "F001",
+      "asset": "cast-forest",
+      "status": "complete",
+      "file": "cast-forest.png"
+    },
+    {
+      "id": "F002",
+      "asset": "cast-action",
+      "status": "complete",
+      "file": "cast-factory.png"
+    },
+    {
+      "id": "F003",
+      "asset": "cast-friends",
+      "status": "complete",
+      "file": "cast-friends.png"
+    },
+    {
+      "id": "F004",
+      "asset": "digits",
+      "status": "complete",
+      "file": "digits.png"
+    }
+  ],
+  "promptSet": "prompts.json",
+  "runtimeAssetManifest": "../runtime/art-manifest.json",
+  "callsThisRelease": 4,
+  "runtimeAssets": {
+    "characters": 15,
+    "posesPerCharacter": 3,
+    "digitThemes": 3,
+    "digitsPerTheme": 10
+  },
+  "release": "https://kuku-beat-festival.yeknom1031.workers.dev/"
+}

@@ -1,0 +1,118 @@
+{
+  "characters": {
+    "bird": {
+      "idle": "bird-idle.webp",
+      "talk": "bird-talk.webp",
+      "win": "bird-win.webp"
+    },
+    "wolf": {
+      "idle": "wolf-idle.webp",
+      "talk": "wolf-talk.webp",
+      "win": "wolf-win.webp"
+    },
+    "rabbit": {
+      "idle": "rabbit-idle.webp",
+      "talk": "rabbit-talk.webp",
+      "win": "rabbit-win.webp"
+    },
+    "bear": {
+      "idle": "bear-idle.webp",
+      "talk": "bear-talk.webp",
+      "win": "bear-win.webp"
+    },
+    "fox": {
+      "idle": "fox-idle.webp",
+      "talk": "fox-talk.webp",
+      "win": "fox-win.webp"
+    },
+    "robot": {
+      "idle": "robot-idle.webp",
+      "talk": "robot-talk.webp",
+      "win": "robot-win.webp"
+    },
+    "cat": {
+      "idle": "cat-idle.webp",
+      "talk": "cat-talk.webp",
+      "win": "cat-win.webp"
+    },
+    "frog": {
+      "idle": "frog-idle.webp",
+      "talk": "frog-talk.webp",
+      "win": "frog-win.webp"
+    },
+    "gorilla": {
+      "idle": "gorilla-idle.webp",
+      "talk": "gorilla-talk.webp",
+      "win": "gorilla-win.webp"
+    },
+    "dragon": {
+      "idle": "dragon-idle.webp",
+      "talk": "dragon-talk.webp",
+      "win": "dragon-win.webp"
+    },
+    "alien": {
+      "idle": "alien-idle.webp",
+      "talk": "alien-talk.webp",
+      "win": "alien-win.webp"
+    },
+    "octopus": {
+      "idle": "octopus-idle.webp",
+      "talk": "octopus-talk.webp",
+      "win": "octopus-win.webp"
+    },
+    "raccoon": {
+      "idle": "raccoon-idle.webp",
+      "talk": "raccoon-talk.webp",
+      "win": "raccoon-win.webp"
+    },
+    "otter": {
+      "idle": "otter-idle.webp",
+      "talk": "otter-talk.webp",
+      "win": "otter-win.webp"
+    },
+    "dog": {
+      "idle": "dog-idle.webp",
+      "talk": "dog-talk.webp",
+      "win": "dog-win.webp"
+    }
+  },
+  "digits": {
+    "gold": {
+      "0": "digit-gold-0.webp",
+      "1": "digit-gold-1.webp",
+      "2": "digit-gold-2.webp",
+      "3": "digit-gold-3.webp",
+      "4": "digit-gold-4.webp",
+      "5": "digit-gold-5.webp",
+      "6": "digit-gold-6.webp",
+      "7": "digit-gold-7.webp",
+      "8": "digit-gold-8.webp",
+      "9": "digit-gold-9.webp"
+    },
+    "jelly": {
+      "0": "digit-jelly-0.webp",
+      "1": "digit-jelly-1.webp",
+      "2": "digit-jelly-2.webp",
+      "3": "digit-jelly-3.webp",
+      "4": "digit-jelly-4.webp",
+      "5": "digit-jelly-5.webp",
+      "6": "digit-jelly-6.webp",
+      "7": "digit-jelly-7.webp",
+      "8": "digit-jelly-8.webp",
+      "9": "digit-jelly-9.webp"
+    },
+    "wood": {
+      "0": "digit-wood-0.webp",
+      "1": "digit-wood-1.webp",
+      "2": "digit-wood-2.webp",
+      "3": "digit-wood-3.webp",
+      "4": "digit-wood-4.webp",
+      "5": "digit-wood-5.webp",
+      "6": "digit-wood-6.webp",
+      "7": "digit-wood-7.webp",
+      "8": "digit-wood-8.webp",
+      "9": "digit-wood-9.webp"
+    }
+  },
+  "method": "Generated transparent sheets; runtime slicing and resizing only"
+}

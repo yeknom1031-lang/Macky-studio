@@ -1,15 +1,15 @@
 {
   "title": "九九ビート大放送 掛け声100パターン",
-  "version": 1,
+  "version": 2,
   "date": "2026-10-04",
-  "status": "台詞・使用条件の計画。音声ファイルは未生成。",
+  "status": "100台詞の音声を生成済み。音声ファイルと実測尺を記入。台詞の適用条件を守ってゲーム内で再生する。",
   "uniqueTextCount": 100,
   "baseAudioTarget": 100,
   "notes": [
     "100種類は異なる台詞の数。キャラ違いの同文や別テイクを100種類に水増ししない。",
     "九九の問題・正答音声はこの100種類とは別枠。",
     "各台詞はまず適任の1キャラで収録する。全員分を一律に複製しない。",
-    "実際の話者モデルは試聴後に確定する。音声ファイルと実測尺は生成後に記入する。"
+    "実際の発話はVOICEVOX:ずんだもんを使用。voiceはゲーム内のキャラクターへの割り当てであり、音声モデルの名前ではない。"
   ],
   "categories": [
     {
@@ -104,9 +104,10 @@
       "voice": "beat-bird",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C001.wav",
+      "actualDurationSeconds": 1.6401,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C002",
@@ -118,9 +119,10 @@
       "voice": "wolf",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C002.wav",
+      "actualDurationSeconds": 1.3372,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C003",
@@ -132,9 +134,10 @@
       "voice": "rabbit",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C003.wav",
+      "actualDurationSeconds": 1.0848,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C004",
@@ -146,9 +149,10 @@
       "voice": "bear",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C004.wav",
+      "actualDurationSeconds": 0.5612,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C005",
@@ -160,9 +164,10 @@
       "voice": "robot",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C005.wav",
+      "actualDurationSeconds": 1.4156,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C006",
@@ -174,9 +179,10 @@
       "voice": "beat-bird",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C006.wav",
+      "actualDurationSeconds": 0.9525,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C007",
@@ -188,9 +194,10 @@
       "voice": "wolf",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C007.wav",
+      "actualDurationSeconds": 1.3139,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C008",
@@ -202,9 +209,10 @@
       "voice": "rabbit",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C008.wav",
+      "actualDurationSeconds": 1.0237,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C009",
@@ -216,9 +224,10 @@
       "voice": "bear",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C009.wav",
+      "actualDurationSeconds": 2.5525,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C010",
@@ -230,9 +239,10 @@
       "voice": "robot",
       "delivery": "明るく招く。長めの台詞は前奏で。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C010.wav",
+      "actualDurationSeconds": 1.5331,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C011",
@@ -244,9 +254,10 @@
       "voice": "wolf",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C011.wav",
+      "actualDurationSeconds": 0.6563,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C012",
@@ -258,9 +269,10 @@
       "voice": "rabbit",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C012.wav",
+      "actualDurationSeconds": 0.5247,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C013",
@@ -272,9 +284,10 @@
       "voice": "bear",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C013.wav",
+      "actualDurationSeconds": 0.6115,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C014",
@@ -286,9 +299,10 @@
       "voice": "robot",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C014.wav",
+      "actualDurationSeconds": 0.5199,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C015",
@@ -300,9 +314,10 @@
       "voice": "beat-bird",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C015.wav",
+      "actualDurationSeconds": 0.7103,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C016",
@@ -314,9 +329,10 @@
       "voice": "wolf",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C016.wav",
+      "actualDurationSeconds": 0.7748,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C017",
@@ -328,9 +344,10 @@
       "voice": "rabbit",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C017.wav",
+      "actualDurationSeconds": 0.657,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C018",
@@ -342,9 +359,10 @@
       "voice": "bear",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C018.wav",
+      "actualDurationSeconds": 0.6021,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C019",
@@ -356,9 +374,10 @@
       "voice": "robot",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C019.wav",
+      "actualDurationSeconds": 0.8439,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C020",
@@ -370,9 +389,10 @@
       "voice": "beat-bird",
       "delivery": "短くはっきり。九九を唱え終えた後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C020.wav",
+      "actualDurationSeconds": 0.6709,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C021",
@@ -384,9 +404,10 @@
       "voice": "rabbit",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C021.wav",
+      "actualDurationSeconds": 0.5034,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C022",
@@ -398,9 +419,10 @@
       "voice": "bear",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C022.wav",
+      "actualDurationSeconds": 0.8086,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C023",
@@ -412,9 +434,10 @@
       "voice": "robot",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C023.wav",
+      "actualDurationSeconds": 0.7185,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C024",
@@ -426,9 +449,10 @@
       "voice": "beat-bird",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C024.wav",
+      "actualDurationSeconds": 1.3893,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C025",
@@ -440,9 +464,10 @@
       "voice": "wolf",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C025.wav",
+      "actualDurationSeconds": 1.0715,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C026",
@@ -454,9 +479,10 @@
       "voice": "rabbit",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C026.wav",
+      "actualDurationSeconds": 1.0438,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C027",
@@ -468,9 +494,10 @@
       "voice": "bear",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C027.wav",
+      "actualDurationSeconds": 0.9776,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C028",
@@ -482,9 +509,10 @@
       "voice": "robot",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C028.wav",
+      "actualDurationSeconds": 1.4282,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C029",
@@ -496,9 +524,10 @@
       "voice": "beat-bird",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C029.wav",
+      "actualDurationSeconds": 1.7573,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C030",
@@ -510,9 +539,10 @@
       "voice": "wolf",
       "delivery": "跳ねるように。特別な正解や結果で。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C030.wav",
+      "actualDurationSeconds": 1.3081,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C031",
@@ -524,9 +554,10 @@
       "voice": "bear",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C031.wav",
+      "actualDurationSeconds": 0.8661,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C032",
@@ -538,9 +569,10 @@
       "voice": "robot",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C032.wav",
+      "actualDurationSeconds": 0.5976,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C033",
@@ -552,9 +584,10 @@
       "voice": "beat-bird",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C033.wav",
+      "actualDurationSeconds": 0.8917,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C034",
@@ -566,9 +599,10 @@
       "voice": "wolf",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C034.wav",
+      "actualDurationSeconds": 1.0842,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C035",
@@ -580,9 +614,10 @@
       "voice": "rabbit",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C035.wav",
+      "actualDurationSeconds": 0.6763,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C036",
@@ -594,9 +629,10 @@
       "voice": "bear",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C036.wav",
+      "actualDurationSeconds": 0.9782,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C037",
@@ -608,9 +644,10 @@
       "voice": "robot",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C037.wav",
+      "actualDurationSeconds": 1.5518,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C038",
@@ -622,9 +659,10 @@
       "voice": "beat-bird",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C038.wav",
+      "actualDurationSeconds": 0.6115,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C039",
@@ -636,9 +674,10 @@
       "voice": "wolf",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C039.wav",
+      "actualDurationSeconds": 1.0967,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C040",
@@ -650,9 +689,10 @@
       "voice": "rabbit",
       "delivery": "拍に乗せる。数学の正解を示す語は使わない。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C040.wav",
+      "actualDurationSeconds": 1.9001,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C041",
@@ -664,9 +704,10 @@
       "voice": "robot",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C041.wav",
+      "actualDurationSeconds": 0.9835,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C042",
@@ -678,9 +719,10 @@
       "voice": "beat-bird",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C042.wav",
+      "actualDurationSeconds": 1.1427,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C043",
@@ -692,9 +734,10 @@
       "voice": "wolf",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C043.wav",
+      "actualDurationSeconds": 0.9728,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C044",
@@ -706,9 +749,10 @@
       "voice": "rabbit",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C044.wav",
+      "actualDurationSeconds": 1.1183,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C045",
@@ -720,9 +764,10 @@
       "voice": "bear",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C045.wav",
+      "actualDurationSeconds": 1.3992,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C046",
@@ -734,9 +779,10 @@
       "voice": "robot",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C046.wav",
+      "actualDurationSeconds": 2.0863,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C047",
@@ -748,9 +794,10 @@
       "voice": "beat-bird",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C047.wav",
+      "actualDurationSeconds": 1.8336,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C048",
@@ -762,9 +809,10 @@
       "voice": "wolf",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C048.wav",
+      "actualDurationSeconds": 2.3114,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C049",
@@ -776,9 +824,10 @@
       "voice": "rabbit",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C049.wav",
+      "actualDurationSeconds": 1.9612,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C050",
@@ -790,9 +839,10 @@
       "voice": "bear",
       "delivery": "節目で一度。成績と一致する台詞だけ。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C050.wav",
+      "actualDurationSeconds": 2.2238,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C051",
@@ -804,9 +854,10 @@
       "voice": "beat-bird",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C051.wav",
+      "actualDurationSeconds": 0.7712,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C052",
@@ -818,9 +869,10 @@
       "voice": "wolf",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C052.wav",
+      "actualDurationSeconds": 0.7235,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C053",
@@ -832,9 +884,10 @@
       "voice": "rabbit",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C053.wav",
+      "actualDurationSeconds": 1.2917,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C054",
@@ -846,9 +899,10 @@
       "voice": "bear",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C054.wav",
+      "actualDurationSeconds": 1.3251,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C055",
@@ -860,9 +914,10 @@
       "voice": "robot",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C055.wav",
+      "actualDurationSeconds": 1.0245,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C056",
@@ -874,9 +929,10 @@
       "voice": "beat-bird",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C056.wav",
+      "actualDurationSeconds": 0.8498,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C057",
@@ -888,9 +944,10 @@
       "voice": "wolf",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C057.wav",
+      "actualDurationSeconds": 1.1327,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C058",
@@ -902,9 +959,10 @@
       "voice": "rabbit",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C058.wav",
+      "actualDurationSeconds": 0.9674,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C059",
@@ -916,9 +974,10 @@
       "voice": "bear",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C059.wav",
+      "actualDurationSeconds": 0.9762,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C060",
@@ -930,9 +989,10 @@
       "voice": "robot",
       "delivery": "優しく背中を押す。出題と重ねない。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C060.wav",
+      "actualDurationSeconds": 1.7266,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C061",
@@ -944,9 +1004,10 @@
       "voice": "wolf",
       "delivery": "明るさを保ちつつ穏やかに。正しい九九の後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C061.wav",
+      "actualDurationSeconds": 1.3888,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C062",
@@ -958,9 +1019,10 @@
       "voice": "rabbit",
       "delivery": "明るさを保ちつつ穏やかに。正しい九九の後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C062.wav",
+      "actualDurationSeconds": 1.6732,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C063",
@@ -972,9 +1034,10 @@
       "voice": "bear",
       "delivery": "明るさを保ちつつ穏やかに。正しい九九の後。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C063.wav",
+      "actualDurationSeconds": 2.0819,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C064",
@@ -986,9 +1049,10 @@
       "voice": "robot",
       "delivery": "明るさを保ちつつ穏やかに。正しい九九の後。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C064.wav",
+      "actualDurationSeconds": 1.2675,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C065",
@@ -1000,9 +1064,10 @@
       "voice": "beat-bird",
       "delivery": "明るさを保ちつつ穏やかに。正しい九九の後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C065.wav",
+      "actualDurationSeconds": 1.54,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C066",
@@ -1014,9 +1079,10 @@
       "voice": "wolf",
       "delivery": "明るさを保ちつつ穏やかに。正しい九九の後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C066.wav",
+      "actualDurationSeconds": 1.3656,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C067",
@@ -1028,9 +1094,10 @@
       "voice": "rabbit",
       "delivery": "明るさを保ちつつ穏やかに。正しい九九の後。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C067.wav",
+      "actualDurationSeconds": 1.8851,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C068",
@@ -1042,9 +1109,10 @@
       "voice": "bear",
       "delivery": "正しい九九の前に専用枠があるときに穏やかに案内する。出題や正答と重ねない。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C068.wav",
+      "actualDurationSeconds": 1.2934,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C069",
@@ -1056,9 +1124,10 @@
       "voice": "robot",
       "delivery": "明るさを保ちつつ穏やかに。正しい九九の後。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C069.wav",
+      "actualDurationSeconds": 1.4617,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C070",
@@ -1070,9 +1139,10 @@
       "voice": "beat-bird",
       "delivery": "明るさを保ちつつ穏やかに。正しい九九の後。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C070.wav",
+      "actualDurationSeconds": 1.184,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C071",
@@ -1084,9 +1154,10 @@
       "voice": "rabbit",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C071.wav",
+      "actualDurationSeconds": 1.2805,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C072",
@@ -1098,9 +1169,10 @@
       "voice": "bear",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C072.wav",
+      "actualDurationSeconds": 1.5508,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C073",
@@ -1112,9 +1184,10 @@
       "voice": "robot",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C073.wav",
+      "actualDurationSeconds": 0.9043,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C074",
@@ -1126,9 +1199,10 @@
       "voice": "beat-bird",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C074.wav",
+      "actualDurationSeconds": 0.9991,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C075",
@@ -1140,9 +1214,10 @@
       "voice": "wolf",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C075.wav",
+      "actualDurationSeconds": 1.5798,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C076",
@@ -1154,9 +1229,10 @@
       "voice": "rabbit",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C076.wav",
+      "actualDurationSeconds": 1.7803,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C077",
@@ -1168,9 +1244,10 @@
       "voice": "bear",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C077.wav",
+      "actualDurationSeconds": 1.1784,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C078",
@@ -1182,9 +1259,10 @@
       "voice": "robot",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C078.wav",
+      "actualDurationSeconds": 1.293,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C079",
@@ -1196,9 +1274,10 @@
       "voice": "beat-bird",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C079.wav",
+      "actualDurationSeconds": 1.3467,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C080",
@@ -1210,9 +1289,10 @@
       "voice": "wolf",
       "delivery": "次の発話が始まる前に終える。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C080.wav",
+      "actualDurationSeconds": 1.3328,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C081",
@@ -1224,9 +1304,10 @@
       "voice": "wolf",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C081.wav",
+      "actualDurationSeconds": 1.7636,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C082",
@@ -1238,9 +1319,10 @@
       "voice": "wolf",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C082.wav",
+      "actualDurationSeconds": 1.9585,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C083",
@@ -1252,9 +1334,10 @@
       "voice": "rabbit",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C083.wav",
+      "actualDurationSeconds": 1.6555,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C084",
@@ -1266,9 +1349,10 @@
       "voice": "rabbit",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C084.wav",
+      "actualDurationSeconds": 1.5682,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C085",
@@ -1280,9 +1364,10 @@
       "voice": "bear",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C085.wav",
+      "actualDurationSeconds": 1.9819,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C086",
@@ -1294,9 +1379,10 @@
       "voice": "fox",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C086.wav",
+      "actualDurationSeconds": 1.6127,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C087",
@@ -1308,9 +1394,10 @@
       "voice": "robot",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C087.wav",
+      "actualDurationSeconds": 1.9394,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C088",
@@ -1322,9 +1409,10 @@
       "voice": "frog",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "short-gap",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C088.wav",
+      "actualDurationSeconds": 1.6619,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C089",
@@ -1336,9 +1424,10 @@
       "voice": "gorilla",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C089.wav",
+      "actualDurationSeconds": 1.602,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C090",
@@ -1350,9 +1439,10 @@
       "voice": "octopus",
       "delivery": "声色と決めポーズを合わせる。",
       "slotClass": "planned-bar",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C090.wav",
+      "actualDurationSeconds": 1.554,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C091",
@@ -1364,9 +1454,10 @@
       "voice": "robot",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C091.wav",
+      "actualDurationSeconds": 1.7807,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C092",
@@ -1378,9 +1469,10 @@
       "voice": "beat-bird",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C092.wav",
+      "actualDurationSeconds": 0.8641,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C093",
@@ -1392,9 +1484,10 @@
       "voice": "wolf",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C093.wav",
+      "actualDurationSeconds": 1.7192,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C094",
@@ -1406,9 +1499,10 @@
       "voice": "rabbit",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C094.wav",
+      "actualDurationSeconds": 1.4163,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C095",
@@ -1420,9 +1514,10 @@
       "voice": "bear",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C095.wav",
+      "actualDurationSeconds": 0.997,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C096",
@@ -1434,9 +1529,10 @@
       "voice": "robot",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C096.wav",
+      "actualDurationSeconds": 1.508,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C097",
@@ -1448,9 +1544,10 @@
       "voice": "beat-bird",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C097.wav",
+      "actualDurationSeconds": 1.7229,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C098",
@@ -1462,9 +1559,10 @@
       "voice": "wolf",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C098.wav",
+      "actualDurationSeconds": 1.9182,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C099",
@@ -1476,9 +1574,10 @@
       "voice": "rabbit",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C099.wav",
+      "actualDurationSeconds": 1.6119,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     },
     {
       "id": "C100",
@@ -1490,9 +1589,10 @@
       "voice": "bear",
       "delivery": "終奏で余韻を作る。途中終了にも合うものを選ぶ。",
       "slotClass": "intro-outro",
-      "status": "script-ready",
-      "audioFile": null,
-      "actualDurationSeconds": null
+      "status": "generated",
+      "audioFile": "../../assets/audio/festival/voice/C100.wav",
+      "actualDurationSeconds": 2.4463,
+      "actualSpeaker": "VOICEVOX:ずんだもん"
     }
   ]
 }
