@@ -1,0 +1,8472 @@
+{
+  "date": "2026-10-04",
+  "policy": "ブラウザ版の既存画像・コマ分けを再利用し、同形式で新ベースを多数生成する。追加生成を止めない。",
+  "summary": {
+    "base_characters": 250,
+    "people": 232,
+    "animals": 18,
+    "source_sheets": 29,
+    "expansion_characters": 170,
+    "expansion_sheets": 17,
+    "typical_walk_frames": 4,
+    "typical_action_frames": 4,
+    "typical_rows": 10,
+    "playback_slots": 15,
+    "atlas_unique_frames": 2543,
+    "backgrounds": 7
+  },
+  "characters": [
+    {
+      "id": "EX001",
+      "legacy_base_index": 0,
+      "name": "リーフ",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-a.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 0,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX002",
+      "legacy_base_index": 1,
+      "name": "ココ",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-a.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 1,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX003",
+      "legacy_base_index": 2,
+      "name": "ソラじい",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-a.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 2,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX004",
+      "legacy_base_index": 3,
+      "name": "モコ",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-a.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 3,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX005",
+      "legacy_base_index": 4,
+      "name": "マリン",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-a.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 4,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX006",
+      "legacy_base_index": 5,
+      "name": "アン",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-b.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 0,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX007",
+      "legacy_base_index": 6,
+      "name": "シェフ",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-b.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 1,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX008",
+      "legacy_base_index": 7,
+      "name": "スミレ",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-b.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 2,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX009",
+      "legacy_base_index": 8,
+      "name": "ハナばあ",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-b.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 3,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX010",
+      "legacy_base_index": 9,
+      "name": "ポポ",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-b.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 4,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX011",
+      "legacy_base_index": 10,
+      "name": "おまわりさん",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-c.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 0,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX012",
+      "legacy_base_index": 11,
+      "name": "ドロボー",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-c.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 1,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX013",
+      "legacy_base_index": 12,
+      "name": "つり名人",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-c.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 2,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX014",
+      "legacy_base_index": 13,
+      "name": "パン屋さん",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-c.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 3,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX015",
+      "legacy_base_index": 14,
+      "name": "うたう旅人",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-c.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 4,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX016",
+      "legacy_base_index": 15,
+      "name": "ちびザウルス",
+      "animal": false,
+      "action": "既存の歩行",
+      "source": "assets/walk-c.png",
+      "source_width": 2172,
+      "source_height": 724,
+      "row": 5,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          15
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX017",
+      "legacy_base_index": 16,
+      "name": "杖のおじいちゃん",
+      "animal": false,
+      "action": "cane",
+      "source": "assets/diversity/people-a.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 0,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX018",
+      "legacy_base_index": 17,
+      "name": "編み物のおばあちゃん",
+      "animal": false,
+      "action": "knit",
+      "source": "assets/diversity/people-a.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 1,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX019",
+      "legacy_base_index": 18,
+      "name": "玉乗りピエロ",
+      "animal": false,
+      "action": "juggle",
+      "source": "assets/diversity/people-a.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 2,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX020",
+      "legacy_base_index": 19,
+      "name": "カメラの青年",
+      "animal": false,
+      "action": "photo",
+      "source": "assets/diversity/people-a.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 3,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX021",
+      "legacy_base_index": 20,
+      "name": "体操のお姉さん",
+      "animal": false,
+      "action": "stretch",
+      "source": "assets/diversity/people-a.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 4,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX022",
+      "legacy_base_index": 21,
+      "name": "バスケのお兄さん",
+      "animal": false,
+      "action": "basketball",
+      "source": "assets/diversity/people-a.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 5,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX023",
+      "legacy_base_index": 22,
+      "name": "レインボーのダンサー",
+      "animal": false,
+      "action": "dance",
+      "source": "assets/diversity/people-a.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 6,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX024",
+      "legacy_base_index": 23,
+      "name": "本好きの人",
+      "animal": false,
+      "action": "read",
+      "source": "assets/diversity/people-a.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 7,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX025",
+      "legacy_base_index": 24,
+      "name": "柴犬",
+      "animal": true,
+      "action": "sniff",
+      "source": "assets/diversity/animals.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 0,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX026",
+      "legacy_base_index": 25,
+      "name": "ダックス",
+      "animal": true,
+      "action": "fetch",
+      "source": "assets/diversity/animals.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 1,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX027",
+      "legacy_base_index": 26,
+      "name": "ふわふわプードル",
+      "animal": true,
+      "action": "roll",
+      "source": "assets/diversity/animals.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 2,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX028",
+      "legacy_base_index": 27,
+      "name": "大きな牧羊犬",
+      "animal": true,
+      "action": "shake",
+      "source": "assets/diversity/animals.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 3,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX029",
+      "legacy_base_index": 28,
+      "name": "三毛猫",
+      "animal": true,
+      "action": "groom",
+      "source": "assets/diversity/animals.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 4,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX030",
+      "legacy_base_index": 29,
+      "name": "黒ねこ",
+      "animal": true,
+      "action": "pounce",
+      "source": "assets/diversity/animals.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 5,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX031",
+      "legacy_base_index": 30,
+      "name": "ふとっちょ茶トラ",
+      "animal": true,
+      "action": "sleep",
+      "source": "assets/diversity/animals.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 6,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX032",
+      "legacy_base_index": 31,
+      "name": "ふわふわ白ねこ",
+      "animal": true,
+      "action": "groom",
+      "source": "assets/diversity/animals.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 7,
+      "source_frames": 14,
+      "active_unique_frames": 14,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX033",
+      "legacy_base_index": 32,
+      "name": "パン職人",
+      "animal": false,
+      "action": "bake",
+      "source": "assets/diversity/workers.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 0,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX034",
+      "legacy_base_index": 33,
+      "name": "大工さん",
+      "animal": false,
+      "action": "hammer",
+      "source": "assets/diversity/workers.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 1,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX035",
+      "legacy_base_index": 34,
+      "name": "庭師さん",
+      "animal": false,
+      "action": "water",
+      "source": "assets/diversity/workers.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 2,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX036",
+      "legacy_base_index": 35,
+      "name": "ペンキ屋さん",
+      "animal": false,
+      "action": "paint",
+      "source": "assets/diversity/workers.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 3,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX037",
+      "legacy_base_index": 36,
+      "name": "清掃員さん",
+      "animal": false,
+      "action": "sweep",
+      "source": "assets/diversity/workers.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 4,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX038",
+      "legacy_base_index": 37,
+      "name": "画家さん",
+      "animal": false,
+      "action": "easel",
+      "source": "assets/diversity/workers.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 5,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX039",
+      "legacy_base_index": 38,
+      "name": "陶芸家さん",
+      "animal": false,
+      "action": "pottery",
+      "source": "assets/diversity/potter.png",
+      "source_width": 1536,
+      "source_height": 1024,
+      "row": 0,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": null,
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX040",
+      "legacy_base_index": 39,
+      "name": "花屋さん",
+      "animal": false,
+      "action": "flowers",
+      "source": "assets/diversity/workers.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 6,
+      "source_frames": 15,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        5,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX041",
+      "legacy_base_index": 40,
+      "name": "太鼓のおじさん",
+      "animal": false,
+      "action": "drum",
+      "source": "assets/diversity/festival.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 0,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX042",
+      "legacy_base_index": 41,
+      "name": "バイオリンの人",
+      "animal": false,
+      "action": "violin",
+      "source": "assets/diversity/festival.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 1,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX043",
+      "legacy_base_index": 42,
+      "name": "アコーディオン奏者",
+      "animal": false,
+      "action": "accordion",
+      "source": "assets/diversity/festival.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 2,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX044",
+      "legacy_base_index": 43,
+      "name": "大道芸人",
+      "animal": false,
+      "action": "juggle",
+      "source": "assets/diversity/festival.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 3,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX045",
+      "legacy_base_index": 44,
+      "name": "風船屋さん",
+      "animal": false,
+      "action": "balloon",
+      "source": "assets/diversity/festival.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 4,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX046",
+      "legacy_base_index": 45,
+      "name": "シャボン玉の子",
+      "animal": false,
+      "action": "bubbles",
+      "source": "assets/diversity/festival.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 5,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX047",
+      "legacy_base_index": 46,
+      "name": "パントマイムの人",
+      "animal": false,
+      "action": "mime",
+      "source": "assets/diversity/festival.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 6,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX048",
+      "legacy_base_index": 47,
+      "name": "リボンの踊り子",
+      "animal": false,
+      "action": "ribbon",
+      "source": "assets/diversity/festival.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 7,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX049",
+      "legacy_base_index": 48,
+      "name": "ヨガの人",
+      "animal": false,
+      "action": "yoga",
+      "source": "assets/diversity/sports.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 0,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX050",
+      "legacy_base_index": 49,
+      "name": "フラフープの人",
+      "animal": false,
+      "action": "hoop",
+      "source": "assets/diversity/sports.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 1,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX051",
+      "legacy_base_index": 50,
+      "name": "スケーター",
+      "animal": false,
+      "action": "skate",
+      "source": "assets/diversity/sports.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 2,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX052",
+      "legacy_base_index": 51,
+      "name": "なわとびの子",
+      "animal": false,
+      "action": "skip",
+      "source": "assets/diversity/sports.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 3,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX053",
+      "legacy_base_index": 52,
+      "name": "ダンベルのおじさん",
+      "animal": false,
+      "action": "weights",
+      "source": "assets/diversity/sports.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 4,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX054",
+      "legacy_base_index": 53,
+      "name": "空手家",
+      "animal": false,
+      "action": "karate",
+      "source": "assets/diversity/sports.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 5,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX055",
+      "legacy_base_index": 54,
+      "name": "サッカー少年",
+      "animal": false,
+      "action": "football",
+      "source": "assets/diversity/sports.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 6,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX056",
+      "legacy_base_index": 55,
+      "name": "バレリーナ",
+      "animal": false,
+      "action": "ballet",
+      "source": "assets/diversity/sports.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 7,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX057",
+      "legacy_base_index": 56,
+      "name": "和服のおばあちゃん",
+      "animal": false,
+      "action": "fan",
+      "source": "assets/diversity/neighbors.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 0,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX058",
+      "legacy_base_index": 57,
+      "name": "サリーの女性",
+      "animal": false,
+      "action": "tea",
+      "source": "assets/diversity/neighbors.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 1,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX059",
+      "legacy_base_index": 58,
+      "name": "ターバンのおじさん",
+      "animal": false,
+      "action": "read",
+      "source": "assets/diversity/neighbors.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 2,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX060",
+      "legacy_base_index": 59,
+      "name": "車いすの画家",
+      "animal": false,
+      "action": "sketch",
+      "source": "assets/diversity/neighbors.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 3,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX061",
+      "legacy_base_index": 60,
+      "name": "補聴器の女の子",
+      "animal": false,
+      "action": "clap",
+      "source": "assets/diversity/neighbors.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 4,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX062",
+      "legacy_base_index": 61,
+      "name": "ひげの紳士",
+      "animal": false,
+      "action": "tea",
+      "source": "assets/diversity/neighbors.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 5,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX063",
+      "legacy_base_index": 62,
+      "name": "スーツの女性",
+      "animal": false,
+      "action": "phone",
+      "source": "assets/diversity/neighbors.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 6,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX064",
+      "legacy_base_index": 63,
+      "name": "パンクのお姉さん",
+      "animal": false,
+      "action": "guitar",
+      "source": "assets/diversity/neighbors.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 7,
+      "source_frames": 16,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        5,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX065",
+      "legacy_base_index": 64,
+      "name": "赤ちゃんとパパ",
+      "animal": false,
+      "action": "cradle",
+      "source": "assets/diversity/families.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 0,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX066",
+      "legacy_base_index": 65,
+      "name": "赤ちゃんとママ",
+      "animal": false,
+      "action": "cradle",
+      "source": "assets/diversity/families.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 1,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX067",
+      "legacy_base_index": 66,
+      "name": "双子のお姉ちゃん",
+      "animal": false,
+      "action": "clap",
+      "source": "assets/diversity/families.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 2,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX068",
+      "legacy_base_index": 67,
+      "name": "ぬいぐるみの子",
+      "animal": false,
+      "action": "hug",
+      "source": "assets/diversity/families.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 3,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX069",
+      "legacy_base_index": 68,
+      "name": "大きなリュックの人",
+      "animal": false,
+      "action": "map",
+      "source": "assets/diversity/families.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 4,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX070",
+      "legacy_base_index": 69,
+      "name": "おしゃれな紳士",
+      "animal": false,
+      "action": "photo",
+      "source": "assets/diversity/families.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 5,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX071",
+      "legacy_base_index": 70,
+      "name": "レインボーの女性",
+      "animal": false,
+      "action": "dance",
+      "source": "assets/diversity/families.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 6,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX072",
+      "legacy_base_index": 71,
+      "name": "日傘のおばさん",
+      "animal": false,
+      "action": "fan",
+      "source": "assets/diversity/families.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 7,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX073",
+      "legacy_base_index": 72,
+      "name": "宇宙飛行士",
+      "animal": false,
+      "action": "float",
+      "source": "assets/diversity/costumes.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 0,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX074",
+      "legacy_base_index": 73,
+      "name": "小さな魔女",
+      "animal": false,
+      "action": "magic",
+      "source": "assets/diversity/costumes.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 1,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX075",
+      "legacy_base_index": 74,
+      "name": "大きなロボット",
+      "animal": false,
+      "action": "robot",
+      "source": "assets/diversity/costumes.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 2,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX076",
+      "legacy_base_index": 75,
+      "name": "カエルの人",
+      "animal": false,
+      "action": "hop",
+      "source": "assets/diversity/costumes.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 3,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX077",
+      "legacy_base_index": 76,
+      "name": "ペンギンの人",
+      "animal": false,
+      "action": "waddle",
+      "source": "assets/diversity/costumes.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 4,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX078",
+      "legacy_base_index": 77,
+      "name": "ドラゴンの人",
+      "animal": false,
+      "action": "flap",
+      "source": "assets/diversity/costumes.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 5,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX079",
+      "legacy_base_index": 78,
+      "name": "探偵さん",
+      "animal": false,
+      "action": "inspect",
+      "source": "assets/diversity/costumes.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 6,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX080",
+      "legacy_base_index": 79,
+      "name": "海賊のおじいさん",
+      "animal": false,
+      "action": "dance",
+      "source": "assets/diversity/costumes.png",
+      "source_width": 1717,
+      "source_height": 916,
+      "row": 7,
+      "source_frames": 17,
+      "active_unique_frames": 15,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        6,
+        6,
+        5
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX081",
+      "legacy_base_index": 80,
+      "name": "時計職人",
+      "animal": false,
+      "action": "repair",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX082",
+      "legacy_base_index": 81,
+      "name": "鍵屋さん",
+      "animal": false,
+      "action": "keys",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX083",
+      "legacy_base_index": 82,
+      "name": "靴職人",
+      "animal": false,
+      "action": "polish",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX084",
+      "legacy_base_index": 83,
+      "name": "ガラス職人",
+      "animal": false,
+      "action": "glass",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX085",
+      "legacy_base_index": 84,
+      "name": "仕立て屋さん",
+      "animal": false,
+      "action": "sew",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX086",
+      "legacy_base_index": 85,
+      "name": "かご職人",
+      "animal": false,
+      "action": "weave",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX087",
+      "legacy_base_index": 86,
+      "name": "革職人",
+      "animal": false,
+      "action": "stitch",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX088",
+      "legacy_base_index": 87,
+      "name": "和傘職人",
+      "animal": false,
+      "action": "umbrella",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX089",
+      "legacy_base_index": 88,
+      "name": "提灯職人",
+      "animal": false,
+      "action": "lantern",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX090",
+      "legacy_base_index": 89,
+      "name": "石工さん",
+      "animal": false,
+      "action": "carve",
+      "source": "assets/expansion/expansion-01.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX091",
+      "legacy_base_index": 90,
+      "name": "クレープ屋さん",
+      "animal": false,
+      "action": "crepe",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX092",
+      "legacy_base_index": 91,
+      "name": "寿司職人",
+      "animal": false,
+      "action": "sushi",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX093",
+      "legacy_base_index": 92,
+      "name": "アイス屋さん",
+      "animal": false,
+      "action": "icecream",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX094",
+      "legacy_base_index": 93,
+      "name": "たこ焼き屋さん",
+      "animal": false,
+      "action": "cook",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX095",
+      "legacy_base_index": 94,
+      "name": "ピザ職人",
+      "animal": false,
+      "action": "pizza",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX096",
+      "legacy_base_index": 95,
+      "name": "チョコ職人",
+      "animal": false,
+      "action": "chocolate",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX097",
+      "legacy_base_index": 96,
+      "name": "お茶屋さん",
+      "animal": false,
+      "action": "tea",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX098",
+      "legacy_base_index": 97,
+      "name": "果物屋さん",
+      "animal": false,
+      "action": "fruit",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX099",
+      "legacy_base_index": 98,
+      "name": "たい焼き屋さん",
+      "animal": false,
+      "action": "waffle",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX100",
+      "legacy_base_index": 99,
+      "name": "ドーナツ屋さん",
+      "animal": false,
+      "action": "donut",
+      "source": "assets/expansion/expansion-02.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX101",
+      "legacy_base_index": 100,
+      "name": "魚屋さん",
+      "animal": false,
+      "action": "fishbox",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX102",
+      "legacy_base_index": 101,
+      "name": "八百屋さん",
+      "animal": false,
+      "action": "vegetables",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX103",
+      "legacy_base_index": 102,
+      "name": "古道具屋さん",
+      "animal": false,
+      "action": "antique",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX104",
+      "legacy_base_index": 103,
+      "name": "帽子屋さん",
+      "animal": false,
+      "action": "hat",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX105",
+      "legacy_base_index": 104,
+      "name": "ぬいぐるみ屋さん",
+      "animal": false,
+      "action": "toy",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX106",
+      "legacy_base_index": 105,
+      "name": "レコード屋さん",
+      "animal": false,
+      "action": "record",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX107",
+      "legacy_base_index": 106,
+      "name": "花束のおじさん",
+      "animal": false,
+      "action": "bouquet",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX108",
+      "legacy_base_index": 107,
+      "name": "新聞屋さん",
+      "animal": false,
+      "action": "newspaper",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX109",
+      "legacy_base_index": 108,
+      "name": "ジャム屋さん",
+      "animal": false,
+      "action": "jam",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX110",
+      "legacy_base_index": 109,
+      "name": "せっけん屋さん",
+      "animal": false,
+      "action": "soap",
+      "source": "assets/expansion/expansion-03.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX111",
+      "legacy_base_index": 110,
+      "name": "消防士さん",
+      "animal": false,
+      "action": "hose",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX112",
+      "legacy_base_index": 111,
+      "name": "郵便屋さん",
+      "animal": false,
+      "action": "letter",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX113",
+      "legacy_base_index": 112,
+      "name": "車掌さん",
+      "animal": false,
+      "action": "ticket",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX114",
+      "legacy_base_index": 113,
+      "name": "救急隊員さん",
+      "animal": false,
+      "action": "bag",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX115",
+      "legacy_base_index": 114,
+      "name": "研究者さん",
+      "animal": false,
+      "action": "science",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX116",
+      "legacy_base_index": 115,
+      "name": "先生",
+      "animal": false,
+      "action": "teach",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX117",
+      "legacy_base_index": 116,
+      "name": "司書さん",
+      "animal": false,
+      "action": "books",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX118",
+      "legacy_base_index": 117,
+      "name": "配管工さん",
+      "animal": false,
+      "action": "wrench",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX119",
+      "legacy_base_index": 118,
+      "name": "電気屋さん",
+      "animal": false,
+      "action": "bulb",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX120",
+      "legacy_base_index": 119,
+      "name": "獣医さん",
+      "animal": false,
+      "action": "vet",
+      "source": "assets/expansion/expansion-04.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX121",
+      "legacy_base_index": 120,
+      "name": "サックスの人",
+      "animal": false,
+      "action": "sax",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX122",
+      "legacy_base_index": 121,
+      "name": "チェロの人",
+      "animal": false,
+      "action": "cello",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX123",
+      "legacy_base_index": 122,
+      "name": "フルートの人",
+      "animal": false,
+      "action": "flute",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX124",
+      "legacy_base_index": 123,
+      "name": "トランペットの人",
+      "animal": false,
+      "action": "trumpet",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX125",
+      "legacy_base_index": 124,
+      "name": "ハープの人",
+      "animal": false,
+      "action": "harp",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX126",
+      "legacy_base_index": 125,
+      "name": "三味線の人",
+      "animal": false,
+      "action": "shamisen",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX127",
+      "legacy_base_index": 126,
+      "name": "マラカスの人",
+      "animal": false,
+      "action": "maracas",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX128",
+      "legacy_base_index": 127,
+      "name": "木琴の人",
+      "animal": false,
+      "action": "xylophone",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX129",
+      "legacy_base_index": 128,
+      "name": "チューバの人",
+      "animal": false,
+      "action": "tuba",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX130",
+      "legacy_base_index": 129,
+      "name": "ハーモニカの人",
+      "animal": false,
+      "action": "harmonica",
+      "source": "assets/expansion/expansion-05.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX131",
+      "legacy_base_index": 130,
+      "name": "凧あげの子",
+      "animal": false,
+      "action": "kite",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX132",
+      "legacy_base_index": 131,
+      "name": "こま回しの子",
+      "animal": false,
+      "action": "top",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX133",
+      "legacy_base_index": 132,
+      "name": "けん玉の子",
+      "animal": false,
+      "action": "kendama",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX134",
+      "legacy_base_index": 133,
+      "name": "竹馬の人",
+      "animal": false,
+      "action": "stilts",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX135",
+      "legacy_base_index": 134,
+      "name": "竹とんぼの子",
+      "animal": false,
+      "action": "rotor",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX136",
+      "legacy_base_index": 135,
+      "name": "紙飛行機の人",
+      "animal": false,
+      "action": "paperplane",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX137",
+      "legacy_base_index": 136,
+      "name": "シャボンの老人",
+      "animal": false,
+      "action": "bubbles",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX138",
+      "legacy_base_index": 137,
+      "name": "お手玉のおばさん",
+      "animal": false,
+      "action": "beanbag",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX139",
+      "legacy_base_index": 138,
+      "name": "将棋のおじいさん",
+      "animal": false,
+      "action": "boardgame",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX140",
+      "legacy_base_index": 139,
+      "name": "ブーメランの人",
+      "animal": false,
+      "action": "boomerang",
+      "source": "assets/expansion/expansion-06.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX141",
+      "legacy_base_index": 140,
+      "name": "卓球の人",
+      "animal": false,
+      "action": "tabletennis",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX142",
+      "legacy_base_index": 141,
+      "name": "テニスの人",
+      "animal": false,
+      "action": "tennis",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX143",
+      "legacy_base_index": 142,
+      "name": "バドミントンの人",
+      "animal": false,
+      "action": "badminton",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX144",
+      "legacy_base_index": 143,
+      "name": "フェンシングの人",
+      "animal": false,
+      "action": "fencing",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 7,
+      "active_unique_frames": 7,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        3
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX145",
+      "legacy_base_index": 144,
+      "name": "ボウリングの人",
+      "animal": false,
+      "action": "bowling",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX146",
+      "legacy_base_index": 145,
+      "name": "ラグビーの人",
+      "animal": false,
+      "action": "rugby",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX147",
+      "legacy_base_index": 146,
+      "name": "サーファー",
+      "animal": false,
+      "action": "surf",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX148",
+      "legacy_base_index": 147,
+      "name": "ローラースケートの人",
+      "animal": false,
+      "action": "rollers",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX149",
+      "legacy_base_index": 148,
+      "name": "太極拳のおばあちゃん",
+      "animal": false,
+      "action": "taichi",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX150",
+      "legacy_base_index": 149,
+      "name": "体操のおじいちゃん",
+      "animal": false,
+      "action": "stretch",
+      "source": "assets/expansion/expansion-07.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX151",
+      "legacy_base_index": 150,
+      "name": "養蜂家さん",
+      "animal": false,
+      "action": "bees",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX152",
+      "legacy_base_index": 151,
+      "name": "きのこ博士",
+      "animal": false,
+      "action": "mushroom",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX153",
+      "legacy_base_index": 152,
+      "name": "盆栽のおじいさん",
+      "animal": false,
+      "action": "bonsai",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX154",
+      "legacy_base_index": 153,
+      "name": "蝶をみる人",
+      "animal": false,
+      "action": "butterfly",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX155",
+      "legacy_base_index": 154,
+      "name": "双眼鏡の人",
+      "animal": false,
+      "action": "binoculars",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX156",
+      "legacy_base_index": 155,
+      "name": "種まきの人",
+      "animal": false,
+      "action": "seeds",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX157",
+      "legacy_base_index": 156,
+      "name": "落ち葉のおじさん",
+      "animal": false,
+      "action": "rake",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX158",
+      "legacy_base_index": 157,
+      "name": "虫めがねの子",
+      "animal": false,
+      "action": "inspect",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX159",
+      "legacy_base_index": 158,
+      "name": "植木鉢の人",
+      "animal": false,
+      "action": "plant",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX160",
+      "legacy_base_index": 159,
+      "name": "バラの庭師",
+      "animal": false,
+      "action": "prune",
+      "source": "assets/expansion/expansion-08.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX161",
+      "legacy_base_index": 160,
+      "name": "折り紙の人",
+      "animal": false,
+      "action": "origami",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX162",
+      "legacy_base_index": 161,
+      "name": "模型の人",
+      "animal": false,
+      "action": "model",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX163",
+      "legacy_base_index": 162,
+      "name": "刺しゅうの人",
+      "animal": false,
+      "action": "embroider",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX164",
+      "legacy_base_index": 163,
+      "name": "人形師さん",
+      "animal": false,
+      "action": "puppet",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX165",
+      "legacy_base_index": 164,
+      "name": "書道の人",
+      "animal": false,
+      "action": "calligraphy",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX166",
+      "legacy_base_index": 165,
+      "name": "スケッチの人",
+      "animal": false,
+      "action": "sketch",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX167",
+      "legacy_base_index": 166,
+      "name": "折りたたみ椅子の人",
+      "animal": false,
+      "action": "chair",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX168",
+      "legacy_base_index": 167,
+      "name": "風車を作る子",
+      "animal": false,
+      "action": "pinwheel",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX169",
+      "legacy_base_index": 168,
+      "name": "ビーズの人",
+      "animal": false,
+      "action": "beads",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX170",
+      "legacy_base_index": 169,
+      "name": "ラジコンの人",
+      "animal": false,
+      "action": "remote",
+      "source": "assets/expansion/expansion-09.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX171",
+      "legacy_base_index": 170,
+      "name": "旅行のおばあちゃん",
+      "animal": false,
+      "action": "suitcase",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX172",
+      "legacy_base_index": 171,
+      "name": "登山のおじさん",
+      "animal": false,
+      "action": "hike",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX173",
+      "legacy_base_index": 172,
+      "name": "カメラのおばさん",
+      "animal": false,
+      "action": "photo",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX174",
+      "legacy_base_index": 173,
+      "name": "スケッチ旅行者",
+      "animal": false,
+      "action": "map",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX175",
+      "legacy_base_index": 174,
+      "name": "ピクニックの人",
+      "animal": false,
+      "action": "picnic",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX176",
+      "legacy_base_index": 175,
+      "name": "おみやげの青年",
+      "animal": false,
+      "action": "souvenir",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX177",
+      "legacy_base_index": 176,
+      "name": "双眼鏡のおばあさん",
+      "animal": false,
+      "action": "binoculars",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX178",
+      "legacy_base_index": 177,
+      "name": "海辺の子",
+      "animal": false,
+      "action": "shell",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX179",
+      "legacy_base_index": 178,
+      "name": "虫よけの人",
+      "animal": false,
+      "action": "fan",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX180",
+      "legacy_base_index": 179,
+      "name": "水筒の人",
+      "animal": false,
+      "action": "drink",
+      "source": "assets/expansion/expansion-10.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX181",
+      "legacy_base_index": 180,
+      "name": "ロングコートの紳士",
+      "animal": false,
+      "action": "watch",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX182",
+      "legacy_base_index": 181,
+      "name": "ベレーの女性",
+      "animal": false,
+      "action": "read",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX183",
+      "legacy_base_index": 182,
+      "name": "モードな青年",
+      "animal": false,
+      "action": "phone",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX184",
+      "legacy_base_index": 183,
+      "name": "虹色のスカーフの人",
+      "animal": false,
+      "action": "dance",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX185",
+      "legacy_base_index": 184,
+      "name": "大きなイヤリングの人",
+      "animal": false,
+      "action": "earrings",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX186",
+      "legacy_base_index": 185,
+      "name": "花柄スーツの人",
+      "animal": false,
+      "action": "bouquet",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX187",
+      "legacy_base_index": 186,
+      "name": "和モダンの人",
+      "animal": false,
+      "action": "fan",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX188",
+      "legacy_base_index": 187,
+      "name": "リボンの紳士",
+      "animal": false,
+      "action": "bowtie",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX189",
+      "legacy_base_index": 188,
+      "name": "フリルの人",
+      "animal": false,
+      "action": "parasol",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX190",
+      "legacy_base_index": 189,
+      "name": "スニーカーの人",
+      "animal": false,
+      "action": "laces",
+      "source": "assets/expansion/expansion-11.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX191",
+      "legacy_base_index": 190,
+      "name": "おんぶのおばあちゃん",
+      "animal": false,
+      "action": "cradle",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX192",
+      "legacy_base_index": 191,
+      "name": "絵本のパパ",
+      "animal": false,
+      "action": "read",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX193",
+      "legacy_base_index": 192,
+      "name": "おやつのママ",
+      "animal": false,
+      "action": "snack",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX194",
+      "legacy_base_index": 193,
+      "name": "肩車のお父さん",
+      "animal": false,
+      "action": "shoulder",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX195",
+      "legacy_base_index": 194,
+      "name": "赤い長靴の子",
+      "animal": false,
+      "action": "puddle",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX196",
+      "legacy_base_index": 195,
+      "name": "工作の子",
+      "animal": false,
+      "action": "paper",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX197",
+      "legacy_base_index": 196,
+      "name": "しゃがむおじいちゃん",
+      "animal": false,
+      "action": "crouch",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX198",
+      "legacy_base_index": 197,
+      "name": "手袋のおばさん",
+      "animal": false,
+      "action": "knit",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX199",
+      "legacy_base_index": 198,
+      "name": "お菓子の兄ちゃん",
+      "animal": false,
+      "action": "snack",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX200",
+      "legacy_base_index": 199,
+      "name": "リュックのお姉ちゃん",
+      "animal": false,
+      "action": "pack",
+      "source": "assets/expansion/expansion-12.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX201",
+      "legacy_base_index": 200,
+      "name": "大きな騎士",
+      "animal": false,
+      "action": "knight",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX202",
+      "legacy_base_index": 201,
+      "name": "小さな妖精",
+      "animal": false,
+      "action": "fairy",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX203",
+      "legacy_base_index": 202,
+      "name": "かぼちゃの人",
+      "animal": false,
+      "action": "pumpkin",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX204",
+      "legacy_base_index": 203,
+      "name": "きのこの人",
+      "animal": false,
+      "action": "mushroom",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX205",
+      "legacy_base_index": 204,
+      "name": "ゆきだるまの人",
+      "animal": false,
+      "action": "snowman",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX206",
+      "legacy_base_index": 205,
+      "name": "ねこの仮装の人",
+      "animal": false,
+      "action": "catdance",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX207",
+      "legacy_base_index": 206,
+      "name": "王冠のおじいさん",
+      "animal": false,
+      "action": "royal",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX208",
+      "legacy_base_index": 207,
+      "name": "天使のお姉さん",
+      "animal": false,
+      "action": "angel",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX209",
+      "legacy_base_index": 208,
+      "name": "カラフルな怪獣",
+      "animal": false,
+      "action": "monster",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX210",
+      "legacy_base_index": 209,
+      "name": "本の妖精",
+      "animal": false,
+      "action": "bookfairy",
+      "source": "assets/expansion/expansion-13.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX211",
+      "legacy_base_index": 210,
+      "name": "バナナの人",
+      "animal": false,
+      "action": "banana",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX212",
+      "legacy_base_index": 211,
+      "name": "いちごの人",
+      "animal": false,
+      "action": "strawberry",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX213",
+      "legacy_base_index": 212,
+      "name": "宇宙人の人",
+      "animal": false,
+      "action": "alien",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX214",
+      "legacy_base_index": 213,
+      "name": "パンダの人",
+      "animal": false,
+      "action": "panda",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX215",
+      "legacy_base_index": 214,
+      "name": "トラの人",
+      "animal": false,
+      "action": "tiger",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX216",
+      "legacy_base_index": 215,
+      "name": "うさぎの人",
+      "animal": false,
+      "action": "rabbit",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX217",
+      "legacy_base_index": 216,
+      "name": "カニの人",
+      "animal": false,
+      "action": "crab",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX218",
+      "legacy_base_index": 217,
+      "name": "ハチの人",
+      "animal": false,
+      "action": "bee",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX219",
+      "legacy_base_index": 218,
+      "name": "恐竜博士",
+      "animal": false,
+      "action": "dinosaur",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX220",
+      "legacy_base_index": 219,
+      "name": "星の人",
+      "animal": false,
+      "action": "star",
+      "source": "assets/expansion/expansion-14.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX221",
+      "legacy_base_index": 220,
+      "name": "ビーグル",
+      "animal": true,
+      "action": "sniff",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX222",
+      "legacy_base_index": 221,
+      "name": "コーギー",
+      "animal": true,
+      "action": "fetch",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX223",
+      "legacy_base_index": 222,
+      "name": "ハスキー",
+      "animal": true,
+      "action": "shake",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX224",
+      "legacy_base_index": 223,
+      "name": "ダルメシアン",
+      "animal": true,
+      "action": "stretch",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX225",
+      "legacy_base_index": 224,
+      "name": "垂れ耳うさぎ",
+      "animal": true,
+      "action": "hop",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX226",
+      "legacy_base_index": 225,
+      "name": "白うさぎ",
+      "animal": true,
+      "action": "groom",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX227",
+      "legacy_base_index": 226,
+      "name": "ハリネズミ",
+      "animal": true,
+      "action": "curl",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX228",
+      "legacy_base_index": 227,
+      "name": "アヒル",
+      "animal": true,
+      "action": "waddle",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX229",
+      "legacy_base_index": 228,
+      "name": "ミニブタ",
+      "animal": true,
+      "action": "sniff",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX230",
+      "legacy_base_index": 229,
+      "name": "リス",
+      "animal": true,
+      "action": "acorn",
+      "source": "assets/expansion/expansion-15.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX231",
+      "legacy_base_index": 230,
+      "name": "自転車整備士",
+      "animal": false,
+      "action": "bikefix",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX232",
+      "legacy_base_index": 231,
+      "name": "船長さん",
+      "animal": false,
+      "action": "captain",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX233",
+      "legacy_base_index": 232,
+      "name": "パイロットさん",
+      "animal": false,
+      "action": "pilot",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX234",
+      "legacy_base_index": 233,
+      "name": "バスの運転手",
+      "animal": false,
+      "action": "driver",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX235",
+      "legacy_base_index": 234,
+      "name": "鉄道模型の人",
+      "animal": false,
+      "action": "train",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX236",
+      "legacy_base_index": 235,
+      "name": "宇宙好きの子",
+      "animal": false,
+      "action": "rocket",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX237",
+      "legacy_base_index": 236,
+      "name": "消防好きの子",
+      "animal": false,
+      "action": "firetoy",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX238",
+      "legacy_base_index": 237,
+      "name": "車いすのダンサー",
+      "animal": false,
+      "action": "dance",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX239",
+      "legacy_base_index": 238,
+      "name": "車いすの読書家",
+      "animal": false,
+      "action": "read",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX240",
+      "legacy_base_index": 239,
+      "name": "ベビーカーの人",
+      "animal": false,
+      "action": "stroller",
+      "source": "assets/expansion/expansion-16.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX241",
+      "legacy_base_index": 240,
+      "name": "りんご飴の人",
+      "animal": false,
+      "action": "candy",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 0,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX242",
+      "legacy_base_index": 241,
+      "name": "金魚すくいの人",
+      "animal": false,
+      "action": "goldfish",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 1,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX243",
+      "legacy_base_index": 242,
+      "name": "お面のおばさん",
+      "animal": false,
+      "action": "mask",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 2,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX244",
+      "legacy_base_index": 243,
+      "name": "星を見る人",
+      "animal": false,
+      "action": "stars",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 3,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX245",
+      "legacy_base_index": 244,
+      "name": "灯りのおじいさん",
+      "animal": false,
+      "action": "lantern",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 4,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX246",
+      "legacy_base_index": 245,
+      "name": "太鼓の子",
+      "animal": false,
+      "action": "drum",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 5,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX247",
+      "legacy_base_index": 246,
+      "name": "踊る花笠の人",
+      "animal": false,
+      "action": "dance",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 6,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX248",
+      "legacy_base_index": 247,
+      "name": "わたあめの人",
+      "animal": false,
+      "action": "cottoncandy",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 7,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX249",
+      "legacy_base_index": 248,
+      "name": "扇子の青年",
+      "animal": false,
+      "action": "fan",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 8,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    },
+    {
+      "id": "EX250",
+      "legacy_base_index": 249,
+      "name": "花火柄の人",
+      "animal": false,
+      "action": "sparkle",
+      "source": "assets/expansion/expansion-17.png",
+      "source_width": 1122,
+      "source_height": 1402,
+      "row": 9,
+      "source_frames": 8,
+      "active_unique_frames": 8,
+      "playback_slots": 15,
+      "source_clip_counts": [
+        4,
+        4
+      ],
+      "clips": {
+        "walk": [
+          0,
+          5
+        ],
+        "gesture": [
+          5,
+          5
+        ],
+        "action": [
+          10,
+          5
+        ]
+      },
+      "status": "生成済み・再利用対象",
+      "reuse": "原本と既存コマを維持。必要な役割差分のみ別シートで追加。色違いは新ベースに数えない。"
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "EX-BG01",
+      "source": "assets/01-festival.png",
+      "status": "生成済み・原本を再利用"
+    },
+    {
+      "id": "EX-BG02",
+      "source": "assets/02-garden.png",
+      "status": "生成済み・原本を再利用"
+    },
+    {
+      "id": "EX-BG03",
+      "source": "assets/03-seaside.png",
+      "status": "生成済み・原本を再利用"
+    },
+    {
+      "id": "EX-BG04",
+      "source": "assets/04-sweets.png",
+      "status": "生成済み・原本を再利用"
+    },
+    {
+      "id": "EX-BG05",
+      "source": "assets/05-autumn.png",
+      "status": "生成済み・原本を再利用"
+    },
+    {
+      "id": "EX-BG06",
+      "source": "assets/06-snow.png",
+      "status": "生成済み・原本を再利用"
+    },
+    {
+      "id": "EX-BG07",
+      "source": "assets/07-lantern.png",
+      "status": "生成済み・原本を再利用"
+    }
+  ],
+  "source_sheets": {
+    "assets/walk-a.png": 5,
+    "assets/walk-b.png": 5,
+    "assets/walk-c.png": 6,
+    "assets/diversity/people-a.png": 8,
+    "assets/diversity/animals.png": 8,
+    "assets/diversity/workers.png": 7,
+    "assets/diversity/potter.png": 1,
+    "assets/diversity/festival.png": 8,
+    "assets/diversity/sports.png": 8,
+    "assets/diversity/neighbors.png": 8,
+    "assets/diversity/families.png": 8,
+    "assets/diversity/costumes.png": 8,
+    "assets/expansion/expansion-01.png": 10,
+    "assets/expansion/expansion-02.png": 10,
+    "assets/expansion/expansion-03.png": 10,
+    "assets/expansion/expansion-04.png": 10,
+    "assets/expansion/expansion-05.png": 10,
+    "assets/expansion/expansion-06.png": 10,
+    "assets/expansion/expansion-07.png": 10,
+    "assets/expansion/expansion-08.png": 10,
+    "assets/expansion/expansion-09.png": 10,
+    "assets/expansion/expansion-10.png": 10,
+    "assets/expansion/expansion-11.png": 10,
+    "assets/expansion/expansion-12.png": 10,
+    "assets/expansion/expansion-13.png": 10,
+    "assets/expansion/expansion-14.png": 10,
+    "assets/expansion/expansion-15.png": 10,
+    "assets/expansion/expansion-16.png": 10,
+    "assets/expansion/expansion-17.png": 10
+  }
+}

@@ -1,16 +1,17 @@
-"""Build planning ledgers and a readable appendix. Does not generate game assets."""
+"""Build placement ledgers using the existing browser sprite format. No generation."""
 from pathlib import Path
 import json
 import math
 from catalog_source import STAGES, ROLE_GROUPS, COMMON_COHORTS
 
 ROOT = Path(__file__).resolve().parent
-STATUS = "未生成の制作指示"
+STATUS = "制作候補・再利用と不足分を確認"
+EXISTING = json.loads((ROOT/"existing-assets.json").read_text())
 roles = []
 for group, names in ROLE_GROUPS.items():
     for name in names.split("|"):
         roles.append(dict(id=f"R{len(roles)+1:03}", group=group, name=name,
-            delivery="開始・主動作・終了・中断復帰を含む絵コンテ1式。使用する設備と相手を併記。",
+            delivery="開始・主動作・終了・中断復帰を設計。既存コマの並べ替えと接点図を優先し、不足する役割差分だけ追加生成。",
             status=STATUS))
 role_by_num = {i+1:r for i,r in enumerate(roles)}
 
@@ -39,7 +40,7 @@ def brief(seed, role, stage=None, child=False):
 def action_ids(primary, photo=False, child=False):
     if photo:
         return ["R200", "R201", "R202"]
-    # Profession-specific action + natural idle/social activity, never 250 actions per character.
+    # Primary action and behavior candidates; not three mandatory generated animation clips.
     pool = [98, 96, 97, 61, 74, 39, 100] if not child else [98, 97, 61, 203, 205, 206, 214]
     values = [primary]
     for r in pool[primary % len(pool):] + pool[:primary % len(pool)]:
@@ -54,7 +55,7 @@ assets = []
 stage_summary = []
 def asset(asset_id, stage, kind, name, spec, quantity=1):
     assets.append(dict(id=asset_id,stage=stage,kind=kind,name=name,quantity=quantity,
-                       spec=spec,status=STATUS))
+                       spec=spec,status=STATUS,generation_policy="既存を再利用し、不足分だけ追加。配置枠を生成回数に直結させない。"))
 
 GENERIC_PROPS = "ベンチ|椅子|小机|長机|柵|低い塀|花鉢|植栽箱|街灯|案内板枠|道具棚|収納箱|買い物かご|紙袋|布袋|コップ|皿|トレー|水差し|バケツ|ほうき|手桶|梯子|脚立|物干し竿|カーテン|日よけ|入口扉|窓|手すり|踏み台|荷札|時計枠|玄関マット|飾り旗|腰掛け石".split("|")
 for si, s in enumerate(STAGES, 1):
@@ -161,13 +162,16 @@ for group,names in ANIMAL_GROUPS.items():
             note="種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。"))
 
 for c in characters:
-    asset(c["id"],c["stage"],"人物",c["name"],"デザイン1、8方向、パーツ指示1、3動作×12主要ポーズを初期枠とする。表情・補修は追加。",46)
+    c['animation_format'] = '既存ブラウザ形式。新規は歩行4＋主要動作4を基本、追加差分は役割別。'
+    c['action_policy'] = '主要役割と補助行動の候補。3本の新規クリップを全員に必須としない。'
+    c['status'] = '既存人物の割当を優先する候補枠' if c['stage']=='COMMON' else '新規ベースの制作候補'
+    asset(c["id"],c["stage"],"人物",c["name"],"新規ベースは歩行4＋主要動作4を基本に、1行1体・10体1シート。共通枠には既存人物232人を優先配属。差分は必要箇所だけ。",8)
 for r in roles:
     asset(r["id"],"COMMON","役割",r["name"],r["delivery"])
 for j,name in enumerate("標準|小刻み|長い歩幅|低い重心|胸を張る|背中を丸める|高齢者のゆったりした歩き|杖|自走車いす|電動車いす|歩行器|小さな子ども|弾む歩き|片手の荷物|両手の荷物|重い荷物|傘|長い衣装|乗降直後|疲れた歩き".split("|"),1):
-    asset(f"MOVE{j:02}","COMMON","共通移動",name,"待機・開始・継続・加減速・方向転換・停止の6区間、8方向。人物の骨格へ調整するための動作参考。")
+    asset(f"MOVE{j:02}","COMMON","共通移動",name,"既存コマの速度・停止・再生順を個別調整する行動参考。全員分・全8方向の新原画は必須にしない。")
 for a in animals:
-    asset(a["id"],"COMMON","動物",a["name"],"原型・方向別原画・6動作。背景環境セットから参照。")
+    asset(a["id"],"COMMON","動物",a["name"],"既存18種を優先利用。新しい生き物は現行コマ形式で追加。6動作は候補で、全種に新規6本を課さない。")
 for j in range(1,13):
     asset(f"STYLE{j:02}","COMMON","画風基準",["構図と視点","人物縮尺","輪郭","明暗","材質","昼の光","夜の光","接地影","通常サイズの識別","拡大時の品質","動作の連続性","群衆の見え方"][j-1],"採用基準となる画像。以後の全生成で参照。")
 for j,name in enumerate("フィルム券表|フィルム券裏|券入れ開|券入れ閉|獲得の光|カメラ機能の絵|現像中の装飾|現像完了の装飾|写真縁の装飾|履歴写真の台紙|使用済み券の小物|空の券入れ".split("|"),1):
@@ -176,12 +180,14 @@ ui=["タイトル原画"]+[f"{s['name']}の選択表紙" for s in STAGES]+["探�
 for j,name in enumerate(ui,1):
     asset(f"UI{j:02}","COMMON","画面と案内",name,"文字は別レイヤー。ゲーム中の常設UIを増やさず、必要な時だけ表示。")
 
-data=dict(version="2026-10-03",status="画像未生成・ゲーム未実装の制作計画",stages=stage_summary,
+data=dict(version="2026-10-04",status="既存ブラウザ形式を再利用し新規ベースを追加する制作計画",existing_assets=EXISTING,stages=stage_summary,
     roles=roles,characters=characters,animals=animals,assets=assets,
     totals=dict(stages=len(STAGES),exclusive_characters=2400,common_characters=1900,
         characters=len(characters),photographers=sum(c['photographer'] for c in characters),
-        roles=len(roles),animals=len(animals),character_key_images=len(characters)*46,
-        character_action_clips=len(characters)*3,animal_clips=len(animals)*6,
+        roles=len(roles),animals=len(animals),existing_base_characters=EXISTING["summary"]["base_characters"],
+        existing_people=EXISTING["summary"]["people"],existing_animals=EXISTING["summary"]["animals"],
+        new_people_if_expanded=len(characters)-EXISTING["summary"]["people"],
+        standard_poses_per_new_character=8,character_behavior_candidates=len(characters)*3,animal_behavior_candidates=len(animals)*6,
         asset_records=len(assets),terrain=sum(x['terrain'] for x in stage_summary),
         buildings=sum(x['buildings'] for x in stage_summary),sites=sum(x['sites'] for x in stage_summary),
         props=sum(x['props'] for x in stage_summary),vehicles=96,environment=192,events=144))
@@ -203,7 +209,7 @@ assert all(len(c['actions'])==3 and len(set(c['actions']))==3 for c in character
 assert len(ui)==32
 (ROOT/'production-ledger.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
 
-lines=["# 全24ステージと250役割の制作付録", "", "この付録は画像生成の発注枠。人物番号は別々に描くデザインを表し、色違いを意味しない。実画像はまだ生成していない。", "", "## ステージの規模と素材数", "", "面積は現行1マップを1とした倍率。縦横両方をこの数だけ拡大する意味ではない。生活拠点は複数職種が時間を分けて利用できる。", "", "| 番号 | ステージ | 面積 | 人数 | 地形区画 | 建物 | 生活拠点 | 小物 |", "| --- | --- | --- | --- | --- | --- | --- | --- |"]
+lines=["# 全24ステージと250役割の制作付録", "", "この付録は配置と制作の候補枠。新規人物はブラウザ版の歩行4＋主要動作4を基本に追加し、共通枠には既存人物232人を優先する。各枠を新規生成1回と数えない。生成済み250ベースは別の既存素材一覧で確認できる。", "", "## ステージの規模と素材数", "", "面積は現行1マップを1とした倍率。縦横両方をこの数だけ拡大する意味ではない。生活拠点は複数職種が時間を分けて利用できる。", "", "| 番号 | ステージ | 面積 | 人数 | 地形区画 | 建物 | 生活拠点 | 小物 |", "| --- | --- | --- | --- | --- | --- | --- | --- |"]
 for s in stage_summary:
     lines.append(f"| {s['id']} | {s['name']} | {s['area']}倍 | {s['population']} | {s['terrain']} | {s['buildings']} | {s['sites']} | {s['props']} |")
 lines.extend(["",f"合計：地形{data['totals']['terrain']}区画、建物{data['totals']['buildings']}式、生活拠点{data['totals']['sites']}式、小物{data['totals']['props']}点。乗り物96式、環境192式、イベント144本。これらは異なる単位のため、単純合計を生成枚数にしない。", ""])
@@ -217,10 +223,10 @@ for si,s in enumerate(STAGES,1):
     lines.extend(["",f"**代表小物12点**：{'、'.join(s['props'].split('|'))}。残りは場所に合う家具・道具・前景を素材台帳で指定。", "",f"**乗り物4式**：{'、'.join(s['vehicles'].split('|'))}。", "",f"**環境8式**：{'、'.join(s['env'].split('|'))}。", "", "**イベント6本**：",""])
     for evt in s['events'].split('|'): lines.append(f"- {evt}。開始・進行・終了・復帰の絵コンテと必要な固有素材を用意。")
     lines.extend(["", "各配役5人は、顔・体格・髪や帽子・服の形・道具の持ち方で別人にする。職種が同じでも共通の人体原画の配色替えにしない。詳細は人物台帳の各IDを参照。",""])
-lines.extend(["## 共通住民1900人の制作枠","", "全て提案枠。各区分100人。職業や行動の絵を背景に合わせて選び、同じ場面に同じ人物を重複させない。", "", "| IDの範囲 | 住民区分 | 人数 |", "| --- | --- | --- |"])
+lines.extend(["## 共通住民1900人の制作枠","", "最大1,900人の提案枠。まず既存232人を充て、残り1,668人を追加する拡張案。候補の配役表は原画を描き直す指示ではない。既存の名前と外見を優先して割り当て、同じ場面に同じ人物を重複させない。", "", "| IDの範囲 | 住民区分 | 人数 |", "| --- | --- | --- |"])
 for i,name in enumerate(COMMON_COHORTS):
     lines.append(f"| G-C{i*100+1:04}〜G-C{(i+1)*100:04} | {name} | 100 |")
-lines.extend(["", "## 全250種類の役割と動作", "", "各行は独立した行動仕様。人物の人数を表さない。全行に、始める・続ける・終える・中断から戻る絵コンテと、接触位置の資料を作る。専用人物と共通住民の動作へ割り当て、全250種類を台帳上で使用する。", ""])
+lines.extend(["", "## 全250種類の役割と動作", "", "各行は独立した行動仕様。人物の人数を表さない。全行で、始める・続ける・終える・中断から戻る動きと接点を設計する。絵コンテは既存コマから作れ、不足する差分だけ追加生成する。専用人物と共通住民の動作へ割り当て、全250種類を台帳上で使用する。", ""])
 for group in ROLE_GROUPS:
     lines.extend([f"### {group}","", "| ID | 動作 |", "| --- | --- |"])
     for r in roles:
@@ -228,6 +234,6 @@ for group in ROLE_GROUPS:
     lines.append("")
 lines.extend(["## 全96種類の動物デザイン", "", "原画と動きは種の構造に合わせる。背景で使う生物はこの原画を参照し、同じ原画を新規納品数として二度数えない。", "", "| ID | 区分 | デザイン |", "| --- | --- | --- |"])
 for a in animals: lines.append(f"| {a['id']} | {a['group']} | {a['name']} |")
-lines.extend(["", "## 人物と素材の個別台帳", "", "人物4,300人と全素材枠は、同じフォルダーの production-ledger.json に格納。読みやすい計画書HTMLでは人物の特徴・役割・素材を検索できる。台帳は全て未生成状態で、候補画像・検品済み画像の存在を示さない。",""])
+lines.extend(["", "## 人物と素材の個別台帳", "", "人物4,300人と全素材枠は、同じフォルダーの production-ledger.json に格納。読みやすい計画書HTMLでは人物の特徴・役割・素材を検索できる。候補台帳は全員の新規生成を要求しない。別の existing-assets.json に生成済み250ベースを記録し、再利用を優先する。",""])
 (ROOT/'CATALOG.md').write_text('\n'.join(lines))
 print(json.dumps(data['totals'],ensure_ascii=False,indent=2))

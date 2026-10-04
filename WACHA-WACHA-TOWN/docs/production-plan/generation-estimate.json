@@ -1,160 +1,83 @@
 {
-  "date": "2026-10-03",
-  "basis": "既存台帳の24ステージ・人物4300人・原画197800点分を維持。生成実績なし。",
-  "one_call": "1出力シート。別候補・再生成・AI編集も1回ずつ加算。",
-  "other_categories": [
-    {
-      "category": "画風基準",
-      "items": "12ボード",
-      "packing": "1ボード／回",
-      "calls": 12
-    },
-    {
-      "category": "ステージ設計",
-      "items": "24ステージ×6図",
-      "packing": "全景や設計図を1図／回",
-      "calls": 144
-    },
-    {
-      "category": "地形",
-      "items": "754区画×2レイヤー",
-      "packing": "広い地面と水面は1レイヤー／回",
-      "calls": 1508
-    },
-    {
-      "category": "建物",
-      "items": "302建物×5パーツ群",
-      "packing": "1建物の5群を2シートへ分ける",
-      "calls": 604
-    },
-    {
-      "category": "生活拠点",
-      "items": "754セット",
-      "packing": "空状態・使用状態・部材を1組／回",
-      "calls": 754
-    },
-    {
-      "category": "小物",
-      "items": "1618点",
-      "packing": "2点×最大4状態を1シート。ステージ内で組む",
-      "calls": 812
-    },
-    {
-      "category": "乗り物",
-      "items": "96セット",
-      "packing": "方向・構造／前後部材／可動部／乗降用の4シート",
-      "calls": 384
-    },
-    {
-      "category": "環境",
-      "items": "192セット",
-      "packing": "静止・構造と、変化・動作の2シート",
-      "calls": 384
-    },
-    {
-      "category": "イベント",
-      "items": "144本",
-      "packing": "絵コンテと固有効果の2シート。人物は再利用",
-      "calls": 288
-    },
-    {
-      "category": "役割",
-      "items": "250種類",
-      "packing": "開始・継続・終了・中断を1絵コンテ／回",
-      "calls": 250
-    },
-    {
-      "category": "共通移動",
-      "items": "20種×6区間×8方向",
-      "packing": "1区間の8方向を1シート",
-      "calls": 120
-    },
-    {
-      "category": "動物",
-      "items": "96デザイン×6動作",
-      "packing": "基本方向1＋動作6＝7シート／種",
-      "calls": 672
-    },
-    {
-      "category": "写真機能",
-      "items": "12原画枠",
-      "packing": "券や装飾4点／回。数字と枠は後付け",
-      "calls": 3
-    },
-    {
-      "category": "画面と案内",
-      "items": "32原画枠",
-      "packing": "タイトル・表紙など1点／回",
-      "calls": 32
-    },
-    {
-      "category": "役割接地図",
-      "items": "55図",
-      "packing": "採用済みの背景と人物を合成し、接点を重ねる",
-      "calls": 0
-    }
-  ],
-  "other_calls": 5967,
+  "date": "2026-10-04",
+  "basis": "現行ブラウザのコマ分けと原画を活用。新規ベースを追加生成する。",
+  "verified_existing": {
+    "base_characters": 250,
+    "people": 232,
+    "animals": 18,
+    "source_sheets": 29,
+    "expansion_characters": 170,
+    "expansion_sheets": 17,
+    "typical_walk_frames": 4,
+    "typical_action_frames": 4,
+    "typical_rows": 10,
+    "playback_slots": 15,
+    "atlas_unique_frames": 2543,
+    "backgrounds": 7
+  },
+  "stage_new_people": 2400,
+  "common_capacity_proposal": 1900,
+  "existing_people_credited_to_common": 232,
+  "additional_common_people_if_expanded": 1668,
+  "new_people_if_expanded": 4068,
   "scenarios": [
     {
-      "id": "whole_person",
-      "name": "1人分を全部まとめる",
-      "character_setup_calls": 4300,
-      "character_action_calls": 0,
-      "character_calls": 4300,
-      "other_calls": 5967,
-      "initial_calls": 10267,
-      "with_30_percent_reserve": 13348,
-      "with_60_percent_reserve": 16428,
-      "layout": "原型・8方向・パーツ指示・3動作の46点を1人1枚",
-      "caveat": "密度が高く、原画解像度と複雑な手の動きの検証が必要"
+      "people_per_sheet": 10,
+      "stage_base_calls": 240,
+      "additional_common_base_calls": 167,
+      "expanded_base_calls": 407,
+      "stage_base_calls_with_30_to_60_percent_reserve": [
+        312,
+        384
+      ],
+      "expanded_base_calls_with_30_to_60_percent_reserve": [
+        530,
+        652
+      ]
     },
     {
-      "id": "four_people",
-      "name": "動作を4人分まとめる",
-      "character_setup_calls": 4300,
-      "character_action_calls": 3225,
-      "character_calls": 7525,
-      "other_calls": 5967,
-      "initial_calls": 13492,
-      "with_30_percent_reserve": 17540,
-      "with_60_percent_reserve": 21588,
-      "layout": "基本設定は1人1枚、動作は4人×12コマ＝48コマ／枚",
-      "caveat": "人物の取り違え・細部の欠落・修正増加の可能性"
+      "people_per_sheet": 8,
+      "stage_base_calls": 312,
+      "additional_common_base_calls": 209,
+      "expanded_base_calls": 521,
+      "stage_base_calls_with_30_to_60_percent_reserve": [
+        406,
+        500
+      ],
+      "expanded_base_calls_with_30_to_60_percent_reserve": [
+        678,
+        834
+      ]
     },
     {
-      "id": "two_people",
-      "name": "動作を2人分まとめる",
-      "character_setup_calls": 4300,
-      "character_action_calls": 6450,
-      "character_calls": 10750,
-      "other_calls": 5967,
-      "initial_calls": 16717,
-      "with_30_percent_reserve": 21733,
-      "with_60_percent_reserve": 26748,
-      "layout": "基本設定は1人1枚、動作は2人×12コマ＝24コマ／枚",
-      "caveat": "試作の第一候補。品質と実際の再生成率は未検証"
-    },
-    {
-      "id": "one_person",
-      "name": "動作を1人分ずつ作る",
-      "character_setup_calls": 4300,
-      "character_action_calls": 12900,
-      "character_calls": 17200,
-      "other_calls": 5967,
-      "initial_calls": 23167,
-      "with_30_percent_reserve": 30118,
-      "with_60_percent_reserve": 37068,
-      "layout": "基本設定1枚＋12コマの動作シート3枚／人",
-      "caveat": "1枚の密度は低いが、人物同一性の修正は必要"
+      "people_per_sheet": 5,
+      "stage_base_calls": 480,
+      "additional_common_base_calls": 334,
+      "expanded_base_calls": 814,
+      "stage_base_calls_with_30_to_60_percent_reserve": [
+        624,
+        768
+      ],
+      "expanded_base_calls_with_30_to_60_percent_reserve": [
+        1059,
+        1303
+      ]
     }
   ],
-  "assumptions": [
-    "共通住民1900人の追加案を含む",
-    "各人物の専用動作は3本×12主要ポーズで、全動作を全8方向に掛け合わせない",
-    "1枚のシートで意図した全素材が採用できた場合の初回計算",
-    "再生成予備30〜60%は未測定の仮定で、上限ではない",
-    "画像解像度・人物同一性・透過・手足と道具の整合は試作で判定",
-    "切り出し・同一画像の編集による分割・接点図の合成・骨格補間は生成回数に含めない"
+  "total_game_calls": null,
+  "total_game_formula": "新規基本シート＋役割別の追加差分＋背景・部材・乗り物・環境等の不足分＋AIによる修正・再生成",
+  "exclusions": [
+    "役割別の追加ポーズ",
+    "不足する背景・建物・前景・小物",
+    "追加の動物・鳥・風船・乗り物",
+    "AIによる修正と不採用の生成"
+  ],
+  "notes": [
+    "250既存ベースを0から作り直さない",
+    "旧8方向・1人46点・全員3動作12コマの前提を撤回",
+    "170種類17採用シートという実績は総呼出回数を証明しない",
+    "通常10体、詳細が必要なシートは5〜8体など個別に調整",
+    "人物4300人は以前の拡張提案。人物232人と動物18種を二重計上しない",
+    "全体総回数は配置に必要な不足差分の確定後に算定"
   ]
 }
