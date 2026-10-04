@@ -5,7 +5,7 @@ import { t, normalizeLanguage, resolveLanguage, setLanguage, getLanguage, online
 import { ENGLISH } from '../src/translations.js';
 import { CATALOG } from '../src/progression.js';
 import { DIFFICULTIES } from '../src/ai.js';
-import { DISC_FINISHES, DISC_PATTERNS, DISC_EMBLEMS } from '../src/cosmetics.js';
+import { DISC_FINISHES, DISC_PATTERNS, DISC_EMBLEMS, DISC_SHAPES, DISC_FONTS, DISC_TEXT_POSITIONS, DISC_COLOR_MODES } from '../src/cosmetics.js';
 
 const jp = /[\u3040-\u9fff]/;
 test('automatic language uses the first browser preference and falls back to English', () => {
@@ -51,13 +51,14 @@ test('all static UI text, catalog entries and difficulty descriptions have Engli
   messages.push(...[...html.matchAll(/(?:aria-label|title|placeholder|content)="([^"]+)"/g)].map(m=>m[1]));
   messages.push(...CATALOG.flatMap(item=>[item.name,item.description].filter(Boolean)),...Object.values(DIFFICULTIES).flatMap(d=>[d.label,d.description]));
   messages.push(...Object.values(DISC_FINISHES),...Object.values(DISC_PATTERNS),...Object.values(DISC_EMBLEMS));
+  messages.push(...[DISC_SHAPES,DISC_FONTS,DISC_TEXT_POSITIONS,DISC_COLOR_MODES].flatMap(Object.values));
   const missing=[...new Set(messages.filter(s=>jp.test(s)&&s!=='日本語'&&!Object.hasOwn(ENGLISH,s)))];
   assert.deepEqual(missing,[]);
 });
 test('literal UI and transport errors have translations', async () => {
-  const sources=await Promise.all(['../src/app.js','../src/capture-preview.js','../src/online.js','../server/game.js','../server/lobby.js','../server/settings.js','../server/worker.js'].map(path=>readFile(new URL(path,import.meta.url),'utf8')));
+  const sources=await Promise.all(['../src/app.js','../src/disc-library.js','../src/capture-preview.js','../src/online.js','../server/game.js','../server/lobby.js','../server/settings.js','../server/worker.js'].map(path=>readFile(new URL(path,import.meta.url),'utf8')));
   for(const source of sources){
-    const keys=[...source.matchAll(/(?:t\(|new Error\(|error\s*[:=]\s*|onError\()'([^'\n]+)'/g)].map(m=>m[1]);
+    const keys=[...source.matchAll(/(?:t\(|new Error\(|error\s*[:=]\s*|reason\s*:\s*|onError\()'([^'\n]+)'/g)].map(m=>m[1]);
     for(const key of keys.filter(s=>jp.test(s)))assert.ok(Object.hasOwn(ENGLISH,key),key);
   }
 });

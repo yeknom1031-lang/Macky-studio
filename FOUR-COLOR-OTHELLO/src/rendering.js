@@ -1,9 +1,9 @@
-import { drawDiscDecoration } from './cosmetics.js';
+import { drawDiscDecoration, traceDiscShape, normalizeCustomDisc } from './cosmetics.js';
 // Paint each finish once; every static stone shares one cached bitmap.
-export function installStoneTextures(doc, colors, computed = getComputedStyle, designs = {}, styleId = 'irodory-stone-textures') {
+export function installStoneTextures(doc, colors, computed = getComputedStyle, designs = {}, styleId = 'irodory-stone-textures', {racks=true} = {}) {
   const style = doc.getElementById(styleId) ?? doc.createElement('style'), rules = [];
   style.id=styleId;
-  const signature=JSON.stringify([colors,designs]);if(style.dataset.signature===signature)return;style.dataset.signature=signature;
+  const signature=JSON.stringify([colors,designs,racks]);if(style.dataset.signature===signature)return;
   const probe = doc.createElement('i'); probe.style.display = 'none'; doc.body.append(probe);
   try {
     for (const color of colors) {
@@ -11,7 +11,7 @@ export function installStoneTextures(doc, colors, computed = getComputedStyle, d
       const css = computed(probe), canvas = doc.createElement('canvas');
       canvas.width = canvas.height = 256;
       const ctx = canvas.getContext('2d'); if (!ctx) return;
-      const design=designs[color];
+      const design=designs[color]?normalizeCustomDisc(designs[color]):null;
       const shade=(hex,factor)=>'#'+hex.slice(1).match(/../g).map(part=>Math.round(parseInt(part,16)*factor).toString(16).padStart(2,'0')).join('');
       const custom=design?{'--stone':design.color,'--rim':shade(design.color,.7),'--dark':shade(design.color,.32)}:null;
       const value = key => custom?.[key] ?? css.getPropertyValue(key).trim();
@@ -24,43 +24,50 @@ export function installStoneTextures(doc, colors, computed = getComputedStyle, d
       const base = tint(value('--stone'),[92,79,55],.18);
       const light = tint(value('--stone'),[238,215,172],.29);
       const edge = tint(value('--rim'),[56,45,29],.24);
-      ctx.beginPath(); ctx.ellipse(129, 138, 108, 102, 0, 0, Math.PI * 2);
+      traceDiscShape(ctx,design?.shape,129,138,108,102);
       ctx.fillStyle = value('--dark'); ctx.shadowColor = '#00000085'; ctx.shadowBlur = 13; ctx.shadowOffsetX = 6; ctx.shadowOffsetY = 7; ctx.fill();
       ctx.shadowColor = 'transparent'; ctx.shadowOffsetX = ctx.shadowOffsetY = 0;
       const side = ctx.createLinearGradient(0,112,0,241);
       side.addColorStop(0,edge); side.addColorStop(.73,edge); side.addColorStop(1,value('--dark'));
       ctx.fillStyle=side;ctx.fill();
-      ctx.beginPath(); ctx.ellipse(126, 121, 107, 102, 0, 0, Math.PI * 2);
+      traceDiscShape(ctx,design?.shape);
       const face = ctx.createLinearGradient(40, 20, 181, 225);
       face.addColorStop(0, light); face.addColorStop(.38, base);
       if(design?.finish==='metal'){face.addColorStop(.52,tint(value('--stone'),[255,237,190],.65));face.addColorStop(.62,base);}
-      face.addColorStop(.8, base); face.addColorStop(1, edge);
+      face.addColorStop(.8,design?.colorMode==='gradient'?tint(design.secondaryColor,[92,79,55],.18):base);face.addColorStop(1,design?.colorMode==='gradient'?shade(design.secondaryColor,.6):edge);
       ctx.fillStyle=face;ctx.fill();ctx.strokeStyle=edge;ctx.lineWidth=2;ctx.stroke();
       if(design)drawDiscDecoration(ctx,design);
+      ctx.save();traceDiscShape(ctx,design?.shape);ctx.clip();
       ctx.save();if(design?.finish==='matte')ctx.globalAlpha=.17;ctx.translate(100,64);ctx.rotate(-.35);ctx.scale(1,.42);
       const shine=ctx.createRadialGradient(0,0,8,0,0,86);
       shine.addColorStop(0,'#fff1d63d');shine.addColorStop(.5,'#ffebc61b');shine.addColorStop(1,'#ffebc600');
       ctx.fillStyle=shine;ctx.beginPath();ctx.arc(0,0,86,0,Math.PI*2);ctx.fill();ctx.restore();
-      ctx.beginPath();ctx.ellipse(126,121,104,99,0,Math.PI*1.02,Math.PI*1.91);
+      if(design?.shape&&design.shape!=='round')traceDiscShape(ctx,design.shape,126,121,104,99);else {ctx.beginPath();ctx.ellipse(126,121,104,99,0,Math.PI*1.02,Math.PI*1.91);}
       ctx.strokeStyle='#ffebbd65';ctx.lineWidth=1.5;ctx.stroke();
-      ctx.beginPath();ctx.ellipse(126,121,103,98,0,.14,Math.PI*.8);
+      if(design?.shape&&design.shape!=='round')traceDiscShape(ctx,design.shape,126,124,103,98);else {ctx.beginPath();ctx.ellipse(126,121,103,98,0,.14,Math.PI*.8);}
       ctx.strokeStyle='#080b0738';ctx.lineWidth=2;ctx.stroke();
+      if(design?.edgeWidth){traceDiscShape(ctx,design.shape,126,121,104-design.edgeWidth/2,99-design.edgeWidth/2);ctx.strokeStyle=design.edgeColor;ctx.lineWidth=design.edgeWidth;ctx.stroke();}
+      ctx.restore();
       // A whole storage row is one shared bitmap, irrespective of board size.
+      let stockRules='';
+      if(racks){
       const stock=doc.createElement('canvas');stock.width=544;stock.height=64;
       const rack=stock.getContext('2d');
       for(let i=29;i>=0;i--){
         const x=24+i*17;
-        rack.beginPath();rack.ellipse(x,32,18,27,0,0,Math.PI*2);
+        traceDiscShape(rack,design?.shape,x,32,18,27);
         rack.fillStyle=value('--dark');rack.shadowColor='#000b';rack.shadowBlur=3;rack.shadowOffsetX=3;rack.fill();rack.shadowColor='transparent';
         const edge=rack.createLinearGradient(x-15,0,x+15,0);edge.addColorStop(0,value('--dark'));edge.addColorStop(.3,value('--rim'));edge.addColorStop(.55,light);edge.addColorStop(.82,base);edge.addColorStop(1,value('--dark'));
         rack.fillStyle=edge;rack.fill();rack.strokeStyle='#010504b3';rack.lineWidth=1.5;rack.stroke();
-        rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);rack.strokeStyle='#f8dfac52';rack.lineWidth=1.2;rack.stroke();
+        if(design?.shape&&design.shape!=='round')traceDiscShape(rack,design.shape,x-2,32,13,24);else{rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);}rack.strokeStyle=design?.edgeWidth?design.edgeColor:'#f8dfac52';rack.lineWidth=1.2;rack.stroke();
       }
       const vertical=doc.createElement('canvas');vertical.width=64;vertical.height=544;const v=vertical.getContext('2d');v.translate(64,0);v.rotate(Math.PI/2);v.drawImage(stock,0,0);
+      stockRules=`--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")`;
+      }
       if(custom)rules.push(`.${color}{--stone:${value('--stone')};--rim:${value('--rim')};--dark:${value('--dark')};--bright:${light}}`);
-      rules.push(`:root{--stone-${color}:url("${canvas.toDataURL()}")}.${color}{--disc-image:var(--stone-${color});--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")}`);
+      rules.push(`:root{--stone-${color}:url("${canvas.toDataURL()}")}.${color}{--disc-image:var(--stone-${color});${stockRules}}`);
     }
-    style.textContent = rules.join('\n'); doc.head.append(style); doc.body.classList.add('stone-textures');
+    style.textContent = rules.join('\n');style.dataset.signature=signature;doc.head.append(style);doc.body.classList.add('stone-textures');
   } finally { probe.remove(); }
 }
 

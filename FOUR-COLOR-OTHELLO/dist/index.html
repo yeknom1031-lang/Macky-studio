@@ -516,6 +516,16 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
 .online-lobby{padding:24px 28px}.online-lobby>.eyebrow{margin:0 0 12px}.online-lobby h2{margin:0 0 12px}.online-lobby #online-lobby-status{margin:8px 0}.online-lobby .online-seats{margin:18px 0}.online-lobby .online-seat{padding:12px 4px}.online-lobby .online-seat .disc{width:34px;height:34px;margin-bottom:8px}.online-lobby .seat-placeholder{font-size:26px;height:42px}.online-lobby .online-error:empty{display:none}.online-lobby .matchmaking-clock strong{font-size:2.2rem}.online-lobby #online-rename{margin-left:16px}.online-lobby .online-official-link{margin-top:12px}
 @media(max-width:600px){.online-lobby{padding:20px 16px}.online-lobby .online-seat .disc{width:28px;height:28px}.online-lobby .online-config-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.online-lobby #online-rename{margin-left:10px}.online-lobby .online-seats{margin:12px 0}.online-lobby .online-seat b{font-size:11px}}
 
+/* Expanded atelier: a calm workbench and a separate collection view. */
+.stone-textures .disc{border-radius:0}
+#creator-dialog{width:1000px;max-height:92dvh}.atelier-content h2{margin-bottom:16px}.atelier-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid #c4aa6940}.atelier-tabs{display:flex;gap:6px;padding:4px;border:1px solid #ae97633d;border-radius:9px;background:#0b1913}.atelier-tabs button{border:0;padding:10px 14px;background:transparent;color:#b6c0b1;border-radius:5px;font-size:12px}.atelier-tabs button[aria-pressed=true]{background:#66573b;color:#fff0cd}.atelier-toolbar>.secondary{margin:0;padding:11px 13px;font-size:12px}
+#creator-editor .creator-layout{grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr);align-items:start;gap:28px}#creator-editor .creator-preview{position:sticky;top:0;padding:26px 12px 20px}.creator-preview .creator-pedestal{min-height:270px}.creator-preview .creator-pedestal>.disc{width:min(100%,248px)}.creator-preview #creator-summary{font-size:12px;line-height:1.8}.creator-preview #creator-preview-text{overflow-wrap:anywhere;margin:10px 0 20px;font-size:14px}.creator-preview #creator-editing-note{letter-spacing:.06em;font-size:11px}.creator-controls .choice-field{margin:18px 0;padding:0 0 18px;border-bottom:1px solid #ad97632a}.creator-controls .choice-field:last-child{border-bottom:0}.creator-controls .creator-options{gap:6px}.creator-controls .creator-options button{padding:8px 11px;min-height:35px}.creator-colors{margin:16px 0}.atelier-label{display:block;font-size:12px;color:#dddfcf;margin:12px 0 8px;line-height:1.5}.atelier-label>input{display:block;width:100%;min-width:0;margin-top:7px;padding:11px 12px;border:1px solid #a68e604d;border-radius:7px;background:#08170f;color:#f4e7c7;font:inherit;font-size:14px}.atelier-label>input:focus{outline:2px solid #ceb779;outline-offset:2px}.atelier-color-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0}.atelier-color-grid>label{display:flex;align-items:center;justify-content:space-between;gap:9px;border:1px solid #a28d603d;border-radius:7px;padding:8px 10px;font-size:12px}.atelier-color-grid input[type=color]{width:36px;height:30px;padding:0;background:none;border:0;cursor:pointer}.atelier-color-grid>label[hidden]{display:none}.atelier-range{display:grid;grid-template-columns:1fr auto;align-items:center;gap:9px;margin:15px 0 0;font-size:12px}.atelier-range input{grid-column:1/-1;width:100%;accent-color:#dbbd7b}.atelier-range output{font-variant-numeric:tabular-nums;color:#edcf91}.inscription-field .small-note{font-size:11px}.creator-actions{margin-top:18px}#creator-disable{display:block;margin:0 auto;padding-top:16px}
+.library-heading{display:flex;align-items:center;justify-content:space-between;gap:14px}.library-heading h3{margin:0;font-size:21px;font-family:"Yu Mincho",serif}.library-heading>span{color:#dec897;font-size:12px;white-space:nowrap}.library-status{display:flex;align-items:center;gap:12px;flex-wrap:wrap;min-height:36px;margin:10px 0 12px;color:#e6d2a5;font-size:12px}.library-status .text-button{padding:4px 0;text-decoration:underline}.disc-library-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.disc-card{min-width:0;border:1px solid #aa936040;background:linear-gradient(140deg,#263326,#0c1b13);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}.disc-card.is-equipped{border-color:#d0b679;box-shadow:inset 0 0 0 1px #cdb77a55}.disc-card-art{display:grid;place-items:center;min-height:162px;border-radius:8px;background:radial-gradient(ellipse,#aa935226,transparent 72%)}.disc-card-art>.disc{width:150px;max-width:100%;filter:drop-shadow(2px 9px 5px #0006)}.disc-card-label{display:flex;align-items:start;gap:8px;justify-content:space-between}.disc-card h4{margin:0;font-size:14px;overflow-wrap:anywhere;line-height:1.5;min-width:0}.disc-card-badge{font-size:10px;color:#efcf8e;white-space:nowrap}.disc-card-description,.disc-card-inscription{margin:0;font-size:11px;color:#aebcac;overflow-wrap:anywhere}.disc-card-inscription{color:#e3d4af}.disc-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto;padding-top:7px}.disc-card-actions button{border:1px solid #ad956544;background:#102419;color:#dfe4d6;border-radius:5px;padding:9px 3px;font-size:11px;min-height:34px}.disc-card-actions .disc-use{background:#685936;color:#fff0c7;border-color:#d4ba7977}.disc-card-actions button:disabled{opacity:.62;cursor:default}.library-empty{padding:50px 24px;border:1px dashed #a9925c6b;border-radius:12px;text-align:center;color:#c0c9b8;font-size:14px}.disc-card button:focus-visible,.atelier-tabs button:focus-visible{outline:2px solid #f0d496;outline-offset:3px}
+@media(max-width:740px){#creator-editor .creator-layout{grid-template-columns:minmax(165px,.7fr) minmax(0,1fr);gap:18px}.creator-preview .creator-pedestal{min-height:185px}.creator-preview .creator-pedestal>.disc{width:180px}.atelier-color-grid{grid-template-columns:1fr}.disc-library-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.atelier-tabs button{padding:9px 10px}.atelier-toolbar{gap:7px}.atelier-toolbar>.secondary{padding:10px;font-size:11px}}
+@media(max-width:560px){#creator-dialog .atelier-content{padding:22px 17px}.atelier-toolbar{flex-wrap:wrap;margin-bottom:16px}.atelier-tabs{flex:1}.atelier-tabs button{flex:1}.atelier-toolbar>.secondary{width:100%}#creator-editor .creator-layout{grid-template-columns:1fr;gap:15px}#creator-editor .creator-preview{position:static;padding:16px 10px 10px}.creator-preview .creator-pedestal{min-height:180px}.creator-preview .creator-pedestal>.disc{width:178px}.creator-preview #creator-preview-text{margin:4px 0 10px}.creator-preview #creator-summary{margin:5px 0}.atelier-color-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.atelier-color-grid>label{padding:8px;font-size:11px}.creator-actions{grid-template-columns:1fr}.disc-library-grid{gap:10px}.disc-card{padding:10px;gap:8px}.disc-card-art{min-height:105px}.disc-card-art>.disc{width:112px}.disc-card-label{flex-direction:column;gap:2px}.disc-card h4{font-size:12px}.disc-card-description,.disc-card-inscription{font-size:10px}.disc-card-actions button{font-size:10px}.library-heading h3{font-size:18px}}
+@media(max-width:560px){#creator-editor .creator-preview{position:sticky;top:0;z-index:2;display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-rows:auto auto 1fr;gap:4px 9px;align-items:center;text-align:left;background:#14231bf5;backdrop-filter:none;padding:9px}.creator-preview .creator-pedestal{grid-column:1;grid-row:1/4;min-height:124px}.creator-preview .creator-pedestal>.disc{width:120px}.creator-preview .creator-pedestal::after{width:116px}.creator-preview .creator-caption{font-size:8px;letter-spacing:.13em}.creator-preview #creator-summary{font-size:11px}.creator-preview #creator-preview-text{font-size:12px;align-self:start}.creator-preview #creator-editing-note{display:none}}
+@media(min-width:960px){.disc-library-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.disc-card-art{min-height:146px}.disc-card-art>.disc{width:138px}}
+
 </style>
 
 </head>
@@ -575,7 +585,7 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
     <h3>勝利とコイン</h3><p>ひとりモードで勝つとコインがもらえます。強さ・広さによって30〜200コイン。最多で引き分けた場合は半分です。４人モードや途中で終了した対局は対象外。ボードは購入後に選んで着せ替えできます。購入した駒の色は次の対局から抽選候補に加わります。見た目は強さに影響しません。</p>
     <h3>途中で降参する</h3><p>対局メニューの「降参する」から確認すると、その対局を終了します。ひとりモードでは負けとして１対局を記録し、コインは増えません。４人モードでは現在の手番の色が降参し、卓全体の対局を終了します。途中の枚数で勝者は決めません。</p>
     <h3>鬼レベル</h3><p>ひとり対戦で「鬼」を選ぶと、１手に最大５秒を使って深く考えます。２色は相手の最善手を見込み、４色はそれぞれの色の利益を見込んで読みます。終盤では最後まで読むことを狙います。思考中もメニューを開いて降参・終了できます。鬼に勝つと160〜200コイン。</p>
-    <h3>自分だけのコマ</h3><p>ホームの「コマ工房」で色・仕上げ・模様・マークを選んで保存できます。４色のひとり対戦では選んだ色を使います。オンラインと黒白の対戦では席の色を保ち、模様や質感を使います。オンラインでは相手にもデザインが見えます。保存したデザインは次の対局から使われ、強さには影響しません。</p><h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。オンのとき、置けるマスにポインターを合わせると取れる相手の石が自分の色に点滅し、枚数が表示されます。矢印キーでマスを選んだときも確認できます。「動きを減らす」がオンのときは点滅せずに表示します。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
+    <h3>自分だけのコマ</h3><p>ホームの「コマ工房」で形・配色・仕上げ・模様・マーク・文字を自由に組み合わせられます。文字は8文字まで、色・書体・大きさ・位置も変更できます。名前付きで24個まで保存でき、「保存したコマ」から使用・編集・複製・削除ができます。４色のひとり対戦では選んだ色を使い、オンラインと黒白の対戦では席の色を保ちます。形や装飾、文字はオンラインの相手にも見えます。選んだコマは次の対局から使われ、強さには影響しません。</p><h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。オンのとき、置けるマスにポインターを合わせると取れる相手の石が自分の色に点滅し、枚数が表示されます。矢印キーでマスを選んだときも確認できます。「動きを減らす」がオンのときは点滅せずに表示します。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
     <p class="small-note">４辺のストックは本物の予備の石をイメージした飾りです。使用枚数の制限はありません。<br>キーボード：矢印でマスを移動、Enter / Space で置く。<br>設定・コイン・購入品はこのブラウザに保存。別の端末やローカルHTMLとは自動同期されません。設定からデータを持ち運べます。</p><button class="primary" data-close>わかった</button>
   </div></dialog>
   <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content">
@@ -593,12 +603,17 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
     <div class="collection-showcase"><div class="showcase-stage"><div id="shop-preview-board" class="board-shell showcase-board" aria-hidden="true"></div></div><div class="showcase-copy"><p class="eyebrow">CRAFTED FOR YOUR NEXT MOVE</p><h3 id="shop-preview-name"></h3><p id="shop-preview-description"></p><span id="shop-preview-status" class="collection-status"></span><button id="shop-preview-action" class="product-action"></button><p class="small-note">下のアイテムを選んで、見た目を試せます。</p></div></div>
     <h3 class="collection-heading"><span>01</span> ボードの見た目</h3><div id="board-products" class="products"></div><h3 class="collection-heading"><span>02</span> あなたの駒の色 <small>ひとりモード専用</small></h3><div id="color-products" class="products colors"></div><button class="primary" data-close>ホームに戻る</button>
   </div></dialog>
-  <dialog id="creator-dialog" aria-labelledby="creator-title"><div class="dialog-content">
+  <dialog id="creator-dialog" aria-labelledby="creator-title"><div class="dialog-content atelier-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">THE DISC ATELIER</p><h2 id="creator-title">自分だけのコマをつくる</h2>
-    <div class="creator-layout"><div class="creator-preview"><div class="creator-pedestal"><i id="creator-disc" class="disc custom-preview" aria-hidden="true"></i></div><p id="creator-summary"></p><span class="creator-caption">YOUR SIGNATURE DISC</span></div>
-    <div class="creator-controls"><fieldset class="choice-field"><legend>コマの色</legend><div class="creator-colors"><button type="button" data-disc-color="#9354ce" style="--swatch:#9354ce" aria-label="紫"></button><button type="button" data-disc-color="#df749d" style="--swatch:#df749d" aria-label="ローズ"></button><button type="button" data-disc-color="#147ad5" style="--swatch:#147ad5" aria-label="青"></button><button type="button" data-disc-color="#0db76c" style="--swatch:#0db76c" aria-label="緑"></button><button type="button" data-disc-color="#e9b72c" style="--swatch:#e9b72c" aria-label="黄"></button><button type="button" data-disc-color="#e9e5d9" style="--swatch:#e9e5d9" aria-label="パール"></button><label class="custom-color-label">自由な色<input id="creator-color" type="color" value="#9354ce"></label></div></fieldset>
-    <fieldset class="choice-field"><legend>仕上げ</legend><div id="creator-finishes" class="creator-options"></div></fieldset><fieldset class="choice-field"><legend>模様</legend><div id="creator-patterns" class="creator-options"></div></fieldset><fieldset class="choice-field"><legend>マーク</legend><div id="creator-emblems" class="creator-options"></div></fieldset></div></div>
-    <p class="field-note">４色のひとり対戦では好きな色を使用。オンラインと黒白の対戦では、席の色でデザインを使います。</p><p id="creator-message" class="field-note" role="status"></p><div class="creator-actions"><button id="creator-save" class="primary">保存してこのコマを使う</button><button id="creator-disable" class="secondary">通常のコマに戻す</button></div>
+    <div class="atelier-toolbar"><div class="atelier-tabs"><button id="creator-editor-open" aria-pressed="true">デザインを編集</button><button id="creator-library-open" aria-pressed="false">保存したコマ</button></div><button id="creator-new" class="secondary">＋ 新しくつくる</button></div>
+    <section id="creator-editor"><div class="creator-layout"><div class="creator-preview"><span class="creator-caption">YOUR SIGNATURE DISC</span><div class="creator-pedestal"><i id="creator-disc" class="disc custom-preview" aria-hidden="true"></i></div><p id="creator-summary"></p><p id="creator-preview-text" class="field-note"></p><span id="creator-editing-note" class="creator-caption"></span></div>
+    <div class="creator-controls"><label class="atelier-label" for="creator-name">デザインの名前<input id="creator-name" type="text" maxlength="96" placeholder="例：星空のコマ" autocomplete="off"></label>
+    <fieldset class="choice-field"><legend>コマの形</legend><div id="creator-shapes" class="creator-options"></div></fieldset>
+    <fieldset class="choice-field"><legend>配色</legend><div id="creator-color-modes" class="creator-options"></div><div class="creator-colors"><button type="button" data-disc-color="#9354ce" style="--swatch:#9354ce" aria-label="紫"></button><button type="button" data-disc-color="#df749d" style="--swatch:#df749d" aria-label="ローズ"></button><button type="button" data-disc-color="#147ad5" style="--swatch:#147ad5" aria-label="青"></button><button type="button" data-disc-color="#0db76c" style="--swatch:#0db76c" aria-label="緑"></button><button type="button" data-disc-color="#e9b72c" style="--swatch:#e9b72c" aria-label="黄"></button><button type="button" data-disc-color="#e9e5d9" style="--swatch:#e9e5d9" aria-label="パール"></button></div><div class="atelier-color-grid"><label>ベース<input id="creator-color" data-disc-input="color" type="color" value="#9354ce"></label><label id="creator-secondary-label">２つめの色<input id="creator-secondary-color" data-disc-input="secondaryColor" type="color" value="#203c65"></label><label>装飾の色<input id="creator-accent-color" data-disc-input="accentColor" type="color" value="#f6e2af"></label><label>ふちの色<input id="creator-edge-color" data-disc-input="edgeColor" type="color" value="#d6ba76"></label></div><label class="atelier-range" for="creator-edge-width">ふちの太さ<output id="creator-edge-value" for="creator-edge-width">0</output><input id="creator-edge-width" data-disc-input="edgeWidth" type="range" min="0" max="8" step="1" value="0"></label></fieldset>
+    <fieldset class="choice-field"><legend>仕上げ</legend><div id="creator-finishes" class="creator-options"></div></fieldset><fieldset class="choice-field"><legend>模様</legend><div id="creator-patterns" class="creator-options"></div></fieldset><fieldset class="choice-field"><legend>マーク</legend><div id="creator-emblems" class="creator-options"></div></fieldset>
+    <fieldset class="choice-field inscription-field"><legend>文字を入れる</legend><label class="atelier-label" for="creator-text">コマに書く文字<input id="creator-text" data-disc-input="text" type="text" maxlength="128" placeholder="例：IRODORY・彩・☆" autocomplete="off"></label><p class="small-note">日本語・英語・記号など8文字まで。空欄にすると文字を消せます。</p><div class="atelier-color-grid"><label>文字の色<input id="creator-text-color" data-disc-input="textColor" type="color" value="#fff4dd"></label></div><div class="atelier-label">書体</div><div id="creator-fonts" class="creator-options"></div><div class="atelier-label">文字の位置</div><div id="creator-text-positions" class="creator-options"></div><label class="atelier-range" for="creator-text-size">文字の大きさ<output id="creator-text-size-value" for="creator-text-size">32</output><input id="creator-text-size" data-disc-input="textSize" type="range" min="18" max="48" step="1" value="32"></label></fieldset>
+    </div></div><p class="field-note">４色のひとり対戦では好きな色を使用。オンラインと黒白の対戦では、席の色でデザインを使います。</p><p id="creator-message" class="field-note" role="status"></p><div class="creator-actions"><button id="creator-save" class="primary">保存してこのコマを使う</button><button id="creator-save-copy" class="secondary">別のコマとして保存</button></div><button id="creator-disable" class="text-button">通常のコマに戻す</button></section>
+    <section id="creator-library" hidden aria-label="保存したコマの一覧"><div class="library-heading"><h3>マイコマ・ギャラリー</h3><span id="library-count"></span></div><p class="field-note">24個まで保存できます。使いたいコマを選ぶと、次の対局から反映されます。</p><div class="library-status" role="status"><span id="library-message"></span><button id="library-undo" class="text-button" hidden>削除を取り消す</button></div><div id="disc-library-grid" class="disc-library-grid"></div><p id="disc-library-empty" class="library-empty">まだ保存したコマがありません。「新しくつくる」から、最初のコマを作りましょう。</p><p class="small-note">デザインはこのブラウザに保存されます。設定の「データを書き出す」で一覧ごと持ち運べます。</p></section>
   </div></dialog>
   <dialog id="menu-dialog" aria-labelledby="menu-title"><div class="dialog-content game-menu">
     <span class="pause-emblem" aria-hidden="true">Ⅱ</span><p class="eyebrow">PAUSED</p><h2 id="menu-title">ポーズ</h2><p class="pause-note">ゲームの時間が止まっています</p><p id="match-info" class="field-note"></p><button class="primary" data-close>ゲームを続ける <kbd>Esc</kbd></button><div class="pause-actions"><button id="game-rules" class="secondary"><span aria-hidden="true">▤</span>ルールブック</button><button id="game-settings" class="secondary"><span aria-hidden="true">⚙</span>設定</button></div><button id="resign-open" class="danger">降参する</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
@@ -992,7 +1007,70 @@ const ENGLISH = Object.freeze({
   "別のタブでオンライン対戦を開きました。このタブの接続を終了しました。": "Online play was opened in another tab. This tab has been disconnected.",
   "接続が切れました。復帰しています…": "Connection lost. Reconnecting…",
   "オンライン版URLから開いてください": "Please open the live online game.",
-  "接続できませんでした": "Could not connect."
+  "接続できませんでした": "Could not connect.",
+  "丸": "Round",
+  "角丸四角": "Rounded square",
+  "六角形": "Hexagon",
+  "八角形": "Octagon",
+  "星型": "Star",
+  "ハート": "Heart",
+  "花型": "Flower",
+  "すっきり": "Clean",
+  "クラシカル": "Classic",
+  "まる文字": "Rounded",
+  "中央": "Center",
+  "上": "Top",
+  "下": "Bottom",
+  "単色": "Solid",
+  "グラデーション": "Gradient",
+  "デザインを編集": "Design studio",
+  "保存したコマ": "Saved discs",
+  "＋ 新しくつくる": "+ Create new",
+  "デザインの名前": "Design name",
+  "例：星空のコマ": "e.g. Starlight",
+  "コマの形": "Shape",
+  "配色": "Colors",
+  "ベース": "Base",
+  "２つめの色": "Second color",
+  "装飾の色": "Decoration",
+  "ふちの色": "Border",
+  "ふちの太さ": "Border width",
+  "文字を入れる": "Inscription",
+  "コマに書く文字": "Text on your disc",
+  "例：IRODORY・彩・☆": "e.g. IRODORY · ACE · ☆",
+  "日本語・英語・記号など8文字まで。空欄にすると文字を消せます。": "Up to 8 characters, including Japanese, English and symbols. Leave blank for no text.",
+  "文字の色": "Text color",
+  "書体": "Lettering style",
+  "文字の位置": "Text position",
+  "文字の大きさ": "Text size",
+  "別のコマとして保存": "Save as a new disc",
+  "保存したコマの一覧": "Saved disc collection",
+  "マイコマ・ギャラリー": "My disc gallery",
+  "24個まで保存できます。使いたいコマを選ぶと、次の対局から反映されます。": "Save up to 24 designs. Choose a disc to use it in your next game.",
+  "削除を取り消す": "Undo deletion",
+  "まだ保存したコマがありません。「新しくつくる」から、最初のコマを作りましょう。": "No saved discs yet. Choose Create new to make your first design.",
+  "デザインはこのブラウザに保存されます。設定の「データを書き出す」で一覧ごと持ち運べます。": "Designs are saved in this browser. Export your save in Settings to take the entire collection with you.",
+  "名前のないコマ": "Untitled disc",
+  "保存済みのデザインを編集しています": "EDITING A SAVED DESIGN",
+  "新しいデザイン": "NEW DESIGN",
+  "文字：{0}": "Inscription: {0}",
+  "選択済み": "Selected",
+  "このコマを使う": "Use this disc",
+  "編集": "Edit",
+  "複製": "Duplicate",
+  "削除": "Delete",
+  "このコマは見つかりません。別のコマとして保存してください。": "This disc is no longer available. Save it as a new disc.",
+  "保存できるコマは24個までです。不要なコマを削除してください。": "You can save up to 24 discs. Delete an unwanted disc to make room.",
+  "保存できませんでした。もう一度お試しください。": "Could not save. Please try again.",
+  "コマが見つかりません。": "Disc not found.",
+  "一覧に保存しました。次の対局からこのコマを使います。": "Saved to your gallery. This disc will be used in your next game.",
+  "通常のコマに戻しました。保存したコマは一覧に残ります。": "Standard discs restored. Your saved designs remain in the gallery.",
+  "{0}のコピー": "{0} copy",
+  "「{0}」を選びました。次の対局から使います。": "“{0}” is selected for your next game.",
+  "コマを複製しました。": "Disc duplicated.",
+  "コマを削除しました。取り消すことができます。": "Disc deleted. You can undo this.",
+  "コマを一覧に戻しました。": "Disc restored to your gallery.",
+  "ホームの「コマ工房」で形・配色・仕上げ・模様・マーク・文字を自由に組み合わせられます。文字は8文字まで、色・書体・大きさ・位置も変更できます。名前付きで24個まで保存でき、「保存したコマ」から使用・編集・複製・削除ができます。４色のひとり対戦では選んだ色を使い、オンラインと黒白の対戦では席の色を保ちます。形や装飾、文字はオンラインの相手にも見えます。選んだコマは次の対局から使われ、強さには影響しません。": "Open Disc atelier to combine shapes, colors, finishes, patterns, emblems and inscriptions. Add up to 8 characters and adjust their color, style, size and position. Save up to 24 named designs, then use, edit, duplicate or delete them in Saved discs. Four-color solo games use your chosen color; online and classic games keep the assigned seat color. Online opponents also see your shape, decorations and text. Your selected disc is used from the next game and never changes playing strength."
 });
 
 
@@ -1057,11 +1135,32 @@ function createStaticTranslations(doc) {
 const DISC_FINISHES = Object.freeze({gloss:'つやあり',matte:'マット',metal:'メタリック'});
 const DISC_PATTERNS = Object.freeze({plain:'無地',rings:'同心円',rays:'光のすじ',waves:'波模様'});
 const DISC_EMBLEMS = Object.freeze({none:'なし',star:'星',moon:'月',diamond:'ダイヤ',flower:'花'});
+const DISC_SHAPES = Object.freeze({round:'丸',square:'角丸四角',hexagon:'六角形',octagon:'八角形',star:'星型',heart:'ハート',flower:'花型'});
+const DISC_FONTS = Object.freeze({sans:'すっきり',serif:'クラシカル',rounded:'まる文字'});
+const DISC_TEXT_POSITIONS = Object.freeze({center:'中央',top:'上',bottom:'下'});
+const DISC_COLOR_MODES = Object.freeze({solid:'単色',gradient:'グラデーション'});
 const SEAT_COLORS = Object.freeze({red:'#d82b36',blue:'#147ad5',yellow:'#e9b72c',green:'#0db76c',black:'#24282b',white:'#edece4'});
+let discTextSegmenter;
+function cleanDiscText(value,limit=8) {
+  if(typeof value!=='string')return '';
+  // Keep ordinary multilingual text/emoji, never controls or bidi overrides.
+  const clean=value.slice(0,256).normalize('NFC').replace(/[\p{Cc}\u200b\u200e\u200f\u202a-\u202e\u2060-\u206f\ufeff]/gu,'').replace(/\s+/gu,' ').trim();
+  if(!clean)return '';
+  const bounded=[...clean].slice(0,64).join('');
+  const letters=typeof Intl.Segmenter==='function'?[...(discTextSegmenter??=new Intl.Segmenter(undefined,{granularity:'grapheme'})).segment(bounded)].map(s=>s.segment):[...bounded];
+  return letters.slice(0,limit).join('');
+}
 function normalizeCustomDisc(raw) {
   const value=raw&&typeof raw==='object'?raw:{};
-  return {enabled:value.enabled===true,color:typeof value.color==='string'&&/^#[0-9a-f]{6}$/i.test(value.color)?value.color.toLowerCase():'#9354ce',
-    finish:Object.hasOwn(DISC_FINISHES,value.finish)?value.finish:'gloss',pattern:Object.hasOwn(DISC_PATTERNS,value.pattern)?value.pattern:'plain',emblem:Object.hasOwn(DISC_EMBLEMS,value.emblem)?value.emblem:'none'};
+  const hex=(key,fallback)=>typeof value[key]==='string'&&/^#[0-9a-f]{6}$/i.test(value[key])?value[key].toLowerCase():fallback;
+  const choice=(key,options,fallback)=>typeof value[key]==='string'&&Object.hasOwn(options,value[key])?value[key]:fallback;
+  const number=(key,min,max,fallback)=>Number.isFinite(value[key])?Math.round(Math.min(max,Math.max(min,value[key]))):fallback;
+  return {enabled:value.enabled===true,color:hex('color','#9354ce'),
+    finish:choice('finish',DISC_FINISHES,'gloss'),pattern:choice('pattern',DISC_PATTERNS,'plain'),emblem:choice('emblem',DISC_EMBLEMS,'none'),
+    shape:choice('shape',DISC_SHAPES,'round'),colorMode:choice('colorMode',DISC_COLOR_MODES,'solid'),secondaryColor:hex('secondaryColor','#203c65'),
+    accentColor:hex('accentColor','#f6e2af'),edgeColor:hex('edgeColor','#d6ba76'),edgeWidth:number('edgeWidth',0,8,0),
+    text:cleanDiscText(value.text),textColor:hex('textColor','#fff4dd'),textFont:choice('textFont',DISC_FONTS,'sans'),
+    textPosition:choice('textPosition',DISC_TEXT_POSITIONS,'bottom'),textSize:number('textSize',18,48,32)};
 }
 function matchCosmetics(colors,mode,human,customDisc,seats=[]) {
   const designs={};
@@ -1080,28 +1179,97 @@ function matchCosmetics(colors,mode,human,customDisc,seats=[]) {
     if(!design.enabled||mode==='friends'||(mode!=='online'&&index!==human))return {...color};
     const id=`custom-${index}`;
     // Online and classic discs retain the assigned seat color, even for a custom design.
-    designs[id]={...design,color:mode==='online'||colors.length===2?SEAT_COLORS[color.id]:design.color};
+    const locked=mode==='online'||colors.length===2;
+    designs[id]={...design,color:locked?SEAT_COLORS[color.id]:design.color,colorMode:locked?'solid':design.colorMode};
     return {...color,id,name:mode==='online'||colors.length===2?color.name:'マイコマ'};
   });
   return {colors:palette,designs};
 }
+// The same bounded silhouette is used for the face, thickness, clipping and stock.
+function traceDiscShape(ctx,shape='round',x=126,y=121,rx=107,ry=102) {
+  ctx.beginPath();ctx.save();ctx.translate(x,y);ctx.scale(rx,ry);
+  if(shape==='square'){
+    const r=.29;ctx.moveTo(-1+r,-1);ctx.lineTo(1-r,-1);ctx.quadraticCurveTo(1,-1,1,-1+r);ctx.lineTo(1,1-r);ctx.quadraticCurveTo(1,1,1-r,1);ctx.lineTo(-1+r,1);ctx.quadraticCurveTo(-1,1,-1,1-r);ctx.lineTo(-1,-1+r);ctx.quadraticCurveTo(-1,-1,-1+r,-1);
+  }else if(shape==='heart'){
+    ctx.moveTo(0,.97);ctx.bezierCurveTo(-.3,.68,-1,.12,-1,-.36);ctx.bezierCurveTo(-1,-1.02,-.28,-1.1,0,-.53);ctx.bezierCurveTo(.28,-1.1,1,-1.02,1,-.36);ctx.bezierCurveTo(1,.12,.3,.68,0,.97);
+  }else if(['hexagon','octagon','star','flower'].includes(shape)){
+    const count=shape==='hexagon'?6:shape==='octagon'?8:shape==='star'?10:120;
+    for(let i=0;i<count;i++){const a=i*Math.PI*2/count-Math.PI/2,r=shape==='star'?(i%2?.64:1):shape==='flower'?.88+.12*Math.cos(i*Math.PI*12/count):1;const px=Math.cos(a)*r,py=Math.sin(a)*r;i?ctx.lineTo(px,py):ctx.moveTo(px,py);}
+  }else ctx.arc(0,0,1,0,Math.PI*2);
+  ctx.closePath();ctx.restore();
+}
 // Decorative geometry stays inside the face. No uploaded image, markup, or per-disc DOM is needed.
 function drawDiscDecoration(ctx,design) {
-  const {pattern,emblem,finish}=normalizeCustomDisc(design);
-  ctx.save();ctx.beginPath();ctx.ellipse(126,121,99,94,0,0,Math.PI*2);ctx.clip();
-  ctx.strokeStyle=finish==='metal'?'#fff2c97a':'#fff0ca4d';ctx.lineWidth=2;
+  const {pattern,emblem,finish,shape,accentColor,text,textColor,textFont,textPosition,textSize}=normalizeCustomDisc(design);
+  ctx.save();traceDiscShape(ctx,shape,126,121,99,94);ctx.clip();
+  ctx.strokeStyle=accentColor+(finish==='metal'?'88':'66');ctx.lineWidth=2;
   if(pattern==='rings')for(const radius of [52,67,82]){ctx.beginPath();ctx.ellipse(126,121,radius,radius*.95,0,0,Math.PI*2);ctx.stroke();}
   if(pattern==='rays')for(let n=0;n<24;n++){const a=n*Math.PI/12;ctx.beginPath();ctx.moveTo(126+Math.cos(a)*48,121+Math.sin(a)*45);ctx.lineTo(126+Math.cos(a)*97,121+Math.sin(a)*92);ctx.stroke();}
   if(pattern==='waves')for(let y=55;y<215;y+=17){ctx.beginPath();ctx.moveTo(20,y);ctx.bezierCurveTo(80,y-32,160,y+32,234,y);ctx.stroke();}
   if(emblem!=='none') {
-    ctx.translate(126,121);ctx.fillStyle='#f6e2af';ctx.strokeStyle='#624824aa';ctx.lineWidth=1.5;ctx.shadowColor='#0006';ctx.shadowBlur=3;ctx.shadowOffsetY=2;ctx.beginPath();
+    ctx.save();ctx.translate(126,text?(textPosition==='center'?79:textPosition==='top'?139:107):121);if(text)ctx.scale(textPosition==='center'?.5:.65,textPosition==='center'?.5:.65);ctx.fillStyle=accentColor;ctx.strokeStyle='#624824aa';ctx.lineWidth=1.5;ctx.shadowColor='#0006';ctx.shadowBlur=3;ctx.shadowOffsetY=2;ctx.beginPath();
     if(emblem==='star')for(let n=0;n<10;n++){const a=n*Math.PI/5-Math.PI/2,r=n%2?17:37;n?ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r):ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r);}
     if(emblem==='diamond'){ctx.moveTo(0,-37);ctx.lineTo(29,0);ctx.lineTo(0,37);ctx.lineTo(-29,0);}
     if(emblem==='moon'){ctx.arc(0,0,34,.35*Math.PI,1.65*Math.PI);ctx.bezierCurveTo(-9,-26,-9,26,Math.cos(.35*Math.PI)*34,Math.sin(.35*Math.PI)*34);}
     if(emblem==='flower')for(let n=0;n<=120;n++){const a=n*Math.PI/60,r=26+9*Math.cos(a*5);n?ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r):ctx.moveTo(Math.cos(a)*r,Math.sin(a)*r);}
-    ctx.closePath();ctx.fill();ctx.stroke();
+    ctx.closePath();ctx.fill();ctx.stroke();ctx.restore();
+  }
+  if(text){
+    const fonts={sans:'"Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif',serif:'"Yu Mincho", Georgia, serif',rounded:'"Hiragino Maru Gothic ProN", "Arial Rounded MT Bold", sans-serif'};
+    const inset=shape==='heart'||shape==='star',y=textPosition==='top'?(inset?96:72):textPosition==='bottom'?(inset?156:167):122;
+    const maxWidth=shape==='star'?(textPosition==='center'?116:96):shape==='heart'&&textPosition!=='center'?110:132;
+    ctx.font=`700 ${textPosition==='center'?textSize:Math.min(textSize,32)}px ${fonts[textFont]}`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';ctx.lineWidth=2;ctx.strokeStyle='#15201899';ctx.fillStyle=textColor;
+    ctx.strokeText(text,126,y,maxWidth);ctx.fillText(text,126,y,maxWidth);
   }
   ctx.restore();
+}
+
+
+const DISC_LIBRARY_LIMIT=24;
+const discIdValid=id=>typeof id==='string'&&/^[a-zA-Z0-9-]{1,64}$/.test(id);
+const newDiscId=()=>globalThis.crypto?.randomUUID?.()??`disc-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+function normalizeDiscCollection(raw={}) {
+  raw=raw&&typeof raw==='object'?raw:{};
+  const discLibrary=[],seen=new Set();
+  for(const item of (Array.isArray(raw.discLibrary)?raw.discLibrary:[]).slice(0,96)){
+    if(!item||!discIdValid(item.id)||seen.has(item.id))continue;
+    seen.add(item.id);discLibrary.push({id:item.id,name:cleanDiscText(item.name,24),design:normalizeCustomDisc({...item.design,enabled:true})});
+    if(discLibrary.length===DISC_LIBRARY_LIMIT)break;
+  }
+  let customDisc=normalizeCustomDisc(raw.customDisc),activeDiscId=discIdValid(raw.activeDiscId)?raw.activeDiscId:null;
+  // Existing single-design saves become the first item, without touching coins or progress.
+  if(!Array.isArray(raw.discLibrary)&&raw.customDisc&&(customDisc.enabled||JSON.stringify({...customDisc,enabled:false})!==JSON.stringify(normalizeCustomDisc()))){
+    discLibrary.push({id:'legacy-custom',name:'',design:{...customDisc,enabled:true}});activeDiscId=customDisc.enabled?'legacy-custom':null;
+  }
+  const active=discLibrary.find(d=>d.id===activeDiscId);
+  if(active)customDisc={...active.design,enabled:true};else activeDiscId=null;
+  return {discLibrary,activeDiscId,customDisc};
+}
+function saveDiscDesign(raw,{id=null,name='',design,equip=true},makeId=newDiscId) {
+  const collection=normalizeDiscCollection(raw),index=collection.discLibrary.findIndex(d=>d.id===id);
+  if(id!==null&&index<0)return {ok:false,profile:raw,reason:'このコマは見つかりません。別のコマとして保存してください。'};
+  if(index<0&&collection.discLibrary.length>=DISC_LIBRARY_LIMIT)return {ok:false,profile:raw,reason:'保存できるコマは24個までです。不要なコマを削除してください。'};
+  const nextId=index>=0?id:makeId();
+  if(!discIdValid(nextId)||(index<0&&collection.discLibrary.some(d=>d.id===nextId)))return {ok:false,profile:raw,reason:'保存できませんでした。もう一度お試しください。'};
+  const item={id:nextId,name:cleanDiscText(name,24),design:normalizeCustomDisc({...design,enabled:true})};
+  if(index<0)collection.discLibrary.push(item);else collection.discLibrary[index]=item;
+  if(equip||collection.activeDiscId===nextId){collection.customDisc={...item.design};collection.activeDiscId=nextId;}
+  return {ok:true,id:nextId,profile:{...raw,...collection}};
+}
+function equipDiscDesign(raw,id) {
+  const collection=normalizeDiscCollection(raw),item=collection.discLibrary.find(d=>d.id===id);
+  if(!item)return {ok:false,profile:raw,reason:'コマが見つかりません。'};
+  return {ok:true,profile:{...raw,...collection,activeDiscId:id,customDisc:{...item.design,enabled:true}}};
+}
+function removeDiscDesign(raw,id) {
+  const collection=normalizeDiscCollection(raw),removed=collection.discLibrary.find(d=>d.id===id);
+  if(!removed)return {ok:false,profile:raw,reason:'コマが見つかりません。'};
+  collection.discLibrary=collection.discLibrary.filter(d=>d.id!==id);
+  if(collection.activeDiscId===id){collection.activeDiscId=null;collection.customDisc={...collection.customDisc,enabled:false};}
+  return {ok:true,removed,profile:{...raw,...collection}};
+}
+function restoreDiscDesign(raw,item) {
+  return saveDiscDesign(raw,{name:item.name,design:item.design,equip:false},()=>item.id);
 }
 
 const SIZE = 8;
@@ -1468,7 +1636,7 @@ function normalizeProfile(value) {
   const integer = v => Number.isSafeInteger(v) && v >= 0 ? Math.min(v, 1000000000) : 0;
   const onlineLedger = {};
   for (const [id, entry] of Object.entries(raw.onlineLedger ?? {}).slice(-100)) if (/^[a-zA-Z0-9-]{1,64}$/.test(id) && entry && typeof entry === 'object') onlineLedger[id] = Object.fromEntries(['earned','played','wins','draws'].map(k=>[k,integer(entry[k])]));
-  return { version: 1, customDisc:normalizeCustomDisc(raw.customDisc), onlineLedger, coins: integer(raw.coins), ownedBoards, ownedColors,
+  return { version: 1, ...normalizeDiscCollection(raw), onlineLedger, coins: integer(raw.coins), ownedBoards, ownedColors,
     equippedBoard: ownedBoards.includes(raw.equippedBoard) ? raw.equippedBoard : 'classic',
     equippedColor: ownedColors.includes(raw.equippedColor) ? raw.equippedColor : 'red',
     claimed: [...new Set(Array.isArray(raw.claimed) ? raw.claimed.filter(v => typeof v === 'string' && v.length <= 120).slice(-2000) : [])],
@@ -1648,10 +1816,10 @@ function createStoneAudio(options, contextFactory, { schedule = setTimeout, unsc
 
 
 // Paint each finish once; every static stone shares one cached bitmap.
-function installStoneTextures(doc, colors, computed = getComputedStyle, designs = {}, styleId = 'irodory-stone-textures') {
+function installStoneTextures(doc, colors, computed = getComputedStyle, designs = {}, styleId = 'irodory-stone-textures', {racks=true} = {}) {
   const style = doc.getElementById(styleId) ?? doc.createElement('style'), rules = [];
   style.id=styleId;
-  const signature=JSON.stringify([colors,designs]);if(style.dataset.signature===signature)return;style.dataset.signature=signature;
+  const signature=JSON.stringify([colors,designs,racks]);if(style.dataset.signature===signature)return;
   const probe = doc.createElement('i'); probe.style.display = 'none'; doc.body.append(probe);
   try {
     for (const color of colors) {
@@ -1659,7 +1827,7 @@ function installStoneTextures(doc, colors, computed = getComputedStyle, designs 
       const css = computed(probe), canvas = doc.createElement('canvas');
       canvas.width = canvas.height = 256;
       const ctx = canvas.getContext('2d'); if (!ctx) return;
-      const design=designs[color];
+      const design=designs[color]?normalizeCustomDisc(designs[color]):null;
       const shade=(hex,factor)=>'#'+hex.slice(1).match(/../g).map(part=>Math.round(parseInt(part,16)*factor).toString(16).padStart(2,'0')).join('');
       const custom=design?{'--stone':design.color,'--rim':shade(design.color,.7),'--dark':shade(design.color,.32)}:null;
       const value = key => custom?.[key] ?? css.getPropertyValue(key).trim();
@@ -1672,43 +1840,50 @@ function installStoneTextures(doc, colors, computed = getComputedStyle, designs 
       const base = tint(value('--stone'),[92,79,55],.18);
       const light = tint(value('--stone'),[238,215,172],.29);
       const edge = tint(value('--rim'),[56,45,29],.24);
-      ctx.beginPath(); ctx.ellipse(129, 138, 108, 102, 0, 0, Math.PI * 2);
+      traceDiscShape(ctx,design?.shape,129,138,108,102);
       ctx.fillStyle = value('--dark'); ctx.shadowColor = '#00000085'; ctx.shadowBlur = 13; ctx.shadowOffsetX = 6; ctx.shadowOffsetY = 7; ctx.fill();
       ctx.shadowColor = 'transparent'; ctx.shadowOffsetX = ctx.shadowOffsetY = 0;
       const side = ctx.createLinearGradient(0,112,0,241);
       side.addColorStop(0,edge); side.addColorStop(.73,edge); side.addColorStop(1,value('--dark'));
       ctx.fillStyle=side;ctx.fill();
-      ctx.beginPath(); ctx.ellipse(126, 121, 107, 102, 0, 0, Math.PI * 2);
+      traceDiscShape(ctx,design?.shape);
       const face = ctx.createLinearGradient(40, 20, 181, 225);
       face.addColorStop(0, light); face.addColorStop(.38, base);
       if(design?.finish==='metal'){face.addColorStop(.52,tint(value('--stone'),[255,237,190],.65));face.addColorStop(.62,base);}
-      face.addColorStop(.8, base); face.addColorStop(1, edge);
+      face.addColorStop(.8,design?.colorMode==='gradient'?tint(design.secondaryColor,[92,79,55],.18):base);face.addColorStop(1,design?.colorMode==='gradient'?shade(design.secondaryColor,.6):edge);
       ctx.fillStyle=face;ctx.fill();ctx.strokeStyle=edge;ctx.lineWidth=2;ctx.stroke();
       if(design)drawDiscDecoration(ctx,design);
+      ctx.save();traceDiscShape(ctx,design?.shape);ctx.clip();
       ctx.save();if(design?.finish==='matte')ctx.globalAlpha=.17;ctx.translate(100,64);ctx.rotate(-.35);ctx.scale(1,.42);
       const shine=ctx.createRadialGradient(0,0,8,0,0,86);
       shine.addColorStop(0,'#fff1d63d');shine.addColorStop(.5,'#ffebc61b');shine.addColorStop(1,'#ffebc600');
       ctx.fillStyle=shine;ctx.beginPath();ctx.arc(0,0,86,0,Math.PI*2);ctx.fill();ctx.restore();
-      ctx.beginPath();ctx.ellipse(126,121,104,99,0,Math.PI*1.02,Math.PI*1.91);
+      if(design?.shape&&design.shape!=='round')traceDiscShape(ctx,design.shape,126,121,104,99);else {ctx.beginPath();ctx.ellipse(126,121,104,99,0,Math.PI*1.02,Math.PI*1.91);}
       ctx.strokeStyle='#ffebbd65';ctx.lineWidth=1.5;ctx.stroke();
-      ctx.beginPath();ctx.ellipse(126,121,103,98,0,.14,Math.PI*.8);
+      if(design?.shape&&design.shape!=='round')traceDiscShape(ctx,design.shape,126,124,103,98);else {ctx.beginPath();ctx.ellipse(126,121,103,98,0,.14,Math.PI*.8);}
       ctx.strokeStyle='#080b0738';ctx.lineWidth=2;ctx.stroke();
+      if(design?.edgeWidth){traceDiscShape(ctx,design.shape,126,121,104-design.edgeWidth/2,99-design.edgeWidth/2);ctx.strokeStyle=design.edgeColor;ctx.lineWidth=design.edgeWidth;ctx.stroke();}
+      ctx.restore();
       // A whole storage row is one shared bitmap, irrespective of board size.
+      let stockRules='';
+      if(racks){
       const stock=doc.createElement('canvas');stock.width=544;stock.height=64;
       const rack=stock.getContext('2d');
       for(let i=29;i>=0;i--){
         const x=24+i*17;
-        rack.beginPath();rack.ellipse(x,32,18,27,0,0,Math.PI*2);
+        traceDiscShape(rack,design?.shape,x,32,18,27);
         rack.fillStyle=value('--dark');rack.shadowColor='#000b';rack.shadowBlur=3;rack.shadowOffsetX=3;rack.fill();rack.shadowColor='transparent';
         const edge=rack.createLinearGradient(x-15,0,x+15,0);edge.addColorStop(0,value('--dark'));edge.addColorStop(.3,value('--rim'));edge.addColorStop(.55,light);edge.addColorStop(.82,base);edge.addColorStop(1,value('--dark'));
         rack.fillStyle=edge;rack.fill();rack.strokeStyle='#010504b3';rack.lineWidth=1.5;rack.stroke();
-        rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);rack.strokeStyle='#f8dfac52';rack.lineWidth=1.2;rack.stroke();
+        if(design?.shape&&design.shape!=='round')traceDiscShape(rack,design.shape,x-2,32,13,24);else{rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);}rack.strokeStyle=design?.edgeWidth?design.edgeColor:'#f8dfac52';rack.lineWidth=1.2;rack.stroke();
       }
       const vertical=doc.createElement('canvas');vertical.width=64;vertical.height=544;const v=vertical.getContext('2d');v.translate(64,0);v.rotate(Math.PI/2);v.drawImage(stock,0,0);
+      stockRules=`--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")`;
+      }
       if(custom)rules.push(`.${color}{--stone:${value('--stone')};--rim:${value('--rim')};--dark:${value('--dark')};--bright:${light}}`);
-      rules.push(`:root{--stone-${color}:url("${canvas.toDataURL()}")}.${color}{--disc-image:var(--stone-${color});--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")}`);
+      rules.push(`:root{--stone-${color}:url("${canvas.toDataURL()}")}.${color}{--disc-image:var(--stone-${color});${stockRules}}`);
     }
-    style.textContent = rules.join('\n'); doc.head.append(style); doc.body.classList.add('stone-textures');
+    style.textContent = rules.join('\n');style.dataset.signature=signature;doc.head.append(style);doc.body.classList.add('stone-textures');
   } finally { probe.remove(); }
 }
 
@@ -1888,6 +2063,7 @@ function mergeOnlineLedger(value,ledger) {
   profile.onlineLedger[ledger.id]=Object.fromEntries(['earned','played','wins','draws'].map(k=>[k,Math.max(previous[k],ledger[k])]));
   return profile;
 }
+
 
 
 
@@ -2405,7 +2581,7 @@ function registerTools() {
   for (const tool of tools) { try { Promise.resolve(context.registerTool(tool, { signal: lifecycle.signal })).catch(() => {}); } catch { /* Optional browser integration. */ } }
 }
 window.addEventListener('storage', event => {
-  if (event.key === STORAGE.profile) { profile = normalizeProfile(readSave(STORAGE.profile)); renderHome(); if ($('#shop-dialog').open) renderShop(); }
+  if (event.key === STORAGE.profile) { profile = normalizeProfile(readSave(STORAGE.profile)); renderHome(); if ($('#shop-dialog').open) renderShop(); if ($('#creator-dialog').open&&atelierView==='library')renderDiscLibrary(); }
 });
 let onlineEnabled=false,onlineRoom=null,onlineTimer=null,onlineStartAt=null,onlineOffset=0,onlinePending=false,onlineResultId=null,onlineReactionTimer=null,onlineViewKey='',onlineLedgerKey='',onlinePlayers=[],onlineConnectionMessage='オンライン',onlineErrorMessage='',onlineLobby=null;
 const online=createOnlineClient({getJoinOptions:()=>({customDisc:normalizeCustomDisc(profile.customDisc)}),onState:receiveOnline,onStatus:(message,connected)=>{
@@ -2516,40 +2692,114 @@ $('#online-host-field').addEventListener('change',()=>{
   if(!onlineLobby?.isHost||onlineRoom)return;
   online.send('settings',{settings:{size:Number($('#online-size').value),turnSeconds:Number($('#online-time').value),aiDifficulty:$('#online-ai').value}});
 });
-let discDraft=normalizeCustomDisc(),discPreviewFrame=null;
-function renderCreator() {
-  $('#creator-color').value=discDraft.color;
-  for(const [target,key,options] of [['creator-finishes','finish',DISC_FINISHES],['creator-patterns','pattern',DISC_PATTERNS],['creator-emblems','emblem',DISC_EMBLEMS]]) {
+let discDraft=normalizeCustomDisc(),discDraftName='',discEditingId=null,discPreviewFrame=null,atelierView='editor',lastRemovedDisc=null;
+const discChoiceGroups=[['creator-shapes','shape',DISC_SHAPES],['creator-color-modes','colorMode',DISC_COLOR_MODES],['creator-finishes','finish',DISC_FINISHES],['creator-patterns','pattern',DISC_PATTERNS],['creator-emblems','emblem',DISC_EMBLEMS],['creator-fonts','textFont',DISC_FONTS],['creator-text-positions','textPosition',DISC_TEXT_POSITIONS]];
+function readLatestDiscProfile(){if(storageWorking)profile=normalizeProfile(readSave(STORAGE.profile)??profile);}
+function discTitle(item){return item.name||t('名前のないコマ');}
+function discDescription(design){return [t(DISC_SHAPES[design.shape]),t(DISC_FINISHES[design.finish]),t(DISC_PATTERNS[design.pattern])].join(' · ');}
+function loadDiscDraft(item=null){discEditingId=item?.id??null;discDraftName=item?.name??'';discDraft=normalizeCustomDisc(item?.design);$('#creator-message').textContent='';}
+function setAtelierView(view){
+  atelierView=view;$('#creator-editor').hidden=view!=='editor';$('#creator-library').hidden=view!=='library';
+  $('#creator-editor-open').setAttribute('aria-pressed',String(view==='editor'));$('#creator-library-open').setAttribute('aria-pressed',String(view==='library'));
+  if(view==='editor')renderCreator();else renderDiscLibrary();$('#creator-dialog').scrollTop=0;
+}
+function renderCreator(){
+  $('#creator-name').value=discDraftName;
+  for(const input of document.querySelectorAll('[data-disc-input]'))input.value=discDraft[input.dataset.discInput];
+  for(const [target,key,options] of discChoiceGroups){
     const group=$('#'+target);
     if(!group.children.length)group.innerHTML=Object.keys(options).map(value=>`<button type="button" data-disc-field="${key}" data-disc-value="${value}"></button>`).join('');
     for(const button of group.children){button.textContent=t(options[button.dataset.discValue]);button.setAttribute('aria-pressed',String(discDraft[key]===button.dataset.discValue));}
   }
+  $('#creator-editing-note').textContent=discEditingId?t('保存済みのデザインを編集しています'):t('新しいデザイン');
+  $('#creator-secondary-label').hidden=discDraft.colorMode!=='gradient';
   renderDiscPreview();
 }
-function renderDiscPreview() {
-  installStoneTextures(document,['custom-preview'],getComputedStyle,{'custom-preview':discDraft},'irodory-preview-texture');
-  $('#creator-summary').textContent=[t(DISC_FINISHES[discDraft.finish]),t(DISC_PATTERNS[discDraft.pattern]),t(DISC_EMBLEMS[discDraft.emblem])].join(' · ');
+function renderDiscPreview(){
+  installStoneTextures(document,['custom-preview'],getComputedStyle,{'custom-preview':discDraft},'irodory-preview-texture',{racks:false});
+  $('#creator-summary').textContent=discDescription(discDraft);
+  $('#creator-preview-text').textContent=discDraft.text?t`文字：${discDraft.text}`:'';
+  $('#creator-edge-value').textContent=String(discDraft.edgeWidth);$('#creator-text-size-value').textContent=String(discDraft.textSize);
   document.querySelectorAll('[data-disc-color]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.discColor===discDraft.color)));
 }
-$('#creator-open').addEventListener('click',()=>{discDraft=normalizeCustomDisc(profile.customDisc);$('#creator-message').textContent='';renderCreator();openDialog('#creator-dialog');});
+function queueDiscPreview(){if(discPreviewFrame===null)discPreviewFrame=requestAnimationFrame(()=>{discPreviewFrame=null;renderDiscPreview();});}
+function renderDiscLibrary(){
+  const designs=Object.fromEntries(profile.discLibrary.map(item=>[`library-${item.id}`,item.design]));
+  installStoneTextures(document,Object.keys(designs),getComputedStyle,designs,'irodory-library-textures',{racks:false});
+  $('#library-count').textContent=`${profile.discLibrary.length} / ${DISC_LIBRARY_LIMIT}`;$('#disc-library-empty').hidden=profile.discLibrary.length>0;
+  $('#library-undo').hidden=!lastRemovedDisc;
+  const grid=$('#disc-library-grid');grid.replaceChildren();
+  const element=(tag,cls,text)=>{const el=document.createElement(tag);el.className=cls;if(text!==undefined)el.textContent=text;return el;};
+  for(const item of profile.discLibrary){
+    const card=element('article','disc-card'),equipped=profile.activeDiscId===item.id&&profile.customDisc.enabled;
+    card.classList.toggle('is-equipped',equipped);card.dataset.designId=item.id;
+    const artwork=element('div','disc-card-art'),disc=element('i',`disc library-${item.id}`);disc.setAttribute('aria-hidden','true');artwork.append(disc);card.append(artwork);
+    const label=element('div','disc-card-label');label.append(element('h4','',discTitle(item)),element('span','disc-card-badge',equipped?t('使用中'):''));card.append(label);
+    card.append(element('p','disc-card-description',discDescription(item.design)));
+    if(item.design.text)card.append(element('p','disc-card-inscription',t`文字：${item.design.text}`));
+    const actions=element('div','disc-card-actions');
+    for(const [action,text] of [['equip',equipped?'選択済み':'このコマを使う'],['edit','編集'],['duplicate','複製'],['delete','削除']]){
+      const button=element('button',action==='equip'?'disc-use':'',t(text));button.type='button';button.dataset.libraryAction=action;button.dataset.designId=item.id;button.disabled=action==='equip'&&equipped;button.setAttribute('aria-label',`${discTitle(item)} — ${t(text)}`);actions.append(button);
+    }
+    card.append(actions);grid.append(card);
+  }
+}
+$('#creator-open').addEventListener('click',()=>{
+  readLatestDiscProfile();const item=profile.discLibrary.find(d=>d.id===profile.activeDiscId);
+  loadDiscDraft(item??null);if(!item&&!profile.discLibrary.length)discDraft=normalizeCustomDisc(profile.customDisc);
+  setAtelierView('editor');openDialog('#creator-dialog');
+});
+$('#creator-library-open').addEventListener('click',()=>{readLatestDiscProfile();setAtelierView('library');});
+$('#creator-editor-open').addEventListener('click',()=>setAtelierView('editor'));
+$('#creator-new').addEventListener('click',()=>{loadDiscDraft();setAtelierView('editor');$('#creator-name').focus();});
 $('#creator-dialog').addEventListener('click',event=>{
   const button=event.target.closest('[data-disc-field],[data-disc-color]');if(!button)return;
-  if(button.dataset.discColor)discDraft.color=button.dataset.discColor;
-  else discDraft[button.dataset.discField]=button.dataset.discValue;
+  if(button.dataset.discColor)discDraft.color=button.dataset.discColor;else discDraft[button.dataset.discField]=button.dataset.discValue;
   renderCreator();
 });
-$('#creator-color').addEventListener('input',event=>{
-  discDraft.color=normalizeCustomDisc({color:event.target.value}).color;
-  if(discPreviewFrame===null)discPreviewFrame=requestAnimationFrame(()=>{discPreviewFrame=null;renderDiscPreview();});
-});
-$('#creator-dialog').addEventListener('close',()=>{if(discPreviewFrame!==null)cancelAnimationFrame(discPreviewFrame);discPreviewFrame=null;});
-function saveCustomDisc(enabled) {
-  if(storageWorking)profile=normalizeProfile(readSave(STORAGE.profile)??profile);
-  profile.customDisc=normalizeCustomDisc({...discDraft,enabled});persist();renderHome();
-  $('#creator-message').textContent=enabled?t('マイコマを保存しました。次の対局から使えます。'):t('通常のコマに戻しました。デザインは工房に残ります。');
+$('#creator-name').addEventListener('input',event=>{discDraftName=event.target.value;});
+$('#creator-name').addEventListener('blur',event=>{discDraftName=cleanDiscText(discDraftName,24);event.target.value=discDraftName;});
+for(const input of document.querySelectorAll('[data-disc-input]')){
+  const update=()=>{discDraft=normalizeCustomDisc({...discDraft,[input.dataset.discInput]:input.type==='range'?Number(input.value):input.value});queueDiscPreview();};
+  input.addEventListener('input',event=>{if(!event.isComposing)update();});input.addEventListener('compositionend',update);
+  input.addEventListener('blur',()=>{input.value=discDraft[input.dataset.discInput];});
 }
-$('#creator-save').addEventListener('click',()=>saveCustomDisc(true));
-$('#creator-disable').addEventListener('click',()=>saveCustomDisc(false));
+$('#creator-dialog').addEventListener('close',()=>{if(discPreviewFrame!==null)cancelAnimationFrame(discPreviewFrame);discPreviewFrame=null;});
+function saveCustomDisc(copy=false){
+  readLatestDiscProfile();const result=saveDiscDesign(profile,{id:copy?null:discEditingId,name:discDraftName,design:discDraft},()=>globalThis.crypto?.randomUUID?.()??`disc-${Date.now()}-${Math.random().toString(36).slice(2)}`);
+  if(!result.ok){$('#creator-message').textContent=t(result.reason);return;}
+  profile=normalizeProfile(result.profile);discEditingId=result.id;discDraftName=profile.discLibrary.find(d=>d.id===result.id).name;persist();renderHome();renderCreator();
+  $('#creator-message').textContent=t('一覧に保存しました。次の対局からこのコマを使います。');
+  $('#library-message').textContent=$('#creator-message').textContent;
+}
+$('#creator-save').addEventListener('click',()=>saveCustomDisc());
+$('#creator-save-copy').addEventListener('click',()=>saveCustomDisc(true));
+$('#creator-disable').addEventListener('click',()=>{readLatestDiscProfile();profile.activeDiscId=null;profile.customDisc={...profile.customDisc,enabled:false};persist();renderHome();$('#creator-message').textContent=t('通常のコマに戻しました。保存したコマは一覧に残ります。');});
+$('#disc-library-grid').addEventListener('click',event=>{
+  const button=event.target.closest('[data-library-action]');if(!button)return;
+  readLatestDiscProfile();const item=profile.discLibrary.find(d=>d.id===button.dataset.designId);
+  if(!item){$('#library-message').textContent=t('コマが見つかりません。');renderDiscLibrary();return;}
+  const action=button.dataset.libraryAction;
+  if(action==='edit'){loadDiscDraft(item);setAtelierView('editor');$('#creator-name').focus();return;}
+  let result;
+  if(action==='equip')result=equipDiscDesign(profile,item.id);
+  if(action==='duplicate')result=saveDiscDesign(profile,{name:t`${discTitle(item)}のコピー`,design:item.design,equip:false});
+  if(action==='delete')result=removeDiscDesign(profile,item.id);
+  if(!result?.ok){$('#library-message').textContent=t(result?.reason??'保存できませんでした。もう一度お試しください。');return;}
+  profile=normalizeProfile(result.profile);
+  if(action==='delete'){lastRemovedDisc=result.removed;if(discEditingId===item.id)discEditingId=null;}
+  if(action==='equip')loadDiscDraft(item);
+  persist();renderHome();renderDiscLibrary();
+  $('#library-message').textContent=action==='equip'?t`「${discTitle(item)}」を選びました。次の対局から使います。`:action==='duplicate'?t('コマを複製しました。'):t('コマを削除しました。取り消すことができます。');
+  if(action==='delete')$('#library-undo').focus({preventScroll:true});
+  else $('#disc-library-grid').querySelector(`[data-design-id="${result.id??item.id}"][data-library-action="edit"]`)?.focus({preventScroll:true});
+});
+$('#library-undo').addEventListener('click',()=>{
+  if(!lastRemovedDisc)return;readLatestDiscProfile();const result=restoreDiscDesign(profile,lastRemovedDisc);
+  if(!result.ok){$('#library-message').textContent=t(result.reason);return;}
+  profile=normalizeProfile(result.profile);lastRemovedDisc=null;persist();renderDiscLibrary();$('#library-message').textContent=t('コマを一覧に戻しました。');
+  $('#disc-library-grid').querySelector(`[data-design-id="${result.id}"][data-library-action="edit"]`)?.focus({preventScroll:true});
+});
 
 function refreshLanguage() {
   setLanguage(preferences.language, navigator.languages?.length ? navigator.languages : [navigator.language]);
@@ -2561,7 +2811,7 @@ function refreshLanguage() {
     setupNotes();
   }
   if ($('#shop-dialog').open) renderShop();
-  if ($('#creator-dialog').open) renderCreator();
+  if ($('#creator-dialog').open) {if(atelierView==='library')renderDiscLibrary();else renderCreator();}
   renderOnlineConfig();
   if (state.phase !== 'home') {
     ui.board.setAttribute('aria-label',t`Irodoryの盤面、${state.size}行${state.size}列、${state.colors.length}色`);

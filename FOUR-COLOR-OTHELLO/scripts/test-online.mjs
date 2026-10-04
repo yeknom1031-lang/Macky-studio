@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import WebSocket from 'ws';
 import {firstRoundMoves} from '../src/engine.js';
+import {normalizeCustomDisc} from '../src/cosmetics.js';
 const base=process.argv[2]??'http://127.0.0.1:8787';
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 async function until(fn,label,timeout=12000){const start=Date.now();while(!fn()){if(Date.now()-start>timeout)throw new Error('Timed out: '+label);await wait(40);}}
@@ -21,7 +22,7 @@ try{
  const group=await Promise.all([1,2,3,4].map(i=>player('動作テスト'+i)));
  assert.equal(group[0].state.players?.length,0,'Run integration tests only when the waiting room is empty.');
  const settings={size:6,turnSeconds:30,aiDifficulty:'hard'};
- const customDisc={enabled:true,color:'#9354ce',finish:'metal',pattern:'rings',emblem:'star'};
+ const customDisc=normalizeCustomDisc({enabled:true,color:'#9354ce',finish:'metal',pattern:'rings',emblem:'star',shape:'hexagon',text:'彩り☆',textPosition:'center',textFont:'serif',edgeWidth:4,colorMode:'gradient',secondaryColor:'#df749d'});
  group[0].send('join',{protocol:2,customDisc});await until(()=>group[0].state.isHost,'first player is host');
  const startAt=group[0].state.startAt;
  group[0].send('settings',{settings});await until(()=>group[0].state.settings?.size===6,'host settings saved');

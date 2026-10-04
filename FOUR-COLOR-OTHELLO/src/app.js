@@ -1,4 +1,5 @@
-import { normalizeCustomDisc, matchCosmetics, DISC_FINISHES, DISC_PATTERNS, DISC_EMBLEMS } from './cosmetics.js';
+import { normalizeCustomDisc, cleanDiscText, matchCosmetics, DISC_FINISHES, DISC_PATTERNS, DISC_EMBLEMS, DISC_SHAPES, DISC_FONTS, DISC_TEXT_POSITIONS, DISC_COLOR_MODES } from './cosmetics.js';
+import { DISC_LIBRARY_LIMIT, saveDiscDesign, equipDiscDesign, removeDiscDesign, restoreDiscDesign } from './disc-library.js';
 import { t, normalizeLanguage, setLanguage, getLanguage, createStaticTranslations, onlineSeatName, onlineNotice } from './i18n.js';
 import { initialBoard, PLAYERS, BOARD_SIZES, captures, legalMoves, firstRoundMoves, playMove, nextTurn, scores, winners } from './engine.js';
 import { createGameClock } from './game-clock.js';
@@ -516,7 +517,7 @@ function registerTools() {
   for (const tool of tools) { try { Promise.resolve(context.registerTool(tool, { signal: lifecycle.signal })).catch(() => {}); } catch { /* Optional browser integration. */ } }
 }
 window.addEventListener('storage', event => {
-  if (event.key === STORAGE.profile) { profile = normalizeProfile(readSave(STORAGE.profile)); renderHome(); if ($('#shop-dialog').open) renderShop(); }
+  if (event.key === STORAGE.profile) { profile = normalizeProfile(readSave(STORAGE.profile)); renderHome(); if ($('#shop-dialog').open) renderShop(); if ($('#creator-dialog').open&&atelierView==='library')renderDiscLibrary(); }
 });
 let onlineEnabled=false,onlineRoom=null,onlineTimer=null,onlineStartAt=null,onlineOffset=0,onlinePending=false,onlineResultId=null,onlineReactionTimer=null,onlineViewKey='',onlineLedgerKey='',onlinePlayers=[],onlineConnectionMessage='オンライン',onlineErrorMessage='',onlineLobby=null;
 const online=createOnlineClient({getJoinOptions:()=>({customDisc:normalizeCustomDisc(profile.customDisc)}),onState:receiveOnline,onStatus:(message,connected)=>{
@@ -627,40 +628,114 @@ $('#online-host-field').addEventListener('change',()=>{
   if(!onlineLobby?.isHost||onlineRoom)return;
   online.send('settings',{settings:{size:Number($('#online-size').value),turnSeconds:Number($('#online-time').value),aiDifficulty:$('#online-ai').value}});
 });
-let discDraft=normalizeCustomDisc(),discPreviewFrame=null;
-function renderCreator() {
-  $('#creator-color').value=discDraft.color;
-  for(const [target,key,options] of [['creator-finishes','finish',DISC_FINISHES],['creator-patterns','pattern',DISC_PATTERNS],['creator-emblems','emblem',DISC_EMBLEMS]]) {
+let discDraft=normalizeCustomDisc(),discDraftName='',discEditingId=null,discPreviewFrame=null,atelierView='editor',lastRemovedDisc=null;
+const discChoiceGroups=[['creator-shapes','shape',DISC_SHAPES],['creator-color-modes','colorMode',DISC_COLOR_MODES],['creator-finishes','finish',DISC_FINISHES],['creator-patterns','pattern',DISC_PATTERNS],['creator-emblems','emblem',DISC_EMBLEMS],['creator-fonts','textFont',DISC_FONTS],['creator-text-positions','textPosition',DISC_TEXT_POSITIONS]];
+function readLatestDiscProfile(){if(storageWorking)profile=normalizeProfile(readSave(STORAGE.profile)??profile);}
+function discTitle(item){return item.name||t('名前のないコマ');}
+function discDescription(design){return [t(DISC_SHAPES[design.shape]),t(DISC_FINISHES[design.finish]),t(DISC_PATTERNS[design.pattern])].join(' · ');}
+function loadDiscDraft(item=null){discEditingId=item?.id??null;discDraftName=item?.name??'';discDraft=normalizeCustomDisc(item?.design);$('#creator-message').textContent='';}
+function setAtelierView(view){
+  atelierView=view;$('#creator-editor').hidden=view!=='editor';$('#creator-library').hidden=view!=='library';
+  $('#creator-editor-open').setAttribute('aria-pressed',String(view==='editor'));$('#creator-library-open').setAttribute('aria-pressed',String(view==='library'));
+  if(view==='editor')renderCreator();else renderDiscLibrary();$('#creator-dialog').scrollTop=0;
+}
+function renderCreator(){
+  $('#creator-name').value=discDraftName;
+  for(const input of document.querySelectorAll('[data-disc-input]'))input.value=discDraft[input.dataset.discInput];
+  for(const [target,key,options] of discChoiceGroups){
     const group=$('#'+target);
     if(!group.children.length)group.innerHTML=Object.keys(options).map(value=>`<button type="button" data-disc-field="${key}" data-disc-value="${value}"></button>`).join('');
     for(const button of group.children){button.textContent=t(options[button.dataset.discValue]);button.setAttribute('aria-pressed',String(discDraft[key]===button.dataset.discValue));}
   }
+  $('#creator-editing-note').textContent=discEditingId?t('保存済みのデザインを編集しています'):t('新しいデザイン');
+  $('#creator-secondary-label').hidden=discDraft.colorMode!=='gradient';
   renderDiscPreview();
 }
-function renderDiscPreview() {
-  installStoneTextures(document,['custom-preview'],getComputedStyle,{'custom-preview':discDraft},'irodory-preview-texture');
-  $('#creator-summary').textContent=[t(DISC_FINISHES[discDraft.finish]),t(DISC_PATTERNS[discDraft.pattern]),t(DISC_EMBLEMS[discDraft.emblem])].join(' · ');
+function renderDiscPreview(){
+  installStoneTextures(document,['custom-preview'],getComputedStyle,{'custom-preview':discDraft},'irodory-preview-texture',{racks:false});
+  $('#creator-summary').textContent=discDescription(discDraft);
+  $('#creator-preview-text').textContent=discDraft.text?t`文字：${discDraft.text}`:'';
+  $('#creator-edge-value').textContent=String(discDraft.edgeWidth);$('#creator-text-size-value').textContent=String(discDraft.textSize);
   document.querySelectorAll('[data-disc-color]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.discColor===discDraft.color)));
 }
-$('#creator-open').addEventListener('click',()=>{discDraft=normalizeCustomDisc(profile.customDisc);$('#creator-message').textContent='';renderCreator();openDialog('#creator-dialog');});
+function queueDiscPreview(){if(discPreviewFrame===null)discPreviewFrame=requestAnimationFrame(()=>{discPreviewFrame=null;renderDiscPreview();});}
+function renderDiscLibrary(){
+  const designs=Object.fromEntries(profile.discLibrary.map(item=>[`library-${item.id}`,item.design]));
+  installStoneTextures(document,Object.keys(designs),getComputedStyle,designs,'irodory-library-textures',{racks:false});
+  $('#library-count').textContent=`${profile.discLibrary.length} / ${DISC_LIBRARY_LIMIT}`;$('#disc-library-empty').hidden=profile.discLibrary.length>0;
+  $('#library-undo').hidden=!lastRemovedDisc;
+  const grid=$('#disc-library-grid');grid.replaceChildren();
+  const element=(tag,cls,text)=>{const el=document.createElement(tag);el.className=cls;if(text!==undefined)el.textContent=text;return el;};
+  for(const item of profile.discLibrary){
+    const card=element('article','disc-card'),equipped=profile.activeDiscId===item.id&&profile.customDisc.enabled;
+    card.classList.toggle('is-equipped',equipped);card.dataset.designId=item.id;
+    const artwork=element('div','disc-card-art'),disc=element('i',`disc library-${item.id}`);disc.setAttribute('aria-hidden','true');artwork.append(disc);card.append(artwork);
+    const label=element('div','disc-card-label');label.append(element('h4','',discTitle(item)),element('span','disc-card-badge',equipped?t('使用中'):''));card.append(label);
+    card.append(element('p','disc-card-description',discDescription(item.design)));
+    if(item.design.text)card.append(element('p','disc-card-inscription',t`文字：${item.design.text}`));
+    const actions=element('div','disc-card-actions');
+    for(const [action,text] of [['equip',equipped?'選択済み':'このコマを使う'],['edit','編集'],['duplicate','複製'],['delete','削除']]){
+      const button=element('button',action==='equip'?'disc-use':'',t(text));button.type='button';button.dataset.libraryAction=action;button.dataset.designId=item.id;button.disabled=action==='equip'&&equipped;button.setAttribute('aria-label',`${discTitle(item)} — ${t(text)}`);actions.append(button);
+    }
+    card.append(actions);grid.append(card);
+  }
+}
+$('#creator-open').addEventListener('click',()=>{
+  readLatestDiscProfile();const item=profile.discLibrary.find(d=>d.id===profile.activeDiscId);
+  loadDiscDraft(item??null);if(!item&&!profile.discLibrary.length)discDraft=normalizeCustomDisc(profile.customDisc);
+  setAtelierView('editor');openDialog('#creator-dialog');
+});
+$('#creator-library-open').addEventListener('click',()=>{readLatestDiscProfile();setAtelierView('library');});
+$('#creator-editor-open').addEventListener('click',()=>setAtelierView('editor'));
+$('#creator-new').addEventListener('click',()=>{loadDiscDraft();setAtelierView('editor');$('#creator-name').focus();});
 $('#creator-dialog').addEventListener('click',event=>{
   const button=event.target.closest('[data-disc-field],[data-disc-color]');if(!button)return;
-  if(button.dataset.discColor)discDraft.color=button.dataset.discColor;
-  else discDraft[button.dataset.discField]=button.dataset.discValue;
+  if(button.dataset.discColor)discDraft.color=button.dataset.discColor;else discDraft[button.dataset.discField]=button.dataset.discValue;
   renderCreator();
 });
-$('#creator-color').addEventListener('input',event=>{
-  discDraft.color=normalizeCustomDisc({color:event.target.value}).color;
-  if(discPreviewFrame===null)discPreviewFrame=requestAnimationFrame(()=>{discPreviewFrame=null;renderDiscPreview();});
-});
-$('#creator-dialog').addEventListener('close',()=>{if(discPreviewFrame!==null)cancelAnimationFrame(discPreviewFrame);discPreviewFrame=null;});
-function saveCustomDisc(enabled) {
-  if(storageWorking)profile=normalizeProfile(readSave(STORAGE.profile)??profile);
-  profile.customDisc=normalizeCustomDisc({...discDraft,enabled});persist();renderHome();
-  $('#creator-message').textContent=enabled?t('マイコマを保存しました。次の対局から使えます。'):t('通常のコマに戻しました。デザインは工房に残ります。');
+$('#creator-name').addEventListener('input',event=>{discDraftName=event.target.value;});
+$('#creator-name').addEventListener('blur',event=>{discDraftName=cleanDiscText(discDraftName,24);event.target.value=discDraftName;});
+for(const input of document.querySelectorAll('[data-disc-input]')){
+  const update=()=>{discDraft=normalizeCustomDisc({...discDraft,[input.dataset.discInput]:input.type==='range'?Number(input.value):input.value});queueDiscPreview();};
+  input.addEventListener('input',event=>{if(!event.isComposing)update();});input.addEventListener('compositionend',update);
+  input.addEventListener('blur',()=>{input.value=discDraft[input.dataset.discInput];});
 }
-$('#creator-save').addEventListener('click',()=>saveCustomDisc(true));
-$('#creator-disable').addEventListener('click',()=>saveCustomDisc(false));
+$('#creator-dialog').addEventListener('close',()=>{if(discPreviewFrame!==null)cancelAnimationFrame(discPreviewFrame);discPreviewFrame=null;});
+function saveCustomDisc(copy=false){
+  readLatestDiscProfile();const result=saveDiscDesign(profile,{id:copy?null:discEditingId,name:discDraftName,design:discDraft},()=>globalThis.crypto?.randomUUID?.()??`disc-${Date.now()}-${Math.random().toString(36).slice(2)}`);
+  if(!result.ok){$('#creator-message').textContent=t(result.reason);return;}
+  profile=normalizeProfile(result.profile);discEditingId=result.id;discDraftName=profile.discLibrary.find(d=>d.id===result.id).name;persist();renderHome();renderCreator();
+  $('#creator-message').textContent=t('一覧に保存しました。次の対局からこのコマを使います。');
+  $('#library-message').textContent=$('#creator-message').textContent;
+}
+$('#creator-save').addEventListener('click',()=>saveCustomDisc());
+$('#creator-save-copy').addEventListener('click',()=>saveCustomDisc(true));
+$('#creator-disable').addEventListener('click',()=>{readLatestDiscProfile();profile.activeDiscId=null;profile.customDisc={...profile.customDisc,enabled:false};persist();renderHome();$('#creator-message').textContent=t('通常のコマに戻しました。保存したコマは一覧に残ります。');});
+$('#disc-library-grid').addEventListener('click',event=>{
+  const button=event.target.closest('[data-library-action]');if(!button)return;
+  readLatestDiscProfile();const item=profile.discLibrary.find(d=>d.id===button.dataset.designId);
+  if(!item){$('#library-message').textContent=t('コマが見つかりません。');renderDiscLibrary();return;}
+  const action=button.dataset.libraryAction;
+  if(action==='edit'){loadDiscDraft(item);setAtelierView('editor');$('#creator-name').focus();return;}
+  let result;
+  if(action==='equip')result=equipDiscDesign(profile,item.id);
+  if(action==='duplicate')result=saveDiscDesign(profile,{name:t`${discTitle(item)}のコピー`,design:item.design,equip:false});
+  if(action==='delete')result=removeDiscDesign(profile,item.id);
+  if(!result?.ok){$('#library-message').textContent=t(result?.reason??'保存できませんでした。もう一度お試しください。');return;}
+  profile=normalizeProfile(result.profile);
+  if(action==='delete'){lastRemovedDisc=result.removed;if(discEditingId===item.id)discEditingId=null;}
+  if(action==='equip')loadDiscDraft(item);
+  persist();renderHome();renderDiscLibrary();
+  $('#library-message').textContent=action==='equip'?t`「${discTitle(item)}」を選びました。次の対局から使います。`:action==='duplicate'?t('コマを複製しました。'):t('コマを削除しました。取り消すことができます。');
+  if(action==='delete')$('#library-undo').focus({preventScroll:true});
+  else $('#disc-library-grid').querySelector(`[data-design-id="${result.id??item.id}"][data-library-action="edit"]`)?.focus({preventScroll:true});
+});
+$('#library-undo').addEventListener('click',()=>{
+  if(!lastRemovedDisc)return;readLatestDiscProfile();const result=restoreDiscDesign(profile,lastRemovedDisc);
+  if(!result.ok){$('#library-message').textContent=t(result.reason);return;}
+  profile=normalizeProfile(result.profile);lastRemovedDisc=null;persist();renderDiscLibrary();$('#library-message').textContent=t('コマを一覧に戻しました。');
+  $('#disc-library-grid').querySelector(`[data-design-id="${result.id}"][data-library-action="edit"]`)?.focus({preventScroll:true});
+});
 
 function refreshLanguage() {
   setLanguage(preferences.language, navigator.languages?.length ? navigator.languages : [navigator.language]);
@@ -672,7 +747,7 @@ function refreshLanguage() {
     setupNotes();
   }
   if ($('#shop-dialog').open) renderShop();
-  if ($('#creator-dialog').open) renderCreator();
+  if ($('#creator-dialog').open) {if(atelierView==='library')renderDiscLibrary();else renderCreator();}
   renderOnlineConfig();
   if (state.phase !== 'home') {
     ui.board.setAttribute('aria-label',t`Irodoryの盤面、${state.size}行${state.size}列、${state.colors.length}色`);

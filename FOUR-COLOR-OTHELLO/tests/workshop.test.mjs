@@ -9,7 +9,7 @@ import {Lobby} from '../server/lobby.js';
 import {createRoom,publicRoom,tickRoom,roomAction} from '../server/game.js';
 import {normalizeOnlineSettings,validateOnlineSettings} from '../server/settings.js';
 
-const design={enabled:true,color:'#9354ce',finish:'metal',pattern:'rings',emblem:'star'};
+const design=normalizeCustomDisc({enabled:true,color:'#9354ce',finish:'metal',pattern:'rings',emblem:'star'});
 const palette=PLAYERS.map(p=>({id:p.color,name:p.name,seat:p.id}));
 const players=Array.from({length:4},(_,i)=>({id:`maker-${i}`,name:`Maker ${i}`}));
 const config={size:10,turnSeconds:90,aiDifficulty:'hard'};
@@ -17,7 +17,7 @@ function waiting(){let id=0;const l=new Lobby(undefined,()=>`workshop-${++id}`);
 
 test('custom designs migrate safely and only allow bounded colors, materials and geometry',()=>{
   for(const raw of [undefined,null,4,'<svg>',[],{enabled:'yes',color:'red;}',finish:'__proto__',pattern:'<img>',emblem:'constructor'}]){
-    assert.deepEqual(normalizeCustomDisc(raw),{enabled:false,color:'#9354ce',finish:'gloss',pattern:'plain',emblem:'none'});
+    assert.deepEqual(normalizeCustomDisc(raw),normalizeCustomDisc());
   }
   assert.deepEqual(normalizeCustomDisc({...design,color:'#ABCDEF',extra:'<script>'}),{...design,color:'#abcdef'});
   assert.equal(normalizeProfile({coins:300}).customDisc.enabled,false);
