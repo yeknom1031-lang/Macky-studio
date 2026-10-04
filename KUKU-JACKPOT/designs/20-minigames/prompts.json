@@ -616,7 +616,11 @@
           "キャラクターの見た目で当てていない",
           "誤答より正しい九九が記憶に残るか試遊で確認",
           "スマホ横で指が式を隠さない"
-        ]
+        ],
+        "productionPlan": "production-plan.json",
+        "cheersCatalog": "cheers-100.json",
+        "cheersRule": "120 BPMの13拍目から正しい九九を読み上げる。残りが短ければ掛け声を省略し、長い『みやぶったね』は節目にあらかじめ設けた1小節で使う。",
+        "animationStrategy": "生成したキーポーズと透過パーツを組み合わせる。4〜6ポーズを補間・差分再生し、位置・回転・拡大縮小はゲーム側で連続的に動かす。"
       }
     }
   ],
@@ -628,5 +632,6 @@
     "safeBottomInset": "4%",
     "minimumTouchTarget": "48 logical px"
   },
-  "updateNote": "21本目「ほんと？うそ？九九の森」を追加。21本目は出題・答え合わせの2画面。"
+  "updateNote": "21本目「ほんと？うそ？九九の森」を追加。21本目は出題・答え合わせの2画面。",
+  "productionPlan": "production-plan.json"
 }
