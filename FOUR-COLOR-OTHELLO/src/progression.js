@@ -20,7 +20,9 @@ export function normalizeProfile(value) {
   const owned = (kind, values) => [...new Set([...CATALOG.filter(i => i.kind === kind && i.price === 0).map(i => i.id), ...(Array.isArray(values) ? values.filter(v => valid(kind).includes(v)) : [])])];
   const ownedBoards = owned('board', raw.ownedBoards), ownedColors = owned('color', raw.ownedColors);
   const integer = v => Number.isSafeInteger(v) && v >= 0 ? Math.min(v, 1000000000) : 0;
-  return { version: 1, coins: integer(raw.coins), ownedBoards, ownedColors,
+  const onlineLedger = {};
+  for (const [id, entry] of Object.entries(raw.onlineLedger ?? {}).slice(-100)) if (/^[a-zA-Z0-9-]{1,64}$/.test(id) && entry && typeof entry === 'object') onlineLedger[id] = Object.fromEntries(['earned','played','wins','draws'].map(k=>[k,integer(entry[k])]));
+  return { version: 1, onlineLedger, coins: integer(raw.coins), ownedBoards, ownedColors,
     equippedBoard: ownedBoards.includes(raw.equippedBoard) ? raw.equippedBoard : 'classic',
     equippedColor: ownedColors.includes(raw.equippedColor) ? raw.equippedColor : 'red',
     claimed: [...new Set(Array.isArray(raw.claimed) ? raw.claimed.filter(v => typeof v === 'string' && v.length <= 120).slice(-2000) : [])],

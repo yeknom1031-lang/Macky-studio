@@ -452,6 +452,25 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
 .reduce-motion .cell.capture-preview::before { animation:none!important; opacity:.9; }
 @media(prefers-reduced-motion:reduce) { .cell.capture-preview::before { animation:none!important; opacity:.9; } }
 
+/* Online lounge: compact controls leave the physical board as the focal point. */
+.online-play{display:flex;justify-content:space-between;align-items:center;gap:20px;text-align:left;padding:16px 22px;background:linear-gradient(110deg,#ab803d,#edcf90);color:#172322;border:1px solid #ffe1a0;box-shadow:0 5px 25px #070e1066}
+.online-play b{display:block;font-size:1.12rem}.online-play small{display:block;font-size:.72rem;margin-top:4px;opacity:.8}.online-play>span:last-child{font-size:1.8rem}
+.online-lobby{text-align:center}.online-seats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}.online-seat{min-width:0;padding:16px 4px;border:1px solid #c3a56745;border-radius:14px;background:#081d1c66}.online-seat .disc{display:block;width:44px;height:44px;margin:0 auto 14px}.online-seat b{display:block;font-size:.82rem;overflow-wrap:anywhere}.online-seat small{color:#d6bd85;display:block;margin-top:6px}.online-seat.empty{border-style:dashed;opacity:.65}.online-seat.empty .seat-placeholder{display:block;font-size:32px;height:58px;color:#b7a17a}
+.matchmaking-clock{display:flex;align-items:baseline;justify-content:center;gap:10px;color:#edd09d}.matchmaking-clock strong{font-size:3rem;font-variant-numeric:tabular-nums}.matchmaking-clock span{font-size:.85rem}.nickname-label{display:block;margin:25px 0 8px}.nickname-input{width:100%;font:inherit;font-size:1.3rem;padding:16px;color:#f8ecd4;background:#082422;border:1px solid #bfa773;border-radius:10px}.online-error{color:#ffb5a7;min-height:1.5em;font-size:.9rem}.online-official-link{display:block;font-size:.75rem;color:#bfae8d;margin-top:12px}
+.online-hud{position:fixed;bottom:max(6px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(96vw,760px);display:flex;justify-content:center;align-items:center;gap:16px;color:#e7d6b5;font-size:.78rem;z-index:10;background:#081916eb;border:1px solid #c5a46c40;border-radius:20px;padding:4px 14px}.online-hud[hidden]{display:none}.online-hud .text-button{padding:7px;font-size:.78rem;margin:0;white-space:nowrap}#online-turn-time{font-variant-numeric:tabular-nums;white-space:nowrap}#online-turn-time.urgent{color:#ffa394}#online-stamps{position:absolute;bottom:48px;right:0;background:#102b29;border:1px solid #b6a274;border-radius:12px;padding:10px;box-shadow:0 10px 35px #0008}#online-stamps button{display:block;background:none;color:#eddfc5;border:0;padding:12px;font:inherit;white-space:nowrap}#online-reaction:empty{display:none}#online-reaction{position:absolute;bottom:50px;left:0;background:#183b34;border:1px solid #ab945e;padding:12px;border-radius:12px;max-width:75vw} .game[data-difficulty=online]{padding-bottom:48px}.game[data-difficulty=online] .score-name{font-size:.73rem;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}.game[data-difficulty=online] .score-owner{font-size:.6rem}
+@media(max-width:600px){.online-seats{gap:6px}.online-seat{padding:12px 2px}.online-seat .disc{width:32px;height:32px}.online-seat b{font-size:.72rem}.online-hud{gap:8px;font-size:.65rem}.online-hud .text-button{font-size:.65rem}.game[data-difficulty=online] .score-name{max-width:54px;font-size:.6rem}.home-menu .online-play{padding:12px 16px}.online-play b{font-size:1rem}}
+.game[data-difficulty=online]{gap:10px;padding:8px 12px 48px}
+.game[data-difficulty=online] .scorebar{grid-template-columns:86px minmax(0,1fr);gap:2px 8px;width:min(800px,100%);min-height:0;flex-shrink:0}
+.game[data-difficulty=online] .turn{justify-content:flex-end;min-width:0;max-width:100%;font-size:.9rem;padding:4px 8px;border:0}
+.game[data-difficulty=online] .turn>span:first-of-type{overflow:hidden;text-overflow:ellipsis}
+.game[data-difficulty=online] .scores{grid-column:1/-1;gap:4px}
+.game[data-difficulty=online] .score{gap:8px;padding:4px 8px 17px}
+.game[data-difficulty=online] .score>span{min-width:0;text-align:center}
+.game[data-difficulty=online] .score-name{display:block;font-size:.72rem;max-width:130px;line-height:1.3}
+.game[data-difficulty=online] .score b{font-size:1.4rem;line-height:1.2}
+.game[data-difficulty=online]>.board-shell{width:min(calc(100svh - 188px),calc(100vw - 24px));flex-shrink:0}
+@media(max-width:600px){.game[data-difficulty=online] .score-name{max-width:60px;font-size:.62rem}.game[data-difficulty=online] .score{gap:4px;padding:4px 3px 16px}.game[data-difficulty=online] .score .disc{width:17px}.game[data-difficulty=online] .scorebar{grid-template-columns:70px minmax(0,1fr)}.game[data-difficulty=online] .turn{font-size:.78rem}.game[data-difficulty=online] .turn .disc{width:21px}}
+
 </style>
 
 </head>
@@ -463,6 +482,7 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
       <h1 class="logo"><span class="brand-art" role="img" aria-label="Irodory"></span><span class="logo-line" aria-hidden="true"></span></h1>
       <p class="home-tagline">一手で、景色が変わる。</p><p class="home-subtitle">４つの色が交差する、あなただけの一局。</p>
       <div class="home-menu">
+        <button id="online-open" class="primary online-play"><span><b>オンラインで遊ぶ</b><small>世界のプレイヤーと、同じ卓へ</small></span><span aria-hidden="true">↗</span></button>
         <button id="start" class="primary play-button"><span><b>ひとりで遊ぶ</b><small>コンピューター３人と対戦</small></span><span class="play-arrow" aria-hidden="true">▶</span></button>
         <button id="friends-open" class="secondary wide"><span>4人で遊ぶ</span><small>ひとつの画面で交代</small></button>
         <button id="classic-open" class="secondary wide"><span>通常の２色オセロ</span><small>黒と白 · AI対戦 / ２人対戦</small></button>
@@ -481,7 +501,15 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
       <div id="match-intro" class="match-intro" aria-hidden="true" hidden><span id="intro-emblem" class="intro-emblem"></span><span id="intro-eyebrow" class="intro-eyebrow">TAKE YOUR SEAT</span><span class="brand-art intro-logo" role="img" aria-label="Irodory"></span><strong id="intro-title">対局開始</strong><p id="intro-detail"></p><div id="intro-pieces"></div></div>
       <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
     </div>
+    <div id="online-hud" class="online-hud" hidden><span id="online-connection">オンライン</span><strong id="online-turn-time"></strong><button id="online-stamps-toggle" class="text-button">リアクション ♡</button><span id="online-reaction" role="status"></span><div id="online-stamps" hidden></div></div>
   </main>
+  <dialog id="online-name-dialog" aria-labelledby="online-name-title"><form id="online-name-form" class="dialog-content">
+    <button type="button" class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">WELCOME TO THE TABLE</p><h2 id="online-name-title">あなたの呼び名は？</h2><p class="field-note">対戦相手に表示するニックネームを決めましょう。</p>
+    <label class="nickname-label" for="online-name">ニックネーム</label><input id="online-name" class="nickname-input" maxlength="24" required autocomplete="nickname" placeholder="例：いろどりネコ"><p class="field-note">1〜12文字。本名や連絡先は入れないでください。</p><p id="online-name-error" class="online-error" role="alert"></p><button id="online-name-submit" class="primary" type="submit">この名前で対戦相手を探す</button>
+  </form></dialog>
+  <dialog id="online-lobby-dialog" aria-labelledby="online-lobby-title"><div class="dialog-content online-lobby">
+    <p class="eyebrow">THE ONLINE LOUNGE</p><h2 id="online-lobby-title">同じ卓で、彩ろう。</h2><p id="online-lobby-status" role="status">対戦相手を探しています…</p><div id="online-seats" class="online-seats"></div><div class="matchmaking-clock"><strong id="online-countdown">60</strong><span>秒以内にスタート</span></div><p class="field-note">4人そろえばすぐに開始。1分後、空いている席にAIが着席します。ひとりでも遊べます。</p><p id="online-lobby-error" class="online-error" role="alert"></p><button id="online-cancel" class="secondary">待機をやめる</button><button id="online-rename" class="text-button">ニックネームを変える</button><a class="online-official-link" href="https://irodory.yeknom1031.workers.dev/">公開されたオンライン版を開く ↗</a>
+  </div></dialog>
   <dialog id="setup-dialog" aria-labelledby="setup-title"><div class="dialog-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">NEW GAME</p><h2 id="setup-title">ひとりで遊ぶ</h2>
     <fieldset id="classic-mode-field" class="choice-field" hidden><legend>遊び方</legend><div class="choices"><label class="choice"><input type="radio" name="classic-mode" value="solo" checked><span>ひとりでAIと対戦</span></label><label class="choice"><input type="radio" name="classic-mode" value="friends"><span>２人で交代</span></label></div></fieldset>
@@ -493,6 +521,7 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
   </div></dialog>
   <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">HOW TO PLAY</p><h2 id="rules-title">ルールブック</h2>
+    <h3>オンライン対戦</h3><p>初回にニックネームを決めて参加します。４色・８×８の対戦で、色と手番はランダム。4人そろえば開始、最初の待機から1分で足りない席を「AI」と表示したコンピューターが担当します。ひとりでも参加できます。</p><p>1手45秒。時間切れはAIが代わりに打ち、連続2回でその席を引き継ぎます。通信が切れた場合は60秒以内に戻ると復帰でき、その間も時間は進みます。降参するとあなたは負けとなり、残りの対局はAIが続けます。オンライン中はメニューや設定を開いても時間は止まりません。</p><p>勝利は70コイン、最多同点は35コイン。結果はサーバーが判定し、同じ結果を二重には受け取れません。コインと購入品はこのブラウザの保存データに反映されます。終局後は同じメンバーとの再戦か、新しい対戦相手を選べます。ニックネームと対戦・報酬データはCloudflareに保存します。ログイン登録は不要ですが、ブラウザのCookieを消すと同じオンラインプレイヤーとして復帰できなくなります。</p>
     <h3>通常の２色オセロ</h3><p>ホームの「通常の２色オセロ」から、AI１人と対戦・２人で交代を選べます。基本は８×８、中央に黒２枚・白２枚を斜めに置き、黒から交互に打ちます。ひとりモードのあなたの色は毎回抽選します。縦・横・斜めにはさんだ相手の石を返し、置けなければ自動パス。双方が置けなければ終了し、石の多い色が勝ち、同数は引き分けです。２色では初手の保護ルールや特別色の抽選を使いません。ボードの着せ替え、強さ、ヒント、降参、ひとり対戦のコインは４色と共通です。</p>
     <h3>４色オセロ</h3><p class="rule-intro">自分の色ではさんで、いちばん多く。</p>
     <ol><li><b>４色で交代。</b>ひとりモードでは、自分の色と１〜４番目の手番を毎回抽選します。残りの３色がコンピューターです。順番はその対局中は変わりません。４人モードは赤 → 青 → 黄 → 緑の順です。</li><li><b>相手の石をはさむ場所に置く。</b>縦・横・斜めの８方向で、１枚以上はさめる空きマスに置けます。はさめないマスには置けません。</li><li><b>間の色は全部ひっくり返る。</b>自分以外の色が混ざっていても、途切れずにはさんだ石はすべて自分の色になります。空きマスを越えてはさむことはできません。</li><li><b>置けなければ自動でスキップ。</b>「置ける場所がありません」と表示して、次の人に進みます。０枚になった色もスキップします。</li><li><b>石の数で勝負。</b>盤が埋まるか、全員が置けなくなると終了。いちばん多い人が勝ち。最多の人が複数なら引き分けです。</li></ol>
@@ -522,7 +551,7 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
     <span class="pause-emblem" aria-hidden="true">Ⅱ</span><p class="eyebrow">PAUSED</p><h2 id="menu-title">ポーズ</h2><p class="pause-note">ゲームの時間が止まっています</p><p id="match-info" class="field-note"></p><button class="primary" data-close>ゲームを続ける <kbd>Esc</kbd></button><div class="pause-actions"><button id="game-rules" class="secondary"><span aria-hidden="true">▤</span>ルールブック</button><button id="game-settings" class="secondary"><span aria-hidden="true">⚙</span>設定</button></div><button id="resign-open" class="danger">降参する</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
   </div></dialog>
   <dialog id="resign-dialog" aria-labelledby="resign-title" aria-describedby="resign-description"><div class="dialog-content resign-confirm"><p class="eyebrow">RESIGN MATCH</p><h2 id="resign-title">降参しますか？</h2><p id="resign-description"></p><button class="primary" data-close autofocus>対局を続ける</button><button id="resign-confirm" class="danger">降参して対局を終了する</button></div></dialog>
-  <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><div id="result-sparks" aria-hidden="true"></div><div id="result-symbol" class="result-symbol" aria-hidden="true"></div><p id="result-flavor" class="result-flavor"></p><p id="result-eyebrow" class="eyebrow">ゲーム終了</p><h2 id="result-title" tabindex="-1" autofocus></h2><p id="result-context" class="field-note"></p><div id="result-scores"></div><p id="result-reward" class="reward-note"></p><button id="again" class="primary">同じ設定でもう一局</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
+  <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><div id="result-sparks" aria-hidden="true"></div><div id="result-symbol" class="result-symbol" aria-hidden="true"></div><p id="result-flavor" class="result-flavor"></p><p id="result-eyebrow" class="eyebrow">ゲーム終了</p><h2 id="result-title" tabindex="-1" autofocus></h2><p id="result-context" class="field-note"></p><div id="result-scores"></div><p id="result-reward" class="reward-note"></p><button id="again" class="primary">同じ設定でもう一局</button><button id="online-new-opponents" class="secondary" hidden>新しい対戦相手を探す</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
   <div id="storage-message" class="storage-message" role="status" hidden></div><div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
   <noscript>このゲームで遊ぶには、ブラウザのJavaScriptを有効にしてください。</noscript>
 <script>
@@ -889,7 +918,9 @@ function normalizeProfile(value) {
   const owned = (kind, values) => [...new Set([...CATALOG.filter(i => i.kind === kind && i.price === 0).map(i => i.id), ...(Array.isArray(values) ? values.filter(v => valid(kind).includes(v)) : [])])];
   const ownedBoards = owned('board', raw.ownedBoards), ownedColors = owned('color', raw.ownedColors);
   const integer = v => Number.isSafeInteger(v) && v >= 0 ? Math.min(v, 1000000000) : 0;
-  return { version: 1, coins: integer(raw.coins), ownedBoards, ownedColors,
+  const onlineLedger = {};
+  for (const [id, entry] of Object.entries(raw.onlineLedger ?? {}).slice(-100)) if (/^[a-zA-Z0-9-]{1,64}$/.test(id) && entry && typeof entry === 'object') onlineLedger[id] = Object.fromEntries(['earned','played','wins','draws'].map(k=>[k,integer(entry[k])]));
+  return { version: 1, onlineLedger, coins: integer(raw.coins), ownedBoards, ownedColors,
     equippedBoard: ownedBoards.includes(raw.equippedBoard) ? raw.equippedBoard : 'classic',
     equippedColor: ownedColors.includes(raw.equippedColor) ? raw.equippedColor : 'red',
     claimed: [...new Set(Array.isArray(raw.claimed) ? raw.claimed.filter(v => typeof v === 'string' && v.length <= 120).slice(-2000) : [])],
@@ -1250,6 +1281,57 @@ function createGameClock({ now = () => performance.now(), schedule = setTimeout,
 }
 
 
+const ONLINE_URL='https://irodory.yeknom1031.workers.dev/';
+function createOnlineClient({onState,onStatus,onError}) {
+  let socket=null,retry=null,pulse=null,stopped=true,attempt=0,pendingJoin=false,lastPong=0,generation=0;
+  function clear(){clearTimeout(retry);clearInterval(pulse);retry=pulse=null;}
+  function stop(){stopped=true;generation++;clear();socket?.close(1000,'終了');socket=null;}
+  function send(action,input={}){if(socket?.readyState!==1){onError('再接続中です。少しお待ちください');return false;}socket.send(JSON.stringify({action,...input}));return true;}
+  function dial(){
+    clear();if(stopped)return;pendingJoin=true;const gen=generation;
+    onStatus(attempt?'再接続しています…':'接続しています…',false);
+    const url=new URL('/api/socket',location.href);url.protocol=location.protocol==='https:'?'wss:':'ws:';
+    const ws=socket=new WebSocket(url);
+    ws.onopen=()=>{if(gen!==generation)return;attempt=0;lastPong=Date.now();onStatus('オンライン',true);pulse=setInterval(()=>{if(Date.now()-lastPong>40000){ws.close();return;}if(ws.readyState===1)ws.send('ping');},15000);};
+    ws.onmessage=event=>{
+      if(gen!==generation)return;if(event.data==='pong'){lastPong=Date.now();return;}
+      let data;try{data=JSON.parse(event.data);}catch{return;}
+      if(data.error){onError(data.error);return;}
+      onState(data);
+      if(pendingJoin){pendingJoin=false;send('join');}
+    };
+    ws.onclose=event=>{
+      if(gen!==generation||stopped)return;clear();
+      if(event.code===4001){stop();onStatus('別のタブで接続中',false);onError('別のタブでオンライン対戦を開きました。このタブではホームに戻ってください。');return;}
+      onStatus('接続が切れました。復帰中…',false);retry=setTimeout(dial,Math.min(8000,700*2**Math.min(attempt++,4)));
+    };
+    ws.onerror=()=>{};
+  }
+  return {
+    async session(name){
+      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
+      try{
+        const response=await fetch('/api/session',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify(name===undefined?{}:{name}),signal:controller.signal});
+        if(!response.headers.get('content-type')?.includes('application/json'))throw new Error('オンライン版のURLから遊んでください');
+        const data=await response.json();if(!response.ok)throw new Error(data.error||'接続できませんでした');return data;
+      }finally{clearTimeout(timer);}
+    },
+    connect(){stop();stopped=false;attempt=0;pendingJoin=true;dial();},
+    send,stop,connected:()=>socket?.readyState===1
+  };
+}
+function mergeOnlineLedger(value,ledger) {
+  const profile=normalizeProfile(value);
+  if(!ledger||typeof ledger.id!=='string'||! /^[a-zA-Z0-9-]{1,64}$/.test(ledger.id)||!['earned','played','wins','draws'].every(k=>Number.isSafeInteger(ledger[k])&&ledger[k]>=0))return profile;
+  const previous=profile.onlineLedger[ledger.id]??{earned:0,played:0,wins:0,draws:0};
+  profile.coins=Math.min(1000000000,profile.coins+Math.max(0,ledger.earned-previous.earned));
+  for(const k of ['played','wins','draws'])profile.stats[k]+=Math.max(0,ledger[k]-previous[k]);
+  profile.onlineLedger[ledger.id]=Object.fromEntries(['earned','played','wins','draws'].map(k=>[k,Math.max(previous[k],ledger[k])]));
+  return profile;
+}
+
+
+
 
 
 
@@ -1276,7 +1358,7 @@ const heldPointer = createHeldStonePointer(ui.board,heldElement);
 const capturePreview = createCapturePreview(ui.board);
 let heldSize=40;
 function syncHeldPointer() {
-  const humanTurn=state.phase==='playing'&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
+  const humanTurn=state.phase==='playing'&&(state.mode!=='online'||online.connected())&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
   heldPointer.sync(humanTurn?state.colors[state.player].id:null,heldSize);
 }
 function measureHeldStone() { heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
@@ -1313,7 +1395,7 @@ function persist() {
 }
 function syncGamePause() {
   const paused=isPaused();if(paused===gamePaused)return;
-  gamePaused=paused;gameClock.setPaused(paused);
+  gamePaused=paused;gameClock.setPaused(state.mode==='online'?false:paused);
   if(paused){
     pauseVersion++;heldPointer.hide();stoneAudio.stop();oniRunner.cancel();
     for(const animation of ui.board.getAnimations?.({subtree:true}) ?? [])if(animation.playState==='running' || animation.pending){animation.pause();pausedAnimations.add(animation);}
@@ -1372,7 +1454,7 @@ function renderStatus() {
     ui.turn.className = `turn ${state.colors[p].id}`;
     ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。ポーズを開く（Esc）`);
   }
-  const nextScoreKey = `${state.mode}:${state.human}:${state.colors.map(c => c.id).join(',')}`;
+  const nextScoreKey = `${state.mode}:${state.human}:${state.colors.map(c => c.id).join(',')}:${state.mode==='online'?state.id:''}`;
   if (scoreKey !== nextScoreKey) {
     scoreKey = nextScoreKey;
     ui.scores.innerHTML = matchPlayers().map(p => `<div class="score ${state.colors[p.id].id}" data-player="${p.id}">${stone(p.id)}<span><span class="score-name">${nameOf(p.id)}</span> <b></b><small>枚</small></span>${state.mode === 'solo' && p.id === state.human ? '<em class="score-owner">あなた</em>' : ''}</div>`).join('');
@@ -1385,6 +1467,11 @@ function renderStatus() {
     const label = `${nameOf(player)} ${value}枚`;
     if (row.getAttribute('aria-label') !== label) row.setAttribute('aria-label', label);
   });
+  if(state.mode==='online'&&onlineRoom){
+    scoreNodes.forEach(({row},i)=>{const seat=onlineRoom.seats[i];row.querySelector('.score-name').textContent=seat.name;row.title=`${nameOf(i)} · ${seat.name}${i===state.human?'（あなた）':''}${seat.bot||seat.forfeit?' · AI':''}`;let label=row.querySelector('em');if(!label){label=document.createElement('em');label.className='score-owner';row.append(label);}label.textContent=seat.bot?'AI':seat.forfeit?'AI引継':i===state.human?'あなた':seat.connected?'参加中':'復帰待ち';});
+    ui.turn.title='対局メニュー（Esc）';ui.turn.setAttribute('aria-label',nameOf(p)+'の番。対局メニューを開く（Esc）');
+    ui.turn.querySelector('span').textContent=`${nameOf(p)} · ${p===state.human?'あなた':onlineRoom.seats[p].name}の番`;
+  }
   updateInputState();
 }
 function updateInputState() {
@@ -1392,7 +1479,7 @@ function updateInputState() {
   syncHeldPointer();
   ui.game.dataset.phase = state.phase;
   ui.board.setAttribute('aria-busy', String(['intro', 'animating', 'thinking'].includes(state.phase)));
-  const canPlay = state.phase === 'playing' && !isPaused() && !document.hidden && (state.mode === 'friends' || state.player === state.human);
+  const canPlay = state.phase === 'playing' && (state.mode!=='online'||online.connected()) && !isPaused() && !document.hidden && (state.mode === 'friends' || state.player === state.human);
   const available = canPlay && preferences.hints ? turnMoves(state.board,state.player) : [];
   const hints = new Set(canPlay && preferences.hints ? available : []);
   cells.forEach((cell, i) => { const disabled = String(!canPlay || state.board[i] !== null); if (cell.getAttribute('aria-disabled') !== disabled) cell.setAttribute('aria-disabled', disabled); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', 'ここに置けます'); else cell.removeAttribute('aria-description'); });
@@ -1456,6 +1543,7 @@ async function flipStone(index, delay, run) {
   } finally { out?.cancel(); into?.cancel(); cell.classList.remove('is-flipping'); }
 }
 async function moveAt(index, actor = 'human') {
+  if(state.mode==='online')return onlineMove(index);
   const ai = state.mode === 'solo' && state.player !== state.human;
   if (isPaused()) return { ok: false, reason: 'メニューを閉じると対局に戻ります' };
   if (actor === 'human' && ai) return { ok: false, reason: 'AIの手番です' };
@@ -1551,6 +1639,7 @@ function decorateResult(outcome) {
   $('#result-symbol').innerHTML = outcome === 'win' ? '<span class="victory-seal"></span>' : `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${outcome === 'resigned' ? flag : trophy}</svg>`;
 }
 function resignGame() {
+  if(state.mode==='online'){online.send('resign');closeDialogs();return;}
   const ended = endByResignation(state);
   if (!ended) { $('#resign-dialog').close(); return; }
   cancelRun(); state = ended; hideNotice(); $('#match-intro').hidden = true; closeDialogs();
@@ -1565,6 +1654,8 @@ function resignGame() {
   openDialog('#result-dialog'); announce(`${nameOf(state.resigned)}が降参しました。対局終了です。`);
 }
 function startGame(config = lastConfig) {
+  if(onlineEnabled)stopOnline();
+  $('#online-hud').hidden=true;$('#online-new-opponents').hidden=true;$('#again').textContent='同じ設定でもう一局';$('#again').disabled=false;
   cancelRun(); hideNotice(); closeDialogs();
   stoneAudio.unlock();
   const palette = config.playerCount === 2 ? { colors:[{id:'black',name:'黒',seat:0},{id:'white',name:'白',seat:1}], human:config.mode === 'solo' ? Math.floor(Math.random()*2) : 0 } : config.mode === 'solo' ? randomSoloLineup(profile) : playerColors('red','friends'); lastConfig = { ...config };
@@ -1587,6 +1678,8 @@ async function enterGame(run) {
   await pause(preferences.reducedMotion ? 1600 : 2500); if (!await ready(run)) return; $('#match-intro').hidden = true; beginTurn(run);
 }
 function goHome() {
+  if(onlineEnabled)stopOnline();
+  $('#online-hud').hidden=true;
   cancelRun(); state.phase = 'home'; $('#match-intro').hidden = true; hideNotice(); closeDialogs(); wake();
   ui.home.hidden = false; ui.game.hidden = true; document.body.classList.remove('playing'); renderHome();
   if (location.hash) history.replaceState(null, '', location.pathname + location.search); $('#start').focus({ preventScroll: true });
@@ -1663,13 +1756,16 @@ $('#launch').addEventListener('click', () => {
   syncSettings(); persist();
   startGame({ mode: setupMode, playerCount:setupCount, difficulty: preferences.difficulty, size: preferences.size, theme: profile.equippedBoard });
 });
-$('#again').addEventListener('click', () => startGame()); $('#home-button').addEventListener('click', goHome); $('#leave-game').addEventListener('click', goHome);
+$('#again').addEventListener('click', () => {if(state.mode==='online'){online.send('rematch');$('#again').disabled=true;$('#again').textContent='ほかのプレイヤーを待っています…';}else startGame();}); $('#home-button').addEventListener('click', goHome); $('#leave-game').addEventListener('click', goHome);
 window.addEventListener('hashchange', () => { if (location.hash !== '#play' && state.phase !== 'home') goHome(); });
 ui.result.addEventListener('cancel', event => { event.preventDefault(); goHome(); });
 for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => openDialog(`#${name}-dialog`));
 function openCollection(){previewItem=previewTheme=profile.equippedBoard;previewColor=profile.equippedColor;renderShop();$('#shop-message').textContent='';openDialog('#shop-dialog');}
 $('#shop-open').addEventListener('click',openCollection);$('#collection-open').addEventListener('click',openCollection);
 function openPause() {
+  $('#menu-dialog .eyebrow').textContent=state.mode==='online'?'ONLINE MATCH':'PAUSED';$('#menu-title').textContent=state.mode==='online'?'対局メニュー':'ポーズ';$('#menu-dialog .pause-note').textContent=state.mode==='online'?'オンライン対戦の時間は進み続けます':'ゲームの時間が止まっています';
+  if(state.mode==='online'){if(!onlineRoom)return;$('#resign-open').disabled=onlineRoom.seats[onlineRoom.you].forfeit||onlineRoom.phase==='ended';$('#match-info').textContent='オンライン · 8 × 8 · 1手45秒 · あなたは'+nameOf(state.human);$('#leave-game').textContent='退出してホームへ（対局中は降参）';openDialog('#menu-dialog');return;}
+  $('#leave-game').textContent='この対局を終了してホームへ';
   if(['home','ended'].includes(state.phase))return;
   $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : `${state.colors.length}人で交代`} · ${state.size} × ${state.size}${state.mode === 'solo' ? ` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => c.name).join(' → ')}`; openDialog('#menu-dialog');
 }
@@ -1681,6 +1777,8 @@ document.addEventListener('keydown',event=>{
   if(top){top.close();wake();}else openPause();
 },true);
 $('#resign-open').addEventListener('click', () => {
+  $('#resign-confirm').textContent=state.mode==='online'?'降参してAIに引き継ぐ':'降参して対局を終了する';
+  if(state.mode==='online'){if(!onlineRoom||onlineRoom.seats[onlineRoom.you].forfeit)return;$('#resign-description').textContent='あなたは負けとなり、残りの手はAIが引き継ぎます。ほかのプレイヤーの対局は続きます。';openDialog('#resign-dialog');return;}
   if (!canResign(state)) return;
   $('#resign-description').textContent = state.mode === 'solo' ? `${nameOf(state.human)}のあなたが降参し、負けとして１対局を記録します。コインは増減しません。` : `${nameOf(state.player)}が降参し、${state.colors.length}人全員のこの対局を終了します。途中の枚数で勝者は決めません。`;
   openDialog('#resign-dialog');
@@ -1730,6 +1828,96 @@ function registerTools() {
 window.addEventListener('storage', event => {
   if (event.key === STORAGE.profile) { profile = normalizeProfile(readSave(STORAGE.profile)); renderHome(); if ($('#shop-dialog').open) renderShop(); }
 });
+let onlineEnabled=false,onlineRoom=null,onlineTimer=null,onlineStartAt=null,onlineOffset=0,onlinePending=false,onlineResultId=null,onlineReactionTimer=null,onlineViewKey='',onlineLedgerKey='';
+const online=createOnlineClient({onState:receiveOnline,onStatus:(message,connected)=>{
+  $('#online-connection').textContent=message;$('#online-lobby-status').textContent=connected?'対戦相手を探しています…':message;
+  if(state.mode==='online')updateInputState();
+},onError:message=>{onlinePending=false;$('#online-lobby-error').textContent=message;if(state.mode==='online'){$('#online-connection').textContent=message;renderStatus();}}});
+function stopOnline(){
+  if(online.connected())online.send('leave');online.stop();onlineEnabled=false;onlineRoom=null;onlineStartAt=null;onlinePending=false;clearInterval(onlineTimer);clearTimeout(onlineReactionTimer);onlineTimer=null;$('#online-stamps').hidden=true;$('#online-reaction').textContent='';
+}
+async function openOnline(){
+  $('#online-open').disabled=true;$('#online-name-error').textContent='';$('#online-lobby-error').textContent='';
+  try{
+    if(location.protocol==='file:')throw new Error('ローカルHTMLのオンライン対戦は、下の公開版リンクから遊べます');
+    const user=await online.session();acceptOnlineLedger(user.ledger);
+    if(!user.name){openDialog('#online-name-dialog');$('#online-name').focus();return;}
+    $('#online-name').value=user.name;startOnline();
+  }catch(e){openDialog('#online-lobby-dialog');$('#online-lobby-status').textContent='オンラインに接続できませんでした';$('#online-lobby-error').textContent=e.name==='AbortError'?'接続がタイムアウトしました。もう一度お試しください':e.message;$('#online-countdown').textContent='—';$('#online-seats').replaceChildren();}
+  finally{$('#online-open').disabled=false;}
+}
+function startOnline(){
+  onlineViewKey='';onlineLedgerKey='';closeDialogs();onlineEnabled=true;onlineResultId=null;onlinePending=false;onlineRoom=null;onlineStartAt=null;
+  $('#online-lobby-error').textContent='';$('#online-seats').replaceChildren();$('#online-countdown').textContent='60';openDialog('#online-lobby-dialog');
+  clearInterval(onlineTimer);onlineTimer=setInterval(updateOnlineTime,250);online.connect();
+}
+function acceptOnlineLedger(ledger){if(!ledger)return;const key=JSON.stringify(ledger);if(key===onlineLedgerKey)return;onlineLedgerKey=key;if(storageWorking)profile=normalizeProfile(readSave(STORAGE.profile)??profile);profile=mergeOnlineLedger(profile,ledger);persist();renderHome();}
+function receiveOnline(data){
+  if(!onlineEnabled)return;acceptOnlineLedger(data.ledger);onlineOffset=data.serverNow-Date.now();onlinePending=false;
+  if(!data.room){
+    onlineStartAt=data.startAt;
+    if(data.waiting&&onlineRoom){cancelRun();onlineRoom=null;onlineViewKey='';state.phase='home';ui.home.hidden=false;ui.game.hidden=true;document.body.classList.remove('playing');$('#online-hud').hidden=true;closeDialogs();openDialog('#online-lobby-dialog');}
+    if(data.waiting){$('#online-lobby-error').textContent='';$('#online-lobby-status').textContent=`${data.players.length} / 4 人が着席しました`;renderOnlineSeats(data.players);}
+    updateOnlineTime();return;
+  }
+  const signature=JSON.stringify([data.room.id,data.room.ply,data.room.phase,data.room.deadline,data.room.seats,data.room.reactions,data.room.notice]);if(signature===onlineViewKey)return;onlineViewKey=signature;
+  const room=data.room,previous=onlineRoom,isNew=previous?.id!==room.id;onlineRoom=room;onlineStartAt=null;
+  if(isNew){
+    cancelRun();closeDialogs();hideNotice();$('#match-intro').hidden=true;onlineResultId=null;
+    state={mode:'online',id:room.id,size:8,human:room.you,player:room.player,colors:playerColors('red','friends').colors,theme:profile.equippedBoard,board:room.board,movedPlayers:room.moved,phase:'intro'};
+    ui.home.hidden=true;ui.game.hidden=false;document.body.classList.add('playing');ui.game.dataset.playerCount='4';ui.game.dataset.difficulty='online';
+    buildBoard();measureHeldStone();cells.forEach((_,i)=>updateCell(i));$('#online-hud').hidden=false;
+    if(location.hash!=='#play')history.pushState(null,'','#play');
+  }
+  const changed=room.board.flatMap((p,i)=>previous&&previous.board[i]!==p?[i]:[]);
+  state.board=room.board;state.player=room.player;state.movedPlayers=room.moved;state.phase=room.phase==='countdown'?'intro':room.phase==='ended'?'ended':room.seats[room.you].forfeit?'watching':'playing';
+  for(const i of changed){updateCell(i);if(!preferences.reducedMotion&&changed.length<=8&&!isPaused()){cells[i].firstElementChild?.animate([{transform:'scaleX(.15) translateY(-5px)'},{transform:'scaleX(1) translateY(0)'}],{duration:320,easing:'ease-out'});}}
+  if(changed.length&&!isPaused()){sound('place',room.lastMove.index);announce(`${room.seats[room.lastMove.player].name}が${room.lastMove.flips.length}枚返しました`);}
+  renderStatus();
+  if(room.phase==='countdown'){showNotice(`あなたは${nameOf(room.you)}`,`${room.you+1}番目の手番です`);}
+  else if(room.notice&&room.notice!==previous?.notice){showNotice(room.notice);noticeTimer=gameClock.schedule(hideNotice,2000);}
+  else if(previous?.phase==='countdown')hideNotice();
+  const reaction=room.reactions.at(-1);
+  if(reaction&&Date.now()+onlineOffset-reaction.at<7000){$('#online-reaction').textContent=`${room.seats[reaction.seat].name}：${reaction.stamp}`;clearTimeout(onlineReactionTimer);onlineReactionTimer=setTimeout(()=>{$('#online-reaction').textContent='';},Math.max(0,7000-(Date.now()+onlineOffset-reaction.at)));}
+  if(room.phase==='ended'&&onlineResultId!==room.id)showOnlineResult(room);
+  updateOnlineTime();
+}
+function renderOnlineSeats(players){
+  $('#online-seats').replaceChildren();
+  for(let i=0;i<4;i++){const member=players[i],el=document.createElement('div');el.className='online-seat'+(member?'':' empty');el.innerHTML=member?piece(PLAYERS[i].color):'<span class="seat-placeholder">＋</span>';const name=document.createElement('b');name.textContent=member?.name??'空いている席';el.append(name);const note=document.createElement('small');note.textContent=member?(member.you?'あなた':'プレイヤー'):'1分後にAI';el.append(note);$('#online-seats').append(el);}
+}
+function updateOnlineTime(){
+  const now=Date.now()+onlineOffset;
+  if(onlineStartAt)$('#online-countdown').textContent=String(Math.max(0,Math.ceil((onlineStartAt-now)/1000)));
+  if(!onlineRoom)return;const seconds=Math.max(0,Math.ceil((onlineRoom.deadline-now)/1000));
+  const text=onlineRoom.phase==='ended'?'対局終了':onlineRoom.phase==='countdown'?`開始まで ${seconds}秒`:onlineRoom.seats[onlineRoom.you].forfeit?'AIが引継ぎ · 観戦中':`残り ${seconds}秒`;
+  if($('#online-turn-time').textContent!==text)$('#online-turn-time').textContent=text;
+  $('#online-turn-time').classList.toggle('urgent',onlineRoom.phase==='playing'&&onlineRoom.player===onlineRoom.you&&seconds<=10);
+}
+function onlineMove(index){
+  if(!onlineRoom||state.phase!=='playing'||isPaused()||onlinePending||onlineRoom.player!==onlineRoom.you)return {ok:false,reason:'あなたの手番ではありません'};
+  if(!turnMoves(state.board,state.player).includes(index)){showNotice('ここには置けません','相手の石をはさめるマスに置いてください');noticeTimer=gameClock.schedule(hideNotice,1300);return {ok:false};}
+  onlinePending=online.send('move',{index,ply:onlineRoom.ply,room:onlineRoom.id});return {ok:onlinePending};
+}
+function showOnlineResult(room){
+  onlineResultId=room.id;hideNotice();closeDialogs();const won=room.winners.includes(room.you)&&!room.seats[room.you].forfeit,draw=won&&room.winners.length>1;
+  decorateResult(room.seats[room.you].forfeit?'resigned':won?draw?'draw':'win':'loss');if(won&&!draw)stoneAudio.celebrate();
+  $('#result-title').textContent=room.abandoned?'対局終了':won?draw?'引き分け！':'あなたの勝ち！':'対局終了';$('#result-context').textContent=room.abandoned?'参加者が退出したため終了しました':'オンライン · 最終スコア';
+  $('#result-scores').replaceChildren();const counts=scores(room.board);
+  for(const i of [0,1,2,3].sort((a,b)=>counts[b]-counts[a])){const row=document.createElement('div');row.className='result-row'+(room.winners.includes(i)?' winner':'');row.innerHTML=stone(i);const name=document.createElement('span');name.textContent=room.seats[i].name+(i===room.you?'（あなた）':'')+(room.seats[i].forfeit?' · 降参／AI引継':room.seats[i].bot?' · AI':'');const count=document.createElement('b');count.textContent=counts[i]+'枚';row.append(name,count);$('#result-scores').append(row);}
+  $('#result-reward').textContent=won?`＋${draw?35:70} コイン！ 所持 ${profile.coins} コイン`:`また次の一局で。所持 ${profile.coins} コイン`;
+  $('#again').textContent='同じメンバーに再戦を申し込む';$('#again').disabled=room.seats[room.you].forfeit||room.abandoned;$('#online-new-opponents').hidden=false;openDialog('#result-dialog');
+}
+$('#online-open').addEventListener('click',openOnline);
+$('#online-name-form').addEventListener('submit',async event=>{event.preventDefault();$('#online-name-submit').disabled=true;try{await online.session($('#online-name').value);startOnline();}catch(e){$('#online-name-error').textContent=e.message;}finally{$('#online-name-submit').disabled=false;}});
+$('#online-cancel').addEventListener('click',()=>{stopOnline();goHome();});
+$('#online-lobby-dialog').addEventListener('cancel',event=>{event.preventDefault();stopOnline();goHome();});
+$('#online-rename').addEventListener('click',()=>{stopOnline();closeDialogs();openDialog('#online-name-dialog');});
+$('#online-new-opponents').addEventListener('click',()=>{stopOnline();goHome();void openOnline();});
+$('#online-stamps-toggle').addEventListener('click',()=>{$('#online-stamps').hidden=!$('#online-stamps').hidden;});
+for(const stamp of ['よろしく！','いい一手！','ありがとう！','楽しかった！']){const button=document.createElement('button');button.textContent=stamp;button.addEventListener('click',()=>{online.send('reaction',{stamp});$('#online-stamps').hidden=true;});$('#online-stamps').append(button);}
+window.addEventListener('pagehide',()=>{online.stop();clearInterval(onlineTimer);});
+window.addEventListener('pageshow',event=>{if(event.persisted&&onlineEnabled){onlineTimer=setInterval(updateOnlineTime,250);online.connect();}});
 installStoneTextures(document, [...CATALOG.filter(item => item.kind === 'color').map(item => item.id), 'black','white']);
 renderHome(); syncSettings(); registerTools();
 // Opening a saved URL always returns to the setup, never starts an unwanted game.

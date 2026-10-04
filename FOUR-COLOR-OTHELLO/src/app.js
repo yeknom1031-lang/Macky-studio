@@ -5,6 +5,7 @@ import { chooseAIMove, DIFFICULTIES } from './ai.js';
 import { canResign, endByResignation } from './match.js';
 import { CATALOG, normalizeProfile, ownsItem, purchaseItem, equipItem, matchReward, awardMatch, recordResignation, playerColors, randomSoloLineup } from './progression.js';
 
+import { createOnlineClient, mergeOnlineLedger, ONLINE_URL } from './online.js';
 import { createStoneAudio } from './audio.js';
 import { createCapturePreview } from './capture-preview.js';
 import { installStoneTextures, paintStone, createCellEffects, createHeldStonePointer } from './rendering.js';
@@ -27,7 +28,7 @@ const heldPointer = createHeldStonePointer(ui.board,heldElement);
 const capturePreview = createCapturePreview(ui.board);
 let heldSize=40;
 function syncHeldPointer() {
-  const humanTurn=state.phase==='playing'&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
+  const humanTurn=state.phase==='playing'&&(state.mode!=='online'||online.connected())&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
   heldPointer.sync(humanTurn?state.colors[state.player].id:null,heldSize);
 }
 function measureHeldStone() { heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
@@ -64,7 +65,7 @@ function persist() {
 }
 function syncGamePause() {
   const paused=isPaused();if(paused===gamePaused)return;
-  gamePaused=paused;gameClock.setPaused(paused);
+  gamePaused=paused;gameClock.setPaused(state.mode==='online'?false:paused);
   if(paused){
     pauseVersion++;heldPointer.hide();stoneAudio.stop();oniRunner.cancel();
     for(const animation of ui.board.getAnimations?.({subtree:true}) ?? [])if(animation.playState==='running' || animation.pending){animation.pause();pausedAnimations.add(animation);}
@@ -123,7 +124,7 @@ function renderStatus() {
     ui.turn.className = `turn ${state.colors[p].id}`;
     ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。ポーズを開く（Esc）`);
   }
-  const nextScoreKey = `${state.mode}:${state.human}:${state.colors.map(c => c.id).join(',')}`;
+  const nextScoreKey = `${state.mode}:${state.human}:${state.colors.map(c => c.id).join(',')}:${state.mode==='online'?state.id:''}`;
   if (scoreKey !== nextScoreKey) {
     scoreKey = nextScoreKey;
     ui.scores.innerHTML = matchPlayers().map(p => `<div class="score ${state.colors[p.id].id}" data-player="${p.id}">${stone(p.id)}<span><span class="score-name">${nameOf(p.id)}</span> <b></b><small>枚</small></span>${state.mode === 'solo' && p.id === state.human ? '<em class="score-owner">あなた</em>' : ''}</div>`).join('');
@@ -136,6 +137,11 @@ function renderStatus() {
     const label = `${nameOf(player)} ${value}枚`;
     if (row.getAttribute('aria-label') !== label) row.setAttribute('aria-label', label);
   });
+  if(state.mode==='online'&&onlineRoom){
+    scoreNodes.forEach(({row},i)=>{const seat=onlineRoom.seats[i];row.querySelector('.score-name').textContent=seat.name;row.title=`${nameOf(i)} · ${seat.name}${i===state.human?'（あなた）':''}${seat.bot||seat.forfeit?' · AI':''}`;let label=row.querySelector('em');if(!label){label=document.createElement('em');label.className='score-owner';row.append(label);}label.textContent=seat.bot?'AI':seat.forfeit?'AI引継':i===state.human?'あなた':seat.connected?'参加中':'復帰待ち';});
+    ui.turn.title='対局メニュー（Esc）';ui.turn.setAttribute('aria-label',nameOf(p)+'の番。対局メニューを開く（Esc）');
+    ui.turn.querySelector('span').textContent=`${nameOf(p)} · ${p===state.human?'あなた':onlineRoom.seats[p].name}の番`;
+  }
   updateInputState();
 }
 function updateInputState() {
@@ -143,7 +149,7 @@ function updateInputState() {
   syncHeldPointer();
   ui.game.dataset.phase = state.phase;
   ui.board.setAttribute('aria-busy', String(['intro', 'animating', 'thinking'].includes(state.phase)));
-  const canPlay = state.phase === 'playing' && !isPaused() && !document.hidden && (state.mode === 'friends' || state.player === state.human);
+  const canPlay = state.phase === 'playing' && (state.mode!=='online'||online.connected()) && !isPaused() && !document.hidden && (state.mode === 'friends' || state.player === state.human);
   const available = canPlay && preferences.hints ? turnMoves(state.board,state.player) : [];
   const hints = new Set(canPlay && preferences.hints ? available : []);
   cells.forEach((cell, i) => { const disabled = String(!canPlay || state.board[i] !== null); if (cell.getAttribute('aria-disabled') !== disabled) cell.setAttribute('aria-disabled', disabled); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', 'ここに置けます'); else cell.removeAttribute('aria-description'); });
@@ -207,6 +213,7 @@ async function flipStone(index, delay, run) {
   } finally { out?.cancel(); into?.cancel(); cell.classList.remove('is-flipping'); }
 }
 async function moveAt(index, actor = 'human') {
+  if(state.mode==='online')return onlineMove(index);
   const ai = state.mode === 'solo' && state.player !== state.human;
   if (isPaused()) return { ok: false, reason: 'メニューを閉じると対局に戻ります' };
   if (actor === 'human' && ai) return { ok: false, reason: 'AIの手番です' };
@@ -302,6 +309,7 @@ function decorateResult(outcome) {
   $('#result-symbol').innerHTML = outcome === 'win' ? '<span class="victory-seal"></span>' : `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${outcome === 'resigned' ? flag : trophy}</svg>`;
 }
 function resignGame() {
+  if(state.mode==='online'){online.send('resign');closeDialogs();return;}
   const ended = endByResignation(state);
   if (!ended) { $('#resign-dialog').close(); return; }
   cancelRun(); state = ended; hideNotice(); $('#match-intro').hidden = true; closeDialogs();
@@ -316,6 +324,8 @@ function resignGame() {
   openDialog('#result-dialog'); announce(`${nameOf(state.resigned)}が降参しました。対局終了です。`);
 }
 function startGame(config = lastConfig) {
+  if(onlineEnabled)stopOnline();
+  $('#online-hud').hidden=true;$('#online-new-opponents').hidden=true;$('#again').textContent='同じ設定でもう一局';$('#again').disabled=false;
   cancelRun(); hideNotice(); closeDialogs();
   stoneAudio.unlock();
   const palette = config.playerCount === 2 ? { colors:[{id:'black',name:'黒',seat:0},{id:'white',name:'白',seat:1}], human:config.mode === 'solo' ? Math.floor(Math.random()*2) : 0 } : config.mode === 'solo' ? randomSoloLineup(profile) : playerColors('red','friends'); lastConfig = { ...config };
@@ -338,6 +348,8 @@ async function enterGame(run) {
   await pause(preferences.reducedMotion ? 1600 : 2500); if (!await ready(run)) return; $('#match-intro').hidden = true; beginTurn(run);
 }
 function goHome() {
+  if(onlineEnabled)stopOnline();
+  $('#online-hud').hidden=true;
   cancelRun(); state.phase = 'home'; $('#match-intro').hidden = true; hideNotice(); closeDialogs(); wake();
   ui.home.hidden = false; ui.game.hidden = true; document.body.classList.remove('playing'); renderHome();
   if (location.hash) history.replaceState(null, '', location.pathname + location.search); $('#start').focus({ preventScroll: true });
@@ -414,13 +426,16 @@ $('#launch').addEventListener('click', () => {
   syncSettings(); persist();
   startGame({ mode: setupMode, playerCount:setupCount, difficulty: preferences.difficulty, size: preferences.size, theme: profile.equippedBoard });
 });
-$('#again').addEventListener('click', () => startGame()); $('#home-button').addEventListener('click', goHome); $('#leave-game').addEventListener('click', goHome);
+$('#again').addEventListener('click', () => {if(state.mode==='online'){online.send('rematch');$('#again').disabled=true;$('#again').textContent='ほかのプレイヤーを待っています…';}else startGame();}); $('#home-button').addEventListener('click', goHome); $('#leave-game').addEventListener('click', goHome);
 window.addEventListener('hashchange', () => { if (location.hash !== '#play' && state.phase !== 'home') goHome(); });
 ui.result.addEventListener('cancel', event => { event.preventDefault(); goHome(); });
 for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => openDialog(`#${name}-dialog`));
 function openCollection(){previewItem=previewTheme=profile.equippedBoard;previewColor=profile.equippedColor;renderShop();$('#shop-message').textContent='';openDialog('#shop-dialog');}
 $('#shop-open').addEventListener('click',openCollection);$('#collection-open').addEventListener('click',openCollection);
 function openPause() {
+  $('#menu-dialog .eyebrow').textContent=state.mode==='online'?'ONLINE MATCH':'PAUSED';$('#menu-title').textContent=state.mode==='online'?'対局メニュー':'ポーズ';$('#menu-dialog .pause-note').textContent=state.mode==='online'?'オンライン対戦の時間は進み続けます':'ゲームの時間が止まっています';
+  if(state.mode==='online'){if(!onlineRoom)return;$('#resign-open').disabled=onlineRoom.seats[onlineRoom.you].forfeit||onlineRoom.phase==='ended';$('#match-info').textContent='オンライン · 8 × 8 · 1手45秒 · あなたは'+nameOf(state.human);$('#leave-game').textContent='退出してホームへ（対局中は降参）';openDialog('#menu-dialog');return;}
+  $('#leave-game').textContent='この対局を終了してホームへ';
   if(['home','ended'].includes(state.phase))return;
   $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : `${state.colors.length}人で交代`} · ${state.size} × ${state.size}${state.mode === 'solo' ? ` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => c.name).join(' → ')}`; openDialog('#menu-dialog');
 }
@@ -432,6 +447,8 @@ document.addEventListener('keydown',event=>{
   if(top){top.close();wake();}else openPause();
 },true);
 $('#resign-open').addEventListener('click', () => {
+  $('#resign-confirm').textContent=state.mode==='online'?'降参してAIに引き継ぐ':'降参して対局を終了する';
+  if(state.mode==='online'){if(!onlineRoom||onlineRoom.seats[onlineRoom.you].forfeit)return;$('#resign-description').textContent='あなたは負けとなり、残りの手はAIが引き継ぎます。ほかのプレイヤーの対局は続きます。';openDialog('#resign-dialog');return;}
   if (!canResign(state)) return;
   $('#resign-description').textContent = state.mode === 'solo' ? `${nameOf(state.human)}のあなたが降参し、負けとして１対局を記録します。コインは増減しません。` : `${nameOf(state.player)}が降参し、${state.colors.length}人全員のこの対局を終了します。途中の枚数で勝者は決めません。`;
   openDialog('#resign-dialog');
@@ -481,6 +498,96 @@ function registerTools() {
 window.addEventListener('storage', event => {
   if (event.key === STORAGE.profile) { profile = normalizeProfile(readSave(STORAGE.profile)); renderHome(); if ($('#shop-dialog').open) renderShop(); }
 });
+let onlineEnabled=false,onlineRoom=null,onlineTimer=null,onlineStartAt=null,onlineOffset=0,onlinePending=false,onlineResultId=null,onlineReactionTimer=null,onlineViewKey='',onlineLedgerKey='';
+const online=createOnlineClient({onState:receiveOnline,onStatus:(message,connected)=>{
+  $('#online-connection').textContent=message;$('#online-lobby-status').textContent=connected?'対戦相手を探しています…':message;
+  if(state.mode==='online')updateInputState();
+},onError:message=>{onlinePending=false;$('#online-lobby-error').textContent=message;if(state.mode==='online'){$('#online-connection').textContent=message;renderStatus();}}});
+function stopOnline(){
+  if(online.connected())online.send('leave');online.stop();onlineEnabled=false;onlineRoom=null;onlineStartAt=null;onlinePending=false;clearInterval(onlineTimer);clearTimeout(onlineReactionTimer);onlineTimer=null;$('#online-stamps').hidden=true;$('#online-reaction').textContent='';
+}
+async function openOnline(){
+  $('#online-open').disabled=true;$('#online-name-error').textContent='';$('#online-lobby-error').textContent='';
+  try{
+    if(location.protocol==='file:')throw new Error('ローカルHTMLのオンライン対戦は、下の公開版リンクから遊べます');
+    const user=await online.session();acceptOnlineLedger(user.ledger);
+    if(!user.name){openDialog('#online-name-dialog');$('#online-name').focus();return;}
+    $('#online-name').value=user.name;startOnline();
+  }catch(e){openDialog('#online-lobby-dialog');$('#online-lobby-status').textContent='オンラインに接続できませんでした';$('#online-lobby-error').textContent=e.name==='AbortError'?'接続がタイムアウトしました。もう一度お試しください':e.message;$('#online-countdown').textContent='—';$('#online-seats').replaceChildren();}
+  finally{$('#online-open').disabled=false;}
+}
+function startOnline(){
+  onlineViewKey='';onlineLedgerKey='';closeDialogs();onlineEnabled=true;onlineResultId=null;onlinePending=false;onlineRoom=null;onlineStartAt=null;
+  $('#online-lobby-error').textContent='';$('#online-seats').replaceChildren();$('#online-countdown').textContent='60';openDialog('#online-lobby-dialog');
+  clearInterval(onlineTimer);onlineTimer=setInterval(updateOnlineTime,250);online.connect();
+}
+function acceptOnlineLedger(ledger){if(!ledger)return;const key=JSON.stringify(ledger);if(key===onlineLedgerKey)return;onlineLedgerKey=key;if(storageWorking)profile=normalizeProfile(readSave(STORAGE.profile)??profile);profile=mergeOnlineLedger(profile,ledger);persist();renderHome();}
+function receiveOnline(data){
+  if(!onlineEnabled)return;acceptOnlineLedger(data.ledger);onlineOffset=data.serverNow-Date.now();onlinePending=false;
+  if(!data.room){
+    onlineStartAt=data.startAt;
+    if(data.waiting&&onlineRoom){cancelRun();onlineRoom=null;onlineViewKey='';state.phase='home';ui.home.hidden=false;ui.game.hidden=true;document.body.classList.remove('playing');$('#online-hud').hidden=true;closeDialogs();openDialog('#online-lobby-dialog');}
+    if(data.waiting){$('#online-lobby-error').textContent='';$('#online-lobby-status').textContent=`${data.players.length} / 4 人が着席しました`;renderOnlineSeats(data.players);}
+    updateOnlineTime();return;
+  }
+  const signature=JSON.stringify([data.room.id,data.room.ply,data.room.phase,data.room.deadline,data.room.seats,data.room.reactions,data.room.notice]);if(signature===onlineViewKey)return;onlineViewKey=signature;
+  const room=data.room,previous=onlineRoom,isNew=previous?.id!==room.id;onlineRoom=room;onlineStartAt=null;
+  if(isNew){
+    cancelRun();closeDialogs();hideNotice();$('#match-intro').hidden=true;onlineResultId=null;
+    state={mode:'online',id:room.id,size:8,human:room.you,player:room.player,colors:playerColors('red','friends').colors,theme:profile.equippedBoard,board:room.board,movedPlayers:room.moved,phase:'intro'};
+    ui.home.hidden=true;ui.game.hidden=false;document.body.classList.add('playing');ui.game.dataset.playerCount='4';ui.game.dataset.difficulty='online';
+    buildBoard();measureHeldStone();cells.forEach((_,i)=>updateCell(i));$('#online-hud').hidden=false;
+    if(location.hash!=='#play')history.pushState(null,'','#play');
+  }
+  const changed=room.board.flatMap((p,i)=>previous&&previous.board[i]!==p?[i]:[]);
+  state.board=room.board;state.player=room.player;state.movedPlayers=room.moved;state.phase=room.phase==='countdown'?'intro':room.phase==='ended'?'ended':room.seats[room.you].forfeit?'watching':'playing';
+  for(const i of changed){updateCell(i);if(!preferences.reducedMotion&&changed.length<=8&&!isPaused()){cells[i].firstElementChild?.animate([{transform:'scaleX(.15) translateY(-5px)'},{transform:'scaleX(1) translateY(0)'}],{duration:320,easing:'ease-out'});}}
+  if(changed.length&&!isPaused()){sound('place',room.lastMove.index);announce(`${room.seats[room.lastMove.player].name}が${room.lastMove.flips.length}枚返しました`);}
+  renderStatus();
+  if(room.phase==='countdown'){showNotice(`あなたは${nameOf(room.you)}`,`${room.you+1}番目の手番です`);}
+  else if(room.notice&&room.notice!==previous?.notice){showNotice(room.notice);noticeTimer=gameClock.schedule(hideNotice,2000);}
+  else if(previous?.phase==='countdown')hideNotice();
+  const reaction=room.reactions.at(-1);
+  if(reaction&&Date.now()+onlineOffset-reaction.at<7000){$('#online-reaction').textContent=`${room.seats[reaction.seat].name}：${reaction.stamp}`;clearTimeout(onlineReactionTimer);onlineReactionTimer=setTimeout(()=>{$('#online-reaction').textContent='';},Math.max(0,7000-(Date.now()+onlineOffset-reaction.at)));}
+  if(room.phase==='ended'&&onlineResultId!==room.id)showOnlineResult(room);
+  updateOnlineTime();
+}
+function renderOnlineSeats(players){
+  $('#online-seats').replaceChildren();
+  for(let i=0;i<4;i++){const member=players[i],el=document.createElement('div');el.className='online-seat'+(member?'':' empty');el.innerHTML=member?piece(PLAYERS[i].color):'<span class="seat-placeholder">＋</span>';const name=document.createElement('b');name.textContent=member?.name??'空いている席';el.append(name);const note=document.createElement('small');note.textContent=member?(member.you?'あなた':'プレイヤー'):'1分後にAI';el.append(note);$('#online-seats').append(el);}
+}
+function updateOnlineTime(){
+  const now=Date.now()+onlineOffset;
+  if(onlineStartAt)$('#online-countdown').textContent=String(Math.max(0,Math.ceil((onlineStartAt-now)/1000)));
+  if(!onlineRoom)return;const seconds=Math.max(0,Math.ceil((onlineRoom.deadline-now)/1000));
+  const text=onlineRoom.phase==='ended'?'対局終了':onlineRoom.phase==='countdown'?`開始まで ${seconds}秒`:onlineRoom.seats[onlineRoom.you].forfeit?'AIが引継ぎ · 観戦中':`残り ${seconds}秒`;
+  if($('#online-turn-time').textContent!==text)$('#online-turn-time').textContent=text;
+  $('#online-turn-time').classList.toggle('urgent',onlineRoom.phase==='playing'&&onlineRoom.player===onlineRoom.you&&seconds<=10);
+}
+function onlineMove(index){
+  if(!onlineRoom||state.phase!=='playing'||isPaused()||onlinePending||onlineRoom.player!==onlineRoom.you)return {ok:false,reason:'あなたの手番ではありません'};
+  if(!turnMoves(state.board,state.player).includes(index)){showNotice('ここには置けません','相手の石をはさめるマスに置いてください');noticeTimer=gameClock.schedule(hideNotice,1300);return {ok:false};}
+  onlinePending=online.send('move',{index,ply:onlineRoom.ply,room:onlineRoom.id});return {ok:onlinePending};
+}
+function showOnlineResult(room){
+  onlineResultId=room.id;hideNotice();closeDialogs();const won=room.winners.includes(room.you)&&!room.seats[room.you].forfeit,draw=won&&room.winners.length>1;
+  decorateResult(room.seats[room.you].forfeit?'resigned':won?draw?'draw':'win':'loss');if(won&&!draw)stoneAudio.celebrate();
+  $('#result-title').textContent=room.abandoned?'対局終了':won?draw?'引き分け！':'あなたの勝ち！':'対局終了';$('#result-context').textContent=room.abandoned?'参加者が退出したため終了しました':'オンライン · 最終スコア';
+  $('#result-scores').replaceChildren();const counts=scores(room.board);
+  for(const i of [0,1,2,3].sort((a,b)=>counts[b]-counts[a])){const row=document.createElement('div');row.className='result-row'+(room.winners.includes(i)?' winner':'');row.innerHTML=stone(i);const name=document.createElement('span');name.textContent=room.seats[i].name+(i===room.you?'（あなた）':'')+(room.seats[i].forfeit?' · 降参／AI引継':room.seats[i].bot?' · AI':'');const count=document.createElement('b');count.textContent=counts[i]+'枚';row.append(name,count);$('#result-scores').append(row);}
+  $('#result-reward').textContent=won?`＋${draw?35:70} コイン！ 所持 ${profile.coins} コイン`:`また次の一局で。所持 ${profile.coins} コイン`;
+  $('#again').textContent='同じメンバーに再戦を申し込む';$('#again').disabled=room.seats[room.you].forfeit||room.abandoned;$('#online-new-opponents').hidden=false;openDialog('#result-dialog');
+}
+$('#online-open').addEventListener('click',openOnline);
+$('#online-name-form').addEventListener('submit',async event=>{event.preventDefault();$('#online-name-submit').disabled=true;try{await online.session($('#online-name').value);startOnline();}catch(e){$('#online-name-error').textContent=e.message;}finally{$('#online-name-submit').disabled=false;}});
+$('#online-cancel').addEventListener('click',()=>{stopOnline();goHome();});
+$('#online-lobby-dialog').addEventListener('cancel',event=>{event.preventDefault();stopOnline();goHome();});
+$('#online-rename').addEventListener('click',()=>{stopOnline();closeDialogs();openDialog('#online-name-dialog');});
+$('#online-new-opponents').addEventListener('click',()=>{stopOnline();goHome();void openOnline();});
+$('#online-stamps-toggle').addEventListener('click',()=>{$('#online-stamps').hidden=!$('#online-stamps').hidden;});
+for(const stamp of ['よろしく！','いい一手！','ありがとう！','楽しかった！']){const button=document.createElement('button');button.textContent=stamp;button.addEventListener('click',()=>{online.send('reaction',{stamp});$('#online-stamps').hidden=true;});$('#online-stamps').append(button);}
+window.addEventListener('pagehide',()=>{online.stop();clearInterval(onlineTimer);});
+window.addEventListener('pageshow',event=>{if(event.persisted&&onlineEnabled){onlineTimer=setInterval(updateOnlineTime,250);online.connect();}});
 installStoneTextures(document, [...CATALOG.filter(item => item.kind === 'color').map(item => item.id), 'black','white']);
 renderHome(); syncSettings(); registerTools();
 // Opening a saved URL always returns to the setup, never starts an unwanted game.

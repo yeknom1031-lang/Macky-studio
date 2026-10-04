@@ -19,6 +19,7 @@
       <h1 class="logo"><span class="brand-art" role="img" aria-label="Irodory"></span><span class="logo-line" aria-hidden="true"></span></h1>
       <p class="home-tagline">一手で、景色が変わる。</p><p class="home-subtitle">４つの色が交差する、あなただけの一局。</p>
       <div class="home-menu">
+        <button id="online-open" class="primary online-play"><span><b>オンラインで遊ぶ</b><small>世界のプレイヤーと、同じ卓へ</small></span><span aria-hidden="true">↗</span></button>
         <button id="start" class="primary play-button"><span><b>ひとりで遊ぶ</b><small>コンピューター３人と対戦</small></span><span class="play-arrow" aria-hidden="true">▶</span></button>
         <button id="friends-open" class="secondary wide"><span>4人で遊ぶ</span><small>ひとつの画面で交代</small></button>
         <button id="classic-open" class="secondary wide"><span>通常の２色オセロ</span><small>黒と白 · AI対戦 / ２人対戦</small></button>
@@ -37,7 +38,15 @@
       <div id="match-intro" class="match-intro" aria-hidden="true" hidden><span id="intro-emblem" class="intro-emblem"></span><span id="intro-eyebrow" class="intro-eyebrow">TAKE YOUR SEAT</span><span class="brand-art intro-logo" role="img" aria-label="Irodory"></span><strong id="intro-title">対局開始</strong><p id="intro-detail"></p><div id="intro-pieces"></div></div>
       <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
     </div>
+    <div id="online-hud" class="online-hud" hidden><span id="online-connection">オンライン</span><strong id="online-turn-time"></strong><button id="online-stamps-toggle" class="text-button">リアクション ♡</button><span id="online-reaction" role="status"></span><div id="online-stamps" hidden></div></div>
   </main>
+  <dialog id="online-name-dialog" aria-labelledby="online-name-title"><form id="online-name-form" class="dialog-content">
+    <button type="button" class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">WELCOME TO THE TABLE</p><h2 id="online-name-title">あなたの呼び名は？</h2><p class="field-note">対戦相手に表示するニックネームを決めましょう。</p>
+    <label class="nickname-label" for="online-name">ニックネーム</label><input id="online-name" class="nickname-input" maxlength="24" required autocomplete="nickname" placeholder="例：いろどりネコ"><p class="field-note">1〜12文字。本名や連絡先は入れないでください。</p><p id="online-name-error" class="online-error" role="alert"></p><button id="online-name-submit" class="primary" type="submit">この名前で対戦相手を探す</button>
+  </form></dialog>
+  <dialog id="online-lobby-dialog" aria-labelledby="online-lobby-title"><div class="dialog-content online-lobby">
+    <p class="eyebrow">THE ONLINE LOUNGE</p><h2 id="online-lobby-title">同じ卓で、彩ろう。</h2><p id="online-lobby-status" role="status">対戦相手を探しています…</p><div id="online-seats" class="online-seats"></div><div class="matchmaking-clock"><strong id="online-countdown">60</strong><span>秒以内にスタート</span></div><p class="field-note">4人そろえばすぐに開始。1分後、空いている席にAIが着席します。ひとりでも遊べます。</p><p id="online-lobby-error" class="online-error" role="alert"></p><button id="online-cancel" class="secondary">待機をやめる</button><button id="online-rename" class="text-button">ニックネームを変える</button><a class="online-official-link" href="https://irodory.yeknom1031.workers.dev/">公開されたオンライン版を開く ↗</a>
+  </div></dialog>
   <dialog id="setup-dialog" aria-labelledby="setup-title"><div class="dialog-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">NEW GAME</p><h2 id="setup-title">ひとりで遊ぶ</h2>
     <fieldset id="classic-mode-field" class="choice-field" hidden><legend>遊び方</legend><div class="choices"><label class="choice"><input type="radio" name="classic-mode" value="solo" checked><span>ひとりでAIと対戦</span></label><label class="choice"><input type="radio" name="classic-mode" value="friends"><span>２人で交代</span></label></div></fieldset>
@@ -49,6 +58,7 @@
   </div></dialog>
   <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">HOW TO PLAY</p><h2 id="rules-title">ルールブック</h2>
+    <h3>オンライン対戦</h3><p>初回にニックネームを決めて参加します。４色・８×８の対戦で、色と手番はランダム。4人そろえば開始、最初の待機から1分で足りない席を「AI」と表示したコンピューターが担当します。ひとりでも参加できます。</p><p>1手45秒。時間切れはAIが代わりに打ち、連続2回でその席を引き継ぎます。通信が切れた場合は60秒以内に戻ると復帰でき、その間も時間は進みます。降参するとあなたは負けとなり、残りの対局はAIが続けます。オンライン中はメニューや設定を開いても時間は止まりません。</p><p>勝利は70コイン、最多同点は35コイン。結果はサーバーが判定し、同じ結果を二重には受け取れません。コインと購入品はこのブラウザの保存データに反映されます。終局後は同じメンバーとの再戦か、新しい対戦相手を選べます。ニックネームと対戦・報酬データはCloudflareに保存します。ログイン登録は不要ですが、ブラウザのCookieを消すと同じオンラインプレイヤーとして復帰できなくなります。</p>
     <h3>通常の２色オセロ</h3><p>ホームの「通常の２色オセロ」から、AI１人と対戦・２人で交代を選べます。基本は８×８、中央に黒２枚・白２枚を斜めに置き、黒から交互に打ちます。ひとりモードのあなたの色は毎回抽選します。縦・横・斜めにはさんだ相手の石を返し、置けなければ自動パス。双方が置けなければ終了し、石の多い色が勝ち、同数は引き分けです。２色では初手の保護ルールや特別色の抽選を使いません。ボードの着せ替え、強さ、ヒント、降参、ひとり対戦のコインは４色と共通です。</p>
     <h3>４色オセロ</h3><p class="rule-intro">自分の色ではさんで、いちばん多く。</p>
     <ol><li><b>４色で交代。</b>ひとりモードでは、自分の色と１〜４番目の手番を毎回抽選します。残りの３色がコンピューターです。順番はその対局中は変わりません。４人モードは赤 → 青 → 黄 → 緑の順です。</li><li><b>相手の石をはさむ場所に置く。</b>縦・横・斜めの８方向で、１枚以上はさめる空きマスに置けます。はさめないマスには置けません。</li><li><b>間の色は全部ひっくり返る。</b>自分以外の色が混ざっていても、途切れずにはさんだ石はすべて自分の色になります。空きマスを越えてはさむことはできません。</li><li><b>置けなければ自動でスキップ。</b>「置ける場所がありません」と表示して、次の人に進みます。０枚になった色もスキップします。</li><li><b>石の数で勝負。</b>盤が埋まるか、全員が置けなくなると終了。いちばん多い人が勝ち。最多の人が複数なら引き分けです。</li></ol>
@@ -78,7 +88,7 @@
     <span class="pause-emblem" aria-hidden="true">Ⅱ</span><p class="eyebrow">PAUSED</p><h2 id="menu-title">ポーズ</h2><p class="pause-note">ゲームの時間が止まっています</p><p id="match-info" class="field-note"></p><button class="primary" data-close>ゲームを続ける <kbd>Esc</kbd></button><div class="pause-actions"><button id="game-rules" class="secondary"><span aria-hidden="true">▤</span>ルールブック</button><button id="game-settings" class="secondary"><span aria-hidden="true">⚙</span>設定</button></div><button id="resign-open" class="danger">降参する</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
   </div></dialog>
   <dialog id="resign-dialog" aria-labelledby="resign-title" aria-describedby="resign-description"><div class="dialog-content resign-confirm"><p class="eyebrow">RESIGN MATCH</p><h2 id="resign-title">降参しますか？</h2><p id="resign-description"></p><button class="primary" data-close autofocus>対局を続ける</button><button id="resign-confirm" class="danger">降参して対局を終了する</button></div></dialog>
-  <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><div id="result-sparks" aria-hidden="true"></div><div id="result-symbol" class="result-symbol" aria-hidden="true"></div><p id="result-flavor" class="result-flavor"></p><p id="result-eyebrow" class="eyebrow">ゲーム終了</p><h2 id="result-title" tabindex="-1" autofocus></h2><p id="result-context" class="field-note"></p><div id="result-scores"></div><p id="result-reward" class="reward-note"></p><button id="again" class="primary">同じ設定でもう一局</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
+  <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><div id="result-sparks" aria-hidden="true"></div><div id="result-symbol" class="result-symbol" aria-hidden="true"></div><p id="result-flavor" class="result-flavor"></p><p id="result-eyebrow" class="eyebrow">ゲーム終了</p><h2 id="result-title" tabindex="-1" autofocus></h2><p id="result-context" class="field-note"></p><div id="result-scores"></div><p id="result-reward" class="reward-note"></p><button id="again" class="primary">同じ設定でもう一局</button><button id="online-new-opponents" class="secondary" hidden>新しい対戦相手を探す</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
   <div id="storage-message" class="storage-message" role="status" hidden></div><div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
   <noscript>このゲームで遊ぶには、ブラウザのJavaScriptを有効にしてください。</noscript>
 </body>

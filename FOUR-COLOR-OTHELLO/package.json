@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "node --test --test-concurrency=1 tests/*.test.mjs"
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "dev:online": "wrangler dev --local",
+    "test:online": "node scripts/test-online.mjs",
+    "deploy": "node scripts/build.mjs && wrangler deploy"
   },
   "devDependencies": {
-    "wrangler": "4.147.0"
+    "wrangler": "4.147.0",
+    "ws": "8.21.0"
   }
 }
