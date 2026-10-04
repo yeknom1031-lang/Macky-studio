@@ -151,3 +151,14 @@ test('all 21 stages also complete with touch down/move/up sequences, without a k
 test('truth stages replace the spoken false claim with the correct equation during the teaching reveal',()=>{
   for(const id of [4,21]){const game=ready(id);finish(game,0,3);game.update({phase:'reveal',time:5,correct:true});const texts=[];const fake=fakeContext();fake.ctx.fillText=(text)=>texts.push(String(text));game.draw(fake.ctx);assert.ok(texts.includes('7 × 7 = 49'));assert.ok(!texts.includes('7 × 7 = 56'));}
 });
+
+test('all rhythm stages animate repeated pulses and neutral demos without legacy controls or answer leaks',()=>{
+  for(const meta of GAMES){
+    const game=ready(meta.id);game.update({rhythmMode:true,phase:'listen',time:2,beat:4});
+    game.pulse({beat:4,success:true,value:null,index:0,total:6,demo:true});
+    assert.equal(game.selected,null,meta.title);let fake=fakeContext();const texts=[];fake.ctx.fillText=text=>texts.push(String(text));game.draw(fake.ctx);fake.check();
+    assert.ok(!texts.some(t=>t.includes('下から 答えを')||t==='うけとる ○'||t==='ほんと ○'),meta.title);
+    for(let i=0;i<4;i++){game.update({time:4+i*.5,beat:8+i,phase:'play'});game.pulse({beat:8+i,success:true,value:meta.mechanic==='truth'?0:42,index:i,total:6,holding:i===1&&[3,10,16,19].includes(meta.id)});game.update({time:4+i*.5+.1,beat:8+i+.2});fake=fakeContext();game.draw(fake.ctx);fake.check();assert.equal(game.completed,false);}
+    game.setAnswer(meta.mechanic==='truth'?0:42,false);game.update({phase:'reveal',time:9});fake=fakeContext();game.draw(fake.ctx);fake.check();assert.equal(game.getResult().value,meta.mechanic==='truth'?0:42);
+  }
+});

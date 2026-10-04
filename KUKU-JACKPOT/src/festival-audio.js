@@ -82,6 +82,7 @@ export class FestivalAudio {
     this.buffers = new Map();
     this.sources = new Set();
     this.pending = new Map();
+    this.cueBuffers = new Map();
     this.recentCheers = [];
     this.volumeSettings = { music: 68, voice: 100, cheer: 85, sfx: 70 };
     this.origin = 0;
@@ -186,8 +187,9 @@ export class FestivalAudio {
   setMusic(name = 'jackpot', when = this.ctx?.currentTime) {
     const key = `music:${MUSIC_NAMES.includes(name) ? name : 'jackpot'}`;
     if (!this.ctx || !this.buffers.has(key)) return false;
+    const startsAt = Math.max(this.ctx.currentTime, when);
     if (this.musicSource) {
-      try { this.musicSource.stop(when); } catch { /* source already ended */ }
+      try { this.musicSource.stop(startsAt); } catch { /* source already ended */ }
     }
     const source = this.ctx.createBufferSource();
     source.buffer = this.buffers.get(key);
@@ -197,7 +199,10 @@ export class FestivalAudio {
     source.connect(this.musicDuck);
     this.sources.add(source);
     source.onended = () => { this.sources.delete(source); source.disconnect(); };
-    source.start(when);
+    // If a render frame arrived after the bar line, seek past that elapsed time
+    // instead of moving the new track's downbeat off the shared musical grid.
+    const offset = (startsAt - when) % source.buffer.duration;
+    source.start(startsAt, offset);
     this.musicSource = source;
     return true;
   }
@@ -274,6 +279,54 @@ export class FestivalAudio {
       if (Number.isFinite(values[name])) this.volumeSettings[name] = Math.max(0, Math.min(100, values[name]));
       if (this.buses) this.buses[name].gain.setTargetAtTime(this.volumeSettings[name] / 100, this.ctx.currentTime, .03);
     }
+  }
+
+  /** Schedule a rhythm demonstration on the music clock, never a UI timer. */
+  cue(at, kind = 'clap') {
+    if (!this.ctx || !this.active || !Number.isFinite(at) || at < 0) return false;
+    const when = this.origin + at;
+    // A late animation frame must not bunch old beats together at "now".
+    if (when < this.ctx.currentTime) return false;
+    const resolved = { accent: 'kick', demo: 'clap', release: 'snare' }[kind] || kind;
+    const name = ['clap', 'kick', 'snare', 'hat', 'tick'].includes(resolved) ? resolved : 'clap';
+    if (!this.cueBuffers.has(name)) {
+      const sampleRate = this.ctx.sampleRate;
+      const seconds = { clap: .17, kick: .24, snare: .17, hat: .065, tick: .065 }[name];
+      const buffer = this.ctx.createBuffer(1, Math.ceil(sampleRate * seconds), sampleRate);
+      const samples = buffer.getChannelData(0);
+      let seed = 1739;
+      let lastNoise = 0;
+      for (let i = 0; i < samples.length; i++) {
+        const t = i / sampleRate;
+        seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+        const noise = seed / 2147483648 - 1;
+        const brightNoise = noise - .82 * lastNoise;
+        lastNoise = noise;
+        const attack = Math.min(1, t / .0015);
+        const tail = Math.min(1, (seconds - t) / .018);
+        if (name === 'clap') {
+          const bursts = [0, .013, .029].reduce((sum, offset) => sum + (t >= offset ? Math.exp(-(t - offset) * 65) : 0), 0);
+          samples[i] = brightNoise * bursts * .21 * attack * tail;
+        } else if (name === 'kick') {
+          const phase = 2 * Math.PI * (55 * t + 80 * .018 * (1 - Math.exp(-t / .018)));
+          samples[i] = Math.sin(phase) * Math.exp(-t * 18) * .62 * attack * tail;
+        } else if (name === 'snare') {
+          samples[i] = (brightNoise * Math.exp(-t * 28) * .3 + Math.sin(2 * Math.PI * 185 * t) * Math.exp(-t * 40) * .19) * attack * tail;
+        } else if (name === 'hat') {
+          samples[i] = brightNoise * Math.exp(-t * 80) * .28 * attack * tail;
+        } else {
+          samples[i] = Math.sin(2 * Math.PI * 1320 * t) * Math.exp(-t * 65) * .12 * attack * tail;
+        }
+      }
+      this.cueBuffers.set(name, buffer);
+    }
+    const source = this.ctx.createBufferSource();
+    source.buffer = this.cueBuffers.get(name);
+    source.connect(this.buses.sfx);
+    this.sources.add(source);
+    source.onended = () => { this.sources.delete(source); source.disconnect(); };
+    source.start(when);
+    return { at, when, kind: name, seconds: source.buffer.duration };
   }
 
   sfx(kind = 'tap') {

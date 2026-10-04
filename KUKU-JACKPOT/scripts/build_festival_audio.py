@@ -6,6 +6,7 @@ Re-running reuses clips whose text/render settings still match the manifest.
 """
 from pathlib import Path
 import argparse
+import hashlib
 import io
 import json
 import math
@@ -23,6 +24,10 @@ VOICE_SR = 24000
 MUSIC_SR = 44100
 MUSIC_BEATS = 32
 RENDER_VERSION = 1
+ANSWER_RENDER_VERSION = 2
+NUMBER_SPEECH_RENDER_VERSION = 2
+KANA_API_SOURCE = 'https://github.com/VOICEVOX/voicevox/blob/main/src/openapi/apis/DefaultApi.ts'
+READING_SOURCE = 'https://www.kochinet.ed.jp/motoyama-t/sansuuseat/kuku.pdf'
 NUMS = ['','いち','に','さん','よん','ご','ろく','なな','はち','きゅう']
 
 # Hand-authored traditional readings. Each row contains the call followed by
@@ -45,8 +50,62 @@ def number(n, traditional=False):
         return units[n]
     tens, ones = divmod(n, 10)
     # Traditional forty is しじゅう, while other tens use their common reading.
-    head = '' if tens == 1 else ('し' if tens == 4 and traditional else NUMS[tens])
+    head = '' if tens == 1 else (units[tens] if traditional else NUMS[tens])
     return head + 'じゅう' + units[ones]
+
+# A syllable-level contract independent of VOICEVOX's Japanese text analyzer.
+# AquesTalk kana is parsed directly; it cannot reinterpret ハ as the particle ワ.
+MORA_PHONEMES = {
+    'イ': (None,'i'), 'ウ': (None,'u'), 'ン': (None,'N'), 'ッ': (None,'cl'),
+    'チ': ('ch','i'), 'ガ': ('g','a'), 'ニ': ('n','i'), 'サ': ('s','a'),
+    'シ': ('sh','i'), 'ゴ': ('g','o'), 'ロ': ('r','o'), 'ク': ('k','u'),
+    'ハ': ('h','a'), 'ジュ': ('j','u'), 'ザ': ('z','a'), 'ブ': ('b','u'),
+    'パ': ('p','a'),
+    'ナ': ('n','a'), 'キュ': ('ky','u'), 'ヨ': ('y','o'), 'ケ': ('k','e'),
+    'ル': ('r','u'), 'ワ': ('w','a'), 'ツ': ('ts','u'), 'デ': ('d','e'), 'カ': ('k','a'),
+}
+
+def katakana(text):
+    return ''.join(chr(ord(char)+0x60) if 'ぁ' <= char <= 'ゖ' else char for char in text)
+
+def split_moras(kana):
+    moras=[]
+    for char in kana:
+        if char in 'ァィゥェォャュョ':
+            if not moras:raise ValueError(f'Kana starts with a small vowel: {kana}')
+            moras[-1]+=char
+        else:moras.append(char)
+    if any(mora not in MORA_PHONEMES for mora in moras):
+        raise ValueError(f'Unreviewed mora in multiplication reading: {kana}')
+    return moras
+
+def answer_pronunciation(a,b):
+    call=katakana(CALLS[a-1][b-1]); result=katakana(number(a*b,True))
+    call_moras=split_moras(call); result_moras=split_moras(result)
+    # Give the two parts of the chant their own accent and a short clear pause.
+    result_accent=result.index('ジュウ')+3 if 'ジュウ' in result else len(result_moras[0])
+    explicit=f"{call}'、{result[:result_accent]}'{result[result_accent:]}"
+    expected=[{'text':mora,'consonant':MORA_PHONEMES[mora][0],'vowel':MORA_PHONEMES[mora][1]} for mora in call_moras+result_moras]
+    return {'method':'create_audio_query_from_kana','kana':explicit,'reading':call+result,'expectedMoras':expected,'readingSource':READING_SOURCE,'apiSource':KANA_API_SOURCE}
+
+def number_question_pronunciation(kind,a,b,claim=None):
+    left=katakana(NUMS[a]); right=katakana(NUMS[b])
+    if kind=='question':
+        parts=[left+'カケル',right+'ワ']; interrogative=True
+    elif kind=='false_claim':
+        parts=[left+'カケル'+right+'ワ',katakana(number(claim))]; interrogative=False
+    elif kind=='reverse_question':
+        parts=[left+'カケル','イクツデ',katakana(number(a*b))]; interrogative=True
+    else:raise ValueError(kind)
+    expected=[{'text':mora,'consonant':MORA_PHONEMES[mora][0],'vowel':MORA_PHONEMES[mora][1]} for part in parts for mora in split_moras(part)]
+    explicit='、'.join(part+"'" for part in parts)+('？' if interrogative else '')
+    return {'method':'create_audio_query_from_kana','kana':explicit,'reading':''.join(parts),'expectedMoras':expected,'grammaticalWaCount':int(kind in ['question','false_claim']),'apiSource':KANA_API_SOURCE}
+
+def query_moras(query):
+    return [{'text':mora.text,'consonant':mora.consonant,'vowel':mora.vowel} for phrase in query.accent_phrases for mora in phrase.moras]
+
+def phonemes(moras):
+    return [phoneme for mora in moras for phoneme in (mora['consonant'],mora['vowel']) if phoneme is not None]
 
 def definitions():
     clips = {}
@@ -55,10 +114,10 @@ def definitions():
             product = a*b
             false = 80 if product == 81 else product+1
             common = {'a': a, 'b': b, 'answer': product}
-            clips[f'q-{a}-{b}'] = {**common, 'text': f'{NUMS[a]}かける、{NUMS[b]}は？', 'kind': 'question', 'slotSeconds': 3.0}
-            clips[f'a-{a}-{b}'] = {**common, 'text': f'{CALLS[a-1][b-1]}、{number(product, True)}！', 'kind': 'answer', 'slotSeconds': 2.55, 'claim': product}
-            clips[f'f-{a}-{b}'] = {**common, 'text': f'{NUMS[a]}かける{NUMS[b]}は、{number(false)}！', 'kind': 'false_claim', 'slotSeconds': 3.0, 'claim': false}
-            clips[f'r-{a}-{b}'] = {**common, 'text': f'{NUMS[a]}かける、いくつで、{number(product)}？', 'kind': 'reverse_question', 'slotSeconds': 3.0, 'hiddenOperand': 'b'}
+            clips[f'q-{a}-{b}'] = {**common, 'text': f'{NUMS[a]}かける、{NUMS[b]}は？', 'kind': 'question', 'slotSeconds': 3.0, 'pronunciation':number_question_pronunciation('question',a,b)}
+            clips[f'a-{a}-{b}'] = {**common, 'text': f'{CALLS[a-1][b-1]}、{number(product, True)}！', 'kind': 'answer', 'slotSeconds': 2.55, 'claim': product, 'pronunciation':answer_pronunciation(a,b)}
+            clips[f'f-{a}-{b}'] = {**common, 'text': f'{NUMS[a]}かける{NUMS[b]}は、{number(false)}！', 'kind': 'false_claim', 'slotSeconds': 3.0, 'claim': false, 'pronunciation':number_question_pronunciation('false_claim',a,b,false)}
+            clips[f'r-{a}-{b}'] = {**common, 'text': f'{NUMS[a]}かける、いくつで、{number(product)}？', 'kind': 'reverse_question', 'slotSeconds': 3.0, 'hiddenOperand': 'b', 'pronunciation':number_question_pronunciation('reverse_question',a,b)}
     catalog = json.loads(CHEERS.read_text())
     assert len(catalog['clips']) == 100
     assert len({clip['text'] for clip in catalog['clips']}) == 100
@@ -75,7 +134,7 @@ def read_wav(data):
         samples = samples[max(0, active[0]-240):min(len(samples), active[-1]+720)]
     return samples, rate
 
-def build_voice(manifest, force=False):
+def build_voice(manifest, force=False, answers_only=False):
     from voicevox_core.blocking import Onnxruntime, OpenJtalk, Synthesizer, VoiceModelFile
     synth = Synthesizer(Onnxruntime.load_once(filename=str(ENGINE/'onnxruntime/lib'/Onnxruntime.LIB_RECOMMENDED_VERSIONED_FILENAME)), OpenJtalk(str(ENGINE/'dict/open_jtalk_dic_utf_8-1.11')), cpu_num_threads=4)
     with VoiceModelFile.open(str(ENGINE/'models/vvms/0.vvm')) as model:
@@ -83,11 +142,20 @@ def build_voice(manifest, force=False):
     definitions_by_key, catalog = definitions()
     manifest['cheers'] = catalog['clips']
     for index, (key, definition) in enumerate(definitions_by_key.items()):
+        if answers_only and definition['kind']!='answer':continue
         path = OUT/'voice'/f'{key}.wav'
         prior = manifest['clips'].get(key, {})
-        if not force and path.exists() and prior.get('text') == definition['text'] and prior.get('renderVersion') == RENDER_VERSION:
+        render_version=ANSWER_RENDER_VERSION if definition['kind']=='answer' else NUMBER_SPEECH_RENDER_VERSION if 'pronunciation' in definition else RENDER_VERSION
+        if not force and path.exists() and prior.get('text') == definition['text'] and prior.get('renderVersion') == render_version:
             continue
-        query = synth.create_audio_query(definition['text'], 3)
+        if 'pronunciation' in definition:
+            query=synth.create_audio_query_from_kana(definition['pronunciation']['kana'],3)
+            actual=query_moras(query); expected=definition['pronunciation']['expectedMoras']
+            if actual!=expected:raise ValueError(f'{key}: phoneme mismatch; refusing to synthesize incorrect learning audio: {actual} != {expected}')
+            legacy=synth.create_audio_query(prior.get('text',definition['text']),3)
+            legacy_moras=query_moras(legacy)
+            definition['pronunciation'].update({'actualMoras':actual,'expectedPhonemes':phonemes(expected),'actualPhonemes':phonemes(actual),'verified':True,'previousTextAnalysis':{'text':prior.get('text',definition['text']),'kana':legacy.kana,'moras':legacy_moras,'phonemes':phonemes(legacy_moras)},'legacyHadWa':any(m['consonant']=='w' for m in legacy_moras),'legacyUnexpectedWaCount':max(0,sum(m['consonant']=='w' for m in legacy_moras)-definition['pronunciation'].get('grammaticalWaCount',0))})
+        else:query = synth.create_audio_query(definition['text'], 3)
         query.speed_scale = 1.14 if definition['kind'] != 'cheer' else 1.09
         query.pitch_scale = {'wolf': -.045, 'rabbit': .045, 'bear': -.07, 'robot': -.015, 'fox': .02, 'frog': .055, 'gorilla': -.09, 'octopus': -.035}.get(definition.get('voice'), .018)
         query.intonation_scale = 1.22 if definition['kind'] == 'cheer' else 1.10
@@ -113,11 +181,14 @@ def build_voice(manifest, force=False):
             stream.setsampwidth(2)
             stream.setframerate(rate)
             stream.writeframes(pcm.tobytes())
-        manifest['clips'][key] = {**definition, 'file': f'voice/{key}.wav', 'seconds': round(duration, 4), 'sampleRate': rate, 'frames': len(samples), 'speaker': 'VOICEVOX:ずんだもん', 'styleId': 3, 'renderVersion': RENDER_VERSION, 'speedScale': round(query.speed_scale, 4), 'roundEligible': duration+.1 <= 1.6 if definition['kind'] == 'cheer' else True, 'peak': round(float(np.max(np.abs(pcm)))/32768, 4), 'rms': round(float(np.sqrt(np.mean((pcm.astype(float)/32768)**2))), 4), 'status': 'generated', 'audioFile': f'voice/{key}.wav', 'actualDurationSeconds': round(duration, 4)}
+        manifest['clips'][key] = {**definition, 'file': f'voice/{key}.wav', 'seconds': round(duration, 4), 'sampleRate': rate, 'frames': len(samples), 'speaker': 'VOICEVOX:ずんだもん', 'styleId': 3, 'renderVersion': render_version, 'speedScale': round(query.speed_scale, 4), 'roundEligible': duration+.1 <= 1.6 if definition['kind'] == 'cheer' else True, 'peak': round(float(np.max(np.abs(pcm)))/32768, 4), 'rms': round(float(np.sqrt(np.mean((pcm.astype(float)/32768)**2))), 4), 'status': 'generated', 'audioFile': f'voice/{key}.wav', 'actualDurationSeconds': round(duration, 4), 'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
         # Persist each clip so interruptions never lose provenance or require repeats.
         save_manifest(manifest)
         print(f'voice {index+1}/{len(definitions_by_key)} {key} {duration:.2f}s', flush=True)
     manifest['cheers'] = [{**clip, 'status': 'generated', 'audioFile': manifest['clips'][clip['id']]['file'], 'actualDurationSeconds': manifest['clips'][clip['id']]['seconds'], 'actualSpeaker': 'VOICEVOX:ずんだもん'} for clip in catalog['clips']]
+    audited=[entry for entry in manifest['clips'].values() if entry['kind']=='answer' and entry.get('pronunciation',{}).get('verified')]
+    manifest['pronunciationAudit']={'answerCount':len(audited),'method':'explicit AquesTalk kana; exact mora consonant/vowel verification before synthesis','noWaInAnswers':all('w' not in entry['pronunciation']['actualPhonemes'] for entry in audited),'readingSource':READING_SOURCE,'kanaApiSource':KANA_API_SOURCE,'variantPolicy':'Use this project’s established traditional reading consistently; regional variants also exist.'}
+    manifest['pronunciationAudit']['numberSpeechCount']=sum(entry.get('pronunciation',{}).get('verified',False) for entry in manifest['clips'].values())
     save_manifest(manifest)
 
 def build_music(manifest, force=False):
@@ -256,6 +327,7 @@ def save_manifest(manifest):
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--voice-only', action='store_true')
+    parser.add_argument('--answers-only', action='store_true', help='Rebuild only the 81 pronunciation-audited answer WAVs; other audio is untouched.')
     parser.add_argument('--music-only', action='store_true')
     parser.add_argument('--force', action='store_true')
     args=parser.parse_args()
@@ -263,8 +335,8 @@ def main():
     (OUT/'music').mkdir(parents=True,exist_ok=True)
     manifest_path=OUT/'manifest.json'
     manifest=json.loads(manifest_path.read_text()) if manifest_path.exists() else {'version':1,'credit':'VOICEVOX:ずんだもん','voicevoxCore':'0.17.0','musicCredit':'Original procedural compositions for 九九ビート大放送','bpm':BPM,'clips':{},'music':{}}
-    if not args.music_only:build_voice(manifest,args.force)
-    if not args.voice_only:build_music(manifest,args.force)
+    if not args.music_only:build_voice(manifest,args.force,args.answers_only)
+    if not args.voice_only and not args.answers_only:build_music(manifest,args.force)
     print(json.dumps({'spokenClips':len(manifest['clips']),'musicLoops':len(manifest['music']),'output':str(OUT)},ensure_ascii=False),flush=True)
 
 if __name__=='__main__':main()

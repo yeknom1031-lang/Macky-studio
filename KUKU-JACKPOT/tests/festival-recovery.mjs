@@ -13,7 +13,7 @@ try{
   {
     const{context,page}=await newPage();await page.goto(base,{waitUntil:'networkidle'});
     await page.locator('.game-card[data-game="1"]').click();await page.locator('#start-single').click();
-    await page.waitForFunction(()=>__festival.state.running);
+    await page.waitForFunction(()=>__festival.state.running);await page.locator('#intro-start').click();
     await page.evaluate(()=>__festival.seekBeat(.3));
     await page.waitForFunction(()=>__festival.audio.spoken?.key?.startsWith('q-'));
     await page.locator('#pause-btn').click();await page.waitForFunction(()=>__festival.audio.ctx.state==='suspended');
@@ -24,6 +24,51 @@ try{
     const after=await page.evaluate(()=>({sameSource:__festival.audio.spoken===window.__savedLesson,key:__festival.audio.spoken?.key}));
     assert.equal(after.sameSource,true,'closing the pause dialog must not stop the suspended lesson');assert.equal(after.key,before.key);
     report.checks.push('mid-question pause/resume preserves the lesson source and frozen clock');await context.close();
+  }
+  // A physical hold cannot survive pause: replay the same fact without a penalty.
+  {
+    const{context,page}=await newPage();await page.goto(base,{waitUntil:'networkidle'});
+    await page.locator('.game-card[data-game="3"]').click();await page.locator('#start-single').click();
+    await page.waitForFunction(()=>__festival.state.running);await page.locator('#intro-start').click();
+    await page.evaluate(()=>__festival.seekBeat(8));await page.waitForFunction(()=>__festival.state.phase==='play');
+    const before=await page.evaluate(()=>({index:__festival.state.index,question:__festival.state.question,results:__festival.state.results.length}));
+    let pad=page.locator(`#answers [data-value="${before.question.answer}"]`);
+    await pad.dispatchEvent('pointerdown',{pointerId:41,pointerType:'touch',isPrimary:true,button:0,buttons:1});
+    assert.equal(await page.evaluate(()=>__festival.state.rhythm.result().holding),0,'rocket begins with a real hold');
+    await page.locator('#pause-btn').click();await page.waitForFunction(()=>__festival.state.paused);
+    await page.locator('#resume-btn').click();await page.waitForFunction(()=>!__festival.state.paused);
+    const restarted=await page.evaluate(()=>({index:__festival.state.index,question:__festival.state.question,results:__festival.state.results.length,rhythm:__festival.state.rhythm.result(),statuses:__festival.state.rhythm.notes.map(n=>n.status)}));
+    assert.equal(restarted.index,before.index);assert.deepEqual(restarted.question,before.question);assert.equal(restarted.results,before.results);
+    assert.equal(restarted.rhythm.hits,0);assert.equal(restarted.rhythm.misses,0);assert.equal(restarted.rhythm.answerValue,null);assert.equal(restarted.rhythm.holding,null);
+    assert.ok(restarted.statuses.every(status=>status==='pending'),'the interrupted question restarts with fresh notes');
+    // Play and release the first hold again through the rebuilt answer pad.
+    await page.evaluate(()=>__festival.seekBeat(8));await page.waitForFunction(()=>__festival.state.phase==='play');
+    pad=page.locator(`#answers [data-value="${before.question.answer}"]`);
+    await pad.dispatchEvent('pointerdown',{pointerId:42,pointerType:'touch',isPrimary:true,button:0,buttons:1});
+    assert.equal(await page.evaluate(()=>__festival.state.rhythm.result().holding),0);
+    await page.evaluate(()=>__festival.seekBeat(__festival.state.pattern.notes[0].end));await page.waitForTimeout(35);
+    await pad.dispatchEvent('pointerup',{pointerId:42,pointerType:'touch',isPrimary:true,button:0,buttons:0});
+    const replayed=await page.evaluate(()=>__festival.state.rhythm.result());assert.equal(replayed.hits,1);assert.equal(replayed.misses,0);assert.equal(replayed.answerValue,before.question.answer);
+    report.checks.push('pausing a hold restarts the same question without a penalty and accepts a fresh hold');await context.close();
+  }
+  // Timing correction applies to player pads, never to the automatic demonstration.
+  {
+    const{context,page}=await newPage();await page.goto(base,{waitUntil:'networkidle'});
+    await page.locator('#settings-btn').click();await page.locator('#offset').fill('-300');await page.locator('#offset').dispatchEvent('input');await page.locator('.dialog-close').click();
+    await page.locator('.game-card[data-game="1"]').click();await page.locator('#start-watch').click();await page.waitForFunction(()=>__festival.state.running);await page.locator('#intro-start').click();
+    await page.evaluate(()=>__festival.seekBeat(7.8));await page.waitForTimeout(35);
+    assert.equal(await page.evaluate(()=>__festival.state.rhythm.result().misses),0);
+    await page.evaluate(()=>__festival.seekBeat(8.04));await page.waitForTimeout(35);
+    assert.equal(await page.evaluate(()=>__festival.state.rhythm.result().events[0].success),true);
+    await page.locator('#pause-btn').click();await page.locator('#quit-btn').click();
+    await page.locator('.game-card[data-game="1"]').click();await page.locator('#start-single').click();await page.waitForFunction(()=>__festival.state.running);await page.locator('#intro-start').click();
+    await page.evaluate(()=>__festival.seekBeat(7.32));await page.waitForTimeout(20);
+    assert.equal(await page.evaluate(()=>__festival.state.phase),'play');
+    const value=await page.evaluate(()=>__festival.state.question.answer);
+    await page.locator(`#answers [data-value="${value}"]`).dispatchEvent('pointerdown',{pointerId:12});
+    await page.locator(`#answers [data-value="${value}"]`).dispatchEvent('pointerup',{pointerId:12});
+    assert.equal(await page.evaluate(()=>__festival.state.rhythm.result().hits),1);
+    report.checks.push('negative timing correction accepts the first player note without corrupting watch mode');await context.close();
   }
   // A completed stale async request must never reopen a dismissed dialog.
   {

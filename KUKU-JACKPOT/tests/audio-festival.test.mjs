@@ -1,12 +1,25 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { chooseCheer, eligibleCheer, FestivalAudio, MUSIC_NAMES } from '../src/festival-audio.js';
 
 const base = new URL('../assets/audio/festival/', import.meta.url);
 const manifest = JSON.parse(readFileSync(new URL('manifest.json', base), 'utf8'));
 const catalog = manifest.cheers;
 const clip = id => catalog.find(item => item.id === id);
+// Approved traditional recitals, independent of the generator's number formatter.
+const EXPECTED_READINGS = [
+  'インイチガイチ インニガニ インサンガサン インシガシ インゴガゴ インロクガロク インシチガシチ インハチガハチ インクガク',
+  'ニイチガニ ニニンガシ ニサンガロク ニシガハチ ニゴジュウ ニロクジュウニ ニシチジュウシ ニハチジュウロク ニクジュウハチ',
+  'サンイチガサン サンニガロク サザンガク サンシジュウニ サンゴジュウゴ サブロクジュウハチ サンシチニジュウイチ サンパニジュウシ サンクニジュウシチ',
+  'シイチガシ シニガハチ シサンジュウニ シシジュウロク シゴニジュウ シロクニジュウシ シシチニジュウハチ シハサンジュウニ シクサンジュウロク',
+  'ゴイチガゴ ゴニジュウ ゴサンジュウゴ ゴシニジュウ ゴゴニジュウゴ ゴロクサンジュウ ゴシチサンジュウゴ ゴハシジュウ ゴックシジュウゴ',
+  'ロクイチガロク ロクニジュウニ ロクサンジュウハチ ロクシニジュウシ ロクゴサンジュウ ロクロクサンジュウロク ロクシチシジュウニ ロクハシジュウハチ ロックゴジュウシ',
+  'シチイチガシチ シチニジュウシ シチサンニジュウイチ シチシニジュウハチ シチゴサンジュウゴ シチロクシジュウニ シチシチシジュウク シチハゴジュウロク シチクロクジュウサン',
+  'ハチイチガハチ ハチニジュウロク ハチサンニジュウシ ハチシサンジュウニ ハチゴシジュウ ハチロクシジュウハチ ハチシチゴジュウロク ハッパロクジュウシ ハックシチジュウニ',
+  'クイチガク クニジュウハチ クサンニジュウシチ クシサンジュウロク クゴシジュウゴ クロクゴジュウシ クシチロクジュウサン クハシチジュウニ ククハチジュウイチ',
+].map(row => row.split(' '));
 
 function wavInfo(path) {
   const bytes = readFileSync(path);
@@ -59,6 +72,67 @@ test('all 81 missing-factor questions speak the given factor and product without
       assert.equal(entry.answer, a * b);
       assert.equal(entry.text, `${units[a]}かける、いくつで、${reading(a * b)}？`);
       assert.ok(entry.seconds <= 3);
+    }
+  }
+});
+
+test('all 81 synthesized recitals match the approved mora readings and contain no particle wa', () => {
+  assert.equal(manifest.pronunciationAudit.answerCount, 81);
+  assert.equal(manifest.pronunciationAudit.noWaInAnswers, true);
+  const phones = { イ: [null, 'i'], ウ: [null, 'u'], ン: [null, 'N'], ッ: [null, 'cl'], チ: ['ch', 'i'], ガ: ['g', 'a'], ニ: ['n', 'i'], サ: ['s', 'a'], シ: ['sh', 'i'], ゴ: ['g', 'o'], ロ: ['r', 'o'], ク: ['k', 'u'], ハ: ['h', 'a'], ジュ: ['j', 'u'], ザ: ['z', 'a'], ブ: ['b', 'u'], パ: ['p', 'a'] };
+  for (let a = 1; a <= 9; a++) {
+    for (let b = 1; b <= 9; b++) {
+      const key = `a-${a}-${b}`;
+      const entry = manifest.clips[key];
+      const audit = entry.pronunciation;
+      assert.equal(entry.renderVersion, 2, key);
+      assert.equal(audit.method, 'create_audio_query_from_kana', key);
+      assert.equal(audit.verified, true, key);
+      assert.equal(audit.actualMoras.map(mora => mora.text).join(''), EXPECTED_READINGS[a - 1][b - 1], key);
+      assert.deepEqual(audit.actualPhonemes, audit.expectedPhonemes, key);
+      assert.ok(!audit.actualPhonemes.includes('w'), key);
+      for (const mora of audit.actualMoras) assert.deepEqual([mora.consonant, mora.vowel], phones[mora.text], `${key} ${mora.text}`);
+      assert.equal(createHash('sha256').update(readFileSync(new URL(entry.file, base))).digest('hex'), entry.sha256, `${key} WAV is bound to its audited synthesis`);
+    }
+  }
+});
+
+test('ha regression covers every shortened times-eight call and the answer forty-eight', () => {
+  for (const a of [4, 5, 6, 7, 9]) {
+    const audit = manifest.clips[`a-${a}-8`].pronunciation;
+    assert.ok(audit.kana.split('、')[0].endsWith("ハ'"));
+    assert.ok(audit.actualMoras.some(m => m.text === 'ハ' && m.consonant === 'h' && m.vowel === 'a'));
+  }
+  assert.equal(manifest.clips['a-6-8'].pronunciation.reading, 'ロクハシジュウハチ');
+  assert.equal(manifest.clips['a-8-6'].pronunciation.reading, 'ハチロクシジュウハチ');
+  assert.equal(manifest.clips['a-8-9'].pronunciation.reading, 'ハックシチジュウニ');
+  assert.equal(manifest.clips['a-9-8'].pronunciation.reading, 'クハシチジュウニ');
+});
+
+test('spoken questions and claims pronounce eight as hachi and reserve wa for the grammatical particle', () => {
+  assert.equal(manifest.pronunciationAudit.numberSpeechCount, 324);
+  const numbers = ['', 'イチ', 'ニ', 'サン', 'ヨン', 'ゴ', 'ロク', 'ナナ', 'ハチ', 'キュウ'];
+  const read = n => n < 10 ? numbers[n] : `${n < 20 ? '' : numbers[Math.floor(n / 10)]}ジュウ${numbers[n % 10]}`;
+  for (let a = 1; a <= 9; a++) {
+    for (let b = 1; b <= 9; b++) {
+      const product = a * b;
+      const readings = {
+        q: `${numbers[a]}カケル${numbers[b]}ワ`,
+        f: `${numbers[a]}カケル${numbers[b]}ワ${read(product === 81 ? 80 : product + 1)}`,
+        r: `${numbers[a]}カケルイクツデ${read(product)}`,
+      };
+      for (const kind of ['q', 'f', 'r']) {
+        const key = `${kind}-${a}-${b}`;
+        const entry = manifest.clips[key];
+        const audit = entry.pronunciation;
+        assert.equal(entry.renderVersion, 2, key);
+        assert.equal(audit.verified, true, key);
+        assert.equal(audit.actualMoras.map(m => m.text).join(''), readings[kind], key);
+        assert.equal(audit.actualMoras.filter(m => m.consonant === 'w').length, kind === 'r' ? 0 : 1, key);
+        for (const mora of audit.actualMoras.filter(m => m.text === 'ハ')) assert.deepEqual([mora.consonant, mora.vowel], ['h', 'a'], key);
+        assert.deepEqual(audit.actualPhonemes, audit.expectedPhonemes, key);
+        assert.equal(createHash('sha256').update(readFileSync(new URL(entry.file, base))).digest('hex'), entry.sha256, key);
+      }
     }
   }
 });
@@ -175,4 +249,65 @@ test('music/voice/cheer/effects volumes clamp independently', () => {
   assert.deepEqual(audio.volumeSettings, { music: 100, voice: 0, cheer: 31, sfx: 27 });
   audio.setVolumes({ music: NaN });
   assert.equal(audio.volumeSettings.music, 100);
+});
+
+test('rhythm cues use the absolute audio origin, remain distinct, and cancel with stop', () => {
+  const audio = new FestivalAudio();
+  const started = [];
+  const stopped = [];
+  audio.ctx = {
+    currentTime: 10,
+    sampleRate: 48000,
+    createBuffer(_channels, frames, rate) {
+      const data = new Float32Array(frames);
+      return { duration: frames / rate, getChannelData: () => data };
+    },
+    createBufferSource() {
+      return { connect() {}, disconnect() {}, start(at) { started.push(at); }, stop() { stopped.push(this); } };
+    },
+  };
+  audio.buses = { sfx: {} };
+  audio.origin = 11.25;
+  audio.active = true;
+  for (const [index, kind] of ['clap', 'kick', 'snare', 'hat', 'tick'].entries()) {
+    const at = index * 60 / 132;
+    const scheduled = audio.cue(at, kind);
+    assert.equal(scheduled.when, audio.origin + at);
+    assert.equal(started.at(-1), audio.origin + at);
+    const samples = audio.cueBuffers.get(kind).getChannelData(0);
+    assert.ok(samples.some(value => Math.abs(value) > .05));
+    assert.ok(samples.every(value => Math.abs(value) < 1));
+  }
+  audio.cue(4, 'clap');
+  assert.equal(audio.cueBuffers.size, 5, 'reuse percussion buffers');
+  assert.equal(audio.cue(5, 'accent').kind, 'kick');
+  assert.equal(audio.cue(6, 'demo').kind, 'clap');
+  assert.equal(audio.cue(7, 'release').kind, 'snare');
+  assert.equal(audio.cue(-1, 'clap'), false);
+  assert.equal(audio.cue(NaN, 'clap'), false);
+  audio.ctx.currentTime = 30;
+  assert.equal(audio.cue(1, 'clap'), false, 'do not bunch late cues together');
+  audio.stop();
+  assert.equal(stopped.length, 9, 'cancel future and currently playing examples');
+  assert.equal(audio.sources.size, 0);
+  assert.equal(audio.cue(100, 'clap'), false, 'stopped music cannot schedule more cues');
+  assert.equal(typeof audio.sfx, 'function', 'existing immediate feedback API stays available');
+});
+
+test('late music changes preserve the original bar phase rather than delaying the downbeat', () => {
+  const audio = new FestivalAudio();
+  const starts = [];
+  const stops = [];
+  audio.ctx = {
+    currentTime: 12.04,
+    createBufferSource: () => ({ connect() {}, disconnect() {}, start(...args) { starts.push(args); }, stop(at) { stops.push(at); } }),
+  };
+  audio.musicDuck = {};
+  audio.buffers.set('music:forest', { duration: 32 * 60 / 132 });
+  assert.equal(audio.setMusic('forest', 12), true);
+  assert.equal(starts[0][0], 12.04);
+  assert.ok(Math.abs(starts[0][1] - .04) < 1e-10);
+  audio.setMusic('forest', 16);
+  assert.deepEqual(starts[1], [16, 0]);
+  assert.equal(stops[0], 16);
 });

@@ -5,15 +5,20 @@ export function makeQuestion(a,b,random=Math.random){
   const truth=random()>.5, claimed=truth?answer:(answer===81?80:answer+1);
   return {a,b,answer,choices:shuffle([answer,...shuffle(candidates,random).slice(0,2)],random),truth,claimed,missing:answer>=10&&random()>.5?'tens':'ones'};
 }
-export function makePlaylist(mode,gameId,table=7,random=Math.random,review=[]){
+export function makePlaylist(mode,gameId,table=0,random=Math.random,review=[]){
   let ids=mode==='tour'?Array.from({length:21},(_,i)=>i+1):mode==='mix'?shuffle(Array.from({length:21},(_,i)=>i+1),random).slice(0,5):[Number(gameId)||1];
   const per=mode==='tour'?3:mode==='mix'?2:5;
-  let bag=shuffle([1,2,3,4,5,6,7,8,9],random),i=0;
+  const digits=[1,2,3,4,5,6,7,8,9], chosen=Number(table);
+  const fixed=Number.isInteger(chosen)&&chosen>=1&&chosen<=9?chosen:0;
+  let tables=[],i=0;
+  const operands=Object.fromEntries(digits.map(a=>[a,[]]));
   return ids.flatMap(id=>Array.from({length:per},()=>{
-    if(i&&i%9===0)bag=shuffle([1,2,3,4,5,6,7,8,9],random);
     const r=mode==='review'&&review.length?review[i%review.length]:null;
-    const a=r?.a||(Number(table)||1+Math.floor(random()*9)),b=r?.b||bag[i++%9];
-    if(r)i++;
+    if(!tables.length)tables=shuffle(digits,random);
+    const a=r?.a||fixed||tables.pop();
+    if(!operands[a].length)operands[a]=shuffle(digits,random);
+    const b=r?.b||operands[a].pop();
+    i++;
     return {gameId:id,...makeQuestion(a,b,random)};
   }));
 }
@@ -21,9 +26,11 @@ export function grade(question,result,{offset=0,watch=false}={}){
   const expected=[4,21].includes(question.gameId)?Number(question.truth):question.answer;
   const value=result?.value??null;
   const error=result?.performed&&Number.isFinite(result.hitTime)?(result.hitTime-TARGET_BEAT*BEAT)*1000-offset:null;
-  return {a:question.a,b:question.b,answer:question.answer,gameId:question.gameId,value,correct:value===expected,performed:!!result?.performed,rhythm:error===null?'miss':Math.abs(error)<=150?'perfect':Math.abs(error)<=320?'nice':'off',errorMs:error,watch};
+  const sequence=result?.sequence;
+  const rhythm=sequence?(sequence.hits===sequence.total&&sequence.total>0&&!sequence.strays?'perfect':sequence.hits>=(sequence.total+(sequence.strays||0))*.6&&sequence.hits>0?'nice':sequence.hits?'off':'miss'):error===null?'miss':Math.abs(error)<=150?'perfect':Math.abs(error)<=320?'nice':'off';
+  return {a:question.a,b:question.b,answer:question.answer,gameId:question.gameId,value,correct:value===expected,performed:!!result?.performed,rhythm,errorMs:error,watch,...(sequence?{rhythmHits:sequence.hits,rhythmTotal:sequence.total,perfectHits:sequence.perfect,maxCombo:sequence.maxCombo,events:sequence.events}: {})};
 }
-export function summarize(results){return {total:results.length,correct:results.filter(x=>x.correct).length,rhythm:results.filter(x=>x.rhythm==='perfect'||x.rhythm==='nice').length,review:[...new Map(results.filter(x=>!x.correct).map(x=>[`${x.a}-${x.b}`,{a:x.a,b:x.b}])).values()]};}
+export function summarize(results){return {total:results.length,correct:results.filter(x=>x.correct).length,rhythm:results.filter(x=>x.rhythm==='perfect'||x.rhythm==='nice').length,rhythmHits:results.reduce((n,r)=>n+(r.rhythmHits||0),0),rhythmTotal:results.reduce((n,r)=>n+(r.rhythmTotal||0),0),maxCombo:Math.max(0,...results.map(r=>r.maxCombo||0)),review:[...new Map(results.filter(x=>!x.correct).map(x=>[`${x.a}-${x.b}`,{a:x.a,b:x.b}])).values()]};}
 export function newSave(){return {version:1,plays:0,correct:0,attempts:0,stars:{},facts:{},settings:{music:55,voice:95,cheer:85,sfx:65,reduceMotion:false,offset:0}};}
 export function normalizeSave(raw){
   const d=newSave();if(!raw||raw.version!==1)return d;
@@ -37,6 +44,6 @@ export function record(save,results){
   const next=normalizeSave(save),played=results.filter(x=>!x.watch);if(!played.length)return next;
   next.plays++;next.attempts+=played.length;next.correct+=played.filter(x=>x.correct).length;
   for(const r of played){const k=`${r.a}-${r.b}`,f=next.facts[k]||{attempts:0,correct:0};next.facts[k]={attempts:f.attempts+1,correct:f.correct+Number(r.correct),lastCorrect:r.correct};}
-  for(const id of new Set(played.map(x=>x.gameId))){const rs=played.filter(x=>x.gameId===id),n=rs.filter(x=>x.correct).length;const stars=n===rs.length?3:n>=rs.length*.6?2:1;next.stars[id]=Math.max(next.stars[id]||0,stars);}
+  for(const id of new Set(played.map(x=>x.gameId))){const rs=played.filter(x=>x.gameId===id),n=rs.filter(x=>x.correct).length;const musical=rs.every(r=>r.rhythm==='perfect'||r.rhythm==='nice');const stars=n===rs.length&&musical?3:n>=rs.length*.6?2:1;next.stars[id]=Math.max(next.stars[id]||0,stars);}
   return next;
 }
