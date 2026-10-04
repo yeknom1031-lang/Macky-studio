@@ -1,0 +1,270 @@
+{
+  "createdAt": "2026-10-04T15:17:39.511Z",
+  "rendererSHA": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+  "dataSHA": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24",
+  "coreSHA": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+  "scope": "Same-browser identical-state DPR-resolution cache versus raw canvas scene; previous visual reports remain historical geometry/art reviews.",
+  "pixelTolerance": {
+    "background": "Exact RGBA equality",
+    "foregroundBoundaryDevicePixels": 2,
+    "maximumChannelDeltaOutsideBoundary": 1,
+    "maximumChangedPixelFraction": 0.002,
+    "reason": "The initial universal 3-level threshold failed. Isolation showed zero background difference and all >3-level differences confined to the foreground polygon antialias boundary. A full-viewport rasterization experiment preserved those boundary differences, identifying transparent foreground re-compositing rather than camera/image displacement. Accept up to 1-level resampling rounding elsewhere; record all remaining differences explicitly.",
+    "initialFailureReport": "render-cache-initial-three-level-threshold.json",
+    "isolationReport": "cache-diagnostic-isolation.json"
+  },
+  "stages": [
+    {
+      "id": 1,
+      "cases": [
+        {
+          "label": "DPR2-default",
+          "viewport": [
+            1440,
+            900
+          ],
+          "pixels": [
+            2880,
+            1800
+          ],
+          "dpr": 2,
+          "zoom": 1,
+          "camera": [
+            836,
+            470.5
+          ],
+          "pixelsCompared": 5184000,
+          "changedPixels": 0,
+          "changedFraction": 0,
+          "over3Pixels": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteChannelDelta": 0,
+          "changedPixelsOutsideBoundary": 0,
+          "maxChannelDeltaOutsideBoundary": 0,
+          "over1PixelsOutsideBoundary": 0,
+          "background": {
+            "pixelsCompared": 5184000,
+            "changedPixels": 0,
+            "changedFraction": 0,
+            "over3Pixels": 0,
+            "maxChannelDelta": 0,
+            "meanAbsoluteChannelDelta": 0,
+            "changedPixelsOutsideBoundary": 0,
+            "maxChannelDeltaOutsideBoundary": 0,
+            "over1PixelsOutsideBoundary": 0
+          },
+          "stationaryCacheStable": true,
+          "builds": 1,
+          "foregroundCacheCount": 0,
+          "photoBypassesCache": true,
+          "photoPixels": [
+            574,
+            574
+          ],
+          "passed": true
+        },
+        {
+          "label": "fractional-pan",
+          "viewport": [
+            1440,
+            900
+          ],
+          "pixels": [
+            2880,
+            1800
+          ],
+          "dpr": 2,
+          "zoom": 1,
+          "camera": [
+            797.0530555555556,
+            470.5
+          ],
+          "pixelsCompared": 5184000,
+          "changedPixels": 0,
+          "changedFraction": 0,
+          "over3Pixels": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteChannelDelta": 0,
+          "changedPixelsOutsideBoundary": 0,
+          "maxChannelDeltaOutsideBoundary": 0,
+          "over1PixelsOutsideBoundary": 0,
+          "background": {
+            "pixelsCompared": 5184000,
+            "changedPixels": 0,
+            "changedFraction": 0,
+            "over3Pixels": 0,
+            "maxChannelDelta": 0,
+            "meanAbsoluteChannelDelta": 0,
+            "changedPixelsOutsideBoundary": 0,
+            "maxChannelDeltaOutsideBoundary": 0,
+            "over1PixelsOutsideBoundary": 0
+          },
+          "stationaryCacheStable": true,
+          "builds": 2,
+          "foregroundCacheCount": 0,
+          "photoBypassesCache": true,
+          "photoPixels": [
+            574,
+            574
+          ],
+          "passed": true,
+          "invalidated": true
+        },
+        {
+          "label": "zoom",
+          "viewport": [
+            1440,
+            900
+          ],
+          "pixels": [
+            2880,
+            1800
+          ],
+          "dpr": 2,
+          "zoom": 1.23,
+          "camera": [
+            795.0979516711834,
+            466.5897922312557
+          ],
+          "pixelsCompared": 5184000,
+          "changedPixels": 0,
+          "changedFraction": 0,
+          "over3Pixels": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteChannelDelta": 0,
+          "changedPixelsOutsideBoundary": 0,
+          "maxChannelDeltaOutsideBoundary": 0,
+          "over1PixelsOutsideBoundary": 0,
+          "background": {
+            "pixelsCompared": 5184000,
+            "changedPixels": 0,
+            "changedFraction": 0,
+            "over3Pixels": 0,
+            "maxChannelDelta": 0,
+            "meanAbsoluteChannelDelta": 0,
+            "changedPixelsOutsideBoundary": 0,
+            "maxChannelDeltaOutsideBoundary": 0,
+            "over1PixelsOutsideBoundary": 0
+          },
+          "stationaryCacheStable": true,
+          "builds": 3,
+          "foregroundCacheCount": 0,
+          "photoBypassesCache": true,
+          "photoPixels": [
+            706,
+            706
+          ],
+          "passed": true,
+          "invalidated": true
+        },
+        {
+          "label": "resize",
+          "viewport": [
+            1260,
+            820
+          ],
+          "pixels": [
+            2520,
+            1640
+          ],
+          "dpr": 2,
+          "zoom": 1.23,
+          "camera": [
+            795.0979516711834,
+            466.5897922312557
+          ],
+          "pixelsCompared": 4132800,
+          "changedPixels": 0,
+          "changedFraction": 0,
+          "over3Pixels": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteChannelDelta": 0,
+          "changedPixelsOutsideBoundary": 0,
+          "maxChannelDeltaOutsideBoundary": 0,
+          "over1PixelsOutsideBoundary": 0,
+          "background": {
+            "pixelsCompared": 4132800,
+            "changedPixels": 0,
+            "changedFraction": 0,
+            "over3Pixels": 0,
+            "maxChannelDelta": 0,
+            "meanAbsoluteChannelDelta": 0,
+            "changedPixelsOutsideBoundary": 0,
+            "maxChannelDeltaOutsideBoundary": 0,
+            "over1PixelsOutsideBoundary": 0
+          },
+          "stationaryCacheStable": true,
+          "builds": 4,
+          "foregroundCacheCount": 0,
+          "photoBypassesCache": true,
+          "photoPixels": [
+            643,
+            643
+          ],
+          "passed": true,
+          "invalidated": true
+        }
+      ],
+      "stageCacheCorrect": true,
+      "image": "cache-stage-01.png",
+      "passed": true
+    },
+    {
+      "id": 3,
+      "cases": [
+        {
+          "label": "DPR2-default",
+          "viewport": [
+            1440,
+            900
+          ],
+          "pixels": [
+            2880,
+            1800
+          ],
+          "dpr": 2,
+          "zoom": 1,
+          "camera": [
+            836,
+            470.5
+          ],
+          "pixelsCompared": 5184000,
+          "changedPixels": 0,
+          "changedFraction": 0,
+          "over3Pixels": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteChannelDelta": 0,
+          "changedPixelsOutsideBoundary": 0,
+          "maxChannelDeltaOutsideBoundary": 0,
+          "over1PixelsOutsideBoundary": 0,
+          "background": {
+            "pixelsCompared": 5184000,
+            "changedPixels": 0,
+            "changedFraction": 0,
+            "over3Pixels": 0,
+            "maxChannelDelta": 0,
+            "meanAbsoluteChannelDelta": 0,
+            "changedPixelsOutsideBoundary": 0,
+            "maxChannelDeltaOutsideBoundary": 0,
+            "over1PixelsOutsideBoundary": 0
+          },
+          "stationaryCacheStable": true,
+          "builds": 6,
+          "foregroundCacheCount": 0,
+          "photoBypassesCache": true,
+          "photoPixels": [
+            574,
+            574
+          ],
+          "passed": true
+        }
+      ],
+      "stageCacheCorrect": true,
+      "image": "cache-stage-03.png",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "completedAt": "2026-10-04T15:18:16.955Z",
+  "passed": true
+}

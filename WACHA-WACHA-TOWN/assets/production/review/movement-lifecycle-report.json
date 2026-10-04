@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-04T13:11:13.823502+00:00",
+  "tests": 6,
+  "passed": 6,
+  "failed": 0,
+  "command": "node --test tests/movement-lifecycle.test.cjs",
+  "regressions": [
+    "cancelling a distant upstairs destination retains actual ground level and coordinates",
+    "only ground-level residents board and boarding clears old stair state",
+    "overlap recovery cannot forcibly eject a seated passenger",
+    "rejected manual placement preserves node and floor",
+    "ground vehicles spawn on outdoor streets in every stage and route around indoor shortcuts",
+    "an upstairs stair transit never selects a ground node merely because it is closer"
+  ],
+  "longSimulation": {
+    "stage": "S01",
+    "seed": 51,
+    "durationSeconds": 180,
+    "floorCheckedEverySeconds": 0.1,
+    "offFloor": 0,
+    "maxOverlapSeconds": 2.8
+  },
+  "sha256": {
+    "src/expedition-core.js": "8d1b0fcb0338c69f201153d40b7a282753c399c4f65d867bbc8387ebda6ffc20",
+    "expedition/expedition-core.js": "8d1b0fcb0338c69f201153d40b7a282753c399c4f65d867bbc8387ebda6ffc20",
+    "expedition/data.js": "b18423d14163de689acad578f40f52d15938a8fd1183add52125710a2080fd23",
+    "tests/movement-lifecycle.test.cjs": "e685bfe8e68e01bfba45a0df12f4ef83ce5e021595c21ff00beeaf1a89eef43c"
+  }
+}

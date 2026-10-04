@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-04T14:58:00.812Z",
+  "passed": true,
+  "status": "passed",
+  "method": "headless Chrome at 1440 × 900, no concurrent simulation workers, 30-second warmup, 179-frame sample; first/final stages additionally checked at Retina 2× when included",
+  "scope": "partial",
+  "stageIds": [
+    23
+  ],
+  "cases": [
+    {
+      "id": 23,
+      "dpr": 1
+    },
+    {
+      "id": 23,
+      "dpr": 2
+    }
+  ],
+  "currentCase": null,
+  "codeHashes": {
+    "expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+    "expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+    "expedition-render.js": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+    "expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+    "expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+    "data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+  },
+  "currentCodeHashes": {
+    "expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+    "expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+    "expedition-render.js": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+    "expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+    "expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+    "data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+  },
+  "unchanged": true,
+  "results": [
+    {
+      "id": 23,
+      "seed": 20261004,
+      "devicePixelRatio": 1,
+      "name": "世界のお祭り大集合",
+      "population": 2000,
+      "visible": 567,
+      "medianMs": 16.700000000000728,
+      "p95Ms": 33.29999999999927,
+      "maxOverlap": 1.9000000000000006,
+      "elapsed": 33.86660000000005
+    },
+    {
+      "id": 23,
+      "seed": 20261004,
+      "devicePixelRatio": 2,
+      "name": "世界のお祭り大集合",
+      "population": 2000,
+      "visible": 567,
+      "medianMs": 16.700000000000728,
+      "p95Ms": 16.799999999999272,
+      "maxOverlap": 1.8000000000000005,
+      "elapsed": 33.71649999999991
+    }
+  ],
+  "errors": []
+}

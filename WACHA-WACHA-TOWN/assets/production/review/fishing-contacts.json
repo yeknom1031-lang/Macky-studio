@@ -1,0 +1,46 @@
+{
+  "createdAt": "2026-10-04T13:23:48.891Z",
+  "stages": [
+    {
+      "stage": "S10",
+      "sites": [
+        {
+          "x": 364.31,
+          "y": 394.56,
+          "node": 1701,
+          "facing": 1,
+          "floor": true,
+          "occupant": 17,
+          "role": "R221"
+        }
+      ],
+      "fishers": 24,
+      "workingFishers": 1
+    },
+    {
+      "stage": "S20",
+      "sites": [
+        {
+          "x": 1812.23,
+          "y": 1283.83,
+          "node": 987,
+          "facing": -1,
+          "floor": true,
+          "occupant": 99,
+          "role": "R222"
+        },
+        {
+          "x": 1812.23,
+          "y": 1359.35,
+          "node": 990,
+          "facing": -1,
+          "floor": true,
+          "occupant": 30,
+          "role": "R223"
+        }
+      ],
+      "fishers": 78,
+      "workingFishers": 2
+    }
+  ]
+}

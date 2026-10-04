@@ -1,20 +1,60 @@
-✔ ready stage contains original unique designs, 100 exclusive people, 5 photographers, no palettes (326.5815ms)
-✔ missing artwork cannot be silently replaced by repeats (112.766416ms)
-✔ photographers give one ticket each, exactly five; wrong touches cost time and target wins (21.488292ms)
-✔ photo costs a found ticket, snapshots the target, waits 3 game seconds and pauses fairly (182.660792ms)
-✔ duo requires a gamepad, disconnect pauses both and photos do not freeze the runner (227.127208ms)
-✔ a long simulation stays finite, uncovers bodies within three seconds and expires at 180 (11083.629334ms)
-✔ crowd yields to a stationary controlled target without dragging that player (223.9115ms)
-✔ second-floor interactions use stair edges on entry and exit (922.838625ms)
-✔ boats remain on their water route and board at the dock (2859.562875ms)
-✔ air rides lift passengers, cruise above the ground and land before boarding (3859.713291ms)
-✔ role-specific actions only use matching places, while existing occupants can always leave (16.904875ms)
-✔ ground walkers uncover a stopped passenger without moving the passenger or the vehicle (227.090417ms)
-ℹ tests 12
+✔ residents give way without persistent overlap in S10 at 10 Hz (2508.623875ms)
+ℹ maximum 2.600 seconds
+✔ residents give way without persistent overlap in S10 at 30 Hz (4551.154792ms)
+ℹ maximum 2.467 seconds
+✔ residents give way without persistent overlap in S10 at 60 Hz (8028.565042ms)
+ℹ maximum 2.233 seconds
+✔ residents give way without persistent overlap in S10 at browser first frame (2365.082667ms)
+ℹ maximum 2.700 seconds
+✔ residents give way without persistent overlap in S4 at 10 Hz (967.065958ms)
+ℹ maximum 2.300 seconds
+✔ residents give way without persistent overlap in S4 at 30 Hz (2560.461208ms)
+ℹ maximum 2.133 seconds
+✔ residents give way without persistent overlap in S4 at 60 Hz (3466.023083ms)
+ℹ maximum 1.867 seconds
+✔ residents give way without persistent overlap in S4 at browser first frame (882.144834ms)
+ℹ maximum 2.217 seconds
+✔ ready stage contains original unique designs, 100 exclusive people, 5 photographers, no palettes (464.547ms)
+✔ missing artwork cannot be silently replaced by repeats (143.356917ms)
+✔ photographers give one ticket each, exactly five; wrong touches cost time and target wins (45.664875ms)
+✔ photo costs a found ticket, snapshots the target, waits 3 game seconds and pauses fairly (494.186334ms)
+✔ controller control is optional and disconnect hands the target back to AI without pausing (1254.241042ms)
+✔ a long simulation stays finite, uncovers bodies within three seconds and expires at 180 (21090.338208ms)
+✔ crowd yields to a stationary controlled target without dragging that player (412.860792ms)
+✔ second-floor interactions use stair edges on entry and exit (2948.841041ms)
+✔ boats remain on their water route and board at the dock (5023.400709ms)
+✔ air rides lift passengers, cruise above the ground and land before boarding (4934.143625ms)
+✔ role-specific actions only use matching places, while existing occupants can always leave (106.494209ms)
+✔ ground walkers uncover a stopped passenger without moving the passenger or the vehicle (411.926833ms)
+✔ a manually controlled resident keeps animating while using painted equipment (51.403708ms)
+✔ a slow resident can leave a narrow dead end within three seconds without pushing the player or crossing the floor boundary (111.034458ms)
+ℹ height 1, gap 8: 1.3 seconds maximum overlap
+ℹ height 1, gap 10: 1.3 seconds maximum overlap
+ℹ height 1.13, gap 10: 1.4 seconds maximum overlap
+ℹ height 1.13, gap 12: 1.4 seconds maximum overlap
+✔ controller takeover cancels an active floor escape without imposing automatic movement (21.497125ms)
+✔ the viewport inset never clamps a valid narrow floor position into a wall (24.878917ms)
+✔ swimming animals keep their measured water route near the viewport edge (25.044167ms)
+✔ stages without a measured water route use land and air animals while preserving the complete unique cast (978.760209ms)
+✔ a walker yields to both passengers of a moving vehicle instead of escaping into the second seat (22.051541ms)
+✔ controller takeover immediately clears a cooperative pause and accepts movement (21.318167ms)
+✔ cancelling a distant upstairs destination keeps the resident on their current ground floor (71.699667ms)
+✔ boarding cannot pull a resident down from another floor and clears completed staircase state at ground level (75.921542ms)
+✔ overlap recovery never ejects a seated passenger into the street (49.278416ms)
+✔ a rejected manual stair placement never changes the current floor or node (59.209583ms)
+✔ ground vehicles route around indoor shortcuts and all stages spawn them on streets (3859.649125ms)
+✔ interrupting an upstairs stair transit retains its upper floor even when the ground entry is closer (42.390125ms)
+✔ an explicit ID subset uses only those workers and writes a separate report (26.508875ms)
+✔ the default path retains every ready stage and the original full report (5.05775ms)
+✔ invalid, repeated, out-of-range and unready IDs are rejected before workers run (41.077625ms)
+✔ a selected-stage failure is recorded and still fails the run (6.12925ms)
+✔ the garden boat and canal boats follow water without taking flight (326.811833ms)
+✔ observation, elevating, mountain, and sky gondolas retain airborne movement (872.687709ms)
+ℹ tests 40
 ℹ suites 0
-ℹ pass 12
+ℹ pass 40
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 20543.05375
+ℹ duration_ms 71561.965875

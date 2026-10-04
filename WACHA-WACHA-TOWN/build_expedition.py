@@ -15,6 +15,7 @@ import numpy as np
 from world_layout import layout
 from sprite_layout import clean_bounds, person_boundaries, character_columns
 from legacy_roles import role as legacy_role
+from quality_backgrounds import scene_assets
 
 ROOT=Path(__file__).resolve().parent
 PROD=ROOT/'assets/production'
@@ -161,21 +162,35 @@ def build(release=False):
         cast=[c for c in characters if c['stage']==key];all_cast=[c for c in proposed.values() if c['stage']==key]
         role_ids=list(dict.fromkeys(c['role'] for c in all_cast))
         water_path=PROD/'navigation'/f'{key}-water.json';water=json.loads(water_path.read_text()) if water_path.exists() else []
-        navigation,fixtures,sites=layout(src,navigation,w,h,role_ids,water)
+        world_layout=layout(src,navigation,w,h,role_ids,water)
+        navigation,fixtures,sites=world_layout[:3]
+        spatial_metadata=world_layout[3] if len(world_layout)>3 else {}
+        scenery=scene_assets(key,w,h,asset)
         common=sum(c['stage']=='G' and not c['animal'] and not c.get('nonCrowd') for c in characters);animal_count=sum(c['animal'] for c in characters)
         complete=len(cast)==100 and common>=src['pop']-100-min(18,animal_count) and f'{key}-set' in jobs_by_id and (i<7 or background in jobs_by_id)
         stages.append(dict(id=i,key=key,name=src['name'],area=src['area'],population=src['pop'],width=w,height=h,background=background,setImage=f'{key}-set',navigation=navigation,fixtures=fixtures,sites=sites,waterPoints=water,water=[water[0][0]/w,water[0][1]/h] if water else None,events=src['events'].split('|'),environment=src['env'].split('|'),vehicles=src['vehicles'].split('|'),ready=complete,castAvailable=len(cast)))
-    data=dict(version=2,characters=characters,stages=stages,roles=manifest['roles'],animalCatalog=animal_plan['animals'],sourceMetadata=source_meta,status=dict(generated=len(jobs_by_id),planned=len(manifest['jobs']),missing=missing,errors=errors))
+        stages[-1].update(spatial_metadata)
+        stages[-1].update(scenery)
+    quality_count=sum(bool(s.get('openBuildings'))+len(s.get('backgroundTiles',[])) for s in stages)
+    data=dict(version=2,releaseVersion='2.1',characters=characters,stages=stages,roles=manifest['roles'],animalCatalog=animal_plan['animals'],sourceMetadata=source_meta,status=dict(generated=len(jobs_by_id),planned=len(manifest['jobs']),qualityGenerated=quality_count,qualityPlanned=76,totalGenerated=len(jobs_by_id)+quality_count,missing=missing,errors=errors))
     write_atomic(OUT/'data.js','window.WACHA24_DATA='+json.dumps(data,ensure_ascii=False,separators=(',',':'))+';')
     cache_path.write_text(json.dumps(cache,separators=(',',':')))
     (PROD/'build-report.json').write_text(json.dumps(data['status']|dict(characters=len(characters),playableStages=[s['key'] for s in stages if s['ready']]),ensure_ascii=False,indent=2))
-    for name in ['expedition-core.js','expedition-render.js','expedition-app.js','expedition.css']:
+    for name in ['expedition-core.js','expedition-render.js','expedition-app.js','expedition-input.js','expedition-audio.js','expedition.css']:
         path=ROOT/'src'/name
         if path.exists():(OUT/name).write_bytes(path.read_bytes())
     shell=ROOT/'src/expedition.html'
     if shell.exists():(OUT/'index.html').write_bytes(shell.read_bytes())
+    import shutil
+    audio=ROOT/'assets/audio/runtime'
+    if audio.exists():
+        shutil.copytree(audio,OUT/'audio',dirs_exist_ok=True)
+        credits=ROOT/'assets/audio/CREDITS.html'
+        if credits.exists():shutil.copyfile(credits,OUT/'audio/CREDITS.html')
     print(json.dumps(dict(characters=len(characters),generated=len(jobs_by_id),planned=len(manifest['jobs']),playable=[s['key'] for s in stages if s['ready']],errors=errors),ensure_ascii=False))
     if release and (missing or errors or not all(s['ready'] for s in stages)):raise SystemExit('Release blocked: incomplete artwork. See assets/production/build-report.json')
+    if release and (quality_count!=76 or not all(s.get('livingTown') and len(s.get('activityAreas',[]))>=6 for s in stages)):
+        raise SystemExit('Release blocked: finish the 76 background/detail images and all 24 living-space layouts.')
     return data
 
 if __name__=='__main__':

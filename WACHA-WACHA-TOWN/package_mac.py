@@ -4,6 +4,7 @@ import argparse
 import plistlib
 import shutil
 import json
+import hashlib
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -24,18 +25,44 @@ def preflight(root):
         raise SystemExit('Package blocked: the runtime has an unfinished stage.')
     if len(data['characters']) != 4396 or report['characters'] != 4396:
         raise SystemExit('Package blocked: all 4,396 character designs are required.')
+    if not all(stage.get('livingTown') and len(stage.get('activityAreas', [])) >= 6 for stage in data['stages']):
+        raise SystemExit('Package blocked: all 24 towns need reviewed interior, garden and stair navigation.')
+    if not all(len(stage.get('backgroundTiles', [])) == 4 and stage.get('detailPixelWidth', 0) >= 3000 for stage in data['stages'][11:]):
+        raise SystemExit('Package blocked: all large late-stage maps need their generated detail tiles.')
     required = {'cover', 'legacy'}
     required.update(character['image'] for character in data['characters'])
     for stage in data['stages']:
         required.update((stage['background'], stage['setImage']))
+        required.update(tile['image'] for tile in stage.get('backgroundTiles', []))
     missing = [key for key in required if not (source / 'images' / (key + '.js')).is_file()]
     if missing:
         raise SystemExit('Package blocked: missing runtime images: ' + ', '.join(sorted(missing)))
-    for name in ['expedition-core.js', 'expedition-render.js', 'expedition-app.js', 'expedition.css']:
+    tracks = json.loads((root / 'assets/audio/tracks.json').read_text())
+    if len(tracks) != 24:
+        raise SystemExit('Package blocked: the 24 licensed sound assets are required.')
+    for track in tracks:
+        audio = source / 'audio' / Path(track['file']).name
+        if not audio.is_file() or hashlib.sha256(audio.read_bytes()).hexdigest() != track['sha256']:
+            raise SystemExit('Package blocked: missing or stale sound asset ' + track['id'])
+    if not (source / 'audio/CREDITS.html').is_file():
+        raise SystemExit('Package blocked: sound attribution must be included.')
+    for name in ['expedition-core.js', 'expedition-render.js', 'expedition-app.js', 'expedition-input.js', 'expedition-audio.js', 'expedition.css']:
         if (source / name).read_bytes() != (root / 'src' / name).read_bytes():
             raise SystemExit(f'Package blocked: rebuild changed source {name}.')
     if (source / 'index.html').read_bytes() != (root / 'src/expedition.html').read_bytes():
         raise SystemExit('Package blocked: rebuild changed game HTML.')
+    qa_path = root / 'assets/production/review/release-qa-summary.json'
+    if not qa_path.is_file():
+        raise SystemExit('Package blocked: run verify_release.py after completing final QA.')
+    qa = json.loads(qa_path.read_text())
+    if qa.get('passed') is not True or qa.get('version') != '2.1':
+        raise SystemExit('Package blocked: a passing v2.1 final QA summary is required.')
+    verified_files = ['expedition-core.js', 'expedition-render.js', 'expedition-app.js',
+                      'expedition-input.js', 'expedition-audio.js', 'data.js']
+    stale = [name for name in verified_files
+             if qa.get('codeHashes', {}).get(name) != hashlib.sha256((source / name).read_bytes()).hexdigest()]
+    if stale:
+        raise SystemExit('Package blocked: final QA does not match the runtime: ' + ', '.join(stale))
     return source, report
 
 
@@ -68,9 +95,10 @@ def package(destination, check=False):
         at=datetime.now(timezone.utc).isoformat(), destination=str(destination),
         entry=str(destination / 'Contents/Resources/index.html'),
         stages=24, characters=report['characters'], generated=report['generated'],
+        qualityGenerated=report['qualityGenerated'], totalGenerated=report['totalGenerated'],
         files=sum(path.is_file() for path in destination.rglob('*')),
         bytes=sum(path.stat().st_size for path in destination.rglob('*') if path.is_file()),
-        needsServer=False, needsNetwork=False, appVersion='2.0',
+        needsServer=False, needsNetwork=False, appVersion='2.1',
     )
     (root / 'assets/production/package-report.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2))
     print(f'Created {destination}')
@@ -99,8 +127,8 @@ game="${0:A:h:h}/Resources/index.html"
             'CFBundleIdentifier': 'com.mackystudio.wachatown',
             'CFBundleExecutable': 'WachaTown',
             'CFBundlePackageType': 'APPL',
-            'CFBundleVersion': '2',
-            'CFBundleShortVersionString': '2.0',
+            'CFBundleVersion': '3',
+            'CFBundleShortVersionString': '2.1',
             'LSUIElement': True,
         }, stream)
 

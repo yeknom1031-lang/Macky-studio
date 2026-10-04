@@ -1,0 +1,111 @@
+{
+  "stage": 23,
+  "dpr": 2,
+  "seed": 20261004,
+  "frames": {
+    "n": 179,
+    "mean": 74.67094972067041,
+    "median": 66.69999999999709,
+    "p95": 150
+  },
+  "step": {
+    "n": 193,
+    "mean": 24.110880829007822,
+    "median": 25,
+    "p95": 55.70000000298023
+  },
+  "draw": {
+    "n": 193,
+    "mean": 2.8968911917175655,
+    "median": 2.899999998509884,
+    "p95": 3.2999999970197678
+  },
+  "visible": 606,
+  "maxOverlap": 2.1165999999999987,
+  "hotspots": [
+    {
+      "name": "(idle) :0",
+      "ms": 8588.134
+    },
+    {
+      "name": "separate expedition-core.js:144",
+      "ms": 2168.034
+    },
+    {
+      "name": "overlapPairs expedition-core.js:121",
+      "ms": 1387.802
+    },
+    {
+      "name": "(program) :0",
+      "ms": 606.463
+    },
+    {
+      "name": "step expedition-core.js:183",
+      "ms": 275.234
+    },
+    {
+      "name": "scene expedition-render.js:37",
+      "ms": 239.792
+    },
+    {
+      "name": "(garbage collector) :0",
+      "ms": 179.244
+    },
+    {
+      "name": "beginFloorEscape expedition-core.js:127",
+      "ms": 164.879
+    },
+    {
+      "name": "drawImage :0",
+      "ms": 120.579
+    },
+    {
+      "name": "yieldOnFloor expedition-core.js:39",
+      "ms": 99.024
+    },
+    {
+      "name": "WachaExpedition.step :1",
+      "ms": 88.813
+    },
+    {
+      "name": " expedition-core.js:145",
+      "ms": 77.742
+    },
+    {
+      "name": "walk expedition-core.js:105",
+      "ms": 62.669
+    },
+    {
+      "name": "restore :0",
+      "ms": 58.6
+    },
+    {
+      "name": "sprite expedition-render.js:20",
+      "ms": 32.319
+    },
+    {
+      "name": "pathTo expedition-core.js:44",
+      "ms": 28.339
+    },
+    {
+      "name": "save :0",
+      "ms": 25.387
+    },
+    {
+      "name": "updateDensity expedition-core.js:48",
+      "ms": 21.174
+    },
+    {
+      "name": "draw expedition-render.js:63",
+      "ms": 17.665
+    },
+    {
+      "name": "floorSegment expedition-core.js:126",
+      "ms": 17.304
+    }
+  ],
+  "phase": "before viewport artwork cache",
+  "sourceSHA": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+  "rendererSHA": "979034611b662234c056e2e6254ad510df89ca1310c8a06591af767bc836d4fe",
+  "measuredAt": "2026-10-04T14:52:15.538101+00:00"
+}

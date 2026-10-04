@@ -1,0 +1,501 @@
+{
+  "at": "2026-10-04T11:38:47.624Z",
+  "offline": true,
+  "results": [
+    {
+      "name": "initial silence",
+      "passed": true
+    },
+    {
+      "name": "gesture unlock and real file playback",
+      "passed": true
+    },
+    {
+      "name": "all 24 stage music and environment profiles play",
+      "passed": true
+    },
+    {
+      "name": "master volume",
+      "passed": true
+    },
+    {
+      "name": "mute all active and retiring media",
+      "passed": true
+    },
+    {
+      "name": "pause freezes all media including fades",
+      "passed": true
+    },
+    {
+      "name": "pause preserves playback position",
+      "passed": true
+    },
+    {
+      "name": "resume continues playback",
+      "passed": true
+    },
+    {
+      "name": "game cues recorded",
+      "passed": true
+    },
+    {
+      "name": "exit during asynchronous stage change stops all audio",
+      "passed": true
+    },
+    {
+      "name": "no playback errors before reload",
+      "passed": true
+    },
+    {
+      "name": "mute and volume persist",
+      "passed": true
+    },
+    {
+      "name": "all runtime files decode",
+      "passed": true
+    },
+    {
+      "name": "all files contain nonzero decoded PCM",
+      "passed": true
+    },
+    {
+      "name": "all files produce a nonzero Chrome analyser signal",
+      "passed": true
+    },
+    {
+      "name": "offline without network requests",
+      "passed": true
+    },
+    {
+      "name": "no browser exceptions",
+      "passed": true
+    },
+    {
+      "name": "no media errors",
+      "passed": true
+    }
+  ],
+  "stages": [
+    {
+      "stage": 0,
+      "ids": [
+        "music-town",
+        "crowd",
+        "birds"
+      ]
+    },
+    {
+      "stage": 1,
+      "ids": [
+        "music-garden",
+        "crowd",
+        "birds",
+        "wind"
+      ]
+    },
+    {
+      "stage": 2,
+      "ids": [
+        "music-water",
+        "crowd",
+        "waves",
+        "birds"
+      ]
+    },
+    {
+      "stage": 3,
+      "ids": [
+        "music-market",
+        "crowd"
+      ]
+    },
+    {
+      "stage": 4,
+      "ids": [
+        "music-market",
+        "crowd",
+        "birds"
+      ]
+    },
+    {
+      "stage": 5,
+      "ids": [
+        "music-snow",
+        "crowd",
+        "wind"
+      ]
+    },
+    {
+      "stage": 6,
+      "ids": [
+        "music-magic",
+        "crowd",
+        "wind"
+      ]
+    },
+    {
+      "stage": 7,
+      "ids": [
+        "music-magic",
+        "crowd",
+        "waves",
+        "birds"
+      ]
+    },
+    {
+      "stage": 8,
+      "ids": [
+        "music-city",
+        "crowd",
+        "train"
+      ]
+    },
+    {
+      "stage": 9,
+      "ids": [
+        "music-water",
+        "crowd",
+        "waves"
+      ]
+    },
+    {
+      "stage": 10,
+      "ids": [
+        "music-garden",
+        "crowd",
+        "birds",
+        "wind"
+      ]
+    },
+    {
+      "stage": 11,
+      "ids": [
+        "music-town",
+        "crowd",
+        "machine"
+      ]
+    },
+    {
+      "stage": 12,
+      "ids": [
+        "music-garden",
+        "crowd",
+        "birds"
+      ]
+    },
+    {
+      "stage": 13,
+      "ids": [
+        "music-city",
+        "crowd",
+        "machine"
+      ]
+    },
+    {
+      "stage": 14,
+      "ids": [
+        "music-water",
+        "crowd",
+        "wind",
+        "machine"
+      ]
+    },
+    {
+      "stage": 15,
+      "ids": [
+        "music-market",
+        "crowd"
+      ]
+    },
+    {
+      "stage": 16,
+      "ids": [
+        "music-city",
+        "crowd",
+        "clockwork",
+        "machine"
+      ]
+    },
+    {
+      "stage": 17,
+      "ids": [
+        "music-market",
+        "crowd",
+        "wind"
+      ]
+    },
+    {
+      "stage": 18,
+      "ids": [
+        "music-snow",
+        "crowd",
+        "wind"
+      ]
+    },
+    {
+      "stage": 19,
+      "ids": [
+        "music-water",
+        "crowd",
+        "waves",
+        "machine"
+      ]
+    },
+    {
+      "stage": 20,
+      "ids": [
+        "music-magic",
+        "crowd",
+        "wind",
+        "birds"
+      ]
+    },
+    {
+      "stage": 21,
+      "ids": [
+        "music-magic",
+        "crowd",
+        "clockwork"
+      ]
+    },
+    {
+      "stage": 22,
+      "ids": [
+        "music-city",
+        "crowd",
+        "train"
+      ]
+    },
+    {
+      "stage": 23,
+      "ids": [
+        "music-town",
+        "crowd",
+        "birds",
+        "waves"
+      ]
+    }
+  ],
+  "decoded": [
+    {
+      "id": "music-town",
+      "duration": 118.472404
+    },
+    {
+      "id": "music-city",
+      "duration": 115.203787
+    },
+    {
+      "id": "music-garden",
+      "duration": 213.912381
+    },
+    {
+      "id": "music-market",
+      "duration": 199.922358
+    },
+    {
+      "id": "music-water",
+      "duration": 255.923084
+    },
+    {
+      "id": "music-magic",
+      "duration": 135.916553
+    },
+    {
+      "id": "music-snow",
+      "duration": 280.012336
+    },
+    {
+      "id": "crowd",
+      "duration": 60.002902
+    },
+    {
+      "id": "birds",
+      "duration": 60.002902
+    },
+    {
+      "id": "waves",
+      "duration": 4.002902
+    },
+    {
+      "id": "wind",
+      "duration": 2.80381
+    },
+    {
+      "id": "machine",
+      "duration": 14.327007
+    },
+    {
+      "id": "train",
+      "duration": 30.002902
+    },
+    {
+      "id": "clockwork",
+      "duration": 17.835828
+    },
+    {
+      "id": "whistle",
+      "duration": 2.323447
+    },
+    {
+      "id": "countdown",
+      "duration": 0.105329
+    },
+    {
+      "id": "start",
+      "duration": 0.292744
+    },
+    {
+      "id": "found",
+      "duration": 0.567029
+    },
+    {
+      "id": "photographer",
+      "duration": 0.281338
+    },
+    {
+      "id": "wrong",
+      "duration": 0.110295
+    },
+    {
+      "id": "lost",
+      "duration": 0.814104
+    },
+    {
+      "id": "shutter",
+      "duration": 0.017415
+    },
+    {
+      "id": "develop",
+      "duration": 0.541905
+    },
+    {
+      "id": "click",
+      "duration": 0.04619
+    }
+  ],
+  "signals": [
+    {
+      "id": "music-town",
+      "peak": 0.7823295593261719,
+      "signalPeak": 0.20410168170928955
+    },
+    {
+      "id": "music-city",
+      "peak": 0.7821057438850403,
+      "signalPeak": 0.6141330003738403
+    },
+    {
+      "id": "music-garden",
+      "peak": 0.6536564230918884,
+      "signalPeak": 0.2756800055503845
+    },
+    {
+      "id": "music-market",
+      "peak": 0.7724037170410156,
+      "signalPeak": 0.3380761742591858
+    },
+    {
+      "id": "music-water",
+      "peak": 0.6177037954330444,
+      "signalPeak": 0.1325927972793579
+    },
+    {
+      "id": "music-magic",
+      "peak": 0.7643105983734131,
+      "signalPeak": 0.2777283191680908
+    },
+    {
+      "id": "music-snow",
+      "peak": 0.5744132995605469,
+      "signalPeak": 0.328499436378479
+    },
+    {
+      "id": "crowd",
+      "peak": 0.3518996834754944,
+      "signalPeak": 0.21144500374794006
+    },
+    {
+      "id": "birds",
+      "peak": 0.6022794246673584,
+      "signalPeak": 0.18050560355186462
+    },
+    {
+      "id": "waves",
+      "peak": 0.3681827187538147,
+      "signalPeak": 0.013842818327248096
+    },
+    {
+      "id": "wind",
+      "peak": 0.3316285014152527,
+      "signalPeak": 0.01667608879506588
+    },
+    {
+      "id": "machine",
+      "peak": 0.4124595522880554,
+      "signalPeak": 0.21688173711299896
+    },
+    {
+      "id": "train",
+      "peak": 0.36842596530914307,
+      "signalPeak": 0.002255154075101018
+    },
+    {
+      "id": "clockwork",
+      "peak": 0.5252895355224609,
+      "signalPeak": 0.20120690762996674
+    },
+    {
+      "id": "whistle",
+      "peak": 1.4301865100860596,
+      "signalPeak": 0.3001239597797394
+    },
+    {
+      "id": "countdown",
+      "peak": 1.2547184228897095,
+      "signalPeak": 0.04650304839015007
+    },
+    {
+      "id": "start",
+      "peak": 1.0108309984207153,
+      "signalPeak": 0.5616242289543152
+    },
+    {
+      "id": "found",
+      "peak": 1.1892566680908203,
+      "signalPeak": 0.715294599533081
+    },
+    {
+      "id": "photographer",
+      "peak": 0.9794489741325378,
+      "signalPeak": 0.1935940980911255
+    },
+    {
+      "id": "wrong",
+      "peak": 1.455184817314148,
+      "signalPeak": 0.8191379904747009
+    },
+    {
+      "id": "lost",
+      "peak": 1.0788847208023071,
+      "signalPeak": 0.7546998858451843
+    },
+    {
+      "id": "shutter",
+      "peak": 0.9898149967193604,
+      "signalPeak": 0.9898149967193604
+    },
+    {
+      "id": "develop",
+      "peak": 0.9894323945045471,
+      "signalPeak": 0.3402988910675049
+    },
+    {
+      "id": "click",
+      "peak": 1.4570461511611938,
+      "signalPeak": 1.4570461511611938
+    }
+  ],
+  "errors": [],
+  "networkRequests": []
+}

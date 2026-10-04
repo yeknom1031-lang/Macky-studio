@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-04T11:47:13.233Z",
+  "method": "Real Chrome Gamepad API, localhost, iframe permission policy; no simulated API and no physical input",
+  "direct": {
+    "blocked": "",
+    "secure": true,
+    "connected": 0
+  },
+  "embedded": {
+    "blocked": "この画面ではコントローラーの利用が制限されています。Chromeまたはデスクトップのアプリから開いてください。",
+    "secure": true,
+    "embedded": true
+  },
+  "checks": [
+    "top-level localhost permits Gamepad API",
+    "iframe policy denial is caught and diagnosed",
+    "search gameplay starts and continues despite the denial"
+  ]
+}

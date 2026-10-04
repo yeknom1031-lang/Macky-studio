@@ -1,0 +1,32 @@
+{
+  "createdAt": "2026-10-04T13:56:10.921Z",
+  "stages": [
+    {
+      "stage": "S10",
+      "fish": [
+        {
+          "id": 114,
+          "role": "R221",
+          "x": 364.31,
+          "y": 394.56,
+          "site": 2,
+          "facing": 1,
+          "phaseChanged": true,
+          "floor": true
+        }
+      ],
+      "points": [
+        {
+          "name": "fishing-1",
+          "x": 364.31,
+          "y": 394.56,
+          "image": "S10-fishing-1-final.png"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "coreSHA": "9ce9f64a624435c4e121529d7cae2216f66bfb1d6b2398ef12690893faf7baec",
+  "dataSHA": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24",
+  "passed": true
+}

@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-04T12:44:45.205200+00:00",
+  "command": "node --test tests/floor-escape.test.cjs",
+  "passed": 5,
+  "failed": 0,
+  "slowResident": {
+    "speed": 8,
+    "pace": 0.4
+  },
+  "cases": [
+    {
+      "height": 1,
+      "initialGap": 8,
+      "maxOverlapSeconds": 1.6
+    },
+    {
+      "height": 1,
+      "initialGap": 10,
+      "maxOverlapSeconds": 1.6
+    },
+    {
+      "height": 1.13,
+      "initialGap": 10,
+      "maxOverlapSeconds": 1.7
+    },
+    {
+      "height": 1.13,
+      "initialGap": 12,
+      "maxOverlapSeconds": 1.7
+    }
+  ],
+  "checks": [
+    "floor-constrained local escape resolves narrow dead-end overlaps in less than three seconds",
+    "manual target remains fixed",
+    "escape uses continuous walking at 60 pixels per second",
+    "takeover cancels an active escape",
+    "viewport clamp cannot move a valid floor position into a wall",
+    "swimming animals retain their exact water route near the viewport edge",
+    "absent or one-point water routes never spawn water animals and retain 500/2000 unique residents, 100 exclusive residents and five photographers"
+  ],
+  "sha256": {
+    "src/expedition-core.js": "5fba851cdf4f2995238077fe6941ff09f1d337c932ff30e05fccc7f07962c926",
+    "tests/floor-escape.test.cjs": "022b2d51bed55b1f055eae6e4b56cd223abb9ace663201a4e89353b59c2b00a1"
+  }
+}

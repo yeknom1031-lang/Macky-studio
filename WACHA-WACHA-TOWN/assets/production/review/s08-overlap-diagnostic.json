@@ -1,0 +1,596 @@
+{
+  "stage": "S08",
+  "seed": 246817,
+  "at": "2026-10-04T13:25:01.045Z",
+  "time": 21.300000000000033,
+  "maxOverlap": 3.0000000000000013,
+  "failures": [
+    {
+      "key": "133:302",
+      "age": 3.0000000000000013,
+      "trace": [
+        {
+          "t": 20.100000000000016,
+          "age": 1.8000000000000005,
+          "people": [
+            {
+              "id": 133,
+              "x": 1514.3906001794994,
+              "y": 768.1980040389608,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1674,
+              "to": 1670,
+              "path": [
+                1665,
+                1659,
+                1653,
+                1646
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1531.9495977199524,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 20.200000000000017,
+          "age": 1.9000000000000006,
+          "people": [
+            {
+              "id": 133,
+              "x": 1517.7778693655703,
+              "y": 768.0761256369235,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1674,
+              "to": 1670,
+              "path": [
+                1665,
+                1659,
+                1653,
+                1646
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1535.3495977199525,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 20.30000000000002,
+          "age": 2.0000000000000004,
+          "people": [
+            {
+              "id": 133,
+              "x": 1521.3512162843672,
+              "y": 769.2248200011553,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1674,
+              "to": 1670,
+              "path": [
+                1665,
+                1659,
+                1653,
+                1646
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1538.7495977199526,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 20.40000000000002,
+          "age": 2.1000000000000005,
+          "people": [
+            {
+              "id": 133,
+              "x": 1524.7185632821545,
+              "y": 768.9771229999361,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1674,
+              "to": 1670,
+              "path": [
+                1665,
+                1659,
+                1653,
+                1646
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1542.1495977199527,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 20.50000000000002,
+          "age": 2.2000000000000006,
+          "people": [
+            {
+              "id": 133,
+              "x": 1528.0340010715954,
+              "y": 768.4081303570727,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1674,
+              "to": 1670,
+              "path": [
+                1665,
+                1659,
+                1653,
+                1646
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1545.5495977199528,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 20.600000000000023,
+          "age": 2.3000000000000007,
+          "people": [
+            {
+              "id": 133,
+              "x": 1531.54292355645,
+              "y": 769.1515294383557,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1674,
+              "to": 1670,
+              "path": [
+                1665,
+                1659,
+                1653,
+                1646
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1548.9495977199529,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 20.700000000000024,
+          "age": 2.400000000000001,
+          "people": [
+            {
+              "id": 133,
+              "x": 1534.834338178267,
+              "y": 768.4101931655848,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1674,
+              "to": 1670,
+              "path": [
+                1665,
+                1659,
+                1653,
+                1646
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1552.349597719953,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 20.800000000000026,
+          "age": 2.500000000000001,
+          "people": [
+            {
+              "id": 133,
+              "x": 1538.3262200016616,
+              "y": 769.0182441487317,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1674,
+              "to": 1670,
+              "path": [
+                1665,
+                1659,
+                1653,
+                1646
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1555.749597719953,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 20.900000000000027,
+          "age": 2.600000000000001,
+          "people": [
+            {
+              "id": 133,
+              "x": 1541.5652467256161,
+              "y": 768.0042533082683,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1674,
+              "to": 1670,
+              "path": [
+                1665,
+                1659,
+                1653,
+                1646
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1559.1495977199531,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 21.00000000000003,
+          "age": 2.700000000000001,
+          "people": [
+            {
+              "id": 133,
+              "x": 1544.567258541467,
+              "y": 768.5465480829885,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "yielding",
+              "node": 1683,
+              "to": null,
+              "path": [],
+              "escape": {
+                "points": [
+                  {
+                    "x": 1550.567258541467,
+                    "y": 768.5465480829885
+                  },
+                  {
+                    "x": 1556.567258541467,
+                    "y": 768.5465480829885
+                  },
+                  {
+                    "x": 1562.567258541467,
+                    "y": 768.5465480829885
+                  }
+                ],
+                "until": 22.60000000000003
+              },
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1562.5495977199532,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 21.10000000000003,
+          "age": 2.800000000000001,
+          "people": [
+            {
+              "id": 133,
+              "x": 1550.567258541467,
+              "y": 768.5465480829885,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "yielding",
+              "node": 1683,
+              "to": null,
+              "path": [],
+              "escape": {
+                "points": [
+                  {
+                    "x": 1556.567258541467,
+                    "y": 768.5465480829885
+                  },
+                  {
+                    "x": 1562.567258541467,
+                    "y": 768.5465480829885
+                  }
+                ],
+                "until": 22.60000000000003
+              },
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1565.9495977199533,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 21.20000000000003,
+          "age": 2.9000000000000012,
+          "people": [
+            {
+              "id": 133,
+              "x": 1556.567258541467,
+              "y": 768.5465480829885,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "yielding",
+              "node": 1683,
+              "to": null,
+              "path": [],
+              "escape": {
+                "points": [
+                  {
+                    "x": 1562.567258541467,
+                    "y": 768.5465480829885
+                  }
+                ],
+                "until": 22.60000000000003
+              },
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1569.3495977199534,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        },
+        {
+          "t": 21.300000000000033,
+          "age": 3.0000000000000013,
+          "people": [
+            {
+              "id": 133,
+              "x": 1555.2605156345426,
+              "y": 768.5465480829885,
+              "height": 1.13,
+              "level": 0,
+              "layer": 0,
+              "station": null,
+              "ride": null,
+              "activity": "walking",
+              "node": 1693,
+              "to": null,
+              "path": [
+                1688,
+                1683,
+                1678,
+                1674
+              ],
+              "escape": null,
+              "valid": true
+            },
+            {
+              "id": 302,
+              "x": 1572.7495977199535,
+              "y": 769.86,
+              "height": 0.84,
+              "level": 0,
+              "layer": 3,
+              "station": null,
+              "ride": 0,
+              "activity": "riding",
+              "node": 1690,
+              "to": null,
+              "path": [],
+              "escape": null,
+              "valid": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dataSha256": "1692c41a18226d2ecd9edc33f5bd425b7cf1a10536dfc8bf1e35d394d81a866c"
+}

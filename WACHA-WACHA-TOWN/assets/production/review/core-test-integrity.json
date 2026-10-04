@@ -1,0 +1,30 @@
+{
+  "startedAt": "2026-10-04T14:42:28.758498+00:00",
+  "tests": [
+    "tests/expedition.test.cjs",
+    "tests/floor-escape.test.cjs",
+    "tests/movement-lifecycle.test.cjs",
+    "tests/ride-habitats.test.cjs",
+    "tests/qa-stage-selection.test.cjs",
+    "tests/crowd-priority.test.cjs"
+  ],
+  "startSha": {
+    "src/expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+    "expedition/expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+    "expedition/data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+  },
+  "endedAt": "2026-10-04T14:43:40.378285+00:00",
+  "endSha": {
+    "src/expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+    "expedition/expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+    "expedition/data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+  },
+  "exitCode": 0,
+  "unchanged": true,
+  "sourceRuntimeMatch": true,
+  "total": 40,
+  "pass": 40,
+  "fail": 0,
+  "passed": true,
+  "reportFormat": "node:test spec"
+}

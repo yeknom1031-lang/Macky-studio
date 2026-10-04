@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-04T12:49:52.512572+00:00",
+  "command": "node --test tests/ride-habitats.test.cjs",
+  "passed": 2,
+  "failed": 0,
+  "checks": [
+    "S02 pond boat and S10 ferry/cargo/sightseeing boats remain exactly on the final measured water route throughout 30 seconds and never gain altitude",
+    "S12 observation, S15 elevating, S19 mountain and S21 sky gondolas retain airborne movement and rise above 20 pixels"
+  ],
+  "changedBehavior": "The name ボート now selects water travel. Existing gondola classification remains unchanged.",
+  "uiImpact": "No input, timer, camera, lobby or other app UI code changed; actual behavior change is limited to the S02 pond boat.",
+  "sha256": {
+    "src/expedition-core.js": "9476ec4210fc0866694daf3ff22786892eacb55abe30127776c9bb6b30b5a5da",
+    "expedition/expedition-core.js": "9476ec4210fc0866694daf3ff22786892eacb55abe30127776c9bb6b30b5a5da",
+    "expedition/data.js": "b18423d14163de689acad578f40f52d15938a8fd1183add52125710a2080fd23",
+    "tests/ride-habitats.test.cjs": "66807bbef716766f37bb738bff6ab52260f96f8582538a77e71dbcf70d1a768a"
+  }
+}

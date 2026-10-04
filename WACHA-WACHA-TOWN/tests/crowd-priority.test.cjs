@@ -1,0 +1,7 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const C=require('../src/expedition-core.js'),context={window:{}};vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname,'../expedition/data.js'),'utf8'),context);const D=context.window.WACHA24_DATA;
+for(const [stage,seed,first] of [[9,120244090,.0166],[3,121136697,.0167]])for(const [label,initial,dt] of [['10 Hz',0,.1],['30 Hz',0,1/30],['60 Hz',0,1/60],['browser first frame',first,.1]])test(`residents give way without persistent overlap in S${stage+1} at ${label}`,t=>{
+ const s=C.create(D,stage,seed);C.start(s);if(initial)C.step(s,initial);
+ for(let i=0;i<Math.ceil((stage===3?15:10)/dt);i++){const waiting=s.people.filter(p=>p.yieldWaitUntil>s.elapsed+dt+1e-8).map(p=>p.id);C.step(s,dt);for(const id of waiting)assert.equal(s.people[id].floorEscape,undefined,'another pair cannot immediately overwrite a cooperative wait');if(i%10===0)assert.ok(s.people.every(p=>C.canStand(s,p,p.x,p.y)),'every resident stays on a measured floor or assigned vehicle/water layer');for(const ride of s.rides)for(const id of ride.passengers)assert.equal(s.people[id].ride,ride.id,'passengers remain attached during crowd avoidance');}
+ assert.ok(s.stats.maxOverlap<3,`S${stage+1} seed${seed} overlap ${s.stats.maxOverlap}`);t.diagnostic(`maximum ${s.stats.maxOverlap.toFixed(3)} seconds`);
+});

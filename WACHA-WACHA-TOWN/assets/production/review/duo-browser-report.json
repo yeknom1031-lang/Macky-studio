@@ -1,16 +1,21 @@
 {
-  "at": "2026-10-04T09:40:59.084Z",
+  "at": "2026-10-04T15:00:27.504Z",
   "checks": [
-    "gamepad moves only the runner; search camera stays independent",
-    "disconnect pauses both players and the timer with visible feedback",
-    "reconnection resumes the same game",
-    "delayed private artwork blocks both begin and resume, freezes both players, and ignores stale readiness messages",
-    "private runner window loads the identical cast and target on the large map",
-    "the private-window controller drives the runner on the 2000-person map while the search camera stays fixed",
-    "closing the private window pauses the large-map game and blocks blind resume",
-    "reopening the private window restores an explicit resume button and the same game",
-    "a saved-photo button cannot resume play after the private window closes"
+    "mode selection is removed and no controller is required to enter any town",
+    "3, 2, 1 appears before the 180-second timer and all residents start",
+    "input from the second controller takes over the target while an idle first controller cannot mask it; search camera remains independent",
+    "D-pad works as movement without analog-stick input",
+    "short rests retain manual control and eight seconds of inactivity returns the resident to AI without stopping play",
+    "unplugging a controller returns to AI immediately and the timer continues",
+    "the visible pause button freezes the clock and all residents; P resumes",
+    "the 2,000-resident final town starts on one screen without a private window",
+    "an optional private view follows the same target and forwards controller input",
+    "closing the optional private window returns to AI and never blocks or pauses the main game",
+    "a browser Gamepad permission error shows actionable connection help and never crashes the game",
+    "target, live countdown, urgent time, pause, leave, and camera remain visible on a narrow phone screen",
+    "quit clears the active game and returns to the town list",
+    "pause cancels a pending start, resume restores countdown audio, and leave prevents starting an abandoned game"
   ],
   "errors": [],
-  "method": "simulated Gamepad API; physical controller not available"
+  "method": "simulated Gamepad API; macOS HID scan detected no connected gamepad, and the registered Pro Controller was disconnected; physical input not verified"
 }

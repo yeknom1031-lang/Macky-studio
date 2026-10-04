@@ -1,0 +1,79 @@
+{
+  "at": "2026-10-04T14:11:49.280Z",
+  "sourceSha": "16f518e2830392f1c3efff1760e21ea490edc27c4a3db725046d01c2c09e7644",
+  "dataSha": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24",
+  "unchanged": true,
+  "passed": true,
+  "results": [
+    {
+      "stage": "S04",
+      "seed": 121136697,
+      "initial": 0.0167,
+      "duration": 30,
+      "dt": 0.1,
+      "maxOverlap": 2.216700000000001,
+      "maxOffFloor": 0,
+      "cooperativeWaitSamples": 2095
+    },
+    {
+      "stage": "S10",
+      "seed": 120244090,
+      "initial": 0.0166,
+      "duration": 30,
+      "dt": 0.1,
+      "maxOverlap": 2.700000000000001,
+      "maxOffFloor": 0,
+      "cooperativeWaitSamples": 6722
+    },
+    {
+      "stage": "S10",
+      "seed": 246811,
+      "initial": 0.0166,
+      "duration": 30,
+      "dt": 0.1,
+      "maxOverlap": 2.416600000000001,
+      "maxOffFloor": 0,
+      "cooperativeWaitSamples": 7282
+    },
+    {
+      "stage": "S10",
+      "seed": 2468013579,
+      "initial": 0.0166,
+      "duration": 30,
+      "dt": 0.1,
+      "maxOverlap": 2.500000000000001,
+      "maxOffFloor": 0,
+      "cooperativeWaitSamples": 4945
+    },
+    {
+      "stage": "S10",
+      "seed": 20261004,
+      "initial": 0.0166,
+      "duration": 30,
+      "dt": 0.1,
+      "maxOverlap": 2.3000000000000007,
+      "maxOffFloor": 0,
+      "cooperativeWaitSamples": 5593
+    },
+    {
+      "stage": "S08",
+      "seed": 246817,
+      "initial": 0,
+      "duration": 60,
+      "dt": 0.1,
+      "maxOverlap": 2.0000000000000004,
+      "maxOffFloor": 0,
+      "cooperativeWaitSamples": 9447
+    },
+    {
+      "stage": "S15",
+      "seed": 246824,
+      "initial": 0,
+      "duration": 60,
+      "dt": 0.1,
+      "maxOverlap": 2.400000000000001,
+      "maxOffFloor": 0,
+      "cooperativeWaitSamples": 12427
+    }
+  ]
+}

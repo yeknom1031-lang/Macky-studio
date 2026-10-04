@@ -1,0 +1,42 @@
+'use strict';
+const {chromium}=require('playwright'),fs=require('fs'),path=require('path'),crypto=require('crypto');
+const root=path.resolve(__dirname,'..'),dir=path.join(root,'assets/production/quality/review'),sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+(async()=>{
+ const report={createdAt:new Date().toISOString(),rendererSHA:sha(path.join(root,'expedition/expedition-render.js')),dataSHA:sha(path.join(root,'expedition/data.js')),coreSHA:sha(path.join(root,'expedition/expedition-core.js')),scope:'Same-browser identical-state DPR-resolution cache versus raw canvas scene; previous visual reports remain historical geometry/art reviews.',measurementMethod:'Only disposable 1:1 snapshot canvases are read with getImageData. Production and cache canvases are never read directly, preventing Chrome CPU-raster fallback from changing subsequent draws.',readbackInterferenceHistory:'cache-readback-interference.log',pixelTolerance:{background:'Exact RGBA equality',foregroundBoundaryDevicePixels:2,maximumChannelDeltaOutsideBoundary:1,maximumChangedPixelFraction:.002,reason:'The initial universal 3-level threshold failed. Isolation showed zero background difference and all >3-level differences confined to the foreground polygon antialias boundary. A full-viewport rasterization experiment preserved those boundary differences, identifying transparent foreground re-compositing rather than camera/image displacement. Accept up to 1-level resampling rounding elsewhere; record all remaining differences explicitly.',initialFailureReport:'render-cache-initial-three-level-threshold.json',isolationReport:'cache-diagnostic-isolation.json'},stages:[],errors:[]};
+ const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',args:['--allow-file-access-from-files']});
+ try{
+  const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:2});page.on('pageerror',e=>report.errors.push(e.message));await page.goto('file://'+path.join(root,'expedition/index.html'));const cdp=await page.context().newCDPSession(page);
+  async function compare(label){return page.evaluate(label=>{
+   const {state:s,world:w}=Wacha24Debug;w.draw(s);const builds=w.staticCache.builds;w.draw(s);const stable=w.staticCache.builds===builds,W=w.canvas.width,H=w.canvas.height,k=w.scale*w.dpr,tx=(w.width/2-w.cx*w.scale)*w.dpr,ty=(w.height/2-w.cy*w.scale)*w.dpr;
+   const make=()=>{const canvas=document.createElement('canvas');canvas.width=W;canvas.height=H;const c=canvas.getContext('2d',{alpha:false});c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.fillStyle='#ede6d5';c.fillRect(0,0,W,H);c.setTransform(k,0,0,k,tx,ty);return[canvas,c]};
+   const edges=(s.definition.foregroundZones||[]).flatMap(z=>{const p=(z.polygon||z).map(([x,y])=>[x*k+tx,y*k+ty]);return p.map((a,i)=>[a,p[(i+1)%p.length]])});
+   const nearBoundary=(x,y)=>edges.some(([a,b])=>{const vx=b[0]-a[0],vy=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*vx+(y-a[1])*vy)/(vx*vx+vy*vy)));return Math.hypot(x-a[0]-t*vx,y-a[1]-t*vy)<=2});
+   // Reading a production canvas repeatedly makes Chrome silently switch only
+   // that canvas to CPU rasterization. Read a one-shot snapshot instead.
+   const data=source=>{const canvas=document.createElement('canvas');canvas.width=W;canvas.height=H;const c=canvas.getContext('2d',{willReadFrequently:true});c.imageSmoothingEnabled=false;c.drawImage(source,0,0);return c.getImageData(0,0,W,H).data};
+   const metrics=(a,b)=>{let changed=0,sum=0,max=0,over3=0,outside=0,outsideMax=0,outsideOver1=0;for(let i=0;i<a.length;i+=4){let local=0;for(let q=0;q<4;q++){const delta=Math.abs(a[i+q]-b[i+q]);sum+=delta;local=Math.max(local,delta)}if(local){changed++;if(local>3)over3++;max=Math.max(max,local);if(!nearBoundary((i/4)%W+.5,Math.floor(i/4/W)+.5)){outside++;outsideMax=Math.max(outsideMax,local);if(local>1)outsideOver1++;}}}return{pixelsCompared:W*H,changedPixels:changed,changedFraction:changed/(W*H),over3Pixels:over3,maxChannelDelta:max,meanAbsoluteChannelDelta:sum/a.length,changedPixelsOutsideBoundary:outside,maxChannelDeltaOutsideBoundary:outsideMax,over1PixelsOutsideBoundary:outsideOver1}};
+   const [raw,c]=make();w.scene(c,s);const scene=metrics(data(w.canvas),data(raw)),[bg,bc]=make();w.background(bc,s,false);const background=metrics(data(w.staticCache.background),data(bg));
+   const rect={x:Math.max(0,s.people[s.targetId].x-150),y:Math.max(0,s.people[s.targetId].y-150),w:300,h:300},record={rect,target:{...s.people[s.targetId],path:[]},takenAt:s.elapsed,eventSnapshot:s.events.map(e=>({...e}))},beforePhoto=w.staticCache.builds,photo=w.photo(s,record),photoRaw=w.staticCache.builds===beforePhoto;
+   return{label,viewport:[w.width,w.height],pixels:[W,H],dpr:w.dpr,zoom:w.zoom,camera:[w.cx,w.cy],...scene,background,stationaryCacheStable:stable,builds,foregroundCacheCount:w.staticCache.foregrounds.size,photoBypassesCache:photoRaw,photoPixels:[photo.width,photo.height],passed:stable&&photoRaw&&background.changedPixels===0&&scene.over1PixelsOutsideBoundary===0&&scene.changedFraction<=.002};
+  },label);}
+  const subset=process.env.QA_STAGE?process.env.QA_STAGE.split(',').map(Number):null;
+  for(let id=0;id<24;id++){
+   if(subset&&!subset.includes(id))continue;
+   await page.evaluate(id=>{Date.now=()=>246810+id;return Wacha24Debug.prepare(id)},id);await page.waitForSelector('[data-action=begin]',{timeout:120000});await page.evaluate(()=>{const{state:s,world:w}=Wacha24Debug;WachaExpedition.start(s);WachaExpedition.step(s,2);Wacha24Debug.pause();document.querySelector('#dialog').close();w.draw(s)});
+   const item={id:id+1,cases:[await compare('DPR2-default')],stageCacheCorrect:await page.evaluate(()=>Wacha24Debug.world.staticCache.key[0]===Wacha24Debug.state.definition)};
+   await page.screenshot({path:path.join(dir,`cache-stage-${String(id+1).padStart(2,'0')}.png`)});item.image=`cache-stage-${String(id+1).padStart(2,'0')}.png`;
+   if([0,9,19,23].includes(id)){
+    let before=await page.evaluate(()=>Wacha24Debug.world.staticCache.builds);await page.evaluate(()=>Wacha24Debug.world.pan(37.25,-19.5));let r=await compare('fractional-pan');r.invalidated=r.builds>before;r.passed&&=r.invalidated;item.cases.push(r);
+    before=r.builds;await page.evaluate(()=>Wacha24Debug.world.zoomAt(1.23,710,430));r=await compare('zoom');r.invalidated=r.builds>before;r.passed&&=r.invalidated;item.cases.push(r);
+    before=r.builds;await page.setViewportSize({width:1260,height:820});await page.evaluate(()=>Wacha24Debug.world.resize());r=await compare('resize');r.invalidated=r.builds>before;r.passed&&=r.invalidated;item.cases.push(r);await page.setViewportSize({width:1440,height:900});await page.evaluate(()=>{Wacha24Debug.world.resize();Wacha24Debug.world.fit()});
+   }
+   if(id===23){
+    const before=await page.evaluate(()=>Wacha24Debug.world.staticCache.builds);await cdp.send('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:1,mobile:false});await page.evaluate(()=>Wacha24Debug.world.resize());let r=await compare('DPR1-switch');r.invalidated=r.builds>before;r.passed&&=r.invalidated;item.cases.push(r);
+    await cdp.send('Emulation.setDeviceMetricsOverride',{width:1440,height:900,deviceScaleFactor:2,mobile:false});await page.evaluate(()=>{const{state:s,world:w}=Wacha24Debug;w.resize();w.zoom=2.3;w.cx=795/1672*s.width;w.cy=555/941*s.height;w.clamp()});item.cases.push(await compare('DPR2-roof-depth'));await page.screenshot({path:path.join(dir,'cache-S24-roof.png')});item.roofImage='cache-S24-roof.png';
+   }
+   item.passed=item.stageCacheCorrect&&item.cases.every(c=>c.passed);report.stages.push(item);console.log(JSON.stringify({id:item.id,passed:item.passed,cases:item.cases.map(c=>({label:c.label,changed:c.changedPixels,max:c.maxChannelDelta,over3:c.over3Pixels,background:c.background.changedPixels,outsideBoundaryMax:c.maxChannelDeltaOutsideBoundary,stable:c.stationaryCacheStable,invalidated:c.invalidated}))}));
+   fs.writeFileSync(path.join(dir,'render-cache-qa-progress.json'),JSON.stringify(report,null,2));
+  }
+  report.completedAt=new Date().toISOString();report.passed=!report.errors.length&&report.stages.every(s=>s.passed);fs.writeFileSync(path.join(dir,subset?'render-cache-qa-partial.json':'render-cache-qa.json'),JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;
+ }finally{await browser.close()}
+})().catch(e=>{console.error(e);process.exitCode=1});

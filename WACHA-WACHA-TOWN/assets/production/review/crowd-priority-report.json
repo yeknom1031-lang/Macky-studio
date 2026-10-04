@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-04T13:55:20.845175+00:00",
+  "passed": true,
+  "sourceSha256": {
+    "src/expedition-core.js": "9ce9f64a624435c4e121529d7cae2216f66bfb1d6b2398ef12690893faf7baec",
+    "expedition/expedition-core.js": "9ce9f64a624435c4e121529d7cae2216f66bfb1d6b2398ef12690893faf7baec",
+    "expedition/data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+  },
+  "fix": "An urgent overlapping pair can replace an escape planned for a lower-priority third person; an escape already serving that pair is preserved. Priority is stable within a tick. Floor, manual player, passenger attachment and walking speed restrictions remain unchanged.",
+  "regressions": {
+    "crowdPriority": 4,
+    "floorEscape": 6,
+    "movementLifecycle": 6
+  },
+  "s10": {
+    "seed": 120244090,
+    "duration": 10,
+    "results": [
+      {
+        "dt": 0.1,
+        "maxOverlap": 2.600000000000001
+      },
+      {
+        "dt": 0.03333333333333333,
+        "maxOverlap": 2.666666666666667
+      },
+      {
+        "dt": 0.016666666666666666,
+        "maxOverlap": 2.5999999999999956
+      },
+      {
+        "firstDt": 0.0166,
+        "dt": 0.1,
+        "maxOverlap": 2.6166000000000014
+      }
+    ],
+    "oldMixedDtMaxOverlap": 3.116600000000002,
+    "maxOffFloor": 0
+  },
+  "shortStress": [
+    {
+      "stage": "S08",
+      "seed": 246817,
+      "duration": 60,
+      "dt": 0.1,
+      "maxOverlap": 2.400000000000001,
+      "maxOffFloor": 0
+    },
+    {
+      "stage": "S15",
+      "seed": 246824,
+      "duration": 60,
+      "dt": 0.1,
+      "maxOverlap": 2.700000000000001,
+      "maxOffFloor": 0
+    }
+  ],
+  "limitations": [
+    "Full 24-stage 180-second verification is pending and tracked separately."
+  ]
+}

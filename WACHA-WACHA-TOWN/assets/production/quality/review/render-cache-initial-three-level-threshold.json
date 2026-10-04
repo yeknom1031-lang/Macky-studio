@@ -1,0 +1,55 @@
+{
+  "createdAt": "2026-10-04T15:08:03.964Z",
+  "rendererSHA": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+  "dataSHA": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24",
+  "coreSHA": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+  "scope": "Compare the new DPR-resolution cached drawing against the uncached raw scene in the same browser, at identical state and camera. Earlier visual reports remain historical geometry/art reviews.",
+  "pixelTolerance": {
+    "maximumChannelDelta": 3,
+    "maximumChangedPixelFraction": 0.002
+  },
+  "stages": [
+    {
+      "id": 24,
+      "cases": [
+        {
+          "label": "DPR2-default",
+          "viewport": [
+            1440,
+            900
+          ],
+          "pixels": [
+            2880,
+            1800
+          ],
+          "dpr": 2,
+          "zoom": 1,
+          "camera": [
+            2048,
+            1152.5
+          ],
+          "pixelsCompared": 5184000,
+          "changedPixels": 3614,
+          "changedFraction": 0.0006971450617283951,
+          "over3Pixels": 1112,
+          "maxChannelDelta": 42,
+          "meanAbsoluteChannelDelta": 0.0013128858024691358,
+          "stationaryCacheStable": true,
+          "builds": 1,
+          "foregroundCacheCount": 1,
+          "photoBypassesCache": true,
+          "photoPixels": [
+            574,
+            574
+          ],
+          "passed": false
+        }
+      ],
+      "stageCacheCorrect": true,
+      "image": "cache-stage-24.png",
+      "passed": false
+    }
+  ],
+  "errors": [],
+  "passed": false
+}

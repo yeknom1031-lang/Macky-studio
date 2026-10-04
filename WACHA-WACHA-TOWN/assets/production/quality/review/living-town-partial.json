@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-04T13:52:27.364Z",
+  "stages": [
+    {
+      "id": 9,
+      "name": "運河と橋の街",
+      "count": 700,
+      "areas": 9,
+      "livingTown": true,
+      "rooms": 291,
+      "roomFraction": 0.4157142857142857,
+      "upper": 36,
+      "moves": 356,
+      "actions": {
+        "walking": 259,
+        "acting": 330,
+        "working": 84,
+        "riding": 8,
+        "chat": 6,
+        "yielding": 13
+      },
+      "detailTiles": 0,
+      "pixelWidth": 1672,
+      "loadedTiles": true,
+      "maxOverlap": 2.7333000000000007
+    },
+    {
+      "id": 19,
+      "name": "海洋研究都市",
+      "count": 1600,
+      "areas": 9,
+      "livingTown": true,
+      "rooms": 746,
+      "roomFraction": 0.46625,
+      "upper": 27,
+      "moves": 368,
+      "actions": {
+        "acting": 1097,
+        "working": 225,
+        "chat": 93,
+        "walking": 164,
+        "riding": 8,
+        "yielding": 13
+      },
+      "detailTiles": 4,
+      "pixelWidth": 3040,
+      "loadedTiles": true,
+      "maxOverlap": 1.433299999999996
+    },
+    {
+      "id": 23,
+      "name": "世界のお祭り大集合",
+      "count": 2000,
+      "areas": 11,
+      "livingTown": true,
+      "rooms": 1143,
+      "roomFraction": 0.5715,
+      "upper": 78,
+      "moves": 331,
+      "actions": {
+        "acting": 1084,
+        "working": 588,
+        "walking": 243,
+        "chat": 72,
+        "riding": 8,
+        "yielding": 5
+      },
+      "detailTiles": 4,
+      "pixelWidth": 3040,
+      "loadedTiles": true,
+      "maxOverlap": 1.533299999999996
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

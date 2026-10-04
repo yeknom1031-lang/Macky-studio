@@ -1,0 +1,704 @@
+{
+  "passed": true,
+  "at": "2026-10-04T13:24:50.588Z",
+  "viewport": "1440 × 900",
+  "renderer": "headless Chrome",
+  "selected": [
+    9
+  ],
+  "codeHashes": {
+    "expedition-core.js": "8d1b0fcb0338c69f201153d40b7a282753c399c4f65d867bbc8387ebda6ffc20",
+    "expedition-render.js": "979034611b662234c056e2e6254ad510df89ca1310c8a06591af767bc836d4fe",
+    "expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+    "expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+    "expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+    "data.js": "1692c41a18226d2ecd9edc33f5bd425b7cf1a10536dfc8bf1e35d394d81a866c"
+  },
+  "results": [
+    {
+      "id": 9,
+      "name": "運河と橋の街",
+      "count": 700,
+      "loadMs": 14777,
+      "seed": 246811,
+      "worstOverlaps": [
+        {
+          "key": "168:510",
+          "age": 2.800000000000001,
+          "at": 8.733399999999985,
+          "p": {
+            "id": 168,
+            "design": "EX055",
+            "role": "R205",
+            "x": 1918.522850871853,
+            "y": 660.0887876609797,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "walking",
+            "node": 1499,
+            "to": 1512,
+            "station": null,
+            "areaId": "S10-floor-06",
+            "path": [
+              1522,
+              1535,
+              1536,
+              1549,
+              1560,
+              1982,
+              2000,
+              1999
+            ],
+            "rideState": null
+          },
+          "q": {
+            "id": 510,
+            "design": "G-C0886",
+            "role": "R191",
+            "x": 1931.894787813759,
+            "y": 649.1236524261814,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1512,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-06",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 10.333399999999985
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "30:375",
+          "age": 2.633400000000001,
+          "at": 2.633400000000001,
+          "p": {
+            "id": 30,
+            "design": "G-C1040",
+            "role": "R101",
+            "x": 1839.3559005403026,
+            "y": 642.4507344493003,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "walking",
+            "node": 1435,
+            "to": 1477,
+            "station": null,
+            "areaId": "S10-floor-06",
+            "path": [
+              1487,
+              1499,
+              1512,
+              1522,
+              1535,
+              1536,
+              1549,
+              1560
+            ],
+            "rideState": null
+          },
+          "q": {
+            "id": 375,
+            "design": "S10-C050",
+            "role": "R067",
+            "x": 1861.6172368901055,
+            "y": 648.6436276612143,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1962,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-06",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 3.8334000000000006
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "18:681",
+          "age": 2.500000000000001,
+          "at": 3.4334000000000016,
+          "p": {
+            "id": 18,
+            "design": "G-C0486",
+            "role": "R101",
+            "x": 1930.281126455749,
+            "y": 720.1681400351988,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "walking",
+            "node": 1513,
+            "to": 1523,
+            "station": null,
+            "areaId": "S10-floor-06",
+            "path": [
+              1539,
+              1551,
+              1561,
+              1982,
+              2000,
+              1999,
+              1998,
+              1997
+            ],
+            "rideState": null
+          },
+          "q": {
+            "id": 681,
+            "design": "G-C1642",
+            "role": "R135",
+            "x": 1948.8258615879217,
+            "y": 722.2256188716001,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1523,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-06",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 4.933400000000002
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "98:607",
+          "age": 2.3000000000000007,
+          "at": 13.733399999999968,
+          "p": {
+            "id": 98,
+            "design": "G-C0517",
+            "role": "R017",
+            "x": 2063.053132673119,
+            "y": 746.5421405779742,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1999,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-06",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 14.233399999999971
+            },
+            "rideState": null
+          },
+          "q": {
+            "id": 607,
+            "design": "G-C1517",
+            "role": "R062",
+            "x": 2065.26658763886,
+            "y": 735.9798329672685,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1561,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-06",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 14.133399999999972
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "332:339",
+          "age": 2.3000000000000007,
+          "at": 20.733400000000028,
+          "p": {
+            "id": 332,
+            "design": "G-C0601",
+            "role": "R106",
+            "x": 2099.3534710403783,
+            "y": 671.369572717143,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "walking",
+            "node": 1668,
+            "to": 1667,
+            "station": null,
+            "areaId": null,
+            "path": [
+              1666,
+              1665,
+              1664,
+              1663,
+              1662,
+              1661,
+              1660,
+              1659
+            ],
+            "rideState": null
+          },
+          "q": {
+            "id": 339,
+            "design": "G-C1889",
+            "role": "R089",
+            "x": 2099.66469581114,
+            "y": 659.9792161847303,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1670,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-06",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 21.133400000000012
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "80:333",
+          "age": 2.2334000000000005,
+          "at": 2.2334000000000005,
+          "p": {
+            "id": 80,
+            "design": "EX197",
+            "role": "R096",
+            "x": 262.9523109630637,
+            "y": 449.95306447776466,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "walking",
+            "node": 295,
+            "to": 308,
+            "station": null,
+            "areaId": "S10-floor-01",
+            "path": [
+              321,
+              1716,
+              1715,
+              1714,
+              1713,
+              1712,
+              1711,
+              324
+            ],
+            "rideState": null
+          },
+          "q": {
+            "id": 333,
+            "design": "G-C0719",
+            "role": "R154",
+            "x": 264.9360568115189,
+            "y": 470.51094767625546,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 283,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-01",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 2.6334
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "280:611",
+          "age": 2.2334000000000005,
+          "at": 2.2334000000000005,
+          "p": {
+            "id": 280,
+            "design": "EX146",
+            "role": "R205",
+            "x": 67.33919487664537,
+            "y": 775.7045307024367,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "walking",
+            "node": 124,
+            "to": 125,
+            "station": null,
+            "areaId": null,
+            "path": [
+              156,
+              184,
+              210,
+              225,
+              234,
+              244,
+              254,
+              265
+            ],
+            "rideState": null
+          },
+          "q": {
+            "id": 611,
+            "design": "S10-C034",
+            "role": "R007",
+            "x": 74.22217446111799,
+            "y": 784.2302400230965,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 206,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-04",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 2.6334
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "63:391",
+          "age": 2.1334000000000004,
+          "at": 2.1334000000000004,
+          "p": {
+            "id": 63,
+            "design": "G-C1048",
+            "role": "R211",
+            "x": 891.1970469209348,
+            "y": 684.9677484638064,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1922,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-05",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 2.6334
+            },
+            "rideState": null
+          },
+          "q": {
+            "id": 391,
+            "design": "G-C1000",
+            "role": "R212",
+            "x": 899.2596446954293,
+            "y": 683.6230188739463,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "walking",
+            "node": 1926,
+            "to": 1932,
+            "station": null,
+            "areaId": "S10-floor-05",
+            "path": [
+              1939,
+              796,
+              1960,
+              1959,
+              1958,
+              1957,
+              1956,
+              1955
+            ],
+            "rideState": null
+          }
+        },
+        {
+          "key": "245:626",
+          "age": 2.1000000000000005,
+          "at": 3.933400000000002,
+          "p": {
+            "id": 245,
+            "design": "G-C1271",
+            "role": "R231",
+            "x": 193.69889239811084,
+            "y": 815.5564080897714,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "walking",
+            "node": 264,
+            "to": 253,
+            "station": null,
+            "areaId": "S10-floor-04",
+            "path": [
+              243,
+              233,
+              224,
+              208,
+              183,
+              154,
+              124,
+              125
+            ],
+            "rideState": null
+          },
+          "q": {
+            "id": 626,
+            "design": "G-C1254",
+            "role": "R244",
+            "x": 176.00681627902767,
+            "y": 801.0904667601174,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1902,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-04",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 4.533400000000001
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "49:87",
+          "age": 2.0334000000000003,
+          "at": 2.0334000000000003,
+          "p": {
+            "id": 49,
+            "design": "S10-C076",
+            "role": "R174",
+            "x": 364.9283631852633,
+            "y": 791.9880301142509,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1909,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-04",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 2.6334
+            },
+            "rideState": null
+          },
+          "q": {
+            "id": 87,
+            "design": "EX048",
+            "role": "R192",
+            "x": 378.2770122098713,
+            "y": 777.5156130265447,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1910,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-04",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 2.6334
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "27:363",
+          "age": 2.0334000000000003,
+          "at": 2.0334000000000003,
+          "p": {
+            "id": 27,
+            "design": "G-C1511",
+            "role": "R170",
+            "x": 780.6476616236516,
+            "y": 729.3729169091462,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1958,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-05",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 2.6334
+            },
+            "rideState": null
+          },
+          "q": {
+            "id": 363,
+            "design": "G-C1750",
+            "role": "R076",
+            "x": 804.9131749372235,
+            "y": 731.3564912547928,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 787,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-05",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 2.6334
+            },
+            "rideState": null
+          }
+        },
+        {
+          "key": "59:381",
+          "age": 2.0334000000000003,
+          "at": 2.0334000000000003,
+          "p": {
+            "id": 59,
+            "design": "G-C1095",
+            "role": "R206",
+            "x": 844.9628039114982,
+            "y": 673.5057955984738,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "walking",
+            "node": 1923,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-05",
+            "path": [
+              1929,
+              1937,
+              796,
+              1960,
+              1959,
+              1958,
+              1957,
+              1956
+            ],
+            "rideState": null
+          },
+          "q": {
+            "id": 381,
+            "design": "G-C0932",
+            "role": "R197",
+            "x": 845.4474922264443,
+            "y": 684.2709488210991,
+            "level": 0,
+            "layer": 0,
+            "ride": null,
+            "activity": "yielding",
+            "node": 1926,
+            "to": null,
+            "station": null,
+            "areaId": "S10-floor-05",
+            "path": [],
+            "floorEscape": {
+              "points": [],
+              "until": 2.6334
+            },
+            "rideState": null
+          }
+        }
+      ],
+      "currentOverlaps": [
+        [
+          "330:434",
+          0.9832999999999956
+        ],
+        [
+          "377:596",
+          0.9832999999999956
+        ],
+        [
+          "435:596",
+          0.7666999999999969
+        ],
+        [
+          "395:411",
+          0.666699999999997
+        ],
+        [
+          "274:634",
+          0.666699999999997
+        ],
+        [
+          "554:659",
+          0.666699999999997
+        ],
+        [
+          "261:429",
+          0.5666999999999971
+        ],
+        [
+          "159:657",
+          0.5666999999999971
+        ],
+        [
+          "130:377",
+          0.5166999999999972
+        ],
+        [
+          "367:693",
+          0.5166999999999972
+        ],
+        [
+          "289:374",
+          0.4166999999999972
+        ],
+        [
+          "322:437",
+          0.4166999999999972
+        ]
+      ],
+      "unique": 700,
+      "photographers": 5,
+      "visible": 493,
+      "frameMedianMs": 16.700000000004366,
+      "frameP95Ms": 100,
+      "simulationElapsed": 33.41660000000016,
+      "maxOverlap": 2.800000000000001,
+      "finite": true,
+      "activities": [
+        "walking",
+        "acting",
+        "working",
+        "riding",
+        "chat",
+        "yielding"
+      ]
+    }
+  ],
+  "errors": []
+}

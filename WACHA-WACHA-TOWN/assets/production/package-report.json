@@ -1,13 +1,20 @@
 {
-  "at": "2026-10-04T09:42:10.801012+00:00",
+  "at": "2026-10-04T15:35:28.119094+00:00",
   "destination": "/Users/makibook/Desktop/わちゃわちゃタウン.app",
   "entry": "/Users/makibook/Desktop/わちゃわちゃタウン.app/Contents/Resources/index.html",
   "stages": 24,
   "characters": 4396,
   "generated": 469,
-  "files": 488,
-  "bytes": 295484226,
+  "qualityGenerated": 76,
+  "totalGenerated": 545,
+  "files": 591,
+  "bytes": 398613145,
   "needsServer": false,
   "needsNetwork": false,
-  "appVersion": "2.0"
+  "appVersion": "2.1",
+  "bundleSha256": "272b519d957b04c51bb77663e20c7dd3797cca92ee6fce377d2b60f9bb794b7c",
+  "bundleSha256Method": "SHA256 of sorted relative file path + NUL + file SHA256 + LF in UTF-8",
+  "integrityVerifiedAt": "2026-10-04T15:37:10.290800+00:00",
+  "runtimeFilesMatched": 587,
+  "guideMatches": true
 }

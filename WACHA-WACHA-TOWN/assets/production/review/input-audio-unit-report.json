@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-04T12:07:51.892238+00:00",
+  "command": "node --test tests/input.test.cjs tests/audio.test.cjs",
+  "exitCode": 0,
+  "tests": 8,
+  "passed": 8,
+  "failed": 0,
+  "suites": {
+    "input": 5,
+    "audio": 3
+  },
+  "checks": [
+    "active controller selection across sparse multiple pads",
+    "analog stick deadzone and normalized diagonal speed",
+    "standard D-pad and action remapping",
+    "nonstandard directional-hat input and neutral positions",
+    "disconnect neutral input",
+    "all shipped audio file hashes and credited source",
+    "redistribution license attribution and evidence",
+    "all 24 stages have music crowd ambience and environment tracks"
+  ],
+  "sourceSha256": {
+    "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+    "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+    "tests/input.test.cjs": "78c303263a7e346555e98e2b3010dbe8b6be91a4b6d35857849e74d678dfa480",
+    "tests/audio.test.cjs": "0b1b1ee23818c3c376c672ee427b5047936ab0196abc6db65a25b4e11fed74d2"
+  },
+  "limitations": [
+    "Input tests simulate Gamepad objects. No physical controller input was verified."
+  ]
+}

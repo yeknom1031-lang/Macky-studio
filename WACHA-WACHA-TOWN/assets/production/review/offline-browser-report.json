@@ -1,16 +1,48 @@
 {
-  "at": "2026-10-04T09:42:37.987Z",
-  "appVersion": "2.0",
+  "at": "2026-10-04T15:36:20.025Z",
+  "appVersion": "2.1",
   "entry": "/Users/makibook/Desktop/わちゃわちゃタウン.app/Contents/Resources/index.html",
   "offline": true,
   "stages": 24,
   "ready": 24,
   "designs": 4396,
+  "openBuildings": 24,
+  "livingStages": 24,
+  "detailTiles": 52,
+  "codeHashes": {
+    "expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+    "expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+    "expedition-render.js": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+    "expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+    "expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+    "data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+  },
   "finalStage": {
     "people": 2000,
     "unique": 2000,
     "cameras": 0
   },
+  "audioTracks": [
+    "music-town",
+    "crowd",
+    "birds",
+    "waves"
+  ],
+  "checks": [
+    "v2.1の配布アプリ",
+    "サーバーなしのローカル入口から24ステージ版へ移動",
+    "配布した5モジュールとデータのハッシュが最終QAと一致",
+    "全24ステージと4,396デザインを収録",
+    "最後の街に固有2,000体・撮影0回で開始",
+    "03:00の時計と退出ボタンを表示",
+    "カウントダウン後にゲームが進行",
+    "オフラインでBGM・ざわめき・環境音を実再生",
+    "一時停止でゲームと音の両方を停止",
+    "新全景24・生活領域24・詳細タイル52を収録",
+    "公開済みの遊び方とローカル起動リンクを同梱",
+    "JavaScript例外0件",
+    "外部通信要求0件"
+  ],
   "networkRequests": [],
   "errors": []
 }

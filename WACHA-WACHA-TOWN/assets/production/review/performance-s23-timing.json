@@ -1,0 +1,129 @@
+{
+  "stage": 22,
+  "seed": 20261004,
+  "frames": {
+    "n": 299,
+    "mean": 23.243478260869562,
+    "median": 16.700000000000728,
+    "p95": 50
+  },
+  "step": {
+    "n": 313,
+    "mean": 20.771565494922022,
+    "median": 16.900000005960464,
+    "p95": 43.5
+  },
+  "draw": {
+    "n": 313,
+    "mean": 2.826198083143265,
+    "median": 2.7999999970197678,
+    "p95": 3.5
+  },
+  "visible": 639,
+  "maxOverlap": 2.1000000000000005,
+  "hotspots": [
+    {
+      "name": "overlapPairs expedition-core.js:121",
+      "ms": 2847.713
+    },
+    {
+      "name": "separate expedition-core.js:143",
+      "ms": 2515.032
+    },
+    {
+      "name": "(program) :0",
+      "ms": 619.585
+    },
+    {
+      "name": "scene expedition-render.js:37",
+      "ms": 419.553
+    },
+    {
+      "name": "step expedition-core.js:182",
+      "ms": 297.775
+    },
+    {
+      "name": "(garbage collector) :0",
+      "ms": 232.956
+    },
+    {
+      "name": "drawImage :0",
+      "ms": 158.384
+    },
+    {
+      "name": "restore :0",
+      "ms": 129.503
+    },
+    {
+      "name": " expedition-core.js:144",
+      "ms": 98.945
+    },
+    {
+      "name": "yieldOnFloor expedition-core.js:39",
+      "ms": 76.811
+    },
+    {
+      "name": "WachaExpedition.step :1",
+      "ms": 69.107
+    },
+    {
+      "name": "canStand expedition-core.js:38",
+      "ms": 60.056
+    },
+    {
+      "name": "walk expedition-core.js:105",
+      "ms": 46.851
+    },
+    {
+      "name": "beginFloorEscape expedition-core.js:126",
+      "ms": 41.123
+    },
+    {
+      "name": "save :0",
+      "ms": 31.558
+    },
+    {
+      "name": "draw expedition-render.js:63",
+      "ms": 30.1
+    },
+    {
+      "name": "sprite expedition-render.js:20",
+      "ms": 27.103
+    },
+    {
+      "name": "frame expedition-render.js:19",
+      "ms": 21.061
+    },
+    {
+      "name": "translate :0",
+      "ms": 16.571
+    },
+    {
+      "name": "updateDensity expedition-core.js:48",
+      "ms": 9.117
+    },
+    {
+      "name": "pathTo expedition-core.js:44",
+      "ms": 9.061
+    },
+    {
+      "name": "visible expedition-render.js:34",
+      "ms": 9.049
+    },
+    {
+      "name": "cameraLabel expedition-app.js:20",
+      "ms": 7.548
+    },
+    {
+      "name": "updateHud expedition-app.js:11",
+      "ms": 6.103
+    },
+    {
+      "name": "floorSegment expedition-core.js:125",
+      "ms": 6.019
+    }
+  ],
+  "phase": "before behavior-preserving crowd optimization",
+  "sourceSHA": "16f518e2830392f1c3efff1760e21ea490edc27c4a3db725046d01c2c09e7644",
+  "measuredAt": "2026-10-04T14:36:14.820100+00:00"
+}

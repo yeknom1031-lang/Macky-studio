@@ -1,0 +1,65 @@
+{
+  "createdAt": "2026-10-04T13:53:32.971Z",
+  "stages": [
+    {
+      "stage": "S10",
+      "fish": [],
+      "points": []
+    },
+    {
+      "stage": "S20",
+      "fish": [
+        {
+          "id": 23,
+          "role": "R224",
+          "x": 1812.23,
+          "y": 1359.35,
+          "site": 95,
+          "facing": -1,
+          "phaseChanged": true,
+          "floor": true
+        },
+        {
+          "id": 250,
+          "role": "R222",
+          "x": 1812.23,
+          "y": 1283.83,
+          "site": 94,
+          "facing": -1,
+          "phaseChanged": true,
+          "floor": true
+        }
+      ],
+      "points": [
+        {
+          "name": "fishing-1",
+          "x": 1812.23,
+          "y": 1359.35,
+          "image": "S20-fishing-1-final.png"
+        },
+        {
+          "name": "fishing-2",
+          "x": 1812.23,
+          "y": 1283.83,
+          "image": "S20-fishing-2-final.png"
+        }
+      ]
+    },
+    {
+      "stage": "S24",
+      "fish": [],
+      "points": [
+        {
+          "name": "roof",
+          "x": 1947.5598086124403,
+          "y": 1359.4845908607863,
+          "image": "S24-roof-final.png"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "coreSHA": "e4b35b242234200020e3f3bc482551b724345b29fd93b1a391aff28ca9f56049",
+  "dataSHA": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24",
+  "passed": false
+}

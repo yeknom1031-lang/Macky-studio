@@ -1,0 +1,38 @@
+{
+  "createdAt": "2026-10-04T14:42:40.580Z",
+  "reviewer": "artwork_qa",
+  "baselineSHA": "16f518e2830392f1c3efff1760e21ea490edc27c4a3db725046d01c2c09e7644",
+  "optimizedSHA": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+  "dataModified": false,
+  "sourceModified": false,
+  "findings": [],
+  "passed": true,
+  "review": [
+    {
+      "area": "bins traversal",
+      "conclusion": "dy, dx and retained cell insertion order are preserved. Layer >= 4 actors were already excluded from every pair."
+    },
+    {
+      "area": "hypot early exclusion",
+      "conclusion": "Only candidates outside the 1.06 axis bounds are skipped; remaining Math.hypot arguments and comparison are unchanged."
+    },
+    {
+      "area": "fixed-point stop",
+      "conclusion": "yieldOnFloor and canStand have no state changes besides coordinate writes and consume no RNG. If every coordinate remains strictly equal through an entire pass, later passes have identical inputs and cannot move an actor."
+    },
+    {
+      "area": "coordinate scratch buffer",
+      "conclusion": "Float64Array preserves the Number coordinates. Existing index/id addressing is unchanged; production people arrays are created with contiguous IDs and not reordered."
+    },
+    {
+      "area": "clamp bypass",
+      "conclusion": "Calling the pure canStand predicate is omitted only when the clamped coordinates equal the current coordinates."
+    }
+  ],
+  "lightweightPairEquivalence": {
+    "fixtures": 262,
+    "passed": true,
+    "coverage": "Deterministic cell/layer/rider mixtures and floating-point candidates on either side of the exact distance cutoff."
+  },
+  "heavySimulation": "Not run by this reviewer; separately owned by gameplay_qa and root."
+}

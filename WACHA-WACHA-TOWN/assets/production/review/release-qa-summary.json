@@ -1,60 +1,73 @@
 {
   "passed": true,
-  "at": "2026-10-04T09:41:39.015Z",
+  "at": "2026-10-04T15:32:50.189397+00:00",
+  "version": "2.1",
   "build": {
     "stages": 24,
     "originalDesigns": 4396,
     "people": 4300,
     "animals": 96,
     "roles": 250,
-    "generatedSourceImages": 469,
-    "plannedSourceImages": 469,
+    "generatedSourceImages": 545,
+    "preservedSourceImages": 469,
+    "newQualityImages": 76,
     "missing": [],
     "errors": []
   },
   "checks": {
-    "coreUnit": 12,
+    "coreUnit": 40,
+    "inputAndAudioUnit": 8,
     "full180SecondSimulations": 24,
     "fullStageBrowserChecks": 24,
+    "livingTownBrowserChecks": 24,
+    "livingTownNavigationChecks": 24,
+    "renderCacheStages": 24,
     "solo": 9,
-    "duo": 9,
+    "duo": 14,
     "revealingPhoto": 4,
-    "isolatedPerformance": 8
+    "audio": 18,
+    "isolatedPerformance": 17
   },
   "metrics": {
     "simulatedMinutes": 72,
-    "maxCharacterOverlapSeconds": 2.3,
+    "maxCharacterOverlapSeconds": 2.9000000000000012,
+    "maxOffFloorActors": 0,
     "maxSwimmingRouteError": 3.552713678800501e-15,
-    "medianFrameMs": 16.7,
-    "isolatedWorstP95FrameMs": 16.8,
+    "medianFrameMs": 16.70000000001164,
+    "isolatedWorstP95FrameMs": 50,
+    "minimumRoomPopulationFraction": 0.4157142857142857,
     "maximumPopulation": 2000,
     "physicalControllerTested": false
   },
-  "method": "Chrome headless 1440 × 900; 30-second scene warmup; Switch-compatible Gamepad API simulated. Isolated measurements recheck all concurrent-load outliers and the 2000-person map.",
+  "method": "Chrome 1440 × 900. All 24 stages: 180-second simulation, actual artwork rendering, interior population and activity checks. Performance sampled without concurrent simulation workers. Gamepad inputs simulated; physical controller not verified.",
   "codeHashes": {
-    "expedition-core.js": "2e0968586445f7ccdaaa1438558ca2c57c15a477aec8ba25db4dace63ff1b4ed",
-    "expedition-app.js": "0ed99cb4809e9700df721735486f94ac67be18d1f161ae4b0754ac427ddca1b0",
-    "expedition-render.js": "7d2789ed4b4b0b952381649f504ef61724b4ff02f938f6cf5f8a9921492a853d"
+    "expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+    "expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+    "expedition-render.js": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+    "expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+    "expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+    "data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
   },
   "reports": [
     "core-test-report.txt",
+    "core-test-integrity.json",
+    "input-audio-unit-report.json",
     "all-stages-simulation.json",
     "stages-browser-report.json",
+    "living-town-qa.json",
     "browser-report.json",
     "duo-browser-report.json",
     "photo-browser-report.json",
-    "performance-isolated-report.json"
-  ],
-  "incrementalValidation": {
-    "at": "2026-10-04T09:40:59.084Z",
-    "change": "Wait for the private runner scene artwork before starting or resuming a large-map game.",
-    "checks": 9,
-    "errors": [],
-    "regression": "Intentionally delayed P2 image preparation keeps both players and the clock frozen, disables begin and resume, and rejects stale scene-ready messages.",
-    "unchanged": [
-      "expedition-core.js",
-      "expedition-render.js"
-    ],
-    "fullStageRetestRequired": false
-  }
+    "ui-final-report.json",
+    "audio-browser-report.json",
+    "performance-isolated-report.json",
+    "../quality/review/living-town-visual-coverage.json",
+    "../quality/review/render-cache-qa.json",
+    "core-equivalence-report.json",
+    "core-performance-review.json",
+    "../quality/review/living-town-browser-report.json",
+    "../quality/review/living-town-partial.json",
+    "../quality/review/living-focus-final.json",
+    "../quality/manifest.json"
+  ]
 }

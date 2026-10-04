@@ -21,7 +21,7 @@ def role_place(role):
     return 'open'
 
 
-def layout(src,navigation,w,h,role_ids,water):
+def legacy_layout(src,navigation,w,h,role_ids,water):
     nav=[list(n[:3])+[n[3] if len(n)>3 else 0] for n in navigation]
     nav=[n[:2]+[list(n[2]),n[3]] for n in nav]
     ground=list(range(len(nav)))
@@ -65,3 +65,50 @@ def layout(src,navigation,w,h,role_ids,water):
             n=nearest(f['x']+dx,f['y']+42);x,y=nav[n][:2]
             if all(math.hypot(x-a['x'],y-a['y'])>27 for a in sites):sites.append(dict(id=len(sites),x=x,y=y,roles=[],kind=kind,fixture=k,level=0,node=n,entryNode=n,stairs=None,facing=1,height=150,name=f['name'],actorX=0,actorY=0))
     return nav,fixtures,sites
+
+
+def layout(src,navigation,w,h,role_ids,water):
+    from pathlib import Path
+    from collections import deque
+    import json
+    key=f"S{src['id']+1:02}";path=Path(__file__).resolve().parent/'assets/production/navigation'/f'{key}-areas.json'
+    if not path.exists():
+        nav,fixtures,sites=legacy_layout(src,navigation,w,h,role_ids,water)
+        return nav,fixtures,sites,dict(activityAreas=[],foregroundZones=[])
+    areas=json.loads(path.read_text());nav=[n[:2]+[list(n[2]),n[3] if len(n)>3 else 0,n[4] if len(n)>4 else None] for n in navigation]
+    fixtures=[];sites=[];foreground=[]
+    for index,area in enumerate(areas):
+        poly=area['polygon'];cx=sum(p[0] for p in poly)/len(poly);cy=sum(p[1] for p in poly)/len(poly);nodes=area['nodeIds'];kinds=area['kinds'];level=area.get('level',0)
+        node=min(nodes,key=lambda n:(nav[n][0]-cx)**2+(nav[n][1]-cy)**2)
+        fixtures.append(dict(id=index,x=cx,y=cy,index=index%8,height=150,name=area['name'],node=node,drawFixture=False,areaId=area['id']))
+        for item in area.get('foreground',[]):foreground.append(dict(**item,areaId=area['id'],level=level) if isinstance(item,dict) else dict(polygon=item,areaId=area['id'],level=level))
+        entries=area.get('entryRoutes',[]);entry=entries[0][0] if entries else node;parents={entry:None};queue=deque([entry])
+        while queue:
+            at=queue.popleft()
+            for other in nav[at][2]:
+                if other not in parents:parents[other]=at;queue.append(other)
+        # Select well-separated contact points throughout each actual open floor.
+        # A deterministic permutation avoids filling one corner of a room first.
+        selected=[];bins={};spacing=38 if src['area']>=2 else 32
+        contact_nodes=[]
+        for contact in area.get('contacts',[]):
+            n=min(nodes,key=lambda n:(nav[n][0]-contact['x'])**2+(nav[n][1]-contact['y'])**2)
+            contact_nodes.append((n,contact))
+        ordered=sorted(nodes,key=lambda n:((n*2654435761)%4294967296))
+        for n in ordered:
+            x,y=nav[n][:2];bx=int(x//spacing);by=int(y//spacing)
+            if any(math.hypot(x-nav[q][0],y-nav[q][1])<spacing for q,c in contact_nodes):continue
+            if any(math.hypot(x-nav[q][0],y-nav[q][1])<spacing for yy in range(by-1,by+2) for xx in range(bx-1,bx+2) for q in bins.get((xx,yy),[])):continue
+            selected.append(n);bins.setdefault((bx,by),[]).append(n)
+        for n,contact in contact_nodes+[(n,None) for n in selected]:
+            stairs=None
+            if level:
+                if n not in parents:continue
+                stairs=[];at=n
+                while at is not None:stairs.append(at);at=parents[at]
+                stairs.reverse()
+            x,y=nav[n][:2];site_kinds=contact['kinds'] if contact else kinds;kind=next((k for k in site_kinds if k not in ['open','seat']),site_kinds[0]);roles=[r for r in role_ids if role_place(r) in site_kinds]
+            sites.append(dict(id=len(sites),x=x,y=y,roles=roles,kinds=site_kinds,contact=bool(contact),kind=kind,fixture=index,level=level,node=n,entryNode=entry if level else n,stairs=stairs,facing=contact.get('facing',1) if contact else (-1 if x>cx else 1),height=150,name=area['name'],areaId=area['id'],actorScale=1,drawFixture=False,actorX=0,actorY=0))
+        area['capacity']=len(selected)
+    metadata=dict(activityAreas=areas,foregroundZones=foreground,livingTown=True)
+    return nav,fixtures,sites,metadata

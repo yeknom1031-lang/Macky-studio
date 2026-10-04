@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-04T13:37:05.728939+00:00",
+  "changes": [
+    "All visible ground-level passengers participate in escape-space occupancy regardless of sprite layer.",
+    "The oldest ongoing overlap is resolved first.",
+    "Candidate positions consider observed movement and active escape paths of nearby residents.",
+    "Local escape starts after 0.7 seconds instead of 0.9 seconds.",
+    "Animal movement tests measure the whole run rather than only the final position."
+  ],
+  "focusedSimulation": [
+    {
+      "stage": "S08",
+      "seed": 246817,
+      "durationSeconds": 60,
+      "offFloor": 0,
+      "maxOverlapSeconds": 2.6
+    },
+    {
+      "stage": "S15",
+      "seed": 246824,
+      "durationSeconds": 60,
+      "offFloor": 0,
+      "maxOverlapSeconds": 2.1
+    }
+  ],
+  "tests": {
+    "floorEscape": 6,
+    "movementLifecycle": 6,
+    "stageSelector": 4
+  },
+  "limitations": [
+    "The updated core still requires the final 24-stage 180-second validation run."
+  ],
+  "sha256": {
+    "src/expedition-core.js": "e4b35b242234200020e3f3bc482551b724345b29fd93b1a391aff28ca9f56049",
+    "expedition/expedition-core.js": "e4b35b242234200020e3f3bc482551b724345b29fd93b1a391aff28ca9f56049",
+    "expedition/data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24",
+    "tests/floor-escape.test.cjs": "586736fcf2c4b851952fb52e6f95f5a31bb5c56d13458d12f16256445384505b",
+    "tests/all-stages.cjs": "5befd4405b6e06631989a6a4fb020f97b1d4446a781272ff67c99e50612891df",
+    "tests/qa-stage-selection.test.cjs": "81e0cd0862989f50db5baa096909306291bfb97ba63370dd8b143a46fb7cea03"
+  }
+}

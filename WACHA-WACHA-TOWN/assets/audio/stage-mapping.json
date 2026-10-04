@@ -1,0 +1,271 @@
+[
+  {
+    "stage": 1,
+    "name": "はじまりのお祭り",
+    "music": "music-town",
+    "crowd": "crowd",
+    "crowdGain": 0.4,
+    "environment": [
+      "birds"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 2,
+    "name": "花咲くガーデン",
+    "music": "music-garden",
+    "crowd": "crowd",
+    "crowdGain": 0.25,
+    "environment": [
+      "birds",
+      "wind"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 3,
+    "name": "海辺のマルシェ",
+    "music": "music-water",
+    "crowd": "crowd",
+    "crowdGain": 0.38,
+    "environment": [
+      "waves",
+      "birds"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 4,
+    "name": "お菓子の広場",
+    "music": "music-market",
+    "crowd": "crowd",
+    "crowdGain": 0.42,
+    "environment": [],
+    "occasionalCue": null
+  },
+  {
+    "stage": 5,
+    "name": "秋色の古本市",
+    "music": "music-market",
+    "crowd": "crowd",
+    "crowdGain": 0.28,
+    "environment": [
+      "birds"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 6,
+    "name": "雪のマーケット",
+    "music": "music-snow",
+    "crowd": "crowd",
+    "crowdGain": 0.3,
+    "environment": [
+      "wind"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 7,
+    "name": "星灯りのお祭り",
+    "music": "music-magic",
+    "crowd": "crowd",
+    "crowdGain": 0.4,
+    "environment": [
+      "wind"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 8,
+    "name": "坂道の温泉街",
+    "music": "music-magic",
+    "crowd": "crowd",
+    "crowdGain": 0.26,
+    "environment": [
+      "waves",
+      "birds"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 9,
+    "name": "大きな鉄道駅",
+    "music": "music-city",
+    "crowd": "crowd",
+    "crowdGain": 0.44,
+    "environment": [
+      "train"
+    ],
+    "occasionalCue": "whistle"
+  },
+  {
+    "stage": 10,
+    "name": "運河と橋の街",
+    "music": "music-water",
+    "crowd": "crowd",
+    "crowdGain": 0.33,
+    "environment": [
+      "waves"
+    ],
+    "occasionalCue": "whistle"
+  },
+  {
+    "stage": 11,
+    "name": "収穫祭の農園",
+    "music": "music-garden",
+    "crowd": "crowd",
+    "crowdGain": 0.28,
+    "environment": [
+      "birds",
+      "wind"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 12,
+    "name": "大きな遊園地",
+    "music": "music-town",
+    "crowd": "crowd",
+    "crowdGain": 0.48,
+    "environment": [
+      "machine"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 13,
+    "name": "森の動物園",
+    "music": "music-garden",
+    "crowd": "crowd",
+    "crowdGain": 0.34,
+    "environment": [
+      "birds"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 14,
+    "name": "映画撮影スタジオ",
+    "music": "music-city",
+    "crowd": "crowd",
+    "crowdGain": 0.31,
+    "environment": [
+      "machine"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 15,
+    "name": "飛行船の港",
+    "music": "music-water",
+    "crowd": "crowd",
+    "crowdGain": 0.29,
+    "environment": [
+      "wind",
+      "machine"
+    ],
+    "occasionalCue": "whistle"
+  },
+  {
+    "stage": 16,
+    "name": "大きな博物館",
+    "music": "music-market",
+    "crowd": "crowd",
+    "crowdGain": 0.19,
+    "environment": [],
+    "occasionalCue": null
+  },
+  {
+    "stage": 17,
+    "name": "時計仕掛けの工房街",
+    "music": "music-city",
+    "crowd": "crowd",
+    "crowdGain": 0.31,
+    "environment": [
+      "clockwork",
+      "machine"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 18,
+    "name": "砂漠のバザール",
+    "music": "music-market",
+    "crowd": "crowd",
+    "crowdGain": 0.4,
+    "environment": [
+      "wind"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 19,
+    "name": "雪山のリゾート",
+    "music": "music-snow",
+    "crowd": "crowd",
+    "crowdGain": 0.26,
+    "environment": [
+      "wind"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 20,
+    "name": "海洋研究都市",
+    "music": "music-water",
+    "crowd": "crowd",
+    "crowdGain": 0.22,
+    "environment": [
+      "waves",
+      "machine"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 21,
+    "name": "雲の上の街",
+    "music": "music-magic",
+    "crowd": "crowd",
+    "crowdGain": 0.2,
+    "environment": [
+      "wind",
+      "birds"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 22,
+    "name": "魔法学校",
+    "music": "music-magic",
+    "crowd": "crowd",
+    "crowdGain": 0.26,
+    "environment": [
+      "clockwork"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 23,
+    "name": "昼と夜の大都会",
+    "music": "music-city",
+    "crowd": "crowd",
+    "crowdGain": 0.44,
+    "environment": [
+      "train"
+    ],
+    "occasionalCue": null
+  },
+  {
+    "stage": 24,
+    "name": "世界のお祭り大集合",
+    "music": "music-town",
+    "crowd": "crowd",
+    "crowdGain": 0.5,
+    "environment": [
+      "birds",
+      "waves"
+    ],
+    "occasionalCue": null
+  }
+]

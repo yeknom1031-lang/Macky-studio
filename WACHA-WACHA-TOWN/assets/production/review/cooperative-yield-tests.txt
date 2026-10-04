@@ -1,0 +1,60 @@
+✔ residents give way without persistent overlap in S10 at 10 Hz (3074.250375ms)
+ℹ maximum 2.600 seconds
+✔ residents give way without persistent overlap in S10 at 30 Hz (4874.668042ms)
+ℹ maximum 2.467 seconds
+✔ residents give way without persistent overlap in S10 at 60 Hz (8983.801666ms)
+ℹ maximum 2.233 seconds
+✔ residents give way without persistent overlap in S10 at browser first frame (2278.400583ms)
+ℹ maximum 2.700 seconds
+✔ residents give way without persistent overlap in S4 at 10 Hz (925.378792ms)
+ℹ maximum 2.300 seconds
+✔ residents give way without persistent overlap in S4 at 30 Hz (2815.911584ms)
+ℹ maximum 2.133 seconds
+✔ residents give way without persistent overlap in S4 at 60 Hz (4520.217458ms)
+ℹ maximum 1.867 seconds
+✔ residents give way without persistent overlap in S4 at browser first frame (1024.7875ms)
+ℹ maximum 2.217 seconds
+✔ ready stage contains original unique designs, 100 exclusive people, 5 photographers, no palettes (555.665417ms)
+✔ missing artwork cannot be silently replaced by repeats (154.554ms)
+✔ photographers give one ticket each, exactly five; wrong touches cost time and target wins (61.34225ms)
+✔ photo costs a found ticket, snapshots the target, waits 3 game seconds and pauses fairly (568.894791ms)
+✔ controller control is optional and disconnect hands the target back to AI without pausing (1346.216083ms)
+✔ a long simulation stays finite, uncovers bodies within three seconds and expires at 180 (20441.949084ms)
+✔ crowd yields to a stationary controlled target without dragging that player (366.377ms)
+✔ second-floor interactions use stair edges on entry and exit (2813.425458ms)
+✔ boats remain on their water route and board at the dock (4591.592792ms)
+✔ air rides lift passengers, cruise above the ground and land before boarding (4063.863667ms)
+✔ role-specific actions only use matching places, while existing occupants can always leave (48.306917ms)
+✔ ground walkers uncover a stopped passenger without moving the passenger or the vehicle (335.51725ms)
+✔ a manually controlled resident keeps animating while using painted equipment (37.787875ms)
+✔ a slow resident can leave a narrow dead end within three seconds without pushing the player or crossing the floor boundary (184.310208ms)
+ℹ height 1, gap 8: 1.3 seconds maximum overlap
+ℹ height 1, gap 10: 1.3 seconds maximum overlap
+ℹ height 1.13, gap 10: 1.4 seconds maximum overlap
+ℹ height 1.13, gap 12: 1.4 seconds maximum overlap
+✔ controller takeover cancels an active floor escape without imposing automatic movement (19.09225ms)
+✔ the viewport inset never clamps a valid narrow floor position into a wall (53.794875ms)
+✔ swimming animals keep their measured water route near the viewport edge (32.663875ms)
+✔ stages without a measured water route use land and air animals while preserving the complete unique cast (966.384667ms)
+✔ a walker yields to both passengers of a moving vehicle instead of escaping into the second seat (20.37875ms)
+✔ controller takeover immediately clears a cooperative pause and accepts movement (18.822125ms)
+✔ cancelling a distant upstairs destination keeps the resident on their current ground floor (125.24375ms)
+✔ boarding cannot pull a resident down from another floor and clears completed staircase state at ground level (131.146833ms)
+✔ overlap recovery never ejects a seated passenger into the street (47.891042ms)
+✔ a rejected manual stair placement never changes the current floor or node (65.802875ms)
+✔ ground vehicles route around indoor shortcuts and all stages spawn them on streets (3000.915209ms)
+✔ interrupting an upstairs stair transit retains its upper floor even when the ground entry is closer (31.329875ms)
+✔ an explicit ID subset uses only those workers and writes a separate report (32.09625ms)
+✔ the default path retains every ready stage and the original full report (6.267167ms)
+✔ invalid, repeated, out-of-range and unready IDs are rejected before workers run (66.750917ms)
+✔ a selected-stage failure is recorded and still fails the run (7.288959ms)
+✔ the garden boat and canal boats follow water without taking flight (426.100625ms)
+✔ observation, elevating, mountain, and sky gondolas retain airborne movement (821.013666ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36227.364709

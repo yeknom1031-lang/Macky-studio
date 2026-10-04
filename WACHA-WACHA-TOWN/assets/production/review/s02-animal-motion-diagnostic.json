@@ -1,0 +1,431 @@
+{
+  "at": "2026-10-04T13:24:08.561Z",
+  "stage": "S02",
+  "seed": 246811,
+  "dataSha256": "6c1c3d46dd3ed7007ab53f4440ecde1bce034c2e36acf33812ff51f27c01ccc3",
+  "maxOverlap": 2.600000000000001,
+  "samples": [
+    {
+      "id": 12,
+      "name": "細い体と縮れ毛の猫",
+      "habitat": "ground",
+      "start": [
+        828,
+        228
+      ],
+      "last": [
+        456.91070374454165,
+        792.3467279652328
+      ],
+      "maxDisplacement": 715.6212453000004,
+      "totalMovement": 3103.049278290506,
+      "activities": [
+        "acting",
+        "walking",
+        "working"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 675.4217165300771,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 15,
+      "name": "ダックス",
+      "habitat": "ground",
+      "start": [
+        756,
+        636
+      ],
+      "last": [
+        623.5086056262469,
+        504.1052745942043
+      ],
+      "maxDisplacement": 197.0765175729407,
+      "totalMovement": 1421.2281628237397,
+      "activities": [
+        "acting",
+        "walking"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 186.9496942307519,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 73,
+      "name": "ミニブタ",
+      "habitat": "ground",
+      "start": [
+        1452,
+        852
+      ],
+      "last": [
+        1460.0136309723046,
+        886.6995528870466
+      ],
+      "maxDisplacement": 73.50077272759957,
+      "totalMovement": 1137.8594474277022,
+      "activities": [
+        "working",
+        "walking",
+        "yielding"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 35.612880421572505,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 124,
+      "name": "細長い川魚",
+      "habitat": "water",
+      "start": [
+        252,
+        540
+      ],
+      "last": [
+        215.37328904593477,
+        504
+      ],
+      "maxDisplacement": 123.44534540397548,
+      "totalMovement": 1356.6421205414551,
+      "activities": [
+        "walking"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 51.35675179869383,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 126,
+      "name": "カエル",
+      "habitat": "ground",
+      "start": [
+        540,
+        900
+      ],
+      "last": [
+        401.8770154467091,
+        766.506001866581
+      ],
+      "maxDisplacement": 246.9200271610211,
+      "totalMovement": 1820.826408312865,
+      "activities": [
+        "working",
+        "walking",
+        "yielding"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 192.09009969166533,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 174,
+      "name": "ふとっちょ茶トラ",
+      "habitat": "ground",
+      "start": [
+        1392,
+        240
+      ],
+      "last": [
+        1392,
+        240
+      ],
+      "maxDisplacement": 161.21452938926225,
+      "totalMovement": 1637.9209043131727,
+      "activities": [
+        "working",
+        "walking",
+        "yielding",
+        "acting"
+      ],
+      "finalActivity": "working",
+      "finalDisplacement": 0,
+      "station": 36,
+      "oldCheckPassed": false
+    },
+    {
+      "id": 197,
+      "name": "ビーバー",
+      "habitat": "ground",
+      "start": [
+        1032,
+        396
+      ],
+      "last": [
+        1014.2349962221059,
+        358.094026583942
+      ],
+      "maxDisplacement": 112.56789114164178,
+      "totalMovement": 1912.736992944067,
+      "activities": [
+        "acting",
+        "walking",
+        "yielding"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 41.862371885112836,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 206,
+      "name": "ミツバチ",
+      "habitat": "air",
+      "start": [
+        1442.5989883411676,
+        239.15719924448058
+      ],
+      "last": [
+        886.7682691326506,
+        643.7117461210422
+      ],
+      "maxDisplacement": 1101.2398254908096,
+      "totalMovement": 3797.283366154635,
+      "activities": [
+        "walking"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 687.46794093569,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 227,
+      "name": "ハスキー",
+      "habitat": "ground",
+      "start": [
+        1416,
+        336
+      ],
+      "last": [
+        865.3595512960262,
+        153.41547640474295
+      ],
+      "maxDisplacement": 585.2649260510362,
+      "totalMovement": 3259.6275018113465,
+      "activities": [
+        "acting",
+        "walking",
+        "working",
+        "yielding"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 580.1224112249246,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 277,
+      "name": "アヒル",
+      "habitat": "ground",
+      "start": [
+        1236,
+        708
+      ],
+      "last": [
+        1257.7378694259023,
+        668.4409259460846
+      ],
+      "maxDisplacement": 214.75154953683,
+      "totalMovement": 2413.39759747491,
+      "activities": [
+        "acting",
+        "walking",
+        "yielding"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 45.13818014919015,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 285,
+      "name": "カワセミ",
+      "habitat": "air",
+      "start": [
+        775.1869402434677,
+        712.1034303125925
+      ],
+      "last": [
+        864.5248211739906,
+        682.6533527427138
+      ],
+      "maxDisplacement": 722.0934136444323,
+      "totalMovement": 7245.666665870673,
+      "activities": [
+        "walking"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 94.06680624975088,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 339,
+      "name": "トンボ",
+      "habitat": "air",
+      "start": [
+        1375.0598317943513,
+        570.0117368916981
+      ],
+      "last": [
+        1395.552382638979,
+        150.5935178408464
+      ],
+      "maxDisplacement": 1338.9883263910012,
+      "totalMovement": 8930.726989528283,
+      "activities": [
+        "walking"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 419.91854818751204,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 370,
+      "name": "カワウソ",
+      "habitat": "ground",
+      "start": [
+        1104,
+        492
+      ],
+      "last": [
+        954.2273382538873,
+        631.0565260991963
+      ],
+      "maxDisplacement": 284.81750805999513,
+      "totalMovement": 2073.2808686264743,
+      "activities": [
+        "acting",
+        "walking",
+        "yielding"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 204.37359823933215,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 388,
+      "name": "柴犬",
+      "habitat": "ground",
+      "start": [
+        1243.1085553982557,
+        523.3420047443515
+      ],
+      "last": [
+        1275.286279254838,
+        683.2448042499354
+      ],
+      "maxDisplacement": 337.3842056920033,
+      "totalMovement": 1750.851107597906,
+      "activities": [
+        "acting",
+        "walking",
+        "yielding"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 163.1082806062079,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 406,
+      "name": "シジュウカラ",
+      "habitat": "air",
+      "start": [
+        1065.195102840662,
+        421.0830952269025
+      ],
+      "last": [
+        1435.7503912573873,
+        48.656705059184326
+      ],
+      "maxDisplacement": 1093.4329039150177,
+      "totalMovement": 7183.748083637714,
+      "activities": [
+        "walking"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 525.369049209182,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 456,
+      "name": "陸ガメ",
+      "habitat": "ground",
+      "start": [
+        516,
+        612
+      ],
+      "last": [
+        252,
+        324
+      ],
+      "maxDisplacement": 390.69169430639295,
+      "totalMovement": 3801.2481175392927,
+      "activities": [
+        "acting",
+        "walking",
+        "yielding"
+      ],
+      "finalActivity": "acting",
+      "finalDisplacement": 390.69169430639295,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 477,
+      "name": "大きな羽の蝶",
+      "habitat": "air",
+      "start": [
+        195.31450785137713,
+        415.60755327157676
+      ],
+      "last": [
+        1091.6214754158805,
+        501.9501279690967
+      ],
+      "maxDisplacement": 1430.0996228567356,
+      "totalMovement": 8731.170679070836,
+      "activities": [
+        "walking"
+      ],
+      "finalActivity": "walking",
+      "finalDisplacement": 900.4561179258391,
+      "station": null,
+      "oldCheckPassed": true
+    },
+    {
+      "id": 482,
+      "name": "ラッコ",
+      "habitat": "ground",
+      "start": [
+        1032,
+        204
+      ],
+      "last": [
+        984,
+        240
+      ],
+      "maxDisplacement": 174.41219370896656,
+      "totalMovement": 1487.1779975249149,
+      "activities": [
+        "acting",
+        "walking",
+        "working",
+        "yielding"
+      ],
+      "finalActivity": "working",
+      "finalDisplacement": 60,
+      "station": 22,
+      "oldCheckPassed": true
+    }
+  ]
+}

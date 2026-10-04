@@ -1,0 +1,2302 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-04T12:06:52.717755+00:00",
+  "generator": "built-in image_gen.imagegen",
+  "purpose": "Generated cutaway backgrounds and precise overlapping detail redraws for Wacha Wacha Town v2.1",
+  "counts": {
+    "backgrounds": 24,
+    "details": 52,
+    "newImages": 76,
+    "previousGeneratedImages": 469,
+    "totalGeneratedImages": 545,
+    "stagesWithBackgrounds": 24,
+    "stagesWithFourDetails": 13
+  },
+  "preservedPreviousArtwork": {
+    "count": 469,
+    "sourceDirectory": "assets/production/source",
+    "auditReport": "assets/production/review/artwork-audit.json",
+    "hashVerifiedAgainstAudit": true,
+    "unchanged": 469,
+    "policy": "All 469 previously accepted generated originals remain preserved unchanged. New artwork is stored separately under assets/production/quality/source; existing character sheets are reused."
+  },
+  "detailLayout": {
+    "stageRange": "S12–S24",
+    "tilesPerStage": 4,
+    "bounds": [
+      [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      [
+        0.45,
+        0.45,
+        1,
+        1
+      ]
+    ],
+    "overlap": 0.1,
+    "effectiveWidthPixels": 3040,
+    "note": "Effective detail width is tile pixels divided by its 55% map width, not the size of any one generated output."
+  },
+  "validation": {
+    "passed": true,
+    "decodedPNG": 76,
+    "sourceCopyHashMatches": 76,
+    "receiptAndReferencePresent": 76,
+    "errors": []
+  },
+  "images": [
+    {
+      "id": "S01-background",
+      "type": "background",
+      "stage": "S01",
+      "index": null,
+      "file": "assets/production/quality/source/S01-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "a6d238d7653cd83d3aa440328663aa686a599ab9ce285984c0fd580ddb99f829",
+      "receipt": "assets/production/quality/receipts/S01.json",
+      "reference": "assets/01-festival.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-fd4d55e1-b5ce-4c77-a819-95a1c36f3242.png",
+      "originalSha256": "a6d238d7653cd83d3aa440328663aa686a599ab9ce285984c0fd580ddb99f829",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S02-background",
+      "type": "background",
+      "stage": "S02",
+      "index": null,
+      "file": "assets/production/quality/source/S02-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "a78caf8200900115c8b9401740f0dc912e2b736fb44e033047498af7fa9381b8",
+      "receipt": "assets/production/quality/receipts/S02.json",
+      "reference": "assets/02-garden.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-36fbd2f4-aad2-46aa-81a0-b4212b5b0017.png",
+      "originalSha256": "a78caf8200900115c8b9401740f0dc912e2b736fb44e033047498af7fa9381b8",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S03-background",
+      "type": "background",
+      "stage": "S03",
+      "index": null,
+      "file": "assets/production/quality/source/S03-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "b89a76b9c6925c94f5857f2df32768495622665fd0d66f988f9b7f4ba0e3efb3",
+      "receipt": "assets/production/quality/receipts/S03.json",
+      "reference": "assets/03-seaside.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-3393a3bd-f177-48f4-a2d8-659decb5a847.png",
+      "originalSha256": "b89a76b9c6925c94f5857f2df32768495622665fd0d66f988f9b7f4ba0e3efb3",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S04-background",
+      "type": "background",
+      "stage": "S04",
+      "index": null,
+      "file": "assets/production/quality/source/S04-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "074df5f88178c75559246cbb7d4553322c065844a3ec51b27a2ff3c7031d7fd9",
+      "receipt": "assets/production/quality/receipts/S04.json",
+      "reference": "assets/04-sweets.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-ccd46d66-a34c-463d-a749-d613016f9d50.png",
+      "originalSha256": "074df5f88178c75559246cbb7d4553322c065844a3ec51b27a2ff3c7031d7fd9",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S05-background",
+      "type": "background",
+      "stage": "S05",
+      "index": null,
+      "file": "assets/production/quality/source/S05-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "2622f702646a82199f977b1b56b76fa402180eb4ed4cf0a00b7d9b5ff86a586b",
+      "receipt": "assets/production/quality/receipts/S05.json",
+      "reference": "assets/05-autumn.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-fe93492b-0dfe-49d6-a8b7-ce9a66fc5cc6.png",
+      "originalSha256": "2622f702646a82199f977b1b56b76fa402180eb4ed4cf0a00b7d9b5ff86a586b",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S06-background",
+      "type": "background",
+      "stage": "S06",
+      "index": null,
+      "file": "assets/production/quality/source/S06-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "3963fb1440aec77619a0fc80b272c734026ab83628bff0e4297d2ddfb0623eaa",
+      "receipt": "assets/production/quality/receipts/S06.json",
+      "reference": "assets/06-snow.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-2842cc4c-39d0-466e-9c59-9b2c6b109bc9.png",
+      "originalSha256": "3963fb1440aec77619a0fc80b272c734026ab83628bff0e4297d2ddfb0623eaa",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S07-background",
+      "type": "background",
+      "stage": "S07",
+      "index": null,
+      "file": "assets/production/quality/source/S07-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "c87cbfc9e0533374693dad6c01515e67e145bf6af9471568953ad1953b90918f",
+      "receipt": "assets/production/quality/receipts/S07.json",
+      "reference": "assets/07-lantern.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-a63f74f6-9624-4013-84cc-6276f3c05a07.png",
+      "originalSha256": "c87cbfc9e0533374693dad6c01515e67e145bf6af9471568953ad1953b90918f",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S08-background",
+      "type": "background",
+      "stage": "S08",
+      "index": null,
+      "file": "assets/production/quality/source/S08-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "4896189083daeb799fe2788e9f20caea0f119238be1620e242a77a7d232f5fa4",
+      "receipt": "assets/production/quality/receipts/S08.json",
+      "reference": "assets/production/source/S08-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-3570e575-2d39-4482-8329-23b581a539f7.png",
+      "originalSha256": "4896189083daeb799fe2788e9f20caea0f119238be1620e242a77a7d232f5fa4",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S09-background",
+      "type": "background",
+      "stage": "S09",
+      "index": null,
+      "file": "assets/production/quality/source/S09-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "80e0027627475829d77ff3959dad91d66548f2bc4270a8ab05db83d79624faff",
+      "receipt": "assets/production/quality/receipts/S09.json",
+      "reference": "assets/production/source/S09-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-f0cf4113-e838-4c3c-87c6-9bfd8c5d907a.png",
+      "originalSha256": "80e0027627475829d77ff3959dad91d66548f2bc4270a8ab05db83d79624faff",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S10-background",
+      "type": "background",
+      "stage": "S10",
+      "index": null,
+      "file": "assets/production/quality/source/S10-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "ec5746c89b05a56f7bd8a22ff18748f8493e394644494e0a5b177ed0d61d6f5c",
+      "receipt": "assets/production/quality/receipts/S10.json",
+      "reference": "assets/production/source/S10-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-806ffb5a-1863-4df1-af75-d7af97ffaa4e.png",
+      "originalSha256": "ec5746c89b05a56f7bd8a22ff18748f8493e394644494e0a5b177ed0d61d6f5c",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S11-background",
+      "type": "background",
+      "stage": "S11",
+      "index": null,
+      "file": "assets/production/quality/source/S11-background.png",
+      "pixelDimensions": [
+        1672,
+        940
+      ],
+      "mode": "RGB",
+      "sha256": "d7b458a20de1747224782f474bcca855b1732cd3fda3e704a91d06bbd890475c",
+      "receipt": "assets/production/quality/receipts/S11.json",
+      "reference": "assets/production/source/S11-background.png",
+      "referencePixelDimensions": [
+        1672,
+        940
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-2e5c7cd4-134c-4aa1-a337-833ade9db8e3.png",
+      "originalSha256": "d7b458a20de1747224782f474bcca855b1732cd3fda3e704a91d06bbd890475c",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S12-background",
+      "type": "background",
+      "stage": "S12",
+      "index": null,
+      "file": "assets/production/quality/source/S12-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "44e739b472492029895ea4f920d1e5304d1f14071bb50339c8d7287e096aa590",
+      "receipt": "assets/production/quality/receipts/S12.json",
+      "reference": "assets/production/source/S12-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-29b40adf-f2d3-4c1f-9a68-55c0e9c378d3.png",
+      "originalSha256": "44e739b472492029895ea4f920d1e5304d1f14071bb50339c8d7287e096aa590",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S12-detail-0",
+      "type": "detail",
+      "stage": "S12",
+      "index": 0,
+      "file": "assets/production/quality/source/S12-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "ef79c3aca075d9cc87816bfdb62a02fa9f8430ee71186bc1cf3c5115e2bf0e25",
+      "receipt": "assets/production/quality/receipts/S12-detail-0.json",
+      "reference": "assets/production/quality/references/S12-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-be649860-c4ab-4ed2-ba9c-424d587b1423.png",
+      "originalSha256": "ef79c3aca075d9cc87816bfdb62a02fa9f8430ee71186bc1cf3c5115e2bf0e25",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S12-detail-1",
+      "type": "detail",
+      "stage": "S12",
+      "index": 1,
+      "file": "assets/production/quality/source/S12-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "3d44512924ac858edf6d774ec35ae825e090fcd5a1885e4099a0579f54b507c8",
+      "receipt": "assets/production/quality/receipts/S12-detail-1.json",
+      "reference": "assets/production/quality/references/S12-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-ea2a5a0b-92ca-452b-bfb1-98e36b8eb0b7.png",
+      "originalSha256": "3d44512924ac858edf6d774ec35ae825e090fcd5a1885e4099a0579f54b507c8",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S12-detail-2",
+      "type": "detail",
+      "stage": "S12",
+      "index": 2,
+      "file": "assets/production/quality/source/S12-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "977ae75d0520126e74934c7275ba57b036805d16eb97dad35f422fe58a84ae9f",
+      "receipt": "assets/production/quality/receipts/S12-detail-2.json",
+      "reference": "assets/production/quality/references/S12-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-b5a8b888-f5ad-4db4-a9d6-084bf881ca0f.png",
+      "originalSha256": "977ae75d0520126e74934c7275ba57b036805d16eb97dad35f422fe58a84ae9f",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S12-detail-3",
+      "type": "detail",
+      "stage": "S12",
+      "index": 3,
+      "file": "assets/production/quality/source/S12-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "9d1c209de4468d2208270e884684ec7e7b1c19de50f14713fdde6d6786bb470b",
+      "receipt": "assets/production/quality/receipts/S12-detail-3.json",
+      "reference": "assets/production/quality/references/S12-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-010c66e9-d147-4579-8777-c625e7cd947c.png",
+      "originalSha256": "9d1c209de4468d2208270e884684ec7e7b1c19de50f14713fdde6d6786bb470b",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S13-background",
+      "type": "background",
+      "stage": "S13",
+      "index": null,
+      "file": "assets/production/quality/source/S13-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "f54434d3f0516eccd864fa35af94a4c01fa96423ad95b838db1466c075a96c7c",
+      "receipt": "assets/production/quality/receipts/S13.json",
+      "reference": "assets/production/source/S13-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-51f68892-e911-4eea-87b1-8b6f0151cc09.png",
+      "originalSha256": "f54434d3f0516eccd864fa35af94a4c01fa96423ad95b838db1466c075a96c7c",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S13-detail-0",
+      "type": "detail",
+      "stage": "S13",
+      "index": 0,
+      "file": "assets/production/quality/source/S13-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "97e32371c441968abc47730bd78ef86557bf0ffe77b075bea3a403f8898d79b7",
+      "receipt": "assets/production/quality/receipts/S13-detail-0.json",
+      "reference": "assets/production/quality/references/S13-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-959239c7-b589-43d4-b03a-7f04363828d4.png",
+      "originalSha256": "97e32371c441968abc47730bd78ef86557bf0ffe77b075bea3a403f8898d79b7",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S13-detail-1",
+      "type": "detail",
+      "stage": "S13",
+      "index": 1,
+      "file": "assets/production/quality/source/S13-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "8df288a2ef57a1dfef02489c3884baa0d3027ba1013fbb2e3570a31240a41d96",
+      "receipt": "assets/production/quality/receipts/S13-detail-1.json",
+      "reference": "assets/production/quality/references/S13-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-2f3cbf37-2bfa-44a5-bb70-97d992f470e4.png",
+      "originalSha256": "8df288a2ef57a1dfef02489c3884baa0d3027ba1013fbb2e3570a31240a41d96",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S13-detail-2",
+      "type": "detail",
+      "stage": "S13",
+      "index": 2,
+      "file": "assets/production/quality/source/S13-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "82968e632534ede16431a45d6d3d47fa4d6e8a6dbe0e7fb31df6bdc88785b4fb",
+      "receipt": "assets/production/quality/receipts/S13-detail-2.json",
+      "reference": "assets/production/quality/references/S13-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-db7a07cd-c56a-4dc0-ba69-4a1d519afa13.png",
+      "originalSha256": "82968e632534ede16431a45d6d3d47fa4d6e8a6dbe0e7fb31df6bdc88785b4fb",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S13-detail-3",
+      "type": "detail",
+      "stage": "S13",
+      "index": 3,
+      "file": "assets/production/quality/source/S13-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "c5a184311cbf6c81c87addd4e9065bd00dbf7199ba2748e28b1476011b8dccf3",
+      "receipt": "assets/production/quality/receipts/S13-detail-3.json",
+      "reference": "assets/production/quality/references/S13-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-54b55a84-ef33-4389-afa8-27121dba7bbc.png",
+      "originalSha256": "c5a184311cbf6c81c87addd4e9065bd00dbf7199ba2748e28b1476011b8dccf3",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S14-background",
+      "type": "background",
+      "stage": "S14",
+      "index": null,
+      "file": "assets/production/quality/source/S14-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "b07abdb1e7054a8c25818723dcbf3dd87e7feb2c6ea090a001cddd4c0be0916d",
+      "receipt": "assets/production/quality/receipts/S14.json",
+      "reference": "assets/production/source/S14-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-4cb90e5a-159e-47c1-983c-31086f1140b2.png",
+      "originalSha256": "b07abdb1e7054a8c25818723dcbf3dd87e7feb2c6ea090a001cddd4c0be0916d",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S14-detail-0",
+      "type": "detail",
+      "stage": "S14",
+      "index": 0,
+      "file": "assets/production/quality/source/S14-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "a1009b364faf6b0a1c5b547803b5fdaa480baf369c30e70a2d94e5f7408bc945",
+      "receipt": "assets/production/quality/receipts/S14-detail-0.json",
+      "reference": "assets/production/quality/references/S14-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-2637784e-0baa-4523-b56b-3b860600f92c.png",
+      "originalSha256": "a1009b364faf6b0a1c5b547803b5fdaa480baf369c30e70a2d94e5f7408bc945",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S14-detail-1",
+      "type": "detail",
+      "stage": "S14",
+      "index": 1,
+      "file": "assets/production/quality/source/S14-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "9a22c0b546ba9aa16f5b86a7b1c631077e45ee910b3ce24a7157f3651b91fc23",
+      "receipt": "assets/production/quality/receipts/S14-detail-1.json",
+      "reference": "assets/production/quality/references/S14-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-cf3ecee2-0a12-4275-9bbe-0ff5ddacf087.png",
+      "originalSha256": "9a22c0b546ba9aa16f5b86a7b1c631077e45ee910b3ce24a7157f3651b91fc23",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S14-detail-2",
+      "type": "detail",
+      "stage": "S14",
+      "index": 2,
+      "file": "assets/production/quality/source/S14-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "f962c8434a976f0dca02d5b52e2dca45b86946df773834d2f905b8ebeb78c01c",
+      "receipt": "assets/production/quality/receipts/S14-detail-2.json",
+      "reference": "assets/production/quality/references/S14-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-bc1f7306-4623-4f63-b0a6-745bece26683.png",
+      "originalSha256": "f962c8434a976f0dca02d5b52e2dca45b86946df773834d2f905b8ebeb78c01c",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S14-detail-3",
+      "type": "detail",
+      "stage": "S14",
+      "index": 3,
+      "file": "assets/production/quality/source/S14-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "1c3915da071486c07d7fe35786e1ca7f9e64b4e98d374c31f02f84f5718b773e",
+      "receipt": "assets/production/quality/receipts/S14-detail-3.json",
+      "reference": "assets/production/quality/references/S14-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-61dfb517-8258-408f-9873-e9a3357ee5e7.png",
+      "originalSha256": "1c3915da071486c07d7fe35786e1ca7f9e64b4e98d374c31f02f84f5718b773e",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S15-background",
+      "type": "background",
+      "stage": "S15",
+      "index": null,
+      "file": "assets/production/quality/source/S15-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "25d1ba4a7cc727be22684d9abc4738cda838246143114e1e0718c73bd4521e38",
+      "receipt": "assets/production/quality/receipts/S15.json",
+      "reference": "assets/production/source/S15-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-ce44a1f9-43e4-403f-8564-c5bd1ec35af5.png",
+      "originalSha256": "25d1ba4a7cc727be22684d9abc4738cda838246143114e1e0718c73bd4521e38",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S15-detail-0",
+      "type": "detail",
+      "stage": "S15",
+      "index": 0,
+      "file": "assets/production/quality/source/S15-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "4be78d2151fca1c95004e3ff15932df127c24ae7a1b3637cb4077e79e5e9b344",
+      "receipt": "assets/production/quality/receipts/S15-detail-0.json",
+      "reference": "assets/production/quality/references/S15-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-e0d19613-15ba-415a-8e71-7ab909ddb6d6.png",
+      "originalSha256": "4be78d2151fca1c95004e3ff15932df127c24ae7a1b3637cb4077e79e5e9b344",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S15-detail-1",
+      "type": "detail",
+      "stage": "S15",
+      "index": 1,
+      "file": "assets/production/quality/source/S15-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "feaed4965dc96fbc18d4cfb2ba0de3e3f54d68d0dcd5d67b9f28bcacd9e3733f",
+      "receipt": "assets/production/quality/receipts/S15-detail-1.json",
+      "reference": "assets/production/quality/references/S15-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-573f3ee9-1e6c-46d1-bfdf-9fd2a2d34c28.png",
+      "originalSha256": "feaed4965dc96fbc18d4cfb2ba0de3e3f54d68d0dcd5d67b9f28bcacd9e3733f",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S15-detail-2",
+      "type": "detail",
+      "stage": "S15",
+      "index": 2,
+      "file": "assets/production/quality/source/S15-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "edb984659f9a2090e177169b377779d2a52cf6630e41d37bf93a414fa1bdf1fd",
+      "receipt": "assets/production/quality/receipts/S15-detail-2.json",
+      "reference": "assets/production/quality/references/S15-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-7376a0d4-4538-420b-8004-166188caa88d.png",
+      "originalSha256": "edb984659f9a2090e177169b377779d2a52cf6630e41d37bf93a414fa1bdf1fd",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S15-detail-3",
+      "type": "detail",
+      "stage": "S15",
+      "index": 3,
+      "file": "assets/production/quality/source/S15-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "9bb5395d147c47b08d05df545f550f72d1a2feea5d352deb06215dddb31a44f8",
+      "receipt": "assets/production/quality/receipts/S15-detail-3.json",
+      "reference": "assets/production/quality/references/S15-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-9c7cf853-b377-4b21-af76-aafbbad113ef.png",
+      "originalSha256": "9bb5395d147c47b08d05df545f550f72d1a2feea5d352deb06215dddb31a44f8",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S16-background",
+      "type": "background",
+      "stage": "S16",
+      "index": null,
+      "file": "assets/production/quality/source/S16-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "0deefb35d453e2c503867d3b6916716d3dcf4c22766059c96032d0c1f47fd6f6",
+      "receipt": "assets/production/quality/receipts/S16.json",
+      "reference": "assets/production/source/S16-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-99d5a453-0803-4793-8dae-74be4ca46b14.png",
+      "originalSha256": "0deefb35d453e2c503867d3b6916716d3dcf4c22766059c96032d0c1f47fd6f6",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S16-detail-0",
+      "type": "detail",
+      "stage": "S16",
+      "index": 0,
+      "file": "assets/production/quality/source/S16-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "661cb7d1197ec3c9dc6b023bc170b5b0aabf5ffa2a7c3b2be2b410ab56d5032f",
+      "receipt": "assets/production/quality/receipts/S16-detail-0.json",
+      "reference": "assets/production/quality/references/S16-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-e82ce551-1025-44e8-8c4e-1e75e6ad8ab9.png",
+      "originalSha256": "661cb7d1197ec3c9dc6b023bc170b5b0aabf5ffa2a7c3b2be2b410ab56d5032f",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S16-detail-1",
+      "type": "detail",
+      "stage": "S16",
+      "index": 1,
+      "file": "assets/production/quality/source/S16-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "7c609185f34c5cfd1cafd9b9d4e87d60d4dac18c2fadc8b9f3a1bf01ab5dff91",
+      "receipt": "assets/production/quality/receipts/S16-detail-1.json",
+      "reference": "assets/production/quality/references/S16-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-9c647c8b-cc4b-4220-9585-1acad9205e72.png",
+      "originalSha256": "7c609185f34c5cfd1cafd9b9d4e87d60d4dac18c2fadc8b9f3a1bf01ab5dff91",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S16-detail-2",
+      "type": "detail",
+      "stage": "S16",
+      "index": 2,
+      "file": "assets/production/quality/source/S16-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "4d898dd9b3e29a5ae253c7947c610beaa3a9e49f0944a69725f4b8bf874b9199",
+      "receipt": "assets/production/quality/receipts/S16-detail-2.json",
+      "reference": "assets/production/quality/references/S16-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-edbfb28f-1043-4586-a961-25126008a70c.png",
+      "originalSha256": "4d898dd9b3e29a5ae253c7947c610beaa3a9e49f0944a69725f4b8bf874b9199",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S16-detail-3",
+      "type": "detail",
+      "stage": "S16",
+      "index": 3,
+      "file": "assets/production/quality/source/S16-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "6562a64899aeb16266c3354b22e5a9cbe77e6def57779dde824d3a5fd1ad65ae",
+      "receipt": "assets/production/quality/receipts/S16-detail-3.json",
+      "reference": "assets/production/quality/references/S16-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-9d376185-dc33-4a66-8a36-f7beb37b0033.png",
+      "originalSha256": "6562a64899aeb16266c3354b22e5a9cbe77e6def57779dde824d3a5fd1ad65ae",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S17-background",
+      "type": "background",
+      "stage": "S17",
+      "index": null,
+      "file": "assets/production/quality/source/S17-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "d322df6d872c9f364b6d91be4de9354df631107d5db14b5c1babb47dc5405acf",
+      "receipt": "assets/production/quality/receipts/S17.json",
+      "reference": "assets/production/source/S17-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-f51bdf9a-4be0-488d-a531-51e28a52dba6.png",
+      "originalSha256": "d322df6d872c9f364b6d91be4de9354df631107d5db14b5c1babb47dc5405acf",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S17-detail-0",
+      "type": "detail",
+      "stage": "S17",
+      "index": 0,
+      "file": "assets/production/quality/source/S17-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "eb029961b6ef5e54e858145b33707d95b83d756f90dece2376e15ca10e15f249",
+      "receipt": "assets/production/quality/receipts/S17-detail-0.json",
+      "reference": "assets/production/quality/references/S17-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-8f092df6-e508-4544-a0b9-fad86297bc52.png",
+      "originalSha256": "eb029961b6ef5e54e858145b33707d95b83d756f90dece2376e15ca10e15f249",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S17-detail-1",
+      "type": "detail",
+      "stage": "S17",
+      "index": 1,
+      "file": "assets/production/quality/source/S17-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "87a6c49b29228fb015cc7b5fae19de8e4d9f488ddad6f8cf3fa042c508b98087",
+      "receipt": "assets/production/quality/receipts/S17-detail-1.json",
+      "reference": "assets/production/quality/references/S17-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-564a6a3d-a607-4887-bc3e-683596cb6cab.png",
+      "originalSha256": "87a6c49b29228fb015cc7b5fae19de8e4d9f488ddad6f8cf3fa042c508b98087",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S17-detail-2",
+      "type": "detail",
+      "stage": "S17",
+      "index": 2,
+      "file": "assets/production/quality/source/S17-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "953cce52009dce5893101dbff5c2733264a83ade415ce53636680077498434c6",
+      "receipt": "assets/production/quality/receipts/S17-detail-2.json",
+      "reference": "assets/production/quality/references/S17-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-88d1dd87-9654-4e6c-8055-dcb946278e77.png",
+      "originalSha256": "953cce52009dce5893101dbff5c2733264a83ade415ce53636680077498434c6",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S17-detail-3",
+      "type": "detail",
+      "stage": "S17",
+      "index": 3,
+      "file": "assets/production/quality/source/S17-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "bbf999ac6338fa0502b71800d4148509f3906009c04ffcc96deb2cf1624830b3",
+      "receipt": "assets/production/quality/receipts/S17-detail-3.json",
+      "reference": "assets/production/quality/references/S17-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-6857fa8a-8d0d-438c-b5b5-d3700b868e25.png",
+      "originalSha256": "bbf999ac6338fa0502b71800d4148509f3906009c04ffcc96deb2cf1624830b3",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S18-background",
+      "type": "background",
+      "stage": "S18",
+      "index": null,
+      "file": "assets/production/quality/source/S18-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "0453235cd2ee52066b9052b888a7c24da31c2c0202eb6b121628678ec6580097",
+      "receipt": "assets/production/quality/receipts/S18.json",
+      "reference": "assets/production/source/S18-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-4d30c3bb-ce66-4421-9e8b-9e8b43e075aa.png",
+      "originalSha256": "0453235cd2ee52066b9052b888a7c24da31c2c0202eb6b121628678ec6580097",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S18-detail-0",
+      "type": "detail",
+      "stage": "S18",
+      "index": 0,
+      "file": "assets/production/quality/source/S18-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "91f8e5ead654061252600a6a846b6507a154d64c68b015a259cb9dc789b58f7b",
+      "receipt": "assets/production/quality/receipts/S18-detail-0.json",
+      "reference": "assets/production/quality/references/S18-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-7c1171b1-73e2-4f34-a0fe-a89f86824e54.png",
+      "originalSha256": "91f8e5ead654061252600a6a846b6507a154d64c68b015a259cb9dc789b58f7b",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S18-detail-1",
+      "type": "detail",
+      "stage": "S18",
+      "index": 1,
+      "file": "assets/production/quality/source/S18-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "590f216df79266234d2e2657a0570d8764ccea4f016719047582f5d8eaca210d",
+      "receipt": "assets/production/quality/receipts/S18-detail-1.json",
+      "reference": "assets/production/quality/references/S18-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-64439301-4d49-49bd-a489-a16fa61a3cfa.png",
+      "originalSha256": "590f216df79266234d2e2657a0570d8764ccea4f016719047582f5d8eaca210d",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S18-detail-2",
+      "type": "detail",
+      "stage": "S18",
+      "index": 2,
+      "file": "assets/production/quality/source/S18-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "f3551afa48e6cc7685d369a3e9ec7c5b8c8eecef9e8e086618f440c8d5de2b18",
+      "receipt": "assets/production/quality/receipts/S18-detail-2.json",
+      "reference": "assets/production/quality/references/S18-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-ff2e769c-5954-4a2c-9900-9613602b816d.png",
+      "originalSha256": "f3551afa48e6cc7685d369a3e9ec7c5b8c8eecef9e8e086618f440c8d5de2b18",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S18-detail-3",
+      "type": "detail",
+      "stage": "S18",
+      "index": 3,
+      "file": "assets/production/quality/source/S18-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "e46de7cf94a17db7db6b7621c2aa575e45d44d4a16328e4e88c5ea1b76294b3b",
+      "receipt": "assets/production/quality/receipts/S18-detail-3.json",
+      "reference": "assets/production/quality/references/S18-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-3bba3af7-814f-4f6f-a75e-23d9c7d5d694.png",
+      "originalSha256": "e46de7cf94a17db7db6b7621c2aa575e45d44d4a16328e4e88c5ea1b76294b3b",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S19-background",
+      "type": "background",
+      "stage": "S19",
+      "index": null,
+      "file": "assets/production/quality/source/S19-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "859f79fa4c5b38baae5c91cfa6469b5c0f2688ddea58a602a3cbd5fe6830b2b3",
+      "receipt": "assets/production/quality/receipts/S19.json",
+      "reference": "assets/production/source/S19-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-c0051314-fc9c-489f-b437-6a2b76b9d0b7.png",
+      "originalSha256": "859f79fa4c5b38baae5c91cfa6469b5c0f2688ddea58a602a3cbd5fe6830b2b3",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S19-detail-0",
+      "type": "detail",
+      "stage": "S19",
+      "index": 0,
+      "file": "assets/production/quality/source/S19-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "c8802689095567a5904d35f1e6f19f2674f60551bf0d168dc4d88de42683a65b",
+      "receipt": "assets/production/quality/receipts/S19-detail-0.json",
+      "reference": "assets/production/quality/references/S19-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-52792f61-62ef-445c-b14e-5dd25ce286d6.png",
+      "originalSha256": "c8802689095567a5904d35f1e6f19f2674f60551bf0d168dc4d88de42683a65b",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S19-detail-1",
+      "type": "detail",
+      "stage": "S19",
+      "index": 1,
+      "file": "assets/production/quality/source/S19-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "e6417cb0c654c4ab247c06fa246c72c6d1b4ea555f81c42749005888d031d6df",
+      "receipt": "assets/production/quality/receipts/S19-detail-1.json",
+      "reference": "assets/production/quality/references/S19-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-846b24a3-b32a-4c39-b260-dd22c001662b.png",
+      "originalSha256": "e6417cb0c654c4ab247c06fa246c72c6d1b4ea555f81c42749005888d031d6df",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S19-detail-2",
+      "type": "detail",
+      "stage": "S19",
+      "index": 2,
+      "file": "assets/production/quality/source/S19-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "256c2793a6ba9fd2f64844443a92a06ff3534da38d73e43b160fd372fd298ffa",
+      "receipt": "assets/production/quality/receipts/S19-detail-2.json",
+      "reference": "assets/production/quality/references/S19-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-a9d7cdb4-89ad-4b3d-882c-af77829403be.png",
+      "originalSha256": "256c2793a6ba9fd2f64844443a92a06ff3534da38d73e43b160fd372fd298ffa",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S19-detail-3",
+      "type": "detail",
+      "stage": "S19",
+      "index": 3,
+      "file": "assets/production/quality/source/S19-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        940
+      ],
+      "mode": "RGB",
+      "sha256": "6b9b633bd84a65956a9fa3bb0a7005b8b46a716b040092b141045a2eaa8bce19",
+      "receipt": "assets/production/quality/receipts/S19-detail-3.json",
+      "reference": "assets/production/quality/references/S19-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-4d1cf60f-9a42-4676-8b00-d1248ec175c6.png",
+      "originalSha256": "6b9b633bd84a65956a9fa3bb0a7005b8b46a716b040092b141045a2eaa8bce19",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S20-background",
+      "type": "background",
+      "stage": "S20",
+      "index": null,
+      "file": "assets/production/quality/source/S20-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "27ab24cbf05188d19ccf8437d9a1c9e8c0e5b8be4aa8fd7cac49354c57ce87da",
+      "receipt": "assets/production/quality/receipts/S20.json",
+      "reference": "assets/production/source/S20-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-d4fe540e-5c7e-45db-a447-a7018c34a6fe.png",
+      "originalSha256": "27ab24cbf05188d19ccf8437d9a1c9e8c0e5b8be4aa8fd7cac49354c57ce87da",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S20-detail-0",
+      "type": "detail",
+      "stage": "S20",
+      "index": 0,
+      "file": "assets/production/quality/source/S20-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "c402bd86c224f1ecd86525f573c5f9cecfcfdcf4b37db4e56689f48ecdf5700c",
+      "receipt": "assets/production/quality/receipts/S20-detail-0.json",
+      "reference": "assets/production/quality/references/S20-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-06e16b6e-d5b9-4f22-a622-383b824699d6.png",
+      "originalSha256": "c402bd86c224f1ecd86525f573c5f9cecfcfdcf4b37db4e56689f48ecdf5700c",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S20-detail-1",
+      "type": "detail",
+      "stage": "S20",
+      "index": 1,
+      "file": "assets/production/quality/source/S20-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "31a886a87926dac12d27163c702d285dda3a6f9819d1d074253577a6a50fd2d3",
+      "receipt": "assets/production/quality/receipts/S20-detail-1.json",
+      "reference": "assets/production/quality/references/S20-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-31263c47-3fa2-49e6-8961-057797754f8c.png",
+      "originalSha256": "31a886a87926dac12d27163c702d285dda3a6f9819d1d074253577a6a50fd2d3",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S20-detail-2",
+      "type": "detail",
+      "stage": "S20",
+      "index": 2,
+      "file": "assets/production/quality/source/S20-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "a0920b3894e209b37d9cce1fdac40e88c8079be87a4b5fd55326b856717ca035",
+      "receipt": "assets/production/quality/receipts/S20-detail-2.json",
+      "reference": "assets/production/quality/references/S20-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-ab9ef126-11a9-423c-b1d4-a1cd015a0934.png",
+      "originalSha256": "a0920b3894e209b37d9cce1fdac40e88c8079be87a4b5fd55326b856717ca035",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S20-detail-3",
+      "type": "detail",
+      "stage": "S20",
+      "index": 3,
+      "file": "assets/production/quality/source/S20-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "e4ba5e412ff67a5efa3aec07763ebf44477f1c46cb4ce3a67d52cb1ce11d9372",
+      "receipt": "assets/production/quality/receipts/S20-detail-3.json",
+      "reference": "assets/production/quality/references/S20-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-893fe52d-6a55-4bec-a2fa-7ba8ccb34046.png",
+      "originalSha256": "e4ba5e412ff67a5efa3aec07763ebf44477f1c46cb4ce3a67d52cb1ce11d9372",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S21-background",
+      "type": "background",
+      "stage": "S21",
+      "index": null,
+      "file": "assets/production/quality/source/S21-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "a08875fd6e5fe6546fa7800f75697907a72bee742770d1e632b2e9dd70ef9811",
+      "receipt": "assets/production/quality/receipts/S21.json",
+      "reference": "assets/production/source/S21-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-31462360-b04d-4466-9fda-666101e6a7b1.png",
+      "originalSha256": "a08875fd6e5fe6546fa7800f75697907a72bee742770d1e632b2e9dd70ef9811",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S21-detail-0",
+      "type": "detail",
+      "stage": "S21",
+      "index": 0,
+      "file": "assets/production/quality/source/S21-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "47be78ffb55ff4fd60051e407b16dd52ff7958c16bd13170c5d867097dd72f6e",
+      "receipt": "assets/production/quality/receipts/S21-detail-0.json",
+      "reference": "assets/production/quality/references/S21-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-7c56eeb1-672b-4e55-b89c-cc349db5e810.png",
+      "originalSha256": "47be78ffb55ff4fd60051e407b16dd52ff7958c16bd13170c5d867097dd72f6e",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S21-detail-1",
+      "type": "detail",
+      "stage": "S21",
+      "index": 1,
+      "file": "assets/production/quality/source/S21-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "99b2070dc91f8dd6950d40900ae38da25c0d4e71f5ea056f87cdaf6485b8a497",
+      "receipt": "assets/production/quality/receipts/S21-detail-1.json",
+      "reference": "assets/production/quality/references/S21-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-400c1b6a-20f1-41ab-b491-6b804a62cb65.png",
+      "originalSha256": "99b2070dc91f8dd6950d40900ae38da25c0d4e71f5ea056f87cdaf6485b8a497",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S21-detail-2",
+      "type": "detail",
+      "stage": "S21",
+      "index": 2,
+      "file": "assets/production/quality/source/S21-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "2dc2b40a198f5cf05e25cbc66224e1ca89cd826fe370a012185422d22137408c",
+      "receipt": "assets/production/quality/receipts/S21-detail-2.json",
+      "reference": "assets/production/quality/references/S21-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-e72038d7-c24d-494a-a7b5-5f51e47d1566.png",
+      "originalSha256": "2dc2b40a198f5cf05e25cbc66224e1ca89cd826fe370a012185422d22137408c",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S21-detail-3",
+      "type": "detail",
+      "stage": "S21",
+      "index": 3,
+      "file": "assets/production/quality/source/S21-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "bf702d1244d367a8df92a057b94eab8e774898f2153adb01b932c511a82acf4b",
+      "receipt": "assets/production/quality/receipts/S21-detail-3.json",
+      "reference": "assets/production/quality/references/S21-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-06420b91-f509-4eb2-9c40-c4e35137f6d5.png",
+      "originalSha256": "bf702d1244d367a8df92a057b94eab8e774898f2153adb01b932c511a82acf4b",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S22-background",
+      "type": "background",
+      "stage": "S22",
+      "index": null,
+      "file": "assets/production/quality/source/S22-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "b71cb43a8fc37399a7f1acf22d905d96296d731e983262a03b0a892d63032698",
+      "receipt": "assets/production/quality/receipts/S22.json",
+      "reference": "assets/production/source/S22-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-476d2f1e-1592-4102-9119-71b323a66003.png",
+      "originalSha256": "b71cb43a8fc37399a7f1acf22d905d96296d731e983262a03b0a892d63032698",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S22-detail-0",
+      "type": "detail",
+      "stage": "S22",
+      "index": 0,
+      "file": "assets/production/quality/source/S22-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "27ca8c10a84d3aa545e9ede9b29fa16be18c8f507d1ba1fcc4031362ccc8d7ec",
+      "receipt": "assets/production/quality/receipts/S22-detail-0.json",
+      "reference": "assets/production/quality/references/S22-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-e0bb3070-8072-4eec-b3c4-b942aaed319b.png",
+      "originalSha256": "27ca8c10a84d3aa545e9ede9b29fa16be18c8f507d1ba1fcc4031362ccc8d7ec",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S22-detail-1",
+      "type": "detail",
+      "stage": "S22",
+      "index": 1,
+      "file": "assets/production/quality/source/S22-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "9bbf49a21337744e325cd3a127d8547b3b670c0b0083b03621b3c9c6c3657d47",
+      "receipt": "assets/production/quality/receipts/S22-detail-1.json",
+      "reference": "assets/production/quality/references/S22-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-6e3a8008-995c-46fe-9366-7060d8282e7f.png",
+      "originalSha256": "9bbf49a21337744e325cd3a127d8547b3b670c0b0083b03621b3c9c6c3657d47",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S22-detail-2",
+      "type": "detail",
+      "stage": "S22",
+      "index": 2,
+      "file": "assets/production/quality/source/S22-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "05f51cb7010d654288f4973745cf0a19f7fc57aeb9a4c75161bdf485051d137b",
+      "receipt": "assets/production/quality/receipts/S22-detail-2.json",
+      "reference": "assets/production/quality/references/S22-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-764e856c-c4a2-437a-994a-2ebeb1dd2bac.png",
+      "originalSha256": "05f51cb7010d654288f4973745cf0a19f7fc57aeb9a4c75161bdf485051d137b",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S22-detail-3",
+      "type": "detail",
+      "stage": "S22",
+      "index": 3,
+      "file": "assets/production/quality/source/S22-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "5308d39eebc320bde73755c70f43d628edc858ab71faef78b8be2aa60f91e231",
+      "receipt": "assets/production/quality/receipts/S22-detail-3.json",
+      "reference": "assets/production/quality/references/S22-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-898dbe16-ca43-4d5a-8384-dde6f9312159.png",
+      "originalSha256": "5308d39eebc320bde73755c70f43d628edc858ab71faef78b8be2aa60f91e231",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S23-background",
+      "type": "background",
+      "stage": "S23",
+      "index": null,
+      "file": "assets/production/quality/source/S23-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "1a7c928c369685473146ee06fa7aae1b9de3e093677db42a0146c53eb552ff46",
+      "receipt": "assets/production/quality/receipts/S23.json",
+      "reference": "assets/production/source/S23-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-15d66e86-695d-47c0-9814-f60165a99e3b.png",
+      "originalSha256": "1a7c928c369685473146ee06fa7aae1b9de3e093677db42a0146c53eb552ff46",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S23-detail-0",
+      "type": "detail",
+      "stage": "S23",
+      "index": 0,
+      "file": "assets/production/quality/source/S23-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "d7a6d6a0866c9f73581d4dbd3553b1224948c47838462bd5a438a0684a4241d4",
+      "receipt": "assets/production/quality/receipts/S23-detail-0.json",
+      "reference": "assets/production/quality/references/S23-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-0c93fb29-40f8-46b9-9629-58abdeeeab9c.png",
+      "originalSha256": "d7a6d6a0866c9f73581d4dbd3553b1224948c47838462bd5a438a0684a4241d4",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S23-detail-1",
+      "type": "detail",
+      "stage": "S23",
+      "index": 1,
+      "file": "assets/production/quality/source/S23-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "b53623bb7eac43579b24d19fab10a6bf451ece9522aeb88a1a48b4252847a44c",
+      "receipt": "assets/production/quality/receipts/S23-detail-1.json",
+      "reference": "assets/production/quality/references/S23-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-4c2442ce-014a-4a4b-b3c8-cbf18f2f3c64.png",
+      "originalSha256": "b53623bb7eac43579b24d19fab10a6bf451ece9522aeb88a1a48b4252847a44c",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S23-detail-2",
+      "type": "detail",
+      "stage": "S23",
+      "index": 2,
+      "file": "assets/production/quality/source/S23-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "3d6f0c861d0f539c22eff13732f78ed1abf560b30e10fae77b96459e4f1257b0",
+      "receipt": "assets/production/quality/receipts/S23-detail-2.json",
+      "reference": "assets/production/quality/references/S23-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-b17419b9-1def-47de-b36e-6983e52dd36f.png",
+      "originalSha256": "3d6f0c861d0f539c22eff13732f78ed1abf560b30e10fae77b96459e4f1257b0",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S23-detail-3",
+      "type": "detail",
+      "stage": "S23",
+      "index": 3,
+      "file": "assets/production/quality/source/S23-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "add4d484be0f1fb36de78bce58e49e0361cda528d9a09881f64e608b1228a56d",
+      "receipt": "assets/production/quality/receipts/S23-detail-3.json",
+      "reference": "assets/production/quality/references/S23-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-57493cfc-d635-4fd7-b72e-6546ca9da840.png",
+      "originalSha256": "add4d484be0f1fb36de78bce58e49e0361cda528d9a09881f64e608b1228a56d",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S24-background",
+      "type": "background",
+      "stage": "S24",
+      "index": null,
+      "file": "assets/production/quality/source/S24-background.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "9596fd3efd02ff6a098181600f13c4d9811d8e1a3ee631aaeb29e46331cec342",
+      "receipt": "assets/production/quality/receipts/S24.json",
+      "reference": "assets/production/source/S24-background.png",
+      "referencePixelDimensions": [
+        1672,
+        941
+      ],
+      "bounds": null,
+      "boundsCoordinateSystem": null,
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-efd823a2-37d0-489c-94ff-30c23bd2f9fd.png",
+      "originalSha256": "9596fd3efd02ff6a098181600f13c4d9811d8e1a3ee631aaeb29e46331cec342",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S24-detail-0",
+      "type": "detail",
+      "stage": "S24",
+      "index": 0,
+      "file": "assets/production/quality/source/S24-detail-0.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "293aa5047a6cb820d75794582083245ff9d7cdd08f125215b6f074325ad1c27d",
+      "receipt": "assets/production/quality/receipts/S24-detail-0.json",
+      "reference": "assets/production/quality/references/S24-detail-0.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0,
+        0.55,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-3e5eea98-4780-4da6-97be-a9969eda8f82.png",
+      "originalSha256": "293aa5047a6cb820d75794582083245ff9d7cdd08f125215b6f074325ad1c27d",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S24-detail-1",
+      "type": "detail",
+      "stage": "S24",
+      "index": 1,
+      "file": "assets/production/quality/source/S24-detail-1.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "ebcf54e4fe8469d75ededc996dc4d03a16880898566b254e7a7046bb00585da4",
+      "receipt": "assets/production/quality/receipts/S24-detail-1.json",
+      "reference": "assets/production/quality/references/S24-detail-1.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0,
+        1,
+        0.55
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-7430b385-b808-450b-b136-0a71e9dad9d7.png",
+      "originalSha256": "ebcf54e4fe8469d75ededc996dc4d03a16880898566b254e7a7046bb00585da4",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S24-detail-2",
+      "type": "detail",
+      "stage": "S24",
+      "index": 2,
+      "file": "assets/production/quality/source/S24-detail-2.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "bff82d8110765927f6ae2c4999ccfe5bcf22bb6260f0caafd66023be95bd90fc",
+      "receipt": "assets/production/quality/receipts/S24-detail-2.json",
+      "reference": "assets/production/quality/references/S24-detail-2.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0,
+        0.45,
+        0.55,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-ecd29cf2-b9b9-4be3-b466-2d9465f45208.png",
+      "originalSha256": "bff82d8110765927f6ae2c4999ccfe5bcf22bb6260f0caafd66023be95bd90fc",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    },
+    {
+      "id": "S24-detail-3",
+      "type": "detail",
+      "stage": "S24",
+      "index": 3,
+      "file": "assets/production/quality/source/S24-detail-3.png",
+      "pixelDimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "sha256": "d971b32e864ffbe83637b78168cb9a032318804bc7c3b75672cc8ec670543435",
+      "receipt": "assets/production/quality/receipts/S24-detail-3.json",
+      "reference": "assets/production/quality/references/S24-detail-3.png",
+      "referencePixelDimensions": [
+        920,
+        518
+      ],
+      "bounds": [
+        0.45,
+        0.45,
+        1,
+        1
+      ],
+      "boundsCoordinateSystem": "normalized [left,top,right,bottom] in the complete stage background",
+      "generator": "built-in image_gen.imagegen",
+      "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-8eddda51-fae2-4661-952a-3d1495451af4.png",
+      "originalSha256": "d971b32e864ffbe83637b78168cb9a032318804bc7c3b75672cc8ec670543435",
+      "originalCopyMatches": true,
+      "pngDecoded": true
+    }
+  ],
+  "promptSet": "assets/production/quality/prompts.json"
+}

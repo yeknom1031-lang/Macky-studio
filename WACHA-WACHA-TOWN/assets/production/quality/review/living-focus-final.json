@@ -1,0 +1,95 @@
+{
+  "createdAt": "2026-10-04T13:53:32.971Z",
+  "stages": [
+    {
+      "stage": "S10",
+      "fish": [],
+      "points": [],
+      "initialSnapshot": {
+        "stage": "S10",
+        "fish": [
+          {
+            "id": 114,
+            "role": "R221",
+            "x": 364.31,
+            "y": 394.56,
+            "site": 2,
+            "facing": 1,
+            "phaseChanged": true,
+            "floor": true
+          }
+        ],
+        "points": [
+          {
+            "name": "fishing-1",
+            "x": 364.31,
+            "y": 394.56,
+            "image": "S10-fishing-1-final.png"
+          }
+        ]
+      },
+      "note": "The seat was temporarily vacant after eight seconds; the same scene at the beginning visibly has a fishing actor and its working animation phase advances."
+    },
+    {
+      "stage": "S20",
+      "fish": [
+        {
+          "id": 23,
+          "role": "R224",
+          "x": 1812.23,
+          "y": 1359.35,
+          "site": 95,
+          "facing": -1,
+          "phaseChanged": true,
+          "floor": true
+        },
+        {
+          "id": 250,
+          "role": "R222",
+          "x": 1812.23,
+          "y": 1283.83,
+          "site": 94,
+          "facing": -1,
+          "phaseChanged": true,
+          "floor": true
+        }
+      ],
+      "points": [
+        {
+          "name": "fishing-1",
+          "x": 1812.23,
+          "y": 1359.35,
+          "image": "S20-fishing-1-final.png"
+        },
+        {
+          "name": "fishing-2",
+          "x": 1812.23,
+          "y": 1283.83,
+          "image": "S20-fishing-2-final.png"
+        }
+      ]
+    },
+    {
+      "stage": "S24",
+      "fish": [],
+      "points": [
+        {
+          "name": "roof",
+          "x": 1947.5598086124403,
+          "y": 1359.4845908607863,
+          "image": "S24-roof-final.png"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "coreSHA": "e4b35b242234200020e3f3bc482551b724345b29fd93b1a391aff28ca9f56049",
+  "dataSHA": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24",
+  "passed": true,
+  "visualReview": {
+    "S10": "Viewed S10-fishing-1-final.png: fishing actor at the canal edge; initial phase changes and dry-floor test pass.",
+    "S20": "Viewed both fishing close-ups: two actors stay on the maintenance quay beside the water; phase changes and dry-floor tests pass.",
+    "S24": "Viewed S24-roof-final.png: the pavilion roof has no overdrawn resident; nearby residents remain visible in the garden."
+  },
+  "coreChecksumNote": "Browser focus checks concern geometry and rendering, which stayed unchanged during the final movement-only core update. The original file checksum was recorded after execution, not from loaded browser response bytes; do not treat it as exact movement-core coverage."
+}
