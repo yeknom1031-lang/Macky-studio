@@ -1,3 +1,4 @@
+import { t } from './i18n.js';
 // Only the hovered/focused move is evaluated. CSS crossfades shared stone
 // textures; there are no polling timers, extra stones, or board mutations.
 export function createCapturePreview(surface) {
@@ -8,7 +9,7 @@ export function createCapturePreview(surface) {
     if (target) {
       target.classList.remove('capture-target');
       target.removeAttribute('data-capture-count');
-      if (target.classList.contains('legal-hint')) target.setAttribute('aria-description', 'ここに置けます');
+      if (target.classList.contains('legal-hint')) target.setAttribute('aria-description', t('ここに置けます'));
       else target.removeAttribute('aria-description');
       target = null;
     }
@@ -24,7 +25,7 @@ export function createCapturePreview(surface) {
     for (const cell of marked) cell.classList.add('capture-preview');
     target = cells[index]; target.classList.add('capture-target');
     target.setAttribute('data-capture-count', String(flips.length));
-    target.setAttribute('aria-description', `ここに置くと相手の石を${flips.length}枚取れます`);
+    target.setAttribute('aria-description', t`ここに置くと相手の石を${flips.length}枚取れます`);
   }
   function indexOf(event) {
     const cell = event.target.closest?.('.cell');

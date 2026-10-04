@@ -162,3 +162,16 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
 .game[data-difficulty=online] .score b{font-size:1.4rem;line-height:1.2}
 .game[data-difficulty=online]>.board-shell{width:min(calc(100svh - 188px),calc(100vw - 24px));flex-shrink:0}
 @media(max-width:600px){.game[data-difficulty=online] .score-name{max-width:60px;font-size:.62rem}.game[data-difficulty=online] .score{gap:4px;padding:4px 3px 16px}.game[data-difficulty=online] .score .disc{width:17px}.game[data-difficulty=online] .scorebar{grid-template-columns:70px minmax(0,1fr)}.game[data-difficulty=online] .turn{font-size:.78rem}.game[data-difficulty=online] .turn .disc{width:21px}}
+
+/* English copy wraps naturally without changing the board's rendering path. */
+.language-setting{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line,rgba(220,200,150,.15))}
+.language-setting>label{font-weight:650;font-size:14px}
+.language-setting select{width:100%;min-width:0;font:inherit;font-size:13px;color:#f4ebd5;background:#152321;border:1px solid #617365;border-radius:9px;padding:11px 28px 11px 10px;color-scheme:dark}
+.language-setting>.field-note{grid-column:1/-1;margin:0}
+:lang(en) .home-tagline{font-size:clamp(21px,2.8vw,36px);letter-spacing:.01em}
+:lang(en) .home-subtitle{letter-spacing:.03em}
+:lang(en) .setting>span,:lang(en) .choice span{line-height:1.45}
+:lang(en) .score small{display:none}
+:lang(en) .turn-who{letter-spacing:0}
+:lang(en) .online-seat small{overflow-wrap:anywhere}
+@media(max-width:600px){:lang(en) .home-menu .primary small{font-size:11px}:lang(en) .secondary-menu button{font-size:12px}:lang(en) .game-menu .text-button{white-space:normal}.language-setting{grid-template-columns:1fr}}

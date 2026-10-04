@@ -1,3 +1,4 @@
+import { t, normalizeLanguage, setLanguage, getLanguage, createStaticTranslations, onlineSeatName, onlineNotice } from './i18n.js';
 import { initialBoard, PLAYERS, BOARD_SIZES, captures, legalMoves, firstRoundMoves, playMove, nextTurn, scores, winners } from './engine.js';
 import { createGameClock } from './game-clock.js';
 import { createOniRunner } from './ai-runner.js';
@@ -10,15 +11,21 @@ import { createStoneAudio } from './audio.js';
 import { createCapturePreview } from './capture-preview.js';
 import { installStoneTextures, paintStone, createCellEffects, createHeldStonePointer } from './rendering.js';
 
+// Reaction payloads and palette names stay canonical across client languages.
+const ONLINE_STAMPS=['よろしく！','いい一手！','ありがとう！','楽しかった！'];
+const BLACK_NAME='黒', WHITE_NAME='白';
 const $ = s => document.querySelector(s);
 const ui = { home: $('#home'), game: $('#game'), board: $('#board'), turn: $('#turn'), scores: $('#scores'), notice: $('#notice'), live: $('#live'), result: $('#result-dialog') };
 const STORAGE = { prefs: 'four-color-othello.preferences', profile: 'four-color-othello.profile' };
 function normalizePreferences(raw = {}) {
   raw = raw && typeof raw === 'object' ? raw : {};
-  return { volume: typeof raw.volume === 'number' && Number.isFinite(raw.volume) ? Math.min(1,Math.max(0,raw.volume)) : .75, sound: typeof raw.sound === 'boolean' ? raw.sound : true, reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : matchMedia('(prefers-reduced-motion: reduce)').matches, hints: raw.hints === true, difficulty: Object.hasOwn(DIFFICULTIES, raw.difficulty) ? raw.difficulty : 'normal', size: BOARD_SIZES.includes(raw.size) ? raw.size : 8 };
+  return { language: normalizeLanguage(raw.language), volume: typeof raw.volume === 'number' && Number.isFinite(raw.volume) ? Math.min(1,Math.max(0,raw.volume)) : .75, sound: typeof raw.sound === 'boolean' ? raw.sound : true, reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : matchMedia('(prefers-reduced-motion: reduce)').matches, hints: raw.hints === true, difficulty: Object.hasOwn(DIFFICULTIES, raw.difficulty) ? raw.difficulty : 'normal', size: BOARD_SIZES.includes(raw.size) ? raw.size : 8 };
 }
 function readSave(key) { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } }
 let preferences = normalizePreferences(readSave(STORAGE.prefs));
+const translateStatic = createStaticTranslations(document);
+setLanguage(preferences.language, navigator.languages?.length ? navigator.languages : [navigator.language]);
+translateStatic();
 let profile = normalizeProfile(readSave(STORAGE.profile));
 let state = { board: initialBoard(), player: 0, phase: 'home', mode: 'solo', size: 8, human: 0, colors: playerColors('red').colors };
 const stoneAudio = createStoneAudio(() => preferences, () => new (window.AudioContext || window.webkitAudioContext)());
@@ -48,7 +55,7 @@ const pause = ms => gameClock.wait(ms);
 const wallDelay = ms => new Promise(resolve => setTimeout(resolve,ms));
 const piece = color => `<i aria-hidden="true" class="disc ${color}"></i>`;
 const stone = player => piece(state.colors[player].id);
-const nameOf = player => state.colors[player].name;
+const nameOf = player => t(state.colors[player].name);
 const matchPlayers = () => PLAYERS.slice(0,state.colors.length);
 const winningPlayers = () => winners(state.board,state.colors.length);
 const active = run => run === epoch && !['home', 'ended'].includes(state.phase);
@@ -61,7 +68,7 @@ function cancelRun() {
 const isPaused = () => !['home','ended'].includes(state.phase) && !!document.querySelector('dialog[open]');
 function persist() {
   try { localStorage.setItem(STORAGE.prefs, JSON.stringify(preferences)); localStorage.setItem(STORAGE.profile, JSON.stringify(profile)); $('#storage-message').hidden = true; storageWorking = true; }
-  catch { storageWorking = false; $('#storage-message').textContent = 'このブラウザでは保存できません。設定の「データを書き出す」で残せます。'; $('#storage-message').hidden = false; }
+  catch { storageWorking = false; $('#storage-message').textContent = t('このブラウザでは保存できません。設定の「データを書き出す」で残せます。'); $('#storage-message').hidden = false; }
 }
 function syncGamePause() {
   const paused=isPaused();if(paused===gamePaused)return;
@@ -82,14 +89,14 @@ function openDialog(id) { if (!$(id).open) { $(id).showModal(); $(id).scrollTop 
 function closeDialogs() { document.querySelectorAll('dialog[open]').forEach(d => d.close()); }
 function announce(text) { ui.live.textContent = text; }
 function renderHome() {
-  $('#home-theme-name').textContent = CATALOG.find(item => item.id === profile.equippedBoard).name;
-  document.querySelectorAll('.coin-balance').forEach(el => { el.textContent = `${profile.coins.toLocaleString('ja-JP')} コイン`; });
-  $('#home-record').textContent = profile.stats.played ? `${profile.stats.wins} 勝 · ${profile.stats.draws} 引き分け · ${profile.stats.played} 対局` : '次の色は、対局が始まるお楽しみ。';
+  $('#home-theme-name').textContent = t(CATALOG.find(item => item.id === profile.equippedBoard).name);
+  document.querySelectorAll('.coin-balance').forEach(el => { el.textContent = t`${profile.coins.toLocaleString(getLanguage())} コイン`; });
+  $('#home-record').textContent = profile.stats.played ? t`${profile.stats.wins} 勝 · ${profile.stats.draws} 引き分け · ${profile.stats.played} 対局` : t('次の色は、対局が始まるお楽しみ。');
 }
 function buildBoard() {
   const n = state.size; focusIndex = (n / 2 - 1) * n + n / 2 - 1;
   ui.board.replaceChildren(); ui.board.style.setProperty('--grid-size', n);
-  ui.board.setAttribute('aria-label', `Irodoryの盤面、${n}行${n}列、${state.colors.length}色`); ui.board.setAttribute('aria-rowcount', n); ui.board.setAttribute('aria-colcount', n);
+  ui.board.setAttribute('aria-label', t`Irodoryの盤面、${n}行${n}列、${state.colors.length}色`); ui.board.setAttribute('aria-rowcount', n); ui.board.setAttribute('aria-colcount', n);
   for (let row = 0; row < n; row++) {
     const line = document.createElement('div'); line.className = 'board-row'; line.setAttribute('role', 'row');
     for (let col = 0; col < n; col++) {
@@ -111,36 +118,37 @@ function buildBoard() {
 function setFocus(index, focus) { if (cells[focusIndex]) cells[focusIndex].tabIndex = -1; focusIndex = index; cells[index].tabIndex = 0; if (focus) cells[index].focus({ preventScroll: true }); }
 function updateCell(index) {
   const player = state.board[index], cell = cells[index]; paintStone(cell, player === null ? null : state.colors[player].id, document); cell.dataset.player = player === null ? '' : String(player);
-  cell.setAttribute('aria-label', `${Math.floor(index / state.size) + 1}行${index % state.size + 1}列、${player === null ? '空きマス' : nameOf(player) + 'の石'}`);
+  cell.setAttribute('aria-label', t`${Math.floor(index / state.size) + 1}行${index % state.size + 1}列、${player === null ? t('空きマス') : nameOf(player) + t('の石')}`);
 }
 let scoreKey = '', turnKey = '', scoreNodes = [];
 function renderStatus() {
   const counts = scores(state.board), p = state.player;
-  const who = state.mode === 'solo' ? (p === state.human ? 'あなた' : state.phase === 'thinking' ? state.difficulty === 'oni' ? '鬼・深く思考中' : 'AI・考え中' : 'AI') : '';
-  const nextTurnKey = `${state.colors[p].id}:${who}`;
+  if(state.mode!=='online')ui.turn.title=t('ポーズ（Esc）');
+  const who = state.mode === 'solo' ? (p === state.human ? t('あなた') : state.phase === 'thinking' ? state.difficulty === 'oni' ? t('鬼・深く思考中') : t('AI・考え中') : 'AI') : '';
+  const nextTurnKey = `${getLanguage()}:${state.colors[p].id}:${who}`;
   if (turnKey !== nextTurnKey) {
     turnKey = nextTurnKey;
-    ui.turn.innerHTML = `${stone(p)}<span>${nameOf(p)}の番${who ? `<small class="turn-who">${who}</small>` : ''}</span><span class="menu-chevron" aria-hidden="true">⌄</span>`;
+    ui.turn.innerHTML = t`${stone(p)}<span>${nameOf(p)}の番${who ? `<small class="turn-who">${who}</small>` : ''}</span><span class="menu-chevron" aria-hidden="true">⌄</span>`;
     ui.turn.className = `turn ${state.colors[p].id}`;
-    ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', `${nameOf(p)}の番${who ? '、' + who : ''}。ポーズを開く（Esc）`);
+    ui.turn.dataset.player = String(p); ui.turn.setAttribute('aria-label', t`${nameOf(p)}の番${who ? t('、') + who : ''}。ポーズを開く（Esc）`);
   }
-  const nextScoreKey = `${state.mode}:${state.human}:${state.colors.map(c => c.id).join(',')}:${state.mode==='online'?state.id:''}`;
+  const nextScoreKey = `${getLanguage()}:${state.mode}:${state.human}:${state.colors.map(c => c.id).join(',')}:${state.mode==='online'?state.id:''}`;
   if (scoreKey !== nextScoreKey) {
     scoreKey = nextScoreKey;
-    ui.scores.innerHTML = matchPlayers().map(p => `<div class="score ${state.colors[p.id].id}" data-player="${p.id}">${stone(p.id)}<span><span class="score-name">${nameOf(p.id)}</span> <b></b><small>枚</small></span>${state.mode === 'solo' && p.id === state.human ? '<em class="score-owner">あなた</em>' : ''}</div>`).join('');
+    ui.scores.innerHTML = matchPlayers().map(p => t`<div class="score ${state.colors[p.id].id}" data-player="${p.id}">${stone(p.id)}<span><span class="score-name">${nameOf(p.id)}</span> <b></b><small>枚</small></span>${state.mode === 'solo' && p.id === state.human ? t('<em class="score-owner">あなた</em>') : ''}</div>`).join('');
     scoreNodes = [...ui.scores.querySelectorAll('.score')].map(row => ({ row, count:row.querySelector('b') }));
   }
   scoreNodes.forEach(({row,count}, player) => {
     const value = String(counts[player]);
     if (count.textContent !== value) count.textContent = value;
     row.classList.toggle('is-current', player === state.player);
-    const label = `${nameOf(player)} ${value}枚`;
+    const label = t`${nameOf(player)} ${value}枚`;
     if (row.getAttribute('aria-label') !== label) row.setAttribute('aria-label', label);
   });
   if(state.mode==='online'&&onlineRoom){
-    scoreNodes.forEach(({row},i)=>{const seat=onlineRoom.seats[i];row.querySelector('.score-name').textContent=seat.name;row.title=`${nameOf(i)} · ${seat.name}${i===state.human?'（あなた）':''}${seat.bot||seat.forfeit?' · AI':''}`;let label=row.querySelector('em');if(!label){label=document.createElement('em');label.className='score-owner';row.append(label);}label.textContent=seat.bot?'AI':seat.forfeit?'AI引継':i===state.human?'あなた':seat.connected?'参加中':'復帰待ち';});
-    ui.turn.title='対局メニュー（Esc）';ui.turn.setAttribute('aria-label',nameOf(p)+'の番。対局メニューを開く（Esc）');
-    ui.turn.querySelector('span').textContent=`${nameOf(p)} · ${p===state.human?'あなた':onlineRoom.seats[p].name}の番`;
+    scoreNodes.forEach(({row},i)=>{const seat=onlineRoom.seats[i];row.querySelector('.score-name').textContent=onlineSeatName(seat,i);row.title=`${nameOf(i)} · ${onlineSeatName(seat,i)}${i===state.human?t('（あなた）'):''}${seat.bot||seat.forfeit?' · AI':''}`;let label=row.querySelector('em');if(!label){label=document.createElement('em');label.className='score-owner';row.append(label);}label.textContent=seat.bot?'AI':seat.forfeit?t('AI引継'):i===state.human?t('あなた'):seat.connected?t('参加中'):t('復帰待ち');});
+    ui.turn.title=t('対局メニュー（Esc）');ui.turn.setAttribute('aria-label',nameOf(p)+t('の番。対局メニューを開く（Esc）'));
+    ui.turn.querySelector('span').textContent=t`${nameOf(p)} · ${p===state.human?t('あなた'):onlineSeatName(onlineRoom.seats[p],p)}の番`;
   }
   updateInputState();
 }
@@ -152,7 +160,7 @@ function updateInputState() {
   const canPlay = state.phase === 'playing' && (state.mode!=='online'||online.connected()) && !isPaused() && !document.hidden && (state.mode === 'friends' || state.player === state.human);
   const available = canPlay && preferences.hints ? turnMoves(state.board,state.player) : [];
   const hints = new Set(canPlay && preferences.hints ? available : []);
-  cells.forEach((cell, i) => { const disabled = String(!canPlay || state.board[i] !== null); if (cell.getAttribute('aria-disabled') !== disabled) cell.setAttribute('aria-disabled', disabled); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', 'ここに置けます'); else cell.removeAttribute('aria-description'); });
+  cells.forEach((cell, i) => { const disabled = String(!canPlay || state.board[i] !== null); if (cell.getAttribute('aria-disabled') !== disabled) cell.setAttribute('aria-disabled', disabled); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', t('ここに置けます')); else cell.removeAttribute('aria-description'); });
   capturePreview.sync({ enabled:canPlay && preferences.hints, cells, color:state.colors[state.player].id, resolve:index => hints.has(index) ? captures(state.board,state.player,index) : [] });
 }
 function hideNotice() { gameClock.clear(noticeTimer); ui.notice.hidden = true; ui.notice.textContent = ''; }
@@ -215,14 +223,14 @@ async function flipStone(index, delay, run) {
 async function moveAt(index, actor = 'human') {
   if(state.mode==='online')return onlineMove(index);
   const ai = state.mode === 'solo' && state.player !== state.human;
-  if (isPaused()) return { ok: false, reason: 'メニューを閉じると対局に戻ります' };
-  if (actor === 'human' && ai) return { ok: false, reason: 'AIの手番です' };
-  if (state.phase !== (actor === 'ai' ? 'thinking' : 'playing') || (actor === 'ai' && !ai)) return { ok: false, reason: '手番の切り替え中です' };
+  if (isPaused()) return { ok: false, reason: t('メニューを閉じると対局に戻ります') };
+  if (actor === 'human' && ai) return { ok: false, reason: t('AIの手番です') };
+  if (state.phase !== (actor === 'ai' ? 'thinking' : 'playing') || (actor === 'ai' && !ai)) return { ok: false, reason: t('手番の切り替え中です') };
   const result = playMove(state.board, state.player, index);
-  if (!result) { showNotice('ここには置けません', '相手の石をはさめるマスに置いてください'); noticeTimer = gameClock.schedule(hideNotice, 1300); return { ok: false, reason: 'ここでは石をはさめません' }; }
+  if (!result) { showNotice(t('ここには置けません'), t('相手の石をはさめるマスに置いてください')); noticeTimer = gameClock.schedule(hideNotice, 1300); return { ok: false, reason: t('ここでは石をはさめません') }; }
   if (!turnMoves(state.board,state.player).includes(index)) {
-    showNotice('まだ最初の手番中です','まだ一度も打っていない色が０枚になる手は置けません');
-    noticeTimer = gameClock.schedule(hideNotice, 1650); return {ok:false,reason:'初手の保護中は未着手の色を０枚にできません'};
+    showNotice(t('まだ最初の手番中です'),t('まだ一度も打っていない色が０枚になる手は置けません'));
+    noticeTimer = gameClock.schedule(hideNotice, 1650); return {ok:false,reason:t('初手の保護中は未着手の色を０枚にできません')};
   }
   hideNotice(); const run = epoch, player = state.player, n = state.size;
   state.movedPlayers[player] = true;
@@ -231,8 +239,8 @@ async function moveAt(index, actor = 'human') {
   const animatedFlips=result.flips.length>8?[]:result.flips;
   if(result.flips.length>8) result.flips.forEach(updateCell);
   await Promise.all([landStone(index,run), ...animatedFlips.map(i => flipStone(i, 175 + 55 * Math.max(Math.abs(Math.floor(i / n) - Math.floor(index / n)), Math.abs(i % n - index % n)), run))]);
-  if (!await ready(run)) return { ok: false, reason: 'ゲームが終了しました' };
-  renderStatus(); if (preferences.reducedMotion || result.flips.length>8) sound('flip',index); announce(`${nameOf(player)}が${result.flips.length}枚ひっくり返しました。`); await advanceTurn(player, run);
+  if (!await ready(run)) return { ok: false, reason: t('ゲームが終了しました') };
+  renderStatus(); if (preferences.reducedMotion || result.flips.length>8) sound('flip',index); announce(t`${nameOf(player)}が${result.flips.length}枚ひっくり返しました。`); await advanceTurn(player, run);
   return { ok: true, flipped: result.flips.length, ...snapshot() };
 }
 async function advanceTurn(player, run) {
@@ -243,11 +251,11 @@ async function advanceTurn(player, run) {
     if (!await ready(run)) return;
     state.player = skipped; state.phase = 'skipping'; renderStatus();
     const safeOpening = state.colors.length === 4 && !state.movedPlayers.every(Boolean);
-    showNotice(`${nameOf(skipped)}は${safeOpening && legalMoves(state.board,skipped).length ? '初手の保護で今回はパス' : '置ける場所がありません'}`, safeOpening ? '全員が一度打つまでは、どの色も０枚になりません' : '次の人に進みます');
+    showNotice(t`${nameOf(skipped)}は${safeOpening && legalMoves(state.board,skipped).length ? t('初手の保護で今回はパス') : t('置ける場所がありません')}`, safeOpening ? t('全員が一度打つまでは、どの色も０枚になりません') : t('次の人に進みます'));
     await pause(1500);
   }
   if (!await ready(run)) return;
-  hideNotice(); if (next.ended) { finish(); return; } state.player = next.player; beginTurn(run); announce(`${nameOf(state.player)}の番です。`);
+  hideNotice(); if (next.ended) { finish(); return; } state.player = next.player; beginTurn(run); announce(t`${nameOf(state.player)}の番です。`);
 }
 function beginTurn(run) {
   if (!active(run)) return;
@@ -289,19 +297,21 @@ function finish() {
   const humanWon = winningPlayers().includes(state.human), draw = winningPlayers().length > 1;
   const outcome = state.mode === 'friends' ? (draw ? 'draw' : 'win') : humanWon ? (draw ? 'draw' : 'win') : 'loss';
   decorateResult(outcome); if (outcome === 'win') stoneAudio.celebrate();
-  $('#result-context').textContent = '最終スコア';
-  const counts = scores(state.board), winning = winningPlayers(), label = winning.map(nameOf).join('・');
-  $('#result-title').textContent = winning.length === 1 ? `${label}の勝ち！` : `${label}の引き分け！`;
-  $('#result-scores').innerHTML = [...matchPlayers()].sort((a, b) => counts[b.id] - counts[a.id]).map(p => `<div class="result-row${winning.includes(p.id) ? ' winner' : ''}">${stone(p.id)}<span>${nameOf(p.id)}${state.mode === 'solo' && p.id === state.human ? '<small>（あなた）</small>' : ''}</span><b>${counts[p.id]}<small>枚</small></b></div>`).join('');
   // Merge the latest profile if another local tab finished a game or bought an item.
   if (storageWorking) profile = normalizeProfile(readSave(STORAGE.profile) ?? profile);
-  const awarded = awardMatch(profile, state); profile = awarded.profile; persist(); renderHome();
-  $('#result-reward').textContent = state.mode === 'friends' ? 'みんなで対戦、ありがとう！' : awarded.earned ? `${winning.length > 1 ? '引き分け' : '勝利'}ボーナス ＋${awarded.earned} コイン！　合計 ${profile.coins} コイン` : `次の一局で勝利をめざそう！　所持 ${profile.coins} コイン`;
+  const awarded = awardMatch(profile, state); profile = awarded.profile; state.reward=awarded.earned; persist(); renderHome(); renderLocalResult();
   openDialog('#result-dialog'); announce(`${$('#result-title').textContent} ${$('#result-reward').textContent}`);
+}
+function renderLocalResult() {
+  $('#result-context').textContent = t('最終スコア');
+  const counts = scores(state.board), winning = winningPlayers(), label = winning.map(nameOf).join(t('・'));
+  $('#result-title').textContent = winning.length === 1 ? t`${label}の勝ち！` : t`${label}の引き分け！`;
+  $('#result-scores').innerHTML = [...matchPlayers()].sort((a, b) => counts[b.id] - counts[a.id]).map(p => t`<div class="result-row${winning.includes(p.id) ? ' winner' : ''}">${stone(p.id)}<span>${nameOf(p.id)}${state.mode === 'solo' && p.id === state.human ? t('<small>（あなた）</small>') : ''}</span><b>${counts[p.id]}<small>枚</small></b></div>`).join('');
+  $('#result-reward').textContent = state.mode === 'friends' ? t('みんなで対戦、ありがとう！') : state.reward ? t`${winning.length > 1 ? t('引き分け') : t('勝利')}ボーナス ＋${state.reward} コイン！　合計 ${profile.coins} コイン` : t`次の一局で勝利をめざそう！　所持 ${profile.coins} コイン`;
 }
 function decorateResult(outcome) {
   ui.result.dataset.outcome = outcome;
-  $('#result-flavor').textContent = {win:'その一手が、景色を変えた。',draw:'互いに譲らない、見事な一局。',loss:'次の一手に、新しい可能性を。',resigned:'また、この卓で。'}[outcome];
+  $('#result-flavor').textContent = {win:t('その一手が、景色を変えた。'),draw:t('互いに譲らない、見事な一局。'),loss:t('次の一手に、新しい可能性を。'),resigned:t('また、この卓で。')}[outcome];
   $('#result-sparks').innerHTML = outcome === 'win' && !preferences.reducedMotion ? Array.from({length:22},(_,i) => `<i style="--x:${(i * 47) % 100}%;--delay:${(i % 7) * .075}s;--spin:${(i % 2 ? 1 : -1) * (120 + i * 13)}deg"></i>`).join('') : '';
   $('#result-eyebrow').textContent = { win:'VICTORY', draw:'DRAW', loss:'MATCH FINISHED', resigned:'RESIGNED' }[outcome];
   const flag = '<path d="M14 34V8m0 1c8-7 12 7 20 0v16c-8 7-12-7-20 0M9 36h10"/>';
@@ -316,32 +326,35 @@ function resignGame() {
   cells.forEach((_, i) => updateCell(i)); renderStatus();
   if (storageWorking) profile = normalizeProfile(readSave(STORAGE.profile) ?? profile);
   profile = recordResignation(profile, state).profile; persist(); renderHome(); decorateResult('resigned');
-  $('#result-title').textContent = `${nameOf(state.resigned)}が降参`;
-  $('#result-context').textContent = '降参時の枚数・順位なし';
+  renderResignedResult();
+  openDialog('#result-dialog'); announce(t`${nameOf(state.resigned)}が降参しました。対局終了です。`);
+}
+function renderResignedResult() {
+  $('#result-title').textContent = t`${nameOf(state.resigned)}が降参`;
+  $('#result-context').textContent = t('降参時の枚数・順位なし');
   const counts = scores(state.board);
-  $('#result-scores').innerHTML = matchPlayers().map(p => `<div class="result-row">${stone(p.id)}<span>${nameOf(p.id)}${p.id === state.resigned ? '<small>（降参）</small>' : ''}</span><b>${counts[p.id]}<small>枚</small></b></div>`).join('');
-  $('#result-reward').textContent = state.mode === 'solo' ? '敗北を記録。コインは変わりません。' : '対局を終了。コインは変わりません。';
-  openDialog('#result-dialog'); announce(`${nameOf(state.resigned)}が降参しました。対局終了です。`);
+  $('#result-scores').innerHTML = matchPlayers().map(p => t`<div class="result-row">${stone(p.id)}<span>${nameOf(p.id)}${p.id === state.resigned ? t('<small>（降参）</small>') : ''}</span><b>${counts[p.id]}<small>枚</small></b></div>`).join('');
+  $('#result-reward').textContent = state.mode === 'solo' ? t('敗北を記録。コインは変わりません。') : t('対局を終了。コインは変わりません。');
 }
 function startGame(config = lastConfig) {
   if(onlineEnabled)stopOnline();
-  $('#online-hud').hidden=true;$('#online-new-opponents').hidden=true;$('#again').textContent='同じ設定でもう一局';$('#again').disabled=false;
+  $('#online-hud').hidden=true;$('#online-new-opponents').hidden=true;$('#again').textContent=t('同じ設定でもう一局');$('#again').disabled=false;
   cancelRun(); hideNotice(); closeDialogs();
   stoneAudio.unlock();
-  const palette = config.playerCount === 2 ? { colors:[{id:'black',name:'黒',seat:0},{id:'white',name:'白',seat:1}], human:config.mode === 'solo' ? Math.floor(Math.random()*2) : 0 } : config.mode === 'solo' ? randomSoloLineup(profile) : playerColors('red','friends'); lastConfig = { ...config };
+  const palette = config.playerCount === 2 ? { colors:[{id:'black',name:BLACK_NAME,seat:0},{id:'white',name:WHITE_NAME,seat:1}], human:config.mode === 'solo' ? Math.floor(Math.random()*2) : 0 } : config.mode === 'solo' ? randomSoloLineup(profile) : playerColors('red','friends'); lastConfig = { ...config };
   state = { ...config, ...palette, id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`, board: initialBoard(config.size, config.playerCount ?? 4), player: 0, phase: 'playing', movedPlayers:Array(config.playerCount ?? 4).fill(false) };
   ui.home.hidden = true; ui.game.hidden = false; document.body.classList.add('playing');
   ui.game.dataset.playerCount = String(state.colors.length);
   ui.game.dataset.difficulty = state.mode === 'solo' ? state.difficulty : 'friends';
-  $('#intro-emblem').textContent = state.mode==='solo' && state.difficulty==='oni' ? '鬼' : '◇';
+  $('#intro-emblem').textContent = state.mode==='solo' && state.difficulty==='oni' ? t('鬼') : '◇';
   $('#intro-eyebrow').textContent = state.mode==='solo' && state.difficulty==='oni' ? 'THE ONI CHALLENGE' : 'TAKE YOUR SEAT';
   buildBoard(); measureHeldStone(); cells.forEach((_, i) => updateCell(i));
   state.phase = 'intro'; renderStatus();
-  $('#intro-title').textContent = state.mode === 'solo' ? `あなたは${nameOf(state.human)}` : '対局開始';
-  $('#intro-detail').textContent = state.mode === 'solo' ? `${state.human + 1}番目の手番です` : state.colors.length === 2 ? '黒と白で、勝負。' : '４つの色で、勝負。';
-  $('#intro-pieces').innerHTML = state.colors.map((color,p) => `<span class="intro-seat${state.mode === 'solo' && p === state.human ? ' is-you' : ''}">${stone(p)}<small>${p + 1}${state.mode === 'solo' && p === state.human ? ' · あなた' : ''}</small></span>`).join('');
+  $('#intro-title').textContent = state.mode === 'solo' ? t`あなたは${nameOf(state.human)}` : t('対局開始');
+  $('#intro-detail').textContent = state.mode === 'solo' ? t`${state.human + 1}番目の手番です` : state.colors.length === 2 ? t('黒と白で、勝負。') : t('４つの色で、勝負。');
+  $('#intro-pieces').innerHTML = state.colors.map((color,p) => `<span class="intro-seat${state.mode === 'solo' && p === state.human ? ' is-you' : ''}">${stone(p)}<small>${p + 1}${state.mode === 'solo' && p === state.human ? t(' · あなた') : ''}</small></span>`).join('');
   $('#match-intro').hidden = false; void enterGame(epoch);
-  wake(); setFocus(focusIndex, true); announce(state.mode === 'solo' ? `あなたは${nameOf(state.human)}、${state.human + 1}番目です。${nameOf(0)}から開始します。` : `ゲーム開始。${nameOf(0)}から開始します。`);
+  wake(); setFocus(focusIndex, true); announce(state.mode === 'solo' ? t`あなたは${nameOf(state.human)}、${state.human + 1}番目です。${nameOf(0)}から開始します。` : t`ゲーム開始。${nameOf(0)}から開始します。`);
   if (location.hash !== '#play') history.pushState(null, '', '#play');
 }
 async function enterGame(run) {
@@ -357,25 +370,25 @@ function goHome() {
 function setup(mode, count = 4) {
   setupCount = count; setupMode = mode;
   $('#classic-mode-field').hidden = count !== 2;
-  $('#classic-mode-field input[value="solo"]').checked = true; $('#setup-title').textContent = mode === 'solo' ? 'ひとりで遊ぶ' : '4人で遊ぶ'; $('#difficulty-field').hidden = $('#color-field').hidden = mode !== 'solo';
-  $('#difficulty-options').innerHTML = Object.entries(DIFFICULTIES).map(([id, d]) => `<label class="choice"><input type="radio" name="difficulty" value="${id}" ${id === preferences.difficulty ? 'checked' : ''}><span>${d.label}</span></label>`).join('');
+  $('#classic-mode-field input[value="solo"]').checked = true; $('#setup-title').textContent = mode === 'solo' ? t('ひとりで遊ぶ') : t('4人で遊ぶ'); $('#difficulty-field').hidden = $('#color-field').hidden = mode !== 'solo';
+  $('#difficulty-options').innerHTML = Object.entries(DIFFICULTIES).map(([id, d]) => `<label class="choice"><input type="radio" name="difficulty" value="${id}" ${id === preferences.difficulty ? 'checked' : ''}><span>${t(d.label)}</span></label>`).join('');
   $('#size-options').innerHTML = BOARD_SIZES.map(n => `<label class="choice"><input type="radio" name="size" value="${n}" ${n === (count === 2 ? 8 : preferences.size) ? 'checked' : ''}><span>${n} × ${n}</span></label>`).join('');
   $('#color-options').innerHTML = profile.ownedColors.map(id => `<span class="draw-color">${piece(id)}</span>`).join('');
   $('#setup-hints').checked = preferences.hints; setupNotes(); openDialog('#setup-dialog');
 }
 function setupNotes() {
   if (setupCount === 2) setupMode = $('#classic-mode-field input:checked').value;
-  $('#setup-title').textContent = setupCount === 2 ? '通常の２色オセロ' : setupMode === 'solo' ? 'ひとりで遊ぶ' : '4人で遊ぶ';
+  $('#setup-title').textContent = setupCount === 2 ? t('通常の２色オセロ') : setupMode === 'solo' ? t('ひとりで遊ぶ') : t('4人で遊ぶ');
   $('#difficulty-field').hidden = setupMode !== 'solo';
   $('#color-field').hidden = setupMode !== 'solo' || setupCount === 2;
-  $('#size-note').textContent = setupCount === 2 ? '8 × 8 が通常の広さ。中央に黒２枚・白２枚、黒から開始。' : '8 × 8 が基本。中央に各色４枚ずつ、合計16枚。';
+  $('#size-note').textContent = setupCount === 2 ? t('8 × 8 が通常の広さ。中央に黒２枚・白２枚、黒から開始。') : t('8 × 8 が基本。中央に各色４枚ずつ、合計16枚。');
   const difficulty = $('#difficulty-options input:checked')?.value ?? preferences.difficulty, size = Number($('#size-options input:checked')?.value ?? preferences.size);
   $('#setup-dialog').dataset.challenge=setupMode==='solo' && difficulty==='oni' ? 'oni' : 'standard';
-  $('#difficulty-description').textContent = DIFFICULTIES[difficulty].description;
-  $('#color-note').textContent = '持っている色から１色、手番は１〜４番目から毎回抽選。購入した色も候補に加わります。';
-  $('#setup-reward').textContent = setupMode === 'solo' ? `勝つと ${matchReward(difficulty, size)} コイン。最多で引き分けると半分。` : setupCount === 2 ? '黒 → 白の順に、２人で交代します。' : '赤 → 青 → 黄 → 緑の順に、みんなで交代します。';
+  $('#difficulty-description').textContent = t(DIFFICULTIES[difficulty].description);
+  $('#color-note').textContent = t('持っている色から１色、手番は１〜４番目から毎回抽選。購入した色も候補に加わります。');
+  $('#setup-reward').textContent = setupMode === 'solo' ? t`勝つと ${matchReward(difficulty, size)} コイン。最多で引き分けると半分。` : setupCount === 2 ? t('黒 → 白の順に、２人で交代します。') : t('赤 → 青 → 黄 → 緑の順に、みんなで交代します。');
 }
-function syncSettings() { stoneAudio.sync(); $('#sound-volume').value = String(Math.round(preferences.volume * 100)); $('#volume-value').textContent = `${Math.round(preferences.volume * 100)}%`; $('#sound-volume').disabled = $('#sound-preview').disabled = !preferences.sound; document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
+function syncSettings() { $('#language-setting').value=preferences.language; stoneAudio.sync(); $('#sound-volume').value = String(Math.round(preferences.volume * 100)); $('#volume-value').textContent = `${Math.round(preferences.volume * 100)}%`; $('#sound-volume').disabled = $('#sound-preview').disabled = !preferences.sound; document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
 let previewItem='classic', previewTheme='classic', previewColor='red';
 function previewBoard(color='red') {
   const colors=playerColors(color).colors;
@@ -384,14 +397,14 @@ function previewBoard(color='red') {
 }
 function itemAction(item) {
   const owned=ownsItem(profile,item), equipped=item.kind==='board' && profile.equippedBoard===item.id;
-  return {disabled:(item.kind==='color'&&owned)||equipped||(!owned&&profile.coins<item.price),label:item.kind==='color'&&owned?'抽選の対象':equipped?'使用中':owned?'使う':`${item.price} コインで購入`};
+  return {disabled:(item.kind==='color'&&owned)||equipped||(!owned&&profile.coins<item.price),label:item.kind==='color'&&owned?t('抽選の対象'):equipped?t('使用中'):owned?t('使う'):t`${item.price} コインで購入`};
 }
 function renderCollectionPreview() {
   const item=CATALOG.find(i=>i.id===previewItem), owned=ownsItem(profile,item), action=itemAction(item);
   const board=$('#shop-preview-board');board.dataset.theme=previewTheme;board.innerHTML=previewBoard(previewColor);
-  $('#shop-preview-name').textContent=item.name;
-  $('#shop-preview-description').textContent=item.description ?? '一局を彩る、つややかな基本の色。';
-  $('#shop-preview-status').textContent=owned ? item.kind==='board'&&profile.equippedBoard===item.id?'現在のボード':'コレクション済み' : `${item.price} コイン`;
+  $('#shop-preview-name').textContent=t(item.name);
+  $('#shop-preview-description').textContent=t(item.description ?? '一局を彩る、つややかな基本の色。');
+  $('#shop-preview-status').textContent=owned ? item.kind==='board'&&profile.equippedBoard===item.id?t('現在のボード'):t('コレクション済み') : t`${item.price} コイン`;
   const button=$('#shop-preview-action');button.dataset.item=item.id;button.textContent=action.label;button.disabled=action.disabled;
   document.querySelectorAll('[data-preview]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.preview===previewItem)));
 }
@@ -402,7 +415,7 @@ function renderShop() {
     $('#' + kind + '-products').innerHTML = items.map(item => {
       const owned=ownsItem(profile,item), equipped=kind==='board'&&profile.equippedBoard===item.id, action=itemAction(item);
       const art=kind==='board'?`<div class="board-shell product-board" data-theme="${item.id}" aria-hidden="true">${previewBoard()}</div>`:`<div class="color-swatch" aria-hidden="true">${piece(item.id)}</div>`;
-      return `<article class="product${equipped?' equipped':''}"><button class="product-preview" data-preview="${item.id}" aria-label="${item.name}を試す" aria-pressed="false">${art}<span class="preview-label">見た目を試す ↗</span></button><h4>${item.name}</h4><p>${item.description ?? '最初から使える基本の色。'}</p><button class="product-action" data-item="${item.id}" ${action.disabled?'disabled':''}>${action.label}</button><small>${!owned&&profile.coins<item.price?`あと ${item.price-profile.coins} コイン`:owned?'OWNED':'COLLECTION'}</small></article>`;
+      return t`<article class="product${equipped?' equipped':''}"><button class="product-preview" data-preview="${item.id}" aria-label="${t(item.name)}を試す" aria-pressed="false">${art}<span class="preview-label">見た目を試す ↗</span></button><h4>${t(item.name)}</h4><p>${t(item.description ?? '最初から使える基本の色。')}</p><button class="product-action" data-item="${item.id}" ${action.disabled?'disabled':''}>${action.label}</button><small>${!owned&&profile.coins<item.price?t`あと ${item.price-profile.coins} コイン`:owned?'OWNED':'COLLECTION'}</small></article>`;
     }).join('');
   }
   renderCollectionPreview();
@@ -415,8 +428,8 @@ $('#shop-dialog').addEventListener('click', event => {
   if (storageWorking) profile = normalizeProfile(readSave(STORAGE.profile) ?? profile);
   let result = ownsItem(profile, item) ? { ok: true, profile } : purchaseItem(profile, item.id);
   if (result.ok && item.kind === 'board') result = equipItem(result.profile, item.id);
-  if (result.ok) { profile = result.profile; persist(); renderShop(); $('#shop-message').textContent = item.kind === 'color' ? `${item.name}が色の抽選に加わりました。` : `${item.name}を選びました。次の対局から使えます。`;  }
-  else $('#shop-message').textContent = result.reason;
+  if (result.ok) { profile = result.profile; persist(); renderShop(); $('#shop-message').textContent = item.kind === 'color' ? t`${t(item.name)}が色の抽選に加わりました。` : t`${t(item.name)}を選びました。次の対局から使えます。`;  }
+  else $('#shop-message').textContent = /^あと\d+コイン必要です$/.test(result.reason) ? t`あと${item.price-profile.coins}コイン必要です` : t(result.reason);
 });
 $('#start').addEventListener('click', () => setup('solo')); $('#friends-open').addEventListener('click', () => setup('friends'));
 $('#classic-open').addEventListener('click', () => setup('solo',2));
@@ -426,18 +439,18 @@ $('#launch').addEventListener('click', () => {
   syncSettings(); persist();
   startGame({ mode: setupMode, playerCount:setupCount, difficulty: preferences.difficulty, size: preferences.size, theme: profile.equippedBoard });
 });
-$('#again').addEventListener('click', () => {if(state.mode==='online'){online.send('rematch');$('#again').disabled=true;$('#again').textContent='ほかのプレイヤーを待っています…';}else startGame();}); $('#home-button').addEventListener('click', goHome); $('#leave-game').addEventListener('click', goHome);
+$('#again').addEventListener('click', () => {if(state.mode==='online'){online.send('rematch');$('#again').disabled=true;$('#again').textContent=t('ほかのプレイヤーを待っています…');}else startGame();}); $('#home-button').addEventListener('click', goHome); $('#leave-game').addEventListener('click', goHome);
 window.addEventListener('hashchange', () => { if (location.hash !== '#play' && state.phase !== 'home') goHome(); });
 ui.result.addEventListener('cancel', event => { event.preventDefault(); goHome(); });
 for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => openDialog(`#${name}-dialog`));
 function openCollection(){previewItem=previewTheme=profile.equippedBoard;previewColor=profile.equippedColor;renderShop();$('#shop-message').textContent='';openDialog('#shop-dialog');}
 $('#shop-open').addEventListener('click',openCollection);$('#collection-open').addEventListener('click',openCollection);
 function openPause() {
-  $('#menu-dialog .eyebrow').textContent=state.mode==='online'?'ONLINE MATCH':'PAUSED';$('#menu-title').textContent=state.mode==='online'?'対局メニュー':'ポーズ';$('#menu-dialog .pause-note').textContent=state.mode==='online'?'オンライン対戦の時間は進み続けます':'ゲームの時間が止まっています';
-  if(state.mode==='online'){if(!onlineRoom)return;$('#resign-open').disabled=onlineRoom.seats[onlineRoom.you].forfeit||onlineRoom.phase==='ended';$('#match-info').textContent='オンライン · 8 × 8 · 1手45秒 · あなたは'+nameOf(state.human);$('#leave-game').textContent='退出してホームへ（対局中は降参）';openDialog('#menu-dialog');return;}
-  $('#leave-game').textContent='この対局を終了してホームへ';
+  $('#menu-dialog .eyebrow').textContent=state.mode==='online'?'ONLINE MATCH':'PAUSED';$('#menu-title').textContent=state.mode==='online'?t('対局メニュー'):t('ポーズ');$('#menu-dialog .pause-note').textContent=state.mode==='online'?t('オンライン対戦の時間は進み続けます'):t('ゲームの時間が止まっています');
+  if(state.mode==='online'){if(!onlineRoom)return;$('#resign-open').disabled=onlineRoom.seats[onlineRoom.you].forfeit||onlineRoom.phase==='ended';$('#match-info').textContent=t('オンライン · 8 × 8 · 1手45秒 · あなたは')+nameOf(state.human);$('#leave-game').textContent=t('退出してホームへ（対局中は降参）');openDialog('#menu-dialog');return;}
+  $('#leave-game').textContent=t('この対局を終了してホームへ');
   if(['home','ended'].includes(state.phase))return;
-  $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : `${state.colors.length}人で交代`} · ${state.size} × ${state.size}${state.mode === 'solo' ? ` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => c.name).join(' → ')}`; openDialog('#menu-dialog');
+  $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = t`${state.mode === 'solo' ? t`ひとり · ${t(DIFFICULTIES[state.difficulty].label)}` : t`${state.colors.length}人で交代`} · ${state.size} × ${state.size}${state.mode === 'solo' ? t` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => t(c.name)).join(' → ')}`; openDialog('#menu-dialog');
 }
 ui.turn.addEventListener('click', openPause);
 document.addEventListener('keydown',event=>{
@@ -447,10 +460,10 @@ document.addEventListener('keydown',event=>{
   if(top){top.close();wake();}else openPause();
 },true);
 $('#resign-open').addEventListener('click', () => {
-  $('#resign-confirm').textContent=state.mode==='online'?'降参してAIに引き継ぐ':'降参して対局を終了する';
-  if(state.mode==='online'){if(!onlineRoom||onlineRoom.seats[onlineRoom.you].forfeit)return;$('#resign-description').textContent='あなたは負けとなり、残りの手はAIが引き継ぎます。ほかのプレイヤーの対局は続きます。';openDialog('#resign-dialog');return;}
+  $('#resign-confirm').textContent=state.mode==='online'?t('降参してAIに引き継ぐ'):t('降参して対局を終了する');
+  if(state.mode==='online'){if(!onlineRoom||onlineRoom.seats[onlineRoom.you].forfeit)return;$('#resign-description').textContent=t('あなたは負けとなり、残りの手はAIが引き継ぎます。ほかのプレイヤーの対局は続きます。');openDialog('#resign-dialog');return;}
   if (!canResign(state)) return;
-  $('#resign-description').textContent = state.mode === 'solo' ? `${nameOf(state.human)}のあなたが降参し、負けとして１対局を記録します。コインは増減しません。` : `${nameOf(state.player)}が降参し、${state.colors.length}人全員のこの対局を終了します。途中の枚数で勝者は決めません。`;
+  $('#resign-description').textContent = state.mode === 'solo' ? t`${nameOf(state.human)}のあなたが降参し、負けとして１対局を記録します。コインは増減しません。` : t`${nameOf(state.player)}が降参し、${state.colors.length}人全員のこの対局を終了します。途中の枚数で勝者は決めません。`;
   openDialog('#resign-dialog');
 });
 $('#resign-confirm').addEventListener('click', resignGame);
@@ -467,57 +480,57 @@ $('#sound-preview').addEventListener('click', async () => {
   if (!$('#settings-dialog').open) return;
   stoneAudio.hit('place',-.2); await wallDelay(330);
   if (!$('#settings-dialog').open) return;
-  stoneAudio.hit('flip',.2); $('#sound-status').textContent = stoneAudio.status().state === 'running' ? '置く音、返す音の順に再生しました。' : '音の準備中です。もう一度お試しください。';
+  stoneAudio.hit('flip',.2); $('#sound-status').textContent = stoneAudio.status().state === 'running' ? t('置く音、返す音の順に再生しました。') : t('音の準備中です。もう一度お試しください。');
 });
 $('#export-save').addEventListener('click', () => {
   const blob = new Blob([JSON.stringify({ format: 'four-color-othello', version: 1, profile, preferences }, null, 2)], { type: 'application/json' }), url = URL.createObjectURL(blob), link = document.createElement('a');
-  link.href = url; link.download = 'Irodory-セーブデータ.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 30000); $('#save-message').textContent = 'セーブデータを書き出しました。安全な場所に残してください。';
+  link.href = url; link.download = t('Irodory-セーブデータ.json'); link.click(); setTimeout(() => URL.revokeObjectURL(url), 30000); $('#save-message').textContent = t('セーブデータを書き出しました。安全な場所に残してください。');
 });
-$('#import-save').addEventListener('click', () => { if (state.phase !== 'home') { $('#save-message').textContent = 'ホームに戻ってから読み込んでください。'; return; } $('#save-file').click(); });
+$('#import-save').addEventListener('click', () => { if (state.phase !== 'home') { $('#save-message').textContent = t('ホームに戻ってから読み込んでください。'); return; } $('#save-file').click(); });
 $('#save-file').addEventListener('change', async event => {
   const file = event.target.files?.[0]; if (!file) return;
   try {
-    if (file.size > 1000000) throw new Error('大きすぎるファイルです');
+    if (file.size > 1000000) throw new Error(t('大きすぎるファイルです'));
     const saved = JSON.parse(await file.text());
-    if (saved?.format !== 'four-color-othello' || saved.version !== 1 || !saved.profile || typeof saved.profile !== 'object' || !saved.preferences) throw new Error('このゲームのセーブデータを選んでください');
-    if (state.phase !== 'home') throw new Error('ホームに戻ってから読み込んでください');
-    profile = normalizeProfile(saved.profile); preferences = normalizePreferences(saved.preferences); persist(); syncSettings(); renderHome(); $('#save-message').textContent = 'コイン・購入品・設定を読み込みました。';
-  } catch (error) { $('#save-message').textContent = `読み込めませんでした。${error instanceof SyntaxError ? 'JSON形式のセーブデータを選んでください。' : error.message}`; }
+    if (saved?.format !== 'four-color-othello' || saved.version !== 1 || !saved.profile || typeof saved.profile !== 'object' || !saved.preferences) throw new Error(t('このゲームのセーブデータを選んでください'));
+    if (state.phase !== 'home') throw new Error(t('ホームに戻ってから読み込んでください'));
+    profile = normalizeProfile(saved.profile); preferences = normalizePreferences(saved.preferences); persist(); refreshLanguage(); $('#save-message').textContent = t('コイン・購入品・設定を読み込みました。');
+  } catch (error) { $('#save-message').textContent = t`読み込めませんでした。${error instanceof SyntaxError ? t('JSON形式のセーブデータを選んでください。') : error.message}`; }
   event.target.value = '';
 });
-function snapshot() { return { clock:{timeMs:Math.floor(gameClock.time()),paused:gameClock.paused(),pending:gameClock.pending()}, ai:aiAnalysis ? {...aiAnalysis,active:oniRunner.active()} : null, rendering:{ stones:ui.board.querySelectorAll('.disc').length, animations:ui.board.getAnimations?.({subtree:true}).length ?? 0, effects:cellEffects.size(), flipping:ui.board.querySelectorAll('.is-flipping').length }, sound: { enabled:preferences.sound, volume:preferences.volume, ...stoneAudio.status() }, firstMoves:state.movedPlayers?.slice() ?? [false,false,false,false], phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, playerCount:state.colors.length, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board).slice(0,state.colors.length), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
+function snapshot() { return { language:getLanguage(), languageSetting:preferences.language, clock:{timeMs:Math.floor(gameClock.time()),paused:gameClock.paused(),pending:gameClock.pending()}, ai:aiAnalysis ? {...aiAnalysis,active:oniRunner.active()} : null, rendering:{ stones:ui.board.querySelectorAll('.disc').length, animations:ui.board.getAnimations?.({subtree:true}).length ?? 0, effects:cellEffects.size(), flipping:ui.board.querySelectorAll('.is-flipping').length }, sound: { enabled:preferences.sound, volume:preferences.volume, ...stoneAudio.status() }, firstMoves:state.movedPlayers?.slice() ?? [false,false,false,false], phase: state.phase, ending: state.ending ?? null, resigned: state.resigned ?? null, stats: { ...profile.stats }, paused: isPaused(), player: state.player, mode: state.mode, human: state.human, difficulty: state.difficulty, size: state.size, playerCount:state.colors.length, colors: state.colors.map(c => c.id), board: state.board.slice(), scores: scores(state.board).slice(0,state.colors.length), hints: preferences.hints, coins: profile.coins, ownedBoards: [...profile.ownedBoards], ownedColors: [...profile.ownedColors] }; }
 function registerTools() {
   const context = document.modelContext; if (!context?.registerTool) return;
   const lifecycle = new AbortController(); window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });
   const tools = [
-    { name: 'read_othello_game', title: '盤面を読む', description: '盤面、手番、設定を読む。boardの値はプレイヤー番号0〜3、空きはnull。colorsが対応する色。', inputSchema: { type: 'object', properties: {}, additionalProperties: false }, annotations: { readOnlyHint: true }, execute: () => snapshot() },
-    { name: 'place_othello_stone', title: '石を置く', description: '人間の手番に1枚置く。行・列は1始まり、設定した盤の広さ以内。はさめない場所・AIの番・メニュー表示中には置けない。', inputSchema: { type: 'object', properties: { row: { type: 'integer', minimum: 1, maximum: 12 }, column: { type: 'integer', minimum: 1, maximum: 12 } }, required: ['row','column'], additionalProperties: false }, annotations: { readOnlyHint: false }, execute: input => { if (!input || Object.keys(input).some(k => !['row','column'].includes(k)) || ![input.row,input.column].every(v => Number.isInteger(v) && v >= 1 && v <= state.size)) throw new Error(`行と列は1〜${state.size}の整数で指定してください`); return moveAt((input.row - 1) * state.size + input.column - 1); } },
+    { name: 'read_othello_game', title: t('盤面を読む'), description: t('盤面、手番、設定を読む。boardの値はプレイヤー番号0〜3、空きはnull。colorsが対応する色。'), inputSchema: { type: 'object', properties: {}, additionalProperties: false }, annotations: { readOnlyHint: true }, execute: () => snapshot() },
+    { name: 'place_othello_stone', title: t('石を置く'), description: t('人間の手番に1枚置く。行・列は1始まり、設定した盤の広さ以内。はさめない場所・AIの番・メニュー表示中には置けない。'), inputSchema: { type: 'object', properties: { row: { type: 'integer', minimum: 1, maximum: 12 }, column: { type: 'integer', minimum: 1, maximum: 12 } }, required: ['row','column'], additionalProperties: false }, annotations: { readOnlyHint: false }, execute: input => { if (!input || Object.keys(input).some(k => !['row','column'].includes(k)) || ![input.row,input.column].every(v => Number.isInteger(v) && v >= 1 && v <= state.size)) throw new Error(t`行と列は1〜${state.size}の整数で指定してください`); return moveAt((input.row - 1) * state.size + input.column - 1); } },
   ];
   for (const tool of tools) { try { Promise.resolve(context.registerTool(tool, { signal: lifecycle.signal })).catch(() => {}); } catch { /* Optional browser integration. */ } }
 }
 window.addEventListener('storage', event => {
   if (event.key === STORAGE.profile) { profile = normalizeProfile(readSave(STORAGE.profile)); renderHome(); if ($('#shop-dialog').open) renderShop(); }
 });
-let onlineEnabled=false,onlineRoom=null,onlineTimer=null,onlineStartAt=null,onlineOffset=0,onlinePending=false,onlineResultId=null,onlineReactionTimer=null,onlineViewKey='',onlineLedgerKey='';
+let onlineEnabled=false,onlineRoom=null,onlineTimer=null,onlineStartAt=null,onlineOffset=0,onlinePending=false,onlineResultId=null,onlineReactionTimer=null,onlineViewKey='',onlineLedgerKey='',onlinePlayers=[],onlineConnectionMessage='オンライン',onlineErrorMessage='';
 const online=createOnlineClient({onState:receiveOnline,onStatus:(message,connected)=>{
-  $('#online-connection').textContent=message;$('#online-lobby-status').textContent=connected?'対戦相手を探しています…':message;
+  onlineConnectionMessage=message;$('#online-connection').textContent=t(message);$('#online-lobby-status').textContent=connected?t('対戦相手を探しています…'):t(message);
   if(state.mode==='online')updateInputState();
-},onError:message=>{onlinePending=false;$('#online-lobby-error').textContent=message;if(state.mode==='online'){$('#online-connection').textContent=message;renderStatus();}}});
+},onError:message=>{onlinePending=false;onlineErrorMessage=message;$('#online-lobby-error').textContent=t(message);if(state.mode==='online'){$('#online-connection').textContent=t(message);renderStatus();}}});
 function stopOnline(){
   if(online.connected())online.send('leave');online.stop();onlineEnabled=false;onlineRoom=null;onlineStartAt=null;onlinePending=false;clearInterval(onlineTimer);clearTimeout(onlineReactionTimer);onlineTimer=null;$('#online-stamps').hidden=true;$('#online-reaction').textContent='';
 }
 async function openOnline(){
   $('#online-open').disabled=true;$('#online-name-error').textContent='';$('#online-lobby-error').textContent='';
   try{
-    if(location.protocol==='file:')throw new Error('ローカルHTMLのオンライン対戦は、下の公開版リンクから遊べます');
+    if(location.protocol==='file:')throw new Error(t('ローカルHTMLのオンライン対戦は、下の公開版リンクから遊べます'));
     const user=await online.session();acceptOnlineLedger(user.ledger);
     if(!user.name){openDialog('#online-name-dialog');$('#online-name').focus();return;}
     $('#online-name').value=user.name;startOnline();
-  }catch(e){openDialog('#online-lobby-dialog');$('#online-lobby-status').textContent='オンラインに接続できませんでした';$('#online-lobby-error').textContent=e.name==='AbortError'?'接続がタイムアウトしました。もう一度お試しください':e.message;$('#online-countdown').textContent='—';$('#online-seats').replaceChildren();}
+  }catch(e){openDialog('#online-lobby-dialog');$('#online-lobby-status').textContent=t('オンラインに接続できませんでした');$('#online-lobby-error').textContent=e.name==='AbortError'?t('接続がタイムアウトしました。もう一度お試しください'):t(e.message);$('#online-countdown').textContent='—';$('#online-seats').replaceChildren();}
   finally{$('#online-open').disabled=false;}
 }
 function startOnline(){
-  onlineViewKey='';onlineLedgerKey='';closeDialogs();onlineEnabled=true;onlineResultId=null;onlinePending=false;onlineRoom=null;onlineStartAt=null;
+  onlineViewKey='';onlineLedgerKey='';closeDialogs();onlineEnabled=true;onlineResultId=null;onlinePending=false;onlineRoom=null;onlineStartAt=null;onlinePlayers=[];onlineErrorMessage='';
   $('#online-lobby-error').textContent='';$('#online-seats').replaceChildren();$('#online-countdown').textContent='60';openDialog('#online-lobby-dialog');
   clearInterval(onlineTimer);onlineTimer=setInterval(updateOnlineTime,250);online.connect();
 }
@@ -527,7 +540,7 @@ function receiveOnline(data){
   if(!data.room){
     onlineStartAt=data.startAt;
     if(data.waiting&&onlineRoom){cancelRun();onlineRoom=null;onlineViewKey='';state.phase='home';ui.home.hidden=false;ui.game.hidden=true;document.body.classList.remove('playing');$('#online-hud').hidden=true;closeDialogs();openDialog('#online-lobby-dialog');}
-    if(data.waiting){$('#online-lobby-error').textContent='';$('#online-lobby-status').textContent=`${data.players.length} / 4 人が着席しました`;renderOnlineSeats(data.players);}
+    if(data.waiting){onlinePlayers=data.players;$('#online-lobby-error').textContent='';$('#online-lobby-status').textContent=t`${data.players.length} / 4 人が着席しました`;renderOnlineSeats(data.players);}
     updateOnlineTime();return;
   }
   const signature=JSON.stringify([data.room.id,data.room.ply,data.room.phase,data.room.deadline,data.room.seats,data.room.reactions,data.room.notice]);if(signature===onlineViewKey)return;onlineViewKey=signature;
@@ -542,52 +555,96 @@ function receiveOnline(data){
   const changed=room.board.flatMap((p,i)=>previous&&previous.board[i]!==p?[i]:[]);
   state.board=room.board;state.player=room.player;state.movedPlayers=room.moved;state.phase=room.phase==='countdown'?'intro':room.phase==='ended'?'ended':room.seats[room.you].forfeit?'watching':'playing';
   for(const i of changed){updateCell(i);if(!preferences.reducedMotion&&changed.length<=8&&!isPaused()){cells[i].firstElementChild?.animate([{transform:'scaleX(.15) translateY(-5px)'},{transform:'scaleX(1) translateY(0)'}],{duration:320,easing:'ease-out'});}}
-  if(changed.length&&!isPaused()){sound('place',room.lastMove.index);announce(`${room.seats[room.lastMove.player].name}が${room.lastMove.flips.length}枚返しました`);}
+  if(changed.length&&!isPaused()){sound('place',room.lastMove.index);announce(t`${onlineSeatName(room.seats[room.lastMove.player],room.lastMove.player)}が${room.lastMove.flips.length}枚返しました`);}
   renderStatus();
-  if(room.phase==='countdown'){showNotice(`あなたは${nameOf(room.you)}`,`${room.you+1}番目の手番です`);}
-  else if(room.notice&&room.notice!==previous?.notice){showNotice(room.notice);noticeTimer=gameClock.schedule(hideNotice,2000);}
+  if(room.phase==='countdown'){showNotice(t`あなたは${nameOf(room.you)}`,t`${room.you+1}番目の手番です`);}
+  else if(room.notice&&room.notice!==previous?.notice){showNotice(onlineNotice(room.notice,room.seats));noticeTimer=gameClock.schedule(hideNotice,2000);}
   else if(previous?.phase==='countdown')hideNotice();
   const reaction=room.reactions.at(-1);
-  if(reaction&&Date.now()+onlineOffset-reaction.at<7000){$('#online-reaction').textContent=`${room.seats[reaction.seat].name}：${reaction.stamp}`;clearTimeout(onlineReactionTimer);onlineReactionTimer=setTimeout(()=>{$('#online-reaction').textContent='';},Math.max(0,7000-(Date.now()+onlineOffset-reaction.at)));}
+  if(reaction&&Date.now()+onlineOffset-reaction.at<7000){$('#online-reaction').textContent=t`${onlineSeatName(room.seats[reaction.seat],reaction.seat)}：${t(reaction.stamp)}`;clearTimeout(onlineReactionTimer);onlineReactionTimer=setTimeout(()=>{$('#online-reaction').textContent='';},Math.max(0,7000-(Date.now()+onlineOffset-reaction.at)));}
   if(room.phase==='ended'&&onlineResultId!==room.id)showOnlineResult(room);
   updateOnlineTime();
 }
 function renderOnlineSeats(players){
   $('#online-seats').replaceChildren();
-  for(let i=0;i<4;i++){const member=players[i],el=document.createElement('div');el.className='online-seat'+(member?'':' empty');el.innerHTML=member?piece(PLAYERS[i].color):'<span class="seat-placeholder">＋</span>';const name=document.createElement('b');name.textContent=member?.name??'空いている席';el.append(name);const note=document.createElement('small');note.textContent=member?(member.you?'あなた':'プレイヤー'):'1分後にAI';el.append(note);$('#online-seats').append(el);}
+  for(let i=0;i<4;i++){const member=players[i],el=document.createElement('div');el.className='online-seat'+(member?'':' empty');el.innerHTML=member?piece(PLAYERS[i].color):t('<span class="seat-placeholder">＋</span>');const name=document.createElement('b');name.textContent=member?.name??t('空いている席');el.append(name);const note=document.createElement('small');note.textContent=member?(member.you?t('あなた'):t('プレイヤー')):t('1分後にAI');el.append(note);$('#online-seats').append(el);}
 }
 function updateOnlineTime(){
   const now=Date.now()+onlineOffset;
   if(onlineStartAt)$('#online-countdown').textContent=String(Math.max(0,Math.ceil((onlineStartAt-now)/1000)));
   if(!onlineRoom)return;const seconds=Math.max(0,Math.ceil((onlineRoom.deadline-now)/1000));
-  const text=onlineRoom.phase==='ended'?'対局終了':onlineRoom.phase==='countdown'?`開始まで ${seconds}秒`:onlineRoom.seats[onlineRoom.you].forfeit?'AIが引継ぎ · 観戦中':`残り ${seconds}秒`;
+  const text=onlineRoom.phase==='ended'?t('対局終了'):onlineRoom.phase==='countdown'?t`開始まで ${seconds}秒`:onlineRoom.seats[onlineRoom.you].forfeit?t('AIが引継ぎ · 観戦中'):t`残り ${seconds}秒`;
   if($('#online-turn-time').textContent!==text)$('#online-turn-time').textContent=text;
   $('#online-turn-time').classList.toggle('urgent',onlineRoom.phase==='playing'&&onlineRoom.player===onlineRoom.you&&seconds<=10);
 }
 function onlineMove(index){
-  if(!onlineRoom||state.phase!=='playing'||isPaused()||onlinePending||onlineRoom.player!==onlineRoom.you)return {ok:false,reason:'あなたの手番ではありません'};
-  if(!turnMoves(state.board,state.player).includes(index)){showNotice('ここには置けません','相手の石をはさめるマスに置いてください');noticeTimer=gameClock.schedule(hideNotice,1300);return {ok:false};}
+  if(!onlineRoom||state.phase!=='playing'||isPaused()||onlinePending||onlineRoom.player!==onlineRoom.you)return {ok:false,reason:t('あなたの手番ではありません')};
+  if(!turnMoves(state.board,state.player).includes(index)){showNotice(t('ここには置けません'),t('相手の石をはさめるマスに置いてください'));noticeTimer=gameClock.schedule(hideNotice,1300);return {ok:false};}
   onlinePending=online.send('move',{index,ply:onlineRoom.ply,room:onlineRoom.id});return {ok:onlinePending};
 }
 function showOnlineResult(room){
   onlineResultId=room.id;hideNotice();closeDialogs();const won=room.winners.includes(room.you)&&!room.seats[room.you].forfeit,draw=won&&room.winners.length>1;
   decorateResult(room.seats[room.you].forfeit?'resigned':won?draw?'draw':'win':'loss');if(won&&!draw)stoneAudio.celebrate();
-  $('#result-title').textContent=room.abandoned?'対局終了':won?draw?'引き分け！':'あなたの勝ち！':'対局終了';$('#result-context').textContent=room.abandoned?'参加者が退出したため終了しました':'オンライン · 最終スコア';
+  renderOnlineResult(room);openDialog('#result-dialog');
+}
+function renderOnlineResult(room){
+  const won=room.winners.includes(room.you)&&!room.seats[room.you].forfeit,draw=won&&room.winners.length>1;
+  $('#result-title').textContent=room.abandoned?t('対局終了'):won?draw?t('引き分け！'):t('あなたの勝ち！'):t('対局終了');$('#result-context').textContent=room.abandoned?t('参加者が退出したため終了しました'):t('オンライン · 最終スコア');
   $('#result-scores').replaceChildren();const counts=scores(room.board);
-  for(const i of [0,1,2,3].sort((a,b)=>counts[b]-counts[a])){const row=document.createElement('div');row.className='result-row'+(room.winners.includes(i)?' winner':'');row.innerHTML=stone(i);const name=document.createElement('span');name.textContent=room.seats[i].name+(i===room.you?'（あなた）':'')+(room.seats[i].forfeit?' · 降参／AI引継':room.seats[i].bot?' · AI':'');const count=document.createElement('b');count.textContent=counts[i]+'枚';row.append(name,count);$('#result-scores').append(row);}
-  $('#result-reward').textContent=won?`＋${draw?35:70} コイン！ 所持 ${profile.coins} コイン`:`また次の一局で。所持 ${profile.coins} コイン`;
-  $('#again').textContent='同じメンバーに再戦を申し込む';$('#again').disabled=room.seats[room.you].forfeit||room.abandoned;$('#online-new-opponents').hidden=false;openDialog('#result-dialog');
+  for(const i of [0,1,2,3].sort((a,b)=>counts[b]-counts[a])){const row=document.createElement('div');row.className='result-row'+(room.winners.includes(i)?' winner':'');row.innerHTML=stone(i);const name=document.createElement('span');name.textContent=onlineSeatName(room.seats[i],i)+(i===room.you?t('（あなた）'):'')+(room.seats[i].forfeit?t(' · 降参／AI引継'):room.seats[i].bot?' · AI':'');const count=document.createElement('b');count.textContent=counts[i]+t('枚');row.append(name,count);$('#result-scores').append(row);}
+  $('#result-reward').textContent=won?t`＋${draw?35:70} コイン！ 所持 ${profile.coins} コイン`:t`また次の一局で。所持 ${profile.coins} コイン`;
+  $('#again').textContent=t('同じメンバーに再戦を申し込む');$('#again').disabled=room.seats[room.you].forfeit||room.abandoned;$('#online-new-opponents').hidden=false;
 }
 $('#online-open').addEventListener('click',openOnline);
-$('#online-name-form').addEventListener('submit',async event=>{event.preventDefault();$('#online-name-submit').disabled=true;try{await online.session($('#online-name').value);startOnline();}catch(e){$('#online-name-error').textContent=e.message;}finally{$('#online-name-submit').disabled=false;}});
+$('#online-name-form').addEventListener('submit',async event=>{event.preventDefault();$('#online-name-submit').disabled=true;try{await online.session($('#online-name').value);startOnline();}catch(e){$('#online-name-error').textContent=t(e.message);}finally{$('#online-name-submit').disabled=false;}});
 $('#online-cancel').addEventListener('click',()=>{stopOnline();goHome();});
 $('#online-lobby-dialog').addEventListener('cancel',event=>{event.preventDefault();stopOnline();goHome();});
 $('#online-rename').addEventListener('click',()=>{stopOnline();closeDialogs();openDialog('#online-name-dialog');});
 $('#online-new-opponents').addEventListener('click',()=>{stopOnline();goHome();void openOnline();});
 $('#online-stamps-toggle').addEventListener('click',()=>{$('#online-stamps').hidden=!$('#online-stamps').hidden;});
-for(const stamp of ['よろしく！','いい一手！','ありがとう！','楽しかった！']){const button=document.createElement('button');button.textContent=stamp;button.addEventListener('click',()=>{online.send('reaction',{stamp});$('#online-stamps').hidden=true;});$('#online-stamps').append(button);}
+for(const stamp of ONLINE_STAMPS){const button=document.createElement('button');button.textContent=t(stamp);button.dataset.stamp=stamp;button.addEventListener('click',()=>{online.send('reaction',{stamp});$('#online-stamps').hidden=true;});$('#online-stamps').append(button);}
 window.addEventListener('pagehide',()=>{online.stop();clearInterval(onlineTimer);});
 window.addEventListener('pageshow',event=>{if(event.persisted&&onlineEnabled){onlineTimer=setInterval(updateOnlineTime,250);online.connect();}});
+
+function refreshLanguage() {
+  setLanguage(preferences.language, navigator.languages?.length ? navigator.languages : [navigator.language]);
+  translateStatic(); syncSettings(); renderHome();
+  for (const id of ['save-message','sound-status','shop-message','online-name-error']) $('#'+id).textContent='';
+  document.querySelectorAll('[data-stamp]').forEach(button=>{button.textContent=t(button.dataset.stamp);});
+  if ($('#setup-dialog').open) {
+    for (const input of document.querySelectorAll('#difficulty-options input')) input.nextElementSibling.textContent=t(DIFFICULTIES[input.value].label);
+    setupNotes();
+  }
+  if ($('#shop-dialog').open) renderShop();
+  if (state.phase !== 'home') {
+    ui.board.setAttribute('aria-label',t`Irodoryの盤面、${state.size}行${state.size}列、${state.colors.length}色`);
+    cells.forEach((_,i)=>updateCell(i)); renderStatus();
+    if ($('#menu-dialog').open) openPause();
+    if (!$('#match-intro').hidden) {
+      $('#intro-emblem').textContent=state.mode==='solo'&&state.difficulty==='oni'?t('鬼'):'◇';
+      $('#intro-title').textContent=state.mode==='solo'?t`あなたは${nameOf(state.human)}`:t('対局開始');
+      $('#intro-detail').textContent=state.mode==='solo'?t`${state.human+1}番目の手番です`:state.colors.length===2?t('黒と白で、勝負。'):t('４つの色で、勝負。');
+      $('#intro-pieces').querySelectorAll('small').forEach((el,p)=>{el.textContent=String(p+1)+(state.mode==='solo'&&p===state.human?t(' · あなた'):'');});
+    }
+    hideNotice();
+  }
+  if (state.phase==='ended') {
+    if (state.mode==='online'&&onlineRoom) renderOnlineResult(onlineRoom);
+    else if (state.ending==='resigned') renderResignedResult(); else renderLocalResult();
+    $('#result-flavor').textContent=t({win:'その一手が、景色を変えた。',draw:'互いに譲らない、見事な一局。',loss:'次の一手に、新しい可能性を。',resigned:'また、この卓で。'}[ui.result.dataset.outcome]);
+  }
+  if (onlineEnabled) {
+    $('#online-connection').textContent=t(onlineErrorMessage||onlineConnectionMessage);
+    $('#online-lobby-error').textContent=t(onlineErrorMessage);
+    if (!onlineRoom) {renderOnlineSeats(onlinePlayers);$('#online-lobby-status').textContent=t`${onlinePlayers.length} / 4 人が着席しました`;}
+    const reaction=onlineRoom?.reactions.at(-1);
+    if(reaction&&Date.now()+onlineOffset-reaction.at<7000) $('#online-reaction').textContent=t`${onlineSeatName(onlineRoom.seats[reaction.seat],reaction.seat)}：${t(reaction.stamp)}`;
+    updateOnlineTime();
+  }
+}
+$('#language-setting').addEventListener('change',event=>{preferences.language=normalizeLanguage(event.target.value);refreshLanguage();persist();});
+window.addEventListener('languagechange',()=>{if(preferences.language==='auto')refreshLanguage();});
+
 installStoneTextures(document, [...CATALOG.filter(item => item.kind === 'color').map(item => item.id), 'black','white']);
 renderHome(); syncSettings(); registerTools();
 // Opening a saved URL always returns to the setup, never starts an unwanted game.

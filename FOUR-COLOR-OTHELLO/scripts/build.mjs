@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 const root = new URL('../', import.meta.url);
 const read = path => readFile(new URL(path, root), 'utf8');
-const [template, css, loungeCSS, ...modules] = await Promise.all(['src/index.html', 'src/style.css', 'src/lounge.css', 'src/engine.js', 'src/ai.js', 'src/oni.js', 'src/ai-runner.js', 'src/match.js', 'src/progression.js', 'src/audio.js', 'src/rendering.js', 'src/capture-preview.js', 'src/game-clock.js', 'src/online.js', 'src/app.js'].map(read));
+const [template, css, loungeCSS, ...modules] = await Promise.all(['src/index.html', 'src/style.css', 'src/lounge.css', 'src/translations.js', 'src/i18n.js', 'src/engine.js', 'src/ai.js', 'src/oni.js', 'src/ai-runner.js', 'src/match.js', 'src/progression.js', 'src/audio.js', 'src/rendering.js', 'src/capture-preview.js', 'src/game-clock.js', 'src/online.js', 'src/app.js'].map(read));
 // Only our local named imports/exports are removed. The resulting classic
 // script has no fetches, module imports, CDN, or file:// CORS dependency.
 let embeddedCSS = css + '\n' + loungeCSS;
