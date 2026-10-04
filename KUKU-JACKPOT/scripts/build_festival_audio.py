@@ -1,7 +1,7 @@
 """Build the festival's real, offline audio with the installed VOICEVOX Core.
 
-424 spoken clips (81 questions + 81 correct recitals + 81 false claims + 81
-missing-factor questions + 100 unique cheers), plus six original arrangements.
+Core spoken clips plus all bounded neighboring-fact false claims, and six
+original arrangements. False claims are keyed by their actual spoken product.
 Re-running reuses clips whose text/render settings still match the manifest.
 """
 from pathlib import Path
@@ -118,6 +118,12 @@ def definitions():
             clips[f'a-{a}-{b}'] = {**common, 'text': f'{CALLS[a-1][b-1]}、{number(product, True)}！', 'kind': 'answer', 'slotSeconds': 2.55, 'claim': product, 'pronunciation':answer_pronunciation(a,b)}
             clips[f'f-{a}-{b}'] = {**common, 'text': f'{NUMS[a]}かける{NUMS[b]}は、{number(false)}！', 'kind': 'false_claim', 'slotSeconds': 3.0, 'claim': false, 'pronunciation':number_question_pronunciation('false_claim',a,b,false)}
             clips[f'r-{a}-{b}'] = {**common, 'text': f'{NUMS[a]}かける、いくつで、{number(product)}？', 'kind': 'reverse_question', 'slotSeconds': 3.0, 'hiddenOperand': 'b', 'pronunciation':number_question_pronunciation('reverse_question',a,b)}
+            # Keep this pool in sync with festival-core.falseClaims. A key includes
+            # the claim so the spoken number can never diverge from the scroll.
+            for claim in dict.fromkeys([product-a, product+a, product-1, product+1]):
+                if claim < 1 or claim > 81 or claim == product:
+                    continue
+                clips[f'f-{a}-{b}-{claim}'] = {**common, 'text': f'{NUMS[a]}かける{NUMS[b]}は、{number(claim)}！', 'kind': 'false_claim', 'slotSeconds': 3.0, 'claim': claim, 'pronunciation':number_question_pronunciation('false_claim',a,b,claim)}
     catalog = json.loads(CHEERS.read_text())
     assert len(catalog['clips']) == 100
     assert len({clip['text'] for clip in catalog['clips']}) == 100
@@ -145,6 +151,11 @@ def build_voice(manifest, force=False, answers_only=False):
         if answers_only and definition['kind']!='answer':continue
         path = OUT/'voice'/f'{key}.wav'
         prior = manifest['clips'].get(key, {})
+        if not force and key.startswith('f-') and len(key.split('-')) == 4:
+            legacy=manifest['clips'].get(f'f-{definition["a"]}-{definition["b"]}', {})
+            if legacy.get('claim') == definition['claim'] and legacy.get('pronunciation',{}).get('verified') and (OUT/legacy.get('file','missing')).is_file():
+                manifest['clips'][key]={**legacy, 'aliasOf':f'f-{definition["a"]}-{definition["b"]}'}
+                continue
         render_version=ANSWER_RENDER_VERSION if definition['kind']=='answer' else NUMBER_SPEECH_RENDER_VERSION if 'pronunciation' in definition else RENDER_VERSION
         if not force and path.exists() and prior.get('text') == definition['text'] and prior.get('renderVersion') == render_version:
             continue
@@ -209,10 +220,13 @@ def build_music(manifest, force=False):
         return sosfilt(butter(2, cut, kind, fs=sr, output='sos'), samples)
     for name, spec in settings.items():
         path = OUT/'music'/f'{name}.wav'
-        if not force and path.exists() and manifest['music'].get(name, {}).get('renderVersion') == RENDER_VERSION:
+        stems_ready=name!='finale' or len(manifest.get('orchestra',{}).get('stems',{}))==6
+        if not force and stems_ready and path.exists() and manifest['music'].get(name, {}).get('renderVersion') == RENDER_VERSION:
             continue
         rng = np.random.default_rng(spec['seed'])
         tracks = {key: np.zeros((length,2), dtype=np.float32) for key in ['drums','bass','keys','lead']}
+        if name=='finale':
+            tracks.update({key:np.zeros((length,2),dtype=np.float32) for key in ['brass','bells']})
         events = []
         def add(track, signal, beat, gain=1, pan=0):
             start = round(beat*BEAT*sr) % length
@@ -305,6 +319,32 @@ def build_music(manifest, force=False):
             dry=tracks[track].copy()
             for delay,gain in [(BEAT*.75,.13),(BEAT*1.5,.065),(.037,.035),(.071,.026)]:
                 tracks[track] += np.roll(dry,round(delay*sr),axis=0)[:,::-1]*gain
+        if name=='finale':
+            for bar in range(8):
+                root=spec['root']+roots[(bar//2)%4]
+                for pitch in [root+12,root+16,root+19]:
+                    note('brass',pitch,bar*4+2,.7,.035,-.25,'brass')
+                for off,interval in [(1,24),(2.5,31),(3.5,28)]:
+                    note('bells',root+interval,bar*4+off,.4,.072,.35,'chime')
+            # All six stems have the same origin, period and global gain. The game
+            # unmutes them on beat boundaries; it never restarts a newly added part.
+            absolute_sum=sum(np.abs(track) for track in tracks.values())
+            stem_scale=.76/max(.01,float(np.max(absolute_sum)))
+            stems={}
+            labels={'drums':'ドラム','bass':'ベース','keys':'ピアノ','lead':'メロディ','brass':'ブラス','bells':'ベル'}
+            for level,(track,signal) in enumerate(tracks.items()):
+                signal=signal*stem_scale
+                join=(signal[0]+signal[-1])*.5
+                for i in range(24):
+                    weight=(1-i/24)**2
+                    signal[i]=signal[i]*(1-weight)+join*weight
+                    signal[-1-i]=signal[-1-i]*(1-weight)+join*weight
+                pcm_stem=(signal*32767).astype('<i2')
+                stem_path=OUT/'music'/f'finale-stem-{track}.wav'
+                with wave.open(str(stem_path),'wb') as stream:
+                    stream.setnchannels(2);stream.setsampwidth(2);stream.setframerate(sr);stream.writeframes(pcm_stem.tobytes())
+                stems[track]={'file':f'music/{stem_path.name}','instrument':labels[track],'unlockAfter':level,'bpm':BPM,'beats':MUSIC_BEATS,'frames':length,'seconds':length/sr,'sampleRate':sr,'peak':float(np.max(np.abs(signal))),'rms':float(np.sqrt(np.mean(signal**2))),'sha256':hashlib.sha256(stem_path.read_bytes()).hexdigest()}
+            manifest['orchestra']={'origin':'same as finale downbeat','stems':stems,'rule':'drums first; add bass, keys, melody, brass and bells after each correct answer'}
         mix=np.tanh(sum(tracks.values())*.94)
         mix *= .73/max(.01,float(np.max(np.abs(mix))))
         # Endpoint repair over 0.5 ms removes quantization jumps without a gap.

@@ -1,9 +1,31 @@
 export const BPM=132, BEAT=60/BPM, ROUND_BEATS=24, TARGET_BEAT=12, REVEAL_BEAT=14;
 export const shuffle=(values,random=Math.random)=>{const a=[...values];for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+// This exact set is also the contract for the recorded f-a-b-claimed voices.
+export function falseClaims(a,b){
+  const answer=a*b;
+  return [...new Set([answer-a,answer+a,answer-1,answer+1])].filter(n=>n>=1&&n<=81&&n!==answer);
+}
 export function makeQuestion(a,b,random=Math.random){
   const answer=a*b, candidates=[...new Set([answer-a,answer+a,answer-1,answer+1,answer-2,answer+2])].filter(x=>x>0&&x<=81&&x!==answer);
-  const truth=random()>.5, claimed=truth?answer:(answer===81?80:answer+1);
+  const truth=random()>.5, claims=falseClaims(a,b), claimed=truth?answer:claims[Math.min(claims.length-1,Math.floor(random()*claims.length))];
   return {a,b,answer,choices:shuffle([answer,...shuffle(candidates,random).slice(0,2)],random),truth,claimed,missing:answer>=10&&random()>.5?'tens':'ones'};
+}
+/** A stage lesson describes actual quantities and relationships, never painted-in answers. */
+export function makeStageQuestion(gameId,a,b,{random=Math.random,stageIndex=0,stageTotal=5,fixedTable=0,source=null,showHint,recallOf=null,pairId,role,finalPair=false,retry=false,sourceIndex=null,attempt=0,linked=false}={}){
+  if(!Number.isInteger(a)||!Number.isInteger(b)||a<1||a>9||b<1||b>9)throw new RangeError('Stage operands must be integers from 1 to 9');
+  const q={gameId:Number(gameId),...makeQuestion(a,b,random)};
+  const lesson={kind:'recall',stageIndex,stageTotal,fixedTable,linked};
+  switch(q.gameId){
+    case 5:Object.assign(lesson,{kind:'multiples',step:a,from:a*(b-1),target:q.answer,path:Array.from({length:Math.min(3,b+1)},(_,i)=>a*(Math.max(0,b-2)+i)),hop:b});break;
+    case 8:Object.assign(lesson,{kind:'place-value',tens:Math.floor(q.answer/10),ones:q.answer%10});break;
+    case 9:Object.assign(lesson,{kind:'train',groupSize:a,groups:b});break;
+    case 10:Object.assign(lesson,{kind:'recipe',perCup:a,cups:b,flavor:['strawberry','grape','melon','lemon'][(a+b)%4]});break;
+    case 11:Object.assign(lesson,{kind:'rebound',retry,sourceIndex,attempt});break;
+    case 12:Object.assign(lesson,{kind:'memory',showHint:showHint??stageIndex<Math.max(1,stageTotal-2),hintUntilBeat:5.5,recallOf});break;
+    case 13:Object.assign(lesson,{kind:'pair',pairId:pairId??`pair-${Math.floor(stageIndex/2)}`,role:role??(stageIndex%2?'second':'first'),finalPair,partner:source?{a:source.a,b:source.b,answer:source.answer}:{a:b,b:a,answer:q.answer},tableException:!!fixedTable&&a!==fixedTable});break;
+    case 14:Object.assign(lesson,{kind:'neighbor',known:{a,b:b-1,answer:a*(b-1)},step:a});break;
+  }
+  q.lesson=lesson;return q;
 }
 export function makePlaylist(mode,gameId,table=0,random=Math.random,review=[]){
   let ids=mode==='tour'?Array.from({length:21},(_,i)=>i+1):mode==='mix'?shuffle(Array.from({length:21},(_,i)=>i+1),random).slice(0,5):[Number(gameId)||1];
@@ -12,15 +34,56 @@ export function makePlaylist(mode,gameId,table=0,random=Math.random,review=[]){
   const fixed=Number.isInteger(chosen)&&chosen>=1&&chosen<=9?chosen:0;
   let tables=[],i=0;
   const operands=Object.fromEntries(digits.map(a=>[a,[]]));
-  return ids.flatMap(id=>Array.from({length:per},()=>{
+  const takeFact=()=>{
     const r=mode==='review'&&review.length?review[i%review.length]:null;
     if(!tables.length)tables=shuffle(digits,random);
     const a=r?.a||fixed||tables.pop();
     if(!operands[a].length)operands[a]=shuffle(digits,random);
     const b=r?.b||operands[a].pop();
     i++;
-    return {gameId:id,...makeQuestion(a,b,random)};
-  }));
+    return {a,b};
+  };
+  // Generic questions still use balanced bags. Linked teaching sequences intentionally
+  // repeat a fact/table: frog paths, ghost recall, and the reversed socks companion.
+  // In fixed-table play only the socks companion may put that table on the right.
+  return ids.flatMap(id=>{
+    const stage=[],hintCount=Math.max(1,per-2);
+    for(let n=0;n<per;n++){
+      let fact,source=null;const options={random,stageIndex:n,stageTotal:per,fixedTable:fixed};
+      if(mode!=='review'&&id===5&&n){fact={a:stage[0].a,b:stage[0].b+n};options.linked=true;}
+      else if(mode!=='review'&&id===12&&n>=hintCount){
+        source=stage[(n-hintCount)%hintCount];fact={a:source.a,b:source.b};options.showHint=false;options.recallOf=source.lesson.stageIndex;options.linked=true;
+      }else if(mode!=='review'&&id===13&&n>0&&(n%2||n===per-1)){
+        // An odd-length set finishes a known pair instead of leaving a lone sock.
+        source=stage[n-1];fact={a:source.b,b:source.a};options.source=source;options.pairId=source.lesson.pairId;options.role='second';options.linked=true;options.finalPair=n===per-1;
+      }else{
+        fact=takeFact();
+        if(mode!=='review'&&id===5)fact.b=Math.min(fact.b,10-per);
+        if(mode!=='review'&&id===13){
+          // Swapping different operands makes the relationship visible. Keep
+          // actual missed square facts untouched in targeted review mode.
+          const used=n=>stage.some(q=>q.a===fact.a&&q.b===n);
+          if(fact.a===fact.b||used(fact.b)){
+            for(let offset=1;offset<10;offset++){const candidate=(fact.b-1+offset)%9+1;if(candidate!==fact.a&&!used(candidate)){fact.b=candidate;break;}}
+          }
+        }
+      }
+      stage.push(makeStageQuestion(id,fact.a,fact.b,options));
+    }
+    return stage;
+  });
+}
+/** Replace an unplayed basketball question, without growing or reordering the tour. */
+export function queueBasketballRetry(playlist,index,result,{random=Math.random}={}){
+  const q=playlist[index];
+  if(!q||q.gameId!==11||!result||result.correct||result.watch||q.lesson?.retry)return {queued:false};
+  const eligible=i=>playlist[i]?.gameId===11&&!playlist[i].lesson?.retry;
+  const targetIndex=[index+2,index+3,index+1].find(eligible);
+  if(targetIndex===undefined)return {queued:false};
+  const target=playlist[targetIndex];
+  const question=makeStageQuestion(11,q.a,q.b,{random,stageIndex:target.lesson?.stageIndex??targetIndex,stageTotal:target.lesson?.stageTotal??5,fixedTable:q.lesson?.fixedTable??0,retry:true,sourceIndex:index,attempt:1,linked:true});
+  playlist[targetIndex]=question;
+  return {queued:true,targetIndex,question};
 }
 export function grade(question,result,{offset=0,watch=false}={}){
   const expected=[4,21].includes(question.gameId)?Number(question.truth):question.answer;

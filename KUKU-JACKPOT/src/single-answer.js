@@ -3,6 +3,14 @@ import {BEAT} from './festival-core.js';
 export const SINGLE_TIMING={countdown:9,target:12,play:0,reveal:14,end:14,round:24};
 const ignored=reason=>({type:'ignored',success:false,reason});
 
+// Early answers keep their full physical reaction and both spoken equations,
+// then leave on a musical bar boundary instead of waiting through unused cues.
+export function answeredTimeline(beat,{questionSeconds=3.2,answerSeconds=2.6,questionStartBeat=.2}={}){
+ const reveal=Math.max(Math.min(SINGLE_TIMING.reveal,beat+2),questionStartBeat+(questionSeconds+.12)/BEAT);
+ const round=Math.ceil((reveal+(answerSeconds+1.6)/BEAT)/4)*4;
+ return {...SINGLE_TIMING,reveal,round};
+}
+
 // A deliberate answer is accepted once. Timing can add a bonus, but never
 // changes which answer the child selected or whether the multiplication is true.
 export class SingleAnswerRound{

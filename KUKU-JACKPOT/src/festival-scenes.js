@@ -1,6 +1,18 @@
+import {drawScenes1to7} from './festival-scenes-1-7.js';
+import {drawScenes8to14} from './festival-scenes-8-14.js';
+import {drawScenes15to21} from './festival-scenes-15-21.js';
+
+export function drawRichScene(ctx,env){
+ if(env.state.rhythmMode&&env.helpers.hasProp?.()){
+  const draw=env.game.id<=7?drawScenes1to7:env.game.id<=14?drawScenes8to14:drawScenes15to21;
+  if(draw({ctx,...env}))return true;
+ }
+ return drawLegacyScene(ctx,env);
+}
+
 // Generated objects react to the very same hits that drive the rhythm score.
 // Numbers remain live game data; they are never baked into a scene illustration.
-export function drawRichScene(ctx,{game,q,state,t,p,done,pulseActive,reaction,helpers,characterAt,num,chip,label,rounded,ellipse,withNaturalAspect}){
+function drawLegacyScene(ctx,{game,q,state,t,p,done,pulseActive,reaction,helpers,characterAt,num,chip,label,rounded,ellipse,withNaturalAspect}){
  if(game.id===1||!helpers.hasProp?.())return false;
  const pulse=state.lastPulse,age=state.time-(pulse?.time??-100),beat=state.beat;
  const active=age>=0&&age<.75&&pulse?.success,success=state.phase==='reveal'&&state.correct;

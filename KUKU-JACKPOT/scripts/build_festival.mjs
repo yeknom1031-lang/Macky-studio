@@ -33,6 +33,16 @@ export function publicDesignHTML(source) {
     .replaceAll('完成したジャックポットで遊ぶ', '九九ビートフェスティバルで遊ぶ');
 }
 
+// Detailed mora-by-mora evidence belongs to the source audit. The player only
+// needs the clip catalogue, file locations and durations to load its voices.
+export function publicAudioManifest(source){
+  const manifest=JSON.parse(source);
+  if(manifest.clips)manifest.clips=Object.fromEntries(Object.entries(manifest.clips).map(([key,clip])=>{
+    const {pronunciation,...runtime}=clip;return [key,runtime];
+  }));
+  return JSON.stringify(manifest)+'\n';
+}
+
 export async function buildFestival({ root = projectRoot, outDir = path.join(root, 'dist'), requireRuntime = true } = {}) {
   const outputRelative = path.relative(path.resolve(root), path.resolve(outDir));
   if (!outputRelative || outputRelative.startsWith('..') || path.isAbsolute(outputRelative)) throw new Error('Output directory must be inside, and differ from, source.');
@@ -66,6 +76,8 @@ export async function buildFestival({ root = projectRoot, outDir = path.join(roo
     await mkdir(path.dirname(target), { recursive: true });
     if (relative.startsWith('designs/') && relative.endsWith('.html')) {
       await writeFile(target, publicDesignHTML(await readFile(path.join(root, relative), 'utf8')));
+    } else if (relative === 'assets/audio/festival/manifest.json') {
+      await writeFile(target,publicAudioManifest(await readFile(path.join(root,relative),'utf8')));
     } else if (relative === 'designs/20-minigames/manifest.json') {
       // The public gallery downloads the lightweight previews; raw art stays local.
       const designManifest = await readFile(path.join(root, relative), 'utf8');

@@ -1,8 +1,27 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {SingleAnswerRound,SINGLE_TIMING} from '../src/single-answer.js';
+import {SingleAnswerRound,SINGLE_TIMING,answeredTimeline} from '../src/single-answer.js';
 import {grade,BEAT} from '../src/festival-core.js';
 const q={gameId:1,a:6,b:8,answer:48};
+test('early answers finish sooner on a bar boundary without cutting either equation or the response',()=>{
+ for(const questionSeconds of [1.2,2.5,3.2])for(const answerSeconds of [1.5,2.6]){
+  const timing=answeredTimeline(1,{questionSeconds,answerSeconds});
+  assert.ok(timing.reveal>=3);
+  assert.ok((timing.reveal-.2)*BEAT>=questionSeconds);
+  assert.ok((timing.round-timing.reveal)*BEAT>=answerSeconds+1.5);
+  assert.equal(timing.round%4,0);assert.ok(timing.round<24);
+  assert.equal(timing.target,12);assert.equal(timing.play,0);
+ }
+ const late=answeredTimeline(13.9);assert.equal(late.reveal,14);assert.equal(late.round,24);
+});
+test('a delayed question frame cannot overlap the answer voice, including a start past the normal reveal deadline',()=>{
+ for(const questionStartBeat of [1,4,13]){
+  const timing=answeredTimeline(questionStartBeat+.1,{questionStartBeat,questionSeconds:2.4,answerSeconds:2});
+  assert.ok(timing.reveal*BEAT>(questionStartBeat*BEAT+2.4));
+  assert.ok((timing.round-timing.reveal)*BEAT>=3.6);
+  assert.equal(timing.round%4,0);
+ }
+});
 test('the first answer is locked, including a wrong answer; repeated taps cannot fish for points',()=>{
  const r=new SingleAnswerRound();assert.equal(r.inputdown(42,12).type,'answer');
  assert.equal(r.inputdown(48,12.1).type,'ignored');r.inputup();r.update(20);

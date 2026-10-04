@@ -2,12 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { chooseCheer, eligibleCheer, FestivalAudio, MUSIC_NAMES } from '../src/festival-audio.js';
+import { chooseCheer, eligibleCheer, FestivalAudio, MUSIC_NAMES, STAGE_AUDIO_PROFILES, synthesizeStageSound } from '../src/festival-audio.js';
+import { falseClaims } from '../src/festival-core.js';
 
 const base = new URL('../assets/audio/festival/', import.meta.url);
 const manifest = JSON.parse(readFileSync(new URL('manifest.json', base), 'utf8'));
 const catalog = manifest.cheers;
 const clip = id => catalog.find(item => item.id === id);
+const claimCount=Array.from({length:9},(_,a)=>Array.from({length:9},(_,b)=>falseClaims(a+1,b+1).length)).flat().reduce((a,b)=>a+b,0);
 // Approved traditional recitals, independent of the generator's number formatter.
 const EXPECTED_READINGS = [
   'インイチガイチ インニガニ インサンガサン インシガシ インゴガゴ インロクガロク インシチガシチ インハチガハチ インクガク',
@@ -41,7 +43,7 @@ function wavInfo(path) {
 }
 
 test('all 81 equations have actual question, correct answer, and consistent false-claim recordings', () => {
-  assert.equal(Object.keys(manifest.clips).length, 424);
+  assert.equal(Object.keys(manifest.clips).length, 424+claimCount);
   for (let a = 1; a <= 9; a++) {
     for (let b = 1; b <= 9; b++) {
       for (const kind of ['q', 'a', 'f']) {
@@ -110,7 +112,7 @@ test('ha regression covers every shortened times-eight call and the answer forty
 });
 
 test('spoken questions and claims pronounce eight as hachi and reserve wa for the grammatical particle', () => {
-  assert.equal(manifest.pronunciationAudit.numberSpeechCount, 324);
+  assert.equal(manifest.pronunciationAudit.numberSpeechCount, 324+claimCount);
   const numbers = ['', 'イチ', 'ニ', 'サン', 'ヨン', 'ゴ', 'ロク', 'ナナ', 'ハチ', 'キュウ'];
   const read = n => n < 10 ? numbers[n] : `${n < 20 ? '' : numbers[Math.floor(n / 10)]}ジュウ${numbers[n % 10]}`;
   for (let a = 1; a <= 9; a++) {
@@ -137,6 +139,63 @@ test('spoken questions and claims pronounce eight as hachi and reserve wa for th
   }
 });
 
+test('every randomized false claim has matching, pronunciation-audited speech',()=>{
+ for(let a=1;a<=9;a++)for(let b=1;b<=9;b++)for(const claim of falseClaims(a,b)){
+  const key=`f-${a}-${b}-${claim}`,entry=manifest.clips[key];
+  assert.ok(entry,key);assert.equal(entry.claim,claim,key);assert.equal(entry.answer,a*b,key);
+  assert.notEqual(entry.claim,entry.answer,key);assert.equal(entry.pronunciation.verified,true,key);
+  assert.deepEqual(entry.pronunciation.actualPhonemes,entry.pronunciation.expectedPhonemes,key);
+  assert.equal(createHash('sha256').update(readFileSync(new URL(entry.file,base))).digest('hex'),entry.sha256,key);
+  assert.ok(entry.seconds<=3,key);
+ }
+});
+
+test('twenty-one stages have distinct cue and action timbres, with speech headroom',()=>{
+ assert.equal(STAGE_AUDIO_PROFILES.length,21);
+ for(const part of ['tick','accent','action']){
+  const hashes=new Set();
+  for(let gameId=1;gameId<=21;gameId++){
+   const sound=synthesizeStageSound(gameId,part,24000,{timing:'perfect',step:1});
+   assert.ok(sound.seconds<=.34);
+   assert.ok(sound.samples.some(v=>Math.abs(v)>.025));
+   assert.ok(sound.samples.every(v=>Number.isFinite(v)&&Math.abs(v)<.6));
+   hashes.add(createHash('sha256').update(Buffer.from(sound.samples.buffer)).digest('hex'));
+  }
+  assert.equal(hashes.size,21,part);
+ }
+ assert.notDeepEqual(synthesizeStageSound(4,'action',24000,{value:1}).samples,synthesizeStageSound(4,'action',24000,{value:0}).samples);
+});
+
+test('orchestra stems are real distinct looping recordings with identical phase duration',()=>{
+ const stems=Object.entries(manifest.orchestra.stems),hashes=new Set();
+ assert.equal(stems.length,6);
+ for(const [index,[key,entry]] of stems.entries()){
+  const wav=wavInfo(new URL(entry.file,base));
+  assert.equal(entry.unlockAfter,index,key);assert.equal(wav.channels,2,key);assert.equal(wav.rate,44100,key);
+  assert.ok(entry.rms>.005,key);assert.ok(Math.abs(wav.seconds-32*60/132)<1/44100,key);
+  assert.equal(wav.data.readInt16LE(0),wav.data.readInt16LE(wav.data.length-4),key);
+  const hash=createHash('sha256').update(readFileSync(new URL(entry.file,base))).digest('hex');
+  assert.equal(hash,entry.sha256,key);hashes.add(hash);
+ }
+ assert.equal(hashes.size,6);
+});
+
+test('orchestra additions unmute phase-aligned stems without restarting any source',()=>{
+ const audio=new FestivalAudio(),starts=[],changes=[];
+ audio.manifest=manifest;audio.origin=10;audio.active=true;audio.musicDuck={gain:{value:1,cancelScheduledValues(){}}};
+ audio.ctx={currentTime:10.1,createGain(){return {gain:{value:0,cancelScheduledValues(){},setTargetAtTime(value,when){changes.push({value,when});}},connect(){},disconnect(){}};},createBufferSource(){return {connect(){},disconnect(){},start(...args){starts.push(args);},stop(){}};}};
+ audio.buffers.set('music:finale',{duration:32*60/132});
+ for(const key of Object.keys(manifest.orchestra.stems))audio.buffers.set(`stem:${key}`,{duration:32*60/132});
+ assert.equal(audio.setMusic('finale',10),true);assert.equal(starts.length,6);
+ starts.forEach(start=>assert.deepEqual(start,[10.1,10.1-10]));
+ assert.deepEqual(audio.orchestraProgress(0).instruments,['drums']);
+ const added=audio.orchestraProgress(1);
+ assert.deepEqual(added.instruments,['drums','bass']);assert.ok(Math.abs(added.when-(10+60/132))<1e-9);
+ assert.equal(starts.length,6,'muted stems keep playing on the existing grid');
+ assert.equal(audio.orchestraProgress(5).instruments.length,6);
+ audio.stop();assert.equal(audio.musicLayers.length,0);assert.equal(audio.orchestraLevel,0);
+});
+
 test('game 15 loads reverse questions instead of revealing the missing factor in q or f', async () => {
   const audio = new FestivalAudio();
   audio.ctx = {};
@@ -150,6 +209,34 @@ test('game 15 loads reverse questions instead of revealing the missing factor in
   assert.ok(!requests.includes('f-7-8'));
   assert.ok(requests.includes('q-3-4'));
   assert.ok(!requests.includes('r-3-4'));
+});
+
+test('stage audio loading is scoped and readiness includes exact false claims and orchestra stems',()=>{
+ const audio=new FestivalAudio();audio.manifest=manifest;
+ const forest=[{gameId:21,a:7,b:8,truth:false,claimed:49}];
+ assert.deepEqual([...audio.requiredKeys(forest)],['music:forest','a-7-8','f-7-8-49']);
+ assert.equal(audio.isReadyFor(forest),false);
+ for(const key of audio.requiredKeys(forest))audio.buffers.set(key,{});
+ assert.equal(audio.isReadyFor(forest),true);
+ const orchestra=[...audio.requiredKeys([{gameId:20,a:2,b:3}])];
+ assert.equal(orchestra.filter(k=>k.startsWith('music:')).length,1);
+ assert.equal(orchestra.filter(k=>k.startsWith('stem:')).length,6);
+ assert.deepEqual([...audio.requiredKeys([])],[],'cheer gallery needs no background music');
+});
+
+test('cancelCues stops future countdown only and automatic action hits keep their audio clock',()=>{
+ const audio=new FestivalAudio(),started=[],stopped=[];
+ audio.ctx={currentTime:10,state:'running',sampleRate:24000,createBuffer:(_channels,n,rate)=>({duration:n/rate,getChannelData:()=>new Float32Array(n)}),createBufferSource(){const source={connect(){},disconnect(){},start(at){started.push({source,at});},stop(){stopped.push(source);}};return source;}};
+ audio.buses={sfx:{}};audio.active=true;audio.origin=10;
+ audio.cue(1,'tick',{gameId:8});audio.cue(2,'accent',{gameId:8});
+ audio.action(8,{correct:false});
+ assert.deepEqual(started.map(s=>s.at),[11,12,10,10.27]);
+ assert.equal(audio.cancelCues(),2);
+ assert.equal(stopped.length,2);assert.equal(audio.sources.size,2,'both automatic punch sounds survive');
+ assert.equal(audio.scheduledCues.size,0);
+ const before=started.length;
+ assert.equal(audio.action(8,{value:8,correct:true}).automaticHits,1);
+ assert.equal(started.length,before+1,'single-digit punch has no empty tens-column strike');
 });
 
 test('100 distinct cheer scripts have 100 real non-silent WAVs with measured durations', () => {

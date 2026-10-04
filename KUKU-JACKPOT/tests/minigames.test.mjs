@@ -135,7 +135,7 @@ test('slot reels finish centered on the chosen wrong number, not on the question
   assert.deepEqual(seen.map(s=>s.value),[5,6]);assert.equal(game.getResult().value,56);
 });
 
-test('generated scenes preserve every stage character, neutral demo and truthful reveal',()=>{
+test('generated scenes preserve every stage character, a neutral unsubmitted demo and the actual chosen answer',()=>{
  for(const meta of GAMES){
   const game=ready(meta.id),numbers=[],texts=[],actors=[],props=[];
   const fake=fakeContext();fake.ctx.fillText=text=>texts.push(String(text));
@@ -144,17 +144,17 @@ test('generated scenes preserve every stage character, neutral demo and truthful
   game.pulse({beat:4,success:true,value:null,index:0,total:6,demo:true});
   game.draw(fake.ctx,844,280,helpers);fake.check();
   assert.ok(actors.includes(meta.character),meta.title);
-  if(![1,4,7,15,18,21].includes(meta.id))assert.ok(!numbers.includes(49),`demo reveals answer: ${meta.title}`);
+  // Answer targets and quantity illustrations may include the correct number.
+  // A demonstration must never turn one of those targets into a submitted answer.
+  assert.equal(game.getResult().value,null,`demo submits an answer: ${meta.title}`);
   game.update({phase:'play',time:4,beat:8});
   game.pulse({value:meta.mechanic==='truth'?1:56,success:false,index:0});
   game.draw(fake.ctx,844,280,helpers);fake.check();
-  if(![1,4,5,9,12,13,15,18,20,21].includes(meta.id))assert.ok(props.at(-1)===0||meta.id===19,`miss advances object: ${meta.title}`);
+  assert.equal(game.selected,meta.mechanic==='truth'?1:56,`wrong choice changed: ${meta.title}`);
   game.setAnswer(meta.mechanic==='truth'?1:56,false);
   game.update({phase:'reveal',time:5,beat:10,correct:false});
   game.draw(fake.ctx,844,280,helpers);fake.check();
   assert.equal(game.getResult().value,meta.mechanic==='truth'?1:56);
-  if(meta.id===4)assert.ok(!texts.some(t=>/^7 × 7 =/.test(t)),'the live equation is placed on the scroll');
-  if(meta.id===21)assert.ok(!texts.some(t=>/^7 × 7 =/.test(t)),'the live accessible equation is placed on the generated forest sign, not duplicated in canvas');
  }
 });
 

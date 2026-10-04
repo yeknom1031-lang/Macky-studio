@@ -2,26 +2,26 @@ import {drawRichScene} from './festival-scenes.js';
 /** Twenty-one little stages. Positions use a 1000 × 440 logical canvas. */
 const INK = '#172b46', CREAM = '#fff5db', CORAL = '#fb785f', GOLD = '#ffce59', TEAL = '#48c7bd';
 const specs = [
-  ['jackpot','九九ジャックポット','ぴたっと！ 大あたり','答えをえらんで、リールをタップ！','stop',['#f9c276','#ef815d'],'ビートくん','エレクトロ・ファンク'],
+  ['jackpot','九九ジャックポット','ぴたっと！ 大あたり','答えを1回タップして、リールを止めよう！','stop',['#f9c276','#ef815d'],'ビートくん','エレクトロ・ファンク'],
   ['sushi','回転ずし・つかみの達人','流れるお皿を つかまえよう','正しいお皿をタップして、つかもう！','catch',['#ffe1bd','#f69c85'],'ネコ','寿司ディスコ'],
-  ['rocket','かけ算ロケット','宇宙まで とんでいけ！','答えをえらぶ → 長おし → はなして発射！','hold',['#253768','#7466ac'],'ロボット','スペース・エレクトロ'],
+  ['rocket','かけ算ロケット','宇宙まで とんでいけ！','燃料の答えを1回タップして発射！','hold',['#253768','#7466ac'],'ロボット','スペース・エレクトロ'],
   ['ninja','九九ニンジャ・見切りの術','九九の巻物を 見きわめろ','あっていたら「うけとる」、ちがえば「はじく」！','truth',['#273d63','#766099'],'キツネ','和太鼓 × ベース'],
   ['frog','カエルの倍数ジャンプ','ぴょん！ はっぱをわたろう','正しい数字のはっぱをタップしてジャンプ！','jump',['#c0ead2','#75c9c7'],'カエル','池のスカ・バンド'],
-  ['quiz','早口クイズ！九九オンエア','君がきょうの チャンピオン','正しい答えをえらんで、早おし！','buzzer',['#7463aa','#c28eb7'],'イヌの司会','クイズ番組のビッグバンド'],
-  ['donuts','ドーナツ増殖工場','ぎゅっ！ 焼きたてできあがり','答えをえらんで、プレスをタップ！','press',['#b5e1da','#72b9bf'],'クマ','工場パーカッション'],
-  ['gorilla','ゴリラの数字パンチ','十の位！ 一の位！','答えをえらんで、ドン・ドンと２回タップ！','double',['#e9c796','#ce956f'],'ゴリラ','ずっしりヒップホップ'],
-  ['train','九九トレイン・出発進行','つないで 出発進行！','答えの車両をタップして、れんけつ！','connect',['#bfe4f1','#75bdce'],'ビートくん','車輪のスウィング'],
-  ['magic','魔法のジュース研究所','まぜまぜ！ おいしい魔法','答えをえらぶ → 長おし → はなして完成！','pour',['#ddd0f1','#aa9cd9'],'ウサギ','魔法のマリンバ・ポップ'],
-  ['basketball','リバウンド・九九バスケ','ねらえ！ ナイスシュート','答えをえらんで、上へスワイプ！ タップでもOK','throw',['#ffc080','#ee9271'],'ネコ','スタジアム・ビート'],
+  ['quiz','クイズショー！九九オンエア','君がきょうの チャンピオン','正しい答えの台を1回タップ！','buzzer',['#7463aa','#c28eb7'],'イヌの司会','クイズ番組のビッグバンド'],
+  ['donuts','ドーナツ増殖工場','ぎゅっ！ 焼きたてできあがり','ぴったりの箱の数を1回タップ！','press',['#b5e1da','#72b9bf'],'クマ','工場パーカッション'],
+  ['gorilla','ゴリラの数字パンチ','十の位！ 一の位！','答えを1回タップ。十と一のパンチは自動だよ！','double',['#e9c796','#ce956f'],'ゴリラ','ずっしりヒップホップ'],
+  ['train','九九トレイン・出発進行','つないで 出発進行！','ぜんぶの人数の切符を1回タップ！','connect',['#bfe4f1','#75bdce'],'ビートくん','車輪のスウィング'],
+  ['magic','魔法のジュース研究所','まぜまぜ！ おいしい魔法','果物の答えを1回タップして完成！','pour',['#ddd0f1','#aa9cd9'],'ウサギ','魔法のマリンバ・ポップ'],
+  ['basketball','リバウンド・九九バスケ','ねらえ！ ナイスシュート','答えのボールを1回タップしてシュート！','throw',['#ffc080','#ee9271'],'ネコ','スタジアム・ビート'],
   ['ghost','おばけの穴あきディスコ','覚えて！ 消えて！ おどろう！','数字をおぼえて、正しいおばけをタップ！','memory',['#534b83','#827bbb'],'キツネ','ふしぎディスコ'],
-  ['socks','くつしたペアペアランド','ぴったりペアで ダンシング','答えのくつしたを、左のくつしたに重ねよう！','pair',['#ffe0d3','#dda4c3'],'アライグマ','ランドリー・ハウス'],
-  ['hero','となりの九九・ヒーロービル','とべ！ 九九ヒーロー','答えの階をえらんで、上へスワイプ！','climb',['#b2dfef','#88b0d5'],'ロボット','ヒーロー・ブラス'],
-  ['aliens','宇宙人の逆九九トーク','ピポパ！ 何をかける？','□に入る数をえらんで、ふきだしをタップ！','echo',['#294c65','#517391'],'宇宙人','電子音のコール＆レスポンス'],
-  ['fishing','九九フィッシング','ぴくぴく！ 大ものヒット','答えをえらぶ → 長おし → はなしてつろう！','pull',['#bce7e9','#62bdbd'],'カワウソ','トロピカル・ビート'],
-  ['delivery','宅配ロボの九九エクスプレス','シュッ！ お届け完了','答えのポストへ、荷物をスワイプ！','deliver',['#ffe0ba','#bdcdbb'],'ロボット','メカニカル・ファンク'],
+  ['socks','くつしたペアペアランド','ぴったりペアで ダンシング','答えのくつしたを1回タップしてペアに！','pair',['#ffe0d3','#dda4c3'],'アライグマ','ランドリー・ハウス'],
+  ['hero','となりの九九・ヒーロービル','とべ！ 九九ヒーロー','答えの階を1回タップしてジャンプ！','climb',['#b2dfef','#88b0d5'],'ロボット','ヒーロー・ブラス'],
+  ['aliens','宇宙人の逆九九トーク','ピポパ！ 何をかける？','□に入る数を1回タップしておへんじ！','echo',['#294c65','#517391'],'宇宙人','電子音のコール＆レスポンス'],
+  ['fishing','九九フィッシング','ぴくぴく！ 大ものヒット','答えの魚を1回タップしてつろう！','pull',['#bce7e9','#62bdbd'],'カワウソ','トロピカル・ビート'],
+  ['delivery','宅配ロボの九九エクスプレス','シュッ！ お届け完了','答えの番地を1回タップしてお届け！','deliver',['#ffe0ba','#bdcdbb'],'ロボット','メカニカル・ファンク'],
   ['octopus','タコの数字修理店','すぽっ！ 数字をなおそう','空いているところに、正しい数字をはめよう！','repair',['#b9e5e8','#75bccb'],'タコ','工具と木琴のポップ'],
-  ['dragon','ドラゴンの九九くしゃみ','ためてためて… はっくしょん！','答えをえらぶ → 長おし → はなして花火！','breathe',['#f4d6a6','#c6c69a'],'ドラゴン','コミカル・オーケストラ'],
-  ['orchestra','九九オールスター・大合奏','みんなで フィナーレ！','答えをえらんで、１・２・３と３回タップ！','conduct',['#f4c880','#e99aa0'],'ビートくん','オールスター・リミックス'],
+  ['dragon','ドラゴンの九九くしゃみ','ためてためて… はっくしょん！','答えを1回タップして、はっくしょん！','breathe',['#f4d6a6','#c6c69a'],'ドラゴン','コミカル・オーケストラ'],
+  ['orchestra','九九オールスター・大合奏','みんなで フィナーレ！','答えを1回タップして、みんなで大合奏！','conduct',['#f4c880','#e99aa0'],'ビートくん','オールスター・リミックス'],
   ['forest','ほんと？うそ？九九の森','どうぶつたちの 九九トーク','言っている九九は「ほんと」？ それとも「うそ」？','truth',['#c7e0c6','#7fb19c'],'オオカミ','森のスウィング・ファンク'],
 ];
 export const GAMES = specs.map((s,i)=>Object.freeze({id:i+1,slug:s[0],title:s[1],subtitle:s[2],instruction:s[3],mechanic:s[4],theme:s[5],character:s[6],music:s[7]}));
@@ -86,7 +86,7 @@ export function createMiniGame(gameId, question, suppliedHelpers={}) {
     for(let n=0;digits.length<3;n++)if(!digits.includes(n))digits.push(n);
     controls=digits.slice(0,3).map(d=>({label:`${d} をはめる`,value:missing==='tens'?d*10+q.answer%10:Math.floor(q.answer/10)*10+d}));
   }
-  const state={time:0,beat:0,phase:'listen',selected:null,correct:null,reduceMotion:false,value:null,hitTime:null,completed:false,down:false,downAt:0,downX:0,downY:0,pointerX:500,pointerY:230,presses:0,actionAt:null,held:0,slots:[0,0],reelStart:0,ghostSeen:false,playStartedAt:null,nudgeUntil:0,rhythmMode:false,lastPulse:null,finalAnswer:false};
+  const state={time:0,beat:0,phase:'listen',selected:null,correct:null,reduceMotion:false,value:null,hitTime:null,completed:false,down:false,downAt:0,downX:0,downY:0,pointerX:500,pointerY:230,presses:0,actionAt:null,held:0,slots:[0,0],reelStart:0,ghostSeen:false,playStartedAt:null,nudgeUntil:0,rhythmMode:false,lastPulse:null,finalAnswer:false,revealedAt:null,controls,stageProgress:{answered:0,correct:0,perfect:0,history:[]}};
   const heldGames=new Set([3,10,16,19]);
   const directGames=new Set([4,6,18,21]);
   function selected(){return state.selected;}
@@ -155,16 +155,18 @@ export function createMiniGame(gameId, question, suppliedHelpers={}) {
   function pulse(event={}){
     state.rhythmMode=true;
     const value=Number.isFinite(event.value)?event.value:null;
-    state.lastPulse={beat:Number.isFinite(event.beat)?event.beat:state.beat,time:state.time,success:event.success!==false,value,index:Number.isInteger(event.index)?event.index:0,total:event.total||1,holding:!!event.holding,demo:!!event.demo};
+    state.lastPulse={beat:Number.isFinite(event.beat)?event.beat:state.beat,time:state.time,success:event.success!==false,value,index:Number.isInteger(event.index)?event.index:0,total:event.total||1,holding:!!event.holding,demo:!!event.demo,timing:event.timing||'off'};
     if(value!==null||event.demo){state.selected=value;state.value=value;}
     state.down=!!event.holding;state.downAt=state.time;state.held=0;state.actionAt=state.time;state.hitTime=state.time;
     state.presses=state.lastPulse.index+1;return state.lastPulse;
   }
   function setAnswer(value,correct){
     state.rhythmMode=true;state.finalAnswer=true;state.value=Number.isFinite(value)?value:null;state.selected=state.value;
-    state.correct=!!correct;state.completed=true;state.down=false;state.hitTime??=state.time;
+    state.revealedAt??=state.time;state.correct=!!correct;state.completed=true;state.down=false;state.hitTime??=state.time;
   }
   function update(next){
+    if(next.stageProgress)state.stageProgress=next.stageProgress;
+    if(Number.isFinite(next.revealBeat))state.revealBeat=next.revealBeat;
     if(Number.isFinite(next.beatDuration))state.beatDuration=next.beatDuration;
     state.nextCueBeat=next.nextCueBeat;
     if(next.rhythmMode!==undefined)state.rhythmMode=!!next.rhythmMode;
@@ -181,12 +183,12 @@ export function createMiniGame(gameId, question, suppliedHelpers={}) {
   function draw(ctx,w=1000,h=440,extraHelpers={}){
     const helpers={...suppliedHelpers,...extraHelpers};ctx.save();ctx.scale(w/1000,h/440);
     const t=state.reduceMotion?0:state.time,beat=Math.sin(state.beat*Math.PI*2),pulseAge=state.time-(state.lastPulse?.time??-100);
-    const pulseActive=!!state.lastPulse&&pulseAge<.42;
+    const pulseActive=!!state.lastPulse&&pulseAge>=0&&pulseAge<1.25;
     const neutralDemo=state.lastPulse?.demo&&[1,4,21].includes(game.id);
     const done=state.rhythmMode?(state.finalAnswer||(state.selected!==null&&!state.lastPulse?.holding&&!neutralDemo)):state.completed;
     const p=done?ease((state.time-state.hitTime)/(state.rhythmMode ? .32 : .85)):0;
     const visualValue=state.rhythmMode?controls[(state.lastPulse?.index??0)%controls.length]?.value:state.value;
-    const reaction=state.phase==='intro'?'exit':state.phase==='reveal'?(state.correct?'celebrate':'recover'):(state.rhythmMode&&pulseActive?(state.lastPulse.success?'act':'recover'):state.anticipating?(heldGames.has(game.id)?'hold':'anticipate'):state.down?'hold':state.phase==='listen'?'talk':state.phase==='demo'?'anticipate':'idle');
+    const reaction=state.phase==='intro'?'exit':state.phase==='reveal'?(state.correct?'celebrate':'recover'):(state.rhythmMode&&pulseActive?(pulseAge<.65||state.lastPulse.success?'act':'recover'):state.anticipating?(heldGames.has(game.id)?'hold':'anticipate'):state.down?'hold':state.phase==='listen'?'talk':state.phase==='demo'?'anticipate':'idle');
     const charging=state.down||(state.anticipating&&heldGames.has(game.id));
     helpers.setArtContext?.({time:t,beat:state.beat,beatDuration:state.beatDuration,holding:charging,anticipating:state.nextCueBeat>state.beat&&state.nextCueBeat-state.beat<.6,pulseIndex:state.lastPulse?.index,pulseTime:state.lastPulse?.time});
     const characterAt=(name,x,y,size=165,pose=reaction)=>{
@@ -212,14 +214,18 @@ export function createMiniGame(gameId, question, suppliedHelpers={}) {
       for(let r=0;r<2;r++){
         const x=richMachine?379+r*123:329+r*173,rw=richMachine?95:148,rh=richMachine?117:191,ry=richMachine?146:87,center=richMachine?ry+rh/2:184,step=richMachine?99:125;
         rounded(ctx,x,ry,rw,rh,richMachine?17:20,CREAM,richMachine?'#bd8b45':INK,richMachine?2:5);ctx.save();ctx.beginPath();ctx.roundRect(x+4,ry+4,rw-8,rh-8,13);ctx.clip();
-        const target=done?Math.floor(state.value/(r===0?10:1))%10:0,at=state.hitTime??state.time;
+        const correction=state.rhythmMode&&state.finalAnswer&&!state.correct&&state.time-state.revealedAt>.6;
+        const target=done?Math.floor(state.value/(r===0?10:1))%10:0,correctDigit=Math.floor(q.answer/(r===0?10:1))%10,at=state.hitTime??state.time;
         const moving=at*15+r*3.25;
         let pos=moving;
         if(done){const start=at*15+r*3.25;const finish=Math.ceil((start-target)/10)*10+target+10;pos=lerp(start,finish,ease((state.time-at)/(state.rhythmMode ? .19+r*.02 : .75+r*.18)));}
-        if(state.reduceMotion)pos=done?target:Math.floor(state.time*3)+r*3;
+        if(correction)pos=target+(mod(correctDigit-target,10))*ease((state.time-state.revealedAt-.6)/.4);
+        if(state.reduceMotion)pos=done?(correction?correctDigit:target):Math.floor(state.time*3)+r*3;
         const base=Math.floor(pos);for(let j=-2;j<=2;j++){const n=mod(base+j,10),yy=center+(base+j-pos)*step;num(n,x+rw/2,yy,richMachine?83:108);}
         ctx.restore();if(!richMachine){line(ctx,[[x+7,121],[x+141,121]],'#172b461b',3);line(ctx,[[x+7,246],[x+141,246]],'#172b461b',3);}
       }
+      if(state.rhythmMode&&state.finalAnswer&&!state.correct)chip(ctx,`正しい答えは ${q.answer}`,530,310,280,CREAM,25);
+      if(state.rhythmMode&&state.lastPulse?.success){const count=state.stageProgress.correct+1;for(let i=0;i<Math.min(5,count);i++)star(ctx,762+i*30,290,12,GOLD);if(state.lastPulse.timing==='perfect')label(ctx,'JACKPOT!',514,303,28,'#9d441c');}
       if(!richMachine){line(ctx,[[741,210],[776,173-done*25]],INK,14);ellipse(ctx,781,163-done*25,23,23,TEAL,INK);}characterAt('ビートくん',159,345,225);star(ctx,850,83,35,GOLD,t*.3);if(!state.rhythmMode)chip(ctx,done?'ぴたっ！':'ぐるぐる…',835,303,176,CREAM);
     } else if(game.id===2){
       for(let x=0;x<1000;x+=70){line(ctx,[[x,0],[x,140]],'#fff5',2);}rounded(ctx,0,310,1000,130,0,'#d4745d',null);rounded(ctx,82,179,836,144,65,INK,INK);rounded(ctx,92,191,816,118,56,'#d9ede1',null);
@@ -289,13 +295,14 @@ export function createMiniGame(gameId, question, suppliedHelpers={}) {
     }
     if(state.phase==='reveal'&&state.correct){
       const now=state.reduceMotion?0:Math.max(0,state.time-(state.hitTime??state.time));
-      helpers.drawEffect?.(ctx,'success',800,160,260,t,{start:state.hitTime,loop:true});
+      // Celebrate at the edge of the stage, clear of answer-bearing objects.
+      helpers.drawEffect?.(ctx,'success',850,95,140,t,{start:state.hitTime,loop:true});
       helpers.drawShared?.(ctx,'party',135,105,210,t,{start:state.hitTime,loop:true});
       for(let i=0;i<16;i++){const x=mod(i*193+47,980)+10,y=mod(i*61+now*90,355);star(ctx,x,y,5+(i%3)*2,[GOLD,CREAM,CORAL,TEAL][i%4],t+i);}
     }
     if(pulseActive&&!state.lastPulse.success)helpers.drawEffect?.(ctx,'surprise',185,205,160,t,{start:state.lastPulse.time,alpha:.6});
     if(!state.rhythmMode){const action=actionText(game,state);rounded(ctx,273,389,454,39,19,state.nudgeUntil>state.time?CORAL:'#172b46eb',null);label(ctx,action,500,409,21,CREAM);}
-    else if(pulseActive&&!state.reduceMotion){const radius=(1-clamp(pulseAge/.42))*24;for(let i=0;i<5;i++)star(ctx,390+i*55,350-Math.sin(i)*15,radius*.45,state.lastPulse.success?GOLD:'#dfd5c6',t+i);}
+    else if(pulseActive&&!state.reduceMotion){const radius=(1-clamp(pulseAge/1.25))*(state.lastPulse.timing==='perfect'?36:24);for(let i=0;i<5;i++)star(ctx,390+i*55,350-Math.sin(i)*15,radius*.45,state.lastPulse.success?GOLD:'#dfd5c6',t+i);}
     if(state.phase==='play'&&!state.completed&&state.nudgeUntil>state.time){line(ctx,[[503,374],[503,347],[514,358],[503,347],[492,358]],CREAM,5);}
     ctx.restore();
   }

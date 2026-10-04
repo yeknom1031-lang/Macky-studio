@@ -5,11 +5,23 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
 import { webcrypto, createHash } from 'node:crypto';
-import { buildFestival, MAX_ASSET_BYTES } from '../scripts/build_festival.mjs';
+import { buildFestival, MAX_ASSET_BYTES, publicAudioManifest } from '../scripts/build_festival.mjs';
 
 const swSource = await readFile(new URL('../sw.js', import.meta.url), 'utf8');
 const digest = body => createHash('sha256').update(body).digest('hex');
 const normal = input => new URL(typeof input === 'string' ? input : input.url, 'https://game.test').pathname;
+
+test('the public audio catalogue keeps every playable voice and orchestra stem while omitting the source-only phoneme evidence',async()=>{
+  const source=await readFile(new URL('../assets/audio/festival/manifest.json',import.meta.url),'utf8');
+  const original=JSON.parse(source),runtime=JSON.parse(publicAudioManifest(source));
+  assert.deepEqual(Object.keys(runtime.clips),Object.keys(original.clips));
+  for(const [key,clip] of Object.entries(original.clips)){
+    assert.equal(runtime.clips[key].file,clip.file);assert.equal(runtime.clips[key].seconds,clip.seconds);
+    assert.equal(runtime.clips[key].text,clip.text);assert.equal(runtime.clips[key].pronunciation,undefined);
+  }
+  assert.deepEqual(runtime.orchestra,original.orchestra);assert.deepEqual(runtime.cheers,original.cheers);
+  assert.ok(Buffer.byteLength(publicAudioManifest(source))<Buffer.byteLength(source)/4);
+});
 
 function serviceWorker({ files, version = 'test-v1', shell = ['/index.html'], cacheStore = new Map(), redirectedURLs = [] }) {
   const messages = [], calls = [], listeners = new Map();

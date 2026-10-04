@@ -1,6 +1,6 @@
 <!doctype html><html lang="ja"><meta charset="utf-8"><title>九九ビート 操作と画面の検証</title>
 <style>body{margin:0;background:#17394a;color:#fff8df;font:14px system-ui}header{display:flex;flex-wrap:wrap;gap:8px;padding:12px;align-items:center}button,select{font:inherit;padding:8px;border:0;border-radius:8px}iframe{display:block;border:0;margin:10px auto;background:#fff8df}output{display:block;padding:10px;text-align:center}</style>
-<header><label>ステージ <select id="game"></select></label><label>画面 <select id="size"><option value="844,390">844×390</option><option value="667,375">667×375</option><option value="1280,720">1280×720</option></select></label><button id="start">このステージを準備</button><button data-beat="0">問題が出た瞬間</button><button data-beat="2">九九を聞く</button><button data-beat="9">3</button><button data-beat="10">2</button><button data-beat="11">1</button><button data-beat="12">ポン</button><button data-beat="14.1">答え合わせ</button><button id="next">次の問題</button></header>
+<header><label>ステージ <select id="game"></select></label><label>画面 <select id="size"><option value="844,390">844×390</option><option value="667,375">667×375</option><option value="1280,720">1280×720</option></select></label><button id="start">このステージを準備</button><button id="practice">練習から開始</button><button id="tour-test">21ゲーム通し・実時間</button><button data-beat="0">問題が出た瞬間</button><button data-beat="2">九九を聞く</button><button data-beat="6">答えを隠す</button><button data-beat="9">3</button><button data-beat="10">2</button><button data-beat="11">1</button><button data-beat="12">ポン</button><button id="reveal">答え合わせ</button><button data-advance=".3">0.3秒進む</button><button data-advance="1">1秒進む</button><button data-advance="2">2秒進む</button><button id="next">次の問題</button></header>
 <output id="status">検証専用・時刻を固定します。公開版には含まれません。</output><iframe id="game-frame" title="実際のゲーム画面" src="./" width="844" height="390"></iframe>
 <script type="module">
 import {GAMES} from './src/minigames.js';import {BEAT} from './src/festival-core.js';
@@ -9,7 +9,12 @@ for(const g of GAMES){const o=document.createElement('option');o.value=g.id;o.te
 let frozenBeat=2,frozenTime=0;
 const clock=()=>{const api=frame.contentWindow.__festival;frozenTime=api.state.roundStart+frozenBeat*BEAT;api.audio.now=()=>frozenTime;};
 document.querySelector('#start').onclick=async()=>{const api=frame.contentWindow.__festival;status.textContent='準備中';await api.start({mode:'single',gameId:Number(select.value)});await frame.contentDocument.querySelector('#intro-start').onclick();frozenBeat=2;clock();status.textContent='時刻を固定中。問題が出た瞬間・九九を聞く・3・2・1・ポンで進め、いつでも1回答えられます。';};
+const naturalNow=()=>frame.contentWindow.__festival.audio.ctx.currentTime-frame.contentWindow.__festival.audio.origin;
+document.querySelector('#tour-test').onclick=async()=>{const api=frame.contentWindow.__festival;api.audio.now=naturalNow;status.textContent='全21ゲーム・実時間の通し検証';await api.start({mode:'tour',practice:true});};
+document.querySelector('#practice').onclick=async()=>{const api=frame.contentWindow.__festival;api.audio.now=naturalNow;status.textContent='練習を準備中';await api.start({mode:'single',gameId:Number(select.value),practice:true});status.textContent='初めての1タップ練習。実時間で動きます。';};
 document.querySelectorAll('[data-beat]').forEach(b=>b.onclick=()=>{frozenBeat=Number(b.dataset.beat);clock();});
+document.querySelectorAll('[data-advance]').forEach(b=>b.onclick=()=>{frozenBeat+=Number(b.dataset.advance)/BEAT;clock();});
+document.querySelector('#reveal').onclick=()=>{frozenBeat=frame.contentWindow.__festival.state.timing.reveal+.1;clock();};
 document.querySelector('#next').onclick=()=>{const api=frame.contentWindow.__festival;frozenBeat=api.state.timing.round+.1;clock();requestAnimationFrame(()=>requestAnimationFrame(()=>{frozenBeat=2;clock();}));};
 document.querySelector('#size').onchange=e=>{const [w,h]=e.target.value.split(',');frame.width=w;frame.height=h;};
 </script></html>

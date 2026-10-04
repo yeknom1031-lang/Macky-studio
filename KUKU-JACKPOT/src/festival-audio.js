@@ -3,6 +3,62 @@ const RECENT_LIMIT = 10;
 export const FESTIVAL_BPM = 132;
 export const FESTIVAL_BEAT = 60 / FESTIVAL_BPM;
 export const MUSIC_NAMES = ['jackpot', 'forest', 'kitchen', 'space', 'sports', 'finale'];
+export const musicForGame=id=>[1,6,8,17].includes(Number(id))?'jackpot':[2,7,10,13,18].includes(Number(id))?'kitchen':[3,4,12,15].includes(Number(id))?'space':[5,9,16,21].includes(Number(id))?'forest':Number(id)===20?'finale':'sports';
+export const STAGE_AUDIO_PROFILES = [
+ ['jackpot','metal',740,'rattle'],['sushi','wood',620,'pop'],['rocket','electro',390,'launch'],
+ ['ninja','wood',480,'swish'],['frog','pluck',330,'boing'],['quiz','bell',660,'buzzer'],
+ ['donuts','metal',290,'press'],['gorilla','drum',140,'punch'],['train','wood',420,'whistle'],
+ ['magic','bell',880,'bubble'],['basketball','drum',240,'bounce'],['ghost','bell',550,'ghost'],
+ ['socks','wood',560,'cloth'],['hero','electro',440,'rise'],['aliens','electro',700,'radio'],
+ ['fishing','pluck',460,'splash'],['delivery','metal',510,'zip'],['octopus','wood',810,'click'],
+ ['dragon','drum',190,'puff'],['orchestra','wood',920,'chord'],['forest','pluck',590,'leaf'],
+].map(([slug,voice,frequency,action],i)=>Object.freeze({gameId:i+1,slug,voice,frequency,action}));
+
+/** Deterministic short sounds: cue timbre identifies the activity, never its answer. */
+export function synthesizeStageSound(gameId,part='tick',sampleRate=24000,{step=0,value,timing,soundOverride}={}){
+ const profile=STAGE_AUDIO_PROFILES[Number(gameId)-1];
+ if(!profile)return null;
+ const action=part==='action',duration=action?.34:part==='accent'?.17:.11;
+ const samples=new Float32Array(Math.ceil(duration*sampleRate));
+ const pitch=profile.frequency*2**((part==='accent'?7:clampSound(step,0,2)*2)/12);
+ const sound=action?(soundOverride||profile.action):profile.voice;
+ let seed=2017+profile.gameId*97,last=0,phase=0;
+ for(let i=0;i<samples.length;i++){
+  const t=i/sampleRate,u=t/duration;
+  seed=(Math.imul(seed,1664525)+1013904223)>>>0;
+  const noise=seed/2147483648-1,bright=noise-.75*last;last=noise;
+  const attack=Math.min(1,t/.003),tail=Math.min(1,(duration-t)/.018);
+  let f=pitch,raw=0,decay=action?10:30;
+  if(['boing','bounce','bubble','splash'].includes(sound))f=pitch*(1.9-1.35*u)+Math.sin(t*49)*pitch*.12;
+  else if(['launch','rise','zip','whistle'].includes(sound))f=pitch*(.7+1.7*u);
+  else if(['punch','press','puff'].includes(sound))f=70+pitch*.45*Math.exp(-t*35);
+  else if(sound==='ghost')f=pitch*(1+.25*Math.sin(t*19));
+  phase+=2*Math.PI*f/sampleRate;
+  const fundamental=Math.sin(phase);
+  switch(sound){
+   case 'wood':case 'click':raw=(fundamental+.36*Math.sin(phase*1.71))*Math.exp(-t*42);break;
+   case 'metal':case 'rattle':raw=(fundamental+.38*Math.sin(phase*2.76)+bright*.1)*Math.exp(-t*23);break;
+   case 'bell':raw=(fundamental+.25*Math.sin(phase*2.73)+.13*Math.sin(phase*5.4))*Math.exp(-t*19);break;
+   case 'drum':case 'punch':case 'press':case 'puff':raw=(fundamental*.8+bright*.33*Math.exp(-t*22))*Math.exp(-t*16);break;
+   case 'swish':raw=value===1?(fundamental*.6+bright*.2)*Math.exp(-t*20):bright*Math.sin(Math.PI*u)*.9;break;
+   case 'net':raw=bright*Math.exp(-t*22)*.55;break;
+   case 'rim':raw=(Math.sin(phase*2.3)+.24*Math.sin(phase*5.4))*Math.exp(-t*28);break;
+   case 'leaf':case 'cloth':raw=bright*Math.sin(Math.PI*u)*.48+fundamental*.3*Math.exp(-t*24);break;
+   case 'buzzer':raw=(fundamental+.25*Math.sin(phase*1.5))*Math.exp(-t*12);break;
+   case 'radio':raw=Math.sin(phase+2*Math.sin(phase*2)*Math.exp(-t*12))*Math.exp(-t*12);break;
+   case 'chord':raw=(fundamental+Math.sin(phase*1.25)+Math.sin(phase*1.5))/2*Math.exp(-t*10);break;
+   case 'launch':raw=(fundamental*.4+bright*.65*Math.sin(Math.PI*u))*Math.exp(-t*3);break;
+   case 'splash':case 'bubble':raw=(fundamental*.68+bright*.3*Math.exp(-t*6))*Math.exp(-t*9);break;
+   default:raw=(fundamental+.16*Math.sin(phase*2))*Math.exp(-t*decay);
+  }
+  // Effects remain below teaching speech, including an early answer during q.
+  const gain=action?.24:part==='accent'?.15:.1;
+  const sheen=action&&timing==='perfect'?Math.sin(phase*2)*Math.exp(-t*23)*.06:0;
+  samples[i]=(raw*gain+sheen)*attack*tail;
+ }
+ return {samples,seconds:duration,kind:sound};
+}
+const clampSound=(n,a,b)=>Math.max(a,Math.min(b,Number.isFinite(n)?n:a));
 
 const eventAliases = {
   start: 'intro', correct: 'answer_correct', correct_big: 'answer_correct_big',
@@ -83,12 +139,15 @@ export class FestivalAudio {
     this.sources = new Set();
     this.pending = new Map();
     this.cueBuffers = new Map();
+    this.scheduledCues = new Map();
     this.recentCheers = [];
     this.volumeSettings = { music: 68, voice: 100, cheer: 85, sfx: 70 };
     this.origin = 0;
     this.active = false;
     this.spoken = null;
     this.manifest = null;
+    this.musicLayers = [];
+    this.orchestraLevel = 0;
   }
 
   async unlock() {
@@ -131,17 +190,8 @@ export class FestivalAudio {
       if (!response.ok) throw new Error('音声リストを読み込めませんでした。');
       this.manifest = await response.json();
     }
-    const wanted = new Set(this.manifest.cheers.map(clip => clip.id));
-    for (const question of questionList) {
-      const a = question.a ?? question.left ?? question.table;
-      const b = question.b ?? question.right ?? question.n;
-      if (!Number.isInteger(a) || !Number.isInteger(b) || a < 1 || a > 9 || b < 1 || b > 9) {
-        throw new Error('九九の出題データが正しくありません。');
-      }
-      const kinds = Number(question.gameId) === 15 ? ['r', 'a'] : ['q', 'a', 'f'];
-      for (const kind of kinds) wanted.add(`${kind}-${a}-${b}`);
-    }
-    for (const key of MUSIC_NAMES) wanted.add(`music:${key}`);
+    const wanted = this.requiredKeys(questionList);
+    for(const clip of this.manifest.cheers)wanted.add(clip.id);
     const list = [...wanted];
     let completed = 0;
     let cursor = 0;
@@ -158,10 +208,36 @@ export class FestivalAudio {
     this.loaded = true;
   }
 
+  requiredKeys(questionList=[]){
+    const wanted=new Set(questionList.map(question=>`music:${musicForGame(question.gameId)}`));
+    if(questionList.some(q=>Number(q.gameId)===20))for(const key of Object.keys(this.manifest?.orchestra?.stems||{}))wanted.add(`stem:${key}`);
+    for (const question of questionList) {
+      const a = question.a ?? question.left ?? question.table;
+      const b = question.b ?? question.right ?? question.n;
+      if (!Number.isInteger(a) || !Number.isInteger(b) || a < 1 || a > 9 || b < 1 || b > 9) {
+        throw new Error('九九の出題データが正しくありません。');
+      }
+      const truthGame=[4,21].includes(Number(question.gameId));
+      const kinds = Number(question.gameId) === 15 ? ['r', 'a'] : truthGame||(Number(question.gameId)===12&&question.lesson?.showHint)?['a']:['q','a'];
+      for (const kind of kinds) wanted.add(`${kind}-${a}-${b}`);
+      if([4,21].includes(Number(question.gameId))&&question.truth===false){
+        const key=`f-${a}-${b}-${question.claimed}`;
+        if(!this.manifest?.clips[key])throw new Error(`九九の主張と音声が一致しません: ${key}`);
+        wanted.add(key);
+      }
+    }
+    return wanted;
+  }
+
+  isReadyFor(questionList=[]){
+    if(!this.manifest)return false;
+    try{return [...this.requiredKeys(questionList)].every(key=>this.buffers.has(key));}catch{return false;}
+  }
+
   async loadClip(key) {
     if (this.buffers.has(key)) return this.buffers.get(key);
     if (this.pending.has(key)) return this.pending.get(key);
-    const definition = key.startsWith('music:') ? this.manifest.music[key.slice(6)] : this.manifest.clips[key];
+    const definition = key.startsWith('music:') ? this.manifest.music[key.slice(6)] : key.startsWith('stem:')?this.manifest.orchestra?.stems[key.slice(5)]:this.manifest.clips[key];
     if (!definition) throw new Error(`音声が見つかりません: ${key}`);
     const request = (async () => {
       const response = await fetch(new URL(definition.file, BASE));
@@ -191,6 +267,22 @@ export class FestivalAudio {
     if (this.musicSource) {
       try { this.musicSource.stop(startsAt); } catch { /* source already ended */ }
     }
+    for(const layer of this.musicLayers){try{layer.source.stop(startsAt);}catch{}}
+    this.musicLayers=[];
+    if(name==='finale'&&Object.keys(this.manifest?.orchestra?.stems||{}).every(key=>this.buffers.has(`stem:${key}`))&&Object.keys(this.manifest?.orchestra?.stems||{}).length){
+      this.musicSource=null;this.currentMusic='finale';
+      for(const [instrument,definition] of Object.entries(this.manifest.orchestra.stems)){
+        const source=this.ctx.createBufferSource(),gain=this.ctx.createGain();
+        source.buffer=this.buffers.get(`stem:${instrument}`);source.loop=true;source.loopStart=0;source.loopEnd=source.buffer.duration;
+        gain.gain.value=definition.unlockAfter<=this.orchestraLevel?1:0;
+        source.connect(gain);gain.connect(this.musicDuck);this.sources.add(source);
+        source.onended=()=>{this.sources.delete(source);source.disconnect();gain.disconnect();};
+        source.start(startsAt,(startsAt-when)%source.buffer.duration);
+        this.musicLayers.push({source,gain,instrument,unlockAfter:definition.unlockAfter});
+      }
+      return true;
+    }
+    this.currentMusic=name;this.orchestraLevel=0;
     const source = this.ctx.createBufferSource();
     source.buffer = this.buffers.get(key);
     source.loop = true;
@@ -205,6 +297,21 @@ export class FestivalAudio {
     source.start(startsAt, offset);
     this.musicSource = source;
     return true;
+  }
+
+  /** Add real instrumental stems together at the next shared beat boundary. */
+  orchestraProgress(count=0){
+    const level=Math.floor(clampSound(count,0,5));
+    this.orchestraLevel=level;
+    if(!this.ctx||!this.active||this.currentMusic!=='finale')return {level,instruments:[]};
+    const now=this.ctx.currentTime;
+    const when=this.origin+Math.max(0,Math.ceil((now-this.origin)/FESTIVAL_BEAT-1e-6))*FESTIVAL_BEAT;
+    for(const layer of this.musicLayers){
+      const target=layer.unlockAfter<=level?1:0;
+      layer.gain.gain.cancelScheduledValues(when);
+      layer.gain.gain.setTargetAtTime(target,Math.max(now,when),.018);
+    }
+    return {level,when,instruments:this.musicLayers.filter(l=>l.unlockAfter<=level).map(l=>l.instrument)};
   }
 
   /** Seconds since start on the audible clock; suspended contexts stay still. */
@@ -282,11 +389,12 @@ export class FestivalAudio {
   }
 
   /** Schedule a rhythm demonstration on the music clock, never a UI timer. */
-  cue(at, kind = 'clap') {
+  cue(at, kind = 'clap', options = {}) {
     if (!this.ctx || !this.active || !Number.isFinite(at) || at < 0) return false;
     const when = this.origin + at;
     // A late animation frame must not bunch old beats together at "now".
     if (when < this.ctx.currentTime) return false;
+    if(STAGE_AUDIO_PROFILES[Number(options.gameId)-1])return this.stageSound(options.gameId,kind==='accent'?'accent':'tick',when,{...options,scheduledCue:true});
     const resolved = { accent: 'kick', demo: 'clap', release: 'snare' }[kind] || kind;
     const name = ['clap', 'kick', 'snare', 'hat', 'tick'].includes(resolved) ? resolved : 'clap';
     if (!this.cueBuffers.has(name)) {
@@ -324,9 +432,56 @@ export class FestivalAudio {
     source.buffer = this.cueBuffers.get(name);
     source.connect(this.buses.sfx);
     this.sources.add(source);
-    source.onended = () => { this.sources.delete(source); source.disconnect(); };
+    this.scheduledCues.set(source,when);
+    source.onended = () => { this.sources.delete(source); this.scheduledCues.delete(source); source.disconnect(); };
     source.start(when);
     return { at, when, kind: name, seconds: source.buffer.duration };
+  }
+
+  stageSound(gameId,part,when,options={}){
+    const key=`stage:${gameId}:${part}:${options.step||0}:${options.value===1?'take':'other'}:${options.timing==='perfect'?'perfect':'plain'}:${options.soundOverride||''}`;
+    const profile=STAGE_AUDIO_PROFILES[Number(gameId)-1];
+    let buffer=this.cueBuffers.get(key),kind=part==='action'?(options.soundOverride||profile?.action):profile?.voice;
+    if(!buffer){
+      const rendered=synthesizeStageSound(gameId,part,this.ctx.sampleRate,options);
+      if(!rendered)return false;
+      buffer=this.ctx.createBuffer(1,rendered.samples.length,this.ctx.sampleRate);buffer.getChannelData(0).set(rendered.samples);kind=rendered.kind;
+      this.cueBuffers.set(key,buffer);
+    }
+    const source=this.ctx.createBufferSource();source.buffer=buffer;source.connect(this.buses.sfx);this.sources.add(source);
+    if(options.scheduledCue)this.scheduledCues.set(source,when);
+    source.onended=()=>{this.sources.delete(source);this.scheduledCues.delete(source);source.disconnect();};source.start(when);
+    return {gameId,part,when,kind,seconds:buffer.duration};
+  }
+
+  /** One physical action per accepted answer; it does not queue another voice. */
+  action(gameId,options={}){
+    if(!this.ctx||!this.active||this.ctx.state!=='running')return false;
+    const now=this.ctx.currentTime;
+    if(Number(gameId)===8){
+      const first=this.stageSound(gameId,'action',now,options);
+      const hits=Number.isFinite(options.value)&&options.value<10?1:2;
+      if(hits===2)this.stageSound(gameId,'action',now+.27,options);
+      return {...first,automaticHits:hits};
+    }
+    if(Number(gameId)===11&&options.correct){
+      const first=this.stageSound(gameId,'action',now,{...options,soundOverride:'swish',value:0});
+      if(options.timing!=='perfect')this.stageSound(gameId,'action',now+.5,{...options,soundOverride:'rim'});
+      this.stageSound(gameId,'action',now+(options.timing==='perfect'?.65:.75),{...options,soundOverride:'net'});
+      return {...first,route:options.timing==='perfect'?'swish':'bank'};
+    }
+    return this.stageSound(gameId,'action',now,options);
+  }
+
+  /** Cancel only not-yet-played countdown sounds, preserving voices and actions. */
+  cancelCues(){
+    let count=0;
+    for(const [source,when] of this.scheduledCues){
+      if(when<=(this.ctx?.currentTime??0))continue;
+      try{source.stop();}catch{}
+      source.disconnect();this.sources.delete(source);this.scheduledCues.delete(source);count++;
+    }
+    return count;
   }
 
   sfx(kind = 'tap') {
@@ -363,11 +518,15 @@ export class FestivalAudio {
     this.active = false;
     this.spoken = null;
     this.musicSource = null;
+    this.musicLayers = [];
+    this.orchestraLevel = 0;
+    this.currentMusic = null;
     for (const source of this.sources) {
       try { source.stop(); } catch { /* already ended */ }
       source.disconnect();
     }
     this.sources.clear();
+    this.scheduledCues.clear();
     if (this.ctx && this.musicDuck) {
       this.musicDuck.gain.cancelScheduledValues(this.ctx.currentTime);
       this.musicDuck.gain.value = 1;
