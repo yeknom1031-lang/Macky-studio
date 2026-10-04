@@ -1,0 +1,28 @@
+{
+  "id": "A0248",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:34:30.046585+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画とpackを確認。0行は元の小型スパナを消しているため不採用。1行の背面工具消失、3行の背面工具袋反転を除く。1・3行の階段、2行の全12は人物・道具を保持。"
+  ],
+  "packReport": "review/A0248-pack.json",
+  "preview": "review/A0248-check.jpg",
+  "disabledClipsByRow": {
+    "1": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

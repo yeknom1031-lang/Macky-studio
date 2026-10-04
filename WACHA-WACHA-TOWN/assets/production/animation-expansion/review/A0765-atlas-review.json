@@ -1,0 +1,355 @@
+{
+  "id": "A0765",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "ebeedfbc961a120eea918e8cd049c83daab73cf7e6d500902e80a9451d09bacf",
+  "alphaZeroFraction": 0.61517,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S15-ENV09",
+      "name": "港の綿毛",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4407,
+          "rgbaSHA256": "d991e04ec17516283e8a199f286d9242c3c801a6eed5f43dd7d5ba766a87f50c"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3711,
+          "rgbaSHA256": "a872d0c167332bb8864cb8eaeefbe3bf7d8f5bfc631452e334976660b17fc300"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4462,
+          "rgbaSHA256": "5106e81b952f86d7c96851abbd0042f6ff46343f63c74885770091b1f36fc220"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3794,
+          "rgbaSHA256": "2ac3e939c42cea0e4b00d28eb10a225e02b1ea8824eece5ad13edad105987311"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3875,
+          "rgbaSHA256": "937ee01f44dce682b2e8952b287e8a399827b4d786dfffca0fa0be920684b8c0"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3460,
+          "rgbaSHA256": "577c1d1caec4d56b6db2cb0829edd165bdd16eac9f8e48d7ea7b2b850f3a6ac2"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3709,
+          "rgbaSHA256": "70b6d0b6bb21db5fdb36f2b1c15e1240b779b5ce1d1eb5d4bea114360c7c74e6"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4631,
+          "rgbaSHA256": "67700f549b7f83ebcc70a94d77623cfdcc0ed3ba2d7876fca9e87977d4041b8a"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S15-ENV10",
+      "name": "気球屋の星モビール",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7471,
+          "rgbaSHA256": "a8f45d7699661924d3d8a0f5b9e22a7b7548e3ef567b170428bcecdff09da9eb"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7382,
+          "rgbaSHA256": "df296f25decaf32ee4d1231f21e82bbc7a6575ea36dca641a473ff3a82934295"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7482,
+          "rgbaSHA256": "9acb55ddca1dbc6d8035d0f8fc115eaca659eec642a282eb6f9f99554a4acc44"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7439,
+          "rgbaSHA256": "d169dcfd89ad2d0c0e54095b8338f12a7a5b6908ac4535531cb8bef7f132f81b"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7471,
+          "rgbaSHA256": "80d5211ac949f057b7a22566324cc1b79625b3e4142fd8d6a19666549adb9794"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7005,
+          "rgbaSHA256": "6fbeb5160d1dee4c776914f02600bc204d24c2b9c92fb0ad0cbc39577ed6f947"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7477,
+          "rgbaSHA256": "65b7509ac21f6405b4492f6dd9fb7f6d79d06711dbf56518cac271969c27c11d"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7491,
+          "rgbaSHA256": "47576b7153501f23d2959f37b0f295323b8ba3ff3f42ba077c2af797b66c6b75"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S15-ENV11",
+      "name": "貨物窓口の扇風機",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 19881,
+          "rgbaSHA256": "98e67e873c67a56062d19bcbfc887817210e27ec4844a9428596276ff1b5349c"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 19909,
+          "rgbaSHA256": "ad871cc08c25ed425e97325b5c4c3dc8f438866a084124b222edb2413c32f1dd"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 19989,
+          "rgbaSHA256": "0512f703c8a0e3ee120035e35301ae34ab0c130978519fd6def8843181fa198e"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 19962,
+          "rgbaSHA256": "19c7933e2cbb66ad6df653cd2d80b6663abec3e46495159ee087bf0b0432a9d7"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 19888,
+          "rgbaSHA256": "2cbb2182567c811759443f619923234e980a51fc4543e4e7a5019785a5d29bd9"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 19931,
+          "rgbaSHA256": "4151aa531578cf4f6c6cd9bf0d543c1238e08a4b3d76369bad6773200d953108"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 19953,
+          "rgbaSHA256": "405a900d745b702fb6b305b9c6db7087170f5d6577a1360390c6c420b2820dad"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 19978,
+          "rgbaSHA256": "79eb2c080f6fd305dd4b84351f3d9b6e17162cf06b776074e7f48e207eff56dd"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S15-ENV12",
+      "name": "浮遊庭の三角旗",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8463,
+          "rgbaSHA256": "f8f21eced0ff721547fa20a173bf8d3dfb58918df7e45ba2d70f38fe2f8eef40"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8197,
+          "rgbaSHA256": "c1a46e62e503b0eb27294bfbdba08470d31c38cb94901efef9b7d49228b40707"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8145,
+          "rgbaSHA256": "a481e56433788c7443c579549b822c224cdb2614d937d667f9623a1b34b7466f"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7732,
+          "rgbaSHA256": "adbdb7135007345508a041381e50082f37970846d4207a7ee85c56b7d50309ae"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8216,
+          "rgbaSHA256": "1ec296d09f2c93b609517b0cd586cb72cf4cf49e8ce70b61ad5e4dfc299286d9"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8398,
+          "rgbaSHA256": "c42f381b1fdd44a78e88c8aa5bcd9864337f37c3d93034e366ed3708188ffb93"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8196,
+          "rgbaSHA256": "c6008b182cd763a7d69e1168ead021842b5469f56abcefdf5dd2c8957c0867dc"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8163,
+          "rgbaSHA256": "d05911aa6a03e3680fb127509f4bad7bc1a9c8ccbc550904339701a353765a5b"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

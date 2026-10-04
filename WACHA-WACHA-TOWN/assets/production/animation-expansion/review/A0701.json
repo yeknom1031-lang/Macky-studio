@@ -1,0 +1,17 @@
+{
+  "id": "A0701",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:39:41.687263+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0
+  ],
+  "notes": [
+    "操舵輪を持つrow 0 は輪の全体と全身が8コマ連続。row 1 は上端が切れた固定吊りロープ、row 2 は横端で切れた固定ロープを含むため背景接続を保証できず保留。row 3 は風船が2個/3個へ変化し色も変わるため除外。"
+  ],
+  "packReport": "review/A0701-pack.json",
+  "preview": "review/A0701-check.jpg"
+}

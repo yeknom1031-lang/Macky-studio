@@ -1,0 +1,24 @@
+{
+  "id": "A0259",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:44:31.089802+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    3
+  ],
+  "notes": [
+    "原画・pack確認。0〜2行は元歩行の空の手に紙袋を追加しているため不採用。3行は背面/上りに新しい肩掛けバッグがあるため両clipを除外、手袋・衣装を保つ下り4コマのみ採用。"
+  ],
+  "packReport": "review/A0259-pack.json",
+  "preview": "review/A0259-check.jpg",
+  "disabledClipsByRow": {
+    "3": [
+      "walkBack",
+      "stairUp"
+    ]
+  },
+  "clipFramesByRow": {}
+}

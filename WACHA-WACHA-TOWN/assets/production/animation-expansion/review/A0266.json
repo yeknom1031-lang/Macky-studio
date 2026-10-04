@@ -1,0 +1,31 @@
+{
+  "id": "A0266",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T18:52:55.778199+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack全行確認。薪を追加せず元の衣装/袋を保持。2行背面の最後だけ帽子の飾りが反転するため0,1,2,1で構成。他のコマは体型・髪・袋が一貫。"
+  ],
+  "packReport": "review/A0266-pack.json",
+  "preview": "review/A0266-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {
+    "2": {
+      "walkBack": [
+        0,
+        1,
+        2,
+        1
+      ]
+    }
+  }
+}

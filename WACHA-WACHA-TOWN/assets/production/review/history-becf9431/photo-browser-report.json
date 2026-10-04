@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-04T20:12:11.808Z",
+  "checks": [
+    "only one character is rendered",
+    "riding target uses the full captured pose",
+    "every opaque target pixel is visible above all scenery",
+    "lower body remains visible"
+  ],
+  "opaque": 577,
+  "legs": 122,
+  "mismatched": 0,
+  "characterDraws": 1,
+  "fullBody": true,
+  "errors": []
+}

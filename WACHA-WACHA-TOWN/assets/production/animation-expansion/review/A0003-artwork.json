@@ -1,0 +1,30 @@
+{
+  "id": "A0003",
+  "status": "accepted-partial",
+  "note": "Excluded jug omission and intermittent stick/cotton candy poses using clipFramesByRow; only coherent clip subsets admitted.",
+  "selection": {
+    "clipFramesByRow": {
+      "1": {
+        "walkBack": [
+          0,
+          3
+        ],
+        "stairDown": [
+          9,
+          10,
+          11
+        ]
+      },
+      "2": {
+        "walkBack": [
+          1,
+          3
+        ],
+        "stairDown": [
+          9,
+          11
+        ]
+      }
+    }
+  }
+}

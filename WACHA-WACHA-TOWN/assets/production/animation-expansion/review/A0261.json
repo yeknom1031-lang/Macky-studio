@@ -1,0 +1,17 @@
+{
+  "id": "A0261",
+  "reviewStatus": "rejected",
+  "reviewedAt": "2026-10-04T18:44:31.092350+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [],
+  "notes": [
+    "原画13コマを整列しpackも確認したが、全4人に左歩行参照にはない野菜箱が全動作で追加されたため不採用。既存歩行を維持。"
+  ],
+  "packReport": "review/A0261-pack.json",
+  "preview": "review/A0261-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

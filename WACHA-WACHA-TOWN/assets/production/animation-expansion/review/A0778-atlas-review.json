@@ -1,0 +1,355 @@
+{
+  "id": "A0778",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "4f984ff8d0590df730224cc435989b4c5d055ab8e3b56703d8d086fa2dc7a7a5",
+  "alphaZeroFraction": 0.52377,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S20-ENV01",
+      "name": "研究港の小吹き流し",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12108,
+          "rgbaSHA256": "c0ca56f4f01b17f599c65fe8add910672395f283945c038389096c1e32a92634"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12436,
+          "rgbaSHA256": "05708f902ecc4d05e190edbb65a428768acef1cb103b9518a8d7e014ba5851f5"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11981,
+          "rgbaSHA256": "a178e8628cf41a33b05676c8f0a2c7a68e34c428ed7bb27b5690f91215e14fc8"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11462,
+          "rgbaSHA256": "f3357724ef744223fef52a5a935214f172759e0cb94438ec65f1eab793aa8a90"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10993,
+          "rgbaSHA256": "1d1b61834e9880a0129e3b0bd26adb22fdba2d8004c4d8eb2a3c8a518290f3bf"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12098,
+          "rgbaSHA256": "1439bfa1a6b28a0df3934d0d26c7399344607734eaa162832a29831ed84762d8"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11418,
+          "rgbaSHA256": "a161d7518e1de78aed9fbb2535e387291206f5de1ac3a887aaf85a0ecfdf6b46"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10993,
+          "rgbaSHA256": "207b6d81c3547e2bcec8274793547d1418d8987aca663562ab6c2d093d24e5c4"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S20-ENV02",
+      "name": "マリンカフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5073,
+          "rgbaSHA256": "b2cf663468e403507b3fa9d9e7b189659e3567b37f106415d23790bfd265a116"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 6185,
+          "rgbaSHA256": "27d21a6a0df64143c0f940671d18593315726d81a6380c311b97a40d7a9e2a6c"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6423,
+          "rgbaSHA256": "e1cd57cb1165f5756897b253ea72e68810d00b0b9759c8c03045dce11786ef54"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6527,
+          "rgbaSHA256": "0e44b1ec08af584d60707a5ec5c3790124bf1c76688d173fec042244e4c32f11"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6070,
+          "rgbaSHA256": "4aae298215603c1364dbaeb4a11a469601a4eb77888e334eda2f3835f5b26995"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5610,
+          "rgbaSHA256": "1b1fc6657ae757f9fe445ce0f792aa2b29aff759de5520e2c20324b2db248f08"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4913,
+          "rgbaSHA256": "20225dc20ab7d2ccc9f04ddd06687276f918f0c8b29d6f49307a0d28ce04eef9"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4614,
+          "rgbaSHA256": "efd76a06bd2185b5fd5fe147af9c40914806c9be30828b9d25df00c5bd12eeab"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S20-ENV03",
+      "name": "研究室の卓上ファン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 22525,
+          "rgbaSHA256": "2669e328b0ad11625dfbefddeb7101176b3e8975d84f590e2fa9d78dfbe51a09"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 22564,
+          "rgbaSHA256": "6ef63f7eb970fa797cbd2563045c0a2e5d5dccb2c027340e5cbe7e3ebf2fc7dd"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 22345,
+          "rgbaSHA256": "ec7b4cc5c4a1e55f6948e1ef6ed3f9ba753e6070bcead620cdbb638feae4dbb6"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 22618,
+          "rgbaSHA256": "dd70bd55dc148f13bf3bc5f1c0f42ad618351ce67c2c7dccf04c203a78834e31"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 22576,
+          "rgbaSHA256": "71de47efe528fb66f397062b47a826b5565bb298dde0286d83b696dd82b0ae9b"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 22688,
+          "rgbaSHA256": "b3f7c2c3f88a2631a978434b36a872a8a3a97559f4ee8e1877b93fda2f781816"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 22421,
+          "rgbaSHA256": "315e6793693046c80bacb2fadb002bcc242e8389632a039d43242fcf57fa9925"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 22324,
+          "rgbaSHA256": "30e7fe8fbef347ed504e429e75da0c420b7a92973f2927cc58a6a026b9da574d"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S20-ENV04",
+      "name": "貝のモビール",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12249,
+          "rgbaSHA256": "c0534324972889860bf5fb8ca33940357726976995e05f5fe6bc7df672f22e77"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12051,
+          "rgbaSHA256": "c5ae601e70fd1c46ac2df0989e3d7456381bd6dfe74fabb1eb424b1cf2555eb2"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11759,
+          "rgbaSHA256": "3d7d2ac1ed42b3b22962ee3df9396ecfe0cb58c5d82ea3bc1b437a707d62e39b"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12118,
+          "rgbaSHA256": "6efef6067bfa501e25fb6939450028923e07784f6230caf6cbb3c1d3368f917f"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11795,
+          "rgbaSHA256": "d433cb12f263d923ad63f75f695270bb3050fbd9cf95f1476f26479746cfece8"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12249,
+          "rgbaSHA256": "e3f10ce1606110bea35933c755f30e48e0cbb02f4421514bc352cec7839f9c1b"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11752,
+          "rgbaSHA256": "2c2d1601ae4263cd5e4be4fc8493c2fb8cb9cac89a6aa4ad20a17d132739a15b"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12025,
+          "rgbaSHA256": "9c16cf38b192784a08ef7263c3d4f21f0308abcde714c345ebcd3b55494eaebb"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

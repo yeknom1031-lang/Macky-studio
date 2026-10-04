@@ -1,0 +1,21 @@
+{
+  "id": "A0217",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:15:06.603832+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ],
+  "notes": [
+    "輪郭抽出へ切替えて右端の足切れを解消。作業員と手かばん/籠を持つ2人は12コマ保持。4行目は左参照の膝前の大きな濃茶の袋が歩行で省略されるため除外。"
+  ],
+  "packReport": "review/A0217-pack.json",
+  "preview": "review/A0217-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

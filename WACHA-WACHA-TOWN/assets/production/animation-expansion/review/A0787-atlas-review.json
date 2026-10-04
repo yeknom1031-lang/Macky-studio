@@ -1,0 +1,355 @@
+{
+  "id": "A0787",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "aafdc4cc4faf4c9b8e0bfcad6a12096631453ddd42393918ec441097c5d2c156",
+  "alphaZeroFraction": 0.49586,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S23-ENV01",
+      "name": "都会の小旗",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14661,
+          "rgbaSHA256": "ecf2ce3fdb24fe4dd9609439a81e340c4899f75404a43c7b01661b6f920f1155"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 14026,
+          "rgbaSHA256": "7ff108e9bd1c19048ed29ddd4284146701dad5791f8397e35b1258658370ea1d"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13293,
+          "rgbaSHA256": "ed9edae815509c9e6c940f65d1e6afd12072e51797bf08c7a085339f658cc9dd"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13129,
+          "rgbaSHA256": "cade2e221cc92c4201ccecb11eba2cef55a64ac45ec5f50086756f3766e1221b"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12805,
+          "rgbaSHA256": "6890422ed96836ec591e396f9a80db18b5d8a01beaabdb42a15c14727656fc44"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12793,
+          "rgbaSHA256": "3c8b3a0f261f02232b7b10f36e7eca3ee1f4c885e9e2c176d8f4299787c11cce"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13596,
+          "rgbaSHA256": "6b6115e4e62654982cdfee15efe08f6da23c984335fcc8226419769fd5f2eb0f"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14257,
+          "rgbaSHA256": "b30c1d31690e96f56399fbb2ed9c250f2178081ebaa7ed42e8a02d15216297d3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S23-ENV02",
+      "name": "商店街の風鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7282,
+          "rgbaSHA256": "e68d0202ce3d86507e83a067096d9b46022e4eeb396b6e6fc9c6b5cb15f369b2"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7340,
+          "rgbaSHA256": "ca74721e3e6f1d3931e3196fb36e62a09314196ef686ead56e5154090ddeabe9"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7368,
+          "rgbaSHA256": "d1d9815a7c8bd240c0872a345dac3d8adc113b5227cde3d6d5c7e7b37d65b2d9"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7413,
+          "rgbaSHA256": "a5a6f27460b9770f7eb24422c5353325e658d0960ef02a949d0e5e0829b87242"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7243,
+          "rgbaSHA256": "96cb47d8868f8c48da5aef3baaec85393e8494d8f0fafbddf609e27b145f738a"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7257,
+          "rgbaSHA256": "fca070f9f4737194c194e62576d6f2b677c898fce4d98673d4f204ac1c3fb5cb"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7291,
+          "rgbaSHA256": "7ec3e98a2433597107519c3124d459a3c7cb556a4fec30bf150a57cb348ab8ce"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7315,
+          "rgbaSHA256": "32364edce974c69f59a39612e33542bcf724693b7f2e4b1c6b2a8984d026c90e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S23-ENV03",
+      "name": "屋上カフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9247,
+          "rgbaSHA256": "15e333755bfef9b0c22be0ad015ac7fd9728640e65ee5d3b156a089fc966f608"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8706,
+          "rgbaSHA256": "7ca82b7470de9d69002cf633c9ad2f1da0a53b8751518fff96ef7e27833974f4"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9019,
+          "rgbaSHA256": "dc289147690a92049e78b324882e5f808baf0023fe8cacb9f9aeadff9a800181"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9472,
+          "rgbaSHA256": "a69dd174bafb518ca5badc6d19784a156b899653aba472f6e7793cff56dd41fb"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8535,
+          "rgbaSHA256": "79a2d96dbbaa52503ba8fc46eb0e96248a45f855e11f2aaf1523863d4ba49a84"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8332,
+          "rgbaSHA256": "fb57ce851052273620444fd9deee51e5e968ce4a7d68ff36a82c223dca064d9f"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8606,
+          "rgbaSHA256": "acdea07bee2b1adb01da4683f718f9ab279e58ce10455dbc3fd573308d51e0c9"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8615,
+          "rgbaSHA256": "b9a3f6887638a679644db311484ee82c67b84b3855422f92bda729b1f02ceb07"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S23-ENV04",
+      "name": "劇場のリボン飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11099,
+          "rgbaSHA256": "be7ff30f0272ea07cb105b8f58cd4bef61b396b74e0ca48a4d9c345568f05322"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10389,
+          "rgbaSHA256": "74841d38a57da3fc2aa49ad57df30b9695d1abd4469bd7729b1edd20b57d3350"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10018,
+          "rgbaSHA256": "d0bf93e7ba260194ffcd35e84dea2dca10bb312b0b28e20791ab495c23184ddf"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9353,
+          "rgbaSHA256": "712468757584bc8b827f02b298fdc55b214ff95d4ab56a605b9f57126dd5bff6"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10815,
+          "rgbaSHA256": "917a2d0c92a19dd3b75a4ff16218097ff7fbbc3e4f531491cebf01771a6f0954"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10911,
+          "rgbaSHA256": "39ba5ff44e70cd88ef5e55e1767dd405b58082ff739d2e9564258c3435724f4d"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10061,
+          "rgbaSHA256": "a4cd87ab1a637f12a4a1b32d57a82346de4f5c21e2d9b10588d609fa0143c2ab"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11020,
+          "rgbaSHA256": "f67636e35bd936dbb1eb3ec84ee1b86d86ff836b49588cbf3eb55c0b108a0ae3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

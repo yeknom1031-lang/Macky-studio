@@ -1,0 +1,355 @@
+{
+  "id": "A0744",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "431ac0a9d60eec6d01c788a3940f08a58a879108f8ebdb601941f5cf22637d7b",
+  "alphaZeroFraction": 0.69652,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S08-ENV09",
+      "name": "坂のもみじ",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5644,
+          "rgbaSHA256": "c8dfb8e9e530b525e6d093931ab77326728ed513a7ebcbdf7f6419a5085f0cfd"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5697,
+          "rgbaSHA256": "aa5ec13364912853bf9d60b1ce0cfd410d4ba046fb7565d0e02c7d8e3bc46cf1"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6313,
+          "rgbaSHA256": "390e482bab5dc0ae4e6a02c92767c8e547eb583a9772d6a165b49ac55a3d1cf7"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5845,
+          "rgbaSHA256": "640b9a4b8ed2aa59bad6bea17d596fb4b46336a2010b8041727a2e62a1b5644f"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5391,
+          "rgbaSHA256": "2eb0b58e7c71f26871741479819cbd57dd5e6c3d9fd87781e8406301978fb15b"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6001,
+          "rgbaSHA256": "2cafa86e789198cbe06217f4db029e1cc3ff15198fcf2c36ef7f3de7d9287174"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5377,
+          "rgbaSHA256": "54f7d9f686c958fbffa9545575cf2364f7b9b5e7d92bd3f2d9eaeac4d630e010"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5434,
+          "rgbaSHA256": "99b85e08061cba0e2167e28e4fe12fa0a2bafbdf07daa408a4e4e8fb81fe6df0"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S08-ENV10",
+      "name": "里山の綿毛",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6526,
+          "rgbaSHA256": "c9916553a022ec22a9a7373af3db2dbc098728571035aca8f32a9d62d0c669f9"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 6576,
+          "rgbaSHA256": "4e7eabd1117a631b926575af7294cf36f64fb75d94486430ccb5069e1b70797e"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5733,
+          "rgbaSHA256": "e4d710084eb50bcdf2b59a6f1ba96faa9ee80cf1197957305b8a53881b4e3a11"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5504,
+          "rgbaSHA256": "c6931f016b02bd9498ca7bab4faba80ea396fa1162052501a271e9e3461834b9"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5397,
+          "rgbaSHA256": "6537371ed1e6b62f975425c54d1814ee3648a595f5f35b2b830332e9a5ab9d55"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 6307,
+          "rgbaSHA256": "880addb3638efd57e0ac78818922d24d2e6252560f43f9928a6b0869d092fa89"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6191,
+          "rgbaSHA256": "5ff80709841c89cc2d608eb4a7115340562cb25c2ea8ed8c23db468716f818ef"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6571,
+          "rgbaSHA256": "6537b6dfb6da3bee855a597187a77ca2602417e6a28a457522c6d5877086bdb9"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S08-ENV11",
+      "name": "茶処の竹風車",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8106,
+          "rgbaSHA256": "493b69a5c7be15023d4694808300c9e0c44c6fe5c39ae961800bb882c88c59e4"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8165,
+          "rgbaSHA256": "9d0ea84520c07b279f72b8c63bfb99addbf545ed1f9994891b046b6e3f3ea47a"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7884,
+          "rgbaSHA256": "2c63951d2122e17d5e1d4c8c91ca18f6d5219fcc9dd4669725d2c2cdbf8ba76f"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8080,
+          "rgbaSHA256": "a5f37fa0daebb1095de2fa51f8740eb57f47de50ce6968cad3632709e2ac3b9f"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8394,
+          "rgbaSHA256": "166f4df03034b76eff06682883ca87d33be055886ee8ebf38afc2f1b88301c7a"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8320,
+          "rgbaSHA256": "a5f6a8b54d06457ba4ba1cfae80d2def3a7146af7707e8e439fb3eae09c26810"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8394,
+          "rgbaSHA256": "a9ca7a0fed7747bef98f2eb7fed7b965e529d562b9740f2524326b269f4fdec3"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8061,
+          "rgbaSHA256": "daed4e03f9bab74345a89a8e508cfb99173183c35190eef1f323304b23f4e9db"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S08-ENV12",
+      "name": "宿の軒先のしずく",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5049,
+          "rgbaSHA256": "ab9fa80b446969111e79712a560f6f9acad424f38c15e9a40f958ad7af458f45"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5458,
+          "rgbaSHA256": "483fccf6bca4c4812a4afb87ec3d0b7ae621d03855e5bb27485a22cf57deca51"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5436,
+          "rgbaSHA256": "d7710c9eabc571e39026ba1b700b58059b1ef698f44a495cfaecbfa3defc51d6"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5591,
+          "rgbaSHA256": "068cebead24cb6fb47573317f39d26cd8bdc0b7cfbb03797c4d1124fcb881f7e"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5541,
+          "rgbaSHA256": "7447d3e51a7ec40e416fd305753430f2c2c4618ea55e264204d7c3f05bf840f8"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5438,
+          "rgbaSHA256": "4bdd840f2cfa25614d4ac21f7ae629038c4187db0303585f05ae6f74b993da23"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5772,
+          "rgbaSHA256": "bad737a6a01572060904e3424030afac51753fa79aa0d7fae070c0d0ba828632"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5082,
+          "rgbaSHA256": "258f3bad4a865f02373176729e94d15f7c4cb44eab256bee1688cc71db3a6634"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent frames. Color compositing verifies true transparency. No duplicated building or complete equipment. Final scene placement pending."
+}

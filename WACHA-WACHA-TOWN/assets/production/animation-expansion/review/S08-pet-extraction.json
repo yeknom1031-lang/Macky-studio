@@ -1,0 +1,407 @@
+{
+  "method": "Pure source crop and alpha connected-component separation; no new painted pixels and no image generation.",
+  "source": "S08-people-10.png",
+  "frames": [
+    {
+      "row": 0,
+      "col": 0,
+      "sourceBox": [
+        12,
+        0,
+        169,
+        147
+      ]
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "sourceBox": [
+        169,
+        0,
+        315,
+        147
+      ]
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "sourceBox": [
+        315,
+        0,
+        457,
+        147
+      ]
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "sourceBox": [
+        457,
+        0,
+        600,
+        147
+      ]
+    },
+    {
+      "row": 0,
+      "col": 4,
+      "sourceBox": [
+        600,
+        0,
+        739,
+        147
+      ]
+    },
+    {
+      "row": 0,
+      "col": 5,
+      "sourceBox": [
+        739,
+        0,
+        879,
+        147
+      ]
+    },
+    {
+      "row": 0,
+      "col": 6,
+      "sourceBox": [
+        879,
+        0,
+        1017,
+        147
+      ]
+    },
+    {
+      "row": 0,
+      "col": 7,
+      "sourceBox": [
+        1017,
+        0,
+        1122,
+        147
+      ]
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "sourceBox": [
+        12,
+        143,
+        169,
+        286
+      ]
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "sourceBox": [
+        169,
+        143,
+        315,
+        286
+      ]
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "sourceBox": [
+        315,
+        143,
+        457,
+        286
+      ]
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "sourceBox": [
+        457,
+        143,
+        600,
+        286
+      ]
+    },
+    {
+      "row": 1,
+      "col": 4,
+      "sourceBox": [
+        600,
+        143,
+        739,
+        286
+      ]
+    },
+    {
+      "row": 1,
+      "col": 5,
+      "sourceBox": [
+        739,
+        143,
+        879,
+        286
+      ]
+    },
+    {
+      "row": 1,
+      "col": 6,
+      "sourceBox": [
+        879,
+        143,
+        1017,
+        286
+      ]
+    },
+    {
+      "row": 1,
+      "col": 7,
+      "sourceBox": [
+        1017,
+        143,
+        1122,
+        286
+      ]
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "sourceBox": [
+        12,
+        278,
+        169,
+        424
+      ]
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "sourceBox": [
+        169,
+        278,
+        315,
+        424
+      ]
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "sourceBox": [
+        315,
+        278,
+        457,
+        424
+      ]
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "sourceBox": [
+        457,
+        278,
+        600,
+        424
+      ]
+    },
+    {
+      "row": 2,
+      "col": 4,
+      "sourceBox": [
+        600,
+        278,
+        739,
+        424
+      ]
+    },
+    {
+      "row": 2,
+      "col": 5,
+      "sourceBox": [
+        739,
+        278,
+        879,
+        424
+      ]
+    },
+    {
+      "row": 2,
+      "col": 6,
+      "sourceBox": [
+        879,
+        278,
+        1017,
+        424
+      ]
+    },
+    {
+      "row": 2,
+      "col": 7,
+      "sourceBox": [
+        1017,
+        278,
+        1122,
+        424
+      ]
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "sourceBox": [
+        12,
+        415,
+        169,
+        563
+      ]
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "sourceBox": [
+        169,
+        415,
+        315,
+        563
+      ]
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "sourceBox": [
+        315,
+        415,
+        457,
+        563
+      ]
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "sourceBox": [
+        457,
+        415,
+        600,
+        563
+      ]
+    },
+    {
+      "row": 3,
+      "col": 4,
+      "sourceBox": [
+        600,
+        415,
+        739,
+        563
+      ]
+    },
+    {
+      "row": 3,
+      "col": 5,
+      "sourceBox": [
+        739,
+        415,
+        879,
+        563
+      ]
+    },
+    {
+      "row": 3,
+      "col": 6,
+      "sourceBox": [
+        879,
+        415,
+        1017,
+        563
+      ]
+    },
+    {
+      "row": 3,
+      "col": 7,
+      "sourceBox": [
+        1017,
+        415,
+        1122,
+        563
+      ]
+    },
+    {
+      "row": 4,
+      "col": 0,
+      "sourceBox": [
+        12,
+        547,
+        169,
+        698
+      ]
+    },
+    {
+      "row": 4,
+      "col": 1,
+      "sourceBox": [
+        169,
+        547,
+        315,
+        698
+      ]
+    },
+    {
+      "row": 4,
+      "col": 2,
+      "sourceBox": [
+        315,
+        547,
+        457,
+        698
+      ]
+    },
+    {
+      "row": 4,
+      "col": 3,
+      "sourceBox": [
+        457,
+        547,
+        600,
+        698
+      ]
+    },
+    {
+      "row": 4,
+      "col": 4,
+      "sourceBox": [
+        600,
+        547,
+        739,
+        698
+      ]
+    },
+    {
+      "row": 4,
+      "col": 5,
+      "sourceBox": [
+        739,
+        547,
+        879,
+        698
+      ]
+    },
+    {
+      "row": 4,
+      "col": 6,
+      "sourceBox": [
+        879,
+        547,
+        1017,
+        698
+      ]
+    },
+    {
+      "row": 4,
+      "col": 7,
+      "sourceBox": [
+        1017,
+        547,
+        1122,
+        698
+      ]
+    }
+  ],
+  "edgeFragmentRule": "Components with center within 7px left or 9px right crop edge excluded; every full human+dog pair manually verified."
+}

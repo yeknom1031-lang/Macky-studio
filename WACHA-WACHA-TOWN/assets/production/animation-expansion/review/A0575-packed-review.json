@@ -1,0 +1,87 @@
+{
+  "width": 1774,
+  "height": 887,
+  "rows": 4,
+  "cols": 12,
+  "frames": 48,
+  "transparentFraction": 0.6572043382492193,
+  "registration": [
+    {
+      "row": 0,
+      "sourceCell": [
+        153,
+        174
+      ],
+      "sharedBounds": [
+        2,
+        3,
+        141,
+        171
+      ],
+      "scale": 0.5238095238095238,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+    },
+    {
+      "row": 1,
+      "sourceCell": [
+        153,
+        183
+      ],
+      "sharedBounds": [
+        6,
+        3,
+        135,
+        180
+      ],
+      "scale": 0.4971751412429379,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+    },
+    {
+      "row": 2,
+      "sourceCell": [
+        153,
+        173
+      ],
+      "sharedBounds": [
+        7,
+        2,
+        133,
+        170
+      ],
+      "scale": 0.5238095238095238,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+    },
+    {
+      "row": 3,
+      "sourceCell": [
+        153,
+        157
+      ],
+      "sharedBounds": [
+        1,
+        2,
+        148,
+        154
+      ],
+      "scale": 0.5789473684210527,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+    }
+  ],
+  "warnings": []
+}

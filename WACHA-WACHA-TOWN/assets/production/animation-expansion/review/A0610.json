@@ -1,0 +1,18 @@
+{
+  "id": "A0610",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:33:49.018464+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    3
+  ],
+  "notes": [
+    "4×8コマと4人の同一性を確認。row4カメラの上下とシャッター動作は全8コマで同じカメラを維持し採用。",
+    "row1ハサミが6コマ目で消失、row2ピッチャーが6コマ目で消失、row3巣箱が2コマ目で消失するため3行は不採用。"
+  ],
+  "packReport": "review/A0610-pack.json",
+  "preview": "review/A0610-check.jpg"
+}

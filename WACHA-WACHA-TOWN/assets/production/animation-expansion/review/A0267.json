@@ -1,0 +1,28 @@
+{
+  "id": "A0267",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:52:55.779708+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ],
+  "notes": [
+    "原画13コマから12を選別。1行は元のトウモロコシを失ったため不採用。2行の下りでは白襟が赤スカーフへ変わるためstairDown除外、3行は背面袋が反転するためwalkBack除外。他の動作は衣装と袋を保持しpack確認済み。"
+  ],
+  "packReport": "review/A0267-pack.json",
+  "preview": "review/A0267-check.jpg",
+  "disabledClipsByRow": {
+    "2": [
+      "stairDown"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

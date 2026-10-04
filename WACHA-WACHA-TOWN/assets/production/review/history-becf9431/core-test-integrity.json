@@ -1,0 +1,51 @@
+{
+  "startedAt": "2026-10-04T20:05:05.666099+00:00",
+  "endedAt": "2026-10-04T20:08:49.850274+00:00",
+  "tests": [
+    "tests/expedition.test.cjs",
+    "tests/floor-escape.test.cjs",
+    "tests/movement-lifecycle.test.cjs",
+    "tests/ride-habitats.test.cjs",
+    "tests/qa-stage-selection.test.cjs",
+    "tests/crowd-priority.test.cjs",
+    "tests/animation-motion.test.cjs",
+    "tests/wheelchair-mobility.test.cjs",
+    "tests/sports-mobility.test.cjs"
+  ],
+  "startSha": {
+    "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+    "tests/expedition.test.cjs": "0580963dc80f28dec68d58bc1ca584cfda9d2e525b473a14ac503c51dbbc70ea",
+    "tests/floor-escape.test.cjs": "d9031d28f3709799908c3527ae189e633694be4f10b889d7343cd85be5033c53",
+    "tests/movement-lifecycle.test.cjs": "e685bfe8e68e01bfba45a0df12f4ef83ce5e021595c21ff00beeaf1a89eef43c",
+    "tests/ride-habitats.test.cjs": "66807bbef716766f37bb738bff6ab52260f96f8582538a77e71dbcf70d1a768a",
+    "tests/qa-stage-selection.test.cjs": "81e0cd0862989f50db5baa096909306291bfb97ba63370dd8b143a46fb7cea03",
+    "tests/crowd-priority.test.cjs": "6e3e09dd61b6988ef23be4e066cff0fef215095b0d0187167fcacd39828155a6",
+    "tests/animation-motion.test.cjs": "fdcb154a908b5969a01a77b599cd9f89ee5cd014606034bf165b4bb365859303",
+    "tests/wheelchair-mobility.test.cjs": "68948b214b3e9e8eb3afd5a645b0752b1b105f183754737053856da8493f8038",
+    "tests/sports-mobility.test.cjs": "bd7d90e5f1ba0a3ecdfcf3a35e6a0a16365f555b102915eb28c573b1555bf3d8"
+  },
+  "endSha": {
+    "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+    "tests/expedition.test.cjs": "0580963dc80f28dec68d58bc1ca584cfda9d2e525b473a14ac503c51dbbc70ea",
+    "tests/floor-escape.test.cjs": "d9031d28f3709799908c3527ae189e633694be4f10b889d7343cd85be5033c53",
+    "tests/movement-lifecycle.test.cjs": "e685bfe8e68e01bfba45a0df12f4ef83ce5e021595c21ff00beeaf1a89eef43c",
+    "tests/ride-habitats.test.cjs": "66807bbef716766f37bb738bff6ab52260f96f8582538a77e71dbcf70d1a768a",
+    "tests/qa-stage-selection.test.cjs": "81e0cd0862989f50db5baa096909306291bfb97ba63370dd8b143a46fb7cea03",
+    "tests/crowd-priority.test.cjs": "6e3e09dd61b6988ef23be4e066cff0fef215095b0d0187167fcacd39828155a6",
+    "tests/animation-motion.test.cjs": "fdcb154a908b5969a01a77b599cd9f89ee5cd014606034bf165b4bb365859303",
+    "tests/wheelchair-mobility.test.cjs": "68948b214b3e9e8eb3afd5a645b0752b1b105f183754737053856da8493f8038",
+    "tests/sports-mobility.test.cjs": "bd7d90e5f1ba0a3ecdfcf3a35e6a0a16365f555b102915eb28c573b1555bf3d8"
+  },
+  "exitCode": 0,
+  "unchanged": true,
+  "sourceRuntimeMatch": true,
+  "total": 56,
+  "pass": 56,
+  "fail": 0,
+  "reportFormat": "node:test TAP",
+  "passed": true
+}

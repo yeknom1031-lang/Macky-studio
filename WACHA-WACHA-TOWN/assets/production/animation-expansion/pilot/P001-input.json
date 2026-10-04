@@ -1,0 +1,153 @@
+{
+  "id": "P001",
+  "generationStatus": "prepared",
+  "characterIds": [
+    "S01-C001",
+    "S01-C002",
+    "S01-C003",
+    "S01-C004"
+  ],
+  "source": "assets/production/source/S01-people-01.png",
+  "sourceSHA256": "c7e42ba8b335824f2c5309b2a67787399d5a2bba885403d89816e76007a6f7e5",
+  "reference": "assets/production/animation-expansion/pilot/P001-reference.png",
+  "referenceConstruction": "Technical crop and proportional Lanczos resize only: original first and eighth poses arranged in four rows by two columns; no creative image changes.",
+  "cells": [
+    {
+      "character": "S01-C001",
+      "sourceBox": [
+        50,
+        6,
+        140,
+        151
+      ],
+      "sourcePose": 0,
+      "boardCell": [
+        0,
+        0
+      ]
+    },
+    {
+      "character": "S01-C001",
+      "sourceBox": [
+        970,
+        8,
+        1094,
+        151
+      ],
+      "sourcePose": 7,
+      "boardCell": [
+        0,
+        1
+      ]
+    },
+    {
+      "character": "S01-C002",
+      "sourceBox": [
+        38,
+        153,
+        146,
+        298
+      ],
+      "sourcePose": 0,
+      "boardCell": [
+        1,
+        0
+      ]
+    },
+    {
+      "character": "S01-C002",
+      "sourceBox": [
+        964,
+        157,
+        1092,
+        298
+      ],
+      "sourcePose": 7,
+      "boardCell": [
+        1,
+        1
+      ]
+    },
+    {
+      "character": "S01-C003",
+      "sourceBox": [
+        46,
+        304,
+        140,
+        427
+      ],
+      "sourcePose": 0,
+      "boardCell": [
+        2,
+        0
+      ]
+    },
+    {
+      "character": "S01-C003",
+      "sourceBox": [
+        978,
+        306,
+        1094,
+        427
+      ],
+      "sourcePose": 7,
+      "boardCell": [
+        2,
+        1
+      ]
+    },
+    {
+      "character": "S01-C004",
+      "sourceBox": [
+        48,
+        427,
+        136,
+        561
+      ],
+      "sourcePose": 0,
+      "boardCell": [
+        3,
+        0
+      ]
+    },
+    {
+      "character": "S01-C004",
+      "sourceBox": [
+        981,
+        433,
+        1103,
+        561
+      ],
+      "sourcePose": 7,
+      "boardCell": [
+        3,
+        1
+      ]
+    }
+  ],
+  "expectedGrid": {
+    "rows": 4,
+    "cols": 12,
+    "sequences": {
+      "rearWalk": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "stairsUp": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "stairsDown": [
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  },
+  "countsToward800": true
+}

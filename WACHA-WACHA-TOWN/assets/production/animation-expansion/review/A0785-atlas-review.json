@@ -1,0 +1,355 @@
+{
+  "id": "A0785",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "1eafa270e82a02567426328830ab8646b8dfa794909b214c18761b3b12487b2a",
+  "alphaZeroFraction": 0.66705,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S22-ENV05",
+      "name": "魔法噴水の飛沫",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5251,
+          "rgbaSHA256": "369636d70a05610754378e65fe9d9f708fdbfc6303e1dda1c649406e91bc10d4"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4792,
+          "rgbaSHA256": "75043c2c237b67236b69734b5f8cc74e16ad4d0d9f962408e945ce16d21b6a54"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4919,
+          "rgbaSHA256": "ad3540dc02960d859ccf8600b9d73884985c3d4680e3dcdb1a6158229120779d"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5004,
+          "rgbaSHA256": "86d70f14684007da0efb984e58306ffb818ad5e75af62fb395b6e2b9fd397391"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4869,
+          "rgbaSHA256": "aebbe998083cb6c0c210c2d9a6c62773445dce5d532a31dc355bfe0bf2dddd78"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5046,
+          "rgbaSHA256": "492d9b781f51da747d9596fe37e57262a761c0c318c89d4f43117211957d0239"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4517,
+          "rgbaSHA256": "ed46bd2ac92e238422958eb581d5de12c254f6de55e4cdf068e525d00f61ca4a"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5167,
+          "rgbaSHA256": "cd2e628cf7b94edc83fd2115dcf9639ae4924f1d6ce8d943bd1d3307ce6153fc"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S22-ENV06",
+      "name": "温室のしずく",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5419,
+          "rgbaSHA256": "847bf9a0c4225808c1dcadbb24491a26d45c76ae8c3fcfe2ff52c755a47ef646"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5504,
+          "rgbaSHA256": "743215f0f786e776faaf366bb6188c83b99918a68770da2f309e21558863cb3c"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5644,
+          "rgbaSHA256": "446981c11c7aefb4c23d91a8f0a5a016332674c390bf97e0933eaefa498c9085"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6078,
+          "rgbaSHA256": "f800a148850e63795bcf382609626d9fdb2f6baaa5c74db50cd20f18603e6191"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5855,
+          "rgbaSHA256": "546aaeec48d70404a7d76e92d7b82bf8eb5e4b59a464e6fc186b3f95584b62d8"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 4800,
+          "rgbaSHA256": "be77c051ee50b16f145daf9c59c34cbc5e60b1dfe22c94bc358eec7f439ee20c"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4752,
+          "rgbaSHA256": "334a2b0b558b1cb73965380968114f6d1c1c8377e8dfe4ece36ee3cbd20e2c31"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5460,
+          "rgbaSHA256": "a8fa3c9ce9d7e8e6c919608ebc0fcbef35144fa44d8cab3bcd810cf52c03d92f"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S22-ENV07",
+      "name": "天文の小惑星模型",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12041,
+          "rgbaSHA256": "42a8e662c3393d2d3d82f3c773dd19861f76ed9bd8cfc7d5c828776a37fcc1f6"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12112,
+          "rgbaSHA256": "621e252cb544485c67e12e5fe784a27e1109f49b9404c0f19806e48ceeacebaa"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11859,
+          "rgbaSHA256": "f2d2ec29b6c67a3dd42ba88ae95ed4f9e83ef1e1d0506600e3e65c5ba05574a5"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11976,
+          "rgbaSHA256": "34a808bdfdeca470a24cf9c6200fea99a49ede9e8750a29aad6f7e537b80dd95"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11733,
+          "rgbaSHA256": "9b9a1a0ea2554dfa29196ed9c4aeceb5f33158fdfafbae0747e0850f73e35e1d"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11990,
+          "rgbaSHA256": "f96007ec8d313cabd52b91d7b4b9f430ae1c43ae00a9a876108b2316b34c9399"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11674,
+          "rgbaSHA256": "3086a09c10f738d7dbff979b0a295df3e49218f4287d1403bf90260ee9b3519b"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11930,
+          "rgbaSHA256": "43988c072d03a32548346d2d7ad77b126001d7cb179a4b457f628ebdc8d380cd"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S22-ENV08",
+      "name": "魔法工房の羽根風車",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12317,
+          "rgbaSHA256": "0d17ef99be41e5ef24df9f7f02f35ffe519902a6b291da09fa5c67e0ec1641da"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12729,
+          "rgbaSHA256": "47cc2e627775fad5c06d4d9881b0b85a3301b3478b77e1e58efa46d751234c60"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13351,
+          "rgbaSHA256": "fb22d13cb71640fca95d903050226981bfcff372af7c1b337c53da985bb8684b"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12618,
+          "rgbaSHA256": "ffbfdeccbbaadc9866cbb381eb14fae235fa28edeae304bf5e0a5f26c7110ce3"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12579,
+          "rgbaSHA256": "1eb9cac1667977283b20b2192f44fa77dc875a31480555631f56f684ae53d0f5"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12660,
+          "rgbaSHA256": "464c4e5158f5d7f548a5de09ed2ccea889b43f11f6f1afc6eca88747428cd92b"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13045,
+          "rgbaSHA256": "9b35f0fa7f27be305406b02ca147e0d30cd2f1f3d8ba1fee959d4bbbf41dca91"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12294,
+          "rgbaSHA256": "794626f7fc42615a43b95dba35dd17a605f5d71925c2ab73392149c033586ee4"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

@@ -1,0 +1,355 @@
+{
+  "id": "A0753",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "3fb4426b95e2977e47075000f0158c8414703a33cd754ce13648731bc1cdb10f",
+  "alphaZeroFraction": 0.4613,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S11-ENV09",
+      "name": "収穫祭のリボン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9296,
+          "rgbaSHA256": "a588f0496ef89153a740c8fa0340298991570b8f7e25acf655abe30823081a5e"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9211,
+          "rgbaSHA256": "9276043ebbec4149bc5ffb5e9d9c35b6d95deff44616e176c0bc78adcc20319b"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8707,
+          "rgbaSHA256": "666e7ccc111a43a1dd71426678e3624d7584dbf1049e9ac38af73629d07cc97a"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8765,
+          "rgbaSHA256": "fb48d67e2a2888419b3ffaed2c4239e3812e422fb3f0533b67e0dde5d58377c3"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8588,
+          "rgbaSHA256": "5f0b65a9a71aaefdee878b3c6f59bae691e3b9d7ffe8aa72d9430c4875d76df2"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8942,
+          "rgbaSHA256": "6e51ab378425eff40e35137e6182a1200ca91560b97eeb4d8f94201ed84b293e"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9203,
+          "rgbaSHA256": "5010d8234e0349726412b26d2ebb6961662933f86aed6fd65b771399d4c90e9f"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8865,
+          "rgbaSHA256": "10da861e920a9edfe108be83e4604ab4f76dc7540595884931807d36fe66c825"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S11-ENV10",
+      "name": "干しハーブの束",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10936,
+          "rgbaSHA256": "e13b00bc19bf60f003336619e8dd99b2215812bfcbc7afb41c8d459dd9091890"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 11081,
+          "rgbaSHA256": "55e649281bbd1b8328475c9484b101c5deec621590398c01870bf4a932236f37"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10944,
+          "rgbaSHA256": "ad06a0f6c83209aef7c1d7c43169a9f450c4d1363ca31998418d182161a116f4"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10847,
+          "rgbaSHA256": "edf5f47a29f7e3ccb3e4598e43dedbd4fe3e68ba722490c7601f9e6beb9a1a1e"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 11117,
+          "rgbaSHA256": "2abb031d4f0459a8f9f75073965cf2ae4af8bfd50622cab9665758e0e156f5b4"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 10896,
+          "rgbaSHA256": "3f4cfede3b7e66e9ed7b37e7f362e2bac4927c9ee31e1b27266681ad56e6cdb4"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 11011,
+          "rgbaSHA256": "034a9c9368d2b02c1cc79491892845662f2b415cf7c0be3888d5509ca8ff4c03"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 11222,
+          "rgbaSHA256": "7ca243625b090fced7806605a81d8cdcb27c6dbe53a7129956232a5e90cd6fba"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S11-ENV11",
+      "name": "焼きとうもろこしの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7319,
+          "rgbaSHA256": "db647be4f435df9222281032bd8d6f538c7174579a1cba5e54f01c70fbb830c4"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8306,
+          "rgbaSHA256": "b35ed870d34055b7564770731251f3fa71731a6bb490f36100ecdc1cd6bc1b19"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8294,
+          "rgbaSHA256": "61bce04a76dd2060087890890c06908bdbd41c08d5b2c11f1b9d86547c480b64"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7580,
+          "rgbaSHA256": "bef6a41fe44c064a0f92d32861da4dfc062c059ba33ee65c1f2802e5e4d2b0ea"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6211,
+          "rgbaSHA256": "79745b8bdf34c7f6643b6d9f59099d0013164fa8200ece7f5d5d504476bfabc0"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5899,
+          "rgbaSHA256": "517cb79eaf4f7564c7a66fa0a3ef6f8d1cbdbfa0fd038060cafc4019f21bbaf2"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7752,
+          "rgbaSHA256": "c921666df1523229ed7c847327848aa4a7f2406555b9099c7d2ad6c2a7585921"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7223,
+          "rgbaSHA256": "eda1c1c1322590ead77aabd5b6f40b17ad3ee9cab8ead4bfd9d1036409879e9c"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S11-ENV12",
+      "name": "南川の金色の光",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4957,
+          "rgbaSHA256": "38cecd0830d1a44b221e33a9fb6fdc3928cdfd24579e9b58904c0c77deb5f3b7"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4843,
+          "rgbaSHA256": "83d5700fd838739251d55f8fc8ec198ac5e148d7fe70e69eebefbd81cd6c3d73"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5047,
+          "rgbaSHA256": "e9d1a911a3165f267a948e0ba7e9e6e0d4ac3b61c971efe53d0129caffb4f662"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5182,
+          "rgbaSHA256": "4402218ddfa664781d8047b8f5ada2a88551a623152d4974631a1f909d0a2e63"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6175,
+          "rgbaSHA256": "a29dc934e5daedd781529bce4cb30b3271391ccd3c183a280074e5c6b8c2c2a9"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5099,
+          "rgbaSHA256": "b1b76f5bc1de377ffc6ead7bdb6e4e6b9afade6d507473e1dcae4bff9b46bd18"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5214,
+          "rgbaSHA256": "1a5d66786829152d12671a5c492c3063d922fd8aa25ebcc77497a75cca11cb93"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5797,
+          "rgbaSHA256": "f2723b7b9a730fb7e0ae896c85ccca8d9ab577886e96b710b5f4703e565a303d"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "Four coherent rows of eight frames, with true transparency confirmed by colored compositing. No complete background equipment duplicated. Final scene placement pending."
+}

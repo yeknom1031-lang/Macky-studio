@@ -1,0 +1,355 @@
+{
+  "id": "A0780",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "cd47f14895f29b10ba36c2b468691ea890490c9b33c96d788b96ab4af6602e68",
+  "alphaZeroFraction": 0.64662,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S20-ENV09",
+      "name": "海風の白い羽",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5731,
+          "rgbaSHA256": "973aaf7d032666af7b305f2765ba1ef1a7fd82ec7a4a51dbacd639b1309eaf3d"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6556,
+          "rgbaSHA256": "d184773e7979ba8a24727f9fedc7da8eb1776ff87b98f320bfd38d48a91366a5"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6027,
+          "rgbaSHA256": "af8a41b1828f80abecb51d598fecff1dd9ff025a2c5bf64da1ae3e0dc962709a"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5979,
+          "rgbaSHA256": "5841b29a4cf3494af951f47615b48e6ae9171ea89f499489c76cf68cd6dc4380"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5105,
+          "rgbaSHA256": "8a581870bed81a8f3b8f024e2b38a1d43cdd9d17d96d2bcfc5aafe652acefe8f"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4636,
+          "rgbaSHA256": "0555442b48ec33444bafad0801c45b8120c88c43eceb6b50151bce69e21f7d4a"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5640,
+          "rgbaSHA256": "2fd68f1c07552d8ead777fdeb88b4781772c6384cbbb4326feeb507060febeed"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5817,
+          "rgbaSHA256": "a0ce520f91bb731ed4d7dee99a3bfcc1be61298c3a81e55562b176047cdbc9e9"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S20-ENV10",
+      "name": "海藻の細い葉先",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6945,
+          "rgbaSHA256": "a412351181356e054b967f02a04c0c56131711251002b7e91671fda0e7e301b0"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7779,
+          "rgbaSHA256": "de8bd58e58cddba61b6d8462f8bae1811c87e56f5c115259f8f20584c875926d"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8109,
+          "rgbaSHA256": "312bc9b43b5a281f5859b9fc9840f007a8d8aa49cc90a5e0adfadd66183fe7aa"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7013,
+          "rgbaSHA256": "ce7428cc55714c78cdfcf1d4311ce4ded3aea47cd2cbb81cdbf31e66293cff43"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6958,
+          "rgbaSHA256": "3bfeee7f5e950f3fdc66d78594c9fb9d6abaec7c6f5d9e65262c7197c61f1456"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8129,
+          "rgbaSHA256": "ab48f3607f8e265c0a7d68651a0e4d4bf49031bbf264e995f669efcddcc65a29"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7969,
+          "rgbaSHA256": "786d8785dbfe0e2b85920997cbbb228e6e52f7dacec57d530389fe9dc91df5e6"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6802,
+          "rgbaSHA256": "e68c281a2ad35f63351c042a74fac9c5c727eba7296d0998b38f3f9af712b3b2"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S20-ENV11",
+      "name": "環境観測の回転模型",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8448,
+          "rgbaSHA256": "be12baeb9a28f8cdb69c3f06a259421cf8a6f98f7934006213a6936a7657078a"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8173,
+          "rgbaSHA256": "68a49c27b59d25c21c22fc567bed05bb6ba33d0cf39bd18b0c764a97ded768ab"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8566,
+          "rgbaSHA256": "ea24d167eac94f2c4fa624d634baff973dd4011e1b67abfcccd9aed3d59631a1"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8600,
+          "rgbaSHA256": "105ac1bad84533420f5a367d1e3b301d8e1673e51cd8c31a00e2318fffb6623a"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8813,
+          "rgbaSHA256": "ba44874445af30a286a969da722b859c84ce64a34a77bc4285b200051e395701"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8565,
+          "rgbaSHA256": "c4390a6906973f9219568db99a7a5c7a89f1344ad80e60eafdd25c40510ffeee"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8392,
+          "rgbaSHA256": "a6877976f2cc6c3d55e739968c63d8e3252f2e6ada75fb3801f33dd3a8f90af9"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8364,
+          "rgbaSHA256": "d85b1ce6ae193af04dad6d5a813bc78d53f3072058db8ddb2290c0ef8f388851"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S20-ENV12",
+      "name": "夜光プランクトンの粒",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6451,
+          "rgbaSHA256": "30fca29a97656f4b4d3b2d300d9e13aabea0d3f1158fb7a16b1239c8b8647bf5"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7290,
+          "rgbaSHA256": "f56936b69dbef59f674cb4b0a05075785d24786b1d2c36209e5dde7928e9aaa8"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6748,
+          "rgbaSHA256": "2572ad9bb64159ae305ac556d9d1651a9c4fbe8c4893d1c99052debd4340f0c2"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7652,
+          "rgbaSHA256": "af9a3bea8fcbd4767d20e35ce1d3fd6aa62a2e6693fde884e3194e2cdb9a5b41"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7541,
+          "rgbaSHA256": "0f6b88d46cdb9f97d91f2be7a59e17f04c4c63ddef77d08316fcdcd022e8994e"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7480,
+          "rgbaSHA256": "cf5ea43644a47e6296693386e53894af84ac01ba49b85116651e6da5e7c3c3c5"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7119,
+          "rgbaSHA256": "834378abb766abd859f4af6fcf6f10264e7572b4b4584784d8eda2ddce6b1f2a"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6606,
+          "rgbaSHA256": "6cd8e146da4583a6a4ea204eb568ff4cdbdec1b8d5de6e9411cea97a05de312e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

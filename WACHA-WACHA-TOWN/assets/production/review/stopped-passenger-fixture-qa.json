@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-04T20:07:21.231425+00:00",
+  "dataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+  "coreChanged": false,
+  "test": "tests/expedition.test.cjs: ground walkers uncover a stopped passenger without moving the passenger or the vehicle",
+  "diagnosis": {
+    "stage": "S01",
+    "seed": 90210,
+    "oldRidePosition": [
+      836,
+      470.5
+    ],
+    "oldWalkerPosition": [
+      821.5,
+      451.5
+    ],
+    "oldStartCanStand": false,
+    "oldEndCanStand": false,
+    "oldEndDistance": 0,
+    "nearestStreetDistance": 52.787309080876625
+  },
+  "fixtureChange": "Find a real level-0 street node with a valid seat projection and 20px floor clearance beside it; do not use geometric map center over painted equipment.",
+  "assertionsPreserved": [
+    "ground passenger and walker overlap is detected",
+    "airborne passenger is excluded",
+    "rider x/y stay locked to seat",
+    "walker and rider distance exceeds 15px after 3 seconds",
+    "maximum overlap stays under 3 seconds"
+  ],
+  "assertionsAdded": [
+    "walker starts on valid floor",
+    "walker remains on valid floor at every separation step"
+  ],
+  "targetedTestsPassed": 1,
+  "failedRunEvidence": [
+    "core-test-becf-invalid-fixture.txt",
+    "core-test-becf-invalid-fixture.json"
+  ]
+}

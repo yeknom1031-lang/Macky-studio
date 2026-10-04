@@ -1,0 +1,27 @@
+{
+  "id": "A0219",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:39:21.914490+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack再表示。2行の鞄は背面と上りで持つ手が反転/消失するため両clipを除外、下り4コマだけは一貫して保持され追加採用。その他3行は全動作採用維持。"
+  ],
+  "packReport": "review/A0219-pack.json",
+  "preview": "review/A0219-check.jpg",
+  "disabledClipsByRow": {
+    "2": [
+      "walkBack",
+      "stairUp"
+    ]
+  },
+  "clipFramesByRow": {}
+}

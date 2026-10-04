@@ -1,0 +1,22 @@
+{
+  "id": "A0222",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T18:15:06.613208+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "輪郭抽出で全48コマを正しく分離。案内人の地図と3人の自転車を後ろ・上り・下りで保持、全身の欠けなし。"
+  ],
+  "packReport": "review/A0222-pack.json",
+  "preview": "review/A0222-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "A0602",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T16:21:07.600087+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "notes": [
+    "4×8コマ、4人の顔・服・帽子と全身が一致。玩具の鳥を調整、茶筅で点てて器を置く、太鼓を打つ、笛を構えて吹く動作を確認。",
+    "茶碗は受け渡し/置く動作で出入りする。工具や楽器の形と色は維持。packのedge-contact警告は原画と灰色合成で欠けがないことを確認。"
+  ],
+  "usableRows": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "rejectedRows": [],
+  "packReport": "review/A0602-pack.json",
+  "preview": "review/A0602-check.jpg",
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ]
+}

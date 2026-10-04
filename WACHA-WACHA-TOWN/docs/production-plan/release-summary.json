@@ -1,9 +1,20 @@
 {
-  "at": "2026-10-05T00:34:15+09:00",
+  "at": "2026-10-05T06:06:56+09:00",
   "released": true,
-  "status": "24ステージ版 v2.1を公開済み",
-  "saved": 545,
-  "planned": 545,
+  "status": "24ステージ版 v2.2を公開済み",
+  "saved": 1345,
+  "planned": 1345,
+  "animationSaved": 800,
+  "animationPlanned": 800,
+  "animationUsedSheets": 799,
+  "animationClips": {
+    "walkBack": 2241,
+    "stairUp": 2278,
+    "stairDown": 2271,
+    "roleWork": 410
+  },
+  "sceneryObjects": 288,
+  "originalMaterialFallbackClips": 468,
   "baseSaved": 469,
   "basePlanned": 469,
   "qualitySaved": 76,
@@ -14,12 +25,12 @@
   "livingStages": 24,
   "livingVerified": true,
   "currentQA": true,
-  "generated": 545,
+  "generated": 1345,
   "baseGenerated": 469,
   "characters": 4396,
   "playableStages": 24,
   "browserStages": 24,
   "simulationStages": 24,
   "physicalControllerTested": false,
-  "appVersion": "2.1"
+  "appVersion": "2.2"
 }

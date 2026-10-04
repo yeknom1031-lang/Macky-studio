@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: wheelchair routes use indoor ground floors but never an upstairs shortcut
+ok 1 - wheelchair routes use indoor ground floors but never an upstairs shortcut
+  ---
+  duration_ms: 1.163416
+  type: 'test'
+  ...
+# Subtest: an upstairs destination does not assign an inaccessible workstation
+ok 2 - an upstairs destination does not assign an inaccessible workstation
+  ---
+  duration_ms: 47.237042
+  type: 'test'
+  ...
+# Subtest: controller input cannot project a wheelchair onto a staircase
+ok 3 - controller input cannot project a wheelchair onto a staircase
+  ---
+  duration_ms: 43.831417
+  type: 'test'
+  ...
+# Subtest: all 41 marked designs remain on actual ground paths and appropriate sites across 24 stages
+ok 4 - all 41 marked designs remain on actual ground paths and appropriate sites across 24 stages
+  ---
+  duration_ms: 6779.183625
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7176.618792

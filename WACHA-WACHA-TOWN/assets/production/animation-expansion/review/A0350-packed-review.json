@@ -1,0 +1,92 @@
+{
+  "width": 1774,
+  "height": 887,
+  "rows": 4,
+  "cols": 12,
+  "frames": 48,
+  "transparentFraction": 0.6674316095321499,
+  "registration": [
+    {
+      "row": 0,
+      "sourceCell": [
+        160,
+        235
+      ],
+      "sharedBounds": [
+        1,
+        59,
+        133,
+        235
+      ],
+      "scale": 0.5,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+    },
+    {
+      "row": 1,
+      "sourceCell": [
+        163,
+        210
+      ],
+      "sharedBounds": [
+        1,
+        35,
+        133,
+        210
+      ],
+      "scale": 0.5028571428571429,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+    },
+    {
+      "row": 2,
+      "sourceCell": [
+        161,
+        222
+      ],
+      "sharedBounds": [
+        1,
+        30,
+        137,
+        222
+      ],
+      "scale": 0.4583333333333333,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+    },
+    {
+      "row": 3,
+      "sourceCell": [
+        159,
+        220
+      ],
+      "sharedBounds": [
+        1,
+        32,
+        140,
+        193
+      ],
+      "scale": 0.546583850931677,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+    }
+  ],
+  "warnings": [
+    "edge contact 1:12",
+    "edge contact 2:4",
+    "edge contact 2:12",
+    "edge contact 3:12"
+  ]
+}

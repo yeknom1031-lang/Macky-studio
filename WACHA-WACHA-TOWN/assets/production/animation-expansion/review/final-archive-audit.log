@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-04T20:56:58.149231+00:00",
+  "passed": true,
+  "generationCalls": 800,
+  "preservedOriginals": 800,
+  "kinds": {
+    "directional": 600,
+    "baseRepair": 5,
+    "interaction": 123,
+    "environment": 72
+  },
+  "reviewStatuses": {
+    "accepted": 582,
+    "accepted-partial": 217,
+    "rejected": 1
+  },
+  "runtimeClipSourceSheets": 791,
+  "adoptedCharacterClips": 7200,
+  "clipsByName": {
+    "walkBack": 2241,
+    "stairUp": 2278,
+    "stairDown": 2271,
+    "roleWork": 410
+  },
+  "environmentObjects": 288,
+  "baseRepairs": [
+    {
+      "id": "A0268",
+      "frameOverrides": 8,
+      "baseSheets": [
+        "S11-people-07"
+      ]
+    },
+    {
+      "id": "A0293",
+      "frameOverrides": 8,
+      "baseSheets": [
+        "S12-people-07"
+      ]
+    },
+    {
+      "id": "A0793",
+      "frameOverrides": 8,
+      "baseSheets": [
+        "S05-people-02"
+      ]
+    },
+    {
+      "id": "A0795",
+      "frameOverrides": 8,
+      "baseSheets": [
+        "S06-people-10"
+      ]
+    },
+    {
+      "id": "A0796",
+      "frameOverrides": 8,
+      "baseSheets": [
+        "S10-people-02"
+      ]
+    }
+  ],
+  "requestedCharacterClips": 7686,
+  "unadoptedCharacterClips": 486,
+  "omittedGroundOnlyStairClips": 18,
+  "originalMaterialFallbackClips": 468,
+  "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+  "note": "800 generation calls are preserved, including rejected rows and repair sheets. Missing optional generated clips use existing artwork; unused stairs for ground-only mobility are reported separately. Runtime clip source counts exclude base repairs recorded in the base artwork metadata."
+}

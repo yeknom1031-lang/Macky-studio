@@ -1,0 +1,19 @@
+{
+  "id": "A0611",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:33:49.019567+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1
+  ],
+  "notes": [
+    "4×8コマ。魚を扱う人と釣り餌を準備する人の2行は衣装/体格を維持し手仕事が読める。",
+    "row3/4は長い竿や釣糸がセルを越えておりpackedで竿先が断裂・隣セル上部に混入するため不採用。"
+  ],
+  "packReport": "review/A0611-pack.json",
+  "preview": "review/A0611-check.jpg"
+}

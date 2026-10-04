@@ -1,0 +1,19 @@
+{
+  "group": "simulation",
+  "startedAt": "2026-10-04T20:34:45.495766+00:00",
+  "completed": [
+    {
+      "test": "all-stages.cjs",
+      "exitCode": 0,
+      "at": "2026-10-04T20:45:44.582788+00:00"
+    },
+    {
+      "test": "living-town-qa.cjs",
+      "exitCode": 0,
+      "at": "2026-10-04T20:46:28.682986+00:00"
+    }
+  ],
+  "running": null,
+  "passed": true,
+  "finishedAt": "2026-10-04T20:46:28.683368+00:00"
+}

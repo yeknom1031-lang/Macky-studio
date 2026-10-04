@@ -1,0 +1,355 @@
+{
+  "id": "A0784",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "7ef74b6dc10f936aa2a2e3ab6af106a872ab8c7cc8d0633ab9cecddb2a95f53a",
+  "alphaZeroFraction": 0.6146,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S22-ENV01",
+      "name": "温室の光る種",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4027,
+          "rgbaSHA256": "4eebadc78bd8740248f024e12c0f73c55f4ba5df3ff406ae6816d4ee240280cb"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3903,
+          "rgbaSHA256": "eef039c056088cb5ec47b8f2534037a1062186b322d79a29b4fd78fabbb17698"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4287,
+          "rgbaSHA256": "2ad72179a709a6cd7b081a67a0a66ebdcaa2d5d5685ad7ee63aed8238b012cd8"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4104,
+          "rgbaSHA256": "135cdb2f41976e457193cc52dfdc4c0a5a3183341961c34c8180e6660eb5a9fa"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4273,
+          "rgbaSHA256": "79218d33ea087c4ce752223d4cd44ef5cae131b315b4c0e92eed77d66c702aa9"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3893,
+          "rgbaSHA256": "ffee23467a5a7f7212860480280405015712725f7d9085a02e2fc4c474272259"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4098,
+          "rgbaSHA256": "f70720d1b17095cf51e80629bef72df56703e0ae68ad7b0d73ee8841c644ccf2"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4400,
+          "rgbaSHA256": "4c715be11b65bcebfe758a05109baaa1936db92cbe7bd8c199b92c1ba51fbb59"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S22-ENV02",
+      "name": "魔法図書館のしおり",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 13073,
+          "rgbaSHA256": "a2a2998130f33fb985e2752b8d3bd074fadbe03b400976b24abcf71e394155ec"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 12932,
+          "rgbaSHA256": "35315327a9bf968391dcab6a81a68119334e965450bbff2aa57b824e1d467b9c"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 13017,
+          "rgbaSHA256": "afd94f2e9d1c24158ce1b5ba3044b5dc883ca1a3fdacfcd275119989588192c6"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 12743,
+          "rgbaSHA256": "5916881db0c42e8b53418cbae1cb60e11e73bbd9a3da2b5af243fdd95f3ad9c8"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 12421,
+          "rgbaSHA256": "cddcf683674596e6a403c91d9afb88768d1d61ac522965d0b8fd4d920ff55602"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 12822,
+          "rgbaSHA256": "a7d52ae7b52c0e1cdad80d4b22dc124899473be62d6d090ccd3bb9ffc7e4f94a"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 13101,
+          "rgbaSHA256": "c39df2bf5df356d9cddc73e81d588f8a3c8576fb38c5a75f81ea2f34823ff8ab"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 13044,
+          "rgbaSHA256": "b8a7c9fb998c54e1bfc7558f80de60662f915957e43613c665919bfb8212d838"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S22-ENV03",
+      "name": "錬金室の薄煙",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5626,
+          "rgbaSHA256": "7ec1a319f69f297a0cbc4188b8164502bac960b3de5237b023c1fa7b9e417672"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6091,
+          "rgbaSHA256": "4f81ab6aadde47056b8b8c01b3d1b9f89e409580bd5f315f847569bdca714803"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6263,
+          "rgbaSHA256": "036a75be22c411d9de1b42e24f8de624cbc6b0c75423679fb0cce6874dbf8fab"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6263,
+          "rgbaSHA256": "f80dff8009e12537d4ab07d10b269d3aaf5914e146f038f51ba53e644eb5f586"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5598,
+          "rgbaSHA256": "abd0d43023a5dc961ba1061e62949d92c521c531e3665f5480111a7d4fd4e701"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4591,
+          "rgbaSHA256": "c38b9a80f9bee47d2c3c2d6cda67b3609b9f06a032043e3a528def34a315c415"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3895,
+          "rgbaSHA256": "a81cc05b952e6acb52d6c9b729fac25326be77f6b8e68bcce5a800a944ecd089"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5664,
+          "rgbaSHA256": "a58e0bf866a5b2f2c5dcf5185edc0553b8384bba33c49265099f0d938984e6ea"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S22-ENV04",
+      "name": "食堂のお茶の湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4097,
+          "rgbaSHA256": "b712da2787ab32ceaac25b1ee0ba838b19491b8817363e95daea7959b02874bb"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4471,
+          "rgbaSHA256": "4b76e575bde42eef1e74a02ae80b353f976297aa6a5bf3939b9505672ea9cce5"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4513,
+          "rgbaSHA256": "cdf279c1d3e80c6b7f8485ab5436c81d9ff9cd68521248febb8ae54b1868a942"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4165,
+          "rgbaSHA256": "3cc124066eb0e583984167aa82a1f2956be9070707d62136960dd73e76e3b65a"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4303,
+          "rgbaSHA256": "0fb126a2a60a425d2b580f804fd452bae827bce86a577a4d0c62d7038a7926ad"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4146,
+          "rgbaSHA256": "534e7cc665d6ec352108151527471f3facb0041360824a0ba07d90acb2da833e"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4588,
+          "rgbaSHA256": "ae8be69a451162e050f12a0ea27c3f9f7d20381efd6d1cf1b42e4463c9e6ccd4"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4114,
+          "rgbaSHA256": "91f41e5edd7a11e3b2e47eef78f959714c5b3ed1190e8c3d5e0cd46ace464b14"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

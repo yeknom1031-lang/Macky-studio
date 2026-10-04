@@ -1,0 +1,19 @@
+{
+  "id": "A0626",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:45:49.508134+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2
+  ],
+  "notes": [
+    "雪玉転がしとスケートの原画・packを確認。両足と道具が収まり姿勢変化が連続。",
+    "1行目はシャベルが1・8コマで消失。4行目はソリ本体が組み込まれ乗車描画と重複するため除外。"
+  ],
+  "packReport": "review/A0626-pack.json",
+  "preview": "review/A0626-check.jpg"
+}

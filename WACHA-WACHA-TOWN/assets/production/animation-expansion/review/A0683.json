@@ -1,0 +1,19 @@
+{
+  "id": "A0683",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:25:59.376195+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ],
+  "notes": [
+    "革縫い、糸紡ぎ、歯車点検は小道具連続・切り出し良好。row 1 の布売りは下半身が生成されず全身規則を満たさないため除外。"
+  ],
+  "packReport": "review/A0683-pack.json",
+  "preview": "review/A0683-check.jpg"
+}

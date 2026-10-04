@@ -1,0 +1,712 @@
+{
+  "at": "2026-10-04T20:12:12.984213+00:00",
+  "startedAt": "2026-10-04T20:10:36.829794+00:00",
+  "checks": {
+    "solo": 9,
+    "automaticController": 14,
+    "photo": 4
+  },
+  "errors": {
+    "solo": [],
+    "automaticController": [],
+    "photo": []
+  },
+  "totalBrowserChecks": 27,
+  "physicalControllerTested": false,
+  "sourceSha256": {
+    "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+    "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+    "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+    "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+    "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+    "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+    "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+    "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+    "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+    "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+    "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+    "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+    "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+  },
+  "sourceIntegrity": {
+    "startSha256": {
+      "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+      "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+      "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+      "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+      "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+      "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+      "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+      "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+      "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+      "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+      "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+      "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+      "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+      "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+    },
+    "endSha256": {
+      "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+      "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+      "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+      "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+      "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+      "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+      "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+      "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+      "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+      "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+      "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+      "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+      "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+      "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+    },
+    "unchanged": true,
+    "sourceRuntimeMatch": true
+  },
+  "browserRunAt": {
+    "solo": "2026-10-04T20:10:51.775Z",
+    "automaticController": "2026-10-04T20:11:55.282Z",
+    "photo": "2026-10-04T20:12:11.808Z"
+  },
+  "runs": [
+    {
+      "suite": "expedition",
+      "startedAt": "2026-10-04T20:10:36.829948+00:00",
+      "endedAt": "2026-10-04T20:10:51.891815+00:00",
+      "exitCode": 0,
+      "startSha256": {
+        "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+      },
+      "endSha256": {
+        "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+      }
+    },
+    {
+      "suite": "duo",
+      "startedAt": "2026-10-04T20:10:51.906181+00:00",
+      "endedAt": "2026-10-04T20:11:55.533985+00:00",
+      "exitCode": 0,
+      "startSha256": {
+        "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+      },
+      "endSha256": {
+        "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+      }
+    },
+    {
+      "suite": "photo",
+      "startedAt": "2026-10-04T20:11:55.550331+00:00",
+      "endedAt": "2026-10-04T20:12:11.932633+00:00",
+      "exitCode": 0,
+      "startSha256": {
+        "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+      },
+      "endSha256": {
+        "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+      }
+    },
+    {
+      "suite": "animation",
+      "startedAt": "2026-10-04T20:12:11.943404+00:00",
+      "endedAt": "2026-10-04T20:12:12.956180+00:00",
+      "exitCode": 0,
+      "startSha256": {
+        "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+      },
+      "endSha256": {
+        "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+      }
+    }
+  ],
+  "visualReview": [
+    "gameplay-s01.png",
+    "automatic-controller-mobile.png",
+    "private-runner.png",
+    "revealing-photo.png"
+  ],
+  "visualReviewPending": false,
+  "limitations": [
+    "Gamepad API inputs are simulated; no physical controller input was tested.",
+    "All-stage 180-second and performance checks are recorded separately."
+  ],
+  "history": [
+    {
+      "at": "2026-10-04T14:01:19.985321+00:00",
+      "checks": {
+        "solo": 9,
+        "automaticController": 14,
+        "photo": 4
+      },
+      "browserRunAt": {
+        "solo": "2026-10-04T13:55:35.215Z",
+        "automaticController": "2026-10-04T14:00:50.093Z",
+        "photo": "2026-10-04T13:57:14.552Z"
+      },
+      "sourceSha256": {
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-core.js": "9ce9f64a624435c4e121529d7cae2216f66bfb1d6b2398ef12690893faf7baec",
+        "src/expedition-render.js": "979034611b662234c056e2e6254ad510df89ca1310c8a06591af767bc836d4fe",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-core.js": "9ce9f64a624435c4e121529d7cae2216f66bfb1d6b2398ef12690893faf7baec",
+        "expedition/expedition-render.js": "979034611b662234c056e2e6254ad510df89ca1310c8a06591af767bc836d4fe",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+      },
+      "incrementalValidation": {
+        "at": "2026-10-04T14:48:05.183900+00:00",
+        "reports": [
+          "assets/production/review/core-test-report.txt",
+          "assets/production/review/core-test-integrity.json",
+          "assets/production/review/cooperative-yield-stress.json",
+          "assets/production/review/core-equivalence-report.json"
+        ],
+        "currentCoreSha256": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+        "currentDataSha256": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24",
+        "coreTestsPassed": 40,
+        "appInputRenderAudioAndMarkupUnchanged": true,
+        "equivalence": {
+          "baselineCoreSha256": "16f518e2830392f1c3efff1760e21ea490edc27c4a3db725046d01c2c09e7644",
+          "optimizedCoreSha256": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+          "casesPassed": 27,
+          "uniqueStages": 24,
+          "secondsPerCase": 30,
+          "stepsCompared": 8103,
+          "randomOutputsCompared": 1846116,
+          "initialAndFinalFullStateIdentical": true,
+          "everyStepMovementPathsOverlapsEventsAndRNGIdentical": true,
+          "startEndSourceHashesIdentical": true
+        },
+        "note": "The original 27 browser UI checks and their sourceSha256/browserRunAt remain the actual 9ce9f64a run. Core-only cooperative yielding was verified by targeted tests and seven stress cases; the optimized 5bbce648 core passes the final 40-test suite. Old 16f518e and optimized 5bbce648 simulations match exactly in initial/final full state, per-step dynamic state, and all RNG outputs/call counts across 24 stages plus three known seeds. All UI modules remain byte-identical, so the full UI suite was not rerun for these core-only changes."
+      }
+    },
+    {
+      "at": "2026-10-04T15:01:31.901205+00:00",
+      "checks": {
+        "solo": 9,
+        "automaticController": 14,
+        "photo": 4
+      },
+      "errors": {
+        "solo": [],
+        "automaticController": [],
+        "photo": []
+      },
+      "totalBrowserChecks": 27,
+      "passed": true,
+      "physicalControllerTested": false,
+      "visualReview": [
+        "gameplay-s01.png",
+        "automatic-controller-mobile.png",
+        "revealing-photo.png"
+      ],
+      "sourceSha256": {
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+        "src/expedition-render.js": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+        "expedition/expedition-render.js": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+      },
+      "limitations": [
+        "Gamepad buttons were simulated. macOS did not expose a connected gamepad at the diagnostic scan.",
+        "All-stage navigation and 180-second simulation verification is tracked separately."
+      ],
+      "browserRunAt": {
+        "solo": "2026-10-04T14:59:24.000Z",
+        "automaticController": "2026-10-04T15:00:27.504Z",
+        "photo": "2026-10-04T15:00:42.404Z"
+      },
+      "testReliabilityChanges": [
+        "Pending-start pause is clicked immediately after the begin button within the same browser task, proving the countdown was active before pause; screenshot encoding cannot consume the countdown first.",
+        "Closing the optional view waits for the actual AI handoff instead of an arbitrary 650 ms delay, while still requiring play to continue.",
+        "The live timer is compared with remaining time from the same browser snapshot, so a legitimate second ticking over cannot falsely fail the display test."
+      ],
+      "sourceIntegrity": {
+        "startSha256": {
+          "src/expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+          "src/expedition-render.js": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+          "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+          "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+          "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+          "expedition/data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+        },
+        "endSha256": {
+          "src/expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+          "src/expedition-render.js": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+          "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+          "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+          "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+          "expedition/data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+        },
+        "unchanged": true,
+        "sourceRuntimeMatch": true
+      },
+      "validation": {
+        "method": "All 27 browser UI checks were rerun on the actual final core5bbc / renderer50dd / data6f5a after the Retina background and foreground caching change. No page errors.",
+        "reports": [
+          "browser-report.json",
+          "duo-browser-report.json",
+          "photo-browser-report.json"
+        ],
+        "coreOptimizationEvidence": [
+          "core-test-report.txt",
+          "core-test-integrity.json",
+          "core-equivalence-report.json"
+        ]
+      }
+    },
+    {
+      "at": "2026-10-04T19:33:20.699446+00:00",
+      "startedAt": "2026-10-04T19:25:34.748128+00:00",
+      "checks": {
+        "solo": 9,
+        "automaticController": 14,
+        "photo": 4
+      },
+      "errors": {
+        "solo": [],
+        "automaticController": [],
+        "photo": []
+      },
+      "totalBrowserChecks": 27,
+      "physicalControllerTested": false,
+      "sourceSha256": {
+        "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+        "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+        "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+        "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+        "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+        "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+        "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+        "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+        "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+      },
+      "sourceIntegrity": {
+        "startSha256": {
+          "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+          "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+          "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+          "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+          "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+          "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+          "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+          "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+          "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+          "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+          "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+          "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+          "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+          "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+          "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+        },
+        "endSha256": {
+          "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+          "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+          "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+          "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+          "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+          "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+          "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+          "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+          "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+          "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+          "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+          "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+          "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+          "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+          "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+        },
+        "unchanged": true,
+        "sourceRuntimeMatch": true
+      },
+      "browserRunAt": {
+        "solo": "2026-10-04T19:27:29.613Z",
+        "automaticController": "2026-10-04T19:31:46.995Z",
+        "photo": "2026-10-04T19:32:53.533Z"
+      },
+      "runs": [
+        {
+          "suite": "expedition",
+          "startedAt": "2026-10-04T19:25:34.749376+00:00",
+          "endedAt": "2026-10-04T19:27:34.574651+00:00",
+          "exitCode": 0,
+          "startSha256": {
+            "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+            "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+            "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+          },
+          "endSha256": {
+            "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+            "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+            "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+          }
+        },
+        {
+          "suite": "duo",
+          "startedAt": "2026-10-04T19:27:34.616988+00:00",
+          "endedAt": "2026-10-04T19:31:48.636310+00:00",
+          "exitCode": 0,
+          "startSha256": {
+            "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+            "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+            "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+          },
+          "endSha256": {
+            "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+            "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+            "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+          }
+        },
+        {
+          "suite": "photo",
+          "startedAt": "2026-10-04T19:31:48.689306+00:00",
+          "endedAt": "2026-10-04T19:32:58.430263+00:00",
+          "exitCode": 0,
+          "startSha256": {
+            "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+            "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+            "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+          },
+          "endSha256": {
+            "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+            "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+            "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+          }
+        },
+        {
+          "suite": "animation",
+          "startedAt": "2026-10-04T19:32:58.623674+00:00",
+          "endedAt": "2026-10-04T19:33:20.574164+00:00",
+          "exitCode": 0,
+          "startSha256": {
+            "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+            "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+            "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+          },
+          "endSha256": {
+            "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+            "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+            "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+            "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+            "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+            "expedition/data.js": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+            "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+            "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+            "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+          }
+        }
+      ],
+      "visualReview": [
+        "gameplay-s01.png",
+        "automatic-controller-mobile.png",
+        "private-runner.png",
+        "revealing-photo.png"
+      ],
+      "visualReviewPending": false,
+      "limitations": [
+        "Gamepad API inputs are simulated; no physical controller input was tested.",
+        "All-stage 180-second and performance checks are recorded separately."
+      ],
+      "passed": true,
+      "visualReviewedAt": "2026-10-04T19:34:20.004661+00:00",
+      "visualReviewEvidence": [
+        {
+          "path": "assets/production/review/gameplay-s01.png",
+          "sha256": "06b24c47ec2ba497e56eba27937f4c72026a0386976aa2595c6643aa4c9a1a65"
+        },
+        {
+          "path": "assets/production/review/automatic-controller-mobile.png",
+          "sha256": "fbae6ac3639e3100e9fe1be9d2ba43861cae502b82b6aa56f8c8c9665e996315"
+        },
+        {
+          "path": "assets/production/review/private-runner.png",
+          "sha256": "b79a1684c2e0c0db104327a9d0d14f25f4c53244d429bdb8f4694e40357e01f8"
+        },
+        {
+          "path": "assets/production/review/revealing-photo.png",
+          "sha256": "9235f51832fad674b337354ae096aa4f12ed6d580d9716cdb47090bb8c425ff6"
+        }
+      ],
+      "validation": {
+        "method": "Reran all 27 UI checks plus 24 animation rendering checks on final v2.2 source, runtime and data. Each suite captured source/runtime hashes before and after. Reviewed full-screen town, narrow mobile controls, optional controller view, and revealed-target photograph. No runtime source changed during the run.",
+        "reports": [
+          "browser-report.json",
+          "duo-browser-report.json",
+          "photo-browser-report.json",
+          "animation-browser-report.json",
+          "core-test-report.txt",
+          "core-test-integrity.json",
+          "input-audio-unit-report.json"
+        ],
+        "animationChecks": 24,
+        "coreTests": 56,
+        "inputAudioTests": 8
+      }
+    }
+  ],
+  "passed": true,
+  "visualReviewedAt": "2026-10-04T20:14:11.489351+00:00",
+  "visualReviewEvidence": [
+    {
+      "path": "assets/production/review/gameplay-s01.png",
+      "sha256": "e1e4e75a85292bbca4886579028a10c2b21fe63cb358eff025f421a05667d96e"
+    },
+    {
+      "path": "assets/production/review/automatic-controller-mobile.png",
+      "sha256": "a05cd4c2e91ac6757cdf0e58432947c47b8f42d4ccdb5f24c42fb823db7d68b0"
+    },
+    {
+      "path": "assets/production/review/private-runner.png",
+      "sha256": "71d6d4dd39aee752def23912536901d4807671a0e9ddd35a30cf98c654eb9279"
+    },
+    {
+      "path": "assets/production/review/revealing-photo.png",
+      "sha256": "6c15f753549a874a056df9dc014eab564437eb814271d8fea2290d03bc887cec"
+    }
+  ],
+  "validation": {
+    "method": "Reran all 27 UI checks plus 24 animation rendering checks on final v2.2 source/runtime and corrected navigation data becf9431. Each suite captured source/runtime hashes before and after. Reviewed full-screen HUD, narrow mobile control placement, optional controller view, and revealed-target photograph. No runtime source changed during the run. All-stage painted-floor geometry is reviewed separately.",
+    "reports": [
+      "browser-report.json",
+      "duo-browser-report.json",
+      "photo-browser-report.json",
+      "animation-browser-report.json",
+      "core-test-report.txt",
+      "core-test-integrity.json",
+      "input-audio-unit-report.json",
+      "stopped-passenger-fixture-qa.json"
+    ],
+    "animationChecks": 24,
+    "coreTests": 56,
+    "inputAudioTests": 8
+  }
+}

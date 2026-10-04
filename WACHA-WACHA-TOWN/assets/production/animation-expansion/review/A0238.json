@@ -1,0 +1,24 @@
+{
+  "id": "A0238",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:31:15.689891+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1
+  ],
+  "notes": [
+    "原画とpackを確認。0行は全12コマ採用。1行のバッグは背面だけ左右が反転するためwalkBackを除外し階段8コマ採用。2・3行は左歩行参照にない大型の反物を持ってしまうため全動作を除外。"
+  ],
+  "packReport": "review/A0238-pack.json",
+  "preview": "review/A0238-check.jpg",
+  "disabledClipsByRow": {
+    "1": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

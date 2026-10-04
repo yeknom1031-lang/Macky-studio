@@ -1,0 +1,31 @@
+{
+  "id": "A0278",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T19:05:22.122369+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "1行目の背面ポーチが最初だけ反対側のため[1,2,3,2]で循環。残りの服・体型・髪型と持ち物は保持、全12コマの切り出し欠けなし。最初の2人の近い外見は既存参照どおり。"
+  ],
+  "packReport": "review/A0278-pack.json",
+  "preview": "review/A0278-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {
+    "0": {
+      "walkBack": [
+        1,
+        2,
+        3,
+        2
+      ]
+    }
+  }
+}

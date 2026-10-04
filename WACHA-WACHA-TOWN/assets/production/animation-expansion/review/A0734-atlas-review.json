@@ -1,0 +1,355 @@
+{
+  "id": "A0734",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "2337d0e6e3a7e0382baae4c4b4394e9125d3543c4e7703327cd23e389dc0f44f",
+  "alphaZeroFraction": 0.58127,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    651,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S05-ENV05",
+      "name": "本の噴水のしぶき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4400,
+          "rgbaSHA256": "4f7ad45036ed4e54740ed89ed36e7fbd772ade42dfb3bbb64f457d99c5facdcf"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4533,
+          "rgbaSHA256": "03ad542c6221f92c6fa474b837ae2bb81a2dd4f38ea26be16ee22f502b30eb1b"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4919,
+          "rgbaSHA256": "c5dc0229b974d6b6b094265aa65f7ee57542dbcabe27b091a6b62b8a31ea2a27"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4684,
+          "rgbaSHA256": "1ddc4a46f877b47a9708839cbb5ff94a99dca9af78627468d7830313368e7213"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4988,
+          "rgbaSHA256": "9a0108dc7c694b366251765a85481e4fa2c057bb15cc0bdc89496ea8c3e68e8c"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4757,
+          "rgbaSHA256": "45c65a05e63f7040203d818e85ce764751fef900b8a47d35fbee62da73fa6592"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3906,
+          "rgbaSHA256": "757ebd1846a34e3877a3f7ad1ea8f34dcdf2d0edabca71fdba4aa46d4db1ef03"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3896,
+          "rgbaSHA256": "3b91a89f07921e4baf7b92a6d315bd580b12b1e02cc869c6847c5f03e2e24169"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S05-ENV06",
+      "name": "秋の池の輪",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8175,
+          "rgbaSHA256": "e4b20928e142e94cd932a6d75f8f866b9cf7204e390a1516e159432a242860c4"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 10445,
+          "rgbaSHA256": "898f22317f4e2cd9cd45788694abdb441e39bbde99ab95756b27d611f7a4a59b"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 13500,
+          "rgbaSHA256": "93584f2581321c82b36b5d09099d151b9177562a391c1349f184fdcba52af645"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 14737,
+          "rgbaSHA256": "5f50d9f65405cd8ef019ef3fb815ecfe40fefa43fb22e9c78aef933832eb5759"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 14638,
+          "rgbaSHA256": "cdebe156f3b729b52560a62d3899e7c68722e9b50a4d67af20c74a43c93f6b43"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 14447,
+          "rgbaSHA256": "4fda649e098cc370371b49bf62562961bf8ec672b9d7db2b54a4c609451b0a34"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10326,
+          "rgbaSHA256": "96fce15656681752164bffa04325f8a03669eadc11229c9d7bedbf1b89310f4f"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8669,
+          "rgbaSHA256": "5a731b4c40514acc2109272d127f06e9203ef8761107f2093a9e14680ff36004"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S05-ENV07",
+      "name": "印刷工房の紙の端",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 208,
+          "visiblePixels": 11264,
+          "rgbaSHA256": "ec6fa118e6d6936821ad197ce3f58e0fe2d748c8de9f221f2f9515f95efee5ba"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 208,
+          "visiblePixels": 11185,
+          "rgbaSHA256": "c9935a93620ca3d2b7333b0a71dccf161d9e31a566738bc39db48ddee9e37705"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 208,
+          "visiblePixels": 11018,
+          "rgbaSHA256": "d27c6e436700a369e4f52fdd5af7f58c84a9845b7aa60eb9fc7b8c1a61072d87"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 208,
+          "visiblePixels": 11443,
+          "rgbaSHA256": "5adeeb68474b0263525a7ba4e02f44d850a194334f2ceec3e85d4fd9e7c76be6"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 208,
+          "visiblePixels": 11387,
+          "rgbaSHA256": "f9a7f43badc9a4d16c795d1adad6c91fd75a7ab6229b6b99a8b54ba80d5340aa"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 208,
+          "visiblePixels": 11424,
+          "rgbaSHA256": "251c2cd4270b5dd4f0a370650c16a88113cd6dbc42c7af5331ebf4a9b45bc4d9"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 208,
+          "visiblePixels": 11345,
+          "rgbaSHA256": "9ae0e56995850eaae251a8fe9f0e9528c0568b3db260387776c30023e81521f1"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 208,
+          "visiblePixels": 11275,
+          "rgbaSHA256": "2586e42b79362b6c2bc179ef7998837482953daf3bf969d9bd7525ca1e164278"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S05-ENV08",
+      "name": "窓辺の羽ペン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 8900,
+          "rgbaSHA256": "dcd519c3f6a9a707d8323ef425b11859bf6f8bbbfbad3afff5eb1480d2812c15"
+        },
+        {
+          "x": 222,
+          "y": 651,
+          "w": 221,
+          "h": 236,
+          "visiblePixels": 9243,
+          "rgbaSHA256": "52bf6e6015738ab6e4c3160f07d93795ff3e543c5dc329d31fabacd430aedb9e"
+        },
+        {
+          "x": 443,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 8528,
+          "rgbaSHA256": "2f1d66e61f5c13e722ab26747beaed136afa61ece7e81c4af1a8588884be8550"
+        },
+        {
+          "x": 665,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 8677,
+          "rgbaSHA256": "cc8c2717e89d7ecfe6ba7bf3cc4a7cc4a144d14c3365679db15963f17f719c5a"
+        },
+        {
+          "x": 887,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 8688,
+          "rgbaSHA256": "493232cfb132b3f2be7176bdfaaae9b9f85389d0d02ccc30a4de2f795bde5860"
+        },
+        {
+          "x": 1109,
+          "y": 651,
+          "w": 221,
+          "h": 236,
+          "visiblePixels": 8852,
+          "rgbaSHA256": "83f58e1355620425d81ca0a4ad93314894165a62121085777e1ac9e1ab17b081"
+        },
+        {
+          "x": 1330,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 8656,
+          "rgbaSHA256": "cd3169e6e1e9e66bf7b7fa149ef9d0d0613f58f57e92e2ad523e2ab4b4e6b94f"
+        },
+        {
+          "x": 1552,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 8635,
+          "rgbaSHA256": "9bd0883d210ca99e3621fa667c96555274b46ad19c72ccc973696c5c342379e2"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

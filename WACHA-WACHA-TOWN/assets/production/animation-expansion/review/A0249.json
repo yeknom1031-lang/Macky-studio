@@ -1,0 +1,59 @@
+{
+  "id": "A0249",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:36:34.105779+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack確認。全行の上り3コマ目でバッグが左右反転するため4,5,7,5を選別。1行の帽子の羽も背面で左右が反転しwalkBackのみ除外。人物・写真機と画材を保持する他コマを採用。"
+  ],
+  "packReport": "review/A0249-pack.json",
+  "preview": "review/A0249-check.jpg",
+  "disabledClipsByRow": {
+    "1": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {
+    "0": {
+      "stairUp": [
+        4,
+        5,
+        7,
+        5
+      ]
+    },
+    "1": {
+      "stairUp": [
+        4,
+        5,
+        7,
+        5
+      ]
+    },
+    "2": {
+      "stairUp": [
+        4,
+        5,
+        7,
+        5
+      ]
+    },
+    "3": {
+      "stairUp": [
+        4,
+        5,
+        7,
+        5
+      ]
+    }
+  }
+}

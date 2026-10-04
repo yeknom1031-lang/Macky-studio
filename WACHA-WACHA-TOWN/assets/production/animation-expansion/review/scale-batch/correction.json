@@ -1,0 +1,3255 @@
+{
+  "at": "2026-10-04T20:52:26.851934+00:00",
+  "passed": true,
+  "criterion": "Only accepted directional rows whose tallest source pose is below 80% of union height, with width no larger than that pose and max cached opacity height below 80% of 88px. All candidate source strips and before/after comparisons visually inspected.",
+  "moduleSHA": "f719cc0bbf73385270fdb74fa2e69a5fd013f8f1d45627dbd91c8972aeb25c3c",
+  "moduleUnchanged": true,
+  "scanSummary": {
+    "jobs": 600,
+    "rows": 2396,
+    "alreadyCorrected": 4,
+    "rejectedRows": 96,
+    "noDirectionalClips": 0,
+    "entireRejectedJobRows": 4
+  },
+  "candidateRows": 20,
+  "changedRows": 19,
+  "changedJobs": 13,
+  "jobs": [
+    {
+      "id": "A0028",
+      "characters": [
+        "S02-C011"
+      ],
+      "rows": [
+        2
+      ],
+      "sourceSHA": "31bab64d70796faf80fb259b2664c612b930c455ecb6d45e630bc2172a180c7a",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "9197c3c1d386fe43eb5e4a13d34440420e6730d629b524a20630710e80248a04",
+      "newJobSHA": "45e9b271d840555c787adc30382717d7ff1840dd1f7b01612f292d7d8507f238",
+      "beforeBitmapSHA": "1d2ed411ecf216778b84cf138baa79d223d37a55d7d07ceb272ab3236b4330f4",
+      "afterBitmapSHA": "8e8c5c61b5690e9a114bf00ba880d7f8575817193e23d4e3e91cb5ba11a637ef",
+      "measurements": [
+        {
+          "row": 2,
+          "character": "S02-C011",
+          "oldScale": 0.42105263157894735,
+          "newScale": 0.5301204819277109,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                34,
+                8,
+                81,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                27,
+                8,
+                75,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                22,
+                8,
+                69,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                16,
+                8,
+                66,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                28,
+                6,
+                77,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                21,
+                6,
+                69,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                21,
+                6,
+                67,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                17,
+                5,
+                65,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                21,
+                9,
+                73,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                14,
+                9,
+                75,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                17,
+                10,
+                75,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                15,
+                11,
+                72,
+                93
+              ],
+              "height": 82,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0028-row2.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0320",
+      "characters": [
+        "S13-C077",
+        "S13-C079",
+        "S13-C080"
+      ],
+      "rows": [
+        0,
+        2,
+        3
+      ],
+      "sourceSHA": "43d5eeeda624f4db7fb4bd31dbfc3de12a07a91968e8cf7484223dfc08a0e8f8",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "4efdee027042093306f6788f0990392530da4fa2860339ce1b162919f1f0be46",
+      "newJobSHA": "c70b57b6c61d8e1b90f2e80ced492b546c4a0cdd2e188d255288250013c8a7a0",
+      "beforeBitmapSHA": "103abe0ad2c37d84680eaed88367da010c82a3bcb2554f25d9059779b1dae51e",
+      "afterBitmapSHA": "926058fe50c2f316e0eb6dc1cca22d73f7de0a9166b963f9e3dd75b15c5d4dd7",
+      "measurements": [
+        {
+          "row": 0,
+          "character": "S13-C077",
+          "oldScale": 0.42718446601941745,
+          "newScale": 0.5605095541401274,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                26,
+                8,
+                84,
+                92
+              ],
+              "height": 84,
+              "foot": 91
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                18,
+                13,
+                75,
+                93
+              ],
+              "height": 80,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                14,
+                13,
+                69,
+                94
+              ],
+              "height": 81,
+              "foot": 93
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                12,
+                12,
+                69,
+                93
+              ],
+              "height": 81,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                25,
+                10,
+                79,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                23,
+                6,
+                84,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                22,
+                9,
+                75,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                21,
+                13,
+                76,
+                93
+              ],
+              "height": 80,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                14,
+                9,
+                82,
+                94
+              ],
+              "height": 85,
+              "foot": 93
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                14,
+                10,
+                82,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                16,
+                11,
+                81,
+                94
+              ],
+              "height": 83,
+              "foot": 93
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                11,
+                13,
+                76,
+                93
+              ],
+              "height": 80,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0320-row0.png"
+        },
+        {
+          "row": 2,
+          "character": "S13-C079",
+          "oldScale": 0.40930232558139534,
+          "newScale": 0.5365853658536586,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                24,
+                8,
+                80,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                16,
+                12,
+                71,
+                93
+              ],
+              "height": 81,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                15,
+                10,
+                69,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                13,
+                11,
+                68,
+                93
+              ],
+              "height": 82,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                28,
+                9,
+                78,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                27,
+                8,
+                81,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                23,
+                13,
+                73,
+                93
+              ],
+              "height": 80,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                21,
+                14,
+                72,
+                93
+              ],
+              "height": 79,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                21,
+                5,
+                82,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                18,
+                6,
+                79,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                17,
+                6,
+                77,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                14,
+                9,
+                74,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0320-row2.png"
+        },
+        {
+          "row": 3,
+          "character": "S13-C080",
+          "oldScale": 0.411214953271028,
+          "newScale": 0.5146198830409356,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                19,
+                5,
+                85,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                15,
+                8,
+                78,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                12,
+                8,
+                76,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                11,
+                8,
+                73,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                17,
+                8,
+                84,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                19,
+                6,
+                84,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                17,
+                10,
+                72,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                17,
+                14,
+                74,
+                93
+              ],
+              "height": 79,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                11,
+                10,
+                84,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                15,
+                12,
+                85,
+                93
+              ],
+              "height": 81,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                15,
+                12,
+                84,
+                94
+              ],
+              "height": 82,
+              "foot": 93
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                11,
+                14,
+                80,
+                93
+              ],
+              "height": 79,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0320-row3.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0322",
+      "characters": [
+        "S13-C085",
+        "S13-C087",
+        "S13-C088"
+      ],
+      "rows": [
+        0,
+        2,
+        3
+      ],
+      "sourceSHA": "8946ed24ddac6dd8a88e8c01f932d655c64b8849a26688015c95a7df59b678c7",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "47716faeb798bd0fc273c8385d00b39386178ba759a60faf8c3cebca659922f1",
+      "newJobSHA": "b140b7e581bf5bc70c05ad300c75081718c589f52d0b689d7337c2c57b9fb88f",
+      "beforeBitmapSHA": "808bd35c93517eb3427bc4a48ba47c29dbbb36a71b4464c7a4a62a4927adeb1b",
+      "afterBitmapSHA": "517f8d60e7d8afe3f50227ca78e3baac273d286b4eab600ce84040baf4a6a089",
+      "measurements": [
+        {
+          "row": 0,
+          "character": "S13-C085",
+          "oldScale": 0.4444444444444444,
+          "newScale": 0.5605095541401274,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                28,
+                11,
+                77,
+                93
+              ],
+              "height": 82,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                31,
+                10,
+                81,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                27,
+                11,
+                76,
+                94
+              ],
+              "height": 83,
+              "foot": 93
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                26,
+                16,
+                74,
+                93
+              ],
+              "height": 77,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                29,
+                5,
+                80,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                25,
+                8,
+                74,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                20,
+                7,
+                71,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                16,
+                9,
+                70,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                14,
+                9,
+                70,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                14,
+                10,
+                70,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                14,
+                12,
+                71,
+                93
+              ],
+              "height": 81,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                14,
+                13,
+                71,
+                93
+              ],
+              "height": 80,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0322-row0.png"
+        },
+        {
+          "row": 2,
+          "character": "S13-C087",
+          "oldScale": 0.4512820512820513,
+          "newScale": 0.5827814569536424,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                27,
+                12,
+                81,
+                93
+              ],
+              "height": 81,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                30,
+                9,
+                84,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                25,
+                8,
+                79,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                24,
+                12,
+                78,
+                93
+              ],
+              "height": 81,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                27,
+                6,
+                82,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                22,
+                5,
+                74,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                16,
+                5,
+                73,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                11,
+                5,
+                69,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                11,
+                7,
+                74,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                14,
+                10,
+                75,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                11,
+                6,
+                76,
+                94
+              ],
+              "height": 88,
+              "foot": 93
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                13,
+                7,
+                75,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0322-row2.png"
+        },
+        {
+          "row": 3,
+          "character": "S13-C088",
+          "oldScale": 0.42718446601941745,
+          "newScale": 0.5605095541401274,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                30,
+                10,
+                79,
+                92
+              ],
+              "height": 82,
+              "foot": 91
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                32,
+                10,
+                82,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                27,
+                10,
+                78,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                26,
+                13,
+                76,
+                92
+              ],
+              "height": 79,
+              "foot": 91
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                31,
+                8,
+                81,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                25,
+                6,
+                75,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                21,
+                8,
+                72,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                14,
+                6,
+                67,
+                94
+              ],
+              "height": 88,
+              "foot": 93
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                14,
+                9,
+                72,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                15,
+                11,
+                71,
+                93
+              ],
+              "height": 82,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                15,
+                12,
+                72,
+                93
+              ],
+              "height": 81,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                15,
+                11,
+                72,
+                93
+              ],
+              "height": 82,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0322-row3.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0323",
+      "characters": [
+        "S13-C092"
+      ],
+      "rows": [
+        3
+      ],
+      "sourceSHA": "b8fd6ac3d450982b53b11fac5dcbad81c85b4b97c11349b6e06122f0b0939272",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "b87370afd7281fa0d262279fd38781cfe8606f4dc0e051f0a3c2caa539d8e68e",
+      "newJobSHA": "544a6db1886f5980973a622464ad0cb4a7e6a0df91168dccfebf01f6f01b0bd9",
+      "beforeBitmapSHA": "19fbe8b13d054a5df14b683eddae64b5502374d1bef7c8ea89cf044eb75defc5",
+      "afterBitmapSHA": "3306ec2e01f303ea3f9269c65870a86f27947f52b4246a185fc711f17a4ab25a",
+      "measurements": [
+        {
+          "row": 3,
+          "character": "S13-C092",
+          "oldScale": 0.46808510638297873,
+          "newScale": 0.6068965517241379,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                30,
+                6,
+                90,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                27,
+                8,
+                81,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                21,
+                6,
+                81,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                19,
+                6,
+                79,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                26,
+                5,
+                88,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                21,
+                8,
+                83,
+                94
+              ],
+              "height": 86,
+              "foot": 93
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                16,
+                5,
+                81,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                17,
+                6,
+                78,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                12,
+                6,
+                76,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                10,
+                5,
+                80,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                13,
+                5,
+                80,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                6,
+                5,
+                77,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0323-row3.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0392",
+      "characters": [
+        "S16-C067"
+      ],
+      "rows": [
+        2
+      ],
+      "sourceSHA": "c5a298a9df9bd2eb86cb7ec18a30df7fdb7af3dc16dbd26eb42bd1f11b8947f0",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "a6c955eee71a522f33ef19fbac918e63ca09dc05b9a5e9a9a3bbbfbe7de56b29",
+      "newJobSHA": "7ed814d844b38e4b09749537ff31b6bbd52d63543b5eaaa4869d95de9fa58772",
+      "beforeBitmapSHA": "203d6dd60314aa03d353e8faea7fb1a31211fffb296fb773e72acebf4f31f6bb",
+      "afterBitmapSHA": "bc29afc0fc85e51c555561728e57333aa27e921e2450aa2d4c189d68590527e1",
+      "measurements": [
+        {
+          "row": 2,
+          "character": "S16-C067",
+          "oldScale": 0.41706161137440756,
+          "newScale": 0.5365853658536586,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                27,
+                9,
+                84,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                22,
+                8,
+                77,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                15,
+                9,
+                74,
+                94
+              ],
+              "height": 85,
+              "foot": 93
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                11,
+                8,
+                67,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                21,
+                7,
+                81,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                21,
+                6,
+                77,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                17,
+                5,
+                73,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                14,
+                7,
+                73,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                17,
+                5,
+                79,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                12,
+                6,
+                80,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                20,
+                11,
+                75,
+                93
+              ],
+              "height": 82,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                13,
+                5,
+                74,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0392-row2.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0422",
+      "characters": [
+        "S17-C088"
+      ],
+      "rows": [
+        3
+      ],
+      "sourceSHA": "4d8489a6440be6e7a86f3666796d9d241243e5f5c0bbf8a1a43fccebdd4c9897",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "1ce87619dee139a590ec9a4b84cdd0326a4cadc9e4d38ec852a5f77bc0a6bed4",
+      "newJobSHA": "4c23af96a51fdf0fc64fb657c060e8223df8644140b940841289a02e98d1ff1d",
+      "beforeBitmapSHA": "95b9825dead701c6ff0adc7a8bffa124b6c2ed4b10061a18b522005fc842453c",
+      "afterBitmapSHA": "0e2ff0f211811184295206d3b87dc8918b2af50fc24067832d29313974c91050",
+      "measurements": [
+        {
+          "row": 3,
+          "character": "S17-C088",
+          "oldScale": 0.43564356435643564,
+          "newScale": 0.5714285714285714,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                26,
+                5,
+                80,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                23,
+                7,
+                78,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                21,
+                7,
+                74,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                19,
+                6,
+                69,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                18,
+                6,
+                75,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                18,
+                6,
+                77,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                18,
+                7,
+                77,
+                94
+              ],
+              "height": 87,
+              "foot": 93
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                17,
+                6,
+                78,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                21,
+                12,
+                83,
+                93
+              ],
+              "height": 81,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                18,
+                9,
+                82,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                16,
+                11,
+                79,
+                92
+              ],
+              "height": 81,
+              "foot": 91
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                12,
+                10,
+                73,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0422-row3.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0457",
+      "characters": [
+        "S19-C026",
+        "S19-C027",
+        "S19-C028"
+      ],
+      "rows": [
+        1,
+        2,
+        3
+      ],
+      "sourceSHA": "b3564ea7faca300da718d3e183c7ce01aa3c668b9ccf5f631a48e114fd8c2c44",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "321a1dcbbbe9d844196ebb546ef0291b0f5a554444aa0491c7f739d46c224896",
+      "newJobSHA": "91007d60fab12941a8bb42e24da4907352adbeca438f7b405fc477fea500187e",
+      "beforeBitmapSHA": "62f9bd53ae6dfbebb8f1fad5bcf0364edbc07217c6b5522bfc618b05c56ba0e2",
+      "afterBitmapSHA": "9defbe8557735ff1b5899070c37649a5724bc291841d79613778e45649c932ba",
+      "measurements": [
+        {
+          "row": 1,
+          "character": "S19-C026",
+          "oldScale": 0.4444444444444444,
+          "newScale": 0.5827814569536424,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                22,
+                8,
+                82,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                20,
+                8,
+                80,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                18,
+                9,
+                77,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                16,
+                8,
+                76,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                15,
+                6,
+                81,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                17,
+                7,
+                78,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                15,
+                8,
+                76,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                9,
+                5,
+                77,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                15,
+                6,
+                87,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                12,
+                7,
+                83,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                12,
+                7,
+                79,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                8,
+                6,
+                75,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0457-row1.png"
+        },
+        {
+          "row": 2,
+          "character": "S19-C027",
+          "oldScale": 0.4444444444444444,
+          "newScale": 0.5906040268456376,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                22,
+                9,
+                85,
+                92
+              ],
+              "height": 83,
+              "foot": 91
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                20,
+                10,
+                84,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                18,
+                11,
+                80,
+                94
+              ],
+              "height": 83,
+              "foot": 93
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                18,
+                9,
+                79,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                16,
+                5,
+                83,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                16,
+                6,
+                80,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                9,
+                7,
+                79,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                10,
+                6,
+                80,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                16,
+                4,
+                89,
+                93
+              ],
+              "height": 89,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                14,
+                7,
+                84,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                13,
+                7,
+                81,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                7,
+                6,
+                77,
+                94
+              ],
+              "height": 88,
+              "foot": 93
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0457-row2.png"
+        },
+        {
+          "row": 3,
+          "character": "S19-C028",
+          "oldScale": 0.44,
+          "newScale": 0.5714285714285714,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                22,
+                6,
+                82,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                21,
+                7,
+                80,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                17,
+                6,
+                78,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                16,
+                6,
+                75,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                19,
+                6,
+                82,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                18,
+                9,
+                79,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                16,
+                8,
+                77,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                11,
+                5,
+                78,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                20,
+                6,
+                87,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                16,
+                6,
+                83,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                14,
+                7,
+                79,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                8,
+                6,
+                76,
+                92
+              ],
+              "height": 86,
+              "foot": 91
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0457-row3.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0464",
+      "characters": [
+        "S19-C056"
+      ],
+      "rows": [
+        3
+      ],
+      "sourceSHA": "d2206d59ed768cd4cf12c66b424e809d2fe0ece4112bed25d561e1f40b63d013",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "0de5f53bf495c55e5744ed2d4aa9cd59dbfc6c135d9ebd9c0be84e3777ce009a",
+      "newJobSHA": "56cfc20aad70ec27cb1727982f754fea7efb26de8749f02c8eed1cb50558c78f",
+      "beforeBitmapSHA": "c62c67277999e0da3dcf86c121160457af3b916a7ced4886bee38074bb5e6a14",
+      "afterBitmapSHA": "b3402084879f79600b767d75608283234f49b50a707b072a2d92fcd690fdc417",
+      "measurements": [
+        {
+          "row": 3,
+          "character": "S19-C056",
+          "oldScale": 0.4607329842931937,
+          "newScale": 0.5827814569536424,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                25,
+                7,
+                82,
+                92
+              ],
+              "height": 85,
+              "foot": 91
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                23,
+                8,
+                77,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                18,
+                7,
+                76,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                19,
+                8,
+                75,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                26,
+                7,
+                85,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                26,
+                7,
+                83,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                25,
+                9,
+                82,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                18,
+                6,
+                76,
+                94
+              ],
+              "height": 88,
+              "foot": 93
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                20,
+                6,
+                83,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                16,
+                7,
+                79,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                14,
+                9,
+                77,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                11,
+                8,
+                75,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0464-row3.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0494",
+      "characters": [
+        "S20-C075"
+      ],
+      "rows": [
+        2
+      ],
+      "sourceSHA": "88f45b8cd3e2e4e324e3de299ae87f43d99bdaaceb3fd19e90926b2804619416",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "2fedfc1c788a65f01059023eb734608a9fca38995fd88ecd78296524762fcb60",
+      "newJobSHA": "2f0ca54d617d44c74e93fe0b3ac6dd2c10566215e0f72868ebe3da84a5c98c7c",
+      "beforeBitmapSHA": "9937be47993e8e14ac7f726366fd8e49c22e7cfcc9a987f91af1259b9823f5a4",
+      "afterBitmapSHA": "2ea419c05187aa683151dcd621918fae3f61ae627d672416e098d53b959fe879",
+      "measurements": [
+        {
+          "row": 2,
+          "character": "S20-C075",
+          "oldScale": 0.43349753694581283,
+          "newScale": 0.5569620253164557,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                29,
+                11,
+                77,
+                93
+              ],
+              "height": 82,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                26,
+                10,
+                76,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                25,
+                10,
+                75,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                23,
+                12,
+                72,
+                94
+              ],
+              "height": 82,
+              "foot": 93
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                23,
+                8,
+                74,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                19,
+                8,
+                72,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                20,
+                7,
+                74,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                22,
+                7,
+                77,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                20,
+                8,
+                76,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                17,
+                5,
+                72,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                20,
+                6,
+                76,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                22,
+                6,
+                78,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0494-row2.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0495",
+      "characters": [
+        "S20-C079"
+      ],
+      "rows": [
+        2
+      ],
+      "sourceSHA": "3dccfe00d453ecbfcfee6244aab7775e9709a738e2df54d8d0c8dd4d9e0f4425",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "38b158b6e3a5dd48250510402e68b2fa055db29302eb4e958366576e9beb98bb",
+      "newJobSHA": "e3857631abab4333b345252a20da2e135d18a669ba5e30123601c4193b2856d4",
+      "beforeBitmapSHA": "f34650454f79d17371700397c4ad44eb7f288a7512733c99100e20c94fc9224a",
+      "afterBitmapSHA": "9e5ba751939d8c2bff241326454e991357509b4850370be28672f10eaf93e40a",
+      "measurements": [
+        {
+          "row": 2,
+          "character": "S20-C079",
+          "oldScale": 0.44221105527638194,
+          "newScale": 0.5534591194968553,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                18,
+                14,
+                75,
+                94
+              ],
+              "height": 80,
+              "foot": 93
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                20,
+                14,
+                75,
+                92
+              ],
+              "height": 78,
+              "foot": 91
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                21,
+                15,
+                75,
+                93
+              ],
+              "height": 78,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                15,
+                14,
+                72,
+                93
+              ],
+              "height": 79,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                23,
+                7,
+                80,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                19,
+                6,
+                79,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                14,
+                5,
+                74,
+                92
+              ],
+              "height": 87,
+              "foot": 91
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                15,
+                6,
+                74,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                20,
+                9,
+                83,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                18,
+                8,
+                81,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                16,
+                8,
+                79,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                13,
+                10,
+                75,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0495-row2.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0549",
+      "characters": [
+        "S22-C095"
+      ],
+      "rows": [
+        2
+      ],
+      "sourceSHA": "e3796540474b32ae2a0bdec321f4db70fb346f74a19405a34c719ae48007efd0",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "f510194629613583646dabbd766dd36d5cddfa70b4bde19fdb18a34a18e9fe22",
+      "newJobSHA": "35b648d46c6b7121a1ebe76564266c305e7f6127a30420d0be32d6ca98cdccfb",
+      "beforeBitmapSHA": "b641af71356543bf426dc9236181b0e949acaebb4512c9db441de1c85b8f2c08",
+      "afterBitmapSHA": "4954a19b3d4aaafe9ebaaec0ed1876c20155dca13fe96f9b60380233b721f44b",
+      "measurements": [
+        {
+          "row": 2,
+          "character": "S22-C095",
+          "oldScale": 0.4731182795698925,
+          "newScale": 0.5986394557823129,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                25,
+                13,
+                82,
+                93
+              ],
+              "height": 80,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                23,
+                9,
+                79,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                19,
+                9,
+                75,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                16,
+                9,
+                72,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                26,
+                11,
+                81,
+                93
+              ],
+              "height": 82,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                23,
+                7,
+                79,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                18,
+                10,
+                74,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                17,
+                6,
+                75,
+                94
+              ],
+              "height": 88,
+              "foot": 93
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                24,
+                10,
+                85,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                17,
+                9,
+                79,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                14,
+                10,
+                75,
+                92
+              ],
+              "height": 82,
+              "foot": 91
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                10,
+                10,
+                73,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0549-row2.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0567",
+      "characters": [
+        "S23-C067"
+      ],
+      "rows": [
+        2
+      ],
+      "sourceSHA": "010128adbde89cf137bd51789da9a4d357bb530be886470e82d660d630e9a7b1",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "ca79911b3c966711d1c9b59e9ec9f39e5affe77cad2f99f391dd19b91586c199",
+      "newJobSHA": "8f2ebca9f9ab42a46660f6de58e8e877f566639082e8669517a664c442bb9838",
+      "beforeBitmapSHA": "abab0ef8ede47a9a8c5ff191df96e3544eedba47fc615f0ab14979b51c6f1712",
+      "afterBitmapSHA": "fed0fda8023e98e086eef8cd40990cf17d3252cb68904cf263d977bae9a2f799",
+      "measurements": [
+        {
+          "row": 2,
+          "character": "S23-C067",
+          "oldScale": 0.42718446601941745,
+          "newScale": 0.5714285714285714,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                19,
+                6,
+                81,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                20,
+                7,
+                77,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                16,
+                8,
+                79,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                20,
+                9,
+                76,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                20,
+                9,
+                79,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                16,
+                8,
+                75,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                15,
+                6,
+                78,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                13,
+                4,
+                80,
+                93
+              ],
+              "height": 89,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                15,
+                7,
+                80,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                9,
+                7,
+                86,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                13,
+                8,
+                82,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                11,
+                9,
+                83,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0567-row2.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    },
+    {
+      "id": "A0568",
+      "characters": [
+        "S23-C071"
+      ],
+      "rows": [
+        2
+      ],
+      "sourceSHA": "9d876e65f7567b566a2542b9f769f1ae1690a67dee1167f9dfecd1397f1a505c",
+      "sourceUnchanged": true,
+      "framesUnchanged": true,
+      "otherRowsRGBAUnchanged": true,
+      "oldJobSHA": "cc340f741715371dfdc5e06209b64df31047a2b58c80f8de012ee6ef4f1d2224",
+      "newJobSHA": "9f1dc15317d60de058da2cb5be3ef8010a596dc0a4b0767678c5fe51bc53d5ac",
+      "beforeBitmapSHA": "8fa843328c24d9e3f4deda7713d68f1626fc34f8f434d9f4223ea0724a1e302e",
+      "afterBitmapSHA": "5bbfd7116a76dcc2642b4a26b868298881f4f2f5e78094d38796e5f63c16a7f2",
+      "measurements": [
+        {
+          "row": 2,
+          "character": "S23-C071",
+          "oldScale": 0.4230769230769231,
+          "newScale": 0.55,
+          "poses": [
+            {
+              "frame": 0,
+              "bounds": [
+                32,
+                6,
+                80,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 1,
+              "bounds": [
+                32,
+                7,
+                79,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 2,
+              "bounds": [
+                30,
+                7,
+                78,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 3,
+              "bounds": [
+                29,
+                8,
+                78,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 4,
+              "bounds": [
+                23,
+                7,
+                76,
+                93
+              ],
+              "height": 86,
+              "foot": 92
+            },
+            {
+              "frame": 5,
+              "bounds": [
+                21,
+                6,
+                75,
+                93
+              ],
+              "height": 87,
+              "foot": 92
+            },
+            {
+              "frame": 6,
+              "bounds": [
+                23,
+                5,
+                76,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 7,
+              "bounds": [
+                20,
+                5,
+                74,
+                93
+              ],
+              "height": 88,
+              "foot": 92
+            },
+            {
+              "frame": 8,
+              "bounds": [
+                21,
+                8,
+                74,
+                93
+              ],
+              "height": 85,
+              "foot": 92
+            },
+            {
+              "frame": 9,
+              "bounds": [
+                18,
+                11,
+                76,
+                93
+              ],
+              "height": 82,
+              "foot": 92
+            },
+            {
+              "frame": 10,
+              "bounds": [
+                16,
+                9,
+                72,
+                93
+              ],
+              "height": 84,
+              "foot": 92
+            },
+            {
+              "frame": 11,
+              "bounds": [
+                16,
+                10,
+                74,
+                93
+              ],
+              "height": 83,
+              "foot": 92
+            }
+          ],
+          "visualReview": "passed",
+          "comparison": "assets/production/animation-expansion/review/scale-batch/A0568-row2.png"
+        }
+      ],
+      "problems": [],
+      "passed": true
+    }
+  ],
+  "excluded": [
+    {
+      "id": "A0528",
+      "row": 2,
+      "character": "S22-C011",
+      "cachedHeights": [
+        68,
+        68,
+        67,
+        68,
+        66,
+        68,
+        68,
+        70,
+        70,
+        70,
+        70,
+        69
+      ],
+      "maxCachedHeight": 70,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          156,
+          222
+        ],
+        "sharedBounds": [
+          21,
+          28,
+          134,
+          214
+        ],
+        "scale": 0.4731182795698925,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 113,
+      "unionHeight": 186,
+      "sourceSHA": "521c7b379788d9a0dfc7d5f2256ba1bcbb31b41404fa8fb47395547952fd2850",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          40,
+          51,
+          127,
+          195
+        ],
+        [
+          33,
+          50,
+          117,
+          193
+        ],
+        [
+          41,
+          51,
+          121,
+          194
+        ],
+        [
+          33,
+          49,
+          119,
+          192
+        ],
+        [
+          34,
+          56,
+          124,
+          194
+        ],
+        [
+          37,
+          49,
+          120,
+          193
+        ],
+        [
+          34,
+          42,
+          119,
+          187
+        ],
+        [
+          37,
+          28,
+          119,
+          177
+        ],
+        [
+          31,
+          49,
+          133,
+          197
+        ],
+        [
+          28,
+          64,
+          134,
+          211
+        ],
+        [
+          21,
+          67,
+          130,
+          214
+        ],
+        [
+          21,
+          69,
+          131,
+          213
+        ]
+      ],
+      "maxPoseHeight": 149,
+      "maxPoseUnionRatio": 0.8010752688172043,
+      "verticalOffsetRange": 37,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": false,
+      "reason": "Excluded: width limit or exact source max-pose ratio does not meet strict 80% criterion."
+    }
+  ],
+  "runtimeHashes": {
+    "data.js": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+    "expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9"
+  },
+  "runtimeUnchanged": true,
+  "finalCachePanels": [
+    {
+      "path": "assets/production/animation-expansion/review/scale-batch/final-01.png",
+      "sha256": "8062a0f52360c9211e7159d2a4c26c2b25e80b0d5cdb25fd1fcd9d919fbc464c",
+      "characters": [
+        "S02-C011",
+        "S13-C077",
+        "S13-C079",
+        "S13-C080"
+      ]
+    },
+    {
+      "path": "assets/production/animation-expansion/review/scale-batch/final-02.png",
+      "sha256": "bf048fb369dbb23773b4a1fc6880757901d7ff2360574ff64019633062338592",
+      "characters": [
+        "S13-C085",
+        "S13-C087",
+        "S13-C088",
+        "S13-C092"
+      ]
+    },
+    {
+      "path": "assets/production/animation-expansion/review/scale-batch/final-03.png",
+      "sha256": "bee8b29fd90a3a509a4e11e40973c1041e8d1fd57a7db25621fff54bf78c9b12",
+      "characters": [
+        "S16-C067",
+        "S17-C088",
+        "S19-C026",
+        "S19-C027"
+      ]
+    },
+    {
+      "path": "assets/production/animation-expansion/review/scale-batch/final-04.png",
+      "sha256": "9eebe1f68edab63f9cd8395f3d1b6cad9f6649aece5f89787c7a09905df6757b",
+      "characters": [
+        "S19-C028",
+        "S19-C056",
+        "S20-C075",
+        "S20-C079"
+      ]
+    },
+    {
+      "path": "assets/production/animation-expansion/review/scale-batch/final-05.png",
+      "sha256": "669328f18022df68792ebe29b58aa2de42581c40382525dd72fe6c09c55f93da",
+      "characters": [
+        "S22-C095",
+        "S23-C067",
+        "S23-C071"
+      ]
+    }
+  ],
+  "totalFramesVerified": 228,
+  "plannedDirectionalRows": 2400,
+  "visualReview": "passed: all 19 original strips, before/after comparisons and five final-cache panels (228 poses) were individually viewed; body/props complete, identities retained, feet stable. Natural crouch and carried-object proportions preserved.",
+  "sourceLocked": true,
+  "changedStages": [
+    "S02",
+    "S13",
+    "S16",
+    "S17",
+    "S19",
+    "S20",
+    "S22",
+    "S23"
+  ],
+  "runtimeBuildPending": false,
+  "postAudit": {
+    "allDirectionalJobs": 600,
+    "correctedRowsTotal": 23,
+    "remainingCachedThresholdCandidates": [
+      {
+        "id": "A0528",
+        "row": 2,
+        "character": "S22-C011",
+        "sourceMaxPoseHeight": 149,
+        "sourceUnionHeight": 186,
+        "sourceRatio": 0.8010752688172043,
+        "excludedReason": "Actual raw pose ratio is 80.1075%, above the strict below-80% threshold; cached 70px height is rounding, not a qualifying case."
+      }
+    ],
+    "remainingQualifyingRows": 0
+  },
+  "runtimeBuildEvidence": {
+    "report": "final-bitmap-build-integrity.json",
+    "reportSHA": "d6888310bc763ec8b858cb8baeb160b9e1497807b1494ed861bf6c7c7eac27ff",
+    "passed": true,
+    "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+    "codeAndDataUnchanged": true,
+    "imageFingerprint": "16b8f4ef00d4a3ec5a564fc4f1ce960fefb1a5085451e451e6a1e0d690fb7d18",
+    "imageFileCount": 1353,
+    "changedImages": [
+      "animation-A0028.js",
+      "animation-A0320.js",
+      "animation-A0322.js",
+      "animation-A0323.js",
+      "animation-A0392.js",
+      "animation-A0422.js",
+      "animation-A0457.js",
+      "animation-A0464.js",
+      "animation-A0494.js",
+      "animation-A0495.js",
+      "animation-A0549.js",
+      "animation-A0567.js",
+      "animation-A0568.js"
+    ],
+    "runtimeVisualReport": "runtime-poses-visual-review.json",
+    "runtimeVisualReportSHA": "f03b771429cdaa2544bbf92483fdde54762f278fcc79355963695c6f6aea3395"
+  }
+}

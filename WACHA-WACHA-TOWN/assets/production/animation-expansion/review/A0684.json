@@ -1,0 +1,18 @@
+{
+  "id": "A0684",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:25:59.377096+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    2
+  ],
+  "notes": [
+    "札への押印と部品箱整理は全8コマ採用。row 1 は玩具の頭の鍵/赤い部品が入れ替わるため除外。row 3 は固定の窓扉を描き込んだため既存動作を維持。"
+  ],
+  "packReport": "review/A0684-pack.json",
+  "preview": "review/A0684-check.jpg"
+}

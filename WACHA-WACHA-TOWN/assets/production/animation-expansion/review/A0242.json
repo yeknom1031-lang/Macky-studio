@@ -1,0 +1,35 @@
+{
+  "id": "A0242",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:34:30.041155+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画13コマから背面4・上り4・下り4を選別。全行の背面バッグが左右反転するためwalkBack除外。帽子人物の白袖になった下り1コマを避け、緑袖の4コマを選択して再pack・目視確認。階段全行採用。"
+  ],
+  "packReport": "review/A0242-pack.json",
+  "preview": "review/A0242-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "walkBack"
+    ],
+    "1": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

@@ -1,0 +1,355 @@
+{
+  "id": "A0766",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "c3dca087c8220d6eb75767ea41d8da6fe2453ac31793ed77a48e71e8ec53da9e",
+  "alphaZeroFraction": 0.55359,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S16-ENV01",
+      "name": "天文展示の小模型",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15639,
+          "rgbaSHA256": "5ba5d40e0bccc9bcc9453c9c3504d827846b3b83d04f83d9303b6790449c0af8"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 14989,
+          "rgbaSHA256": "d5337ad7ba00bb0809b67280f5d9160a1dff2631fe0de965a7e99f09fbb5c25e"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14703,
+          "rgbaSHA256": "afb1234cd956067186f661d5c79d4d4d93a388d5d3ccca5a9e23aabf10d5e438"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14681,
+          "rgbaSHA256": "7c3ea28c411717e3e46b0bbc627e616c8e7b087d43e6c093fd6fdf4d5fe53302"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15534,
+          "rgbaSHA256": "168586e94e4dba3ded538dd16de96e47313790a43b0522bcaa05316ad9ffcb8c"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 15543,
+          "rgbaSHA256": "c9edb947e02965def2083cf4c3c59b81bc17be7f83b0821c9a8e8814f405eee7"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15230,
+          "rgbaSHA256": "05070f2b3abf5669ce6c33b0d4ce83d4309e9e233c63277720d6f9c8cbb4c974"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15252,
+          "rgbaSHA256": "139e5b9b390f30cd4d1dbde2a49674e3058e5fb8e9d1f1d50d964bbbcdd513ce"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S16-ENV02",
+      "name": "閲覧室の羽ペン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9169,
+          "rgbaSHA256": "1720db2422c015ac450edf58243033f2e6b0344d954679b28bf19f80d9d1ace9"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9256,
+          "rgbaSHA256": "c7e6e239a170c4ac28be47a56023937dbee51e4a60062cd416a432c533a80a05"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9170,
+          "rgbaSHA256": "18bc9d7b31de5d650625e0b8b5bd6c9483a866e985c7d70f1be19152296af0e8"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8925,
+          "rgbaSHA256": "2178e930204d5f7ed67226c5b5acc3075a008ab84a80598e45eced594eb39d98"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8829,
+          "rgbaSHA256": "342a4b82cc5c571155b3737ba7a2800c06b944af884c17404390fbd3883ac7b5"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9359,
+          "rgbaSHA256": "be4ccd4abb6769983a70972d9be59737594b761b69e2d1fb0d824e08aea861af"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9392,
+          "rgbaSHA256": "f595f8f2c966aaf387d87424fbca2923a30e69c3b57bb69ffb7da6646838751d"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9009,
+          "rgbaSHA256": "1e65b7d71c0fa31d3861b8e301a367e15b5c46dc6cb977d5d793104fc301689e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S16-ENV03",
+      "name": "博物館の花リボン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15462,
+          "rgbaSHA256": "013ce25f733925712176917419cc790812ed409d44cfefdcf984a338d85e62a1"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 14877,
+          "rgbaSHA256": "fd7c711a7c742b04ad4c9dd8d4f83ccf96fc48571230b274eb3aa21bb2b565a5"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15181,
+          "rgbaSHA256": "a3905d4417ec5213e5e3d4536f047e6cec234c64bcbc2a1218cbcd285167d3fb"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15007,
+          "rgbaSHA256": "bb84394c50e150477af2e00480a685299d7b98f778fa840c2f10597142741824"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14180,
+          "rgbaSHA256": "9eb5b533b7e0c563f8547efc5412bf3587476f5675bb5fb59667bb6d3e4235ad"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 14656,
+          "rgbaSHA256": "7ca6fb8e6e1d377b0f0394c3cc183b84d5b07d55f300d41279e75d6809773aba"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14286,
+          "rgbaSHA256": "005402f30575b682b39cc04a039f526b67090224c549b279cdb481be00517de6"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15494,
+          "rgbaSHA256": "cd0019e1b4df237af4d356ac6cf872997706b91c14247bf0b9b31ee635a30ce6"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S16-ENV04",
+      "name": "カフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6099,
+          "rgbaSHA256": "47ebdbf98705da8acc5a737b4969296ed0cb75752eca6197193357418b1ca7a3"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5790,
+          "rgbaSHA256": "cd4fb1fede35dce6d316ed9b712d3116895c395748d3a71482d98ddaf1b2c07c"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5658,
+          "rgbaSHA256": "aa4eca70fecad73b479fdc56f837a9aad79eec807ed82f2c4f22a068cb3749da"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5950,
+          "rgbaSHA256": "9a9d2f17f747bc038a60864ffbdae6ef5d822ab848fb6f6c0c7aa944cb21631d"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5487,
+          "rgbaSHA256": "2de8b93dc6097c1237e62c481d7150d9678b78317487b73359e9763ad87f0de9"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5704,
+          "rgbaSHA256": "bac053719cef9e1a46fb429c772c17020578a9ac09e652e681aff126764f8f03"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5323,
+          "rgbaSHA256": "b9ec31fd8ca0ac1c7f23d6d17fd8b6d0392ce1bf0e273622b1bfd085ccb6eb0d"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5817,
+          "rgbaSHA256": "ca1510871ef50b6d5e3ceffa0285d6e8542bc853fd00cb7762c83e74c3d1600c"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

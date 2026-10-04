@@ -1,0 +1,355 @@
+{
+  "id": "A0772",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "fece39a8ac399a404f619fe30866d9c66c1e963071b573d633f2f872e6689cd3",
+  "alphaZeroFraction": 0.45859,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      898,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S18-ENV01",
+      "name": "砂漠の布飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7864,
+          "rgbaSHA256": "9cbdc6340fc3671bdfaef34f7d648bcdd052a44495f0fcbce7fde0dd68f68ab7"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8937,
+          "rgbaSHA256": "092d368ea6511f9d4a216f39189ec074581d2f1642a2af15eb63280a42702d44"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7441,
+          "rgbaSHA256": "6109c977b239c199034d2aa68ab77557e92f72fb7e2aae9176f65a7f611748aa"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 233,
+          "h": 222,
+          "visiblePixels": 8477,
+          "rgbaSHA256": "74d2d60801fba9c99bb09804c7311dd33a1cef612e5f348c5bd4fadc38ed231a"
+        },
+        {
+          "x": 898,
+          "y": 0,
+          "w": 211,
+          "h": 222,
+          "visiblePixels": 7476,
+          "rgbaSHA256": "f8978305ac343c36751c3015c8effd4534822c5b638acf2454cd4a22ae7540f0"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8068,
+          "rgbaSHA256": "45a5ad1fc06ea6afc367c78d55ee849e750a5d9e7a94f1dd0c20d26071a889e5"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8111,
+          "rgbaSHA256": "15eaca6520916b841765574e563df0c7d51b916c278171422d28a15e42a2de81"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7846,
+          "rgbaSHA256": "e509f33323d63db72fdb46106eeb834e78324197bdef2303f01998b02cfb3964"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S18-ENV02",
+      "name": "絨毯屋の房",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9277,
+          "rgbaSHA256": "ad90eb42508d2264d967619da5f53ed96a008d9ef42305b58172fe01541af2b9"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9393,
+          "rgbaSHA256": "93e6bc5cbcd310cd476ad60b9a7d08802b70e760348f6bdd3673623c678d0a0a"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9371,
+          "rgbaSHA256": "7578a5ddee8a57991aa4ba450c6c55c783cc2849f0bd465103d3c8faa05c5ea1"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9655,
+          "rgbaSHA256": "33a915a756af05ea43aa1b5221de0f22ed944630bb5bebecf71a153670443bd9"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9261,
+          "rgbaSHA256": "e7b047627410952c225dbe50286a98facc1f43d7a14474cd306a4a9c3d656af6"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9091,
+          "rgbaSHA256": "c8fbe8fac14bc772982add3465236a440396ec7b2dc9b58672aefb5e04e5e98e"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9347,
+          "rgbaSHA256": "760dd80afeaa08b5a1a6b84c5735bd53460729b728b7afa0a8682b966c7c0e59"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9162,
+          "rgbaSHA256": "b71164d0189ded4054243752395efb3f5054fc57925d6eff93d2945a57b0b5f6"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S18-ENV03",
+      "name": "香辛料店の香り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4469,
+          "rgbaSHA256": "9010a8796b9955af5c5430061cd1a666231c9cb76294b5a641548f46e37596c8"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8394,
+          "rgbaSHA256": "5a4c860b22c3441f7f847b5bb8e26906bac51dd6bcbcf85fe0d31d0729780f79"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12152,
+          "rgbaSHA256": "9b714f2730a1ac27861ddae61a06faaa1935e75976a46809f9484a7353d86622"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13201,
+          "rgbaSHA256": "84e90bbc034b8fc571537711c8fbdf9a086ea4df023e4dc45227b2793fc0664d"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11261,
+          "rgbaSHA256": "b9f6a20c096902ea4e4404efc2478a82ca7980697de8bd8d3c0feb2e94e179f4"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10089,
+          "rgbaSHA256": "ffa7076d4964c2768a5cb645be82bb0875b8ce3f6605fbc9d52bb44c28735dc8"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6310,
+          "rgbaSHA256": "832e8b4bf74bd75b2096acce0720154f1c368b521ba6665c7c1d827d7069aa04"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4082,
+          "rgbaSHA256": "bca3df79c03a831d2413779244f2aca42b5e1fa9b9c5cd118af91d9164586b83"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S18-ENV04",
+      "name": "茶屋の湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4020,
+          "rgbaSHA256": "4ef9975a3ab44b12bfaecf60f91571eea52e5b8668b6904f05ea72f502f03327"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5586,
+          "rgbaSHA256": "f03427aab09a37c805aef25f9cc6155cf43e47daca5a49d6267630ad455f01bb"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6575,
+          "rgbaSHA256": "4809ae8574d93be2b02866b95f411ec9941586ae664b33723da1508cb3762410"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6395,
+          "rgbaSHA256": "f786fc0bdbe9a8555ae99d8fd398bab4463f8f1e7fd0201b7b9df43486417f97"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6856,
+          "rgbaSHA256": "5a794632a83e6fc137247f82968ac9aab73d0188580258ea70db55675654c39c"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6034,
+          "rgbaSHA256": "d4f75a00c9fbca8b536178c4f9923b9cd7ae8859b661d0deb6d93b487e1e49e9"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5295,
+          "rgbaSHA256": "2b7b71318ea10fe9c4977da4431e31df20038e628b303ffdf110ba7b33e2f621"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3726,
+          "rgbaSHA256": "1af133cbdf26fac55cbb3a62a2831303a1b112ba987f9db5c939f7253120f059"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

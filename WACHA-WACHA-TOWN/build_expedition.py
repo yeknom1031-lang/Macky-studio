@@ -16,6 +16,7 @@ from world_layout import layout
 from sprite_layout import clean_bounds, person_boundaries, character_columns
 from legacy_roles import role as legacy_role
 from quality_backgrounds import scene_assets
+from animation_assets import integrate as integrate_animations
 
 ROOT=Path(__file__).resolve().parent
 PROD=ROOT/'assets/production'
@@ -29,9 +30,21 @@ def write_atomic(path,text):
 
 def asset(key,im,quality=92):
     import io
+    dest=OUT/'images'/f'{key}.js'
+    cache_dir=ROOT/'.cache/asset-encodings';cache_dir.mkdir(parents=True,exist_ok=True)
+    cache_file=cache_dir/f'{key}.json'
+    signature=hashlib.sha256(im.mode.encode()+str(im.size).encode()+str(quality).encode()+b'webp-method4'+im.tobytes()).hexdigest()
+    if cache_file.exists() and dest.exists():
+        try:
+            previous=json.loads(cache_file.read_text())
+            if previous['pixels']==signature and previous['output']==hashlib.sha256(dest.read_bytes()).hexdigest():
+                return key
+        except (ValueError,KeyError):
+            pass
     f=io.BytesIO();im.save(f,'WEBP',quality=quality,method=4)
     data='data:image/webp;base64,'+base64.b64encode(f.getvalue()).decode()
-    write_atomic(OUT/'images'/f'{key}.js','Wacha24Images['+json.dumps(key)+']='+json.dumps(data)+';')
+    write_atomic(dest,'Wacha24Images['+json.dumps(key)+']='+json.dumps(data)+';')
+    write_atomic(cache_file,json.dumps(dict(pixels=signature,output=hashlib.sha256(dest.read_bytes()).hexdigest())))
     return key
 
 def boundaries(alpha,n,axis):
@@ -171,8 +184,10 @@ def build(release=False):
         stages.append(dict(id=i,key=key,name=src['name'],area=src['area'],population=src['pop'],width=w,height=h,background=background,setImage=f'{key}-set',navigation=navigation,fixtures=fixtures,sites=sites,waterPoints=water,water=[water[0][0]/w,water[0][1]/h] if water else None,events=src['events'].split('|'),environment=src['env'].split('|'),vehicles=src['vehicles'].split('|'),ready=complete,castAvailable=len(cast)))
         stages[-1].update(spatial_metadata)
         stages[-1].update(scenery)
+    animation_status=integrate_animations(characters,stages,asset,strict=release)
     quality_count=sum(bool(s.get('openBuildings'))+len(s.get('backgroundTiles',[])) for s in stages)
-    data=dict(version=2,releaseVersion='2.1',characters=characters,stages=stages,roles=manifest['roles'],animalCatalog=animal_plan['animals'],sourceMetadata=source_meta,status=dict(generated=len(jobs_by_id),planned=len(manifest['jobs']),qualityGenerated=quality_count,qualityPlanned=76,totalGenerated=len(jobs_by_id)+quality_count,missing=missing,errors=errors))
+    data=dict(version=2,releaseVersion='2.2',characters=characters,stages=stages,roles=manifest['roles'],animalCatalog=animal_plan['animals'],sourceMetadata=source_meta,status=dict(generated=len(jobs_by_id),planned=len(manifest['jobs']),qualityGenerated=quality_count,qualityPlanned=76,totalGenerated=len(jobs_by_id)+quality_count,missing=missing,errors=errors))
+    data['animationExpansion']={k:v for k,v in animation_status.items() if k!='sheets'}
     write_atomic(OUT/'data.js','window.WACHA24_DATA='+json.dumps(data,ensure_ascii=False,separators=(',',':'))+';')
     cache_path.write_text(json.dumps(cache,separators=(',',':')))
     (PROD/'build-report.json').write_text(json.dumps(data['status']|dict(characters=len(characters),playableStages=[s['key'] for s in stages if s['ready']]),ensure_ascii=False,indent=2))

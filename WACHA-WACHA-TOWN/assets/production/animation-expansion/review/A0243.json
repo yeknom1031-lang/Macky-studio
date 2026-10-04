@@ -1,0 +1,29 @@
+{
+  "id": "A0243",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:34:30.042223+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    2,
+    3
+  ],
+  "notes": [
+    "原画とpack全コマ確認。0・1行は左歩行参照にない釣り竿を追加するため不採用。2・3行は背面4コマの人物とバッグを採用、階段8コマは望遠鏡が追加されるため除外。"
+  ],
+  "packReport": "review/A0243-pack.json",
+  "preview": "review/A0243-check.jpg",
+  "disabledClipsByRow": {
+    "2": [
+      "stairUp",
+      "stairDown"
+    ],
+    "3": [
+      "stairUp",
+      "stairDown"
+    ]
+  },
+  "clipFramesByRow": {}
+}

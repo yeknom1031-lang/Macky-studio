@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: every shipped recording has exact file integrity and a credited source
+ok 1 - every shipped recording has exact file integrity and a credited source
+  ---
+  duration_ms: 37.459417
+  type: 'test'
+  ...
+# Subtest: each source records verified redistribution license, author, origin and evidence
+ok 2 - each source records verified redistribution license, author, origin and evidence
+  ---
+  duration_ms: 136.263375
+  type: 'test'
+  ...
+# Subtest: all 24 stages have available music, real crowd ambience and valid environment tracks
+ok 3 - all 24 stages have available music, real crowd ambience and valid environment tracks
+  ---
+  duration_ms: 3.51125
+  type: 'test'
+  ...
+# Subtest: the moving controller is selected even when an earlier controller is idle
+ok 4 - the moving controller is selected even when an earlier controller is idle
+  ---
+  duration_ms: 1.336792
+  type: 'test'
+  ...
+# Subtest: stick drift does not take over and diagonals have bounded speed
+ok 5 - stick drift does not take over and diagonals have bounded speed
+  ---
+  duration_ms: 0.259583
+  type: 'test'
+  ...
+# Subtest: D-pad movement and remapped action work without stick axes
+ok 6 - D-pad movement and remapped action work without stick axes
+  ---
+  duration_ms: 0.162666
+  type: 'test'
+  ...
+# Subtest: a nonstandard directional hat works but neutral zero or values above one do not move
+ok 7 - a nonstandard directional hat works but neutral zero or values above one do not move
+  ---
+  duration_ms: 0.239833
+  type: 'test'
+  ...
+# Subtest: disconnect and sparse Gamepad arrays produce neutral input
+ok 8 - disconnect and sparse Gamepad arrays produce neutral input
+  ---
+  duration_ms: 0.162041
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 279.906916

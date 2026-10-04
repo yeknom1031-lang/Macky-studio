@@ -1,0 +1,18 @@
+{
+  "id": "A0605",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:24:53.089534+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    3
+  ],
+  "notes": [
+    "4×8と全4人の顔/服/頭身を保持。row4のカメラを構える→撮影→下げるループは一貫。",
+    "row1櫂、row2網は8コマ目に消える。row3誘導棒は6コマ目に消えるためこれら3行は不採用。"
+  ],
+  "packReport": "review/A0605-pack.json",
+  "preview": "review/A0605-check.jpg"
+}

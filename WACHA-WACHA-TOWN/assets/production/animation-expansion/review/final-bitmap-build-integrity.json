@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-04T20:56:37.948107+00:00",
+  "passed": true,
+  "codeAndDataUnchanged": true,
+  "runtimeHashes": {
+    "data.js": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+    "expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9"
+  },
+  "changedImages": [
+    "animation-A0028.js",
+    "animation-A0320.js",
+    "animation-A0322.js",
+    "animation-A0323.js",
+    "animation-A0392.js",
+    "animation-A0422.js",
+    "animation-A0457.js",
+    "animation-A0464.js",
+    "animation-A0494.js",
+    "animation-A0495.js",
+    "animation-A0549.js",
+    "animation-A0567.js",
+    "animation-A0568.js"
+  ],
+  "changedStages": [
+    "S02",
+    "S13",
+    "S16",
+    "S17",
+    "S19",
+    "S20",
+    "S22",
+    "S23"
+  ],
+  "previousImageFingerprint": "fdb52e4204cc0a306cd119820fdea94bfa4080de3e60ab4cb893ad02aaf2d4fd",
+  "imageFingerprint": "16b8f4ef00d4a3ec5a564fc4f1ce960fefb1a5085451e451e6a1e0d690fb7d18",
+  "imageFileCount": 1353
+}

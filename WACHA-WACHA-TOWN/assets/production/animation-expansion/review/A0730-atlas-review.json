@@ -1,0 +1,355 @@
+{
+  "id": "A0730",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "3988c79cff183dff60bf1f479476737bfabb910d2be6d2f9280be7e3f7f9c019",
+  "alphaZeroFraction": 0.59114,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S04-ENV01",
+      "name": "キャンディ風鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8707,
+          "rgbaSHA256": "79f3c5b51785466f5af6638309af454a94ac6aa4ee446e4611181ca80dfa314e"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8788,
+          "rgbaSHA256": "1452597f8cb133be4e1ebf56adce6eb8fff35e64ef976eb3c34c2fbf834c2c53"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8745,
+          "rgbaSHA256": "e92e28e07dd7e17b839be4c8a3ec30c6275b351fcdef55359015d8d7ab16299f"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8778,
+          "rgbaSHA256": "75a8c8e871471e08c7fa17e23cbc60577317d92601f45e43882e307ee45c83b0"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8729,
+          "rgbaSHA256": "821517ba43cc0e0bde9e188a98372cfdfdaa599052fe9a4fd2f5c661992f7507"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8859,
+          "rgbaSHA256": "fb6a6106e213395a945c5d37c03b84f2e8b5ffad0a11e1565cd2e2d246257b3b"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8805,
+          "rgbaSHA256": "95703381dd9c60b9abfa03c00fb56e1c3d53456bb8e3d06be91d5cda75d4648f"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8578,
+          "rgbaSHA256": "cb8606ecc7aaca09518d4a5524b86bf09a02ccac1bbe26887457bfa730d35f7f"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S04-ENV02",
+      "name": "ショコラ屋のリボン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 15128,
+          "rgbaSHA256": "11548eac6fd2ed4ec2911fb8a3e07964bde2d1648835e26ca6040ea6ada8d3e5"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 15395,
+          "rgbaSHA256": "9a4bef3d3109fadcf2012f2852323edb207d9f291629f2bfbf3bc708578f026d"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16408,
+          "rgbaSHA256": "38e06ba98014f43679121adc1cf61bc34459d9e941d1177983abb0fde89f3f93"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16463,
+          "rgbaSHA256": "57ca507785b84b18ef19a867831f656985527fc2ddd71b3cf8ca808a4a493ef6"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16124,
+          "rgbaSHA256": "8db952a4f8345a1a816ffe1c1e713981c8fa10954937285d156d7bdd0537daa2"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 16500,
+          "rgbaSHA256": "9e6fbfca1b1b3fcdc1ddbc5727aec94214db5ea13f9c0b4d9695edf5961e1776"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 15795,
+          "rgbaSHA256": "5c7749b9a7dbfd622b555e91991369cfe43547bba889d1bf50bf238d9ca177f3"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 15051,
+          "rgbaSHA256": "2711157241300f5883865bea5e481dbca507051bbc210ca55ef4c8daa6619bef"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S04-ENV03",
+      "name": "ケーキ屋の回転飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13341,
+          "rgbaSHA256": "0e8bc1853de8e523e9195d3c7d88d1fa6b2de6d958cbce6d2cb3d31c16c608f5"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 13792,
+          "rgbaSHA256": "ead34607fc1c023aa72417d4d2db49afea83df407ad119e556abd8504c48f204"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13557,
+          "rgbaSHA256": "5ff1e56e940333ebf6c2cc755a69727f3b33f40aafd8d935d54013919984051d"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13854,
+          "rgbaSHA256": "e3b203a66462064595b21d9943afb18cb6a3af33b2ac4dda3c8ff686d9c6f9dc"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13922,
+          "rgbaSHA256": "4771838fe2e6c7fc35b96d6b61fd300a5ebf2d0c72c83a357f087946ce8e615c"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 13271,
+          "rgbaSHA256": "161b9051a94e4b66b84b4770647a408f2e352b1075031f8fc127d84184793a9d"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13760,
+          "rgbaSHA256": "b44c785877934581266c7f76e23b4726e7570000572013151efb5c2d846ea3c8"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13841,
+          "rgbaSHA256": "120afa106e636972b0e8ae6a52c6c5397ba58ba9f43a5507a60185633bae0070"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S04-ENV04",
+      "name": "焼き菓子の香り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6883,
+          "rgbaSHA256": "4a4afeb1f6f63c79f7b908260207ab66248d29aa883e1be6dbfc1c0f1e28f847"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6816,
+          "rgbaSHA256": "fb2f6d01a5c76bf7251b0ce4b1950d0111905b6ff1f8ef8237538ad82c12a085"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6598,
+          "rgbaSHA256": "be77e2270fbdf207d7c9d8e366644ca78655453ac5827fa435804dbc914eada3"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6667,
+          "rgbaSHA256": "c29baa80133e23af2f8b3ef9cb7c357f5e2ae88da55065ddcf695fbf0da8559e"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6716,
+          "rgbaSHA256": "383a378f265243f6305190950d60fc4597bbb495a11482f36b5610cfa8f2c822"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6468,
+          "rgbaSHA256": "1b4bd7ec3c71d71f1d9c0018923c057c2735da08de7a708daef854f0e48a40b9"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6620,
+          "rgbaSHA256": "e0cd205719f707717812ceb1bba9537b86d6d8e890a3a7b74b0a3f5aec4847ff"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5339,
+          "rgbaSHA256": "dea1fd0245d600d107c2059b4177d6021cbe7354c54c49655a8a91d61ec860c9"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

@@ -1,0 +1,355 @@
+{
+  "id": "A0774",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "aea7b3b5ee105d4df95e97def4d4e00f31eb79c451063fc1c4d7c71e68d86ac4",
+  "alphaZeroFraction": 0.64332,
+  "rowBoundaries": [
+    0,
+    222,
+    423,
+    651,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S18-ENV09",
+      "name": "椰子の葉先",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13468,
+          "rgbaSHA256": "5669c883840343064f490efcdaead3f8bc95e91af98605c40e3f87c9465189cf"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 13963,
+          "rgbaSHA256": "11ddddaf563103b1845ca8b72dae29a1cc266fa9af70050a36431b431a522d46"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14216,
+          "rgbaSHA256": "df9bebc79da15ac417a85c7be09493ba32ff43ee54c50642d450fffde6a818e4"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14379,
+          "rgbaSHA256": "4a7e91a3cbac414c52732e90ed662bb88dc93434e311396819420686d0d67fd7"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13325,
+          "rgbaSHA256": "ace31b7a12f2b3f31e6161cfc46fccaae055df642ddbed250f25d3cf658b500d"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12933,
+          "rgbaSHA256": "1522e23aa1a310b5f01f9bbaf60f7044b9f35d91765a3c0ffabec5488cb81b9e"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12674,
+          "rgbaSHA256": "875833f4f2a87b15dccba0d70fef48d32bc0c36a27bdc5d6fea778fc3009c4be"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12758,
+          "rgbaSHA256": "48b1f1211dd8135a3b40e30785e8c0213461fe725153c634cc9028db3c16a4ea"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S18-ENV10",
+      "name": "天幕の小旗",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 201,
+          "visiblePixels": 13758,
+          "rgbaSHA256": "76b3456966d806e59002d4287672a4b3607da331a3525f84fac53b83bd8df250"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 201,
+          "visiblePixels": 14042,
+          "rgbaSHA256": "3a0eabfaaa5beacd37134d52851841c2873a98b99eb176c850b78966390942cb"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 201,
+          "visiblePixels": 12884,
+          "rgbaSHA256": "9723beefff5e258c8f15778a9e6aeea4f83d557a8a518480b8176a01d8d51bb8"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 201,
+          "visiblePixels": 12717,
+          "rgbaSHA256": "bea5df14ae441f20e412e1c23070d4096f8453e4ef33fca4944d23e1ce03a164"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 201,
+          "visiblePixels": 12653,
+          "rgbaSHA256": "4c045d7eddb1f4071d25bece1baadaa273c946933b21d1b0662c6924550f257b"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 201,
+          "visiblePixels": 13262,
+          "rgbaSHA256": "d98d4eab62261f7756aff436ee3fcc139850f43df4915519ed77db98ef6cca92"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 201,
+          "visiblePixels": 13759,
+          "rgbaSHA256": "cc2293129a9e31354d819fc414d87ae1bf43304fb8805f221af7d0029bcd3451"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 201,
+          "visiblePixels": 14242,
+          "rgbaSHA256": "da0dfe58d7b93176214d62a55d6b19d95a88b2956914e8d38d8578499493ee9e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S18-ENV11",
+      "name": "市場の銅風鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 423,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 10369,
+          "rgbaSHA256": "b96014ed59e4e7194050113a3ae913fc199e3c39eff39495ee046c1e64649e08"
+        },
+        {
+          "x": 222,
+          "y": 423,
+          "w": 221,
+          "h": 228,
+          "visiblePixels": 10349,
+          "rgbaSHA256": "862dffddba9c5ef4ebd442779187e587600713e5fea5a40e95bebf336d7712de"
+        },
+        {
+          "x": 443,
+          "y": 423,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 10539,
+          "rgbaSHA256": "eb245188f42e3c25a3300dc6f869c47c286f152ebb875354805c857870a28668"
+        },
+        {
+          "x": 665,
+          "y": 423,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 10174,
+          "rgbaSHA256": "1f8fcbba280637d6b0d56922266917a2aff6a714fd5e405434017700332889d0"
+        },
+        {
+          "x": 887,
+          "y": 423,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 9787,
+          "rgbaSHA256": "8d6e0eb83c4fca7dee01b8cc956489776fed9c63ae8bc2930387325960623e28"
+        },
+        {
+          "x": 1109,
+          "y": 423,
+          "w": 221,
+          "h": 228,
+          "visiblePixels": 10546,
+          "rgbaSHA256": "f2abe0905b213f5481ca9570225aece04f38afb5ff4e443d16d802e4a0b578e1"
+        },
+        {
+          "x": 1330,
+          "y": 423,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 9450,
+          "rgbaSHA256": "f473f11e3a5ed32653a4a3ab4b30bf42682339f31f1ed00fc1f9fd8b388405c1"
+        },
+        {
+          "x": 1552,
+          "y": 423,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 10292,
+          "rgbaSHA256": "63c2a35afe99bbb62f9fbbc2bb0aa199c7563ba7f5b556f35638d504475619c0"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S18-ENV12",
+      "name": "香炉の細い煙",
+      "frames": [
+        {
+          "x": 0,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 7532,
+          "rgbaSHA256": "0e405094929b3507c9726ce6869b371ff2ec23432b34c8a9ded5138996aee66d"
+        },
+        {
+          "x": 222,
+          "y": 651,
+          "w": 221,
+          "h": 236,
+          "visiblePixels": 7290,
+          "rgbaSHA256": "5a43faffbda27d6b4bbf2fd14585059aa3c252fb1e53f29812e173a04840d14a"
+        },
+        {
+          "x": 443,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 7828,
+          "rgbaSHA256": "5a11771f58b3fefadba537d9f98ab159a34e6d04ed5e39cdc20d3802b3e57723"
+        },
+        {
+          "x": 665,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 8276,
+          "rgbaSHA256": "c06b26cb1ae08acd268c2dda469eb92361b4b7a2972a73e413726c8bbc29fd10"
+        },
+        {
+          "x": 887,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 8069,
+          "rgbaSHA256": "df4cf75d8bc48a273268df32d54869c21c91921926cca0d8575588091c9b0c5f"
+        },
+        {
+          "x": 1109,
+          "y": 651,
+          "w": 221,
+          "h": 236,
+          "visiblePixels": 7015,
+          "rgbaSHA256": "e2b71d3951a8726b8b22d3b422de2c9f2845eeb6ff539863868289cf359f2652"
+        },
+        {
+          "x": 1330,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 6255,
+          "rgbaSHA256": "da6aa6edbfcaae6e489b198e663d8bf0e539ee07c4b09dfe70b3b6655f1800d2"
+        },
+        {
+          "x": 1552,
+          "y": 651,
+          "w": 222,
+          "h": 236,
+          "visiblePixels": 7091,
+          "rgbaSHA256": "3d28fc871c321dd20b0419159872efbc5d564d0634b8cf501d70dcf39e71acb6"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

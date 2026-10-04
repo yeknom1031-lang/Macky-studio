@@ -1,0 +1,355 @@
+{
+  "id": "A0788",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "3565b8d02386b02965efebafae0f9417a4b7faafa10fc12ba0c2e6d365ea740e",
+  "alphaZeroFraction": 0.61948,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S23-ENV05",
+      "name": "公園噴水の飛沫",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1846,
+          "rgbaSHA256": "bfffff3f6be4bb41b6bf90de06490bfe418f306470cf825f1deae6e02166a9c0"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2980,
+          "rgbaSHA256": "662a2bb3cbe074500fb2e422cfdcc406ad66f2aa6dc0be917e002ec38f7c650d"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4412,
+          "rgbaSHA256": "2285d6b904de6233195309a4bc29d8862d5de84b1e73feb0ad7417979f95dafd"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5856,
+          "rgbaSHA256": "d8f025c5bb761401da540968dbd2f13c4cb59b32007b00d196b4fd414fe06d77"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5070,
+          "rgbaSHA256": "3ab23a808b2499608932e27b5894b84b15972cf06913cdff04233d508cd3736b"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3588,
+          "rgbaSHA256": "4d546a214ded3eb0b6979a315322371ff6070cafa6f00b4b33ac84fb9bc5c732"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2536,
+          "rgbaSHA256": "76b56c93c872cc85a9209970e9cb77df3f89366eeba9ab78cf581d4a46bc7f57"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1589,
+          "rgbaSHA256": "c355a687f22f2daf1807f980f341941042a4eaf1eb54d9a70b72bed3b8d085f1"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S23-ENV06",
+      "name": "駅舎の排気蒸気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 3986,
+          "rgbaSHA256": "f8d4c31fcbf2e7d53dad403fd94336a233f78fce693756e8d11882fdb201645d"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5975,
+          "rgbaSHA256": "c06bff135e072ccf1d7a1ab4cfc3e9e447564db7f2e65302ce33996a5cbfd5ad"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7554,
+          "rgbaSHA256": "e008833edbf560cf8ac28707d9bd6041ec7a52c8c951414501d8302c725c65b4"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8117,
+          "rgbaSHA256": "ade012d397b9c82e4b80f676a8bd049b67116b8b5d33126d526dabd73b73be1b"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8190,
+          "rgbaSHA256": "c6b8637828f8f36e0aa41e6264bccf6eb8477c8d0afd54fa823d3a3365be2940"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 6116,
+          "rgbaSHA256": "743f89af3ab30bc6dc3709d296b7a9b9490b82b75a395e7948522ebaed62550a"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5130,
+          "rgbaSHA256": "3c891d913f996606e5756fc759ed2ad7efc894d7a934ff1a5b3bd02ee3d8b446"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 3635,
+          "rgbaSHA256": "657c2d9ebd911d758c522b1fd840455244ab4d234941b0160bc4b2f392111c50"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S23-ENV07",
+      "name": "暮れの水面光",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3894,
+          "rgbaSHA256": "daae6ddef0bab7adb5d5c48bb79b74df55be36a5a670c13065d5ae2c31ff8bbc"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5436,
+          "rgbaSHA256": "05dfb0dde62341e370f74d6907b25292d3b65a271fcc674de83ebe85aaf1d658"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5893,
+          "rgbaSHA256": "b61a13e9c2d9630960a334bb95b1e610219b90bb529baf6fcd2174168aa7f097"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6103,
+          "rgbaSHA256": "d2112663473bf6ee5d29c111f65a99062a6c7e83d6d9af01a4dea0e8f7249457"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6412,
+          "rgbaSHA256": "6cfb096b7f3eb348b707733bd7e2cdfe04600b5c874d3565dad030d5520bdf44"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6152,
+          "rgbaSHA256": "580ae3c94167369e103a47c7affff7d3f7d569e734b065cc3646f3f34cc74da9"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4943,
+          "rgbaSHA256": "0aea84cc9aaccb913fb98474c78bbb9f9c69ff59771c1a4249a562c299e47a06"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3840,
+          "rgbaSHA256": "50bb56194ab1dc2f07d97e3f621e28d25365429c3cf53efcf53b66c0ff7c30bf"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S23-ENV08",
+      "name": "カフェテラスの泡",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6860,
+          "rgbaSHA256": "df97fbfa4ef79dcc1827d3cbe20169962b5c82f4f9846cbe6750e4981fef7d10"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6459,
+          "rgbaSHA256": "5475ae8add2ecd1d587849626086640d38421bc2f947ba2b5d7122e987d1a116"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6259,
+          "rgbaSHA256": "d71dc2fd3bc80be4aa63d4aa60f9c84bfabdeac3585dafc8590614a39f61eac0"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5910,
+          "rgbaSHA256": "9a970112c8581a34f8887e56db6013a07b8004fba87a2c05b2452f01d18fe75d"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5681,
+          "rgbaSHA256": "2311447db04f7fd71a958735ff5a77ab80b5b20ec524b328d7af73abee0b8ede"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5523,
+          "rgbaSHA256": "40525ebfe794a25e2af8c5d216d80cd6a91f37b7871a325e898304ff3b8bc7f7"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4406,
+          "rgbaSHA256": "7af17ff29e84b6e07e0b8af624abb1dd7104929795e7639d19db282918238045"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6442,
+          "rgbaSHA256": "ef03034b530a729a07f90f79c89151f2cc929fea719aaedf1712c51de8d6b6db"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "A0286",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T19:07:09.625155+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "1行目は仕事参照の腰道具が追加され、下りも束が犬型風船へ変わるため不採用。2行目は束を全方向維持。3行目はバッグ左右入替の背面と犬型に変わる下りを除外し上りのみ採用。4行目は犬型へ変わる下りを除外。原画とcomponents packを確認、残りは既存ループ保持。"
+  ],
+  "packReport": "review/A0286-pack.json",
+  "preview": "review/A0286-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "stairDown"
+    ],
+    "2": [
+      "walkBack",
+      "stairDown"
+    ],
+    "3": [
+      "stairDown"
+    ]
+  },
+  "clipFramesByRow": {}
+}

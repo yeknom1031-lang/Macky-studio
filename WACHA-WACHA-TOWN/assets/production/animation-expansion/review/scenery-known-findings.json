@@ -1,0 +1,745 @@
+{
+  "priorRuntimeHashes": {
+    "data.js": "0c7fdb4c9f42702afb31cd5b6b8b61e27f120b4bb3332126feeedbeaa027fc5f",
+    "expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9"
+  },
+  "findings": [
+    {
+      "stage": "S08",
+      "state": "resolved",
+      "finding": "Residents on river rocks at reference (350,810)/(900,800) without a visible walk connection.",
+      "before": {
+        "path": "assets/production/animation-expansion/review/before-navigation-S08-overview.png",
+        "sha256": "fbf5e69e9d0f9cd91471b2599e3087e550ca9d5f430e904df6b4244e350c16e6"
+      },
+      "resolvedInDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "review": "The original issue is clear in the intermediate overview/detail; newly discovered surfaces in the same stage are listed separately.",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "finalReview": "River rocks and open water are clear of pedestrians; bath-side benches and dry paths retain activity.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S08-runtime-overview.png",
+          "sha256": "c6f36e8d07e044ccb2e8834142da422744158c394c8ac5a795e8e5d92669ef79"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S08-runtime-detail.png",
+          "sha256": "1c50fad16600d6e942a8d2e34d25d352a7e7371f9375b95753087d9236612ae4"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S08-runtime-corner.png",
+          "sha256": "104b04a93f0d442867844bfe01abfa44bac8b7308935e03598475cdf8917cfda"
+        }
+      },
+      "validatedImageFingerprint": "e64fd0f91c4088131f29289026cda6b7950cb879d746a324d93b21c6d571c962"
+    },
+    {
+      "stage": "S10",
+      "state": "resolved",
+      "finding": "Groups apparently standing in port water near reference (1400,810)/(1000,840).",
+      "before": {
+        "path": "assets/production/animation-expansion/review/before-navigation-S10-overview.png",
+        "sha256": "329326be758b88c1d694da7fd7bb7e8dc5ee6ec4b63c9780966ba3488ae97ec7"
+      },
+      "resolvedInDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "review": "The original issue is clear in the intermediate overview/detail; newly discovered surfaces in the same stage are listed separately.",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "finalReview": "Inner dock workers use the dry western floor; outer sea and vertical quay faces are clear of pedestrians.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S10-runtime-overview.png",
+          "sha256": "e7b478e4d7e8531a307a4e78bfc8d257ac6a207c18a07f71911578322ff23630"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S10-runtime-detail.png",
+          "sha256": "70fc6ee1f38060030cdea784ea0112769a7acff052d50fa559e908b6a87c7f56"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S10-runtime-corner.png",
+          "sha256": "a90a81b783747ad8eddb1927c7d514414917171eeda86fe98fc083f29796af3a"
+        }
+      },
+      "validatedImageFingerprint": "74d6cc00584ed7351cd64b30a78e267de369081d861b53a305e770fae460add1"
+    },
+    {
+      "stage": "S21",
+      "state": "resolved",
+      "finding": "Groups beyond the visible floating island on surrounding clouds.",
+      "before": {
+        "path": "assets/production/animation-expansion/review/before-navigation-S21-overview.png",
+        "sha256": "4b9f3335f22f18014091f9e788cfde5332878380649f3855a1ed9cd953a44b17"
+      },
+      "resolvedInDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "review": "The original issue is clear in the intermediate overview/detail; newly discovered surfaces in the same stage are listed separately.",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "finalReview": "Outer clouds, the north-east internal air gap and the central upper roof face are clear; the island floors and bridges retain residents.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S21-runtime-overview.png",
+          "sha256": "800dcd544030b05626ea0211938714be2327c8f56df1c00fc7d6768be149cb2c"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S21-runtime-detail.png",
+          "sha256": "937018c91f7223fc14cbf59e9ab1449d8b1e93d29fdafe9c20c24c92c3cf9ffb"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S21-runtime-corner.png",
+          "sha256": "2fb3c07a8b6dbbd11fd08617f9857bb697b0a13374a53bf4d81c579d8d9da130"
+        }
+      },
+      "validatedImageFingerprint": "30e1ae0b36309ea6113befd33ea3589a9f8ff7bf0c2a0ed66b00df996da5b538"
+    },
+    {
+      "stage": "S23",
+      "state": "resolved",
+      "finding": "Many residents in cloud area at reference x0–450,y780–930.",
+      "before": {
+        "path": "assets/production/animation-expansion/review/before-navigation-S23-overview.png",
+        "sha256": "4a6c790b7a1a00294e8707cc0056dfb354ef64c8379937ed3496f5fa27a24d90"
+      },
+      "resolvedInDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "review": "The original issue is clear in the intermediate overview/detail; newly discovered surfaces in the same stage are listed separately.",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "finalReview": "Outer clouds and cliff faces are clear; actual balconies and paths retain residents.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S23-focused-overview.png",
+          "sha256": "b55d7f64e8c3ad6483ba4d5853c6a1006667703487e0809e3af68dba684e67f9"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S23-focused-detail.png",
+          "sha256": "189f503604396e61dd3db7a7310eb395b8a29ad1231fb89f83d6d0126225da5d"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S23-focused-corner.png",
+          "sha256": "c0f17a462e87fb1fa55adb74a1ca75be2e68964d5e8e2ffe446c260588ac0da7"
+        }
+      },
+      "validatedImageFingerprint": "97952b04faec1301e7b470960dcfa6fe9cada6366a1cb42cfa3a76b932525b4b"
+    },
+    {
+      "stage": "S24",
+      "state": "resolved",
+      "finding": "Residents appear in the central upper doorway/beam without clearly visible floor, detail x640–940,y400–465; requires geometry clarification.",
+      "before": {
+        "path": "assets/production/animation-expansion/review/before-navigation-S24-detail.png",
+        "sha256": "8271830b897d375c75f218d2ee7cc0dfa4b9b6abdca7942f0b72caa7247522cc"
+      },
+      "resolvedInDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "review": "The original issue is clear in the intermediate overview/detail; newly discovered surfaces in the same stage are listed separately.",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "finalReview": "The southern wall, clouds and central doorway beam are clear; actual garden flooring, stairs and bridge retain residents.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S24-runtime-overview.png",
+          "sha256": "7cef3804ebded93e5a12283d6f3b7369043e9f9849f4c6bdf31b98a9269fa14a"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S24-runtime-detail.png",
+          "sha256": "cda674e820ce9976138f1f76c3dffac284fe89da378d9e33dd030a37519f60ec"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S24-runtime-corner.png",
+          "sha256": "ac35c89258bd9f99e3cf3c7eaf1586a046e69d3ba22d7c3bca0463f6478d9809"
+        }
+      },
+      "validatedImageFingerprint": "a2259db587c92e46714d72cccdfcea6313a73c4f66771f381d3485ba0f8e850d"
+    },
+    {
+      "stage": "S01",
+      "state": "resolved",
+      "finding": "South-west pool has a full-body pedestrian on water (384,850).",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S01-overview.jpg",
+        "sha256": "37ccaab89d9618e0d708cbfadc137a2e5e184e7cfbeecebd15b1f73bc93eddc1"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "South-west pool water is clear; visible boats retain passengers.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "South-west pool water is clear; visible boats retain their passengers. Residents stand on shop floors, terraces, stairs and fountain rims.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S01-runtime-overview.png",
+          "sha256": "1c88ce79145c6ac08a9e6822a79a08422edbd8ee501bc76d8d3db3b37ff8e86c"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S01-runtime-detail.png",
+          "sha256": "1c88ce79145c6ac08a9e6822a79a08422edbd8ee501bc76d8d3db3b37ff8e86c"
+        }
+      },
+      "validatedImageFingerprint": "7e5afc1db7273783cc2f0c523f91529e93027cff0f3ea436c903bfa74c62c2c5"
+    },
+    {
+      "stage": "S09",
+      "state": "resolved",
+      "finding": "Residents below the south railing stand on the vertical stone face.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S09-overview.jpg",
+        "sha256": "5b80b9262ee522e35740b36b55f0f9211f15db7a0bea62d2e00cd27347652877"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "South vertical station wall is clear; visible stair access remains.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The south station vertical wall is clear; actual stair access remains populated.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S09-runtime-overview.png",
+          "sha256": "23b8f3858fd7dd64abc27d970eb49f29cb6e6d615fb6464290da9ccac2522fa0"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S09-runtime-detail.png",
+          "sha256": "bc482e9c4eb66fce2ae6ae12af34f62a09a24b02c74487b1c905b7f581a4528b"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S09-runtime-corner.png",
+          "sha256": "74e991e670e29371dd4d2c48fcc167e74bad2c5942dd4b0a271a4b97c13bddcb"
+        }
+      },
+      "validatedImageFingerprint": "e8504bccefc354bd981b16d6d5ea76a9af05496b26403dafd4a781d1de2c3d39"
+    },
+    {
+      "stage": "S10",
+      "state": "resolved",
+      "finding": "Inner shipyard work floor/entry extends from wooden deck over water (300,630).",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S10-overview.jpg",
+        "sha256": "f11f762e0a006570b733228e553a7ab09ca3576d2337721e3de1862e967c0653"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "Inner dock uses the dry west work floor; outer sea is clear.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "Inner dock workers use the dry western floor; outer sea and vertical quay faces are clear of pedestrians.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S10-runtime-overview.png",
+          "sha256": "e7b478e4d7e8531a307a4e78bfc8d257ac6a207c18a07f71911578322ff23630"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S10-runtime-detail.png",
+          "sha256": "70fc6ee1f38060030cdea784ea0112769a7acff052d50fa559e908b6a87c7f56"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S10-runtime-corner.png",
+          "sha256": "a90a81b783747ad8eddb1927c7d514414917171eeda86fe98fc083f29796af3a"
+        }
+      },
+      "validatedImageFingerprint": "74d6cc00584ed7351cd64b30a78e267de369081d861b53a305e770fae460add1"
+    },
+    {
+      "stage": "S11",
+      "state": "resolved",
+      "finding": "Residents stand below the south rail on vertical river wall.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S11-overview.jpg",
+        "sha256": "cffff7d80d32477289c7e9b3edf202ec1458240003f860cefc4c99745ca10009"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "South river wall faces are clear and the actual stairs remain populated.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The southern river wall faces are clear; the three real stair connections remain populated.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S11-runtime-overview.png",
+          "sha256": "2ec32ea238ffef066299bc1a09dbf63ad8e1d550f4b031c65a2107577cae2371"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S11-runtime-detail.png",
+          "sha256": "56095762ad996115982e9e68f3ea253a347510f3cd8fe83e0201ec5f77ff1a81"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S11-runtime-corner.png",
+          "sha256": "423cff3782da9eb9777c4b8466faec494b404bed3e653578b7474f7d3aaaf7e2"
+        }
+      },
+      "validatedImageFingerprint": "3eef83d6ea8e59d39d9300728e6ccd6d81dd7499c20f60f69aaaa99f444bccfc"
+    },
+    {
+      "stage": "S12",
+      "state": "resolved",
+      "finding": "Front curved gate roofs and vertical pillars are treated as floor.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S12-overview.jpg",
+        "sha256": "9567bb22663c95757f37b6c8b0c7ffb50faf8854df68f169d06554bff50b0840"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "Curved gate roofs are clear, but the small central front tower still has residents on its vertical face; independently confirmed by navigation coordinates.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The curved front gate roofs and central white tower facade are clear. Visitors remain on the actual front plaza and bridge.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S12-runtime-overview.png",
+          "sha256": "4daede9bfb0d9d715890600762b206f0046f8c17e5830a4477dc2c693a6e0c4b"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S12-runtime-detail.png",
+          "sha256": "1e134df84e3672b0b1585690354e68cd5f76a7a07ffcd8fbd63955866463fa1c"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S12-runtime-corner.png",
+          "sha256": "be2a4d8fb51d8d3dbba6634eabc6645087eb5d48509090d2cd133846902ad050"
+        }
+      },
+      "validatedImageFingerprint": "461e44d3b10e48ea0ac9880a483835091636b27796bab0c099fb444587b2b14f"
+    },
+    {
+      "stage": "S13",
+      "state": "resolved",
+      "finding": "South curved river retaining wall face allows residents below the railing.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S13-overview.jpg",
+        "sha256": "7c4163357f4dc4e03fc023207f73c66f4541b990a8f06a457510520ef78584be"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "South curved river-wall face is clear; wooden bridge and actual stairs remain populated.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The curved southern retaining face is clear; actual stairs and the wooden bridge retain residents.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S13-focused-overview.png",
+          "sha256": "6a49785c53447d20e6de75b969f7b3686bee7c45e4fbd955210435eeca5e57dc"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S13-focused-detail.png",
+          "sha256": "9999d76d07664030f77062a5b487e09071114a5e744714fd49c0818ef90638cd"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S13-focused-corner.png",
+          "sha256": "ad664727c8aa16125b51e06a46c6e35c81cbfc6e284967951b25f7f2c69b7c2d"
+        }
+      },
+      "validatedImageFingerprint": "ecad3354fe4b700f2d0f29606cb21095ec484a500f89edc5346a8133b73b3a94"
+    },
+    {
+      "stage": "S14",
+      "state": "resolved",
+      "finding": "South water tank/roof, entrance vertical sign wall, and right roof edge allow residents.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S14-overview.jpg",
+        "sha256": "4dcd59c585c5575d642934f6a1094bbb28a7bf662c9a0360db0f5939414e79d6"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "Water tank, entrance sign wall and south roof edge are clear.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The south-west water tank and roof, central entry-sign face and south-east roof are clear of pedestrians.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S14-runtime-overview.png",
+          "sha256": "837b57cb651c719cf8c455ecf06f08703127e3a288c6e17990f0f096795eb96e"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S14-runtime-detail.png",
+          "sha256": "cf1c36f69239252a1ab15c416f53fab9815ea99bc6c132a73860ad648262b27f"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S14-runtime-corner.png",
+          "sha256": "6f9ab93b7b2141fcd3f5d0a9839ac4b03c5892124cbdcf86b9dd83889cb9414f"
+        }
+      },
+      "validatedImageFingerprint": "622666825155a978bed8d486adb432aca222fe3ef97d127af1e9a62f1a064785"
+    },
+    {
+      "stage": "S15",
+      "state": "resolved",
+      "finding": "South balcony supports and arches are treated as floor/air.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S15-overview.jpg",
+        "sha256": "2f3897ac8e9f9cae74637c0b3a59ab52950a10ec1770c48ae6e1bd46a750a701"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "South arches and surrounding clouds are clear; balcony floors and stairs remain populated.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The southern arch faces and surrounding clouds are clear; balconies and real stairs remain populated.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S15-runtime-overview.png",
+          "sha256": "205d52224ad3ca6d1c087e032403b721e344c7f8bbe6531eaa6afa6d6eb7ff1f"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S15-runtime-detail.png",
+          "sha256": "b3bb54cac7a4b4c4829a0cb1985b89d968c430d66e29b73aa451a48c75d6bb1b"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S15-runtime-corner.png",
+          "sha256": "fc486f8b336046e5bac9481a5260e3d56fd73d2aaf38634031abc35f73e47936"
+        }
+      },
+      "validatedImageFingerprint": "8e9061603ecad1e522a272dea009615dfe5b5644b7c6fd6bd473621c78e1c40c"
+    },
+    {
+      "stage": "S16",
+      "state": "resolved",
+      "finding": "Central garden entrance crosses glass gate roof. Closed garden has no clearly visible alternate floor connection.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S16-overview.jpg",
+        "sha256": "e41abc2335d3def181f92a71d812585a6cda5d7358ac453ea1bd04035238fc03"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "Closed central garden and glass gate are clear; foreground south-east green dome has one suspected resident foot point on its roof.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The closed central garden, glass roof and foreground green dome are clear; the dry loading floor and actual interiors retain residents.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S16-focused-overview.png",
+          "sha256": "6795a29009570419af7ba6187bb1ef3ec1610d6287e26cf14b41b0a2fd879746"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S16-focused-detail.png",
+          "sha256": "9373c96c6a07e9c1d5bd88ed9270c1cb9602085a705259265850cab517a90f58"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S16-focused-corner.png",
+          "sha256": "f73a04347aa2e15571de322300e3a3ed7ac326cf6c53258f955cae1278ea6e6f"
+        }
+      },
+      "validatedImageFingerprint": "b45c4f7ef2d211a92b55c3ffdf4edf612b8d71e0b0103a21b1ce07df05f5ab76"
+    },
+    {
+      "stage": "S17",
+      "state": "resolved",
+      "finding": "South retaining wall plus booth canopy and blue turret roof footprints allow residents.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S17-overview.jpg",
+        "sha256": "0b48bbcfc05525e03ef456589d329c90c584b5f75e905270de4cce555c97dc0f"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "Booth canopies and south wall are clear; south-east block western blue tower has one suspected resident foot point on its roof.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "Tent canopies, the southern wall and the west blue tower are clear. Shop floors, northern pavement and the retained entrance remain populated.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S17-focused-overview.png",
+          "sha256": "3b94c90e124a21e9c9a318654a5dfc1904d6dddbe4f9c5c9de4574bafe8877f2"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S17-focused-detail.png",
+          "sha256": "2822f0d29c113e24b8a5bbff0616330801ccb92edbd42e8239a71f631fea48dd"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S17-focused-corner.png",
+          "sha256": "a1a91c8f1344ced31fbec207e42ebc3da2da729d9eb6b6cca43940b824ccc13b"
+        }
+      },
+      "validatedImageFingerprint": "50f1011cc07c2406165ea2edca4b4bc72f5d76231ecfc7faaba3bc8826f39189"
+    },
+    {
+      "stage": "S18",
+      "state": "resolved",
+      "finding": "Canal wall faces, bottom tent canopies, actual water, and waterfall dome walls allow residents.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S18-overview.jpg",
+        "sha256": "657c3f9e9a37fafcbb09c47671f5e614104c4ddb86c42d0c94527d4d9a80d833"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "Canal faces, bottom tent roofs, water and waterfall dome are clear; stair passage remains populated.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "Canal wall faces, tent roofs, water and the waterfall dome are clear of pedestrians; actual stairs retain residents.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S18-runtime-overview.png",
+          "sha256": "61143c4900edfbdbd736520269e5f40230de7c7bbde8052060d499f12989a558"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S18-runtime-detail.png",
+          "sha256": "d8d4ffd9b991a29bd7fa512dc5cd21013fe7132800dbc068f1fe8a2e4a7756ee"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S18-runtime-corner.png",
+          "sha256": "bca2b36911c2956dbd3bfb8bda720e9645861587ba8f633d36a86dade62fe022"
+        }
+      },
+      "validatedImageFingerprint": "879069d3803625818935bf1f16d1b7478bbbda287fdf7fff2afcc1e8ae5dded7"
+    },
+    {
+      "stage": "S19",
+      "state": "resolved",
+      "finding": "South foreground is cloud/vertical cliff rather than snow floor; people stand on it.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S19-overview.jpg",
+        "sha256": "8da79ffa2ff6e827f89363e28677cfe571c50e7605eed8d30ca5e1d3714bb641"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "South cloud and vertical cliff are clear; visible central stairs retain residents.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "Southern clouds and cliff faces are clear; visible stairs and winter activity floors remain populated.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S19-focused-overview.png",
+          "sha256": "49fb3d96f9cc002d2d6212b1fd6c818514974763aa1ed3f897dccaf678cafc59"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S19-focused-detail.png",
+          "sha256": "f7002bd6f4361e8fdd91210c69e2b6f52735d84ac5ca889769f1686b5cbbb9fc"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S19-focused-corner.png",
+          "sha256": "d3602b1a6797703a4ad1589a3845ea0c7ef040eba693c24bb97e5cf19829cd4b"
+        }
+      },
+      "validatedImageFingerprint": "0cc558c2530ab54eea3cc11259fbccddfb6579dbb211953191f0d92e2168d5e0"
+    },
+    {
+      "stage": "S20",
+      "state": "resolved",
+      "finding": "South-east quay face just west of narrow wooden pier permits feet below pavement.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S20-overview.jpg",
+        "sha256": "4dc6491f70766d249824d2e959b9d770f29aa61ae8cd9cfbb219c4c8e9eb727e"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "South-east quay face is clear, with residents on the narrow wooden pier.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The south-east quay face is clear; people on the wooden pier have visible flooring. Sea wildlife remains environmental scenery.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S20-focused-overview.png",
+          "sha256": "f94ee52310b64850f60dd64ecf5f5b098f97cd7ce876e70860e9fa9e5ebc062b"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S20-focused-detail.png",
+          "sha256": "aa695175f37c48d9c138bde0857c106cc428daaa52813ab9d5486fadfa3b09c2"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S20-focused-corner.png",
+          "sha256": "76d1023f27f9ef0b6aeedd61b2f48786918a1f01ab633a7833c082dccf63dc35"
+        }
+      },
+      "validatedImageFingerprint": "efbfaa138d9665585d54e0e89a77a4b69b4cc8edce801026fe82308d340fcda9"
+    },
+    {
+      "stage": "S21",
+      "state": "resolved",
+      "finding": "Sky gap inside north-east dock and central upper-house roof/facade allow residents; outer sky is now clear.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S21-overview.jpg",
+        "sha256": "bd56d211fd227cf4c615902b6b8152d78ffee0e65bc2bef8ecc9a6244c773254"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "Outer clouds, north-east dock air gap and central upper roof are clear; real floors remain populated.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "Outer clouds, the north-east internal air gap and the central upper roof face are clear; the island floors and bridges retain residents.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S21-runtime-overview.png",
+          "sha256": "800dcd544030b05626ea0211938714be2327c8f56df1c00fc7d6768be149cb2c"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S21-runtime-detail.png",
+          "sha256": "937018c91f7223fc14cbf59e9ab1449d8b1e93d29fdafe9c20c24c92c3cf9ffb"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S21-runtime-corner.png",
+          "sha256": "2fb3c07a8b6dbbd11fd08617f9857bb697b0a13374a53bf4d81c579d8d9da130"
+        }
+      },
+      "validatedImageFingerprint": "30e1ae0b36309ea6113befd33ea3589a9f8ff7bf0c2a0ed66b00df996da5b538"
+    },
+    {
+      "stage": "S22",
+      "state": "resolved",
+      "finding": "South vertical castle retaining wall/arches allow residents.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S22-overview.jpg",
+        "sha256": "051d49b04a7d5975c9ed0471091c72939d3b73992023132680714d10b55ad7b2"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "South arched wall face is clear; bridge and indoor floors remain populated.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The southern arched wall is clear; interiors, real steps and bridges remain populated.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S22-focused-overview.png",
+          "sha256": "38440794aac912b4488561fb45d5734f70d35cb47054a5fd5b4d7736ab702d89"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S22-focused-detail.png",
+          "sha256": "0cb433373c87d48c942abf52e29e4e62a83b4ea87e41fc5078717bbb573c5ac4"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S22-focused-corner.png",
+          "sha256": "6b302c7a1073a3dd1d12152924dd94d07d184940683829e847c5002d8720e9cc"
+        }
+      },
+      "validatedImageFingerprint": "b9574ea2d01c2d21761a576a33daf6c6f752bd9aabde840ff9a5d588cedab7a0"
+    },
+    {
+      "stage": "S24",
+      "state": "resolved",
+      "finding": "South vertical wall/rocks allow residents; central garden doorway beam is now clear.",
+      "identifiedDataSHA": "4f4ae86c73e1ce22a75d79ea570bd18f3cd10b8ddf995ac40a7e4f0064686f65",
+      "before": {
+        "path": "assets/production/animation-expansion/review/interim-navigation/S24-overview.jpg",
+        "sha256": "a197a6e6e3c022180c7058f7ba63ec3f9dd06cb1ed9148b7f21c2a3f15815884"
+      },
+      "resolvedInDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "review": "South wall, cloud and central doorway beam are clear; real garden and stairs remain populated.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The southern wall, clouds and central doorway beam are clear; actual garden flooring, stairs and bridge retain residents.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S24-runtime-overview.png",
+          "sha256": "7cef3804ebded93e5a12283d6f3b7369043e9f9849f4c6bdf31b98a9269fa14a"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S24-runtime-detail.png",
+          "sha256": "cda674e820ce9976138f1f76c3dffac284fe89da378d9e33dd030a37519f60ec"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S24-runtime-corner.png",
+          "sha256": "ac35c89258bd9f99e3cf3c7eaf1586a046e69d3ba22d7c3bca0463f6478d9809"
+        }
+      },
+      "validatedImageFingerprint": "a2259db587c92e46714d72cccdfcea6313a73c4f66771f381d3485ba0f8e850d"
+    },
+    {
+      "stage": "S12",
+      "state": "resolved",
+      "finding": "Small central front tower still has residents on vertical white facade; canStand true independently confirmed at (957,788),(970,788),(983,788),(965,800).",
+      "identifiedDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "before": {
+        "path": "assets/production/animation-expansion/review/pre-polish-becf/S12-corner.png",
+        "sha256": "64f01789cd84e0375a0d72e0941ee94a36bfd5c8a0467015419f2a32a0c1a915"
+      },
+      "referencePoint": [
+        970,
+        788
+      ],
+      "resolvedInDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "review": "The central front white tower facade is now clear, along with both curved blue gate roofs; visitors remain on the actual foreground plaza and bridge.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "after": {
+        "path": "assets/production/animation-expansion/review/S12-runtime-corner.png",
+        "sha256": "be2a4d8fb51d8d3dbba6634eabc6645087eb5d48509090d2cd133846902ad050"
+      },
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The curved front gate roofs and central white tower facade are clear. Visitors remain on the actual front plaza and bridge.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S12-runtime-overview.png",
+          "sha256": "4daede9bfb0d9d715890600762b206f0046f8c17e5830a4477dc2c693a6e0c4b"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S12-runtime-detail.png",
+          "sha256": "1e134df84e3672b0b1585690354e68cd5f76a7a07ffcd8fbd63955866463fa1c"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S12-runtime-corner.png",
+          "sha256": "be2a4d8fb51d8d3dbba6634eabc6645087eb5d48509090d2cd133846902ad050"
+        }
+      },
+      "validatedImageFingerprint": "461e44d3b10e48ea0ac9880a483835091636b27796bab0c099fb444587b2b14f"
+    },
+    {
+      "stage": "S16",
+      "state": "resolved",
+      "finding": "One resident foot point appears on the south-east foreground green dome (corner screen 1096,881); awaiting independent geometry confirmation.",
+      "identifiedDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "before": {
+        "path": "assets/production/animation-expansion/review/pre-polish-becf/S16-corner.png",
+        "sha256": "ab2bfabd558ca936c334f23b274cc997a26db2dc6b3946792999b6ea9e7ccd03"
+      },
+      "resolvedInDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "review": "The south-east foreground green dome and central gate roof are clear. Residents still use the interior work floor, relocated open loading entrance and actual street.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "after": {
+        "path": "assets/production/animation-expansion/review/S16-focused-corner.png",
+        "sha256": "f73a04347aa2e15571de322300e3a3ed7ac326cf6c53258f955cae1278ea6e6f"
+      },
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "The closed central garden, glass roof and foreground green dome are clear; the dry loading floor and actual interiors retain residents.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S16-focused-overview.png",
+          "sha256": "6795a29009570419af7ba6187bb1ef3ec1610d6287e26cf14b41b0a2fd879746"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S16-focused-detail.png",
+          "sha256": "9373c96c6a07e9c1d5bd88ed9270c1cb9602085a705259265850cab517a90f58"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S16-focused-corner.png",
+          "sha256": "f73a04347aa2e15571de322300e3a3ed7ac326cf6c53258f955cae1278ea6e6f"
+        }
+      },
+      "validatedImageFingerprint": "b45c4f7ef2d211a92b55c3ffdf4edf612b8d71e0b0103a21b1ce07df05f5ab76"
+    },
+    {
+      "stage": "S17",
+      "state": "resolved",
+      "finding": "One resident foot point appears on the western blue tower of the south-east block (corner screen 45,398); awaiting independent geometry confirmation.",
+      "identifiedDataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+      "before": {
+        "path": "assets/production/animation-expansion/review/pre-polish-becf/S17-corner.png",
+        "sha256": "6a10ed5ff95c4b3e7edeb91eaf96c59f960d39de994f089b4266ff2ff1d840be"
+      },
+      "referencePoint": [
+        1075,
+        742
+      ],
+      "resolvedInDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "review": "The western blue tower of the south-east block, booth canopies and south vertical wall are clear. Residents remain on the northern pavement and shop floors; the south entry is retained.",
+      "reviewedAt": "2026-10-04T20:49:03.636716+00:00",
+      "after": {
+        "path": "assets/production/animation-expansion/review/S17-focused-corner.png",
+        "sha256": "a1a91c8f1344ced31fbec207e42ebc3da2da729d9eb6b6cca43940b824ccc13b"
+      },
+      "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "finalReview": "Tent canopies, the southern wall and the west blue tower are clear. Shop floors, northern pavement and the retained entrance remain populated.",
+      "finalEvidence": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S17-focused-overview.png",
+          "sha256": "3b94c90e124a21e9c9a318654a5dfc1904d6dddbe4f9c5c9de4574bafe8877f2"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S17-focused-detail.png",
+          "sha256": "2822f0d29c113e24b8a5bbff0616330801ccb92edbd42e8239a71f631fea48dd"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S17-focused-corner.png",
+          "sha256": "a1a91c8f1344ced31fbec207e42ebc3da2da729d9eb6b6cca43940b824ccc13b"
+        }
+      },
+      "validatedImageFingerprint": "50f1011cc07c2406165ea2edca4b4bc72f5d76231ecfc7faaba3bc8826f39189"
+    }
+  ],
+  "lastVisualReviewAt": "2026-10-04T20:26:24.042175+00:00",
+  "validatedDataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+  "reviewedAt": "2026-10-04T21:00:56.834356+00:00",
+  "unresolvedCount": 0,
+  "finalImageFingerprint": "16b8f4ef00d4a3ec5a564fc4f1ce960fefb1a5085451e451e6a1e0d690fb7d18"
+}

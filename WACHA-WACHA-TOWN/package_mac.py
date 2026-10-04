@@ -31,9 +31,13 @@ def preflight(root):
         raise SystemExit('Package blocked: all large late-stage maps need their generated detail tiles.')
     required = {'cover', 'legacy'}
     required.update(character['image'] for character in data['characters'])
+    required.update(clip['image'] for character in data['characters'] for clip in character.get('clips', {}).values())
     for stage in data['stages']:
         required.update((stage['background'], stage['setImage']))
         required.update(tile['image'] for tile in stage.get('backgroundTiles', []))
+        required.update(clip['image'] for clip in stage.get('animatedScenery', []))
+        if len(stage.get('animatedScenery', [])) != 12:
+            raise SystemExit('Package blocked: each stage needs its 12 reviewed scenery animations.')
     missing = [key for key in required if not (source / 'images' / (key + '.js')).is_file()]
     if missing:
         raise SystemExit('Package blocked: missing runtime images: ' + ', '.join(sorted(missing)))
@@ -55,14 +59,20 @@ def preflight(root):
     if not qa_path.is_file():
         raise SystemExit('Package blocked: run verify_release.py after completing final QA.')
     qa = json.loads(qa_path.read_text())
-    if qa.get('passed') is not True or qa.get('version') != '2.1':
-        raise SystemExit('Package blocked: a passing v2.1 final QA summary is required.')
+    if qa.get('passed') is not True or qa.get('version') != '2.2':
+        raise SystemExit('Package blocked: a passing v2.2 final QA summary is required.')
     verified_files = ['expedition-core.js', 'expedition-render.js', 'expedition-app.js',
                       'expedition-input.js', 'expedition-audio.js', 'data.js']
     stale = [name for name in verified_files
              if qa.get('codeHashes', {}).get(name) != hashlib.sha256((source / name).read_bytes()).hexdigest()]
     if stale:
         raise SystemExit('Package blocked: final QA does not match the runtime: ' + ', '.join(stale))
+    from runtime_image_integrity import artwork_fingerprints
+    artwork = artwork_fingerprints(source)
+    if qa.get('imageFingerprint') != artwork['fingerprint'] or qa.get('imageFileCount') != artwork['fileCount']:
+        raise SystemExit('Package blocked: runtime artwork changed after final visual QA.')
+    from verify_animation_archive import audit
+    audit(root)
     return source, report
 
 
@@ -95,11 +105,14 @@ def package(destination, check=False):
         at=datetime.now(timezone.utc).isoformat(), destination=str(destination),
         entry=str(destination / 'Contents/Resources/index.html'),
         stages=24, characters=report['characters'], generated=report['generated'],
-        qualityGenerated=report['qualityGenerated'], totalGenerated=report['totalGenerated'],
+        qualityGenerated=report['qualityGenerated'], baseTotalGenerated=report['totalGenerated'],
+        additionalAnimationGenerated=800, totalGenerated=report['totalGenerated'] + 800,
         files=sum(path.is_file() for path in destination.rglob('*')),
         bytes=sum(path.stat().st_size for path in destination.rglob('*') if path.is_file()),
-        needsServer=False, needsNetwork=False, appVersion='2.1',
+        needsServer=False, needsNetwork=False, appVersion='2.2',
     )
+    qa = json.loads((root / 'assets/production/review/release-qa-summary.json').read_text())
+    summary.update(imageFingerprint=qa['imageFingerprint'], imageFileCount=qa['imageFileCount'])
     (root / 'assets/production/package-report.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2))
     print(f'Created {destination}')
 
@@ -127,8 +140,8 @@ game="${0:A:h:h}/Resources/index.html"
             'CFBundleIdentifier': 'com.mackystudio.wachatown',
             'CFBundleExecutable': 'WachaTown',
             'CFBundlePackageType': 'APPL',
-            'CFBundleVersion': '3',
-            'CFBundleShortVersionString': '2.1',
+            'CFBundleVersion': '4',
+            'CFBundleShortVersionString': '2.2',
             'LSUIElement': True,
         }, stream)
 

@@ -1,0 +1,19 @@
+{
+  "id": "A0700",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:39:41.684146+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "薪運搬・イルカの玩具・撮影は8コマ連続。row 0 の水滴がセル境界を越え、パック5コマ左に前コマの水滴が混入するため保留。"
+  ],
+  "packReport": "review/A0700-pack.json",
+  "preview": "review/A0700-check.jpg"
+}

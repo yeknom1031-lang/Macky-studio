@@ -1,0 +1,20 @@
+{
+  "id": "A0615",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:33:49.023665+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "4×8コマ、灯台の模型を扱う・巻物を持って案内する・カメラを構える3行は同一人物/道具を保持した一巡。",
+    "row1は飲む7コマ目でピッチャーが消えて次に出現するため不採用。"
+  ],
+  "packReport": "review/A0615-pack.json",
+  "preview": "review/A0615-check.jpg"
+}

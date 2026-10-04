@@ -1,0 +1,21 @@
+{
+  "id": "A0264",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:44:31.097656+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画13コマから背面4・上り4・下り4を選別。0行は左歩行参照にないバケツを追加し不採用。1行の穀物桶・2行の麦束桶・3行の空手と衣装は維持。pack全身確認。"
+  ],
+  "packReport": "review/A0264-pack.json",
+  "preview": "review/A0264-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

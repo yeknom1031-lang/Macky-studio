@@ -1,0 +1,35 @@
+{
+  "id": "A0004",
+  "status": "accepted-partial",
+  "note": "Excluded balloon row because balloon colors change; rear bare-stick transition frames removed in remaining three rows.",
+  "selection": {
+    "acceptedRows": [
+      0,
+      1,
+      2
+    ],
+    "clipFramesByRow": {
+      "0": {
+        "walkBack": [
+          0,
+          1,
+          2
+        ]
+      },
+      "1": {
+        "walkBack": [
+          0,
+          1,
+          2
+        ]
+      },
+      "2": {
+        "walkBack": [
+          0,
+          1,
+          2
+        ]
+      }
+    }
+  }
+}

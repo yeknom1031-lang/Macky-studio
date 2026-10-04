@@ -1,0 +1,50 @@
+{
+  "createdAt": "2026-10-04T19:58:13.417226+00:00",
+  "changedStages": [
+    "S01",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S24"
+  ],
+  "testedStages": [
+    "S01",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24"
+  ],
+  "runtimeUnchanged": true,
+  "waterRoutesPreserved": true,
+  "boundarySHA": "ca12a2250f088f4e568ca476d2331a8b0398d7a0871c6a8cb6766efc77c05bca",
+  "specialCases": [
+    "S10 shipyard on dry west apron; west street entry",
+    "S16 inaccessible garden retained as scenery, 9 activity areas",
+    "S21 raised pier aligned to actual wooden bridge",
+    "S17 overview/detail market footprints excluded"
+  ]
+}

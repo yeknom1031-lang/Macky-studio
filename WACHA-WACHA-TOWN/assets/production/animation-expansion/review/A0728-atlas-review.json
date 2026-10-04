@@ -1,0 +1,355 @@
+{
+  "id": "A0728",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "fe7201fe79c235034dbf393d2816ddf200302111eaa6f8a0d2f1feb8a992bdf2",
+  "alphaZeroFraction": 0.39063,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S03-ENV05",
+      "name": "桟橋のさざ波",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8368,
+          "rgbaSHA256": "60173ede57cb246d2c1c1d2dde278ff55163c196f69d59842444dc0ab1538562"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10025,
+          "rgbaSHA256": "7404a181a69c7eecd60254da2550e27e92b48083376df0101000e4d542f932c1"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10843,
+          "rgbaSHA256": "d8781fe0d755336f66bd8a4314796c45c6542d07639339b5e445932649c4d72b"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10971,
+          "rgbaSHA256": "91bd3bb6abffcfe1d39ffb518032751abd042774e73379794e2fda81774e4008"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11377,
+          "rgbaSHA256": "d208410236b10897247fd5aa22febe5892bc0d3615eeab73e98f5b9a2819fd8f"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10276,
+          "rgbaSHA256": "820e60ba2c58cc39674706c99508aa64a7001287b0f22e7b4e67039cb5a135b9"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9316,
+          "rgbaSHA256": "698830fa589bda3078f4b4efb5b303dabbe94bad26df215ab26fab684103fc7c"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7911,
+          "rgbaSHA256": "7b191b8a31a603dd2235c2f11d14ecd0e4b33c8bb7b686f9894e4f831645ac0a"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S03-ENV06",
+      "name": "灯台下の波しぶき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7290,
+          "rgbaSHA256": "2da5181a91eb14f8437a91b5f56d8c0d9b7f5d427d7dabe446302cef719f7b52"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8368,
+          "rgbaSHA256": "f40755fbadeeea39e6f7cb69a90a2df5b7262734ddadc4ed55718889ac4816ba"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10525,
+          "rgbaSHA256": "68b4e36344cb598c0663c4fe2139116962316e9304d5b4320bba0d2c0e2c0d65"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10541,
+          "rgbaSHA256": "51bc04c697bce8740d0d853ca59af9278aeb0ca77808bceabaaacea56063b57b"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9758,
+          "rgbaSHA256": "ce6a40526257ed4128eaf1bfa612aea3158d353b6b4b878b58ece876b99564c3"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8774,
+          "rgbaSHA256": "3bc3abb4926c37ccdb2554a9788a0b8ca6473f0c3285ec14afea2b25d4643187"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7964,
+          "rgbaSHA256": "82b6e50f3d319a44f8ffca76ed80e609f2050b3fec0a33acfe082bc4fe2aed8b"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7280,
+          "rgbaSHA256": "4edbf05f1d78d9a1e149d19d79f81f9c96f26fef91265488dbbf5ca4840ca7f6"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S03-ENV07",
+      "name": "牡蠣いけすの泡",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1800,
+          "rgbaSHA256": "a355be70b9ca5c6dfd24bc9c0cd700231ca5897f8cb3ae08ba8f51147fd401ac"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3881,
+          "rgbaSHA256": "e4e7716b9c879f5cc0746ae134367583cf8df5003edebf283352acb763ee2115"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4796,
+          "rgbaSHA256": "e5a5a780b8caa11758ac1332aeeabf6dceab19b0ee6254a2be2ed4c58bc06650"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7483,
+          "rgbaSHA256": "3b0d4e91be2e9f0e5b07f0079552bfbbe8ed84d80cb6c4def349c05f0763ca37"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7620,
+          "rgbaSHA256": "8f76d397d7aab8ddcde3d44f0d3598d5e0aab0df44544f21e8c310a654d5f78a"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6348,
+          "rgbaSHA256": "5f2853782d5146c79073e8fe500ec51cacee4db33fabded72aa7d5a65c512e0e"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5764,
+          "rgbaSHA256": "9ee2eb9143574cad15616979df917888679ed4813db5d55f4f6b874589da41b1"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3385,
+          "rgbaSHA256": "fab00ea52d93c279c07c87cbb31cf7999ce68897ea207f04490f5e39090f26c7"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S03-ENV08",
+      "name": "浜辺の潮の線",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5038,
+          "rgbaSHA256": "3a6abf1528f3559dd5d5bfd91c086d3431e3264d1515f6df89477c0324e24205"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6097,
+          "rgbaSHA256": "3d1c33515a8b5240a28a855c92687cb841d6245e8df5164ddcb5dd0862cbccba"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7483,
+          "rgbaSHA256": "07b8c2614249342f80eb41e72c887032889bc3c265a35a421878750e3605ce71"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8010,
+          "rgbaSHA256": "6d97ef2366f5c4ed3cebb6790f540e7b49542932beb9269c20696518afddc504"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8578,
+          "rgbaSHA256": "88c30db923a6f789ed3d9f2d34d16c6b637ae545975177e140ac2b222c821a21"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7248,
+          "rgbaSHA256": "fc67d2781628f7dd1314b07847f4401c6ccc0e818d339ef406e99b607de0d570"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5518,
+          "rgbaSHA256": "29f7b7bc48847d1f25fb0e77fc6a5a506120a50fd1d047f7bfc9925078fd009d"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4584,
+          "rgbaSHA256": "85d111c08ab3f099d3cb8b80a4d158a94d641f4b25a9d1f1a75874f7eb957ea4"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

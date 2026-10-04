@@ -1,0 +1,22 @@
+{
+  "id": "A0282",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T19:07:09.621794+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "ジャグリング球とクラブを参照左のまま保持。切り出しはcomponentsへ変更して境界を確認。3行7列のedge警告はセル右端のクラブ輪郭で、隣人の混入・道具の欠けなし。"
+  ],
+  "packReport": "review/A0282-pack.json",
+  "preview": "review/A0282-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

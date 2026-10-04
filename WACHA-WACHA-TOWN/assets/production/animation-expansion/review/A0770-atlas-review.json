@@ -1,0 +1,355 @@
+{
+  "id": "A0770",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "1b9f99cb10a34e24b3fbc39a5eb70097ddceb6fbf8d126d709fc5c769bc98382",
+  "alphaZeroFraction": 0.38151,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S17-ENV05",
+      "name": "運河の小さな波",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6717,
+          "rgbaSHA256": "68c37e37a339afc698db604740503132fec93e888d1e27ed172aaa3d2b3086f0"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7269,
+          "rgbaSHA256": "65f3c389e01c4723d7c3eecccb1d86290fb8ec39ff301e9c7c2d6683f71253a8"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10024,
+          "rgbaSHA256": "7cdecddee85908443754c7da6f647d5f92ec129eb0cc6d4cc0f889e7c06373fb"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13430,
+          "rgbaSHA256": "3c87f149553879d7494d0bbe3c4f52d251c92ddf5b88285f33afd86c2f5c152f"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11101,
+          "rgbaSHA256": "53d917f6009ef9a34ba009e5278668379fb66c913b6b110fe715b92f793637bb"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10342,
+          "rgbaSHA256": "5ba5ebf58210afc5aadcf6c1703b0d9e585afae605987280d4e5f188b7105bae"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7033,
+          "rgbaSHA256": "408ae0c5ce3bf49f517afb5098766b8544d8072cdd9748dd9eef7f3e8f904b21"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6633,
+          "rgbaSHA256": "4c6ab8c9f6d9468e79c93cfd1c78969f897c41653dcbb9da6dad4d3a15c86437"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S17-ENV06",
+      "name": "鋳物工房の蒸気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6746,
+          "rgbaSHA256": "28cf769912309dce117afd0f4d0c6ad96b577a088e95a20e6f036316e6cca32e"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9140,
+          "rgbaSHA256": "44e13876fe4293a85752b0a3f5e3218f7db0bc4b7b0837c6596c5c8287d764ed"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10570,
+          "rgbaSHA256": "ceda6fe10b0ea7332c1128257534d511da3fc5cff42aed40493350683f16b686"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9915,
+          "rgbaSHA256": "92c760687a0d22abe395b48672956036de11221d455e58463f7a169d0efa4088"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7706,
+          "rgbaSHA256": "5db22b092dedd1d7798d4d7696acf57bc2e1501dd38b5707861a2ac9803b9faf"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5104,
+          "rgbaSHA256": "fc4cb4bd6d21a14d201b8da54b9459e1c4bdf4137d0ee5abd336d32846f84b4c"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4484,
+          "rgbaSHA256": "a9145d8d141d7430693ed32402ffc2ccf8c8492783243664531386d05b727467"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6473,
+          "rgbaSHA256": "4bca257030483bdc828323559cf236d17da34e00c1cf809d38818d3eefabadcd"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S17-ENV07",
+      "name": "硝子工房の熱のゆらぎ",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15313,
+          "rgbaSHA256": "c467d0be130d1fd3df7e82c414a4a473975d3f476a32a7c9ec0422c6348b5bab"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 17962,
+          "rgbaSHA256": "5fad32e790fce7219559ad7c203518bc43d2eeca6f446818a35f339a71071b20"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 19611,
+          "rgbaSHA256": "934160880535356d702d03b95e93789f8c3f1dcdff42cfb22a9ff7b9aa8e0dbf"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 20913,
+          "rgbaSHA256": "6a154944d783d52cb6eff36e691b1924368f83bd810254da8cfae5d6b32e3d50"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 18733,
+          "rgbaSHA256": "7b4a70dc0054f143fe7e929c7e5eeb88015cfe9d67f7c37f435655036b38d0a4"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 15802,
+          "rgbaSHA256": "73ccc8f0840a6c865bb01dfbee40c8c6ce592b73dd352433d1f52da09fc0953b"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 16909,
+          "rgbaSHA256": "f788ec234d6925334c7994f8d2c19ba8e0df990960277948435f2e0c9aa9107f"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14994,
+          "rgbaSHA256": "4fb336c96a8ab724573476b01705724ee204494ff66a47163044cdd355c25a71"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S17-ENV08",
+      "name": "木工房の紙くず",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4880,
+          "rgbaSHA256": "403e0da3801ee7c63c371b0dcaa59b7929cbe8af559a4e07fd4c9a78f35767ae"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5152,
+          "rgbaSHA256": "881b58dc750960827babe9ff3060f3dec343b92bf76a0860463aebc17b90e6c3"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4932,
+          "rgbaSHA256": "6285dd56e08e8eacba589da89cf32db653baf1c1b48ff88b8d7080e92c194684"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5500,
+          "rgbaSHA256": "657869e2bf919ed895ad5f5d4220a0546669179cbf9face9904539f7101d940c"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5287,
+          "rgbaSHA256": "f96266319d015790fe445f9324b239711e296c5f2d8bf769abd5d5d7db0a7b14"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5763,
+          "rgbaSHA256": "3cd01714dd52a9470db0da15744650fe722899e2049d8b2171ec5ebc91c282ec"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5388,
+          "rgbaSHA256": "296cded74508553734e4dd6eb6db31b50e086659af4335413cb77b12584ad406"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5015,
+          "rgbaSHA256": "d349440c4de9a42133fe1bbd76af9d87da77b864b315295b3eb17837d00ee466"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

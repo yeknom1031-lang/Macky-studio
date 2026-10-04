@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: accepted upward and downward stair movement select opposite clips on the actual edge
+ok 1 - accepted upward and downward stair movement select opposite clips on the actual edge
+  ---
+  duration_ms: 96.492292
+  type: 'test'
+  ...
+# Subtest: flat upstairs movement is ordinary walking, not climbing inferred from its level
+ok 2 - flat upstairs movement is ordinary walking, not climbing inferred from its level
+  ---
+  duration_ms: 69.625875
+  type: 'test'
+  ...
+# Subtest: stopped stairs and paused game preserve the captured animation phase
+ok 3 - stopped stairs and paused game preserve the captured animation phase
+  ---
+  duration_ms: 46.598167
+  type: 'test'
+  ...
+# Subtest: manual movement uses accepted path direction and zero input does not cycle feet
+ok 4 - manual movement uses accepted path direction and zero input does not cycle feet
+  ---
+  duration_ms: 45.915041
+  type: 'test'
+  ...
+# Subtest: blocked input does not animate movement that the floor rejected
+ok 5 - blocked input does not animate movement that the floor rejected
+  ---
+  duration_ms: 47.389708
+  type: 'test'
+  ...
+# Subtest: actual entryRoutes are recognized when a legacy stage lacks the new edge manifest
+ok 6 - actual entryRoutes are recognized when a legacy stage lacks the new edge manifest
+  ---
+  duration_ms: 46.310583
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 872.6065

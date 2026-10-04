@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-04T20:30:20.227441+00:00",
+  "passed": true,
+  "stages": [
+    "S12",
+    "S16",
+    "S17"
+  ],
+  "newObservedPoints": {
+    "S12": [
+      [
+        957,
+        788
+      ],
+      [
+        970,
+        788
+      ],
+      [
+        983,
+        788
+      ],
+      [
+        965,
+        800
+      ]
+    ],
+    "S16": [
+      [
+        1450,
+        918
+      ]
+    ],
+    "S17": [
+      [
+        1075,
+        742
+      ]
+    ]
+  },
+  "notes": [
+    "Small foreground turret and roof projections excluded; other stage geometry untouched.",
+    "S16 cargo entry relocated to open floor x1345 beside dome.",
+    "S17 southern market entry retained; approach follows visible north side of turret, with intermediate nodes instead of a diagonal through roof.",
+    "All 18 measured stage graphs connected; ground nodes and edges inside measured land, sampled at <=3 canonical pixels.",
+    "Interim S12/S16/S17 3-second actual-footpoint simulation passed; runtime not modified."
+  ],
+  "boundarySHA": "c232097375004f7c5d8d7d666b2cb90c632f586ac7e814c6e80e61cc28bb798a"
+}

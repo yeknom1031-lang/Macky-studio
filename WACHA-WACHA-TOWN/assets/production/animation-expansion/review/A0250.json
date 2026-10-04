@@ -1,0 +1,21 @@
+{
+  "id": "A0250",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:36:34.106973+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    3
+  ],
+  "notes": [
+    "原画13コマから12を選別しpack確認。0・1行の写真機と3行の車椅子/カメラは全コマ保持。2行は元の歩行像にない肩掛けバッグが追加され、三脚も背面左右が変化するため既存動作を維持。"
+  ],
+  "packReport": "review/A0250-pack.json",
+  "preview": "review/A0250-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

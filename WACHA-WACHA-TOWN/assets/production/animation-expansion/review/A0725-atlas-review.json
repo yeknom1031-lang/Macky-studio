@@ -1,0 +1,355 @@
+{
+  "id": "A0725",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "a2912316642f46a37cc4a836c0125b9bb4b7e4af98493fca952baa0bd3d561a2",
+  "alphaZeroFraction": 0.55213,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    659,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S02-ENV05",
+      "name": "花噴水の霧",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6697,
+          "rgbaSHA256": "c2f2e8f83d587796bfafc59749edeadd317cb865522fa9fad2c3300d5489faf5"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8105,
+          "rgbaSHA256": "36ead08d022973283e9017e2d6f23c90e1036b7233849c8b9feae7cd65b320d4"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8678,
+          "rgbaSHA256": "552d1a0c0a3b9cc708dbda579c87c81749e8427cc59e2017e27ebf6becf9dc3c"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8451,
+          "rgbaSHA256": "300f23456a155907fe64ce79d350d7634d0b636c12e73232b0fb5fd532f9f36d"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7885,
+          "rgbaSHA256": "fc04bf002ce7b2a4bd5576f5664199d3765301eac613940ff22b9e5a8df90bee"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6717,
+          "rgbaSHA256": "b2a81b04b621182ae21b6f6c866952b7f869bfd5d839345fe2ea4adfd4b322a4"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6748,
+          "rgbaSHA256": "3e98fd8400f26d58f80630ac54e5d32988dd12843714ce89eb3943a6dedb05f5"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5112,
+          "rgbaSHA256": "ed02695a5cd300b4a88c3014ac7b616aa0a9712a5a0021213595b1c79276ac18"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S02-ENV06",
+      "name": "滝壺の泡",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4829,
+          "rgbaSHA256": "dc628037e481b29a3f02d0ff8d03606313e1f60fd0679a75b3b6b48d58a0e93a"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5836,
+          "rgbaSHA256": "354ec64d5c5b63501faf9ed6523f7a8814a1be1e6036a735373ef6576af073c0"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6122,
+          "rgbaSHA256": "02e4abc0dada660b17b6de371e1f87ebc945554f30ca7e1aecaebb11665482d0"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5154,
+          "rgbaSHA256": "638bc2209de55464fe81f727de09cf5d9e7db6794cb84e97d22ae276f4dc6ea2"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6060,
+          "rgbaSHA256": "15887f59257387b7f631f4da5a6cb20a2230efcdd048f9be79668ad8ed4dd7d0"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5294,
+          "rgbaSHA256": "46f36d4ff98c1ef896dccfb6cc3468be908a57b19b3d05bb40d5d161e39d4bb5"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6239,
+          "rgbaSHA256": "030dde17aac7df71e072eaacb0343f8dcb295a5d9c1019a3ab4805d69a53d15c"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5006,
+          "rgbaSHA256": "ac01fa408773ae32fcfe10288544c5df8eabddd47bb982d24af272aca989eef5"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S02-ENV07",
+      "name": "睡蓮池の輪",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 216,
+          "visiblePixels": 7381,
+          "rgbaSHA256": "9e90e21640e39b590c3a2ca5155c94ca80f4c9e6121bbbfc5b01d79c9a6fbfe7"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 216,
+          "visiblePixels": 7130,
+          "rgbaSHA256": "5fae50d97b1feefcb44cd601112322e0bbd5e81de05c4801954a7995d6f80950"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 216,
+          "visiblePixels": 7297,
+          "rgbaSHA256": "302087c81a943df4ff31f332b07f3cc43fd38e414a33612d1103e2884f2aaaed"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 216,
+          "visiblePixels": 7985,
+          "rgbaSHA256": "59e21a9297fa7b7bf5fbf9bffae85f4d865039fa68ee6fbcb0d67b913db802b9"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 216,
+          "visiblePixels": 7276,
+          "rgbaSHA256": "9f19dc9c6b4e102a0347a77e98db441593122ebac9166580660120d7630067e1"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 216,
+          "visiblePixels": 7538,
+          "rgbaSHA256": "817d2c0f05580c7fc6777a12b30169d267a907a3461d3eddc51cce97a1ce1b9b"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 216,
+          "visiblePixels": 7451,
+          "rgbaSHA256": "e81fbc52152fb0433a49cbf8a9d6092c2163a2d937d351225f7b993763c23167"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 216,
+          "visiblePixels": 7379,
+          "rgbaSHA256": "bbacb8069e544a8df89ce1f6b0b94914ab90a24ac7e8946fd45352d63eab94d0"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S02-ENV08",
+      "name": "雨上がりの葉しずく",
+      "frames": [
+        {
+          "x": 0,
+          "y": 659,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 6260,
+          "rgbaSHA256": "7370a42ecbf8b07c28e069487907bb44991b1241a13cfde07315016aefc5bcca"
+        },
+        {
+          "x": 222,
+          "y": 659,
+          "w": 221,
+          "h": 228,
+          "visiblePixels": 6269,
+          "rgbaSHA256": "3737a0395b216536441e169a303d7a3c74f3385d80848d490e02fbae0c2fe289"
+        },
+        {
+          "x": 443,
+          "y": 659,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 6010,
+          "rgbaSHA256": "457b963ffeca4e8c3fb84845565d8f95da017fab88c4f00d368204e3bc1d8f54"
+        },
+        {
+          "x": 665,
+          "y": 659,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 6451,
+          "rgbaSHA256": "2ee2a5ca869764883004e45b64965a9d33f072050c5e0ecc3d258b3d0a1bb68e"
+        },
+        {
+          "x": 887,
+          "y": 659,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 6486,
+          "rgbaSHA256": "15b9156a7649648b20daa6802723fbc696be2fe4610d0f32426ce5355557ff02"
+        },
+        {
+          "x": 1109,
+          "y": 659,
+          "w": 221,
+          "h": 228,
+          "visiblePixels": 6309,
+          "rgbaSHA256": "1b69a5428885937e767a311ee4820cd8892b33ad26778a5db1faf9b30af36b9f"
+        },
+        {
+          "x": 1330,
+          "y": 659,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 6252,
+          "rgbaSHA256": "3c9bc6d92b123c11faa642def9f16c97a9187c3e0a9d0bebdff020f75012f652"
+        },
+        {
+          "x": 1552,
+          "y": 659,
+          "w": 222,
+          "h": 228,
+          "visiblePixels": 6325,
+          "rgbaSHA256": "d4b09ef05f72ae5b30fa6e6e9620b750681f28187fa84eafdda4481c4cafd039"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

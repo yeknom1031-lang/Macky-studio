@@ -1,0 +1,22 @@
+{
+  "id": "A0284",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T19:07:09.623477+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "魔術師4人の眼鏡・白ひげ・三つ編み・髪飾りとマントを12コマで確認。作業参照の人形や道具を追加せず、空手の歩行と階段2方向が安定。componentsで隣のコマの混入を解消。"
+  ],
+  "packReport": "review/A0284-pack.json",
+  "preview": "review/A0284-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

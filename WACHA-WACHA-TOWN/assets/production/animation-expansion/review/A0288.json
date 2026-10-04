@@ -1,0 +1,26 @@
+{
+  "id": "A0288",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T19:08:02.344157+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "4人の左参照を維持し、作業用の綿菓子・アイスを移動に追加していない。3行目は下りで腰の大きなリボンが左右移動・消失するため下りだけ除外、他は12コマの原画・components切り出しの全身を確認。2行9列edge警告は老人の左手輪郭で欠けなし。"
+  ],
+  "packReport": "review/A0288-pack.json",
+  "preview": "review/A0288-check.jpg",
+  "disabledClipsByRow": {
+    "2": [
+      "stairDown"
+    ]
+  },
+  "clipFramesByRow": {}
+}

@@ -1,0 +1,32 @@
+{
+  "id": "A0241",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:31:15.692714+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画とpackを確認。0・1・2行は背面バッグ/腰袋が左右反転するためwalkBackのみ除外。これらの階段8コマは安定。3行の橙色コートの老人は全12コマで人物と衣装を保持。"
+  ],
+  "packReport": "review/A0241-pack.json",
+  "preview": "review/A0241-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "walkBack"
+    ],
+    "1": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

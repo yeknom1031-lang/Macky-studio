@@ -1,0 +1,1972 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-04T16:15:28.475970+00:00",
+  "stage": "S01",
+  "generationCalls": 3,
+  "objectDesigns": 12,
+  "frames": 96,
+  "acceptedOriginals": 3,
+  "originalsUnmodified": true,
+  "trueTransparencyVerified": true,
+  "all96FramesNonempty": true,
+  "distinctFramesPerObject": 8,
+  "sourceVisualReview": true,
+  "referencePlacementReview": true,
+  "runtimeIntegrationTested": false,
+  "runtimeApproval": "pending builder/render integration and browser capture",
+  "notes": [
+    "A0721 needs measured uneven rowEdges rather than a blind 4-row split.",
+    "Pixels with alpha1–2 carry residual RGB; compositing on color confirms no visible noisy background. Original pixels are preserved.",
+    "Water effects are additive sparse highlights/foam only; no wheel, building, basin, tree, or character has been duplicated.",
+    "Generated sheet previews and existing-background composites are diagnostic derivatives, not additional generation calls."
+  ],
+  "jobs": [
+    {
+      "id": "A0721",
+      "sourceSHA256": "7509766836462972bc10aecfef100728ee1ab84e8253341050dfade5b3492e10",
+      "imageSize": [
+        1774,
+        887
+      ],
+      "alphaMode": "RGBA, true transparent background",
+      "rows": [
+        {
+          "object": "S01-ENV01",
+          "name": "江戸ガラスの風鈴",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                0,
+                222,
+                242
+              ],
+              "visibleBounds": [
+                77,
+                3,
+                171,
+                216
+              ],
+              "transparentFraction": 0.769,
+              "meanAlpha": 35.452,
+              "rgbaSHA256": "dddbb19259950cf9cc14a8386fadf80082c0bfc51e4e107be53ce3a639381033"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                0,
+                222,
+                242
+              ],
+              "visibleBounds": [
+                81,
+                3,
+                198,
+                211
+              ],
+              "transparentFraction": 0.7613,
+              "meanAlpha": 36.024,
+              "rgbaSHA256": "e193e760307f72b09441f30701127bb492b74d87c640f656a97882d082d10bc1"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                0,
+                221,
+                242
+              ],
+              "visibleBounds": [
+                83,
+                3,
+                188,
+                216
+              ],
+              "transparentFraction": 0.7507,
+              "meanAlpha": 37.171,
+              "rgbaSHA256": "df60b74774c0ee9324698bfec47bfcaf53f1b5de7097e9b281c5859cb116309c"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                0,
+                222,
+                242
+              ],
+              "visibleBounds": [
+                81,
+                3,
+                168,
+                220
+              ],
+              "transparentFraction": 0.7562,
+              "meanAlpha": 37.128,
+              "rgbaSHA256": "bde09f0b505bcb5757b6c8757de976a0ae9c1fae8399060a5e4415def3b938b8"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                0,
+                222,
+                242
+              ],
+              "visibleBounds": [
+                73,
+                3,
+                150,
+                220
+              ],
+              "transparentFraction": 0.7579,
+              "meanAlpha": 37.232,
+              "rgbaSHA256": "25164d05c277e1cffb5126341c3f0db303ab600dc173f49318199585c839de33"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                0,
+                221,
+                242
+              ],
+              "visibleBounds": [
+                67,
+                3,
+                145,
+                220
+              ],
+              "transparentFraction": 0.7651,
+              "meanAlpha": 36.767,
+              "rgbaSHA256": "b5ddbd6dcc926e000dad28da295bda33f528add6ced6e078cde93b40ae7cda9e"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                0,
+                222,
+                242
+              ],
+              "visibleBounds": [
+                53,
+                3,
+                142,
+                218
+              ],
+              "transparentFraction": 0.7649,
+              "meanAlpha": 36.736,
+              "rgbaSHA256": "9be06fe8fe8baf41fca5a266d5d701bd4b5be1c594e8d4f817478a8e5f47904b"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                0,
+                222,
+                242
+              ],
+              "visibleBounds": [
+                49,
+                3,
+                141,
+                215
+              ],
+              "transparentFraction": 0.7766,
+              "meanAlpha": 35.52,
+              "rgbaSHA256": "ddd8b4ff1d81d0ca22e2d7399a4a886acb92585b5583425220c1d73294ca8371"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        },
+        {
+          "object": "S01-ENV02",
+          "name": "祭りの三角小旗",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                242,
+                222,
+                159
+              ],
+              "visibleBounds": [
+                10,
+                17,
+                217,
+                129
+              ],
+              "transparentFraction": 0.5589,
+              "meanAlpha": 72.508,
+              "rgbaSHA256": "4524d2d907af0d08df18b2d8cfb149e0c6b38816cbe74d7f462c9df808713748"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                242,
+                222,
+                159
+              ],
+              "visibleBounds": [
+                9,
+                17,
+                217,
+                128
+              ],
+              "transparentFraction": 0.5769,
+              "meanAlpha": 67.581,
+              "rgbaSHA256": "4a98f3b36ca4ecc624de5322ab0951686ee00e572888b2e58e34be24d5c85fff"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                242,
+                221,
+                159
+              ],
+              "visibleBounds": [
+                9,
+                17,
+                217,
+                135
+              ],
+              "transparentFraction": 0.5809,
+              "meanAlpha": 70.869,
+              "rgbaSHA256": "792bccc0a68167dd0412a4059fe88aa618648ee32b789d84b1b073875be26e66"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                242,
+                222,
+                159
+              ],
+              "visibleBounds": [
+                11,
+                17,
+                219,
+                134
+              ],
+              "transparentFraction": 0.5752,
+              "meanAlpha": 69.382,
+              "rgbaSHA256": "4e50ea724ea280d1b0faa8565c44075c97f1c950a68316319e3d55bb1ce4bbcf"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                242,
+                222,
+                159
+              ],
+              "visibleBounds": [
+                11,
+                17,
+                219,
+                136
+              ],
+              "transparentFraction": 0.545,
+              "meanAlpha": 73.619,
+              "rgbaSHA256": "2d9c265b673ab9ca250d6bd3dd37ce199578b3e09a825c94b4f713a50cb506b9"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                242,
+                221,
+                159
+              ],
+              "visibleBounds": [
+                10,
+                17,
+                217,
+                135
+              ],
+              "transparentFraction": 0.5567,
+              "meanAlpha": 74.775,
+              "rgbaSHA256": "c1673a50b246f5b2199854254b669e7e3f41b1e77e52c3e132c4de05b811ed67"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                242,
+                222,
+                159
+              ],
+              "visibleBounds": [
+                10,
+                17,
+                217,
+                135
+              ],
+              "transparentFraction": 0.5607,
+              "meanAlpha": 74.401,
+              "rgbaSHA256": "0931565fd7649ec570e2cad5947122c08d58465f2f7c26e32d0c3f3303565538"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                242,
+                222,
+                159
+              ],
+              "visibleBounds": [
+                8,
+                17,
+                212,
+                128
+              ],
+              "transparentFraction": 0.5771,
+              "meanAlpha": 70.44,
+              "rgbaSHA256": "d5da6bee2c9662f6bb8d5d74109bc3ff97c38907737b8a511bc770994c7082e7"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        },
+        {
+          "object": "S01-ENV03",
+          "name": "竹の二重風車",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                401,
+                222,
+                256
+              ],
+              "visibleBounds": [
+                29,
+                31,
+                191,
+                243
+              ],
+              "transparentFraction": 0.6438,
+              "meanAlpha": 66.004,
+              "rgbaSHA256": "38a14bde8cea4f8b472a4bc9369f5ee26002615abb8b7d1ba9654fc26b7ce505"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                401,
+                222,
+                256
+              ],
+              "visibleBounds": [
+                37,
+                31,
+                195,
+                246
+              ],
+              "transparentFraction": 0.6403,
+              "meanAlpha": 66.429,
+              "rgbaSHA256": "976503f1655a7e2b14d2e98c481caf7a33703f39d678de408071134549aa3a95"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                401,
+                221,
+                256
+              ],
+              "visibleBounds": [
+                30,
+                42,
+                198,
+                246
+              ],
+              "transparentFraction": 0.6186,
+              "meanAlpha": 66.586,
+              "rgbaSHA256": "8c22160078ee57160892fc46104aea9742f43951523a7d3e1f6cc4b3889cc93d"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                401,
+                222,
+                256
+              ],
+              "visibleBounds": [
+                30,
+                32,
+                191,
+                246
+              ],
+              "transparentFraction": 0.6408,
+              "meanAlpha": 66.032,
+              "rgbaSHA256": "5486e2aa09b49dd0930bc52c1120f24a6b3b6dce7da72bb2f4e9ffb05675a502"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                401,
+                222,
+                256
+              ],
+              "visibleBounds": [
+                28,
+                43,
+                197,
+                246
+              ],
+              "transparentFraction": 0.6362,
+              "meanAlpha": 66.355,
+              "rgbaSHA256": "33b1cd0fd4d39e1ae6d51953ba32abedbec23dbec61d6facab0efdc780ead0a2"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                401,
+                221,
+                256
+              ],
+              "visibleBounds": [
+                34,
+                34,
+                188,
+                246
+              ],
+              "transparentFraction": 0.6381,
+              "meanAlpha": 66.928,
+              "rgbaSHA256": "55b9b97c318a030919f8d6ad8e63ced0c52c64665359c08cdb4b13be84f15467"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                401,
+                222,
+                256
+              ],
+              "visibleBounds": [
+                32,
+                36,
+                195,
+                246
+              ],
+              "transparentFraction": 0.6559,
+              "meanAlpha": 65.359,
+              "rgbaSHA256": "27fa2638b8bda5301a491603a29472e99f3799f7ef66c6440d5d1c5617772f73"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                401,
+                222,
+                256
+              ],
+              "visibleBounds": [
+                29,
+                32,
+                190,
+                246
+              ],
+              "transparentFraction": 0.6446,
+              "meanAlpha": 66.202,
+              "rgbaSHA256": "ff08bffd46724a325dd8140631e8b4d23eb1102dd7d68d77cd71eb72d642907e"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        },
+        {
+          "object": "S01-ENV04",
+          "name": "茶庭の湯気",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                657,
+                222,
+                230
+              ],
+              "visibleBounds": [
+                56,
+                15,
+                167,
+                208
+              ],
+              "transparentFraction": 0.5359,
+              "meanAlpha": 23.193,
+              "rgbaSHA256": "9bd3d73b1a8313adac955fddec560c0fbd156afb4643f7c0bd9dc213c65f8bba"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                657,
+                222,
+                230
+              ],
+              "visibleBounds": [
+                65,
+                21,
+                166,
+                212
+              ],
+              "transparentFraction": 0.5473,
+              "meanAlpha": 24.501,
+              "rgbaSHA256": "a0899d1c90649ca632bca7b88659cc4ef328717fde366d313f35773099ab2e73"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                657,
+                221,
+                230
+              ],
+              "visibleBounds": [
+                57,
+                23,
+                168,
+                214
+              ],
+              "transparentFraction": 0.5475,
+              "meanAlpha": 23.534,
+              "rgbaSHA256": "0c7a4f9c0ed24e338a5391d73a89f96e3000bb19d5c925d7040e934e50f9c134"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                657,
+                222,
+                230
+              ],
+              "visibleBounds": [
+                58,
+                28,
+                155,
+                216
+              ],
+              "transparentFraction": 0.5904,
+              "meanAlpha": 22.212,
+              "rgbaSHA256": "da2cd4f0fd778ea1882c1f3e5d3a5b0cff7d31711cbf4d3015deaff3cb16fdcd"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                657,
+                222,
+                230
+              ],
+              "visibleBounds": [
+                61,
+                21,
+                159,
+                216
+              ],
+              "transparentFraction": 0.6092,
+              "meanAlpha": 25.815,
+              "rgbaSHA256": "eb5fce5df5c8a4f8bae82c4437154938aab11b5a49c41a05753cf44b8c740a5f"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                657,
+                221,
+                230
+              ],
+              "visibleBounds": [
+                61,
+                32,
+                162,
+                216
+              ],
+              "transparentFraction": 0.5834,
+              "meanAlpha": 24.176,
+              "rgbaSHA256": "fcb58f7699abd52e86afb1a22ac6419ac82b46fa26fedc5fd4e6b61ebcd3d3fb"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                657,
+                222,
+                230
+              ],
+              "visibleBounds": [
+                59,
+                33,
+                155,
+                215
+              ],
+              "transparentFraction": 0.621,
+              "meanAlpha": 23.39,
+              "rgbaSHA256": "d98c00e04a0264cba862359ac476638f3e1d8fbab0b503f381eaba547fd55939"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                657,
+                222,
+                230
+              ],
+              "visibleBounds": [
+                54,
+                27,
+                169,
+                215
+              ],
+              "transparentFraction": 0.5495,
+              "meanAlpha": 22.268,
+              "rgbaSHA256": "9020b244b1f216f09c52bc8a72af832691c18e58c30089b86cf2b275f024b48f"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        }
+      ],
+      "atlas": {
+        "imageSize": [
+          1774,
+          887
+        ],
+        "rowEdges": [
+          0,
+          242,
+          401,
+          657,
+          887
+        ],
+        "columnEdges": [
+          0,
+          222,
+          444,
+          665,
+          887,
+          1109,
+          1330,
+          1552,
+          1774
+        ],
+        "measuredOn": "original-generated-PNG",
+        "notes": "Nonuniform first-sheet row spacing is preserved; do not blindly split A0721 into equal-height rows."
+      }
+    },
+    {
+      "id": "A0722",
+      "sourceSHA256": "f1f1a5d6b93457a086721b02fb6fb7cb7512ffa6b02ece93dfa29078a6a65108",
+      "imageSize": [
+        1774,
+        887
+      ],
+      "alphaMode": "RGBA, true transparent background",
+      "rows": [
+        {
+          "object": "S01-ENV05",
+          "name": "噴水の細かい飛沫",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                22,
+                100,
+                199,
+                192
+              ],
+              "transparentFraction": 0.592,
+              "meanAlpha": 20.312,
+              "rgbaSHA256": "f2de5ab931aeb3dabecae13ec1d894ea9e27f4045c3cf8d63c942498bf65d540"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                19,
+                69,
+                208,
+                190
+              ],
+              "transparentFraction": 0.4405,
+              "meanAlpha": 28.241,
+              "rgbaSHA256": "9ffc9e1a7be5d953240e338519439ee9d7bad705c5fd5b5262ba03817458d164"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                0,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                16,
+                59,
+                203,
+                191
+              ],
+              "transparentFraction": 0.2866,
+              "meanAlpha": 31.449,
+              "rgbaSHA256": "b47b1be1235ea087ff33a6a80bfbc679556c13328f4605f2f28fe85ded413ac9"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                12,
+                60,
+                209,
+                191
+              ],
+              "transparentFraction": 0.3121,
+              "meanAlpha": 29.497,
+              "rgbaSHA256": "b586a3ae1df9b11db803c56115232dbb346ac401fd120a769e05723b720e7032"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                19,
+                66,
+                207,
+                191
+              ],
+              "transparentFraction": 0.3084,
+              "meanAlpha": 30.462,
+              "rgbaSHA256": "cf1249dff63aa91f12c17ace4e1ed541c1cba95518c193ebc2030caf1e7b10d1"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                0,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                15,
+                77,
+                203,
+                192
+              ],
+              "transparentFraction": 0.3893,
+              "meanAlpha": 26.975,
+              "rgbaSHA256": "8a55d759a9b67426e6089dbd1ceebfaeb3c693f8551c59847a8831fe417b7e90"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                19,
+                95,
+                203,
+                191
+              ],
+              "transparentFraction": 0.5234,
+              "meanAlpha": 22.058,
+              "rgbaSHA256": "c78b831d1d2ff0a78c3a5f1947de62c48693924e32a6cdfd09d45b2b847ad7b2"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                23,
+                97,
+                200,
+                191
+              ],
+              "transparentFraction": 0.6099,
+              "meanAlpha": 20.329,
+              "rgbaSHA256": "44f32000ae588c2ebeeef59e886f462debfa2078235c3d0ef244b1fb7c8dcd28"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        },
+        {
+          "object": "S01-ENV06",
+          "name": "水車の落ち水しぶき",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                60,
+                54,
+                167,
+                198
+              ],
+              "transparentFraction": 0.3869,
+              "meanAlpha": 27.51,
+              "rgbaSHA256": "66da62bea860c43de5cbd4748fbb8cf49e2660eb68dcf35aaf63c2623ba04977"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                47,
+                49,
+                176,
+                199
+              ],
+              "transparentFraction": 0.2536,
+              "meanAlpha": 38.553,
+              "rgbaSHA256": "aa2053c116c09c3a4173338ff07e36303810a1c55d88b6ce0fe2d0ed3786a2d8"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                222,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                41,
+                38,
+                175,
+                199
+              ],
+              "transparentFraction": 0.2321,
+              "meanAlpha": 49.006,
+              "rgbaSHA256": "5e2a291e9c223dad0ef5797a5308d8710b4dead8d0bc5ff6f2d31bf897807baa"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                38,
+                38,
+                177,
+                199
+              ],
+              "transparentFraction": 0.1976,
+              "meanAlpha": 50.397,
+              "rgbaSHA256": "4b266df0cee3d8d32cba2390837d88ae998e2930e78f04ead64cd1d70e644e7e"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                50,
+                43,
+                179,
+                199
+              ],
+              "transparentFraction": 0.1441,
+              "meanAlpha": 44.851,
+              "rgbaSHA256": "48164ce5abdccc599e2d9b440e55fecca6a8b2ed9c96d98ff903f41602a93322"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                222,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                50,
+                47,
+                167,
+                199
+              ],
+              "transparentFraction": 0.1939,
+              "meanAlpha": 38.104,
+              "rgbaSHA256": "4f6a2ec510f4667c8e2530a6c7ea5d002b924508e4a94cf45afe583872ff62ed"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                53,
+                60,
+                170,
+                199
+              ],
+              "transparentFraction": 0.2755,
+              "meanAlpha": 26.856,
+              "rgbaSHA256": "aa543f605bbf89737e0882244b2367da8bdcb0479dbedcae55ac695632aafdd2"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                58,
+                59,
+                163,
+                197
+              ],
+              "transparentFraction": 0.4476,
+              "meanAlpha": 23.801,
+              "rgbaSHA256": "2bc2f75a93d2726f3167f10cf815bedc08b9871ccae409a469806a7bbeffb859"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        },
+        {
+          "object": "S01-ENV07",
+          "name": "鯉の池の波紋",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                28,
+                82,
+                197,
+                167
+              ],
+              "transparentFraction": 0.4617,
+              "meanAlpha": 15.522,
+              "rgbaSHA256": "f1fda0addd80bdbcaa290675aa0315bebc09a6a21185a4dd3a3b7ed6b2be98ea"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                21,
+                78,
+                202,
+                170
+              ],
+              "transparentFraction": 0.3868,
+              "meanAlpha": 18.222,
+              "rgbaSHA256": "cad8cc688a88d53341fff01df2f5a4c102501fc1ccfcf6b0de29700b0b647239"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                444,
+                221,
+                221
+              ],
+              "visibleBounds": [
+                11,
+                73,
+                206,
+                169
+              ],
+              "transparentFraction": 0.3483,
+              "meanAlpha": 17.504,
+              "rgbaSHA256": "6a68b9fb7ecdf583c7f8aaa8b76c2769fe719d3dae1663879d5a4fa9680c9872"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                12,
+                73,
+                210,
+                166
+              ],
+              "transparentFraction": 0.3215,
+              "meanAlpha": 17.794,
+              "rgbaSHA256": "d98e72c4ab9358b54ccd9dce936845632136cf39536e5986158d138a47633f72"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                12,
+                68,
+                210,
+                167
+              ],
+              "transparentFraction": 0.2567,
+              "meanAlpha": 16.122,
+              "rgbaSHA256": "8a2fab22980889246a53790f58d27d2586c402f97b00bcc866457e05ac9f8e55"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                444,
+                221,
+                221
+              ],
+              "visibleBounds": [
+                19,
+                69,
+                214,
+                167
+              ],
+              "transparentFraction": 0.2935,
+              "meanAlpha": 14.215,
+              "rgbaSHA256": "727da6770db63ce553db06ea59331e8e3f5967af8f28aa178e8137cb6d9216b6"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                22,
+                82,
+                200,
+                160
+              ],
+              "transparentFraction": 0.3469,
+              "meanAlpha": 10.717,
+              "rgbaSHA256": "521be117a39be389e820280cf31babf89925e44927171c10d32c2b9cbef895a8"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                25,
+                80,
+                195,
+                167
+              ],
+              "transparentFraction": 0.4218,
+              "meanAlpha": 15.946,
+              "rgbaSHA256": "4ec5cb1dea35eb97fb53408a74f7d395a5f481e61107a935243224c2429a44f2"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        },
+        {
+          "object": "S01-ENV08",
+          "name": "船着場のきらめき",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                28,
+                73,
+                198,
+                165
+              ],
+              "transparentFraction": 0.5891,
+              "meanAlpha": 21.316,
+              "rgbaSHA256": "1821b15ece9ea94763e359092071590e6db2438e66f8cb9f9d352493e6c13f1b"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                23,
+                66,
+                196,
+                158
+              ],
+              "transparentFraction": 0.5439,
+              "meanAlpha": 22.802,
+              "rgbaSHA256": "420ac4c7c3009af6998e61d1692a287f689c872ff6ac14ed45bfd5098dfb6469"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                665,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                33,
+                66,
+                200,
+                157
+              ],
+              "transparentFraction": 0.5181,
+              "meanAlpha": 23.099,
+              "rgbaSHA256": "34bb7f457d9bb2f45719ffc6df113244e47077bca1b3a2f8f4340351fef45003"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                26,
+                63,
+                202,
+                162
+              ],
+              "transparentFraction": 0.3955,
+              "meanAlpha": 26.921,
+              "rgbaSHA256": "1ca0a90475d6aaa973babd8d05a781137147c9bd288cee12a8491f5aca74734b"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                26,
+                66,
+                191,
+                160
+              ],
+              "transparentFraction": 0.49,
+              "meanAlpha": 24.401,
+              "rgbaSHA256": "88331edc453d7b43098717fa3b6c8bc3320779d883b364a9203c1e372358c276"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                665,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                26,
+                67,
+                181,
+                158
+              ],
+              "transparentFraction": 0.463,
+              "meanAlpha": 22.329,
+              "rgbaSHA256": "55120a6813d54a959c4f5d632e25f14cb3c5bfcbb22da644cd6ceb6bfab4301d"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                29,
+                62,
+                189,
+                158
+              ],
+              "transparentFraction": 0.5128,
+              "meanAlpha": 21.341,
+              "rgbaSHA256": "712577f23b8554884386bdc93414fbe58fcf8829eeb48defd0af18b30bcbf03c"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                29,
+                72,
+                197,
+                166
+              ],
+              "transparentFraction": 0.5867,
+              "meanAlpha": 19.268,
+              "rgbaSHA256": "d785905eade2a490d188fc4c23a4af19388a9b975c2fc222974def87a9ab34a5"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        }
+      ],
+      "atlas": {
+        "imageSize": [
+          1774,
+          887
+        ],
+        "rowEdges": [
+          0,
+          222,
+          444,
+          665,
+          887
+        ],
+        "columnEdges": [
+          0,
+          222,
+          444,
+          665,
+          887,
+          1109,
+          1330,
+          1552,
+          1774
+        ],
+        "measuredOn": "original-generated-PNG",
+        "notes": "Four equal-height rows confirmed; bright sprite bodies remain within each cell."
+      }
+    },
+    {
+      "id": "A0723",
+      "sourceSHA256": "f4d7d4717cd09dbd0bf3e04861a06129cd6cd8a50349a6ceb39056ec19254c24",
+      "imageSize": [
+        1774,
+        887
+      ],
+      "alphaMode": "RGBA, true transparent background",
+      "rows": [
+        {
+          "object": "S01-ENV09",
+          "name": "桜の花びらの舞",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                46,
+                51,
+                203,
+                191
+              ],
+              "transparentFraction": 0.5951,
+              "meanAlpha": 29.266,
+              "rgbaSHA256": "f5192a74e1b2bd33a0a5d5cd38fc68c916f29fb39066f8745e4eaae61bce4051"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                51,
+                42,
+                179,
+                197
+              ],
+              "transparentFraction": 0.5603,
+              "meanAlpha": 28.394,
+              "rgbaSHA256": "9077c4b3e9aa068cc0e3395df2187217ae78c792ad084b054b9fbd5b70ba5164"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                0,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                54,
+                54,
+                190,
+                195
+              ],
+              "transparentFraction": 0.5906,
+              "meanAlpha": 29.288,
+              "rgbaSHA256": "97b010f4114422cccac32b6e0d16a789507f54622e45b6490d60d63ea1ec1bea"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                45,
+                44,
+                188,
+                196
+              ],
+              "transparentFraction": 0.5822,
+              "meanAlpha": 29.942,
+              "rgbaSHA256": "5dd6fc611a622c903639350d3cd30d3d47cfbee919f80500acfc0a4aeebdd287"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                51,
+                39,
+                188,
+                201
+              ],
+              "transparentFraction": 0.5509,
+              "meanAlpha": 28.094,
+              "rgbaSHA256": "54bea83bb2acde0d80e639e33493fb095ad28cfd2adba1a270423e9911dc1380"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                0,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                40,
+                59,
+                172,
+                204
+              ],
+              "transparentFraction": 0.5393,
+              "meanAlpha": 27.32,
+              "rgbaSHA256": "70f54c474da4c26005423d82f7b457e2a34186f4933b48d3f21135a5117ce2e8"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                37,
+                45,
+                185,
+                199
+              ],
+              "transparentFraction": 0.4601,
+              "meanAlpha": 29.673,
+              "rgbaSHA256": "57b9b206ef9461bd2793ac5d6e1cbb2b62fb754266120e7e76221efa0fcc8814"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                0,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                29,
+                52,
+                185,
+                193
+              ],
+              "transparentFraction": 0.5622,
+              "meanAlpha": 29.289,
+              "rgbaSHA256": "612eaef45157c9bf2b03a4924c631a75dd5f6ccb48d4f467a2d04f116a9e8426"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        },
+        {
+          "object": "S01-ENV10",
+          "name": "柳の綿毛",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                50,
+                46,
+                191,
+                183
+              ],
+              "transparentFraction": 0.6052,
+              "meanAlpha": 16.078,
+              "rgbaSHA256": "3b9882bf8ceeb3e2b55ba498e8ecc4d539ea5f6db49716f473019f3ffa27fe40"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                63,
+                51,
+                181,
+                193
+              ],
+              "transparentFraction": 0.5896,
+              "meanAlpha": 14.424,
+              "rgbaSHA256": "cf27fd7d789eb2cc277f52ee164fdc6979a755b830a77efd7f67ea35c39ecbb5"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                222,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                52,
+                45,
+                167,
+                187
+              ],
+              "transparentFraction": 0.5734,
+              "meanAlpha": 17.354,
+              "rgbaSHA256": "7d7b4cbb268a58ef1c9f465778db07814b310c1795acb41112aa2c92b34c7be8"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                53,
+                49,
+                175,
+                201
+              ],
+              "transparentFraction": 0.5215,
+              "meanAlpha": 14.67,
+              "rgbaSHA256": "3d36fd5e5ef0ac2260aea8a042e98f0fa891ecbdecd5fb94ae1397335de7e8bc"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                42,
+                49,
+                176,
+                187
+              ],
+              "transparentFraction": 0.5087,
+              "meanAlpha": 15.759,
+              "rgbaSHA256": "9bfe9aef0a0caa667bea593b5d8434f6defc007bff9619bbf32c59ada4a0dce4"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                222,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                67,
+                50,
+                182,
+                194
+              ],
+              "transparentFraction": 0.5545,
+              "meanAlpha": 15.076,
+              "rgbaSHA256": "97ff33581947e3ba6c854c96aa1823906f19d38321ce20a7bf77f0d0fdbaa0dd"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                50,
+                42,
+                170,
+                185
+              ],
+              "transparentFraction": 0.5536,
+              "meanAlpha": 16.381,
+              "rgbaSHA256": "d5820cc92c087d8819dcd8c9903550c9cddcc73136f346315ea3fe701c4ae9a2"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                222,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                56,
+                50,
+                188,
+                198
+              ],
+              "transparentFraction": 0.5585,
+              "meanAlpha": 15.55,
+              "rgbaSHA256": "4dcea2c2894e005012bfa50ed38345416727870743d0fdf08a1ba7bdfff0ceff"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        },
+        {
+          "object": "S01-ENV11",
+          "name": "屋台のしゃぼん玉",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                63,
+                30,
+                180,
+                174
+              ],
+              "transparentFraction": 0.6249,
+              "meanAlpha": 32.009,
+              "rgbaSHA256": "0322a259566d844f2531628bc192864e4e43b48db76461ded61ed3c0665496d6"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                58,
+                39,
+                183,
+                183
+              ],
+              "transparentFraction": 0.5409,
+              "meanAlpha": 35.364,
+              "rgbaSHA256": "fa69cda48189d79e57e790874a799570545b00d6ea1b45710bde7aa26dba2d28"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                444,
+                221,
+                221
+              ],
+              "visibleBounds": [
+                52,
+                31,
+                182,
+                175
+              ],
+              "transparentFraction": 0.4518,
+              "meanAlpha": 34.771,
+              "rgbaSHA256": "866b970008a2b9f56ada15b3de6f9af14e18ce9b0822eaa10c5980c4822c19d5"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                54,
+                40,
+                176,
+                175
+              ],
+              "transparentFraction": 0.5466,
+              "meanAlpha": 29.987,
+              "rgbaSHA256": "97158ee7d0703665145e0be87d05a7207194ebc118a6c8ce3c0d5a870028d6a4"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                50,
+                40,
+                174,
+                183
+              ],
+              "transparentFraction": 0.4985,
+              "meanAlpha": 34.176,
+              "rgbaSHA256": "7aab88d59c57e578fe3c5b7a0c009f825d17e6f82972625bf88b2d29a16155b8"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                444,
+                221,
+                221
+              ],
+              "visibleBounds": [
+                50,
+                52,
+                170,
+                180
+              ],
+              "transparentFraction": 0.4898,
+              "meanAlpha": 25.684,
+              "rgbaSHA256": "49205e7f9d7971649d49866576f55c5944ef629c9ff04c4598460f78618550a8"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                45,
+                49,
+                170,
+                180
+              ],
+              "transparentFraction": 0.5232,
+              "meanAlpha": 25.897,
+              "rgbaSHA256": "599236231d45e416cc6f2dd7560928d9abb886ab9bc7de8319f2bf46fdc8d8e6"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                444,
+                222,
+                221
+              ],
+              "visibleBounds": [
+                51,
+                49,
+                164,
+                171
+              ],
+              "transparentFraction": 0.6152,
+              "meanAlpha": 17.109,
+              "rgbaSHA256": "e366f03160e6650f37efc10d25e278fc52acc5d63506dc4443c90d37ac443967"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        },
+        {
+          "object": "S01-ENV12",
+          "name": "回廊の房飾り",
+          "allFramesNonempty": true,
+          "allEightFramesDistinct": true,
+          "sourceFrames": [
+            {
+              "frame": 0,
+              "sourceRect": [
+                0,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                70,
+                3,
+                152,
+                190
+              ],
+              "transparentFraction": 0.7832,
+              "meanAlpha": 36.024,
+              "rgbaSHA256": "b453c2a8f45db8d607525cbbdf85acda8582dc04aeeb66aa803c62736bf772b3"
+            },
+            {
+              "frame": 1,
+              "sourceRect": [
+                222,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                88,
+                3,
+                190,
+                189
+              ],
+              "transparentFraction": 0.7628,
+              "meanAlpha": 37.241,
+              "rgbaSHA256": "e42cdd2b95a08cfc0b638de1c33b33aa425ffaa7d692c95eadf72f921ef4124b"
+            },
+            {
+              "frame": 2,
+              "sourceRect": [
+                444,
+                665,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                87,
+                3,
+                194,
+                188
+              ],
+              "transparentFraction": 0.7241,
+              "meanAlpha": 39.333,
+              "rgbaSHA256": "73a49e05df9c8cd184865a35cdbda44924613a7e9e191c5dc87566a67644b67d"
+            },
+            {
+              "frame": 3,
+              "sourceRect": [
+                665,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                83,
+                3,
+                180,
+                190
+              ],
+              "transparentFraction": 0.7529,
+              "meanAlpha": 39.65,
+              "rgbaSHA256": "9b578a1719c9d86b5d4f75a695531eaf042d6fd819943fe4ad56bf40dec50f3b"
+            },
+            {
+              "frame": 4,
+              "sourceRect": [
+                887,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                83,
+                3,
+                169,
+                191
+              ],
+              "transparentFraction": 0.762,
+              "meanAlpha": 37.859,
+              "rgbaSHA256": "0184738df27e805f6e148e969acd03fbe6af3d2d8d63d0ee4cd61809aaa1438a"
+            },
+            {
+              "frame": 5,
+              "sourceRect": [
+                1109,
+                665,
+                221,
+                222
+              ],
+              "visibleBounds": [
+                35,
+                3,
+                135,
+                189
+              ],
+              "transparentFraction": 0.7351,
+              "meanAlpha": 39.227,
+              "rgbaSHA256": "5306f12ac2ecacaaee9db984f32cf15d977c13848890c153fc9b1e6cb3dbc491"
+            },
+            {
+              "frame": 6,
+              "sourceRect": [
+                1330,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                33,
+                3,
+                136,
+                189
+              ],
+              "transparentFraction": 0.7619,
+              "meanAlpha": 38.616,
+              "rgbaSHA256": "6668c6c2a911fcc090840ca7b2c3e180b5fe813a65be19eb081676ebd0fdc001"
+            },
+            {
+              "frame": 7,
+              "sourceRect": [
+                1552,
+                665,
+                222,
+                222
+              ],
+              "visibleBounds": [
+                52,
+                3,
+                138,
+                190
+              ],
+              "transparentFraction": 0.7489,
+              "meanAlpha": 37.652,
+              "rgbaSHA256": "159ad49df38a7b5449333899d0827be71be761ac2495a84b989019f9c29ea25a"
+            }
+          ],
+          "visualReview": "Eight coherent sequential poses; no extra objects, background panel, text, or missing body part."
+        }
+      ],
+      "atlas": {
+        "imageSize": [
+          1774,
+          887
+        ],
+        "rowEdges": [
+          0,
+          222,
+          444,
+          665,
+          887
+        ],
+        "columnEdges": [
+          0,
+          222,
+          444,
+          665,
+          887,
+          1109,
+          1330,
+          1552,
+          1774
+        ],
+        "measuredOn": "original-generated-PNG",
+        "notes": "Four equal-height rows confirmed; bright sprite bodies remain within each cell."
+      }
+    }
+  ]
+}

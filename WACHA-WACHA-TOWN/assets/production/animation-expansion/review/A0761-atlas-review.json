@@ -1,0 +1,355 @@
+{
+  "id": "A0761",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "8b4f198c317a9ea6dae0c71414ce1efd1b80fbf12987bf35ec99ca7003cd020f",
+  "alphaZeroFraction": 0.36037,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S14-ENV05",
+      "name": "噴水セットの飛沫",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1959,
+          "rgbaSHA256": "586f163a007dbf17d81e6db2dc69f1eb5b633eb9b810e6b0a1c61077addb95e2"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2709,
+          "rgbaSHA256": "0eecd8a962f08d1901320ec1feadb4fc933fdb042c038b0ba013e7409ba02a80"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4213,
+          "rgbaSHA256": "d4c72971906ec7cfb02bfd863f07301bc56d033daa24c6aa17b830d1db2f0cce"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4218,
+          "rgbaSHA256": "df7229a2c5318ee89a8939209c621bc4da6838a4c8de18874072b5696ae8f3b1"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3716,
+          "rgbaSHA256": "5180fb248905c6a16efc2b0352174a27bf303cb21a83be26460ce7748d9d03f9"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3966,
+          "rgbaSHA256": "b03d7fb2c3ff5f48f087f9c802ed524874abb4344079a71c5df79b9e48ae6a81"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2347,
+          "rgbaSHA256": "c2da3a621f3039095e9639a342f99e3913686e7fa5d67c7aaa56237d8bdf3829"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2063,
+          "rgbaSHA256": "c56640a872c7cb45645e1e25b5e3b87365898f2f35b4a10bdd2cd5fb28394a51"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S14-ENV06",
+      "name": "海賊セットの霧",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10510,
+          "rgbaSHA256": "c290e5bf964705cac34f807bf7dad2f9b1a47064515eb8cda263313bbef9dab0"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 15035,
+          "rgbaSHA256": "7dcf8caaf8e614b042bcbd1fd9f43e0fc91844c1413b495f8f30e01d070dbd20"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 23085,
+          "rgbaSHA256": "02933b4232cde6718cc7e807c65067d0ac70a624210ab924f1098d65d423b651"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 22857,
+          "rgbaSHA256": "47eab2b189cfe0649c633bf52d6a0fef582225ec40b680747ec90060650b7846"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 23800,
+          "rgbaSHA256": "b797e3350aed315774636437c5fd306622778fcaf2a575807411c5a1054cd418"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 18347,
+          "rgbaSHA256": "7bfdbf0c1946efb725c7bb8be44c624979a90124cf1dc88609da0bcff9d8bd1d"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 11643,
+          "rgbaSHA256": "91e6e971d35f5de49ac302b9924329b847582d7075cf4a715d7ec07b4699a649"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8939,
+          "rgbaSHA256": "285a352d991fd862c52b5baea6f37223289e0f9241614e44e6fbcb32f8d3ab70"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S14-ENV07",
+      "name": "蒸気撮影機の煙",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6861,
+          "rgbaSHA256": "c28477e236508eee1f09592c62e30151d72f31859a8ad684b46a394c916eb4b4"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11153,
+          "rgbaSHA256": "e423a3a19c324937fb1530fdfbe588f7d731185683f89212fcea28a52664028c"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15279,
+          "rgbaSHA256": "54cdd2f8d0d9c4cb8b3daf1653846c4dda9e20f72ad9352d1540352b100a053f"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14766,
+          "rgbaSHA256": "2a290c40312967c3eab3efad62748801b7cc57e093030c16ddaf717f08611d68"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15322,
+          "rgbaSHA256": "fdbd83cd2733e494a7ad3471fdee2647684d1463c137018051ad1750bdfcc2a5"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12266,
+          "rgbaSHA256": "326b52a2cea4ff499c493a14d035ea63053cc62fa48043c77d3df748d7620da8"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9333,
+          "rgbaSHA256": "48d9b83d50c83ff536c5a3ebb239c0f72e7f3eed40bcb0910b0e029ae14ca471"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6933,
+          "rgbaSHA256": "4a0e914c3727025119408500373439c1284d533ee831ba93f08ef74a9aa1726b"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S14-ENV08",
+      "name": "特殊効果の泡",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4412,
+          "rgbaSHA256": "64ddd0d95eff5f6c473256a172231ec9b29f8ff6f3ea3471801abdcc8dc76190"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5224,
+          "rgbaSHA256": "5ea4ceb1c0e0be66438e8919bdf6f9d8d9a5fe3fcf096e9ece528dc29d5d3217"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5979,
+          "rgbaSHA256": "6d2b4827cde50a4f9cb6f0be50320db4690c5119fc578995d1bcbca65a886bfc"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6302,
+          "rgbaSHA256": "a1a8390c2bfa61354e43e22a2feaf4d71cae16ecd151c7f2940d88daae885cb4"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5100,
+          "rgbaSHA256": "3978aa98c13bf1a8d1d8f7918f22eacaf189fbc172c9eed09372454b39693be8"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4338,
+          "rgbaSHA256": "fdef85595800926e9755cda510ccc27802847ae1557559a3293a97a80d99023d"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3112,
+          "rgbaSHA256": "c77550fe80ccc1bbb76fb6dbf0b19de34b2dfa7e2468711893f1070fc8a28b99"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2762,
+          "rgbaSHA256": "9070502930e3aa1b1c5547497f23191a4c41e45e679b85dcfc24e2204826cf13"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

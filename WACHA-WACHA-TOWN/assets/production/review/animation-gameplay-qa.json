@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-04T16:13:01.966388+00:00",
+  "passed": true,
+  "sourceSha": {
+    "core": "a9e3d58743d8ba376908bdfaf8ae8522ee4bd0b2bd01733a27964ba1ed94ccdd",
+    "render": "b04fae44676e0de0eb5214559484d69c0fbef5fae325962f888909586f59a878"
+  },
+  "scope": "Source implementation tested; runtime copying/build remains with parent. Browser checks use synthetic diagnostic strips, not generated artwork acceptance.",
+  "motionUnit": {
+    "passed": 6,
+    "report": "animation-motion-report.txt"
+  },
+  "browser": {
+    "passed": 22,
+    "report": "animation-browser-report.json"
+  },
+  "physicsEquivalence": {
+    "cases": 27,
+    "steps": 8103,
+    "rngDraws": 1846116,
+    "maxOverlap": 2.9000000000000012,
+    "report": "animation-equivalence-report.json",
+    "sourceUnchanged": true,
+    "method": "Exact RNG output/call-count comparison from create through every step; ordered movement, path, overlap, event and other dynamic-state serialization compared each step; exact full state compared at initialization and completion. New visual-prefixed metadata is excluded; all physical state remains included. RNG wrapper records outputs without consuming extra values."
+  },
+  "contract": {
+    "characterClips": [
+      "walkBack",
+      "stairUp",
+      "stairDown",
+      "roleWork"
+    ],
+    "clipLimitBytes": 100663296,
+    "environmentLayers": [
+      "underActors",
+      "depth",
+      "sky"
+    ],
+    "environmentPlacements": "World coordinates and explicit object anchors; additive components stay outside static background cache",
+    "photograph": "record.pose captures clip and frame; target remains full-body above all scenery; original base front pose remains in wanted portrait"
+  },
+  "incrementalValidation": {
+    "at": "2026-10-04T16:43:32.109171+00:00",
+    "sourceSha": {
+      "core": "ab2a18cecab3bf302b7d2f5b521a0906e1e4c692f2e1a3b731ee72e6b67ab3db",
+      "render": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9"
+    },
+    "wheelchair": {
+      "passed": 4,
+      "report": "wheelchair-mobility-qa.json"
+    },
+    "browser": {
+      "passed": 24,
+      "report": "animation-browser-report.json"
+    },
+    "notes": [
+      "Wheelchair routes intentionally remain on reachable ground paths and cannot enter upstairs sites. Previous animation equivalence proof remains tied to its recorded source, before this intentional mobility change.",
+      "Generated roleWork clips without explicit requiresSite use the role behavior restriction; street performances are allowed while workstation crafts require their site."
+    ]
+  }
+}

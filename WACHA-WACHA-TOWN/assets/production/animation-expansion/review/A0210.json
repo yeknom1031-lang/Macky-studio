@@ -1,0 +1,21 @@
+{
+  "id": "A0210",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:09:31.619932+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "2〜4行の左参照の携行品と全身を保持。1行目は右の作業かごが空手の左歩行へ混入するため除外。"
+  ],
+  "packReport": "review/A0210-pack.json",
+  "preview": "review/A0210-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

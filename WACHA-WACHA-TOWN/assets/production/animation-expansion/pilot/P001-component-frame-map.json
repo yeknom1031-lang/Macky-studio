@@ -1,0 +1,584 @@
+{
+  "source": "P001.png",
+  "normalized": "P001-components-normalized.png",
+  "cellSize": 192,
+  "frames": [
+    {
+      "row": 0,
+      "col": 0,
+      "sourceBox": [
+        50,
+        3,
+        168,
+        184
+      ],
+      "componentPixels": 12566,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "sourceBox": [
+        28,
+        182,
+        173,
+        365
+      ],
+      "componentPixels": 15514,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "sourceBox": [
+        36,
+        362,
+        165,
+        540
+      ],
+      "componentPixels": 13637,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "sourceBox": [
+        41,
+        538,
+        165,
+        721
+      ],
+      "componentPixels": 13743,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "sourceBox": [
+        222,
+        3,
+        333,
+        185
+      ],
+      "componentPixels": 12478,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "sourceBox": [
+        207,
+        184,
+        339,
+        366
+      ],
+      "componentPixels": 15217,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "sourceBox": [
+        199,
+        363,
+        331,
+        541
+      ],
+      "componentPixels": 13610,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "sourceBox": [
+        205,
+        538,
+        326,
+        722
+      ],
+      "componentPixels": 13995,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "sourceBox": [
+        386,
+        3,
+        507,
+        185
+      ],
+      "componentPixels": 12817,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "sourceBox": [
+        377,
+        183,
+        516,
+        365
+      ],
+      "componentPixels": 15783,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "sourceBox": [
+        370,
+        363,
+        506,
+        540
+      ],
+      "componentPixels": 13850,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "sourceBox": [
+        367,
+        537,
+        503,
+        722
+      ],
+      "componentPixels": 14750,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "sourceBox": [
+        562,
+        4,
+        671,
+        185
+      ],
+      "componentPixels": 12614,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "sourceBox": [
+        555,
+        186,
+        687,
+        364
+      ],
+      "componentPixels": 15768,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "sourceBox": [
+        545,
+        363,
+        680,
+        542
+      ],
+      "componentPixels": 14350,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "sourceBox": [
+        549,
+        539,
+        672,
+        721
+      ],
+      "componentPixels": 14655,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 4,
+      "sourceBox": [
+        749,
+        0,
+        864,
+        184
+      ],
+      "componentPixels": 13302,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 4,
+      "sourceBox": [
+        738,
+        185,
+        873,
+        368
+      ],
+      "componentPixels": 15302,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 4,
+      "sourceBox": [
+        735,
+        362,
+        865,
+        546
+      ],
+      "componentPixels": 14500,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 4,
+      "sourceBox": [
+        741,
+        537,
+        865,
+        723
+      ],
+      "componentPixels": 14513,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 5,
+      "sourceBox": [
+        933,
+        1,
+        1050,
+        185
+      ],
+      "componentPixels": 13469,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 5,
+      "sourceBox": [
+        923,
+        182,
+        1055,
+        368
+      ],
+      "componentPixels": 15289,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 5,
+      "sourceBox": [
+        925,
+        362,
+        1052,
+        546
+      ],
+      "componentPixels": 14548,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 5,
+      "sourceBox": [
+        928,
+        537,
+        1049,
+        721
+      ],
+      "componentPixels": 14212,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 6,
+      "sourceBox": [
+        1116,
+        2,
+        1230,
+        186
+      ],
+      "componentPixels": 13087,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 6,
+      "sourceBox": [
+        1100,
+        183,
+        1242,
+        368
+      ],
+      "componentPixels": 15691,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 6,
+      "sourceBox": [
+        1107,
+        362,
+        1237,
+        547
+      ],
+      "componentPixels": 14609,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 6,
+      "sourceBox": [
+        1106,
+        537,
+        1236,
+        724
+      ],
+      "componentPixels": 14712,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 7,
+      "sourceBox": [
+        1293,
+        3,
+        1404,
+        185
+      ],
+      "componentPixels": 12822,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 7,
+      "sourceBox": [
+        1294,
+        185,
+        1431,
+        361
+      ],
+      "componentPixels": 15906,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 7,
+      "sourceBox": [
+        1292,
+        364,
+        1423,
+        546
+      ],
+      "componentPixels": 14122,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 7,
+      "sourceBox": [
+        1294,
+        538,
+        1424,
+        719
+      ],
+      "componentPixels": 15149,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 8,
+      "sourceBox": [
+        1471,
+        0,
+        1617,
+        185
+      ],
+      "componentPixels": 14376,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 8,
+      "sourceBox": [
+        1477,
+        186,
+        1629,
+        358
+      ],
+      "componentPixels": 16829,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 8,
+      "sourceBox": [
+        1471,
+        363,
+        1627,
+        544
+      ],
+      "componentPixels": 14796,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 8,
+      "sourceBox": [
+        1475,
+        542,
+        1624,
+        716
+      ],
+      "componentPixels": 15403,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 9,
+      "sourceBox": [
+        1663,
+        3,
+        1803,
+        185
+      ],
+      "componentPixels": 13854,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 9,
+      "sourceBox": [
+        1670,
+        185,
+        1810,
+        367
+      ],
+      "componentPixels": 15703,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 9,
+      "sourceBox": [
+        1659,
+        368,
+        1806,
+        542
+      ],
+      "componentPixels": 13959,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 9,
+      "sourceBox": [
+        1666,
+        541,
+        1804,
+        723
+      ],
+      "componentPixels": 14792,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 10,
+      "sourceBox": [
+        1846,
+        5,
+        1982,
+        185
+      ],
+      "componentPixels": 13540,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 10,
+      "sourceBox": [
+        1847,
+        185,
+        1990,
+        364
+      ],
+      "componentPixels": 16100,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 10,
+      "sourceBox": [
+        1835,
+        367,
+        1985,
+        542
+      ],
+      "componentPixels": 13917,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 10,
+      "sourceBox": [
+        1844,
+        541,
+        1983,
+        722
+      ],
+      "componentPixels": 14860,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 0,
+      "col": 11,
+      "sourceBox": [
+        2011,
+        2,
+        2155,
+        182
+      ],
+      "componentPixels": 14158,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 1,
+      "col": 11,
+      "sourceBox": [
+        2013,
+        183,
+        2159,
+        365
+      ],
+      "componentPixels": 16202,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 2,
+      "col": 11,
+      "sourceBox": [
+        2006,
+        361,
+        2158,
+        544
+      ],
+      "componentPixels": 15049,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    },
+    {
+      "row": 3,
+      "col": 11,
+      "sourceBox": [
+        2011,
+        541,
+        2156,
+        723
+      ],
+      "componentPixels": 15101,
+      "maskMode": "nearest opaque component plus original 3px alpha fringe"
+    }
+  ],
+  "method": "Technical connected-component separation only. Exact source colors and alpha preserved within selected component and 3px antialias fringe. Original PNG unchanged; normalized preview uses proportional Lanczos resize."
+}

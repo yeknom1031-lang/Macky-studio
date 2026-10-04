@@ -1,0 +1,21 @@
+{
+  "id": "A0616",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T16:33:49.024664+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "4×8コマでパン生地をこねる、ピールを押し出す、パンを包む、ケーキを飾る動作を全行確認。顔/帽子/髪/エプロンは元参照と一致。",
+    "手前の板とピールは小型手持ち/卓上道具の範囲。包み紙の形は包装に伴い変わるが別の無関係な品物への変化なし。全身と道具が各セル内に収まる。"
+  ],
+  "packReport": "review/A0616-pack.json",
+  "preview": "review/A0616-check.jpg"
+}

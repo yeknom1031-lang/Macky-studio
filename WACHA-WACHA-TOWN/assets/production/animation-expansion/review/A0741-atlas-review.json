@@ -1,0 +1,355 @@
+{
+  "id": "A0741",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "4b5ce6b2df92e9581afd5cb8c23646e0a23ed181b2adec5121e6d990f3665572",
+  "alphaZeroFraction": 0.60612,
+  "rowBoundaries": [
+    0,
+    222,
+    434,
+    654,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S07-ENV09",
+      "name": "桜の夜の花びら",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6913,
+          "rgbaSHA256": "0a6b464f5791f6b773095bdc755bd9a399c70591d48e47eb6888ebe16ba1bad0"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6249,
+          "rgbaSHA256": "fdf7b9f8044b1f4db14885af50a922c8498b6f76c00f7284c23751e3fa2cb44b"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6139,
+          "rgbaSHA256": "7cee13deafcae7e8b1a3aa88b80e383196212d4788b8619ca85ecd2f34f1f279"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6037,
+          "rgbaSHA256": "73fd46a4e967e5ab39f2000cc0964bfd6cf91faa1d57fa16324b5c2c49ff18d2"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6354,
+          "rgbaSHA256": "e10b9f2287cbf2adbbdf0193b1373a92df68789b41a754ee30c8b1cda9439f6d"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6704,
+          "rgbaSHA256": "7faf66483ebd1b7f36654a5910c644235c848e9d68d5d4abe373f7086e4bb95b"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6148,
+          "rgbaSHA256": "9667fff4d42b177ed46553e1259c074ec73426c5b85fc93b103ab6f9433464a4"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6423,
+          "rgbaSHA256": "ecd350836b4448d1f736e2657baa74e54624dfa19a20bc0c38e15f5fcc191258"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S07-ENV10",
+      "name": "星祭りの紙モビール",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 212,
+          "visiblePixels": 8894,
+          "rgbaSHA256": "48a899aca3f6dd4f243aa7de1633fa4f4cd8bb760b5c7d24c6d273316ddaf99d"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 212,
+          "visiblePixels": 8921,
+          "rgbaSHA256": "e90ffff10303c95280e67088040a31b2246e0ca83af296a75287d56b0a20bb76"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 212,
+          "visiblePixels": 8838,
+          "rgbaSHA256": "1698d18bfb5d1ba4542588636da1b601abbbd59e64586da96d82471d6d1bb559"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 212,
+          "visiblePixels": 8683,
+          "rgbaSHA256": "712341317d360862ae9ddfa55fa10a856c8859dd33dbd29e1916c41fd5a34a66"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 212,
+          "visiblePixels": 8416,
+          "rgbaSHA256": "3bd6e665c975e528319e822aaa51a7e82a867380bdfedf2afd8351ab8508176d"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 212,
+          "visiblePixels": 8603,
+          "rgbaSHA256": "a07e7e29790746e1161b7f59187b01cd6d83c7efedad0e2d722ee788dda2084f"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 212,
+          "visiblePixels": 8323,
+          "rgbaSHA256": "3fef4993a52e9975de3974e9777bd92a7018a78e8ea42b9d111fcb9539aa7879"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 212,
+          "visiblePixels": 8971,
+          "rgbaSHA256": "737f61476eb79093a185ee7f41a5b0fdfda4fc299247fb3c1cfe01b9c9e9da85"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S07-ENV11",
+      "name": "天文台の回転飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 434,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 16336,
+          "rgbaSHA256": "9690b3716799ae3df9b42061de2a24f8866477b39a448206cc87ee8093f70aac"
+        },
+        {
+          "x": 222,
+          "y": 434,
+          "w": 221,
+          "h": 220,
+          "visiblePixels": 14490,
+          "rgbaSHA256": "0d7eea131c02175316085c51920cb9331669f740471364494f25d219f3b92153"
+        },
+        {
+          "x": 443,
+          "y": 434,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 16212,
+          "rgbaSHA256": "741eca63de9bfa2fabff977d3edb332594e7661b378f93ee7749f94c2581030b"
+        },
+        {
+          "x": 665,
+          "y": 434,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 15316,
+          "rgbaSHA256": "0f943f39224d8b8e9742eda961ef32ab3f489e9619d0af57692d3148b85c62ec"
+        },
+        {
+          "x": 887,
+          "y": 434,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 15540,
+          "rgbaSHA256": "a1fd0a99eaf6ba9f8e43ec7f504ef32f34bbacb61548048cd496e8b88fcb810a"
+        },
+        {
+          "x": 1109,
+          "y": 434,
+          "w": 221,
+          "h": 220,
+          "visiblePixels": 15647,
+          "rgbaSHA256": "1f35ef34fc99f97217db8c954bf5c58abc0acc8bd8568af0ac2c0d11e2bbf147"
+        },
+        {
+          "x": 1330,
+          "y": 434,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 14088,
+          "rgbaSHA256": "3dd1d0a243e605dc534d518570162ff2d8549ae20aeea9db20631b5b1a2be19a"
+        },
+        {
+          "x": 1552,
+          "y": 434,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 15846,
+          "rgbaSHA256": "f25edea4742602fb4e44bbc68a47909e90ed46733f4e7a91d527cbf57291f1fc"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S07-ENV12",
+      "name": "楽屋の揺れるリボン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 654,
+          "w": 222,
+          "h": 233,
+          "visiblePixels": 9060,
+          "rgbaSHA256": "b2f3b4839ec701f8ad23900ca2cadf6c352251f269753570d8a6cb27c51ef23a"
+        },
+        {
+          "x": 222,
+          "y": 654,
+          "w": 221,
+          "h": 233,
+          "visiblePixels": 10012,
+          "rgbaSHA256": "5bf370a87dc2a41264ec71cf950a2c41627987166cef0d5f7921ea6efe556c45"
+        },
+        {
+          "x": 443,
+          "y": 654,
+          "w": 222,
+          "h": 233,
+          "visiblePixels": 10099,
+          "rgbaSHA256": "979ae8a66cb4364ec727e4985c3128488b73fd9ff3005916e82dfa75fcf8ec3d"
+        },
+        {
+          "x": 665,
+          "y": 654,
+          "w": 222,
+          "h": 233,
+          "visiblePixels": 10038,
+          "rgbaSHA256": "52040c3319a5aeceb73a1673d3a9d4a308f1720a884730fc2820d7c54505946c"
+        },
+        {
+          "x": 887,
+          "y": 654,
+          "w": 222,
+          "h": 233,
+          "visiblePixels": 9921,
+          "rgbaSHA256": "72a3c1d3a668128a68085a163e49b2f5b9ae4c91e8e7519e29781101f432f9e3"
+        },
+        {
+          "x": 1109,
+          "y": 654,
+          "w": 221,
+          "h": 233,
+          "visiblePixels": 9841,
+          "rgbaSHA256": "011a4675b8a5ea50d1ab14682aff82f5d0af76be0ddc192a0dc277cd43e1d2b3"
+        },
+        {
+          "x": 1330,
+          "y": 654,
+          "w": 222,
+          "h": 233,
+          "visiblePixels": 8925,
+          "rgbaSHA256": "7ff6a3b1a92a42f466afb053e5f3590053aea78e8d4b850dda4c9dcb8eb8c6d3"
+        },
+        {
+          "x": 1552,
+          "y": 654,
+          "w": 222,
+          "h": 233,
+          "visiblePixels": 10329,
+          "rgbaSHA256": "f9966f0197fb124b4ff570fb232036783866a46bc2a5f3e6d72de40824fa31b9"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent frames. Color compositing verifies true transparency. No duplicated building or complete equipment. Final scene placement pending."
+}

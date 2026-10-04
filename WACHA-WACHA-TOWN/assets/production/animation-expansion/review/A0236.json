@@ -1,0 +1,26 @@
+{
+  "id": "A0236",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:39:52.088808+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・packを再表示。2行は背面の肩掛け袋だけ左右が反転するためwalkBackを除外、階段8コマは一貫し追加採用。他3行の全12は維持。"
+  ],
+  "packReport": "review/A0236-pack.json",
+  "preview": "review/A0236-check.jpg",
+  "disabledClipsByRow": {
+    "2": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

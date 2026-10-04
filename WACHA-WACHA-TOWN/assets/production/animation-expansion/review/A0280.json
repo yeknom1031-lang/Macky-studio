@@ -1,0 +1,31 @@
+{
+  "id": "A0280",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T19:05:22.124498+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "3行目の背面バッグが最初だけ反対側へ移るため[1,2,3,2]で循環。他のカメラ・ヘッドホン・眼鏡・服装は参照と一致、全身の切り出し欠けなし。"
+  ],
+  "packReport": "review/A0280-pack.json",
+  "preview": "review/A0280-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {
+    "2": {
+      "walkBack": [
+        1,
+        2,
+        3,
+        2
+      ]
+    }
+  }
+}

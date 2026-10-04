@@ -1,0 +1,28 @@
+{
+  "id": "A0604",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T16:21:07.600739+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "notes": [
+    "4×8コマ、灰髪のおばあさんの射的、金魚すくい、陶芸、飲み水を注ぐ4動作を確認。顔・服・髪・道具を維持し足先まで完全。",
+    "陶芸の小さな卓上ろくろは元の仕事参照と同じ構成。カウンターや建物は追加していない。魚と水滴は行為に応じた可動部。"
+  ],
+  "usableRows": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "rejectedRows": [],
+  "packReport": "review/A0604-pack.json",
+  "preview": "review/A0604-check.jpg",
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ]
+}

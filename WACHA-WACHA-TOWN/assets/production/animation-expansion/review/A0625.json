@@ -1,0 +1,20 @@
+{
+  "id": "A0625",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:45:49.505061+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    3
+  ],
+  "notes": [
+    "本束運び・札を考える・カメラを構える原画とpackを確認。顔、衣装、携行品は一致。",
+    "3行目は大型の三脚望遠鏡が一体化し背景の設備と重複するため除外。"
+  ],
+  "packReport": "review/A0625-pack.json",
+  "preview": "review/A0625-check.jpg"
+}

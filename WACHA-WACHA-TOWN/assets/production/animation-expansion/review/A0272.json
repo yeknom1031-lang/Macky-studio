@@ -1,0 +1,32 @@
+{
+  "id": "A0272",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:52:55.786833+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画14コマから背面4・上り4・下り4を選別。太鼓の3行は背面で上げるばちが左右反転するためwalkBackのみ除外。0行全12と太鼓3行の階段8は衣装と楽器を保つ。pack確認済み。"
+  ],
+  "packReport": "review/A0272-pack.json",
+  "preview": "review/A0272-check.jpg",
+  "disabledClipsByRow": {
+    "1": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

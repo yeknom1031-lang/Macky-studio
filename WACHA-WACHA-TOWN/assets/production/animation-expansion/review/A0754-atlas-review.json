@@ -1,0 +1,355 @@
+{
+  "id": "A0754",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "3a0a6deb22243397a55bfe86767148eb21a7cf8df6761dd4b7de80c88fb41eef",
+  "alphaZeroFraction": 0.62986,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S12-ENV01",
+      "name": "遊園地の星風車",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11896,
+          "rgbaSHA256": "e68912ed45b88aa12758b25225b91a2ce2e4f622945095c39544577cfe3a6d8d"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11441,
+          "rgbaSHA256": "f66bacd49f0a914986478b8d41fcf937d494f451ae9ecc9bee080d1f537b7488"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11449,
+          "rgbaSHA256": "c06e49ad38b5cbc5f33e355545fad6742670c75f95b66bcd415263c2cbd6e267"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11320,
+          "rgbaSHA256": "5d6f2d916e1107116db104b810bd6664e012f82a0cdf1a86ee538d510e4a7f8f"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11306,
+          "rgbaSHA256": "96b9c45b8cd53b582829432ef52d3624c5e1881f73abeb6aefff7d411c6faa2d"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10901,
+          "rgbaSHA256": "073f82ebe0fedab83a3a28519f103a80906ed13d85fc3f41f4dbdda24bbdf12e"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11781,
+          "rgbaSHA256": "115d09e2cb5e4bba76e3815c0e73e4a0cc6705e02513a7f8ac9f6e3bac147eff"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11868,
+          "rgbaSHA256": "7ca4ac082900ed597321a5607fd5eb8a35d6c3bc73c6f7f865fec28d1f12efce"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S12-ENV02",
+      "name": "チケット屋の小旗",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9097,
+          "rgbaSHA256": "ed91deea67d764ccb491b7b9ecad4aae1af190afcd9e6d97aad5d69f28116e74"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8802,
+          "rgbaSHA256": "46edabf223b4d9a3710c4c3145deed7c25a4dbff002ada553f62d2ae95786f05"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8424,
+          "rgbaSHA256": "49a0c7ac751e717192bb237934c1f9bb26d6f3b24afcdb2a88abe60cb8ac2cf0"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9120,
+          "rgbaSHA256": "41307c6fe88797f35fe060afd90e9d335754d31e9570f6dc8555ca2b7dedb202"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9028,
+          "rgbaSHA256": "64c7561fc5dfc3f607cc36a52279c158fdd99eae9d6bc9410a28f4cb34b43b82"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8976,
+          "rgbaSHA256": "353344ed607e7f6cfc91082e7272a3cdf647d79f9ea2929ba63a104c01782152"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9032,
+          "rgbaSHA256": "a64bec32f879080ae0060ee76ef1568b20bae0672f5ae45a4d469767e0af2b5f"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9173,
+          "rgbaSHA256": "59b2f47ce9ecbd3e6e04d4be562ba8bade61fa86a38765422aa51042dd9ff9f4"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S12-ENV03",
+      "name": "観覧車の追加リボン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12549,
+          "rgbaSHA256": "35f8ff2b06d317576a434a6fa25f33cabf67a9995ef6a6f311437f03fe6aca8b"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11191,
+          "rgbaSHA256": "05a0e8515a46a03aae518cfd5817672b52cf1ef650d6f956a2d733f0da089699"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11482,
+          "rgbaSHA256": "8bc7879edba2e71cc5f44d4393129b66d4405ba50cc474ed1659acb6bc5efd7a"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11286,
+          "rgbaSHA256": "d484b5e9079afe6bc554935368c61daef886813413f1f6b18e17f442cfea5774"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11891,
+          "rgbaSHA256": "badc7f8522afc4d81cb1044785d6b6b472f2278358356dfabc7b05c0df3d7e1c"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11098,
+          "rgbaSHA256": "3056396c37f03efc7026bbeb1b674ec8dad922ffcfe872ded8ce4192e2fc3938"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11350,
+          "rgbaSHA256": "1439482b8624fb920239f0369b9dbc76bf59d4f3a8a7f9190927e4111a92055a"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12520,
+          "rgbaSHA256": "7a3f9b0a9977be364fff817029ee22895ae7a3b95cbfc3bf0e077fea2ba1f2ef"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S12-ENV04",
+      "name": "お菓子屋の湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6277,
+          "rgbaSHA256": "f0108e553f697ec89bace294ff2085b12572e51b93d1d4a4b845259b19df2700"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6039,
+          "rgbaSHA256": "2d1bbc74980b08d9772ce17f8d987fd3e319d81d32ed5727b8dfb97931163e2f"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6126,
+          "rgbaSHA256": "4a7aadb39b5b989d6048879f1a562e015d81e9f0b7a25438020a88de3e176220"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5394,
+          "rgbaSHA256": "86c65c6e2b55be51315d47517fc50d47f64837c4f03c54ee762bffa4481d010d"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5873,
+          "rgbaSHA256": "ebd35387751be12e023f2662187609710bc8528913f8eb6f6e658c8c6000ea95"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5835,
+          "rgbaSHA256": "ce50c702df21a7329d3679b6e464b6a2525d0d7408a6ab90b55e1e7c483077e9"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4971,
+          "rgbaSHA256": "a80b8b8b170103493e6ca64fd0c989cdc3a2e62f7f922048c29d6cba0f199785"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6200,
+          "rgbaSHA256": "2e8be45738cdcd6a89ca49f41fb9f696a00578eddb9020d22ff1d145c48972c3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "Four coherent rows of eight frames, with true transparency confirmed by colored compositing. No complete background equipment duplicated. Final scene placement pending."
+}

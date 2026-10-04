@@ -1,0 +1,355 @@
+{
+  "id": "A0749",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "b83b5fe3efbe8a24f9eb986a1d544797ed013aeae946d1543d820b1dae287785",
+  "alphaZeroFraction": 0.61015,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S10-ENV05",
+      "name": "水門の泡の列",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4699,
+          "rgbaSHA256": "70d6ffcd23438bfd9f393ce823394e524e8f0c11cd457f2a201449838a4fb20f"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5107,
+          "rgbaSHA256": "e83fb62552813d979b60341247141af5511bcec3cd017a210db2580e070bbaea"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5765,
+          "rgbaSHA256": "e8ff6a722afd2993c08ab5775adb9c3f83a6421779621d7d49e8058732135a8a"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7257,
+          "rgbaSHA256": "b0eb6cbb512a230b02cd332ea748f0f6598e798c3e4302bd7369e71de37d0de7"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5357,
+          "rgbaSHA256": "6b303a528eaaa360383b8a43cce7075858742622297e4265afb81ae1bab188a0"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4417,
+          "rgbaSHA256": "f09cb78862051e84512c6ba0268f21bb0c9e3b68783a573c1502b95975e763c3"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3965,
+          "rgbaSHA256": "bfdefca819ac3ce7dd99613440c421b57e8234d7f28c9e3aa5873d3c32573915"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4058,
+          "rgbaSHA256": "5e79d578e65466b115b763e69ac28fa1ad3924316924d6ef08d81a3d3fc91f7e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S10-ENV06",
+      "name": "橋脚まわりの波紋",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2734,
+          "rgbaSHA256": "27a0d462cc03b09d0714b14ac588531fe63aa1603d29ba2bd7904cdb051ebd84"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 4852,
+          "rgbaSHA256": "2c88dadab4be3fdc4be227fab490736b6a7da3c59a527d799dd73577e4ba5483"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7104,
+          "rgbaSHA256": "86da47fc93929c3621cc7d3a81d5d714e60b4fb2d0274a9e8a8e2c856d45dc86"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 11952,
+          "rgbaSHA256": "db0a7e0e6bd47e108fd7c97f35a42fa963334935ccfe6d0ccae56a1fc82e9e67"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7804,
+          "rgbaSHA256": "799809236529d3a664f6f2517eac4edb71c07a1f27ada481ba4bc9790dc590fe"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 4041,
+          "rgbaSHA256": "f652d3e39c46cd67aafe2bcb3971a0b25910c37d2fa917567171376a896b941c"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2635,
+          "rgbaSHA256": "cfae281e59a58410f7e2e9d7a86fb99482c9566ec2aa60e737aca46375aeecbf"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2735,
+          "rgbaSHA256": "9af341851527b40f20a461b553952d61eab817a9c3ac46ce37ee9ebfbe4222f7"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S10-ENV07",
+      "name": "造船所の水しぶき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2675,
+          "rgbaSHA256": "78f5309c8b516c17077a58a3a469a321b635a58f4f76b99b1ae7360673c7b903"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3767,
+          "rgbaSHA256": "377d53e8e8d71db5996e9c1ddd89aa5bb295166a232e563730c20257df899cc2"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3943,
+          "rgbaSHA256": "b3176d01b1125327080a44e7f137734cddff04b82c2110f1a119ff3d50ae7154"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5504,
+          "rgbaSHA256": "2861c7064afa5681c0e3c5985a44e5b891c95604c337aa36127fcc0b7a80087e"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3713,
+          "rgbaSHA256": "72b60d8188230ad8c9db8ab51b48d79575138c558a622fb3848b7a61cff37cce"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3271,
+          "rgbaSHA256": "ebe987b65ce095d88cd6237653a3c65d854989b2a51847d68ae7ecfd93f05d5b"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2817,
+          "rgbaSHA256": "54fabe65492a4f91fba632f4fda7a0361fbf7dd65a94bca5eafe7a6779747809"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2067,
+          "rgbaSHA256": "7c1604dc01ee7af03d56324eb7e6ab642642065bd0e66c03815fc8117571fec3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S10-ENV08",
+      "name": "南の運河のきらめき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1748,
+          "rgbaSHA256": "38677d4aa998ec4cc0805e22285811b61979ced71cee996f85d06e99efc8b2e9"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2567,
+          "rgbaSHA256": "9ca86b9e98843eec9aaeecefde20e4d47ac787585036f2c517a6effe32ef32ee"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2294,
+          "rgbaSHA256": "01f81df1df44c5fb87e8b0ecee74ecf1f0597dd468395c5f3b22113f1fd515d5"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3362,
+          "rgbaSHA256": "beb7ecd3fc20115c1a1ec11964baa0cea79cbcddc9b79d40e2acf6713d878c65"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2261,
+          "rgbaSHA256": "9cf25cabd0c50b2da68903b7baa39b7ff6e884109dc5983b88f8112633ed054a"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2027,
+          "rgbaSHA256": "dfc377bb20a1db225afe25aac43cafb0ce939e499cddc4c9079ddb823262dd4f"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1301,
+          "rgbaSHA256": "63baa810c5f8808ab45a3e105df8e26b03869e7728d56e576aebdba6193593a1"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2077,
+          "rgbaSHA256": "931cc51c1e14468e7aa160919e33770f9476d17d8fe678609e7112647cd91cda"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "Four coherent rows of eight frames, with true transparency confirmed by colored compositing. No complete background equipment duplicated. Final scene placement pending."
+}

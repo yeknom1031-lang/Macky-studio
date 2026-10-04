@@ -1,0 +1,20 @@
+{
+  "id": "A0649",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:01:42.771323+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ],
+  "notes": [
+    "魚を見せる・望遠鏡・赤旗の3行は原画とpackで道具と全身を保持。",
+    "釣りの3コマ目の糸が4コマ目に越境し、packで糸の断片が隣セルに混入するため2行目除外。"
+  ],
+  "packReport": "review/A0649-pack.json",
+  "preview": "review/A0649-check.jpg"
+}

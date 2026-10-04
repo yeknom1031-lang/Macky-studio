@@ -1,0 +1,20 @@
+{
+  "id": "A0634",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:48:07.494076+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ],
+  "notes": [
+    "金魚すくい・水やり・櫂の原画とpackは道具を保持してループ可能。",
+    "2行目射的銃が1・8コマで消えるため不採用。"
+  ],
+  "packReport": "review/A0634-pack.json",
+  "preview": "review/A0634-check.jpg"
+}

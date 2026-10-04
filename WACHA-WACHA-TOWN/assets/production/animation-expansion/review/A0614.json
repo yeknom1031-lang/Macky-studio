@@ -1,0 +1,19 @@
+{
+  "id": "A0614",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:33:49.022599+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    3
+  ],
+  "notes": [
+    "4×8コマ、配膳する人と海藻を観察する人は同じ服装/手持ち品を維持し自然な動き。",
+    "row2は人物へ窓/壁枠本体が付属し背景に合わない。row3は膝を曲げる時だけ地上の籠が出現するため不採用。"
+  ],
+  "packReport": "review/A0614-pack.json",
+  "preview": "review/A0614-check.jpg"
+}

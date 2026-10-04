@@ -1,0 +1,355 @@
+{
+  "id": "A0736",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "d0cb57c7953177c490eafe38a17ad79bc745f6c4c5d76026c9c7da97a05d8492",
+  "alphaZeroFraction": 0.57521,
+  "rowBoundaries": [
+    0,
+    222,
+    445,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      666,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      900,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S06-ENV01",
+      "name": "雪の木鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15206,
+          "rgbaSHA256": "3ef06df18355cef5c914a3aec1bc2e7905fc4697355ec7490c4c4ed210802e89"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 15392,
+          "rgbaSHA256": "6016924bd867ca4e93def3c9208c8e5968c0db387292ccdb20feab3c948dfda5"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 223,
+          "h": 222,
+          "visiblePixels": 15883,
+          "rgbaSHA256": "d22e83b4307d9d8e6ee134266b9241a2f739496e494c629786fab80ba848b648"
+        },
+        {
+          "x": 666,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 15630,
+          "rgbaSHA256": "e7222c43de0b58fa0128e338841926c451f45782e1aa85758ed3d9fb43cb6644"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15367,
+          "rgbaSHA256": "a276a366d228489132e7ab6e771e364e2abffdc132e7269964b08629f1be04aa"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 14352,
+          "rgbaSHA256": "08970f6cc3c2c6964ff2e8bf08eef0077a45c6855ea67274de9d2fa2f2cf81e1"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15404,
+          "rgbaSHA256": "8cbb7037f1b63a966627920048512a0310f658d2bdec6b6be57abc7c10df6350"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15038,
+          "rgbaSHA256": "e6eae35eac96d2affff06dd9eedc21cd2f7a913e2937e81af1e3676eb03dc13e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S06-ENV02",
+      "name": "毛糸屋のミトン飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 223,
+          "visiblePixels": 13970,
+          "rgbaSHA256": "7c6ff3c9206ee0df2848618d0570675ebdda6ff5dc178a9805c28864999952c9"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 223,
+          "visiblePixels": 14593,
+          "rgbaSHA256": "4c5056072a2f1dc3092fa8afa3540ca297309417e200c0aedd18f505500af01e"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 223,
+          "visiblePixels": 13718,
+          "rgbaSHA256": "abc49c91fdd4c073d1cdfecd2e2ffbd980b406fd89877ebdf40a600149e982b8"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 235,
+          "h": 223,
+          "visiblePixels": 13920,
+          "rgbaSHA256": "18275824cdd31802010aa4a3c0bd7324476db2adcdf3812b39c339244a1729d4"
+        },
+        {
+          "x": 900,
+          "y": 222,
+          "w": 209,
+          "h": 223,
+          "visiblePixels": 13438,
+          "rgbaSHA256": "bbed837a873f69724fc664f221ab228a99e5c694ade812928747520010c7fe3d"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 223,
+          "visiblePixels": 13703,
+          "rgbaSHA256": "15d3f69405931d5a49666ed4acaf74bc6b88f1c663168fad4f5e0b49323ea9d0"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 223,
+          "visiblePixels": 14398,
+          "rgbaSHA256": "7e37d727bafaf5d9df14635fe9519cbe02ee4cd319a67830d4add3ea3cd142b3"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 223,
+          "visiblePixels": 14280,
+          "rgbaSHA256": "360635367e2618bc2a38a186347a7d102ec598a891d2f6599a358745ab948319"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S06-ENV03",
+      "name": "カフェのマグの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 445,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 9994,
+          "rgbaSHA256": "00da26a94d433a83118ec57aed53f0291596b5c8c19e88f7188ab065132ed15c"
+        },
+        {
+          "x": 222,
+          "y": 445,
+          "w": 221,
+          "h": 220,
+          "visiblePixels": 9431,
+          "rgbaSHA256": "9688f81fe11b926bf0c9f8328e6d50665540f63f9411883f76f60b628c5efcc7"
+        },
+        {
+          "x": 443,
+          "y": 445,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 8312,
+          "rgbaSHA256": "c446d6579e2fac65f4546efd043ffac61a89f663c88937f65544c48b7baed7b8"
+        },
+        {
+          "x": 665,
+          "y": 445,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 8093,
+          "rgbaSHA256": "c5275e75f46abed849004b0cd25190b0a9f49ae141a4e31f11e0b0257d96e247"
+        },
+        {
+          "x": 887,
+          "y": 445,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 8464,
+          "rgbaSHA256": "9b1ea3f0f9d081f210ffa4ceae7f3ff9800f031028cf1151fa82e23e673f1e3b"
+        },
+        {
+          "x": 1109,
+          "y": 445,
+          "w": 221,
+          "h": 220,
+          "visiblePixels": 7513,
+          "rgbaSHA256": "b4d88d616b875fdf041c069927e6cad4006e7149f1d529a1c6d8c2a312713c87"
+        },
+        {
+          "x": 1330,
+          "y": 445,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 7748,
+          "rgbaSHA256": "87fcffaff9cdaee65103d1462a83735f0595172d97164ed62649ec8d5181e6ea"
+        },
+        {
+          "x": 1552,
+          "y": 445,
+          "w": 222,
+          "h": 220,
+          "visiblePixels": 9443,
+          "rgbaSHA256": "51f37e63fcf1e390d2ee603dd84e759400c3327aff94b15efa6bf3e1e486ee9d"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S06-ENV04",
+      "name": "雪市の紙風車",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11601,
+          "rgbaSHA256": "4b5babadb0de4f290e11cc2a77480cc33e2611fed24b45a23261a5e961886ad9"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11406,
+          "rgbaSHA256": "d5d069da378fe702a7fb76e4a9b1206303306f4ab7b4433ae5db7aa7f01dbdaf"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11358,
+          "rgbaSHA256": "fbf8b3ee494d5dd9b404e49f353f53b7f58e2efe4aa0315b74f69d4211cf25af"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11406,
+          "rgbaSHA256": "4fc2b62fd4632948a7242bc9e2b26e999c49630c00cd05eba58a31c8d4546a36"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11525,
+          "rgbaSHA256": "c3e1b529955a135d0f72e00ea0a7fe23688aa8efb1db261db2f6ab20c8b9fa7d"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11242,
+          "rgbaSHA256": "092cffa4d6438c51c4f58f5593249615fc835219ae12088cb1326d3d6c77213b"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11037,
+          "rgbaSHA256": "3c5ffaca9995edb67a0e20a73d81a4adf419e876e32a93e0e16fc780c40ca84d"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10992,
+          "rgbaSHA256": "8eb9b6ac8aa2857e377295845e7c7e806dcbfb689cbc468a5afb2d957023d22f"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

@@ -1,7 +1,7 @@
 {
-  "at": "2026-10-04T15:18:23.130Z",
-  "sourceSHA": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
-  "dataSHA": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24",
+  "at": "2026-10-04T20:45:44.512Z",
+  "sourceSHA": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+  "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
   "scope": "all",
   "stageIds": [
     0,
@@ -38,16 +38,16 @@
       "population": 500,
       "area": 1,
       "stats": {
-        "purchases": 92,
-        "conversations": 23,
-        "rides": 48,
-        "events": 11,
+        "purchases": 87,
+        "conversations": 20,
+        "rides": 46,
+        "events": 9,
         "maxOverlap": 2.600000000000001
       },
-      "seconds": 61,
+      "seconds": 24.54,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 103.92694780715512
+      "minAnimalDisplacement": 97.13496441593992
     },
     {
       "stage": "S02",
@@ -60,7 +60,7 @@
         "events": 11,
         "maxOverlap": 2.400000000000001
       },
-      "seconds": 43.94,
+      "seconds": 21.25,
       "maxWaterError": 0,
       "maxOffFloor": 0,
       "minAnimalDisplacement": 53.2421152809391
@@ -76,7 +76,7 @@
         "events": 10,
         "maxOverlap": 2.500000000000001
       },
-      "seconds": 36.99,
+      "seconds": 15.54,
       "maxWaterError": 0,
       "maxOffFloor": 0,
       "minAnimalDisplacement": 87.34907768464606
@@ -92,7 +92,7 @@
         "events": 9,
         "maxOverlap": 2.2000000000000006
       },
-      "seconds": 40.82,
+      "seconds": 17.51,
       "maxWaterError": 0,
       "maxOffFloor": 0,
       "minAnimalDisplacement": 211.614783471377
@@ -108,7 +108,7 @@
         "events": 11,
         "maxOverlap": 2.2000000000000006
       },
-      "seconds": 32.43,
+      "seconds": 16.42,
       "maxWaterError": 0,
       "maxOffFloor": 0,
       "minAnimalDisplacement": 75.47017228672986
@@ -120,302 +120,302 @@
       "stats": {
         "purchases": 152,
         "conversations": 50,
-        "rides": 50,
+        "rides": 54,
         "events": 10,
-        "maxOverlap": 2.3000000000000007
+        "maxOverlap": 2.600000000000001
       },
-      "seconds": 42.62,
+      "seconds": 17.77,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 209.1913237858197
+      "minAnimalDisplacement": 86.14130305761928
     },
     {
       "stage": "S07",
       "population": 500,
       "area": 1,
       "stats": {
-        "purchases": 123,
-        "conversations": 33,
-        "rides": 56,
-        "events": 9,
+        "purchases": 126,
+        "conversations": 39,
+        "rides": 54,
+        "events": 10,
         "maxOverlap": 2.3000000000000007
       },
-      "seconds": 44.71,
+      "seconds": 16.75,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 72.42578133803323
+      "minAnimalDisplacement": 97.00647565926467
     },
     {
       "stage": "S08",
       "population": 600,
       "area": 1.2,
       "stats": {
-        "purchases": 84,
-        "conversations": 48,
-        "rides": 44,
-        "events": 10,
-        "maxOverlap": 2.600000000000001
+        "purchases": 78,
+        "conversations": 39,
+        "rides": 46,
+        "events": 9,
+        "maxOverlap": 2.500000000000001
       },
-      "seconds": 63.54,
+      "seconds": 40.3,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 70.2809396153436
+      "minAnimalDisplacement": 240.61401345284574
     },
     {
       "stage": "S09",
       "population": 650,
       "area": 1.4,
       "stats": {
-        "purchases": 130,
-        "conversations": 66,
-        "rides": 56,
-        "events": 9,
-        "maxOverlap": 2.3000000000000007
+        "purchases": 144,
+        "conversations": 56,
+        "rides": 52,
+        "events": 10,
+        "maxOverlap": 2.400000000000001
       },
-      "seconds": 39.01,
+      "seconds": 42.11,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 91.5710291655019
+      "minAnimalDisplacement": 229.59495408706852
     },
     {
       "stage": "S10",
       "population": 700,
       "area": 1.6,
       "stats": {
-        "purchases": 77,
-        "conversations": 50,
+        "purchases": 54,
+        "conversations": 37,
         "rides": 32,
         "events": 9,
-        "maxOverlap": 2.9000000000000012
+        "maxOverlap": 2.3000000000000007
       },
-      "seconds": 58.92,
+      "seconds": 100.98,
       "maxWaterError": 1.7763568394002505e-15,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 128.77911453308434
+      "minAnimalDisplacement": 132.3112891515199
     },
     {
       "stage": "S11",
       "population": 750,
       "area": 1.8,
       "stats": {
-        "purchases": 247,
-        "conversations": 44,
-        "rides": 54,
-        "events": 9,
-        "maxOverlap": 2.400000000000001
+        "purchases": 250,
+        "conversations": 53,
+        "rides": 50,
+        "events": 11,
+        "maxOverlap": 2.9000000000000012
       },
-      "seconds": 53.07,
+      "seconds": 55.67,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 175.75072254287693
+      "minAnimalDisplacement": 151.53172035234454
     },
     {
       "stage": "S12",
       "population": 800,
       "area": 2,
       "stats": {
-        "purchases": 134,
-        "conversations": 100,
+        "purchases": 122,
+        "conversations": 71,
         "rides": 54,
         "events": 10,
         "maxOverlap": 2.400000000000001
       },
-      "seconds": 49.86,
+      "seconds": 79.2,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 123.79446848204277
+      "minAnimalDisplacement": 121.54739331358526
     },
     {
       "stage": "S13",
       "population": 900,
       "area": 2.25,
       "stats": {
-        "purchases": 188,
-        "conversations": 85,
+        "purchases": 184,
+        "conversations": 94,
         "rides": 52,
         "events": 10,
         "maxOverlap": 2.600000000000001
       },
-      "seconds": 286.93,
+      "seconds": 111.41,
       "maxWaterError": 3.552713678800501e-15,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 115.19404141419056
+      "minAnimalDisplacement": 89.90755757695881
     },
     {
       "stage": "S14",
       "population": 1000,
       "area": 2.5,
       "stats": {
-        "purchases": 238,
-        "conversations": 114,
-        "rides": 50,
+        "purchases": 193,
+        "conversations": 83,
+        "rides": 54,
         "events": 10,
-        "maxOverlap": 2.500000000000001
+        "maxOverlap": 2.400000000000001
       },
-      "seconds": 330.14,
+      "seconds": 199.89,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 90.4059009622498
+      "minAnimalDisplacement": 223.87348768937693
     },
     {
       "stage": "S15",
       "population": 1100,
       "area": 2.75,
       "stats": {
-        "purchases": 235,
-        "conversations": 152,
+        "purchases": 224,
+        "conversations": 147,
         "rides": 54,
-        "events": 9,
-        "maxOverlap": 2.600000000000001
+        "events": 10,
+        "maxOverlap": 2.400000000000001
       },
-      "seconds": 370.32,
+      "seconds": 189.72,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 118.81861879661187
+      "minAnimalDisplacement": 202.7345625247215
     },
     {
       "stage": "S16",
       "population": 1200,
       "area": 3,
       "stats": {
-        "purchases": 308,
-        "conversations": 106,
-        "rides": 54,
+        "purchases": 249,
+        "conversations": 111,
+        "rides": 52,
         "events": 10,
-        "maxOverlap": 2.400000000000001
+        "maxOverlap": 2.2000000000000006
       },
-      "seconds": 478.73,
+      "seconds": 200.21,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 233.43633363582114
+      "minAnimalDisplacement": 134.9390341494427
     },
     {
       "stage": "S17",
       "population": 1300,
       "area": 3.3,
       "stats": {
-        "purchases": 435,
-        "conversations": 149,
-        "rides": 50,
-        "events": 10,
-        "maxOverlap": 2.2000000000000006
+        "purchases": 446,
+        "conversations": 145,
+        "rides": 52,
+        "events": 11,
+        "maxOverlap": 2.600000000000001
       },
-      "seconds": 350.32,
+      "seconds": 189.02,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 231.9434461609747
+      "minAnimalDisplacement": 115.25234327200465
     },
     {
       "stage": "S18",
       "population": 1400,
       "area": 3.6,
       "stats": {
-        "purchases": 482,
-        "conversations": 150,
-        "rides": 54,
-        "events": 11,
-        "maxOverlap": 2.600000000000001
+        "purchases": 460,
+        "conversations": 144,
+        "rides": 52,
+        "events": 10,
+        "maxOverlap": 2.400000000000001
       },
-      "seconds": 335.1,
+      "seconds": 167.44,
       "maxWaterError": 3.552713678800501e-15,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 204.54965372204333
+      "minAnimalDisplacement": 132.65871396507805
     },
     {
       "stage": "S19",
       "population": 1500,
       "area": 4,
       "stats": {
-        "purchases": 396,
-        "conversations": 114,
+        "purchases": 413,
+        "conversations": 175,
         "rides": 52,
         "events": 10,
-        "maxOverlap": 2.500000000000001
+        "maxOverlap": 2.400000000000001
       },
-      "seconds": 344.59,
+      "seconds": 167.6,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 206.45580640902304
+      "minAnimalDisplacement": 114.92245319807485
     },
     {
       "stage": "S20",
       "population": 1600,
       "area": 4.4,
       "stats": {
-        "purchases": 329,
-        "conversations": 186,
-        "rides": 36,
+        "purchases": 306,
+        "conversations": 170,
+        "rides": 34,
         "events": 10,
-        "maxOverlap": 2.600000000000001
+        "maxOverlap": 2.400000000000001
       },
-      "seconds": 312.25,
+      "seconds": 191.28,
       "maxWaterError": 3.552713678800501e-15,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 297.34317054802256
+      "minAnimalDisplacement": 194.33347014242236
     },
     {
       "stage": "S21",
       "population": 1700,
       "area": 4.8,
       "stats": {
-        "purchases": 374,
-        "conversations": 213,
+        "purchases": 357,
+        "conversations": 188,
         "rides": 54,
         "events": 10,
         "maxOverlap": 2.500000000000001
       },
-      "seconds": 250.24,
+      "seconds": 222.55,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 150.8770202809943
+      "minAnimalDisplacement": 170.13058184921488
     },
     {
       "stage": "S22",
       "population": 1800,
       "area": 5.2,
       "stats": {
-        "purchases": 677,
-        "conversations": 155,
+        "purchases": 685,
+        "conversations": 173,
         "rides": 54,
         "events": 11,
-        "maxOverlap": 2.400000000000001
+        "maxOverlap": 2.500000000000001
       },
-      "seconds": 235.86,
+      "seconds": 148.64,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 332.9309652165146
+      "minAnimalDisplacement": 159.5708585550633
     },
     {
       "stage": "S23",
       "population": 1900,
       "area": 5.6,
       "stats": {
-        "purchases": 520,
-        "conversations": 192,
-        "rides": 52,
+        "purchases": 503,
+        "conversations": 210,
+        "rides": 50,
         "events": 10,
-        "maxOverlap": 2.400000000000001
+        "maxOverlap": 2.600000000000001
       },
-      "seconds": 257.18,
+      "seconds": 199.15,
       "maxWaterError": 0,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 137.87456237163138
+      "minAnimalDisplacement": 335.6313372317383
     },
     {
       "stage": "S24",
       "population": 2000,
       "area": 6,
       "stats": {
-        "purchases": 776,
-        "conversations": 200,
-        "rides": 52,
-        "events": 10,
-        "maxOverlap": 2.600000000000001
+        "purchases": 775,
+        "conversations": 164,
+        "rides": 50,
+        "events": 9,
+        "maxOverlap": 2.700000000000001
       },
-      "seconds": 202.5,
+      "seconds": 128.97,
       "maxWaterError": 3.552713678800501e-15,
       "maxOffFloor": 0,
-      "minAnimalDisplacement": 207.816697723462
+      "minAnimalDisplacement": 156.0769665894614
     }
   ],
   "failures": []

@@ -1,0 +1,35 @@
+{
+  "id": "A0220",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:39:21.915545+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack再表示し、全行をクリップ単位で再判定。背面4コマは本・杖・袋・鞄が左右反転し除外。全4行の階段8コマは持ち物・衣装・顔・足運びが一貫し採用可能。"
+  ],
+  "packReport": "review/A0220-pack.json",
+  "preview": "review/A0220-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "walkBack"
+    ],
+    "1": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

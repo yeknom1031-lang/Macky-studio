@@ -1,0 +1,19 @@
+{
+  "id": "A0606",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:24:53.091095+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    3
+  ],
+  "notes": [
+    "4×8と4人の同一性を維持。row1花束を整える、row4剪定ばさみを使う身振りは明瞭。",
+    "row2バケツが途中で出現、row3土袋が単独フレームで出没するためこれら2行は不採用。"
+  ],
+  "packReport": "review/A0606-pack.json",
+  "preview": "review/A0606-check.jpg"
+}

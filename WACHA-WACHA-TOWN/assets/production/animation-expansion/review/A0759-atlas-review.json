@@ -1,0 +1,355 @@
+{
+  "id": "A0759",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "450226b782c041d650087a6c260428fff3b8c0310208003f353dc0b01c0b4017",
+  "alphaZeroFraction": 0.5857,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S13-ENV09",
+      "name": "森の綿毛",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3996,
+          "rgbaSHA256": "04f66da2ead5021cf96588d93aef4be1f0243a32b1b59a31f0f2530fa31a35ec"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4022,
+          "rgbaSHA256": "a78c2719b120dbc061d0867ad709bd860ef9331e6cbcd054349b777f4f8c0835"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3916,
+          "rgbaSHA256": "f6cce7a8e9f4234fa69d60f3496f5d22126c60db0fdb8a09c369249d7bb49a59"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4109,
+          "rgbaSHA256": "b656db530f758c9befc7eb61aef9cbe90c8a5f0245ad5f7f3c229c63f68b7b54"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4211,
+          "rgbaSHA256": "2dbdff69c300f68677724a379f48853387111c03536b0b1959b08ad7da731f11"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4198,
+          "rgbaSHA256": "26672f8b33734febe9d04691dda65c411fb661ac3ff85aede597b3ce6e9ac6ef"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4239,
+          "rgbaSHA256": "6b307c81f71952234be63e68094437007f7c8497e64c0fddd0572a736c34531b"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4049,
+          "rgbaSHA256": "a5372af96914fa463ee4268a948b28fa252c711687962a8af0ee71e53849bb26"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S13-ENV10",
+      "name": "熱帯の落ち葉",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8727,
+          "rgbaSHA256": "9512e1b80c1efd1d56a942ab4da640c23bec0f6c85acd3db99dbeec76fc95c03"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9054,
+          "rgbaSHA256": "f31a14aeff5125bc0a90398632a4dcf16fbfafec80d1037fac7f96f73a303a10"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7554,
+          "rgbaSHA256": "9ae8f8c51a37e1110e3dd3aa39890298596c0a668d25d052ae71f9eec0e6508f"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8412,
+          "rgbaSHA256": "f7211ca7b5606dfa6e2123cc46ae97d5640b6cbdf8f1d330b6853aadccc239c9"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8193,
+          "rgbaSHA256": "b0613ef1bc324905db4694fed2f00eb4c68eb3f32fd60982ebf43bc9d9cc09aa"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8870,
+          "rgbaSHA256": "ff873eacf676a786203adef04a5129c77110f5cb153e2971e53a422c9e65b63e"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8380,
+          "rgbaSHA256": "0158c7d87e93061391f7e0c2db1e0a7ea869fd68b55b28fd31d538e0bf487643"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8477,
+          "rgbaSHA256": "392ded15a1e32252d2383623871a46a336b1d65c91554d500f0f3b26e36ca97c"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S13-ENV11",
+      "name": "巣箱の羽飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9751,
+          "rgbaSHA256": "67372b115dc924afbbaf4e8088de7c87c66819f6386e8a55e9a277c98c2b3ff0"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9931,
+          "rgbaSHA256": "b9f2a15dd771114ce3477057cffbaf9828117fbaeb15ad039e99071d10c6089e"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9774,
+          "rgbaSHA256": "fd44b122550f8f3bd510ff4a50e6f532fc790c4018be0bcb4cba924812b1a7b3"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10092,
+          "rgbaSHA256": "b1d0357f59ad1d99fddf7a3dfc45601f6ecc4ed1ba1608d711640da70566ece2"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9416,
+          "rgbaSHA256": "e987c8ddb45144a184f330f3efd1e2d625f39b79fc13522078252bbf9a058f98"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9789,
+          "rgbaSHA256": "c60879c59d62db68a46f4c40627934cb5772ad06847761a618b3b644e79dd371"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9955,
+          "rgbaSHA256": "6be681475357b8e243740c6c43c6e06fde24b8c8b07b108b300fbf1ed25aaf95"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10116,
+          "rgbaSHA256": "7c1768ffeaac7abe98241465090b23870802f7862a543ff3e4e87b689ae19af2"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S13-ENV12",
+      "name": "飼料室の卓上ファン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 18013,
+          "rgbaSHA256": "dc58c8dbf3b507c5209e4a6a1edb2c637ddb8c1a3052d49dbda81d61b8a15e38"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 17646,
+          "rgbaSHA256": "956dd6cd03adf89cfc2376f3dc8fdc45cdcd105a6a3e611e55bba3aaba11ca33"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 17933,
+          "rgbaSHA256": "1e937713f430c966757025d5df4aeb1920baaa27bb347d005ee9c33988fd73e3"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 17780,
+          "rgbaSHA256": "0868e63f53936e9d2bd77f23752ebbbe7e486376f484f7bd6825ed5be05afb97"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 17716,
+          "rgbaSHA256": "bb36559bc8eea43b6339974254782e8f9b696a5f3edeaf970ad8aeac76eab4f6"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 17715,
+          "rgbaSHA256": "975c0e14693a9f25859111cbfb04c374e856c9bab254475ccf2f9c0dfa4a46a9"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 17816,
+          "rgbaSHA256": "663f13fa5fa9c0fa6167911f4f673b3bebd4c2f00ff8a3e94f8d0da9bad702c0"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 17805,
+          "rgbaSHA256": "074fe33ad542cbf4b861176a03701ba3e4cc8de2ea4ce140c5b9b1913b75337b"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

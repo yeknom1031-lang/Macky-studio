@@ -1,0 +1,27 @@
+{
+  "id": "A0228",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:46:44.077665+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack再表示。1行のカゴは背面・下りで持つ手が反転するので両clip除外、上り4コマは一貫した同じ手とカゴを保つので追加採用。他3行は全12採用維持。"
+  ],
+  "packReport": "review/A0228-pack.json",
+  "preview": "review/A0228-check.jpg",
+  "disabledClipsByRow": {
+    "1": [
+      "walkBack",
+      "stairDown"
+    ]
+  },
+  "clipFramesByRow": {}
+}

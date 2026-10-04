@@ -1,0 +1,20 @@
+{
+  "id": "A0630",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T16:45:49.511491+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "スノードームを揺らす、赤い傘の開閉、誘導灯、カメラの原画とpackを確認。道具は全コマ保持、傘は閉状態へ戻り循環可能。"
+  ],
+  "packReport": "review/A0630-pack.json",
+  "preview": "review/A0630-check.jpg"
+}

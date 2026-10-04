@@ -1,0 +1,20 @@
+{
+  "id": "A0631",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:45:49.512437+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ],
+  "notes": [
+    "星風船・団子・りんご飴の3列は原画とpackで同一の人物と携行品を保つ。",
+    "4行目は吊布を掲げる動きから最後だけ折り畳んだ別状態へ急変するため除外。"
+  ],
+  "packReport": "review/A0631-pack.json",
+  "preview": "review/A0631-check.jpg"
+}

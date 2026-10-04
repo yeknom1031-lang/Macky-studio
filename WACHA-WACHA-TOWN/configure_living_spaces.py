@@ -320,5 +320,47 @@ for key,index,spots in [
  DATA[key]['areas'][index].setdefault('contacts',[]).extend(
   dict(x=x,y=y,kinds=['water'],facing=facing) for x,y,facing in spots)
 
+# The front wall of the garden gate has no walkable floor across its face.
+DATA['S08']['areas'][5]['entries']=[[[1110,582],[1144,581],[1178,581],[1201,593],[1232,610],[1300,610],[1360,581],[1400,560],[1440,534]]]
+gate_wall=[[700,429],[873,429],[889,455],[884,506],[854,504],[729,501],[700,479]]
+if gate_wall not in DATA['S24']['areas'][3]['holes']:
+ DATA['S24']['areas'][3]['holes'].append(gate_wall)
+# Only the round stone lookout is a floor. The rectangles beside it are the
+# open spaces under the balustrades, with clouds visible through their arches.
+lookout=next(a for a in DATA['S21']['areas'] if a['id']=='S21-floor-10')
+lookout['polygon']=[[771,746],[899,746],[922,766],[922,799],[895,822],[771,822],[746,799],[746,769]]
+lookout['entries']=[[[836,716],[836,749],[836,780]]]
+
+# The shipyard's front vertical fascia and the basin below it are not a floor.
+shipyard=DATA['S10']['areas'][3]
+shipyard['polygon']=[[74,555],[108,555],[118,568],[118,590],[108,600],[78,600]]
+shipyard['holes']=[]
+shipyard['entries']=[[[98,676],[99,650],[97,626],[98,599],[110,589]]]
+shipyard['contacts']=[dict(x=109,y=583,kinds=['workshop'],facing=-1)]
+
+# The garden's painted southern exit is hidden by the entrance canopy and its
+# side fences have no visible doorway. Keep it as scenery instead of drawing
+# a route through the roof; residents use the other nine accessible activity areas.
+DATA['S16']['areas']=[a for a in DATA['S16']['areas'] if a['id']!='S16-floor-05']
+
+# The raised pier follows the visible plank surface below the sky opening.
+# Its eastern canopy hides the floor, so use the open western connection only.
+pier=next(a for a in DATA['S21']['areas'] if a['id']=='S21-floor-09')
+pier['polygon']=[[1117,195],[1349,247],[1354,269],[1120,218],[1110,207]]
+pier['entries']=[[[1082,201],[1118,207],[1153,215]]]
+
+# High-detail artwork places this awning within the courtyard's old rectangle.
+# Remove its projected roof from the explicit activity floor as well as the road.
+clock_awning=[[1180, 631], [1210, 630], [1236, 615], [1267, 637], [1273, 679], [1253, 701], [1181, 676]]
+clock_market=[[1443, 648], [1470, 636], [1504, 621], [1530, 632], [1563, 607], [1597, 622], [1592, 669], [1561, 686], [1534, 682], [1509, 711], [1481, 709], [1441, 686]]
+for obstacle in [clock_awning,clock_market]:
+ if obstacle not in DATA['S17']['areas'][5]['holes']:
+  DATA['S17']['areas'][5]['holes'].append(obstacle)
+
+
+# Keep approach routes on visible pavement beside the final foreground turrets.
+next(a for a in DATA['S16']['areas'] if a['id']=='S16-floor-08')['entries']=[[[1345, 920], [1345, 906], [1345, 886]]]
+next(a for a in DATA['S17']['areas'] if a['id']=='S17-floor-06')['entries']=[[[1068, 668], [1100, 675], [1130, 695], [1160, 715], [1295.5, 724], [1295.5, 680]]]
+
 P.write_text(json.dumps(DATA,ensure_ascii=False,indent=2))
 print('configured',','.join(sorted(DATA)))

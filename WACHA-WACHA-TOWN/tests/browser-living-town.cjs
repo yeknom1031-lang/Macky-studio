@@ -1,8 +1,9 @@
 const {chromium}=require('playwright');
-const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const hashes=()=>Object.fromEntries(['data.js','expedition-core.js','expedition-render.js','expedition-app.js','expedition-input.js','expedition-audio.js'].map(n=>[n,crypto.createHash('sha256').update(fs.readFileSync('expedition/'+n)).digest('hex')]));
 (async()=>{
  const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',args:['--allow-file-access-from-files']});
- const report={at:new Date().toISOString(),stages:[],errors:[]};
+ const report={at:new Date().toISOString(),runtimeHashes:hashes(),stages:[],errors:[]};
  try{
   const page=await browser.newPage({viewport:{width:1440,height:900}});page.on('pageerror',e=>report.errors.push(e.message));
   await page.goto('file://'+path.resolve('expedition/index.html'));
@@ -38,7 +39,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
    await page.screenshot({path:`assets/production/quality/review/overview-${String(id+1).padStart(2,'0')}.png`});
    report.stages.push(metrics);
   }
-  assert.deepEqual(report.errors,[]);report.passed=true;
+  assert.deepEqual(report.errors,[]);assert.deepEqual(hashes(),report.runtimeHashes);report.unchanged=true;report.passed=true;
   fs.writeFileSync(`assets/production/quality/review/${subset?'living-town-partial':'living-town-browser-report'}.json`,JSON.stringify(report,null,2));
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

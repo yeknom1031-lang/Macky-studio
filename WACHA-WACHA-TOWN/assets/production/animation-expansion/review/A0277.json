@@ -1,0 +1,47 @@
+{
+  "id": "A0277",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T19:05:22.121327+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "制服のポーチが背面だけ左右へ飛ぶため、1・2行目は後ろ[1,2,3,2]、3行目は[0,1,2,1]の3姿勢で循環。他の方向と4行目の両側ポーチは安定。原画と切り出しを確認。"
+  ],
+  "packReport": "review/A0277-pack.json",
+  "preview": "review/A0277-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {
+    "0": {
+      "walkBack": [
+        1,
+        2,
+        3,
+        2
+      ]
+    },
+    "1": {
+      "walkBack": [
+        1,
+        2,
+        3,
+        2
+      ]
+    },
+    "2": {
+      "walkBack": [
+        0,
+        1,
+        2,
+        1
+      ]
+    }
+  }
+}

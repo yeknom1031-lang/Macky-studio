@@ -1,0 +1,19 @@
+{
+  "id": "A0607",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:24:53.092159+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    3
+  ],
+  "notes": [
+    "4×8で苗箱を支えながら運ぶ身振りと種をまく動作を確認。顔/服/道具の安定した2行を採用。",
+    "row1ハンドルとrow3じょうろは最後だけ消え、開始コマに戻ると突然出るため不採用。"
+  ],
+  "packReport": "review/A0607-pack.json",
+  "preview": "review/A0607-check.jpg"
+}

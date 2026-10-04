@@ -1,0 +1,28 @@
+{
+  "id": "A0601",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:21:07.599169+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "notes": [
+    "全4人の顔・服装と4×8コマを確認。ヘラの返し、団子づくり、綿菓子巻きは読める。",
+    "row4の風船の色・本数が不連続（青黄赤→黄赤緑→赤緑→黄緑）。手渡しに連動しない切替でちらつく。"
+  ],
+  "usableRows": [
+    1,
+    2,
+    3
+  ],
+  "rejectedRows": [
+    4
+  ],
+  "packReport": "review/A0601-pack.json",
+  "preview": "review/A0601-check.jpg",
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ]
+}

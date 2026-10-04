@@ -1,0 +1,355 @@
+{
+  "id": "A0792",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "bdff02963a9b4883fa5505111e4b5bf535540d610e97c3fff3aace62a8be1077",
+  "alphaZeroFraction": 0.67654,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S24-ENV09",
+      "name": "音楽広場の紙吹雪",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5324,
+          "rgbaSHA256": "d616bbbf117f8fdfac7970e36de1322e2e6268c9198bdddbf501a7bc15af45dd"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5839,
+          "rgbaSHA256": "e4d4a1d4a417999180628547c18f2a66d58f50196217b0f9ccf3fe967f90ba81"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5407,
+          "rgbaSHA256": "5c48e1651472254716b799c4314ffa1596b6930b24ddb8f601408d8224283752"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5104,
+          "rgbaSHA256": "c331501e87a6172d8c4ea6b41ba5bed628fae0cd17e0f5a860e8558e4b639e32"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5472,
+          "rgbaSHA256": "485b681edf867e0122971185f6841fe1d8ca01e22f46df48b70f2bc0f13bc726"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5183,
+          "rgbaSHA256": "40e69dd7cbf438e1de72917e437d7e78f58f3afdfca1ffcb1a1137bd37357480"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5629,
+          "rgbaSHA256": "aa573eb6f1b15766ab9ef501ae3844991c80f1b33ee3f37862d51cc0e6e5647d"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6085,
+          "rgbaSHA256": "14eca5b62fa69f0a2c8f54cc0334eb005d1753244f4f52d013fe3723c00bb9e7"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S24-ENV10",
+      "name": "カーニバルの房",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10283,
+          "rgbaSHA256": "6deafd3a5246e2aa0d27d47cef3baf8da801d4fcab52ee9d67d3d0a283dadbb2"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9979,
+          "rgbaSHA256": "e21eb933371de9b9f8543aedb84d58ea7594fe048e71b93c36bd09db842288e9"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10577,
+          "rgbaSHA256": "4c9e6b671e044e7b8e7df35ce31249cbd815cb73c5b546e1e69747f28575d003"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10553,
+          "rgbaSHA256": "741835249ab093bfe0cd2c72d88ba4aeecae1d57733898df52ed74739d85d7fb"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10401,
+          "rgbaSHA256": "3b98e1e4ccb74422869d5fb14de41f9910d74ce69955ea815d69acc69b512e3b"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9907,
+          "rgbaSHA256": "9e0cda388b5e88c249d24e05790afc4eb245e6fdf3a13c4ca5817ee29793b1bc"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10195,
+          "rgbaSHA256": "05b2360b0e6729d73747933ca3aad46a1a7b86a24ad99fce7fb729a29b6366a3"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10125,
+          "rgbaSHA256": "99f38bcc9eef5ba1bd8f24f2924c35a35b64cd1ca0d643404b835d56e6409843"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S24-ENV11",
+      "name": "花祭りの花びら",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7149,
+          "rgbaSHA256": "66941fa6f8206d6630299fb14324db570f10ffa79319bfa4eeeca0786479d8a3"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7264,
+          "rgbaSHA256": "662d52159286354b000ae026560941a06a7350493818d07b82be380e875f276e"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7380,
+          "rgbaSHA256": "954932daf577b11f5a23fb32fedc048e45f4a748ca15aa2d187c43ce0ca7f581"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7200,
+          "rgbaSHA256": "398b6fc53a12cce449e2b42fe85258f7e05d7be42bdce66e3e4d02dea06b0bf8"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6832,
+          "rgbaSHA256": "2b0cf6ba4db3f2b11f6cb42351138c0fcd499553a51dd38feda7b4504f8afa3b"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6982,
+          "rgbaSHA256": "7c065c3453b76960f2a59aec32043e74888e7b66c5769cacd216d1a54dea0b49"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7058,
+          "rgbaSHA256": "0b9db1d8e1486a8e28da7dece3c85aeac824445ffb31ef8fbf1e823262bde0f5"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7416,
+          "rgbaSHA256": "82034ff0e51f87b8487a5d1a3df256adb6106114747327bfe88f75855b696013"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S24-ENV12",
+      "name": "工芸屋の回転玩具",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11626,
+          "rgbaSHA256": "8fbca7a473cd89f1756c5ba586fdaa3baccf90b8be125795694f1746f58f6d31"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12151,
+          "rgbaSHA256": "8e468c22ea31ddaf4a94763ff7c1fb21b0fca3b1e88f29c138ea868105287886"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11299,
+          "rgbaSHA256": "5f51ec2adebeaa58e8ac845200a6f47ba434761240d4b22001952253ff579b8f"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11560,
+          "rgbaSHA256": "fb532d95872de5c9a9b60cca96de56bfc53b12eb0247105ccae5103285f51af3"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11848,
+          "rgbaSHA256": "1a5f0f34671cbbef48257380b6e6d29778a8f917dc210180594139a2312e7288"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11867,
+          "rgbaSHA256": "68aff7e7edeeb3823fac14cf258d25fe8432e2ee35ad39dd01f0983380fb1fc4"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11762,
+          "rgbaSHA256": "4bbd56ef96d323c08e707dd3f6547d03cb6e891634bbd54ab5438a2800b1e9fd"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11809,
+          "rgbaSHA256": "3f4e0d91ccf17787d249b71dee78a740ced5581b2872fa79e4cdb677ad893d63"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

@@ -1,0 +1,355 @@
+{
+  "id": "A0779",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "81fa7dbb1547114932ae3ddad18511fa26fd5b6e9c95c361a42c690299ab13e9",
+  "alphaZeroFraction": 0.63798,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S20-ENV05",
+      "name": "潜水艇ドックの泡",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4052,
+          "rgbaSHA256": "91dd3c86c7f67fb75aa5cc9543bfc3fae2aa210824c5fc34f95efac4bb2dba44"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4258,
+          "rgbaSHA256": "84a6ef0c11ca361defb8624133d952db01121d623079c2823db345a8e5bbf343"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4474,
+          "rgbaSHA256": "f873065d92aeecaac3f242e5384fcdd0a7e38a02536c73f3be7fd833aaa5cf66"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5959,
+          "rgbaSHA256": "6e79e965085308a7c2528b48203c9b4b8667ff1dd7d5ecfa6bf33351b1150200"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3783,
+          "rgbaSHA256": "0dc5193e4bcb951ab3763e52e0b906ce9a8910379a270d2effa3fe220ddd80cf"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3636,
+          "rgbaSHA256": "4aae3e7ca0bdf2db8fc520a774e7d977c93c050df7bee0dcae0273638b2c8a36"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3533,
+          "rgbaSHA256": "84a8a93e91c418ac7f091fd5ecf2b0a8d9b4f3153edcff229444d0f80bd49532"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2199,
+          "rgbaSHA256": "ba8983c05ea28a3faefd0994d3261bdaa3cae9ecb9dcf6ff5da68d5a799dfdfd"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S20-ENV06",
+      "name": "水槽の細い泡",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1796,
+          "rgbaSHA256": "4675a2122d1d80208b31ec5ae9b0dddb2b8770008bde682ad66dcc0febaeb2f0"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 2009,
+          "rgbaSHA256": "7b2e55c0a3beda8b23dea532c276bc9dc0ef50e4bee6a6f42e1572d8ea3b0bae"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2128,
+          "rgbaSHA256": "07db5413a529f589cb44380a7a2015cf0b17a1ea137518361f1bc111665b5f30"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2361,
+          "rgbaSHA256": "36ab34a5006bcc3802fdd2fe4c5d87dd804afca8f53ab0fe1c1b5d06dd350c78"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1700,
+          "rgbaSHA256": "711755a859fe72695cf870362de8768f7cc8e399a823c0c403e6a93ddb6a6aad"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 1049,
+          "rgbaSHA256": "885ce61c55f19c955c7612f7f096178f0b7675486331fcf65a7ca9c454a7b2a2"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 608,
+          "rgbaSHA256": "6734ddc51054c1f3f51e58f6b8f8d3073b0ae994766fc5fc1511d28fabde1df5"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 371,
+          "rgbaSHA256": "83933c09b409113a7de9f7f735944bfe78b8199517b1ca911f1a81dd9f64da9c"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S20-ENV07",
+      "name": "海の光のゆらぎ",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4641,
+          "rgbaSHA256": "830030df9d074f13aab690c2714cef304148c425023f9496fdffabb31aaf2748"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5672,
+          "rgbaSHA256": "a38f9d1dd151012ed4d7c9f1cca1d7b7b65e5b7d4868afa4a21f3475cfa33387"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7336,
+          "rgbaSHA256": "1551c6478824540422f8c0d4a683be87efcfb16abe35c8978cd471066a5014c0"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8098,
+          "rgbaSHA256": "d520128a468ae69107f421e6efc8ea473d562d91feca38cff1417454d4b0b44f"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7151,
+          "rgbaSHA256": "a3907023292c2e86886934c051fc185569e60bc71a9c5231d21da35be600ba96"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6205,
+          "rgbaSHA256": "a221beeeaf5f2b3e8ac25b8105b03efec74e775a1a1043944729407ce8f06975"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5683,
+          "rgbaSHA256": "694e37ffe87fc0e553fa3fe38c2694761ceae43c6bfaa9c18418dd8ffad225c3"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3633,
+          "rgbaSHA256": "d4f659100e9042fd9550a2cc5cc291a19c4d1f3a2da97284cfa9d10514a61580"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S20-ENV08",
+      "name": "桟橋の波しぶき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4266,
+          "rgbaSHA256": "73cc51bc6b968948f8d9c2aa75187b2dc3c0d6497f9b382ea72be904973b3895"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5690,
+          "rgbaSHA256": "dcea7591c1a8ba64e42dc9b98736542d5679fa7a5fe52d3a2d01f8adf9d4cdcd"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6580,
+          "rgbaSHA256": "f6103cbbe8b43c2a818ef087e4aa0aafaa503a7c12fcd0704db8cc7ac238c4e4"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7560,
+          "rgbaSHA256": "e504d9de12087b6efa554e4ba53c3973cf680d90e861eefc91de087bd9a3d789"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5673,
+          "rgbaSHA256": "51ef44e3561622b6fc041ddcb443c1651e601bbea119ac5a63723aa0fc7b9eb4"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4299,
+          "rgbaSHA256": "7cc250b7516bdec9b1d9257c191def2796df4aeb440c02fae5e2e5bf471a794c"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3553,
+          "rgbaSHA256": "3dbaf4fd665e7f221d9173cde8c58fe5f6e98362de3b315756ea656edbf42a1e"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4272,
+          "rgbaSHA256": "5b9916e86ad6d5c2ddfede48313be220ed308192dcda3af29ca1f3ff9a3efa3d"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

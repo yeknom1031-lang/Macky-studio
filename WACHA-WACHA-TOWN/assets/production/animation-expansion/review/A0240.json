@@ -1,0 +1,35 @@
+{
+  "id": "A0240",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:31:15.691802+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画とpackを全行確認。全4行で背面4コマの腰袋・ショルダーストラップが左右反転するためwalkBackのみ除外。階段上り下りの各8コマは衣装・袋・足運びが一貫しているので採用。"
+  ],
+  "packReport": "review/A0240-pack.json",
+  "preview": "review/A0240-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "walkBack"
+    ],
+    "1": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

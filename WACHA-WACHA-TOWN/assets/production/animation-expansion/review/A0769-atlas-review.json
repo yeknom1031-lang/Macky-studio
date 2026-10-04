@@ -1,0 +1,355 @@
+{
+  "id": "A0769",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "d7eddd52dd0427d1e43081b1c4e82fc1899f9c2568527f5ad8b5848b7a6e2082",
+  "alphaZeroFraction": 0.4877,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S17-ENV01",
+      "name": "工房の銅風鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11929,
+          "rgbaSHA256": "bad1969041f7fc1fce1ab46b41d7c14afae4518c22d0963db607adf4527ad284"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11561,
+          "rgbaSHA256": "ead67d2d3d3035b77bf0cb686ebf4ae97a2684799ce991c4e3a25c5371af3828"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11841,
+          "rgbaSHA256": "122ad17e5eed00c7b8f383b67f6ede1df2ebb669059b936ed8c9bb43f7d23398"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12129,
+          "rgbaSHA256": "cd0b13a76994105c9dc1d4a0875f391303e743512ddfd35b0903a3a4a9bd18bd"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12118,
+          "rgbaSHA256": "ff41fe707a178b837af06990868f659f938be6dfc06eecd42b308fd6c2bb4fee"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12386,
+          "rgbaSHA256": "b5dff99a904312ed45ab72e5788e3e70081b5f680a6146b5c3c51c3851784f03"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12056,
+          "rgbaSHA256": "5e62119d1f5452d49357a3194bc1d2355c0a11fcc2f1fcd240eab1f24f103636"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11916,
+          "rgbaSHA256": "e8f5d9dd1d0b2b452f375faaf36a69512d38a6a982c5c476cb56ce1d47370071"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S17-ENV02",
+      "name": "時計屋の歯車モビール",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 12260,
+          "rgbaSHA256": "101188b5fd255ef33e3beb7b12017bb54431ac01c49a38468b96d48c69e8882c"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 11601,
+          "rgbaSHA256": "6e55b5845d65327ecef470e4ada1b8c07cdf60eb64dcabc5856b343152bf9fea"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 11917,
+          "rgbaSHA256": "c3f46d1b6e422af97c5bd9bd26f600d98c8613dcf098611e52fa441d2152f7c2"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 11863,
+          "rgbaSHA256": "65c4566122a5ba3db585ebdc2ca2fd939f522b82ee1e1e1b1129b3d4e86197bf"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 12655,
+          "rgbaSHA256": "72045d6d7b5bd5ab65aa4cd393886c32cc3caf593eeb16e73b4db56374510c89"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 12282,
+          "rgbaSHA256": "ebddeaa9d18f0d0b254b56643a8f7836a5dc4fe5197e0e97ab9ec6bf341f305d"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 12309,
+          "rgbaSHA256": "017fb25ecb838d583df57a66632c93fe6c3f7077aa0c02335843c08d24131b35"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 11877,
+          "rgbaSHA256": "b549b2ece1cc1db893d795454c85419a1f6e9e4a7265b4a8707557db61d58d6a"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S17-ENV03",
+      "name": "自転車店の小風車",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 16402,
+          "rgbaSHA256": "09730fe2b2fd72e7a7f9254a7cea4cbb671e125eb596834781646c24b44809d3"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 16554,
+          "rgbaSHA256": "f573fdaeae5bb49616d437e487a96273f20bde751eb55d8390b673b2063b8ce0"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 16591,
+          "rgbaSHA256": "866a8fa54ab7bd5347e997aeed4fc5a388158f441558136d6d9521219d122db3"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 16786,
+          "rgbaSHA256": "3bf6d7f2f380afedeaf14f07a3f8e9e7731fe80456b6ad412b2bcf86ff996597"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 16794,
+          "rgbaSHA256": "d1f94c9e9e1d8140f8305a31af7505360b62682803f6ec636245d76d5efb9228"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 16634,
+          "rgbaSHA256": "ab76496fd345ebb65cc09ce615b6738a76990af6f56447142511f0cb91d4b567"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 16739,
+          "rgbaSHA256": "6404e2df7af602a84a10dae2580b0d380e676f03fd946982d8900ffbdf3cae2e"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 16697,
+          "rgbaSHA256": "838797c623d773355b8b30639b9759f7d93b352f8a330cc7fdddd38723b4f224"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S17-ENV04",
+      "name": "茶房の湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6230,
+          "rgbaSHA256": "872228bd9d3340af819609a6ab79906c74af7397d6889e5d548eb3ba5fdbc827"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6021,
+          "rgbaSHA256": "98bf73f2db0b3d5043f195341d37290ad6ba10844009ff2b2d88726c3b674779"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5899,
+          "rgbaSHA256": "175b413be1ab4eaf7aee4d1896c557052b3ed55296cdaf5ef55195329552ba0b"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6342,
+          "rgbaSHA256": "e76a9aaeb5203a1a1b1ea2a703e9eabc1fe64c8a6acbec9db53c598a4ceb341b"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5746,
+          "rgbaSHA256": "e4865cb0e7aaf0f9244f85aa662715ca955f5d50ea926befbf9791af11d1ecb9"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6549,
+          "rgbaSHA256": "4b4d38727e95c35c2daa0ef51e76d1a878cdf5e60a7f94a2d5d5b43e0e4d3b33"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6148,
+          "rgbaSHA256": "69c0c276f3100abf93faeb0fc4887c5b0066868757ca409d2bda05c139ff9f66"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5894,
+          "rgbaSHA256": "a07010056ef0f553e30b52f1979ccc583c69e84c3f5462921b9fee3d4808e008"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

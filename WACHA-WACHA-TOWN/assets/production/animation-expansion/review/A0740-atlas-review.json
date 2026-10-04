@@ -1,0 +1,355 @@
+{
+  "id": "A0740",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "44ac04017ac60c4c240a6760b1db816540be6bf5853604cf0073be918514d9ee",
+  "alphaZeroFraction": 0.36532,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S07-ENV05",
+      "name": "星映る池の輪",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6547,
+          "rgbaSHA256": "a06c43c7d61b4631c39d1cc7e449000df9f54480cfb2eac4313c9716c30d62ba"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6996,
+          "rgbaSHA256": "7152ab5bba4eafe8d2c7799d17289a24bfbfd9c33c22f14be306451a6291e533"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7101,
+          "rgbaSHA256": "fc939a4824777b8549f678949499cbcb1c6dc2531a73776ce9b8cd8bd03fca6e"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7322,
+          "rgbaSHA256": "bf7f19f01b287862c19dacb7a046beec7a7a749e0c35dcebec3624f2b0898724"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6950,
+          "rgbaSHA256": "5861f17173f04a7cbaadac568b36c33c2a36b4ef7b4e0c05008911d786105f38"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6424,
+          "rgbaSHA256": "bb24a31407c7c5852c5903eb2cfe14b62ff4d13c7e53ceb3b4631b3c728e324b"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6944,
+          "rgbaSHA256": "b99a5565d93ce905d9bb876e76ff7e54ef1c54915638f625c793f4f7d4b952e8"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6442,
+          "rgbaSHA256": "0116d3179b8563443eff42af812e1917d1fba1699868abdb3211755a50114a1e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S07-ENV06",
+      "name": "夜の滝のしぶき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8628,
+          "rgbaSHA256": "12cca9b991e6785d25948789d39638141f587f8eba0a14dd29c726d815e0fd03"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7913,
+          "rgbaSHA256": "67b4ea055c0edaec4b02c6fe9a0556f2de078098727967dab4f592b234af98b3"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9085,
+          "rgbaSHA256": "208b5ea1a6ed0463ca8397b708fd86db0e06293bcc84e36a8583118a396166c4"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8533,
+          "rgbaSHA256": "76c59331d06fff8b938bab9782f30c59ac0c2fee24d375961bc97c91518f4bfd"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8870,
+          "rgbaSHA256": "1e95ac3c35c45b158a0ea8f73411d13c36c0791b862e6202bbfe6ef69990ceae"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9360,
+          "rgbaSHA256": "cdabd11cc2f60b91261b7e21e08a081bc15fb2ca6624cbf2cce9198df9875fc5"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8615,
+          "rgbaSHA256": "527cfc0b824ec1943b2419a33dd243b9c0108ce6c3d357d82d46343fff7f8965"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8094,
+          "rgbaSHA256": "08b298a256f2ac442142700f3b981d9ec7c770b311be87f3f8d72b05349ba02b"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S07-ENV07",
+      "name": "橋下の水面光",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7702,
+          "rgbaSHA256": "631cae52d5dc2c3cbd99cf55b0ff5a8a007e7fb53b5fff85493fc66c431b49bf"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6741,
+          "rgbaSHA256": "aa02e99fa10e9181eacbf6c1e80f0181ff5745ad5994adebc8ae3f5588f27e0e"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6937,
+          "rgbaSHA256": "729c98c98a1d40af2974d7f6b2b2b086e0d400f89859cda89ea542ba31b3af2f"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6845,
+          "rgbaSHA256": "17f48918ab3b5cccba714acb65bcaac457617e0f78d1a6804e1b3b3ea30d36f4"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6766,
+          "rgbaSHA256": "99c38766dc8113dfdb22a728ec9aeb25750e487cd4324be275ba342eac222a68"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7198,
+          "rgbaSHA256": "502f95edfba62b06d44e7ab2a70e6a693cf8941327a7715280d94ef44e0c93aa"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6749,
+          "rgbaSHA256": "b8668e053772ea73498e0b358160c56e8192a1112c050a71726bc66430f2ef0d"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7725,
+          "rgbaSHA256": "38a5747271a38048d1c48d05164285c573d0292c2ec3b9a4bd9ed745c87e9b53"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S07-ENV08",
+      "name": "ランタンの小光",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3179,
+          "rgbaSHA256": "5321752a65f981804cfac0f633218a48c47493ba25d5496494089370f87e2a76"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3079,
+          "rgbaSHA256": "a9eb19e3b8e8a695fa8cd8883f927946b03ad702d0605fd0676b633522fe91c1"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2972,
+          "rgbaSHA256": "3f7f9bbb4d11d213f4d31971b5bc1cc40b8807aafdb2f41bfc070bcdb7cd6efc"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2982,
+          "rgbaSHA256": "dc82f6e583b96b7faa4f5b4b25a8012810205d7a12bb1e5cc210cb59c28a33f6"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3425,
+          "rgbaSHA256": "1efd590da5084d33877e078c08096bcb45ad80625f7c6ec652c74c1b1c194ce3"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3512,
+          "rgbaSHA256": "d43efc5ae922120b7c2ed1200d27ea6d841cb57e91b9227339933de8242d194d"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2994,
+          "rgbaSHA256": "32625640af73f076ed547004d1be3a43ffe1bb1992aa44ed154badc492a6d3a2"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3283,
+          "rgbaSHA256": "6bb63e4080541a8cc0a2dc66f3f89ff12175c5d7cb6826b96f85d9c87eed191f"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent frames. Color compositing verifies true transparency. No duplicated building or complete equipment. Final scene placement pending."
+}

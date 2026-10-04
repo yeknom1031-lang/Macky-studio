@@ -1,0 +1,355 @@
+{
+  "id": "A0755",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "24c15fa6f885f1332344bc2e8491dc396e2d023f862495cf0d5eface0737c7dd",
+  "alphaZeroFraction": 0.55696,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S12-ENV05",
+      "name": "水遊びの飛沫",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3495,
+          "rgbaSHA256": "1f4b126844cdc168cde70e2aba97ff691261d720dd6daf29263d37cfb727c6f1"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5521,
+          "rgbaSHA256": "ca40e66827d470165fcf114d5c8b7e1f49f4df5ee681ea44f79f652b1e61d10e"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7574,
+          "rgbaSHA256": "aa3426f783fe1cf71fdeeb710681ce54b2088af3828a8d4a7d32cbb58023b053"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9530,
+          "rgbaSHA256": "0b3144906d959401deeb18e86b2cb6682108bb51a5ec94b580aa0a16b9ee8a37"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6713,
+          "rgbaSHA256": "f40f1760044958760b17078e070c23645c6e5d4a9ea53a56c3c3d359025f5f45"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5375,
+          "rgbaSHA256": "f94143d71190b75db15cc9d45d791e2db4f1284423e8a1bcb2608e0425c1639d"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4430,
+          "rgbaSHA256": "aa8730fdcefb3377ea38e7b3b9c254bf4d9f4045cbbfd9e5f3b4f6525ca44f02"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3623,
+          "rgbaSHA256": "eda72bc02b326a4af90077e2d7464b6722f618d23ea3075298faaaae4cbe97fe"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S12-ENV06",
+      "name": "入園口の噴水霧",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8125,
+          "rgbaSHA256": "02c4b252937bc355a8f4f1f10574d455cf72c4a70c3326923e216ad0829225be"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 10186,
+          "rgbaSHA256": "24b594c85a5ee318ce9bda36bc2bd2b552095373b15d1c4630636e4ce58b44ee"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 13865,
+          "rgbaSHA256": "fe955ef6f56617d2a7d9ffc49d1e2c1f84bc2490d0421bd41d63eb22747cd3b8"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 15283,
+          "rgbaSHA256": "145336a1c6a360e764f04b610d848566bd85b4ed2179e3af7b1a0d16e77017f3"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 15367,
+          "rgbaSHA256": "8b0082e9ec4f1055df343d204a4dc030af6d67096c30235c7a3b0d7890ddd742"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 12391,
+          "rgbaSHA256": "b6b97b1df931919b4f64d78df028cf767f7f8f3d628c7f6e541b2037232f3095"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10237,
+          "rgbaSHA256": "edb74c3a8a63eb5c6e7dcdf70d43fac897bd391aa43e497408f0b4c73c18bc7e"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7128,
+          "rgbaSHA256": "36509635d2f23ba5ffaba19b162723985b851ecaa048c41b76895f1aef81f8e3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S12-ENV07",
+      "name": "水路の虹色泡",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8515,
+          "rgbaSHA256": "87aa2baa5054559c707e409a41808a9cc051d17fb3f1a4a76c2c84076eb3e787"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8278,
+          "rgbaSHA256": "58689615c3ef3dddf60469db1d1fc93e0a3a34203fe03d8e070a9031f28d6da7"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8210,
+          "rgbaSHA256": "d9aadc3c404eb1e0d0c3255575711552fcb6ab75e911db3c810716414b91b564"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7802,
+          "rgbaSHA256": "bb258e43588cd3ba26c8a94bf99223422ba70c2b93860cc5be46abe793ff46a0"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7487,
+          "rgbaSHA256": "0b23cc8470cfea7c5bb510fce4c0df138620616a9596465784a6390a6b82e8c9"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8112,
+          "rgbaSHA256": "fde37332932086409e9cce4a57c9e16c4e0e9623b750f9e13bfad0653fca2b37"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8283,
+          "rgbaSHA256": "43889b01139482692de47190cc3329b6972a54483898095cf41aefb048ef7f47"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8127,
+          "rgbaSHA256": "e74e4b4cd85094716c261a9ad0e3d10c6d845ea6d36c0c9f3d8b62bbed79d0c9"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S12-ENV08",
+      "name": "カップ噴水の落水",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5101,
+          "rgbaSHA256": "b95f465baf674d1bc2e199deaf0728ec2e5c1d89c8bf05a04eefdba855fba70d"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5685,
+          "rgbaSHA256": "85598766adf4c8ba4df453be4a69bdb41791266301164037af3ded2d6550d46e"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5876,
+          "rgbaSHA256": "dcef4c9c625f3341d0e2918794ac1a631868415f7f50ea533fde9f0de2ff2eea"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6838,
+          "rgbaSHA256": "7410c2c34a302a0fcd02bdb8d05bea3615dc3c679dd0f8a2fca91145fbfaa5f6"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5909,
+          "rgbaSHA256": "658063b967c27ed914dde26141a8c616f2dd36bec0ec927cd88d255ba937beb1"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4973,
+          "rgbaSHA256": "ee2b7628ff09f3500e627b86e8c4e7a40ee9a63dfe948a46aa10a4078dbafcf6"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4613,
+          "rgbaSHA256": "9a437c691e59973319e702bc58ed20738812b43b716e4304b11ad481a7bb7571"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4504,
+          "rgbaSHA256": "9bc4854d1ab2667665f7e586073e16c81689478eeff0301323f2277721886795"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "Four coherent rows of eight frames, with true transparency confirmed by colored compositing. No complete background equipment duplicated. Final scene placement pending."
+}

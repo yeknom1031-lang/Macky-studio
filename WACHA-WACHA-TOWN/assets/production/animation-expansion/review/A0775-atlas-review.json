@@ -1,0 +1,355 @@
+{
+  "id": "A0775",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "0599866cbfb390da606b8a3f21e9d3cb2e8220ce261a19754c1983a4073e020c",
+  "alphaZeroFraction": 0.62148,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S19-ENV01",
+      "name": "山小屋の木鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8503,
+          "rgbaSHA256": "d44354cb4a813b21c1fa8d0e81ef84742956d02b8342b0d9750645bc276d42f1"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9510,
+          "rgbaSHA256": "9012d8b18e93517d2cc580d66547abb75d3ebfc4a2037b38ff17fee15a8525a7"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9075,
+          "rgbaSHA256": "55e713337eaa8ea31bc275d08593f4b4cc615e217a70bc09483acde019b83fb3"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9125,
+          "rgbaSHA256": "fb9cb3c1992b58e44442504652426b0461f3da62ab01d62d73ea00a1ed91272e"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8968,
+          "rgbaSHA256": "70c440f1264325d70a9913f87d4579412a63a4d050eb5bbc18b46d3fcb3a0d5a"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8975,
+          "rgbaSHA256": "23584c57939fea6c9f44d11fe1e3844ce3f14d5b63ccd85b3b7dac7981cc7866"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8901,
+          "rgbaSHA256": "6906a7cf8745ea4e7518f02e2b0eac27184fdc30303d35a95b0e3602e8ac2ee7"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8768,
+          "rgbaSHA256": "bf66860c9e4f2c5ab8af7ff3b8d12385548fa0b2fa093ff401ef8286adf9f3fe"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S19-ENV02",
+      "name": "リフト小屋の吹き流し",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9579,
+          "rgbaSHA256": "04499ef04645adf6be8907d5ee250bea8fd9d9ad016c6d70356bf531d99bb79a"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 10942,
+          "rgbaSHA256": "fdf75e5a9f527d6f53b54974cbfa86bd56b4ac165630f3531e816c700871425a"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10402,
+          "rgbaSHA256": "d4153cf22b438b8d3ae82a398d08cb8ca406e3775ed334f9d3b07b48b1218487"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10993,
+          "rgbaSHA256": "e2929d675d987a062ca4116a89579890169f48daa1a87421881751a5902e88d9"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10496,
+          "rgbaSHA256": "3f14a0be530b3ca7a15e5fb4156acfefdb19497d53c073a196442529d34b270b"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 10126,
+          "rgbaSHA256": "62fa6313d689e85eda5946b6bb465a44453d012c5dde7274fcd285fcdc97d4c6"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10269,
+          "rgbaSHA256": "a4cfef30c677f1beb351c697fb54ba56bd7f26df4d7e98bf874ab5c67943acbc"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10171,
+          "rgbaSHA256": "d600a3d73d1dae69464c84672a18177244eb4b48da9f9e43cdbdb8880642b0c5"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S19-ENV03",
+      "name": "スキー店の飾り紐",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8315,
+          "rgbaSHA256": "824486f229b404c2eb9efa897ec6d4a8179226b95389ffc14d4566c2558ae1a1"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7784,
+          "rgbaSHA256": "724d762ebdf57c3558a111ecd8596e9a5b713fda4e2fe9a54ecf15ef91bec254"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7798,
+          "rgbaSHA256": "beb1f1cc0eab71b719e4034c2d45d28ee4e0808ff05526561e5eb359a5976985"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8183,
+          "rgbaSHA256": "e63146e9345aa50c7585272aef7b6add520f8d4b0a354e86082a66297708b60a"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7676,
+          "rgbaSHA256": "fe0f435bb3817b8c163e0660a05d7c75a950185ac08ddb0c2d9faddc0d01e935"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8261,
+          "rgbaSHA256": "543471af72bad355196395c3a29ef243b0f6a66c5c77bedf28b6634b57163087"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8003,
+          "rgbaSHA256": "104c6dd711aefc8b14d3041b4733d59f8dc5632aacbb2a05e360f62d8a3c041f"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7830,
+          "rgbaSHA256": "a4d9ba1fab8d943d072b412c407681b1cf43fd75aa8bc110b39ce9276efc66fd"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S19-ENV04",
+      "name": "山のカフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6830,
+          "rgbaSHA256": "5de355644a4a3846ce047ef7d57540f161db1bef3ec42cd64b7a26f9355d9c06"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6874,
+          "rgbaSHA256": "fce83c4f8f1c393ab6e87df7ed82e16d5e7c19f0b86a097423d1dd663276af55"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6971,
+          "rgbaSHA256": "ab3cc523f9246425d343c3161de08ade4734f8d0df79abe428bb1735c8d38121"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6973,
+          "rgbaSHA256": "b37bf3064d435f349b7e15a80cc3181fdfb8a3a03659c98e492a8c6e51ed8720"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6806,
+          "rgbaSHA256": "df86af7b748ecd4901578161ab5b8b7051df34827f6e839d93d5c4a95730304c"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6834,
+          "rgbaSHA256": "281c91d438029b9790b9bdae45ad665ae0f5354b69d0a05009ee66f10a68423a"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6870,
+          "rgbaSHA256": "088ea80fc75008967a1e37cc55d3b0e16f06aee2a5920ac78b2b99f1bc2cf04c"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7079,
+          "rgbaSHA256": "0b69c68cc41723109f0bc0246854136c7d90dc6c0ed2664b6eadba21749e7a53"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

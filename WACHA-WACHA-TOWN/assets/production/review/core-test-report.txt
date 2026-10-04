@@ -1,60 +1,358 @@
-✔ residents give way without persistent overlap in S10 at 10 Hz (2508.623875ms)
-ℹ maximum 2.600 seconds
-✔ residents give way without persistent overlap in S10 at 30 Hz (4551.154792ms)
-ℹ maximum 2.467 seconds
-✔ residents give way without persistent overlap in S10 at 60 Hz (8028.565042ms)
-ℹ maximum 2.233 seconds
-✔ residents give way without persistent overlap in S10 at browser first frame (2365.082667ms)
-ℹ maximum 2.700 seconds
-✔ residents give way without persistent overlap in S4 at 10 Hz (967.065958ms)
-ℹ maximum 2.300 seconds
-✔ residents give way without persistent overlap in S4 at 30 Hz (2560.461208ms)
-ℹ maximum 2.133 seconds
-✔ residents give way without persistent overlap in S4 at 60 Hz (3466.023083ms)
-ℹ maximum 1.867 seconds
-✔ residents give way without persistent overlap in S4 at browser first frame (882.144834ms)
-ℹ maximum 2.217 seconds
-✔ ready stage contains original unique designs, 100 exclusive people, 5 photographers, no palettes (464.547ms)
-✔ missing artwork cannot be silently replaced by repeats (143.356917ms)
-✔ photographers give one ticket each, exactly five; wrong touches cost time and target wins (45.664875ms)
-✔ photo costs a found ticket, snapshots the target, waits 3 game seconds and pauses fairly (494.186334ms)
-✔ controller control is optional and disconnect hands the target back to AI without pausing (1254.241042ms)
-✔ a long simulation stays finite, uncovers bodies within three seconds and expires at 180 (21090.338208ms)
-✔ crowd yields to a stationary controlled target without dragging that player (412.860792ms)
-✔ second-floor interactions use stair edges on entry and exit (2948.841041ms)
-✔ boats remain on their water route and board at the dock (5023.400709ms)
-✔ air rides lift passengers, cruise above the ground and land before boarding (4934.143625ms)
-✔ role-specific actions only use matching places, while existing occupants can always leave (106.494209ms)
-✔ ground walkers uncover a stopped passenger without moving the passenger or the vehicle (411.926833ms)
-✔ a manually controlled resident keeps animating while using painted equipment (51.403708ms)
-✔ a slow resident can leave a narrow dead end within three seconds without pushing the player or crossing the floor boundary (111.034458ms)
-ℹ height 1, gap 8: 1.3 seconds maximum overlap
-ℹ height 1, gap 10: 1.3 seconds maximum overlap
-ℹ height 1.13, gap 10: 1.4 seconds maximum overlap
-ℹ height 1.13, gap 12: 1.4 seconds maximum overlap
-✔ controller takeover cancels an active floor escape without imposing automatic movement (21.497125ms)
-✔ the viewport inset never clamps a valid narrow floor position into a wall (24.878917ms)
-✔ swimming animals keep their measured water route near the viewport edge (25.044167ms)
-✔ stages without a measured water route use land and air animals while preserving the complete unique cast (978.760209ms)
-✔ a walker yields to both passengers of a moving vehicle instead of escaping into the second seat (22.051541ms)
-✔ controller takeover immediately clears a cooperative pause and accepts movement (21.318167ms)
-✔ cancelling a distant upstairs destination keeps the resident on their current ground floor (71.699667ms)
-✔ boarding cannot pull a resident down from another floor and clears completed staircase state at ground level (75.921542ms)
-✔ overlap recovery never ejects a seated passenger into the street (49.278416ms)
-✔ a rejected manual stair placement never changes the current floor or node (59.209583ms)
-✔ ground vehicles route around indoor shortcuts and all stages spawn them on streets (3859.649125ms)
-✔ interrupting an upstairs stair transit retains its upper floor even when the ground entry is closer (42.390125ms)
-✔ an explicit ID subset uses only those workers and writes a separate report (26.508875ms)
-✔ the default path retains every ready stage and the original full report (5.05775ms)
-✔ invalid, repeated, out-of-range and unready IDs are rejected before workers run (41.077625ms)
-✔ a selected-stage failure is recorded and still fails the run (6.12925ms)
-✔ the garden boat and canal boats follow water without taking flight (326.811833ms)
-✔ observation, elevating, mountain, and sky gondolas retain airborne movement (872.687709ms)
-ℹ tests 40
-ℹ suites 0
-ℹ pass 40
-ℹ fail 0
-ℹ cancelled 0
-ℹ skipped 0
-ℹ todo 0
-ℹ duration_ms 71561.965875
+TAP version 13
+# Subtest: accepted upward and downward stair movement select opposite clips on the actual edge
+ok 1 - accepted upward and downward stair movement select opposite clips on the actual edge
+  ---
+  duration_ms: 87.077833
+  type: 'test'
+  ...
+# Subtest: flat upstairs movement is ordinary walking, not climbing inferred from its level
+ok 2 - flat upstairs movement is ordinary walking, not climbing inferred from its level
+  ---
+  duration_ms: 65.538875
+  type: 'test'
+  ...
+# Subtest: stopped stairs and paused game preserve the captured animation phase
+ok 3 - stopped stairs and paused game preserve the captured animation phase
+  ---
+  duration_ms: 40.972417
+  type: 'test'
+  ...
+# Subtest: manual movement uses accepted path direction and zero input does not cycle feet
+ok 4 - manual movement uses accepted path direction and zero input does not cycle feet
+  ---
+  duration_ms: 38.466417
+  type: 'test'
+  ...
+# Subtest: blocked input does not animate movement that the floor rejected
+ok 5 - blocked input does not animate movement that the floor rejected
+  ---
+  duration_ms: 43.146958
+  type: 'test'
+  ...
+# Subtest: actual entryRoutes are recognized when a legacy stage lacks the new edge manifest
+ok 6 - actual entryRoutes are recognized when a legacy stage lacks the new edge manifest
+  ---
+  duration_ms: 47.328291
+  type: 'test'
+  ...
+# Subtest: residents give way without persistent overlap in S10 at 10 Hz
+ok 7 - residents give way without persistent overlap in S10 at 10 Hz
+  ---
+  duration_ms: 4176.154542
+  type: 'test'
+  ...
+# maximum 2.300 seconds
+# Subtest: residents give way without persistent overlap in S10 at 30 Hz
+ok 8 - residents give way without persistent overlap in S10 at 30 Hz
+  ---
+  duration_ms: 8541.918583
+  type: 'test'
+  ...
+# maximum 2.100 seconds
+# Subtest: residents give way without persistent overlap in S10 at 60 Hz
+ok 9 - residents give way without persistent overlap in S10 at 60 Hz
+  ---
+  duration_ms: 15132.815917
+  type: 'test'
+  ...
+# maximum 2.550 seconds
+# Subtest: residents give way without persistent overlap in S10 at browser first frame
+ok 10 - residents give way without persistent overlap in S10 at browser first frame
+  ---
+  duration_ms: 9505.306
+  type: 'test'
+  ...
+# maximum 2.500 seconds
+# Subtest: residents give way without persistent overlap in S4 at 10 Hz
+ok 11 - residents give way without persistent overlap in S4 at 10 Hz
+  ---
+  duration_ms: 1822.96475
+  type: 'test'
+  ...
+# maximum 2.300 seconds
+# Subtest: residents give way without persistent overlap in S4 at 30 Hz
+ok 12 - residents give way without persistent overlap in S4 at 30 Hz
+  ---
+  duration_ms: 5896.785458
+  type: 'test'
+  ...
+# maximum 2.133 seconds
+# Subtest: residents give way without persistent overlap in S4 at 60 Hz
+ok 13 - residents give way without persistent overlap in S4 at 60 Hz
+  ---
+  duration_ms: 9706.738042
+  type: 'test'
+  ...
+# maximum 1.867 seconds
+# Subtest: residents give way without persistent overlap in S4 at browser first frame
+ok 14 - residents give way without persistent overlap in S4 at browser first frame
+  ---
+  duration_ms: 2571.215458
+  type: 'test'
+  ...
+# maximum 2.217 seconds
+# Subtest: ready stage contains original unique designs, 100 exclusive people, 5 photographers, no palettes
+ok 15 - ready stage contains original unique designs, 100 exclusive people, 5 photographers, no palettes
+  ---
+  duration_ms: 1277.096333
+  type: 'test'
+  ...
+# Subtest: missing artwork cannot be silently replaced by repeats
+ok 16 - missing artwork cannot be silently replaced by repeats
+  ---
+  duration_ms: 742.807209
+  type: 'test'
+  ...
+# Subtest: photographers give one ticket each, exactly five; wrong touches cost time and target wins
+ok 17 - photographers give one ticket each, exactly five; wrong touches cost time and target wins
+  ---
+  duration_ms: 170.425375
+  type: 'test'
+  ...
+# Subtest: photo costs a found ticket, snapshots the target, waits 3 game seconds and pauses fairly
+ok 18 - photo costs a found ticket, snapshots the target, waits 3 game seconds and pauses fairly
+  ---
+  duration_ms: 1658.512167
+  type: 'test'
+  ...
+# Subtest: controller control is optional and disconnect hands the target back to AI without pausing
+ok 19 - controller control is optional and disconnect hands the target back to AI without pausing
+  ---
+  duration_ms: 4400.376834
+  type: 'test'
+  ...
+# Subtest: a long simulation stays finite, uncovers bodies within three seconds and expires at 180
+ok 20 - a long simulation stays finite, uncovers bodies within three seconds and expires at 180
+  ---
+  duration_ms: 70099.8815
+  type: 'test'
+  ...
+# Subtest: crowd yields to a stationary controlled target without dragging that player
+ok 21 - crowd yields to a stationary controlled target without dragging that player
+  ---
+  duration_ms: 1285.738583
+  type: 'test'
+  ...
+# Subtest: second-floor interactions use stair edges on entry and exit
+ok 22 - second-floor interactions use stair edges on entry and exit
+  ---
+  duration_ms: 7435.362958
+  type: 'test'
+  ...
+# Subtest: boats remain on their water route and board at the dock
+ok 23 - boats remain on their water route and board at the dock
+  ---
+  duration_ms: 18789.747625
+  type: 'test'
+  ...
+# Subtest: air rides lift passengers, cruise above the ground and land before boarding
+ok 24 - air rides lift passengers, cruise above the ground and land before boarding
+  ---
+  duration_ms: 15207.597708
+  type: 'test'
+  ...
+# Subtest: role-specific actions only use matching places, while existing occupants can always leave
+ok 25 - role-specific actions only use matching places, while existing occupants can always leave
+  ---
+  duration_ms: 159.566792
+  type: 'test'
+  ...
+# Subtest: ground walkers uncover a stopped passenger without moving the passenger or the vehicle
+ok 26 - ground walkers uncover a stopped passenger without moving the passenger or the vehicle
+  ---
+  duration_ms: 1116.982584
+  type: 'test'
+  ...
+# Subtest: a manually controlled resident keeps animating while using painted equipment
+ok 27 - a manually controlled resident keeps animating while using painted equipment
+  ---
+  duration_ms: 266.561791
+  type: 'test'
+  ...
+# Subtest: a slow resident can leave a narrow dead end within three seconds without pushing the player or crossing the floor boundary
+ok 28 - a slow resident can leave a narrow dead end within three seconds without pushing the player or crossing the floor boundary
+  ---
+  duration_ms: 675.864084
+  type: 'test'
+  ...
+# height 1, gap 8: 1.3 seconds maximum overlap
+# height 1, gap 10: 1.3 seconds maximum overlap
+# height 1.13, gap 10: 1.4 seconds maximum overlap
+# height 1.13, gap 12: 1.4 seconds maximum overlap
+# Subtest: controller takeover cancels an active floor escape without imposing automatic movement
+ok 29 - controller takeover cancels an active floor escape without imposing automatic movement
+  ---
+  duration_ms: 50.46975
+  type: 'test'
+  ...
+# Subtest: the viewport inset never clamps a valid narrow floor position into a wall
+ok 30 - the viewport inset never clamps a valid narrow floor position into a wall
+  ---
+  duration_ms: 76.081833
+  type: 'test'
+  ...
+# Subtest: swimming animals keep their measured water route near the viewport edge
+ok 31 - swimming animals keep their measured water route near the viewport edge
+  ---
+  duration_ms: 73.877834
+  type: 'test'
+  ...
+# Subtest: stages without a measured water route use land and air animals while preserving the complete unique cast
+ok 32 - stages without a measured water route use land and air animals while preserving the complete unique cast
+  ---
+  duration_ms: 3081.440458
+  type: 'test'
+  ...
+# Subtest: a walker yields to both passengers of a moving vehicle instead of escaping into the second seat
+ok 33 - a walker yields to both passengers of a moving vehicle instead of escaping into the second seat
+  ---
+  duration_ms: 80.916417
+  type: 'test'
+  ...
+# Subtest: controller takeover immediately clears a cooperative pause and accepts movement
+ok 34 - controller takeover immediately clears a cooperative pause and accepts movement
+  ---
+  duration_ms: 69.374416
+  type: 'test'
+  ...
+# Subtest: cancelling a distant upstairs destination keeps the resident on their current ground floor
+ok 35 - cancelling a distant upstairs destination keeps the resident on their current ground floor
+  ---
+  duration_ms: 234.519916
+  type: 'test'
+  ...
+# Subtest: boarding cannot pull a resident down from another floor and clears completed staircase state at ground level
+ok 36 - boarding cannot pull a resident down from another floor and clears completed staircase state at ground level
+  ---
+  duration_ms: 244.643416
+  type: 'test'
+  ...
+# Subtest: overlap recovery never ejects a seated passenger into the street
+ok 37 - overlap recovery never ejects a seated passenger into the street
+  ---
+  duration_ms: 118.514542
+  type: 'test'
+  ...
+# Subtest: a rejected manual stair placement never changes the current floor or node
+ok 38 - a rejected manual stair placement never changes the current floor or node
+  ---
+  duration_ms: 143.171958
+  type: 'test'
+  ...
+# Subtest: ground vehicles route around indoor shortcuts and all stages spawn them on streets
+ok 39 - ground vehicles route around indoor shortcuts and all stages spawn them on streets
+  ---
+  duration_ms: 10803.716084
+  type: 'test'
+  ...
+# Subtest: interrupting an upstairs stair transit retains its upper floor even when the ground entry is closer
+ok 40 - interrupting an upstairs stair transit retains its upper floor even when the ground entry is closer
+  ---
+  duration_ms: 79.424209
+  type: 'test'
+  ...
+# Subtest: an explicit ID subset uses only those workers and writes a separate report
+ok 41 - an explicit ID subset uses only those workers and writes a separate report
+  ---
+  duration_ms: 62.502417
+  type: 'test'
+  ...
+# Subtest: the default path retains every ready stage and the original full report
+ok 42 - the default path retains every ready stage and the original full report
+  ---
+  duration_ms: 13.742083
+  type: 'test'
+  ...
+# Subtest: invalid, repeated, out-of-range and unready IDs are rejected before workers run
+ok 43 - invalid, repeated, out-of-range and unready IDs are rejected before workers run
+  ---
+  duration_ms: 110.737333
+  type: 'test'
+  ...
+# Subtest: a selected-stage failure is recorded and still fails the run
+ok 44 - a selected-stage failure is recorded and still fails the run
+  ---
+  duration_ms: 11.171166
+  type: 'test'
+  ...
+# Subtest: the garden boat and canal boats follow water without taking flight
+ok 45 - the garden boat and canal boats follow water without taking flight
+  ---
+  duration_ms: 1411.930916
+  type: 'test'
+  ...
+# Subtest: observation, elevating, mountain, and sky gondolas retain airborne movement
+ok 46 - observation, elevating, mountain, and sky gondolas retain airborne movement
+  ---
+  duration_ms: 2090.813541
+  type: 'test'
+  ...
+# Subtest: ski uses a ground detour and refuses upstairs work
+ok 47 - ski uses a ground detour and refuses upstairs work
+  ---
+  duration_ms: 5.450417
+  type: 'test'
+  ...
+# Subtest: ski manual control cannot climb a staircase
+ok 48 - ski manual control cannot climb a staircase
+  ---
+  duration_ms: 942.965542
+  type: 'test'
+  ...
+# Subtest: skate uses a ground detour and refuses upstairs work
+ok 49 - skate uses a ground detour and refuses upstairs work
+  ---
+  duration_ms: 6.480291
+  type: 'test'
+  ...
+# Subtest: skate manual control cannot climb a staircase
+ok 50 - skate manual control cannot climb a staircase
+  ---
+  duration_ms: 819.220208
+  type: 'test'
+  ...
+# Subtest: only the 14 visually confirmed worn-equipment designs receive tags
+ok 51 - only the 14 visually confirmed worn-equipment designs receive tags
+  ---
+  duration_ms: 3.389792
+  type: 'test'
+  ...
+# Subtest: verified skaters and skiers start on their sports floor and naturally choose destinations there
+ok 52 - verified skaters and skiers start on their sports floor and naturally choose destinations there
+  ---
+  duration_ms: 34942.453042
+  type: 'test'
+  ...
+# Subtest: wheelchair routes use indoor ground floors but never an upstairs shortcut
+ok 53 - wheelchair routes use indoor ground floors but never an upstairs shortcut
+  ---
+  duration_ms: 1.998875
+  type: 'test'
+  ...
+# Subtest: an upstairs destination does not assign an inaccessible workstation
+ok 54 - an upstairs destination does not assign an inaccessible workstation
+  ---
+  duration_ms: 184.134833
+  type: 'test'
+  ...
+# Subtest: controller input cannot project a wheelchair onto a staircase
+ok 55 - controller input cannot project a wheelchair onto a staircase
+  ---
+  duration_ms: 305.293792
+  type: 'test'
+  ...
+# Subtest: all 41 marked designs remain on actual ground paths and appropriate sites across 24 stages
+ok 56 - all 41 marked designs remain on actual ground paths and appropriate sites across 24 stages
+  ---
+  duration_ms: 38164.831917
+  type: 'test'
+  ...
+1..56
+# tests 56
+# suites 0
+# pass 56
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 286556.4205

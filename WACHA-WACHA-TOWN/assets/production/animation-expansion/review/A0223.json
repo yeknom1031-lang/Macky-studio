@@ -1,0 +1,22 @@
+{
+  "id": "A0223",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T18:15:06.615599+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "輪郭抽出で3行目の誤境界を解消。自転車の2人、救護の2人の全身と持ち物が12コマで連続。"
+  ],
+  "packReport": "review/A0223-pack.json",
+  "preview": "review/A0223-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

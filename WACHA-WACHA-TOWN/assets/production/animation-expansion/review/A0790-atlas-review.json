@@ -1,0 +1,355 @@
+{
+  "id": "A0790",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "1583763988d55c362b1a61545105df8cdc365511fd73de4a51d3d414fcbe9ef9",
+  "alphaZeroFraction": 0.65735,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S24-ENV01",
+      "name": "世界祭りの小旗",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8362,
+          "rgbaSHA256": "4e46c7071733b83cc4942a239129eb4632a69cb9d27802bd45d8351ee24cb616"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8011,
+          "rgbaSHA256": "bb11186091ca87667791104c388bf2b23ace440ddde0413788f58367560a6b0a"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7670,
+          "rgbaSHA256": "633f351f2a939f8a254cfd6b4d8d2a7a8e8bd621af18541de976a0f4673d782a"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8163,
+          "rgbaSHA256": "4e4cbacbc7b688b4e8f4eb774578613ee18940ad8f179bd8804ecc0870945c9a"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8142,
+          "rgbaSHA256": "2d1d3def674d102e51b4404dd5d33e2f42c2e8904182e5701d967f7d5f39ae99"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8088,
+          "rgbaSHA256": "40ce65a4b52c34a069ef149afd4f42f34d514ec02eb658d35c00bf77bb1fb1eb"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8137,
+          "rgbaSHA256": "cefdccfd77de1ce8e98047ac60844deece7e32dfb694afc874ba167cee0ba60f"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8126,
+          "rgbaSHA256": "d0c0321d9b1a0327566b78db4ee5580e7f8205f3b5bcb097ea3211c9df84ed6a"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S24-ENV02",
+      "name": "世界屋台のリボン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16561,
+          "rgbaSHA256": "b4f3a652b53d22256b7f211e9eb709c0e987fea4fdb1c16deb89fb5949559536"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 16202,
+          "rgbaSHA256": "92067ad7a864721e073d9641068e410db929e8158eb20dea2a91def028d12be2"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 15752,
+          "rgbaSHA256": "9c4866d656f5387b47ec60920ecd0ad19431a4073d6ccbbbf03cd3b982f59390"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16463,
+          "rgbaSHA256": "70974cf820dc02a6c37c3b579e754be861af039953815d97c67abd9e08a823ec"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16569,
+          "rgbaSHA256": "d5620119ad0ebc8ed8826c9a7e6f64ac1c32a915ee7577c09c2a87b839971a40"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 15542,
+          "rgbaSHA256": "95ea8efedba9496419a29ebca3c11efb33d2a1c448ce5d3772c6589bd2fc4a97"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 17404,
+          "rgbaSHA256": "63cfddd416f5284132405fd18d2109cb0a4e63415728074baa6dc7573508fa66"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16689,
+          "rgbaSHA256": "55de5426edcb1bf8a4324c7971c3d7046a2d558373b912b4e8fc227279d35a45"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S24-ENV03",
+      "name": "工芸広場の風鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7081,
+          "rgbaSHA256": "85f7a992c72138114a4e064c7d1ac1f041ee2fbfb7cddc8a9e6100f7fcd103ab"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7181,
+          "rgbaSHA256": "eeee7d5dea4cb1bd23efd001743a8bad103d8fb5afc7f07873d2824dfa966d18"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7040,
+          "rgbaSHA256": "0e6e99c42feaf9e440e0f42d1f87492b70f4422fd8fb4a706318047a8cea7aa7"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7478,
+          "rgbaSHA256": "6a09d0eac7d99b9b548a963fa05c39d1194294c732be5b2385da99c4ee4f52be"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7058,
+          "rgbaSHA256": "f6f065427a1be7f7a9387909e3d3b8d3292fed2046f3b5d9386a65e834593d1c"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7313,
+          "rgbaSHA256": "afeb3042318430137e21ad0ded5ca32cabea04ba99256ea86b38ac46a2ed004c"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6882,
+          "rgbaSHA256": "0f4adb08938f4509c6636592c2f34820f4a43bcff6e6e54b083e815aa1648ea5"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7037,
+          "rgbaSHA256": "8361b8c584a5fe03756b5163e65e10ec7e7e70cd641fa91cd27e2f5e3e0cb70a"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S24-ENV04",
+      "name": "屋台料理の湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5213,
+          "rgbaSHA256": "a48d84d8fbfb06283d53ef87df37ab72790477af536a3432b49c4e262732370d"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4906,
+          "rgbaSHA256": "661efe8743813ec0cf46391218228c6fbae3e030d6c1a5f6135510771b2f8b96"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5197,
+          "rgbaSHA256": "068a22591a7160109780fa367a0ad15fb9c2c58a91087227517cee6a7c34595e"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5282,
+          "rgbaSHA256": "fe266b26b5dc1b95996d8877d0f269d65dbc7dc0dbb9c887da8eaf2ee51684b1"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5248,
+          "rgbaSHA256": "49ebbd90917ce419325b1f9fbe20b69d4a09f7266b8197e3ce3704ddacb19289"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4711,
+          "rgbaSHA256": "d0fdf3e5b6d2d6b9161e67944a28de53813df9826e67c77321929760ed14eca1"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4933,
+          "rgbaSHA256": "b5a1c2e95e0773bf6352c837d26f2716276db9f974d5996271da0d460a35c735"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4764,
+          "rgbaSHA256": "acd9ae8426f06cd29e9130ccb6a862408b437969f741543b70e8c7129755b1b2"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

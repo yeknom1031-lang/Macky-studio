@@ -1,0 +1,20 @@
+{
+  "id": "A0653",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:01:42.777011+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ],
+  "notes": [
+    "苗運び・餌まき・ほうき掃きを原画とpackで確認。足・道具の輪郭が欠けず循環可能。",
+    "2行目ボール投げは5・6コマで球が完全に消失し、7コマで手元に突然戻るため除外。"
+  ],
+  "packReport": "review/A0653-pack.json",
+  "preview": "review/A0653-check.jpg"
+}

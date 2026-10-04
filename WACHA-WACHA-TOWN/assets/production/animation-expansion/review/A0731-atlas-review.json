@@ -1,0 +1,355 @@
+{
+  "id": "A0731",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "902e9a6fefc8c68edf1247832ba6e9c8f5638c2f9dd780253b0fe4578e2909e2",
+  "alphaZeroFraction": 0.5404,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S04-ENV05",
+      "name": "ケーキ噴水の飛沫",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5924,
+          "rgbaSHA256": "d4cb093be9fe129b56b1739d9b38fdd2331b716f59f5a6231e0f57bf8bdcfb57"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7162,
+          "rgbaSHA256": "b13e0a842c2f32d8c17eba3f924aeb38c335fb57faa2590c25552f3d07db9c60"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8047,
+          "rgbaSHA256": "c9c48f6f8c07bcb52f6ff406ea4b1d40c2b8ffd2b3ff6744f4d2bf2cfed7de8c"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7479,
+          "rgbaSHA256": "f373606b3c87b02bbfcb48e0100e8341b994def3a0038afde0138058c2a46011"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5952,
+          "rgbaSHA256": "92e382ddfb4d279fea42c83d567e86ef51844c81f88dc42906be95675daf8846"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5606,
+          "rgbaSHA256": "10c55995ab04960311b4d56a65317c010929a56773fb387d970f4c26d5914829"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4965,
+          "rgbaSHA256": "1960bd8ae8c82f69fd79cbea604ad60d9f28f78f36fc1910625f0df21a3c4fcf"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4972,
+          "rgbaSHA256": "179543090cca3c4c9a3adb07d90b1d82e6357556e6a60211e85af6ff868b7ed2"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S04-ENV06",
+      "name": "小運河の波紋",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 3644,
+          "rgbaSHA256": "7ebba192fd7737b790f86ed1e921a2c9b9fb93c7775c552ca6f72124a3dea3e2"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 4791,
+          "rgbaSHA256": "eee5d3674cf0851da9a13b2ab7ebdd3388967eda9c4124ff4e2e40855638ceb2"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6970,
+          "rgbaSHA256": "807204133a453fadedad3fb8e5fa9a1f9ae21de8ffe38d68a0cfca5bab224278"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6862,
+          "rgbaSHA256": "5f6e4b36879deb9362082c6d9c91e8009874e0d65fbfd15e924cdd2c373d765e"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5580,
+          "rgbaSHA256": "b9a67b7a1be9004e9dbe70d780c4c1b6b4b9f13563f860ed5459297e330aed20"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 4956,
+          "rgbaSHA256": "f47c06704394c40015b62a6ca0f5bf69dd3b21925dfeecef99d84dca7b10c0eb"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 3846,
+          "rgbaSHA256": "314cce31bb2748d6b62c239d5441e875fe4baff2c631765467df569f02756653"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 3310,
+          "rgbaSHA256": "b8a50874638ff705ab6ffffb503d0106cef916a2c029b6dccca4333fec4cc0f7"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S04-ENV07",
+      "name": "砂糖菓子のきらめき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2746,
+          "rgbaSHA256": "2130e6ea753fb411379be939fed1d3a797fadb2f9d53f5580c0e1f33e7ac3a3f"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3128,
+          "rgbaSHA256": "e1819ba2058b57c1a9397a54e0efd01c842083d2541e0f13957eef0bd2052517"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3454,
+          "rgbaSHA256": "198704ee72661df9ce52dace7c9c87b4ec655247d0aac66a21ab4b49002f541c"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3474,
+          "rgbaSHA256": "4ff29818bda7e8ad07bc32121a88b1f74538d4b12f741baadf0d3e022a5a5ddb"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3132,
+          "rgbaSHA256": "86232432c9469514ad74a957ecc9a9f8243651cbc5cf9eea9beb993fa4c187f0"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3106,
+          "rgbaSHA256": "f114138f33ba5dddb5b25bd8c7b702cff6f6c34d09c36bc2d551f98bfd8b372d"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2560,
+          "rgbaSHA256": "9c80df7591bfdaf54f93de60813ae6488e224403cd5cf37938cc574f45e0b618"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2593,
+          "rgbaSHA256": "8df0b1881038c0dcfc88ca5927ef0b3e467df7f6399f16647c819ee280e00553"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S04-ENV08",
+      "name": "ホットココアの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2632,
+          "rgbaSHA256": "4c5a2b88eb116b7614b05645b8c230a2df7d6d99398b253716556bdf4aa7a27e"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3717,
+          "rgbaSHA256": "021c222b6145416eac0216b74ba8242113c06afc17ca5c378a4b781527738be7"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5155,
+          "rgbaSHA256": "6dbf1bc5b5001e42b1346872f4934455d0f723d641f7a9d705ae3139488252d5"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4311,
+          "rgbaSHA256": "063cc753645f7fad8b446404f6d0a618c22f13e5c4ea2e0fd4a39138b9db0e83"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3582,
+          "rgbaSHA256": "3f8e313f65b7cfff4dd1478c7b38ff05fa102caa710ed79ed6df87997eb60cec"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3708,
+          "rgbaSHA256": "7e0bc776478de593aeb46f5e9b672721785e078cbd54a13e4921b8e8ecf21659"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3535,
+          "rgbaSHA256": "68b34354e6fd770454daf885f74fc2ead828027014d9eb123bc9cf7920625ac1"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2717,
+          "rgbaSHA256": "6eabc6d876ab1bdff1dd912da16ec8c7c9ad61277ad3dfb1b3445b63f9346803"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

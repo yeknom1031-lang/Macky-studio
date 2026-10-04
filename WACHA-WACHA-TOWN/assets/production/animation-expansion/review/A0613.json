@@ -1,0 +1,20 @@
+{
+  "id": "A0613",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:33:49.021523+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "4×8コマ、魚箱を抱える・魚を焼く・寿司を握る3行は顔/衣服/手持ち品の識別が続き、全身が収まる。",
+    "row1は大型の舵輪台まで人物に組み込まれ背景設備と重複するため不採用。"
+  ],
+  "packReport": "review/A0613-pack.json",
+  "preview": "review/A0613-check.jpg"
+}

@@ -1,0 +1,355 @@
+{
+  "id": "A0735",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "36d1301f06ca5d0ba6ab58ea804cbe9de96a3f9eee5d2ceed339cff14378f07a",
+  "alphaZeroFraction": 0.6182,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S05-ENV09",
+      "name": "いちょうの葉の舞",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4912,
+          "rgbaSHA256": "836bdc07838b4f14f6826e786cddf006bb7f346bc80cf169ebe9dcc832304297"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5379,
+          "rgbaSHA256": "dc55c60ff200053bed3d62b28607952e4340cb7d96c033c6a2646e4a7aba03f8"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5222,
+          "rgbaSHA256": "99c98f541bc08aebe30fdbf27136ddcb6de99d3a166ccdc6a06208baaea60811"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5831,
+          "rgbaSHA256": "a4a6a7dc1a64a9d63f026343c7e021ad15f3ffa0de6238c8b3ad210c2e54a149"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5165,
+          "rgbaSHA256": "a6f75cee3dd53aaccbc07c58bef829e3389aef41a3316f5e86370af602aca293"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5387,
+          "rgbaSHA256": "48565ee18beb65b20bcfdf7d5edeca062592c4312c950bdf23e36b3e8575e109"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4688,
+          "rgbaSHA256": "aac716909c90deb2110afd6dc4494a6724bd86535531751b8e3f55f7b5306319"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4863,
+          "rgbaSHA256": "2a2daa505b2b4b21df6b6fe3c8c86aeefde06b0f0bd1f754a6381352bb387c6b"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S05-ENV10",
+      "name": "紅葉の葉の舞",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7469,
+          "rgbaSHA256": "6a2d104aa9b66c6045de43ef4ad0da75d5db6b3ad84a87d6976eb6ced6a6adf6"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7283,
+          "rgbaSHA256": "28bf004e0c0b3c33f61d80a432055e58aeb7c47f0b16d77cbab1ff89fe336b12"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7456,
+          "rgbaSHA256": "31f8b57c6efbb3877ce73b13a7c4abff0d02845b8133ac7052c184b22bb230ad"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7864,
+          "rgbaSHA256": "60acd8fd4324e08f3fe080b8e6f7ea5fa18b6a0579e4127cbe7a3577e6085a9f"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7824,
+          "rgbaSHA256": "e60d39ebfcc383b348d432b226e2580f54ec7f1b3e172fd462c6ce14398d262a"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7640,
+          "rgbaSHA256": "8635c143e917feac7271d24bfc53b2caba0b8d1da4e0ace6a1e56b6ced7eeea6"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7450,
+          "rgbaSHA256": "b71e6b099c4625c99492215ba51441eabe7626f675ba9b9d3f75a717f71c1b97"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7831,
+          "rgbaSHA256": "edb7c9bd9f514c4c30aafbd25e25d9e98bfb09829c222492842d15fb9a8ecda5"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S05-ENV11",
+      "name": "書棚のほこり光",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2501,
+          "rgbaSHA256": "bdc79900d7d3c53eba986763b4d803e05896a6081b42a90573f257c7ee24a184"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2499,
+          "rgbaSHA256": "3802b59653abd14ccf326cbf1936ed3c2156046b99e477755759c4c0e8e131be"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2345,
+          "rgbaSHA256": "b7bb748735530f4192e53eecc65b11e1f90cb1e1cc2866df872bca93a6c768a3"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2517,
+          "rgbaSHA256": "9a26c941521fb70dae77dcff30e70230aa125d41a1fa95d04117c4fb9ff74cd3"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2634,
+          "rgbaSHA256": "a7c5e55d4405934bf6c0f29600d60ea76d4a410b58c9ad9a66f919e0a45f8710"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2543,
+          "rgbaSHA256": "a3f9a4cced041329e0437f2bd1959d367684026c314e6e5a4dacd60ae21af099"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2674,
+          "rgbaSHA256": "1c7c32217e283670b54fb451e6b311d214a7e61bd4fcd305c5308009360d4ef7"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2331,
+          "rgbaSHA256": "0b93acf6eadfa5897c11a069e3aa1d338cb4e469f59e4ad6f8d121c9eb4832ec"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S05-ENV12",
+      "name": "園路のどんぐり風鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12650,
+          "rgbaSHA256": "6ec7bd59da54518e4b690e42868a57a2dd9c6e08543eddaebfb85f4a8b77252d"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12263,
+          "rgbaSHA256": "931c12b94ba86158033f1b4212e6ceb97f41aee142eb177be8d41798b261fe40"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12108,
+          "rgbaSHA256": "2dce93200db09c2d419b6f568dba1a4835e12a6c02af1be7e2b11016db568208"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12192,
+          "rgbaSHA256": "5e6ee597f6cf5c5163314304e7737a53511033463bd20ebde5965aaeb3a98fcc"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11667,
+          "rgbaSHA256": "f5fa594bc97f2964f29ec17413c7e33691647d97615d9885ce8a0ec406a777d1"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11801,
+          "rgbaSHA256": "26efac974df0318be5a0bd82679860e18eaf783dab105e7b0d46826fa3ba67dd"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12035,
+          "rgbaSHA256": "615b49d02d15bd347e81a6bd4e7adef3d237adf78be56af439ba22decf3c7e14"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12253,
+          "rgbaSHA256": "f1d411baf9134969c9ee490f148049ad7abc45a086d50f49c819e990d0889826"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

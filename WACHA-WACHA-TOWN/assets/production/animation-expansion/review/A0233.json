@@ -1,0 +1,29 @@
+{
+  "id": "A0233",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:39:52.087709+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・packを再表示。1行の腰袋と2行の花カゴは背面4コマのみ反転するためwalkBackを除外、階段8コマは安定し追加採用。0・3行の全12採用維持。"
+  ],
+  "packReport": "review/A0233-pack.json",
+  "preview": "review/A0233-check.jpg",
+  "disabledClipsByRow": {
+    "1": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

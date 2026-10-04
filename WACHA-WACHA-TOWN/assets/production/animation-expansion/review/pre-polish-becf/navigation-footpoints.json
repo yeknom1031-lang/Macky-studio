@@ -1,0 +1,551 @@
+{
+  "passed": true,
+  "sourceSHA": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+  "dataSHA": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+  "dataFile": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/expedition/data.js",
+  "boundarySHA": "ca12a2250f088f4e568ca476d2331a8b0398d7a0871c6a8cb6766efc77c05bca",
+  "at": "2026-10-04T20:00:15.082Z",
+  "seconds": 12,
+  "stages": [
+    {
+      "stage": "S01",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 2.2000000000000006,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 384,
+          "y": 850,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 384,
+          "y": 864,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S08",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 2.1000000000000005,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 350,
+          "y": 810,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 900,
+          "y": 800,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S09",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.5000000000000002,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 290,
+          "y": 882,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S10",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 2.400000000000001,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 1400,
+          "y": 810,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1000,
+          "y": 840,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 300,
+          "y": 630,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 230,
+          "y": 632,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S11",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.8000000000000005,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 108,
+          "y": 830,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 210,
+          "y": 833,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 530,
+          "y": 825,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S12",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.6000000000000003,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 450,
+          "y": 788,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 610,
+          "y": 780,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1050,
+          "y": 780,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S13",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.7000000000000004,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 300,
+          "y": 817,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 540,
+          "y": 923,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1300,
+          "y": 853,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S14",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.7000000000000004,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 100,
+          "y": 770,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 160,
+          "y": 810,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 838,
+          "y": 720,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S15",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 2.1000000000000005,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 490,
+          "y": 860,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1100,
+          "y": 870,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S16",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 2.2000000000000006,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 838,
+          "y": 634,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 839,
+          "y": 642,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S17",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.7000000000000004,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 200,
+          "y": 850,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1250,
+          "y": 850,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1230,
+          "y": 660,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1236,
+          "y": 633,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1490,
+          "y": 650,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1560,
+          "y": 628,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1610,
+          "y": 716,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S18",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.5000000000000002,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 290,
+          "y": 908,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1370,
+          "y": 911,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 690,
+          "y": 860,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1450,
+          "y": 870,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1610,
+          "y": 750,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S19",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.6000000000000003,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 200,
+          "y": 850,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 660,
+          "y": 860,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1180,
+          "y": 890,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S20",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 2.1000000000000005,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 1220,
+          "y": 757,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S21",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.7000000000000004,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 80,
+          "y": 870,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1600,
+          "y": 880,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 697,
+          "y": 783,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1190,
+          "y": 198,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1300,
+          "y": 219,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 900,
+          "y": 410,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1190,
+          "y": 198,
+          "level": 1,
+          "walkable": false
+        },
+        {
+          "x": 1300,
+          "y": 219,
+          "level": 1,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S22",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.8000000000000005,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 300,
+          "y": 901,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1300,
+          "y": 900,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S23",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.8000000000000005,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 200,
+          "y": 830,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 350,
+          "y": 900,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S24",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.9000000000000006,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 780,
+          "y": 466,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 630,
+          "y": 884,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1000,
+          "y": 884,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 190,
+          "y": 875,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

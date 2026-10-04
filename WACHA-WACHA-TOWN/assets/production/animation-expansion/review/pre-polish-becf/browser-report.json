@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-04T20:10:51.775Z",
+  "checks": [
+    "24 stage cards",
+    "500 people in full viewport",
+    "target portrait remains accessible",
+    "photographer touch grants a photo",
+    "10 percent photo frame can drag and does not follow cursor",
+    "photo develops after 3 game seconds and captured image remains frozen",
+    "wrong touch feedback and time penalty",
+    "background visibility pauses the whole world and resumes through the visible button",
+    "target touch gives visible win result"
+  ],
+  "errors": [],
+  "physicalControllerTested": false
+}

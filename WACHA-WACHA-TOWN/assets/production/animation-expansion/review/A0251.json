@@ -1,0 +1,29 @@
+{
+  "id": "A0251",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:36:34.107853+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・packを確認。0行のバッグ、2行のポニーテールが背面で反転するため該当walkBackだけ除外。階段8コマと1・3行の全12は衣装と髪を保持。"
+  ],
+  "packReport": "review/A0251-pack.json",
+  "preview": "review/A0251-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

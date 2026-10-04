@@ -1,0 +1,355 @@
+{
+  "id": "A0752",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "da45f7e3005295e83927e8ffd5f009f49da33451af71167ddc3331216efa0a61",
+  "alphaZeroFraction": 0.48542,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S11-ENV05",
+      "name": "水車のはねる水",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3465,
+          "rgbaSHA256": "af3c112732620d18d4e544e86de407a188add419c3d1ed6f543b92d6cdad7d55"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5891,
+          "rgbaSHA256": "807ad3a110556bbfb690ade29568b3cfc9e61ee93694723fa697d1b3f4ab2cca"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7012,
+          "rgbaSHA256": "af6349fc3ae6a9a43ed23b264a75e3fb1a5eb090743b2b25bf290a1dae2f05f2"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7074,
+          "rgbaSHA256": "bf2fb5ffd5a9d06ad9e8fb51d9fb99868d6f559000bc65a855b41ce39d61fe3f"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7092,
+          "rgbaSHA256": "cad66ddecfeb19e46b34a7cea517b301aeacc178a8a1940e5acdf8a56855f0cf"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6416,
+          "rgbaSHA256": "9af6cd0eb1e628126aa07b910a8bfafb879acebda3aec8bc14fe6103f2b18524"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5487,
+          "rgbaSHA256": "7068db456a9908795ddc81b6939a00dd7596f1837b9943f821a1a6d0b595dfbf"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3209,
+          "rgbaSHA256": "02fd902f0b611341b7a0739322e1dd7d7bb076ece92dd14002923ec89c72fe97"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S11-ENV06",
+      "name": "畑の散水しずく",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2111,
+          "rgbaSHA256": "06125d4de424bc3fde2f59f11a88382e55cc684c8937a90434a814e485d20c4d"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 4712,
+          "rgbaSHA256": "b9d3baf84fe1fc0379920a4425afc9e6763fc95e4779578918e6a46b0003132c"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6545,
+          "rgbaSHA256": "16c8f3715868305670799287a428da0145b1890e1a16d132736892420a4b33ab"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6671,
+          "rgbaSHA256": "9788137aaf23e302a7cac4b3de896b3632d97242e9d8a1eb094423a6bda4cda7"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6190,
+          "rgbaSHA256": "19f595c4b291764f780be7ceafb946dc4db900aa716f9dfee110fb4828ad2e7f"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5514,
+          "rgbaSHA256": "9c81e86c09cfd3ba2958b1bf92b0e4d8fd5cefd3bfcada96e1fba175a849c835"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4525,
+          "rgbaSHA256": "609104d20f58137014b95dc6e866277454448172ff0ac8ab34eca4e74011d68a"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1802,
+          "rgbaSHA256": "b485a81cb7ce841b4b0424483fccc14eb338c9b891f5b6ed63f1f902d5e3ce23"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S11-ENV07",
+      "name": "りんご畑の花びら",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5751,
+          "rgbaSHA256": "dc14bb281d036fde4cf6b40a70168ffb22f5540d385abf2bba46ec569b54c36f"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5382,
+          "rgbaSHA256": "320a743b25769edfe10ba19426568e61776528957286b7c7ba017057ef157bea"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6186,
+          "rgbaSHA256": "ea7906b315292d3e7b8002b55c40fa41237b79c244e208dc661dcf23f2f96be7"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5735,
+          "rgbaSHA256": "37f23da82e381cb9c1850d820aaa5b1c9a20b995f6985ad0db9f118f42cc79ce"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5951,
+          "rgbaSHA256": "a6ce0664be25775808ba85e58fef3667be72047a49c265a00c3879c6d5a0128a"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5753,
+          "rgbaSHA256": "472337b642691e1610797611588db46b53a5a9e2b730012ff18b00519eebb656"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5823,
+          "rgbaSHA256": "953d0bfd6f45445815bbfd0c7f7204070a779201ff1b01be719a8de80bdba874"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5460,
+          "rgbaSHA256": "5a9733157e6ed46d3481d82b13ab574d4b53dd46afe784df62cd9bf8eb4c41d3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S11-ENV08",
+      "name": "牧草の穂の綿毛",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4936,
+          "rgbaSHA256": "65d3a31c15b01d6716cd60650f24b2038a45d1759baba5a21b1100118ae0a354"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4814,
+          "rgbaSHA256": "3667942ef21c2868250fa0d0f65a8171dedc2f5896a634660cd3df7cc2339150"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5352,
+          "rgbaSHA256": "659693607ff86639fe9d35139f6adf632ef6e72525c5b2687061cf7932369c45"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4990,
+          "rgbaSHA256": "0c63021388048f897bd9d501ac0a31c6163a91fa6ebe30e16efeb25c4a4601a6"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4834,
+          "rgbaSHA256": "9b4d607e5189dc7ea60546b46117bf22003a7b98151c9cd4c233e7ec32298fb5"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5046,
+          "rgbaSHA256": "2832dd475935b9671bfb93696e761a2d5dbc6c97c3b37d0803a64a88934578bb"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4582,
+          "rgbaSHA256": "a96b4966494d38877a7607dc590db4ad63a8d7c8210e1a822b29ec8547648955"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5263,
+          "rgbaSHA256": "19c4895cb3c5ed11b5554ee236b18359287b9f81213b74b0f51a47e6657277e3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "Four coherent rows of eight frames, with true transparency confirmed by colored compositing. No complete background equipment duplicated. Final scene placement pending."
+}

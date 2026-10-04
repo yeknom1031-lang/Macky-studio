@@ -1,0 +1,19 @@
+{
+  "id": "A0612",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:33:49.020648+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    2,
+    3
+  ],
+  "notes": [
+    "4×8コマ、帆布を折る・綱を結ぶ2行は同一道具を持った連続した腕/腰の動作で人物も一致。",
+    "row1/2の網は複数コマで下端が直線に切れており足元で欠けが見えるため不採用。"
+  ],
+  "packReport": "review/A0612-pack.json",
+  "preview": "review/A0612-check.jpg"
+}

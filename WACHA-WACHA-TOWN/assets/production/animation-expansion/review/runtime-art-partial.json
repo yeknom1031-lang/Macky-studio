@@ -1,0 +1,898 @@
+{
+  "at": "2026-10-04T20:33:14.546Z",
+  "runtimeHashes": {
+    "data.js": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+    "expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9"
+  },
+  "stages": [
+    {
+      "stage": "S13",
+      "population": 900,
+      "directional": 100,
+      "role": 17,
+      "environment": 12,
+      "cache": {
+        "baseCharacters": 900,
+        "clips": 314,
+        "clipBytes": 48807936,
+        "clipLimit": 100663296
+      },
+      "dimensions": [
+        {
+          "id": "S13-C091",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3488
+        },
+        {
+          "id": "S13-C091",
+          "clip": "walkBack",
+          "visibleHeight": 82,
+          "foot": 92,
+          "opaque": 2829
+        },
+        {
+          "id": "S13-C091",
+          "clip": "stairUp",
+          "visibleHeight": 85,
+          "foot": 92,
+          "opaque": 2821
+        },
+        {
+          "id": "S13-C091",
+          "clip": "stairDown",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 3304
+        },
+        {
+          "id": "S13-C091",
+          "clip": "roleWork",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3895
+        },
+        {
+          "id": "S13-C016",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3809
+        },
+        {
+          "id": "S13-C016",
+          "clip": "walkBack",
+          "visibleHeight": 79,
+          "foot": 92,
+          "opaque": 2233
+        },
+        {
+          "id": "S13-C016",
+          "clip": "stairUp",
+          "visibleHeight": 78,
+          "foot": 92,
+          "opaque": 2306
+        },
+        {
+          "id": "S13-C016",
+          "clip": "stairDown",
+          "visibleHeight": 77,
+          "foot": 92,
+          "opaque": 2562
+        },
+        {
+          "id": "S13-C016",
+          "clip": "roleWork",
+          "visibleHeight": 84,
+          "foot": 92,
+          "opaque": 3605
+        },
+        {
+          "id": "S13-C061",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3268
+        },
+        {
+          "id": "S13-C061",
+          "clip": "walkBack",
+          "visibleHeight": 83,
+          "foot": 92,
+          "opaque": 2579
+        },
+        {
+          "id": "S13-C061",
+          "clip": "stairUp",
+          "visibleHeight": 85,
+          "foot": 92,
+          "opaque": 2494
+        },
+        {
+          "id": "S13-C061",
+          "clip": "stairDown",
+          "visibleHeight": 83,
+          "foot": 93,
+          "opaque": 2666
+        },
+        {
+          "id": "S13-C061",
+          "clip": "roleWork",
+          "visibleHeight": 81,
+          "foot": 92,
+          "opaque": 3049
+        },
+        {
+          "id": "S13-C081",
+          "clip": "base",
+          "visibleHeight": 85,
+          "foot": 90,
+          "opaque": 2759
+        },
+        {
+          "id": "S13-C081",
+          "clip": "walkBack",
+          "visibleHeight": 79,
+          "foot": 93,
+          "opaque": 2212
+        },
+        {
+          "id": "S13-C081",
+          "clip": "stairUp",
+          "visibleHeight": 76,
+          "foot": 92,
+          "opaque": 1987
+        },
+        {
+          "id": "S13-C081",
+          "clip": "stairDown",
+          "visibleHeight": 76,
+          "foot": 92,
+          "opaque": 2316
+        },
+        {
+          "id": "S13-C081",
+          "clip": "roleWork",
+          "visibleHeight": 87,
+          "foot": 91,
+          "opaque": 3272
+        },
+        {
+          "id": "S13-C026",
+          "clip": "base",
+          "visibleHeight": 86,
+          "foot": 91,
+          "opaque": 3172
+        },
+        {
+          "id": "S13-C026",
+          "clip": "walkBack",
+          "visibleHeight": 75,
+          "foot": 92,
+          "opaque": 2221
+        },
+        {
+          "id": "S13-C026",
+          "clip": "stairUp",
+          "visibleHeight": 72,
+          "foot": 91,
+          "opaque": 2110
+        },
+        {
+          "id": "S13-C026",
+          "clip": "stairDown",
+          "visibleHeight": 74,
+          "foot": 92,
+          "opaque": 2350
+        },
+        {
+          "id": "S13-C026",
+          "clip": "roleWork",
+          "visibleHeight": 85,
+          "foot": 92,
+          "opaque": 3431
+        },
+        {
+          "id": "S13-C021",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 2657
+        },
+        {
+          "id": "S13-C021",
+          "clip": "walkBack",
+          "visibleHeight": 76,
+          "foot": 92,
+          "opaque": 2066
+        },
+        {
+          "id": "S13-C021",
+          "clip": "stairUp",
+          "visibleHeight": 77,
+          "foot": 92,
+          "opaque": 2238
+        },
+        {
+          "id": "S13-C021",
+          "clip": "stairDown",
+          "visibleHeight": 74,
+          "foot": 92,
+          "opaque": 2246
+        },
+        {
+          "id": "S13-C021",
+          "clip": "roleWork",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 2879
+        },
+        {
+          "id": "S13-C056",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3667
+        },
+        {
+          "id": "S13-C056",
+          "clip": "walkBack",
+          "visibleHeight": 72,
+          "foot": 92,
+          "opaque": 2291
+        },
+        {
+          "id": "S13-C056",
+          "clip": "stairUp",
+          "visibleHeight": 77,
+          "foot": 92,
+          "opaque": 2309
+        },
+        {
+          "id": "S13-C056",
+          "clip": "stairDown",
+          "visibleHeight": 78,
+          "foot": 92,
+          "opaque": 2718
+        },
+        {
+          "id": "S13-C056",
+          "clip": "roleWork",
+          "visibleHeight": 86,
+          "foot": 92,
+          "opaque": 3667
+        },
+        {
+          "id": "S13-C066",
+          "clip": "base",
+          "visibleHeight": 86,
+          "foot": 91,
+          "opaque": 4631
+        },
+        {
+          "id": "S13-C066",
+          "clip": "walkBack",
+          "visibleHeight": 76,
+          "foot": 92,
+          "opaque": 2752
+        },
+        {
+          "id": "S13-C066",
+          "clip": "stairUp",
+          "visibleHeight": 76,
+          "foot": 91,
+          "opaque": 2647
+        },
+        {
+          "id": "S13-C066",
+          "clip": "stairDown",
+          "visibleHeight": 77,
+          "foot": 92,
+          "opaque": 3007
+        },
+        {
+          "id": "S13-C066",
+          "clip": "roleWork",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 4357
+        }
+      ]
+    },
+    {
+      "stage": "S15",
+      "population": 1100,
+      "directional": 100,
+      "role": 18,
+      "environment": 12,
+      "cache": {
+        "baseCharacters": 1100,
+        "clips": 318,
+        "clipBytes": 49545216,
+        "clipLimit": 100663296
+      },
+      "dimensions": [
+        {
+          "id": "S15-C051",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3058
+        },
+        {
+          "id": "S15-C051",
+          "clip": "walkBack",
+          "visibleHeight": 86,
+          "foot": 92,
+          "opaque": 2659
+        },
+        {
+          "id": "S15-C051",
+          "clip": "stairUp",
+          "visibleHeight": 81,
+          "foot": 92,
+          "opaque": 2301
+        },
+        {
+          "id": "S15-C051",
+          "clip": "stairDown",
+          "visibleHeight": 85,
+          "foot": 92,
+          "opaque": 2902
+        },
+        {
+          "id": "S15-C051",
+          "clip": "roleWork",
+          "visibleHeight": 83,
+          "foot": 91,
+          "opaque": 3112
+        },
+        {
+          "id": "S15-C091",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3139
+        },
+        {
+          "id": "S15-C091",
+          "clip": "walkBack",
+          "visibleHeight": 82,
+          "foot": 92,
+          "opaque": 2616
+        },
+        {
+          "id": "S15-C091",
+          "clip": "stairUp",
+          "visibleHeight": 83,
+          "foot": 92,
+          "opaque": 2723
+        },
+        {
+          "id": "S15-C091",
+          "clip": "stairDown",
+          "visibleHeight": 89,
+          "foot": 92,
+          "opaque": 3028
+        },
+        {
+          "id": "S15-C091",
+          "clip": "roleWork",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 3224
+        },
+        {
+          "id": "S15-C026",
+          "clip": "base",
+          "visibleHeight": 85,
+          "foot": 90,
+          "opaque": 2732
+        },
+        {
+          "id": "S15-C026",
+          "clip": "walkBack",
+          "visibleHeight": 76,
+          "foot": 92,
+          "opaque": 2119
+        },
+        {
+          "id": "S15-C026",
+          "clip": "stairUp",
+          "visibleHeight": 74,
+          "foot": 92,
+          "opaque": 1988
+        },
+        {
+          "id": "S15-C026",
+          "clip": "stairDown",
+          "visibleHeight": 71,
+          "foot": 92,
+          "opaque": 2204
+        },
+        {
+          "id": "S15-C026",
+          "clip": "roleWork",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 3303
+        },
+        {
+          "id": "S15-C036",
+          "clip": "base",
+          "visibleHeight": 85,
+          "foot": 91,
+          "opaque": 4677
+        },
+        {
+          "id": "S15-C036",
+          "clip": "walkBack",
+          "visibleHeight": 79,
+          "foot": 92,
+          "opaque": 2758
+        },
+        {
+          "id": "S15-C036",
+          "clip": "stairUp",
+          "visibleHeight": 76,
+          "foot": 91,
+          "opaque": 2485
+        },
+        {
+          "id": "S15-C036",
+          "clip": "stairDown",
+          "visibleHeight": 80,
+          "foot": 92,
+          "opaque": 2973
+        },
+        {
+          "id": "S15-C036",
+          "clip": "roleWork",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 4843
+        },
+        {
+          "id": "S15-C076",
+          "clip": "base",
+          "visibleHeight": 86,
+          "foot": 90,
+          "opaque": 4132
+        },
+        {
+          "id": "S15-C076",
+          "clip": "walkBack",
+          "visibleHeight": 79,
+          "foot": 92,
+          "opaque": 2759
+        },
+        {
+          "id": "S15-C076",
+          "clip": "stairUp",
+          "visibleHeight": 81,
+          "foot": 92,
+          "opaque": 2698
+        },
+        {
+          "id": "S15-C076",
+          "clip": "stairDown",
+          "visibleHeight": 78,
+          "foot": 92,
+          "opaque": 2876
+        },
+        {
+          "id": "S15-C076",
+          "clip": "roleWork",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 4142
+        },
+        {
+          "id": "S15-C016",
+          "clip": "base",
+          "visibleHeight": 83,
+          "foot": 91,
+          "opaque": 4248
+        },
+        {
+          "id": "S15-C016",
+          "clip": "walkBack",
+          "visibleHeight": 69,
+          "foot": 92,
+          "opaque": 2356
+        },
+        {
+          "id": "S15-C016",
+          "clip": "stairUp",
+          "visibleHeight": 73,
+          "foot": 92,
+          "opaque": 2665
+        },
+        {
+          "id": "S15-C016",
+          "clip": "stairDown",
+          "visibleHeight": 73,
+          "foot": 92,
+          "opaque": 2697
+        },
+        {
+          "id": "S15-C016",
+          "clip": "roleWork",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 4496
+        },
+        {
+          "id": "S15-C031",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3440
+        },
+        {
+          "id": "S15-C031",
+          "clip": "walkBack",
+          "visibleHeight": 76,
+          "foot": 92,
+          "opaque": 2164
+        },
+        {
+          "id": "S15-C031",
+          "clip": "stairUp",
+          "visibleHeight": 81,
+          "foot": 92,
+          "opaque": 2296
+        },
+        {
+          "id": "S15-C031",
+          "clip": "stairDown",
+          "visibleHeight": 82,
+          "foot": 92,
+          "opaque": 2611
+        },
+        {
+          "id": "S15-C031",
+          "clip": "roleWork",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 3643
+        },
+        {
+          "id": "S15-C001",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3403
+        },
+        {
+          "id": "S15-C001",
+          "clip": "walkBack",
+          "visibleHeight": 83,
+          "foot": 92,
+          "opaque": 2776
+        },
+        {
+          "id": "S15-C001",
+          "clip": "stairUp",
+          "visibleHeight": 84,
+          "foot": 92,
+          "opaque": 2587
+        },
+        {
+          "id": "S15-C001",
+          "clip": "stairDown",
+          "visibleHeight": 85,
+          "foot": 92,
+          "opaque": 2757
+        },
+        {
+          "id": "S15-C001",
+          "clip": "roleWork",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 4223
+        }
+      ]
+    },
+    {
+      "stage": "S22",
+      "population": 1800,
+      "directional": 90,
+      "role": 18,
+      "environment": 12,
+      "cache": {
+        "baseCharacters": 1800,
+        "clips": 286,
+        "clipBytes": 44826624,
+        "clipLimit": 100663296
+      },
+      "dimensions": [
+        {
+          "id": "S22-C096",
+          "clip": "base",
+          "visibleHeight": 86,
+          "foot": 90,
+          "opaque": 3384
+        },
+        {
+          "id": "S22-C096",
+          "clip": "walkBack",
+          "visibleHeight": 85,
+          "foot": 91,
+          "opaque": 2710
+        },
+        {
+          "id": "S22-C096",
+          "clip": "stairUp",
+          "visibleHeight": 85,
+          "foot": 91,
+          "opaque": 2991
+        },
+        {
+          "id": "S22-C096",
+          "clip": "stairDown",
+          "visibleHeight": 83,
+          "foot": 92,
+          "opaque": 2955
+        },
+        {
+          "id": "S22-C096",
+          "clip": "roleWork",
+          "visibleHeight": 86,
+          "foot": 92,
+          "opaque": 3392
+        },
+        {
+          "id": "S22-C001",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3038
+        },
+        {
+          "id": "S22-C001",
+          "clip": "walkBack",
+          "visibleHeight": 77,
+          "foot": 92,
+          "opaque": 2395
+        },
+        {
+          "id": "S22-C001",
+          "clip": "stairUp",
+          "visibleHeight": 76,
+          "foot": 93,
+          "opaque": 2336
+        },
+        {
+          "id": "S22-C001",
+          "clip": "stairDown",
+          "visibleHeight": 78,
+          "foot": 92,
+          "opaque": 2528
+        },
+        {
+          "id": "S22-C001",
+          "clip": "roleWork",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3669
+        },
+        {
+          "id": "S22-C021",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3558
+        },
+        {
+          "id": "S22-C021",
+          "clip": "walkBack",
+          "visibleHeight": 79,
+          "foot": 92,
+          "opaque": 2637
+        },
+        {
+          "id": "S22-C021",
+          "clip": "stairUp",
+          "visibleHeight": 78,
+          "foot": 92,
+          "opaque": 2691
+        },
+        {
+          "id": "S22-C021",
+          "clip": "stairDown",
+          "visibleHeight": 82,
+          "foot": 92,
+          "opaque": 3018
+        },
+        {
+          "id": "S22-C021",
+          "clip": "roleWork",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 4113
+        },
+        {
+          "id": "S22-C006",
+          "clip": "base",
+          "visibleHeight": 86,
+          "foot": 91,
+          "opaque": 3545
+        },
+        {
+          "id": "S22-C006",
+          "clip": "walkBack",
+          "visibleHeight": 74,
+          "foot": 92,
+          "opaque": 2392
+        },
+        {
+          "id": "S22-C006",
+          "clip": "stairUp",
+          "visibleHeight": 76,
+          "foot": 92,
+          "opaque": 2334
+        },
+        {
+          "id": "S22-C006",
+          "clip": "stairDown",
+          "visibleHeight": 77,
+          "foot": 92,
+          "opaque": 2518
+        },
+        {
+          "id": "S22-C006",
+          "clip": "roleWork",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 4513
+        },
+        {
+          "id": "S22-C016",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 92,
+          "opaque": 3523
+        },
+        {
+          "id": "S22-C016",
+          "clip": "walkBack",
+          "visibleHeight": 84,
+          "foot": 92,
+          "opaque": 2853
+        },
+        {
+          "id": "S22-C016",
+          "clip": "stairUp",
+          "visibleHeight": 83,
+          "foot": 93,
+          "opaque": 2675
+        },
+        {
+          "id": "S22-C016",
+          "clip": "stairDown",
+          "visibleHeight": 84,
+          "foot": 92,
+          "opaque": 2978
+        },
+        {
+          "id": "S22-C016",
+          "clip": "roleWork",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 3734
+        },
+        {
+          "id": "S22-C026",
+          "clip": "base",
+          "visibleHeight": 87,
+          "foot": 91,
+          "opaque": 3611
+        },
+        {
+          "id": "S22-C026",
+          "clip": "walkBack",
+          "visibleHeight": 79,
+          "foot": 92,
+          "opaque": 2609
+        },
+        {
+          "id": "S22-C026",
+          "clip": "stairUp",
+          "visibleHeight": 81,
+          "foot": 92,
+          "opaque": 2482
+        },
+        {
+          "id": "S22-C026",
+          "clip": "stairDown",
+          "visibleHeight": 82,
+          "foot": 92,
+          "opaque": 2645
+        },
+        {
+          "id": "S22-C026",
+          "clip": "roleWork",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 3631
+        },
+        {
+          "id": "S22-C071",
+          "clip": "base",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 3933
+        },
+        {
+          "id": "S22-C071",
+          "clip": "walkBack",
+          "visibleHeight": 77,
+          "foot": 92,
+          "opaque": 2446
+        },
+        {
+          "id": "S22-C071",
+          "clip": "stairUp",
+          "visibleHeight": 80,
+          "foot": 92,
+          "opaque": 2600
+        },
+        {
+          "id": "S22-C071",
+          "clip": "stairDown",
+          "visibleHeight": 79,
+          "foot": 92,
+          "opaque": 2827
+        },
+        {
+          "id": "S22-C071",
+          "clip": "roleWork",
+          "visibleHeight": 85,
+          "foot": 92,
+          "opaque": 3888
+        },
+        {
+          "id": "S22-C031",
+          "clip": "base",
+          "visibleHeight": 85,
+          "foot": 92,
+          "opaque": 2596
+        },
+        {
+          "id": "S22-C031",
+          "clip": "walkBack",
+          "visibleHeight": 81,
+          "foot": 92,
+          "opaque": 2428
+        },
+        {
+          "id": "S22-C031",
+          "clip": "stairUp",
+          "visibleHeight": 81,
+          "foot": 93,
+          "opaque": 2412
+        },
+        {
+          "id": "S22-C031",
+          "clip": "stairDown",
+          "visibleHeight": 84,
+          "foot": 93,
+          "opaque": 2563
+        },
+        {
+          "id": "S22-C031",
+          "clip": "roleWork",
+          "visibleHeight": 88,
+          "foot": 92,
+          "opaque": 3332
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "unchanged": true,
+  "passed": true
+}

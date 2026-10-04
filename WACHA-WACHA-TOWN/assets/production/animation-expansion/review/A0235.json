@@ -1,0 +1,21 @@
+{
+  "id": "A0235",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:24:02.034469+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "飲み物、カップ、菓子トレイの3人は全12コマ保持。1行目はパンだけの左参照にないカップが前向きで加わるため除外。"
+  ],
+  "packReport": "review/A0235-pack.json",
+  "preview": "review/A0235-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

@@ -1,0 +1,355 @@
+{
+  "id": "A0763",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "fc76eaff94ed30d88d870a9b1ea9c9a77a5f9bdd2a5ea10f209d834dd2d73245",
+  "alphaZeroFraction": 0.67016,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      450,
+      673,
+      893,
+      1114,
+      1343,
+      1559,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S15-ENV01",
+      "name": "飛行港の吹き流し",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11158,
+          "rgbaSHA256": "c1a0f8c92ee82c4a22d12d3a5e72e2c6c54762d8e3336759e0dcc93da7f1af1d"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 228,
+          "h": 222,
+          "visiblePixels": 11286,
+          "rgbaSHA256": "15f5839d7e2d9ae8be3cd97bbc1905ca65168284d8b105753d95b8a7ca5519d2"
+        },
+        {
+          "x": 450,
+          "y": 0,
+          "w": 223,
+          "h": 222,
+          "visiblePixels": 10006,
+          "rgbaSHA256": "d367fa9eeb4c2a44e4b529559adefaf59adef8dcd4568a7265be202be2e97fd6"
+        },
+        {
+          "x": 673,
+          "y": 0,
+          "w": 220,
+          "h": 222,
+          "visiblePixels": 10419,
+          "rgbaSHA256": "07cd8e9b72a53523c16872db53eeff9aae7e9285010aeffd4a1bdab93c506d91"
+        },
+        {
+          "x": 893,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10148,
+          "rgbaSHA256": "0806f71b07f78e06eac4d0d332415bd40213474cf4209db6b94f2ddfa52a05fa"
+        },
+        {
+          "x": 1114,
+          "y": 0,
+          "w": 229,
+          "h": 222,
+          "visiblePixels": 10282,
+          "rgbaSHA256": "de1ce64c0755f8b92095805b70c020dfb983a5f34edd9369dc70467cb413a1e9"
+        },
+        {
+          "x": 1343,
+          "y": 0,
+          "w": 216,
+          "h": 222,
+          "visiblePixels": 10604,
+          "rgbaSHA256": "66fd0c18356fdf7e64dcbc46ff64d9397c8a063caa48bfb480c2f55d92324e25"
+        },
+        {
+          "x": 1559,
+          "y": 0,
+          "w": 215,
+          "h": 222,
+          "visiblePixels": 10481,
+          "rgbaSHA256": "b1f98671ba4f4f96ac0fc2dab8790746c1a7a3e198e6809d3527b0202d0da5fc"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S15-ENV02",
+      "name": "空港カフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5145,
+          "rgbaSHA256": "0bb8c63e7cb456f61a8ab1ec0c940fde38eaf38f55e862df84c7e2176e353c69"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5431,
+          "rgbaSHA256": "939c76ba3951079f773efe6bd070909bf18fd4d0648909fb0c6b3339b925ace3"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4868,
+          "rgbaSHA256": "fbf5bab9695d3186c1cf266f2a2639030236ce2025a3b625219fd1e4f95d741e"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4787,
+          "rgbaSHA256": "7d99b75c46017c98ca3db0bc9cbff2a0c115935009cc8880a42d1657eadcffb2"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5302,
+          "rgbaSHA256": "46563d3e56e620f9f7555f6d8ffbb5e4969c1bd1f19b1e06c7868246d0f8cec3"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5287,
+          "rgbaSHA256": "ea9c025d07697591865ff351264aed8b25a13b753081beb53cd22c10ec36ef3a"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4094,
+          "rgbaSHA256": "d9348a75fe53dfdb48e5de1ad562a676c8fd90d593c4dee4ed8e0b474186e760"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5412,
+          "rgbaSHA256": "09279b25b68bbbf7aaebe0afe0ef983293d5397fa526d1239b806d9499e271e9"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S15-ENV03",
+      "name": "気球工房のリボン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9959,
+          "rgbaSHA256": "c62defe6fa5289b70b92045d34cc66f641e66584182d96d40b1c8f31478ff4f4"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10123,
+          "rgbaSHA256": "215e680dad9b21be7a4214143554a3d2fa9dafb80b7db14362bca63cdf0ef095"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9838,
+          "rgbaSHA256": "b0e64d112d4b3b7862f9da705d6c4160735c5b0f944c63d288a1f605bfed099f"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9766,
+          "rgbaSHA256": "5e40c3e765b910c822d98323da4d359d4d0dbac26595f8e3d4ee963353b19ce9"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10032,
+          "rgbaSHA256": "045430f563d2c0d4e265ce636a58884a86cb7d9c5f60ce5b3f64d895e8ba9081"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9636,
+          "rgbaSHA256": "2af650c1ba6c8fa53d6ba44f9dd994f6871aff2f1ed956be0322dff502122a4e"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9918,
+          "rgbaSHA256": "fcc9b5e55038ea6219bdcd136f67989e18bb7c3e07580df4291bc9b49a0a51cc"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10158,
+          "rgbaSHA256": "4cad6c0c26691e319f760c6f4f09b1ae9c5e5fbc8e278827ec84a54dfc263103"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S15-ENV04",
+      "name": "格納庫の小回転模型",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9976,
+          "rgbaSHA256": "e7b75fed2e09dc4e23dd81f06fc66a89ce73965c97d937baedf12db55dc9e8c9"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10827,
+          "rgbaSHA256": "96450ebd5f2399ab7a069e606b30bcfaa767b25af1787dc20afa5a7a574e12cf"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10025,
+          "rgbaSHA256": "85ef56f97f3d6911d37006816eee60e95200c2ae90ad011bbe37c3b8d0cf4e58"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10109,
+          "rgbaSHA256": "aec0a73e40e5a86c172e95b43982f29d40e82d9a6f1b4d2b3d74e7c48823b974"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10475,
+          "rgbaSHA256": "5bc678eb9d9560e6ee3ce2532dfcab5bbabc66930ce65e6a37ccf3061cea7eae"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10374,
+          "rgbaSHA256": "7d57e8c692660a014f0b3f4e6c91a2023db5fe71ca01302f5b8bb861f7e708cf"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10825,
+          "rgbaSHA256": "40a907eafefb2c66541ad6d7db5e8015dc80ac7ecd14d2c4ccb7e610e192b3a8"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9990,
+          "rgbaSHA256": "78fb181b0acc4ce2b7c4af610eb31e74b59753c19564190ee60888a748b14293"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

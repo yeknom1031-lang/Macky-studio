@@ -1,0 +1,355 @@
+{
+  "id": "A0727",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "c7c2556bf05a92b681d02cb8e18a1e835508eccdaca00b10fb0c2cc1bb3263c7",
+  "alphaZeroFraction": 0.53908,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S03-ENV01",
+      "name": "港の吹き流し",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9292,
+          "rgbaSHA256": "8cfedeb0eae261522c483c38203b2d5c161bb5866716ada982411198a79e0285"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9035,
+          "rgbaSHA256": "342711d1f416483da86348dee922f7acb22d3ca37184cbe59aa99ba90c334cb4"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9001,
+          "rgbaSHA256": "e9ac5f87a8daff6767b8d6e861df519b85afbf36addaa9704c20bc6a51b739e7"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8946,
+          "rgbaSHA256": "c907f70f3d488c9f6022c3576144895af21afe70af72e76040e4a73717385c38"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9279,
+          "rgbaSHA256": "ed0e97b9a195c83191022b92f0de34b90d259715255bc342abf248966eb75f50"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8791,
+          "rgbaSHA256": "8c3b5264d653a363bb58910f280087eaa593e6f22aa7092dbf1954d2acf92349"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9074,
+          "rgbaSHA256": "201c8d125de63842adfe04a099abeb8ccb1b706494c8953dfe930c55960a98cb"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9090,
+          "rgbaSHA256": "53398bfb3daa22bfeac0346f7615f284dae3ecf462b57c33f1735eb02d4cb70c"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S03-ENV02",
+      "name": "魚屋の暖簾",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 14090,
+          "rgbaSHA256": "4e70c9c24a3de27baa2887d825da8e1fee184782188a89ddb33f96d63f5ac095"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 14155,
+          "rgbaSHA256": "ded131b39f844d3c1df13f5e6d9673f92d4286ba4e71eb554d0ffe4e9cdbe458"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 14126,
+          "rgbaSHA256": "96501b61f514d75e42d17db9d459b0187eed47f33f992a1dc50599b143d8afd2"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 14000,
+          "rgbaSHA256": "35a28fe2a127e9b8228a156b3e11c943b13b93d836314a1e2f3dc10bacc67afb"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 13933,
+          "rgbaSHA256": "f9b816f70326898710dc41d72f6aedc500c50c59619e016a791b3574a4d99303"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 13555,
+          "rgbaSHA256": "6c150656878e84c207946015cf933722f3f296c59e9433579f2110426c70c12a"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 14150,
+          "rgbaSHA256": "4d866557b644bb6addd1cd8337500efd874cb3d3559b4059e1218c519103e2fb"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 14058,
+          "rgbaSHA256": "8122d5a034050dbacba42cf0ea804660cc5f35a34b1e220eeb55c49a2ef3b251"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S03-ENV03",
+      "name": "貝のウインドチャイム",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12086,
+          "rgbaSHA256": "e28e8109f6ab7e6b56aa5132baf15c99c0733147d63f7ff610079ef00a2aa16d"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12024,
+          "rgbaSHA256": "2d91ef9d55437645cbe85902e7534cff714ef69af6a3561c39bb795a36a4cc0b"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11910,
+          "rgbaSHA256": "e09ba177ef07abdbc7d4c95acc3d66fc59c545d11f9da2a13b298ad2cec5ed00"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12027,
+          "rgbaSHA256": "94a35e2614a3c3c36eb4f94bcaafa01133c34277038ebeb3805200a599c3fd0e"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11784,
+          "rgbaSHA256": "430ecde42ed187ab7d755dd00dffc5c37ecd619527e645a44746751718b3adab"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11981,
+          "rgbaSHA256": "a04d39eab3e36a17e2075d78f56adf5e5d8473c5526c6d326efe37d0b92b9128"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12021,
+          "rgbaSHA256": "7994a0e39636b8e940272d4ce71457576101f8abd530b8541332537b24275cd1"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12031,
+          "rgbaSHA256": "d180d40eb4340f1865ae4f3a9c195de49bd1cc980483a61be12daea4c7808ca8"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S03-ENV04",
+      "name": "焼き魚の湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5792,
+          "rgbaSHA256": "75b83d1c5246e75e8ee71cd3641abdecf4ab70d5272ac2b2ced7f964fbaaae6d"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6015,
+          "rgbaSHA256": "5ae4243348bafc461895ba8b5c1e1ae12e990670a343aa5c356b1a4ef36a9bc3"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5869,
+          "rgbaSHA256": "b78d61c46be64264142b74e5e182a13a4d6b05efeb39d6c07e6d9b1b5cdc010e"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6229,
+          "rgbaSHA256": "13cc14b75ddde1a01f659bd549fa9779cd7dd9d4292730dac06add0a4c497205"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6203,
+          "rgbaSHA256": "3e566a916b516073677aaf94aba601e4be990f9b12b4fd10d0d9d606b1a0926f"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6392,
+          "rgbaSHA256": "8af893736149e1ecbdca08ae1edba6bc9e2fec311e12e5d0188305deb09fb73e"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5736,
+          "rgbaSHA256": "3770a616fd50d371c852641c222dccefec3c51ae60a3699bd81a6a73361ce18c"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5957,
+          "rgbaSHA256": "4d8ffbe3e151a2c9565a8d163db282bd1dc322029fb8222f9859d7fe71648902"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

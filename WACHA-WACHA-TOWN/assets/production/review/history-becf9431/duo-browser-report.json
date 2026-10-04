@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-04T20:11:55.282Z",
+  "checks": [
+    "mode selection is removed and no controller is required to enter any town",
+    "3, 2, 1 appears before the 180-second timer and all residents start",
+    "input from the second controller takes over the target while an idle first controller cannot mask it; search camera remains independent",
+    "D-pad works as movement without analog-stick input",
+    "short rests retain manual control and eight seconds of inactivity returns the resident to AI without stopping play",
+    "unplugging a controller returns to AI immediately and the timer continues",
+    "the visible pause button freezes the clock and all residents; P resumes",
+    "the 2,000-resident final town starts on one screen without a private window",
+    "an optional private view follows the same target and forwards controller input",
+    "closing the optional private window returns to AI and never blocks or pauses the main game",
+    "a browser Gamepad permission error shows actionable connection help and never crashes the game",
+    "target, live countdown, urgent time, pause, leave, and camera remain visible on a narrow phone screen",
+    "quit clears the active game and returns to the town list",
+    "pause cancels a pending start, resume restores countdown audio, and leave prevents starting an abandoned game"
+  ],
+  "errors": [],
+  "method": "simulated Gamepad API; macOS HID scan detected no connected gamepad, and the registered Pro Controller was disconnected; physical input not verified"
+}

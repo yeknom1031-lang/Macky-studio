@@ -1,0 +1,355 @@
+{
+  "id": "A0729",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "c78dba0d0eacaf4dc80e7e0dc88df764d6a102d9a774dcb0e29dbe7970cadcfd",
+  "alphaZeroFraction": 0.6728,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    660,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S03-ENV09",
+      "name": "カモメの羽",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7648,
+          "rgbaSHA256": "6bb84da14c4c1458c8a424927fb3678ceb94cfc420b1e9492f353d8783379d0d"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7043,
+          "rgbaSHA256": "8ac1e7b12fc8b978bc255e050105ec971cc3a0ed538d00f1322c03fe3c8d3ff4"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6597,
+          "rgbaSHA256": "226e0788305f7a7363bb352756e1abf47c7114b42a7cb793e80389e9d920a06b"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6788,
+          "rgbaSHA256": "f9c27c633cde831080e88895bbca85526af1c421777c195d2f6b9e8e5ac6ffb5"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6694,
+          "rgbaSHA256": "3e37e2f23c2597f55ee55c3cda29fcf493b077e2f0e377d055b7f1d0371c6e32"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5447,
+          "rgbaSHA256": "463bd508d8e850139140bc6c00acd1a54e83f6383be86551ead34bcf5f53594c"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6070,
+          "rgbaSHA256": "d1d7323923828768abf3c03f5785173d6810fecbe487c0b14039d86e87574d9d"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7776,
+          "rgbaSHA256": "dd6afd3146cd8bc932e4f73e1c1d232014f58fbc144bd9c694881c0ad4eac9a0"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S03-ENV10",
+      "name": "帆具店の結び紐",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7792,
+          "rgbaSHA256": "e72b1802233d592e3515cca60a9dac79db459fefa76e66ed4eda79a6537c1240"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8072,
+          "rgbaSHA256": "327b3ac3c44a37aa5c7f1c982d8279ce20f75d9f7068d91f6d0597963d702ffe"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8503,
+          "rgbaSHA256": "838f3d3caecaea7bb43bf89658c2ee155e531374db48d856ace545c3d6e2979d"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9489,
+          "rgbaSHA256": "f7cc613042ee708c783d65e02273cfa4e6b82a7e269c02e5ebfeae925918647d"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8060,
+          "rgbaSHA256": "aba8195e7d695950b469e171fb6cc17fd202527f1d3672d8b3f1443440b96144"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8155,
+          "rgbaSHA256": "d93831d8f311caa87d2640b1f2e705d95e7c84db81f53fec6eda4df938f9a87f"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8512,
+          "rgbaSHA256": "24743aeb77ea79197e5b83bd89c7842f2e5bbe58ffb1682fdc23b221aa32d8b6"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8002,
+          "rgbaSHA256": "97ea4fa44c7646f7f42e005e95aae3fbfd5cb44cf8e2291caedf0f1269abcfd3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S03-ENV11",
+      "name": "市場のシャボン玉",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 217,
+          "visiblePixels": 7829,
+          "rgbaSHA256": "58dfcda4a936f07a8169b8a5b40d7f4d670dc9a9fefc7840ffef9208cfb1e786"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 217,
+          "visiblePixels": 6618,
+          "rgbaSHA256": "d88a5511657b2fc9b92a4c206d387816366de5953dd9259984dfd21aefe862ba"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 217,
+          "visiblePixels": 6904,
+          "rgbaSHA256": "528e2db027055a59cdb97a5f12c95b3a553c943307fd31d4c57d581273d423c2"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 217,
+          "visiblePixels": 3365,
+          "rgbaSHA256": "f26df926d01e68c901f904845bc205a7d6e0727e6289a970d6f011a3e164aa1b"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 217,
+          "visiblePixels": 3294,
+          "rgbaSHA256": "be771eff7be86f0ac0bb62e05ecc79c49123d42b5d1c5b8196f4b0bb4dccebb1"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 217,
+          "visiblePixels": 4343,
+          "rgbaSHA256": "5c62d3e895432ad71145b2efc492c2e0e21017c78d8dbe1b78a3bcde5eb7082b"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 217,
+          "visiblePixels": 5122,
+          "rgbaSHA256": "3e9012a074ce9cf87555ebaa04f653ca952df5acb424426d841a7f4771616873"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 217,
+          "visiblePixels": 8501,
+          "rgbaSHA256": "f7aad751e336ff7a110bd455f0d81f68bb9f4a6c55de49fcb313784ec27f1af6"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S03-ENV12",
+      "name": "漁具屋の小風車",
+      "frames": [
+        {
+          "x": 0,
+          "y": 660,
+          "w": 222,
+          "h": 227,
+          "visiblePixels": 14754,
+          "rgbaSHA256": "b6da953c5968957ac27dd854c29794289326e7067812dc2cf935b2c929204dc0"
+        },
+        {
+          "x": 222,
+          "y": 660,
+          "w": 221,
+          "h": 227,
+          "visiblePixels": 13104,
+          "rgbaSHA256": "dee838271f4d114e6608dce1535e127f0ac80d961c3085008801b1145630e139"
+        },
+        {
+          "x": 443,
+          "y": 660,
+          "w": 222,
+          "h": 227,
+          "visiblePixels": 14835,
+          "rgbaSHA256": "7d778effe92873ddba6f3f00caea1c10e86735a911b7e519d731f5d3dff7001c"
+        },
+        {
+          "x": 665,
+          "y": 660,
+          "w": 222,
+          "h": 227,
+          "visiblePixels": 13780,
+          "rgbaSHA256": "16a2478ba65151079e9845563458e4b97f2ab650138d55c122cb808fadf8d9de"
+        },
+        {
+          "x": 887,
+          "y": 660,
+          "w": 222,
+          "h": 227,
+          "visiblePixels": 14024,
+          "rgbaSHA256": "1112bb05e8c82104beb2c1f0a925c6eedba3824bffa8c35ca535dc0bf567bb20"
+        },
+        {
+          "x": 1109,
+          "y": 660,
+          "w": 221,
+          "h": 227,
+          "visiblePixels": 14549,
+          "rgbaSHA256": "e99634da6ce2fbc0cd73c2a9620ec757a4a616234cb2a38609dc0227c216714d"
+        },
+        {
+          "x": 1330,
+          "y": 660,
+          "w": 222,
+          "h": 227,
+          "visiblePixels": 14285,
+          "rgbaSHA256": "ab46ab6cd29f17a228f86e8a386ccbfd61f03b0fe6e9723bc1b4d465adbbe231"
+        },
+        {
+          "x": 1552,
+          "y": 660,
+          "w": 222,
+          "h": 227,
+          "visiblePixels": 14916,
+          "rgbaSHA256": "06b3465d6bab5958e27a2b63614cda15e0e1f2ae464f44f03c58aeb411a8fb11"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

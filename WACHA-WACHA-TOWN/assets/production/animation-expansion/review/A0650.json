@@ -1,0 +1,20 @@
+{
+  "id": "A0650",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:01:42.773531+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ],
+  "notes": [
+    "配達箱・パレットと筆・カメラを原画とpackで確認、道具を保持。",
+    "2行目は1・8コマで持つレンチが中央の作業コマで消え、手だけになるため除外。"
+  ],
+  "packReport": "review/A0650-pack.json",
+  "preview": "review/A0650-check.jpg"
+}

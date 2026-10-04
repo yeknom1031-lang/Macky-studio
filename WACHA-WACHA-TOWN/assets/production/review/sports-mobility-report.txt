@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: ski uses a ground detour and refuses upstairs work
+ok 1 - ski uses a ground detour and refuses upstairs work
+  ---
+  duration_ms: 0.908667
+  type: 'test'
+  ...
+# Subtest: ski manual control cannot climb a staircase
+ok 2 - ski manual control cannot climb a staircase
+  ---
+  duration_ms: 193.845833
+  type: 'test'
+  ...
+# Subtest: skate uses a ground detour and refuses upstairs work
+ok 3 - skate uses a ground detour and refuses upstairs work
+  ---
+  duration_ms: 0.1645
+  type: 'test'
+  ...
+# Subtest: skate manual control cannot climb a staircase
+ok 4 - skate manual control cannot climb a staircase
+  ---
+  duration_ms: 232.323875
+  type: 'test'
+  ...
+# Subtest: only the 14 visually confirmed worn-equipment designs receive tags
+ok 5 - only the 14 visually confirmed worn-equipment designs receive tags
+  ---
+  duration_ms: 2.369416
+  type: 'test'
+  ...
+# Subtest: verified skaters and skiers start on their sports floor and naturally choose destinations there
+ok 6 - verified skaters and skiers start on their sports floor and naturally choose destinations there
+  ---
+  duration_ms: 5821.002459
+  type: 'test'
+  ...
+# Subtest: wheelchair routes use indoor ground floors but never an upstairs shortcut
+ok 7 - wheelchair routes use indoor ground floors but never an upstairs shortcut
+  ---
+  duration_ms: 1.076084
+  type: 'test'
+  ...
+# Subtest: an upstairs destination does not assign an inaccessible workstation
+ok 8 - an upstairs destination does not assign an inaccessible workstation
+  ---
+  duration_ms: 57.275666
+  type: 'test'
+  ...
+# Subtest: controller input cannot project a wheelchair onto a staircase
+ok 9 - controller input cannot project a wheelchair onto a staircase
+  ---
+  duration_ms: 49.74175
+  type: 'test'
+  ...
+# Subtest: all 41 marked designs remain on actual ground paths and appropriate sites across 24 stages
+ok 10 - all 41 marked designs remain on actual ground paths and appropriate sites across 24 stages
+  ---
+  duration_ms: 7382.659583
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7812.650625

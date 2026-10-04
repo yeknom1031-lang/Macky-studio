@@ -5,13 +5,14 @@ const path = require('node:path');
 const {pathToFileURL, fileURLToPath} = require('node:url');
 const crypto = require('node:crypto');
 const {chromium} = require('playwright');
+const {artworkFingerprints} = require('./artwork-fingerprint.cjs');
 
 (async () => {
   const root = path.join(__dirname, '..');
   const pkg = JSON.parse(fs.readFileSync(path.join(root, 'assets/production/package-report.json'), 'utf8'));
   const checks = [];
-  assert.equal(pkg.appVersion, '2.1');
-  checks.push('v2.1の配布アプリ');
+  assert.equal(pkg.appVersion, '2.2');
+  checks.push('v2.2の配布アプリ');
   const browser = await chromium.launch({executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true});
   try {
     const context = await browser.newContext({offline: true, viewport: {width: 1440, height: 900}});
@@ -31,9 +32,21 @@ const {chromium} = require('playwright');
     const qa = JSON.parse(fs.readFileSync(path.join(root, 'assets/production/review/release-qa-summary.json'), 'utf8'));
     for (const name of names) assert.equal(codeHashes[name], qa.codeHashes[name], 'Packaged runtime must match final QA: ' + name);
     checks.push('配布した5モジュールとデータのハッシュが最終QAと一致');
+    const artwork = artworkFingerprints(runtime);
+    assert.equal(artwork.fingerprint, qa.imageFingerprint, 'Every packaged image must match final visual QA');
+    assert.equal(artwork.fileCount, qa.imageFileCount);
+    checks.push('配布した全画像のハッシュが最終の目視検証と一致');
+    const screenshots = {};
+    const capture = async name => {
+      const relative = 'assets/production/review/offline-v2.2-' + name + '.png';
+      const file = path.join(root, relative);
+      await page.screenshot({path: file});
+      screenshots[name] = {path: relative, sha256: crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')};
+    };
     const before = await page.evaluate(() => ({stages: WACHA24_DATA.stages.length, ready: WACHA24_DATA.stages.filter(s => s.ready).length, designs: WACHA24_DATA.characters.length}));
     assert.deepEqual(before, {stages: 24, ready: 24, designs: 4396});
     checks.push('全24ステージと4,396デザインを収録');
+    await capture('title');
     await page.evaluate(() => Wacha24Debug.prepare(23));
     await page.locator('[data-action=begin]').waitFor({timeout: 90000});
     const finalStage = await page.evaluate(() => ({people: Wacha24Debug.state.people.length, unique: new Set(Wacha24Debug.state.people.map(p => p.design)).size, cameras: Wacha24Debug.state.photoCredits}));
@@ -52,6 +65,7 @@ const {chromium} = require('playwright');
     assert.ok(audioPlaying.active.some(a => a.id.startsWith('music-')));
     assert.ok(audioPlaying.active.some(a => a.id === 'crowd'));
     checks.push('オフラインでBGM・ざわめき・環境音を実再生');
+    await capture('stage24');
     await page.evaluate(() => Wacha24Debug.pause());
     assert.equal(await page.evaluate(() => Wacha24Debug.state.status), 'paused');
     assert.ok(await page.evaluate(() => Wacha24Sound.getState().active.every(a => a.paused)));
@@ -59,9 +73,15 @@ const {chromium} = require('playwright');
     const currentGame = await page.evaluate(() => ({openBuildings: WACHA24_DATA.stages.filter(s => s.openBuildings).length, livingStages: WACHA24_DATA.stages.filter(s => s.livingTown && s.activityAreas?.length).length, detailTiles: WACHA24_DATA.stages.reduce((n,s) => n + (s.backgroundTiles?.length || 0), 0)}));
     assert.deepEqual(currentGame, {openBuildings: 24, livingStages: 24, detailTiles: 52});
     checks.push('新全景24・生活領域24・詳細タイル52を収録');
+    const animation = await page.evaluate(() => ({version: WACHA24_DATA.releaseVersion, status: WACHA24_DATA.animationExpansion, scenery: WACHA24_DATA.stages.reduce((n,s) => n + s.animatedScenery.length, 0), loaded: Wacha24Debug.state.definition.animatedScenery.every(c => Wacha24Art.loaded.get(c.image)?.naturalWidth > 0)}));
+    assert.equal(animation.version, '2.2');
+    assert.equal(animation.status.generated, 800);
+    assert.equal(animation.scenery, 288);
+    assert.ok(animation.loaded);
+    checks.push('追加800原画由来の人物動作と288環境アニメを同梱・実読込');
     const guide = fs.readFileSync(path.join(path.dirname(pkg.entry), '遊び方.html'), 'utf8');
     if (process.env.QA_RELEASED_GUIDE === '1') {
-      assert.match(guide, /<p id="release-status">24ステージ版 v2\.1を収録しています。/);
+      assert.match(guide, /<p id="release-status">24ステージ版 v2\.2を収録しています。/);
       assert.doesNotMatch(guide, /制作中の拡張版/);
     }
     assert.ok(guide.includes('href="expedition/index.html"'));
@@ -70,7 +90,7 @@ const {chromium} = require('playwright');
     checks.push('JavaScript例外0件');
     assert.deepEqual(networkRequests, []);
     checks.push('外部通信要求0件');
-    const report = {at: new Date().toISOString(), appVersion: pkg.appVersion, entry: pkg.entry, offline: true, ...before, ...currentGame, codeHashes, finalStage, audioTracks: audioPlaying.active.map(a => a.id), checks, networkRequests, errors};
+    const report = {at: new Date().toISOString(), appVersion: pkg.appVersion, entry: pkg.entry, offline: true, ...before, ...currentGame, codeHashes, imageFingerprint: artwork.fingerprint, imageFileCount: artwork.fileCount, finalStage, audioTracks: audioPlaying.active.map(a => a.id), screenshots, checks, networkRequests, errors};
     fs.writeFileSync(path.join(root, 'assets/production/review/offline-browser-report.json'), JSON.stringify(report, null, 2));
     console.log(JSON.stringify(report));
   } finally {

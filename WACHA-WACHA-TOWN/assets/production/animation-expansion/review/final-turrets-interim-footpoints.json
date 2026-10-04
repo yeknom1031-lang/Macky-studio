@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "sourceSHA": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+  "dataSHA": "a8489737219a46027dbafd9389cd353852c0838847b7e953944f493100e8c2fc",
+  "dataFile": "/tmp/wacha-final-turrets-data.json",
+  "boundarySHA": "c232097375004f7c5d8d7d666b2cb90c632f586ac7e814c6e80e61cc28bb798a",
+  "at": "2026-10-04T20:29:15.823Z",
+  "seconds": 3,
+  "stages": [
+    {
+      "stage": "S12",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.2,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 450,
+          "y": 788,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 610,
+          "y": 780,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1050,
+          "y": 780,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 957,
+          "y": 788,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 970,
+          "y": 788,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 983,
+          "y": 788,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 965,
+          "y": 800,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S16",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.7000000000000004,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 838,
+          "y": 634,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 839,
+          "y": 642,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1450,
+          "y": 918,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "stage": "S17",
+      "outsideLand": 0,
+      "onExcludedSurface": 0,
+      "offNavigableFloor": 0,
+      "maxOverlap": 1.6000000000000003,
+      "examples": [],
+      "observedScenery": [
+        {
+          "x": 1075,
+          "y": 742,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 200,
+          "y": 850,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1250,
+          "y": 850,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1230,
+          "y": 660,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1236,
+          "y": 633,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1490,
+          "y": 650,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1560,
+          "y": 628,
+          "level": 0,
+          "walkable": false
+        },
+        {
+          "x": 1610,
+          "y": 716,
+          "level": 0,
+          "walkable": false
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "scope": "Source-only interim data smoke test before final parent build; not the formal runtime release result."
+}

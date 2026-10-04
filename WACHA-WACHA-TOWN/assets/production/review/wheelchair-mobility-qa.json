@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-04T16:35:32.325283+00:00",
+  "passed": true,
+  "coreSha256": "ab2a18cecab3bf302b7d2f5b521a0906e1e4c692f2e1a3b731ee72e6b67ab3db",
+  "designCount": 41,
+  "registry": "assets/production/animation-expansion/wheelchair-designs.json",
+  "tests": 4,
+  "stageCoverage": 24,
+  "durationPerStage": 2,
+  "report": "wheelchair-mobility-report.txt",
+  "behavior": "Wheelchair residents use reachable ground floor nodes, including indoor floors, reject upstairs stations and controller stair projection. Existing walking routes and unmarked characters retain behavior. Explicit ramps are not present in current navigation; no synthetic access was added."
+}

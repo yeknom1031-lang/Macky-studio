@@ -1,0 +1,355 @@
+{
+  "id": "A0746",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "e5ef3451a28d84a44b7d4200ee01e57f7b99b49b78e632bf2bffd9e910b41d87",
+  "alphaZeroFraction": 0.61149,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S09-ENV05",
+      "name": "駅前噴水の水しぶき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5284,
+          "rgbaSHA256": "8b76c6a15513e6015c38d00688a760bfebe581bcc242b057349aa5dffe6a121b"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6854,
+          "rgbaSHA256": "d8deec66e6f7fd3e0113e27f850cc8b65cf7dc8f060986bbd5d2ce6b04e85b3b"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8234,
+          "rgbaSHA256": "e8335542efc062ed70a3bd1879478c87fd3fd439510c98dd9f4c3b54b68bfccd"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9051,
+          "rgbaSHA256": "46db97a84c565be75a1b69614d8cdfb74e0906f9cee83a65c8329ed50a88eb02"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7971,
+          "rgbaSHA256": "5ba895aa8916b7fb2692ab7cd35605324ce48aee64e7a3d67ad4c7453ed4e497"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6990,
+          "rgbaSHA256": "6e20fa3a1fd1d04357cf02040e5f081810775be37c689d4b12b2ab58e7d2d5a5"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5571,
+          "rgbaSHA256": "18ebb0e5ad6bb6df917c9da4c3f3c1d0d37a3f86589c9387709ab59d39bc14b5"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4920,
+          "rgbaSHA256": "1014d1f3e76bb8cb7d908f7cea3f1fbec01e08f0b7d9b0f99b38614376fcc4fb"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S09-ENV06",
+      "name": "蒸気機関庫の排気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2921,
+          "rgbaSHA256": "ae856f4ddea4b70b5f4ea5e3727674fcc0f654dd8c5ebe39d63dae9e230b0bf4"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 4962,
+          "rgbaSHA256": "a0be06a33c84fa43c9f31121b2421f2d689e1b9b1a1e2ee52e1018735dfcae19"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6955,
+          "rgbaSHA256": "dd55550939895813e929661ae46d577907cac55e5d5919c7edad545912539542"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8916,
+          "rgbaSHA256": "f5b552a70c8037d3e5bb72c7a117325feb307e278ba2d4aa59c2580084b81d50"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9167,
+          "rgbaSHA256": "63dc5bbccc07eca2f05b707faed1b7d8c04c8ba154dc0374077680cd330c17c4"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7130,
+          "rgbaSHA256": "d4dc9789c7cd86a7f00e48306e50fe1fbba85ec5cd3747fadce3121146564472"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5533,
+          "rgbaSHA256": "f372f97133d2bbd01efa4583bbb6d6faca6bd92a8ddb44116267674b21392a60"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2892,
+          "rgbaSHA256": "329f44f9789af8c689f91712b23d6e59019e57918f27adb062bc1763bebee032"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S09-ENV07",
+      "name": "整備工房の歯車玩具",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14409,
+          "rgbaSHA256": "d4fc362ca3ee2f6120eaaf6b70923534ea9daeffdb6f0c6eea3dfe090cff070f"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 14387,
+          "rgbaSHA256": "0897436c4fc1a983c410a1bd823acb5a62d616cddc26f2c394cf2c27b2f2c52d"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14330,
+          "rgbaSHA256": "0190787dccd571eabf3a7833f0eee09efca5091d1b19796c8713038962bb404c"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14563,
+          "rgbaSHA256": "c1c88744f7f60fba4762b60b83f8db52cf99c94ce27c09ed82ad98ed4a8744c1"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14047,
+          "rgbaSHA256": "b670a9b2449201898860187e9b69815baf5d4bcc15f53f0fee9198fed98fa308"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 14495,
+          "rgbaSHA256": "54cdb559b33ba70e6607ca94103c48139028c56a681b46ccd092088d4f98642f"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14186,
+          "rgbaSHA256": "26f23e40860fc5d4eb18057a009071eb11714f27bdc813ef1896b4dec0731259"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14228,
+          "rgbaSHA256": "9284e7989d36c77d0004641de0901a0970f5d81a87a5c97e4f7f5464336da0f5"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S09-ENV08",
+      "name": "駅弁の温かな湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2487,
+          "rgbaSHA256": "49efcd585728d597c6ea6a4516923768a641762db91e9edd503a1204b20d340e"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3712,
+          "rgbaSHA256": "0c887af656b09adbbada9aedf72fcb6f597e60c18c5c4f061c4b32369f82764b"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4581,
+          "rgbaSHA256": "ad8d1f84bed578d65aa6f960e12bbd1ace122f02003c73022156caa540517190"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5967,
+          "rgbaSHA256": "16495c4d1bbe34ad57a5b62f0befca99865847afbaa54283e984c5db2716b5fa"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4855,
+          "rgbaSHA256": "e91edc44397caadbb1e89c9861c5432a27d868c104badac77c57d2793a8d181e"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4079,
+          "rgbaSHA256": "0fd4e19a1295c5d3e6681c17784eeb0e4ac0c7b072fd64a5574cfc6619a92621"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3002,
+          "rgbaSHA256": "beb03e30b3842495f0f3a96688e80e90f4edd2ecf55b11a98a4f183bedfeeff4"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2353,
+          "rgbaSHA256": "32f5d14ce05494128d0098e5b20385fd5902aac509a6599f2ee55b718661a257"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent frames. Color compositing verifies true transparency. No duplicated building or complete equipment. Final scene placement pending."
+}

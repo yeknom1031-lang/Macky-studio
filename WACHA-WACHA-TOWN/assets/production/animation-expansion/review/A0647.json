@@ -1,0 +1,18 @@
+{
+  "id": "A0647",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:57:54.900102+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    2
+  ],
+  "notes": [
+    "花束を整える3行目は原画とpackで本人・花束・紐が保たれるため採用。",
+    "1行目モップが3コマ目で右セルを越え、4コマ目の左端に断片が混入。2行目レンチが8コマ目で消失。4行目は1・8コマの小容器と途中の大きなポットが別形状になり除外。"
+  ],
+  "packReport": "review/A0647-pack.json",
+  "preview": "review/A0647-check.jpg"
+}

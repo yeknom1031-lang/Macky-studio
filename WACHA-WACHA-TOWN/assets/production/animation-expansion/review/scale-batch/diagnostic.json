@@ -1,0 +1,2790 @@
+{
+  "summary": {
+    "jobs": 600,
+    "rows": 2396,
+    "alreadyCorrected": 4,
+    "rejectedRows": 96,
+    "noDirectionalClips": 0
+  },
+  "candidates": [
+    {
+      "id": "A0028",
+      "row": 2,
+      "character": "S02-C011",
+      "cachedHeights": [
+        67,
+        67,
+        67,
+        67,
+        69,
+        69,
+        69,
+        70,
+        66,
+        66,
+        66,
+        65
+      ],
+      "maxCachedHeight": 70,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          161,
+          215
+        ],
+        "sharedBounds": [
+          18,
+          3,
+          144,
+          212
+        ],
+        "scale": 0.42105263157894735,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 126,
+      "unionHeight": 209,
+      "sourceSHA": "31bab64d70796faf80fb259b2664c612b930c455ecb6d45e630bc2172a180c7a",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          55,
+          39,
+          144,
+          198
+        ],
+        [
+          42,
+          39,
+          132,
+          199
+        ],
+        [
+          33,
+          39,
+          122,
+          198
+        ],
+        [
+          23,
+          39,
+          116,
+          198
+        ],
+        [
+          45,
+          26,
+          137,
+          189
+        ],
+        [
+          32,
+          10,
+          121,
+          175
+        ],
+        [
+          31,
+          6,
+          118,
+          169
+        ],
+        [
+          23,
+          3,
+          114,
+          169
+        ],
+        [
+          32,
+          24,
+          128,
+          181
+        ],
+        [
+          18,
+          35,
+          132,
+          194
+        ],
+        [
+          24,
+          46,
+          133,
+          203
+        ],
+        [
+          19,
+          58,
+          126,
+          212
+        ]
+      ],
+      "maxPoseHeight": 166,
+      "maxPoseUnionRatio": 0.7942583732057417,
+      "verticalOffsetRange": 43,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0028-row2.png",
+      "comparisonSHA": "c796f64c201c7dd54a471fe02725f3497e3803ab31be45f49ad9a17f5f70e7f0",
+      "proposedScale": 0.5301204819277109
+    },
+    {
+      "id": "A0320",
+      "row": 0,
+      "character": "S13-C077",
+      "cachedHeights": [
+        64,
+        62,
+        62,
+        62,
+        64,
+        67,
+        64,
+        61,
+        65,
+        63,
+        63,
+        61
+      ],
+      "maxCachedHeight": 67,
+      "registration": {
+        "row": 0,
+        "sourceCell": [
+          163,
+          212
+        ],
+        "sharedBounds": [
+          4,
+          3,
+          135,
+          209
+        ],
+        "scale": 0.42718446601941745,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 131,
+      "unionHeight": 206,
+      "sourceSHA": "43d5eeeda624f4db7fb4bd31dbfc3de12a07a91968e8cf7484223dfc08a0e8f8",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          31,
+          43,
+          135,
+          194
+        ],
+        [
+          16,
+          48,
+          119,
+          192
+        ],
+        [
+          10,
+          48,
+          108,
+          192
+        ],
+        [
+          5,
+          48,
+          107,
+          193
+        ],
+        [
+          29,
+          45,
+          127,
+          194
+        ],
+        [
+          26,
+          24,
+          135,
+          181
+        ],
+        [
+          23,
+          14,
+          119,
+          164
+        ],
+        [
+          22,
+          3,
+          121,
+          146
+        ],
+        [
+          10,
+          39,
+          132,
+          190
+        ],
+        [
+          10,
+          50,
+          131,
+          198
+        ],
+        [
+          13,
+          59,
+          129,
+          206
+        ],
+        [
+          4,
+          65,
+          121,
+          209
+        ]
+      ],
+      "maxPoseHeight": 157,
+      "maxPoseUnionRatio": 0.7621359223300971,
+      "verticalOffsetRange": 63,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0320-row0.png",
+      "comparisonSHA": "2a7bca39a3a3cf2a116fdda2a35d922b95bffd13c3382f13fc4ea4fa7f7a09f3",
+      "proposedScale": 0.5605095541401274
+    },
+    {
+      "id": "A0320",
+      "row": 2,
+      "character": "S13-C079",
+      "cachedHeights": [
+        64,
+        62,
+        63,
+        63,
+        63,
+        64,
+        61,
+        61,
+        67,
+        66,
+        67,
+        64
+      ],
+      "maxCachedHeight": 67,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          163,
+          221
+        ],
+        "sharedBounds": [
+          9,
+          3,
+          138,
+          218
+        ],
+        "scale": 0.40930232558139534,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 129,
+      "unionHeight": 215,
+      "sourceSHA": "43d5eeeda624f4db7fb4bd31dbfc3de12a07a91968e8cf7484223dfc08a0e8f8",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          30,
+          39,
+          134,
+          197
+        ],
+        [
+          14,
+          43,
+          117,
+          194
+        ],
+        [
+          12,
+          41,
+          114,
+          195
+        ],
+        [
+          9,
+          42,
+          111,
+          196
+        ],
+        [
+          37,
+          41,
+          130,
+          197
+        ],
+        [
+          36,
+          24,
+          136,
+          182
+        ],
+        [
+          28,
+          15,
+          120,
+          165
+        ],
+        [
+          24,
+          3,
+          119,
+          151
+        ],
+        [
+          24,
+          16,
+          138,
+          180
+        ],
+        [
+          19,
+          37,
+          133,
+          199
+        ],
+        [
+          17,
+          50,
+          129,
+          212
+        ],
+        [
+          11,
+          62,
+          123,
+          218
+        ]
+      ],
+      "maxPoseHeight": 164,
+      "maxPoseUnionRatio": 0.7627906976744186,
+      "verticalOffsetRange": 67,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0320-row2.png",
+      "comparisonSHA": "adf2d2fe51eaaf7177c53cf12ed8a80ea3fb5021e02e5c10da2ac4a448c23725",
+      "proposedScale": 0.5365853658536586
+    },
+    {
+      "id": "A0320",
+      "row": 3,
+      "character": "S13-C080",
+      "cachedHeights": [
+        70,
+        68,
+        69,
+        68,
+        68,
+        69,
+        67,
+        63,
+        66,
+        65,
+        66,
+        63
+      ],
+      "maxCachedHeight": 70,
+      "registration": {
+        "row": 3,
+        "sourceCell": [
+          163,
+          220
+        ],
+        "sharedBounds": [
+          7,
+          3,
+          151,
+          217
+        ],
+        "scale": 0.411214953271028,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 144,
+      "unionHeight": 214,
+      "sourceSHA": "43d5eeeda624f4db7fb4bd31dbfc3de12a07a91968e8cf7484223dfc08a0e8f8",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          23,
+          32,
+          151,
+          203
+        ],
+        [
+          14,
+          40,
+          137,
+          205
+        ],
+        [
+          10,
+          37,
+          133,
+          204
+        ],
+        [
+          8,
+          37,
+          128,
+          203
+        ],
+        [
+          18,
+          37,
+          149,
+          203
+        ],
+        [
+          22,
+          24,
+          148,
+          193
+        ],
+        [
+          19,
+          9,
+          125,
+          171
+        ],
+        [
+          19,
+          3,
+          129,
+          156
+        ],
+        [
+          7,
+          35,
+          149,
+          196
+        ],
+        [
+          15,
+          51,
+          150,
+          210
+        ],
+        [
+          15,
+          57,
+          149,
+          216
+        ],
+        [
+          7,
+          64,
+          142,
+          217
+        ]
+      ],
+      "maxPoseHeight": 171,
+      "maxPoseUnionRatio": 0.7990654205607477,
+      "verticalOffsetRange": 61,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0320-row3.png",
+      "comparisonSHA": "f752761de11e3c605e4c6e1a80b742925db56c79b533528d39bfe7a18a9e4f02",
+      "proposedScale": 0.5146198830409356
+    },
+    {
+      "id": "A0322",
+      "row": 0,
+      "character": "S13-C085",
+      "cachedHeights": [
+        64,
+        66,
+        65,
+        61,
+        69,
+        68,
+        68,
+        68,
+        66,
+        65,
+        64,
+        64
+      ],
+      "maxCachedHeight": 69,
+      "registration": {
+        "row": 0,
+        "sourceCell": [
+          148,
+          235
+        ],
+        "sharedBounds": [
+          13,
+          37,
+          132,
+          235
+        ],
+        "scale": 0.4444444444444444,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 119,
+      "unionHeight": 198,
+      "sourceSHA": "8946ed24ddac6dd8a88e8c01f932d655c64b8849a26688015c95a7df59b678c7",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          38,
+          77,
+          124,
+          222
+        ],
+        [
+          43,
+          75,
+          132,
+          223
+        ],
+        [
+          35,
+          76,
+          123,
+          223
+        ],
+        [
+          34,
+          82,
+          120,
+          219
+        ],
+        [
+          40,
+          63,
+          131,
+          220
+        ],
+        [
+          33,
+          47,
+          120,
+          199
+        ],
+        [
+          23,
+          37,
+          114,
+          190
+        ],
+        [
+          17,
+          47,
+          113,
+          198
+        ],
+        [
+          14,
+          74,
+          112,
+          222
+        ],
+        [
+          14,
+          88,
+          112,
+          235
+        ],
+        [
+          13,
+          91,
+          115,
+          235
+        ],
+        [
+          14,
+          92,
+          115,
+          235
+        ]
+      ],
+      "maxPoseHeight": 157,
+      "maxPoseUnionRatio": 0.7929292929292929,
+      "verticalOffsetRange": 45,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0322-row0.png",
+      "comparisonSHA": "342f7de604f3eff4ebe79fd0df0719cee929ea65ac4fed0bf6af05660a47c99f",
+      "proposedScale": 0.5605095541401274
+    },
+    {
+      "id": "A0322",
+      "row": 2,
+      "character": "S13-C087",
+      "cachedHeights": [
+        62,
+        65,
+        66,
+        63,
+        67,
+        68,
+        68,
+        67,
+        66,
+        64,
+        68,
+        67
+      ],
+      "maxCachedHeight": 68,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          148,
+          205
+        ],
+        "sharedBounds": [
+          9,
+          9,
+          135,
+          204
+        ],
+        "scale": 0.4512820512820513,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 126,
+      "unionHeight": 195,
+      "sourceSHA": "8946ed24ddac6dd8a88e8c01f932d655c64b8849a26688015c95a7df59b678c7",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          37,
+          55,
+          129,
+          194
+        ],
+        [
+          42,
+          52,
+          135,
+          195
+        ],
+        [
+          32,
+          50,
+          126,
+          195
+        ],
+        [
+          31,
+          55,
+          124,
+          194
+        ],
+        [
+          37,
+          45,
+          132,
+          194
+        ],
+        [
+          27,
+          22,
+          118,
+          173
+        ],
+        [
+          18,
+          9,
+          115,
+          160
+        ],
+        [
+          9,
+          24,
+          110,
+          173
+        ],
+        [
+          9,
+          46,
+          118,
+          193
+        ],
+        [
+          14,
+          55,
+          119,
+          197
+        ],
+        [
+          9,
+          54,
+          122,
+          203
+        ],
+        [
+          12,
+          56,
+          119,
+          204
+        ]
+      ],
+      "maxPoseHeight": 151,
+      "maxPoseUnionRatio": 0.7743589743589744,
+      "verticalOffsetRange": 44,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0322-row2.png",
+      "comparisonSHA": "4b7e4e9c6e9c47f9abef4621caab52d5035312628c4664f5c704c5bdfd6a9400",
+      "proposedScale": 0.5827814569536424
+    },
+    {
+      "id": "A0322",
+      "row": 3,
+      "character": "S13-C088",
+      "cachedHeights": [
+        62,
+        64,
+        63,
+        60,
+        65,
+        67,
+        65,
+        66,
+        65,
+        63,
+        63,
+        63
+      ],
+      "maxCachedHeight": 67,
+      "registration": {
+        "row": 3,
+        "sourceCell": [
+          148,
+          231
+        ],
+        "sharedBounds": [
+          11,
+          1,
+          133,
+          207
+        ],
+        "scale": 0.42718446601941745,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 122,
+      "unionHeight": 206,
+      "sourceSHA": "8946ed24ddac6dd8a88e8c01f932d655c64b8849a26688015c95a7df59b678c7",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          39,
+          45,
+          128,
+          192
+        ],
+        [
+          43,
+          44,
+          133,
+          192
+        ],
+        [
+          35,
+          45,
+          125,
+          193
+        ],
+        [
+          33,
+          50,
+          123,
+          192
+        ],
+        [
+          42,
+          39,
+          132,
+          191
+        ],
+        [
+          30,
+          13,
+          120,
+          170
+        ],
+        [
+          24,
+          1,
+          116,
+          154
+        ],
+        [
+          11,
+          14,
+          105,
+          170
+        ],
+        [
+          11,
+          44,
+          115,
+          194
+        ],
+        [
+          12,
+          57,
+          113,
+          204
+        ],
+        [
+          13,
+          58,
+          116,
+          204
+        ],
+        [
+          13,
+          60,
+          115,
+          207
+        ]
+      ],
+      "maxPoseHeight": 157,
+      "maxPoseUnionRatio": 0.7621359223300971,
+      "verticalOffsetRange": 53,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0322-row3.png",
+      "comparisonSHA": "64aae7f05334523b7fc32b3c608ad76559635e57f846aa1b0699ba403b895f22",
+      "proposedScale": 0.5605095541401274
+    },
+    {
+      "id": "A0323",
+      "row": 3,
+      "character": "S13-C092",
+      "cachedHeights": [
+        67,
+        65,
+        67,
+        67,
+        67,
+        66,
+        67,
+        67,
+        67,
+        68,
+        68,
+        68
+      ],
+      "maxCachedHeight": 68,
+      "registration": {
+        "row": 3,
+        "sourceCell": [
+          155,
+          222
+        ],
+        "sharedBounds": [
+          1,
+          2,
+          140,
+          190
+        ],
+        "scale": 0.46808510638297873,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 139,
+      "unionHeight": 188,
+      "sourceSHA": "b8fd6ac3d450982b53b11fac5dcbad81c85b4b97c11349b6e06122f0b0939272",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          41,
+          38,
+          140,
+          181
+        ],
+        [
+          35,
+          38,
+          125,
+          178
+        ],
+        [
+          26,
+          38,
+          124,
+          182
+        ],
+        [
+          23,
+          38,
+          121,
+          181
+        ],
+        [
+          34,
+          42,
+          137,
+          186
+        ],
+        [
+          26,
+          30,
+          128,
+          171
+        ],
+        [
+          18,
+          8,
+          126,
+          152
+        ],
+        [
+          19,
+          2,
+          121,
+          145
+        ],
+        [
+          12,
+          38,
+          117,
+          182
+        ],
+        [
+          7,
+          42,
+          123,
+          187
+        ],
+        [
+          13,
+          45,
+          124,
+          190
+        ],
+        [
+          1,
+          45,
+          118,
+          190
+        ]
+      ],
+      "maxPoseHeight": 145,
+      "maxPoseUnionRatio": 0.7712765957446809,
+      "verticalOffsetRange": 45,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0323-row3.png",
+      "comparisonSHA": "9be077f6d4de54d070f6acf2b4ef17438b297a196690b56f429d93d5e6f59406",
+      "proposedScale": 0.6068965517241379
+    },
+    {
+      "id": "A0392",
+      "row": 2,
+      "character": "S16-C067",
+      "cachedHeights": [
+        66,
+        66,
+        67,
+        66,
+        67,
+        69,
+        68,
+        68,
+        68,
+        68,
+        64,
+        68
+      ],
+      "maxCachedHeight": 69,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          148,
+          220
+        ],
+        "sharedBounds": [
+          3,
+          9,
+          139,
+          220
+        ],
+        "scale": 0.41706161137440756,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 136,
+      "unionHeight": 211,
+      "sourceSHA": "c5a298a9df9bd2eb86cb7ec18a30df7fdb7af3dc16dbd26eb42bd1f11b8947f0",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          32,
+          45,
+          139,
+          202
+        ],
+        [
+          23,
+          45,
+          126,
+          203
+        ],
+        [
+          10,
+          44,
+          120,
+          202
+        ],
+        [
+          3,
+          44,
+          107,
+          204
+        ],
+        [
+          21,
+          43,
+          133,
+          204
+        ],
+        [
+          21,
+          19,
+          125,
+          183
+        ],
+        [
+          14,
+          9,
+          118,
+          173
+        ],
+        [
+          9,
+          38,
+          118,
+          200
+        ],
+        [
+          14,
+          33,
+          130,
+          197
+        ],
+        [
+          6,
+          55,
+          131,
+          218
+        ],
+        [
+          19,
+          66,
+          122,
+          220
+        ],
+        [
+          7,
+          54,
+          120,
+          218
+        ]
+      ],
+      "maxPoseHeight": 164,
+      "maxPoseUnionRatio": 0.7772511848341233,
+      "verticalOffsetRange": 47,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0392-row2.png",
+      "comparisonSHA": "6b75c2b6a80366bc47cfb397b62c6914a8ad20e5e8d56872b434917f6e6debed",
+      "proposedScale": 0.5365853658536586
+    },
+    {
+      "id": "A0422",
+      "row": 3,
+      "character": "S17-C088",
+      "cachedHeights": [
+        67,
+        66,
+        65,
+        67,
+        66,
+        67,
+        66,
+        66,
+        62,
+        64,
+        62,
+        63
+      ],
+      "maxCachedHeight": 67,
+      "registration": {
+        "row": 3,
+        "sourceCell": [
+          148,
+          222
+        ],
+        "sharedBounds": [
+          9,
+          1,
+          134,
+          203
+        ],
+        "scale": 0.43564356435643564,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 125,
+      "unionHeight": 202,
+      "sourceSHA": "4d8489a6440be6e7a86f3666796d9d241243e5f5c0bbf8a1a43fccebdd4c9897",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          33,
+          33,
+          128,
+          187
+        ],
+        [
+          29,
+          35,
+          125,
+          187
+        ],
+        [
+          26,
+          37,
+          117,
+          187
+        ],
+        [
+          21,
+          34,
+          110,
+          187
+        ],
+        [
+          20,
+          28,
+          121,
+          180
+        ],
+        [
+          20,
+          13,
+          123,
+          166
+        ],
+        [
+          19,
+          1,
+          123,
+          153
+        ],
+        [
+          18,
+          21,
+          125,
+          173
+        ],
+        [
+          26,
+          14,
+          134,
+          156
+        ],
+        [
+          20,
+          28,
+          132,
+          175
+        ],
+        [
+          16,
+          47,
+          127,
+          190
+        ],
+        [
+          9,
+          58,
+          117,
+          203
+        ]
+      ],
+      "maxPoseHeight": 154,
+      "maxPoseUnionRatio": 0.7623762376237624,
+      "verticalOffsetRange": 50,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0422-row3.png",
+      "comparisonSHA": "4fa882556a97b96b71922e5ed29988c750054aa6082ea995e7082344603340b9",
+      "proposedScale": 0.5714285714285714
+    },
+    {
+      "id": "A0457",
+      "row": 1,
+      "character": "S19-C026",
+      "cachedHeights": [
+        65,
+        65,
+        64,
+        65,
+        66,
+        66,
+        65,
+        67,
+        66,
+        66,
+        66,
+        67
+      ],
+      "maxCachedHeight": 67,
+      "registration": {
+        "row": 1,
+        "sourceCell": [
+          142,
+          203
+        ],
+        "sharedBounds": [
+          5,
+          2,
+          141,
+          200
+        ],
+        "scale": 0.4444444444444444,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 136,
+      "unionHeight": 198,
+      "sourceSHA": "b3564ea7faca300da718d3e183c7ce01aa3c668b9ccf5f631a48e114fd8c2c44",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "rawBoxes": [
+        [
+          29,
+          44,
+          133,
+          192
+        ],
+        [
+          25,
+          45,
+          129,
+          192
+        ],
+        [
+          22,
+          53,
+          124,
+          198
+        ],
+        [
+          19,
+          44,
+          123,
+          192
+        ],
+        [
+          17,
+          27,
+          130,
+          176
+        ],
+        [
+          20,
+          2,
+          125,
+          150
+        ],
+        [
+          17,
+          9,
+          122,
+          155
+        ],
+        [
+          6,
+          25,
+          124,
+          176
+        ],
+        [
+          17,
+          42,
+          141,
+          192
+        ],
+        [
+          13,
+          52,
+          133,
+          200
+        ],
+        [
+          12,
+          51,
+          128,
+          200
+        ],
+        [
+          5,
+          45,
+          120,
+          195
+        ]
+      ],
+      "maxPoseHeight": 151,
+      "maxPoseUnionRatio": 0.7626262626262627,
+      "verticalOffsetRange": 50,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0457-row1.png",
+      "comparisonSHA": "5cbcb281221e6e7c2406350106adf91e4634f119ca735537452143d013aaa3a4",
+      "proposedScale": 0.5827814569536424
+    },
+    {
+      "id": "A0457",
+      "row": 2,
+      "character": "S19-C027",
+      "cachedHeights": [
+        63,
+        63,
+        62,
+        64,
+        66,
+        65,
+        64,
+        66,
+        66,
+        65,
+        65,
+        65
+      ],
+      "maxCachedHeight": 66,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          142,
+          204
+        ],
+        "sharedBounds": [
+          1,
+          3,
+          140,
+          201
+        ],
+        "scale": 0.4444444444444444,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 139,
+      "unionHeight": 198,
+      "sourceSHA": "b3564ea7faca300da718d3e183c7ce01aa3c668b9ccf5f631a48e114fd8c2c44",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "rawBoxes": [
+        [
+          26,
+          50,
+          132,
+          192
+        ],
+        [
+          24,
+          50,
+          132,
+          191
+        ],
+        [
+          20,
+          55,
+          124,
+          195
+        ],
+        [
+          20,
+          49,
+          123,
+          191
+        ],
+        [
+          17,
+          28,
+          130,
+          175
+        ],
+        [
+          16,
+          3,
+          124,
+          150
+        ],
+        [
+          4,
+          13,
+          123,
+          159
+        ],
+        [
+          6,
+          33,
+          125,
+          181
+        ],
+        [
+          17,
+          41,
+          140,
+          190
+        ],
+        [
+          12,
+          55,
+          131,
+          201
+        ],
+        [
+          11,
+          53,
+          127,
+          199
+        ],
+        [
+          1,
+          48,
+          120,
+          195
+        ]
+      ],
+      "maxPoseHeight": 149,
+      "maxPoseUnionRatio": 0.7525252525252525,
+      "verticalOffsetRange": 51,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0457-row2.png",
+      "comparisonSHA": "594230905be988da91f814ff972f281c625e8e54be3b38d6452adf51ba169b6e",
+      "proposedScale": 0.5906040268456376
+    },
+    {
+      "id": "A0457",
+      "row": 3,
+      "character": "S19-C028",
+      "cachedHeights": [
+        67,
+        66,
+        66,
+        67,
+        68,
+        65,
+        65,
+        68,
+        68,
+        67,
+        67,
+        67
+      ],
+      "maxCachedHeight": 68,
+      "registration": {
+        "row": 3,
+        "sourceCell": [
+          142,
+          206
+        ],
+        "sharedBounds": [
+          1,
+          3,
+          140,
+          203
+        ],
+        "scale": 0.44,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 139,
+      "unionHeight": 200,
+      "sourceSHA": "b3564ea7faca300da718d3e183c7ce01aa3c668b9ccf5f631a48e114fd8c2c44",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "rawBoxes": [
+        [
+          26,
+          42,
+          131,
+          194
+        ],
+        [
+          25,
+          43,
+          127,
+          194
+        ],
+        [
+          17,
+          46,
+          124,
+          197
+        ],
+        [
+          15,
+          41,
+          118,
+          194
+        ],
+        [
+          21,
+          26,
+          131,
+          179
+        ],
+        [
+          18,
+          3,
+          125,
+          151
+        ],
+        [
+          15,
+          10,
+          123,
+          159
+        ],
+        [
+          7,
+          28,
+          124,
+          182
+        ],
+        [
+          22,
+          40,
+          140,
+          193
+        ],
+        [
+          16,
+          51,
+          133,
+          203
+        ],
+        [
+          11,
+          49,
+          127,
+          200
+        ],
+        [
+          1,
+          45,
+          120,
+          197
+        ]
+      ],
+      "maxPoseHeight": 154,
+      "maxPoseUnionRatio": 0.77,
+      "verticalOffsetRange": 52,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0457-row3.png",
+      "comparisonSHA": "8437816bd6afe27611fac401c83ab6543ddb21516fe6b089d6de987f2b91c512",
+      "proposedScale": 0.5714285714285714
+    },
+    {
+      "id": "A0464",
+      "row": 3,
+      "character": "S19-C056",
+      "cachedHeights": [
+        68,
+        67,
+        68,
+        68,
+        69,
+        68,
+        67,
+        70,
+        68,
+        68,
+        67,
+        68
+      ],
+      "maxCachedHeight": 70,
+      "registration": {
+        "row": 3,
+        "sourceCell": [
+          148,
+          215
+        ],
+        "sharedBounds": [
+          5,
+          15,
+          132,
+          206
+        ],
+        "scale": 0.4607329842931937,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 127,
+      "unionHeight": 191,
+      "sourceSHA": "d2206d59ed768cd4cf12c66b424e809d2fe0ece4112bed25d561e1f40b63d013",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          29,
+          48,
+          126,
+          195
+        ],
+        [
+          26,
+          49,
+          118,
+          195
+        ],
+        [
+          18,
+          48,
+          117,
+          195
+        ],
+        [
+          19,
+          47,
+          114,
+          194
+        ],
+        [
+          31,
+          50,
+          132,
+          199
+        ],
+        [
+          31,
+          36,
+          129,
+          184
+        ],
+        [
+          29,
+          15,
+          127,
+          159
+        ],
+        [
+          16,
+          35,
+          116,
+          186
+        ],
+        [
+          20,
+          34,
+          128,
+          183
+        ],
+        [
+          14,
+          46,
+          122,
+          194
+        ],
+        [
+          10,
+          58,
+          118,
+          203
+        ],
+        [
+          5,
+          59,
+          114,
+          206
+        ]
+      ],
+      "maxPoseHeight": 151,
+      "maxPoseUnionRatio": 0.7905759162303665,
+      "verticalOffsetRange": 47,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0464-row3.png",
+      "comparisonSHA": "ae1172e425c8bcab67789be52bda3598300dfaf687525f8beae9794beae1696f",
+      "proposedScale": 0.5827814569536424
+    },
+    {
+      "id": "A0494",
+      "row": 2,
+      "character": "S20-C075",
+      "cachedHeights": [
+        63,
+        64,
+        64,
+        63,
+        67,
+        66,
+        67,
+        67,
+        66,
+        69,
+        68,
+        68
+      ],
+      "maxCachedHeight": 69,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          148,
+          231
+        ],
+        "sharedBounds": [
+          14,
+          28,
+          124,
+          231
+        ],
+        "scale": 0.43349753694581283,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 110,
+      "unionHeight": 203,
+      "sourceSHA": "88f45b8cd3e2e4e324e3de299ae87f43d99bdaaceb3fd19e90926b2804619416",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          35,
+          50,
+          123,
+          197
+        ],
+        [
+          31,
+          48,
+          120,
+          196
+        ],
+        [
+          28,
+          48,
+          118,
+          197
+        ],
+        [
+          24,
+          58,
+          112,
+          203
+        ],
+        [
+          25,
+          50,
+          116,
+          202
+        ],
+        [
+          18,
+          28,
+          113,
+          180
+        ],
+        [
+          19,
+          44,
+          117,
+          199
+        ],
+        [
+          24,
+          43,
+          121,
+          197
+        ],
+        [
+          20,
+          44,
+          121,
+          197
+        ],
+        [
+          14,
+          61,
+          114,
+          219
+        ],
+        [
+          19,
+          69,
+          121,
+          226
+        ],
+        [
+          22,
+          74,
+          124,
+          231
+        ]
+      ],
+      "maxPoseHeight": 158,
+      "maxPoseUnionRatio": 0.7783251231527094,
+      "verticalOffsetRange": 51,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0494-row2.png",
+      "comparisonSHA": "ee88de94e5a61613ce58f2f3909b95bc9f3170319c9474e9c8a7e67d0c7063d5",
+      "proposedScale": 0.5569620253164557
+    },
+    {
+      "id": "A0495",
+      "row": 2,
+      "character": "S20-C079",
+      "cachedHeights": [
+        64,
+        63,
+        63,
+        63,
+        69,
+        69,
+        70,
+        70,
+        68,
+        67,
+        68,
+        67
+      ],
+      "maxCachedHeight": 70,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          151,
+          203
+        ],
+        "sharedBounds": [
+          25,
+          4,
+          151,
+          203
+        ],
+        "scale": 0.44221105527638194,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 126,
+      "unionHeight": 199,
+      "sourceSHA": "3dccfe00d453ecbfcfee6244aab7775e9709a738e2df54d8d0c8dd4d9e0f4425",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          35,
+          41,
+          137,
+          184
+        ],
+        [
+          37,
+          43,
+          137,
+          186
+        ],
+        [
+          39,
+          44,
+          136,
+          185
+        ],
+        [
+          28,
+          43,
+          131,
+          185
+        ],
+        [
+          43,
+          32,
+          145,
+          187
+        ],
+        [
+          36,
+          4,
+          144,
+          161
+        ],
+        [
+          27,
+          27,
+          135,
+          186
+        ],
+        [
+          28,
+          4,
+          135,
+          161
+        ],
+        [
+          38,
+          34,
+          151,
+          187
+        ],
+        [
+          33,
+          45,
+          147,
+          197
+        ],
+        [
+          31,
+          44,
+          144,
+          197
+        ],
+        [
+          25,
+          52,
+          137,
+          203
+        ]
+      ],
+      "maxPoseHeight": 159,
+      "maxPoseUnionRatio": 0.7989949748743719,
+      "verticalOffsetRange": 42,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0495-row2.png",
+      "comparisonSHA": "5844b881aa913420d649873f0d90aacad191ff73444d17f8d7024dc5ba7c10f5",
+      "proposedScale": 0.5534591194968553
+    },
+    {
+      "id": "A0528",
+      "row": 2,
+      "character": "S22-C011",
+      "cachedHeights": [
+        68,
+        68,
+        67,
+        68,
+        66,
+        68,
+        68,
+        70,
+        70,
+        70,
+        70,
+        69
+      ],
+      "maxCachedHeight": 70,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          156,
+          222
+        ],
+        "sharedBounds": [
+          21,
+          28,
+          134,
+          214
+        ],
+        "scale": 0.4731182795698925,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 113,
+      "unionHeight": 186,
+      "sourceSHA": "521c7b379788d9a0dfc7d5f2256ba1bcbb31b41404fa8fb47395547952fd2850",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          40,
+          51,
+          127,
+          195
+        ],
+        [
+          33,
+          50,
+          117,
+          193
+        ],
+        [
+          41,
+          51,
+          121,
+          194
+        ],
+        [
+          33,
+          49,
+          119,
+          192
+        ],
+        [
+          34,
+          56,
+          124,
+          194
+        ],
+        [
+          37,
+          49,
+          120,
+          193
+        ],
+        [
+          34,
+          42,
+          119,
+          187
+        ],
+        [
+          37,
+          28,
+          119,
+          177
+        ],
+        [
+          31,
+          49,
+          133,
+          197
+        ],
+        [
+          28,
+          64,
+          134,
+          211
+        ],
+        [
+          21,
+          67,
+          130,
+          214
+        ],
+        [
+          21,
+          69,
+          131,
+          213
+        ]
+      ],
+      "maxPoseHeight": 149,
+      "maxPoseUnionRatio": 0.8010752688172043,
+      "verticalOffsetRange": 37,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": false,
+      "reason": "Excluded: width limit or exact source max-pose ratio does not meet strict 80% criterion."
+    },
+    {
+      "id": "A0549",
+      "row": 2,
+      "character": "S22-C095",
+      "cachedHeights": [
+        64,
+        66,
+        67,
+        66,
+        66,
+        68,
+        66,
+        70,
+        66,
+        66,
+        66,
+        66
+      ],
+      "maxCachedHeight": 70,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          148,
+          192
+        ],
+        "sharedBounds": [
+          10,
+          3,
+          136,
+          189
+        ],
+        "scale": 0.4731182795698925,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 126,
+      "unionHeight": 186,
+      "sourceSHA": "e3796540474b32ae2a0bdec321f4db70fb346f74a19405a34c719ae48007efd0",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          35,
+          25,
+          130,
+          159
+        ],
+        [
+          31,
+          23,
+          126,
+          164
+        ],
+        [
+          25,
+          25,
+          120,
+          166
+        ],
+        [
+          20,
+          24,
+          114,
+          164
+        ],
+        [
+          36,
+          24,
+          129,
+          163
+        ],
+        [
+          32,
+          11,
+          127,
+          155
+        ],
+        [
+          24,
+          3,
+          117,
+          143
+        ],
+        [
+          22,
+          16,
+          119,
+          163
+        ],
+        [
+          33,
+          24,
+          136,
+          164
+        ],
+        [
+          22,
+          39,
+          126,
+          179
+        ],
+        [
+          16,
+          46,
+          120,
+          185
+        ],
+        [
+          10,
+          50,
+          115,
+          189
+        ]
+      ],
+      "maxPoseHeight": 147,
+      "maxPoseUnionRatio": 0.7903225806451613,
+      "verticalOffsetRange": 46,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0549-row2.png",
+      "comparisonSHA": "b23b54cc3c26e2f6e7837e269a274f31115588728929b84aa8d271b4d58b2b37",
+      "proposedScale": 0.5986394557823129
+    },
+    {
+      "id": "A0567",
+      "row": 2,
+      "character": "S23-C067",
+      "cachedHeights": [
+        64,
+        63,
+        63,
+        62,
+        63,
+        64,
+        65,
+        67,
+        65,
+        64,
+        64,
+        63
+      ],
+      "maxCachedHeight": 67,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          152,
+          217
+        ],
+        "sharedBounds": [
+          9,
+          3,
+          143,
+          209
+        ],
+        "scale": 0.42718446601941745,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 134,
+      "unionHeight": 206,
+      "sourceSHA": "010128adbde89cf137bd51789da9a4d357bb530be886470e82d660d630e9a7b1",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "rawBoxes": [
+        [
+          26,
+          42,
+          135,
+          193
+        ],
+        [
+          28,
+          42,
+          127,
+          191
+        ],
+        [
+          22,
+          42,
+          130,
+          190
+        ],
+        [
+          29,
+          42,
+          126,
+          188
+        ],
+        [
+          29,
+          55,
+          130,
+          202
+        ],
+        [
+          22,
+          31,
+          124,
+          180
+        ],
+        [
+          20,
+          3,
+          130,
+          155
+        ],
+        [
+          16,
+          28,
+          133,
+          182
+        ],
+        [
+          19,
+          36,
+          132,
+          187
+        ],
+        [
+          9,
+          37,
+          143,
+          188
+        ],
+        [
+          17,
+          50,
+          135,
+          199
+        ],
+        [
+          13,
+          62,
+          137,
+          209
+        ]
+      ],
+      "maxPoseHeight": 154,
+      "maxPoseUnionRatio": 0.7475728155339806,
+      "verticalOffsetRange": 54,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0567-row2.png",
+      "comparisonSHA": "6abf8ca23b57f1575442446798a27c440deaf67e43f965d2176d4955a75a72d9",
+      "proposedScale": 0.5714285714285714
+    },
+    {
+      "id": "A0568",
+      "row": 2,
+      "character": "S23-C071",
+      "cachedHeights": [
+        67,
+        67,
+        67,
+        66,
+        66,
+        67,
+        68,
+        68,
+        66,
+        63,
+        65,
+        64
+      ],
+      "maxCachedHeight": 68,
+      "registration": {
+        "row": 2,
+        "sourceCell": [
+          132,
+          214
+        ],
+        "sharedBounds": [
+          6,
+          3,
+          123,
+          211
+        ],
+        "scale": 0.4230769230769231,
+        "anchor": [
+          0.5,
+          1
+        ],
+        "method": "shared row scale and horizontal origin; planted-foot vertical registration"
+      },
+      "unionWidth": 117,
+      "unionHeight": 208,
+      "sourceSHA": "9d876e65f7567b566a2542b9f769f1ae1690a67dee1167f9dfecd1397f1a505c",
+      "sourceColumns": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12
+      ],
+      "rawBoxes": [
+        [
+          36,
+          33,
+          123,
+          191
+        ],
+        [
+          35,
+          34,
+          122,
+          191
+        ],
+        [
+          32,
+          34,
+          120,
+          191
+        ],
+        [
+          30,
+          36,
+          119,
+          191
+        ],
+        [
+          19,
+          38,
+          116,
+          194
+        ],
+        [
+          15,
+          33,
+          114,
+          191
+        ],
+        [
+          18,
+          12,
+          115,
+          172
+        ],
+        [
+          14,
+          3,
+          111,
+          163
+        ],
+        [
+          15,
+          30,
+          112,
+          185
+        ],
+        [
+          10,
+          57,
+          116,
+          205
+        ],
+        [
+          6,
+          58,
+          109,
+          211
+        ],
+        [
+          6,
+          59,
+          112,
+          211
+        ]
+      ],
+      "maxPoseHeight": 160,
+      "maxPoseUnionRatio": 0.7692307692307693,
+      "verticalOffsetRange": 48,
+      "widthWouldLimitCorrectedScale": false,
+      "eligible": true,
+      "reason": "Measured vertical travel, not body size or width, compresses even tallest pose below 80%.",
+      "comparisonImage": "assets/production/animation-expansion/review/scale-batch/A0568-row2.png",
+      "comparisonSHA": "4161785eee7364ea7cba2415b783d4ac8d72875c6b554d2aa0e3837f9e292d5b",
+      "proposedScale": 0.55
+    }
+  ],
+  "eligibleCount": 19,
+  "moduleSHA": "f719cc0bbf73385270fdb74fa2e69a5fd013f8f1d45627dbd91c8972aeb25c3c"
+}

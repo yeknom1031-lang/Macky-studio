@@ -1,0 +1,1452 @@
+{
+  "passed": true,
+  "at": "2026-10-04T21:03:28.741857+00:00",
+  "status": "All 24 final bundled-image panels visually inspected, including all 23 corrected characters.",
+  "scope": "192 selected characters: eight per stage. Each displayed clip uses frame 0 of base/walkBack/stairUp/stairDown/roleWork when present. Every final PNG was opened individually. This is sampled runtime presentation QA, not every frame or every character. The separate correction reports cover all 12 poses of the 23 opt-in rows.",
+  "passCriteria": [
+    "Displayed sampled bodies/props are complete without technical crop loss.",
+    "Sampled views remain recognizable as the same character.",
+    "Feet or intended seated/vehicle support baseline stay inside each tile.",
+    "All 23 corrected identities appear in the final actual-render panels with the corrected scale."
+  ],
+  "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+  "rendererSHA": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+  "sourceSHA": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+  "imageFingerprint": "16b8f4ef00d4a3ec5a564fc4f1ce960fefb1a5085451e451e6a1e0d690fb7d18",
+  "imageFileCount": 1353,
+  "automatedReport": "runtime-art-all.json",
+  "automatedReportSHA": "8c2c6d271529485a2793f20ecec3a84c1baa4bcb929b4f9e6c113a32e9ae3f28",
+  "peopleSampled": 192,
+  "displayedPoses": 910,
+  "optionalFallbackCells": 50,
+  "correctedCharacters": [
+    {
+      "character": "S02-C011",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 85,
+          "baseHeight": 86,
+          "ratio": 0.9884
+        },
+        {
+          "clip": "stairUp",
+          "height": 87,
+          "baseHeight": 86,
+          "ratio": 1.0116
+        },
+        {
+          "clip": "stairDown",
+          "height": 84,
+          "baseHeight": 86,
+          "ratio": 0.9767
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S13-C092",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 87,
+          "baseHeight": 86,
+          "ratio": 1.0116
+        },
+        {
+          "clip": "stairUp",
+          "height": 88,
+          "baseHeight": 86,
+          "ratio": 1.0233
+        },
+        {
+          "clip": "stairDown",
+          "height": 87,
+          "baseHeight": 86,
+          "ratio": 1.0116
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S13-C079",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 85,
+          "baseHeight": 87,
+          "ratio": 0.977
+        },
+        {
+          "clip": "stairUp",
+          "height": 84,
+          "baseHeight": 87,
+          "ratio": 0.9655
+        },
+        {
+          "clip": "stairDown",
+          "height": 88,
+          "baseHeight": 87,
+          "ratio": 1.0115
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S13-C077",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 84,
+          "baseHeight": 86,
+          "ratio": 0.9767
+        },
+        {
+          "clip": "stairUp",
+          "height": 83,
+          "baseHeight": 86,
+          "ratio": 0.9651
+        },
+        {
+          "clip": "stairDown",
+          "height": 85,
+          "baseHeight": 86,
+          "ratio": 0.9884
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S13-C085",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 82,
+          "baseHeight": 87,
+          "ratio": 0.9425
+        },
+        {
+          "clip": "stairUp",
+          "height": 88,
+          "baseHeight": 87,
+          "ratio": 1.0115
+        },
+        {
+          "clip": "stairDown",
+          "height": 84,
+          "baseHeight": 87,
+          "ratio": 0.9655
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S13-C080",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 88,
+          "baseHeight": 86,
+          "ratio": 1.0233
+        },
+        {
+          "clip": "stairUp",
+          "height": 85,
+          "baseHeight": 86,
+          "ratio": 0.9884
+        },
+        {
+          "clip": "stairDown",
+          "height": 83,
+          "baseHeight": 86,
+          "ratio": 0.9651
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S13-C087",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 81,
+          "baseHeight": 87,
+          "ratio": 0.931
+        },
+        {
+          "clip": "stairUp",
+          "height": 87,
+          "baseHeight": 87,
+          "ratio": 1.0
+        },
+        {
+          "clip": "stairDown",
+          "height": 86,
+          "baseHeight": 87,
+          "ratio": 0.9885
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S13-C088",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 82,
+          "baseHeight": 87,
+          "ratio": 0.9425
+        },
+        {
+          "clip": "stairUp",
+          "height": 85,
+          "baseHeight": 87,
+          "ratio": 0.977
+        },
+        {
+          "clip": "stairDown",
+          "height": 84,
+          "baseHeight": 87,
+          "ratio": 0.9655
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S13-C091",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 82,
+          "baseHeight": 87,
+          "ratio": 0.9425
+        },
+        {
+          "clip": "stairUp",
+          "height": 85,
+          "baseHeight": 87,
+          "ratio": 0.977
+        },
+        {
+          "clip": "stairDown",
+          "height": 88,
+          "baseHeight": 87,
+          "ratio": 1.0115
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S15-C051",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 86,
+          "baseHeight": 87,
+          "ratio": 0.9885
+        },
+        {
+          "clip": "stairUp",
+          "height": 81,
+          "baseHeight": 87,
+          "ratio": 0.931
+        },
+        {
+          "clip": "stairDown",
+          "height": 85,
+          "baseHeight": 87,
+          "ratio": 0.977
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S15-C091",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 82,
+          "baseHeight": 87,
+          "ratio": 0.9425
+        },
+        {
+          "clip": "stairUp",
+          "height": 83,
+          "baseHeight": 87,
+          "ratio": 0.954
+        },
+        {
+          "clip": "stairDown",
+          "height": 89,
+          "baseHeight": 87,
+          "ratio": 1.023
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S16-C067",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 84,
+          "baseHeight": 87,
+          "ratio": 0.9655
+        },
+        {
+          "clip": "stairUp",
+          "height": 86,
+          "baseHeight": 87,
+          "ratio": 0.9885
+        },
+        {
+          "clip": "stairDown",
+          "height": 88,
+          "baseHeight": 87,
+          "ratio": 1.0115
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S17-C088",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 88,
+          "baseHeight": 86,
+          "ratio": 1.0233
+        },
+        {
+          "clip": "stairUp",
+          "height": 87,
+          "baseHeight": 86,
+          "ratio": 1.0116
+        },
+        {
+          "clip": "stairDown",
+          "height": 81,
+          "baseHeight": 86,
+          "ratio": 0.9419
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S19-C056",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 85,
+          "baseHeight": 86,
+          "ratio": 0.9884
+        },
+        {
+          "clip": "stairUp",
+          "height": 86,
+          "baseHeight": 86,
+          "ratio": 1.0
+        },
+        {
+          "clip": "stairDown",
+          "height": 87,
+          "baseHeight": 86,
+          "ratio": 1.0116
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S19-C026",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 85,
+          "baseHeight": 85,
+          "ratio": 1.0
+        },
+        {
+          "clip": "stairUp",
+          "height": 87,
+          "baseHeight": 85,
+          "ratio": 1.0235
+        },
+        {
+          "clip": "stairDown",
+          "height": 87,
+          "baseHeight": 85,
+          "ratio": 1.0235
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S19-C028",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 87,
+          "baseHeight": 80,
+          "ratio": 1.0875
+        },
+        {
+          "clip": "stairUp",
+          "height": 87,
+          "baseHeight": 80,
+          "ratio": 1.0875
+        },
+        {
+          "clip": "stairDown",
+          "height": 87,
+          "baseHeight": 80,
+          "ratio": 1.0875
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S19-C027",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 83,
+          "baseHeight": 75,
+          "ratio": 1.1067
+        },
+        {
+          "clip": "stairUp",
+          "height": 88,
+          "baseHeight": 75,
+          "ratio": 1.1733
+        },
+        {
+          "clip": "stairDown",
+          "height": 89,
+          "baseHeight": 75,
+          "ratio": 1.1867
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S20-C079",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 80,
+          "baseHeight": 86,
+          "ratio": 0.9302
+        },
+        {
+          "clip": "stairUp",
+          "height": 86,
+          "baseHeight": 86,
+          "ratio": 1.0
+        },
+        {
+          "clip": "stairDown",
+          "height": 84,
+          "baseHeight": 86,
+          "ratio": 0.9767
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S20-C075",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 82,
+          "baseHeight": 87,
+          "ratio": 0.9425
+        },
+        {
+          "clip": "stairUp",
+          "height": 85,
+          "baseHeight": 87,
+          "ratio": 0.977
+        },
+        {
+          "clip": "stairDown",
+          "height": 85,
+          "baseHeight": 87,
+          "ratio": 0.977
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S22-C095",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 80,
+          "baseHeight": 86,
+          "ratio": 0.9302
+        },
+        {
+          "clip": "stairUp",
+          "height": 82,
+          "baseHeight": 86,
+          "ratio": 0.9535
+        },
+        {
+          "clip": "stairDown",
+          "height": 83,
+          "baseHeight": 86,
+          "ratio": 0.9651
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S22-C096",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 85,
+          "baseHeight": 86,
+          "ratio": 0.9884
+        },
+        {
+          "clip": "stairUp",
+          "height": 85,
+          "baseHeight": 86,
+          "ratio": 0.9884
+        },
+        {
+          "clip": "stairDown",
+          "height": 83,
+          "baseHeight": 86,
+          "ratio": 0.9651
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S23-C067",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 87,
+          "baseHeight": 86,
+          "ratio": 1.0116
+        },
+        {
+          "clip": "stairUp",
+          "height": 84,
+          "baseHeight": 86,
+          "ratio": 0.9767
+        },
+        {
+          "clip": "stairDown",
+          "height": 86,
+          "baseHeight": 86,
+          "ratio": 1.0
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    },
+    {
+      "character": "S23-C071",
+      "passed": true,
+      "sampledDirectional": [
+        {
+          "clip": "walkBack",
+          "height": 87,
+          "baseHeight": 87,
+          "ratio": 1.0
+        },
+        {
+          "clip": "stairUp",
+          "height": 86,
+          "baseHeight": 87,
+          "ratio": 0.9885
+        },
+        {
+          "clip": "stairDown",
+          "height": 85,
+          "baseHeight": 87,
+          "ratio": 0.977
+        }
+      ],
+      "scope": "Runtime frame 0 of available directional clips; all 12 poses covered by technical correction evidence.",
+      "visual": "Same identity, complete silhouette/props, restored common scale, planted feet retained."
+    }
+  ],
+  "scaleCorrectionReport": "foot-aligned-scale-correction.json",
+  "batchScaleCorrectionReport": "scale-batch/correction.json",
+  "buildIntegrityReport": "final-bitmap-build-integrity.json",
+  "buildIntegrityReportSHA": "d6888310bc763ec8b858cb8baeb160b9e1497807b1494ed861bf6c7c7eac27ff",
+  "remainingScaleObservations": {
+    "note": "Single-frame height variation remains for some unchanged characters and is retained as an observation. The completed 600-sheet audit found no uncorrected row meeting the agreed strict criterion: even its tallest pose below 80% because of shared vertical travel, without width limiting. A naturally lower individual pose is not by itself a new defect.",
+    "samples": [
+      {
+        "character": "S01-C096",
+        "clip": "walkBack",
+        "height": 68,
+        "baseHeight": 86,
+        "ratio": 0.7907
+      },
+      {
+        "character": "S01-C096",
+        "clip": "stairDown",
+        "height": 65,
+        "baseHeight": 86,
+        "ratio": 0.7558
+      },
+      {
+        "character": "S04-C071",
+        "clip": "walkBack",
+        "height": 67,
+        "baseHeight": 85,
+        "ratio": 0.7882
+      },
+      {
+        "character": "S04-C091",
+        "clip": "walkBack",
+        "height": 66,
+        "baseHeight": 88,
+        "ratio": 0.75
+      },
+      {
+        "character": "S04-C091",
+        "clip": "stairUp",
+        "height": 66,
+        "baseHeight": 88,
+        "ratio": 0.75
+      },
+      {
+        "character": "S04-C091",
+        "clip": "stairDown",
+        "height": 65,
+        "baseHeight": 88,
+        "ratio": 0.7386
+      },
+      {
+        "character": "S16-C036",
+        "clip": "stairDown",
+        "height": 64,
+        "baseHeight": 85,
+        "ratio": 0.7529
+      },
+      {
+        "character": "S16-C011",
+        "clip": "walkBack",
+        "height": 67,
+        "baseHeight": 84,
+        "ratio": 0.7976
+      },
+      {
+        "character": "S20-C076",
+        "clip": "walkBack",
+        "height": 69,
+        "baseHeight": 88,
+        "ratio": 0.7841
+      },
+      {
+        "character": "S21-C071",
+        "clip": "walkBack",
+        "height": 69,
+        "baseHeight": 88,
+        "ratio": 0.7841
+      },
+      {
+        "character": "S21-C056",
+        "clip": "stairDown",
+        "height": 66,
+        "baseHeight": 85,
+        "ratio": 0.7765
+      },
+      {
+        "character": "S22-C011",
+        "clip": "walkBack",
+        "height": 68,
+        "baseHeight": 87,
+        "ratio": 0.7816
+      },
+      {
+        "character": "S22-C011",
+        "clip": "stairUp",
+        "height": 66,
+        "baseHeight": 87,
+        "ratio": 0.7586
+      },
+      {
+        "character": "S22-C076",
+        "clip": "walkBack",
+        "height": 68,
+        "baseHeight": 86,
+        "ratio": 0.7907
+      }
+    ],
+    "remainingQualifyingRows": 0
+  },
+  "stages": [
+    {
+      "stage": "S01",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S01.png",
+      "imageSHA": "8edf8f737a52856786d99a33f15f9354e00350aaee67ce574c6e111375d16c8d",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "7e5afc1db7273783cc2f0c523f91529e93027cff0f3ea436c903bfa74c62c2c5",
+      "visuallyInspected": true,
+      "characters": [
+        "S01-C026",
+        "S01-C071",
+        "S01-C036",
+        "S01-C096",
+        "S01-C006",
+        "S01-C011",
+        "S01-C041",
+        "S01-C001"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        91,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S02",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S02.png",
+      "imageSHA": "52d90ee0b77317284b202259c64fc4db2f0ecae75835310b0294abe72a86ee05",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "4bd9a96cd8a99ba747f00a63b09c5af5d5d2122116cf9702abad7eca4922d01d",
+      "visuallyInspected": true,
+      "characters": [
+        "S02-C011",
+        "S02-C061",
+        "S02-C051",
+        "S02-C001",
+        "S02-C036",
+        "S02-C026",
+        "S02-C046",
+        "S02-C066"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 39,
+      "missingOptionalCells": 1,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S03",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S03.png",
+      "imageSHA": "b0953c521149ca12addcb4f71ce9dc7167cd5b670103b7694d36058b730b7c07",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "b5c4b5150fd8cf4a8b78439c5107a6c7cb7b28d96bb6db4b679d51a549315441",
+      "visuallyInspected": true,
+      "characters": [
+        "S03-C076",
+        "S03-C091",
+        "S03-C086",
+        "S03-C061",
+        "S03-C046",
+        "S03-C051",
+        "S03-C001",
+        "S03-C036"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        91,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S04",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S04.png",
+      "imageSHA": "70e2527d230363039df6eb00af5206d1d8e854772dbdb6a1cf3ef0001ebe8b84",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "afa271cb1352860f5ce191a85667866c4e57a9037ee799e90e6e6dfdc9f6a1c7",
+      "visuallyInspected": true,
+      "characters": [
+        "S04-C071",
+        "S04-C021",
+        "S04-C036",
+        "S04-C096",
+        "S04-C091",
+        "S04-C046",
+        "S04-C026",
+        "S04-C061"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        92
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S05",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S05.png",
+      "imageSHA": "b1459437b1cccef55a1a13513415d5ffe8070247fab3baa9c3852b54988013a3",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "0ddd70ff28340c906cf00765a40a309959105c0c546bbb0b165beab3e0351fb0",
+      "visuallyInspected": true,
+      "characters": [
+        "S05-C001",
+        "S05-C056",
+        "S05-C096",
+        "S05-C051",
+        "S05-C031",
+        "S05-C026",
+        "S05-C041",
+        "S05-C066"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S06",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S06.png",
+      "imageSHA": "8bf52408dd62f771baacee79c6aa49aaa42f9724b05451b707ed30b1f29f433b",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "1c2f32c1649e47980887ca07b73c158d9a2710e01681eeff3c751ea10a804599",
+      "visuallyInspected": true,
+      "characters": [
+        "S06-C066",
+        "S06-C031",
+        "S06-C086",
+        "S06-C006",
+        "S06-C051",
+        "S06-C021",
+        "S06-C096",
+        "S06-C046"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        91,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S07",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S07.png",
+      "imageSHA": "fd84ac5ba74a168b0cfcf7ca861c44f3c236d9c39be08cda0ff77c610d67d679",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "a8ad570ad2a9575321379f890132a30136ad389dd7248ac40a9e0d2ed12abda6",
+      "visuallyInspected": true,
+      "characters": [
+        "S07-C096",
+        "S07-C006",
+        "S07-C056",
+        "S07-C031",
+        "S07-C011",
+        "S07-C001",
+        "S07-C036",
+        "S07-C087"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S08",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S08.png",
+      "imageSHA": "3eb30d380c6f82b21b7db1e0e1b9fc54c258c01539f2c83ef1b15303e09a518a",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "e64fd0f91c4088131f29289026cda6b7950cb879d746a324d93b21c6d571c962",
+      "visuallyInspected": true,
+      "characters": [
+        "S08-C031",
+        "S08-C056",
+        "S08-C076",
+        "S08-C046",
+        "S08-C026",
+        "S08-C016",
+        "S08-C036",
+        "S08-C021"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 34,
+      "missingOptionalCells": 6,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S09",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S09.png",
+      "imageSHA": "54c73c6a324c846c3131c0454243067c63bbad6387254234ccfb6692ddaddb49",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "e8504bccefc354bd981b16d6d5ea76a9af05496b26403dafd4a781d1de2c3d39",
+      "visuallyInspected": true,
+      "characters": [
+        "S09-C071",
+        "S09-C001",
+        "S09-C016",
+        "S09-C091",
+        "S09-C011",
+        "S09-C076",
+        "S09-C066",
+        "S09-C081"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S10",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S10.png",
+      "imageSHA": "eb3255938db97b1db74efb0a1a1d40dd5a9f397e865f40e72360baf5837bc05b",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "74d6cc00584ed7351cd64b30a78e267de369081d861b53a305e770fae460add1",
+      "visuallyInspected": true,
+      "characters": [
+        "S10-C041",
+        "S10-C011",
+        "S10-C016",
+        "S10-C096",
+        "S10-C081",
+        "S10-C061",
+        "S10-C076",
+        "S10-C006"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 33,
+      "missingOptionalCells": 7,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        92
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S11",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S11.png",
+      "imageSHA": "4a1947abebad71c9d3a995090189a55f156f131d7b4a5883c2b146e01ab98c46",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "3eef83d6ea8e59d39d9300728e6ccd6d81dd7499c20f60f69aaaa99f444bccfc",
+      "visuallyInspected": true,
+      "characters": [
+        "S11-C011",
+        "S11-C036",
+        "S11-C056",
+        "S11-C066",
+        "S11-C006",
+        "S11-C021",
+        "S11-C001",
+        "S11-C076"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 31,
+      "missingOptionalCells": 9,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        92
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S12",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S12.png",
+      "imageSHA": "5a8cfefd0778f60741463b4470859d3b0b1927146343f2f8c4344f624f71e47c",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "461e44d3b10e48ea0ac9880a483835091636b27796bab0c099fb444587b2b14f",
+      "visuallyInspected": true,
+      "characters": [
+        "S12-C081",
+        "S12-C091",
+        "S12-C031",
+        "S12-C056",
+        "S12-C036",
+        "S12-C016",
+        "S12-C021",
+        "S12-C067"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 34,
+      "missingOptionalCells": 6,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S13",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S13.png",
+      "imageSHA": "9711438ed6ea2c5501e26876c33ad7028ae179cc15bcf220821e5735382fd12d",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "ecad3354fe4b700f2d0f29606cb21095ec484a500f89edc5346a8133b73b3a94",
+      "visuallyInspected": true,
+      "characters": [
+        "S13-C092",
+        "S13-C079",
+        "S13-C077",
+        "S13-C085",
+        "S13-C080",
+        "S13-C087",
+        "S13-C088",
+        "S13-C091"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 33,
+      "missingOptionalCells": 7,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S14",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S14.png",
+      "imageSHA": "ffa732a6ae80fc207e70b6547356d87b94ba9d0b392245909715c164dc51757e",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "622666825155a978bed8d486adb432aca222fe3ef97d127af1e9a62f1a064785",
+      "visuallyInspected": true,
+      "characters": [
+        "S14-C021",
+        "S14-C031",
+        "S14-C036",
+        "S14-C011",
+        "S14-C056",
+        "S14-C051",
+        "S14-C071",
+        "S14-C066"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        92
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S15",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S15.png",
+      "imageSHA": "dbd1672b611d94d97b8b380da0e88739dad3ad20e2fc64b925b0c02cea1eeb5a",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "8e9061603ecad1e522a272dea009615dfe5b5644b7c6fd6bd473621c78e1c40c",
+      "visuallyInspected": true,
+      "characters": [
+        "S15-C051",
+        "S15-C091",
+        "S15-C011",
+        "S15-C031",
+        "S15-C016",
+        "S15-C036",
+        "S15-C026",
+        "S15-C046"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        92
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S16",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S16.png",
+      "imageSHA": "5e68835a9cadbcad30909cd16626b9330b2308443a8bbac1d64f4de853605c77",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "b45c4f7ef2d211a92b55c3ffdf4edf612b8d71e0b0103a21b1ce07df05f5ab76",
+      "visuallyInspected": true,
+      "characters": [
+        "S16-C067",
+        "S16-C086",
+        "S16-C061",
+        "S16-C046",
+        "S16-C036",
+        "S16-C011",
+        "S16-C091",
+        "S16-C041"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 39,
+      "missingOptionalCells": 1,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S17",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S17.png",
+      "imageSHA": "531f3050684b37e3b07c8ba0b810374351369d757ebd1c6334e6f2a0054d2872",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "50f1011cc07c2406165ea2edca4b4bc72f5d76231ecfc7faaba3bc8826f39189",
+      "visuallyInspected": true,
+      "characters": [
+        "S17-C088",
+        "S17-C021",
+        "S17-C036",
+        "S17-C061",
+        "S17-C091",
+        "S17-C057",
+        "S17-C016",
+        "S17-C051"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 39,
+      "missingOptionalCells": 1,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S18",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S18.png",
+      "imageSHA": "18d0bfb244ae593a3d12bd3adfd83d86928a1647a15b37daa93bc6b1e99e9522",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "879069d3803625818935bf1f16d1b7478bbbda287fdf7fff2afcc1e8ae5dded7",
+      "visuallyInspected": true,
+      "characters": [
+        "S18-C036",
+        "S18-C066",
+        "S18-C091",
+        "S18-C011",
+        "S18-C006",
+        "S18-C081",
+        "S18-C056",
+        "S18-C076"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S19",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S19.png",
+      "imageSHA": "72a96aaa27c5c9a3bad31646d993f06875bfbfd3184b8cb83170af0d5964faa1",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "0cc558c2530ab54eea3cc11259fbccddfb6579dbb211953191f0d92e2168d5e0",
+      "visuallyInspected": true,
+      "characters": [
+        "S19-C056",
+        "S19-C026",
+        "S19-C028",
+        "S19-C027",
+        "S19-C036",
+        "S19-C046",
+        "S19-C076",
+        "S19-C091"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 38,
+      "missingOptionalCells": 2,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S20",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S20.png",
+      "imageSHA": "4f19c31b7f683f1317a3193e6b0b233359e20305b11ee2c7a0a340955485b5db",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "efbfaa138d9665585d54e0e89a77a4b69b4cc8edce801026fe82308d340fcda9",
+      "visuallyInspected": true,
+      "characters": [
+        "S20-C079",
+        "S20-C075",
+        "S20-C071",
+        "S20-C001",
+        "S20-C061",
+        "S20-C041",
+        "S20-C056",
+        "S20-C076"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 38,
+      "missingOptionalCells": 2,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S21",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S21.png",
+      "imageSHA": "553e6d5ec38a75c047f75996ce2b31d4e63fcbe9a29616fde106e814ed35fe54",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "30e1ae0b36309ea6113befd33ea3589a9f8ff7bf0c2a0ed66b00df996da5b538",
+      "visuallyInspected": true,
+      "characters": [
+        "S21-C051",
+        "S21-C096",
+        "S21-C026",
+        "S21-C071",
+        "S21-C056",
+        "S21-C066",
+        "S21-C046",
+        "S21-C081"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 40,
+      "missingOptionalCells": 0,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S22",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S22.png",
+      "imageSHA": "677e3aaca77f8bee05c932cd2da1a53d656a28ccb6b248f175e40516beb91c73",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "b9574ea2d01c2d21761a576a33daf6c6f752bd9aabde840ff9a5d588cedab7a0",
+      "visuallyInspected": true,
+      "characters": [
+        "S22-C095",
+        "S22-C096",
+        "S22-C006",
+        "S22-C021",
+        "S22-C061",
+        "S22-C011",
+        "S22-C081",
+        "S22-C076"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 39,
+      "missingOptionalCells": 1,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S23",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S23.png",
+      "imageSHA": "e543a36a959b2a2ec456bbbdc861ac23fcc5b201cea939e24a3ed396b79e71ab",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "97952b04faec1301e7b470960dcfa6fe9cada6366a1cb42cfa3a76b932525b4b",
+      "visuallyInspected": true,
+      "characters": [
+        "S23-C067",
+        "S23-C071",
+        "S23-C051",
+        "S23-C026",
+        "S23-C096",
+        "S23-C021",
+        "S23-C001",
+        "S23-C041"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 38,
+      "missingOptionalCells": 2,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        93
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    },
+    {
+      "stage": "S24",
+      "passed": true,
+      "image": "assets/production/animation-expansion/review/runtime-poses-S24.png",
+      "imageSHA": "6bc437c03f4b03287dc13d6453ee33d63a64b004b64e5f1b37d44764aa5fce54",
+      "dataSHA": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "imageFingerprint": "a2259db587c92e46714d72cccdfcea6313a73c4f66771f381d3485ba0f8e850d",
+      "visuallyInspected": true,
+      "characters": [
+        "S24-C076",
+        "S24-C081",
+        "S24-C031",
+        "S24-C006",
+        "S24-C071",
+        "S24-C021",
+        "S24-C016",
+        "S24-C011"
+      ],
+      "peopleSampled": 8,
+      "displayedPoses": 35,
+      "missingOptionalCells": 5,
+      "clipping": false,
+      "identityMismatch": false,
+      "feetAlignment": "passed",
+      "footPixelRange": [
+        90,
+        92
+      ],
+      "notes": "Final bundled renderer panel individually viewed. Complete bodies/props, recognizable identities and planted feet. Missing optional clips use the existing runtime fallback."
+    }
+  ]
+}

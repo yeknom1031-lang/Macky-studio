@@ -1,0 +1,19 @@
+{
+  "id": "A0675",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:21:29.267234+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ],
+  "notes": [
+    "誘導灯・望遠鏡・カメラは自然な反復で採用。row 1 は切符が3/6/7コマで消えるため既存動作を維持。"
+  ],
+  "packReport": "review/A0675-pack.json",
+  "preview": "review/A0675-check.jpg"
+}

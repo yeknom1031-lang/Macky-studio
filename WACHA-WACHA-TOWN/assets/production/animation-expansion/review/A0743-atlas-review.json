@@ -1,0 +1,355 @@
+{
+  "id": "A0743",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "4a14b0afbe4f781cd1ab14bcecf5969c59f17fdd6e2b1cf255d4d41728282c32",
+  "alphaZeroFraction": 0.48349,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S08-ENV05",
+      "name": "露天風呂の湯けむり",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12527,
+          "rgbaSHA256": "c111d4f8343c03290f38d36a8a5aa6ad0d744a62ce815c2a4a95994b5b059e1f"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 15679,
+          "rgbaSHA256": "4aa4c08c18eaac23ee96a07e01e5c977dcc1bce926f8dca9a178ab89bd698ed9"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 16877,
+          "rgbaSHA256": "bec336374e045f41af6034790cbb5845e173cea03cf59e46c2632c22ffb4481b"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14274,
+          "rgbaSHA256": "7f5bb9430245f6209aa8a7bf62a11625327df405074131ba73fbb6c97406a51a"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 17036,
+          "rgbaSHA256": "f5d7d91a95be46e9c6d5d97523a57f232de6891ce281b216c8c5358fbf10e7bc"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 13725,
+          "rgbaSHA256": "09e314d3e2f0fef93976da61ef3157126847e8bdfc1ce8bdb3dbf72627911334"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11835,
+          "rgbaSHA256": "043a70b7856f1545c369311349ea6db09af5981d56af4fa2bfdd1d377ae1d7b5"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12387,
+          "rgbaSHA256": "1c4a0c15f909d65fff93c1383706646593349d290532ceec5f82aa79119e62b5"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S08-ENV06",
+      "name": "足湯のゆらぎ",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 12996,
+          "rgbaSHA256": "3f461f52ae6cbc4f6c43395a1ce2d84117b47bd876900f953d90d824779a9a0d"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 14220,
+          "rgbaSHA256": "4c2f655dd59ecdad290a278b6f01f648960a75c86640a69693c488be8070e89c"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 14591,
+          "rgbaSHA256": "b2ae6c4c98288bd1d001100e300a5ef0a3019e1bfb7d8ec5e7f6587359762bcc"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 15638,
+          "rgbaSHA256": "d4a77b7a696adf4f922ade1be9aedfe94551e2f8cbc681f5475b5217dd8863b3"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16288,
+          "rgbaSHA256": "9273f53ad205c414f6465bc86781f9a0d56d4a27ea2415fab0c1cc8950d89cab"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 14480,
+          "rgbaSHA256": "4341316e41c12237a1ddfaa691ed0b32ee3f856108f2380a087be2447c768647"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 14828,
+          "rgbaSHA256": "934962db181a307ddee7d5ca6fd86b15c0a2a744b1f887d0bb80e868b0f61417"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 12801,
+          "rgbaSHA256": "edfd3909fe7b1c67ba4dd4ce4a0cd83729c5033ab57c4cefb83306a8b9e93139"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S08-ENV07",
+      "name": "川石のしぶき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8040,
+          "rgbaSHA256": "81619cc7070b316085c34106fa34563effa129f622b7d2a280f0cf549549c3d3"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9946,
+          "rgbaSHA256": "05d3258a776d022ab4a8c4a05db39efb2adb723ea0d84a8d896b36efbd0fceeb"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11621,
+          "rgbaSHA256": "d9c7eda8d1cab53eee79bd12b6baa4cbd396f4a60ff2d627a758f49864f12d07"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10337,
+          "rgbaSHA256": "61fe66252df90a18aea847812c0880843ae3d556f7ff8e5dc34c4e90c64c5a3f"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10425,
+          "rgbaSHA256": "5cdac6cd66c43bbca1f2400fa8c0ef5827b68f4cc725509e05522b62d5f56156"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9117,
+          "rgbaSHA256": "c220ca737208a0d24df8430d644da28d2a24f29075eaa4ab7d7477b127c03ee2"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8971,
+          "rgbaSHA256": "03424b1def0ae820b7f1348ffe696a81a1ac97693a62bc86e9a1aefba2ed9e4c"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8013,
+          "rgbaSHA256": "364ba166cc39312188755ca6e58d6392ac338a35a08802e63ed0a9bb2a632172"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S08-ENV08",
+      "name": "木の湯桶のしずく",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3428,
+          "rgbaSHA256": "b430c8e356ad0976a66b79bb8e8394fda8054dc465ea1175e981b5144649d04b"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3255,
+          "rgbaSHA256": "67751a5bd57bc6ef112beeb3843ce7a9efbcf92b78687f3abbff1fdda7385277"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2949,
+          "rgbaSHA256": "a80687d6adb0c18742f64441e3305bc707ce2c6226dbccbc7e2fe56af6786e7c"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3799,
+          "rgbaSHA256": "2795dfcb9331ac4ad3db04e9b1e83678c44e859a7798d9706441ace92efc6fb2"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3553,
+          "rgbaSHA256": "cf0a8ebf2853131500adf0d47e14c4179abdf8b40132f616fc31f1744af582c3"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2254,
+          "rgbaSHA256": "0f8bb1acefdaa257e0f6820b85bf88074d1a12830c1fae965010ccc3db7943be"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2315,
+          "rgbaSHA256": "682938267f1177ab64196fc77e8980524f591a159900dce0d41f3e7dc564fbd0"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3464,
+          "rgbaSHA256": "9a30142e2ab37a84af5953ebb5b00547d318f1c25a82b1c6e1c8f81b8a510630"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent frames. Color compositing verifies true transparency. No duplicated building or complete equipment. Final scene placement pending."
+}

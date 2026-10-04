@@ -1,0 +1,2065 @@
+{
+  "reviewedAt": "2026-10-04T19:08:02.431395+00:00",
+  "reviewer": "gameplay_qa",
+  "range": "A0201-A0288",
+  "invocations": 88,
+  "directionalSheets": 87,
+  "baseRepairSheets": 1,
+  "allReferenceOriginalAndPackedViewed": true,
+  "statusCounts": {
+    "accepted": 42,
+    "accepted-partial": 45,
+    "rejected": 1
+  },
+  "charactersWithAtLeastOneNewClip": 310,
+  "usableClipCounts": {
+    "walkBack": 263,
+    "stairUp": 305,
+    "stairDown": 301
+  },
+  "unusedClipsUseExistingAnimation": true,
+  "notes": [
+    "Each sheet invoked once. A0289-A0300 transferred to root before invocation.",
+    "A0268 was changed by root from directional to one-character original identity repair before invocation; root reviewed extracted original overrides.",
+    "Reference-left inventory enforced; added work props, missing carry props and anatomy/identity defects rejected per row or clip.",
+    "Valid three-pose loops may reuse a frame to avoid inconsistent fourth-frame prop flips without regeneration."
+  ],
+  "sheets": [
+    {
+      "id": "A0201",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0201.png",
+      "source": "source/A0201.png",
+      "review": "review/A0201.json"
+    },
+    {
+      "id": "A0202",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0202.png",
+      "source": "source/A0202.png",
+      "review": "review/A0202.json"
+    },
+    {
+      "id": "A0203",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0203.png",
+      "source": "source/A0203.png",
+      "review": "review/A0203.json"
+    },
+    {
+      "id": "A0204",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0204.png",
+      "source": "source/A0204.png",
+      "review": "review/A0204.json"
+    },
+    {
+      "id": "A0205",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0205.png",
+      "source": "source/A0205.png",
+      "review": "review/A0205.json"
+    },
+    {
+      "id": "A0206",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0206.png",
+      "source": "source/A0206.png",
+      "review": "review/A0206.json"
+    },
+    {
+      "id": "A0207",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0207.png",
+      "source": "source/A0207.png",
+      "review": "review/A0207.json"
+    },
+    {
+      "id": "A0208",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0208.png",
+      "source": "source/A0208.png",
+      "review": "review/A0208.json"
+    },
+    {
+      "id": "A0209",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0209.png",
+      "source": "source/A0209.png",
+      "review": "review/A0209.json"
+    },
+    {
+      "id": "A0210",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0210.png",
+      "source": "source/A0210.png",
+      "review": "review/A0210.json"
+    },
+    {
+      "id": "A0211",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0211.png",
+      "source": "source/A0211.png",
+      "review": "review/A0211.json"
+    },
+    {
+      "id": "A0212",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ],
+        "1": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {
+        "1": {
+          "stairUp": [
+            5,
+            6,
+            7,
+            6
+          ]
+        }
+      },
+      "clips": {
+        "stairUp": 4,
+        "stairDown": 4,
+        "walkBack": 2
+      },
+      "reference": "references/A0212.png",
+      "source": "source/A0212.png",
+      "review": "review/A0212.json"
+    },
+    {
+      "id": "A0213",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0213.png",
+      "source": "source/A0213.png",
+      "review": "review/A0213.json"
+    },
+    {
+      "id": "A0214",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0214.png",
+      "source": "source/A0214.png",
+      "review": "review/A0214.json"
+    },
+    {
+      "id": "A0215",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0215.png",
+      "source": "source/A0215.png",
+      "review": "review/A0215.json"
+    },
+    {
+      "id": "A0216",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0216.png",
+      "source": "source/A0216.png",
+      "review": "review/A0216.json"
+    },
+    {
+      "id": "A0217",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0217.png",
+      "source": "source/A0217.png",
+      "review": "review/A0217.json"
+    },
+    {
+      "id": "A0218",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0218.png",
+      "source": "source/A0218.png",
+      "review": "review/A0218.json"
+    },
+    {
+      "id": "A0219",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "2": [
+          "walkBack",
+          "stairUp"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 4
+      },
+      "reference": "references/A0219.png",
+      "source": "source/A0219.png",
+      "review": "review/A0219.json"
+    },
+    {
+      "id": "A0220",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ],
+        "1": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0220.png",
+      "source": "source/A0220.png",
+      "review": "review/A0220.json"
+    },
+    {
+      "id": "A0221",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0221.png",
+      "source": "source/A0221.png",
+      "review": "review/A0221.json"
+    },
+    {
+      "id": "A0222",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0222.png",
+      "source": "source/A0222.png",
+      "review": "review/A0222.json"
+    },
+    {
+      "id": "A0223",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0223.png",
+      "source": "source/A0223.png",
+      "review": "review/A0223.json"
+    },
+    {
+      "id": "A0224",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0224.png",
+      "source": "source/A0224.png",
+      "review": "review/A0224.json"
+    },
+    {
+      "id": "A0225",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "2": [
+          "stairDown"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 3
+      },
+      "reference": "references/A0225.png",
+      "source": "source/A0225.png",
+      "review": "review/A0225.json"
+    },
+    {
+      "id": "A0226",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0226.png",
+      "source": "source/A0226.png",
+      "review": "review/A0226.json"
+    },
+    {
+      "id": "A0227",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0227.png",
+      "source": "source/A0227.png",
+      "review": "review/A0227.json"
+    },
+    {
+      "id": "A0228",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "1": [
+          "walkBack",
+          "stairDown"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 4,
+        "stairDown": 3
+      },
+      "reference": "references/A0228.png",
+      "source": "source/A0228.png",
+      "review": "review/A0228.json"
+    },
+    {
+      "id": "A0229",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0229.png",
+      "source": "source/A0229.png",
+      "review": "review/A0229.json"
+    },
+    {
+      "id": "A0230",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0230.png",
+      "source": "source/A0230.png",
+      "review": "review/A0230.json"
+    },
+    {
+      "id": "A0231",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "1": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 1,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0231.png",
+      "source": "source/A0231.png",
+      "review": "review/A0231.json"
+    },
+    {
+      "id": "A0232",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0232.png",
+      "source": "source/A0232.png",
+      "review": "review/A0232.json"
+    },
+    {
+      "id": "A0233",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "1": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 2,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0233.png",
+      "source": "source/A0233.png",
+      "review": "review/A0233.json"
+    },
+    {
+      "id": "A0234",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0234.png",
+      "source": "source/A0234.png",
+      "review": "review/A0234.json"
+    },
+    {
+      "id": "A0235",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0235.png",
+      "source": "source/A0235.png",
+      "review": "review/A0235.json"
+    },
+    {
+      "id": "A0236",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "2": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0236.png",
+      "source": "source/A0236.png",
+      "review": "review/A0236.json"
+    },
+    {
+      "id": "A0237",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "stairUp": 4,
+        "stairDown": 4,
+        "walkBack": 2
+      },
+      "reference": "references/A0237.png",
+      "source": "source/A0237.png",
+      "review": "review/A0237.json"
+    },
+    {
+      "id": "A0238",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1
+      ],
+      "disabledClipsByRow": {
+        "1": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 1,
+        "stairUp": 2,
+        "stairDown": 2
+      },
+      "reference": "references/A0238.png",
+      "source": "source/A0238.png",
+      "review": "review/A0238.json"
+    },
+    {
+      "id": "A0239",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0239.png",
+      "source": "source/A0239.png",
+      "review": "review/A0239.json"
+    },
+    {
+      "id": "A0240",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ],
+        "1": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0240.png",
+      "source": "source/A0240.png",
+      "review": "review/A0240.json"
+    },
+    {
+      "id": "A0241",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ],
+        "1": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "stairUp": 4,
+        "stairDown": 4,
+        "walkBack": 1
+      },
+      "reference": "references/A0241.png",
+      "source": "source/A0241.png",
+      "review": "review/A0241.json"
+    },
+    {
+      "id": "A0242",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ],
+        "1": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0242.png",
+      "source": "source/A0242.png",
+      "review": "review/A0242.json"
+    },
+    {
+      "id": "A0243",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "2": [
+          "stairUp",
+          "stairDown"
+        ],
+        "3": [
+          "stairUp",
+          "stairDown"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 2
+      },
+      "reference": "references/A0243.png",
+      "source": "source/A0243.png",
+      "review": "review/A0243.json"
+    },
+    {
+      "id": "A0244",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0244.png",
+      "source": "source/A0244.png",
+      "review": "review/A0244.json"
+    },
+    {
+      "id": "A0245",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ],
+        "1": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {
+        "0": {
+          "stairUp": [
+            5,
+            6,
+            7,
+            6
+          ]
+        }
+      },
+      "clips": {
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0245.png",
+      "source": "source/A0245.png",
+      "review": "review/A0245.json"
+    },
+    {
+      "id": "A0246",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0246.png",
+      "source": "source/A0246.png",
+      "review": "review/A0246.json"
+    },
+    {
+      "id": "A0247",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "1": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "stairUp": 3,
+        "stairDown": 3,
+        "walkBack": 1
+      },
+      "reference": "references/A0247.png",
+      "source": "source/A0247.png",
+      "review": "review/A0247.json"
+    },
+    {
+      "id": "A0248",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "1": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "stairUp": 3,
+        "stairDown": 3,
+        "walkBack": 1
+      },
+      "reference": "references/A0248.png",
+      "source": "source/A0248.png",
+      "review": "review/A0248.json"
+    },
+    {
+      "id": "A0249",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "1": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {
+        "0": {
+          "stairUp": [
+            4,
+            5,
+            7,
+            5
+          ]
+        },
+        "1": {
+          "stairUp": [
+            4,
+            5,
+            7,
+            5
+          ]
+        },
+        "2": {
+          "stairUp": [
+            4,
+            5,
+            7,
+            5
+          ]
+        },
+        "3": {
+          "stairUp": [
+            4,
+            5,
+            7,
+            5
+          ]
+        }
+      },
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0249.png",
+      "source": "source/A0249.png",
+      "review": "review/A0249.json"
+    },
+    {
+      "id": "A0250",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0250.png",
+      "source": "source/A0250.png",
+      "review": "review/A0250.json"
+    },
+    {
+      "id": "A0251",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "stairUp": 4,
+        "stairDown": 4,
+        "walkBack": 2
+      },
+      "reference": "references/A0251.png",
+      "source": "source/A0251.png",
+      "review": "review/A0251.json"
+    },
+    {
+      "id": "A0252",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0252.png",
+      "source": "source/A0252.png",
+      "review": "review/A0252.json"
+    },
+    {
+      "id": "A0253",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 2,
+        "stairUp": 2,
+        "stairDown": 2
+      },
+      "reference": "references/A0253.png",
+      "source": "source/A0253.png",
+      "review": "review/A0253.json"
+    },
+    {
+      "id": "A0254",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0254.png",
+      "source": "source/A0254.png",
+      "review": "review/A0254.json"
+    },
+    {
+      "id": "A0255",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0255.png",
+      "source": "source/A0255.png",
+      "review": "review/A0255.json"
+    },
+    {
+      "id": "A0256",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0256.png",
+      "source": "source/A0256.png",
+      "review": "review/A0256.json"
+    },
+    {
+      "id": "A0257",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0257.png",
+      "source": "source/A0257.png",
+      "review": "review/A0257.json"
+    },
+    {
+      "id": "A0258",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {
+        "0": {
+          "stairUp": [
+            5,
+            6,
+            7,
+            6
+          ]
+        },
+        "1": {
+          "stairUp": [
+            5,
+            6,
+            7,
+            6
+          ],
+          "stairDown": [
+            8,
+            10,
+            11,
+            10
+          ]
+        }
+      },
+      "clips": {
+        "walkBack": 2,
+        "stairUp": 2,
+        "stairDown": 2
+      },
+      "reference": "references/A0258.png",
+      "source": "source/A0258.png",
+      "review": "review/A0258.json"
+    },
+    {
+      "id": "A0259",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        3
+      ],
+      "disabledClipsByRow": {
+        "3": [
+          "walkBack",
+          "stairUp"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "stairDown": 1
+      },
+      "reference": "references/A0259.png",
+      "source": "source/A0259.png",
+      "review": "review/A0259.json"
+    },
+    {
+      "id": "A0260",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0260.png",
+      "source": "source/A0260.png",
+      "review": "review/A0260.json"
+    },
+    {
+      "id": "A0261",
+      "reviewStatus": "rejected",
+      "acceptedRows": [],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {},
+      "reference": "references/A0261.png",
+      "source": "source/A0261.png",
+      "review": "review/A0261.json"
+    },
+    {
+      "id": "A0262",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "2": [
+          "stairUp",
+          "stairDown"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 2,
+        "stairUp": 1,
+        "stairDown": 1
+      },
+      "reference": "references/A0262.png",
+      "source": "source/A0262.png",
+      "review": "review/A0262.json"
+    },
+    {
+      "id": "A0263",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 2,
+        "stairUp": 2,
+        "stairDown": 2
+      },
+      "reference": "references/A0263.png",
+      "source": "source/A0263.png",
+      "review": "review/A0263.json"
+    },
+    {
+      "id": "A0264",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0264.png",
+      "source": "source/A0264.png",
+      "review": "review/A0264.json"
+    },
+    {
+      "id": "A0265",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0265.png",
+      "source": "source/A0265.png",
+      "review": "review/A0265.json"
+    },
+    {
+      "id": "A0266",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {
+        "2": {
+          "walkBack": [
+            0,
+            1,
+            2,
+            1
+          ]
+        }
+      },
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0266.png",
+      "source": "source/A0266.png",
+      "review": "review/A0266.json"
+    },
+    {
+      "id": "A0267",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "2": [
+          "stairDown"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 2,
+        "stairUp": 3,
+        "stairDown": 2
+      },
+      "reference": "references/A0267.png",
+      "source": "source/A0267.png",
+      "review": "review/A0267.json"
+    },
+    {
+      "id": "A0268",
+      "type": "baseRepair",
+      "reviewStatus": "accepted",
+      "reviewer": "root",
+      "note": "S11-C069 identity restoration; root owns extraction and acceptance"
+    },
+    {
+      "id": "A0269",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0269.png",
+      "source": "source/A0269.png",
+      "review": "review/A0269.json"
+    },
+    {
+      "id": "A0270",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0270.png",
+      "source": "source/A0270.png",
+      "review": "review/A0270.json"
+    },
+    {
+      "id": "A0271",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0271.png",
+      "source": "source/A0271.png",
+      "review": "review/A0271.json"
+    },
+    {
+      "id": "A0272",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "1": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 1,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0272.png",
+      "source": "source/A0272.png",
+      "review": "review/A0272.json"
+    },
+    {
+      "id": "A0273",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0273.png",
+      "source": "source/A0273.png",
+      "review": "review/A0273.json"
+    },
+    {
+      "id": "A0274",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0274.png",
+      "source": "source/A0274.png",
+      "review": "review/A0274.json"
+    },
+    {
+      "id": "A0275",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0275.png",
+      "source": "source/A0275.png",
+      "review": "review/A0275.json"
+    },
+    {
+      "id": "A0276",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0276.png",
+      "source": "source/A0276.png",
+      "review": "review/A0276.json"
+    },
+    {
+      "id": "A0277",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {
+        "0": {
+          "walkBack": [
+            1,
+            2,
+            3,
+            2
+          ]
+        },
+        "1": {
+          "walkBack": [
+            1,
+            2,
+            3,
+            2
+          ]
+        },
+        "2": {
+          "walkBack": [
+            0,
+            1,
+            2,
+            1
+          ]
+        }
+      },
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0277.png",
+      "source": "source/A0277.png",
+      "review": "review/A0277.json"
+    },
+    {
+      "id": "A0278",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {
+        "0": {
+          "walkBack": [
+            1,
+            2,
+            3,
+            2
+          ]
+        }
+      },
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0278.png",
+      "source": "source/A0278.png",
+      "review": "review/A0278.json"
+    },
+    {
+      "id": "A0279",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0279.png",
+      "source": "source/A0279.png",
+      "review": "review/A0279.json"
+    },
+    {
+      "id": "A0280",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {
+        "2": {
+          "walkBack": [
+            1,
+            2,
+            3,
+            2
+          ]
+        }
+      },
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0280.png",
+      "source": "source/A0280.png",
+      "review": "review/A0280.json"
+    },
+    {
+      "id": "A0281",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0281.png",
+      "source": "source/A0281.png",
+      "review": "review/A0281.json"
+    },
+    {
+      "id": "A0282",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0282.png",
+      "source": "source/A0282.png",
+      "review": "review/A0282.json"
+    },
+    {
+      "id": "A0283",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0283.png",
+      "source": "source/A0283.png",
+      "review": "review/A0283.json"
+    },
+    {
+      "id": "A0284",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0284.png",
+      "source": "source/A0284.png",
+      "review": "review/A0284.json"
+    },
+    {
+      "id": "A0285",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 4
+      },
+      "reference": "references/A0285.png",
+      "source": "source/A0285.png",
+      "review": "review/A0285.json"
+    },
+    {
+      "id": "A0286",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "stairDown"
+        ],
+        "2": [
+          "walkBack",
+          "stairDown"
+        ],
+        "3": [
+          "stairDown"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 2,
+        "stairUp": 3,
+        "stairDown": 1
+      },
+      "reference": "references/A0286.png",
+      "source": "source/A0286.png",
+      "review": "review/A0286.json"
+    },
+    {
+      "id": "A0287",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        3
+      ],
+      "disabledClipsByRow": {},
+      "clipFramesByRow": {
+        "2": {
+          "walkBack": [
+            0,
+            1,
+            2,
+            1
+          ],
+          "stairUp": [
+            4,
+            5,
+            6,
+            5
+          ]
+        }
+      },
+      "clips": {
+        "walkBack": 3,
+        "stairUp": 3,
+        "stairDown": 3
+      },
+      "reference": "references/A0287.png",
+      "source": "source/A0287.png",
+      "review": "review/A0287.json"
+    },
+    {
+      "id": "A0288",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "2": [
+          "stairDown"
+        ]
+      },
+      "clipFramesByRow": {},
+      "clips": {
+        "walkBack": 4,
+        "stairUp": 4,
+        "stairDown": 3
+      },
+      "reference": "references/A0288.png",
+      "source": "source/A0288.png",
+      "review": "review/A0288.json"
+    }
+  ]
+}

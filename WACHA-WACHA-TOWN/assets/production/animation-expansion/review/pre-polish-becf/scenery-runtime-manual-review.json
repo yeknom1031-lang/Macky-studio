@@ -1,0 +1,4261 @@
+{
+  "at": "2026-10-04T20:01:40.779Z",
+  "runtimeHashes": {
+    "data.js": "becf9431a76b0e074313124c8c65ded30824babb45ab120f457ba88cd94600be",
+    "expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+    "expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+    "expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+    "expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c"
+  },
+  "stages": [
+    {
+      "stage": "S01",
+      "name": "はじまりのお祭り",
+      "population": 500,
+      "elapsed": 1.216600000000001,
+      "scenery": [
+        {
+          "id": "A0721-0",
+          "name": "江戸ガラスの風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0721-1",
+          "name": "祭りの三角小旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0721-2",
+          "name": "竹の二重風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0721-3",
+          "name": "茶庭の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0722-0",
+          "name": "噴水の細かい飛沫",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0722-1",
+          "name": "水車の落ち水しぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0722-2",
+          "name": "鯉の池の波紋",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0722-3",
+          "name": "船着場のきらめき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0723-0",
+          "name": "桜の花びらの舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0723-1",
+          "name": "柳の綿毛",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0723-2",
+          "name": "屋台のしゃぼん玉",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0723-3",
+          "name": "回廊の房飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S01-floor-01",
+          "name": "北西のお祭り売店",
+          "level": 0,
+          "people": 24
+        },
+        {
+          "id": "S01-floor-02",
+          "name": "桜通りの屋台床",
+          "level": 0,
+          "people": 28
+        },
+        {
+          "id": "S01-floor-03",
+          "name": "西の射的と屋台広場",
+          "level": 0,
+          "people": 40
+        },
+        {
+          "id": "S01-floor-04",
+          "name": "中央の舞台床",
+          "level": 0,
+          "people": 24
+        },
+        {
+          "id": "S01-floor-05",
+          "name": "二階商店の一階売場",
+          "level": 0,
+          "people": 5
+        },
+        {
+          "id": "S01-floor-06",
+          "name": "東の茶店一階",
+          "level": 0,
+          "people": 28
+        },
+        {
+          "id": "S01-floor-07",
+          "name": "南の太鼓の稽古床",
+          "level": 0,
+          "people": 43
+        },
+        {
+          "id": "S01-floor-08",
+          "name": "茶屋の芝生庭園",
+          "level": 0,
+          "people": 46
+        },
+        {
+          "id": "S01-floor-09",
+          "name": "中央商店の二階テラス",
+          "level": 1,
+          "people": 8
+        },
+        {
+          "id": "S01-floor-10",
+          "name": "東茶屋の二階テラス",
+          "level": 1,
+          "people": 9
+        }
+      ],
+      "working": 97,
+      "upper": 17,
+      "maxOverlap": 1.216600000000001,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S01-runtime-overview.png",
+          "sha256": "8bd95ff60aa93a9af531e388b2e7a48b8c81b540ec70e608ae223e66c0996596"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S01-runtime-detail.png",
+          "sha256": "8bd95ff60aa93a9af531e388b2e7a48b8c81b540ec70e608ae223e66c0996596"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "South-west pool water is clear; visible boats retain passengers.",
+      "reviewedViews": [
+        "overview",
+        "detail"
+      ]
+    },
+    {
+      "stage": "S02",
+      "name": "花咲くガーデン",
+      "population": 500,
+      "elapsed": 1.2167000000000003,
+      "scenery": [
+        {
+          "id": "A0724-0",
+          "name": "温室のガラス風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0724-1",
+          "name": "ガゼボの花リボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0724-2",
+          "name": "苗売り場の蝶形風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0724-3",
+          "name": "庭カフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0725-0",
+          "name": "花噴水の霧",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0725-1",
+          "name": "滝壺の泡",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0725-2",
+          "name": "睡蓮池の輪",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0725-3",
+          "name": "雨上がりの葉しずく",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0726-0",
+          "name": "ローズアーチの花びら",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0726-1",
+          "name": "藤棚の花の房",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0726-2",
+          "name": "養蜂庭の綿毛",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0726-3",
+          "name": "温室の小さな換気羽根",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S02-floor-01",
+          "name": "北西温室の花仕事床",
+          "level": 0,
+          "people": 32
+        },
+        {
+          "id": "S02-floor-02",
+          "name": "庭園の池を眺める東岸",
+          "level": 0,
+          "people": 7
+        },
+        {
+          "id": "S02-floor-03",
+          "name": "花市の販売広場",
+          "level": 0,
+          "people": 25
+        },
+        {
+          "id": "S02-floor-04",
+          "name": "東温室のカフェ一階",
+          "level": 0,
+          "people": 22
+        },
+        {
+          "id": "S02-floor-05",
+          "name": "噴水の庭園回廊",
+          "level": 0,
+          "people": 40
+        },
+        {
+          "id": "S02-floor-06",
+          "name": "東のバラ園とガゼボ広場",
+          "level": 0,
+          "people": 40
+        },
+        {
+          "id": "S02-floor-08",
+          "name": "庭師の家の玄関広場",
+          "level": 0,
+          "people": 28
+        },
+        {
+          "id": "S02-floor-10",
+          "name": "南東の植物市場床",
+          "level": 0,
+          "people": 46
+        },
+        {
+          "id": "S02-floor-11",
+          "name": "池の上段の花の東屋",
+          "level": 1,
+          "people": 9
+        },
+        {
+          "id": "S02-floor-12",
+          "name": "東温室の二階カフェ",
+          "level": 1,
+          "people": 5
+        },
+        {
+          "id": "S02-floor-13",
+          "name": "庭師の家の二階",
+          "level": 1,
+          "people": 4
+        }
+      ],
+      "working": 127,
+      "upper": 18,
+      "maxOverlap": 1.2167000000000003,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S02-runtime-overview.png",
+          "sha256": "c1abf4c46a235cff38f022ece6f21b52593016e4d3f3c2f4d896645dbc1bd73a"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S02-runtime-detail.png",
+          "sha256": "c1abf4c46a235cff38f022ece6f21b52593016e4d3f3c2f4d896645dbc1bd73a"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Overview and center detail inspected: residents occupy visible roads, activity floors and upper areas; no clear new misplaced surface detected.",
+      "reviewedViews": [
+        "overview",
+        "detail"
+      ]
+    },
+    {
+      "stage": "S03",
+      "name": "海辺のマルシェ",
+      "population": 500,
+      "elapsed": 1.2166999999999963,
+      "scenery": [
+        {
+          "id": "A0727-0",
+          "name": "港の吹き流し",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0727-1",
+          "name": "魚屋の暖簾",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0727-2",
+          "name": "貝のウインドチャイム",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0727-3",
+          "name": "焼き魚の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0728-0",
+          "name": "桟橋のさざ波",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0728-1",
+          "name": "灯台下の波しぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0728-2",
+          "name": "牡蠣いけすの泡",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0728-3",
+          "name": "浜辺の潮の線",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0729-0",
+          "name": "カモメの羽",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0729-1",
+          "name": "帆具店の結び紐",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0729-2",
+          "name": "市場のシャボン玉",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0729-3",
+          "name": "漁具屋の小風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S03-floor-01",
+          "name": "北の鮮魚市場床",
+          "level": 0,
+          "people": 18
+        },
+        {
+          "id": "S03-floor-02",
+          "name": "港の開いた荷さばき床",
+          "level": 0,
+          "people": 30
+        },
+        {
+          "id": "S03-floor-03",
+          "name": "西の魚料理店とテラス",
+          "level": 0,
+          "people": 31
+        },
+        {
+          "id": "S03-floor-04",
+          "name": "港のカフェ一階",
+          "level": 0,
+          "people": 22
+        },
+        {
+          "id": "S03-floor-05",
+          "name": "漁具工房の一階床",
+          "level": 0,
+          "people": 26
+        },
+        {
+          "id": "S03-floor-06",
+          "name": "東の魚市場とカフェ床",
+          "level": 0,
+          "people": 32
+        },
+        {
+          "id": "S03-floor-07",
+          "name": "南のシーフード食堂",
+          "level": 0,
+          "people": 40
+        },
+        {
+          "id": "S03-floor-08",
+          "name": "砂浜の遊び場",
+          "level": 0,
+          "people": 20
+        },
+        {
+          "id": "S03-floor-09",
+          "name": "港カフェの二階テラス",
+          "level": 1,
+          "people": 7
+        },
+        {
+          "id": "S03-floor-10",
+          "name": "漁具店の高床作業テラス",
+          "level": 1,
+          "people": 9
+        },
+        {
+          "id": "S03-floor-11",
+          "name": "南の小さな展望テラス",
+          "level": 1,
+          "people": 5
+        },
+        {
+          "id": "S03-floor-12",
+          "name": "展望カフェの地上前庭",
+          "level": 0,
+          "people": 21
+        }
+      ],
+      "working": 117,
+      "upper": 21,
+      "maxOverlap": 1.2166999999999963,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S03-runtime-overview.png",
+          "sha256": "5d2035af13cb6684756444f4af0155afdaeddf3af52275c8b0dcb99f3a455020"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S03-runtime-detail.png",
+          "sha256": "5d2035af13cb6684756444f4af0155afdaeddf3af52275c8b0dcb99f3a455020"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Overview and center detail inspected: residents occupy visible roads, activity floors and upper areas; no clear new misplaced surface detected.",
+      "reviewedViews": [
+        "overview",
+        "detail"
+      ]
+    },
+    {
+      "stage": "S04",
+      "name": "お菓子の広場",
+      "population": 500,
+      "elapsed": 1.216599999999998,
+      "scenery": [
+        {
+          "id": "A0730-0",
+          "name": "キャンディ風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0730-1",
+          "name": "ショコラ屋のリボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0730-2",
+          "name": "ケーキ屋の回転飾り",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0730-3",
+          "name": "焼き菓子の香り",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0731-0",
+          "name": "ケーキ噴水の飛沫",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0731-1",
+          "name": "小運河の波紋",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0731-2",
+          "name": "砂糖菓子のきらめき",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0731-3",
+          "name": "ホットココアの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0732-0",
+          "name": "桃色花びら",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0732-1",
+          "name": "パティスリーの紙モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0732-2",
+          "name": "飴売り場のしゃぼん玉",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0732-3",
+          "name": "お菓子屋のレース飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S04-floor-01",
+          "name": "北西のケーキ屋の一階",
+          "level": 0,
+          "people": 23
+        },
+        {
+          "id": "S04-floor-02",
+          "name": "チョコレート工房一階",
+          "level": 0,
+          "people": 36
+        },
+        {
+          "id": "S04-floor-03",
+          "name": "焼き菓子屋の芝生庭",
+          "level": 0,
+          "people": 24
+        },
+        {
+          "id": "S04-floor-04",
+          "name": "西のカフェ一階",
+          "level": 0,
+          "people": 25
+        },
+        {
+          "id": "S04-floor-05",
+          "name": "中央のアイスクリーム売り場",
+          "level": 0,
+          "people": 25
+        },
+        {
+          "id": "S04-floor-06",
+          "name": "東パティスリーの一階",
+          "level": 0,
+          "people": 15
+        },
+        {
+          "id": "S04-floor-07",
+          "name": "東のケーキ販売広場",
+          "level": 0,
+          "people": 32
+        },
+        {
+          "id": "S04-floor-08",
+          "name": "南の製菓工房",
+          "level": 0,
+          "people": 36
+        },
+        {
+          "id": "S04-floor-09",
+          "name": "南東の喫茶広場",
+          "level": 0,
+          "people": 28
+        },
+        {
+          "id": "S04-floor-10",
+          "name": "西のカフェの二階",
+          "level": 1,
+          "people": 6
+        },
+        {
+          "id": "S04-floor-11",
+          "name": "パティスリーの二階作業床",
+          "level": 1,
+          "people": 4
+        },
+        {
+          "id": "S04-floor-12",
+          "name": "北西ケーキ屋の二階",
+          "level": 1,
+          "people": 4
+        }
+      ],
+      "working": 99,
+      "upper": 14,
+      "maxOverlap": 1.216599999999998,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S04-runtime-overview.png",
+          "sha256": "96e130a22516292df44f9fdf0b139e85072af8d37b1903abdbd3c51c29263990"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S04-runtime-detail.png",
+          "sha256": "96e130a22516292df44f9fdf0b139e85072af8d37b1903abdbd3c51c29263990"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Overview and center detail inspected: residents occupy visible roads, activity floors and upper areas; no clear new misplaced surface detected.",
+      "reviewedViews": [
+        "overview",
+        "detail"
+      ]
+    },
+    {
+      "stage": "S05",
+      "name": "秋色の古本市",
+      "population": 500,
+      "elapsed": 1.2165999999999983,
+      "scenery": [
+        {
+          "id": "A0733-0",
+          "name": "本屋のしおりモビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0733-1",
+          "name": "図書館の房飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0733-2",
+          "name": "読書カフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0733-3",
+          "name": "古書店の小風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0734-0",
+          "name": "本の噴水のしぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0734-1",
+          "name": "秋の池の輪",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0734-2",
+          "name": "印刷工房の紙の端",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0734-3",
+          "name": "窓辺の羽ペン",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0735-0",
+          "name": "いちょうの葉の舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0735-1",
+          "name": "紅葉の葉の舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0735-2",
+          "name": "書棚のほこり光",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0735-3",
+          "name": "園路のどんぐり風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S05-floor-01",
+          "name": "古本市場の売り場",
+          "level": 0,
+          "people": 27
+        },
+        {
+          "id": "S05-floor-02",
+          "name": "図書館一階の閲覧床",
+          "level": 0,
+          "people": 44
+        },
+        {
+          "id": "S05-floor-03",
+          "name": "運河カフェの岸辺",
+          "level": 0,
+          "people": 22
+        },
+        {
+          "id": "S05-floor-04",
+          "name": "製本工房の作業床",
+          "level": 0,
+          "people": 28
+        },
+        {
+          "id": "S05-floor-05",
+          "name": "読書広場の散策",
+          "level": 0,
+          "people": 55
+        },
+        {
+          "id": "S05-floor-06",
+          "name": "文学カフェ一階",
+          "level": 0,
+          "people": 21
+        },
+        {
+          "id": "S05-floor-07",
+          "name": "読書食堂の床",
+          "level": 0,
+          "people": 73
+        },
+        {
+          "id": "S05-floor-08",
+          "name": "文学カフェ二階",
+          "level": 1,
+          "people": 7
+        },
+        {
+          "id": "S05-floor-09",
+          "name": "図書館二階の回廊",
+          "level": 1,
+          "people": 7
+        }
+      ],
+      "working": 146,
+      "upper": 14,
+      "maxOverlap": 1.2165999999999983,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S05-runtime-overview.png",
+          "sha256": "d1d84ca377633f62cb7a64869371370947c1c749eda528d781fc5689354bfde6"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S05-runtime-detail.png",
+          "sha256": "d1d84ca377633f62cb7a64869371370947c1c749eda528d781fc5689354bfde6"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Overview and center detail inspected: residents occupy visible roads, activity floors and upper areas; no clear new misplaced surface detected.",
+      "reviewedViews": [
+        "overview",
+        "detail"
+      ]
+    },
+    {
+      "stage": "S06",
+      "name": "雪のマーケット",
+      "population": 500,
+      "elapsed": 1.216499999999999,
+      "scenery": [
+        {
+          "id": "A0736-0",
+          "name": "雪の木鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0736-1",
+          "name": "毛糸屋のミトン飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0736-2",
+          "name": "カフェのマグの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0736-3",
+          "name": "雪市の紙風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0737-0",
+          "name": "凍らない水路の小波",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0737-1",
+          "name": "水車の冷たい飛沫",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0737-2",
+          "name": "つららのしずく",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0737-3",
+          "name": "暖炉の煙",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0738-0",
+          "name": "小雪の舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0738-1",
+          "name": "松枝の粉雪",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0738-2",
+          "name": "赤い冬の小旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0738-3",
+          "name": "氷のきらめき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S06-floor-01",
+          "name": "冬の露店広場",
+          "level": 0,
+          "people": 24
+        },
+        {
+          "id": "S06-floor-02",
+          "name": "氷のスケート場",
+          "level": 0,
+          "people": 26
+        },
+        {
+          "id": "S06-floor-03",
+          "name": "冬の土産物店一階",
+          "level": 0,
+          "people": 17
+        },
+        {
+          "id": "S06-floor-04",
+          "name": "街角の暖炉カフェ",
+          "level": 0,
+          "people": 21
+        },
+        {
+          "id": "S06-floor-05",
+          "name": "冬の食堂の床",
+          "level": 0,
+          "people": 37
+        },
+        {
+          "id": "S06-floor-06",
+          "name": "雪だるま広場",
+          "level": 0,
+          "people": 32
+        },
+        {
+          "id": "S06-floor-07",
+          "name": "冬の手仕事工房",
+          "level": 0,
+          "people": 25
+        },
+        {
+          "id": "S06-floor-08",
+          "name": "雪のバス停待合",
+          "level": 0,
+          "people": 22
+        },
+        {
+          "id": "S06-floor-09",
+          "name": "薪割り工房の床",
+          "level": 0,
+          "people": 40
+        },
+        {
+          "id": "S06-floor-10",
+          "name": "山小屋カフェ一階",
+          "level": 0,
+          "people": 33
+        },
+        {
+          "id": "S06-floor-11",
+          "name": "暖炉の二階客間",
+          "level": 1,
+          "people": 8
+        },
+        {
+          "id": "S06-floor-12",
+          "name": "山小屋二階テラス",
+          "level": 1,
+          "people": 12
+        }
+      ],
+      "working": 143,
+      "upper": 20,
+      "maxOverlap": 1.216499999999999,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S06-runtime-overview.png",
+          "sha256": "faaf3c1e287d2347acf5d5b9882a1e8427d2be68a52b3b0b7720ef7de4e8b640"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S06-runtime-detail.png",
+          "sha256": "faaf3c1e287d2347acf5d5b9882a1e8427d2be68a52b3b0b7720ef7de4e8b640"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Overview and center detail inspected: residents occupy visible roads, activity floors and upper areas; no clear new misplaced surface detected.",
+      "reviewedViews": [
+        "overview",
+        "detail"
+      ]
+    },
+    {
+      "stage": "S07",
+      "name": "星灯りのお祭り",
+      "population": 500,
+      "elapsed": 1.2164999999999995,
+      "scenery": [
+        {
+          "id": "A0739-0",
+          "name": "星の風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0739-1",
+          "name": "夜店の流れ房",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0739-2",
+          "name": "灯籠の炎",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0739-3",
+          "name": "団子屋の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0740-0",
+          "name": "星映る池の輪",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0740-1",
+          "name": "夜の滝のしぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0740-2",
+          "name": "橋下の水面光",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0740-3",
+          "name": "ランタンの小光",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0741-0",
+          "name": "桜の夜の花びら",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0741-1",
+          "name": "星祭りの紙モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0741-2",
+          "name": "天文台の回転飾り",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0741-3",
+          "name": "楽屋の揺れるリボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S07-floor-01",
+          "name": "灯籠カフェの広場",
+          "level": 0,
+          "people": 38
+        },
+        {
+          "id": "S07-floor-02",
+          "name": "水辺工房の西岸",
+          "level": 0,
+          "people": 18
+        },
+        {
+          "id": "S07-floor-03",
+          "name": "灯籠市場の東岸",
+          "level": 0,
+          "people": 18
+        },
+        {
+          "id": "S07-floor-04",
+          "name": "二階茶屋の一階",
+          "level": 0,
+          "people": 23
+        },
+        {
+          "id": "S07-floor-05",
+          "name": "茶器工房の作業床",
+          "level": 0,
+          "people": 28
+        },
+        {
+          "id": "S07-floor-06",
+          "name": "庭園茶店の木床",
+          "level": 0,
+          "people": 37
+        },
+        {
+          "id": "S07-floor-07",
+          "name": "星見広場の庭",
+          "level": 0,
+          "people": 64
+        },
+        {
+          "id": "S07-floor-08",
+          "name": "屋外劇場の観覧床",
+          "level": 0,
+          "people": 16
+        },
+        {
+          "id": "S07-floor-09",
+          "name": "橋のたもとの茶店",
+          "level": 0,
+          "people": 20
+        },
+        {
+          "id": "S07-floor-10",
+          "name": "水辺二階の工房",
+          "level": 1,
+          "people": 4
+        },
+        {
+          "id": "S07-floor-11",
+          "name": "東の楽器舞台",
+          "level": 1,
+          "people": 2
+        }
+      ],
+      "working": 111,
+      "upper": 6,
+      "maxOverlap": 1.2164999999999995,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S07-runtime-overview.png",
+          "sha256": "513d0148a391d5244aa941cb23659012e9d14f46c3921929831419b2880b2621"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S07-runtime-detail.png",
+          "sha256": "513d0148a391d5244aa941cb23659012e9d14f46c3921929831419b2880b2621"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Overview and center detail inspected: residents occupy visible roads, activity floors and upper areas; no clear new misplaced surface detected.",
+      "reviewedViews": [
+        "overview",
+        "detail"
+      ]
+    },
+    {
+      "stage": "S08",
+      "name": "坂道の温泉街",
+      "population": 600,
+      "elapsed": 1.233300000000002,
+      "scenery": [
+        {
+          "id": "A0742-0",
+          "name": "温泉宿の風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0742-1",
+          "name": "湯の町の暖簾飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0742-2",
+          "name": "洗濯庭のタオル",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0742-3",
+          "name": "蒸し饅頭の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0743-0",
+          "name": "露天風呂の湯けむり",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0743-1",
+          "name": "足湯のゆらぎ",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0743-2",
+          "name": "川石のしぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0743-3",
+          "name": "木の湯桶のしずく",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0744-0",
+          "name": "坂のもみじ",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0744-1",
+          "name": "里山の綿毛",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0744-2",
+          "name": "茶処の竹風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0744-3",
+          "name": "宿の軒先のしずく",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S08-floor-01",
+          "name": "温泉宿の玄関床",
+          "level": 0,
+          "people": 20
+        },
+        {
+          "id": "S08-floor-02",
+          "name": "湯屋の前庭",
+          "level": 0,
+          "people": 27
+        },
+        {
+          "id": "S08-floor-03",
+          "name": "滝の見晴らし庭園",
+          "level": 0,
+          "people": 28
+        },
+        {
+          "id": "S08-floor-04",
+          "name": "温泉街の市場床",
+          "level": 0,
+          "people": 75
+        },
+        {
+          "id": "S08-floor-05",
+          "name": "洗濯の中庭",
+          "level": 0,
+          "people": 82
+        },
+        {
+          "id": "S08-floor-06",
+          "name": "露天風呂の乾いた側道",
+          "level": 0,
+          "people": 23
+        },
+        {
+          "id": "S08-floor-07",
+          "name": "温泉宿の二階",
+          "level": 1,
+          "people": 2
+        },
+        {
+          "id": "S08-floor-08",
+          "name": "市場二階の作業室",
+          "level": 1,
+          "people": 3
+        },
+        {
+          "id": "S08-floor-09",
+          "name": "洗濯宿の二階物干し",
+          "level": 1,
+          "people": 4
+        }
+      ],
+      "working": 83,
+      "upper": 9,
+      "maxOverlap": 1.233300000000002,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S08-runtime-overview.png",
+          "sha256": "c051be3df40a1c1d5cca7cbaa131e83f414ea9080cad6d63ef9a002fa4310afe"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S08-runtime-detail.png",
+          "sha256": "a0a21bd83634afd60995ab11d32661ec6930db7e27510a94b759000e608833ea"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S08-runtime-corner.png",
+          "sha256": "89568cb3a717504c0577bf65c255d16be215bb64f3ac4456b7c6fe73c1818abd"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "River rocks are clear of pedestrians; bath and interior areas remain populated.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S09",
+      "name": "大きな鉄道駅",
+      "population": 650,
+      "elapsed": 1.2333000000000018,
+      "scenery": [
+        {
+          "id": "A0745-0",
+          "name": "駅の合図小旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0745-1",
+          "name": "駅カフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0745-2",
+          "name": "荷物窓口の小扇風機",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0745-3",
+          "name": "花売り場のリボン",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0746-0",
+          "name": "駅前噴水の水しぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0746-1",
+          "name": "蒸気機関庫の排気",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0746-2",
+          "name": "整備工房の歯車玩具",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0746-3",
+          "name": "駅弁の温かな湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0747-0",
+          "name": "並木の葉",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0747-1",
+          "name": "ホームの紙テープ",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0747-2",
+          "name": "郵便カウンターの羽飾り",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0747-3",
+          "name": "駅ホールの光の粒",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S09-floor-01",
+          "name": "鉄道整備庫の前床",
+          "level": 0,
+          "people": 40
+        },
+        {
+          "id": "S09-floor-02",
+          "name": "中央駅の改札前",
+          "level": 0,
+          "people": 35
+        },
+        {
+          "id": "S09-floor-03",
+          "name": "駅の銅像庭園",
+          "level": 0,
+          "people": 5
+        },
+        {
+          "id": "S09-floor-04",
+          "name": "列車ホームの待合",
+          "level": 0,
+          "people": 53
+        },
+        {
+          "id": "S09-floor-05",
+          "name": "駅前カフェ一階",
+          "level": 0,
+          "people": 36
+        },
+        {
+          "id": "S09-floor-06",
+          "name": "旅の案内所一階",
+          "level": 0,
+          "people": 81
+        },
+        {
+          "id": "S09-floor-07",
+          "name": "土産物店の一階",
+          "level": 0,
+          "people": 47
+        },
+        {
+          "id": "S09-floor-08",
+          "name": "駅前カフェ二階",
+          "level": 1,
+          "people": 9
+        },
+        {
+          "id": "S09-floor-09",
+          "name": "中央待合所二階",
+          "level": 1,
+          "people": 9
+        },
+        {
+          "id": "S09-floor-10",
+          "name": "土産物店二階",
+          "level": 1,
+          "people": 9
+        }
+      ],
+      "working": 125,
+      "upper": 27,
+      "maxOverlap": 1.2333000000000018,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S09-runtime-overview.png",
+          "sha256": "a4abb4ed0a1713de06a1d3843d16fdb2ce89b195fd886eb58b524f02534038d2"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S09-runtime-detail.png",
+          "sha256": "b257cc89ad7ed961bf826c275dd4ce1b7c026340833835ba5b89a38f5ef94f78"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S09-runtime-corner.png",
+          "sha256": "27a04eab4a295fa38801022fb4ce6637ab69ae9efc1c5a5995745c58e0f2e15a"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "South vertical station wall is clear; visible stair access remains.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S10",
+      "name": "運河と橋の街",
+      "population": 700,
+      "elapsed": 1.1332999999999884,
+      "scenery": [
+        {
+          "id": "A0748-0",
+          "name": "運河の細いペナント",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0748-1",
+          "name": "船大工の風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0748-2",
+          "name": "運河カフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0748-3",
+          "name": "窓辺の吊りリボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0749-0",
+          "name": "水門の泡の列",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0749-1",
+          "name": "橋脚まわりの波紋",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0749-2",
+          "name": "造船所の水しぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0749-3",
+          "name": "南の運河のきらめき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0750-0",
+          "name": "ヤナギの葉の舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0750-1",
+          "name": "水都の紙風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0750-2",
+          "name": "画家の彩色モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0750-3",
+          "name": "造船所の縄の房",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S10-floor-01",
+          "name": "水路市場の一階広場",
+          "level": 0,
+          "people": 66
+        },
+        {
+          "id": "S10-floor-02",
+          "name": "水路市場の上段店",
+          "level": 1,
+          "people": 10
+        },
+        {
+          "id": "S10-floor-03",
+          "name": "河畔住宅の地上カフェ",
+          "level": 0,
+          "people": 79
+        },
+        {
+          "id": "S10-floor-04",
+          "name": "造船所の作業床",
+          "level": 0,
+          "people": 14
+        },
+        {
+          "id": "S10-floor-05",
+          "name": "水路中央のカフェ広場",
+          "level": 0,
+          "people": 42
+        },
+        {
+          "id": "S10-floor-06",
+          "name": "東岸の工房床",
+          "level": 0,
+          "people": 81
+        },
+        {
+          "id": "S10-floor-07",
+          "name": "河畔住宅二階の庭",
+          "level": 1,
+          "people": 16
+        },
+        {
+          "id": "S10-floor-08",
+          "name": "中央市場二階の売店",
+          "level": 1,
+          "people": 6
+        },
+        {
+          "id": "S10-floor-09",
+          "name": "中央工房二階",
+          "level": 1,
+          "people": 4
+        }
+      ],
+      "working": 85,
+      "upper": 36,
+      "maxOverlap": 1.1332999999999884,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S10-runtime-overview.png",
+          "sha256": "e206659ce70ce0b2abb811bbe70ff2a23bbbecf4a3a4134413e3791e43faaaeb"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S10-runtime-detail.png",
+          "sha256": "9846cd7985c766e80625c32808b1a8ab6ae68aef0c5824f7b24a64aca6eed72f"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S10-runtime-corner.png",
+          "sha256": "1f66d5a324439fbcfe0025fcf9008f731ba25eae1b18e8903ed1a560eb223e9a"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Inner dock uses the dry west work floor; outer sea is clear.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S11",
+      "name": "収穫祭の農園",
+      "population": 750,
+      "elapsed": 1.2832000000000112,
+      "scenery": [
+        {
+          "id": "A0751-0",
+          "name": "収穫の麦飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0751-1",
+          "name": "果樹園の吹き流し",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0751-2",
+          "name": "農家カフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0751-3",
+          "name": "納屋の風車飾り",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0752-0",
+          "name": "水車のはねる水",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0752-1",
+          "name": "畑の散水しずく",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0752-2",
+          "name": "りんご畑の花びら",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0752-3",
+          "name": "牧草の穂の綿毛",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0753-0",
+          "name": "収穫祭のリボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0753-1",
+          "name": "干しハーブの束",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0753-2",
+          "name": "焼きとうもろこしの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0753-3",
+          "name": "南川の金色の光",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S11-floor-01",
+          "name": "菜園の作業通路",
+          "level": 0,
+          "people": 69
+        },
+        {
+          "id": "S11-floor-02",
+          "name": "果樹園の収穫広場",
+          "level": 0,
+          "people": 60
+        },
+        {
+          "id": "S11-floor-03",
+          "name": "牧場納屋の作業床",
+          "level": 0,
+          "people": 76
+        },
+        {
+          "id": "S11-floor-04",
+          "name": "風車の芝生広場",
+          "level": 0,
+          "people": 119
+        },
+        {
+          "id": "S11-floor-05",
+          "name": "収穫市場の売り場",
+          "level": 0,
+          "people": 33
+        },
+        {
+          "id": "S11-floor-06",
+          "name": "祭りの露店広場",
+          "level": 0,
+          "people": 51
+        },
+        {
+          "id": "S11-floor-07",
+          "name": "果樹園の二階キッチン",
+          "level": 1,
+          "people": 12
+        },
+        {
+          "id": "S11-floor-08",
+          "name": "納屋の二階",
+          "level": 1,
+          "people": 12
+        },
+        {
+          "id": "S11-floor-09",
+          "name": "市場二階の作業室",
+          "level": 1,
+          "people": 9
+        },
+        {
+          "id": "S11-floor-10",
+          "name": "水車小屋の工房二階",
+          "level": 1,
+          "people": 2
+        }
+      ],
+      "working": 247,
+      "upper": 35,
+      "maxOverlap": 1.2832000000000112,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S11-runtime-overview.png",
+          "sha256": "d1cdfd0bb495bab6ea320dccdbbc687d6ea1294e06cb502dff5dd2391f81ca9e"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S11-runtime-detail.png",
+          "sha256": "d583b7bdcf79ed8c2e43d87ba8cfa671d199e01d2ec7c3f21ea76f73236fb856"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S11-runtime-corner.png",
+          "sha256": "2c194f4974c4cb7c391b4432d9f9b748bbc019be61a95912ab43209822d21b42"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "South river wall faces are clear and the actual stairs remain populated.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S12",
+      "name": "大きな遊園地",
+      "population": 800,
+      "elapsed": 1.2666000000000053,
+      "scenery": [
+        {
+          "id": "A0754-0",
+          "name": "遊園地の星風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0754-1",
+          "name": "チケット屋の小旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0754-2",
+          "name": "観覧車の追加リボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0754-3",
+          "name": "お菓子屋の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0755-0",
+          "name": "水遊びの飛沫",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0755-1",
+          "name": "入園口の噴水霧",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0755-2",
+          "name": "水路の虹色泡",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0755-3",
+          "name": "カップ噴水の落水",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0756-0",
+          "name": "劇場の紙吹雪",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0756-1",
+          "name": "メリーゴーラウンドの房",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0756-2",
+          "name": "売店の虹モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0756-3",
+          "name": "雲形の風船飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S12-floor-01",
+          "name": "メリーゴーラウンド前広場",
+          "level": 0,
+          "people": 49
+        },
+        {
+          "id": "S12-floor-02",
+          "name": "観覧車の待合広場",
+          "level": 0,
+          "people": 57
+        },
+        {
+          "id": "S12-floor-03",
+          "name": "お菓子通りの中庭",
+          "level": 0,
+          "people": 59
+        },
+        {
+          "id": "S12-floor-04",
+          "name": "劇場前の待合広場",
+          "level": 0,
+          "people": 96
+        },
+        {
+          "id": "S12-floor-05",
+          "name": "水遊び場の南岸",
+          "level": 0,
+          "people": 26
+        },
+        {
+          "id": "S12-floor-06",
+          "name": "園内整備工房の作業床",
+          "level": 0,
+          "people": 81
+        },
+        {
+          "id": "S12-floor-07",
+          "name": "劇場上階の舞台",
+          "level": 1,
+          "people": 3
+        },
+        {
+          "id": "S12-floor-08",
+          "name": "お菓子屋二階の製菓室",
+          "level": 1,
+          "people": 3
+        },
+        {
+          "id": "S12-floor-09",
+          "name": "整備工房二階の回廊",
+          "level": 1,
+          "people": 4
+        }
+      ],
+      "working": 99,
+      "upper": 10,
+      "maxOverlap": 0.48330000000001766,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S12-runtime-overview.png",
+          "sha256": "0c19b5f1bdeb0745d94a867c8afeab5314ef99de3c1fd7d1a8d1deaf21c75e35"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S12-runtime-detail.png",
+          "sha256": "cb236431a37d6755ae09b35d947ac5104b8e33a948813465f56e06f7dad297c7"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S12-runtime-corner.png",
+          "sha256": "64f01789cd84e0375a0d72e0941ee94a36bfd5c8a0467015419f2a32a0c1a915"
+        }
+      },
+      "visualPassed": false,
+      "visualNotes": "Curved gate roofs are clear, but the small central front tower still has residents on its vertical face; independently confirmed by navigation coordinates.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ],
+      "localIssueEvidence": {
+        "path": "assets/production/animation-expansion/review/pre-polish-becf/S12-corner.png",
+        "sha256": "64f01789cd84e0375a0d72e0941ee94a36bfd5c8a0467015419f2a32a0c1a915"
+      }
+    },
+    {
+      "stage": "S13",
+      "name": "森の動物園",
+      "population": 900,
+      "elapsed": 1.2332999999999883,
+      "scenery": [
+        {
+          "id": "A0757-0",
+          "name": "温室の葉形風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0757-1",
+          "name": "飼育舎の木のモビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0757-2",
+          "name": "カフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0757-3",
+          "name": "観察小屋の風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0758-0",
+          "name": "水鳥池のさざ波",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0758-1",
+          "name": "岩場の小さな霧",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0758-2",
+          "name": "飼育園の散水",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0758-3",
+          "name": "南の川の泡",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0759-0",
+          "name": "森の綿毛",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0759-1",
+          "name": "熱帯の落ち葉",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0759-2",
+          "name": "巣箱の羽飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0759-3",
+          "name": "飼料室の卓上ファン",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S13-floor-01",
+          "name": "植物園入口の広場",
+          "level": 0,
+          "people": 125
+        },
+        {
+          "id": "S13-floor-02",
+          "name": "樹木温室の低い回廊",
+          "level": 0,
+          "people": 51
+        },
+        {
+          "id": "S13-floor-03",
+          "name": "飼育観察の中庭",
+          "level": 0,
+          "people": 77
+        },
+        {
+          "id": "S13-floor-04",
+          "name": "標本室と岩の庭",
+          "level": 0,
+          "people": 105
+        },
+        {
+          "id": "S13-floor-05",
+          "name": "園芸カフェ一階",
+          "level": 0,
+          "people": 68
+        },
+        {
+          "id": "S13-floor-06",
+          "name": "標本館二階の閲覧室",
+          "level": 1,
+          "people": 14
+        },
+        {
+          "id": "S13-floor-07",
+          "name": "園芸工房二階",
+          "level": 1,
+          "people": 13
+        },
+        {
+          "id": "S13-floor-08",
+          "name": "動物館二階テラス",
+          "level": 1,
+          "people": 5
+        },
+        {
+          "id": "S13-floor-09",
+          "name": "滝の観察橋",
+          "level": 1,
+          "people": 10
+        }
+      ],
+      "working": 177,
+      "upper": 42,
+      "maxOverlap": 1.2332999999999883,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S13-runtime-overview.png",
+          "sha256": "e6b644040db41375460e0578566cd24c3322c46b42a846340bd4f34677a19ff8"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S13-runtime-detail.png",
+          "sha256": "3db77a705b352b19c567928132b3e31e50fb86d2acbada61f478d119eea7105f"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S13-runtime-corner.png",
+          "sha256": "e5350c636f0147cc285b5a398a37d05047190293bbf9dd6b1519f64198bb8c78"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "South curved river-wall face is clear; wooden bridge and actual stairs remain populated.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S14",
+      "name": "映画撮影スタジオ",
+      "population": 1000,
+      "elapsed": 1.233200000000011,
+      "scenery": [
+        {
+          "id": "A0760-0",
+          "name": "映画館のフィルム飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0760-1",
+          "name": "衣装室のリボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0760-2",
+          "name": "小道具室の紙風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0760-3",
+          "name": "カフェのコーヒー蒸気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0761-0",
+          "name": "噴水セットの飛沫",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0761-1",
+          "name": "海賊セットの霧",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0761-2",
+          "name": "蒸気撮影機の煙",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0761-3",
+          "name": "特殊効果の泡",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0762-0",
+          "name": "西部劇の風の葉",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0762-1",
+          "name": "楽屋の星モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0762-2",
+          "name": "舞台照明の散光",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0762-3",
+          "name": "フィルム巻き取り模型",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S14-floor-01",
+          "name": "西部劇の撮影広場",
+          "level": 0,
+          "people": 75
+        },
+        {
+          "id": "S14-floor-02",
+          "name": "街角セットのカフェ",
+          "level": 0,
+          "people": 95
+        },
+        {
+          "id": "S14-floor-03",
+          "name": "衣装室一階",
+          "level": 0,
+          "people": 86
+        },
+        {
+          "id": "S14-floor-04",
+          "name": "大道具工房の作業床",
+          "level": 0,
+          "people": 72
+        },
+        {
+          "id": "S14-floor-05",
+          "name": "映像編集棟一階",
+          "level": 0,
+          "people": 35
+        },
+        {
+          "id": "S14-floor-06",
+          "name": "撮影機材のスタジオ",
+          "level": 0,
+          "people": 56
+        },
+        {
+          "id": "S14-floor-07",
+          "name": "撮影所の食堂",
+          "level": 0,
+          "people": 68
+        },
+        {
+          "id": "S14-floor-08",
+          "name": "編集室二階",
+          "level": 1,
+          "people": 15
+        },
+        {
+          "id": "S14-floor-09",
+          "name": "衣装室二階",
+          "level": 1,
+          "people": 4
+        },
+        {
+          "id": "S14-floor-10",
+          "name": "街角セット二階",
+          "level": 1,
+          "people": 3
+        },
+        {
+          "id": "S14-floor-11",
+          "name": "大道具二階の設計室",
+          "level": 1,
+          "people": 8
+        }
+      ],
+      "working": 183,
+      "upper": 30,
+      "maxOverlap": 1.233200000000011,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S14-runtime-overview.png",
+          "sha256": "b929d967e7d20e9b120210892f5d0f778330efa8b8c5e530d9a5e3b978256b3e"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S14-runtime-detail.png",
+          "sha256": "3655ccbdf4185feea093e3604c759101c87aac361201a2cfcf838134dc53fff0"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S14-runtime-corner.png",
+          "sha256": "ac7e9a6192b94b60da5be48aafbcc8e63b915f2c79c53b8a3c334a5a9131c333"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Water tank, entrance sign wall and south roof edge are clear.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S15",
+      "name": "飛行船の港",
+      "population": 1100,
+      "elapsed": 1.2332000000000118,
+      "scenery": [
+        {
+          "id": "A0763-0",
+          "name": "飛行港の吹き流し",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0763-1",
+          "name": "空港カフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0763-2",
+          "name": "気球工房のリボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0763-3",
+          "name": "格納庫の小回転模型",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0764-0",
+          "name": "雲の白いほころび",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0764-1",
+          "name": "係留ロープの房",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0764-2",
+          "name": "庭噴水の水滴",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0764-3",
+          "name": "蒸気機関の排気",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0765-0",
+          "name": "港の綿毛",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0765-1",
+          "name": "気球屋の星モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0765-2",
+          "name": "貨物窓口の扇風機",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0765-3",
+          "name": "浮遊庭の三角旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S15-floor-01",
+          "name": "飛行船駅の待合広場",
+          "level": 0,
+          "people": 78
+        },
+        {
+          "id": "S15-floor-02",
+          "name": "管制塔前の庭",
+          "level": 0,
+          "people": 67
+        },
+        {
+          "id": "S15-floor-03",
+          "name": "空港の開放整備工房",
+          "level": 0,
+          "people": 98
+        },
+        {
+          "id": "S15-floor-04",
+          "name": "気球工房の通路",
+          "level": 0,
+          "people": 104
+        },
+        {
+          "id": "S15-floor-05",
+          "name": "天文館の噴水庭園",
+          "level": 0,
+          "people": 92
+        },
+        {
+          "id": "S15-floor-06",
+          "name": "飛行船整備場の前床",
+          "level": 0,
+          "people": 59
+        },
+        {
+          "id": "S15-floor-07",
+          "name": "天文館の二階テラス",
+          "level": 1,
+          "people": 19
+        },
+        {
+          "id": "S15-floor-08",
+          "name": "空港展望塔のテラス",
+          "level": 1,
+          "people": 10
+        }
+      ],
+      "working": 208,
+      "upper": 29,
+      "maxOverlap": 1.2332000000000118,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S15-runtime-overview.png",
+          "sha256": "7457794e628e5aa75a5904898324708d4402577d08acd163f76dc20a60e5f294"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S15-runtime-detail.png",
+          "sha256": "ed879f8026f2d76e8459ee6ad385c2dda7e4e0b5395e2179fdea0acb9e33ab58"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S15-runtime-corner.png",
+          "sha256": "f28e324b634bdd1b9232bc08a4adb0a767bd8736166e40ee4148685900705273"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "South arches and surrounding clouds are clear; balcony floors and stairs remain populated.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S16",
+      "name": "大きな博物館",
+      "population": 1200,
+      "elapsed": 1.233199999999982,
+      "scenery": [
+        {
+          "id": "A0766-0",
+          "name": "天文展示の小模型",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0766-1",
+          "name": "閲覧室の羽ペン",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0766-2",
+          "name": "博物館の花リボン",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0766-3",
+          "name": "修復室の温熱容器の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0767-0",
+          "name": "中庭の水しぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0767-1",
+          "name": "温室の葉しずく",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0767-2",
+          "name": "復元工房のほこり",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0767-3",
+          "name": "科学室の小さな煙",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0768-0",
+          "name": "秋の中庭の葉",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0768-1",
+          "name": "吊り下げ惑星の飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0768-2",
+          "name": "展示のプリズム光",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0768-3",
+          "name": "機械展示の振り子模型",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S16-floor-01",
+          "name": "恐竜館の観覧通路",
+          "level": 0,
+          "people": 61
+        },
+        {
+          "id": "S16-floor-02",
+          "name": "古代館の展示通路",
+          "level": 0,
+          "people": 118
+        },
+        {
+          "id": "S16-floor-03",
+          "name": "科学館の体験床",
+          "level": 0,
+          "people": 106
+        },
+        {
+          "id": "S16-floor-04",
+          "name": "修復工房の作業床",
+          "level": 0,
+          "people": 81
+        },
+        {
+          "id": "S16-floor-06",
+          "name": "鉱石館の展示床",
+          "level": 0,
+          "people": 38
+        },
+        {
+          "id": "S16-floor-07",
+          "name": "博物館受付の庭",
+          "level": 0,
+          "people": 81
+        },
+        {
+          "id": "S16-floor-08",
+          "name": "搬入口と梱包作業床",
+          "level": 0,
+          "people": 98
+        },
+        {
+          "id": "S16-floor-09",
+          "name": "修復工房二階の資料室",
+          "level": 1,
+          "people": 3
+        },
+        {
+          "id": "S16-floor-10",
+          "name": "受付二階の回廊",
+          "level": 1,
+          "people": 8
+        }
+      ],
+      "working": 214,
+      "upper": 11,
+      "maxOverlap": 1.233199999999982,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S16-runtime-overview.png",
+          "sha256": "eed6a84e4849316676cc50af78c06a042bd27f7d52731b0787bde937e8ba4525"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S16-runtime-detail.png",
+          "sha256": "71170a8447b60ece9d947b63d39f43ad0d32b87e6b478169845ea72188380802"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S16-runtime-corner.png",
+          "sha256": "ab2bfabd558ca936c334f23b274cc997a26db2dc6b3946792999b6ea9e7ccd03"
+        }
+      },
+      "visualPassed": false,
+      "visualNotes": "Closed central garden and glass gate are clear; foreground south-east green dome has one suspected resident foot point on its roof.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ],
+      "localIssueEvidence": {
+        "path": "assets/production/animation-expansion/review/pre-polish-becf/S16-corner.png",
+        "sha256": "ab2bfabd558ca936c334f23b274cc997a26db2dc6b3946792999b6ea9e7ccd03"
+      }
+    },
+    {
+      "stage": "S17",
+      "name": "時計仕掛けの工房街",
+      "population": 1300,
+      "elapsed": 1.2332000000000125,
+      "scenery": [
+        {
+          "id": "A0769-0",
+          "name": "工房の銅風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0769-1",
+          "name": "時計屋の歯車モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0769-2",
+          "name": "自転車店の小風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0769-3",
+          "name": "茶房の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0770-0",
+          "name": "運河の小さな波",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0770-1",
+          "name": "鋳物工房の蒸気",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0770-2",
+          "name": "硝子工房の熱のゆらぎ",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0770-3",
+          "name": "木工房の紙くず",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0771-0",
+          "name": "歯車庭の旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0771-1",
+          "name": "乾燥台のハーブ",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0771-2",
+          "name": "窓辺の回転小模型",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0771-3",
+          "name": "並木の種の舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S17-floor-01",
+          "name": "時計塔の公開工房",
+          "level": 0,
+          "people": 126
+        },
+        {
+          "id": "S17-floor-02",
+          "name": "歯車工房の作業床",
+          "level": 0,
+          "people": 108
+        },
+        {
+          "id": "S17-floor-03",
+          "name": "ガラス工房の床",
+          "level": 0,
+          "people": 109
+        },
+        {
+          "id": "S17-floor-04",
+          "name": "木工通りの中庭",
+          "level": 0,
+          "people": 169
+        },
+        {
+          "id": "S17-floor-05",
+          "name": "自転車工房と荷捌き床",
+          "level": 0,
+          "people": 162
+        },
+        {
+          "id": "S17-floor-06",
+          "name": "からくり広場と販売所",
+          "level": 0,
+          "people": 173
+        },
+        {
+          "id": "S17-floor-07",
+          "name": "時計職人の二階",
+          "level": 1,
+          "people": 12
+        },
+        {
+          "id": "S17-floor-08",
+          "name": "木工職人の二階",
+          "level": 1,
+          "people": 18
+        }
+      ],
+      "working": 306,
+      "upper": 30,
+      "maxOverlap": 1.2332000000000125,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S17-runtime-overview.png",
+          "sha256": "af4f0855cd360a156201ace90f72b20e11519a47366a67b2ba5b952077cbfefa"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S17-runtime-detail.png",
+          "sha256": "0b9313f7923a84d4396dbd0c5d772581f46dba52c4cdcd5b7086876dd6fdd906"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S17-runtime-corner.png",
+          "sha256": "6a10ed5ff95c4b3e7edeb91eaf96c59f960d39de994f089b4266ff2ff1d840be"
+        }
+      },
+      "visualPassed": false,
+      "visualNotes": "Booth canopies and south wall are clear; south-east block western blue tower has one suspected resident foot point on its roof.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ],
+      "localIssueEvidence": {
+        "path": "assets/production/animation-expansion/review/pre-polish-becf/S17-corner.png",
+        "sha256": "6a10ed5ff95c4b3e7edeb91eaf96c59f960d39de994f089b4266ff2ff1d840be"
+      }
+    },
+    {
+      "stage": "S18",
+      "name": "砂漠のバザール",
+      "population": 1400,
+      "elapsed": 1.2332999999999879,
+      "scenery": [
+        {
+          "id": "A0772-0",
+          "name": "砂漠の布飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0772-1",
+          "name": "絨毯屋の房",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0772-2",
+          "name": "香辛料の細かな粉",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0772-3",
+          "name": "茶屋の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0773-0",
+          "name": "オアシスのさざ波",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0773-1",
+          "name": "中庭噴水の飛沫",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0773-2",
+          "name": "水屋の水滴",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0773-3",
+          "name": "砂の小さな舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0774-0",
+          "name": "椰子の葉先",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0774-1",
+          "name": "天幕の小旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0774-2",
+          "name": "市場の銅風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0774-3",
+          "name": "香炉の細い煙",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S18-floor-01",
+          "name": "布市場の広場",
+          "level": 0,
+          "people": 135
+        },
+        {
+          "id": "S18-floor-02",
+          "name": "香辛料市場の広場",
+          "level": 0,
+          "people": 113
+        },
+        {
+          "id": "S18-floor-03",
+          "name": "隊商の休憩床",
+          "level": 0,
+          "people": 144
+        },
+        {
+          "id": "S18-floor-04",
+          "name": "水売り場と石造回廊",
+          "level": 0,
+          "people": 131
+        },
+        {
+          "id": "S18-floor-05",
+          "name": "中庭と陶器市",
+          "level": 0,
+          "people": 154
+        },
+        {
+          "id": "S18-floor-06",
+          "name": "果実市場と庭",
+          "level": 0,
+          "people": 169
+        },
+        {
+          "id": "S18-floor-07",
+          "name": "隊商宿の二階",
+          "level": 1,
+          "people": 26
+        },
+        {
+          "id": "S18-floor-08",
+          "name": "布商人の二階回廊",
+          "level": 1,
+          "people": 19
+        }
+      ],
+      "working": 396,
+      "upper": 45,
+      "maxOverlap": 1.2332999999999879,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S18-runtime-overview.png",
+          "sha256": "48deac62aece7d5cb84ae2a0b89d047379acb9b8412d5d493cde5a6dc6f1cc37"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S18-runtime-detail.png",
+          "sha256": "a9796445dc54fbe20222539eeb53e8f11d2cbf8d2c2ea83c08d6399249574243"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S18-runtime-corner.png",
+          "sha256": "4a036588af04f07c1294e275324bb027b341d96d130a5b73fabd238ff8e52411"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Canal faces, bottom tent roofs, water and waterfall dome are clear; stair passage remains populated.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S19",
+      "name": "雪山のリゾート",
+      "population": 1500,
+      "elapsed": 1.233299999999989,
+      "scenery": [
+        {
+          "id": "A0775-0",
+          "name": "山小屋の木鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0775-1",
+          "name": "リフト小屋の吹き流し",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0775-2",
+          "name": "スキー店の飾り紐",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0775-3",
+          "name": "山のカフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0776-0",
+          "name": "崖の粉雪",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0776-1",
+          "name": "氷面のきらめき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0776-2",
+          "name": "氷の雫",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0776-3",
+          "name": "雪上車工房の排気",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0777-0",
+          "name": "雪の結晶の舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0777-1",
+          "name": "針葉樹の粉雪",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0777-2",
+          "name": "ゲレンデの小旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0777-3",
+          "name": "休憩所の冬モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S19-floor-01",
+          "name": "リフト受付と貸出床",
+          "level": 0,
+          "people": 93
+        },
+        {
+          "id": "S19-floor-02",
+          "name": "初心者ゲレンデ",
+          "level": 0,
+          "people": 175
+        },
+        {
+          "id": "S19-floor-03",
+          "name": "レンタルショップ一階",
+          "level": 0,
+          "people": 148
+        },
+        {
+          "id": "S19-floor-04",
+          "name": "整備庫の作業床",
+          "level": 0,
+          "people": 133
+        },
+        {
+          "id": "S19-floor-05",
+          "name": "雪の遊び場",
+          "level": 0,
+          "people": 144
+        },
+        {
+          "id": "S19-floor-06",
+          "name": "救護小屋の床",
+          "level": 0,
+          "people": 14
+        },
+        {
+          "id": "S19-floor-07",
+          "name": "山頂カフェの開いた床",
+          "level": 1,
+          "people": 18
+        },
+        {
+          "id": "S19-floor-08",
+          "name": "用具店二階の休憩室",
+          "level": 1,
+          "people": 11
+        }
+      ],
+      "working": 295,
+      "upper": 29,
+      "maxOverlap": 1.233299999999989,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S19-runtime-overview.png",
+          "sha256": "f46cba2e67878a9f494cdfd093b3ef39e30921a3e45fb9b5e77e86cd77929cf0"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S19-runtime-detail.png",
+          "sha256": "8cc849609c9d29da89cb179ee76e15cc04ff392ce7c4d938e47e63feb1a18763"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S19-runtime-corner.png",
+          "sha256": "836d61711f3f6b282e4b2b87d58e9168686469ff4625ca084ce3e2ec38c5c54c"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "South cloud and vertical cliff are clear; visible central stairs retain residents.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S20",
+      "name": "海洋研究都市",
+      "population": 1600,
+      "elapsed": 1.2166000000000348,
+      "scenery": [
+        {
+          "id": "A0778-0",
+          "name": "研究港の小吹き流し",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0778-1",
+          "name": "マリンカフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0778-2",
+          "name": "研究室の卓上ファン",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0778-3",
+          "name": "貝のモビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0779-0",
+          "name": "潜水艇ドックの泡",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0779-1",
+          "name": "水槽の細い泡",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0779-2",
+          "name": "海の光のゆらぎ",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0779-3",
+          "name": "桟橋の波しぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0780-0",
+          "name": "海風の白い羽",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0780-1",
+          "name": "海藻の細い葉先",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0780-2",
+          "name": "環境観測の回転模型",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0780-3",
+          "name": "夜光プランクトンの粒",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S20-floor-01",
+          "name": "研究ドームの展示床",
+          "level": 0,
+          "people": 144
+        },
+        {
+          "id": "S20-floor-02",
+          "name": "水槽の見学回廊",
+          "level": 0,
+          "people": 52
+        },
+        {
+          "id": "S20-floor-03",
+          "name": "試料ラボ一階",
+          "level": 0,
+          "people": 72
+        },
+        {
+          "id": "S20-floor-04",
+          "name": "海上デッキのカフェ",
+          "level": 0,
+          "people": 91
+        },
+        {
+          "id": "S20-floor-05",
+          "name": "潜水艇整備デッキ",
+          "level": 0,
+          "people": 84
+        },
+        {
+          "id": "S20-floor-06",
+          "name": "海辺の資材市場",
+          "level": 0,
+          "people": 184
+        },
+        {
+          "id": "S20-floor-07",
+          "name": "研究棟二階の制御室",
+          "level": 1,
+          "people": 18
+        },
+        {
+          "id": "S20-floor-08",
+          "name": "海上展望デッキ",
+          "level": 1,
+          "people": 11
+        },
+        {
+          "id": "S20-floor-09",
+          "name": "海沿いの散策広場",
+          "level": 0,
+          "people": 133
+        }
+      ],
+      "working": 224,
+      "upper": 29,
+      "maxOverlap": 1.2166000000000348,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S20-runtime-overview.png",
+          "sha256": "449751ac3007727fd82548ed30be3aa9f834739576afc2101e2d8ca2fbb56ac3"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S20-runtime-detail.png",
+          "sha256": "52b0a56930a2317434f828b72df6374e3b9380cd0d367599992518af95bae7a5"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S20-runtime-corner.png",
+          "sha256": "b654a58f89849b8db653149b724e4f436cee706c33d368bb78410c5f1077da10"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "South-east quay face is clear, with residents on the narrow wooden pier.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S21",
+      "name": "雲の上の街",
+      "population": 1700,
+      "elapsed": 1.233299999999988,
+      "scenery": [
+        {
+          "id": "A0781-0",
+          "name": "雲の街の風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0781-1",
+          "name": "風車小屋のリボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0781-2",
+          "name": "空カフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0781-3",
+          "name": "雲の庭の紙風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0782-0",
+          "name": "庭の滝の霧",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0782-1",
+          "name": "噴水の雲のしぶき",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0782-2",
+          "name": "雲の薄いかけら",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0782-3",
+          "name": "空の水路のゆらぎ",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0783-0",
+          "name": "飛行船桟橋の小旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0783-1",
+          "name": "花壇の綿毛",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0783-2",
+          "name": "市場の風モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0783-3",
+          "name": "空工房の羽根模型",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S21-floor-01",
+          "name": "雲上の広場と時計店",
+          "level": 0,
+          "people": 157
+        },
+        {
+          "id": "S21-floor-02",
+          "name": "風車通りの仕事床",
+          "level": 0,
+          "people": 109
+        },
+        {
+          "id": "S21-floor-03",
+          "name": "雲の芝生庭園",
+          "level": 0,
+          "people": 101
+        },
+        {
+          "id": "S21-floor-04",
+          "name": "雲の庭の休憩室",
+          "level": 0,
+          "people": 44
+        },
+        {
+          "id": "S21-floor-05",
+          "name": "家屋一階の工房",
+          "level": 0,
+          "people": 179
+        },
+        {
+          "id": "S21-floor-06",
+          "name": "空の市場",
+          "level": 0,
+          "people": 157
+        },
+        {
+          "id": "S21-floor-07",
+          "name": "家屋二階の暮らし",
+          "level": 1,
+          "people": 22
+        },
+        {
+          "id": "S21-floor-08",
+          "name": "風工房の上階",
+          "level": 1,
+          "people": 14
+        },
+        {
+          "id": "S21-floor-09",
+          "name": "空中桟橋",
+          "level": 1,
+          "people": 9
+        },
+        {
+          "id": "S21-floor-10",
+          "name": "南の展望広場",
+          "level": 0,
+          "people": 60
+        }
+      ],
+      "working": 256,
+      "upper": 45,
+      "maxOverlap": 1.233299999999988,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S21-runtime-overview.png",
+          "sha256": "8b2b3e6fc5ce3480bac45cee0f4eb18b12bdeb5cfdb0e95ce62c473c5117a5b0"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S21-runtime-detail.png",
+          "sha256": "2ea801ef298541dac81380cd680d8d074b247991707ea4e459ba1c193369cc4f"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S21-runtime-corner.png",
+          "sha256": "4c46ad2ad98112c9739e8e42e2050e7471f2235be96e54e52bc113de724e2e3b"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Outer clouds, north-east dock air gap and central upper roof are clear; real floors remain populated.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S22",
+      "name": "魔法学校",
+      "population": 1800,
+      "elapsed": 1.2332999999999883,
+      "scenery": [
+        {
+          "id": "A0784-0",
+          "name": "温室の光る種",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0784-1",
+          "name": "魔法図書館のしおり",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0784-2",
+          "name": "錬金室の薄煙",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0784-3",
+          "name": "食堂のお茶の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0785-0",
+          "name": "魔法噴水の飛沫",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0785-1",
+          "name": "温室のしずく",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0785-2",
+          "name": "天文の小惑星模型",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0785-3",
+          "name": "魔法工房の羽根風車",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0786-0",
+          "name": "学寮の星モビール",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0786-1",
+          "name": "箒工房の房",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0786-2",
+          "name": "書庫の光るほこり",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0786-3",
+          "name": "青い花びらの舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S22-floor-01",
+          "name": "薬草温室の作業床",
+          "level": 0,
+          "people": 104
+        },
+        {
+          "id": "S22-floor-02",
+          "name": "魔法の中庭",
+          "level": 0,
+          "people": 91
+        },
+        {
+          "id": "S22-floor-03",
+          "name": "図書塔の閲覧床",
+          "level": 0,
+          "people": 79
+        },
+        {
+          "id": "S22-floor-04",
+          "name": "魔法実験室の一階",
+          "level": 0,
+          "people": 66
+        },
+        {
+          "id": "S22-floor-05",
+          "name": "寮の談話室",
+          "level": 0,
+          "people": 85
+        },
+        {
+          "id": "S22-floor-06",
+          "name": "箒の練習床",
+          "level": 0,
+          "people": 184
+        },
+        {
+          "id": "S22-floor-07",
+          "name": "大食堂の通路と配膳",
+          "level": 0,
+          "people": 95
+        },
+        {
+          "id": "S22-floor-08",
+          "name": "時計回廊の一階",
+          "level": 0,
+          "people": 124
+        },
+        {
+          "id": "S22-floor-09",
+          "name": "大きな中庭の散策",
+          "level": 0,
+          "people": 242
+        },
+        {
+          "id": "S22-floor-10",
+          "name": "実験室二階の研究机",
+          "level": 1,
+          "people": 17
+        },
+        {
+          "id": "S22-floor-11",
+          "name": "寮二階の寝室",
+          "level": 1,
+          "people": 11
+        },
+        {
+          "id": "S22-floor-12",
+          "name": "寮二階の読書室",
+          "level": 1,
+          "people": 10
+        },
+        {
+          "id": "S22-floor-13",
+          "name": "時計回廊二階",
+          "level": 1,
+          "people": 27
+        }
+      ],
+      "working": 563,
+      "upper": 65,
+      "maxOverlap": 1.2332999999999883,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S22-runtime-overview.png",
+          "sha256": "61ed604d38bfd92ae7b0304de0ebbc3d0be40d64530a51795b34eb1f3d04fe6b"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S22-runtime-detail.png",
+          "sha256": "8b8d76cb05e0af37117cb25794c073cb9bc18b2fb4d0cf0ba5b06322dbb37096"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S22-runtime-corner.png",
+          "sha256": "671f0ec9edbbd2264e1ec9af3a33b162d91334793e09282b1eff08aa85f3e196"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "South arched wall face is clear; bridge and indoor floors remain populated.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S23",
+      "name": "昼と夜の大都会",
+      "population": 1900,
+      "elapsed": 1.2165999999999768,
+      "scenery": [
+        {
+          "id": "A0787-0",
+          "name": "都会の小旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0787-1",
+          "name": "商店街の風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0787-2",
+          "name": "屋上カフェの湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0787-3",
+          "name": "劇場のリボン飾り",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0788-0",
+          "name": "公園噴水の飛沫",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0788-1",
+          "name": "駅舎の排気蒸気",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0788-2",
+          "name": "暮れの水面光",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0788-3",
+          "name": "カフェテラスの泡",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0789-0",
+          "name": "公園の葉の舞",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0789-1",
+          "name": "花屋のリボン",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0789-2",
+          "name": "劇場の紙吹雪",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0789-3",
+          "name": "アパートの卓上ファン",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "S23-floor-01",
+          "name": "駅の案内と改札前",
+          "level": 0,
+          "people": 171
+        },
+        {
+          "id": "S23-floor-02",
+          "name": "商店街の開いた一階",
+          "level": 0,
+          "people": 144
+        },
+        {
+          "id": "S23-floor-03",
+          "name": "オフィス一階",
+          "level": 0,
+          "people": 78
+        },
+        {
+          "id": "S23-floor-04",
+          "name": "公園と読書の庭",
+          "level": 0,
+          "people": 277
+        },
+        {
+          "id": "S23-floor-05",
+          "name": "劇場前とカフェの中庭",
+          "level": 0,
+          "people": 141
+        },
+        {
+          "id": "S23-floor-06",
+          "name": "住宅の中庭",
+          "level": 0,
+          "people": 132
+        },
+        {
+          "id": "S23-floor-07",
+          "name": "住宅一階の作業室",
+          "level": 0,
+          "people": 39
+        },
+        {
+          "id": "S23-floor-08",
+          "name": "オフィスの屋上庭園",
+          "level": 1,
+          "people": 41
+        },
+        {
+          "id": "S23-floor-09",
+          "name": "劇場の客席と舞台",
+          "level": 1,
+          "people": 9
+        },
+        {
+          "id": "S23-floor-10",
+          "name": "劇場二階の工房",
+          "level": 1,
+          "people": 10
+        }
+      ],
+      "working": 418,
+      "upper": 60,
+      "maxOverlap": 1.2165999999999768,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S23-runtime-overview.png",
+          "sha256": "5b7c06c1d84e1c54cf27eda5977ef139e62887bba04bbfd12df113635a543d4c"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S23-runtime-detail.png",
+          "sha256": "75f371356dcdf8eee1fc29343d680540f9334904838025d6bf96d892cccbbd6b"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S23-runtime-corner.png",
+          "sha256": "c084f9383a7cbf82efbe1d20802a94f74934341a4af990d0fafe1c92da4c9012"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "Outer cloud and cliff areas are clear; balcony and interior floors remain populated.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    },
+    {
+      "stage": "S24",
+      "name": "世界のお祭り大集合",
+      "population": 2000,
+      "elapsed": 1.233299999999989,
+      "scenery": [
+        {
+          "id": "A0790-0",
+          "name": "世界祭りの小旗",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0790-1",
+          "name": "世界屋台のリボン",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0790-2",
+          "name": "工芸広場の風鈴",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0790-3",
+          "name": "屋台料理の湯気",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0791-0",
+          "name": "水上劇場の飛沫",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0791-1",
+          "name": "庭の小噴水の霧",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0791-2",
+          "name": "入口の水面光",
+          "layer": "underActors",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0791-3",
+          "name": "祝祭のしゃぼん玉",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0792-0",
+          "name": "音楽広場の紙吹雪",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0792-1",
+          "name": "カーニバルの房",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0792-2",
+          "name": "花祭りの花びら",
+          "layer": "sky",
+          "placements": 1,
+          "loaded": true
+        },
+        {
+          "id": "A0792-3",
+          "name": "工芸屋の回転玩具",
+          "layer": "depth",
+          "placements": 1,
+          "loaded": true
+        }
+      ],
+      "areas": [
+        {
+          "id": "parade",
+          "name": "パレードと屋台の広場",
+          "level": 0,
+          "people": 271
+        },
+        {
+          "id": "market",
+          "name": "世界の食市場",
+          "level": 0,
+          "people": 161
+        },
+        {
+          "id": "workshop",
+          "name": "職人長屋の工房",
+          "level": 0,
+          "people": 194
+        },
+        {
+          "id": "garden",
+          "name": "庭園と休憩のテラス",
+          "level": 0,
+          "people": 170
+        },
+        {
+          "id": "station",
+          "name": "鉄道広場と売店",
+          "level": 0,
+          "people": 79
+        },
+        {
+          "id": "stage",
+          "name": "水辺の舞台",
+          "level": 1,
+          "people": 18
+        },
+        {
+          "id": "market-upper",
+          "name": "食市場の二階回廊",
+          "level": 1,
+          "people": 33
+        },
+        {
+          "id": "workshop-upper",
+          "name": "職人工房の二階",
+          "level": 1,
+          "people": 17
+        },
+        {
+          "id": "garden-upper",
+          "name": "庭園を見渡す二階",
+          "level": 1,
+          "people": 10
+        },
+        {
+          "id": "promenade",
+          "name": "海沿いの散策と販売広場",
+          "level": 0,
+          "people": 142
+        },
+        {
+          "id": "east-promenade",
+          "name": "東の散策広場",
+          "level": 0,
+          "people": 114
+        }
+      ],
+      "working": 581,
+      "upper": 78,
+      "maxOverlap": 1.233299999999989,
+      "screenshots": {
+        "overview": {
+          "path": "assets/production/animation-expansion/review/S24-runtime-overview.png",
+          "sha256": "b0ab8f5e61fcc7e983ad2a2e7f5824295a44a195ff45a6d8ea5e0861293b5a6b"
+        },
+        "detail": {
+          "path": "assets/production/animation-expansion/review/S24-runtime-detail.png",
+          "sha256": "a81aa89acf500effa015f96c39f759afc13eedcdd64aff36d2ac4b1cec378ba7"
+        },
+        "corner": {
+          "path": "assets/production/animation-expansion/review/S24-runtime-corner.png",
+          "sha256": "d1ae46ff25effefe881cfb9d2080b62a402358b09409687abf094f258a40d94b"
+        }
+      },
+      "visualPassed": true,
+      "visualNotes": "South wall, cloud and central doorway beam are clear; real garden and stairs remain populated.",
+      "reviewedViews": [
+        "overview",
+        "detail",
+        "corner"
+      ]
+    }
+  ],
+  "errors": [],
+  "visualReview": "reviewed-pending-local-surface-fixes",
+  "unresolvedFindings": [
+    "S12",
+    "S16",
+    "S17"
+  ],
+  "unchanged": true,
+  "capturePassed": true,
+  "reviewedAt": "2026-10-04T20:26:24.042175+00:00",
+  "reviewMethod": "Manual inspection of all 24 overview and detail screenshots plus 17 south-east zoomed corner screenshots (65 images); first seven overview/detail byte-identical pairs independently checked."
+}

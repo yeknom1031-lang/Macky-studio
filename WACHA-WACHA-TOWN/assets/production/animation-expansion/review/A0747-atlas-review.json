@@ -1,0 +1,355 @@
+{
+  "id": "A0747",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "152bb09cf1a7e0ef4360b61c8cde29e2bf737ce772208282d031d08e125f8f97",
+  "alphaZeroFraction": 0.69766,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S09-ENV09",
+      "name": "並木の葉",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4243,
+          "rgbaSHA256": "49ae76eee4d73f3a8feebb06c0582df1b0dd3338fa08f43b46b38aa5b9048882"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4364,
+          "rgbaSHA256": "a8bda8c4d8443a6711244c632459fda354407c0bf6af12d121ba419838ab360e"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4466,
+          "rgbaSHA256": "a110d03eec7dc4a0d9c3578452f234ca05561055154c2eb082f12c25455fa93b"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4277,
+          "rgbaSHA256": "a5eb7ad90b6ac1ef9cbb23633259188d2de3ccc0ca5c5a330ea2ecdaf5b9cf5b"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4271,
+          "rgbaSHA256": "5c988d68c668ff6fad59c3e2d6fefdb0b3a4b47aeeb2e7f23c0401cf111c8049"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4830,
+          "rgbaSHA256": "963adaa0af56228c6457c604c41a0b99f613206cfd1119d27d10d177d307043b"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4128,
+          "rgbaSHA256": "611fa8791c217f6ec4d6fe8d1a06eb2b3198b0bed8c31ab80f8b4c775cb964e3"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4694,
+          "rgbaSHA256": "ac63647a706ebe3d091bf95590b7b783d50c89edda5b529fd5c9be79875678f5"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S09-ENV10",
+      "name": "ホームの紙テープ",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7242,
+          "rgbaSHA256": "ad867e85ac4be669968a585c33e9aff5680dc8e5ecd145080481837e78accafd"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7159,
+          "rgbaSHA256": "7bd6a1e8fb675bcc00d7913525c778557ceff81c5f087a2e81d6b33fc10dbaa2"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7099,
+          "rgbaSHA256": "8096eb55a2827effbaaf7f96f85a50f12fccda62b5112e505a164e3d384c9575"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6976,
+          "rgbaSHA256": "c9962a2845ceef3352691c7959b71595b511eacbad88fe9d58d899bfedde750d"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7027,
+          "rgbaSHA256": "96b53d0e276b7787b8209c409cdb6ee5008668d71714db424d6b9ca684f0e689"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 6837,
+          "rgbaSHA256": "141931040c619fc4a26c6c087381f6bc8360f0e5206829a4a6240cdf43e79151"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6407,
+          "rgbaSHA256": "d7ac288430ea6b071b2ce8fbef0898820f9edb35232ca72cdcef19cda3327096"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6891,
+          "rgbaSHA256": "a4d364f376c9f1ceb77757f17d7e4a222dc05aa564744fcd49c329c6af927745"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S09-ENV11",
+      "name": "郵便カウンターの羽飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7671,
+          "rgbaSHA256": "7672558508301bd235357a4fd34b587eb1fb6a402b2ff7b829d30accea370387"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7115,
+          "rgbaSHA256": "9b7b8579607c3c4dfac1e2a99229983b1c0a25a4cb8efc5009cdb448a01b4482"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6275,
+          "rgbaSHA256": "92b9c4c35468eabe3746921f731e77b3017e091ef8ca5717196bfa75a409345c"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5599,
+          "rgbaSHA256": "e527618ece4a084f8b377d42724e3e5e3a538648b7ab95d07e56ca90145b751b"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6801,
+          "rgbaSHA256": "2452d7de31c707c4e4a82d3b8a667080281b4f63f43dcb2143c4c12cd507aa3e"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7175,
+          "rgbaSHA256": "455eb0738c29fd1d6168956f9ba100e228f9ea10e56c6ff47e90a52d47c32a21"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7115,
+          "rgbaSHA256": "ddb1e54205fe6d8c65b587b53d4aee2c577ac53c1d0b42751dd128db71705148"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7823,
+          "rgbaSHA256": "8e7984dbb9e54bbbd7e13507b5b5217dc9ddd859eaa712fea3e797fcf962817c"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S09-ENV12",
+      "name": "駅ホールの光の粒",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1897,
+          "rgbaSHA256": "90332899c4c396fadf66a62bc0ad0b087afaca0ed2d9e0d6802ef872bbe3749f"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 1920,
+          "rgbaSHA256": "00face68f6c906966da4d7f424db23eb12e1eb6ecb3694c8e7a0fc9d0202fd2d"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2225,
+          "rgbaSHA256": "f02befa1e8e80d30882fbcff4ec6229220585d0094a549bdd391d07b2be79de8"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1725,
+          "rgbaSHA256": "57ce98227a0278c9799fa964000ad773ba7b5f8b5d4bc6a54c6b2676618c8276"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1952,
+          "rgbaSHA256": "532d1361d3829153d2298a22cb053c32f3254c6e84f69f3f8299abf2bd200b4d"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 1791,
+          "rgbaSHA256": "1feea3ffecd326c5d0bde182822e7b351f879ff2a9256a335d4f285860fc3b2d"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1811,
+          "rgbaSHA256": "090eee78d9d4e4d6cf225546ab8770452c6c2bd52194da68a617405ec0d38a40"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 1944,
+          "rgbaSHA256": "d0939f3a80e5ae49ad34b2c4ff44d3386f2d06ddcdcf87f63addf538c4feda8e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent frames. Color compositing verifies true transparency. No duplicated building or complete equipment. Final scene placement pending."
+}

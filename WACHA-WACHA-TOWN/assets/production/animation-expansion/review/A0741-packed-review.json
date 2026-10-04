@@ -1,0 +1,87 @@
+{
+  "width": 1774,
+  "height": 887,
+  "rows": 4,
+  "cols": 8,
+  "frames": 32,
+  "transparentFraction": 0.7967580064796655,
+  "registration": [
+    {
+      "row": 0,
+      "sourceCell": [
+        222,
+        222
+      ],
+      "sharedBounds": [
+        40,
+        20,
+        186,
+        188
+      ],
+      "scale": 1.0952380952380953,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "one affine transform per complete row"
+    },
+    {
+      "row": 1,
+      "sourceCell": [
+        222,
+        212
+      ],
+      "sharedBounds": [
+        34,
+        7,
+        199,
+        185
+      ],
+      "scale": 1.0337078651685394,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "one affine transform per complete row"
+    },
+    {
+      "row": 2,
+      "sourceCell": [
+        222,
+        220
+      ],
+      "sharedBounds": [
+        37,
+        1,
+        186,
+        201
+      ],
+      "scale": 0.92,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "one affine transform per complete row"
+    },
+    {
+      "row": 3,
+      "sourceCell": [
+        222,
+        233
+      ],
+      "sharedBounds": [
+        41,
+        2,
+        204,
+        203
+      ],
+      "scale": 0.9154228855721394,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "one affine transform per complete row"
+    }
+  ],
+  "warnings": []
+}

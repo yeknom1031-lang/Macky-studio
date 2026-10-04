@@ -1,0 +1,20 @@
+{
+  "id": "A0624",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:43:32.055129+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ],
+  "notes": [
+    "3人の読書・しおり動作は原画とpackで顔・衣装・本を維持。",
+    "4行目は窓枠をキャラクターに焼き込んでいるため不採用。背景側の窓を使う既存動作を維持。"
+  ],
+  "packReport": "review/A0624-pack.json",
+  "preview": "review/A0624-check.jpg"
+}

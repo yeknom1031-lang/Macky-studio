@@ -1,0 +1,355 @@
+{
+  "id": "A0751",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "ecdb83b2224305190a0dbbf053d7df063b1ad898814c0ddfece06c300b2407a0",
+  "alphaZeroFraction": 0.6156,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      672,
+      887,
+      1113,
+      1345,
+      1573,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S11-ENV01",
+      "name": "収穫の麦飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13520,
+          "rgbaSHA256": "a2e853f946b06a21b78bd7bbd49e21bf845c3b6074f6882c71980736f83a8b54"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 13862,
+          "rgbaSHA256": "d94f7eb94942a094bda47787ad4266452da0392b427cbedfc0eb33bb85c18bb3"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14161,
+          "rgbaSHA256": "aa0c5d09387d9ae59ac236ffd0102e688d40038ace5758afc0c25f5217151591"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13798,
+          "rgbaSHA256": "5a9f7cdd8b45669afea3ca6012c1f985440f5c996ea761cbee30113833aadb41"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13719,
+          "rgbaSHA256": "36e61cb1b690b0f3570740d5a30ae77e42f2d706a519a86c9cc803618a39c098"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 14534,
+          "rgbaSHA256": "3d8cbcb31703c9fbd90667614214b420c15074c19863165bff5d176abe93867b"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13553,
+          "rgbaSHA256": "f6b9e752300fbab9b9d89b492fe5e18b797be3878fe6cd991eceb925a26df11f"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13789,
+          "rgbaSHA256": "c4a4b79a6f814e6119e8813ee49c1ad608dcfe6ff3b458dce36dce4cc346f16b"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S11-ENV02",
+      "name": "果樹園の吹き流し",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8942,
+          "rgbaSHA256": "8eb54603de7c187ce2bd588084d26605d498df468e2524798d2686719d884d57"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 9430,
+          "rgbaSHA256": "b0625308c75cc00843864dde98e28f041d1f3aa6febc51c213bf40658b189dfe"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 229,
+          "h": 221,
+          "visiblePixels": 10340,
+          "rgbaSHA256": "8be4fbacf9d3f27dec304b8c6446bce209c8f9e1a8eabb3b0fecb34718cd2986"
+        },
+        {
+          "x": 672,
+          "y": 222,
+          "w": 215,
+          "h": 221,
+          "visiblePixels": 9249,
+          "rgbaSHA256": "574e4c2615599575322478238420809dacb749586be3bc198576c59731a00e80"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 226,
+          "h": 221,
+          "visiblePixels": 9362,
+          "rgbaSHA256": "b5ce7ddc6f9933e9309165383cf7b39abd0e460f018448fccbdc5c72d19c102a"
+        },
+        {
+          "x": 1113,
+          "y": 222,
+          "w": 232,
+          "h": 221,
+          "visiblePixels": 10112,
+          "rgbaSHA256": "c0e47453c82c67cc9b614328ca3323e89e704ed3aa4ded741a6137193476af3f"
+        },
+        {
+          "x": 1345,
+          "y": 222,
+          "w": 228,
+          "h": 221,
+          "visiblePixels": 9999,
+          "rgbaSHA256": "d8465de31881ed85cd22881446f34e5c5ebbf9683c1329299a5af6d1036e5c72"
+        },
+        {
+          "x": 1573,
+          "y": 222,
+          "w": 201,
+          "h": 221,
+          "visiblePixels": 8862,
+          "rgbaSHA256": "b9f52445006178e6cc6e9c79766c0dbe237e6a8829258454882f9170780420f7"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S11-ENV03",
+      "name": "農家カフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5825,
+          "rgbaSHA256": "13c959445f9847f37562d729ca1e3bcdb14e17824cc34476db3a1c499c0bb1f7"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6245,
+          "rgbaSHA256": "354987354ae6d64bdb272bc9075088b13c80e314c0232e13297d6fd74de4d02a"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5848,
+          "rgbaSHA256": "0e9e4bc7597cea2e53c6868f19e0fea6bd5407510649e454b10c3150c54351f6"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4439,
+          "rgbaSHA256": "3c9660e4f9f1970420f7411270e5c65c50ec6108dc6d479ee4490cd45b34188a"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3379,
+          "rgbaSHA256": "9a94c370a440041db647d339f33ca24c26cc0925ded9d1c48f672bcabb7ba319"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2726,
+          "rgbaSHA256": "7b12855ca5b8929e9f10975ea0cf36603b79639e94f873469b0ad7cbe05197d9"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5074,
+          "rgbaSHA256": "08d881cb3513e88b5bcfc7fc022f898ab1bf3f30d903183077b4628813207a18"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5997,
+          "rgbaSHA256": "8f8affafb5cbbd9b031a1b1107c03c2019902baec7f852e2a952a779f007e454"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S11-ENV04",
+      "name": "納屋の風車飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11554,
+          "rgbaSHA256": "90e3447c7f527cd0976393a0c27175bd26c40ed71a8886d9630c9769a0871186"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11372,
+          "rgbaSHA256": "392bb4e014a6b5b286a069b3db2deca0b5ec26476597aa0fec73795633276c64"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11319,
+          "rgbaSHA256": "75c9ffd2e7dcec65196719f10d5be65afe4bf52cade128adb909ea94aa2f049b"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10788,
+          "rgbaSHA256": "5fbe7ac265e7e7574ec0db0eb18db9feb50487bb42bb49fb788f9bc8e9411982"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11130,
+          "rgbaSHA256": "92af351047a9c973532875e9d9d610c112826d2eaa3591cf0731071f9d73d04d"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11383,
+          "rgbaSHA256": "a5c01390e8dc0b101a47157149f3693fed594b6438fb4c9ca3a1eea7a7f52568"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11094,
+          "rgbaSHA256": "8fcbb354e1007dc15f15005fda762e3c69768a327b66c7590fc9cec351b08378"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11294,
+          "rgbaSHA256": "eabb2ce86487eb615817f024da9d22449918774142ccefc321106ae7170a84bd"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "Four coherent rows of eight frames, with true transparency confirmed by colored compositing. No complete background equipment duplicated. Final scene placement pending."
+}

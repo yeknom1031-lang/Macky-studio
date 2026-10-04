@@ -2,7 +2,7 @@
 
 街で働いたり遊んだりする住人の中から、見本と同じ相手を3分以内に探すゲームです。
 
-**24ステージ版 v2.1を公開済み。** 収録デザイン4,396 / 4,396種類、原画保存545 / 545枚、遊べる街24 / 24。[実装状況と検証結果](docs/production-plan/IMPLEMENTATION_STATUS.md)で現在の状態を確認できます。
+**24ステージ版 v2.2を公開済み。** 収録デザイン4,396 / 4,396種類、原画保存1,345 / 1,345枚、遊べる街24 / 24。[実装状況と検証結果](docs/production-plan/IMPLEMENTATION_STATUS.md)で現在の状態を確認できます。
 
 ## 開く
 
@@ -15,7 +15,7 @@
 
 ## 24の街を探す
 
-各街の専用人物100人に、場所に合った共通の住人と動物が加わります。最初の7ステージは500体、後半は街も人数も増え、最後は面積6倍・2,000体です。v2.1では室内・庭・2階・階段が見える全景24枚と、広い街の拡大用画像52枚を追加しました。広い場所では画面をドラッグして移動し、ホイールやピンチで拡大します。同じ場面に同じデザインは1体だけ。色違いの水増しはありません。
+各街の専用人物100人に、場所に合った共通の住人と動物が加わります。最初の7ステージは500体、後半は街も人数も増え、最後は面積6倍・2,000体です。室内・庭・2階・階段が見える全景24枚と、広い街の拡大用画像52枚を収録しています。v2.2では追加800回の画像生成で、後ろ向き歩行・階段の上り下り・設備での仕事・街の小物アニメを加えました。広い場所では画面をドラッグして移動し、ホイールやピンチで拡大します。同じ場面に同じデザインは1体だけ。色違いの水増しはありません。
 
 左上の見本を押すと、探索画面のまま顔や服を大きく確認できます。正解は「みーつけた！」、お手つきは「お手つき！ −3秒」と表示します。残り時間は常に表示します。開始前は3・2・1のカウントダウン。Esc・Pキー・一時停止ボタンで休憩でき、「街を出る」で街の一覧へ戻れます。一時停止中の「ゲームを終了」でも終了できます。
 
@@ -77,13 +77,13 @@
 
 ## 素材と開発
 
-ブラウザ版の2D描画を拡張しています。新規人物は歩行4コマ＋主要動作4コマ、動物も8コマ、乗り物と環境は各2ポーズを移動・揺れと組み合わせます。250役割には役割別の原画を割り当て、経路・設備・会話・追跡・乗車などの制御を共有します。背景から測定した通行領域と設備の前後関係を持つ2Dの街です。
+ブラウザ版の2D描画を拡張しています。人物の基本素材は歩行4コマ＋主要動作4コマで、動物も8コマです。v2.2では後ろ向き歩行・階段の上り下りを各4コマ、設備での仕事を8コマ、環境の動きを8コマで追加しました。採用した追加動作がない人物には、従来の歩行・仕事の絵を使用します。車いすやスポーツ用具の移動は、その場所と動作に合わせて制御します。既存の乗り物・環境素材も保持します。250役割には役割別の原画を割り当て、経路・設備・会話・追跡・乗車などの制御を共有します。背景から測定した通行領域と設備の前後関係を持つ2Dの街です。
 
 既存250ベースと旧原本を保持し、新規人物4,068・動物78を追加しました。人物は専用2,400種類＋共通1,900種類、動物は96デザインです。原画は `assets/production/`、実行用の圧縮画像は `expedition/images/` に分けて保存します。必要な画像を読み込み、画面外の描画を省略します。
 
 ```sh
 python3 build_expedition.py --release
-node --test tests/expedition.test.cjs tests/floor-escape.test.cjs tests/ride-habitats.test.cjs tests/movement-lifecycle.test.cjs tests/crowd-priority.test.cjs tests/input.test.cjs tests/audio.test.cjs
+node --test tests/expedition.test.cjs tests/floor-escape.test.cjs tests/ride-habitats.test.cjs tests/movement-lifecycle.test.cjs tests/crowd-priority.test.cjs tests/wheelchair-mobility.test.cjs tests/sports-mobility.test.cjs tests/animation-motion.test.cjs tests/input.test.cjs tests/audio.test.cjs
 RELEASE_QA=1 node tests/all-stages.cjs
 node tests/browser-expedition.cjs
 node tests/browser-duo.cjs
@@ -91,6 +91,9 @@ node tests/browser-photo.cjs
 node tests/browser-audio.cjs
 RELEASE_QA=1 node tests/browser-stages.cjs
 node tests/browser-living-town.cjs
+node tests/browser-animation.cjs
+node tests/browser-scenery-placement.cjs
+python3 verify_animation_archive.py
 python3 verify_release.py
 python3 package_mac.py --check
 python3 package_mac.py

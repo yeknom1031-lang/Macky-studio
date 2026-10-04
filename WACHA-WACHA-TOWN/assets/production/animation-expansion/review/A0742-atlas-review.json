@@ -1,0 +1,355 @@
+{
+  "id": "A0742",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "e2fe2d130ef96a8ea78706d87fa370a741b74796f74fc39d0ab3c283c376392e",
+  "alphaZeroFraction": 0.56087,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S08-ENV01",
+      "name": "温泉宿の風鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6657,
+          "rgbaSHA256": "1c4c37129cf9ade23d59dac2917d35fa5dc02546b4d6a2d13fbf3ff4f151b443"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6803,
+          "rgbaSHA256": "bef8c288716f148ba323773abb4c8e1941006928a53166fdc492678ad3b6f1c4"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7095,
+          "rgbaSHA256": "ed80532d43cc59138f057013e89817b80438fe3d48b36f8e761ebada4db50806"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6865,
+          "rgbaSHA256": "a328d0593a505476277eeb9c34fd90924523dd000f53967f10f9a753e463f981"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6865,
+          "rgbaSHA256": "b7764cdf34cc7a591f7b3d2bb0a81686cae1337e96098a6947da4a9829f1e0d9"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6791,
+          "rgbaSHA256": "3e8b64f651267c5c3d0fa8bb0a38c68c1aa94797843c617e686da720ed7e4c54"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6777,
+          "rgbaSHA256": "7c9c5e8d611849fe85af93712f6bab3be3418b3efb83f145f72aa6947afef529"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6677,
+          "rgbaSHA256": "5243c186d9410c73571136a409e9346ab9c84e5006223861964fdb1cbff8b696"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S08-ENV02",
+      "name": "湯の町の暖簾飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16569,
+          "rgbaSHA256": "4b358c3a87977cfc8dabffcd0dacfb842a2e9334d6fdac4972ddd6157eb0f721"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 15756,
+          "rgbaSHA256": "c3555d1cca7954ae238e516d03c48325e4f6f405514ed8ee01e146f90a9466aa"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16432,
+          "rgbaSHA256": "ab99222a4e5254a41d548185ab2235bf130b8be62f8f5991c8530522d2a0dd5a"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16259,
+          "rgbaSHA256": "eb66f452e98b396fbe3a3bf3d5f4636835ba29ec8098fccac47773a4461417a1"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 15440,
+          "rgbaSHA256": "44d01b9feaa4655f955c9a2968880e3819bcded1fb01773efca6115bf332a86c"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 14949,
+          "rgbaSHA256": "0a712f7b3e81b31870e4dc88985b156e4b5c204b3c3c22bb207ce217a21ed656"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16334,
+          "rgbaSHA256": "5456228a160eeac39e5e46f3806040d4a3b9a6ccec2c3b0abb6ad613b43a3216"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 16795,
+          "rgbaSHA256": "576a4b79096b9c382d203ecd0441e00fa9b254685e345038b3a7db0cfb513373"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S08-ENV03",
+      "name": "洗濯庭のタオル",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 16201,
+          "rgbaSHA256": "9fe08c474b29311bc287596ba68b93b6cc97820ec13be53c1862dc4795e17a8c"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 15261,
+          "rgbaSHA256": "0dad8f247e055d86fb5b18567c9cfb548c52cd5b5e8158b39e0ed5410207ce09"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15545,
+          "rgbaSHA256": "615e61971e20a3612cfbfc9ab7aff415a50a11c356c5b012f421886bf11c4bb0"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15604,
+          "rgbaSHA256": "8d6738145acd3f54cd87799124c774ea9f2826453fcedecf99dfa3d5d4343d7b"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13260,
+          "rgbaSHA256": "20192551418dea4394f7b9ac75a3be535d1374bc083e525ecc85fd963366d40b"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 13977,
+          "rgbaSHA256": "979053ccbc02b3dedbd7dcc7f7f42ae8d42e1f616048f61187c501a4ef10c31a"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15344,
+          "rgbaSHA256": "c697316e5eba5ff99172fe15164009a276e8618cb0d71327898b27674f739d38"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 15870,
+          "rgbaSHA256": "5727b09e81100a8d131b9599e3808850cb56f09a072d8cdae86059c21317fd14"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S08-ENV04",
+      "name": "蒸し饅頭の湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6929,
+          "rgbaSHA256": "f5c34b35a31af490f3436fdae151889480dacc3e4d14e4bd5af5884f61245254"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7030,
+          "rgbaSHA256": "997e3611c3ef89c311d6c38eaedccf482770d7cd574a46782cc577cec58e984f"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7664,
+          "rgbaSHA256": "021b10c3e580379da2bd5fc14fc09c87984f3bf410feda60d31eee78a7db3331"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7821,
+          "rgbaSHA256": "71921575642fdb2ba992130ae3fdae344447d8d03732430b1728837d3ee7a37f"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7388,
+          "rgbaSHA256": "77323dcc52f1a5ff9c1355b8a820990956918172c70075d34ca0a3ae47d2723b"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7005,
+          "rgbaSHA256": "136016950668ceed5b18bcae752d18e2d18c9809d137c79cd5b9f7664d0afbd0"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6752,
+          "rgbaSHA256": "f1524bce024930a46121f75e40f65504e5e500e2aefd5aeb9a9e80f1addf904b"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6420,
+          "rgbaSHA256": "5c57b7bf7d2fa39974b2d9ce1c056d9949d36f47bb84c489b689017e27eca99a"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent frames. Color compositing verifies true transparency. No duplicated building or complete equipment. Final scene placement pending."
+}

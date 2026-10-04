@@ -1,0 +1,29 @@
+{
+  "id": "A0237",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:31:15.688419+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画とpack全48コマを確認。0行の肩バッグと3行の腰ポーチは背面4コマで左右が入れ替わるためwalkBackのみ除外。両行の階段8コマと1・2行の全12コマは服装・手足・持ち物が安定。"
+  ],
+  "packReport": "review/A0237-pack.json",
+  "preview": "review/A0237-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

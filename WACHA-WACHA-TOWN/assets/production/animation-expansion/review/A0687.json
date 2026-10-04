@@ -1,0 +1,18 @@
+{
+  "id": "A0687",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:28:06.895453+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    3
+  ],
+  "notes": [
+    "花束を整える動作と鍋を混ぜる動作は8コマ連続・切り出し良好。row 1 は果物かごが途中で布袋へ形状変更。row 2 は注水が杯に届かず胴体へ流れる構図のため不採用。"
+  ],
+  "packReport": "review/A0687-pack.json",
+  "preview": "review/A0687-check.jpg"
+}

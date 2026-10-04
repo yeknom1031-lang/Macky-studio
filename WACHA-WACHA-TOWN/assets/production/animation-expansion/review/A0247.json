@@ -1,0 +1,28 @@
+{
+  "id": "A0247",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:34:30.045825+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画とpack確認。0行は元の歩行像にない贈り物を持つため不採用。1・3行は背面の工具消失がありwalkBackのみ除外。2行は全12、1・3行は階段8でスパナ・服装・三つ編み等を維持。"
+  ],
+  "packReport": "review/A0247-pack.json",
+  "preview": "review/A0247-check.jpg",
+  "disabledClipsByRow": {
+    "1": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

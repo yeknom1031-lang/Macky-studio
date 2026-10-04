@@ -1,6 +1,6 @@
 {
-  "at": "2026-10-04T15:36:20.025Z",
-  "appVersion": "2.1",
+  "at": "2026-10-04T21:08:51.799Z",
+  "appVersion": "2.2",
   "entry": "/Users/makibook/Desktop/わちゃわちゃタウン.app/Contents/Resources/index.html",
   "offline": true,
   "stages": 24,
@@ -10,13 +10,15 @@
   "livingStages": 24,
   "detailTiles": 52,
   "codeHashes": {
-    "expedition-core.js": "5bbce648b20057837dadd75e66c22bd24fb8b4f76304158f7db8af7304e21e40",
+    "expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
     "expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
-    "expedition-render.js": "50dd0319008671a573999f4d3509e1b2bb58b56479e620332dca6b3bc4deea87",
+    "expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
     "expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
     "expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
-    "data.js": "6f5a0b9660ca308b894675fd1c75afcc72bc788a0a200c909cbd2fa84a842c24"
+    "data.js": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4"
   },
+  "imageFingerprint": "16b8f4ef00d4a3ec5a564fc4f1ce960fefb1a5085451e451e6a1e0d690fb7d18",
+  "imageFileCount": 1353,
   "finalStage": {
     "people": 2000,
     "unique": 2000,
@@ -28,10 +30,21 @@
     "birds",
     "waves"
   ],
+  "screenshots": {
+    "title": {
+      "path": "assets/production/review/offline-v2.2-title.png",
+      "sha256": "c0802756789ff6ef8ccc7c3b5a7a167cff66046ebc2824cbf7afc7246e3f273b"
+    },
+    "stage24": {
+      "path": "assets/production/review/offline-v2.2-stage24.png",
+      "sha256": "7415a4301342ff74291dad8a57e7324f1d337d8ffb00a041d2521dc9a3b2a9c4"
+    }
+  },
   "checks": [
-    "v2.1の配布アプリ",
+    "v2.2の配布アプリ",
     "サーバーなしのローカル入口から24ステージ版へ移動",
     "配布した5モジュールとデータのハッシュが最終QAと一致",
+    "配布した全画像のハッシュが最終の目視検証と一致",
     "全24ステージと4,396デザインを収録",
     "最後の街に固有2,000体・撮影0回で開始",
     "03:00の時計と退出ボタンを表示",
@@ -39,10 +52,20 @@
     "オフラインでBGM・ざわめき・環境音を実再生",
     "一時停止でゲームと音の両方を停止",
     "新全景24・生活領域24・詳細タイル52を収録",
+    "追加800原画由来の人物動作と288環境アニメを同梱・実読込",
     "公開済みの遊び方とローカル起動リンクを同梱",
     "JavaScript例外0件",
     "外部通信要求0件"
   ],
   "networkRequests": [],
-  "errors": []
+  "errors": [],
+  "visualReview": {
+    "passed": true,
+    "at": "2026-10-04T21:10:24.667600+00:00",
+    "screenshots": [
+      "title",
+      "stage24"
+    ],
+    "notes": "Opened both actual offline-bundle captures: the title and town artwork render correctly; the final-stage search screen shows residents, the target portrait, running clock, exit controls and zero initial photo credits without a missing-image placeholder."
+  }
 }

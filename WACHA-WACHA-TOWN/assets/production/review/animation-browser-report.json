@@ -1,0 +1,106 @@
+{
+  "at": "2026-10-04T20:43:34.734Z",
+  "sourceSha": {
+    "core": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+    "render": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9"
+  },
+  "passed": true,
+  "checks": [
+    "all four independent character clips preloaded",
+    "clip memory is bounded by actual frames",
+    "back walk uses the matching generated clip",
+    "stair up has priority",
+    "stair down uses its own clip",
+    "movement frame follows accepted distance phase",
+    "click hits the opaque left-hand silhouette of the selected back frame",
+    "transparent pixels do not inherit the base-frame hit mask",
+    "wanted portrait remains the original front-facing identity",
+    "role work loops by simulation time at its fixture",
+    "site-required work cannot play in the street",
+    "omitted clip restriction follows the role and permits street performances",
+    "omitted clip restriction preserves workstation-only crafts",
+    "photograph records its exact selected clip and frame",
+    "photograph does not advance with live character or scenery time",
+    "generated scenery changes frames visibly",
+    "scenery animation does not rebuild the static Retina cache",
+    "paused simulation time freezes environmental and character frames",
+    "underActors scenery obeys its actor occlusion order",
+    "depth scenery obeys its actor occlusion order",
+    "sky scenery obeys its actor occlusion order",
+    "mirrored noncentral clip anchor matches alpha hit geometry",
+    "riding uses its seated base pose",
+    "photo target is drawn on top of scenery without riding crop"
+  ],
+  "cache": {
+    "baseCharacters": 1,
+    "clips": 4,
+    "clipBytes": 737280,
+    "clipLimit": 100663296
+  },
+  "portrait": [
+    34,
+    34,
+    34,
+    255
+  ],
+  "sceneryPixels": [
+    [
+      255,
+      51,
+      0,
+      255
+    ],
+    [
+      0,
+      187,
+      68,
+      255
+    ]
+  ],
+  "errors": [],
+  "sourceIntegrity": {
+    "startedAt": "2026-10-04T20:43:32.953314+00:00",
+    "endedAt": "2026-10-04T20:43:34.904233+00:00",
+    "startSha256": {
+      "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+      "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+      "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+      "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+      "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+      "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+      "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+      "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+      "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+      "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+      "expedition/data.js": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+      "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+      "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+      "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+    },
+    "endSha256": {
+      "src/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+      "src/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+      "src/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+      "src/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+      "src/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+      "expedition/expedition-core.js": "709c4cc6ea73307ad36ca4ecfcf0188f9cbb6296a7852d31a12e381999697e53",
+      "expedition/expedition-render.js": "81308d7648dc177c368d191c1211ee13aacb0f959359b4e64ccd196aba866ca9",
+      "expedition/expedition-app.js": "d6fd03637f93cdb33603dcbbd3d6fe87f2b5b6630b114bd8919d6df3f361261c",
+      "expedition/expedition-input.js": "10ade82d6fb2aafc9434b270570ec4f6302e2c8111d3d76fb87f2804fefddf7c",
+      "expedition/expedition-audio.js": "ebc5ec02e254db6d320a61a86e086862e18ef8fd25536ae7d9351ea6ab7fa91c",
+      "expedition/data.js": "f3d8fb53fc48a6a2cf64e02db58449fb62ad7aef9149eace7843a57272d8fef4",
+      "src/expedition.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+      "src/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241",
+      "expedition/index.html": "55600094b651c23fda017749a640f151c03b560e70c7961dfc4108e0eff78fa5",
+      "expedition/expedition.css": "9cdc3a5f1ae85e1b872588cc7d187d85536369509ca0b4bc5bf134576ee1b241"
+    },
+    "unchanged": true
+  },
+  "fixtureScreenshot": {
+    "path": "assets/production/review/animation-render-fixture.png",
+    "sha256": "a2ef078744a918d5ff6399468b00fbffca4cb6432041639520126c48ee7a483a",
+    "visuallyReviewedAt": "2026-10-04T20:44:43.701736+00:00",
+    "note": "Synthetic colored geometry intentionally verifies per-frame alpha silhouette, depth order and frozen snapshot; this is not production artwork."
+  }
+}

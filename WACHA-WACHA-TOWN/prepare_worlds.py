@@ -37,6 +37,10 @@ def measure(path,w,h,all_pavement=False):
         stone[:round(im.height*.075)]=False
         for x0,y0,x1,y1 in [(.59,.075,.70,.20),(.105,.105,.30,.335),(.395,.12,.595,.34),(.70,.105,.91,.335),(.12,.445,.30,.65),(.40,.445,.595,.65),(.70,.445,.91,.65)]:
             stone[round(y0*im.height):round(y1*im.height),round(x0*im.width):round(x1*im.width)]=False
+    if all_pavement:
+        from ground_boundaries import allowed_ground
+        ground=allowed_ground(path.stem[:3],im.size)
+        if ground is not None:stone &= ground
     groups=component_grid(stone,*im.size)
     if not groups or len(groups[0])<150:raise ValueError(f'{path.stem}: pavement needs manual navigation review')
     # Keep the connected main street; pale disconnected roofs are not streets.
@@ -84,17 +88,23 @@ def build():
 
 
 
-def connect_activity_areas(nodes,areas,w,h,blocked=None,water_mask=None):
+def connect_activity_areas(nodes,areas,w,h,blocked=None,water_mask=None,street_mask=None):
     """Add measured open floors and their visible doorway/stair connections."""
     from living_spaces import floor_contains,inside,touches_hole
     sx=w/1672;sy=h/941
     ground_areas=[a for a in areas if not a.get('level')]
     def eligible(n):
         x=n[0]/sx;y=n[1]/sy
+        if street_mask is not None:
+            px=max(0,min(street_mask.shape[1]-1,round(x)));py=max(0,min(street_mask.shape[0]-1,round(y)))
+            if not street_mask[py,px]:return False
         if y<25 or any(touches_hole(x,y,h) for a in ground_areas for h in a.get('holes',[])):return False
         return not any(inside(x,y,p) for p in blocked or []) or any(floor_contains(a,x,y) for a in ground_areas)
     keep=[i for i,n in enumerate(nodes) if eligible(n)];remap={old:i for i,old in enumerate(keep)}
-    nav=[[nodes[i][0],nodes[i][1],[remap[j] for j in nodes[i][2] if j in remap],0,None] for i in keep]
+    def safe_edge(a,b):
+        distance=((a[0]-b[0])**2+(a[1]-b[1])**2)**.5
+        return all(eligible([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]) for t in np.linspace(0,1,max(3,int(distance/min(sx,sy)/4))))
+    nav=[[nodes[i][0],nodes[i][1],[remap[j] for j in nodes[i][2] if j in remap and (street_mask is None or safe_edge(nodes[i],nodes[j]))],0,None] for i in keep]
     lookup={(round(n[0],2),round(n[1],2),0):i for i,n in enumerate(nav)}
     def add(x,y,level,area=None):
         key=(round(x*sx,2),round(y*sy,2),level)
@@ -189,11 +199,12 @@ def connect_activity_areas(nodes,areas,w,h,blocked=None,water_mask=None):
 
 def prepare_quality_stage(key):
     from living_spaces import definitions,blockers
+    from ground_boundaries import allowed_ground
     stage=next(s for s in json.loads((PROD/'jobs.json').read_text())['stages'] if f'S{s["id"]+1:02}'==key)
     path=PROD/'quality/source'/f'{key}-background.png';areas=definitions(key)
     if not path.exists() or not areas:raise ValueError(f'{key}: reviewed source and activity-floor definitions are required')
     scale=stage['area']**.5;w=round(1672*scale);h=round(941*scale)
-    nodes,water,overlay,groups=measure(path,w,h,all_pavement=True);pixels=np.asarray(Image.open(path).convert('RGB')).astype(float);r,g,b=pixels[:,:,0],pixels[:,:,1],pixels[:,:,2];water_mask=(g>r*1.04)&(b>r*1.07)&(b>110)&(g>115);nodes,areas=connect_activity_areas(nodes,areas,w,h,blockers(key),water_mask);folder=PROD/'navigation';folder.mkdir(exist_ok=True)
+    nodes,water,overlay,groups=measure(path,w,h,all_pavement=True);pixels=np.asarray(Image.open(path).convert('RGB')).astype(float);r,g,b=pixels[:,:,0],pixels[:,:,1],pixels[:,:,2];water_mask=(g>r*1.04)&(b>r*1.07)&(b>110)&(g>115);nodes,areas=connect_activity_areas(nodes,areas,w,h,blockers(key),water_mask,allowed_ground(key));folder=PROD/'navigation';folder.mkdir(exist_ok=True)
     (folder/f'{key}.json').write_text(json.dumps(nodes,separators=(',',':')))
     (folder/f'{key}-water.json').write_text(json.dumps(water,separators=(',',':')))
     (folder/f'{key}-areas.json').write_text(json.dumps(areas,ensure_ascii=False,separators=(',',':')))

@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "characters": [
+    {
+      "id": "S06-C011",
+      "mobility": "skate",
+      "mobilityArea": "S06-floor-02"
+    },
+    {
+      "id": "S06-C012",
+      "mobility": "skate",
+      "mobilityArea": "S06-floor-02"
+    },
+    {
+      "id": "S06-C013",
+      "mobility": "skate",
+      "mobilityArea": "S06-floor-02"
+    },
+    {
+      "id": "S06-C014",
+      "mobility": "skate",
+      "mobilityArea": "S06-floor-02"
+    },
+    {
+      "id": "S06-C015",
+      "mobility": "skate",
+      "mobilityArea": "S06-floor-02"
+    },
+    {
+      "id": "S19-C006",
+      "mobility": "ski",
+      "mobilityArea": "S19-floor-02"
+    },
+    {
+      "id": "S19-C007",
+      "mobility": "ski",
+      "mobilityArea": "S19-floor-02"
+    },
+    {
+      "id": "S19-C008",
+      "mobility": "ski",
+      "mobilityArea": "S19-floor-02"
+    },
+    {
+      "id": "S19-C009",
+      "mobility": "ski",
+      "mobilityArea": "S19-floor-02"
+    },
+    {
+      "id": "S19-C016",
+      "mobility": "skate"
+    },
+    {
+      "id": "S19-C017",
+      "mobility": "skate"
+    },
+    {
+      "id": "S19-C018",
+      "mobility": "skate"
+    },
+    {
+      "id": "S19-C019",
+      "mobility": "skate"
+    },
+    {
+      "id": "S19-C020",
+      "mobility": "skate"
+    }
+  ],
+  "notes": [
+    "Visual reference confirms worn equipment, not role label alone. S19-C010 wears normal walking boots and is deliberately excluded.",
+    "S06-floor-02 is the verified ice rink and S19-floor-02 the beginner ski slope; AI spawn and destination selection prefer these existing ground nodes.",
+    "S19 skating figures remain ground-only: the visible ice pond is currently a navigation hole, not a verified walkable skating floor.",
+    "No artificial ramps, teleportation or expanded floor masks are introduced. Manual input may use all actual ground paths."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "A0609",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:33:49.017092+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ],
+  "notes": [
+    "4×8コマ、泡を吹く・糸巻きを操る・筆を動かす行は顔と衣服を保ち道具が継続する。長い凧糸は細線だけで人物の欠けなし。",
+    "row4は顔で使う双眼鏡と胸に下がる双眼鏡が同時に描かれ重複するため不採用。"
+  ],
+  "packReport": "review/A0609-pack.json",
+  "preview": "review/A0609-check.jpg"
+}

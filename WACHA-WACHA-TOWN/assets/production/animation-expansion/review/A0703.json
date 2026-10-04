@@ -1,0 +1,19 @@
+{
+  "id": "A0703",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:41:45.570103+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "レンチ調整、縫製、布を扱う3列は反復と全身を確認。row 0 はバルブ輪が1/8コマに存在せず不採用。"
+  ],
+  "packReport": "review/A0703-pack.json",
+  "preview": "review/A0703-check.jpg"
+}

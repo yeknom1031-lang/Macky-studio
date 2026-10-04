@@ -1,0 +1,23 @@
+{
+  "id": "A0007",
+  "status": "accepted-partial",
+  "note": "Removed third front pose from rows 2 and 3 where bowls disappear.",
+  "selection": {
+    "clipFramesByRow": {
+      "1": {
+        "stairDown": [
+          8,
+          9,
+          11
+        ]
+      },
+      "2": {
+        "stairDown": [
+          8,
+          9,
+          11
+        ]
+      }
+    }
+  }
+}

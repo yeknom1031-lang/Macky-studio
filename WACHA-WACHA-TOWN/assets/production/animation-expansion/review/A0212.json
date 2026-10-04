@@ -1,0 +1,38 @@
+{
+  "id": "A0212",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:39:21.911325+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "背面のみ除外できる契約に合わせ再検品。原画・packを再表示し0行のケトル、1行の鞄の背面左右反転を除外。1行上りは反転する初コマを除き5,6,7,6を採用。その他は人物と持ち物が一貫。"
+  ],
+  "packReport": "review/A0212-pack.json",
+  "preview": "review/A0212-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "walkBack"
+    ],
+    "1": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {
+    "1": {
+      "stairUp": [
+        5,
+        6,
+        7,
+        6
+      ]
+    }
+  }
+}

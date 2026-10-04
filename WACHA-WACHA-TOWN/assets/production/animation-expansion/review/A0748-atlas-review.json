@@ -1,0 +1,355 @@
+{
+  "id": "A0748",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "2a4e242bcd1918f8f9b08c6772c6b1fec706c65a544e3e581b7f9b7637dfe845",
+  "alphaZeroFraction": 0.64134,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S10-ENV01",
+      "name": "運河の細いペナント",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9861,
+          "rgbaSHA256": "b45045d401ea3f6def5da165195d38fecb6486b188257ec3c813e56910b0145d"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9200,
+          "rgbaSHA256": "3dc17cbc5b0ed30ce4d82566ecc0d39b792b5f9a6c2a633a2416a2ba332332c3"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9392,
+          "rgbaSHA256": "77e1bcf70d35df7ac1e229adf8733f0d22ff9b25a2fe88906513a0eca566c568"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9011,
+          "rgbaSHA256": "39df051598be4422e6d0363e6fa4fd1b5b82f4f3367909d501afcb7bbc3ce56e"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9553,
+          "rgbaSHA256": "5ad3d8109ce85e5938a9e8d13f34dfc0746baae9f911319ace1f79db1d329291"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9068,
+          "rgbaSHA256": "fe3c7d08f3ba58206218a2cf3f8af27916ee17e3fad60239c71ca01e60db312f"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9172,
+          "rgbaSHA256": "f2dd7de38de624b87c8df424a8aafbb72f3f3b2075a94e3e401d04692480cc2d"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10065,
+          "rgbaSHA256": "4fe0bab8df03bb281635e2ae8e8342073af395c1eadf40fe49b751ea6f7ac42d"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S10-ENV02",
+      "name": "船大工の風鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9329,
+          "rgbaSHA256": "3931552ed7278393ed83ac06472dbdbd3c6d88fb4f090cd37d0db5c43d2329f5"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8873,
+          "rgbaSHA256": "592e67ff5e6c2b0e18035b6d0daad4ffc0190a377e44b0cde7ead3f1096dee75"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8984,
+          "rgbaSHA256": "6b1c4567f9a64e47287477756d3df46c31dc315c713e2c3ca9490ce08709db1b"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8808,
+          "rgbaSHA256": "42aab30e50cebd021c51839cbab2a5a6bbd5dc89384840950a6124821a82dd15"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9010,
+          "rgbaSHA256": "8fb8cf594737ceb03d4c8b1758357fc5b5bb98aa33d4b0fb4acda04e5cfba545"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8922,
+          "rgbaSHA256": "037d1b674c61ee9d941da0b055e2e4214e9f865147f14bf2a2e7d9f2e914f7eb"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9018,
+          "rgbaSHA256": "a08c82318b4102647c73d292ab6a67273374e51e63f34af77852207d9eb4f86a"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9185,
+          "rgbaSHA256": "bf2656ac2f8baee7e2d218473721c2d43eedf4561b0fee95c56441ba36965f55"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S10-ENV03",
+      "name": "運河カフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7322,
+          "rgbaSHA256": "007365c2a6672e74ddf964b20bb7ef9318ad044f26baeff72fe9bdc452b53d3f"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6772,
+          "rgbaSHA256": "8b9a3dcc3273a5633d2cbcee9f9b2cfa910dee03d534973f9b3c8cb33df6525b"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6922,
+          "rgbaSHA256": "97eaf714b17d86dd811fa3d16f65ff7f891015d5e9cbb10d7dac09d0ff3125da"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6839,
+          "rgbaSHA256": "0ae3d362edfeb2e7e0e7f0ab25e57385b3a64feafeed9ec336af80d74683988c"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6068,
+          "rgbaSHA256": "f639d11546681c39bb2a412d54b04e98aa97cc549309f6c662d1649da6e07954"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5720,
+          "rgbaSHA256": "fca7f7466a47227aa41d85a4b93c6960aa9925997a6fbd5b5dd4d3b515161302"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5847,
+          "rgbaSHA256": "f13810e396ec3c9636cb5337b76bcdb0cdb2726a47f0ad87099a9ba9a06f30f6"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5647,
+          "rgbaSHA256": "93b8a970ac86e679eb27603800616a3266b7b7a7b6570402b51316dd194d6117"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S10-ENV04",
+      "name": "窓辺の吊りリボン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10382,
+          "rgbaSHA256": "7d0551e641964e1fea75d8f2cac6db987b7f9bf4d98c1e81f2bab188badc6596"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10524,
+          "rgbaSHA256": "fa165459341a95d1df7c3b667a0f48655be5d657df5b26a9a857e006d142130d"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10520,
+          "rgbaSHA256": "c292381ef137a837fbe6dd8431e74be60d04108f13690200a0a90ac83b4b963e"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10088,
+          "rgbaSHA256": "5c2bafb65ffcf371787b0b73498ebae32bb8db94d00c2b57f9e32a23b1c2a8c2"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10399,
+          "rgbaSHA256": "be42eed2e01c7c51061facb54b664160d13fe14cf94cb924db3292ca52a99034"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10111,
+          "rgbaSHA256": "cdfe80f093f483dd79223b7bce88c43889521f139ff51323b24068862d80d89c"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9713,
+          "rgbaSHA256": "73a6626bc42122b02d8d39291c5004fe280ee727c8f8e1c11eb9537ed26d0478"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10739,
+          "rgbaSHA256": "3e9453f7acd36070c3e6c621c75ff92013e6206683235cf781edba649b36a299"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "Four coherent rows of eight frames, with true transparency confirmed by colored compositing. No complete background equipment duplicated. Final scene placement pending."
+}

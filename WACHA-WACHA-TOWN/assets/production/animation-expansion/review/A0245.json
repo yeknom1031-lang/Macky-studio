@@ -1,0 +1,44 @@
+{
+  "id": "A0245",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:34:30.043923+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画13コマから12を選別しpack確認。背面は全行で手道具の左右反転/消失があるため除外。0行の上り初コマだけランタンの手が反転するため5,6,7,6で4コマを構成。残り階段はランタン・ラッパ・誘導棒・ベルを保持。"
+  ],
+  "packReport": "review/A0245-pack.json",
+  "preview": "review/A0245-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "walkBack"
+    ],
+    "1": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {
+    "0": {
+      "stairUp": [
+        5,
+        6,
+        7,
+        6
+      ]
+    }
+  }
+}

@@ -1,0 +1,615 @@
+{
+  "id": "P001",
+  "allocatedJobId": "A0001",
+  "generated": true,
+  "tool": "built-in image_gen",
+  "characterIds": [
+    "S01-C001",
+    "S01-C002",
+    "S01-C003",
+    "S01-C004"
+  ],
+  "size": [
+    2172,
+    724
+  ],
+  "mode": "RGBA",
+  "transparentFraction": 0.5377837469348717,
+  "opaqueFraction": 0.4171366106040719,
+  "sourceSHA256": "51e4509adeacfdfb518eb94c9333508935fce9d8a3246a8c993330c3f65891e1",
+  "expectedGrid": [
+    4,
+    12
+  ],
+  "cellSize": [
+    181,
+    181
+  ],
+  "nonemptyCells": 48,
+  "cells": [
+    {
+      "row": 0,
+      "col": 0,
+      "occupiedPixels": 12631,
+      "alphaBounds": [
+        53,
+        6,
+        165,
+        181
+      ],
+      "opaqueCellBorderPixels": 13
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "occupiedPixels": 12563,
+      "alphaBounds": [
+        44,
+        5,
+        149,
+        181
+      ],
+      "opaqueCellBorderPixels": 13
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "occupiedPixels": 12893,
+      "alphaBounds": [
+        27,
+        6,
+        143,
+        181
+      ],
+      "opaqueCellBorderPixels": 15
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "occupiedPixels": 12694,
+      "alphaBounds": [
+        22,
+        7,
+        125,
+        181
+      ],
+      "opaqueCellBorderPixels": 14
+    },
+    {
+      "row": 0,
+      "col": 4,
+      "occupiedPixels": 13390,
+      "alphaBounds": [
+        28,
+        2,
+        137,
+        181
+      ],
+      "opaqueCellBorderPixels": 15
+    },
+    {
+      "row": 0,
+      "col": 5,
+      "occupiedPixels": 13532,
+      "alphaBounds": [
+        31,
+        4,
+        142,
+        181
+      ],
+      "opaqueCellBorderPixels": 16
+    },
+    {
+      "row": 0,
+      "col": 6,
+      "occupiedPixels": 13137,
+      "alphaBounds": [
+        33,
+        5,
+        141,
+        181
+      ],
+      "opaqueCellBorderPixels": 19
+    },
+    {
+      "row": 0,
+      "col": 7,
+      "occupiedPixels": 12899,
+      "alphaBounds": [
+        29,
+        6,
+        134,
+        181
+      ],
+      "opaqueCellBorderPixels": 17
+    },
+    {
+      "row": 0,
+      "col": 8,
+      "occupiedPixels": 14444,
+      "alphaBounds": [
+        26,
+        3,
+        166,
+        181
+      ],
+      "opaqueCellBorderPixels": 23
+    },
+    {
+      "row": 0,
+      "col": 9,
+      "occupiedPixels": 13941,
+      "alphaBounds": [
+        37,
+        6,
+        171,
+        181
+      ],
+      "opaqueCellBorderPixels": 19
+    },
+    {
+      "row": 0,
+      "col": 10,
+      "occupiedPixels": 13606,
+      "alphaBounds": [
+        38,
+        8,
+        169,
+        181
+      ],
+      "opaqueCellBorderPixels": 17
+    },
+    {
+      "row": 0,
+      "col": 11,
+      "occupiedPixels": 14269,
+      "alphaBounds": [
+        23,
+        5,
+        161,
+        179
+      ],
+      "opaqueCellBorderPixels": 0
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "occupiedPixels": 15587,
+      "alphaBounds": [
+        31,
+        0,
+        170,
+        181
+      ],
+      "opaqueCellBorderPixels": 17
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "occupiedPixels": 15298,
+      "alphaBounds": [
+        29,
+        0,
+        155,
+        181
+      ],
+      "opaqueCellBorderPixels": 20
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "occupiedPixels": 15872,
+      "alphaBounds": [
+        18,
+        0,
+        151,
+        181
+      ],
+      "opaqueCellBorderPixels": 20
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "occupiedPixels": 15829,
+      "alphaBounds": [
+        15,
+        0,
+        141,
+        180
+      ],
+      "opaqueCellBorderPixels": 6
+    },
+    {
+      "row": 1,
+      "col": 4,
+      "occupiedPixels": 15363,
+      "alphaBounds": [
+        16,
+        0,
+        146,
+        181
+      ],
+      "opaqueCellBorderPixels": 25
+    },
+    {
+      "row": 1,
+      "col": 5,
+      "occupiedPixels": 15343,
+      "alphaBounds": [
+        21,
+        0,
+        147,
+        181
+      ],
+      "opaqueCellBorderPixels": 30
+    },
+    {
+      "row": 1,
+      "col": 6,
+      "occupiedPixels": 15719,
+      "alphaBounds": [
+        17,
+        0,
+        153,
+        181
+      ],
+      "opaqueCellBorderPixels": 39
+    },
+    {
+      "row": 1,
+      "col": 7,
+      "occupiedPixels": 15980,
+      "alphaBounds": [
+        30,
+        0,
+        161,
+        177
+      ],
+      "opaqueCellBorderPixels": 11
+    },
+    {
+      "row": 1,
+      "col": 8,
+      "occupiedPixels": 16915,
+      "alphaBounds": [
+        32,
+        0,
+        180,
+        175
+      ],
+      "opaqueCellBorderPixels": 17
+    },
+    {
+      "row": 1,
+      "col": 9,
+      "occupiedPixels": 15766,
+      "alphaBounds": [
+        44,
+        0,
+        181,
+        181
+      ],
+      "opaqueCellBorderPixels": 43
+    },
+    {
+      "row": 1,
+      "col": 10,
+      "occupiedPixels": 16182,
+      "alphaBounds": [
+        40,
+        0,
+        177,
+        180
+      ],
+      "opaqueCellBorderPixels": 10
+    },
+    {
+      "row": 1,
+      "col": 11,
+      "occupiedPixels": 16273,
+      "alphaBounds": [
+        25,
+        5,
+        166,
+        181
+      ],
+      "opaqueCellBorderPixels": 6
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "occupiedPixels": 13757,
+      "alphaBounds": [
+        39,
+        3,
+        162,
+        181
+      ],
+      "opaqueCellBorderPixels": 30
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "occupiedPixels": 13740,
+      "alphaBounds": [
+        21,
+        0,
+        147,
+        181
+      ],
+      "opaqueCellBorderPixels": 29
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "occupiedPixels": 13978,
+      "alphaBounds": [
+        11,
+        3,
+        141,
+        181
+      ],
+      "opaqueCellBorderPixels": 29
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "occupiedPixels": 14439,
+      "alphaBounds": [
+        5,
+        4,
+        134,
+        181
+      ],
+      "opaqueCellBorderPixels": 5
+    },
+    {
+      "row": 2,
+      "col": 4,
+      "occupiedPixels": 14690,
+      "alphaBounds": [
+        14,
+        0,
+        138,
+        181
+      ],
+      "opaqueCellBorderPixels": 58
+    },
+    {
+      "row": 2,
+      "col": 5,
+      "occupiedPixels": 14716,
+      "alphaBounds": [
+        23,
+        0,
+        144,
+        181
+      ],
+      "opaqueCellBorderPixels": 55
+    },
+    {
+      "row": 2,
+      "col": 6,
+      "occupiedPixels": 14752,
+      "alphaBounds": [
+        24,
+        0,
+        148,
+        181
+      ],
+      "opaqueCellBorderPixels": 59
+    },
+    {
+      "row": 2,
+      "col": 7,
+      "occupiedPixels": 14224,
+      "alphaBounds": [
+        28,
+        5,
+        153,
+        181
+      ],
+      "opaqueCellBorderPixels": 36
+    },
+    {
+      "row": 2,
+      "col": 8,
+      "occupiedPixels": 14898,
+      "alphaBounds": [
+        26,
+        4,
+        176,
+        179
+      ],
+      "opaqueCellBorderPixels": 0
+    },
+    {
+      "row": 2,
+      "col": 9,
+      "occupiedPixels": 14060,
+      "alphaBounds": [
+        33,
+        0,
+        174,
+        177
+      ],
+      "opaqueCellBorderPixels": 16
+    },
+    {
+      "row": 2,
+      "col": 10,
+      "occupiedPixels": 14002,
+      "alphaBounds": [
+        28,
+        8,
+        172,
+        177
+      ],
+      "opaqueCellBorderPixels": 0
+    },
+    {
+      "row": 2,
+      "col": 11,
+      "occupiedPixels": 15160,
+      "alphaBounds": [
+        18,
+        1,
+        164,
+        179
+      ],
+      "opaqueCellBorderPixels": 0
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "occupiedPixels": 13768,
+      "alphaBounds": [
+        43,
+        0,
+        163,
+        175
+      ],
+      "opaqueCellBorderPixels": 35
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "occupiedPixels": 14044,
+      "alphaBounds": [
+        26,
+        0,
+        142,
+        177
+      ],
+      "opaqueCellBorderPixels": 33
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "occupiedPixels": 14770,
+      "alphaBounds": [
+        8,
+        0,
+        138,
+        176
+      ],
+      "opaqueCellBorderPixels": 36
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "occupiedPixels": 14724,
+      "alphaBounds": [
+        9,
+        0,
+        126,
+        175
+      ],
+      "opaqueCellBorderPixels": 15
+    },
+    {
+      "row": 3,
+      "col": 4,
+      "occupiedPixels": 14558,
+      "alphaBounds": [
+        20,
+        0,
+        138,
+        177
+      ],
+      "opaqueCellBorderPixels": 40
+    },
+    {
+      "row": 3,
+      "col": 5,
+      "occupiedPixels": 14231,
+      "alphaBounds": [
+        26,
+        0,
+        141,
+        175
+      ],
+      "opaqueCellBorderPixels": 34
+    },
+    {
+      "row": 3,
+      "col": 6,
+      "occupiedPixels": 14760,
+      "alphaBounds": [
+        23,
+        0,
+        147,
+        178
+      ],
+      "opaqueCellBorderPixels": 43
+    },
+    {
+      "row": 3,
+      "col": 7,
+      "occupiedPixels": 15198,
+      "alphaBounds": [
+        30,
+        0,
+        154,
+        173
+      ],
+      "opaqueCellBorderPixels": 32
+    },
+    {
+      "row": 3,
+      "col": 8,
+      "occupiedPixels": 15497,
+      "alphaBounds": [
+        30,
+        2,
+        173,
+        171
+      ],
+      "opaqueCellBorderPixels": 0
+    },
+    {
+      "row": 3,
+      "col": 9,
+      "occupiedPixels": 14869,
+      "alphaBounds": [
+        39,
+        0,
+        173,
+        177
+      ],
+      "opaqueCellBorderPixels": 6
+    },
+    {
+      "row": 3,
+      "col": 10,
+      "occupiedPixels": 14936,
+      "alphaBounds": [
+        37,
+        0,
+        170,
+        176
+      ],
+      "opaqueCellBorderPixels": 7
+    },
+    {
+      "row": 3,
+      "col": 11,
+      "occupiedPixels": 15193,
+      "alphaBounds": [
+        22,
+        1,
+        162,
+        177
+      ],
+      "opaqueCellBorderPixels": 0
+    }
+  ],
+  "status": "accepted with connected-component extraction; fixed horizontal row slicing is rejected",
+  "recordedAt": "2026-10-04T15:53:57.969819+00:00",
+  "reviewStatus": "accepted",
+  "identityReview": "All four original identities and clothing are preserved; rear construction coherent; 48 distinct poses present.",
+  "motionReview": "Rear walk and forward-facing descent are visibly distinct. Ascent raises knees and arms but has subtler difference from rear walk; stronger knee/posture contrast recommended for subsequent prompts.",
+  "gridReview": "Tight row spacing yields overlapping bounding rectangles, but all 12 columns contain exactly 4 independently connected characters. Opt-in animation_components.component_cells preserves complete silhouettes and row-wide affine registration.",
+  "approvedPreview": "P001-components-normalized.png",
+  "rejectedPreview": "P001-normalized.png"
+}

@@ -1,0 +1,355 @@
+{
+  "id": "A0733",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "f43cc950d49d2f036be622cfc5a356eaf60954f6d52a1fc3e9a33f2ef2856fd6",
+  "alphaZeroFraction": 0.67633,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S05-ENV01",
+      "name": "本屋のしおりモビール",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11902,
+          "rgbaSHA256": "2a240d761f819ba758b997980f791c90e986b06e3175f588e3601308931e6dee"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11889,
+          "rgbaSHA256": "1b18dc0a60cc378c2623884434c0dccba639c9f8a976bee0100dc8f5cf17c338"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11333,
+          "rgbaSHA256": "a114a17beb8331ba2adb79c8f3e39908f9201f451e21064b99becc170800d360"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10755,
+          "rgbaSHA256": "7a3da7e99b854fd994c1b57be386343bb4d705995f0a86565f185b8e2925f067"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9903,
+          "rgbaSHA256": "250c4d8402f8dc354ac2c2c2af59d3bbb2b247817f8d3b0279ef609afda703fa"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10264,
+          "rgbaSHA256": "cc8fd154469f56a4c1ca1f2fc271f9b6e96b120056bdabaae1f91e50c21710f3"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11372,
+          "rgbaSHA256": "bae487a5a700e7359cbe1c96fe97efd0873c5115b0bbd1e1b41fd5be2d14326a"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11231,
+          "rgbaSHA256": "c23aa09a7e8dacf7334ea9ae6be0f9d73868e485a62d37e1537e9fe59f5703ff"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S05-ENV02",
+      "name": "図書館の房飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6770,
+          "rgbaSHA256": "8ddf65264c2054278b68ca5c0329b8a5db98b3d024c6744e7980cd9e8b01fb28"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7013,
+          "rgbaSHA256": "480a6dd350e16e318c9e1af886483da5e0250b91df1f72cf7bc2b3933ab91086"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7078,
+          "rgbaSHA256": "47a725ea95fc5f16f6d7d15fb210f50cbf75d5704f1bcf4a2026beffd10b69b5"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6765,
+          "rgbaSHA256": "8d833e125bd8401c45c6e1c53ee9fd2a804fab260ef2081b7e3b2b6685e49d0c"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6772,
+          "rgbaSHA256": "97e19d0ef21576d0ea0fb438ef89595b914b14bdd2268f0a30e70afd2e4acb13"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 6813,
+          "rgbaSHA256": "5bda881598c37c2b040651b669ab8f014fd70201eec0fbe8429c808fdfca94eb"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6791,
+          "rgbaSHA256": "ea593a4f68af6a24eb5324c42f6484c38167b8bfd653e22f5646ca0a33223117"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6833,
+          "rgbaSHA256": "0aecc78ec3bc603e68267a84737a6ac71637fbaa246f550bb04deceb45bf1529"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S05-ENV03",
+      "name": "読書カフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4266,
+          "rgbaSHA256": "463621576be0dd197c6f81bb38aedc523685ef8bb03e2f760107d9a193dda7c9"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5229,
+          "rgbaSHA256": "c1c4b8559fe9ac13ebbebb41011c48727a639194060a1f4967545b6c172d000e"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5201,
+          "rgbaSHA256": "6fbc3997a829e3ff5f0e31a15e2d0c06979c53383f2e768007c6c43a07c98b9b"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5517,
+          "rgbaSHA256": "036b6b67e5a39bc3537839c38fe05db3ac7c0f696a17fef3da17e6197ae37517"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3849,
+          "rgbaSHA256": "d4a1bac0ca9d369cb6c6f71ba1b75c5183bc2b32f2b35aa14daa5d93478f145b"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3497,
+          "rgbaSHA256": "ad8d5b99598c8e7918c3c28dd76b2270713c5e200cdfcd9e66f5486843e25373"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4480,
+          "rgbaSHA256": "0349fef2287a13737ad4b2efcf755e50bfa0cb51bb518eb04b27ee1f0d61df04"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4324,
+          "rgbaSHA256": "03478c4e9aea0e8293dd6f387658dd84c26ae08606eed448b1435ce0f0c646e1"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S05-ENV04",
+      "name": "古書店の小風車",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10505,
+          "rgbaSHA256": "6732a3fe3fdbee27ba00f14046468b2d5831ca23fbe91769ce8ee216062479f8"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9946,
+          "rgbaSHA256": "9558f64893190410b9f38d50565cae8e5343f991827981f329c34ce48d4ea1c2"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10268,
+          "rgbaSHA256": "4166032034d96878f9b1d5b1919d32a93aa57b41cfe5b2345670cba4f539d6de"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9964,
+          "rgbaSHA256": "17239598ddaaf60bef9e1f2d4f064ae11dd1e875d2758eeb2da656dadc0ee987"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10012,
+          "rgbaSHA256": "abe8a1ecf42e8fc30b176e663aa879185ee41e40b24d1dd74d8476eab973b86b"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10249,
+          "rgbaSHA256": "aa5495e013d41d29fcd6d7ab3a272ae8bcf522fa5786dbc9dde189d3a1fb9651"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10267,
+          "rgbaSHA256": "9aa63ee396a1c97af2d27e662fb0764e07bdc9575e81a6d2b98865e65e8e356c"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10387,
+          "rgbaSHA256": "b2e4b1ad789b0820ddf6e1878f01b90d788f78a8863bf8194383bb3c94b1259a"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

@@ -1,0 +1,355 @@
+{
+  "id": "A0782",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "2f6397bb0ca64a9c96bc5e790a281e24c2127b8364558435237999a4f2af4819",
+  "alphaZeroFraction": 0.23536,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S21-ENV05",
+      "name": "庭の滝の霧",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10149,
+          "rgbaSHA256": "e53331b3d72f5694ed207f5ad2cfa0a5388c8bcb3596adb484f69fc39408c34c"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10912,
+          "rgbaSHA256": "257b30d3af73bab182e6c51c6b3c7634bbdec740ea58e12e3e38cdb9d28675bc"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11653,
+          "rgbaSHA256": "6d1e103cac38701e10b1af1305217bd05ab79e41361acec661d45f43d0dae17c"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12475,
+          "rgbaSHA256": "b445af437ba21a85b7ba850539a9a3ff0e2aa0a7ec913a2437b574ba0b3977fd"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10946,
+          "rgbaSHA256": "af3b562cd309a83fc5fa1616bb7692e2b65ed01393a77601b0e3e73d43eb8535"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11507,
+          "rgbaSHA256": "ef3bad611584993512f71c703d222704de9f9fe82c37106a60d2842f8e6c2eef"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10173,
+          "rgbaSHA256": "284bc027f316051d9e8a87fdcbafd167bc30168a6f4c9ad74e518cc189afba43"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10039,
+          "rgbaSHA256": "a401848caad6fc54ffd6d9b19097196d451113da7613746afdf0b705e2740c56"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S21-ENV06",
+      "name": "噴水の雲のしぶき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4068,
+          "rgbaSHA256": "46a6d64f3446e8a1d0c174bbc1ef106e91f60932119425a3b126c8235299592d"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5359,
+          "rgbaSHA256": "5411299b710229d1c7c5fb7a1c8fcfa1739aef1bcbdbc7b405af3a00d5cf223a"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6521,
+          "rgbaSHA256": "af9eecb3c9e6d9e5ff2a9dfc7815b64f4e3b5b082404c62fa216eeb6c0322eac"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7589,
+          "rgbaSHA256": "76e66648a606a1d05d7e0bb70926131322c182f1c1d09cd163945b965ddd32a6"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7114,
+          "rgbaSHA256": "d1b282c977ce79fc985e03ed6731a1cf9520e5d5b936aabeb01f9fc0900a8aa1"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 6156,
+          "rgbaSHA256": "79beebfeefde44a94ccc9d0bf40561e71c499263c14e7d41ecf1894cede9b266"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4887,
+          "rgbaSHA256": "dbafff290a0c7143a3b6984f0a69e7ff7ad5ee32b4b60b9a4cdfefd6b05d28ff"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 3598,
+          "rgbaSHA256": "f21633b7507559194147bf2d2114cda62a66f2d82a3e59670ebf32b4a06ce106"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S21-ENV07",
+      "name": "雲の薄いかけら",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13055,
+          "rgbaSHA256": "78953a0997238797bde33683c69ebad7642dfe6f5b2a22166f0a9f5d23557d4c"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11911,
+          "rgbaSHA256": "3f52bfd0c3d618c0fca971060cfeae42544cd49be8f649c6ecf3e833b82d78b5"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10949,
+          "rgbaSHA256": "9c1669560b60496aab4c3c64708006f3031da110ad52e10dc4975bf5c98bd247"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9896,
+          "rgbaSHA256": "c58267131a5be112d94217cec653442dff8cff9a6f8e25800212980a6b6ed30a"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10330,
+          "rgbaSHA256": "c3aaf2cf37cb6c702e520aa1c3aefd3ea245363a90de3887c2eba80dc75bfc79"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9390,
+          "rgbaSHA256": "421326ad848f76a2395a6970ff6b49bbd77bc151d8d892eb87cc7ee276b2976a"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10511,
+          "rgbaSHA256": "e7cf4b5b031cb3ad52ff803139c5a0afa5a95fc97471ae60d7b750c5100926de"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13017,
+          "rgbaSHA256": "12256e8cccd14056bf254d62eada9436f4386a7c35ae52a253f1dd7c94ec9e8a"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S21-ENV08",
+      "name": "空の水路のゆらぎ",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5918,
+          "rgbaSHA256": "7a73ff08ca17f20ff1ac1a338fd9f68e7a00e4efb7d32dfe4289e3d7c78941c3"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7188,
+          "rgbaSHA256": "b60875da31c02b5bae5e99b25504c42c065ac919bce353a1ed6812b452d2ea5c"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5879,
+          "rgbaSHA256": "87bf76bddc80e7e22a88136e360977d99575a6469980261b8bc707b53287aebb"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5746,
+          "rgbaSHA256": "7218bad423aaa6279610b1d35bfa9477ae1ada66ba0dc731199e82e7a956bc03"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6048,
+          "rgbaSHA256": "b00b79ee7efd5b4f3efd8c222cbb39d7eb85ba2248394cf3d4a0e0d8be68dfb4"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6203,
+          "rgbaSHA256": "7391ecce8caaa4e12694cfc92f8bce1da361d5d3d7fcd62d5d151f3131ef04ca"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5924,
+          "rgbaSHA256": "247a851bfee304a010bdb57474488cd9fa72cf8d2495037edc4887dcebca8683"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6204,
+          "rgbaSHA256": "6ef6c1ae84eedbde349502aa593a02b410d22abadf754f1c1b52ae595f43fcc3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

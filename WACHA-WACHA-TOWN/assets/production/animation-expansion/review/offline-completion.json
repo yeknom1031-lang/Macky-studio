@@ -1,0 +1,2122 @@
+{
+  "at": "2026-10-04T18:51:08.558612+00:00",
+  "owner": "offline_release",
+  "sourceVisualPassed": true,
+  "runtimePassed": false,
+  "runtimeState": "final integration and corrected navigation review pending",
+  "generationCalls": 172,
+  "environmentSheets": 72,
+  "environmentObjects": 288,
+  "directionalSheets": 100,
+  "sourceFiles": [
+    {
+      "id": "A0501",
+      "sha256": "21ea8c977ca1875e8f1a222023cd9b6566a8a94e35cb71cfc43285f7717f14a7",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0502",
+      "sha256": "d5220d4c528f9d573448f2b250a1044a1f44b6f8674b7ab39f824e1e59535055",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0503",
+      "sha256": "f8337184adc124d4567603f77ac733f75e1bc09b60b27380b3900b7d3fae1133",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0504",
+      "sha256": "bfa0818c5f6caea534b8bd4c5d649c91ca240ba986038b450ec56b24da2c9aab",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0505",
+      "sha256": "1d29bddb9d1a0f4898289a4ce4746736fe7ff98d8a4fdae4e8efab97bc999eb7",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0506",
+      "sha256": "308dc34dfddae053b2abcf6af8d0de3e7e12cec4689cd6812e2616e0ea7be771",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0507",
+      "sha256": "66fb39c0715ea187fb8173315be3e576b25628290173f939c54b82d07c86c250",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0508",
+      "sha256": "7ef5c014045aa8077e96550a8a4abf7284b3a0860e2f4baa503806847688589f",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0509",
+      "sha256": "196ddb3969997d7600f39eb93102e8d53968166f5db1abcd28506dc4f07abe21",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0510",
+      "sha256": "bfe939aaf36c1862e436517955a941cea9c3cff32705b270fea880ebc0e47e81",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0511",
+      "sha256": "9ede712118749975444886bf7469ed3b78cce13a0342deeb98d1cda291d31a57",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0512",
+      "sha256": "7a56c4de1c51c15ce9bb34e46370934a2583322ece7a4d02d6c8bb84a5aa16fa",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0513",
+      "sha256": "cf98ab222459810f5d56d01b4612e9f3bb0cf46140d11cf3de2a8045a7e3a654",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0514",
+      "sha256": "7b166b3bc01ab2103a1a0501c8c976cf36e483283543b3a1a666f92e82c73d04",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0515",
+      "sha256": "7d56935710648a55ea7636ab315af6628d8b543e23a6577eb47fdd198364f264",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0516",
+      "sha256": "38c7a1d22aff55b8861fed5297848d8275f845c7b210ef2c5b0805ea95752a99",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0517",
+      "sha256": "267b6000ff73d490e579f1060cc670cc16603e1d20aef403f01ae1575c4289c2",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0518",
+      "sha256": "22cde72ab25a246548861fae14c7227d9c1dd3d7ae0e886892db932f99874058",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0519",
+      "sha256": "a8f66b235ef7811c8f6da1d2b34556fa69d15f752d0983220ca881f819c6ad05",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0520",
+      "sha256": "1d32eca17221421dda94c3d930adfc8eed363feb8c5f25246a70a8a4a56a23b5",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ]
+      }
+    },
+    {
+      "id": "A0521",
+      "sha256": "9733e64ead3fd1e3f8b4eb7abb2942e3d61aa5304da9d449002fe8682f004cef",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0522",
+      "sha256": "d01690a9f075dc95e73ebfacb736103160d88341abb9e3ef7553e7bf567e5844",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0523",
+      "sha256": "a381e06301b1ba1a25e9db48007697c88c9a7a3dbb8c9b3b310149c011b95411",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0524",
+      "sha256": "6042bba41c1a0fd24096942cb2206801fb2491d4381882664263a1cbfd350af0",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0525",
+      "sha256": "3341da773fadad35f2683571c59c09b09d9ac0496bc9baebafba7a49bb41a1ab",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "3": [
+          "stairUp",
+          "stairDown"
+        ]
+      }
+    },
+    {
+      "id": "A0526",
+      "sha256": "36cc7abec6857952ea1efe4ab7a2ea21f13ab0f94ba447b39d2705bb588cc63c",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0527",
+      "sha256": "a9fef5915c881268a8e12c10d460ee11acfe1a72cb8c4985aa0bd31d2f76bea4",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0528",
+      "sha256": "521c7b379788d9a0dfc7d5f2256ba1bcbb31b41404fa8fb47395547952fd2850",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0529",
+      "sha256": "f61f6e76990b71ebd2e759143cb14c5d96c560a908ed5fe42098738582d5e114",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0530",
+      "sha256": "ff6f42f6d5cd2bc0b12e6fc5234089a285c1337fe99851b7c67f588bf91e9945",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0531",
+      "sha256": "c1337189cbae1168dc639e38dc4dce1415c5f8a7923333ecc6f14dcf71934719",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0532",
+      "sha256": "43379cebf9f3be7f40840d2fd0a0b1edb9760fc67ca86d123ecae25c3d174346",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0533",
+      "sha256": "7b3b8bde65346ee8ca886357c5789254cd6b9c88f92a1577fb943f52882b26ec",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0534",
+      "sha256": "2d796cc58519f6a31ad2a77addfd4ad084ffd65a8b822342e38aa7c69940072f",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0535",
+      "sha256": "5f1b74e8cded4c460597f3a118385d473f7db7b3bcf480f33e16e6a55f6e31c3",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0536",
+      "sha256": "fe2c0c3a81279bb63aced9578a383cd669a16c2b0c0b4292f47cf137ef017f1f",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0537",
+      "sha256": "1db7b2dab58ab8c780057775c1c05c89a02e645c466e374707495c7b366a8608",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0538",
+      "sha256": "ee882536dbbe7a29137bd03c01b588b1f6155280e6999e16684d56bf947fb56d",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0539",
+      "sha256": "8ad6d5bb3d043bce7f05a5e7afdd343a67f5a7633518802512da32904ab3d3dd",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0540",
+      "sha256": "ae6264794d3855a3340f409efbd70b6280825999f370a6d1cb8cbd686b1f470b",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0541",
+      "sha256": "fb4a0aa13762bad9049ff8e8d5aa6dae1f2d1076405ec08fe5dfcf5246d27668",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0542",
+      "sha256": "d8b479c085b44cc8d050e468bb6585a0f1fff18f6ce27917f43cff5627751bc7",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0543",
+      "sha256": "11c0478362dd7909cc2caa1df83a6739f2daee24b648bdfb50552ade6b443b6e",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0544",
+      "sha256": "211b30d4825c9fcbc5623dc5fe7f13d725708dd3217831fc4a4e9aaba4f7288a",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0545",
+      "sha256": "ff6fe36a5b17eccee70b812112fdf4c71fe96c7db20862954c4a9d4ec5a8a518",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0546",
+      "sha256": "a5dab5183aa416c4582b54d23969261a76ac3af7761f4adf7805d36e67e5e140",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0547",
+      "sha256": "8f118450d5040b7d24144b36674d20dfdad746a1f27e13eee82746699696993d",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0548",
+      "sha256": "42ee09d13e4c16767d8a9e29c0ca9670edf56e0dc43b7ba288d96c99f6dcfc1a",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0549",
+      "sha256": "e3796540474b32ae2a0bdec321f4db70fb346f74a19405a34c719ae48007efd0",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0550",
+      "sha256": "16db40653048bfc231511a518104ccbeaf86c7f08371dedb919de3fceadf6554",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "3": [
+          "stairUp",
+          "stairDown"
+        ]
+      }
+    },
+    {
+      "id": "A0551",
+      "sha256": "eab4f4b336f84e7844ed0df34024dc7cc56623b97fecce8b3590e4714fe6dbc5",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0552",
+      "sha256": "4bf4fcbe477aa393e62659164b84f8874800e23f4aa2d8220f39ddf400a05ba0",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0553",
+      "sha256": "f04d91ea9e5390b3d2e4781a3e144bdbf0e73554d2ad8a9197957791698fe20c",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0554",
+      "sha256": "85193d87406ce907708a09f98e39f09f02b41e431492e096dca3dc824d7c8c30",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0555",
+      "sha256": "356f71f301650120f4630ff5a892497b84cd2be577e392d682cf6898eb955583",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        2
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0556",
+      "sha256": "ac8b6241b8a5d18a2a98f768296bea403aa5d358cd671467b41ab11ab263af84",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ],
+        "2": [
+          "walkBack"
+        ],
+        "3": [
+          "walkBack"
+        ]
+      }
+    },
+    {
+      "id": "A0557",
+      "sha256": "3b0f81fda3373d16560c1459050ed3e6931c5286611a38aeebb4789ef5f09cf9",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ]
+      }
+    },
+    {
+      "id": "A0558",
+      "sha256": "aef3efcb73d61617eb9d0fde048ca2d82d966f14dc47ffaca67216d72bc45347",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0559",
+      "sha256": "33d079edcfc91280025f23f307eb4ee59117b6d13adc875a3150ff765ab0cd9b",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0560",
+      "sha256": "1ba5eff40c24398b0a925bc26572a772b5c950283023bca87ccc622c01b44915",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0561",
+      "sha256": "564f3410605b7ad8f0fc446fd2694904c6f3146eeb574816251b688a70096e8d",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0562",
+      "sha256": "b2ef6c89e187095a7e7a73ad9dd38fcaae201e8711e76f3b389100e643fd9db7",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0563",
+      "sha256": "63ea63d8fc7666ddd2cde7e92840e23f6c7a54005f0beb96ff6cf166f2ecd444",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0564",
+      "sha256": "5284a1303a46258d048b50c97f44b526219d74927b711b963e920c0e41793e33",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0565",
+      "sha256": "2c8456bdc247968470b89d60674d9563277e7ee01c9a3c70095618244e501679",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0566",
+      "sha256": "6a91cda0c7d57c58d3d605076bf7ee85384600b78b96acdf55e89fce0126c83a",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0567",
+      "sha256": "010128adbde89cf137bd51789da9a4d357bb530be886470e82d660d630e9a7b1",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0568",
+      "sha256": "9d876e65f7567b566a2542b9f769f1ae1690a67dee1167f9dfecd1397f1a505c",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0569",
+      "sha256": "bfba3862b4e3ba4845a2c3c7af70f18b462fb3e35eecf6dda47ebe948889bb36",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0570",
+      "sha256": "779ddd2b1dc916655ee6e369864198f51f1c7c26f163e4f16b653d6f824abca5",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0571",
+      "sha256": "3f58e44dc6b1b5590c4236a3d2ef3a026805fc4bb9e007e1135450d72d1d6c66",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0572",
+      "sha256": "e47bd31be7dcaf60777981a7c9832fdf5de1c0bf926ba17d63182dd4c784e5c0",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "1": [
+          "stairUp",
+          "stairDown"
+        ],
+        "2": [
+          "stairUp",
+          "stairDown"
+        ],
+        "3": [
+          "stairUp",
+          "stairDown"
+        ]
+      }
+    },
+    {
+      "id": "A0573",
+      "sha256": "b50d1cae6fb843a50816e0e04f712465035b1c966b36c6da83a5218c3c5ea8fb",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "stairUp",
+          "stairDown"
+        ],
+        "1": [
+          "stairUp",
+          "stairDown"
+        ]
+      }
+    },
+    {
+      "id": "A0574",
+      "sha256": "e1dc7e9a0ce1fd75e11424d1001a3b7349f75ac3f39a9f0fc0986f886da532fa",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "walkBack"
+        ]
+      }
+    },
+    {
+      "id": "A0575",
+      "sha256": "c8d975c30c374894c4696bda3b4fb7c35f0f240942f7ac9d802cea77c58cf63a",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "3": [
+          "stairUp",
+          "stairDown"
+        ]
+      }
+    },
+    {
+      "id": "A0576",
+      "sha256": "e7457dce29c7d85654ea20e17933056f580e707ab950f799489ba951fc8a128e",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0577",
+      "sha256": "577af64f38a74417d9d53fae0719d5f950c5578dc76781519e9361ff3760c85c",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0578",
+      "sha256": "864495420d54bc59a36a293b6be68fabae0f435c6a4a1ddb2b2fe3e27adb625e",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "0": [
+          "stairUp",
+          "stairDown"
+        ],
+        "1": [
+          "stairUp",
+          "stairDown"
+        ],
+        "2": [
+          "stairUp",
+          "stairDown"
+        ],
+        "3": [
+          "stairUp",
+          "stairDown"
+        ]
+      }
+    },
+    {
+      "id": "A0579",
+      "sha256": "ed1cd0c5c2255ebf6c5aaed6133446751db731721b7046d0a10cfbf8aaaf6869",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0580",
+      "sha256": "e9194aac043c6c81f5de8eafef70aac9dbf517ce49abe9c9b168c7275b8bfc6e",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0581",
+      "sha256": "d4a856625e383eb8bdee8b3c0712f17d3f482dfeaa2012ec1ba06959d1f0d1bc",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0582",
+      "sha256": "53190c4ecad690f065a49b850aee87c370a8287a2374bd71a13f808e0e31c7b0",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0583",
+      "sha256": "a34c4af9ce1d74b7c9ae9059b3a49986427a994be960338c113e5fe9acd51068",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0584",
+      "sha256": "81c01ec335ee8df224bd2c65f002dce86a99b2d8a4c5046f39383d7d3c21c382",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0585",
+      "sha256": "cdc058aea84ed158cc9e128a9d8d90eb75e383c5dc0ead9737baaa208efc4a9e",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0586",
+      "sha256": "6051c88b1620b6f80810e0bc165c440624436555822bf61c41f36b8a3661bd4e",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0587",
+      "sha256": "7bb5ef4d7d39b2cbfe4b25e3839a339c8230ff9d25f51b1f25363859efc6712d",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0588",
+      "sha256": "19ae38fd3713d040bc3c608269a66776019056d27132b895b33f7ad9312719c8",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0589",
+      "sha256": "b2e0a785b332eaf5179860ae51a38639ea051bc4d69d6a5ff84c606f01b531e5",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0590",
+      "sha256": "c9a3e33ad720f3fba1b3c0fdf69c527d5c00d65145db81652ee88927b90a271b",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0591",
+      "sha256": "bc9b76ac8f32e3c07d7b57854fc007d644eac128c1ceff98e9d3db8eb3984ee1",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0592",
+      "sha256": "7f4ba8d668c0aae4f6c9daa2bec895a3df0172b3c5b6253134359ba36975b53e",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0593",
+      "sha256": "c56ab7868a809440e95601d9f3d7c0acf162dde35797e763640970d8e4b145f0",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0594",
+      "sha256": "a8732ad2ca8e9af2dddd6844888e7df206785beba7459dc55bee33ea2f4b2e68",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0595",
+      "sha256": "0319af9dc6096ef809e2c78d741fa028d766c3605400f1a328d706be41385f7c",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0596",
+      "sha256": "02e8bac005cefd097267cbf57932149cfe82f50ed1410c3d1e7a99f62ee0a970",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0597",
+      "sha256": "c42bc092dd0fa39e4de9a0bc42c39fe6f20eade51d53d1819de96d2a38b8fb17",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0598",
+      "sha256": "aea79d91174b10fea405b2088ba0811d86353450dd4fdfe748454f7e1f1d8319",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0599",
+      "sha256": "54818ea143b4c3eddae1bee7662bba460809b08c059eee8426fded27a4c9f23b",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        0,
+        1,
+        2
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0600",
+      "sha256": "e08960a3120ea2362d26fbc335ab712de0a41f1ac37400d411d71ab9ccc87040",
+      "reviewStatus": "accepted-partial",
+      "acceptedRows": [
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {
+        "2": [
+          "walkBack"
+        ],
+        "3": [
+          "stairUp",
+          "stairDown"
+        ]
+      }
+    },
+    {
+      "id": "A0721",
+      "sha256": "7509766836462972bc10aecfef100728ee1ab84e8253341050dfade5b3492e10",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0722",
+      "sha256": "f1f1a5d6b93457a086721b02fb6fb7cb7512ffa6b02ece93dfa29078a6a65108",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0723",
+      "sha256": "f4d7d4717cd09dbd0bf3e04861a06129cd6cd8a50349a6ceb39056ec19254c24",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0724",
+      "sha256": "0def257467ea31fe4dafbd66266ee08559608ba2178a8680c3eed9458cb5d2b1",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0725",
+      "sha256": "a2912316642f46a37cc4a836c0125b9bb4b7e4af98493fca952baa0bd3d561a2",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0726",
+      "sha256": "315e44c000f82c09842b73c8e183f15d5aeb327c06811ef75ccf25343e5db375",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0727",
+      "sha256": "c7c2556bf05a92b681d02cb8e18a1e835508eccdaca00b10fb0c2cc1bb3263c7",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0728",
+      "sha256": "fe7201fe79c235034dbf393d2816ddf200302111eaa6f8a0d2f1feb8a992bdf2",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0729",
+      "sha256": "c78dba0d0eacaf4dc80e7e0dc88df764d6a102d9a774dcb0e29dbe7970cadcfd",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0730",
+      "sha256": "3988c79cff183dff60bf1f479476737bfabb910d2be6d2f9280be7e3f7f9c019",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0731",
+      "sha256": "902e9a6fefc8c68edf1247832ba6e9c8f5638c2f9dd780253b0fe4578e2909e2",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0732",
+      "sha256": "bf96e51a06f7666bfd6ec890f0a7df91c6e8f9cc73c06ed9867e868f69c8ae59",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0733",
+      "sha256": "f43cc950d49d2f036be622cfc5a356eaf60954f6d52a1fc3e9a33f2ef2856fd6",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0734",
+      "sha256": "2337d0e6e3a7e0382baae4c4b4394e9125d3543c4e7703327cd23e389dc0f44f",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0735",
+      "sha256": "36d1301f06ca5d0ba6ab58ea804cbe9de96a3f9eee5d2ceed339cff14378f07a",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0736",
+      "sha256": "d0cb57c7953177c490eafe38a17ad79bc745f6c4c5d76026c9c7da97a05d8492",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0737",
+      "sha256": "f7cb8a63fdc8bb91c1ffc1770c7a8d28edeb420be3d4046997b1fb0ba7843455",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0738",
+      "sha256": "6d8563c4c30f064c612c701b3ca0216f9f71d182e12194ff271420df0c9a7b0d",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0739",
+      "sha256": "c1404e5aa7a2df6858466bc2a2bc148c307a6d1cf01ce93f6f17d96b40e3005d",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0740",
+      "sha256": "44ac04017ac60c4c240a6760b1db816540be6bf5853604cf0073be918514d9ee",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0741",
+      "sha256": "4b5ce6b2df92e9581afd5cb8c23646e0a23ed181b2adec5121e6d990f3665572",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0742",
+      "sha256": "e2fe2d130ef96a8ea78706d87fa370a741b74796f74fc39d0ab3c283c376392e",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0743",
+      "sha256": "4a14b0afbe4f781cd1ab14bcecf5969c59f17fdd6e2b1cf255d4d41728282c32",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0744",
+      "sha256": "431ac0a9d60eec6d01c788a3940f08a58a879108f8ebdb601941f5cf22637d7b",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0745",
+      "sha256": "a9348b22e4cddfcc4c6c6646ae15d868dce46d89c638f221e2bbd6154c1bc5d7",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0746",
+      "sha256": "e5ef3451a28d84a44b7d4200ee01e57f7b99b49b78e632bf2bffd9e910b41d87",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0747",
+      "sha256": "152bb09cf1a7e0ef4360b61c8cde29e2bf737ce772208282d031d08e125f8f97",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0748",
+      "sha256": "2a4e242bcd1918f8f9b08c6772c6b1fec706c65a544e3e581b7f9b7637dfe845",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0749",
+      "sha256": "b83b5fe3efbe8a24f9eb986a1d544797ed013aeae946d1543d820b1dae287785",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0750",
+      "sha256": "076afad4472bc62c09257bb87c56dcdbb3e3381248638b1571cf02a56646f836",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0751",
+      "sha256": "ecdb83b2224305190a0dbbf053d7df063b1ad898814c0ddfece06c300b2407a0",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0752",
+      "sha256": "da45f7e3005295e83927e8ffd5f009f49da33451af71167ddc3331216efa0a61",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0753",
+      "sha256": "3fb4426b95e2977e47075000f0158c8414703a33cd754ce13648731bc1cdb10f",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0754",
+      "sha256": "3a0a6deb22243397a55bfe86767148eb21a7cf8df6761dd4b7de80c88fb41eef",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0755",
+      "sha256": "24c15fa6f885f1332344bc2e8491dc396e2d023f862495cf0d5eface0737c7dd",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0756",
+      "sha256": "985007a4168199cf40ba584875fc1346322fe1ece81bb9b32e24537991351d84",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0757",
+      "sha256": "3096936de53cad2670c41bc7b0577b529ce97cc126f59d60c487969d0f4c1255",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0758",
+      "sha256": "03448bcbfd3b3ff863097f0dbc8d2750f5a5e9e4cce9c030125284886d1eb69c",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0759",
+      "sha256": "450226b782c041d650087a6c260428fff3b8c0310208003f353dc0b01c0b4017",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0760",
+      "sha256": "8688a38dd12655b75b0148ce75d13994053f670d50a46be7df7a1b0bc8a17c1a",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0761",
+      "sha256": "8b4f198c317a9ea6dae0c71414ce1efd1b80fbf12987bf35ec99ca7003cd020f",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0762",
+      "sha256": "c92807344262f193cca1c2cd3a8f8cc3f94aea03517e49b57d997462344cd47b",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0763",
+      "sha256": "fc76eaff94ed30d88d870a9b1ea9c9a77a5f9bdd2a5ea10f209d834dd2d73245",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0764",
+      "sha256": "83d885c767561c00e288e3556d25c326eddd3cda47a067f24e8568a886db137b",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0765",
+      "sha256": "ebeedfbc961a120eea918e8cd049c83daab73cf7e6d500902e80a9451d09bacf",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0766",
+      "sha256": "c3dca087c8220d6eb75767ea41d8da6fe2453ac31793ed77a48e71e8ec53da9e",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0767",
+      "sha256": "3379d8edd7db6adb09d5104f232760964634763334af69f2a03bffb91d75f24a",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0768",
+      "sha256": "1547debbeb3bccf57d6152331293dfb857d8c1d34054bf2e399e75c255bd4c64",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0769",
+      "sha256": "d7eddd52dd0427d1e43081b1c4e82fc1899f9c2568527f5ad8b5848b7a6e2082",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0770",
+      "sha256": "1b9f99cb10a34e24b3fbc39a5eb70097ddceb6fbf8d126d709fc5c769bc98382",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0771",
+      "sha256": "3964c33335aed6530c59e500e719ec5328574a49e969c05f4a667d2a5270217c",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0772",
+      "sha256": "fece39a8ac399a404f619fe30866d9c66c1e963071b573d633f2f872e6689cd3",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0773",
+      "sha256": "3e026fc7fefb90311d90a18e6e0ed1bdaec433993e2c346e51cdda8c2193617b",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0774",
+      "sha256": "aea7b3b5ee105d4df95e97def4d4e00f31eb79c451063fc1c4d7c71e68d86ac4",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0775",
+      "sha256": "0599866cbfb390da606b8a3f21e9d3cb2e8220ce261a19754c1983a4073e020c",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0776",
+      "sha256": "da0afac5e6402a069bc84876e2548129b83fc92ce95b283555d132edf0a67360",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0777",
+      "sha256": "a496bdca656f8abd491aa8b688d9d199d5a9849d2010dcb93e38e2d411986602",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0778",
+      "sha256": "4f984ff8d0590df730224cc435989b4c5d055ab8e3b56703d8d086fa2dc7a7a5",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0779",
+      "sha256": "81fa7dbb1547114932ae3ddad18511fa26fd5b6e9c95c361a42c690299ab13e9",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0780",
+      "sha256": "cd47f14895f29b10ba36c2b468691ea890490c9b33c96d788b96ab4af6602e68",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0781",
+      "sha256": "a245f17d18fe41dffc54af4559c11d58096c4276e5295d9a04a0bd107d14e72d",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0782",
+      "sha256": "2f6397bb0ca64a9c96bc5e790a281e24c2127b8364558435237999a4f2af4819",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0783",
+      "sha256": "02ff78609e26b33e58aff4de5d1f0b2ed6792dd78f5ce0a0a33cd7f7f1ffc44c",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0784",
+      "sha256": "7ef74b6dc10f936aa2a2e3ab6af106a872ab8c7cc8d0633ab9cecddb2a95f53a",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0785",
+      "sha256": "1eafa270e82a02567426328830ab8646b8dfa794909b214c18761b3b12487b2a",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0786",
+      "sha256": "2341da5411e3c7c19fc009f7a7192c183b75f2f72616226d2342b00771c6adfc",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0787",
+      "sha256": "aafdc4cc4faf4c9b8e0bfcad6a12096631453ddd42393918ec441097c5d2c156",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0788",
+      "sha256": "3565b8d02386b02965efebafae0f9417a4b7faafa10fc12ba0c2e6d365ea740e",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0789",
+      "sha256": "0da9299ab1e4cc5187a2b65962ce05c6daa9996a96afc5a17dc194548de08a18",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0790",
+      "sha256": "1583763988d55c362b1a61545105df8cdc365511fd73de4a51d3d414fcbe9ef9",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0791",
+      "sha256": "ebaf7c7cbc777d21ca91fcf28e4b2bbacc7f1c514f92477fa61b6038ce06d278",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    },
+    {
+      "id": "A0792",
+      "sha256": "bdff02963a9b4883fa5505111e4b5bf535540d610e97c3fff3aace62a8be1077",
+      "reviewStatus": "accepted",
+      "acceptedRows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "disabledClipsByRow": {}
+    }
+  ],
+  "directionalAcceptedRows": 360,
+  "directionalAcceptedClips": 1047,
+  "directionalFallbackRows": 40
+}

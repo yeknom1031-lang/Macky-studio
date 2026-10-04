@@ -1,0 +1,19 @@
+{
+  "id": "A0702",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:41:45.568835+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ],
+  "notes": [
+    "風車・凧・剪定の3列は道具と全身が連続。row 3 はパックで前セルの水滴が次セル左側へ混入するため保留。"
+  ],
+  "packReport": "review/A0702-pack.json",
+  "preview": "review/A0702-check.jpg"
+}

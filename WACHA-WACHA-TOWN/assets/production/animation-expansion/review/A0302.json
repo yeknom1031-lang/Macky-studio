@@ -1,0 +1,93 @@
+{
+  "width": 1774,
+  "height": 887,
+  "rows": 4,
+  "cols": 12,
+  "frames": 48,
+  "transparentFraction": 0.6538278706964814,
+  "registration": [
+    {
+      "row": 0,
+      "sourceCell": [
+        211,
+        225
+      ],
+      "sharedBounds": [
+        1,
+        51,
+        211,
+        225
+      ],
+      "scale": 0.41904761904761906,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "one affine transform per complete row"
+    },
+    {
+      "row": 1,
+      "sourceCell": [
+        213,
+        218
+      ],
+      "sharedBounds": [
+        1,
+        37,
+        213,
+        206
+      ],
+      "scale": 0.41509433962264153,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "one affine transform per complete row"
+    },
+    {
+      "row": 2,
+      "sourceCell": [
+        217,
+        222
+      ],
+      "sharedBounds": [
+        0,
+        9,
+        217,
+        207
+      ],
+      "scale": 0.4055299539170507,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "one affine transform per complete row"
+    },
+    {
+      "row": 3,
+      "sourceCell": [
+        212,
+        222
+      ],
+      "sharedBounds": [
+        1,
+        7,
+        212,
+        190
+      ],
+      "scale": 0.41706161137440756,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "method": "one affine transform per complete row"
+    }
+  ],
+  "warnings": [
+    "edge contact 1:6",
+    "edge contact 1:12",
+    "edge contact 2:6",
+    "edge contact 3:7",
+    "edge contact 4:6"
+  ]
+}

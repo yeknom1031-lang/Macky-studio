@@ -1,0 +1,355 @@
+{
+  "id": "A0737",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "f7cb8a63fdc8bb91c1ffc1770c7a8d28edeb420be3d4046997b1fb0ba7843455",
+  "alphaZeroFraction": 0.63081,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S06-ENV05",
+      "name": "凍らない水路の小波",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3262,
+          "rgbaSHA256": "78c2d2b37226a4e44e1b8040a02cdbc71177e43dce8cbd63c61f7eefcfc02f0f"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4182,
+          "rgbaSHA256": "c62025fcbeb7cb461e96c7f33bc5d2ae83a2f4861f5976e12d22dfe75a4b2204"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4851,
+          "rgbaSHA256": "8809453648047aae71315b57732f0feeda8fb6c0e3fc0baed3f0ca5d9a593a27"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6652,
+          "rgbaSHA256": "8367754daf36077034c1058a515f81e2cb37d38eb9fcd88a2b438a67ac2589bd"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5131,
+          "rgbaSHA256": "dbcef6241ad776559e75ae282f7e3f4887fda912a8a0c9e25ae56d0176652605"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4750,
+          "rgbaSHA256": "835d77bb152021ccd0589e96fcbfe7db77862e50630dfbb4faa9cb64c94c127b"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3782,
+          "rgbaSHA256": "b3a6ead1e65451d1abef8c145ef5b7d224e117609d1726736be9f9c5afc36bfd"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2940,
+          "rgbaSHA256": "b29b302805eaf231c9501e94a33eb4bc74006adf96484245a695704c55986716"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S06-ENV06",
+      "name": "水車の冷たい飛沫",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1796,
+          "rgbaSHA256": "4721ef5236ab38051b0257a3cb530093cf64f1f4467abc4668a3e7b7f5b6903c"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 2598,
+          "rgbaSHA256": "241a1acbdc0cd70f4127b66d541a15abf46daa42f45559fc0221e2b57fa33dc0"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5118,
+          "rgbaSHA256": "77e4a84f6c15a08e081e497fadb355ce8c137a445fadaf921aa7848c0001fec4"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7686,
+          "rgbaSHA256": "3ee7e906274abd05697fe63cad3ad602b0f157d034a37ad62b12095bf39c029a"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4991,
+          "rgbaSHA256": "cdecccf8c15c05f31e127524644ab8e26b34061cb58a4d59a25f805aff887261"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 3665,
+          "rgbaSHA256": "f9d7efe6b1a89e79b09337915e19957923a8aff9031d304d72a01863300b3264"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2681,
+          "rgbaSHA256": "34cd47e4e35889550441be02ce5ec915535aca2865dfaee49ad43609aa904db4"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 767,
+          "rgbaSHA256": "e548634c1bc63b66efa4c1835ab6f1e77c01844b02d1ffc1eccd46870f927bb0"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S06-ENV07",
+      "name": "つららのしずく",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3608,
+          "rgbaSHA256": "3174b489bb1119fd29c91318559199c71ffbe1e8665055c94436e7ebe47054cb"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4051,
+          "rgbaSHA256": "fd02d968c0d58353d14204a1f99cbefe61d33c8b55b8235db87cdbd7d9948cf9"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3807,
+          "rgbaSHA256": "7fdf4f5982e319f2a4cabe74e9ea1843a467f96cef888c633aa73a7779a53fb3"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4097,
+          "rgbaSHA256": "04f4deb4451db8cff8f86fdcac005e1683127d865142457559476b153191f374"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3461,
+          "rgbaSHA256": "d9a6223d1d263557f648b3d6827415c3ecc2e4daad2e76ca25feb07ac9e9713d"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3486,
+          "rgbaSHA256": "8766edfbad53c583f077b5369ae6e740b36381f21d13730ee207563cb435aab6"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3643,
+          "rgbaSHA256": "a134a24d5cd9cf22a4b0d69ee92a5b15a07e3ea6cbdd669bfe31c25c1be9024b"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4171,
+          "rgbaSHA256": "4619341e3cc0db56c872cb289d2741fe27d311affe9ff98f32498a5b5f9364d5"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S06-ENV08",
+      "name": "暖炉の煙",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2464,
+          "rgbaSHA256": "6853e2e1194fa341e5f88b3a1e7484c334116c1f466a72a0b20c87854fe1fb51"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5501,
+          "rgbaSHA256": "43031118ea81e596c2bcb34338986f69d2354e74a7143955a1fc5c8591742fae"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8544,
+          "rgbaSHA256": "37cb674627958872b68dbf3dedfdaddd6e26d47aa888b57060fc915a5ff408d3"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7773,
+          "rgbaSHA256": "466b31cc9abeaa6527cba60615739c3c77a129b8704fc8bbee96ec8d5750200c"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6938,
+          "rgbaSHA256": "2a5cf13ff9d22a3b01b76c68e602f29eee787698b6fe538161a731b32a6919ab"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5376,
+          "rgbaSHA256": "0dfad46a945d4e0a7aee6ece7c9ddadbe4951b4ec3de862bfe52bf0c28678a25"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4629,
+          "rgbaSHA256": "657582a50d977ba65fba7c82a89054fc54ba54ac1a0520e2dc0c8abab603486d"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2895,
+          "rgbaSHA256": "0368e0f01b1c72b0fdad2fdfbc1e311b9962291b925c5a747aade9be24d9f9c3"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

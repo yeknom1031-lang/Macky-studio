@@ -1,0 +1,355 @@
+{
+  "id": "A0738",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "6d8563c4c30f064c612c701b3ca0216f9f71d182e12194ff271420df0c9a7b0d",
+  "alphaZeroFraction": 0.65329,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S06-ENV09",
+      "name": "小雪の舞",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2993,
+          "rgbaSHA256": "75582b60399a82be4f2ac4ed99c7dd2015a3d7b68d528b2216b358925f57ec60"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3130,
+          "rgbaSHA256": "61dde80dedaf3d502c4a6924bf3304522eae3f41ddfd6cbe2a521882c779f3b2"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3046,
+          "rgbaSHA256": "8414d81b60852fd17e8fd7feaac4df1446e91ee0e954d359c391c6a4c9c109d9"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2952,
+          "rgbaSHA256": "9062a833dff0c856c0fde9b950f925d5fa53824d6180f23d32c362d2770031d5"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3092,
+          "rgbaSHA256": "0f7b79ab36080144f9ca61a5fb35c12f45d02bfdee400b3a1d31d4ec4336304d"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2796,
+          "rgbaSHA256": "295aa7e36fa28a92e54fb452e5d6297e135836d7ff5fd527149e586126d35af1"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2753,
+          "rgbaSHA256": "74509ecf399682fcce6d3f8e0ca03c9593e870b6eca63efd8b6a598cebcd4edb"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2818,
+          "rgbaSHA256": "c362b7dafba3e7bb23bb60905bcb4159b52b9a176495e024065028f848af08b5"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S06-ENV10",
+      "name": "松枝の粉雪",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1714,
+          "rgbaSHA256": "927f5313e56c7bdd29edca6e1a75e7dc3d4fd518b8500580d23f6eba547f6cd3"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 1590,
+          "rgbaSHA256": "38665e0c1626886fbaf0bfdb446ca2d6b8e0b627bd903d59041a236fd50282b3"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1472,
+          "rgbaSHA256": "90865eb3e36c0bb58e7cadbfb35e995489ca9a4d2e65ba8b968483c137f65fdc"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1639,
+          "rgbaSHA256": "b5f36f221a409540bec27e8fd8eaf57b864b921d53fdb2e47e023d08114f2ce5"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1455,
+          "rgbaSHA256": "c36e699c52d205de8b54bb689d3bdcac7fd8dd533e977514363bf096f2f9ae94"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 1599,
+          "rgbaSHA256": "09b02aeb4bfc16870c5995c6b345b106191e226a4b705fc0219a9a951af6a360"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1542,
+          "rgbaSHA256": "a72ccd1fe2472344844cf59824e4411715556c371c1d34bcec41c1d80f027c64"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 1595,
+          "rgbaSHA256": "2427319481d42d8b166c86f194f8998c51041740c4f0b99c1fe7463902a93311"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S06-ENV11",
+      "name": "赤い冬の小旗",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6300,
+          "rgbaSHA256": "c548701acf4de89eba4133b8cc4bb2a1d4cf07333a9daf17058e6317ed1c456b"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6402,
+          "rgbaSHA256": "9a1ad97c82ddf76418638a1b4dfda3fc5341680fcbcdfd0ce076a37b3515900d"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6366,
+          "rgbaSHA256": "d7e67329e31fda5116a3125dcff2efc8cf3472705a394ce3df15367501a291b8"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6443,
+          "rgbaSHA256": "dd9cab14f18713467e7f25db7b062caa5eaf1c631a36e317d4dc860bc51f0cee"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6442,
+          "rgbaSHA256": "b3556fcd3285348b347561d4406a2a29e4c229343275835dfcb6e60ae21075b1"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6527,
+          "rgbaSHA256": "d7053b2ef46c44e6db642b982ee92a8b01790f63ca932159d5042687a60a84e4"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6437,
+          "rgbaSHA256": "af7833a95977637f8771386869c20d3bdf2ec2fa0bca28dfd835ab23b32c7448"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6403,
+          "rgbaSHA256": "a6e8c52d635b739c94c076ee4a7f62bd88a949c9d76e258b09b5643d2cf38254"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S06-ENV12",
+      "name": "氷のきらめき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4724,
+          "rgbaSHA256": "9a5e1969ef4f1431a580440765e4a9a89bd00b3ab23c9a8a90d44876e13387ff"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4385,
+          "rgbaSHA256": "9170bf9f6fc48c98a482923201503ede0b26574c0094d6daea2a5b5639472817"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4375,
+          "rgbaSHA256": "ac5c889711765f599428bd9815339407b1270396a48c765687f6944e0bb5a297"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4735,
+          "rgbaSHA256": "512bf01a81886299903f5b92395bf6e9637904197895bc7f29e1df0951ec6f89"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5330,
+          "rgbaSHA256": "a17e435f6c2d1cccdcb1e145e4fabacf09fb84bca9e949e9b96691cd3323d819"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5147,
+          "rgbaSHA256": "74c37f145d504b9acc4cb92ba44f3654daf5b7fd81be4482640dbbd110a3c838"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4461,
+          "rgbaSHA256": "2ed49b31b9b4bb9a0a830ed5a0e53941cfdc4a22385cbb5ea8ce85acf27bd62f"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4364,
+          "rgbaSHA256": "f8d8a713071b102c7b5977f873b142ab089e0ddb03a6544d4fae7b36965fb6a2"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent object-specific frames. Transparent color composite visually verified; no scene panel, labels, missing row or merged sprite. Final in-game placement remains pending."
+}

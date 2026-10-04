@@ -1,0 +1,26 @@
+{
+  "id": "A0214",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:39:21.913512+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack再表示。3行の白トートは背面4コマのみ左右反転するためwalkBackを除外し、階段8コマを追加採用。0〜2行の全12コマ採用を維持。"
+  ],
+  "packReport": "review/A0214-pack.json",
+  "preview": "review/A0214-check.jpg",
+  "disabledClipsByRow": {
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

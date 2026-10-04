@@ -1,0 +1,18 @@
+{
+  "id": "A0697",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:38:01.335680+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    3
+  ],
+  "notes": [
+    "網の水切りとレンチの反復は保持・パック良好。row 1 は8コマ目で採集物が消失、row 2 は8コマ目で道具が消失するため既存動作を維持。"
+  ],
+  "packReport": "review/A0697-pack.json",
+  "preview": "review/A0697-check.jpg"
+}

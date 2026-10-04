@@ -1,0 +1,5588 @@
+{
+  "version": 1,
+  "createdFor": "800-call animation expansion",
+  "sourceReferences": [
+    "assets/production/jobs.json",
+    "assets/production/navigation/living-spaces.json"
+  ],
+  "referenceFormat": {
+    "charactersPerImage": 4,
+    "posesPerCharacterInReference": 2,
+    "referenceGrid": [
+      4,
+      2
+    ],
+    "referencePoseChoice": "受理済み原画の歩行・役割動作を技術切り出し。見た目が異なる別人を同一rowへ混ぜない。",
+    "targetGrid": [
+      4,
+      12
+    ],
+    "recommendedCanvasAspect": "2:1（人物の身長を詰めず、四行の上下余白を確保）",
+    "transparent": true,
+    "identityReview": "元の顔、体型、髪、帽子、服構造と色を保持。後ろ姿は帯・エプロン結びを合理的に描き、別衣装へ変更しない。",
+    "movementReview": "後ろ歩きは交互の接地/通過。上りは膝上げ/前傾/蹴り出し。下りは足先を下へ出す/支持膝屈曲/重心移動。階段そのものは画像へ焼き込まない。",
+    "cuttingReview": "48コマ・alpha・ポーズ順・完全な頭と足を確認。行のbboxが重なる場合は成分で分離、結合していれば不受理。"
+  },
+  "stages": [
+    {
+      "stage": "S01",
+      "name": "はじまりのお祭り",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "北西のお祭り売店",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "桜通りの屋台床",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "西の射的と屋台広場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "play",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "中央の舞台床",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "play",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "二階商店の一階売場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "東の茶店一階",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "shop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "南の太鼓の稽古床",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "shop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "茶屋の芝生庭園",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "animal",
+            "seat",
+            "play",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "中央商店の二階テラス",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "shop",
+            "seat"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "東茶屋の二階テラス",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "kitchen",
+            "seat"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S01-C001",
+          "role": "R021",
+          "name": "鉄板屋台の料理人 1"
+        },
+        {
+          "character": "S01-C006",
+          "role": "R025",
+          "name": "団子屋の職人 1"
+        },
+        {
+          "character": "S01-C011",
+          "role": "R027",
+          "name": "綿菓子の職人 1"
+        },
+        {
+          "character": "S01-C016",
+          "role": "R013",
+          "name": "風船売り 1"
+        },
+        {
+          "character": "S01-C021",
+          "role": "R012",
+          "name": "からくり玩具売り 1"
+        },
+        {
+          "character": "S01-C026",
+          "role": "R033",
+          "name": "茶屋の店員 1"
+        },
+        {
+          "character": "S01-C031",
+          "role": "R186",
+          "name": "太鼓奏者 1"
+        },
+        {
+          "character": "S01-C036",
+          "role": "R187",
+          "name": "笛の奏者 1"
+        },
+        {
+          "character": "S01-C041",
+          "role": "R192",
+          "name": "盆踊りの踊り手 1"
+        },
+        {
+          "character": "S01-C046",
+          "role": "R193",
+          "name": "お手玉芸人 1"
+        },
+        {
+          "character": "S01-C051",
+          "role": "R194",
+          "name": "玉乗りピエロ 1"
+        },
+        {
+          "character": "S01-C056",
+          "role": "R196",
+          "name": "手品師 1"
+        },
+        {
+          "character": "S01-C061",
+          "role": "R217",
+          "name": "射的を楽しむ客 1"
+        },
+        {
+          "character": "S01-C066",
+          "role": "R218",
+          "name": "金魚すくいの客 1"
+        },
+        {
+          "character": "S01-C071",
+          "role": "R111",
+          "name": "面づくりの陶芸家 1"
+        },
+        {
+          "character": "S01-C076",
+          "role": "R063",
+          "name": "玩具店の2階の住人 1"
+        },
+        {
+          "character": "S01-C081",
+          "role": "R161",
+          "name": "水路の舟の漕ぎ手 1"
+        },
+        {
+          "character": "S01-C086",
+          "role": "R224",
+          "name": "水路の網漁師 1"
+        },
+        {
+          "character": "S01-C091",
+          "role": "R174",
+          "name": "橋の交通案内係 1"
+        },
+        {
+          "character": "S01-C096",
+          "role": "R200",
+          "name": "はじまりのお祭りのカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "太鼓の合図で踊りが始まる",
+        "山車が交差点を曲がる",
+        "玩具店の窓が開く",
+        "舟の乗り換えが起きる",
+        "犬が落とした団子を嗅ぐ",
+        "風でお面棚の布が揺れる"
+      ],
+      "environmentCandidates": [
+        "丸い風船",
+        "魚型風船",
+        "ハト",
+        "カモメ",
+        "夏雲",
+        "柳の枝",
+        "水路の波",
+        "提灯の揺れ"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S02",
+      "name": "花咲くガーデン",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "北西温室の花仕事床",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "庭園の池を眺める東岸",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "花市の販売広場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "garden",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "東温室のカフェ一階",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "garden",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "噴水の庭園回廊",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "seat",
+            "performance",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "東のバラ園とガゼボ広場",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "seat",
+            "play",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "庭師の家の玄関広場",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "南東の植物市場床",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "池の上段の花の東屋",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "garden",
+            "seat"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "東温室の二階カフェ",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "garden",
+            "seat",
+            "kitchen"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "庭師の家の二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S02-C001",
+          "role": "R007",
+          "name": "花束職人 1"
+        },
+        {
+          "character": "S02-C006",
+          "role": "R054",
+          "name": "切り花店員 1"
+        },
+        {
+          "character": "S02-C011",
+          "role": "R079",
+          "name": "鉢植えの住人 1"
+        },
+        {
+          "character": "S02-C016",
+          "role": "R082",
+          "name": "剪定庭師 1"
+        },
+        {
+          "character": "S02-C021",
+          "role": "R149",
+          "name": "温室管理人 1"
+        },
+        {
+          "character": "S02-C026",
+          "role": "R232",
+          "name": "苗を運ぶ園芸家 1"
+        },
+        {
+          "character": "S02-C031",
+          "role": "R227",
+          "name": "じょうろの庭師 1"
+        },
+        {
+          "character": "S02-C036",
+          "role": "R226",
+          "name": "種まき係 1"
+        },
+        {
+          "character": "S02-C041",
+          "role": "R228",
+          "name": "菜園の収穫係 1"
+        },
+        {
+          "character": "S02-C046",
+          "role": "R230",
+          "name": "落ち葉の清掃係 1"
+        },
+        {
+          "character": "S02-C051",
+          "role": "R229",
+          "name": "果樹園の摘み取り係 1"
+        },
+        {
+          "character": "S02-C056",
+          "role": "R237",
+          "name": "動物のブラッシング係 1"
+        },
+        {
+          "character": "S02-C061",
+          "role": "R203",
+          "name": "シャボン玉遊びの子 1"
+        },
+        {
+          "character": "S02-C066",
+          "role": "R204",
+          "name": "凧揚げの家族 1"
+        },
+        {
+          "character": "S02-C071",
+          "role": "R198",
+          "name": "花を描く画家 1"
+        },
+        {
+          "character": "S02-C076",
+          "role": "R220",
+          "name": "野鳥観察客 1"
+        },
+        {
+          "character": "S02-C081",
+          "role": "R014",
+          "name": "庭園の入場係 1"
+        },
+        {
+          "character": "S02-C086",
+          "role": "R031",
+          "name": "レモネード店員 1"
+        },
+        {
+          "character": "S02-C091",
+          "role": "R239",
+          "name": "巣箱を直す職人 1"
+        },
+        {
+          "character": "S02-C096",
+          "role": "R200",
+          "name": "花咲くガーデンのカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "噴水が吹き上がる",
+        "温室が換気される",
+        "花束が客に渡る",
+        "庭師がはしごを掛ける",
+        "蜂が花壇へ移動する",
+        "子犬がボールを返す"
+      ],
+      "environmentCandidates": [
+        "蝶",
+        "ミツバチ",
+        "スズメ",
+        "てんとう虫",
+        "綿毛",
+        "噴水の水",
+        "温室の葉",
+        "花びら"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S03",
+      "name": "海辺のマルシェ",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "北の鮮魚市場床",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "港の開いた荷さばき床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "西の魚料理店とテラス",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "shop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "港のカフェ一階",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "漁具工房の一階床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "東の魚市場とカフェ床",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "南のシーフード食堂",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "砂浜の遊び場",
+          "level": 0,
+          "kinds": [
+            "play",
+            "animal",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "港カフェの二階テラス",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "kitchen",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "漁具店の高床作業テラス",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "shop",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "南の小さな展望テラス",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "kitchen"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "展望カフェの地上前庭",
+          "level": 0,
+          "kinds": [
+            "seat",
+            "open",
+            "kitchen"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S03-C001",
+          "role": "R004",
+          "name": "魚屋 1"
+        },
+        {
+          "character": "S03-C006",
+          "role": "R223",
+          "name": "釣り餌を付ける釣り人 1"
+        },
+        {
+          "character": "S03-C011",
+          "role": "R221",
+          "name": "投げ釣りの釣り人 1"
+        },
+        {
+          "character": "S03-C016",
+          "role": "R222",
+          "name": "釣果を取り込む釣り人 1"
+        },
+        {
+          "character": "S03-C021",
+          "role": "R224",
+          "name": "網漁師 1"
+        },
+        {
+          "character": "S03-C026",
+          "role": "R078",
+          "name": "網を繕う職人 1"
+        },
+        {
+          "character": "S03-C031",
+          "role": "R148",
+          "name": "帆を畳む船員 1"
+        },
+        {
+          "character": "S03-C036",
+          "role": "R147",
+          "name": "係留係 1"
+        },
+        {
+          "character": "S03-C041",
+          "role": "R162",
+          "name": "帆船の操舵手 1"
+        },
+        {
+          "character": "S03-C046",
+          "role": "R173",
+          "name": "水産物の荷渡し係 1"
+        },
+        {
+          "character": "S03-C051",
+          "role": "R021",
+          "name": "魚の鉄板料理人 1"
+        },
+        {
+          "character": "S03-C056",
+          "role": "R024",
+          "name": "寿司職人 1"
+        },
+        {
+          "character": "S03-C061",
+          "role": "R034",
+          "name": "海辺食堂の給仕 1"
+        },
+        {
+          "character": "S03-C066",
+          "role": "R064",
+          "name": "食堂の2階の住人 1"
+        },
+        {
+          "character": "S03-C071",
+          "role": "R243",
+          "name": "貝殻を拾う子 1"
+        },
+        {
+          "character": "S03-C076",
+          "role": "R250",
+          "name": "海辺の植物採集家 1"
+        },
+        {
+          "character": "S03-C081",
+          "role": "R031",
+          "name": "ジュース売り 1"
+        },
+        {
+          "character": "S03-C086",
+          "role": "R053",
+          "name": "灯台のお土産売り 1"
+        },
+        {
+          "character": "S03-C091",
+          "role": "R181",
+          "name": "岸壁の案内係 1"
+        },
+        {
+          "character": "S03-C096",
+          "role": "R200",
+          "name": "海辺のマルシェのカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "漁船が接岸する",
+        "魚箱が市場に届く",
+        "大きな魚が釣れる",
+        "カモメが屋根に降りる",
+        "帆が畳まれる",
+        "砂浜で貝の交換が始まる"
+      ],
+      "environmentCandidates": [
+        "カモメ",
+        "アジサシ",
+        "波",
+        "潮しぶき",
+        "旗",
+        "浮き",
+        "漁船の煙",
+        "海霧"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S04",
+      "name": "お菓子の広場",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "北西のケーキ屋の一階",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "チョコレート工房一階",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "kitchen",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "焼き菓子屋の芝生庭",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "kitchen",
+            "shop",
+            "play",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "西のカフェ一階",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "shop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "中央のアイスクリーム売り場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "play",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "東パティスリーの一階",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "東のケーキ販売広場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "南の製菓工房",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "kitchen",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "南東の喫茶広場",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "shop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "西のカフェの二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "kitchen",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "パティスリーの二階作業床",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "kitchen",
+            "shop"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "北西ケーキ屋の二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "kitchen",
+            "seat"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S04-C001",
+          "role": "R001",
+          "name": "生地をこねるパン職人 1"
+        },
+        {
+          "character": "S04-C006",
+          "role": "R002",
+          "name": "窯焼きのパン職人 1"
+        },
+        {
+          "character": "S04-C011",
+          "role": "R003",
+          "name": "パンの包装係 1"
+        },
+        {
+          "character": "S04-C016",
+          "role": "R029",
+          "name": "ケーキ装飾職人 1"
+        },
+        {
+          "character": "S04-C021",
+          "role": "R030",
+          "name": "チョコ職人 1"
+        },
+        {
+          "character": "S04-C026",
+          "role": "R026",
+          "name": "飴細工師 1"
+        },
+        {
+          "character": "S04-C031",
+          "role": "R028",
+          "name": "アイス店員 1"
+        },
+        {
+          "character": "S04-C036",
+          "role": "R055",
+          "name": "焼き菓子販売員 1"
+        },
+        {
+          "character": "S04-C041",
+          "role": "R032",
+          "name": "バリスタ 1"
+        },
+        {
+          "character": "S04-C046",
+          "role": "R034",
+          "name": "カフェの給仕 1"
+        },
+        {
+          "character": "S04-C051",
+          "role": "R036",
+          "name": "食器洗い係 1"
+        },
+        {
+          "character": "S04-C056",
+          "role": "R019",
+          "name": "試食の配布係 1"
+        },
+        {
+          "character": "S04-C061",
+          "role": "R020",
+          "name": "試食する客 1"
+        },
+        {
+          "character": "S04-C066",
+          "role": "R037",
+          "name": "パフェを食べる客 1"
+        },
+        {
+          "character": "S04-C071",
+          "role": "R065",
+          "name": "カフェの2階の住人 1"
+        },
+        {
+          "character": "S04-C076",
+          "role": "R047",
+          "name": "材料の開梱係 1"
+        },
+        {
+          "character": "S04-C081",
+          "role": "R171",
+          "name": "菓子の配達員 1"
+        },
+        {
+          "character": "S04-C086",
+          "role": "R056",
+          "name": "焼き菓子袋の包装係 1"
+        },
+        {
+          "character": "S04-C091",
+          "role": "R012",
+          "name": "お菓子玩具店の主人 1"
+        },
+        {
+          "character": "S04-C096",
+          "role": "R200",
+          "name": "お菓子の広場のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "大きなケーキを二人で運ぶ",
+        "焼き上がりのパンが並ぶ",
+        "アイスを選び直す",
+        "チョコ噴水が動く",
+        "配達員が裏口に到着する",
+        "飴細工の実演が始まる"
+      ],
+      "environmentCandidates": [
+        "クリーム形風船",
+        "スズメ",
+        "オーブンの湯気",
+        "カフェの湯気",
+        "店の旗",
+        "噴水",
+        "砂糖飾りの風車",
+        "日よけ布"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S05",
+      "name": "秋色の古本市",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "古本市場の売り場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "図書館一階の閲覧床",
+          "level": 0,
+          "kinds": [
+            "seat",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "運河カフェの岸辺",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "製本工房の作業床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "読書広場の散策",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "文学カフェ一階",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "読書食堂の床",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "文学カフェ二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "workshop"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "図書館二階の回廊",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "workshop"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S05-C001",
+          "role": "R008",
+          "name": "古本の包装店員 1"
+        },
+        {
+          "character": "S05-C006",
+          "role": "R074",
+          "name": "読書する客 1"
+        },
+        {
+          "character": "S05-C011",
+          "role": "R073",
+          "name": "新聞を読む住人 1"
+        },
+        {
+          "character": "S05-C016",
+          "role": "R134",
+          "name": "製本職人 1"
+        },
+        {
+          "character": "S05-C021",
+          "role": "R135",
+          "name": "活版印刷職人 1"
+        },
+        {
+          "character": "S05-C026",
+          "role": "R133",
+          "name": "切り絵作家 1"
+        },
+        {
+          "character": "S05-C031",
+          "role": "R076",
+          "name": "物語を書く作家 1"
+        },
+        {
+          "character": "S05-C036",
+          "role": "R198",
+          "name": "挿絵画家 1"
+        },
+        {
+          "character": "S05-C041",
+          "role": "R197",
+          "name": "紙人形劇の演者 1"
+        },
+        {
+          "character": "S05-C046",
+          "role": "R011",
+          "name": "本棚の補充係 1"
+        },
+        {
+          "character": "S05-C051",
+          "role": "R230",
+          "name": "落ち葉を集める係 1"
+        },
+        {
+          "character": "S05-C056",
+          "role": "R032",
+          "name": "読書カフェのバリスタ 1"
+        },
+        {
+          "character": "S05-C061",
+          "role": "R040",
+          "name": "カフェのメニューを見る客 1"
+        },
+        {
+          "character": "S05-C066",
+          "role": "R015",
+          "name": "古本市の会計係 1"
+        },
+        {
+          "character": "S05-C071",
+          "role": "R053",
+          "name": "しおり売り 1"
+        },
+        {
+          "character": "S05-C076",
+          "role": "R064",
+          "name": "作家部屋の住人 1"
+        },
+        {
+          "character": "S05-C081",
+          "role": "R171",
+          "name": "本の配達員 1"
+        },
+        {
+          "character": "S05-C086",
+          "role": "R214",
+          "name": "ボードゲームの客 1"
+        },
+        {
+          "character": "S05-C091",
+          "role": "R220",
+          "name": "天体の本を調べる観測家 1"
+        },
+        {
+          "character": "S05-C096",
+          "role": "R200",
+          "name": "秋色の古本市のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "読書会が始まる",
+        "本の山を積み直す",
+        "窓から栞が舞う",
+        "印刷機から紙が出る",
+        "猫が箱で眠る",
+        "人形劇に観客が集まる"
+      ],
+      "environmentCandidates": [
+        "落ち葉",
+        "スズメ",
+        "丸顔の猫",
+        "秋雲",
+        "紙の風車",
+        "揺れる木の枝",
+        "カフェの湯気",
+        "落ち葉の渦"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S06",
+      "name": "雪のマーケット",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "冬の露店広場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "氷のスケート場",
+          "level": 0,
+          "kinds": [
+            "play",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "冬の土産物店一階",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "街角の暖炉カフェ",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "冬の食堂の床",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "雪だるま広場",
+          "level": 0,
+          "kinds": [
+            "play",
+            "garden",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "冬の手仕事工房",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "雪のバス停待合",
+          "level": 0,
+          "kinds": [
+            "door",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "薪割り工房の床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "山小屋カフェ一階",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "shop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "暖炉の二階客間",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "kitchen"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "山小屋二階テラス",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "kitchen"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S06-C001",
+          "role": "R145",
+          "name": "雪かき係 1"
+        },
+        {
+          "character": "S06-C006",
+          "role": "R244",
+          "name": "雪だるま作りの人 1"
+        },
+        {
+          "character": "S06-C011",
+          "role": "R169",
+          "name": "スケート客 1"
+        },
+        {
+          "character": "S06-C016",
+          "role": "R170",
+          "name": "そり遊びの人 1"
+        },
+        {
+          "character": "S06-C021",
+          "role": "R245",
+          "name": "焚き火の薪係 1"
+        },
+        {
+          "character": "S06-C026",
+          "role": "R246",
+          "name": "焚き火で焼く人 1"
+        },
+        {
+          "character": "S06-C031",
+          "role": "R077",
+          "name": "ニットを編む人 1"
+        },
+        {
+          "character": "S06-C036",
+          "role": "R009",
+          "name": "防寒服の販売員 1"
+        },
+        {
+          "character": "S06-C041",
+          "role": "R031",
+          "name": "温かい飲み物の店員 1"
+        },
+        {
+          "character": "S06-C046",
+          "role": "R022",
+          "name": "スープの料理人 1"
+        },
+        {
+          "character": "S06-C051",
+          "role": "R034",
+          "name": "山小屋の給仕 1"
+        },
+        {
+          "character": "S06-C056",
+          "role": "R066",
+          "name": "洗濯を取り込む住人 1"
+        },
+        {
+          "character": "S06-C061",
+          "role": "R155",
+          "name": "冬のバス運転手 1"
+        },
+        {
+          "character": "S06-C066",
+          "role": "R156",
+          "name": "バスの乗客 1"
+        },
+        {
+          "character": "S06-C071",
+          "role": "R236",
+          "name": "動物の餌係 1"
+        },
+        {
+          "character": "S06-C076",
+          "role": "R014",
+          "name": "スケート場の受付 1"
+        },
+        {
+          "character": "S06-C081",
+          "role": "R053",
+          "name": "雪のお土産店員 1"
+        },
+        {
+          "character": "S06-C086",
+          "role": "R088",
+          "name": "傘を開く客 1"
+        },
+        {
+          "character": "S06-C091",
+          "role": "R174",
+          "name": "凍った道の誘導係 1"
+        },
+        {
+          "character": "S06-C096",
+          "role": "R200",
+          "name": "雪のマーケットのカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "屋根の雪が落ちる",
+        "雪だるまの帽子を直す",
+        "バスが到着する",
+        "焚き火に人が寄る",
+        "スケート客が休憩する",
+        "ニットの実演販売が始まる"
+      ],
+      "environmentCandidates": [
+        "雪片",
+        "雪の落下",
+        "息の白さ",
+        "煙突の煙",
+        "冬の鳥",
+        "氷面のきらめき",
+        "毛糸風車",
+        "暖炉の火"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S07",
+      "name": "星灯りのお祭り",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "灯籠カフェの広場",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "水辺工房の西岸",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "灯籠市場の東岸",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "二階茶屋の一階",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "茶器工房の作業床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "庭園茶店の木床",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "garden",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "星見広場の庭",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "garden",
+            "play",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "屋外劇場の観覧床",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "橋のたもとの茶店",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "水辺二階の工房",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "東の楽器舞台",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "performance",
+            "open"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S07-C001",
+          "role": "R013",
+          "name": "星形風船売り 1"
+        },
+        {
+          "character": "S07-C006",
+          "role": "R025",
+          "name": "夜の団子売り 1"
+        },
+        {
+          "character": "S07-C011",
+          "role": "R026",
+          "name": "りんご飴職人 1"
+        },
+        {
+          "character": "S07-C016",
+          "role": "R043",
+          "name": "暖簾を掛ける屋台主 1"
+        },
+        {
+          "character": "S07-C021",
+          "role": "R186",
+          "name": "夜祭りの太鼓奏者 1"
+        },
+        {
+          "character": "S07-C026",
+          "role": "R188",
+          "name": "弦楽器の奏者 1"
+        },
+        {
+          "character": "S07-C031",
+          "role": "R189",
+          "name": "アコーディオン奏者 1"
+        },
+        {
+          "character": "S07-C036",
+          "role": "R192",
+          "name": "扇の踊り手 1"
+        },
+        {
+          "character": "S07-C041",
+          "role": "R219",
+          "name": "舞台の観客 1"
+        },
+        {
+          "character": "S07-C046",
+          "role": "R220",
+          "name": "星を見る人 1"
+        },
+        {
+          "character": "S07-C051",
+          "role": "R193",
+          "name": "光る道具の芸人 1"
+        },
+        {
+          "character": "S07-C056",
+          "role": "R196",
+          "name": "夜の手品師 1"
+        },
+        {
+          "character": "S07-C061",
+          "role": "R218",
+          "name": "夜店の金魚すくい客 1"
+        },
+        {
+          "character": "S07-C066",
+          "role": "R217",
+          "name": "夜店の射的客 1"
+        },
+        {
+          "character": "S07-C071",
+          "role": "R063",
+          "name": "花鉢に水をやる住人 1"
+        },
+        {
+          "character": "S07-C076",
+          "role": "R161",
+          "name": "灯籠舟の漕ぎ手 1"
+        },
+        {
+          "character": "S07-C081",
+          "role": "R131",
+          "name": "舞台照明係 1"
+        },
+        {
+          "character": "S07-C086",
+          "role": "R128",
+          "name": "舞台幕の係 1"
+        },
+        {
+          "character": "S07-C091",
+          "role": "R174",
+          "name": "橋の誘導係 1"
+        },
+        {
+          "character": "S07-C096",
+          "role": "R200",
+          "name": "星灯りのお祭りのカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "灯籠が流れ始める",
+        "舞台の幕が上がる",
+        "望遠鏡を交代する",
+        "風で提灯が揺れる",
+        "橋で踊り手が挨拶する",
+        "夜店が商品を補充する"
+      ],
+      "environmentCandidates": [
+        "蛍",
+        "灯籠の揺れ",
+        "水面の反射",
+        "薄い夜雲",
+        "星形風船",
+        "夜の鳥",
+        "木の枝",
+        "線香花火の小さな火花"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S08",
+      "name": "坂道の温泉街",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "温泉宿の玄関床",
+          "level": 0,
+          "kinds": [
+            "door",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "湯屋の前庭",
+          "level": 0,
+          "kinds": [
+            "water",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "滝の見晴らし庭園",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "温泉街の市場床",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 3
+        },
+        {
+          "name": "洗濯の中庭",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "garden",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "露天風呂の乾いた側道",
+          "level": 0,
+          "kinds": [
+            "water",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "温泉宿の二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "kitchen"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "市場二階の作業室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "shop",
+            "workshop"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "洗濯宿の二階物干し",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S08-C001",
+          "role": "R058",
+          "name": "旅館の案内係 1"
+        },
+        {
+          "character": "S08-C006",
+          "role": "R033",
+          "name": "茶屋の主人 1"
+        },
+        {
+          "character": "S08-C011",
+          "role": "R055",
+          "name": "温泉菓子の店員 1"
+        },
+        {
+          "character": "S08-C016",
+          "role": "R061",
+          "name": "足湯の客 1"
+        },
+        {
+          "character": "S08-C021",
+          "role": "R065",
+          "name": "旅館の洗濯係 1"
+        },
+        {
+          "character": "S08-C026",
+          "role": "R066",
+          "name": "洗濯を取り込む係 1"
+        },
+        {
+          "character": "S08-C031",
+          "role": "R068",
+          "name": "階段を上る湯治客 1"
+        },
+        {
+          "character": "S08-C036",
+          "role": "R069",
+          "name": "階段を下りる湯治客 1"
+        },
+        {
+          "character": "S08-C041",
+          "role": "R063",
+          "name": "2階の鉢植えの住人 1"
+        },
+        {
+          "character": "S08-C046",
+          "role": "R035",
+          "name": "食堂の清掃係 1"
+        },
+        {
+          "character": "S08-C051",
+          "role": "R037",
+          "name": "旅館で食事する客 1"
+        },
+        {
+          "character": "S08-C056",
+          "role": "R053",
+          "name": "温泉土産の店員 1"
+        },
+        {
+          "character": "S08-C061",
+          "role": "R015",
+          "name": "外湯の会計係 1"
+        },
+        {
+          "character": "S08-C066",
+          "role": "R171",
+          "name": "坂道の配達員 1"
+        },
+        {
+          "character": "S08-C071",
+          "role": "R090",
+          "name": "木陰の休憩客 1"
+        },
+        {
+          "character": "S08-C076",
+          "role": "R078",
+          "name": "浴衣を繕う職人 1"
+        },
+        {
+          "character": "S08-C081",
+          "role": "R125",
+          "name": "温泉配管の整備係 1"
+        },
+        {
+          "character": "S08-C086",
+          "role": "R181",
+          "name": "観光案内人 1"
+        },
+        {
+          "character": "S08-C091",
+          "role": "R233",
+          "name": "犬の散歩客 1"
+        },
+        {
+          "character": "S08-C096",
+          "role": "R200",
+          "name": "坂道の温泉街のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "旅館に客が着く",
+        "足湯で席を譲る",
+        "温泉饅頭が蒸し上がる",
+        "2階から洗濯を取り込む",
+        "荷物を坂の上へ運ぶ",
+        "川舟が橋をくぐる"
+      ],
+      "environmentCandidates": [
+        "湯気",
+        "川の流れ",
+        "山の鳥",
+        "猫",
+        "暖簾",
+        "山雲",
+        "紅葉の枝",
+        "湯面の波"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S09",
+      "name": "大きな鉄道駅",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "鉄道整備庫の前床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "vehicle",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "中央駅の改札前",
+          "level": 0,
+          "kinds": [
+            "door",
+            "shop",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "駅の銅像庭園",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "列車ホームの待合",
+          "level": 0,
+          "kinds": [
+            "seat",
+            "door",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "駅前カフェ一階",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "shop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "旅の案内所一階",
+          "level": 0,
+          "kinds": [
+            "door",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "土産物店の一階",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "駅前カフェ二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "kitchen",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "中央待合所二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "door",
+            "seat"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "土産物店二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "shop",
+            "seat"
+          ],
+          "contactCount": 2
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S09-C001",
+          "role": "R158",
+          "name": "改札係 1"
+        },
+        {
+          "character": "S09-C006",
+          "role": "R159",
+          "name": "ホーム案内係 1"
+        },
+        {
+          "character": "S09-C011",
+          "role": "R157",
+          "name": "車両のドア係 1"
+        },
+        {
+          "character": "S09-C016",
+          "role": "R146",
+          "name": "線路の点検係 1"
+        },
+        {
+          "character": "S09-C021",
+          "role": "R184",
+          "name": "手荷物預かり係 1"
+        },
+        {
+          "character": "S09-C026",
+          "role": "R185",
+          "name": "手荷物返却係 1"
+        },
+        {
+          "character": "S09-C031",
+          "role": "R014",
+          "name": "切符売り 1"
+        },
+        {
+          "character": "S09-C036",
+          "role": "R057",
+          "name": "駅弁店員 1"
+        },
+        {
+          "character": "S09-C041",
+          "role": "R031",
+          "name": "飲み物売店員 1"
+        },
+        {
+          "character": "S09-C046",
+          "role": "R042",
+          "name": "列車を待つ客 1"
+        },
+        {
+          "character": "S09-C051",
+          "role": "R075",
+          "name": "路線図を見る客 1"
+        },
+        {
+          "character": "S09-C056",
+          "role": "R093",
+          "name": "出発時計を見る客 1"
+        },
+        {
+          "character": "S09-C061",
+          "role": "R173",
+          "name": "駅の荷渡し係 1"
+        },
+        {
+          "character": "S09-C066",
+          "role": "R164",
+          "name": "座席の乗客 1"
+        },
+        {
+          "character": "S09-C071",
+          "role": "R068",
+          "name": "連絡階段の利用客 1"
+        },
+        {
+          "character": "S09-C076",
+          "role": "R105",
+          "name": "エレベーターの利用客 1"
+        },
+        {
+          "character": "S09-C081",
+          "role": "R181",
+          "name": "旅行案内係 1"
+        },
+        {
+          "character": "S09-C086",
+          "role": "R151",
+          "name": "駅前の自転車客 1"
+        },
+        {
+          "character": "S09-C091",
+          "role": "R182",
+          "name": "駅の救護係 1"
+        },
+        {
+          "character": "S09-C096",
+          "role": "R200",
+          "name": "大きな鉄道駅のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "列車が到着する",
+        "乗客が乗り降りする",
+        "駅弁を受け渡す",
+        "預け荷物を返す",
+        "整備係が点検を終える",
+        "迷子を案内する"
+      ],
+      "environmentCandidates": [
+        "ハト",
+        "旗",
+        "列車の蒸気",
+        "風に動く新聞",
+        "駅前の木",
+        "雨だれ",
+        "換気口の湯気",
+        "ホームの吹き流し"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S10",
+      "name": "運河と橋の街",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "水路市場の一階広場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "water",
+            "open"
+          ],
+          "contactCount": 3
+        },
+        {
+          "name": "水路市場の上段店",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "shop",
+            "workshop"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "河畔住宅の地上カフェ",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "造船所の作業床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "水路中央のカフェ広場",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "water",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "東岸の工房床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "河畔住宅二階の庭",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "garden",
+            "seat"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "中央市場二階の売店",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "shop",
+            "workshop"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "中央工房二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "shop"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S10-C001",
+          "role": "R161",
+          "name": "運河舟の漕ぎ手 1"
+        },
+        {
+          "character": "S10-C006",
+          "role": "R160",
+          "name": "船着き場の乗降客 1"
+        },
+        {
+          "character": "S10-C011",
+          "role": "R147",
+          "name": "係留ロープの係 1"
+        },
+        {
+          "character": "S10-C016",
+          "role": "R162",
+          "name": "運河船の操舵手 1"
+        },
+        {
+          "character": "S10-C021",
+          "role": "R142",
+          "name": "床清掃の係 1"
+        },
+        {
+          "character": "S10-C026",
+          "role": "R125",
+          "name": "水門整備の職人 1"
+        },
+        {
+          "character": "S10-C031",
+          "role": "R007",
+          "name": "水辺の花屋 1"
+        },
+        {
+          "character": "S10-C036",
+          "role": "R034",
+          "name": "運河カフェの給仕 1"
+        },
+        {
+          "character": "S10-C041",
+          "role": "R063",
+          "name": "バルコニーの住人 1"
+        },
+        {
+          "character": "S10-C046",
+          "role": "R067",
+          "name": "橋の手すりの見物客 1"
+        },
+        {
+          "character": "S10-C051",
+          "role": "R051",
+          "name": "布市場の商人 1"
+        },
+        {
+          "character": "S10-C056",
+          "role": "R052",
+          "name": "香辛料市場の商人 1"
+        },
+        {
+          "character": "S10-C061",
+          "role": "R004",
+          "name": "運河の魚屋 1"
+        },
+        {
+          "character": "S10-C066",
+          "role": "R221",
+          "name": "橋の下の釣り人 1"
+        },
+        {
+          "character": "S10-C071",
+          "role": "R220",
+          "name": "水鳥観察の客 1"
+        },
+        {
+          "character": "S10-C076",
+          "role": "R174",
+          "name": "可動橋の誘導係 1"
+        },
+        {
+          "character": "S10-C081",
+          "role": "R171",
+          "name": "橋を渡る配達員 1"
+        },
+        {
+          "character": "S10-C086",
+          "role": "R122",
+          "name": "自転車修理職人 1"
+        },
+        {
+          "character": "S10-C091",
+          "role": "R198",
+          "name": "橋を描く画家 1"
+        },
+        {
+          "character": "S10-C096",
+          "role": "R200",
+          "name": "運河と橋の街のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "可動橋が開閉する",
+        "貨物舟が通る",
+        "水門で水位が変わる",
+        "バルコニーで花に水をやる",
+        "橋の画家に客が寄る",
+        "釣り竿に小魚が掛かる"
+      ],
+      "environmentCandidates": [
+        "水鳥",
+        "波紋",
+        "水門の水流",
+        "洗濯物",
+        "柳",
+        "運河の反射",
+        "舟の航跡",
+        "雲"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S11",
+      "name": "収穫祭の農園",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "菜園の作業通路",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "果樹園の収穫広場",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "牧場納屋の作業床",
+          "level": 0,
+          "kinds": [
+            "animal",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "風車の芝生広場",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "play",
+            "animal",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "収穫市場の売り場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "祭りの露店広場",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "shop",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "果樹園の二階キッチン",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "kitchen",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "納屋の二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "animal",
+            "workshop"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "市場二階の作業室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "shop",
+            "workshop"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "水車小屋の工房二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 2
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S11-C001",
+          "role": "R225",
+          "name": "畑を耕す農家 1"
+        },
+        {
+          "character": "S11-C006",
+          "role": "R226",
+          "name": "種まきの農家 1"
+        },
+        {
+          "character": "S11-C011",
+          "role": "R227",
+          "name": "畑の水やり係 1"
+        },
+        {
+          "character": "S11-C016",
+          "role": "R228",
+          "name": "収穫する農家 1"
+        },
+        {
+          "character": "S11-C021",
+          "role": "R229",
+          "name": "果実を摘む農家 1"
+        },
+        {
+          "character": "S11-C026",
+          "role": "R005",
+          "name": "野菜直売の店員 1"
+        },
+        {
+          "character": "S11-C031",
+          "role": "R006",
+          "name": "果物直売の店員 1"
+        },
+        {
+          "character": "S11-C036",
+          "role": "R230",
+          "name": "落ち葉の堆肥係 1"
+        },
+        {
+          "character": "S11-C041",
+          "role": "R232",
+          "name": "苗運搬係 1"
+        },
+        {
+          "character": "S11-C046",
+          "role": "R234",
+          "name": "犬に玩具を投げる住人 1"
+        },
+        {
+          "character": "S11-C051",
+          "role": "R236",
+          "name": "家畜の給餌係 1"
+        },
+        {
+          "character": "S11-C056",
+          "role": "R238",
+          "name": "畜舎清掃係 1"
+        },
+        {
+          "character": "S11-C061",
+          "role": "R245",
+          "name": "焚き火の係 1"
+        },
+        {
+          "character": "S11-C066",
+          "role": "R246",
+          "name": "焼きとうもろこし係 1"
+        },
+        {
+          "character": "S11-C071",
+          "role": "R065",
+          "name": "農家の洗濯係 1"
+        },
+        {
+          "character": "S11-C076",
+          "role": "R106",
+          "name": "納屋修理の大工 1"
+        },
+        {
+          "character": "S11-C081",
+          "role": "R021",
+          "name": "収穫祭の料理人 1"
+        },
+        {
+          "character": "S11-C086",
+          "role": "R186",
+          "name": "収穫祭の太鼓奏者 1"
+        },
+        {
+          "character": "S11-C091",
+          "role": "R154",
+          "name": "収穫荷車の運搬係 1"
+        },
+        {
+          "character": "S11-C096",
+          "role": "R200",
+          "name": "収穫祭の農園のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "収穫箱を積む",
+        "果樹の実を受け取る",
+        "水車が回る",
+        "子犬が畑の縁を走る",
+        "給餌が始まる",
+        "収穫祭の演奏が始まる"
+      ],
+      "environmentCandidates": [
+        "蝶",
+        "蜂",
+        "ニワトリ",
+        "子牛",
+        "かかしの布",
+        "麦の穂",
+        "水車の水",
+        "煙"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S12",
+      "name": "大きな遊園地",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "メリーゴーラウンド前広場",
+          "level": 0,
+          "kinds": [
+            "play",
+            "performance",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "観覧車の待合広場",
+          "level": 0,
+          "kinds": [
+            "play",
+            "shop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "お菓子通りの中庭",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "play",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "劇場前の待合広場",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "水遊び場の南岸",
+          "level": 0,
+          "kinds": [
+            "water",
+            "seat",
+            "play"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "園内整備工房の作業床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "vehicle",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "劇場上階の舞台",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "performance",
+            "seat"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "お菓子屋二階の製菓室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "kitchen",
+            "seat"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "整備工房二階の回廊",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S12-C001",
+          "role": "R014",
+          "name": "入園券の係 1"
+        },
+        {
+          "character": "S12-C006",
+          "role": "R165",
+          "name": "安全バーの係 1"
+        },
+        {
+          "character": "S12-C011",
+          "role": "R183",
+          "name": "乗り場の列案内係 1"
+        },
+        {
+          "character": "S12-C016",
+          "role": "R164",
+          "name": "遊具の乗客 1"
+        },
+        {
+          "character": "S12-C021",
+          "role": "R194",
+          "name": "玉乗りピエロ 1"
+        },
+        {
+          "character": "S12-C026",
+          "role": "R193",
+          "name": "大道芸のピエロ 1"
+        },
+        {
+          "character": "S12-C031",
+          "role": "R196",
+          "name": "手品の演者 1"
+        },
+        {
+          "character": "S12-C036",
+          "role": "R197",
+          "name": "人形劇の演者 1"
+        },
+        {
+          "character": "S12-C041",
+          "role": "R013",
+          "name": "動物風船の売り手 1"
+        },
+        {
+          "character": "S12-C046",
+          "role": "R027",
+          "name": "綿菓子売り 1"
+        },
+        {
+          "character": "S12-C051",
+          "role": "R028",
+          "name": "アイス売り 1"
+        },
+        {
+          "character": "S12-C056",
+          "role": "R012",
+          "name": "玩具店員 1"
+        },
+        {
+          "character": "S12-C061",
+          "role": "R124",
+          "name": "遊具の整備係 1"
+        },
+        {
+          "character": "S12-C066",
+          "role": "R131",
+          "name": "劇場照明係 1"
+        },
+        {
+          "character": "S12-C071",
+          "role": "R219",
+          "name": "劇場の観客 1"
+        },
+        {
+          "character": "S12-C076",
+          "role": "R192",
+          "name": "パレードの踊り手 1"
+        },
+        {
+          "character": "S12-C081",
+          "role": "R180",
+          "name": "迷子案内係 1"
+        },
+        {
+          "character": "S12-C086",
+          "role": "R181",
+          "name": "園内案内係 1"
+        },
+        {
+          "character": "S12-C091",
+          "role": "R182",
+          "name": "救護所の係 1"
+        },
+        {
+          "character": "S12-C096",
+          "role": "R200",
+          "name": "大きな遊園地のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "パレードが通る",
+        "観覧車で乗り降りする",
+        "ピエロの芸に観客が集まる",
+        "迷子が家族に会う",
+        "売店へ補充が届く",
+        "劇場の幕が上がる"
+      ],
+      "environmentCandidates": [
+        "動物風船",
+        "ハト",
+        "シャボン玉",
+        "噴水",
+        "旗",
+        "観覧車の飾り",
+        "植栽",
+        "空の雲"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S13",
+      "name": "森の動物園",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "植物園入口の広場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "garden",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "樹木温室の低い回廊",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "飼育観察の中庭",
+          "level": 0,
+          "kinds": [
+            "animal",
+            "garden",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "標本室と岩の庭",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "garden",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "園芸カフェ一階",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "shop",
+            "garden",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "標本館二階の閲覧室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "workshop"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "園芸工房二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "kitchen"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "動物館二階テラス",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "animal",
+            "seat"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "滝の観察橋",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "water",
+            "seat"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S13-C001",
+          "role": "R237",
+          "name": "動物ブラッシング係 1"
+        },
+        {
+          "character": "S13-C006",
+          "role": "R236",
+          "name": "動物給餌係 1"
+        },
+        {
+          "character": "S13-C011",
+          "role": "R238",
+          "name": "動物舎清掃係 1"
+        },
+        {
+          "character": "S13-C016",
+          "role": "R239",
+          "name": "鳥の巣箱係 1"
+        },
+        {
+          "character": "S13-C021",
+          "role": "R240",
+          "name": "水槽の清掃係 1"
+        },
+        {
+          "character": "S13-C026",
+          "role": "R241",
+          "name": "動物の観察員 1"
+        },
+        {
+          "character": "S13-C031",
+          "role": "R233",
+          "name": "犬の散歩担当 1"
+        },
+        {
+          "character": "S13-C036",
+          "role": "R234",
+          "name": "犬の遊び担当 1"
+        },
+        {
+          "character": "S13-C041",
+          "role": "R014",
+          "name": "動物園の受付 1"
+        },
+        {
+          "character": "S13-C046",
+          "role": "R181",
+          "name": "飼育ガイド 1"
+        },
+        {
+          "character": "S13-C051",
+          "role": "R220",
+          "name": "鳥の観察客 1"
+        },
+        {
+          "character": "S13-C056",
+          "role": "R076",
+          "name": "観察記録を書く研究者 1"
+        },
+        {
+          "character": "S13-C061",
+          "role": "R082",
+          "name": "園内の庭師 1"
+        },
+        {
+          "character": "S13-C066",
+          "role": "R232",
+          "name": "餌植物の運搬係 1"
+        },
+        {
+          "character": "S13-C071",
+          "role": "R034",
+          "name": "森のカフェの給仕 1"
+        },
+        {
+          "character": "S13-C076",
+          "role": "R053",
+          "name": "動物土産の店員 1"
+        },
+        {
+          "character": "S13-C081",
+          "role": "R063",
+          "name": "飼育舎2階の管理人 1"
+        },
+        {
+          "character": "S13-C086",
+          "role": "R180",
+          "name": "家族案内係 1"
+        },
+        {
+          "character": "S13-C091",
+          "role": "R198",
+          "name": "動物を描く画家 1"
+        },
+        {
+          "character": "S13-C096",
+          "role": "R200",
+          "name": "森の動物園のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "給餌が始まる",
+        "鳥が止まり木を移る",
+        "動物が日陰へ移る",
+        "飼育員がブラッシングする",
+        "家族が観察窓を譲る",
+        "小動物がトンネルを通る"
+      ],
+      "environmentCandidates": [
+        "オウム",
+        "フラミンゴ",
+        "カピバラ",
+        "ペンギン",
+        "蝶",
+        "木の葉",
+        "池の波",
+        "小さな滝"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S14",
+      "name": "映画撮影スタジオ",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "西部劇の撮影広場",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "街角セットのカフェ",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "衣装室一階",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "大道具工房の作業床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "映像編集棟一階",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "撮影機材のスタジオ",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "performance",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "撮影所の食堂",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "編集室二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "衣装室二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "shop"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "街角セット二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "performance",
+            "seat"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "大道具二階の設計室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S14-C001",
+          "role": "R129",
+          "name": "撮影カメラ設置係 1"
+        },
+        {
+          "character": "S14-C006",
+          "role": "R130",
+          "name": "レンズ整備係 1"
+        },
+        {
+          "character": "S14-C011",
+          "role": "R131",
+          "name": "映画照明係 1"
+        },
+        {
+          "character": "S14-C016",
+          "role": "R132",
+          "name": "背景画家 1"
+        },
+        {
+          "character": "S14-C021",
+          "role": "R128",
+          "name": "舞台幕の係 1"
+        },
+        {
+          "character": "S14-C026",
+          "role": "R009",
+          "name": "衣装の管理係 1"
+        },
+        {
+          "character": "S14-C031",
+          "role": "R078",
+          "name": "衣装の縫製係 1"
+        },
+        {
+          "character": "S14-C036",
+          "role": "R087",
+          "name": "鏡前の出演者 1"
+        },
+        {
+          "character": "S14-C041",
+          "role": "R192",
+          "name": "ミュージカルの出演者 1"
+        },
+        {
+          "character": "S14-C046",
+          "role": "R196",
+          "name": "奇術場面の出演者 1"
+        },
+        {
+          "character": "S14-C051",
+          "role": "R203",
+          "name": "泡の演出係 1"
+        },
+        {
+          "character": "S14-C056",
+          "role": "R107",
+          "name": "大道具の大工 1"
+        },
+        {
+          "character": "S14-C061",
+          "role": "R127",
+          "name": "セット看板の職人 1"
+        },
+        {
+          "character": "S14-C066",
+          "role": "R140",
+          "name": "展示セット設営係 1"
+        },
+        {
+          "character": "S14-C071",
+          "role": "R171",
+          "name": "撮影機材の配達員 1"
+        },
+        {
+          "character": "S14-C076",
+          "role": "R034",
+          "name": "食堂の給仕 1"
+        },
+        {
+          "character": "S14-C081",
+          "role": "R219",
+          "name": "観覧客 1"
+        },
+        {
+          "character": "S14-C086",
+          "role": "R076",
+          "name": "脚本の記録係 1"
+        },
+        {
+          "character": "S14-C091",
+          "role": "R100",
+          "name": "共演者と相談する出演者 1"
+        },
+        {
+          "character": "S14-C096",
+          "role": "R200",
+          "name": "映画撮影スタジオのカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "カチンコから撮影が始まる",
+        "背景セットを入れ替える",
+        "衣装を鏡で確認する",
+        "ドリーが移動する",
+        "休憩の食事を運ぶ",
+        "出演者が観客へ挨拶する"
+      ],
+      "environmentCandidates": [
+        "舞台煙",
+        "人工雪",
+        "紙吹雪",
+        "送風機の布",
+        "スタジオの旗",
+        "天窓の雲影",
+        "小道具の鳩",
+        "風船小道具"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S15",
+      "name": "飛行船の港",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "飛行船駅の待合広場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "door",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "管制塔前の庭",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "garden",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "空港の開放整備工房",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "気球工房の通路",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "天文館の噴水庭園",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "water",
+            "play",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "飛行船整備場の前床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "天文館の二階テラス",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "kitchen",
+            "seat",
+            "workshop"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "空港展望塔のテラス",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "kitchen"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S15-C001",
+          "role": "R163",
+          "name": "飛行船の操縦士 1"
+        },
+        {
+          "character": "S15-C006",
+          "role": "R147",
+          "name": "係留ロープの係 1"
+        },
+        {
+          "character": "S15-C011",
+          "role": "R183",
+          "name": "搭乗案内係 1"
+        },
+        {
+          "character": "S15-C016",
+          "role": "R184",
+          "name": "手荷物預かり係 1"
+        },
+        {
+          "character": "S15-C021",
+          "role": "R185",
+          "name": "手荷物返却係 1"
+        },
+        {
+          "character": "S15-C026",
+          "role": "R124",
+          "name": "エンジン整備係 1"
+        },
+        {
+          "character": "S15-C031",
+          "role": "R119",
+          "name": "計器の歯車職人 1"
+        },
+        {
+          "character": "S15-C036",
+          "role": "R078",
+          "name": "気球布の縫製職人 1"
+        },
+        {
+          "character": "S15-C041",
+          "role": "R148",
+          "name": "帆布の整理係 1"
+        },
+        {
+          "character": "S15-C046",
+          "role": "R173",
+          "name": "貨物の荷渡し係 1"
+        },
+        {
+          "character": "S15-C051",
+          "role": "R136",
+          "name": "荷札の係 1"
+        },
+        {
+          "character": "S15-C056",
+          "role": "R137",
+          "name": "部品仕分け係 1"
+        },
+        {
+          "character": "S15-C061",
+          "role": "R220",
+          "name": "展望客 1"
+        },
+        {
+          "character": "S15-C066",
+          "role": "R075",
+          "name": "航路図を見る旅行者 1"
+        },
+        {
+          "character": "S15-C071",
+          "role": "R034",
+          "name": "展望カフェの給仕 1"
+        },
+        {
+          "character": "S15-C076",
+          "role": "R126",
+          "name": "塔の灯り交換係 1"
+        },
+        {
+          "character": "S15-C081",
+          "role": "R174",
+          "name": "デッキの誘導係 1"
+        },
+        {
+          "character": "S15-C086",
+          "role": "R014",
+          "name": "搭乗券売り 1"
+        },
+        {
+          "character": "S15-C091",
+          "role": "R067",
+          "name": "管制室の見張り係 1"
+        },
+        {
+          "character": "S15-C096",
+          "role": "R200",
+          "name": "飛行船の港のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "飛行船が係留される",
+        "貨物を積み替える",
+        "搭乗が始まる",
+        "風向きで旗が変わる",
+        "整備係が機関を点検する",
+        "観測員が望遠鏡を交代する"
+      ],
+      "environmentCandidates": [
+        "吹き流し",
+        "高い雲",
+        "低い雲",
+        "空の鳥",
+        "旗",
+        "ロープの揺れ",
+        "蒸気",
+        "気球の布"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S16",
+      "name": "大きな博物館",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "恐竜館の観覧通路",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "古代館の展示通路",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "科学館の体験床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "play",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "修復工房の作業床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "自然史庭園の回遊路",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "water",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "鉱石館の展示床",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 3
+        },
+        {
+          "name": "博物館受付の庭",
+          "level": 0,
+          "kinds": [
+            "door",
+            "shop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "搬入口と梱包作業床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "vehicle",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "修復工房二階の資料室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "受付二階の回廊",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "shop",
+            "seat"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S16-C001",
+          "role": "R139",
+          "name": "展示磨きの職人 1"
+        },
+        {
+          "character": "S16-C006",
+          "role": "R140",
+          "name": "展示台の設営係 1"
+        },
+        {
+          "character": "S16-C011",
+          "role": "R150",
+          "name": "試料の研究者 1"
+        },
+        {
+          "character": "S16-C016",
+          "role": "R134",
+          "name": "古文書の製本職人 1"
+        },
+        {
+          "character": "S16-C021",
+          "role": "R113",
+          "name": "陶器修復の職人 1"
+        },
+        {
+          "character": "S16-C026",
+          "role": "R199",
+          "name": "彫刻の実演家 1"
+        },
+        {
+          "character": "S16-C031",
+          "role": "R198",
+          "name": "模写の画家 1"
+        },
+        {
+          "character": "S16-C036",
+          "role": "R181",
+          "name": "展示のガイド 1"
+        },
+        {
+          "character": "S16-C041",
+          "role": "R014",
+          "name": "入館券の係 1"
+        },
+        {
+          "character": "S16-C046",
+          "role": "R053",
+          "name": "博物館土産の店員 1"
+        },
+        {
+          "character": "S16-C051",
+          "role": "R074",
+          "name": "展示図録を読む客 1"
+        },
+        {
+          "character": "S16-C056",
+          "role": "R076",
+          "name": "展示記録の研究者 1"
+        },
+        {
+          "character": "S16-C061",
+          "role": "R220",
+          "name": "天文展示の客 1"
+        },
+        {
+          "character": "S16-C066",
+          "role": "R214",
+          "name": "科学ゲームの客 1"
+        },
+        {
+          "character": "S16-C071",
+          "role": "R219",
+          "name": "実演を観る客 1"
+        },
+        {
+          "character": "S16-C076",
+          "role": "R173",
+          "name": "展示品の搬入係 1"
+        },
+        {
+          "character": "S16-C081",
+          "role": "R067",
+          "name": "回廊の見物客 1"
+        },
+        {
+          "character": "S16-C086",
+          "role": "R141",
+          "name": "館内清掃係 1"
+        },
+        {
+          "character": "S16-C091",
+          "role": "R035",
+          "name": "カフェの片づけ係 1"
+        },
+        {
+          "character": "S16-C096",
+          "role": "R200",
+          "name": "大きな博物館のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "恐竜模型の実演が始まる",
+        "展示品が搬入される",
+        "修復の見学会が始まる",
+        "ガイドが次の展示へ進む",
+        "振り子実験を交代する",
+        "中庭で写生する"
+      ],
+      "environmentCandidates": [
+        "中庭の鳥",
+        "展示模型の振り子",
+        "体験装置の歯車",
+        "噴水",
+        "木の葉",
+        "天窓の雲影",
+        "模型気球",
+        "機械仕掛けの蝶"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S17",
+      "name": "時計仕掛けの工房街",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "時計塔の公開工房",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "歯車工房の作業床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "ガラス工房の床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "木工通りの中庭",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "自転車工房と荷捌き床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "からくり広場と販売所",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "shop",
+            "play",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "時計職人の二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "木工職人の二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "workshop"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S17-C001",
+          "role": "R119",
+          "name": "時計職人 1"
+        },
+        {
+          "character": "S17-C006",
+          "role": "R118",
+          "name": "金属鍛造職人 1"
+        },
+        {
+          "character": "S17-C011",
+          "role": "R120",
+          "name": "宝飾職人 1"
+        },
+        {
+          "character": "S17-C016",
+          "role": "R114",
+          "name": "ガラス職人 1"
+        },
+        {
+          "character": "S17-C021",
+          "role": "R106",
+          "name": "木工の切断職人 1"
+        },
+        {
+          "character": "S17-C026",
+          "role": "R107",
+          "name": "木工の組立職人 1"
+        },
+        {
+          "character": "S17-C031",
+          "role": "R108",
+          "name": "木工の研磨職人 1"
+        },
+        {
+          "character": "S17-C036",
+          "role": "R122",
+          "name": "自転車修理職人 1"
+        },
+        {
+          "character": "S17-C041",
+          "role": "R117",
+          "name": "革細工職人 1"
+        },
+        {
+          "character": "S17-C046",
+          "role": "R115",
+          "name": "織物職人 1"
+        },
+        {
+          "character": "S17-C051",
+          "role": "R116",
+          "name": "糸紡ぎ職人 1"
+        },
+        {
+          "character": "S17-C056",
+          "role": "R137",
+          "name": "歯車仕分け係 1"
+        },
+        {
+          "character": "S17-C061",
+          "role": "R136",
+          "name": "部品の荷札係 1"
+        },
+        {
+          "character": "S17-C066",
+          "role": "R012",
+          "name": "からくり玩具商人 1"
+        },
+        {
+          "character": "S17-C071",
+          "role": "R138",
+          "name": "工房の片づけ係 1"
+        },
+        {
+          "character": "S17-C076",
+          "role": "R064",
+          "name": "職人の2階の住人 1"
+        },
+        {
+          "character": "S17-C081",
+          "role": "R126",
+          "name": "塔の灯り整備係 1"
+        },
+        {
+          "character": "S17-C086",
+          "role": "R124",
+          "name": "小型機関の整備係 1"
+        },
+        {
+          "character": "S17-C091",
+          "role": "R196",
+          "name": "からくり手品の演者 1"
+        },
+        {
+          "character": "S17-C096",
+          "role": "R200",
+          "name": "時計仕掛けの工房街のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "時計塔の鐘が動く",
+        "からくり人形が踊る",
+        "自転車の修理が終わる",
+        "歯車の荷物が届く",
+        "ガラス実演が始まる",
+        "窓から時計を掛け直す"
+      ],
+      "environmentCandidates": [
+        "煙突の煙",
+        "回転歯車",
+        "振り子",
+        "機械の鳥",
+        "風見鶏",
+        "布の旗",
+        "蒸気",
+        "からくり花"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S18",
+      "name": "砂漠のバザール",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "布市場の広場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "香辛料市場の広場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "隊商の休憩床",
+          "level": 0,
+          "kinds": [
+            "animal",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "水売り場と石造回廊",
+          "level": 0,
+          "kinds": [
+            "water",
+            "shop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "中庭と陶器市",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "果実市場と庭",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "garden",
+            "play",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "隊商宿の二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "布商人の二階回廊",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S18-C001",
+          "role": "R051",
+          "name": "布商人 1"
+        },
+        {
+          "character": "S18-C006",
+          "role": "R052",
+          "name": "香辛料商人 1"
+        },
+        {
+          "character": "S18-C011",
+          "role": "R050",
+          "name": "陶器の買い物客 1"
+        },
+        {
+          "character": "S18-C016",
+          "role": "R113",
+          "name": "陶器絵付けの職人 1"
+        },
+        {
+          "character": "S18-C021",
+          "role": "R007",
+          "name": "乾燥花の花束職人 1"
+        },
+        {
+          "character": "S18-C026",
+          "role": "R006",
+          "name": "果実商人 1"
+        },
+        {
+          "character": "S18-C031",
+          "role": "R031",
+          "name": "水売り 1"
+        },
+        {
+          "character": "S18-C036",
+          "role": "R022",
+          "name": "市場の煮込み料理人 1"
+        },
+        {
+          "character": "S18-C041",
+          "role": "R116",
+          "name": "糸紡ぎ職人 1"
+        },
+        {
+          "character": "S18-C046",
+          "role": "R115",
+          "name": "織物職人 1"
+        },
+        {
+          "character": "S18-C051",
+          "role": "R117",
+          "name": "革袋の職人 1"
+        },
+        {
+          "character": "S18-C056",
+          "role": "R173",
+          "name": "隊商の荷渡し係 1"
+        },
+        {
+          "character": "S18-C061",
+          "role": "R090",
+          "name": "日陰の休憩客 1"
+        },
+        {
+          "character": "S18-C066",
+          "role": "R075",
+          "name": "旅の地図を見る客 1"
+        },
+        {
+          "character": "S18-C071",
+          "role": "R236",
+          "name": "隊商動物の給餌係 1"
+        },
+        {
+          "character": "S18-C076",
+          "role": "R237",
+          "name": "動物を手入れする係 1"
+        },
+        {
+          "character": "S18-C081",
+          "role": "R063",
+          "name": "2階の鉢植えの住人 1"
+        },
+        {
+          "character": "S18-C086",
+          "role": "R192",
+          "name": "広場の踊り手 1"
+        },
+        {
+          "character": "S18-C091",
+          "role": "R188",
+          "name": "市場の弦楽器奏者 1"
+        },
+        {
+          "character": "S18-C096",
+          "role": "R200",
+          "name": "砂漠のバザールのカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "隊商が休憩所に着く",
+        "布を広げて見せる",
+        "香辛料を量り売りする",
+        "水瓶を交換する",
+        "日陰で演奏が始まる",
+        "鉢植えに水が注がれる"
+      ],
+      "environmentCandidates": [
+        "砂塵",
+        "布の天幕の揺れ",
+        "砂漠の鳥",
+        "ヤシの葉",
+        "水面",
+        "壺の風車",
+        "薄雲",
+        "オアシスの蝶"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S19",
+      "name": "雪山のリゾート",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "リフト受付と貸出床",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "door",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "初心者ゲレンデ",
+          "level": 0,
+          "kinds": [
+            "play",
+            "open",
+            "vehicle"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "レンタルショップ一階",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "整備庫の作業床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "雪の遊び場",
+          "level": 0,
+          "kinds": [
+            "play",
+            "animal",
+            "garden",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "救護小屋の床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "山頂カフェの開いた床",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "kitchen",
+            "seat",
+            "shop"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "用具店二階の休憩室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "workshop"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S19-C001",
+          "role": "R167",
+          "name": "リフトの乗客 1"
+        },
+        {
+          "character": "S19-C006",
+          "role": "R168",
+          "name": "スキー客 1"
+        },
+        {
+          "character": "S19-C011",
+          "role": "R170",
+          "name": "そり遊び客 1"
+        },
+        {
+          "character": "S19-C016",
+          "role": "R169",
+          "name": "スケート客 1"
+        },
+        {
+          "character": "S19-C021",
+          "role": "R183",
+          "name": "リフトの列案内係 1"
+        },
+        {
+          "character": "S19-C026",
+          "role": "R014",
+          "name": "リフト券売り 1"
+        },
+        {
+          "character": "S19-C031",
+          "role": "R010",
+          "name": "スキー靴の試着係 1"
+        },
+        {
+          "character": "S19-C036",
+          "role": "R124",
+          "name": "リフト整備係 1"
+        },
+        {
+          "character": "S19-C041",
+          "role": "R145",
+          "name": "雪かき係 1"
+        },
+        {
+          "character": "S19-C046",
+          "role": "R244",
+          "name": "雪だるま作りの客 1"
+        },
+        {
+          "character": "S19-C051",
+          "role": "R182",
+          "name": "山の救護係 1"
+        },
+        {
+          "character": "S19-C056",
+          "role": "R181",
+          "name": "コース案内係 1"
+        },
+        {
+          "character": "S19-C061",
+          "role": "R031",
+          "name": "山頂カフェの飲み物係 1"
+        },
+        {
+          "character": "S19-C066",
+          "role": "R034",
+          "name": "カフェの給仕 1"
+        },
+        {
+          "character": "S19-C071",
+          "role": "R065",
+          "name": "小屋の洗濯係 1"
+        },
+        {
+          "character": "S19-C076",
+          "role": "R077",
+          "name": "防寒具の編み物係 1"
+        },
+        {
+          "character": "S19-C081",
+          "role": "R245",
+          "name": "薪ストーブの係 1"
+        },
+        {
+          "character": "S19-C086",
+          "role": "R173",
+          "name": "山小屋の荷渡し係 1"
+        },
+        {
+          "character": "S19-C091",
+          "role": "R220",
+          "name": "山頂の眺望客 1"
+        },
+        {
+          "character": "S19-C096",
+          "role": "R200",
+          "name": "雪山のリゾートのカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "リフトに乗り降りする",
+        "スキー客が休憩する",
+        "雪上車が整備する",
+        "用具を返却する",
+        "雪だるまを完成させる",
+        "山頂カフェへ荷物が届く"
+      ],
+      "environmentCandidates": [
+        "雪片",
+        "雪煙",
+        "山の鳥",
+        "雲海",
+        "風見旗",
+        "木から落ちる雪",
+        "息",
+        "煙突の煙"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S20",
+      "name": "海洋研究都市",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "研究ドームの展示床",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "水槽の見学回廊",
+          "level": 0,
+          "kinds": [
+            "seat",
+            "open",
+            "door"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "試料ラボ一階",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "海上デッキのカフェ",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "seat",
+            "water",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "潜水艇整備デッキ",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "water",
+            "open"
+          ],
+          "contactCount": 4
+        },
+        {
+          "name": "海辺の資材市場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "workshop",
+            "garden",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "研究棟二階の制御室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "海上展望デッキ",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "water"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "海沿いの散策広場",
+          "level": 0,
+          "kinds": [
+            "open",
+            "performance",
+            "play"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S20-C001",
+          "role": "R150",
+          "name": "顕微鏡の研究者 1"
+        },
+        {
+          "character": "S20-C006",
+          "role": "R240",
+          "name": "水槽清掃係 1"
+        },
+        {
+          "character": "S20-C011",
+          "role": "R241",
+          "name": "海洋生物の観察員 1"
+        },
+        {
+          "character": "S20-C016",
+          "role": "R224",
+          "name": "採集網の研究員 1"
+        },
+        {
+          "character": "S20-C021",
+          "role": "R222",
+          "name": "魚を取り込む研究員 1"
+        },
+        {
+          "character": "S20-C026",
+          "role": "R223",
+          "name": "採集道具の準備係 1"
+        },
+        {
+          "character": "S20-C031",
+          "role": "R125",
+          "name": "ドーム配管の整備係 1"
+        },
+        {
+          "character": "S20-C036",
+          "role": "R124",
+          "name": "潜水艇整備係 1"
+        },
+        {
+          "character": "S20-C041",
+          "role": "R173",
+          "name": "試料の荷渡し係 1"
+        },
+        {
+          "character": "S20-C046",
+          "role": "R076",
+          "name": "海洋記録の研究者 1"
+        },
+        {
+          "character": "S20-C051",
+          "role": "R220",
+          "name": "海鳥の観測者 1"
+        },
+        {
+          "character": "S20-C056",
+          "role": "R147",
+          "name": "潜水艇の係留係 1"
+        },
+        {
+          "character": "S20-C061",
+          "role": "R160",
+          "name": "潜水艇の乗降客 1"
+        },
+        {
+          "character": "S20-C066",
+          "role": "R164",
+          "name": "観測船の乗客 1"
+        },
+        {
+          "character": "S20-C071",
+          "role": "R181",
+          "name": "研究施設のガイド 1"
+        },
+        {
+          "character": "S20-C076",
+          "role": "R031",
+          "name": "研究カフェの店員 1"
+        },
+        {
+          "character": "S20-C081",
+          "role": "R063",
+          "name": "温室を管理する住人 1"
+        },
+        {
+          "character": "S20-C086",
+          "role": "R245",
+          "name": "海辺の焚き火係 1"
+        },
+        {
+          "character": "S20-C091",
+          "role": "R053",
+          "name": "海洋展示のお土産店員 1"
+        },
+        {
+          "character": "S20-C096",
+          "role": "R200",
+          "name": "海洋研究都市のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "潜水艇が帰還する",
+        "試料がラボに届く",
+        "水槽清掃を始める",
+        "魚群が回廊を横切る",
+        "観測窓で案内が始まる",
+        "浮標の点検を行う"
+      ],
+      "environmentCandidates": [
+        "魚群",
+        "クラゲ",
+        "海亀",
+        "海鳥",
+        "海面の波",
+        "泡",
+        "海藻",
+        "観測浮標"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S21",
+      "name": "雲の上の街",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "雲上の広場と時計店",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "performance",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "風車通りの仕事床",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "雲の芝生庭園",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "animal",
+            "play",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "雲の庭の休憩室",
+          "level": 0,
+          "kinds": [
+            "seat",
+            "shop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "家屋一階の工房",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "空の市場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "performance",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "家屋二階の暮らし",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "workshop"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "風工房の上階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "garden"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "空中桟橋",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "open",
+            "water"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "南の展望広場",
+          "level": 0,
+          "kinds": [
+            "seat",
+            "open",
+            "play"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S21-C001",
+          "role": "R163",
+          "name": "空の船の操縦士 1"
+        },
+        {
+          "character": "S21-C006",
+          "role": "R166",
+          "name": "空中ゴンドラの乗客 1"
+        },
+        {
+          "character": "S21-C011",
+          "role": "R147",
+          "name": "空中桟橋の係留係 1"
+        },
+        {
+          "character": "S21-C016",
+          "role": "R013",
+          "name": "雲形風船の売り手 1"
+        },
+        {
+          "character": "S21-C021",
+          "role": "R216",
+          "name": "風車遊びの住人 1"
+        },
+        {
+          "character": "S21-C026",
+          "role": "R204",
+          "name": "凧揚げの住人 1"
+        },
+        {
+          "character": "S21-C031",
+          "role": "R082",
+          "name": "雲の庭師 1"
+        },
+        {
+          "character": "S21-C036",
+          "role": "R063",
+          "name": "空中家屋の鉢植え係 1"
+        },
+        {
+          "character": "S21-C041",
+          "role": "R149",
+          "name": "雲温室の整備係 1"
+        },
+        {
+          "character": "S21-C046",
+          "role": "R119",
+          "name": "風車の計器職人 1"
+        },
+        {
+          "character": "S21-C051",
+          "role": "R148",
+          "name": "帆を畳む職人 1"
+        },
+        {
+          "character": "S21-C056",
+          "role": "R078",
+          "name": "帆布の補修係 1"
+        },
+        {
+          "character": "S21-C061",
+          "role": "R174",
+          "name": "空中橋の誘導係 1"
+        },
+        {
+          "character": "S21-C066",
+          "role": "R220",
+          "name": "空の望遠鏡客 1"
+        },
+        {
+          "character": "S21-C071",
+          "role": "R031",
+          "name": "雲カフェの店員 1"
+        },
+        {
+          "character": "S21-C076",
+          "role": "R198",
+          "name": "雲を描く画家 1"
+        },
+        {
+          "character": "S21-C081",
+          "role": "R188",
+          "name": "空の弦楽器奏者 1"
+        },
+        {
+          "character": "S21-C086",
+          "role": "R173",
+          "name": "空港の荷渡し係 1"
+        },
+        {
+          "character": "S21-C091",
+          "role": "R053",
+          "name": "風のお土産売り 1"
+        },
+        {
+          "character": "S21-C096",
+          "role": "R200",
+          "name": "雲の上の街のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "雲船が港に着く",
+        "橋に霧が通る",
+        "風車が風向きに合わせて回る",
+        "凧の糸を巻く",
+        "庭の雲鉢を手入れする",
+        "空中市場に荷物が届く"
+      ],
+      "environmentCandidates": [
+        "近景雲",
+        "遠景雲",
+        "鳥",
+        "吹き流し",
+        "風鈴",
+        "風車の羽",
+        "雲形風船",
+        "浮遊する綿毛"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S22",
+      "name": "魔法学校",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "薬草温室の作業床",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "魔法の中庭",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "play",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "図書塔の閲覧床",
+          "level": 0,
+          "kinds": [
+            "seat",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "魔法実験室の一階",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "寮の談話室",
+          "level": 0,
+          "kinds": [
+            "seat",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "箒の練習床",
+          "level": 0,
+          "kinds": [
+            "play",
+            "workshop",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "大食堂の通路と配膳",
+          "level": 0,
+          "kinds": [
+            "kitchen",
+            "shop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "時計回廊の一階",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "performance",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "大きな中庭の散策",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "animal",
+            "water",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "実験室二階の研究机",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "寮二階の寝室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "寮二階の読書室",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "workshop"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "時計回廊二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S22-C001",
+          "role": "R022",
+          "name": "薬液を混ぜる研究生 1"
+        },
+        {
+          "character": "S22-C006",
+          "role": "R150",
+          "name": "魔法試料の研究者 1"
+        },
+        {
+          "character": "S22-C011",
+          "role": "R074",
+          "name": "魔法の本を読む学生 1"
+        },
+        {
+          "character": "S22-C016",
+          "role": "R134",
+          "name": "魔導書の製本職人 1"
+        },
+        {
+          "character": "S22-C021",
+          "role": "R232",
+          "name": "薬草を運ぶ学生 1"
+        },
+        {
+          "character": "S22-C026",
+          "role": "R227",
+          "name": "薬草に水をやる学生 1"
+        },
+        {
+          "character": "S22-C031",
+          "role": "R220",
+          "name": "星を観測する学生 1"
+        },
+        {
+          "character": "S22-C036",
+          "role": "R196",
+          "name": "手品実習の学生 1"
+        },
+        {
+          "character": "S22-C041",
+          "role": "R216",
+          "name": "魔法風車の実習生 1"
+        },
+        {
+          "character": "S22-C046",
+          "role": "R129",
+          "name": "魔法撮影装置の設置係 1"
+        },
+        {
+          "character": "S22-C051",
+          "role": "R065",
+          "name": "寮の洗濯係 1"
+        },
+        {
+          "character": "S22-C056",
+          "role": "R064",
+          "name": "寮の窓を開ける住人 1"
+        },
+        {
+          "character": "S22-C061",
+          "role": "R034",
+          "name": "大食堂の給仕 1"
+        },
+        {
+          "character": "S22-C066",
+          "role": "R023",
+          "name": "麺を湯切りする料理人 1"
+        },
+        {
+          "character": "S22-C071",
+          "role": "R035",
+          "name": "食堂の片づけ係 1"
+        },
+        {
+          "character": "S22-C076",
+          "role": "R124",
+          "name": "箒乗り場の整備係 1"
+        },
+        {
+          "character": "S22-C081",
+          "role": "R014",
+          "name": "体験教室の受付 1"
+        },
+        {
+          "character": "S22-C086",
+          "role": "R180",
+          "name": "新入生の案内係 1"
+        },
+        {
+          "character": "S22-C091",
+          "role": "R188",
+          "name": "学校楽団の奏者 1"
+        },
+        {
+          "character": "S22-C096",
+          "role": "R200",
+          "name": "魔法学校のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "実習で小さな煙が出る",
+        "本が棚へ戻る",
+        "薬草が花を開く",
+        "箒の搭乗練習が始まる",
+        "食堂に料理が並ぶ",
+        "寮から洗濯物を取り込む"
+      ],
+      "environmentCandidates": [
+        "フクロウ",
+        "紙の鳥",
+        "薬液の泡",
+        "魔法の光粒",
+        "動く蔦",
+        "浮遊する本",
+        "雲",
+        "時計の振り子"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S23",
+      "name": "昼と夜の大都会",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "駅の案内と改札前",
+          "level": 0,
+          "kinds": [
+            "door",
+            "shop",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "商店街の開いた一階",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "オフィス一階",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "shop",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "公園と読書の庭",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "play",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "劇場前とカフェの中庭",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "住宅の中庭",
+          "level": 0,
+          "kinds": [
+            "animal",
+            "garden",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "住宅一階の作業室",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "kitchen",
+            "shop"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "オフィスの屋上庭園",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "garden",
+            "seat"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "劇場の客席と舞台",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "performance",
+            "seat"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "劇場二階の工房",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "shop"
+          ],
+          "contactCount": 1
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S23-C001",
+          "role": "R175",
+          "name": "交差点の交通整理係 1"
+        },
+        {
+          "character": "S23-C006",
+          "role": "R176",
+          "name": "パトロール警察官 1"
+        },
+        {
+          "character": "S23-C011",
+          "role": "R177",
+          "name": "泥棒を追う警察官 1"
+        },
+        {
+          "character": "S23-C016",
+          "role": "R178",
+          "name": "袋を持つ泥棒役 1"
+        },
+        {
+          "character": "S23-C021",
+          "role": "R179",
+          "name": "落ちた袋の回収係 1"
+        },
+        {
+          "character": "S23-C026",
+          "role": "R155",
+          "name": "市街バスの運転手 1"
+        },
+        {
+          "character": "S23-C031",
+          "role": "R159",
+          "name": "駅ホームの案内係 1"
+        },
+        {
+          "character": "S23-C036",
+          "role": "R171",
+          "name": "都会の配達員 1"
+        },
+        {
+          "character": "S23-C041",
+          "role": "R032",
+          "name": "街角のバリスタ 1"
+        },
+        {
+          "character": "S23-C046",
+          "role": "R009",
+          "name": "衣服店の店員 1"
+        },
+        {
+          "character": "S23-C051",
+          "role": "R122",
+          "name": "自転車修理店の職人 1"
+        },
+        {
+          "character": "S23-C056",
+          "role": "R076",
+          "name": "オフィスで書く住人 1"
+        },
+        {
+          "character": "S23-C061",
+          "role": "R063",
+          "name": "屋上庭園の手入れ係 1"
+        },
+        {
+          "character": "S23-C066",
+          "role": "R191",
+          "name": "劇場の歌手 1"
+        },
+        {
+          "character": "S23-C071",
+          "role": "R192",
+          "name": "劇場のダンサー 1"
+        },
+        {
+          "character": "S23-C076",
+          "role": "R131",
+          "name": "劇場照明係 1"
+        },
+        {
+          "character": "S23-C081",
+          "role": "R233",
+          "name": "公園で犬を散歩する人 1"
+        },
+        {
+          "character": "S23-C086",
+          "role": "R103",
+          "name": "車いすで移動する住人 1"
+        },
+        {
+          "character": "S23-C091",
+          "role": "R104",
+          "name": "杖で歩く住人 1"
+        },
+        {
+          "character": "S23-C096",
+          "role": "R200",
+          "name": "昼と夜の大都会のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "交差点の信号が変わる",
+        "追跡が横道へ移る",
+        "舞台が開演する",
+        "バスから人が降りる",
+        "屋上庭園で休憩する",
+        "街灯が順に灯る"
+      ],
+      "environmentCandidates": [
+        "ハト",
+        "街路樹",
+        "広告旗",
+        "雲影",
+        "排気口の蒸気",
+        "雨滴",
+        "水たまり",
+        "街灯の灯り"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    },
+    {
+      "stage": "S24",
+      "name": "世界のお祭り大集合",
+      "directionalScope": "100既存キャラクター。4人×12コマを25枚。後ろ歩き4・階段上り4・階段下り4。顔/髪/服/体型/色を固定し、左右はゲーム側ミラー。",
+      "realActivityAreas": [
+        {
+          "name": "パレードと屋台の広場",
+          "level": 0,
+          "kinds": [
+            "performance",
+            "play",
+            "open",
+            "shop"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "世界の食市場",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "kitchen",
+            "seat",
+            "open"
+          ],
+          "contactCount": 3
+        },
+        {
+          "name": "職人長屋の工房",
+          "level": 0,
+          "kinds": [
+            "workshop",
+            "kitchen",
+            "shop",
+            "open"
+          ],
+          "contactCount": 3
+        },
+        {
+          "name": "庭園と休憩のテラス",
+          "level": 0,
+          "kinds": [
+            "garden",
+            "animal",
+            "seat",
+            "play",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "鉄道広場と売店",
+          "level": 0,
+          "kinds": [
+            "shop",
+            "door",
+            "seat",
+            "open"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "水辺の舞台",
+          "level": 1,
+          "kinds": [
+            "performance",
+            "seat",
+            "open"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "食市場の二階回廊",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "open"
+          ],
+          "contactCount": 1
+        },
+        {
+          "name": "職人工房の二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "workshop",
+            "seat"
+          ],
+          "contactCount": 2
+        },
+        {
+          "name": "庭園を見渡す二階",
+          "level": 1,
+          "kinds": [
+            "upper",
+            "seat",
+            "garden"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "海沿いの散策と販売広場",
+          "level": 0,
+          "kinds": [
+            "open",
+            "performance",
+            "seat",
+            "play"
+          ],
+          "contactCount": 0
+        },
+        {
+          "name": "東の散策広場",
+          "level": 0,
+          "kinds": [
+            "open",
+            "seat",
+            "shop"
+          ],
+          "contactCount": 0
+        }
+      ],
+      "upperFloorPolicy": "実際に見える階段に結ばれた上階だけ上り下りclipを使う。屋根/水/閉じた庭へ入らない。",
+      "interactionPriority": [
+        {
+          "character": "S24-C001",
+          "role": "R021",
+          "name": "大鉄板の料理人 1"
+        },
+        {
+          "character": "S24-C006",
+          "role": "R052",
+          "name": "香辛料の商人 1"
+        },
+        {
+          "character": "S24-C011",
+          "role": "R029",
+          "name": "記念ケーキの職人 1"
+        },
+        {
+          "character": "S24-C016",
+          "role": "R007",
+          "name": "式典の花束職人 1"
+        },
+        {
+          "character": "S24-C021",
+          "role": "R051",
+          "name": "展示織物の商人 1"
+        },
+        {
+          "character": "S24-C026",
+          "role": "R186",
+          "name": "合同太鼓の奏者 1"
+        },
+        {
+          "character": "S24-C031",
+          "role": "R188",
+          "name": "合同弦楽の奏者 1"
+        },
+        {
+          "character": "S24-C036",
+          "role": "R189",
+          "name": "合同アコーディオン奏者 1"
+        },
+        {
+          "character": "S24-C041",
+          "role": "R192",
+          "name": "合同パレードの踊り手 1"
+        },
+        {
+          "character": "S24-C046",
+          "role": "R193",
+          "name": "祝祭ジャグラー 1"
+        },
+        {
+          "character": "S24-C051",
+          "role": "R194",
+          "name": "祝祭ピエロ 1"
+        },
+        {
+          "character": "S24-C056",
+          "role": "R197",
+          "name": "記念人形劇の演者 1"
+        },
+        {
+          "character": "S24-C061",
+          "role": "R199",
+          "name": "祝祭彫刻家 1"
+        },
+        {
+          "character": "S24-C066",
+          "role": "R014",
+          "name": "会場の受付 1"
+        },
+        {
+          "character": "S24-C071",
+          "role": "R174",
+          "name": "パレード誘導係 1"
+        },
+        {
+          "character": "S24-C076",
+          "role": "R183",
+          "name": "乗り場の案内係 1"
+        },
+        {
+          "character": "S24-C081",
+          "role": "R236",
+          "name": "動物休憩所の世話係 1"
+        },
+        {
+          "character": "S24-C086",
+          "role": "R063",
+          "name": "2階回廊の花の係 1"
+        },
+        {
+          "character": "S24-C091",
+          "role": "R220",
+          "name": "展望回廊の見物客 1"
+        },
+        {
+          "character": "S24-C096",
+          "role": "R200",
+          "name": "世界のお祭り大集合のカメラマン 1"
+        }
+      ],
+      "eventActions": [
+        "大パレードが地区を巡る",
+        "合同演奏が始まる",
+        "料理の実演を行う",
+        "列車から来場者が降りる",
+        "水上パレードが橋を通る",
+        "職人の共同制作が完成する"
+      ],
+      "environmentCandidates": [
+        "複数形状の風船",
+        "カモメ",
+        "ハト",
+        "蝶",
+        "花びら",
+        "旗",
+        "噴水",
+        "ゆっくり流れる雲"
+      ],
+      "placementPolicy": "仕事は既存contactで道具と作業台の接触を合わせる。環境アニメは原画の位置・大きさ・床/水/空分類に合わせる。空/屋根の青を水面と扱わない。",
+      "balancePolicy": "上階・屋内・庭の空き面へ分散。手すりや家具へめり込ませない。通路の滞在仕事は禁止し、工作/調理/販売の代表者の動きを目立たせる。"
+    }
+  ]
+}

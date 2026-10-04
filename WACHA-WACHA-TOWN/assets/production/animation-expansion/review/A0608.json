@@ -1,0 +1,21 @@
+{
+  "id": "A0608",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T16:24:53.092922+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "4×8、野菜を収穫して籠に収める、熊手で落ち葉を集める、りんごを摘んで籠に入れる、ブラシで磨く動作を全身で確認。",
+    "顔/髪/服装/体型が一致。背景設備の追加なし。籠の手前への持ち替えは受け渡し動作に対応し道具の無関係な変色なし。"
+  ],
+  "packReport": "review/A0608-pack.json",
+  "preview": "review/A0608-check.jpg"
+}

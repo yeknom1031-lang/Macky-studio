@@ -1,0 +1,355 @@
+{
+  "id": "A0756",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "985007a4168199cf40ba584875fc1346322fe1ece81bb9b32e24537991351d84",
+  "alphaZeroFraction": 0.74706,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S12-ENV09",
+      "name": "劇場の紙吹雪",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5358,
+          "rgbaSHA256": "ce1a01bb8e397a1f1ca4e72b34bb8b4de1303f9ba5331db47016857699bcb393"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4736,
+          "rgbaSHA256": "eb34a7f9c91784ab039e33fcfc6664aef02a58afcc1ec491844c45fce3ffe477"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5231,
+          "rgbaSHA256": "f75cea0141c0eac55e1bce42ece5ccd72e803bddf116a5747689245fe24b9615"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4957,
+          "rgbaSHA256": "b2bf59ddb5fbee9097f426e577930c90fc4435febf575c598e45f53dac1d7b37"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5101,
+          "rgbaSHA256": "22f435a98a52132fdfbdf5786ca76362806defa6ae623cd2fafa9ec1c916ca71"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5071,
+          "rgbaSHA256": "1f97a53d0d2e35783facb1ce4055d1c938f614e2eb8fde6dd586117754639eb4"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4921,
+          "rgbaSHA256": "6df741eef92ac26d5768ae1ddc4b63862bc748bdb54d3ad48a6f196770853145"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5426,
+          "rgbaSHA256": "8fe14422a6471186968892346bdb8f9b3ede41f5705b1116a1dabf4200041961"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S12-ENV10",
+      "name": "メリーゴーラウンドの房",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8733,
+          "rgbaSHA256": "070860a587d45c204b299238c74a0dca2e5af78de115f900b918b150e024cbf6"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8820,
+          "rgbaSHA256": "aacf13d0f79bcd54d0fab9e2c45dd8ebe5c3c0a20fa1a60d2b77992aa7d38794"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8773,
+          "rgbaSHA256": "aa821a13126bd89f9ba20e47219c7a6da21bad0cfa7db969906450c37b4d99be"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8613,
+          "rgbaSHA256": "57607c9271a85eec73f6e2494a757387656ceede090da772475067368b0cdde4"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9181,
+          "rgbaSHA256": "f1125cab12b1f84df02039bf1aa137cf90a7e488889bf996dc7702cc92472da6"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8680,
+          "rgbaSHA256": "5392021b6142ef39b0177691f6c1f8eb984f51f7eb38f8b1018ea38d92ab41e4"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9072,
+          "rgbaSHA256": "42115da26ac724b1020b405dad0eecfd6d463fd0f4cab3e659871b1b113243ac"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8731,
+          "rgbaSHA256": "9a50933dbc985685b99ff22aeafebe8f6d1a5cc6c4785b98e2c7929876de4b04"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S12-ENV11",
+      "name": "売店の虹モビール",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7461,
+          "rgbaSHA256": "2dfbaa433b1eca27335a868f2115e94eaf62f8657a0de316f354f5baaafef2aa"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7435,
+          "rgbaSHA256": "4b1a84fe98d7a75e74d4fbf9a3923e5d3a7e344539ec7ec41be0f0ecdbe867f7"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7518,
+          "rgbaSHA256": "9109619244c954542a69055de2c1b2493f79418dc134acbe01c9be750803e47f"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7526,
+          "rgbaSHA256": "1ff0c020d46880adb1d687cb66d1e8a2a84abb2d5cebdcedebb1953e88010ef6"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7407,
+          "rgbaSHA256": "b1cc28158cb8edd5725304cf2b8763004f6453331a020190be95b8e3e80b02f7"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7536,
+          "rgbaSHA256": "18fab6401fb6a4040af498f6ccb26584f5e9812c395f30a147d0ccf1424e5241"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7658,
+          "rgbaSHA256": "542b7e7d121c481b194917bfc40adc3ea107359c66bdbb21fc378372c977fbd9"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7462,
+          "rgbaSHA256": "8bb2ae1a43b8c54370817c6ccdb7dd6f0701b776465a4dc744563a7a5ca8d6cf"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S12-ENV12",
+      "name": "雲形の風船飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6288,
+          "rgbaSHA256": "1be98e7e085d2da28af9ce9d4b1bb70c21f6ac2b372e73236816f9cc9d38bbb1"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6215,
+          "rgbaSHA256": "3d402ad27456c2ff57812a107c2a5fdb4a9904017f7171eeb7a19001249cd047"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6130,
+          "rgbaSHA256": "bdacf5ff29e69a6a79d9842f99662e09493cc7f067f53e6709447bcbf92ebc4a"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6145,
+          "rgbaSHA256": "bbc9ec86563d45bde5ec7394129ea7848fd94ab7bb56047f4eeb4696d4b67690"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6169,
+          "rgbaSHA256": "0b4ced6d74d4c9e8f6e95f35446f201fe27a891c24740edc5cab98f125ef3eee"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6119,
+          "rgbaSHA256": "37614160728682f7abdf806d97e8d37d13c0196a924ab379e242875045971862"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6207,
+          "rgbaSHA256": "f9c6465e3ca2aacc48fbe5268bc5a9e8e14361b2231f8d73959ab7bf59c7a6d7"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6245,
+          "rgbaSHA256": "865e1719d10da2ab9b7b91400489ebd8f9c9bb0ed6df0cf5ad50af9434a26413"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

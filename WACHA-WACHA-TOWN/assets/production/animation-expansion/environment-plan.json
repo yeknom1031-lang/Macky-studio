@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-04T16:10:28.836846+00:00",
+  "generationCalls": 72,
+  "sheetGrid": [
+    4,
+    8
+  ],
+  "objectDesigns": 288,
+  "animationFrames": 2304,
+  "idRange": [
+    "A0721",
+    "A0792"
+  ],
+  "generationTool": "built-in image_gen.imagegen",
+  "plannedOnly": true,
+  "policy": "Additive cutouts only. No duplicated building, ride, fountain, existing wheel, entire tree, or opaque scene. Per-row fixed anchor. Positions based on final rendered backgrounds, including ordered detail tiles.",
+  "stages": [
+    {
+      "stage": "S01",
+      "jobs": [
+        "A0721",
+        "A0722",
+        "A0723"
+      ]
+    },
+    {
+      "stage": "S02",
+      "jobs": [
+        "A0724",
+        "A0725",
+        "A0726"
+      ]
+    },
+    {
+      "stage": "S03",
+      "jobs": [
+        "A0727",
+        "A0728",
+        "A0729"
+      ]
+    },
+    {
+      "stage": "S04",
+      "jobs": [
+        "A0730",
+        "A0731",
+        "A0732"
+      ]
+    },
+    {
+      "stage": "S05",
+      "jobs": [
+        "A0733",
+        "A0734",
+        "A0735"
+      ]
+    },
+    {
+      "stage": "S06",
+      "jobs": [
+        "A0736",
+        "A0737",
+        "A0738"
+      ]
+    },
+    {
+      "stage": "S07",
+      "jobs": [
+        "A0739",
+        "A0740",
+        "A0741"
+      ]
+    },
+    {
+      "stage": "S08",
+      "jobs": [
+        "A0742",
+        "A0743",
+        "A0744"
+      ]
+    },
+    {
+      "stage": "S09",
+      "jobs": [
+        "A0745",
+        "A0746",
+        "A0747"
+      ]
+    },
+    {
+      "stage": "S10",
+      "jobs": [
+        "A0748",
+        "A0749",
+        "A0750"
+      ]
+    },
+    {
+      "stage": "S11",
+      "jobs": [
+        "A0751",
+        "A0752",
+        "A0753"
+      ]
+    },
+    {
+      "stage": "S12",
+      "jobs": [
+        "A0754",
+        "A0755",
+        "A0756"
+      ]
+    },
+    {
+      "stage": "S13",
+      "jobs": [
+        "A0757",
+        "A0758",
+        "A0759"
+      ]
+    },
+    {
+      "stage": "S14",
+      "jobs": [
+        "A0760",
+        "A0761",
+        "A0762"
+      ]
+    },
+    {
+      "stage": "S15",
+      "jobs": [
+        "A0763",
+        "A0764",
+        "A0765"
+      ]
+    },
+    {
+      "stage": "S16",
+      "jobs": [
+        "A0766",
+        "A0767",
+        "A0768"
+      ]
+    },
+    {
+      "stage": "S17",
+      "jobs": [
+        "A0769",
+        "A0770",
+        "A0771"
+      ]
+    },
+    {
+      "stage": "S18",
+      "jobs": [
+        "A0772",
+        "A0773",
+        "A0774"
+      ]
+    },
+    {
+      "stage": "S19",
+      "jobs": [
+        "A0775",
+        "A0776",
+        "A0777"
+      ]
+    },
+    {
+      "stage": "S20",
+      "jobs": [
+        "A0778",
+        "A0779",
+        "A0780"
+      ]
+    },
+    {
+      "stage": "S21",
+      "jobs": [
+        "A0781",
+        "A0782",
+        "A0783"
+      ]
+    },
+    {
+      "stage": "S22",
+      "jobs": [
+        "A0784",
+        "A0785",
+        "A0786"
+      ]
+    },
+    {
+      "stage": "S23",
+      "jobs": [
+        "A0787",
+        "A0788",
+        "A0789"
+      ]
+    },
+    {
+      "stage": "S24",
+      "jobs": [
+        "A0790",
+        "A0791",
+        "A0792"
+      ]
+    }
+  ],
+  "runtimeContract": {
+    "stageField": "animatedScenery",
+    "transform": "Map every job.objects row to one clip; derive its 8 source frames from inspected actual image dimensions; copy object.anchor/fps/layer/motion; wrap object.placement in placements[]; image is job.id.",
+    "placementBasis": "World coordinates already calculated; do not rescale x/y a second time. referencePosition/referenceDimensions are review evidence only.",
+    "collision": "false: only attached decorations, transparent effects and small ornaments on already-painted surfaces. No new navigable blockers.",
+    "animation": "8 sequential frames, 3–4 fps. Random deterministic per-instance phase. No unrequested positional drift or scale wobble.",
+    "release": "Generated sheets and final renderer placements require visual QA before enabling. Reject white/opaque backgrounds, missing or merged cells and duplicate existing equipment."
+  }
+}

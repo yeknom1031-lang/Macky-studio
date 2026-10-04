@@ -1,0 +1,21 @@
+{
+  "id": "A0227",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:19:52.336472+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ],
+  "notes": [
+    "三つ編み人物、リュック人物、左参照でも背負う木箱の人物は12コマ保持。4行目に右作業参照の大きな布袋を背負わせたためその行は除外。"
+  ],
+  "packReport": "review/A0227-pack.json",
+  "preview": "review/A0227-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

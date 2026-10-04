@@ -1,0 +1,21 @@
+{
+  "id": "A0209",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:09:31.618714+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ],
+  "notes": [
+    "輪郭抽出で48コマを正しく分離して再確認。4行目は左参照の携行かごがなくなるため除外、他3人はかばんと方向を保持。"
+  ],
+  "packReport": "review/A0209-pack.json",
+  "preview": "review/A0209-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

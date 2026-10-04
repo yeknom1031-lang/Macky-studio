@@ -1,0 +1,355 @@
+{
+  "id": "A0776",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "da0afac5e6402a069bc84876e2548129b83fc92ce95b283555d132edf0a67360",
+  "alphaZeroFraction": 0.34699,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S19-ENV05",
+      "name": "崖の粉雪",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8622,
+          "rgbaSHA256": "7793b4abe104bae958c877f0caa14da1279c93c94d9fed0d39eb31021f3b131c"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8582,
+          "rgbaSHA256": "3b3dd8506a68fa995b3576c9bb873ac09164fda0fd23a9e4fbbe290c9b481fa9"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8561,
+          "rgbaSHA256": "53fcdcfba0d528a67a1b3f953a42f92b4269f509b6688d286000e34487335f3a"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7275,
+          "rgbaSHA256": "5cf7c0a64702519bef98d563b12d8f8f3eb42c67cad1c6b027863b77c690aa9e"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5579,
+          "rgbaSHA256": "7faa40821bf2daefcde5700aae147d4210b1a89ac70c4b09229d619a74842fad"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3085,
+          "rgbaSHA256": "61ec707f5f2c48e1d729cef486683fdfc4f130811687648db3b305213d1ab5ba"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6467,
+          "rgbaSHA256": "ef9fedbb73c95572aa0cceb6610b7ffd3d9dc319220b21818b49ac48d070861b"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8605,
+          "rgbaSHA256": "c3d6d02de44c71ed0ed9876b943f30cf7783d9b378335c5eacbf06bac63da44a"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S19-ENV06",
+      "name": "小川の冷たい泡",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5806,
+          "rgbaSHA256": "86c91b94ebf000aaad2442ee4348fbf4eb89ad18fe1e4acecded45c6b2e86a44"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5468,
+          "rgbaSHA256": "8323e0c053abae03743f5c65ce578a0e9216698e4b8e754fe1052682772d0f9b"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5485,
+          "rgbaSHA256": "e25539e3467c162da1b89c2bc4360dce4b76b6e04dc9c9819a80cf3e22d6e305"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4432,
+          "rgbaSHA256": "5c898d6f1baff69cf8ff311fd872da4dbba92065f4455c6cc6fe1160dd5000ca"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 3523,
+          "rgbaSHA256": "9a5a1466db7e004b706df65c50309f9c4d62ea75e3949d647a7cadc6b5ec85e7"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 4020,
+          "rgbaSHA256": "117d43dc478e0a26af22eab22acd257a3620c264e73ce1eabfb346d6dedc9864"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 4840,
+          "rgbaSHA256": "201120d9b8d654fd8fd9d6af5398bfd8f8103c94c3d8d0d4853fb2f4dcae19eb"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5754,
+          "rgbaSHA256": "3c267399d03ef22838c84ee8cbb1d437adaa4e58c32dafaf2c70f68af5056592"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S19-ENV07",
+      "name": "氷の雫",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3726,
+          "rgbaSHA256": "fe1c74a6dd5178c6df061062d0734029c0ff2d82a847ec3de757424285dae752"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3846,
+          "rgbaSHA256": "19aa9a7514d763ecffcb323833469df1c4f96b04659ae3faefb25f1506c1ba32"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4204,
+          "rgbaSHA256": "fb7c0f88931c2b7c86e11465d2bfdd2a7acfba274b69dd1314ac77125d939887"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4359,
+          "rgbaSHA256": "a4004391464f386b3e616ad77203ec130ac20a49497e26046296c894b170f857"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3660,
+          "rgbaSHA256": "90015f72eeabc14143fe30615987bf14ea1db9709c99f47c102bd18367dd2b93"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3628,
+          "rgbaSHA256": "cc4f7a651182d2511cfa603ed84b136e4c4674111317f37f6c5a49c4edfa8f1e"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3725,
+          "rgbaSHA256": "a687c181c032e1bfa6de73958e39c0e7fcd87fdbe70001c7e9a301c5628b7864"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3680,
+          "rgbaSHA256": "f48bf5b16faf2e2a0180c7c62aa21a93398e73c29c1fd52e93ceb6397a899b95"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S19-ENV08",
+      "name": "雪上車工房の排気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10860,
+          "rgbaSHA256": "245d3a755bf5e97d90299ff561768def782c808c6a444718fb375d97afdc7879"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10139,
+          "rgbaSHA256": "b90c3ed02e1a5de4fddadc3263b95002aa9121ddf8e88b0f5e87b35aebdd7fd2"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9886,
+          "rgbaSHA256": "c63b05746262ddbd9121b3df6f9d06e94cf3f5ca6db1585d14074954586949be"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8521,
+          "rgbaSHA256": "84bf780ba9adb087d77be542c48fbd57a2f0f210da146f508cd971d5f404e9f2"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6935,
+          "rgbaSHA256": "362857bf9670d94bf00c9eafb42a396689375672d37ebc5f1936faa618eccfc3"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6211,
+          "rgbaSHA256": "69dc4553862d90f31c5906016b86fea2771edceec9da742434bc585f4f3fe849"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7256,
+          "rgbaSHA256": "8cdd93b99e4698c9a6d8ee53b081ccbbece89366fad935db6c8ba19b0cd3c9d6"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10678,
+          "rgbaSHA256": "510de7b69ee3ee2e075c02159d6fce28e10353075969cfdce2995e44a90d3d56"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

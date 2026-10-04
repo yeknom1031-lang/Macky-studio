@@ -1,0 +1,355 @@
+{
+  "id": "A0768",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "1547debbeb3bccf57d6152331293dfb857d8c1d34054bf2e399e75c255bd4c64",
+  "alphaZeroFraction": 0.59099,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S16-ENV09",
+      "name": "秋の中庭の葉",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5371,
+          "rgbaSHA256": "4d744c8f0c468714b2158bdfe81c3e4204b7e9982a78272dbfbec8204ce8b828"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5282,
+          "rgbaSHA256": "d6e75891bf38b51ecd4e13ea3c62b3d7a5916aa8e005ba85bacb005f64413cd0"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5213,
+          "rgbaSHA256": "d6d534910463d4b44b96075dd89f0ddedbf335e7a46cbf3f03d5dce695f4b2e0"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5161,
+          "rgbaSHA256": "c968d07bcb995c00529f0107e848aec95f4d012018511ddc2cb147ea59cbe0f3"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5607,
+          "rgbaSHA256": "9e6e0d3614643bf4681f226883dfcf21b1e1c58df799776bafea7213904282e4"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4837,
+          "rgbaSHA256": "f50fe23f770c15e7bb38fb8ef001c7273a38c7ea3557f8a90dd875f1fb1abde2"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5126,
+          "rgbaSHA256": "bd1aaf093683fd1a656bf3a4f78014fde658942e98fba1a198ff5a9cecee4047"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5541,
+          "rgbaSHA256": "5a4b07671f7a5d9295c4a353ce8a2cb9b288934d715a448d70f3af5b9e6aa50f"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S16-ENV10",
+      "name": "吊り下げ惑星の飾り",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8340,
+          "rgbaSHA256": "593b69615c4e5ff8edf9305fb2748c3bd524a442cdc30181da53fea584c6cfbb"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8450,
+          "rgbaSHA256": "df03db87e266ccfdcd7abccfbc2b60464a5462ce3b6c4f3278086a498a98207b"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8789,
+          "rgbaSHA256": "817200c3408ddbaf25613de7afc9855b76918dbe062d5ff868e706caf2771413"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8775,
+          "rgbaSHA256": "3ab1e3dc11ba4672fcc61a64af7fdab92abc1eee0b3ea995413fb8eeaa2914a4"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8566,
+          "rgbaSHA256": "746a75293f6cc5260e1677f336e8152714ff4965badc3d9ff4ad6f7f386021b0"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8926,
+          "rgbaSHA256": "2a7c88a04f73af6a405086ead9e94340b4427b6f0972a947171795a5f65aa908"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8621,
+          "rgbaSHA256": "b727284ef0257c87b6f4b2ec7227ff5da2270261af3e054fc102eb471cfd68fa"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 9051,
+          "rgbaSHA256": "45a53d273964b49320e187dd6fced5e0820eb0fcf9312c6f7d3b334f610214bf"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S16-ENV11",
+      "name": "展示のプリズム光",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5761,
+          "rgbaSHA256": "c139bf8bb702ba952651b66ea73dff079be0ed74f9e5cfad902ce26ecfd5868f"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6114,
+          "rgbaSHA256": "77c6d19bc821b7f6aadc2bd36f6fc52a9492f48ac60ca9074d342da33e906729"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4908,
+          "rgbaSHA256": "0d271b63dadce991b6528b1712e2aee9d8433cf93e7bb0a31cc515d3a421fc9b"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6543,
+          "rgbaSHA256": "88d9881ce296fecb512c162e65b47398ae0e266d9539d8643af9a6350b946099"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5338,
+          "rgbaSHA256": "229becdc802060b709703b4bdc3dda95e26d7533821483424413dfd06b31ba56"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 4926,
+          "rgbaSHA256": "95468c8f10012a97d5e4904b2808b56414df5f8d58b29f6b30ef988e5334fb38"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6245,
+          "rgbaSHA256": "55f9c3c31d68ffd953e40622243f3ebc70c0c8f76ac9ff39217f9047c8064a56"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4898,
+          "rgbaSHA256": "e48317277055b857d24f7134bc7745f383767d576084ada0b2c854b2eefc24a0"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S16-ENV12",
+      "name": "機械展示の振り子模型",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12010,
+          "rgbaSHA256": "a8f54b1b5477cfa506cf010d65f20f5fd60c00133060125c4e0378dde47054c7"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12239,
+          "rgbaSHA256": "f64efae9b7c91e30dc4d87d4bbe8734eacc7a3771888a3c149edfcf0132779ee"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12284,
+          "rgbaSHA256": "3bc28989af740e3090aa78bda628ab920455ed4400a32cec9f2b6f79bfef9d25"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11817,
+          "rgbaSHA256": "02e6d2cf6ca3862640d7bc7368d32606df6f75f89dc8ee43ce243b20e92af2a6"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12074,
+          "rgbaSHA256": "67ca39f6f751e7f4724554c7d39e64424338584bf7b6678e9c59fa036ef7eb88"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11866,
+          "rgbaSHA256": "11e73428c1cdf1d4fbc9c330c170ddf8233003496a47fd4d54db8c5c68e26f65"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12247,
+          "rgbaSHA256": "61a32605b5948bfd3fe08300f1a14655e50bdf23a677950bb36714512eff0bc8"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12001,
+          "rgbaSHA256": "109f8c9028dd31d35f843b8cb39e6f626112d722083da9cab9831f859fa246c6"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

@@ -1,0 +1,355 @@
+{
+  "id": "A0757",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "3096936de53cad2670c41bc7b0577b529ce97cc126f59d60c487969d0f4c1255",
+  "alphaZeroFraction": 0.61198,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S13-ENV01",
+      "name": "温室の葉形風鈴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7935,
+          "rgbaSHA256": "b9da95669acb8c59b9f87720ff6e4bc7138b9e2a9734f0b51058b8478afc7cbc"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7939,
+          "rgbaSHA256": "d408b690035a69c1949a62acebc105c7c6daba7b1b396aea8cab8a443788f516"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7867,
+          "rgbaSHA256": "85c18e7efc227377eb8301525a0a3d107e75d939a6f0eba2792fda027e913dd7"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7707,
+          "rgbaSHA256": "a018497eaacc07d7f5efea40d6770d910992f0fb80e0d78692a40915553cb637"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7539,
+          "rgbaSHA256": "84152994b22d761c2b5d6fae16a4968c2ba15de236fd19046f48d94a5f19b6ec"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7810,
+          "rgbaSHA256": "395efcbfa9ae2d8503ae52afc30a1817d9e91134d28451c204a7b0caa6b11f1e"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7687,
+          "rgbaSHA256": "1832c4d56aa5b456dc0114cc77da79e78c8263e430410c694b56f44cc379ed72"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7882,
+          "rgbaSHA256": "fa705841ebf772ac1abb6ed609a8795c9f9469f7c09619e0fca3fc1297135f39"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S13-ENV02",
+      "name": "飼育舎の木のモビール",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10891,
+          "rgbaSHA256": "8bf96148152bd72fa89a380b8d6fc900e41fef5861615c14dd28e7d9cee85ad8"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 11020,
+          "rgbaSHA256": "69005d51463dac371ee5b3384beb4e19d2e7db2045f4baf5906001617f9b9de7"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10990,
+          "rgbaSHA256": "faec499e4b025d7054648d0bcb77b8c158bab822c0f43434169325712403cae9"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10971,
+          "rgbaSHA256": "02e4478388acfd22502e43f6987c4e012d4033bc1e9efb13fc288fd98c68bca8"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10921,
+          "rgbaSHA256": "e274643f6ec98de04128cc9ae327dcff61db3ba52af202fc1793c1ba4d5913bb"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 10824,
+          "rgbaSHA256": "8e6474b321ae60cc20561288d0e0b1cca70faf35058325ebfda7dfa7e1b4d509"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10877,
+          "rgbaSHA256": "3570f2269ee5162c6a4cf113874d795b7cefddb207a66fc5d31d84f801523390"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10845,
+          "rgbaSHA256": "7de67217e94d4546a97a2d62f3159a7dc71704e332c85403111f57a9bc6e6eaa"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S13-ENV03",
+      "name": "カフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5958,
+          "rgbaSHA256": "88570742fbc8a0f6ac805e0b31af0ee4e8dde60c7f15a30771b5c003fa026197"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6419,
+          "rgbaSHA256": "97a8d2f8191f8d3780290938496192dd37d1c3f4a4e0957dbb73ae480d86a7a3"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7043,
+          "rgbaSHA256": "99e69697183b575a3be4bee9029eb658df9de3b851eaa3c9989329042b8bb28d"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7418,
+          "rgbaSHA256": "60a44ef5e22861ae64a388b306aa5d20cdf3f864c392efbdac2da6fc248fee89"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5538,
+          "rgbaSHA256": "0123f2010276911b9e4866d6c966b63a004c483d5439a8ea2843593c15679c54"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 5587,
+          "rgbaSHA256": "d7077615f375c66325751bd84b917f3f95fda2e50478f6e90f44809bfeec2039"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4801,
+          "rgbaSHA256": "b126c0c4b3fe801ecadab80c3ef57db232a5f3fd2d8ff3eb93a935500fb5372c"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4034,
+          "rgbaSHA256": "11b57866749cd58c098384ff2ab6f994bd986f1a27e5cfed7508034d19c3c310"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S13-ENV04",
+      "name": "観察小屋の風車",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10036,
+          "rgbaSHA256": "0e2e750b490dc72e756decbc638ef57747689894c7b181ff287776f6e762adde"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10120,
+          "rgbaSHA256": "bdf03db32d9c111efaa39869731aef297f53fc97a0923ad82693528f4e63b804"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9819,
+          "rgbaSHA256": "44b9a41dca318a45c476f8e38a5e00173aa688c0ce9256b2174f3fb433768c83"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9822,
+          "rgbaSHA256": "065b5dbfe7102514fd250d3b0296c8f3eb64e96c0a748cfa1bd85ed7da3e1af8"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9977,
+          "rgbaSHA256": "1d56da1d8484ca376352692b2cc92cdc8bb6e496fa7e3d3bc17ef396e6725e3d"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9801,
+          "rgbaSHA256": "421d43725ccc5849f2a628db789f9e96ce4c06f18b827cfe0c656ea38ba7c4ca"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9758,
+          "rgbaSHA256": "7d9a2f714b6f668d622b4e22efebb3c18b95798f8ed2cfbf57274ae86d9695c9"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9790,
+          "rgbaSHA256": "7f9a85fb92a770b0ed184516c6536f43ebb37f59917dceb2dd243cba3082732f"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

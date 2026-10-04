@@ -1,0 +1,355 @@
+{
+  "id": "A0764",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "83d885c767561c00e288e3556d25c326eddd3cda47a067f24e8568a886db137b",
+  "alphaZeroFraction": 0.52234,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S15-ENV05",
+      "name": "雲の白いほころび",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9594,
+          "rgbaSHA256": "db2ac2c062ccce2794be3665135a6dae48bc99c2bdd529041a02817f4d61b634"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9120,
+          "rgbaSHA256": "f23f570510ad48aa790f9584a9a49f4966c4d1853d2ca533e4ff9688b1651b33"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7128,
+          "rgbaSHA256": "d348439b0ca12b4779daebadf7174fe348ad3b8d4968ef52ab7c23a043736cd1"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5290,
+          "rgbaSHA256": "ac4403b14195d2a8cc8c133339e8baf9765a094c0ec2c59563717bf941f53b10"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3929,
+          "rgbaSHA256": "9906e1cf91588bee3eef52ed650df9f85fd9c493c24e1c98b079fd212b0dc23b"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7388,
+          "rgbaSHA256": "6a72bb226f19afb26ac0941ac5ce1fdffb09780670a38af596f76609ac3c041b"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8890,
+          "rgbaSHA256": "e53dff667a086878c783fa61aa7fa06682d688b365a768e57a31d36935119d89"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9541,
+          "rgbaSHA256": "6bf6d4083765ca68e3dcaf4078104add2ae9125fbb6334803080974049e1be17"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S15-ENV06",
+      "name": "係留ロープの房",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7542,
+          "rgbaSHA256": "54639e2f9f7abd5396d37e57e07b5bae1632a6853ccfac841e82af5d6fe3cc4f"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7792,
+          "rgbaSHA256": "851261eaa9a1437d0799432826ca7ea2c0564a5d1c5b17f9d0eb80b1977d0fbd"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7959,
+          "rgbaSHA256": "a8d48aeefb1723872031fa34636f5b83e56139a35c0fc7d04361e20e37112b4a"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8037,
+          "rgbaSHA256": "7801ff92211694e0fae13a3c17e09134a3b939c9c99a5dcfe655b4b0da716e19"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7997,
+          "rgbaSHA256": "e150d7293e86d01b815f84dda8d4674fb0a87f8c2e89f9f22c8daad0082c1d9f"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8101,
+          "rgbaSHA256": "e59d97cd88ba3cf087fa5ef68c936cdf3b85afe4a3cf386bd657f22f97abb210"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8020,
+          "rgbaSHA256": "efbe351e13730b6e1c7dbb9a12bd1b69fc653669f0b0fd6213da4efc39c44b04"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7564,
+          "rgbaSHA256": "0309b93d5571fe75b26ec7211b1c30b6eaa07cc103d4d931ff031edcf5f9ab6d"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S15-ENV07",
+      "name": "庭噴水の水滴",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7197,
+          "rgbaSHA256": "f22c906fca5abb209d6f919cd6f0d7ed622068dc9fca423b81d6415db3b78150"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6949,
+          "rgbaSHA256": "24076e120c1b79a4becd35c2a7067936225a12d1e2e8ac3f247027d33b8caae8"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4712,
+          "rgbaSHA256": "a55500527440b3a4185873565d57ee8d4d3d0d53f7ff0e647babc2204d2f6d2b"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3902,
+          "rgbaSHA256": "582e52a45267c89cda52a099069089622fc8964fcef5f1e8df4656dc33b28d95"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3211,
+          "rgbaSHA256": "6535c2554cbb7eca790f136c2c784e0a8fc805fe729a3d88e2dedb1779e585a8"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2050,
+          "rgbaSHA256": "8f05033dcd805412d967dc2a4ce64bbc43cf20718f21319dc7e1349ef55e66a5"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 969,
+          "rgbaSHA256": "ec189f1afcfae3b53e7ece6f361b990d9bad9aa11397402816457a82ad169ec4"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7203,
+          "rgbaSHA256": "5af2655ccc6003aeb22f9e582770695148f22f5f0404e0b7c7771d8455d88de1"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S15-ENV08",
+      "name": "蒸気機関の排気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8671,
+          "rgbaSHA256": "1db9d555a15b447d12ceb42d0e0a0bad75f49ae2e9a2a068ab120e022f9f14a6"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9109,
+          "rgbaSHA256": "bc31f178fe0f4fcab72ed27a4e7099c5864b76db4f1fe8bbeb0b276ec07e4c5f"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9095,
+          "rgbaSHA256": "0e165f9c21e964168ed81f9f1165558bed4a359b1c6a163e0f3189a7403c59b2"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8714,
+          "rgbaSHA256": "659c9ac2c71952b5b0ae1cc1f7679ff2cd72e926ee46941c1ee0f54e6f7c4bcd"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7629,
+          "rgbaSHA256": "ef3621964fe88655a959726f7c7cc702bf34e221c025e837ab32824935024201"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 6246,
+          "rgbaSHA256": "08085824ce387c8acdf1f7ecb7f4850258100071110a244c5ba1b210de06fa30"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5026,
+          "rgbaSHA256": "f6ac71211e9b47ff6eadac57fc10d72f15c3418716268479e86ceb85b129cf17"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8754,
+          "rgbaSHA256": "a8b73fa51aa3b94ae3510c1f0b7b769828ae1409d7262146043a71a07ba9f82c"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

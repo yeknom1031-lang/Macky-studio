@@ -1,0 +1,25 @@
+{
+  "id": "A0262",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:44:31.094965+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack確認。0・1行は新しい野菜箱と皿を全動作で追加し不採用。2行は空手の背面4コマのみ採用し、花輪追加の階段は除外。3行は空手・青ベストを全12コマ保持し採用。"
+  ],
+  "packReport": "review/A0262-pack.json",
+  "preview": "review/A0262-check.jpg",
+  "disabledClipsByRow": {
+    "2": [
+      "stairUp",
+      "stairDown"
+    ]
+  },
+  "clipFramesByRow": {}
+}

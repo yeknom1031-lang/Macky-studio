@@ -1,0 +1,355 @@
+{
+  "id": "A0767",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "3379d8edd7db6adb09d5104f232760964634763334af69f2a03bffb91d75f24a",
+  "alphaZeroFraction": 0.55296,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S16-ENV05",
+      "name": "中庭の水しぶき",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5950,
+          "rgbaSHA256": "576ac393c0c24b63ac475a6a117bda8a4d45e46e7de90240718b60902d988229"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8264,
+          "rgbaSHA256": "15e2080223a22e9b33ca716ef874b753a378c41582b2c89920df0e74c7e9b80d"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12532,
+          "rgbaSHA256": "e68892eaab8fe726b64cc2ca6eed8210ff41359c626b58aa09b1f3a37adb1000"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13296,
+          "rgbaSHA256": "9f8e67996c1037fe77b602ff195fe84202cbce215b21f46e010114a0cd49c8ae"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13907,
+          "rgbaSHA256": "e9c29d0d91bfdaad309b709ebec851ff3a27155bc53fbf513d03dc32f1a9708d"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10806,
+          "rgbaSHA256": "c733c922ce3669b013f9630e5c888ddc1060fc08737179840e006b079bcc6f6b"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8022,
+          "rgbaSHA256": "2770341875d7fcc227d79e8543079d05f7ce32f7cfe2763ced0c73872d9b0b3c"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5539,
+          "rgbaSHA256": "f58791c8e4489d417d28e2384107802ca56c9f8de31c2c77424a6108a826b6b7"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S16-ENV06",
+      "name": "温室の葉しずく",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5131,
+          "rgbaSHA256": "7d2d8ba169eb5f58f0a1675c0ebb3b8a6194016cfca254d096cf231a7857d5af"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5210,
+          "rgbaSHA256": "95d691ec1f9cc5b29d553ae99eda2bc63c8abdd8601ab56b7f7bea2144d7bd04"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5577,
+          "rgbaSHA256": "3d9f899e61b1d7dad09b34d5ac0acac7597d948c4193c69ae2d6fb67733e7218"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5981,
+          "rgbaSHA256": "b2c9ec67043f83f5794c5e0c3dd7165bded9339fe5058393a5fa72e77423e83d"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 6076,
+          "rgbaSHA256": "3130e2fe0dd0b766bc700b74a6d37a38d09b6ff33a45ad294a701d58e30ff739"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 5592,
+          "rgbaSHA256": "901fd6cff26e2248a26b52d84e18df85a7597da801f41c3166bcca3a0d6b76d5"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5375,
+          "rgbaSHA256": "8d49e5aa51c40549a88a45344fb53c1cf8d5d2ce9413ef03643e4a5973c4f5ea"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 5116,
+          "rgbaSHA256": "21ee61b241facbbfcd8d76fdc2d80f3f38a7720a123f984892b16287dd0021fa"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S16-ENV07",
+      "name": "復元工房のほこり",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2843,
+          "rgbaSHA256": "c060743628339e440bfe897936eb01a8277649081b85951a0aaf8a1b921cab0e"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3100,
+          "rgbaSHA256": "3d5ee46707882da44599b0115ce003de0bd99c25b80bbae1e0e481f3eb3dea82"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3204,
+          "rgbaSHA256": "3d10ced0c8b716c30b131925d458d028581560e407ba266ca2ecc915c65feccc"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2546,
+          "rgbaSHA256": "343581fddb9d7df5a9b16470662c6cca199ec7bd892bd54523cc2afe475b30a9"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3408,
+          "rgbaSHA256": "cc2fbe8d1ac7c82f3a57e10604175148f72a7cb3fe045d3a89c0fae14577aed5"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 2907,
+          "rgbaSHA256": "c6441c1b41d26f46a22f99ad5c51ac071d02475fe35f4895500465faef4057fb"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2950,
+          "rgbaSHA256": "474800412d736c4adf5de6c5ffdab147afb5f2102dad9bf0b080bd740cb61423"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 2852,
+          "rgbaSHA256": "9db75f74c96e29978dffc70e2e2ffccd96ae71930f8549545f0d669f8e386630"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S16-ENV08",
+      "name": "科学室の小さな煙",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5547,
+          "rgbaSHA256": "0825114fbc09e418ac82b60baad1ba0748b11d3b670e023e7fd998e6a0884045"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7556,
+          "rgbaSHA256": "197d07aeb6bbd76c80041e1970f05edcf8bd9cc7fc2d0f87a1691952cde314f2"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8312,
+          "rgbaSHA256": "f5afbadddde693bda65e31fd48bb7b62180068d1fd148650e68d7d9761369628"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13769,
+          "rgbaSHA256": "b59989ae89bcfde409a96554e85b0909adf732bbdccdbbb9eb4955ad2155f0d9"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11140,
+          "rgbaSHA256": "28326459b2e7fed678bdac93e770f07f412daa82878ffd00de14824b022d9a09"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9417,
+          "rgbaSHA256": "9c78d5d36a6e112a941a0f9f3ae7d4d9d4a79cee155f3142914b2b472c6d96e3"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6262,
+          "rgbaSHA256": "2fed6725b45eef2549129098333e62512b3accb2777a9b4206b6aa275e0411ea"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5060,
+          "rgbaSHA256": "4edc2fb710ace57f42a0e3c006508cff5986c8cc925730db65de860d56065b61"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

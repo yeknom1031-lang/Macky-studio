@@ -1,0 +1,26 @@
+{
+  "id": "A0225",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:46:44.075741+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack再表示。2行の背面と上りでは閉じた三脚が維持されるので追加採用、下りで三脚が開くためstairDownのみ除外。他3行の採用維持。"
+  ],
+  "packReport": "review/A0225-pack.json",
+  "preview": "review/A0225-check.jpg",
+  "disabledClipsByRow": {
+    "2": [
+      "stairDown"
+    ]
+  },
+  "clipFramesByRow": {}
+}

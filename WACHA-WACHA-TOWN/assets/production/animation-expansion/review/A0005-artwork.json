@@ -1,0 +1,31 @@
+{
+  "sourceColumns": 13,
+  "groups": [
+    4,
+    5,
+    4
+  ],
+  "issues": [
+    "Extra first ascent turn pose; remove with explicit source selection"
+  ],
+  "suggestedSourceColumns": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "id": "A0005",
+  "visuallyReviewed": true,
+  "identity": "Four reference people preserved in the same row order",
+  "grid": "4 rows present",
+  "reviewedAt": "2026-10-04T16:10:36.701905+00:00",
+  "reviewStatus": "needs-correction-or-explicit-selection"
+}

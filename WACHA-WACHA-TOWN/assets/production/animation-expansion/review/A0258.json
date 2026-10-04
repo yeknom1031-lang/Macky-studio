@@ -1,0 +1,43 @@
+{
+  "id": "A0258",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:44:31.088292+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1
+  ],
+  "notes": [
+    "原画・pack確認。0・1行の上り初コマはカゴの位置が逆になるため5,6,7,6を採用。1行下りでカゴが消える9を除き8,10,11,10。2・3行は左歩行像にない紙袋を追加したため不採用。"
+  ],
+  "packReport": "review/A0258-pack.json",
+  "preview": "review/A0258-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {
+    "0": {
+      "stairUp": [
+        5,
+        6,
+        7,
+        6
+      ]
+    },
+    "1": {
+      "stairUp": [
+        5,
+        6,
+        7,
+        6
+      ],
+      "stairDown": [
+        8,
+        10,
+        11,
+        10
+      ]
+    }
+  }
+}

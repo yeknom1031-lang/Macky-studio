@@ -1,0 +1,969 @@
+{
+  "source": "P001.png",
+  "normalized": "P001-normalized.png",
+  "rows": 4,
+  "cols": 12,
+  "cellSize": 192,
+  "frames": [
+    {
+      "row": 0,
+      "col": 0,
+      "sourceBox": [
+        52,
+        4,
+        168,
+        181
+      ],
+      "sourceCell": [
+        0,
+        0,
+        181,
+        181
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 11
+      }
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "sourceBox": [
+        30,
+        183,
+        172,
+        362
+      ],
+      "sourceCell": [
+        0,
+        181,
+        181,
+        362
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 10
+      }
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "sourceBox": [
+        38,
+        364,
+        164,
+        540
+      ],
+      "sourceCell": [
+        0,
+        362,
+        181,
+        540
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "sourceBox": [
+        42,
+        540,
+        164,
+        720
+      ],
+      "sourceCell": [
+        0,
+        540,
+        181,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "sourceBox": [
+        223,
+        4,
+        333,
+        182
+      ],
+      "sourceCell": [
+        181,
+        0,
+        362,
+        182
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 2
+      }
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "sourceBox": [
+        209,
+        186,
+        339,
+        363
+      ],
+      "sourceCell": [
+        181,
+        182,
+        362,
+        363
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 1
+      }
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "sourceBox": [
+        201,
+        365,
+        331,
+        540
+      ],
+      "sourceCell": [
+        181,
+        363,
+        362,
+        540
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "sourceBox": [
+        207,
+        540,
+        325,
+        722
+      ],
+      "sourceCell": [
+        181,
+        540,
+        362,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "sourceBox": [
+        388,
+        4,
+        506,
+        182
+      ],
+      "sourceCell": [
+        362,
+        0,
+        543,
+        182
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 5
+      }
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "sourceBox": [
+        378,
+        184,
+        516,
+        362
+      ],
+      "sourceCell": [
+        362,
+        182,
+        543,
+        362
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 10
+      }
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "sourceBox": [
+        372,
+        364,
+        506,
+        540
+      ],
+      "sourceCell": [
+        362,
+        362,
+        543,
+        540
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "sourceBox": [
+        368,
+        540,
+        502,
+        722
+      ],
+      "sourceCell": [
+        362,
+        540,
+        543,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "sourceBox": [
+        563,
+        6,
+        671,
+        181
+      ],
+      "sourceCell": [
+        543,
+        0,
+        724,
+        181
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 12
+      }
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "sourceBox": [
+        557,
+        187,
+        687,
+        362
+      ],
+      "sourceCell": [
+        543,
+        181,
+        724,
+        362
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "sourceBox": [
+        547,
+        364,
+        679,
+        541
+      ],
+      "sourceCell": [
+        543,
+        362,
+        724,
+        541
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "sourceBox": [
+        551,
+        541,
+        671,
+        721
+      ],
+      "sourceCell": [
+        543,
+        541,
+        724,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 4,
+      "sourceBox": [
+        750,
+        0,
+        864,
+        181
+      ],
+      "sourceCell": [
+        724,
+        0,
+        905,
+        181
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 13
+      }
+    },
+    {
+      "row": 1,
+      "col": 4,
+      "sourceBox": [
+        740,
+        187,
+        872,
+        364
+      ],
+      "sourceCell": [
+        724,
+        181,
+        905,
+        364
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 13
+      }
+    },
+    {
+      "row": 2,
+      "col": 4,
+      "sourceBox": [
+        736,
+        364,
+        864,
+        540
+      ],
+      "sourceCell": [
+        724,
+        364,
+        905,
+        540
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 4,
+        "bottom": 22
+      }
+    },
+    {
+      "row": 3,
+      "col": 4,
+      "sourceBox": [
+        742,
+        540,
+        864,
+        722
+      ],
+      "sourceCell": [
+        724,
+        540,
+        905,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 20,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 5,
+      "sourceBox": [
+        935,
+        2,
+        1049,
+        182
+      ],
+      "sourceCell": [
+        905,
+        0,
+        1086,
+        182
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 9
+      }
+    },
+    {
+      "row": 1,
+      "col": 5,
+      "sourceBox": [
+        925,
+        184,
+        1055,
+        364
+      ],
+      "sourceCell": [
+        905,
+        182,
+        1086,
+        364
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 11
+      }
+    },
+    {
+      "row": 2,
+      "col": 5,
+      "sourceBox": [
+        927,
+        364,
+        1051,
+        539
+      ],
+      "sourceCell": [
+        905,
+        364,
+        1086,
+        539
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 23
+      }
+    },
+    {
+      "row": 3,
+      "col": 5,
+      "sourceBox": [
+        929,
+        539,
+        1049,
+        721
+      ],
+      "sourceCell": [
+        905,
+        539,
+        1086,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 21,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 6,
+      "sourceBox": [
+        1118,
+        4,
+        1230,
+        183
+      ],
+      "sourceCell": [
+        1086,
+        0,
+        1267,
+        183
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 3
+      }
+    },
+    {
+      "row": 1,
+      "col": 6,
+      "sourceBox": [
+        1102,
+        185,
+        1242,
+        365
+      ],
+      "sourceCell": [
+        1086,
+        183,
+        1267,
+        365
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 6
+      }
+    },
+    {
+      "row": 2,
+      "col": 6,
+      "sourceBox": [
+        1108,
+        365,
+        1236,
+        540
+      ],
+      "sourceCell": [
+        1086,
+        365,
+        1267,
+        540
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 1,
+        "bottom": 23
+      }
+    },
+    {
+      "row": 3,
+      "col": 6,
+      "sourceBox": [
+        1108,
+        540,
+        1236,
+        724
+      ],
+      "sourceCell": [
+        1086,
+        540,
+        1267,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 23,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 7,
+      "sourceBox": [
+        1295,
+        4,
+        1403,
+        182
+      ],
+      "sourceCell": [
+        1267,
+        0,
+        1448,
+        182
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 7
+      }
+    },
+    {
+      "row": 1,
+      "col": 7,
+      "sourceBox": [
+        1295,
+        186,
+        1431,
+        360
+      ],
+      "sourceCell": [
+        1267,
+        182,
+        1448,
+        362
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 2,
+      "col": 7,
+      "sourceBox": [
+        1293,
+        366,
+        1423,
+        540
+      ],
+      "sourceCell": [
+        1267,
+        362,
+        1448,
+        540
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 22
+      }
+    },
+    {
+      "row": 3,
+      "col": 7,
+      "sourceBox": [
+        1295,
+        540,
+        1423,
+        718
+      ],
+      "sourceCell": [
+        1267,
+        540,
+        1448,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 19,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 8,
+      "sourceBox": [
+        1472,
+        2,
+        1616,
+        182
+      ],
+      "sourceCell": [
+        1448,
+        0,
+        1629,
+        182
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 14
+      }
+    },
+    {
+      "row": 1,
+      "col": 8,
+      "sourceBox": [
+        1478,
+        188,
+        1629,
+        358
+      ],
+      "sourceCell": [
+        1448,
+        182,
+        1629,
+        362
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 2,
+      "col": 8,
+      "sourceBox": [
+        1474,
+        364,
+        1626,
+        543
+      ],
+      "sourceCell": [
+        1448,
+        362,
+        1629,
+        543
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 3,
+      "col": 8,
+      "sourceBox": [
+        1476,
+        545,
+        1624,
+        715
+      ],
+      "sourceCell": [
+        1448,
+        543,
+        1629,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 9,
+      "sourceBox": [
+        1665,
+        4,
+        1803,
+        182
+      ],
+      "sourceCell": [
+        1629,
+        0,
+        1810,
+        182
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 10
+      }
+    },
+    {
+      "row": 1,
+      "col": 9,
+      "sourceBox": [
+        1671,
+        186,
+        1810,
+        364
+      ],
+      "sourceCell": [
+        1629,
+        182,
+        1810,
+        364
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 2
+      }
+    },
+    {
+      "row": 2,
+      "col": 9,
+      "sourceBox": [
+        1661,
+        370,
+        1805,
+        542
+      ],
+      "sourceCell": [
+        1629,
+        364,
+        1810,
+        543
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 3,
+      "col": 9,
+      "sourceBox": [
+        1667,
+        543,
+        1803,
+        723
+      ],
+      "sourceCell": [
+        1629,
+        543,
+        1810,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 10,
+      "sourceBox": [
+        1848,
+        6,
+        1982,
+        182
+      ],
+      "sourceCell": [
+        1810,
+        0,
+        1991,
+        182
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 8
+      }
+    },
+    {
+      "row": 1,
+      "col": 10,
+      "sourceBox": [
+        1848,
+        186,
+        1990,
+        362
+      ],
+      "sourceCell": [
+        1810,
+        182,
+        1991,
+        362
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 2,
+      "col": 10,
+      "sourceBox": [
+        1836,
+        368,
+        1984,
+        542
+      ],
+      "sourceCell": [
+        1810,
+        362,
+        1991,
+        543
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 3,
+      "col": 10,
+      "sourceBox": [
+        1846,
+        543,
+        1982,
+        721
+      ],
+      "sourceCell": [
+        1810,
+        543,
+        1991,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 0,
+      "col": 11,
+      "sourceBox": [
+        2013,
+        4,
+        2155,
+        181
+      ],
+      "sourceCell": [
+        1991,
+        0,
+        2172,
+        181
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 1,
+      "col": 11,
+      "sourceBox": [
+        2015,
+        185,
+        2159,
+        362
+      ],
+      "sourceCell": [
+        1991,
+        181,
+        2172,
+        362
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 2,
+      "col": 11,
+      "sourceBox": [
+        2007,
+        362,
+        2157,
+        543
+      ],
+      "sourceCell": [
+        1991,
+        362,
+        2172,
+        543
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    },
+    {
+      "row": 3,
+      "col": 11,
+      "sourceBox": [
+        2011,
+        543,
+        2155,
+        723
+      ],
+      "sourceCell": [
+        1991,
+        543,
+        2172,
+        724
+      ],
+      "cutBoundaryOpaqueCount": {
+        "top": 0,
+        "bottom": 0
+      }
+    }
+  ]
+}

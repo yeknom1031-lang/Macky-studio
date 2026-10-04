@@ -1,0 +1,355 @@
+{
+  "id": "A0777",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "a496bdca656f8abd491aa8b688d9d199d5a9849d2010dcb93e38e2d411986602",
+  "alphaZeroFraction": 0.4803,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S19-ENV09",
+      "name": "雪の結晶の舞",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3594,
+          "rgbaSHA256": "2be76021cc27e600bd85f9b37608a3730b1b2ee524e41acbe9d4394ca484ecdb"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3251,
+          "rgbaSHA256": "687f208b098c7a4a96fc47e47cd4d793eac13241fdcbc075647ece3c3dfef300"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4031,
+          "rgbaSHA256": "74b539f64defe50e2e7c2dc40f6ace062d619400e30750a5ea4cca88fdcf4abc"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3449,
+          "rgbaSHA256": "58da3646a506b460d292a53d3a03e80acafce70d4496d85140231a16f190c53f"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3515,
+          "rgbaSHA256": "c5ac9f9b0859c48f0eb8abf1abe195b42577a1156dedf9df3824d418aada539d"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 3120,
+          "rgbaSHA256": "df4e721eb28a8f907b3d8a2edd66b6eaaa816ae3bb846ef15e9170613159981f"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 4032,
+          "rgbaSHA256": "f2ebee3a1c9cbe2509409cb90ae62653c9d103eea3683d621f2eac4ee13c601b"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 3315,
+          "rgbaSHA256": "6e5e2bf6a4015ea4225016ab9519f8a562d9ec178a30207e329e29fb0db07450"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S19-ENV10",
+      "name": "針葉樹の粉雪",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2571,
+          "rgbaSHA256": "702ffe366adb6bab075ed5f3ae273a3a1181caaf2cd6ac3f80919e9263315146"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 2420,
+          "rgbaSHA256": "0d53610dd0c6019e16b53d2b29dc8d1a8c525b8707b12c811f91e8cdda3c371b"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2395,
+          "rgbaSHA256": "d66b678d4b7d25414ecbdfad10e7184692212f4a7ab64d2b960551cd8ea1860c"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2472,
+          "rgbaSHA256": "28130760eac568a1af75dc34e21bf143a8591bdb507168e6a063cf7e6224eaf0"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2968,
+          "rgbaSHA256": "e870f3966cae97181516b109fe237d8f9b7cdde4b8cbad7b480e81f344a7a22b"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 2637,
+          "rgbaSHA256": "85f062c3075298a319eda4a3a94caf4030aab7a0ce43ac1e03d7d2570bcba104"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2704,
+          "rgbaSHA256": "d0322b3b92cb4bee42deb85076509ce679f0a88cc237240bc40e770715d22c4a"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 2910,
+          "rgbaSHA256": "f19614d74fa04a497c70a0363e5f26ca72f434a53313be3e8726c4877378da0f"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S19-ENV11",
+      "name": "ゲレンデの小旗",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7527,
+          "rgbaSHA256": "164e7ed8f56cfbabbfa3eb17e70ad93ba43c37c09a236397d5a1f171f1b74c26"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7961,
+          "rgbaSHA256": "65ab7ad3dd90176686ababad250e312784fa8e3f79d2ecc0722a56c7843a9598"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7489,
+          "rgbaSHA256": "4dd8350a25f372fd6cce357f6ec4805a4d3bf8c405a77cb386b8399d0408946c"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7923,
+          "rgbaSHA256": "ce778234afd3e30a990cd186a0a39d9add426a9ab3bb5bd71a8e791357de7937"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7679,
+          "rgbaSHA256": "821112de17f9b811ab2c89fc50e60e9ba85f097515feae369253c5f599ecb8a7"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7770,
+          "rgbaSHA256": "e2857ec499adc73ab15921f409a98dce0e4ebee59bc6200432ea30e95ad68c4e"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7517,
+          "rgbaSHA256": "b7a50f7f7d0e6c138c104c7ac06d287ca822be20804b1fdc353acf65a533d5aa"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7749,
+          "rgbaSHA256": "bfe190b2a3a441269e89289f8c3279880400348d52c410af7d9ed371a63e9ad9"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S19-ENV12",
+      "name": "休憩所の冬モビール",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9861,
+          "rgbaSHA256": "f2e990eae488e3abf18e88b5cefab10141f286612d0cde11cff34b281bba70a6"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9747,
+          "rgbaSHA256": "c977dacf221fd3c8aceb1636a7ea8a7256edf4669366bb69793bb4d56b5eeb89"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10098,
+          "rgbaSHA256": "9f131af3ba2134c917394f33833194f96c3cb8a86c515edc5a158a8671cf62d4"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9988,
+          "rgbaSHA256": "cfed92416eda0d849cc07a6d6c54f8be60a8a804883007407e5af405924097f6"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10573,
+          "rgbaSHA256": "467131b94e3c23cd4ed61bac29afa5d1e40793d73091bb0179e15c129adee8da"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9830,
+          "rgbaSHA256": "164ef7ea92aba6b806288fe6e35fe8120bf2280fa3e467e043061475e0b2cac4"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9661,
+          "rgbaSHA256": "559c19a06a016b6978f83782fc6a127c3d3364a8f7ba3383e821db5393b946ed"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10097,
+          "rgbaSHA256": "df61f9bee7cba7fd4fbce49ab04ff21725551f76e84bc36ec584c986c2f3199e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

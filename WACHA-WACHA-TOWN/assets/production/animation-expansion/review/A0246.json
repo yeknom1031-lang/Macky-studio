@@ -1,0 +1,26 @@
+{
+  "id": "A0246",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:34:30.044982+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画とpack確認。0・1行は空の手、2行の手紙、3行の箱を維持。3行の背面バッグのみ左右反転があるので除外し、その他の動作を採用。"
+  ],
+  "packReport": "review/A0246-pack.json",
+  "preview": "review/A0246-check.jpg",
+  "disabledClipsByRow": {
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

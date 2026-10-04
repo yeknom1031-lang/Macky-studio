@@ -1,0 +1,21 @@
+{
+  "id": "A0244",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:34:30.043053+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ],
+  "notes": [
+    "原画とpack確認。0・1・2行は12コマで衣装・袋・顔を維持。3行は左歩行参照にない肩掛け袋を追加するため不採用。"
+  ],
+  "packReport": "review/A0244-pack.json",
+  "preview": "review/A0244-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

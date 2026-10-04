@@ -1,0 +1,25 @@
+{
+  "id": "A0015",
+  "status": "accepted-partial",
+  "note": "Excluded inappropriate briefcase animations in row 2 back/up and row 3 up; row 1 rear last hand-switch pose removed.",
+  "selection": {
+    "clipFramesByRow": {
+      "0": {
+        "walkBack": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    "disabledClipsByRow": {
+      "1": [
+        "walkBack",
+        "stairUp"
+      ],
+      "2": [
+        "stairUp"
+      ]
+    }
+  }
+}

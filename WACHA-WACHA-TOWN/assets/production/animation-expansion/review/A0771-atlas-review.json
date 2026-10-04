@@ -1,0 +1,355 @@
+{
+  "id": "A0771",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "3964c33335aed6530c59e500e719ec5328574a49e969c05f4a667d2a5270217c",
+  "alphaZeroFraction": 0.63634,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S17-ENV09",
+      "name": "歯車庭の旗",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12158,
+          "rgbaSHA256": "c258acfa899fe047fb2bbab61ea1bafc3d81008e1017eed726cec8f606f5e022"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 11408,
+          "rgbaSHA256": "b1fadb652c8a046241d5e31b10a2d7b464b1cf1dee1c595a8886b972e4e7fe21"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12207,
+          "rgbaSHA256": "eecbd4880d8b9132f160e5188bca4b854b48f70f18ef580fdccd7041847302a6"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11135,
+          "rgbaSHA256": "64cad26e9efbd0816ebaca99560c59f2c03b1fabc4b8a2d71840d38ddf0bf18b"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12214,
+          "rgbaSHA256": "68663fb472ec33fc19976df7511bd55ba5475505588783e1d448c073a7156a75"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12151,
+          "rgbaSHA256": "a88d24be86ba65affd4bb072239ac1e841c7a201aa5b7dd18e1df0b6cf9d488b"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11826,
+          "rgbaSHA256": "ed2080a943284612c0de4041b42bc9c434595ceb31f3f854ea2f8c08294a65b0"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12172,
+          "rgbaSHA256": "19b82f8a21797a16c10d5a81de6fd0ba382cf178e303806ef76d6b0d46f041f0"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S17-ENV10",
+      "name": "乾燥台のハーブ",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10139,
+          "rgbaSHA256": "da21c48162f7ed290631bdcba5b3305cc4eebe0468fa118094092f27c804abb1"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 10692,
+          "rgbaSHA256": "4f1feed458250ba280838779ee4a90bf853861fe81626184db4e0d83c42b0632"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10157,
+          "rgbaSHA256": "2be40ee49bdb11ae2f5b675ad1dc00795e35f8fb370aec2f663fa0a37c240534"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10810,
+          "rgbaSHA256": "231454eebcd16a3b2decc8eb785f09e79654bcd693769213c40b521817f12762"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 11039,
+          "rgbaSHA256": "93449bbb319f3794443d7437cc0314b30db2ffe92f86308c704a3ed61ebd3f88"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 10370,
+          "rgbaSHA256": "b1958bf7dc310696065e43304136300c348b3ddef06e5937108c15333564a84c"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10482,
+          "rgbaSHA256": "57c1957cb62fdcb8e67126365012ab46f17a4e300d94ad9b3428e6a155a9d8b6"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 10037,
+          "rgbaSHA256": "65ffec52c24ad1bd0cd5db51d0a93cccbfd7889ca82e1f4ea26d1bdc78e6a16c"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S17-ENV11",
+      "name": "窓辺の回転小模型",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10653,
+          "rgbaSHA256": "51db70a37e55724e705c328614e80927009a5169a5126f986d499419755b283b"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 9564,
+          "rgbaSHA256": "c77ad43c207e3e543e41940de28a4f80b6e643a95f4469531fd4f8336c58f244"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5099,
+          "rgbaSHA256": "0ecf6e8d1bea76be0748aefa76e6c1ff66b0e591c504bae91a2846a493e0037b"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 5522,
+          "rgbaSHA256": "cfec05205a91abbe0a81fc598847e93935830c44932c92d9cbc4075c0bc1b7f2"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6283,
+          "rgbaSHA256": "2f101fddf3b70907f875e6a38e10f5a4b05552d0668e20741e3799f639602dd0"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 10163,
+          "rgbaSHA256": "52e6f241df26919d06c2667d15e9ccc966f2aacdaef64e1c80276a3eb7795a92"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 9669,
+          "rgbaSHA256": "113f1d4f2df8922fb1ba81d6ef567e69e6b5c82c1b26dc595d53f83b8f57c866"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 10622,
+          "rgbaSHA256": "792ccedae0914cda2b1c71b00c696890efb86e91b10830c833d4ff9c2fa6c33e"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S17-ENV12",
+      "name": "並木の種の舞",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8558,
+          "rgbaSHA256": "b9c99c5ee662788af43dbd324fd62806cfec3a419ca8265b264f02d8784e1212"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8632,
+          "rgbaSHA256": "2b9eeff70e873d11f45603db9eeb94c682c6c079a909c565e4d659370f03c1c2"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8665,
+          "rgbaSHA256": "85190125cef7a7ee2ccc556448d2c6d377d82c0ae99a2fef8460c8d7a7e1dcf1"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8235,
+          "rgbaSHA256": "01e7508ee6d5bf8583215eaf6540f6fc1c86081e5f5ce6c491bf620fa5d69885"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8551,
+          "rgbaSHA256": "5fb2a331df62aec9dae6f8a4e101dde530f456f1883f242887d386eaf3da63fc"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 8411,
+          "rgbaSHA256": "3de557b76184a66c42c4d8cada06bb0060fed877f3049bba8724cc50933ba539"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8635,
+          "rgbaSHA256": "4c9375245875c1d088a528b0169b3ee1ead80909716a2354cc0c35724d8210d5"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8526,
+          "rgbaSHA256": "5733de68b132f28129f59d5bdc0e526507416047c8339be51de184f1387f37ce"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All 32 frames reviewed on colored background; coherent loop subjects with clear alpha and no full background equipment duplication. Runtime placement pending."
+}

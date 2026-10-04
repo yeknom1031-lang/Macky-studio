@@ -1,0 +1,32 @@
+{
+  "id": "A0231",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:39:52.085942+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "クリップ単位採用で原画・packを再確認。1〜3行の鍵束/腰袋が背面だけ左右反転するためwalkBackを除外。階段8コマは顔と道具を保持し追加採用。0行は全12採用維持。"
+  ],
+  "packReport": "review/A0231-pack.json",
+  "preview": "review/A0231-check.jpg",
+  "disabledClipsByRow": {
+    "1": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

@@ -1,0 +1,19 @@
+{
+  "id": "A0709",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:46:04.178934+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ],
+  "notes": [
+    "給仕・布拭き・レンチ調整は自然な8コマで採用。row 1 湯切りはパック時に隣コマの水滴が左側へ混入するため保留。"
+  ],
+  "packReport": "review/A0709-pack.json",
+  "preview": "review/A0709-check.jpg"
+}

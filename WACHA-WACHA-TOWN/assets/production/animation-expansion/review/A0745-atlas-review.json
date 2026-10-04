@@ -1,0 +1,355 @@
+{
+  "id": "A0745",
+  "size": [
+    1774,
+    887
+  ],
+  "sourceSHA256": "a9348b22e4cddfcc4c6c6646ae15d868dce46d89c638f221e2bbd6154c1bc5d7",
+  "alphaZeroFraction": 0.60225,
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  },
+  "clips": [
+    {
+      "id": "S09-ENV01",
+      "name": "駅の合図小旗",
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8452,
+          "rgbaSHA256": "ec2531b560be5cc0ee1b43a429503af22fdbbdfba8575099da22e3483a2060ae"
+        },
+        {
+          "x": 222,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7830,
+          "rgbaSHA256": "a34d10e975a6b66d86d27ea2472fce87ebd1481ed6afa11824357f855a86b7df"
+        },
+        {
+          "x": 443,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7294,
+          "rgbaSHA256": "2abd45afae6b0d14708f680befde3a315908193159f570d010419c7a295d85b0"
+        },
+        {
+          "x": 665,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7805,
+          "rgbaSHA256": "f2c65f0a0b63ebb32000853b3eb1f7be40ef73b02dd20c4a4995c924adb66a2b"
+        },
+        {
+          "x": 887,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 6877,
+          "rgbaSHA256": "1296043ec339f201c7bfc31bc63beb7df27a8ca52cd8e275a8d3f00f0d79b181"
+        },
+        {
+          "x": 1109,
+          "y": 0,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 7008,
+          "rgbaSHA256": "b842082beeb13ad4bfc062f1a9eb1494dfd3c257bad591a1918ffd09c95609f8"
+        },
+        {
+          "x": 1330,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 7940,
+          "rgbaSHA256": "147e9e6e37c647e1fd18b5caf93b99b12c6b9b37806dc2205c8c8256609ce8b6"
+        },
+        {
+          "x": 1552,
+          "y": 0,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 8321,
+          "rgbaSHA256": "cf8cbfc1d0c98d117cc2e0e889d3d2a894eaafb2e90a23b6fcb32dcb878171a4"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S09-ENV02",
+      "name": "駅カフェの湯気",
+      "frames": [
+        {
+          "x": 0,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7063,
+          "rgbaSHA256": "30b8d718525a2f657b27d3d53fcabad6443ea6c547a4c7925f472a6176da1fea"
+        },
+        {
+          "x": 222,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 8078,
+          "rgbaSHA256": "2a81315fab33922e660681ca068387aad400c50e3196a5ab8a82a5cae6d84640"
+        },
+        {
+          "x": 443,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7956,
+          "rgbaSHA256": "7d3a50d06fda769d97234f5947894dc80466ed2575b1bf3262e0e3dd9a2be908"
+        },
+        {
+          "x": 665,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8346,
+          "rgbaSHA256": "d5d9c7599d93f529d0de294104ce7a6dbda9c6530f8b4bfbaa6dfdbdbebdd570"
+        },
+        {
+          "x": 887,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8331,
+          "rgbaSHA256": "42e1b383d99a280e122c7f82a27bbaf995885cb4195c3fb1789c73a42686274a"
+        },
+        {
+          "x": 1109,
+          "y": 222,
+          "w": 221,
+          "h": 221,
+          "visiblePixels": 7706,
+          "rgbaSHA256": "787bbfaba38ca20d81ef5379d9f54544223ca81a48bed8938fc4cac8e2f7e8dd"
+        },
+        {
+          "x": 1330,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 8051,
+          "rgbaSHA256": "324d7712e59e6ea205c3b560c6e42b8c3cdacd7f3f910540cf260131591060b4"
+        },
+        {
+          "x": 1552,
+          "y": 222,
+          "w": 222,
+          "h": 221,
+          "visiblePixels": 7140,
+          "rgbaSHA256": "5440075301032951c07615e458446fd7c3277e8c6fdce8ff2a456a8e9e54df21"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S09-ENV03",
+      "name": "荷物窓口の小扇風機",
+      "frames": [
+        {
+          "x": 0,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 13775,
+          "rgbaSHA256": "b823f48234a16129b4c1f3600b398936d600ce63fb9b3ee39eddcb466bbeb2f4"
+        },
+        {
+          "x": 222,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 14179,
+          "rgbaSHA256": "97a96c81ae7a389da6fc2253032ab4992890251067c7b0b401f253040450d100"
+        },
+        {
+          "x": 443,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14451,
+          "rgbaSHA256": "13b21b11aa26a9f1094b1f03d174640ee9798576baacb8eeeef79fd38edac852"
+        },
+        {
+          "x": 665,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14470,
+          "rgbaSHA256": "464c8dbc70d5a196537986deb1d6822f1772fb9988e23d925abd89b9f9783bc1"
+        },
+        {
+          "x": 887,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14171,
+          "rgbaSHA256": "c64f48b4c2335ab88b4607fee3d5ff6e1ec15ea463f2377d0e32eb41fc5e1676"
+        },
+        {
+          "x": 1109,
+          "y": 443,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 13875,
+          "rgbaSHA256": "9dfafa609bc585cde2003aacb66d4f0539f22d89c6e5845644f47b66775b54ca"
+        },
+        {
+          "x": 1330,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14229,
+          "rgbaSHA256": "13502c28a5dda22ec2a3667ac57803174c7f6ec14369408992d78f2f99c86786"
+        },
+        {
+          "x": 1552,
+          "y": 443,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 14313,
+          "rgbaSHA256": "ed9e1b0d5ee9661aa0f4cda373b7184171cc9145abbb2ab01867b8ecf09630a0"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    },
+    {
+      "id": "S09-ENV04",
+      "name": "花売り場のリボン",
+      "frames": [
+        {
+          "x": 0,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12981,
+          "rgbaSHA256": "83078eddd7690753ab72a3968b941822e0dee2eaff40f372c295df7fe6d44f85"
+        },
+        {
+          "x": 222,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 12713,
+          "rgbaSHA256": "816ef627553bc5bc1d2acc1806b81cb504f626e0edc7ceed9000f057fcb1584e"
+        },
+        {
+          "x": 443,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 11936,
+          "rgbaSHA256": "dd2413213dcb7e7084bdcebd00404c51bfef890a659ded52bc8dba9ff2b240d1"
+        },
+        {
+          "x": 665,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12201,
+          "rgbaSHA256": "f614e0646661700c215e283caa64125b00e6969e280745ed9387f13def536d99"
+        },
+        {
+          "x": 887,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12664,
+          "rgbaSHA256": "06d18cbab3752f1f363d0d53fa5603e284133ec9c12e84e1c235e4dd948072cb"
+        },
+        {
+          "x": 1109,
+          "y": 665,
+          "w": 221,
+          "h": 222,
+          "visiblePixels": 13371,
+          "rgbaSHA256": "6c465e1564ad5e1abb0f135d60a319f710dcee72b2915ce176841c9250db6ef0"
+        },
+        {
+          "x": 1330,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12779,
+          "rgbaSHA256": "a4564fc345a1a05c7e3ce01c7a8e305170abc709d3c6a17b37c064f75dadfbe0"
+        },
+        {
+          "x": 1552,
+          "y": 665,
+          "w": 222,
+          "h": 222,
+          "visiblePixels": 12968,
+          "rgbaSHA256": "d817e974f7fed4320309f333fc35d567387b6460036e6ee66e4e682ee0af3ee2"
+        }
+      ],
+      "allNonempty": true,
+      "distinctFrames": 8
+    }
+  ],
+  "technicalPassed": true,
+  "manualVisualReview": "passed-source-sheet",
+  "manualNotes": "All four rows have eight coherent frames. Color compositing verifies true transparency. No duplicated building or complete equipment. Final scene placement pending."
+}
