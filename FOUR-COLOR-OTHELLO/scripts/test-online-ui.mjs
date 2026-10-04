@@ -7,7 +7,7 @@ for(let i=1;i<=3;i++){
  if(!r.ok)throw new Error('Session '+r.status);
  const ws=new WebSocket(base.replace(/^http/,'ws')+'/api/socket',{headers:{Origin:base,Cookie:r.headers.get('set-cookie').split(';')[0]}});peers.push(ws);
  let joined=false,ply=-1,roomId;
- ws.on('message',buffer=>{const msg=JSON.parse(String(buffer));if(msg.error){console.log(msg.error);return;}if(!joined){joined=true;ws.send(JSON.stringify({action:'join'}));}
+ ws.on('message',buffer=>{const msg=JSON.parse(String(buffer));if(msg.error){console.log(msg.error);return;}if(!joined){joined=true;ws.send(JSON.stringify({action:'join',protocol:2}));}
  const room=msg.room;if(!room||room.phase!=='playing'||room.player!==room.you||room.ply===ply&&room.id===roomId)return;
  ply=room.ply;roomId=room.id;setTimeout(()=>{if(ws.readyState===1)ws.send(JSON.stringify({action:'move',room:room.id,ply:room.ply,index:firstRoundMoves(room.board,room.player,room.moved)[0]}));},400);
  });

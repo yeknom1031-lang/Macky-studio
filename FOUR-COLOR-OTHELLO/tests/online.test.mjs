@@ -9,17 +9,17 @@ function lobby(){let n=0;return new Lobby(undefined,()=>`room-${++n}`);}
 test('ニックネームは1〜12文字、制御文字とHTMLを拒否',()=>{assert.equal(nickname(' ネコ１２ '),'ネコ12');for(const n of ['','<img src=x>','a\u202eb','長'.repeat(13),{},null])assert.throws(()=>nickname(n));});
 test('1〜3人でもちょうど60秒でAI補充、4人なら即座に同じ卓',()=>{
  for(let humans=1;humans<=4;humans++){
-  const l=lobby();people.slice(0,humans).forEach(p=>l.action(p,'join',{},1000));
+  const l=lobby();people.slice(0,humans).forEach(p=>l.action(p,'join',{protocol:2},1000));
   if(humans<4){l.tick(60999);assert.equal(Object.keys(l.data.rooms).length,0);l.tick(61000);}
   const room=l.room('p0');assert.equal(room.seats.filter(p=>p.bot).length,4-humans);
   for(const p of people.slice(0,humans))assert.equal(l.room(p.id).id,room.id);
  }
 });
 test('重複参加・8人同時参加・キャンセル・通信切断の待機席',()=>{
- const l=lobby();l.action(people[0],'join',{},0);l.action(people[0],'join',{},0);assert.equal(l.data.queue.length,1);
+ const l=lobby();l.action(people[0],'join',{protocol:2},0);l.action(people[0],'join',{protocol:2},0);assert.equal(l.data.queue.length,1);
  l.action(people[0],'leave',{},10);assert.equal(l.data.queue.length,0);
- people.forEach(p=>l.action(p,'join',{},20));assert.equal(Object.keys(l.data.rooms).length,2);assert.equal(new Set(Object.values(l.data.assignments)).size,2);
- const q=lobby();q.action(people[0],'join',{},0);q.disconnect('p0',1000);q.tick(61000);assert.equal(q.data.queue.length,0);assert.equal(Object.keys(q.data.rooms).length,0);
+ people.forEach(p=>l.action(p,'join',{protocol:2},20));assert.equal(Object.keys(l.data.rooms).length,2);assert.equal(new Set(Object.values(l.data.assignments)).size,2);
+ const q=lobby();q.action(people[0],'join',{protocol:2},0);q.disconnect('p0',1000);q.tick(61000);assert.equal(q.data.queue.length,0);assert.equal(Object.keys(q.data.rooms).length,0);
 });
 test('手番・部外者・古い盤面・不正手をサーバーが拒否する',()=>{
  const r=createRoom('r',people.slice(0,4),0,()=>.999);tickRoom(r,5000);
@@ -32,18 +32,18 @@ test('最初の着手前にどの色も全滅させず、45秒のタイムアウ
  const r=createRoom('r',people.slice(0,4),0,()=>.999);tickRoom(r,5000);tickRoom(r,49999);assert.equal(r.ply,0);tickRoom(r,50000);assert.equal(r.ply,1);assert.equal(r.seats[0].misses,1);assert.ok(scores(r.board).every(n=>n>0));assert.equal(r.lastMove.automatic,true);
 });
 test('60秒以内の再接続は席を保ち、経過後と降参はAIが継続する',()=>{
- const l=lobby();people.slice(0,4).forEach(p=>l.action(p,'join',{},0));const r=l.room('p0');l.disconnect('p0',100);l.connect('p0',59999);assert.equal(r.seats.find(s=>s.id==='p0').forfeit,false);
+ const l=lobby();people.slice(0,4).forEach(p=>l.action(p,'join',{protocol:2},0));const r=l.room('p0');l.disconnect('p0',100);l.connect('p0',59999);assert.equal(r.seats.find(s=>s.id==='p0').forfeit,false);
  l.disconnect('p0',60000);l.tick(120000);assert.equal(r.seats.find(s=>s.id==='p0').forfeit,true);
  l.action(people[1],'resign',{},120001);assert.notEqual(r.phase,'ended');assert.equal(r.seats.find(s=>s.id==='p1').forfeit,true);
 });
 test('再戦は全員同意したときだけ、新しい一意の部屋へ移る',()=>{
- const l=lobby();people.slice(0,4).forEach(p=>l.action(p,'join',{},0));const first=l.room('p0');first.phase='ended';first.winners=[0];first.endedAt=1;
+ const l=lobby();people.slice(0,4).forEach(p=>l.action(p,'join',{protocol:2},0));const first=l.room('p0');first.phase='ended';first.winners=[0];first.endedAt=1;
  for(const p of people.slice(0,3))l.action(p,'rematch',{},10);assert.equal(l.room('p0').id,first.id);
  l.action(people[3],'rematch',{},10);const second=l.room('p0');assert.notEqual(second.id,first.id);assert.equal(second.ply,0);assert.equal(second.seats.filter(s=>s.bot).length,0);
  second.phase='ended';second.winners=[0];second.endedAt=20;people.slice(0,4).forEach(p=>l.action(p,'rematch',{},30));assert.notEqual(l.room('p0').id,second.id);
 });
 test('全員退出で終了、部屋の掃除と報酬・スタンプ・ID秘匿',()=>{
- const l=lobby();people.slice(0,4).forEach(p=>l.action(p,'join',{},0));const r=l.room('p0');l.action(people[0],'reaction',{stamp:'よろしく！'},1);assert.throws(()=>l.action(people[0],'reaction',{stamp:'よろしく！'},2));
+ const l=lobby();people.slice(0,4).forEach(p=>l.action(p,'join',{protocol:2},0));const r=l.room('p0');l.action(people[0],'reaction',{stamp:'よろしく！'},1);assert.throws(()=>l.action(people[0],'reaction',{stamp:'よろしく！'},2));
  assert.ok(publicRoom(r,'p0',5).seats.every(s=>s.id===undefined));people.slice(0,4).forEach(p=>l.action(p,'leave',{},20));assert.equal(r.phase,'ended');assert.equal(rewardFor(r,'p0').amount,0);r.settled=true;l.tick(600020);assert.equal(Object.keys(l.data.rooms).length,0);assert.equal(l.nextAlarm(600020),null);
 });
 test('複数対局を完走し報酬を二重加算しない。AI席・引継ぎ席は人間の報酬にしない',()=>{

@@ -75,7 +75,7 @@ export class IrodoryHub extends DurableObject {
       if(now-p.window>=10000){p.window=now;p.count=0;}p.count++;ws.serializeAttachment(p);
       if(p.count>30){ws.send(JSON.stringify({error:'操作が速すぎます。少しお待ちください'}));return;}
       let error;
-      try{const m=JSON.parse(message);if(!m||!['join','leave','state','move','resign','reaction','rematch'].includes(m.action))throw new Error('使えない操作です');this.lobby.action(p,m.action,m,now);}catch(e){error=e instanceof SyntaxError?'入力を確認してください':e.message;}
+      try{const m=JSON.parse(message);if(!m||!['join','leave','settings','state','move','resign','reaction','rematch'].includes(m.action))throw new Error('使えない操作です');this.lobby.action(p,m.action,m,now);}catch(e){error=e instanceof SyntaxError?'入力を確認してください':e.message;}
       await this.flush();if(error)ws.send(JSON.stringify({error}));
     });
   }

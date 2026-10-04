@@ -1,6 +1,9 @@
+import { drawDiscDecoration } from './cosmetics.js';
 // Paint each finish once; every static stone shares one cached bitmap.
-export function installStoneTextures(doc, colors, computed = getComputedStyle) {
-  const style = doc.createElement('style'), rules = [];
+export function installStoneTextures(doc, colors, computed = getComputedStyle, designs = {}, styleId = 'irodory-stone-textures') {
+  const style = doc.getElementById(styleId) ?? doc.createElement('style'), rules = [];
+  style.id=styleId;
+  const signature=JSON.stringify([colors,designs]);if(style.dataset.signature===signature)return;style.dataset.signature=signature;
   const probe = doc.createElement('i'); probe.style.display = 'none'; doc.body.append(probe);
   try {
     for (const color of colors) {
@@ -8,7 +11,10 @@ export function installStoneTextures(doc, colors, computed = getComputedStyle) {
       const css = computed(probe), canvas = doc.createElement('canvas');
       canvas.width = canvas.height = 256;
       const ctx = canvas.getContext('2d'); if (!ctx) return;
-      const value = key => css.getPropertyValue(key).trim();
+      const design=designs[color];
+      const shade=(hex,factor)=>'#'+hex.slice(1).match(/../g).map(part=>Math.round(parseInt(part,16)*factor).toString(16).padStart(2,'0')).join('');
+      const custom=design?{'--stone':design.color,'--rim':shade(design.color,.7),'--dark':shade(design.color,.32)}:null;
+      const value = key => custom?.[key] ?? css.getPropertyValue(key).trim();
       // Warm, broad upper-left light and a low, flat resin face match the lounge.
       const tint = (hex, light, amount) => {
         const rgb = hex.replace('#','');
@@ -26,9 +32,12 @@ export function installStoneTextures(doc, colors, computed = getComputedStyle) {
       ctx.fillStyle=side;ctx.fill();
       ctx.beginPath(); ctx.ellipse(126, 121, 107, 102, 0, 0, Math.PI * 2);
       const face = ctx.createLinearGradient(40, 20, 181, 225);
-      face.addColorStop(0, light); face.addColorStop(.38, base); face.addColorStop(.8, base); face.addColorStop(1, edge);
+      face.addColorStop(0, light); face.addColorStop(.38, base);
+      if(design?.finish==='metal'){face.addColorStop(.52,tint(value('--stone'),[255,237,190],.65));face.addColorStop(.62,base);}
+      face.addColorStop(.8, base); face.addColorStop(1, edge);
       ctx.fillStyle=face;ctx.fill();ctx.strokeStyle=edge;ctx.lineWidth=2;ctx.stroke();
-      ctx.save();ctx.translate(100,64);ctx.rotate(-.35);ctx.scale(1,.42);
+      if(design)drawDiscDecoration(ctx,design);
+      ctx.save();if(design?.finish==='matte')ctx.globalAlpha=.17;ctx.translate(100,64);ctx.rotate(-.35);ctx.scale(1,.42);
       const shine=ctx.createRadialGradient(0,0,8,0,0,86);
       shine.addColorStop(0,'#fff1d63d');shine.addColorStop(.5,'#ffebc61b');shine.addColorStop(1,'#ffebc600');
       ctx.fillStyle=shine;ctx.beginPath();ctx.arc(0,0,86,0,Math.PI*2);ctx.fill();ctx.restore();
@@ -48,6 +57,7 @@ export function installStoneTextures(doc, colors, computed = getComputedStyle) {
         rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);rack.strokeStyle='#f8dfac52';rack.lineWidth=1.2;rack.stroke();
       }
       const vertical=doc.createElement('canvas');vertical.width=64;vertical.height=544;const v=vertical.getContext('2d');v.translate(64,0);v.rotate(Math.PI/2);v.drawImage(stock,0,0);
+      if(custom)rules.push(`.${color}{--stone:${value('--stone')};--rim:${value('--rim')};--dark:${value('--dark')};--bright:${light}}`);
       rules.push(`:root{--stone-${color}:url("${canvas.toDataURL()}")}.${color}{--disc-image:var(--stone-${color});--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")}`);
     }
     style.textContent = rules.join('\n'); doc.head.append(style); doc.body.classList.add('stone-textures');

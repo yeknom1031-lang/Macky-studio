@@ -1,3 +1,5 @@
+import { normalizeOnlineSettings } from './settings.js';
+import { normalizeCustomDisc } from '../src/cosmetics.js';
 import {initialBoard, firstRoundMoves, playMove, scores, PLAYERS} from '../src/engine.js';
 import {chooseAIMove} from '../src/ai.js';
 export const TURN_MS=45000, GRACE_MS=60000, COUNTDOWN_MS=5000, WAIT_MS=60000;
@@ -7,18 +9,19 @@ export function nickname(value) {
   if(!name||[...name].length>12||! /^[\p{L}\p{N} _ー・.!！?？-]+$/u.test(name))throw new Error('名前は1〜12文字の文字・数字で入力してください');
   return name;
 }
-export function createRoom(id,members,now,random=Math.random) {
-  const seats=members.map(p=>({id:p.id,name:p.name,bot:false,connected:true,disconnectedAt:null,forfeit:false,misses:0,rematch:false}));
+export function createRoom(id,members,now,random=Math.random,settings={}) {
+  settings=normalizeOnlineSettings(settings);
+  const seats=members.map(p=>({id:p.id,name:p.name,customDisc:normalizeCustomDisc(p.customDisc),bot:false,connected:true,disconnectedAt:null,forfeit:false,misses:0,rematch:false}));
   while(seats.length<4)seats.push({id:null,name:`コンピューター ${seats.length+1}`,bot:true,connected:true,disconnectedAt:null,forfeit:false,misses:0,rematch:true});
   for(let i=seats.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[seats[i],seats[j]]=[seats[j],seats[i]];}
-  return {id,seats,board:initialBoard(),player:0,moved:[false,false,false,false],phase:'countdown',startAt:now+COUNTDOWN_MS,deadline:now+COUNTDOWN_MS,ply:0,lastMove:null,notice:'まもなく対局開始',reactions:[],createdAt:now,endedAt:null};
+  return {id,seats,settings,board:initialBoard(settings.size),player:0,moved:[false,false,false,false],phase:'countdown',startAt:now+COUNTDOWN_MS,deadline:now+COUNTDOWN_MS,ply:0,lastMove:null,notice:'まもなく対局開始',reactions:[],createdAt:now,endedAt:null};
 }
 export function endRoom(room,now,abandoned=false) {
   room.phase='ended';room.endedAt=now;room.deadline=null;room.abandoned=abandoned;
   const counts=scores(room.board),eligible=room.seats.map((s,i)=>s.forfeit?-1:counts[i]),max=Math.max(...eligible);
   room.winners=abandoned?[]:eligible.flatMap((n,i)=>n===max?[i]:[]);
 }
-function turnDeadline(room,now){return now+(room.seats[room.player].bot||room.seats[room.player].forfeit?1100:TURN_MS);}
+function turnDeadline(room,now){return now+(room.seats[room.player].bot||room.seats[room.player].forfeit?1100:(room.settings?.turnSeconds??45)*1000);}
 export function advanceRoom(room,now) {
   const skipped=[];
   for(let step=1;step<=4;step++){
@@ -48,7 +51,7 @@ export function tickRoom(room,now) {
     const moves=firstRoundMoves(room.board,room.player,room.moved);
     if(!moves.length){advanceRoom(room,now);return;}
     if(!seat.bot&&!seat.forfeit){seat.misses++;if(seat.misses>=2)seat.forfeit=true;}
-    const move=chooseAIMove(room.board,room.player,{difficulty:'normal',allowedMoves:moves,playerCount:4});
+    const move=chooseAIMove(room.board,room.player,{difficulty:room.settings?.aiDifficulty??'normal',width:room.board.length>=100?2:3,allowedMoves:moves,playerCount:4});
     applyRoomMove(room,move,now,true);
     if(room.phase==='playing'&&!seat.bot)room.notice=`${seat.name}の手をAIが代行しました`;
   }
@@ -76,7 +79,7 @@ export function roomAction(room,id,action,input,now) {
   throw new Error('使えない操作です');
 }
 export function publicRoom(room,id,now) {
-  return {...room,seats:room.seats.map((s,i)=>({name:s.name,color:PLAYERS[i].color,bot:s.bot,forfeit:s.forfeit,connected:s.connected,rematch:s.rematch})),you:room.seats.findIndex(s=>s.id===id),serverNow:now};
+  return {...room,settings:normalizeOnlineSettings(room.settings),seats:room.seats.map((s,i)=>({name:s.name,customDisc:normalizeCustomDisc(s.customDisc),color:PLAYERS[i].color,bot:s.bot,forfeit:s.forfeit,connected:s.connected,rematch:s.rematch})),you:room.seats.findIndex(s=>s.id===id),serverNow:now};
 }
 export function rewardFor(room,id) {
   const seat=room.seats.findIndex(s=>s.id===id);

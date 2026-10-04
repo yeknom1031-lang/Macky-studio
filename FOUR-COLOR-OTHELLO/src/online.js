@@ -1,6 +1,6 @@
 import {normalizeProfile} from './progression.js';
 export const ONLINE_URL='https://irodory.yeknom1031.workers.dev/';
-export function createOnlineClient({onState,onStatus,onError}) {
+export function createOnlineClient({onState,onStatus,onError,getJoinOptions=()=>({})}) {
   let socket=null,retry=null,pulse=null,stopped=true,attempt=0,pendingJoin=false,lastPong=0,generation=0;
   function clear(){clearTimeout(retry);clearInterval(pulse);retry=pulse=null;}
   function stop(){stopped=true;generation++;clear();socket?.close(1000,'終了');socket=null;}
@@ -16,7 +16,7 @@ export function createOnlineClient({onState,onStatus,onError}) {
       let data;try{data=JSON.parse(event.data);}catch{return;}
       if(data.error){onError(data.error);return;}
       onState(data);
-      if(pendingJoin){pendingJoin=false;send('join');}
+      if(pendingJoin){pendingJoin=false;send('join',{...getJoinOptions(),protocol:2});}
     };
     ws.onclose=event=>{
       if(gen!==generation||stopped)return;clear();
