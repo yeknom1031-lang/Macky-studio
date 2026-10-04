@@ -1,33 +1,25 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import http from 'node:http';
 import { createRequire } from 'node:module';
 import assert from 'node:assert/strict';
+import { cloudflareStaticServer, cachedHTML } from './pwa-test-server.mjs';
 
 const { chromium, webkit } = createRequire(import.meta.url)('playwright');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
 const manifest = JSON.parse(await readFile(path.join(dist, 'assets-manifest.json'), 'utf8'));
 const browserName = process.env.KUKU_TEST_BROWSER === 'webkit' ? 'WebKit' : 'Chrome';
-const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.webmanifest': 'application/manifest+json', '.webp': 'image/webp', '.png': 'image/png', '.woff2': 'font/woff2', '.wav': 'audio/wav' };
 const errors = [], badResponses = [];
 let browser, server;
 try {
-  server = http.createServer(async (req, res) => {
-    try {
-      let route = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-      if (route.endsWith('/')) route += 'index.html';
-      else if (!path.extname(route)) route += '.html';
-      const file = path.resolve(dist, '.' + route);
-      if (!file.startsWith(dist + path.sep)) { res.writeHead(403); res.end(); return; }
-      const content = await readFile(file);
-      res.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream', 'Cache-Control': 'no-store' });
-      res.end(content);
-    } catch { res.writeHead(404); res.end(); }
-  });
+  server = cloudflareStaticServer(dist);
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const origin = `http://127.0.0.1:${server.address().port}`;
+  const redirect = await fetch(origin + '/index.html', { redirect: 'manual' });
+  assert.equal(redirect.status, 307);
+  assert.equal(redirect.headers.get('location'), '/');
+  assert.equal((await fetch(origin + '/designs/20-minigames/release-plan.html')).redirected, true);
   browser = browserName === 'WebKit' ? await webkit.launch({ headless: true }) : await chromium.launch({ headless: true, executablePath: process.env.KUKU_CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
   const context = await browser.newContext({ viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 });
   await context.addInitScript(() => {
@@ -53,13 +45,25 @@ try {
     return (await cache.keys()).map(request => new URL(request.url).pathname);
   }, manifest.version);
   assert.ok(manifest.assets.every(asset => matched.includes(asset.url)));
+  const htmlCache = await cachedHTML(page, manifest.version);
+  assert.equal(htmlCache.length, manifest.assets.filter(asset => asset.url.endsWith('.html')).length);
+  assert.ok(htmlCache.every(entry => !entry.redirected && entry.status === 200), JSON.stringify(htmlCache));
+  for (let i = 0; i < 2; i++) {
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.waitForFunction(() => document.querySelectorAll('.game-card').length === 21);
+  }
 
   // This is a real network outage, not the broken WebKit setOffline emulation.
   server.closeAllConnections();
   await new Promise(resolve => server.close(resolve));
   await assert.rejects(fetch(origin + '/network-only-proof.txt'));
-  await page.reload({ waitUntil: 'networkidle' });
-  await page.waitForFunction(() => document.body.textContent.trim().length > 60);
+  for (let i = 0; i < 2; i++) {
+    await page.goto(origin + '/designs/20-minigames/release-plan', { waitUntil: 'networkidle' });
+    assert.match(await page.locator('h1').textContent(), /21/);
+    await page.goto(origin, { waitUntil: 'networkidle' });
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.waitForFunction(() => document.querySelectorAll('.game-card').length === 21);
+  }
   const samples = [
     ...manifest.assets.filter(asset => /\/music\/.*\.wav$/.test(asset.url)),
     ...manifest.assets.filter(asset => /\/voice\/.*\.wav$/.test(asset.url)).filter((_, i) => i % 45 === 0),
@@ -78,7 +82,7 @@ try {
   assert.ok(geometry.scrollWidth <= geometry.width + 1, JSON.stringify(geometry));
   assert.deepEqual(errors, []);
   assert.deepEqual(badResponses, []);
-  const report = { passed: true, browser: browserName, viewport: '844x390', offlineMode: 'origin-server-stopped', version: manifest.version, totalAssets: manifest.assets.length, totalBytes: manifest.totalBytes, offlineSamples: samplesPassed, geometry, errors, badResponses };
+  const report = { passed: true, browser: browserName, viewport: '844x390', offlineMode: 'origin-server-stopped', version: manifest.version, totalAssets: manifest.assets.length, totalBytes: manifest.totalBytes, canonicalRedirectStatus: redirect.status, normalizedHTMLCount: htmlCache.length, onlineReloads: 2, offlineNavigations: 4, offlineReloads: 2, offlineSamples: samplesPassed, geometry, errors, badResponses };
   const qa = path.join(root, 'qa/pwa-release');
   await mkdir(qa, { recursive: true });
   await page.evaluate(() => scrollTo(0, 0));

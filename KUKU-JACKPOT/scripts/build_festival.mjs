@@ -46,6 +46,7 @@ export async function buildFestival({ root = projectRoot, outDir = path.join(roo
   await rm(outDir, { recursive: true, force: true });
   await mkdir(outDir, { recursive: true });
   const files = ['index.html', 'manifest.webmanifest', '_headers'];
+  if (await exists(path.join(root, 'recover.html'))) files.push('recover.html');
   for (const name of ['festival.css', 'festival-style.css']) if (await exists(path.join(root, name))) files.push(name);
   for (const [dir, accept] of [
     ['src', f => /\.(?:js|css|json)$/.test(f)],
@@ -95,6 +96,9 @@ export async function buildFestival({ root = projectRoot, outDir = path.join(roo
   const shell = assets.filter(asset => asset.url === '/index.html' || asset.url === '/manifest.webmanifest' || asset.url.startsWith('/src/') || asset.url.endsWith('.css') || asset.url.startsWith('/assets/fonts/') || /\/icon-(192|512)\.png$/.test(asset.url)).map(asset => asset.url);
   const manifest = { version, totalBytes: assets.reduce((sum, asset) => sum + asset.bytes, 0), totalAssets: assets.length, shell, assets };
   await writeFile(path.join(outDir, 'assets-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
+  // Keep this small recovery checkpoint out of the versioned cache manifest.
+  // A broken old worker must fetch the currently deployed version from network.
+  await writeFile(path.join(outDir, 'recovery-version.json'), JSON.stringify({ version }) + '\n');
   await writeFile(path.join(outDir, 'sw.js'), swTemplate.replaceAll('__KUKU_BUILD_ID__', version));
   console.log(`Built ${assets.length} assets, ${(manifest.totalBytes / 1024 / 1024).toFixed(2)} MiB. Version ${version}.`);
   return manifest;

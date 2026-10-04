@@ -11,7 +11,7 @@ const swSource = await readFile(new URL('../sw.js', import.meta.url), 'utf8');
 const digest = body => createHash('sha256').update(body).digest('hex');
 const normal = input => new URL(typeof input === 'string' ? input : input.url, 'https://game.test').pathname;
 
-function serviceWorker({ files, version = 'test-v1', shell = ['/index.html'], cacheStore = new Map() }) {
+function serviceWorker({ files, version = 'test-v1', shell = ['/index.html'], cacheStore = new Map(), redirectedURLs = [] }) {
   const messages = [], calls = [], listeners = new Map();
   let offline = false, skipCount = 0, claimCount = 0;
   const assets = Object.entries(files).map(([url, body]) => ({ url, bytes: Buffer.byteLength(body), hash: digest(body) }));
@@ -37,10 +37,17 @@ function serviceWorker({ files, version = 'test-v1', shell = ['/index.html'], ca
     clients: { async matchAll() { return [client]; }, async claim() { claimCount++; } },
     async skipWaiting() { skipCount++; },
   };
+  function followedRedirect(response) {
+    Object.defineProperty(response, 'redirected', { value: true });
+    const clone = response.clone.bind(response);
+    response.clone = () => followedRedirect(clone());
+    return response;
+  }
   const context = vm.createContext({ self, caches, crypto: webcrypto, Response, Request, Headers, URL, console, fetch: async input => {
     const key = normal(input); calls.push(key);
     if (offline) throw new TypeError('offline');
-    return server.has(key) ? new Response(server.get(key), { headers: { 'Content-Type': key.endsWith('.wav') ? 'audio/wav' : 'text/plain' } }) : new Response('missing', { status: 404 });
+    const response = server.has(key) ? new Response(server.get(key), { headers: { 'Content-Type': key.endsWith('.wav') ? 'audio/wav' : 'text/html', ...(redirectedURLs.includes(key) ? {'Content-Encoding':'br','Content-Length':'999'} : {}) } }) : new Response('missing', { status: 404 });
+    return redirectedURLs.includes(key) ? followedRedirect(response) : response;
   } });
   vm.runInContext(swSource.replaceAll('__KUKU_BUILD_ID__', version), context);
   async function dispatch(type, props = {}) {
@@ -157,4 +164,28 @@ test('release PWA requests standalone landscape and uses same-origin icons', asy
   assert.equal(manifest.orientation, 'landscape');
   assert.equal(manifest.scope, '/');
   assert.deepEqual(manifest.icons.map(icon => icon.sizes), ['192x192', '512x512']);
+});
+
+test('canonical redirects are saved as fresh responses that Safari can navigate to', async () => {
+  const worker = serviceWorker({files:{'/index.html':'<h1>九九</h1>','/designs/release-plan.html':'plan'},redirectedURLs:['/index.html','/designs/release-plan.html']});
+  await worker.dispatch('install');await worker.dispatch('message',{data:{type:'CACHE_ALL'}});
+  const cache=worker.cacheStore.get('kuku-beat-festival-test-v1');
+  for(const key of ['/index.html','/designs/release-plan.html']){
+    const response=cache.get(key);assert.equal(response.redirected,false);assert.equal(response.headers.get('content-encoding'),null);assert.equal(response.headers.get('content-length'),null);
+  }
+  worker.setOffline(true);
+  for(const pathname of ['/','/','/designs/release-plan','/index.html']){
+    const response=await worker.dispatch('fetch',{request:{url:'https://game.test'+pathname,method:'GET',mode:'navigate',redirect:'manual',headers:new Headers()}});
+    assert.equal(response.redirected,false);assert.equal(response.status,200);assert.ok((await response.text()).length>0);
+  }
+});
+test('a previously cached redirected page is also safe on both cache and offline fallback paths', async () => {
+  const response=new Response('old cached body',{headers:{'Content-Type':'text/html'}});
+  function mark(r){Object.defineProperty(r,'redirected',{value:true});const clone=r.clone.bind(r);r.clone=()=>mark(clone());return r;}
+  const store=new Map([['kuku-beat-festival-test-v1',new Map([['/index.html',mark(response)]])]]);
+  const worker=serviceWorker({files:{'/index.html':'old cached body'},cacheStore:store});worker.setOffline(true);
+  for(const pathname of ['/','/missing-route']){
+    const result=await worker.dispatch('fetch',{request:{url:'https://game.test'+pathname,method:'GET',mode:'navigate',redirect:'manual',headers:new Headers()}});
+    assert.equal(result.redirected,false);assert.equal(await result.text(),'old cached body');
+  }
 });

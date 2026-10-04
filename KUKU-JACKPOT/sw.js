@@ -6,6 +6,19 @@ const MANIFEST_URL = '/assets-manifest.json';
 let manifestPromise;
 let fullSave;
 
+// A followed /index.html -> / redirect carries a redirect URL list even after
+// CacheStorage saves it. Safari rejects that response for a manual navigation.
+// Only the already-fetched bytes are reused; redirects are not followed here.
+function navigationSafeResponse(response, body = response.body) {
+  if (!response.redirected) return response;
+  const headers = new Headers(response.headers);
+  // Fetch has decoded the body already. Do not advertise its wire encoding.
+  headers.delete('Content-Encoding');
+  headers.delete('Transfer-Encoding');
+  headers.delete('Content-Length');
+  return new Response(body, { status: response.status, statusText: response.statusText, headers });
+}
+
 async function manifest() {
   if (!manifestPromise) manifestPromise = (async () => {
     const cache = await caches.open(CACHE_NAME);
@@ -28,7 +41,7 @@ async function saveResponse(cache, asset, response) {
   const body = await response.clone().arrayBuffer();
   const hash = [...new Uint8Array(await crypto.subtle.digest('SHA-256', body))].map(b => b.toString(16).padStart(2, '0')).join('');
   if (hash !== asset.hash) throw new Error('新しいバージョンが公開されました。ゲームを閉じて開き直してから保存してください。');
-  await cache.put(asset.url, response);
+  await cache.put(asset.url, navigationSafeResponse(response, body));
 }
 
 async function saveAsset(cache, asset) {
@@ -134,7 +147,7 @@ self.addEventListener('fetch', event => {
         if (cached) { key = alias; break; }
       }
     }
-    if (cached) return request.headers.has('range') ? rangeResponse(cached, request.headers.get('range')) : cached;
+    if (cached) return request.headers.has('range') ? rangeResponse(cached, request.headers.get('range')) : navigationSafeResponse(cached);
     try {
       const response = await fetch(request);
       if (response.ok && response.status !== 206) {
@@ -145,11 +158,11 @@ self.addEventListener('fetch', event => {
           event.waitUntil(saveResponse(cache, asset, response.clone()).catch(() => {}));
         }
       }
-      return response;
+      return request.mode === 'navigate' ? navigationSafeResponse(response) : response;
     } catch (error) {
       if (request.mode === 'navigate') {
         const fallback = await cache.match('/index.html');
-        if (fallback) return fallback;
+        if (fallback) return navigationSafeResponse(fallback);
       }
       throw error;
     }
