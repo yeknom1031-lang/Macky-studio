@@ -1,0 +1,1260 @@
+{
+  "animals": [
+    {
+      "id": "AN001",
+      "group": "犬",
+      "name": "ダックス",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX026",
+      "proposedName": "短足で長胴のダックス",
+      "height": 0.7
+    },
+    {
+      "id": "AN002",
+      "group": "犬",
+      "name": "柴犬",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX025",
+      "proposedName": "立ち耳で巻き尾の柴犬",
+      "height": 0.7
+    },
+    {
+      "id": "AN003",
+      "group": "犬",
+      "name": "ビーグル",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX221",
+      "proposedName": "細い脚と細長い顔のウィペット",
+      "height": 0.7
+    },
+    {
+      "id": "AN004",
+      "group": "犬",
+      "name": "ダルメシアン",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX224",
+      "proposedName": "大きな胸と短い鼻のブルドッグ",
+      "height": 0.7
+    },
+    {
+      "id": "AN005",
+      "group": "犬",
+      "name": "大きな牧羊犬",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX028",
+      "proposedName": "毛量の多い牧羊犬",
+      "height": 0.7
+    },
+    {
+      "id": "AN006",
+      "group": "犬",
+      "name": "ふわふわプードル",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX027",
+      "proposedName": "小さな鼻と丸いカットのプードル",
+      "height": 0.7
+    },
+    {
+      "id": "AN007",
+      "group": "犬",
+      "name": "コーギー",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX222",
+      "proposedName": "長い耳と大きな足のバセット",
+      "height": 0.7
+    },
+    {
+      "id": "AN008",
+      "group": "犬",
+      "name": "ハスキー",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX223",
+      "proposedName": "大柄で厚い被毛の山岳犬",
+      "height": 0.7
+    },
+    {
+      "id": "AN009",
+      "group": "猫",
+      "name": "三毛猫",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX029",
+      "proposedName": "丸顔で耳の折れた猫",
+      "height": 0.7
+    },
+    {
+      "id": "AN010",
+      "group": "猫",
+      "name": "黒ねこ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX030",
+      "proposedName": "大きな耳と短い被毛の猫",
+      "height": 0.7
+    },
+    {
+      "id": "AN011",
+      "group": "猫",
+      "name": "細長い顔と長い脚の猫",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN012",
+      "group": "猫",
+      "name": "ふわふわ白ねこ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX032",
+      "proposedName": "長毛で胸の飾り毛がある猫",
+      "height": 0.7
+    },
+    {
+      "id": "AN013",
+      "group": "猫",
+      "name": "短い尾と丸い胴の猫",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN014",
+      "group": "猫",
+      "name": "細い体と縮れ毛の猫",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN015",
+      "group": "猫",
+      "name": "ふとっちょ茶トラ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX031",
+      "proposedName": "大きな体と四角い顎の猫",
+      "height": 0.7
+    },
+    {
+      "id": "AN016",
+      "group": "猫",
+      "name": "小柄で大きな目の猫",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN017",
+      "group": "鳥",
+      "name": "カモメ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN018",
+      "group": "鳥",
+      "name": "アジサシ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN019",
+      "group": "鳥",
+      "name": "ハト",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN020",
+      "group": "鳥",
+      "name": "スズメ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN021",
+      "group": "鳥",
+      "name": "ツバメ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN022",
+      "group": "鳥",
+      "name": "カラス",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN023",
+      "group": "鳥",
+      "name": "ムクドリ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN024",
+      "group": "鳥",
+      "name": "メジロ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN025",
+      "group": "鳥",
+      "name": "シジュウカラ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN026",
+      "group": "鳥",
+      "name": "フクロウ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN027",
+      "group": "鳥",
+      "name": "ミミズク",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN028",
+      "group": "鳥",
+      "name": "オウム",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN029",
+      "group": "鳥",
+      "name": "インコ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN030",
+      "group": "鳥",
+      "name": "カワセミ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN031",
+      "group": "鳥",
+      "name": "サギ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN032",
+      "group": "鳥",
+      "name": "フラミンゴ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN033",
+      "group": "鳥",
+      "name": "ペリカン",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN034",
+      "group": "鳥",
+      "name": "アヒル",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX228",
+      "proposedName": "カモ",
+      "height": 0.7
+    },
+    {
+      "id": "AN035",
+      "group": "鳥",
+      "name": "ガチョウ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN036",
+      "group": "鳥",
+      "name": "ニワトリ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN037",
+      "group": "鳥",
+      "name": "ヒヨコ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN038",
+      "group": "鳥",
+      "name": "ペンギン",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN039",
+      "group": "鳥",
+      "name": "キツツキ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN040",
+      "group": "鳥",
+      "name": "ハチドリ",
+      "actions": "羽ばたく・滑空・旋回・着地・歩く・羽繕い",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN041",
+      "group": "陸上小動物",
+      "name": "リス",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX230",
+      "proposedName": "リス",
+      "height": 0.7
+    },
+    {
+      "id": "AN042",
+      "group": "陸上小動物",
+      "name": "シマリス",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN043",
+      "group": "陸上小動物",
+      "name": "ハリネズミ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX227",
+      "proposedName": "ハリネズミ",
+      "height": 0.7
+    },
+    {
+      "id": "AN044",
+      "group": "陸上小動物",
+      "name": "白うさぎ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX226",
+      "proposedName": "ウサギ",
+      "height": 0.7
+    },
+    {
+      "id": "AN045",
+      "group": "陸上小動物",
+      "name": "垂れ耳うさぎ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX225",
+      "proposedName": "垂れ耳ウサギ",
+      "height": 0.7
+    },
+    {
+      "id": "AN046",
+      "group": "陸上小動物",
+      "name": "モルモット",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN047",
+      "group": "陸上小動物",
+      "name": "ハムスター",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN048",
+      "group": "陸上小動物",
+      "name": "フェレット",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN049",
+      "group": "陸上小動物",
+      "name": "ミーアキャット",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN050",
+      "group": "陸上小動物",
+      "name": "プレーリードッグ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN051",
+      "group": "陸上小動物",
+      "name": "チンチラ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN052",
+      "group": "陸上小動物",
+      "name": "ヤマネ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN053",
+      "group": "陸上小動物",
+      "name": "ミニブタ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "legacyId": "EX229",
+      "proposedName": "カピバラ",
+      "height": 0.7
+    },
+    {
+      "id": "AN054",
+      "group": "陸上小動物",
+      "name": "ラッコ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN055",
+      "group": "陸上小動物",
+      "name": "カワウソ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN056",
+      "group": "陸上小動物",
+      "name": "ビーバー",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN057",
+      "group": "水辺の生き物",
+      "name": "カエル",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN058",
+      "group": "水辺の生き物",
+      "name": "アマガエル",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN059",
+      "group": "水辺の生き物",
+      "name": "陸ガメ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN060",
+      "group": "水辺の生き物",
+      "name": "海ガメ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN061",
+      "group": "水辺の生き物",
+      "name": "ヤドカリ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN062",
+      "group": "水辺の生き物",
+      "name": "カニ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN063",
+      "group": "水辺の生き物",
+      "name": "エビ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN064",
+      "group": "水辺の生き物",
+      "name": "タコ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN065",
+      "group": "水辺の生き物",
+      "name": "イカ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN066",
+      "group": "水辺の生き物",
+      "name": "クラゲ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN067",
+      "group": "水辺の生き物",
+      "name": "タツノオトシゴ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN068",
+      "group": "水辺の生き物",
+      "name": "チンアナゴ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN069",
+      "group": "水辺の生き物",
+      "name": "エイ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN070",
+      "group": "水辺の生き物",
+      "name": "丸い熱帯魚",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN071",
+      "group": "水辺の生き物",
+      "name": "細長い川魚",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN072",
+      "group": "水辺の生き物",
+      "name": "大きなコイ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN073",
+      "group": "昆虫",
+      "name": "大きな羽の蝶",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.42
+    },
+    {
+      "id": "AN074",
+      "group": "昆虫",
+      "name": "細い羽の蝶",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.42
+    },
+    {
+      "id": "AN075",
+      "group": "昆虫",
+      "name": "ミツバチ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.42
+    },
+    {
+      "id": "AN076",
+      "group": "昆虫",
+      "name": "てんとう虫",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.42
+    },
+    {
+      "id": "AN077",
+      "group": "昆虫",
+      "name": "トンボ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.42
+    },
+    {
+      "id": "AN078",
+      "group": "昆虫",
+      "name": "カブトムシ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.42
+    },
+    {
+      "id": "AN079",
+      "group": "昆虫",
+      "name": "クワガタ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.42
+    },
+    {
+      "id": "AN080",
+      "group": "昆虫",
+      "name": "ホタル",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.42
+    },
+    {
+      "id": "AN081",
+      "group": "大型動物",
+      "name": "ウマ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 1.12
+    },
+    {
+      "id": "AN082",
+      "group": "大型動物",
+      "name": "ロバ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 1.12
+    },
+    {
+      "id": "AN083",
+      "group": "大型動物",
+      "name": "ラクダ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 1.12
+    },
+    {
+      "id": "AN084",
+      "group": "大型動物",
+      "name": "アルパカ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 1.12
+    },
+    {
+      "id": "AN085",
+      "group": "大型動物",
+      "name": "ヤギ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 1.12
+    },
+    {
+      "id": "AN086",
+      "group": "大型動物",
+      "name": "ヒツジ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 1.12
+    },
+    {
+      "id": "AN087",
+      "group": "大型動物",
+      "name": "ウシ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 1.12
+    },
+    {
+      "id": "AN088",
+      "group": "大型動物",
+      "name": "ゾウ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 1.12
+    },
+    {
+      "id": "AN089",
+      "group": "空想動物",
+      "name": "小さな丸翼の竜",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN090",
+      "group": "空想動物",
+      "name": "細長い耳の雲うさぎ",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN091",
+      "group": "空想動物",
+      "name": "木の枝角を持つ小鹿",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN092",
+      "group": "空想動物",
+      "name": "紙の羽の鳥",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN093",
+      "group": "空想動物",
+      "name": "歯車脚の小鳥",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    },
+    {
+      "id": "AN094",
+      "group": "空想動物",
+      "name": "花びらのたてがみを持つ獣",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "ground",
+      "height": 0.7
+    },
+    {
+      "id": "AN095",
+      "group": "空想動物",
+      "name": "葉の背びれを持つ魚",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "water",
+      "height": 0.7
+    },
+    {
+      "id": "AN096",
+      "group": "空想動物",
+      "name": "大きなヒレで浮かぶ空の魚",
+      "actions": "休む・ゆっくり移動・速く移動・食事や手入れ・遊ぶか反応・場所に入るか出る",
+      "status": "制作候補・再利用と不足分を確認",
+      "note": "種の骨格に合わせた動作に置換。色違いを別種として数えない。個体として同じ場面に出すのは1体まで。",
+      "habitat": "air",
+      "height": 0.7
+    }
+  ],
+  "jobs": [
+    {
+      "id": "A-animals-01",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN011",
+        "AN013",
+        "AN014",
+        "AN016",
+        "AN017"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: 細長い顔と長い脚の猫 (猫). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 2: 短い尾と丸い胴の猫 (猫). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 3: 細い体と縮れ毛の猫 (猫). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 4: 小柄で大きな目の猫 (猫). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 5: カモメ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-02",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN018",
+        "AN019",
+        "AN020",
+        "AN021",
+        "AN022"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: アジサシ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 2: ハト (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 3: スズメ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 4: ツバメ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 5: カラス (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-03",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN023",
+        "AN024",
+        "AN025",
+        "AN026",
+        "AN027"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: ムクドリ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 2: メジロ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 3: シジュウカラ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 4: フクロウ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 5: ミミズク (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-04",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN028",
+        "AN029",
+        "AN030",
+        "AN031",
+        "AN032"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: オウム (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 2: インコ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 3: カワセミ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 4: サギ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 5: フラミンゴ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-05",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN033",
+        "AN035",
+        "AN036",
+        "AN037",
+        "AN038"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: ペリカン (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 2: ガチョウ (鳥). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 3: ニワトリ (鳥). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 4: ヒヨコ (鳥). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 5: ペンギン (鳥). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-06",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN039",
+        "AN040",
+        "AN042",
+        "AN046",
+        "AN047"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: キツツキ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 2: ハチドリ (鳥). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 3: シマリス (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 4: モルモット (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 5: ハムスター (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-07",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN048",
+        "AN049",
+        "AN050",
+        "AN051",
+        "AN052"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: フェレット (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 2: ミーアキャット (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 3: プレーリードッグ (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 4: チンチラ (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 5: ヤマネ (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-08",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN054",
+        "AN055",
+        "AN056",
+        "AN057",
+        "AN058"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: ラッコ (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 2: カワウソ (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 3: ビーバー (陸上小動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 4: カエル (水辺の生き物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 5: アマガエル (水辺の生き物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-09",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN059",
+        "AN060",
+        "AN061",
+        "AN062",
+        "AN063"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: 陸ガメ (水辺の生き物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 2: 海ガメ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 3: ヤドカリ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 4: カニ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 5: エビ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-10",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN064",
+        "AN065",
+        "AN066",
+        "AN067",
+        "AN068"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: タコ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 2: イカ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 3: クラゲ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 4: タツノオトシゴ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 5: チンアナゴ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-11",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN069",
+        "AN070",
+        "AN071",
+        "AN072",
+        "AN073"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: エイ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 2: 丸い熱帯魚 (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 3: 細長い川魚 (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 4: 大きなコイ (水辺の生き物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 5: 大きな羽の蝶 (昆虫). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-12",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN074",
+        "AN075",
+        "AN076",
+        "AN077",
+        "AN078"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: 細い羽の蝶 (昆虫). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 2: ミツバチ (昆虫). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 3: てんとう虫 (昆虫). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 4: トンボ (昆虫). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 5: カブトムシ (昆虫). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-13",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN079",
+        "AN080",
+        "AN081",
+        "AN082",
+        "AN083"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: クワガタ (昆虫). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 2: ホタル (昆虫). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 3: ウマ (大型動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 4: ロバ (大型動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 5: ラクダ (大型動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-14",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN084",
+        "AN085",
+        "AN086",
+        "AN087",
+        "AN088"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: アルパカ (大型動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 2: ヤギ (大型動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 3: ヒツジ (大型動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 4: ウシ (大型動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 5: ゾウ (大型動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-15",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 5,
+      "cols": 8,
+      "characters": [
+        "AN089",
+        "AN090",
+        "AN091",
+        "AN092",
+        "AN093"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 5 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 5 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: 小さな丸翼の竜 (空想動物). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 2: 細長い耳の雲うさぎ (空想動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 3: 木の枝角を持つ小鹿 (空想動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 4: 紙の羽の鳥 (空想動物). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8.\nROW 5: 歯車脚の小鳥 (空想動物). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8."
+    },
+    {
+      "id": "A-animals-16",
+      "kind": "animals",
+      "stage": "A",
+      "rows": 3,
+      "cols": 8,
+      "characters": [
+        "AN094",
+        "AN095",
+        "AN096"
+      ],
+      "prompt": "Use case: stylized-concept. A beautiful polished hand-painted cute storybook game ANIMAL sprite sheet. Exactly 3 rows, eight columns, no humans. One distinct animal species and anatomy per row, same identity in every cell. Entire body, ears, tail, wings, feet must be visible, never cropped or overlapping. Generous 15 percent clear transparent gutters between all cells and 5 percent outside margin. Genuine transparent alpha, NO scenery, labels, boxes, grid lines or cast shadows. Three-quarter elevated view facing right, crisp dark soft outlines, warm appealing painted details. First four columns are a smooth moving cycle, last four are another species-appropriate action loop. Clear motion changes, not copied poses. All EIGHT poses and ALL 3 rows, including the final row, fully drawn. Distinct real anatomies and silhouettes, no recolours.\nROW 1: 花びらのたてがみを持つ獣 (空想動物). four different walking poses with alternate legs forward in columns 1-4; four grooming, sniffing, feeding or playful poses in columns 5-8.\nROW 2: 葉の背びれを持つ魚 (空想動物). four clearly different swimming poses in columns 1-4; four turning and tail/fin flexing poses in columns 5-8.\nROW 3: 大きなヒレで浮かぶ空の魚 (空想動物). FOUR different phases of airborne wing beats in columns 1-4; four hovering or turning poses in columns 5-8."
+    }
+  ],
+  "reuse": {
+    "AN001": "EX026",
+    "AN002": "EX025",
+    "AN003": "EX221",
+    "AN004": "EX224",
+    "AN005": "EX028",
+    "AN006": "EX027",
+    "AN007": "EX222",
+    "AN008": "EX223",
+    "AN009": "EX029",
+    "AN010": "EX030",
+    "AN012": "EX032",
+    "AN015": "EX031",
+    "AN034": "EX228",
+    "AN041": "EX230",
+    "AN043": "EX227",
+    "AN044": "EX226",
+    "AN045": "EX225",
+    "AN053": "EX229"
+  }
+}
