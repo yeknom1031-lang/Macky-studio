@@ -1,0 +1,187 @@
+{
+  "method": "Built-in image_gen",
+  "created": "2026-10-04",
+  "request": "20種類の九九リズムミニゲーム。各ゲーム最大3枚。スマートフォン横向きの1画面に収まるデザイン。",
+  "deliveredImagesPerGame": 1,
+  "viewport": {
+    "width": 844,
+    "height": 390,
+    "orientation": "landscape"
+  },
+  "promptSet": "prompts.json",
+  "originalsPreserved": true,
+  "imageReview": "全20枚の構図、主操作、問題と正答の対応を目視確認。7番は4行×6列の24個、9番は機関車を除く6両、15番は4×9と6×6の両方を正答として確認。",
+  "implementationNote": "画面デザイン案。実装時は式、選択肢、ボタン、拍の表示を独立したUI要素として描画し、画像に焼き込まれた文字や装飾をそのまま操作判定に使わない。",
+  "images": [
+    {
+      "id": 1,
+      "file": "images/01-jackpot.png",
+      "generationSource": "exec-1c7a87d8-d383-45fc-9f0a-1e51dc45afb0.png",
+      "attempts": 1,
+      "sha256": "195baab6d739b1ae1f4868b6063b63c8746b6f106e512fbd64e7055db309ae15"
+    },
+    {
+      "id": 2,
+      "file": "images/02-sushi.png",
+      "generationSource": "exec-9397edc1-0c2b-41c0-8d3a-6674b1161443.png",
+      "attempts": 1,
+      "sha256": "9e36c05ba4a89565fd94ecc0a32c6f2b558580717c07617e0872afc0cdfbe5ef"
+    },
+    {
+      "id": 3,
+      "file": "images/03-rocket.png",
+      "generationSource": "exec-b1cfb5c0-0d3d-478b-a623-b1f6e00fcb40.png",
+      "attempts": 1,
+      "sha256": "3d34e95447d221cf361d9d70fda991ed1ceed410d05b6bbbec5123f9be8d24cd"
+    },
+    {
+      "id": 4,
+      "file": "images/04-ninja.png",
+      "generationSource": "exec-8bfc49f7-f851-462b-ac7e-2a91e2ca5f1f.png",
+      "attempts": 1,
+      "sha256": "6cffd37df5514e600e7de5b5d5dbd052799eed3ce7f58cfd342bdd303a08dee8"
+    },
+    {
+      "id": 5,
+      "file": "images/05-frog.png",
+      "generationSource": "exec-269b3b97-ad7a-42ad-8727-0f2580531343.png",
+      "attempts": 1,
+      "sha256": "e8b3d47e2b2a66c5b9f686fdae6cb25ecc076781dcc988ae4eb8d64b689f70cd"
+    },
+    {
+      "id": 6,
+      "file": "images/06-quiz.png",
+      "generationSource": "exec-687a25cc-4cb1-44ea-ae31-151573aa9e08.png",
+      "attempts": 1,
+      "sha256": "d11f5b2fcd7d46afe1c4a9a9c7594e55d422254b6e55c131507cdb88d5886a4b"
+    },
+    {
+      "id": 7,
+      "file": "images/07-donuts.png",
+      "generationSource": "exec-17b2847c-7d97-464a-a224-8455ebf10cba.png",
+      "attempts": 1,
+      "sha256": "68b2c6e28e2d4a4da9366fe32ad14e61c47b61214be21eb02efcfc39c517ab57"
+    },
+    {
+      "id": 8,
+      "file": "images/08-gorilla.png",
+      "generationSource": "exec-10e1c04c-bd0a-4b94-af2e-8c967fbfed64.png",
+      "attempts": 1,
+      "sha256": "e982e52a82465edcd8deae57c78975e3487167e11685c26a0be99fa7e675be88"
+    },
+    {
+      "id": 9,
+      "file": "images/09-train.png",
+      "generationSource": "exec-dcb02f20-8410-4f96-af16-6e9f77e53bf0.png",
+      "attempts": 1,
+      "sha256": "7b8606edeaf1f3ad2267ee70cb3b3237847283c5701d66c483216f664f680836"
+    },
+    {
+      "id": 10,
+      "file": "images/10-magic.png",
+      "generationSource": "exec-eeea59f8-669e-4f3f-909d-82296ead3a6f.png",
+      "attempts": 1,
+      "sha256": "0b238b9bd2f667aeb944c312e67b4f01d3ef255690dfca3057bc6198e9db9893"
+    },
+    {
+      "id": 11,
+      "file": "images/11-basketball.png",
+      "generationSource": "exec-618bd7b9-acc6-49bb-98bd-a2f1eb25ed81.png",
+      "attempts": 1,
+      "sha256": "1ac191945e5fc3501b56ed910165b52f59a414e6107398614ac31fdf0bfa1bb2"
+    },
+    {
+      "id": 12,
+      "file": "images/12-ghost.png",
+      "generationSource": "exec-378c3cb3-67d1-4ce0-b572-049ecfe142f5.png",
+      "attempts": 1,
+      "sha256": "7dc611a8831b2239db761ba599cf2bdc004625e8ff3ca72a60eda65aca5c91dc"
+    },
+    {
+      "id": 13,
+      "file": "images/13-socks.png",
+      "generationSource": "exec-9603afb3-68a5-4a76-a3b7-bc1d0a54d002.png",
+      "attempts": 1,
+      "sha256": "4803299a03752258e24d92e892f8f3fc605c675a56121ce57716e4001a89e947"
+    },
+    {
+      "id": 14,
+      "file": "images/14-hero.png",
+      "generationSource": "exec-a254576a-9998-4704-b2cf-1deb2bca56b3.png",
+      "attempts": 1,
+      "sha256": "d33ce69d551051a0122d5a6b88e0342aaedf28ae963378cd567aee07a4fa87b3"
+    },
+    {
+      "id": 15,
+      "file": "images/15-aliens.png",
+      "generationSource": "exec-daa058b9-1542-4e02-8d31-66aac78270f1.png",
+      "attempts": 1,
+      "sha256": "8f6025f66f1e605cce8d685021592a1bced36ebad3ac645a96a15b112657ec57"
+    },
+    {
+      "id": 16,
+      "file": "images/16-fishing.png",
+      "generationSource": "exec-cdad087e-c149-4610-b1c9-01725f4d2d92.png",
+      "attempts": 1,
+      "sha256": "8356102726c05e08e835cfc256b2c3b21202729dfc1636a51c6bc0aff609b7ea"
+    },
+    {
+      "id": 17,
+      "file": "images/17-delivery.png",
+      "generationSource": "exec-bf975e80-b4c9-4bee-86d8-d9097d8afe5a.png",
+      "attempts": 1,
+      "sha256": "bbd9161c65d8d30677660b398eec11b78856939222ec561a1ed06a6dc9453eaa"
+    },
+    {
+      "id": 18,
+      "file": "images/18-octopus.png",
+      "generationSource": "exec-77124668-5c8d-4520-9a25-7dd0f3846505.png",
+      "attempts": 1,
+      "sha256": "e935c3de5a31a7c2f50c8cb387095736759a75bb715ef9c13c3a4ab353b666da"
+    },
+    {
+      "id": 19,
+      "file": "images/19-dragon.png",
+      "generationSource": "exec-c86b2292-899b-4517-9b7d-17f4e69f7225.png",
+      "attempts": 1,
+      "sha256": "a90363ed88050bb0f04ef125980f6c16ef0f2088cc8c9fba95b24b904d82d771"
+    },
+    {
+      "id": 20,
+      "file": "images/20-orchestra.png",
+      "generationSource": "exec-952cac70-d763-4be2-9943-18aadcfe336f.png",
+      "attempts": 1,
+      "sha256": "1482db930b4f476069674efd45061c5863141c5058e098b9d60d2de3f2747f69"
+    }
+  ],
+  "galleryVerification": {
+    "passed": true,
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900
+      },
+      {
+        "width": 844,
+        "height": 390
+      },
+      {
+        "width": 667,
+        "height": 375
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "checks": [
+      "20 thumbnails and 20 original PNGs load",
+      "All filters",
+      "All viewer next/previous navigation",
+      "Keyboard navigation and close",
+      "横画面で画像の欠け・横方向のはみ出しなし",
+      "横画面で前後・閉じる操作がデザイン画像と重ならない"
+    ],
+    "browserErrors": []
+  }
+}
