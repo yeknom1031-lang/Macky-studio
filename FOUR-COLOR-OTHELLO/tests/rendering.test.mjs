@@ -27,6 +27,21 @@ test('CSS終了イベントが来なくても連続する着地演出のタイ�
 });
 
 import { createStoneAudio } from '../src/audio.js';
+test('以前のBGMオン設定が残っていても、操作・設定更新で音楽ノードや周期タイマーを作らない', () => {
+ let created=0,oscillators=0,timers=0;
+ const param=()=>({value:0,setTargetAtTime(){}});
+ const node=()=>({connect(){},gain:param()});
+ const context={state:'running',currentTime:0,destination:{},createGain:node,
+ createOscillator(){oscillators++;throw new Error('BGM must not start');},
+ createDynamicsCompressor:()=>({...node(),threshold:param(),knee:param(),ratio:param(),attack:param(),release:param()})};
+ const settings={sound:true,music:true,volume:.75};
+ const audio=createStoneAudio(()=>settings,()=>{created++;return context;},{schedule:()=>timers++});
+ for(let n=0;n<1000;n++){audio.unlock();audio.sync();}
+ assert.equal(created,1);assert.equal(oscillators,0);assert.equal(timers,0);assert.equal(audio.status().active,0);
+ settings.sound=false;
+ const muted=createStoneAudio(()=>settings,()=>{throw new Error('Silent game must not create audio');});
+ muted.unlock();assert.equal(muted.status().state,'idle');
+});
 test('音のended通知が届かない環境でも音声ノードは16個以内で、寿命と停止で必ず解放', () => {
  const tasks=new Map();let sequence=0,disconnected=0;
  const param=()=>({value:0,setTargetAtTime(){},setValueAtTime(){},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){}});

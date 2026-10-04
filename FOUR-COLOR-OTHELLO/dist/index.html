@@ -445,6 +445,13 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
   .result .primary,.result .secondary { padding:10px; min-height:44px; margin-top:10px; }
 }
 
+/* Capture preview: shared textures, opacity only, present for one candidate. */
+.cell.capture-preview::before { content:''; position:absolute; inset:10%; z-index:1; pointer-events:none; background:var(--capture-image) center / contain no-repeat; animation:capture-tint 1.6s ease-in-out infinite; }
+.cell.capture-target::after { content:attr(data-capture-count) '枚'; position:absolute; right:3%; top:3%; width:auto; height:auto; aspect-ratio:auto; min-width:22px; padding:2px 4px; border:1px solid #f3e2b89c; border-radius:4px; color:#fff4d9; background:#132219f2; box-shadow:0 2px 5px #0007; font:600 clamp(9px,1vw,12px)/1.25 sans-serif; z-index:3; }
+@keyframes capture-tint { 0%,100% { opacity:0; } 35%,65% { opacity:1; } }
+.reduce-motion .cell.capture-preview::before { animation:none!important; opacity:.9; }
+@media(prefers-reduced-motion:reduce) { .cell.capture-preview::before { animation:none!important; opacity:.9; } }
+
 </style>
 
 </head>
@@ -481,7 +488,7 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
     <fieldset id="difficulty-field" class="choice-field"><legend>コンピューターの強さ</legend><div id="difficulty-options" class="choices"></div><p id="difficulty-description" class="field-note"></p></fieldset>
     <fieldset class="choice-field"><legend>ボードの広さ</legend><div id="size-options" class="choices"></div><p id="size-note" class="field-note">8 × 8 が基本。どの広さも中央の16枚からスタート。</p></fieldset>
     <fieldset id="color-field" class="choice-field"><legend>色と手番はランダム</legend><div id="color-options" class="color-options"></div><p id="color-note" class="field-note"></p></fieldset>
-    <label class="setting compact"><span>置ける場所を表示する<small>あなたの番に、目印が出ます</small></span><input id="setup-hints" type="checkbox" role="switch"></label>
+    <label class="setting compact"><span>置ける場所を表示する<small>目印と、ポインターを合わせたときに取れる石・枚数を表示</small></span><input id="setup-hints" type="checkbox" role="switch"></label>
     <div class="setup-footer"><p id="setup-reward" class="reward-note"></p><button id="launch" class="primary">この設定で遊ぶ</button></div>
   </div></dialog>
   <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-content">
@@ -494,14 +501,13 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
     <h3>勝利とコイン</h3><p>ひとりモードで勝つとコインがもらえます。強さ・広さによって30〜200コイン。最多で引き分けた場合は半分です。４人モードや途中で終了した対局は対象外。ボードは購入後に選んで着せ替えできます。購入した駒の色は次の対局から抽選候補に加わります。見た目は強さに影響しません。</p>
     <h3>途中で降参する</h3><p>対局メニューの「降参する」から確認すると、その対局を終了します。ひとりモードでは負けとして１対局を記録し、コインは増えません。４人モードでは現在の手番の色が降参し、卓全体の対局を終了します。途中の枚数で勝者は決めません。</p>
     <h3>鬼レベル</h3><p>ひとり対戦で「鬼」を選ぶと、１手に最大５秒を使って深く考えます。２色は相手の最善手を見込み、４色はそれぞれの色の利益を見込んで読みます。終盤では最後まで読むことを狙います。思考中もメニューを開いて降参・終了できます。鬼に勝つと160〜200コイン。</p>
-    <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
+    <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。オンのとき、置けるマスにポインターを合わせると取れる相手の石が自分の色に点滅し、枚数が表示されます。矢印キーでマスを選んだときも確認できます。「動きを減らす」がオンのときは点滅せずに表示します。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
     <p class="small-note">４辺のストックは本物の予備の石をイメージした飾りです。使用枚数の制限はありません。<br>キーボード：矢印でマスを移動、Enter / Space で置く。<br>設定・コイン・購入品はこのブラウザに保存。別の端末やローカルHTMLとは自動同期されません。設定からデータを持ち運べます。</p><button class="primary" data-close>わかった</button>
   </div></dialog>
   <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">MAKE YOURSELF AT HOME</p><h2 id="settings-title">設定</h2>
-    <label class="setting"><span>置ける場所を表示する<small>人が打つ番だけ、置けるマスに目印</small></span><input id="hints-setting" type="checkbox" role="switch"></label>
+    <label class="setting"><span>置ける場所を表示する<small>置けるマスに目印。ポインターを合わせると、取れる石が自分の色に点滅</small></span><input id="hints-setting" type="checkbox" role="switch"></label>
     <label class="setting"><span>石と盤の音<small>置く音・返す音・勝利の音</small></span><input id="sound-setting" type="checkbox" role="switch" checked></label>
-    <label class="setting"><span>静かなBGM<small>操作後に流れ、タブを離れると止まります</small></span><input id="music-setting" type="checkbox" role="switch" checked></label>
     <div class="sound-controls"><label for="sound-volume">音量 <output id="volume-value" for="sound-volume">75%</output></label><input id="sound-volume" type="range" min="0" max="100" step="5" value="75"><button id="sound-preview" class="secondary">音を試す</button><p id="sound-status" class="field-note" role="status">短い着手音と、石を返す音を確かめられます。</p></div>
     <label class="setting"><span>動きを少なくする</span><input id="motion-setting" type="checkbox" role="switch"></label>
     <div class="save-section"><h3>遊んだデータを持ち運ぶ</h3><p class="field-note">コイン・購入品・設定を保存します。読み込むと現在の保存データを置き換えます。対局中の盤面は含みません。</p><div class="save-actions"><button id="export-save" class="secondary">データを書き出す</button><button id="import-save" class="secondary">データを読み込む</button></div><input id="save-file" type="file" accept="application/json,.json" hidden><p id="save-message" class="field-note" role="status"></p></div>
@@ -980,16 +986,8 @@ function stoneWave(sampleRate = 48000, kind = 'place', seed = 1) {
 }
 
 function createStoneAudio(options, contextFactory, { schedule = setTimeout, unschedule = clearTimeout } = {}) {
-  let context, master, musicGain, limiter, count = 0, lastFlip = -1, chordGeneration = 0, musicTimer = 0, chordIndex = 0;
-  const voices = new Map(), musicVoices = new Map(), cache = new Map();
-  const progression = [
-    [261.63,329.63,392,493.88,587.33], [220,261.63,329.63,392,493.88],
-    [174.61,220,261.63,329.63,392], [196,246.94,293.66,349.23,440]
-  ];
-  function stopMusic() {
-    unschedule(musicTimer); musicTimer = 0;
-    for (const release of musicVoices.values()) release();
-  }
+  let context, master, limiter, count = 0, lastFlip = -1, chordGeneration = 0;
+  const voices = new Map(), cache = new Map();
   function releaseAfter(source, outputs, pool, lifetime) {
     let timer, released = false;
     const release = () => {
@@ -1002,45 +1000,18 @@ function createStoneAudio(options, contextFactory, { schedule = setTimeout, unsc
     timer = schedule(release, lifetime);
     return release;
   }
-  function scheduleChord() {
-    if (!options().music || context?.state !== 'running') return;
-    const notes = progression[chordIndex++ % progression.length], now = context.currentTime;
-    const chord = [...notes.slice(0,4), notes[0] / 2];
-    for (const [i,frequency] of chord.entries()) {
-      const oscillator = context.createOscillator(), gain = context.createGain();
-      const at = now + i * (i === 4 ? .15 : .42), pad = i === 4;
-      oscillator.type = pad ? 'sine' : 'triangle';
-      oscillator.frequency.value = pad ? frequency * 1.003 : frequency;
-      const level = options().volume * (pad ? .026 : .018);
-      gain.gain.setValueAtTime(.0001,at);
-      gain.gain.exponentialRampToValueAtTime(Math.max(.0002,level),at + (pad ? 2.2 : .9));
-      gain.gain.setValueAtTime(Math.max(.0002,level),at + 6.8);
-      gain.gain.exponentialRampToValueAtTime(.0001,at + 8.25);
-      oscillator.connect(gain); gain.connect(musicGain);
-      oscillator.start(at); oscillator.stop(at + 8.4);
-      releaseAfter(oscillator,[gain],musicVoices,Math.ceil((at-now+8.6)*1000));
-      while (musicVoices.size > 10) musicVoices.values().next().value();
-    }
-    musicTimer = schedule(scheduleChord,8500);
-  }
-  function startMusic() {
-    if (!options().music || context?.state !== 'running' || musicTimer) return;
-    scheduleChord();
-  }
   function unlock() {
-    if (!options().sound && !options().music) return;
+    if (!options().sound) return;
     try {
       if (!context) {
         context = contextFactory();
-        master = context.createGain(); musicGain = context.createGain(); limiter = context.createDynamicsCompressor();
+        master = context.createGain(); limiter = context.createDynamicsCompressor();
         limiter.threshold.value = -10; limiter.knee.value = 8; limiter.ratio.value = 8;
         limiter.attack.value = .002; limiter.release.value = .07;
-        master.connect(limiter); musicGain.connect(limiter); limiter.connect(context.destination);
+        master.connect(limiter); limiter.connect(context.destination);
       }
       master.gain.setTargetAtTime(options().sound ? options().volume * .78 : 0, context.currentTime,.025);
-      musicGain.gain.setTargetAtTime(options().music ? .72 * options().volume : 0, context.currentTime,.15);
-      if (context.state === 'suspended') void context.resume().then(startMusic).catch(() => {});
-      else startMusic();
+      if (context.state === 'suspended') void context.resume().catch(() => {});
     } catch { /* Audio must never prevent playing. */ }
   }
   function track(source, outputs, lifetime = 350) {
@@ -1076,7 +1047,7 @@ function createStoneAudio(options, contextFactory, { schedule = setTimeout, unsc
     chordGeneration++; lastFlip = -1;
     for (const release of voices.values()) release();
   }
-  function suspend() { stop(); stopMusic(); }
+  function suspend() { stop(); }
   function celebrate() {
     if (!options().sound) return;
     unlock(); if (!context || context.state !== 'running') return;
@@ -1091,11 +1062,9 @@ function createStoneAudio(options, contextFactory, { schedule = setTimeout, unsc
   }
   function sync() {
     if (!options().sound || !options().volume) stop();
-    if (musicGain) musicGain.gain.setTargetAtTime(options().music ? .72 * options().volume : 0,context.currentTime,.15);
     if (master) master.gain.setTargetAtTime(options().sound ? options().volume * .78 : 0,context.currentTime,.012);
-    if (options().music) startMusic(); else stopMusic();
   }
-  return { unlock, hit, stop, suspend, celebrate, sync, status: () => ({ state:context?.state ?? 'idle', contacts:count, active:voices.size, music:options().music, musicActive:musicVoices.size>0 }) };
+  return { unlock, hit, stop, suspend, celebrate, sync, status: () => ({ state:context?.state ?? 'idle', contacts:count, active:voices.size }) };
 }
 
 // Paint each finish once; every static stone shares one cached bitmap.
@@ -1109,20 +1078,33 @@ function installStoneTextures(doc, colors, computed = getComputedStyle) {
       canvas.width = canvas.height = 256;
       const ctx = canvas.getContext('2d'); if (!ctx) return;
       const value = key => css.getPropertyValue(key).trim();
-      ctx.beginPath(); ctx.ellipse(128, 139, 110, 107, 0, 0, Math.PI * 2);
-      ctx.fillStyle = value('--dark'); ctx.shadowColor = '#0009'; ctx.shadowBlur = 9; ctx.shadowOffsetY = 5; ctx.fill();
-      ctx.shadowColor = 'transparent';
-      ctx.beginPath(); ctx.arc(128, 123, 109, 0, Math.PI * 2);
-      const face = ctx.createLinearGradient(55, 28, 185, 226);
-      face.addColorStop(0, value('--bright')); face.addColorStop(.28, value('--stone')); face.addColorStop(.78, value('--stone')); face.addColorStop(1, value('--rim'));
-      ctx.fillStyle = face; ctx.fill(); ctx.strokeStyle = value('--rim'); ctx.lineWidth = 3; ctx.stroke();
-      ctx.beginPath(); ctx.arc(128, 122, 101, Math.PI * 1.05, Math.PI * 1.91);
-      ctx.strokeStyle = '#ffffff80'; ctx.lineWidth = 2; ctx.stroke();
-      ctx.save();ctx.translate(112,66);ctx.rotate(-.32);ctx.scale(1,.48);
-      const shine=ctx.createRadialGradient(-16,-12,0,0,0,78);
-      shine.addColorStop(0,'#ffffff91');shine.addColorStop(.36,'#ffffff36');shine.addColorStop(1,'#ffffff00');
-      ctx.fillStyle=shine;ctx.beginPath();ctx.arc(0,0,78,0,Math.PI*2);ctx.fill();ctx.restore();
-      ctx.beginPath();ctx.arc(128,123,97,0,Math.PI*2);ctx.strokeStyle='#ffffff16';ctx.lineWidth=1;ctx.stroke();
+      // Warm, broad upper-left light and a low, flat resin face match the lounge.
+      const tint = (hex, light, amount) => {
+        const rgb = hex.replace('#','');
+        const expanded = rgb.length === 3 ? [...rgb].map(c=>c+c).join('') : rgb;
+        return `rgb(${[0,2,4].map((offset,i)=>Math.round(parseInt(expanded.slice(offset,offset+2),16)*(1-amount)+light[i]*amount)).join(',')})`;
+      };
+      const base = tint(value('--stone'),[92,79,55],.18);
+      const light = tint(value('--stone'),[238,215,172],.29);
+      const edge = tint(value('--rim'),[56,45,29],.24);
+      ctx.beginPath(); ctx.ellipse(129, 138, 108, 102, 0, 0, Math.PI * 2);
+      ctx.fillStyle = value('--dark'); ctx.shadowColor = '#00000085'; ctx.shadowBlur = 13; ctx.shadowOffsetX = 6; ctx.shadowOffsetY = 7; ctx.fill();
+      ctx.shadowColor = 'transparent'; ctx.shadowOffsetX = ctx.shadowOffsetY = 0;
+      const side = ctx.createLinearGradient(0,112,0,241);
+      side.addColorStop(0,edge); side.addColorStop(.73,edge); side.addColorStop(1,value('--dark'));
+      ctx.fillStyle=side;ctx.fill();
+      ctx.beginPath(); ctx.ellipse(126, 121, 107, 102, 0, 0, Math.PI * 2);
+      const face = ctx.createLinearGradient(40, 20, 181, 225);
+      face.addColorStop(0, light); face.addColorStop(.38, base); face.addColorStop(.8, base); face.addColorStop(1, edge);
+      ctx.fillStyle=face;ctx.fill();ctx.strokeStyle=edge;ctx.lineWidth=2;ctx.stroke();
+      ctx.save();ctx.translate(100,64);ctx.rotate(-.35);ctx.scale(1,.42);
+      const shine=ctx.createRadialGradient(0,0,8,0,0,86);
+      shine.addColorStop(0,'#fff1d63d');shine.addColorStop(.5,'#ffebc61b');shine.addColorStop(1,'#ffebc600');
+      ctx.fillStyle=shine;ctx.beginPath();ctx.arc(0,0,86,0,Math.PI*2);ctx.fill();ctx.restore();
+      ctx.beginPath();ctx.ellipse(126,121,104,99,0,Math.PI*1.02,Math.PI*1.91);
+      ctx.strokeStyle='#ffebbd65';ctx.lineWidth=1.5;ctx.stroke();
+      ctx.beginPath();ctx.ellipse(126,121,103,98,0,.14,Math.PI*.8);
+      ctx.strokeStyle='#080b0738';ctx.lineWidth=2;ctx.stroke();
       // A whole storage row is one shared bitmap, irrespective of board size.
       const stock=doc.createElement('canvas');stock.width=544;stock.height=64;
       const rack=stock.getContext('2d');
@@ -1130,12 +1112,12 @@ function installStoneTextures(doc, colors, computed = getComputedStyle) {
         const x=24+i*17;
         rack.beginPath();rack.ellipse(x,32,18,27,0,0,Math.PI*2);
         rack.fillStyle=value('--dark');rack.shadowColor='#000b';rack.shadowBlur=3;rack.shadowOffsetX=3;rack.fill();rack.shadowColor='transparent';
-        const edge=rack.createLinearGradient(x-15,0,x+15,0);edge.addColorStop(0,value('--dark'));edge.addColorStop(.3,value('--rim'));edge.addColorStop(.68,value('--bright'));edge.addColorStop(.85,value('--stone'));edge.addColorStop(1,value('--dark'));
+        const edge=rack.createLinearGradient(x-15,0,x+15,0);edge.addColorStop(0,value('--dark'));edge.addColorStop(.3,value('--rim'));edge.addColorStop(.55,light);edge.addColorStop(.82,base);edge.addColorStop(1,value('--dark'));
         rack.fillStyle=edge;rack.fill();rack.strokeStyle='#010504b3';rack.lineWidth=1.5;rack.stroke();
-        rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);rack.strokeStyle='#ffffff75';rack.lineWidth=1.2;rack.stroke();
+        rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);rack.strokeStyle='#f8dfac52';rack.lineWidth=1.2;rack.stroke();
       }
       const vertical=doc.createElement('canvas');vertical.width=64;vertical.height=544;const v=vertical.getContext('2d');v.translate(64,0);v.rotate(Math.PI/2);v.drawImage(stock,0,0);
-      rules.push(`.${color}{--disc-image:url("${canvas.toDataURL()}");--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")}`);
+      rules.push(`:root{--stone-${color}:url("${canvas.toDataURL()}")}.${color}{--disc-image:var(--stone-${color});--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")}`);
     }
     style.textContent = rules.join('\n'); doc.head.append(style); doc.body.classList.add('stone-textures');
   } finally { probe.remove(); }
@@ -1198,6 +1180,52 @@ function createHeldStonePointer(surface, element, { frame = requestAnimationFram
   };
 }
 
+// Only the hovered/focused move is evaluated. CSS crossfades shared stone
+// textures; there are no polling timers, extra stones, or board mutations.
+function createCapturePreview(surface) {
+  let enabled = false, cells = [], resolve = () => [], current = null, marked = [], target = null;
+  function clear() {
+    for (const cell of marked) cell.classList.remove('capture-preview');
+    marked = [];
+    if (target) {
+      target.classList.remove('capture-target');
+      target.removeAttribute('data-capture-count');
+      if (target.classList.contains('legal-hint')) target.setAttribute('aria-description', 'ここに置けます');
+      else target.removeAttribute('aria-description');
+      target = null;
+    }
+  }
+  function hide() { clear(); current = null; }
+  function show(index) {
+    if (!enabled || index === current) return;
+    clear(); current = index;
+    if (index === null) return;
+    const flips = resolve(index);
+    if (!flips.length || !cells[index]) return;
+    marked = flips.map(i => cells[i]);
+    for (const cell of marked) cell.classList.add('capture-preview');
+    target = cells[index]; target.classList.add('capture-target');
+    target.setAttribute('data-capture-count', String(flips.length));
+    target.setAttribute('aria-description', `ここに置くと相手の石を${flips.length}枚取れます`);
+  }
+  function indexOf(event) {
+    const cell = event.target.closest?.('.cell');
+    return cell && surface.contains(cell) ? Number(cell.dataset.index) : null;
+  }
+  function pointer(event) { if (event.pointerType === 'touch') { hide(); return; } show(indexOf(event)); }
+  function focus(event) { if (event.target.matches?.(':focus-visible')) show(indexOf(event)); }
+  const handlers = { pointermove:pointer, pointerleave:hide, pointercancel:hide, focusin:focus, focusout:hide };
+  for (const [type, handler] of Object.entries(handlers)) surface.addEventListener(type, handler, { passive:true });
+  return {
+    sync(options) {
+      hide(); enabled = options.enabled; cells = options.cells; resolve = options.resolve;
+      surface.style.setProperty('--capture-image', `var(--stone-${options.color})`);
+    },
+    hide,
+    destroy() { hide(); for (const [type, handler] of Object.entries(handlers)) surface.removeEventListener(type, handler); }
+  };
+}
+
 // Only game-time work belongs here; menu controls keep using ordinary timers.
 function createGameClock({ now = () => performance.now(), schedule = setTimeout, unschedule = clearTimeout } = {}) {
   const jobs = new Map();
@@ -1229,12 +1257,13 @@ function createGameClock({ now = () => performance.now(), schedule = setTimeout,
 
 
 
+
 const $ = s => document.querySelector(s);
 const ui = { home: $('#home'), game: $('#game'), board: $('#board'), turn: $('#turn'), scores: $('#scores'), notice: $('#notice'), live: $('#live'), result: $('#result-dialog') };
 const STORAGE = { prefs: 'four-color-othello.preferences', profile: 'four-color-othello.profile' };
 function normalizePreferences(raw = {}) {
   raw = raw && typeof raw === 'object' ? raw : {};
-  return { volume: typeof raw.volume === 'number' && Number.isFinite(raw.volume) ? Math.min(1,Math.max(0,raw.volume)) : .75, sound: typeof raw.sound === 'boolean' ? raw.sound : true, music: typeof raw.music === 'boolean' ? raw.music : true, reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : matchMedia('(prefers-reduced-motion: reduce)').matches, hints: raw.hints === true, difficulty: Object.hasOwn(DIFFICULTIES, raw.difficulty) ? raw.difficulty : 'normal', size: BOARD_SIZES.includes(raw.size) ? raw.size : 8 };
+  return { volume: typeof raw.volume === 'number' && Number.isFinite(raw.volume) ? Math.min(1,Math.max(0,raw.volume)) : .75, sound: typeof raw.sound === 'boolean' ? raw.sound : true, reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : matchMedia('(prefers-reduced-motion: reduce)').matches, hints: raw.hints === true, difficulty: Object.hasOwn(DIFFICULTIES, raw.difficulty) ? raw.difficulty : 'normal', size: BOARD_SIZES.includes(raw.size) ? raw.size : 8 };
 }
 function readSave(key) { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } }
 let preferences = normalizePreferences(readSave(STORAGE.prefs));
@@ -1244,6 +1273,7 @@ const stoneAudio = createStoneAudio(() => preferences, () => new (window.AudioCo
 const heldElement = document.createElement('i');
 heldElement.hidden=true;heldElement.setAttribute('aria-hidden','true');document.body.append(heldElement);
 const heldPointer = createHeldStonePointer(ui.board,heldElement);
+const capturePreview = createCapturePreview(ui.board);
 let heldSize=40;
 function syncHeldPointer() {
   const humanTurn=state.phase==='playing'&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
@@ -1252,8 +1282,8 @@ function syncHeldPointer() {
 function measureHeldStone() { heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
 if(window.ResizeObserver)new ResizeObserver(measureHeldStone).observe(ui.board);
 window.addEventListener('resize',measureHeldStone,{passive:true});
-window.addEventListener('scroll',()=>heldPointer.hide(),{passive:true});
-window.addEventListener('blur',()=>heldPointer.hide());
+window.addEventListener('scroll',()=>{heldPointer.hide();capturePreview.hide();},{passive:true});
+window.addEventListener('blur',()=>{heldPointer.hide();capturePreview.hide();});
 const gameClock = createGameClock();
 const cellEffects = createCellEffects(gameClock.schedule,gameClock.clear);
 const pausedAnimations = new Set(), dialogStack = [];
@@ -1271,7 +1301,7 @@ const matchPlayers = () => PLAYERS.slice(0,state.colors.length);
 const winningPlayers = () => winners(state.board,state.colors.length);
 const active = run => run === epoch && !['home', 'ended'].includes(state.phase);
 function cancelRun() {
-  heldPointer.hide(); stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
+  heldPointer.hide(); capturePreview.hide(); stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
   ui.board.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel());
   cells.forEach(cell => cell.classList.remove('is-flipping'));
   pausedAnimations.clear();gameClock.reset();gamePaused=false;ui.game.classList.remove('is-paused');
@@ -1358,13 +1388,15 @@ function renderStatus() {
   updateInputState();
 }
 function updateInputState() {
+  capturePreview.hide();
   syncHeldPointer();
   ui.game.dataset.phase = state.phase;
   ui.board.setAttribute('aria-busy', String(['intro', 'animating', 'thinking'].includes(state.phase)));
-  const canPlay = state.phase === 'playing' && !isPaused();
+  const canPlay = state.phase === 'playing' && !isPaused() && !document.hidden && (state.mode === 'friends' || state.player === state.human);
   const available = canPlay && preferences.hints ? turnMoves(state.board,state.player) : [];
   const hints = new Set(canPlay && preferences.hints ? available : []);
   cells.forEach((cell, i) => { const disabled = String(!canPlay || state.board[i] !== null); if (cell.getAttribute('aria-disabled') !== disabled) cell.setAttribute('aria-disabled', disabled); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', 'ここに置けます'); else cell.removeAttribute('aria-description'); });
+  capturePreview.sync({ enabled:canPlay && preferences.hints, cells, color:state.colors[state.player].id, resolve:index => hints.has(index) ? captures(state.board,state.player,index) : [] });
 }
 function hideNotice() { gameClock.clear(noticeTimer); ui.notice.hidden = true; ui.notice.textContent = ''; }
 function showNotice(text, detail = '') {
@@ -1580,7 +1612,7 @@ function setupNotes() {
   $('#color-note').textContent = '持っている色から１色、手番は１〜４番目から毎回抽選。購入した色も候補に加わります。';
   $('#setup-reward').textContent = setupMode === 'solo' ? `勝つと ${matchReward(difficulty, size)} コイン。最多で引き分けると半分。` : setupCount === 2 ? '黒 → 白の順に、２人で交代します。' : '赤 → 青 → 黄 → 緑の順に、みんなで交代します。';
 }
-function syncSettings() { stoneAudio.sync(); $('#sound-volume').value = String(Math.round(preferences.volume * 100)); $('#volume-value').textContent = `${Math.round(preferences.volume * 100)}%`; $('#sound-volume').disabled = $('#sound-preview').disabled = !preferences.sound; $('#music-setting').checked=preferences.music; document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
+function syncSettings() { stoneAudio.sync(); $('#sound-volume').value = String(Math.round(preferences.volume * 100)); $('#volume-value').textContent = `${Math.round(preferences.volume * 100)}%`; $('#sound-volume').disabled = $('#sound-preview').disabled = !preferences.sound; document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
 let previewItem='classic', previewTheme='classic', previewColor='red';
 function previewBoard(color='red') {
   const colors=playerColors(color).colors;
@@ -1657,10 +1689,10 @@ $('#resign-confirm').addEventListener('click', resignGame);
 $('#game-rules').addEventListener('click', () => openDialog('#rules-dialog')); $('#game-settings').addEventListener('click', () => openDialog('#settings-dialog'));
 document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
 document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', () => { const i=dialogStack.indexOf(dialog);if(i>=0)dialogStack.splice(i,1);wake(); }));
-for (const [id,key] of [['sound-setting','sound'],['music-setting','music'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; stoneAudio.unlock(); syncSettings(); persist(); updateInputState(); });
+for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; stoneAudio.unlock(); syncSettings(); persist(); updateInputState(); });
 document.addEventListener('pointerdown', () => stoneAudio.unlock(), { passive:true });
 document.addEventListener('keydown', () => stoneAudio.unlock());
-document.addEventListener('visibilitychange', () => { if (document.hidden) {heldPointer.hide();stoneAudio.suspend();} else stoneAudio.unlock(); });
+document.addEventListener('visibilitychange', () => { if (document.hidden) {heldPointer.hide();capturePreview.hide();stoneAudio.suspend();} else stoneAudio.unlock(); updateInputState(); });
 $('#sound-volume').addEventListener('input', event => { preferences.volume = Number(event.target.value) / 100; syncSettings(); persist(); });
 $('#sound-preview').addEventListener('click', async () => {
   stoneAudio.unlock(); await wallDelay(30);

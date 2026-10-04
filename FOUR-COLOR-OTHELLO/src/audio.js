@@ -31,16 +31,8 @@ export function stoneWave(sampleRate = 48000, kind = 'place', seed = 1) {
 }
 
 export function createStoneAudio(options, contextFactory, { schedule = setTimeout, unschedule = clearTimeout } = {}) {
-  let context, master, musicGain, limiter, count = 0, lastFlip = -1, chordGeneration = 0, musicTimer = 0, chordIndex = 0;
-  const voices = new Map(), musicVoices = new Map(), cache = new Map();
-  const progression = [
-    [261.63,329.63,392,493.88,587.33], [220,261.63,329.63,392,493.88],
-    [174.61,220,261.63,329.63,392], [196,246.94,293.66,349.23,440]
-  ];
-  function stopMusic() {
-    unschedule(musicTimer); musicTimer = 0;
-    for (const release of musicVoices.values()) release();
-  }
+  let context, master, limiter, count = 0, lastFlip = -1, chordGeneration = 0;
+  const voices = new Map(), cache = new Map();
   function releaseAfter(source, outputs, pool, lifetime) {
     let timer, released = false;
     const release = () => {
@@ -53,45 +45,18 @@ export function createStoneAudio(options, contextFactory, { schedule = setTimeou
     timer = schedule(release, lifetime);
     return release;
   }
-  function scheduleChord() {
-    if (!options().music || context?.state !== 'running') return;
-    const notes = progression[chordIndex++ % progression.length], now = context.currentTime;
-    const chord = [...notes.slice(0,4), notes[0] / 2];
-    for (const [i,frequency] of chord.entries()) {
-      const oscillator = context.createOscillator(), gain = context.createGain();
-      const at = now + i * (i === 4 ? .15 : .42), pad = i === 4;
-      oscillator.type = pad ? 'sine' : 'triangle';
-      oscillator.frequency.value = pad ? frequency * 1.003 : frequency;
-      const level = options().volume * (pad ? .026 : .018);
-      gain.gain.setValueAtTime(.0001,at);
-      gain.gain.exponentialRampToValueAtTime(Math.max(.0002,level),at + (pad ? 2.2 : .9));
-      gain.gain.setValueAtTime(Math.max(.0002,level),at + 6.8);
-      gain.gain.exponentialRampToValueAtTime(.0001,at + 8.25);
-      oscillator.connect(gain); gain.connect(musicGain);
-      oscillator.start(at); oscillator.stop(at + 8.4);
-      releaseAfter(oscillator,[gain],musicVoices,Math.ceil((at-now+8.6)*1000));
-      while (musicVoices.size > 10) musicVoices.values().next().value();
-    }
-    musicTimer = schedule(scheduleChord,8500);
-  }
-  function startMusic() {
-    if (!options().music || context?.state !== 'running' || musicTimer) return;
-    scheduleChord();
-  }
   function unlock() {
-    if (!options().sound && !options().music) return;
+    if (!options().sound) return;
     try {
       if (!context) {
         context = contextFactory();
-        master = context.createGain(); musicGain = context.createGain(); limiter = context.createDynamicsCompressor();
+        master = context.createGain(); limiter = context.createDynamicsCompressor();
         limiter.threshold.value = -10; limiter.knee.value = 8; limiter.ratio.value = 8;
         limiter.attack.value = .002; limiter.release.value = .07;
-        master.connect(limiter); musicGain.connect(limiter); limiter.connect(context.destination);
+        master.connect(limiter); limiter.connect(context.destination);
       }
       master.gain.setTargetAtTime(options().sound ? options().volume * .78 : 0, context.currentTime,.025);
-      musicGain.gain.setTargetAtTime(options().music ? .72 * options().volume : 0, context.currentTime,.15);
-      if (context.state === 'suspended') void context.resume().then(startMusic).catch(() => {});
-      else startMusic();
+      if (context.state === 'suspended') void context.resume().catch(() => {});
     } catch { /* Audio must never prevent playing. */ }
   }
   function track(source, outputs, lifetime = 350) {
@@ -127,7 +92,7 @@ export function createStoneAudio(options, contextFactory, { schedule = setTimeou
     chordGeneration++; lastFlip = -1;
     for (const release of voices.values()) release();
   }
-  function suspend() { stop(); stopMusic(); }
+  function suspend() { stop(); }
   function celebrate() {
     if (!options().sound) return;
     unlock(); if (!context || context.state !== 'running') return;
@@ -142,9 +107,7 @@ export function createStoneAudio(options, contextFactory, { schedule = setTimeou
   }
   function sync() {
     if (!options().sound || !options().volume) stop();
-    if (musicGain) musicGain.gain.setTargetAtTime(options().music ? .72 * options().volume : 0,context.currentTime,.15);
     if (master) master.gain.setTargetAtTime(options().sound ? options().volume * .78 : 0,context.currentTime,.012);
-    if (options().music) startMusic(); else stopMusic();
   }
-  return { unlock, hit, stop, suspend, celebrate, sync, status: () => ({ state:context?.state ?? 'idle', contacts:count, active:voices.size, music:options().music, musicActive:musicVoices.size>0 }) };
+  return { unlock, hit, stop, suspend, celebrate, sync, status: () => ({ state:context?.state ?? 'idle', contacts:count, active:voices.size }) };
 }

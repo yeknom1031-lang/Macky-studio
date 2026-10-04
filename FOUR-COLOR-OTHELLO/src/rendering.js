@@ -9,20 +9,33 @@ export function installStoneTextures(doc, colors, computed = getComputedStyle) {
       canvas.width = canvas.height = 256;
       const ctx = canvas.getContext('2d'); if (!ctx) return;
       const value = key => css.getPropertyValue(key).trim();
-      ctx.beginPath(); ctx.ellipse(128, 139, 110, 107, 0, 0, Math.PI * 2);
-      ctx.fillStyle = value('--dark'); ctx.shadowColor = '#0009'; ctx.shadowBlur = 9; ctx.shadowOffsetY = 5; ctx.fill();
-      ctx.shadowColor = 'transparent';
-      ctx.beginPath(); ctx.arc(128, 123, 109, 0, Math.PI * 2);
-      const face = ctx.createLinearGradient(55, 28, 185, 226);
-      face.addColorStop(0, value('--bright')); face.addColorStop(.28, value('--stone')); face.addColorStop(.78, value('--stone')); face.addColorStop(1, value('--rim'));
-      ctx.fillStyle = face; ctx.fill(); ctx.strokeStyle = value('--rim'); ctx.lineWidth = 3; ctx.stroke();
-      ctx.beginPath(); ctx.arc(128, 122, 101, Math.PI * 1.05, Math.PI * 1.91);
-      ctx.strokeStyle = '#ffffff80'; ctx.lineWidth = 2; ctx.stroke();
-      ctx.save();ctx.translate(112,66);ctx.rotate(-.32);ctx.scale(1,.48);
-      const shine=ctx.createRadialGradient(-16,-12,0,0,0,78);
-      shine.addColorStop(0,'#ffffff91');shine.addColorStop(.36,'#ffffff36');shine.addColorStop(1,'#ffffff00');
-      ctx.fillStyle=shine;ctx.beginPath();ctx.arc(0,0,78,0,Math.PI*2);ctx.fill();ctx.restore();
-      ctx.beginPath();ctx.arc(128,123,97,0,Math.PI*2);ctx.strokeStyle='#ffffff16';ctx.lineWidth=1;ctx.stroke();
+      // Warm, broad upper-left light and a low, flat resin face match the lounge.
+      const tint = (hex, light, amount) => {
+        const rgb = hex.replace('#','');
+        const expanded = rgb.length === 3 ? [...rgb].map(c=>c+c).join('') : rgb;
+        return `rgb(${[0,2,4].map((offset,i)=>Math.round(parseInt(expanded.slice(offset,offset+2),16)*(1-amount)+light[i]*amount)).join(',')})`;
+      };
+      const base = tint(value('--stone'),[92,79,55],.18);
+      const light = tint(value('--stone'),[238,215,172],.29);
+      const edge = tint(value('--rim'),[56,45,29],.24);
+      ctx.beginPath(); ctx.ellipse(129, 138, 108, 102, 0, 0, Math.PI * 2);
+      ctx.fillStyle = value('--dark'); ctx.shadowColor = '#00000085'; ctx.shadowBlur = 13; ctx.shadowOffsetX = 6; ctx.shadowOffsetY = 7; ctx.fill();
+      ctx.shadowColor = 'transparent'; ctx.shadowOffsetX = ctx.shadowOffsetY = 0;
+      const side = ctx.createLinearGradient(0,112,0,241);
+      side.addColorStop(0,edge); side.addColorStop(.73,edge); side.addColorStop(1,value('--dark'));
+      ctx.fillStyle=side;ctx.fill();
+      ctx.beginPath(); ctx.ellipse(126, 121, 107, 102, 0, 0, Math.PI * 2);
+      const face = ctx.createLinearGradient(40, 20, 181, 225);
+      face.addColorStop(0, light); face.addColorStop(.38, base); face.addColorStop(.8, base); face.addColorStop(1, edge);
+      ctx.fillStyle=face;ctx.fill();ctx.strokeStyle=edge;ctx.lineWidth=2;ctx.stroke();
+      ctx.save();ctx.translate(100,64);ctx.rotate(-.35);ctx.scale(1,.42);
+      const shine=ctx.createRadialGradient(0,0,8,0,0,86);
+      shine.addColorStop(0,'#fff1d63d');shine.addColorStop(.5,'#ffebc61b');shine.addColorStop(1,'#ffebc600');
+      ctx.fillStyle=shine;ctx.beginPath();ctx.arc(0,0,86,0,Math.PI*2);ctx.fill();ctx.restore();
+      ctx.beginPath();ctx.ellipse(126,121,104,99,0,Math.PI*1.02,Math.PI*1.91);
+      ctx.strokeStyle='#ffebbd65';ctx.lineWidth=1.5;ctx.stroke();
+      ctx.beginPath();ctx.ellipse(126,121,103,98,0,.14,Math.PI*.8);
+      ctx.strokeStyle='#080b0738';ctx.lineWidth=2;ctx.stroke();
       // A whole storage row is one shared bitmap, irrespective of board size.
       const stock=doc.createElement('canvas');stock.width=544;stock.height=64;
       const rack=stock.getContext('2d');
@@ -30,12 +43,12 @@ export function installStoneTextures(doc, colors, computed = getComputedStyle) {
         const x=24+i*17;
         rack.beginPath();rack.ellipse(x,32,18,27,0,0,Math.PI*2);
         rack.fillStyle=value('--dark');rack.shadowColor='#000b';rack.shadowBlur=3;rack.shadowOffsetX=3;rack.fill();rack.shadowColor='transparent';
-        const edge=rack.createLinearGradient(x-15,0,x+15,0);edge.addColorStop(0,value('--dark'));edge.addColorStop(.3,value('--rim'));edge.addColorStop(.68,value('--bright'));edge.addColorStop(.85,value('--stone'));edge.addColorStop(1,value('--dark'));
+        const edge=rack.createLinearGradient(x-15,0,x+15,0);edge.addColorStop(0,value('--dark'));edge.addColorStop(.3,value('--rim'));edge.addColorStop(.55,light);edge.addColorStop(.82,base);edge.addColorStop(1,value('--dark'));
         rack.fillStyle=edge;rack.fill();rack.strokeStyle='#010504b3';rack.lineWidth=1.5;rack.stroke();
-        rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);rack.strokeStyle='#ffffff75';rack.lineWidth=1.2;rack.stroke();
+        rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);rack.strokeStyle='#f8dfac52';rack.lineWidth=1.2;rack.stroke();
       }
       const vertical=doc.createElement('canvas');vertical.width=64;vertical.height=544;const v=vertical.getContext('2d');v.translate(64,0);v.rotate(Math.PI/2);v.drawImage(stock,0,0);
-      rules.push(`.${color}{--disc-image:url("${canvas.toDataURL()}");--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")}`);
+      rules.push(`:root{--stone-${color}:url("${canvas.toDataURL()}")}.${color}{--disc-image:var(--stone-${color});--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")}`);
     }
     style.textContent = rules.join('\n'); doc.head.append(style); doc.body.classList.add('stone-textures');
   } finally { probe.remove(); }

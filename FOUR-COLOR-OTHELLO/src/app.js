@@ -1,4 +1,4 @@
-import { initialBoard, PLAYERS, BOARD_SIZES, legalMoves, firstRoundMoves, playMove, nextTurn, scores, winners } from './engine.js';
+import { initialBoard, PLAYERS, BOARD_SIZES, captures, legalMoves, firstRoundMoves, playMove, nextTurn, scores, winners } from './engine.js';
 import { createGameClock } from './game-clock.js';
 import { createOniRunner } from './ai-runner.js';
 import { chooseAIMove, DIFFICULTIES } from './ai.js';
@@ -6,6 +6,7 @@ import { canResign, endByResignation } from './match.js';
 import { CATALOG, normalizeProfile, ownsItem, purchaseItem, equipItem, matchReward, awardMatch, recordResignation, playerColors, randomSoloLineup } from './progression.js';
 
 import { createStoneAudio } from './audio.js';
+import { createCapturePreview } from './capture-preview.js';
 import { installStoneTextures, paintStone, createCellEffects, createHeldStonePointer } from './rendering.js';
 
 const $ = s => document.querySelector(s);
@@ -13,7 +14,7 @@ const ui = { home: $('#home'), game: $('#game'), board: $('#board'), turn: $('#t
 const STORAGE = { prefs: 'four-color-othello.preferences', profile: 'four-color-othello.profile' };
 function normalizePreferences(raw = {}) {
   raw = raw && typeof raw === 'object' ? raw : {};
-  return { volume: typeof raw.volume === 'number' && Number.isFinite(raw.volume) ? Math.min(1,Math.max(0,raw.volume)) : .75, sound: typeof raw.sound === 'boolean' ? raw.sound : true, music: typeof raw.music === 'boolean' ? raw.music : true, reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : matchMedia('(prefers-reduced-motion: reduce)').matches, hints: raw.hints === true, difficulty: Object.hasOwn(DIFFICULTIES, raw.difficulty) ? raw.difficulty : 'normal', size: BOARD_SIZES.includes(raw.size) ? raw.size : 8 };
+  return { volume: typeof raw.volume === 'number' && Number.isFinite(raw.volume) ? Math.min(1,Math.max(0,raw.volume)) : .75, sound: typeof raw.sound === 'boolean' ? raw.sound : true, reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : matchMedia('(prefers-reduced-motion: reduce)').matches, hints: raw.hints === true, difficulty: Object.hasOwn(DIFFICULTIES, raw.difficulty) ? raw.difficulty : 'normal', size: BOARD_SIZES.includes(raw.size) ? raw.size : 8 };
 }
 function readSave(key) { try { return JSON.parse(localStorage.getItem(key)); } catch { return null; } }
 let preferences = normalizePreferences(readSave(STORAGE.prefs));
@@ -23,6 +24,7 @@ const stoneAudio = createStoneAudio(() => preferences, () => new (window.AudioCo
 const heldElement = document.createElement('i');
 heldElement.hidden=true;heldElement.setAttribute('aria-hidden','true');document.body.append(heldElement);
 const heldPointer = createHeldStonePointer(ui.board,heldElement);
+const capturePreview = createCapturePreview(ui.board);
 let heldSize=40;
 function syncHeldPointer() {
   const humanTurn=state.phase==='playing'&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
@@ -31,8 +33,8 @@ function syncHeldPointer() {
 function measureHeldStone() { heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
 if(window.ResizeObserver)new ResizeObserver(measureHeldStone).observe(ui.board);
 window.addEventListener('resize',measureHeldStone,{passive:true});
-window.addEventListener('scroll',()=>heldPointer.hide(),{passive:true});
-window.addEventListener('blur',()=>heldPointer.hide());
+window.addEventListener('scroll',()=>{heldPointer.hide();capturePreview.hide();},{passive:true});
+window.addEventListener('blur',()=>{heldPointer.hide();capturePreview.hide();});
 const gameClock = createGameClock();
 const cellEffects = createCellEffects(gameClock.schedule,gameClock.clear);
 const pausedAnimations = new Set(), dialogStack = [];
@@ -50,7 +52,7 @@ const matchPlayers = () => PLAYERS.slice(0,state.colors.length);
 const winningPlayers = () => winners(state.board,state.colors.length);
 const active = run => run === epoch && !['home', 'ended'].includes(state.phase);
 function cancelRun() {
-  heldPointer.hide(); stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
+  heldPointer.hide(); capturePreview.hide(); stoneAudio.stop(); oniRunner.cancel(); aiAnalysis = null; cellEffects.clear(); ++epoch; const waiters = resumeWaiters; resumeWaiters = []; waiters.forEach(resolve => resolve());
   ui.board.getAnimations?.({ subtree: true }).forEach(animation => animation.cancel());
   cells.forEach(cell => cell.classList.remove('is-flipping'));
   pausedAnimations.clear();gameClock.reset();gamePaused=false;ui.game.classList.remove('is-paused');
@@ -137,13 +139,15 @@ function renderStatus() {
   updateInputState();
 }
 function updateInputState() {
+  capturePreview.hide();
   syncHeldPointer();
   ui.game.dataset.phase = state.phase;
   ui.board.setAttribute('aria-busy', String(['intro', 'animating', 'thinking'].includes(state.phase)));
-  const canPlay = state.phase === 'playing' && !isPaused();
+  const canPlay = state.phase === 'playing' && !isPaused() && !document.hidden && (state.mode === 'friends' || state.player === state.human);
   const available = canPlay && preferences.hints ? turnMoves(state.board,state.player) : [];
   const hints = new Set(canPlay && preferences.hints ? available : []);
   cells.forEach((cell, i) => { const disabled = String(!canPlay || state.board[i] !== null); if (cell.getAttribute('aria-disabled') !== disabled) cell.setAttribute('aria-disabled', disabled); cell.classList.toggle('legal-hint', hints.has(i)); if (hints.has(i)) cell.setAttribute('aria-description', 'ここに置けます'); else cell.removeAttribute('aria-description'); });
+  capturePreview.sync({ enabled:canPlay && preferences.hints, cells, color:state.colors[state.player].id, resolve:index => hints.has(index) ? captures(state.board,state.player,index) : [] });
 }
 function hideNotice() { gameClock.clear(noticeTimer); ui.notice.hidden = true; ui.notice.textContent = ''; }
 function showNotice(text, detail = '') {
@@ -359,7 +363,7 @@ function setupNotes() {
   $('#color-note').textContent = '持っている色から１色、手番は１〜４番目から毎回抽選。購入した色も候補に加わります。';
   $('#setup-reward').textContent = setupMode === 'solo' ? `勝つと ${matchReward(difficulty, size)} コイン。最多で引き分けると半分。` : setupCount === 2 ? '黒 → 白の順に、２人で交代します。' : '赤 → 青 → 黄 → 緑の順に、みんなで交代します。';
 }
-function syncSettings() { stoneAudio.sync(); $('#sound-volume').value = String(Math.round(preferences.volume * 100)); $('#volume-value').textContent = `${Math.round(preferences.volume * 100)}%`; $('#sound-volume').disabled = $('#sound-preview').disabled = !preferences.sound; $('#music-setting').checked=preferences.music; document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
+function syncSettings() { stoneAudio.sync(); $('#sound-volume').value = String(Math.round(preferences.volume * 100)); $('#volume-value').textContent = `${Math.round(preferences.volume * 100)}%`; $('#sound-volume').disabled = $('#sound-preview').disabled = !preferences.sound; document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
 let previewItem='classic', previewTheme='classic', previewColor='red';
 function previewBoard(color='red') {
   const colors=playerColors(color).colors;
@@ -436,10 +440,10 @@ $('#resign-confirm').addEventListener('click', resignGame);
 $('#game-rules').addEventListener('click', () => openDialog('#rules-dialog')); $('#game-settings').addEventListener('click', () => openDialog('#settings-dialog'));
 document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
 document.querySelectorAll('dialog').forEach(dialog => dialog.addEventListener('close', () => { const i=dialogStack.indexOf(dialog);if(i>=0)dialogStack.splice(i,1);wake(); }));
-for (const [id,key] of [['sound-setting','sound'],['music-setting','music'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; stoneAudio.unlock(); syncSettings(); persist(); updateInputState(); });
+for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints']]) $('#' + id).addEventListener('change', event => { preferences[key] = event.target.checked; stoneAudio.unlock(); syncSettings(); persist(); updateInputState(); });
 document.addEventListener('pointerdown', () => stoneAudio.unlock(), { passive:true });
 document.addEventListener('keydown', () => stoneAudio.unlock());
-document.addEventListener('visibilitychange', () => { if (document.hidden) {heldPointer.hide();stoneAudio.suspend();} else stoneAudio.unlock(); });
+document.addEventListener('visibilitychange', () => { if (document.hidden) {heldPointer.hide();capturePreview.hide();stoneAudio.suspend();} else stoneAudio.unlock(); updateInputState(); });
 $('#sound-volume').addEventListener('input', event => { preferences.volume = Number(event.target.value) / 100; syncSettings(); persist(); });
 $('#sound-preview').addEventListener('click', async () => {
   stoneAudio.unlock(); await wallDelay(30);

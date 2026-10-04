@@ -44,7 +44,7 @@
     <fieldset id="difficulty-field" class="choice-field"><legend>コンピューターの強さ</legend><div id="difficulty-options" class="choices"></div><p id="difficulty-description" class="field-note"></p></fieldset>
     <fieldset class="choice-field"><legend>ボードの広さ</legend><div id="size-options" class="choices"></div><p id="size-note" class="field-note">8 × 8 が基本。どの広さも中央の16枚からスタート。</p></fieldset>
     <fieldset id="color-field" class="choice-field"><legend>色と手番はランダム</legend><div id="color-options" class="color-options"></div><p id="color-note" class="field-note"></p></fieldset>
-    <label class="setting compact"><span>置ける場所を表示する<small>あなたの番に、目印が出ます</small></span><input id="setup-hints" type="checkbox" role="switch"></label>
+    <label class="setting compact"><span>置ける場所を表示する<small>目印と、ポインターを合わせたときに取れる石・枚数を表示</small></span><input id="setup-hints" type="checkbox" role="switch"></label>
     <div class="setup-footer"><p id="setup-reward" class="reward-note"></p><button id="launch" class="primary">この設定で遊ぶ</button></div>
   </div></dialog>
   <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-content">
@@ -57,14 +57,13 @@
     <h3>勝利とコイン</h3><p>ひとりモードで勝つとコインがもらえます。強さ・広さによって30〜200コイン。最多で引き分けた場合は半分です。４人モードや途中で終了した対局は対象外。ボードは購入後に選んで着せ替えできます。購入した駒の色は次の対局から抽選候補に加わります。見た目は強さに影響しません。</p>
     <h3>途中で降参する</h3><p>対局メニューの「降参する」から確認すると、その対局を終了します。ひとりモードでは負けとして１対局を記録し、コインは増えません。４人モードでは現在の手番の色が降参し、卓全体の対局を終了します。途中の枚数で勝者は決めません。</p>
     <h3>鬼レベル</h3><p>ひとり対戦で「鬼」を選ぶと、１手に最大５秒を使って深く考えます。２色は相手の最善手を見込み、４色はそれぞれの色の利益を見込んで読みます。終盤では最後まで読むことを狙います。思考中もメニューを開いて降参・終了できます。鬼に勝つと160〜200コイン。</p>
-    <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
+    <h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。オンのとき、置けるマスにポインターを合わせると取れる相手の石が自分の色に点滅し、枚数が表示されます。矢印キーでマスを選んだときも確認できます。「動きを減らす」がオンのときは点滅せずに表示します。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
     <p class="small-note">４辺のストックは本物の予備の石をイメージした飾りです。使用枚数の制限はありません。<br>キーボード：矢印でマスを移動、Enter / Space で置く。<br>設定・コイン・購入品はこのブラウザに保存。別の端末やローカルHTMLとは自動同期されません。設定からデータを持ち運べます。</p><button class="primary" data-close>わかった</button>
   </div></dialog>
   <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">MAKE YOURSELF AT HOME</p><h2 id="settings-title">設定</h2>
-    <label class="setting"><span>置ける場所を表示する<small>人が打つ番だけ、置けるマスに目印</small></span><input id="hints-setting" type="checkbox" role="switch"></label>
+    <label class="setting"><span>置ける場所を表示する<small>置けるマスに目印。ポインターを合わせると、取れる石が自分の色に点滅</small></span><input id="hints-setting" type="checkbox" role="switch"></label>
     <label class="setting"><span>石と盤の音<small>置く音・返す音・勝利の音</small></span><input id="sound-setting" type="checkbox" role="switch" checked></label>
-    <label class="setting"><span>静かなBGM<small>操作後に流れ、タブを離れると止まります</small></span><input id="music-setting" type="checkbox" role="switch" checked></label>
     <div class="sound-controls"><label for="sound-volume">音量 <output id="volume-value" for="sound-volume">75%</output></label><input id="sound-volume" type="range" min="0" max="100" step="5" value="75"><button id="sound-preview" class="secondary">音を試す</button><p id="sound-status" class="field-note" role="status">短い着手音と、石を返す音を確かめられます。</p></div>
     <label class="setting"><span>動きを少なくする</span><input id="motion-setting" type="checkbox" role="switch"></label>
     <div class="save-section"><h3>遊んだデータを持ち運ぶ</h3><p class="field-note">コイン・購入品・設定を保存します。読み込むと現在の保存データを置き換えます。対局中の盤面は含みません。</p><div class="save-actions"><button id="export-save" class="secondary">データを書き出す</button><button id="import-save" class="secondary">データを読み込む</button></div><input id="save-file" type="file" accept="application/json,.json" hidden><p id="save-message" class="field-note" role="status"></p></div>
