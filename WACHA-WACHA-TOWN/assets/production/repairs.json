@@ -1,0 +1,1534 @@
+{
+  "sourceRows": {
+    "S02-people-09": [
+      "S02-C081",
+      "S02-C082",
+      "S02-C083",
+      "S02-C084",
+      "S02-C085",
+      "S02-C086",
+      "S02-C087",
+      "S02-C088",
+      "S02-C089"
+    ],
+    "S03-people-08": [
+      "S03-C071",
+      "S03-C072",
+      "S03-C073",
+      "S03-C074",
+      "S03-C075",
+      "S03-C076",
+      "S03-C077",
+      "S03-C079",
+      "S03-C080"
+    ],
+    "S16-people-02": [
+      "S16-C011",
+      "S16-C012",
+      "S16-C013",
+      "S16-C014",
+      "S16-C015",
+      "S16-C016",
+      "S16-C017",
+      "S16-C019",
+      "S16-C020"
+    ],
+    "S20-people-10": [
+      "S20-C091",
+      "S20-C092",
+      "S20-C093",
+      "S20-C094",
+      "S20-C095",
+      "S20-C096",
+      "S20-C097",
+      "S20-C099",
+      "S20-C100"
+    ],
+    "S21-people-06": [
+      "S21-C051",
+      "S21-C052",
+      "S21-C053",
+      "S21-C054",
+      "S21-C055",
+      "S21-C056",
+      "S21-C057",
+      "S21-C059",
+      "S21-C060"
+    ],
+    "S23-people-02": [
+      "S23-C011",
+      "S23-C012",
+      "S23-C013",
+      "S23-C014",
+      "S23-C015",
+      "S23-C016",
+      "S23-C017",
+      "S23-C018",
+      "S23-C020"
+    ]
+  },
+  "rowBoundaries": {
+    "S02-people-09": [
+      0,
+      150,
+      296,
+      430,
+      572,
+      716,
+      855,
+      1001,
+      1160,
+      1402
+    ],
+    "S03-people-08": [
+      0,
+      150,
+      298,
+      436,
+      572,
+      708,
+      845,
+      992,
+      1144,
+      1402
+    ],
+    "S16-people-02": [
+      0,
+      151,
+      285,
+      434,
+      570,
+      707,
+      842,
+      990,
+      1145,
+      1402
+    ],
+    "S20-people-10": [
+      0,
+      141,
+      282,
+      421,
+      563,
+      706,
+      849,
+      991,
+      1151,
+      1402
+    ],
+    "S21-people-06": [
+      0,
+      151,
+      286,
+      419,
+      552,
+      688,
+      832,
+      988,
+      1171,
+      1402
+    ],
+    "S23-people-02": [
+      0,
+      141,
+      282,
+      413,
+      545,
+      679,
+      818,
+      959,
+      1114,
+      1402
+    ]
+  },
+  "jobs": [
+    {
+      "id": "repair-people-01",
+      "kind": "people",
+      "rows": 2,
+      "cols": 8,
+      "stage": "mixed",
+      "characters": [
+        "S02-C090",
+        "S03-C078"
+      ],
+      "prompt": "Use case: stylized-concept. Production sprite sheet for a cute polished hand-painted storybook town game. The reference is STYLE ONLY. Create TWO NEW distinct characters in exactly TWO rows and EIGHT columns, transparent alpha. Landscape 4:1 grid. Top row is a tall, pleasantly round middle-aged garden lemonade seller with low hair bunches on each side, a split-tail green linen coat, cream apron and lemon-shaped brooch. Bottom row is a medium-height muscular middle-aged seaside botanist with LONG THICK BRAIDS, round collar and puffed sleeves, teal short jacket, trousers, botanical specimen notebook. Every cell shows the entire head, body and feet; absolutely no clipping. Row 1 columns 1-4 WALK: left foot forward, feet passing, right foot forward, feet passing; columns 5-8 ACTION: lifts lemonade pitcher, tilts to pour into glass, fills glass, offers glass. Row 2 columns 1-4 the same full-body walk sequence; columns 5-8 ACTION: opens notebook, studies a seaweed specimen in hand, writes a note, closes notebook. Same identity and scale across each row; three-quarter elevated view facing right. Clear changes in leg position for the walk, clear arm motion for the actions. No counters or scenery. Generous 15 percent clear transparent gutters between cells, full head and shoes in all SIXTEEN cells. No text, no lines, no floor, no shadows. Crisp beautifully painted miniature illustration with soft dark outlines."
+    },
+    {
+      "id": "repair-people-02",
+      "kind": "people",
+      "rows": 1,
+      "cols": 8,
+      "stage": "mixed",
+      "characters": [
+        "S16-C018"
+      ],
+      "prompt": "Use case: stylized-concept. Asset: one-row transparent animation sprite sheet for Wacha Wacha Town, a polished cute hand-painted storybook miniature town game. Create ONE NEW character in exactly ONE HORIZONTAL ROW of EIGHT equal square cells, very wide 8:1 composition. This is a middle-aged muscular museum bookbinder with a long thick curved moustache, short black hair, a distinctive ochre shirt with rolled sleeves, dark green crossed-back apron folded over at the waist, trousers and stout brown boots. Friendly round face, medium skin tone, chibi proportions, soft dark outlines, three-quarter elevated view facing right. Preserve the SAME person, size, clothes and baseline throughout all 8 full-body frames. Frames 1-4 are a real four-pose walk loop: left foot forward, passing feet, right foot forward, opposite passing feet; arms counter-swing. Frames 5-8 are a readable bookbinding action loop: holds old book, stitches spine with a small hand needle, smooths book cover, proudly lifts the finished closed book. Props held in hands only, no desk. Keep his entire head, moustache, body, feet and tools within EVERY square cell with generous clear 15% transparent gutters. Exactly eight different full-body poses on one row. Transparent alpha, no ground, no floor shadow, no labels, no text, no dividing lines. Richly painted crisp character art matching a whimsical illustrated museum setting."
+    },
+    {
+      "id": "repair-poses-01",
+      "kind": "patches",
+      "rows": 1,
+      "cols": 4,
+      "prompt": "Use case: identity-preserve. Asset: a repair animation-pose sheet for an illustrated game. Input image is the EXACT FOUR character identities in left-to-right order. Preserve each person's face, skin tone, hair, costume, proportions, painting style and outlines, changing ONLY their action pose. Output exactly ONE horizontal row with FOUR equal cells, transparent background. Cell 1: the short round elderly woman with straight gray bob, purple robe, pale mauve sleeves and brown waist apron smiles and holds a small skewer of roasted food at chest height, turning it to inspect; both feet, head and hands are visible; no firepit. Cell 2: the petite young woman with high black hair bun and navy fishing outfit is casting a COMPACT fishing rod diagonally upward, leaning forward slightly, with both feet and full face visible; entire rod fits her cell. Cell 3: the muscular short curly-haired brown-skinned man with olive vest, cream shirt and brown trousers is seated comfortably in a small dark green fabric hammock, holding its edge and stretching his legs; his entire smiling face, torso and both shoes MUST remain clearly visible; no empty hammock. Cell 4: the young brown-skinned woman with long braid, large blue hair ribbon, blue short jacket and cream tunic reels in a SMALL silver fish with a short compact fishing rod, full head, body, both feet and hands clearly visible; fish stays inside her cell. All four complete people must be present. Match the reference's cute polished hand-painted storybook chibi art and slightly elevated three-quarter right-facing camera. Generous transparent 15 percent gutters, every person and hand-held prop fully inside each cell. No text, no labels, no floor, no shadows, no scenery, no extra people. This is four individual action sprites, not a scene."
+    },
+    {
+      "id": "repair-poses-02",
+      "kind": "patches",
+      "rows": 4,
+      "cols": 4,
+      "prompt": "Use case: identity-preserve. Production repair walk animation sheet for a cute hand-painted storybook winter game. Input image shows EXACT four characters left to right; preserve their faces, proportions, clothes and painterly outlined chibi style. Turn those four identities into FOUR ROWS and FOUR COLUMNS, 16 clearly separated square cells. Row1: round middle-aged person with large brown fur earflap hat, brick red winter jacket, mustard scarf, black mittens. Row2: muscular curly black-haired dark moustached man, olive puffy vest over beige sweater, black mittens. Row3: slim bald elderly man with small gray side hair, blue coat, purple scarf, black mittens. Row4: plump red curly-haired woman in dark green coat, large fluffy cream fur collar, red mittens. Every row shows exactly four poses of the SAME person WALKING while pulling a SMALL wooden sled by a short rope BEHIND them, facing right three-quarter slightly elevated. Left foot forward; feet passing; right foot forward; opposite passing. The entire head, hair or hat, body, both shoes, rope, and entire sled MUST be fully visible in EVERY cell. Sled is SMALL enough to stay in its character's square cell with a 20% empty transparent border on ALL sides. Every sprite has its own sled; do not place sleds between cells. Consistent scale, camera and foot baseline across each row. Keep original cute storybook painting style. Transparent alpha. No snow, no ground, no scenery, no text, no labels, no extra people. Exactly16 separate full-body sprites in4x4grid."
+    },
+    {
+      "id": "repair-people-03",
+      "kind": "people",
+      "rows": 3,
+      "cols": 8,
+      "stage": "mixed",
+      "characters": [
+        "S20-C098",
+        "S21-C058",
+        "S23-C019"
+      ],
+      "prompt": "Use case: stylized-concept. Production animation sprite sheet for Wacha Wacha Town, a richly painted cute storybook miniature town game. Exactly THREE NEW distinct characters in THREE ROWS and EIGHT equal columns. 8x3 grid, transparent alpha, generous 15% completely clear gutters between EVERY cell. Soft dark outlines, compact chibi bodies with clear faces, three-quarter elevated right-facing view. Each row preserves one character's exact face, outfit, proportions, size and baseline through eight FULL BODY poses. Row 1: elderly, medium height, sturdy muscular ocean-research photographer with a round navy brimmed bucket hat over cropped silver hair, square blue camera bag, a rounded slate-blue vest with long tails over cream shirt, trousers and practical boots. He has a clean-shaven strong chin and round nose; no long moustache. Row 2: elderly muscular airship sailcloth repairer with close-cropped gray hair, distinctive rectangular glasses, a wide ochre waist sash, blue work shirt with tiered hem, tan trousers and brown boots; carries a small folded pale sailcloth and sewing kit. Row 3: young adult lanky theatrical thief with short chestnut hair, short round beard, an angular dark burgundy vest over charcoal shirt, narrow trousers and soft shoes, small black eye mask; carries a small tied fabric bag. Columns 1-4 of EVERY row: real four-frame WALK loop with left leg forward, passing feet, right leg forward, opposite passing feet and coordinated arms. Columns 5-8 ACTION: row1 lifts a camera, looks through viewfinder, presses shutter, lowers camera. Row2 unfolds the small sailcloth in his hands, threads needle, stitches fabric, inspects seam. Row3 checks tied bag, peers left suspiciously, hugs bag, peers right suspiciously. Every cell contains ENTIRE head, body, two shoes and hand-held props, absolutely no clipping. Eight separate full people per row, 24 full-body cells total. No scenery, no tables, no text, no floor, no shadows. Do not merge characters or omit poses."
+    }
+  ],
+  "reason": "Visual review confirmed missing identities in three generated sheets. Original good rows are retained; missing identities are generated separately.",
+  "columnBoundaries": {
+    "S02-people-02": {
+      "0": [
+        0,
+        140,
+        280,
+        402,
+        549,
+        666,
+        791,
+        933,
+        1122
+      ]
+    },
+    "G-people-111": {
+      "6": [
+        0,
+        140,
+        279,
+        398,
+        525,
+        663,
+        792,
+        976,
+        1122
+      ],
+      "0": [
+        0,
+        140,
+        276,
+        394,
+        519,
+        649,
+        786,
+        982,
+        1122
+      ]
+    },
+    "G-people-125": {
+      "1": [
+        0,
+        140,
+        277,
+        396,
+        520,
+        668,
+        811,
+        958,
+        1122
+      ]
+    },
+    "repair-poses-01": {
+      "0": [
+        0,
+        470,
+        1093,
+        1635,
+        2170
+      ]
+    },
+    "G-people-46": {
+      "0": [
+        0,
+        140,
+        270,
+        389,
+        516,
+        649,
+        799,
+        933,
+        1122
+      ],
+      "1": [
+        0,
+        140,
+        269,
+        392,
+        518,
+        656,
+        809,
+        942,
+        1122
+      ],
+      "2": [
+        0,
+        140,
+        272,
+        391,
+        517,
+        657,
+        803,
+        950,
+        1122
+      ],
+      "3": [
+        0,
+        140,
+        273,
+        389,
+        507,
+        645,
+        802,
+        951,
+        1122
+      ],
+      "4": [
+        0,
+        140,
+        271,
+        384,
+        509,
+        639,
+        800,
+        959,
+        1122
+      ],
+      "5": [
+        0,
+        140,
+        265,
+        387,
+        503,
+        649,
+        804,
+        967,
+        1122
+      ],
+      "6": [
+        0,
+        140,
+        275,
+        403,
+        521,
+        660,
+        814,
+        982,
+        1122
+      ],
+      "7": [
+        0,
+        140,
+        266,
+        383,
+        511,
+        642,
+        801,
+        958,
+        1122
+      ],
+      "8": [
+        0,
+        140,
+        270,
+        394,
+        518,
+        659,
+        816,
+        981,
+        1122
+      ],
+      "9": [
+        0,
+        139,
+        258,
+        375,
+        502,
+        646,
+        799,
+        959,
+        1122
+      ]
+    },
+    "S08-people-10": {
+      "0": [
+        0,
+        155,
+        304,
+        460,
+        590,
+        724,
+        858,
+        995,
+        1122
+      ],
+      "1": [
+        0,
+        166,
+        313,
+        449,
+        589,
+        728,
+        859,
+        988,
+        1122
+      ]
+    },
+    "A-animals-01": {
+      "0": [
+        0,
+        212,
+        413,
+        631,
+        823,
+        978,
+        1183,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        200,
+        409,
+        618,
+        818,
+        987,
+        1176,
+        1344,
+        1536
+      ],
+      "2": [
+        0,
+        206,
+        413,
+        622,
+        829,
+        963,
+        1172,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        200,
+        404,
+        620,
+        816,
+        960,
+        1177,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        193,
+        398,
+        605,
+        820,
+        1032,
+        1185,
+        1362,
+        1536
+      ]
+    },
+    "A-animals-02": {
+      "0": [
+        0,
+        197,
+        395,
+        585,
+        781,
+        961,
+        1152,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        204,
+        398,
+        590,
+        781,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "2": [
+        0,
+        207,
+        396,
+        585,
+        776,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        206,
+        402,
+        592,
+        781,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        217,
+        415,
+        606,
+        789,
+        965,
+        1158,
+        1344,
+        1536
+      ]
+    },
+    "A-animals-03": {
+      "0": [
+        0,
+        205,
+        398,
+        581,
+        768,
+        988,
+        1183,
+        1338,
+        1536
+      ],
+      "1": [
+        0,
+        200,
+        391,
+        589,
+        774,
+        985,
+        1187,
+        1344,
+        1536
+      ],
+      "2": [
+        0,
+        208,
+        404,
+        584,
+        768,
+        984,
+        1179,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        196,
+        404,
+        586,
+        768,
+        1001,
+        1195,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        215,
+        415,
+        596,
+        776,
+        1002,
+        1189,
+        1332,
+        1536
+      ]
+    },
+    "A-animals-04": {
+      "0": [
+        0,
+        193,
+        386,
+        576,
+        768,
+        960,
+        1152,
+        1347,
+        1536
+      ],
+      "1": [
+        0,
+        193,
+        384,
+        579,
+        768,
+        960,
+        1153,
+        1344,
+        1536
+      ],
+      "2": [
+        0,
+        229,
+        413,
+        602,
+        779,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        219,
+        407,
+        604,
+        784,
+        963,
+        1152,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        220,
+        392,
+        591,
+        768,
+        961,
+        1174,
+        1344,
+        1536
+      ]
+    },
+    "A-animals-05": {
+      "0": [
+        0,
+        208,
+        392,
+        588,
+        768,
+        962,
+        1151,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        192,
+        384,
+        576,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "2": [
+        0,
+        192,
+        384,
+        576,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        192,
+        384,
+        576,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        192,
+        384,
+        576,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ]
+    },
+    "A-animals-06": {
+      "0": [
+        0,
+        198,
+        399,
+        585,
+        775,
+        970,
+        1154,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        205,
+        387,
+        584,
+        774,
+        963,
+        1152,
+        1349,
+        1536
+      ],
+      "2": [
+        0,
+        205,
+        390,
+        586,
+        774,
+        960,
+        1155,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        202,
+        391,
+        582,
+        776,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        192,
+        384,
+        576,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ]
+    },
+    "A-animals-07": {
+      "0": [
+        0,
+        243,
+        434,
+        608,
+        805,
+        960,
+        1163,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        233,
+        431,
+        621,
+        802,
+        960,
+        1161,
+        1336,
+        1536
+      ],
+      "2": [
+        0,
+        221,
+        416,
+        609,
+        796,
+        960,
+        1166,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        227,
+        423,
+        622,
+        808,
+        960,
+        1175,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        224,
+        429,
+        621,
+        810,
+        960,
+        1175,
+        1344,
+        1536
+      ]
+    },
+    "A-animals-08": {
+      "0": [
+        0,
+        230,
+        430,
+        607,
+        798,
+        963,
+        1154,
+        1371,
+        1536
+      ],
+      "1": [
+        0,
+        234,
+        434,
+        624,
+        805,
+        973,
+        1164,
+        1370,
+        1536
+      ],
+      "2": [
+        0,
+        217,
+        418,
+        605,
+        797,
+        981,
+        1152,
+        1349,
+        1536
+      ],
+      "3": [
+        0,
+        216,
+        409,
+        595,
+        806,
+        970,
+        1148,
+        1335,
+        1536
+      ],
+      "4": [
+        0,
+        206,
+        392,
+        589,
+        789,
+        1002,
+        1152,
+        1328,
+        1536
+      ]
+    },
+    "A-animals-09": {
+      "0": [
+        0,
+        196,
+        395,
+        590,
+        777,
+        960,
+        1152,
+        1337,
+        1536
+      ],
+      "1": [
+        0,
+        209,
+        403,
+        604,
+        802,
+        976,
+        1157,
+        1328,
+        1536
+      ],
+      "2": [
+        0,
+        210,
+        412,
+        597,
+        783,
+        981,
+        1152,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        217,
+        412,
+        595,
+        789,
+        978,
+        1154,
+        1343,
+        1536
+      ],
+      "4": [
+        0,
+        228,
+        426,
+        606,
+        795,
+        963,
+        1152,
+        1335,
+        1536
+      ]
+    },
+    "A-animals-10": {
+      "0": [
+        0,
+        212,
+        406,
+        594,
+        781,
+        974,
+        1157,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        219,
+        428,
+        621,
+        801,
+        1002,
+        1184,
+        1362,
+        1536
+      ],
+      "2": [
+        0,
+        192,
+        399,
+        597,
+        780,
+        968,
+        1158,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        192,
+        386,
+        585,
+        773,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        208,
+        401,
+        591,
+        782,
+        966,
+        1152,
+        1344,
+        1536
+      ]
+    },
+    "A-animals-11": {
+      "0": [
+        0,
+        196,
+        402,
+        583,
+        767,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        208,
+        417,
+        600,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "2": [
+        0,
+        215,
+        415,
+        637,
+        788,
+        961,
+        1152,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        224,
+        405,
+        603,
+        792,
+        964,
+        1152,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        209,
+        399,
+        604,
+        772,
+        972,
+        1152,
+        1344,
+        1536
+      ]
+    },
+    "A-animals-12": {
+      "0": [
+        0,
+        192,
+        384,
+        576,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        192,
+        384,
+        576,
+        768,
+        960,
+        1155,
+        1344,
+        1536
+      ],
+      "2": [
+        0,
+        196,
+        384,
+        577,
+        768,
+        960,
+        1153,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        202,
+        388,
+        577,
+        768,
+        960,
+        1152,
+        1348,
+        1536
+      ],
+      "4": [
+        0,
+        192,
+        384,
+        576,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ]
+    },
+    "A-animals-13": {
+      "0": [
+        0,
+        209,
+        385,
+        579,
+        768,
+        974,
+        1152,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        197,
+        384,
+        577,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "2": [
+        0,
+        198,
+        386,
+        578,
+        768,
+        960,
+        1152,
+        1333,
+        1536
+      ],
+      "3": [
+        0,
+        197,
+        385,
+        576,
+        768,
+        960,
+        1152,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        200,
+        394,
+        583,
+        768,
+        960,
+        1152,
+        1335,
+        1536
+      ]
+    },
+    "A-animals-14": {
+      "0": [
+        0,
+        192,
+        384,
+        576,
+        768,
+        960,
+        1161,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        198,
+        384,
+        576,
+        773,
+        961,
+        1161,
+        1346,
+        1536
+      ],
+      "2": [
+        0,
+        192,
+        391,
+        582,
+        773,
+        960,
+        1164,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        213,
+        426,
+        614,
+        799,
+        972,
+        1178,
+        1345,
+        1536
+      ],
+      "4": [
+        0,
+        208,
+        412,
+        599,
+        808,
+        1009,
+        1173,
+        1356,
+        1536
+      ]
+    },
+    "A-animals-15": {
+      "0": [
+        0,
+        229,
+        419,
+        595,
+        768,
+        973,
+        1152,
+        1344,
+        1536
+      ],
+      "1": [
+        0,
+        201,
+        400,
+        593,
+        782,
+        961,
+        1152,
+        1344,
+        1536
+      ],
+      "2": [
+        0,
+        197,
+        395,
+        587,
+        774,
+        978,
+        1182,
+        1344,
+        1536
+      ],
+      "3": [
+        0,
+        223,
+        414,
+        595,
+        775,
+        988,
+        1152,
+        1344,
+        1536
+      ],
+      "4": [
+        0,
+        216,
+        412,
+        596,
+        776,
+        968,
+        1152,
+        1344,
+        1536
+      ]
+    },
+    "A-animals-16": {
+      "0": [
+        0,
+        236,
+        451,
+        670,
+        887,
+        1105,
+        1330,
+        1552,
+        1774
+      ],
+      "1": [
+        0,
+        228,
+        447,
+        667,
+        923,
+        1109,
+        1330,
+        1551,
+        1774
+      ],
+      "2": [
+        0,
+        227,
+        449,
+        691,
+        909,
+        1106,
+        1338,
+        1547,
+        1774
+      ]
+    }
+  },
+  "frameOverrides": {
+    "G-people-103": [
+      {
+        "row": 3,
+        "col": 5,
+        "source": "repair-poses-01",
+        "box": [
+          68,
+          201,
+          406,
+          636
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 8,
+        "col": 5,
+        "source": "repair-poses-01",
+        "box": [
+          539,
+          120,
+          1093,
+          635
+        ],
+        "renderHeight": 132
+      }
+    ],
+    "G-people-106": [
+      {
+        "row": 5,
+        "col": 6,
+        "source": "repair-poses-01",
+        "box": [
+          1102,
+          221,
+          1635,
+          603
+        ],
+        "renderHeight": 132
+      }
+    ],
+    "G-people-112": [
+      {
+        "row": 8,
+        "col": 6,
+        "source": "repair-poses-01",
+        "box": [
+          1732,
+          191,
+          2128,
+          634
+        ],
+        "renderHeight": 132
+      }
+    ],
+    "S06-people-02": [
+      {
+        "row": 6,
+        "col": 0,
+        "source": "repair-poses-02",
+        "box": [
+          25,
+          97,
+          301,
+          307
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 6,
+        "col": 1,
+        "source": "repair-poses-02",
+        "box": [
+          355,
+          91,
+          615,
+          310
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 6,
+        "col": 2,
+        "source": "repair-poses-02",
+        "box": [
+          668,
+          96,
+          940,
+          311
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 6,
+        "col": 3,
+        "source": "repair-poses-02",
+        "box": [
+          999,
+          94,
+          1260,
+          312
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 7,
+        "col": 0,
+        "source": "repair-poses-02",
+        "box": [
+          26,
+          381,
+          297,
+          602
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 7,
+        "col": 1,
+        "source": "repair-poses-02",
+        "box": [
+          354,
+          371,
+          614,
+          599
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 7,
+        "col": 2,
+        "source": "repair-poses-02",
+        "box": [
+          667,
+          382,
+          944,
+          602
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 7,
+        "col": 3,
+        "source": "repair-poses-02",
+        "box": [
+          999,
+          372,
+          1261,
+          600
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 8,
+        "col": 0,
+        "source": "repair-poses-02",
+        "box": [
+          29,
+          669,
+          292,
+          879
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 8,
+        "col": 1,
+        "source": "repair-poses-02",
+        "box": [
+          361,
+          661,
+          602,
+          878
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 8,
+        "col": 2,
+        "source": "repair-poses-02",
+        "box": [
+          675,
+          667,
+          933,
+          879
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 8,
+        "col": 3,
+        "source": "repair-poses-02",
+        "box": [
+          1001,
+          665,
+          1246,
+          878
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 9,
+        "col": 0,
+        "source": "repair-poses-02",
+        "box": [
+          25,
+          932,
+          315,
+          1164
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 9,
+        "col": 1,
+        "source": "repair-poses-02",
+        "box": [
+          353,
+          925,
+          632,
+          1166
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 9,
+        "col": 2,
+        "source": "repair-poses-02",
+        "box": [
+          665,
+          929,
+          958,
+          1168
+        ],
+        "renderHeight": 132
+      },
+      {
+        "row": 9,
+        "col": 3,
+        "source": "repair-poses-02",
+        "box": [
+          999,
+          926,
+          1272,
+          1166
+        ],
+        "renderHeight": 132
+      }
+    ]
+  }
+}
