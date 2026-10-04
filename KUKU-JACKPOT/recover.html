@@ -1,36 +1,102 @@
 <!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fff6df"><title>九九ビート — アクセスを修復</title><style>
 :root{color-scheme:light}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px;background:#fff6df;color:#18394a;font:700 16px/1.8 system-ui,sans-serif}main{max-width:530px;width:100%;padding:30px;border:2px solid #dfd5bc;border-radius:24px;background:#fffdf4;box-shadow:0 8px 0 #18394a0c}.badge{font-size:12px;letter-spacing:.15em;color:#469286}h1{font-size:27px;line-height:1.5;margin:12px 0}p{font-size:14px}button,a{font:inherit}button{width:100%;padding:16px;margin:12px 0;border:0;border-radius:15px;background:#ef795f;color:#18394a;box-shadow:0 4px 0 #ce604b;cursor:pointer}button:disabled{opacity:.55;cursor:wait}a{color:#267f78}#status{min-height:48px;color:#517465;font-size:13px}.note{font-size:12px;color:#7c877b}@media(orientation:landscape) and (max-height:450px){main{padding:18px 26px}h1{font-size:22px;margin:5px 0}p{margin:6px 0}button{padding:12px;margin:6px 0}#status{min-height:24px}}
-</style></head><body><main><span class="badge">KUKU • BEAT</span><h1>ゲームを開けるように<br>修復します</h1><p>Safariでページを開けなくなる不具合を直しました。<br>この端末に保存されたゲームを更新します。</p><p><strong>九九の記録と設定は、そのまま残ります。</strong></p><button id="repair" type="button">修復して ゲームを開く</button><p id="status" role="status" aria-live="polite">通信できる状態で、上のボタンを押してください。</p><p class="note">修復後は、ふだんのURL・ホーム画面のアイコンから遊べます。</p></main><script>
+</style></head><body><main><span class="badge">KUKU • BEAT</span><h1>ゲームを開けるように<br>修復します</h1><p>Safariでページを開けなくなる不具合を直しました。<br>保存された画面を修復し、新しいゲームを確認します。</p><p><strong>九九の記録と設定は、そのまま残ります。</strong></p><button id="repair" type="button">修復して ゲームを開く</button><p id="status" role="status" aria-live="polite">通信できる状態で、上のボタンを押してください。</p><p id="saved-option" hidden><a id="open-saved-game" href="/">保存済みのゲームを開く →</a></p><p id="update-note" class="note">九九の記録・設定・保存素材を削除せずに修復します。</p></main><script>
 const button=document.getElementById('repair'),status=document.getElementById('status');
+const savedOption=document.getElementById('saved-option'),updateNote=document.getElementById('update-note');
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+function bounded(promise,ms,message){
+ let timer;
+ return Promise.race([promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error(message)),ms);})]).finally(()=>clearTimeout(timer));
+}
+async function repairSavedHTML(){
+ let homes=0,repaired=0;
+ for(const name of await caches.keys()){
+  if(!name.startsWith('kuku-beat-festival-'))continue;
+  const cache=await caches.open(name);
+  for(const request of await cache.keys()){
+   const url=new URL(request.url);
+   if(url.origin!==location.origin||!(/\.html$/.test(url.pathname)||url.pathname.endsWith('/')))continue;
+   let response=await cache.match(request);
+   if(!response?.ok)continue;
+   if(response.redirected){
+    const headers=new Headers(response.headers);
+    for(const key of ['Content-Encoding','Transfer-Encoding','Content-Length'])headers.delete(key);
+    await cache.put(request,new Response(await response.arrayBuffer(),{status:response.status,statusText:response.statusText,headers}));
+    response=await cache.match(request);repaired++;
+   }
+   if(response.redirected)throw new Error('保存された画面を修復できませんでした。もう一度おためしください。');
+   if(url.pathname==='/index.html'||url.pathname==='/')homes++;
+  }
+ }
+ return {homes,repaired};
+}
+function controllerStatus(controller,ms){
+ return new Promise(resolve=>{
+  const listener=event=>{if(event.source===controller&&['CACHE_STATUS','CACHE_ERROR'].includes(event.data?.type)){finish(event.data);}};
+  const finish=value=>{clearTimeout(timer);navigator.serviceWorker.removeEventListener('message',listener);resolve(value);};
+  const timer=setTimeout(()=>finish(null),ms);
+  navigator.serviceWorker.addEventListener('message',listener);
+  controller.postMessage({type:'GET_CACHE_STATUS'});
+ });
+}
 button.onclick=async()=>{
- button.disabled=true;status.textContent='修正版を読み込んでいます…';
+ button.disabled=true;savedOption.hidden=true;status.textContent='保存された画面を修復しています…';
+ const deadline=Date.now()+12000;
+ let cachedGameReady=false;
+ const remaining=()=>Math.max(0,deadline-Date.now());
+ const run=(promise,message,cap=12000)=>bounded(promise,Math.max(1,Math.min(cap,remaining())),message);
  try{
   if(!('serviceWorker' in navigator)){location.replace('/');return;}
-  const manifestResponse=await fetch('/recovery-version.json',{cache:'no-store'});
-  if(!manifestResponse.ok)throw new Error('通信を確認して、もう一度おためしください。');
-  const manifest=await manifestResponse.json();
-  const registration=await navigator.serviceWorker.register('/sw.js',{updateViaCache:'none'});
-  await registration.update();
-  const deadline=Date.now()+60000;
-  let activated=false;
-  while(Date.now()<deadline){
-   if(registration.waiting){registration.waiting.postMessage({type:'ACTIVATE_UPDATE'});status.textContent='保存されたゲームを更新しています…';}
+  // CacheStorage is independent of the registration job queue. Repair the
+  // active worker's existing HTML before register/update can become stuck.
+  const repaired=await run(repairSavedHTML(),'画面の修復に時間がかかっています。もう一度おためしください。');
+  if(repaired.homes){
+   try{
+    const response=await run(fetch('/',{cache:'no-store'}),'保存された画面の確認に時間がかかっています。',1500);
+    cachedGameReady=response.ok&&!response.redirected;
+   }catch{/* A fresh worker may still complete; never claim a cached page was verified. */}
+  }
+  status.textContent='画面を修復しました。新しいゲームを確認しています…';
+  const abort=new AbortController();
+  let targetVersion;
+  try{
+   targetVersion=await run((async()=>{
+    const response=await fetch('/recovery-version.json',{cache:'no-store',signal:abort.signal});
+    if(!response.ok)throw new Error('新しいゲームを確認できませんでした。');
+    return (await response.json()).version;
+   })(),'新しいゲームの確認に時間がかかっています。',4000);
+  }finally{abort.abort();}
+  let registration=await run(navigator.serviceWorker.getRegistration('/'),'更新の確認に時間がかかっています。',1500);
+  if(registration){
+   // Do not wait on an existing install job, or queue more updates behind it.
+   if(!registration.installing)registration.update().catch(()=>{});
+  }else{
+   navigator.serviceWorker.register('/sw.js',{updateViaCache:'none'}).then(value=>{registration=value;}).catch(()=>{});
+  }
+  while(remaining()>0){
+   if(registration?.waiting){registration.waiting.postMessage({type:'ACTIVATE_UPDATE'});status.textContent='新しいゲームへ切り替えています…';}
    const controller=navigator.serviceWorker.controller;
    if(controller){
-    const reply=await new Promise(resolve=>{
-     const listener=event=>{if(event.source===controller&&['CACHE_STATUS','CACHE_ERROR'].includes(event.data?.type)){clearTimeout(timer);navigator.serviceWorker.removeEventListener('message',listener);resolve(event.data);}};
-     const timer=setTimeout(()=>{navigator.serviceWorker.removeEventListener('message',listener);resolve(null);},1800);
-     navigator.serviceWorker.addEventListener('message',listener);controller.postMessage({type:'GET_CACHE_STATUS'});
-    });
-    if(reply?.type==='CACHE_STATUS'&&reply.version===manifest.version){activated=true;break;}
+    const reply=await controllerStatus(controller,Math.min(1000,remaining()));
+    if(reply?.type==='CACHE_STATUS'&&reply.version===targetVersion){
+     status.textContent='新しいゲームへの更新が完了しました！';
+     location.replace('/');return;
+    }
    }
-   await wait(200);
+   await wait(Math.min(200,remaining()));
   }
-  if(!activated)throw new Error('更新がまだ完了していません。通信を確認して、もう一度おためしください。');
-  status.textContent='修復できました。ゲームを開きます！';
-  location.replace('/');
- }catch(error){status.textContent=error.message||'修復できませんでした。通信を確認して、もう一度おためしください。';button.disabled=false;button.textContent='もう一度 修復する';}
+  throw new Error('最新版への更新は、まだ完了していません。');
+ }catch(error){
+  button.disabled=false;button.textContent='もう一度 更新を確認する';
+  if(cachedGameReady){
+   savedOption.hidden=false;
+   status.textContent='保存された画面は修復できました。最新版への更新は、まだ完了していません。';
+   updateNote.textContent='リンクから保存済みのゲームを遊べます。記録と設定は残ります。新しい内容が反映されないときは、Safariアプリをいったん終了して開き直し、この修復ページでもう一度おためしください。';
+  }else{
+   status.textContent=error.message||'修復できませんでした。通信を確認して、もう一度おためしください。';
+   updateNote.textContent='記録と設定は削除していません。通信を確認して、もう一度おためしください。';
+  }
+ }
 };
 </script></body></html>

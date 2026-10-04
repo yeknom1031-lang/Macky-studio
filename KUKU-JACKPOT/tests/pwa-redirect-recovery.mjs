@@ -39,7 +39,7 @@ try {
   const origin = `http://127.0.0.1:${server.address().port}`;
   browser = browserName === 'WebKit' ? await webkit.launch({ headless: true }) : await chromium.launch({ headless: true, executablePath: process.env.KUKU_CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
   const context = await browser.newContext();
-  const page = await context.newPage();
+  let page = await context.newPage();
   await page.goto(origin);
   await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller));
   await page.evaluate(({ key, value }) => localStorage.setItem(key, value), { key: storageKey, value: savedRecord });
@@ -48,6 +48,11 @@ try {
   let legacyNavigationFailure = null;
   try { await page.reload({ timeout: 15000 }); } catch (error) { legacyNavigationFailure = error.message; }
   if (browserName === 'WebKit') assert.match(legacyNavigationFailure || '', /redirection|service worker/i, 'The old SW must reproduce the reported Safari failure.');
+  // Open the rescue URL in a fresh tab of the same profile. Chromium may still
+  // be committing its error document after the failed reload promise rejects.
+  const failedPage = page;
+  page = await context.newPage();
+  await failedPage.close();
 
   await writeFile(path.join(root, 'index.html'), html('recovered'));
   await writeFile(path.join(root, 'sw.js'), fixedSW);
@@ -55,13 +60,7 @@ try {
   const updated = await buildFestival({ root, requireRuntime: false });
   // Access the canonical route directly: the legacy worker must not receive a
   // followed redirect while serving this rescue navigation itself.
-  try { await page.goto(origin + '/recover', { waitUntil: 'domcontentloaded' }); }
-  catch (error) {
-    // Chromium can commit its error document after the failed legacy reload
-    // promise rejects. Retry only that known error-page navigation race.
-    if (browserName !== 'Chrome' || !/interrupted by another navigation to "chrome-error:/.test(error.message)) throw error;
-    await page.goto(origin + '/recover', { waitUntil: 'domcontentloaded' });
-  }
+  await page.goto(origin + '/recover', { waitUntil: 'domcontentloaded' });
   assert.equal(await page.locator('#repair').isVisible(), true);
   await page.evaluate(async () => (await navigator.serviceWorker.getRegistration()).update());
   await page.waitForFunction(async () => Boolean((await navigator.serviceWorker.getRegistration()).waiting));

@@ -40,28 +40,28 @@
       "name": "統合・操作・画面",
       "owner": "メインエージェント",
       "scope": "下の答えパッドに操作を統一、4段階の見える進行、手動開始・練習、全段ミックスと重複しない出題、PCキー操作、統合検証",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "minigames",
       "name": "21種類のミニゲーム",
       "owner": "ミニゲーム担当サブエージェント",
       "scope": "21種類の4拍パターンと2回の反復、複数ノート、4ゲームの長押し判定、キャラクターの反応とコンボ",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "audio",
       "name": "音楽・九九・掛け声",
       "owner": "音声担当サブエージェント",
       "scope": "九九関連324音声すべての読みをかなで明示して再生成、お手本音、発話尺に応じた28拍進行、正答音声の実尺に応じた100掛け声の再生",
-      "status": "in_progress"
+      "status": "completed"
     },
     {
       "id": "pwa",
       "name": "PWA・ビルド・公開準備",
       "owner": "配信担当サブエージェント",
       "scope": "既存のmanifest・Service Workerを維持し、改修版の全素材保存・オフライン・更新・Cloudflare配信を再確認",
-      "status": "in_progress"
+      "status": "completed"
     }
   ],
   "platform": {
@@ -132,6 +132,12 @@
       "label": "実機iPhoneのSafari・ホーム画面起動",
       "status": "not_verified",
       "detail": "この作業環境では実機に触れられないため未確認。WebKitの自動検証とは分けて扱う。"
+    },
+    {
+      "id": "safari-access-recovery",
+      "label": "Safariのアクセス障害からの復旧",
+      "status": "passed",
+      "detail": "CloudflareのHTML転送を再現したChrome・WebKitテストで旧版のエラーと復旧を確認。転送履歴の除去、連続再読込、オフライン、記録・設定保持を検証。macOS Safariの実際に失敗していた公開URLも修復し、停止した旧更新はSafari再起動後に適用。最新版の全段ミックスと星の保持、通常URLの連続再読み込みを確認。実機iPhoneの確認とは区別する。"
     }
   ],
   "definitionOfDone": [
@@ -269,5 +275,12 @@
         "detail": "この作業環境では実機に触れられないため未確認。WebKitの自動検証とは分けて扱う。"
       }
     ]
+  },
+  "accessRecovery": {
+    "url": "https://kuku-beat-festival.yeknom1031.workers.dev/recover",
+    "cause": "Cloudflareの/index.htmlから/への転送履歴を保存したResponseをService Workerが返し、Safariがページを拒否した。",
+    "fix": "保存・返却時に転送履歴のないResponseへ再構築。修復ページでは既存の保存HTMLも修復する。",
+    "records": "localStorageの記録・設定は削除しない。",
+    "stalledUpdate": "旧版のインストール停止時は待ち続けず、保存済みゲームへの入口を表示。Safariを終了して開き直すと更新を再試行できる。"
   }
 }
