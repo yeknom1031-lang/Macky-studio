@@ -134,7 +134,7 @@ for idx, page in enumerate(data['pages']):
             para = doc.add_paragraph()
             para.paragraph_format.line_spacing = 1
             run = para.add_run()
-            shape = run.add_picture(str(ROOT / block['path']), width=Mm(172))
+            shape = run.add_picture(str(ROOT / block['path']), width=Mm(block.get('width', 172)))
             shape._inline.docPr.set('descr', block['alt'])
             p(block['caption'], 'Caption')
         elif kind == 'list':

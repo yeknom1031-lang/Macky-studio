@@ -1,8 +1,11 @@
 {
   "method": "Built-in image_gen",
   "created": "2026-10-04",
-  "request": "20種類の九九リズムミニゲーム。各ゲーム最大3枚。スマートフォン横向きの1画面に収まるデザイン。",
-  "deliveredImagesPerGame": 1,
+  "request": "20種類のスマホ横画面に、21本目「ほんと？うそ？九九の森」の出題・答え合わせを追加。",
+  "deliveredImagesPerGame": {
+    "1-20": 1,
+    "21": 2
+  },
   "viewport": {
     "width": 844,
     "height": 390,
@@ -10,7 +13,7 @@
   },
   "promptSet": "prompts.json",
   "originalsPreserved": true,
-  "imageReview": "全20枚の構図、主操作、問題と正答の対応を目視確認。7番は4行×6列の24個、9番は機関車を除く6両、15番は4×9と6×6の両方を正答として確認。",
+  "imageReview": "既存20枚に加え、21本目の出題・答え合わせ2枚を目視確認。出題の7×8＝54は意図的な嘘で、回答は「うそ」。結果では54を消し、正しい7×8＝56と「しちは ごじゅうろく」を表示。",
   "implementationNote": "画面デザイン案。実装時は式、選択肢、ボタン、拍の表示を独立したUI要素として描画し、画像に焼き込まれた文字や装飾をそのまま操作判定に使わない。",
   "images": [
     {
@@ -152,6 +155,22 @@
       "generationSource": "exec-952cac70-d763-4be2-9943-18aadcfe336f.png",
       "attempts": 1,
       "sha256": "1482db930b4f476069674efd45061c5863141c5058e098b9d60d2de3f2747f69"
+    },
+    {
+      "id": 21,
+      "state": "question",
+      "file": "images/21-forest.png",
+      "generationSource": "exec-26e593ab-264e-4f93-ba52-a8c0023bf1d4.png",
+      "attempts": 1,
+      "sha256": "bac7dbd355b3223c8f9ec0c78cfdf7de9eb6129f417916ce20557a209fbaeff1"
+    },
+    {
+      "id": 21,
+      "state": "feedback",
+      "file": "images/21-forest-feedback.png",
+      "generationSource": "exec-11f72e20-976e-47e7-96df-6a33a3d02448.png",
+      "attempts": 1,
+      "sha256": "9cd2b86d252213c8736241584669ec38bb0894021ac210e35373e3a1235cc723"
     }
   ],
   "galleryVerification": {
@@ -175,13 +194,29 @@
       }
     ],
     "checks": [
-      "20 thumbnails and 20 original PNGs load",
+      "21 thumbnails and 21 original gameplay PNGs load",
       "All filters",
       "All viewer next/previous navigation",
       "Keyboard navigation and close",
-      "横画面で画像の欠け・横方向のはみ出しなし",
-      "横画面で前後・閉じる操作がデザイン画像と重ならない"
+      "Forest proposal and two generated states load",
+      "Both states fit phone landscape",
+      "Proposal portrait layout has no overflow"
     ],
     "browserErrors": []
+  },
+  "totalGames": 21,
+  "totalImages": 22,
+  "documentVerification": {
+    "pageCount": 16,
+    "newPages": [
+      15,
+      16
+    ],
+    "visuallyReviewedChangedPages": [
+      1,
+      15,
+      16
+    ],
+    "previouslyReviewedUnchangedPages": "2–14 pixel-identical to prior approved render"
   }
 }

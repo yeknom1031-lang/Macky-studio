@@ -449,6 +449,175 @@
       "payoff": "楽器とコーラスが増え、最後は全員で大合唱。",
       "music": "オールスター・リミックス",
       "prompt": "Use case: ui-mockup. Deliver ONE polished gameplay screen design for an original Japanese multiplication rhythm minigame, specifically a SMARTPHONE IN LANDSCAPE ORIENTATION. Very wide canvas, approximately 1920 x 888 pixels (2.16:1, matching a phone viewport of 844 x 390 logical pixels). No portrait or square composition. ALL gameplay elements fit inside this ONE screen with absolutely no scrolling. No physical phone/device frame, no browser chrome, no multi-panel collage, no title-screen poster. Reference image 1 provides only the existing game's cream/navy UI identity; RECOMPOSE it completely for the SHORT mobile-landscape height, do not retain its desktop proportions. Reference image 2 is ART STYLE ONLY: premium hand-painted gouache texture, bold navy contours, charming comic characters, warm cream backgrounds and vibrant teal/coral/yellow accents. Do not copy its triptych. Mobile spatial rules: reserve a quiet 5% inset at BOTH left and right for notch/thumb safety; reserve bottom 4% for the home indicator. One slim navy header across the top 10% contains game title, small '03 / 09', and pause icon. Main game world and HUGE readable math occupy middle 65%. A compact interaction strip occupies bottom 21%, with supporting answer choices or direction controls toward LEFT THUMB and the main action button toward RIGHT THUMB; beat cue across bottom middle. Every primary touch button must appear at least 48 logical pixels tall on an844x390 phone, equivalent to about 110 pixels tall on this image. Buttons have clear generous spacing, no tiny clickable icons. Large digits, short labels, minimal HUD, no sidebars or tall website-like cards. Characters frame the mechanic; never cover equations or targets. A child must immediately see what the problem is, where to act, and when to act. Rounded heavy Japanese lettering with plain backing surfaces. Keep the specific title and arithmetic EXACT. No engineering notes, watermark, lorem ipsum, or real brand logos. All displayed arithmetic and counted objects must be correct. Show one meaningful interactive moment and a subtle hint of the comedic success reaction. \nGame 20: 九九オールスター・大合奏.\nScene: Grand finale of the same original rhythm game series. A warm cream concert stage framed by coral curtains, turquoise platforms and golden spotlights. The familiar orange bird DJ conducts at front, accompanied by a purple friendly gorilla on drums, frog trumpet player, cat keyboardist and tiny alien bassist. Several distinct characters, large readable silhouettes.\nSpecific gameplay layout, adapted within the above smartphone landscape zones: Large top-center cream music-score card reads '7 × 8 = ?'. In the central foreground are three broad answer cards '54', '56', '63',56 selected. The band is arranged behind around the question, with drum and bass platforms lit, other instruments waiting dimly, demonstrating layers being added. Bottom right huge orange 'タクトをふる！' button with baton icon. Bottom left a clear four-instrument progression strip with icons drum, bass, keys, brass, first two lit and next glowing ready. A single restrained celebratory text '音がふえる！'. No busy crowd obscuring gameplay. Make this a believable playable finale UI, not a poster.\nText (verbatim, prominent): \"九九オールスター・大合奏\", \"7 × 8 = ?\", \"54\", \"56\", \"63\", \"タクトをふる！\", \"音がふえる！\"\nLandscape is mandatory. Keep everything inside the short wide phone viewport."
+    },
+    {
+      "id": 21,
+      "slug": "forest",
+      "title": "ほんと？うそ？九九の森",
+      "action": "キャラクターの九九を聞いて「ほんと／うそ」を1回選ぶ",
+      "equation": "7 × 8 = 54 … ほんと？うそ？",
+      "scene": "森の小さな劇場に、オオカミ、ウサギ、クマ、キツネ、ロボットが順番に登場。声と登場ポーズが毎回変わる。",
+      "layout": "スマホ横844×390。中央に発言の式、左右下に固定した「○ ほんと」「× うそ」の大ボタン。右側に次のキャラクター。出題時は正答を示す強調を付けない。",
+      "copy": [
+        "ほんと？うそ？九九の森",
+        "オオカミの ひとこと",
+        "7 × 8 = 54",
+        "ほんと",
+        "うそ",
+        "つぎは…"
+      ],
+      "learn": "発言の正誤を九九で判断する。答え合わせでは必ず正しい式を表示し、正しい九九だけを一緒に唱える。",
+      "payoff": "見抜くと蝶ネクタイがくるくる、耳がぴょん。次のキャラクターが拍に合わせて登場する。",
+      "music": "森のスウィング・ファンク",
+      "detailPage": "forest-plan.html",
+      "variantImages": [
+        {
+          "file": "images/21-forest.png",
+          "label": "出題画面"
+        },
+        {
+          "file": "images/21-forest-feedback.png",
+          "label": "答え合わせ画面"
+        }
+      ],
+      "prompt": "Use case: ui-mockup. Create ONE premium finished game-screen concept for a new Japanese multiplication rhythm minigame named \"ほんと？うそ？九九の森\". Reference image 1 is an ART STYLE and UI-family reference only: preserve its polished gouache texture, navy outlines, cream panels, vivid teal/coral/golden colors, charming expressive animal characters and bold readable Japanese typography. Invent a new forest theater scene, do NOT copy the quiz-host dog.\nMANDATORY: smartphone LANDSCAPE, very wide aspect approximately 1844 x 853 (844 x 390 logical viewport). One complete gameplay view, no phone bezel, browser, poster, collage or scrolling. All essential content inset 5% left and right and 4% bottom. The upper 10% is a slim navy title/status bar. Two huge touch buttons occupy the bottom 25%, and each would be at least 56 logical px high.\nGameplay: a different animal appears each round and confidently reads a multiplication question AND its proposed answer. The player ONLY chooses whether the animal's claim is true or false. Show the moment BEFORE any selection. This example is DELIBERATELY A FALSE CLAIM: a cute gray wolf with fluffy ears, a tiny coral bow tie and teal vest is speaking \"7 × 8 = 54\". This arithmetic is intentionally incorrect and must appear EXACTLY as the wolf's quoted statement, never as an endorsed correct solution. The player must decide. No correctness marks, selected state or glowing correct button in this image.\nScene: magical outdoor forest comedy theater at dusk, warm string lights, leafy wooden arch, gentle rhythm sparkles. The wolf stands left-center holding a microphone, confidently making a neutral-friendly speaking gesture; do not give him a sneaky look, sweat, Pinocchio nose or visual lie cue. A very large clean cream speech bubble with a tail CLEARLY connecting to the wolf occupies upper center/right, containing the tiny label \"オオカミの ひとこと\" and HUGE exactly \"7 × 8 = 54\". Above or just below it show \"ほんと？ うそ？\". The wolf and bubble together dominate the image.\nAt the far right, three smaller visible waiting characters (rabbit, bear, fox) peek from a backstage doorway; a small \"つぎは…\" sign above them with a simple rightward progression makes it clear characters appear one after another. They are not answer choices. Keep this queue subordinate to the large equation.\nHeader text exactly \"ほんと？うそ？九九の森\", compact \"03 / 08\", pause icon.\nBottom controls: LEFT a large teal rounded button with a big white CIRCLE icon and exact label \"ほんと\"; RIGHT an equally large coral rounded button with a big white CROSS icon and exact label \"うそ\". BOTH have equally neutral, unselected styling. Bottom middle between them a compact three-beat indicator with dots leading to a star and small text \"えらぼう！\". Make it immediately obvious there are only TWO choices. There is NO confirm button, no answer-number keypad, no speech-recognition or microphone input button. The microphone is only in the wolf's hand.\nLegible typography and numbers; avoid excess tiny copy, scoring clutter or an educational worksheet appearance. Characterful, energetic and funny, but calm readable backing around all essential text. No watermark or external brand logo. Make this genuinely look like a playable phone landscape screen.",
+      "feedbackPrompt": "Use case: ui-mockup. Reference image 1 is the EDIT TARGET: the question screen of the smartphone landscape rhythm learning game \"ほんと？うそ？九九の森\". Create its matching ANSWER-REVEAL screen immediately after the player correctly selected \"うそ\". Preserve EXACTLY the wide 1844 x 853 landscape framing, forest theater, wolf character design (gray fluffy fur, teal vest, coral bow tie, handheld microphone), rabbit/bear/fox queue, header title and 03 / 08, color family, gouache texture, thick outlines, the position and size of all major interface shapes. Do not crop or rearrange the two-button layout.\nChanges only for answer reveal:\n1. Replace the false equation in the huge cream speech bubble with the CORRECT equation \"7 × 8 = 56\", using very large readable digits. Only this correct equation appears anywhere on the result screen: REMOVE 54 completely.\n2. Replace the wooden small label above the equation with exactly \"ほんとうは…\". Under the big correct equation, replace the question \"ほんと？うそ？\" with the reading \"しちは ごじゅうろく\". A short celebratory gold ribbon above/beside the speech bubble, safely below the header and without covering any essential content, says \"みやぶった！\".\n3. The wolf has a surprised delighted face, raised eyebrows, and his bow tie comically spins sideways. A few small golden leaves pop around him. It is a friendly humorous reaction, no humiliation or anger. The waiting animals cheer.\n4. Keep LEFT teal button circle icon and label \"ほんと\", but subdued. Keep RIGHT coral button CROSS icon and label \"うそ\" in the exact same position, clearly selected with a gold outline and a small \"せいかい！\" badge. Very important: the right button's cross is the chosen FALSE answer and the player has SUCCEEDED, it must not look like an incorrect-player-answer screen.\n5. Replace the little bottom-middle \"えらぼう！\" with \"いっしょに！\" and three musical notes, inviting a correct spoken repetition. No additional next/confirm button: the following animal will enter automatically.\nMobile readability: all text in the short wide viewport; 5% side inset, no clipped controls, no scrolling, no device bezel, no multi-panel composition. Maintain the same production quality.",
+      "plan": {
+        "status": "画面デザインと企画。ゲーム・音声は未実装。",
+        "core": "九九の問題と提示された答えを最後まで聞き、ほんと／うそを1回押す。音声認識も、数字入力も、追加の確定操作も使わない。",
+        "characters": [
+          {
+            "name": "オオカミ",
+            "voice": "元気で自信たっぷり",
+            "reveal": "蝶ネクタイがくるくる回る"
+          },
+          {
+            "name": "ウサギ",
+            "voice": "軽く弾む明るい声",
+            "reveal": "耳がアンテナのように伸びる"
+          },
+          {
+            "name": "クマ",
+            "voice": "低く温かい声",
+            "reveal": "小さなシンバルで大げさな決めポーズ"
+          },
+          {
+            "name": "キツネ",
+            "voice": "軽快な調子",
+            "reveal": "しっぽから金色の葉っぱが舞う"
+          },
+          {
+            "name": "ロボット",
+            "voice": "少し機械的な明瞭な声",
+            "reveal": "頭のランプがミラーボールになる"
+          }
+        ],
+        "rhythm": {
+          "bpm": 120,
+          "meter": "4/4",
+          "barsPerQuestion": 4,
+          "secondsPerQuestion": 8,
+          "questions": 8,
+          "secondsOfQuestions": 64,
+          "introOutro": "前奏と終奏各4拍を加え約68秒。ゆっくりモードは考える小節を追加。"
+        },
+        "timeline": [
+          {
+            "beats": "1–8",
+            "seconds": "0–4秒",
+            "event": "キャラクターが登場して、問題と提示答を読み上げる。例「なな かける はちは、ごじゅうよん！」。同じ内容を吹き出しに表示。"
+          },
+          {
+            "beats": "9–12",
+            "seconds": "4–6秒",
+            "event": "ほんと／うそのどちらかを1回選ぶ。初級はこの時間内の入力をすべて受け付ける。"
+          },
+          {
+            "beats": "13–16",
+            "seconds": "6–8秒",
+            "event": "正誤と正しい式を表示。全員で「しちは ごじゅうろく」。すぐ次のキャラクターに交代する。"
+          }
+        ],
+        "examples": [
+          {
+            "character": "オオカミ",
+            "a": 7,
+            "b": 8,
+            "claim": 54,
+            "choice": "うそ",
+            "correct": 56
+          },
+          {
+            "character": "ウサギ",
+            "a": 6,
+            "b": 8,
+            "claim": 48,
+            "choice": "ほんと",
+            "correct": 48
+          },
+          {
+            "character": "クマ",
+            "a": 7,
+            "b": 7,
+            "claim": 42,
+            "choice": "うそ",
+            "correct": 49
+          },
+          {
+            "character": "キツネ",
+            "a": 8,
+            "b": 9,
+            "claim": 72,
+            "choice": "ほんと",
+            "correct": 72
+          },
+          {
+            "character": "オオカミ",
+            "a": 7,
+            "b": 8,
+            "claim": 56,
+            "choice": "ほんと",
+            "correct": 56
+          }
+        ],
+        "learning": [
+          "最初の手本では正しい九九を見せてから判断に入る。未学習の式をいきなり嘘だけで覚えさせない。",
+          "嘘の発言は1回で止め、結果では誤答を消して正しい式と読みを主役にする。プレイヤーが間違えた場合も正しい九九を穏やかに確認する。",
+          "キャラクター・声色・表情で正誤を判別できないよう、全員が本当と嘘の両方を言う。正誤の順番も固定しない。",
+          "判定の正解とリズム評価を分ける。拍を外しても数学的な正解は取り消さない。無回答は無回答として保存する。",
+          "2択の正答だけで九九を習得済みにしない。数問後は同じ式を別キャラクターで、別のゲームでは答え自体を選ぶ形でも確認する。"
+        ],
+        "audio": [
+          "既存試作の音声素材を再生する仕組みを使い、キャラクターの発言と正しい九九の唱え声を別ファイルにする。",
+          "発言は通常の話し声、正しい九九は短い音楽フレーズにする。まずオオカミとウサギの2声で8問を作り、声が聞き分けやすいか確かめてから増やす。",
+          "1問の発言を音声ファイルとして事前生成し、長さを測って4秒以内に収める。収まらない場合は台詞を短くするか思考用小節を増やす。",
+          "曲、音声、入力受付を共通の音声時計で進める。話している間は伴奏を下げ、答え合わせの声が終わってから交代する。",
+          "マイクは使わず、タップだけで完結。音声を切っても吹き出しと拍表示で遊べる。"
+        ],
+        "assets": {
+          "prototypeCharacters": 2,
+          "expandedCharacters": 5,
+          "perCharacterStates": [
+            "登場",
+            "話す",
+            "考え中",
+            "見抜かれた",
+            "本当だった",
+            "正しい九九を唱える",
+            "退場"
+          ],
+          "backgrounds": 1,
+          "buttons": 2,
+          "generatedScreens": 2
+        },
+        "prototypeChecks": [
+          "初めて見ても2択操作が分かる",
+          "発言を最後まで聞く時間がある",
+          "キャラクターの見た目で当てていない",
+          "誤答より正しい九九が記憶に残るか試遊で確認",
+          "スマホ横で指が式を隠さない"
+        ]
+      }
     }
   ],
   "viewport": {
@@ -458,5 +627,6 @@
     "safeHorizontalInset": "5%",
     "safeBottomInset": "4%",
     "minimumTouchTarget": "48 logical px"
-  }
+  },
+  "updateNote": "21本目「ほんと？うそ？九九の森」を追加。21本目は出題・答え合わせの2画面。"
 }
