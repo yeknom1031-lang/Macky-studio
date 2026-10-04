@@ -1,0 +1,37 @@
+{
+  "id": 640,
+  "key": "0640-dragon-effect-surprise-3",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T15:38:25.198Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for ドラゴンの九九くしゃみ. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: comical surprise poof with friendly whimsical stage props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #f4d6a6, #c6c69a with gold and mint highlights.",
+  "completedAt": "2026-10-04T15:41:17.532Z",
+  "source": "assets/source-art/rich-800/0640-dragon-effect-surprise-3.png",
+  "runtime": "0640-dragon-effect-surprise-3.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7381,
+  "bytes": 150106,
+  "qualityNote": "目視済み。くしゃみの雲、鈴、星と緑の風の驚き6コマ。欠けなし。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

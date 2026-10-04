@@ -1,0 +1,37 @@
+{
+  "id": 64,
+  "key": "0064-jackpot-effect-surprise-3",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T12:48:36.736Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for 九九ジャックポット. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: comical surprise poof with friendly whimsical stage props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #f9c276, #ef815d with gold and mint highlights.",
+  "completedAt": "2026-10-04T12:58:30.854Z",
+  "source": "assets/source-art/rich-800/0064-jackpot-effect-surprise-3.png",
+  "runtime": "0064-jackpot-effect-surprise-3.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7451,
+  "bytes": 149060,
+  "qualityNote": "Visually checked: six distinct coherent frames in a 3×2 sheet, consistent identity, no numbers or text, transparent output verified.",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

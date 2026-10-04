@@ -135,6 +135,38 @@ test('slot reels finish centered on the chosen wrong number, not on the question
   assert.deepEqual(seen.map(s=>s.value),[5,6]);assert.equal(game.getResult().value,56);
 });
 
+test('generated scenes preserve every stage character, neutral demo and truthful reveal',()=>{
+ for(const meta of GAMES){
+  const game=ready(meta.id),numbers=[],texts=[],actors=[],props=[];
+  const fake=fakeContext();fake.ctx.fillText=text=>texts.push(String(text));
+  const helpers={hasProp:()=>true,drawProp(_ctx,x,y,size,time,options){props.push(options.frame);return true;},drawCharacter(_ctx,name){actors.push(name);},drawNumber(_ctx,value){numbers.push(value);}};
+  game.update({rhythmMode:true,time:2,beat:4,phase:'demo'});
+  game.pulse({beat:4,success:true,value:null,index:0,total:6,demo:true});
+  game.draw(fake.ctx,844,280,helpers);fake.check();
+  assert.ok(actors.includes(meta.character),meta.title);
+  if(![1,4,7,15,18,21].includes(meta.id))assert.ok(!numbers.includes(49),`demo reveals answer: ${meta.title}`);
+  game.update({phase:'play',time:4,beat:8});
+  game.pulse({value:meta.mechanic==='truth'?1:56,success:false,index:0});
+  game.draw(fake.ctx,844,280,helpers);fake.check();
+  if(![1,4,5,9,12,13,15,18,20,21].includes(meta.id))assert.ok(props.at(-1)===0||meta.id===19,`miss advances object: ${meta.title}`);
+  game.setAnswer(meta.mechanic==='truth'?1:56,false);
+  game.update({phase:'reveal',time:5,beat:10,correct:false});
+  game.draw(fake.ctx,844,280,helpers);fake.check();
+  assert.equal(game.getResult().value,meta.mechanic==='truth'?1:56);
+  if(meta.id===4)assert.ok(!texts.some(t=>/^7 × 7 =/.test(t)),'the live equation is placed on the scroll');
+  if(meta.id===21)assert.ok(!texts.some(t=>/^7 × 7 =/.test(t)),'the live accessible equation is placed on the generated forest sign, not duplicated in canvas');
+ }
+});
+
+test('revealing a single answer never starts the stopped slot reels spinning again',()=>{
+ const game=ready(1);game.update({rhythmMode:true,phase:'play',time:5.5,beat:12});
+ game.pulse({value:56,success:false,index:0,total:1});
+ game.update({time:6.5,beat:14});game.setAnswer(56,false);
+ const seen=[],fake=fakeContext();
+ game.draw(fake.ctx,1000,440,{drawNumber(_ctx,value,x,y){if(Math.abs(y-184)<.001)seen.push(value);}});
+ assert.deepEqual(seen,[5,6]);assert.equal(game.getResult().hitTime,5.5);
+});
+
 test('all 21 stages also complete with touch down/move/up sequences, without a keyboard',()=>{
   for(const meta of GAMES){
     const game=ready(meta.id),value=meta.mechanic==='truth'?0:49;game.choose(value,2);

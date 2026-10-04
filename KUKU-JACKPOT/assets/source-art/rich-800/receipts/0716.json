@@ -1,0 +1,38 @@
+{
+  "id": 716,
+  "key": "0716-hero-prop",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:06:22.142Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: main interactive stage object sprite sheet. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Subject: a cheerful little toy skyscraper with three big empty mint windows and coral roof; six frames of windows lighting from bottom to top and a star arriving on the roof. EXACT SIX frames in 3 columns by 2 rows of equal square cells. One entire object per cell, same size and anchor and frontal camera, all parts contained within 10% margins. Genuinely transparent background, no ground outside object, no characters, no text or numbers. Keep any display windows empty so the game can draw the correct maths. Bright clean detailed premium toy appearance with material shading, precise consistent construction across frames.",
+  "completedAt": "2026-10-04T13:07:46.033Z",
+  "source": "assets/source-art/rich-800/0716-hero-prop.png",
+  "runtime": "0716-hero-prop.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.474,
+  "bytes": 78560,
+  "qualityNote": "Visually reviewed all six poses; preserve full cell framing and original proportions.",
+  "usableFrames": [
+    0,
+    1,
+    3,
+    4
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      15,
+      0,
+      0,
+      19
+    ],
+    "excludedFrames": [
+      2,
+      5
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

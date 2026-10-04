@@ -1,3 +1,4 @@
+import {drawRichScene} from './festival-scenes.js';
 /** Twenty-one little stages. Positions use a 1000 × 440 logical canvas. */
 const INK = '#172b46', CREAM = '#fff5db', CORAL = '#fb785f', GOLD = '#ffce59', TEAL = '#48c7bd';
 const specs = [
@@ -161,12 +162,15 @@ export function createMiniGame(gameId, question, suppliedHelpers={}) {
   }
   function setAnswer(value,correct){
     state.rhythmMode=true;state.finalAnswer=true;state.value=Number.isFinite(value)?value:null;state.selected=state.value;
-    state.correct=!!correct;state.completed=true;state.down=false;state.hitTime=state.time;
+    state.correct=!!correct;state.completed=true;state.down=false;state.hitTime??=state.time;
   }
   function update(next){
+    if(Number.isFinite(next.beatDuration))state.beatDuration=next.beatDuration;
+    state.nextCueBeat=next.nextCueBeat;
     if(next.rhythmMode!==undefined)state.rhythmMode=!!next.rhythmMode;
     if(Number.isFinite(next.time))state.time=next.time;
     if(Number.isFinite(next.beat))state.beat=next.beat;
+    state.anticipating=!!next.anticipating;
     if(next.phase){if(next.phase==='play'&&state.phase!=='play')state.playStartedAt=state.time;state.phase=next.phase;}
     if(next.correct!==undefined)state.correct=next.correct;
     if(next.reduceMotion!==undefined)state.reduceMotion=Boolean(next.reduceMotion);
@@ -179,33 +183,44 @@ export function createMiniGame(gameId, question, suppliedHelpers={}) {
     const t=state.reduceMotion?0:state.time,beat=Math.sin(state.beat*Math.PI*2),pulseAge=state.time-(state.lastPulse?.time??-100);
     const pulseActive=!!state.lastPulse&&pulseAge<.42;
     const neutralDemo=state.lastPulse?.demo&&[1,4,21].includes(game.id);
-    const done=state.rhythmMode?(state.finalAnswer||(!!state.lastPulse?.success&&!state.lastPulse.holding&&!neutralDemo)):state.completed;
+    const done=state.rhythmMode?(state.finalAnswer||(state.selected!==null&&!state.lastPulse?.holding&&!neutralDemo)):state.completed;
     const p=done?ease((state.time-state.hitTime)/(state.rhythmMode ? .32 : .85)):0;
     const visualValue=state.rhythmMode?controls[(state.lastPulse?.index??0)%controls.length]?.value:state.value;
-    const reaction=state.phase==='reveal'?(state.correct?'celebrate':'recover'):(state.rhythmMode&&pulseActive?(state.lastPulse.success?'act':'recover'):state.down?'act':state.phase==='listen'?'talk':'idle');
-    const characterAt=(name,x,y,size=165,pose=reaction)=>character(ctx,name,x,y,size,pose,t,helpers);
+    const reaction=state.phase==='intro'?'exit':state.phase==='reveal'?(state.correct?'celebrate':'recover'):(state.rhythmMode&&pulseActive?(state.lastPulse.success?'act':'recover'):state.anticipating?(heldGames.has(game.id)?'hold':'anticipate'):state.down?'hold':state.phase==='listen'?'talk':state.phase==='demo'?'anticipate':'idle');
+    const charging=state.down||(state.anticipating&&heldGames.has(game.id));
+    helpers.setArtContext?.({time:t,beat:state.beat,beatDuration:state.beatDuration,holding:charging,anticipating:state.nextCueBeat>state.beat&&state.nextCueBeat-state.beat<.6,pulseIndex:state.lastPulse?.index,pulseTime:state.lastPulse?.time});
+    const characterAt=(name,x,y,size=165,pose=reaction)=>{
+      if(charging)helpers.drawEffect?.(ctx,'charge',x,y-size*.4,size*1.65,t,{start:state.down?state.downAt:t-state.beat*state.beatDuration,loop:true,alpha:.75});
+      character(ctx,name,x,y,size,pose,t,helpers);
+      if(pulseActive&&state.lastPulse.success)helpers.drawEffect?.(ctx,'beat',x+size*.3,y-size*.5,size*.85,t,{start:state.lastPulse.time});
+    };
     const num=(value,x,y,size=66)=>number(ctx,state.rhythmMode&&(value===null||value===undefined)?'♪':value,x,y,size,helpers);
     const sceneValue=value=>state.rhythmMode?(state.selected!==null&&value===visualValue?state.selected:'♪'):value;
     const picked=(value)=>!state.rhythmMode&&selected()===value;
     const bg=ctx.createLinearGradient(0,0,0,440);bg.addColorStop(0,game.theme[0]);bg.addColorStop(1,game.theme[1]);ctx.fillStyle=bg;ctx.fillRect(0,0,1000,440);
+    const richBackdrop=helpers.drawBackdrop?.(ctx,t);
     // Small moving shapes make each stage feel alive without obscuring the numbers.
-    if([3,4,12,15].includes(game.id)){for(let i=0;i<26;i++){const x=mod(i*173+17,1000),y=mod(i*61+23,345);star(ctx,x,y,3+(i%3),i%2?CREAM:GOLD,t*.08);}}
-    else {for(let i=0;i<7;i++){ellipse(ctx,i*170+35,44+(i%3)*23,44,15,'#fff8');ellipse(ctx,i*170+62,40+(i%3)*23,25,20,'#fff8');}}
-    if(game.id===1){
+    if(!richBackdrop&&[3,4,12,15].includes(game.id)){for(let i=0;i<26;i++){const x=mod(i*173+17,1000),y=mod(i*61+23,345);star(ctx,x,y,3+(i%3),i%2?CREAM:GOLD,t*.08);}}
+    else if(!richBackdrop){for(let i=0;i<7;i++){ellipse(ctx,i*170+35,44+(i%3)*23,44,15,'#fff8');ellipse(ctx,i*170+62,40+(i%3)*23,25,20,'#fff8');}}
+    const richScene=drawRichScene(ctx,{game,q,state,t,p,done,pulseActive,reaction,helpers,characterAt,num,chip,label,rounded,ellipse,withNaturalAspect});
+    if(richScene){ /* Stage objects and characters were drawn from the animation atlas. */ }
+    else if(game.id===1){
       // The reel strip is continuous; after input it travels to the EXACT selected digits.
-      rounded(ctx,278,26,454,307,38,INK,INK,5);rounded(ctx,292,39,426,275,30,CORAL,CREAM,5);
-      for(let i=0;i<15;i++)ellipse(ctx,310+i*27,59,5,5,i%2?(beat>0?GOLD:CREAM):CREAM);
+      const richMachine=helpers.drawProp?.(ctx,274,-7,455,t,{frame:state.phase==='reveal'&&state.correct?4:done?3:pulseActive?1:Math.floor(t*3)%3===0?0:2});
+      if(!richMachine){rounded(ctx,278,26,454,307,38,INK,INK,5);rounded(ctx,292,39,426,275,30,CORAL,CREAM,5);
+      for(let i=0;i<15;i++)ellipse(ctx,310+i*27,59,5,5,i%2?(beat>0?GOLD:CREAM):CREAM);}
       for(let r=0;r<2;r++){
-        const x=329+r*173;rounded(ctx,x,87,148,191,20,CREAM,INK,5);ctx.save();ctx.beginPath();ctx.roundRect(x+5,92,138,181,14);ctx.clip();
+        const x=richMachine?379+r*123:329+r*173,rw=richMachine?95:148,rh=richMachine?117:191,ry=richMachine?146:87,center=richMachine?ry+rh/2:184,step=richMachine?99:125;
+        rounded(ctx,x,ry,rw,rh,richMachine?17:20,CREAM,richMachine?'#bd8b45':INK,richMachine?2:5);ctx.save();ctx.beginPath();ctx.roundRect(x+4,ry+4,rw-8,rh-8,13);ctx.clip();
         const target=done?Math.floor(state.value/(r===0?10:1))%10:0,at=state.hitTime??state.time;
         const moving=at*15+r*3.25;
         let pos=moving;
         if(done){const start=at*15+r*3.25;const finish=Math.ceil((start-target)/10)*10+target+10;pos=lerp(start,finish,ease((state.time-at)/(state.rhythmMode ? .19+r*.02 : .75+r*.18)));}
         if(state.reduceMotion)pos=done?target:Math.floor(state.time*3)+r*3;
-        const base=Math.floor(pos);for(let j=-2;j<=2;j++){const n=mod(base+j,10),yy=184+(base+j-pos)*125;num(n,x+74,yy,108);}
-        ctx.restore();line(ctx,[[x+7,121],[x+141,121]],'#172b461b',3);line(ctx,[[x+7,246],[x+141,246]],'#172b461b',3);
+        const base=Math.floor(pos);for(let j=-2;j<=2;j++){const n=mod(base+j,10),yy=center+(base+j-pos)*step;num(n,x+rw/2,yy,richMachine?83:108);}
+        ctx.restore();if(!richMachine){line(ctx,[[x+7,121],[x+141,121]],'#172b461b',3);line(ctx,[[x+7,246],[x+141,246]],'#172b461b',3);}
       }
-      line(ctx,[[741,210],[776,173-done*25]],INK,14);ellipse(ctx,781,163-done*25,23,23,TEAL,INK);characterAt('ビートくん',159,345,225);star(ctx,850,83,35,GOLD,t*.3);chip(ctx,done?'ぴたっ！':'ぐるぐる…',835,303,176,CREAM);
+      if(!richMachine){line(ctx,[[741,210],[776,173-done*25]],INK,14);ellipse(ctx,781,163-done*25,23,23,TEAL,INK);}characterAt('ビートくん',159,345,225);star(ctx,850,83,35,GOLD,t*.3);if(!state.rhythmMode)chip(ctx,done?'ぴたっ！':'ぐるぐる…',835,303,176,CREAM);
     } else if(game.id===2){
       for(let x=0;x<1000;x+=70){line(ctx,[[x,0],[x,140]],'#fff5',2);}rounded(ctx,0,310,1000,130,0,'#d4745d',null);rounded(ctx,82,179,836,144,65,INK,INK);rounded(ctx,92,191,816,118,56,'#d9ede1',null);
       for(let i=0;i<14;i++){const x=100+mod(i*63-t*45,800);line(ctx,[[x,200],[x,300]],'#94bab0',3);}
@@ -272,7 +287,13 @@ export function createMiniGame(gameId, question, suppliedHelpers={}) {
       for(let i=0;i<7;i++){const x=i*179-28;rounded(ctx,x-12,86,26,293,8,'#8c6b52',null);ellipse(ctx,x,69+(i%2)*25,99,84,['#6c9d77','#96b986','#b5c990'][i%3]);}ellipse(ctx,504,429,699,131,'#a2c284');for(let i=0;i<14;i++){const x=mod(i*173+28,990);star(ctx,x,319+(i%3)*31,7,i%2?CREAM:GOLD,t*.15);}
       const cast=['オオカミ','ウサギ','クマ','キツネ'];const name=q.character||cast[(q.a+q.b)%cast.length];characterAt(name,128,348,189,state.phase==='listen'?'talk':reaction);bubble(ctx,`${q.a} × ${q.b} = ${state.phase==='reveal'?q.answer:(q.claimed??q.answer)}`,582,119,450,CREAM,53);if(!state.rhythmMode)drawTruthPads(ctx,controls,picked,done);else if(state.selected!==null&&!state.lastPulse?.demo){label(ctx,state.selected?'○':'×',575,294,89,state.selected?TEAL:CORAL);}if(done&&state.selected!==null&&!state.lastPulse?.demo)chip(ctx,state.value?'ほんと！':'うそ！',848,349,182,CREAM);
     }
-    if(state.phase==='reveal'&&state.correct){const now=state.reduceMotion?0:Math.max(0,state.time-(state.hitTime??state.time));for(let i=0;i<16;i++){const x=mod(i*193+47,980)+10,y=mod(i*61+now*90,355);star(ctx,x,y,5+(i%3)*2,[GOLD,CREAM,CORAL,TEAL][i%4],t+i);}}
+    if(state.phase==='reveal'&&state.correct){
+      const now=state.reduceMotion?0:Math.max(0,state.time-(state.hitTime??state.time));
+      helpers.drawEffect?.(ctx,'success',800,160,260,t,{start:state.hitTime,loop:true});
+      helpers.drawShared?.(ctx,'party',135,105,210,t,{start:state.hitTime,loop:true});
+      for(let i=0;i<16;i++){const x=mod(i*193+47,980)+10,y=mod(i*61+now*90,355);star(ctx,x,y,5+(i%3)*2,[GOLD,CREAM,CORAL,TEAL][i%4],t+i);}
+    }
+    if(pulseActive&&!state.lastPulse.success)helpers.drawEffect?.(ctx,'surprise',185,205,160,t,{start:state.lastPulse.time,alpha:.6});
     if(!state.rhythmMode){const action=actionText(game,state);rounded(ctx,273,389,454,39,19,state.nudgeUntil>state.time?CORAL:'#172b46eb',null);label(ctx,action,500,409,21,CREAM);}
     else if(pulseActive&&!state.reduceMotion){const radius=(1-clamp(pulseAge/.42))*24;for(let i=0;i<5;i++)star(ctx,390+i*55,350-Math.sin(i)*15,radius*.45,state.lastPulse.success?GOLD:'#dfd5c6',t+i);}
     if(state.phase==='play'&&!state.completed&&state.nudgeUntil>state.time){line(ctx,[[503,374],[503,347],[514,358],[503,347],[492,358]],CREAM,5);}

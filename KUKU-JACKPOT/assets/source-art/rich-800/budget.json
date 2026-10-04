@@ -1,0 +1,35 @@
+{
+  "project": "KUKU BEAT rich animation expansion",
+  "authorizedCalls": 800,
+  "scope": "800 actual built-in image generation tool invocations for this expansion; historical calls excluded",
+  "status": "completed",
+  "countPolicy": "Each dispatched image_gen tool call counts once. Cropping, packing, resizing, frames, retries and adopted assets are reported separately. Retries also consume a call. Never equate animation frames with generation calls.",
+  "plan": {
+    "stagePacks": {
+      "stages": 21,
+      "callsPerStage": "27–32",
+      "total": 667,
+      "contents": "499 character clips, 84 backgrounds, 84 animated effect sheets; five optional third-performance clips were reallocated to quality repairs."
+    },
+    "shared": {
+      "total": 133,
+      "contents": "30 numeral sheets, 21 interactive props, 21 result scenes, 21 duets, 15 greetings, 10 party effects, 4 rewards, 11 quality repair generations."
+    }
+  },
+  "generationTool": "built-in image_gen",
+  "receiptsDirectory": "receipts",
+  "qualityGates": [
+    "inspect generated art",
+    "pack alpha-preserving animation frames",
+    "reference every adopted runtime asset",
+    "verify character frames visibly change",
+    "browser playtest",
+    "smartphone performance and landscape layout",
+    "PWA update/offline tests"
+  ],
+  "notes": "800 actual calls completed with 800 unique originals. Visual review and conservative atlas-boundary audit adopt 779 sheets / 3679 frames and reject 21 sheets. Browser and release evidence is recorded in designs/20-minigames/rich-release-report.json.",
+  "actualCalls": 800,
+  "adoptedSheets": 779,
+  "rejectedSheets": 21,
+  "adoptedFrames": 3679
+}

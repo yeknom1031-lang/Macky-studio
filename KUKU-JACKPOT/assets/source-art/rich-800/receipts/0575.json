@@ -1,0 +1,37 @@
+{
+  "id": 575,
+  "key": "0575-delivery-effect-charge-2",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:37:53.718Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for 宅配ロボの九九エクスプレス. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: charging energy swirl of stage-themed shapes. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #ffe0ba, #bdcdbb with gold and mint highlights.",
+  "completedAt": "2026-10-04T14:40:35.129Z",
+  "source": "assets/source-art/rich-800/0575-delivery-effect-charge-2.png",
+  "runtime": "0575-delivery-effect-charge-2.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7374,
+  "bytes": 147420,
+  "qualityNote": "目視済み。荷物、葉、星、音符の渦が膨らんで消える6コマ。各セル内に輪郭保持。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

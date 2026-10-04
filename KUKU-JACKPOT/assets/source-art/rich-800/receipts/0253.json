@@ -1,0 +1,37 @@
+{
+  "id": 253,
+  "key": "0253-donuts-effect-beat-0",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T15:54:13.589Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for ドーナツ増殖工場. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: short rhythmic impact with cute stage-specific tiny props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #b5e1da, #72b9bf with gold and mint highlights.",
+  "completedAt": "2026-10-04T15:57:02.912Z",
+  "source": "assets/source-art/rich-800/0253-donuts-effect-beat-0.png",
+  "runtime": "0253-donuts-effect-beat-0.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7505,
+  "bytes": 147030,
+  "qualityNote": "Inspected all six generated effect frames visually. The painted effect sequence is readable and usable, without unwanted text or block artifacts. Accepted all six frames.",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

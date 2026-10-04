@@ -1,0 +1,17 @@
+{
+  "id": 221,
+  "key": "0221-quiz-effect-beat-0",
+  "status": "rejected",
+  "dispatchedAt": "2026-10-04T15:13:26.653Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for 早口クイズ！九九オンエア. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: short rhythmic impact with cute stage-specific tiny props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #7463aa, #c28eb7 with gold and mint highlights.",
+  "completedAt": "2026-10-04T15:19:04.429Z",
+  "source": "assets/source-art/rich-800/0221-quiz-effect-beat-0.png",
+  "runtime": "0221-quiz-effect-beat-0.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.8307,
+  "bytes": 78124,
+  "qualityNote": "Visual inspection of raw PNG and packed WebP shows jagged white/magenta block artifacts around every effect, unlike the clean painterly assets. Reject all frames; use the clean success/charge effect as fallback.",
+  "usableFrames": []
+}

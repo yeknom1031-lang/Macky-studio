@@ -135,6 +135,8 @@ test('release builder excludes raw material, generates a reproducible version, a
       'src/festival-app.js': 'export const game = 21;',
       'manifest.webmanifest': '{}', '_headers': '/*\n  X-Content-Type-Options: nosniff', 'sw.js': swSource,
       'assets/runtime/icon-192.png': 'icon', 'assets/audio/festival/voice.wav': 'audio',
+      'assets/runtime/rich/manifest.json': '{"clips":[{"file":"adopted.webp"}]}',
+      'assets/runtime/rich/adopted.webp': 'reviewed art', 'assets/runtime/rich/rejected.webp': 'bad pose',
       'assets/art/original.png': 'large raw art', '.tools/private.txt': 'private', 'tests/secret.txt': 'private',
       'designs/20-minigames/index.html': '<img src="images/21-forest.png"><a href="21-minigames-designs.zip" download>全22枚を保存</a>',
       'designs/20-minigames/images/21-forest.webp': 'webp', 'designs/20-minigames/images/21-forest.png': 'raw',
@@ -145,6 +147,8 @@ test('release builder excludes raw material, generates a reproducible version, a
     const first = await buildFestival({ root, requireRuntime: false });
     assert.ok(first.assets.every(asset => !asset.url.includes('/.tools/') && !asset.url.includes('/tests/') && !asset.url.includes('/assets/art/')));
     assert.ok(!first.assets.some(asset => asset.url.endsWith('/21-forest.png')));
+    assert.ok(first.assets.some(asset => asset.url.endsWith('/rich/adopted.webp')));
+    assert.ok(!first.assets.some(asset => asset.url.endsWith('/rich/rejected.webp')));
     const gallery = await readFile(path.join(root, 'dist/designs/20-minigames/index.html'), 'utf8');
     assert.ok(gallery.includes('images/21-forest.webp'));
     assert.ok(!gallery.includes('.zip'));

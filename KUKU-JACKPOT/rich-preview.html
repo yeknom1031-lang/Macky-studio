@@ -1,0 +1,35 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>九九ビート 動く素材の検証</title><style>
+*{box-sizing:border-box}body{margin:0;background:#fff7df;color:#172b46;font:14px system-ui}header{padding:8px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}select,button{font:inherit;padding:8px;min-height:40px}canvas{display:block;width:100%;max-height:calc(100dvh - 110px);object-fit:contain;background:#172b46}output{display:block;padding:8px 14px;font:12px monospace}label{display:flex;gap:5px;align-items:center}
+</style><header><label>舞台 <select id="stage"></select></label><label>演技 <select id="phase"><option value="auto">自動で一周</option><option value="intro">あいさつ</option><option value="listen">話す</option><option value="demo">構える</option><option value="play">リズム反応</option><option value="reveal">成功</option><option value="miss">失敗</option></select></label><label>種類 <select id="variant"><option>0</option><option>1</option><option>2</option><option>3</option></select></label><label><input type="checkbox" id="reduce">動きを控える</label><button id="next">次の舞台</button><a href="/">ゲームへ</a></header><canvas id="scene" width="1000" height="440"></canvas><output id="stats">素材を読み込み中</output><script type="module">
+import {GAMES,createMiniGame} from './src/minigames.js';
+import {FestivalArt} from './src/festival-art.js';
+const $=id=>document.getElementById(id),art=new FestivalArt(),ctx=$('scene').getContext('2d');
+for(const g of GAMES){const o=new Option(`${g.id} ${g.title}`,g.id);$('stage').add(o);}
+const helpers=Object.fromEntries(['drawCharacter','drawNumber','drawBackdrop','drawProp','hasProp','drawEffect','drawShared'].map(k=>[k,art[k].bind(art)]));helpers.setArtContext=art.setContext.bind(art);
+let mini,start=0,lastPulse=-1,lastPhase='',frames=0,since=performance.now(),fps=0,loadToken=0,tour=false,tourStarted=0,tourSamples=[];
+const tourButton=document.createElement('button');tourButton.textContent='21舞台を自動確認';document.querySelector('header').append(tourButton);
+const report=document.createElement('output');report.id='tour-report';document.body.append(report);
+tourButton.onclick=async()=>{tour=true;tourSamples=[];report.textContent='21舞台を計測中';$('stage').value='1';$('phase').value='auto';await select();tourStarted=performance.now();};
+await art.load();
+async function select(){
+ const token=++loadToken,g=GAMES[Number($('stage').value)-1],v=Number($('variant').value);
+ $('stats').textContent='舞台を準備中';mini=null;art.setStage(g,v);art.theme=g.id===21?'wood':[3,5,10,15,16,18].includes(g.id)?'jelly':'gold';
+ await art.prepareStage(g,v,'オオカミ');if(token!==loadToken)return;
+ mini=createMiniGame(g.id,{a:6,b:8,answer:48,choices:[42,48,54],claimed:42,truth:false,missing:'ones',character:'オオカミ'},helpers);
+ start=performance.now()/1000;lastPulse=-1;lastPhase='';
+}
+$('stage').onchange=select;$('variant').onchange=select;$('phase').onchange=()=>{lastPhase='';};$('reduce').onchange=()=>art.reduceMotion=$('reduce').checked;
+$('next').onclick=()=>{$('stage').value=Number($('stage').value)%21+1;select();};
+await select();
+function draw(now){
+ if(mini){const t=now/1000-start,b=t/.5,cycle=b%24,selection=$('phase').value;let phase=selection==='auto'?(cycle<9?'listen':cycle<14?'play':'reveal'):selection;const correct=phase!=='miss';if(phase==='miss')phase='reveal';
+  mini.update({rhythmMode:true,time:t,beat:b,beatDuration:.5,nextCueBeat:12+Math.floor(b/24)*24,phase,correct,anticipating:cycle>=9&&cycle<12,reduceMotion:art.reduceMotion});
+  if(phase==='play'&&cycle>=12&&Math.floor(b/24)!==lastPulse){lastPulse=Math.floor(b/24);mini.pulse({beat:b,value:mini.game.mechanic==='truth'?0:48,success:true,index:0,total:1,holding:false});mini.setAnswer(mini.game.mechanic==='truth'?0:48,true);}
+  mini.draw(ctx,1000,440);frames++;
+  if(now-since>1000){fps=Math.round(frames*1000/(now-since));frames=0;since=now;const d=art.animation.diagnostics();$('stats').textContent=`${mini.game.title} | ${phase} | ${fps} fps | decoded ${d.decodedMegabytes.toFixed(1)} MB | sheets ${d.loadedSheets} | different frames ${d.uniqueFrames} | adopted ${d.availableSheets}`;}
+  if(tour&&now-tourStarted>12200){const d=art.animation.diagnostics();tourSamples.push({stage:mini.game.id,fps,decodedMB:Number(d.decodedMegabytes.toFixed(1)),sheets:d.loadedSheets,uniqueFrames:d.uniqueFrames});report.textContent=JSON.stringify(tourSamples);if(Number($('stage').value)===21){tour=false;report.textContent='完了 '+report.textContent;}else{$('stage').value=Number($('stage').value)+1;select().then(()=>tourStarted=performance.now());}}
+ }
+ requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+</script></html>

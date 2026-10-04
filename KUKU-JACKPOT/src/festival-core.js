@@ -27,8 +27,9 @@ export function grade(question,result,{offset=0,watch=false}={}){
   const value=result?.value??null;
   const error=result?.performed&&Number.isFinite(result.hitTime)?(result.hitTime-TARGET_BEAT*BEAT)*1000-offset:null;
   const sequence=result?.sequence;
-  const rhythm=sequence?(sequence.hits===sequence.total&&sequence.total>0&&!sequence.strays?'perfect':sequence.hits>=(sequence.total+(sequence.strays||0))*.6&&sequence.hits>0?'nice':sequence.hits?'off':'miss'):error===null?'miss':Math.abs(error)<=150?'perfect':Math.abs(error)<=320?'nice':'off';
-  return {a:question.a,b:question.b,answer:question.answer,gameId:question.gameId,value,correct:value===expected,performed:!!result?.performed,rhythm,errorMs:error,watch,...(sequence?{rhythmHits:sequence.hits,rhythmTotal:sequence.total,perfectHits:sequence.perfect,maxCombo:sequence.maxCombo,events:sequence.events}: {})};
+  const rhythm=sequence?.single?sequence.timing:sequence?(sequence.hits===sequence.total&&sequence.total>0&&!sequence.strays?'perfect':sequence.hits>=(sequence.total+(sequence.strays||0))*.6&&sequence.hits>0?'nice':sequence.hits?'off':'miss'):error===null?'miss':Math.abs(error)<=150?'perfect':Math.abs(error)<=320?'nice':'off';
+  const correct=value===expected,timingBonus=correct?(rhythm==='perfect'?50:rhythm==='nice'?25:0):0;
+  return {a:question.a,b:question.b,answer:question.answer,gameId:question.gameId,value,correct,points:correct?100+timingBonus:0,timingBonus,performed:!!result?.performed,rhythm,errorMs:sequence?.single?sequence.errorMs:error,watch,...(sequence?{rhythmHits:sequence.hits,rhythmTotal:sequence.total,perfectHits:sequence.perfect,maxCombo:sequence.maxCombo,events:sequence.events}: {})};
 }
 export function summarize(results){return {total:results.length,correct:results.filter(x=>x.correct).length,rhythm:results.filter(x=>x.rhythm==='perfect'||x.rhythm==='nice').length,rhythmHits:results.reduce((n,r)=>n+(r.rhythmHits||0),0),rhythmTotal:results.reduce((n,r)=>n+(r.rhythmTotal||0),0),maxCombo:Math.max(0,...results.map(r=>r.maxCombo||0)),review:[...new Map(results.filter(x=>!x.correct).map(x=>[`${x.a}-${x.b}`,{a:x.a,b:x.b}])).values()]};}
 export function newSave(){return {version:1,plays:0,correct:0,attempts:0,stars:{},facts:{},settings:{music:55,voice:95,cheer:85,sfx:65,reduceMotion:false,offset:0}};}

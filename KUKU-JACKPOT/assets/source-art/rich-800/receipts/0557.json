@@ -1,0 +1,37 @@
+{
+  "id": 557,
+  "key": "0557-delivery-character-robot-hold-1",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:22:28.000Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Asset type: production 2D animation sprite sheet. The attached image is the identity reference. Keep exactly the same ロボット (robot) character face, colors, clothing and proportions. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Create a six-frame charged power loop: gather hands, squeeze eyes, puff cheeks, arms lifted holding invisible energy, slight side strain, return toward gather; sweet determined face; stage context: 宅配ロボの九九エクスプレス — シュッ！ お届け完了. Performance variation 2 of 3: extra lively comic performance with more expressive face and arms. Sheet: landscape 3 columns by 2 rows, EXACTLY SIX equal square cells. Read left-to-right then next row. One complete character per cell, 12% empty margin, identical camera, identical character scale, ground anchor at 87% cell height. Draw each pose differently; not identical stills moved around. Transparent RGBA background only, no ground, no cast shadows, no decorative background, no cell dividers, no labels. All limbs stay inside their cells. Animation must form a coherent sequence.",
+  "completedAt": "2026-10-04T14:26:23.845Z",
+  "source": "assets/source-art/rich-800/0557-delivery-character-robot-hold-1.png",
+  "runtime": "0557-delivery-character-robot-hold-1.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.6039,
+  "bytes": 86098,
+  "qualityNote": "目視済み。ためと解放の6コマ。全体がセル内、隣接混入なし。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

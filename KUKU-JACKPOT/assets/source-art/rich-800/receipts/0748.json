@@ -1,0 +1,38 @@
+{
+  "id": 748,
+  "key": "0748-ninja-duet",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:05:03.349Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Reference: preserve this character. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. SIX-frame animation sheet of this hero and a cute tiny supportive bird sidekick dancing together for 九九ニンジャ・見切りの術; wind up, step left, clap hands, step right, cheer, return. 3x2 equal cells; full duo in every cell, same size and baseline. True transparent background, no words, no panel lines.",
+  "completedAt": "2026-10-04T14:07:36.482Z",
+  "source": "assets/source-art/rich-800/0748-ninja-duet.png",
+  "runtime": "0748-ninja-duet.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.6007,
+  "bytes": 113156,
+  "usableFrames": [
+    0,
+    2,
+    5
+  ],
+  "qualityNote": "目視検収：全身と動作差を確認。隣接セルへの翼・耳・装飾のはみ出しがあるコマと、その隣接汚染コマを除外。",
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      33,
+      0,
+      30,
+      55,
+      0
+    ],
+    "excludedFrames": [
+      1,
+      3,
+      4
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

@@ -1,0 +1,37 @@
+{
+  "id": 479,
+  "key": "0479-hero-effect-charge-2",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T16:09:40.916Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for となりの九九・ヒーロービル. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: charging energy swirl of stage-themed shapes. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #b2dfef, #88b0d5 with gold and mint highlights.",
+  "completedAt": "2026-10-04T16:12:49.728Z",
+  "source": "assets/source-art/rich-800/0479-hero-effect-charge-2.png",
+  "runtime": "0479-hero-effect-charge-2.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7609,
+  "bytes": 155904,
+  "qualityNote": "目視済み。青と金の渦に星と音符が集まり、拡大して消えていくチャージ効果。4コマ目は右余白が小さいが輪郭はセル内。全6コマを使用可能。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

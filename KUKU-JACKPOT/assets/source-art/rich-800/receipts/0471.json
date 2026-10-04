@@ -1,0 +1,37 @@
+{
+  "id": 471,
+  "key": "0471-hero-character-robot-recover-2",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T16:06:59.304Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Asset type: production 2D animation sprite sheet. The attached image is the identity reference. Keep exactly the same ロボット (robot) character face, colors, clothing and proportions. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Create six frames of a kind comical near-miss reaction: surprised round eyes, ears drop, gentle wobble, sheepish smile, brush self off, encouraging thumbs up; never sad or shaming; stage context: となりの九九・ヒーロービル — とべ！ 九九ヒーロー. Performance variation 3 of 3: encore performance, playful exaggerated confidence. Sheet: landscape 3 columns by 2 rows, EXACTLY SIX equal square cells. Read left-to-right then next row. One complete character per cell, 12% empty margin, identical camera, identical character scale, ground anchor at 87% cell height. Draw each pose differently; not identical stills moved around. Transparent RGBA background only, no ground, no cast shadows, no decorative background, no cell dividers, no labels. All limbs stay inside their cells. Animation must form a coherent sequence.",
+  "completedAt": "2026-10-04T16:09:39.397Z",
+  "source": "assets/source-art/rich-800/0471-hero-character-robot-recover-2.png",
+  "runtime": "0471-hero-character-robot-recover-2.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.5697,
+  "bytes": 107232,
+  "qualityNote": "目視済み。驚きから揺れ、照れ、深呼吸、励ましへ移る回復動作。1コマ目の右指は余白が小さいがセル内にあり全6コマを使用可能。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

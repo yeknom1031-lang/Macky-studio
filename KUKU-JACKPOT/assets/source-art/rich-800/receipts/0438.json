@@ -1,0 +1,37 @@
+{
+  "id": 438,
+  "key": "0438-shared-digit-quality-repair",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T16:16:42.293Z",
+  "tool": "image_gen",
+  "prompt": "Production transparent 2D sprite atlas, repair of an existing asset. Preserve the attached subject identity and materials, but rebuild cleanly. EXACTLY 6 EQUAL SQUARE CELLS, 3 columns by 2 rows, landscape sheet. the same upright perfectly legible golden numeral 1. Six subtle bounce animation poses, at most 5 percent squash, no other numbers. No trails, no stars, no sparkles, no extra decoration. First and last numeral must be straight upright. Critical: every complete subject is centered inside the CENTRAL 65 PERCENT of its cell, with a wide clear TRANSPARENT gutter on every side. Keep all six subjects at the SAME scale and ground anchor. Each cell contains just its subject and nothing else. True RGBA transparency. Absolutely NO dividing lines, NO grid, NO outlines of cells, NO backdrop or paper behind the subject, NO text, NO labels, NO watermark. Premium original warm hand-painted Japanese children’s rhythm-game toy art, rounded expressive contours and rich shading. Priority is fully contained, consistent, clean animation poses.",
+  "completedAt": "2026-10-04T16:18:25.754Z",
+  "source": "assets/source-art/rich-800/0438-shared-digit-quality-repair.png",
+  "runtime": "0438-shared-digit-quality-repair.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7907,
+  "bytes": 34588,
+  "qualityNote": "Six unambiguous golden numeral 1 poses; no trails, readable upright poster.",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "posterFrame": 0,
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  }
+}

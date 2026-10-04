@@ -1,0 +1,40 @@
+{
+  "id": 794,
+  "key": "0794-donuts-duet-repair",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:54:10.956Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Make a production animation sprite sheet of the exact reference hero dancing with a tiny supportive bird. Warm hand-painted children’s game, clean navy outline, same costume and face as reference. SIX equal square cells in a strict 3-column by 2-row landscape grid. Each cell holds the ENTIRE TWO-CHARACTER DUO within its CENTRAL 60% width and CENTRAL 65% height, with HUGE empty 20% margins on ALL four sides. Small figures, generous transparent gutters are essential. Absolutely no figure, wing, ear, prop or limb crosses a cell boundary. No sparkles, rays or motion marks. Frames: neutral smile, left step, clap, right step, arms up, neutral smile. Both characters complete and same scale in every cell, feet anchored at 78% cell height. Real transparent RGBA background. No floor, background, panel borders, text, logo or numerals.",
+  "completedAt": "2026-10-04T14:56:48.088Z",
+  "source": "assets/source-art/rich-800/0794-donuts-duet-repair.png",
+  "runtime": "0794-donuts-duet-repair.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7456,
+  "bytes": 73368,
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "quality": {
+    "reviewed": true,
+    "notes": "Repair accepted: both complete characters contained with clear gutters in all six frames."
+  },
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

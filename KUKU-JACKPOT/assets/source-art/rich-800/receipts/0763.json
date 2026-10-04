@@ -1,0 +1,38 @@
+{
+  "id": 763,
+  "key": "0763-dragon-duet",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:18:37.089Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Reference: preserve this character. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. SIX-frame animation sheet of this hero and a cute tiny supportive bird sidekick dancing together for ドラゴンの九九くしゃみ; wind up, step left, clap hands, step right, cheer, return. 3x2 equal cells; full duo in every cell, same size and baseline. True transparent background, no words, no panel lines.",
+  "completedAt": "2026-10-04T14:21:10.664Z",
+  "source": "assets/source-art/rich-800/0763-dragon-duet.png",
+  "runtime": "0763-dragon-duet.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.5952,
+  "bytes": 129140,
+  "usableFrames": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "qualityNote": "目視検収：全6コマの全身、動作差、透明背景を確認。",
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      6,
+      13,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [
+      0,
+      1
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 2
+}

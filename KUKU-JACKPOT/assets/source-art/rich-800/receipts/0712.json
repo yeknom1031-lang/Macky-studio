@@ -1,0 +1,38 @@
+{
+  "id": 712,
+  "key": "0712-magic-prop",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:04:04.796Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: main interactive stage object sprite sheet. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Subject: a rounded magical glass mixing cauldron with mint juice and coral handles; frames show empty, quarter full, half full, full, swirling sparkle, fizz. EXACT SIX frames in 3 columns by 2 rows of equal square cells. One entire object per cell, same size and anchor and frontal camera, all parts contained within 10% margins. Genuinely transparent background, no ground outside object, no characters, no text or numbers. Keep any display windows empty so the game can draw the correct maths. Bright clean detailed premium toy appearance with material shading, precise consistent construction across frames.",
+  "completedAt": "2026-10-04T13:05:07.348Z",
+  "source": "assets/source-art/rich-800/0712-magic-prop.png",
+  "runtime": "0712-magic-prop.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.3686,
+  "bytes": 167326,
+  "qualityNote": "Visually reviewed all six poses; preserve full cell framing and original proportions.",
+  "usableFrames": [
+    0,
+    1,
+    3,
+    4
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      37,
+      0,
+      0,
+      38
+    ],
+    "excludedFrames": [
+      2,
+      5
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

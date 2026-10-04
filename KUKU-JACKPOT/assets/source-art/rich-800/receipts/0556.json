@@ -1,0 +1,38 @@
+{
+  "id": 556,
+  "key": "0556-delivery-character-robot-act-1",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:22:27.610Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Asset type: production 2D animation sprite sheet. The attached image is the identity reference. Keep exactly the same ロボット (robot) character face, colors, clothing and proportions. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Create six frames of an energetic beat action: ready, wind back, big action contact pose with arms extended, follow through, rebound, back to ready; visibly different silhouettes and clean anatomy; stage context: 宅配ロボの九九エクスプレス — シュッ！ お届け完了. Performance variation 2 of 3: extra lively comic performance with more expressive face and arms. Sheet: landscape 3 columns by 2 rows, EXACTLY SIX equal square cells. Read left-to-right then next row. One complete character per cell, 12% empty margin, identical camera, identical character scale, ground anchor at 87% cell height. Draw each pose differently; not identical stills moved around. Transparent RGBA background only, no ground, no cast shadows, no decorative background, no cell dividers, no labels. All limbs stay inside their cells. Animation must form a coherent sequence.",
+  "completedAt": "2026-10-04T14:26:23.651Z",
+  "source": "assets/source-art/rich-800/0556-delivery-character-robot-act-1.png",
+  "runtime": "0556-delivery-character-robot-act-1.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.5803,
+  "bytes": 101316,
+  "qualityNote": "目視済み。腕を振る6コマ。3コマ目の左の黄色い効果が境界付近へ進入するため2・3を除外。",
+  "usableFrames": [
+    0,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      22,
+      28,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [
+      1,
+      2
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

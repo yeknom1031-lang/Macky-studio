@@ -1,0 +1,38 @@
+{
+  "id": 96,
+  "key": "0096-sushi-effect-surprise-3",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:05:40.407Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for 回転ずし・つかみの達人. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: comical surprise poof with friendly whimsical stage props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #ffe1bd, #f69c85 with gold and mint highlights.",
+  "completedAt": "2026-10-04T13:07:21.417Z",
+  "source": "assets/source-art/rich-800/0096-sushi-effect-surprise-3.png",
+  "runtime": "0096-sushi-effect-surprise-3.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.773,
+  "bytes": 128826,
+  "qualityNote": "目視済み。6コマ演出、最大4コマ目がセル境界に近いため採用から除外。ほかは十分な余白。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      80,
+      75,
+      0
+    ],
+    "excludedFrames": [
+      3,
+      4
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

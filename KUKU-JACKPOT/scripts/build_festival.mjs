@@ -46,11 +46,14 @@ export async function buildFestival({ root = projectRoot, outDir = path.join(roo
   await rm(outDir, { recursive: true, force: true });
   await mkdir(outDir, { recursive: true });
   const files = ['index.html', 'manifest.webmanifest', '_headers'];
+  let adoptedArt;
+  const richManifest=path.join(root,'assets/runtime/rich/manifest.json');
+  if(await exists(richManifest))adoptedArt=new Set(JSON.parse(await readFile(richManifest,'utf8')).clips.map(clip=>clip.file));
   if (await exists(path.join(root, 'recover.html'))) files.push('recover.html');
   for (const name of ['festival.css', 'festival-style.css']) if (await exists(path.join(root, name))) files.push(name);
   for (const [dir, accept] of [
     ['src', f => /\.(?:js|css|json)$/.test(f)],
-    ['assets/runtime', f => allowedRuntime.test(f)],
+    ['assets/runtime', f => allowedRuntime.test(f)&&(!f.includes(`${path.sep}rich${path.sep}`)||path.basename(f)==='manifest.json'||adoptedArt?.has(path.basename(f)))],
     ['assets/audio/festival', f => allowedAudio.test(f)],
     ['assets/fonts', f => /\.(?:woff2|txt)$/i.test(f)],
     ['designs/20-minigames', f => !f.includes(`${path.sep}qa${path.sep}`) && /\.(?:html|json|webp)$/i.test(f)],

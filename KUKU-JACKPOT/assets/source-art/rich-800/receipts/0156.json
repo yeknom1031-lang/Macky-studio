@@ -1,0 +1,25 @@
+{
+  "id": 156,
+  "key": "0156-ninja-background-3",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:22:06.360Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: wide landscape background for a 2D rhythm game. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Theme: 九九ニンジャ・見切りの術, 九九の巻物を 見きわめろ; palette #273d63, #766099. Setting surprising whimsical fantasy variation. Painted layered scenery: detailed edges with appealing stage decorations, middle 60 percent is open uncluttered action space. Lower third is simple ground or stage platform. Strong depth, lovely lighting, joyful charming world. No characters, no numbers, no text, no interface. Landscape composition approximately 2.25:1, camera fixed frontal, nothing essential in extreme edges.",
+  "completedAt": "2026-10-04T14:25:28.806Z",
+  "source": "assets/source-art/rich-800/0156-ninja-background-3.png",
+  "runtime": "0156-ninja-background-3.webp",
+  "width": 1400,
+  "height": 622,
+  "alpha": 0,
+  "bytes": 164714,
+  "qualityNote": "Inspected the generated landscape background visually: the themed scene is coherent, with an open central play area and no unwanted labels or watermarks. Accepted.",
+  "usableFrames": [
+    0
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

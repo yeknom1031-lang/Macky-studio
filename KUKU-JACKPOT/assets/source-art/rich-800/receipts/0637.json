@@ -1,0 +1,38 @@
+{
+  "id": 637,
+  "key": "0637-dragon-effect-beat-0",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T15:19:09.519Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for ドラゴンの九九くしゃみ. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: short rhythmic impact with cute stage-specific tiny props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #f4d6a6, #c6c69a with gold and mint highlights.",
+  "completedAt": "2026-10-04T15:22:31.768Z",
+  "source": "assets/source-art/rich-800/0637-dragon-effect-beat-0.png",
+  "runtime": "0637-dragon-effect-beat-0.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.8054,
+  "bytes": 123728,
+  "qualityNote": "目視済み。くしゃみの風と煙の拍演出。3コマ目の左の煙が左セルへ入るため2・3コマ目を除外。",
+  "usableFrames": [
+    0,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      53,
+      57,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [
+      1,
+      2
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

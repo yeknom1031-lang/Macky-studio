@@ -1,0 +1,37 @@
+{
+  "id": 511,
+  "key": "0511-aliens-effect-charge-2",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:35:10.153Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for 宇宙人の逆九九トーク. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: charging energy swirl of stage-themed shapes. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #294c65, #517391 with gold and mint highlights.",
+  "completedAt": "2026-10-04T13:38:08.642Z",
+  "source": "assets/source-art/rich-800/0511-aliens-effect-charge-2.png",
+  "runtime": "0511-aliens-effect-charge-2.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7358,
+  "bytes": 163258,
+  "qualityNote": "目視済み。星と音符の渦が広がり消える6コマ。最大時に余白狭めだが輪郭欠けなし。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

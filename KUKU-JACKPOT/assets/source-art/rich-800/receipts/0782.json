@@ -1,0 +1,40 @@
+{
+  "id": 782,
+  "key": "0782-shared-party-1",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:47:02.660Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. A six-frame celebratory effect animation. Theme rainbow ribbons. Frames: tiny anticipation, grow, burst, expand, drift, fade. 3x2 equal square cells, transparent background, no numbers, no words, no interface, no borders.",
+  "completedAt": "2026-10-04T14:49:23.106Z",
+  "source": "assets/source-art/rich-800/0782-shared-party-1.png",
+  "runtime": "0782-shared-party-1.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.8128,
+  "bytes": 137170,
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "quality": {
+    "reviewed": true,
+    "notes": "All six frames visibly inspected; characters/objects contained inside their own cells, no numerals in effects."
+  },
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

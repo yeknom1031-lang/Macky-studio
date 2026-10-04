@@ -1,0 +1,37 @@
+{
+  "id": 715,
+  "key": "0715-socks-prop",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:05:12.152Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: main interactive stage object sprite sheet. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Subject: a pair of delightful colorful socks clipped to a laundry line; six-frame dance of socks swinging apart, coming together, toe tap, heel kick, wave, settle. EXACT SIX frames in 3 columns by 2 rows of equal square cells. One entire object per cell, same size and anchor and frontal camera, all parts contained within 10% margins. Genuinely transparent background, no ground outside object, no characters, no text or numbers. Keep any display windows empty so the game can draw the correct maths. Bright clean detailed premium toy appearance with material shading, precise consistent construction across frames.",
+  "completedAt": "2026-10-04T13:06:22.026Z",
+  "source": "assets/source-art/rich-800/0715-socks-prop.png",
+  "runtime": "0715-socks-prop.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.6214,
+  "bytes": 121652,
+  "qualityNote": "Visually reviewed all six poses; preserve full cell framing and original proportions.",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

@@ -1,0 +1,25 @@
+{
+  "id": 737,
+  "key": "0737-hero-result",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:56:08.249Z",
+  "tool": "image_gen",
+  "prompt": "Use case: illustration-story. Reference: preserve this character. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Wide landscape celebratory stage tableau for となりの九九・ヒーロービル. Main character celebrating with colorful props from this theme, playful triumphant little scene, beautiful warm rim light. Leave central upper 40% softly uncluttered for game-drawn result text. No text or numerals in the artwork.",
+  "completedAt": "2026-10-04T13:58:06.697Z",
+  "source": "assets/source-art/rich-800/0737-hero-result.png",
+  "runtime": "0737-hero-result.webp",
+  "width": 1050,
+  "height": 700,
+  "alpha": 0,
+  "bytes": 91540,
+  "qualityNote": "目視検収：全景、キャラクター、ステージの小道具を確認。結果背景として採用。",
+  "usableFrames": [
+    0
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

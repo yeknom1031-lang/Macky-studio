@@ -1,0 +1,28 @@
+{
+  "id": 791,
+  "key": "0791-jackpot-result-repair",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:51:51.518Z",
+  "tool": "image_gen",
+  "prompt": "Use case: precise-object-edit. Edit this celebratory bird stage illustration. Remove ALL red numeral 9 marks from the round drums at the left and right. Each drum face must be a clean empty cream circle with no symbol and no number. Keep exactly the same original happy orange bird, headphones, pose, stage, coins, star wands, lighting, palette and beautiful hand-painted texture. Change only the three numeral marks. No text, no digits, no watermark. Preserve the entire landscape composition.",
+  "completedAt": "2026-10-04T14:54:10.519Z",
+  "source": "assets/source-art/rich-800/0791-jackpot-result-repair.png",
+  "runtime": "0791-jackpot-result-repair.webp",
+  "width": 1050,
+  "height": 700,
+  "alpha": 0,
+  "bytes": 122670,
+  "usableFrames": [
+    0
+  ],
+  "quality": {
+    "reviewed": true,
+    "notes": "Removed incorrect red numerals; result scene preserves identity and blank drums."
+  },
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

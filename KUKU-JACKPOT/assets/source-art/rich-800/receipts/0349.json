@@ -1,0 +1,37 @@
+{
+  "id": 349,
+  "key": "0349-magic-effect-beat-0",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:57:47.101Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for 魔法のジュース研究所. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: short rhythmic impact with cute stage-specific tiny props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #ddd0f1, #aa9cd9 with gold and mint highlights.",
+  "completedAt": "2026-10-04T14:02:48.176Z",
+  "source": "assets/source-art/rich-800/0349-magic-effect-beat-0.png",
+  "runtime": "0349-magic-effect-beat-0.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7607,
+  "bytes": 172040,
+  "qualityNote": "Visually checked: six distinct coherent frames in a 3×2 sheet, consistent identity, no numbers or text, transparent output verified.",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

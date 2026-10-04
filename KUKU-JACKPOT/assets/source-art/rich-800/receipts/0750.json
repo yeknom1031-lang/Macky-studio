@@ -1,0 +1,38 @@
+{
+  "id": 750,
+  "key": "0750-quiz-duet",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:07:36.738Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Reference: preserve this character. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. SIX-frame animation sheet of this hero and a cute tiny supportive bird sidekick dancing together for 早口クイズ！九九オンエア; wind up, step left, clap hands, step right, cheer, return. 3x2 equal cells; full duo in every cell, same size and baseline. True transparent background, no words, no panel lines.",
+  "completedAt": "2026-10-04T14:10:12.106Z",
+  "source": "assets/source-art/rich-800/0750-quiz-duet.png",
+  "runtime": "0750-quiz-duet.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.5918,
+  "bytes": 126802,
+  "usableFrames": [
+    0,
+    2,
+    5
+  ],
+  "qualityNote": "目視検収：全身と動作差を確認。隣接セルへの翼・耳・装飾のはみ出しがあるコマと、その隣接汚染コマを除外。",
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      10,
+      0,
+      68,
+      68,
+      0
+    ],
+    "excludedFrames": [
+      1,
+      3,
+      4
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

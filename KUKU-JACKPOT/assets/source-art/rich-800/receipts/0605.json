@@ -1,0 +1,37 @@
+{
+  "id": 605,
+  "key": "0605-octopus-effect-beat-0",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:47:16.428Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for タコの数字修理店. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: short rhythmic impact with cute stage-specific tiny props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #b9e5e8, #75bccb with gold and mint highlights.",
+  "completedAt": "2026-10-04T14:50:12.872Z",
+  "source": "assets/source-art/rich-800/0605-octopus-effect-beat-0.png",
+  "runtime": "0605-octopus-effect-beat-0.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7751,
+  "bytes": 121846,
+  "qualityNote": "目視済み。水しぶき、星、ボルト・ナットの拍演出6コマ。大きな4コマ目も輪郭を保持。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

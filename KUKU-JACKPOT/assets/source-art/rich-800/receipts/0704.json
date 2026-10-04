@@ -1,0 +1,38 @@
+{
+  "id": 704,
+  "key": "0704-sushi-prop",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T12:37:00.861Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: main interactive stage object sprite sheet. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Subject: a beautiful wooden miniature sushi conveyor with adorable salmon and egg sushi plates; frames show dishes advancing, chopsticks approaching, dish lifted, joyful bounce, sparkle, reset. EXACT SIX frames in 3 columns by 2 rows of equal square cells. One entire object per cell, same size and anchor and frontal camera, all parts contained within 10% margins. Genuinely transparent background, no ground outside object, no characters, no text or numbers. Keep any display windows empty so the game can draw the correct maths. Bright clean detailed premium toy appearance with material shading, precise consistent construction across frames.",
+  "completedAt": "2026-10-04T12:38:08.844Z",
+  "source": "assets/source-art/rich-800/0704-sushi-prop.png",
+  "runtime": "0704-sushi-prop.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.4068,
+  "bytes": 145100,
+  "qualityNote": "Visually reviewed all six poses; preserve full cell framing and original proportions.",
+  "usableFrames": [
+    0,
+    1,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      31,
+      61,
+      124,
+      0
+    ],
+    "excludedFrames": [
+      2,
+      3,
+      4
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

@@ -1,0 +1,37 @@
+{
+  "id": 341,
+  "key": "0341-magic-character-rabbit-hold-2",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:20:39.004Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Asset type: production 2D animation sprite sheet. The attached image is the identity reference. Keep exactly the same ウサギ (rabbit) character face, colors, clothing and proportions. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Create a six-frame charged power loop: gather hands, squeeze eyes, puff cheeks, arms lifted holding invisible energy, slight side strain, return toward gather; sweet determined face; stage context: 魔法のジュース研究所 — まぜまぜ！ おいしい魔法. Performance variation 3 of 3: encore performance, playful exaggerated confidence. Sheet: landscape 3 columns by 2 rows, EXACTLY SIX equal square cells. Read left-to-right then next row. One complete character per cell, 12% empty margin, identical camera, identical character scale, ground anchor at 87% cell height. Draw each pose differently; not identical stills moved around. Transparent RGBA background only, no ground, no cast shadows, no decorative background, no cell dividers, no labels. All limbs stay inside their cells. Animation must form a coherent sequence.",
+  "completedAt": "2026-10-04T14:23:39.133Z",
+  "source": "assets/source-art/rich-800/0341-magic-character-rabbit-hold-2.png",
+  "runtime": "0341-magic-character-rabbit-hold-2.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.5874,
+  "bytes": 102152,
+  "qualityNote": "Visually checked: six distinct coherent frames in a 3×2 sheet, consistent identity, no numbers or text, transparent output verified.",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

@@ -1,0 +1,39 @@
+{
+  "id": 702,
+  "key": "0702-shared-digit-wood-9",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:48:44.726Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. The attached image is a cute numeral reference. Create exactly SIX animation frames of the SAME numeral 9, same wood material, no changes to numerical identity. Frames in this exact order: 1 neutral upright perfectly legible numeral, 2 gentle squash, 3 gentle stretch, 4 one small bounce, 5 happy sparkles, 6 neutral upright settled. Maximum numeral deformation 15 percent, readability is essential. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Transparent sprite sheet, 3 columns by 2 rows identical square cells, same centered anchor, big clear legible numeral in every cell. No other numerals, no text, no faces that obscure numeral, no background.",
+  "completedAt": "2026-10-04T13:49:57.640Z",
+  "source": "assets/source-art/rich-800/0702-shared-digit-wood-9.png",
+  "runtime": "0702-shared-digit-wood-9.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.5692,
+  "bytes": 84602,
+  "usableFrames": [
+    0,
+    3,
+    4,
+    5
+  ],
+  "qualityNotes": "Six wooden numeral poses inspected; identity, upright poster and all cell margins remain usable.",
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      23,
+      22,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [
+      1,
+      2
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0,
+  "qualityNote": "Six wooden numeral poses inspected; identity, upright poster and all cell margins remain usable."
+}

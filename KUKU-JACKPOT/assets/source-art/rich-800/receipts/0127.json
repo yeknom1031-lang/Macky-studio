@@ -1,0 +1,38 @@
+{
+  "id": 127,
+  "key": "0127-rocket-effect-charge-2",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:52:44.859Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for かけ算ロケット. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: charging energy swirl of stage-themed shapes. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #253768, #7466ac with gold and mint highlights.",
+  "completedAt": "2026-10-04T13:58:07.988Z",
+  "source": "assets/source-art/rich-800/0127-rocket-effect-charge-2.png",
+  "runtime": "0127-rocket-effect-charge-2.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.6851,
+  "bytes": 157392,
+  "qualityNote": "Charge effect lower-left star reaches across the row boundary; exclude upper-left and lower-left cells to avoid a clipped star or stray fragment.",
+  "usableFrames": [
+    1,
+    2,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      19,
+      0,
+      0,
+      20,
+      0,
+      0
+    ],
+    "excludedFrames": [
+      0,
+      3
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 1
+}

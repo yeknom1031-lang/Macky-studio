@@ -1,0 +1,38 @@
+{
+  "id": 759,
+  "key": "0759-aliens-duet",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:12:44.955Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Reference: preserve this character. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. SIX-frame animation sheet of this hero and a cute tiny supportive bird sidekick dancing together for 宇宙人の逆九九トーク; wind up, step left, clap hands, step right, cheer, return. 3x2 equal cells; full duo in every cell, same size and baseline. True transparent background, no words, no panel lines.",
+  "completedAt": "2026-10-04T14:18:34.613Z",
+  "source": "assets/source-art/rich-800/0759-aliens-duet.png",
+  "runtime": "0759-aliens-duet.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.3963,
+  "bytes": 178340,
+  "usableFrames": [
+    0,
+    1,
+    2
+  ],
+  "qualityNote": "目視検収：全身と動作差を確認。隣接セルへの翼・耳・装飾のはみ出しがあるコマと、その隣接汚染コマを除外。",
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      66,
+      121,
+      55
+    ],
+    "excludedFrames": [
+      3,
+      4,
+      5
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

@@ -1,0 +1,38 @@
+{
+  "id": 621,
+  "key": "0621-dragon-character-dragon-hold-1",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T15:22:34.367Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Asset type: production 2D animation sprite sheet. The attached image is the identity reference. Keep exactly the same ドラゴン (dragon) character face, colors, clothing and proportions. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Create a six-frame charged power loop: gather hands, squeeze eyes, puff cheeks, arms lifted holding invisible energy, slight side strain, return toward gather; sweet determined face; stage context: ドラゴンの九九くしゃみ — ためてためて… はっくしょん！. Performance variation 2 of 3: extra lively comic performance with more expressive face and arms. Sheet: landscape 3 columns by 2 rows, EXACTLY SIX equal square cells. Read left-to-right then next row. One complete character per cell, 12% empty margin, identical camera, identical character scale, ground anchor at 87% cell height. Draw each pose differently; not identical stills moved around. Transparent RGBA background only, no ground, no cast shadows, no decorative background, no cell dividers, no labels. All limbs stay inside their cells. Animation must form a coherent sequence.",
+  "completedAt": "2026-10-04T15:26:12.366Z",
+  "source": "assets/source-art/rich-800/0621-dragon-character-dragon-hold-1.png",
+  "runtime": "0621-dragon-character-dragon-hold-1.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.518,
+  "bytes": 125036,
+  "qualityNote": "目視済み。ための別演技。4・5コマ目の角が上段へ入り、影響する1・2・4・5コマ目を除外。主ため素材613を推奨。",
+  "usableFrames": [
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      44,
+      44,
+      24,
+      44,
+      28,
+      0
+    ],
+    "excludedFrames": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 5
+}

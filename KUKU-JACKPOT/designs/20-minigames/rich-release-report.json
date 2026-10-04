@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-04T16:21:59.613Z",
+  "actualImageGenerationCalls": 800,
+  "uniqueOriginalOutputs": 800,
+  "adoptedSheets": 779,
+  "rejectedSheets": 21,
+  "adoptedFrames": 3679,
+  "runtimeBytes": 90298372,
+  "coverage": [
+    {
+      "stage": "forest",
+      "adoptedSheets": 33,
+      "characterClips": 22,
+      "characterFrames": 107,
+      "backgrounds": 4
+    },
+    {
+      "stage": "jackpot",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 121,
+      "backgrounds": 4
+    },
+    {
+      "stage": "sushi",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 131,
+      "backgrounds": 4
+    },
+    {
+      "stage": "rocket",
+      "adoptedSheets": 34,
+      "characterClips": 23,
+      "characterFrames": 133,
+      "backgrounds": 4
+    },
+    {
+      "stage": "ninja",
+      "adoptedSheets": 34,
+      "characterClips": 23,
+      "characterFrames": 123,
+      "backgrounds": 4
+    },
+    {
+      "stage": "frog",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 128,
+      "backgrounds": 4
+    },
+    {
+      "stage": "quiz",
+      "adoptedSheets": 34,
+      "characterClips": 24,
+      "characterFrames": 131,
+      "backgrounds": 4
+    },
+    {
+      "stage": "donuts",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 135,
+      "backgrounds": 4
+    },
+    {
+      "stage": "gorilla",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 139,
+      "backgrounds": 4
+    },
+    {
+      "stage": "train",
+      "adoptedSheets": 34,
+      "characterClips": 23,
+      "characterFrames": 103,
+      "backgrounds": 4
+    },
+    {
+      "stage": "magic",
+      "adoptedSheets": 32,
+      "characterClips": 21,
+      "characterFrames": 108,
+      "backgrounds": 4
+    },
+    {
+      "stage": "basketball",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 128,
+      "backgrounds": 4
+    },
+    {
+      "stage": "ghost",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 111,
+      "backgrounds": 4
+    },
+    {
+      "stage": "socks",
+      "adoptedSheets": 30,
+      "characterClips": 19,
+      "characterFrames": 109,
+      "backgrounds": 4
+    },
+    {
+      "stage": "fishing",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 130,
+      "backgrounds": 4
+    },
+    {
+      "stage": "hero",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 133,
+      "backgrounds": 4
+    },
+    {
+      "stage": "aliens",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 133,
+      "backgrounds": 4
+    },
+    {
+      "stage": "delivery",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 138,
+      "backgrounds": 4
+    },
+    {
+      "stage": "octopus",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 137,
+      "backgrounds": 4
+    },
+    {
+      "stage": "dragon",
+      "adoptedSheets": 35,
+      "characterClips": 24,
+      "characterFrames": 126,
+      "backgrounds": 4
+    },
+    {
+      "stage": "orchestra",
+      "adoptedSheets": 34,
+      "characterClips": 23,
+      "characterFrames": 102,
+      "backgrounds": 4
+    }
+  ],
+  "countPolicy": "Actual built-in image_gen invocations, not individual frames. Historical calls are excluded. Rejected and repaired outputs still count as calls.",
+  "qualityPolicy": "Visual review plus conservative alpha boundary exclusions. Original outputs are retained locally; only adopted WebP assets are deployed."
+}

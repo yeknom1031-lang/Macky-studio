@@ -1,0 +1,37 @@
+{
+  "id": 616,
+  "key": "0616-dragon-character-dragon-exit-0",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T15:14:51.278Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Asset type: production 2D animation sprite sheet. The attached image is the identity reference. Keep exactly the same ドラゴン (dragon) character face, colors, clothing and proportions. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Create six frames of a playful entrance/exit greeting: full-body side-facing cautious step with NO occlusion or half-body peek, turn to viewer, wide wave, jaunty step, bow, salute; keep whole character visible in every cell; stage context: ドラゴンの九九くしゃみ — ためてためて… はっくしょん！. Performance variation 1 of 3: clear restrained main performance. Sheet: landscape 3 columns by 2 rows, EXACTLY SIX equal square cells. Read left-to-right then next row. One complete character per cell, 12% empty margin, identical camera, identical character scale, ground anchor at 87% cell height. Draw each pose differently; not identical stills moved around. Transparent RGBA background only, no ground, no cast shadows, no decorative background, no cell dividers, no labels. All limbs stay inside their cells. Animation must form a coherent sequence.",
+  "completedAt": "2026-10-04T15:19:08.697Z",
+  "source": "assets/source-art/rich-800/0616-dragon-character-dragon-exit-0.png",
+  "runtime": "0616-dragon-character-dragon-exit-0.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.5864,
+  "bytes": 115208,
+  "qualityNote": "目視済み。全身の歩みと手振り、お辞儀、敬礼の6コマ。翼と尾もセル内。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

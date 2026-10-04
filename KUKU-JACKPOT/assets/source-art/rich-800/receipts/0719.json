@@ -1,0 +1,38 @@
+{
+  "id": 719,
+  "key": "0719-delivery-prop",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:07:50.995Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: main interactive stage object sprite sheet. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Subject: a cheerful mint postbox with coral roof and a small wrapped parcel; six frames of parcel approaching, lid opens, parcel enters, lid closes, star pops, settle. EXACT SIX frames in 3 columns by 2 rows of equal square cells. One entire object per cell, same size and anchor and frontal camera, all parts contained within 10% margins. Genuinely transparent background, no ground outside object, no characters, no text or numbers. Keep any display windows empty so the game can draw the correct maths. Bright clean detailed premium toy appearance with material shading, precise consistent construction across frames.",
+  "completedAt": "2026-10-04T13:09:06.028Z",
+  "source": "assets/source-art/rich-800/0719-delivery-prop.png",
+  "runtime": "0719-delivery-prop.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.4687,
+  "bytes": 97750,
+  "qualityNote": "Visually reviewed all six poses; preserve full cell framing and original proportions.",
+  "usableFrames": [
+    2,
+    3,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      292,
+      321,
+      0,
+      0,
+      55,
+      0
+    ],
+    "excludedFrames": [
+      0,
+      1,
+      4
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 2
+}

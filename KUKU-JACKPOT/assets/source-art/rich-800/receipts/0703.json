@@ -1,0 +1,38 @@
+{
+  "id": 703,
+  "key": "0703-jackpot-prop",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T12:32:31.737Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: main interactive stage object sprite sheet. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Subject: ornate coral and mint slot machine cabinet with gold trim, two large empty cream reel windows side by side, flashing bulbs and a lever at right; frames show ready, lever pulling, spinning glow, stopping, jackpot lights, settle. EXACT SIX frames in 3 columns by 2 rows of equal square cells. One entire object per cell, same size and anchor and frontal camera, all parts contained within 10% margins. Genuinely transparent background, no ground outside object, no characters, no text or numbers. Keep any display windows empty so the game can draw the correct maths. Bright clean detailed premium toy appearance with material shading, precise consistent construction across frames.",
+  "completedAt": "2026-10-04T12:33:30.061Z",
+  "source": "assets/source-art/rich-800/0703-jackpot-prop.png",
+  "runtime": "0703-jackpot-prop.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.3328,
+  "bytes": 155894,
+  "qualityNote": "Visually reviewed all six poses; preserve full cell framing and original proportions.",
+  "usableFrames": [
+    0,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      28,
+      24,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [
+      1,
+      2
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

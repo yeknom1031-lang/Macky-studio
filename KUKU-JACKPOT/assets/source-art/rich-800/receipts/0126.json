@@ -1,0 +1,37 @@
+{
+  "id": 126,
+  "key": "0126-rocket-effect-success-1",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:16:13.068Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for かけ算ロケット. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: spectacular success burst and confetti with stage-specific props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #253768, #7466ac with gold and mint highlights.",
+  "completedAt": "2026-10-04T13:19:12.570Z",
+  "source": "assets/source-art/rich-800/0126-rocket-effect-success-1.png",
+  "runtime": "0126-rocket-effect-success-1.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.6768,
+  "bytes": 172718,
+  "qualityNote": "Inspected all six generated effect frames visually. The painted effect sequence is readable and usable, without unwanted text or block artifacts. Accepted all six frames.",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

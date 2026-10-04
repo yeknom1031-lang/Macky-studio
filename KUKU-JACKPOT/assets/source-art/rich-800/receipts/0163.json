@@ -1,0 +1,37 @@
+{
+  "id": 163,
+  "key": "0163-frog-character-frog-anticipate-0",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:26:00.906Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Asset type: production 2D animation sprite sheet. The attached image is the identity reference. Keep exactly the same カエル (frog) character face, colors, clothing and proportions. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Create six frames of winding up for a big rhythmic action: attentive, eyes focus, knees bend, arms draw backward, deepest squash, spring-ready pose; progressively build anticipation; stage context: カエルの倍数ジャンプ — ぴょん！ はっぱをわたろう. Performance variation 1 of 3: clear restrained main performance. Sheet: landscape 3 columns by 2 rows, EXACTLY SIX equal square cells. Read left-to-right then next row. One complete character per cell, 12% empty margin, identical camera, identical character scale, ground anchor at 87% cell height. Draw each pose differently; not identical stills moved around. Transparent RGBA background only, no ground, no cast shadows, no decorative background, no cell dividers, no labels. All limbs stay inside their cells. Animation must form a coherent sequence.",
+  "completedAt": "2026-10-04T14:29:48.095Z",
+  "source": "assets/source-art/rich-800/0163-frog-character-frog-anticipate-0.png",
+  "runtime": "0163-frog-character-frog-anticipate-0.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.6332,
+  "bytes": 88594,
+  "qualityNote": "Inspected every generated pose visually against the character reference. Character identity and expression sequence are usable; no additional malformed limbs or cut fragments were identified. Accepted all six frames.",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

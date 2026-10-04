@@ -1,0 +1,38 @@
+{
+  "id": 32,
+  "key": "0032-forest-effect-surprise-3",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T12:59:03.492Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: SIX-frame animated visual effect sprite sheet for ほんと？うそ？九九の森. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Effect concept: comical surprise poof with friendly whimsical stage props. One effect evolving over SIX frames from small to expansion to soft fade. Exact 3 columns by 2 rows equal square cells, same center in every cell, all effect pieces within cell margins. True transparent background; no characters, no text, no numbers, no cell borders. Palette #c7e0c6, #7fb19c with gold and mint highlights.",
+  "completedAt": "2026-10-04T13:02:56.092Z",
+  "source": "assets/source-art/rich-800/0032-forest-effect-surprise-3.png",
+  "runtime": "0032-forest-effect-surprise-3.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.7924,
+  "bytes": 128372,
+  "qualityNote": "The third burst has a gold arc crossing into the second cell (opaque alpha pixels confirmed). Keep only unaffected effect frames.",
+  "usableFrames": [
+    0,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      47,
+      53,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [
+      1,
+      2
+    ],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

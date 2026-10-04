@@ -1,0 +1,37 @@
+{
+  "id": 689,
+  "key": "0689-shared-digit-jelly-6",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:29:15.862Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. The attached image is a cute numeral reference. Create exactly SIX animation frames of the SAME numeral 6, same jelly material, no changes to numerical identity. Frames in this exact order: 1 neutral upright perfectly legible numeral, 2 gentle squash, 3 gentle stretch, 4 one small bounce, 5 happy sparkles, 6 neutral upright settled. Maximum numeral deformation 15 percent, readability is essential. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Transparent sprite sheet, 3 columns by 2 rows identical square cells, same centered anchor, big clear legible numeral in every cell. No other numerals, no text, no faces that obscure numeral, no background.",
+  "completedAt": "2026-10-04T13:30:33.575Z",
+  "source": "assets/source-art/rich-800/0689-shared-digit-jelly-6.png",
+  "runtime": "0689-shared-digit-jelly-6.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.6563,
+  "bytes": 72890,
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "qualityNote": "All six frames visually preserve the intended numeral and are legible; neutral upright first frame.",
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

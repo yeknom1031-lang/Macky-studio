@@ -1,0 +1,25 @@
+{
+  "id": 185,
+  "key": "0185-frog-background-0",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T14:33:29.459Z",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: wide landscape background for a 2D rhythm game. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Theme: カエルの倍数ジャンプ, ぴょん！ はっぱをわたろう; palette #c0ead2, #75c9c7. Setting main daytime performance. Painted layered scenery: detailed edges with appealing stage decorations, middle 60 percent is open uncluttered action space. Lower third is simple ground or stage platform. Strong depth, lovely lighting, joyful charming world. No characters, no numbers, no text, no interface. Landscape composition approximately 2.25:1, camera fixed frontal, nothing essential in extreme edges.",
+  "completedAt": "2026-10-04T14:36:31.645Z",
+  "source": "assets/source-art/rich-800/0185-frog-background-0.png",
+  "runtime": "0185-frog-background-0.webp",
+  "width": 1400,
+  "height": 622,
+  "alpha": 0,
+  "bytes": 172022,
+  "qualityNote": "Inspected the generated landscape background visually: the themed scene is coherent, with an open central play area and no unwanted labels or watermarks. Accepted.",
+  "usableFrames": [
+    0
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}

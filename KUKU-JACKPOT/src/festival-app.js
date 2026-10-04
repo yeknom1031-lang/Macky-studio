@@ -1,16 +1,18 @@
 import {GAMES,createMiniGame} from './minigames.js';
 import {FestivalAudio} from './festival-audio.js';
 import {FestivalArt} from './festival-art.js';
-import {getPattern,RhythmRound} from './festival-rhythm.js';
+import {FestivalDecorations} from './festival-decorations.js';
+import {SingleAnswerRound,SINGLE_TIMING} from './single-answer.js';
 import {BEAT,makePlaylist,grade,summarize,newSave,normalizeSave,record} from './festival-core.js';
 const $=id=>document.getElementById(id), audio=new FestivalAudio(), art=new FestivalArt();
+const decorations=new FestivalDecorations(art);
 const KEY='kuku-beat-festival-v1';let save=newSave(),storageAvailable=true;
 try{save=normalizeSave(JSON.parse(localStorage.getItem(KEY)));}catch{storageAvailable=false;}
 let playlist=[],results=[],index=0,mini=null,roundStart=0,phase='',running=false,paused=false,watch=false,flags={},streak=0,lastOptions={},token=0,frame=0,allowPortrait=false,wakeLock=null,toastTimer;
 let swRegistration=null,cacheStatus=null,offlineManifest=null,previewAudio=null,dialogRequest=0;
 let artReady=null, rhythm=null, pattern=null, timing=null, noteNodes=[], awaitingIntro=false, retryHeldRound=false, heldInput=null, seenDemo=new Set();
 function ensureArt(){if(!artReady)artReady=art.load().catch(error=>{artReady=null;throw error;});return artReady;}
-ensureArt().catch(()=>{});
+ensureArt().then(()=>{if(!$('home').hidden)decorations.show('home');}).catch(()=>{});
 const ctx=$('stage').getContext('2d');
 const musicFor=id=>[1,6,8,17].includes(id)?'jackpot':[2,7,10,13,18].includes(id)?'kitchen':[3,4,12,15].includes(id)?'space':[5,9,16,21].includes(id)?'forest':id===20?'finale':'sports';
 const paths=['jackpot','sushi','rocket','ninja','frog','quiz','donuts','gorilla','train','magic','basketball','ghost','socks','hero','aliens','fishing','delivery','octopus','dragon','orchestra','forest'];
@@ -18,7 +20,7 @@ const artPath=id=>`./designs/20-minigames/images/${String(id).padStart(2,'0')}-$
 const safeText=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function toast(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,4500);}
 function persist(){try{localStorage.setItem(KEY,JSON.stringify(save));}catch{storageAvailable=false;toast('このブラウザでは記録を保存できません。遊びは続けられます。');}}
-function screen(name){for(const id of ['home','play','results'])$(id).hidden=id!==name;document.body.classList.toggle('in-game',name==='play');window.scrollTo(0,0);orientation();}
+function screen(name){for(const id of ['home','play','results'])$(id).hidden=id!==name;document.body.classList.toggle('in-game',name==='play');decorations.show(name,GAMES[(playlist[Math.min(index,playlist.length-1)]?.gameId||1)-1]);window.scrollTo(0,0);orientation();}
 function openDialog(content){dialogRequest++;$('dialog-content').innerHTML=content;if(!$('dialog').open)$('dialog').showModal();}
 function applySettings(){audio.setVolumes(save.settings);art.reduceMotion=save.settings.reduceMotion||matchMedia('(prefers-reduced-motion: reduce)').matches;document.body.classList.toggle('reduced',art.reduceMotion);}
 function refreshHome(){
@@ -27,13 +29,11 @@ function refreshHome(){
  for(const game of GAMES){const b=document.createElement('button');b.className='game-card';b.dataset.game=game.id;b.innerHTML=`<img loading="lazy" src="${artPath(game.id)}" alt=""><div class="card-copy"><small>SHOW ${String(game.id).padStart(2,'0')}</small><span class="card-stars">${'★'.repeat(save.stars[game.id]||0)}${'☆'.repeat(3-(save.stars[game.id]||0))}</span><h3>${game.title}</h3><p>${game.subtitle}</p></div>`;b.addEventListener('click',()=>preview(game));$('game-grid').append(b);}
 }
 function lessonInstruction(id){
- const action=getPattern(id).notes.some(n=>n.end!=null)?'●で下の答えを押して、○ではなそう。':'●に合わせて、下の答えを何度もタップ！';
  const meaning=id===21?'九九があっていたら「ほんと」、ちがったら「うそ」。':id===4?'正しい九九は「うけとる」、ちがう九九は「はじく」。':id===15?'□に入る、かける数を答えよう。':id===18?'□に入る数字を答えよう。':'正しい九九の答えを考えよう。';
- return `${meaning} ${action}`;
+ return `${meaning} 3・2・1・ポン！で、答えを1回タップ。`;
 }
 function preview(game){
- const p=getPattern(game.id);
- openDialog(`<img class="modal-hero" src="${artPath(game.id)}" alt="${game.title}"><h2>${game.title}</h2><p>${lessonInstruction(game.id)}</p><p>リズム：${p.instruction}</p><p>① 九九をきく　② お手本のリズムをきく<br>③ 下の答えボタンで、同じリズムを２回！<br>操作するのは、下の答えボタンだけ。5問・約1分。</p><div class="modal-buttons"><button id="start-single" class="primary">あそぶ！</button><button id="start-watch" class="secondary">お手本をみる</button></div>`);
+ openDialog(`<img class="modal-hero" src="${artPath(game.id)}" alt="${game.title}"><h2>${game.title}</h2><p>${lessonInstruction(game.id)}</p><p>① 九九をきく　② 3・2・1…<br>③ ポン！で答えを1回タップ。<br>正解で100点。タイミングぴったりなら＋50点！<br>5問・約1分。</p><div class="modal-buttons"><button id="start-single" class="primary">あそぶ！</button><button id="start-watch" class="secondary">お手本をみる</button></div>`);
  $('start-single').onclick=()=>start({mode:'single',gameId:game.id});
  $('start-watch').onclick=()=>start({mode:'single',gameId:game.id,watch:true});
 }
@@ -47,6 +47,7 @@ async function start(options){
  try{
   await audio.unlock();applySettings();
   await Promise.all([ensureArt(),audio.load(playlist,p=>{$('loading').querySelector('progress').value=p;})]);
+  await art.prepareStage(GAMES[playlist[0].gameId-1],0,forestGuest(playlist[0]));
   if(run!==token)return;
   running=true;awaitingIntro=true;roundStart=4*BEAT;
   beginRound(true);$('loading').hidden=true;screen('play');
@@ -66,25 +67,28 @@ async function launchRound(){
  awaitingIntro=false;roundStart=4*BEAT;flags.scheduled=false;audio.cheer('start',{},1.6);
  $('intro-start').hidden=true;requestWakeLock();
 }
+function forestGuest(q){return q?.gameId===21?['オオカミ','ウサギ','クマ','キツネ'][(q.a+q.b)%4]:undefined;}
 function beginRound(changed){
  const q=playlist[index],game=GAMES[q.gameId-1];
- if(q.gameId===21)q.character=['オオカミ','ウサギ','クマ','キツネ'][(q.a+q.b)%4];
- const shift=[4,15,21].includes(game.id)?4:0;
- timing={demo:4+shift,play:8+shift,end:16+shift,reveal:17+shift,round:24+shift};
- const original=getPattern(game.id);
- pattern={...original,notes:original.notes.map(n=>({...n,beat:n.beat+shift,...(n.end==null?{}:{end:n.end+shift})}))};
- rhythm=new RhythmRound(pattern);seenDemo=new Set();heldInput=null;
+ if(q.gameId===21)q.character=forestGuest(q);
+ timing={...SINGLE_TIMING};
+ pattern={notes:[{beat:timing.target}]};
+ rhythm=new SingleAnswerRound();heldInput=null;
  flags={q:false,answer:false,cheer:false,scheduled:false,auto:new Set(),release:new Set(),flashUntil:0};phase='intro';
- mini=createMiniGame(game.id,q,{drawCharacter:art.drawCharacter.bind(art),drawNumber:art.drawNumber.bind(art)});
+ art.setStage(game,index);
+ art.prepareStage(game,index,q.character).catch(()=>{});
+ const nextQuestion=playlist[index+1];
+ if(nextQuestion)art.prepareStage(GAMES[nextQuestion.gameId-1],index+1,forestGuest(nextQuestion)).catch(()=>{});
+ mini=createMiniGame(game.id,q,{drawCharacter:art.drawCharacter.bind(art),drawNumber:art.drawNumber.bind(art),drawBackdrop:art.drawBackdrop.bind(art),drawProp:art.drawProp.bind(art),hasProp:art.hasProp.bind(art),drawEffect:art.drawEffect.bind(art),drawShared:art.drawShared.bind(art),setArtContext:art.setContext.bind(art)});
  art.theme=game.id===21?'wood':[3,5,10,15,16,18].includes(game.id)?'jelly':'gold';
- $('game-no').textContent=String(game.id).padStart(2,'0');$('game-title').textContent=game.title;
+ $('play').dataset.game=game.id;$('game-no').textContent=String(game.id).padStart(2,'0');$('game-title').textContent=game.title;
  const scope=lastOptions.mode==='review'?'にがての九九':Number($('table').value)?`${$('table').value}のだん`:'1〜9のだん ミックス';
  $('play-mode').textContent=`${watch?'お手本 • ':''}${scope}`;
  $('round-count').textContent=`${index+1} / ${playlist.length}`;
- $('score-live').textContent=`せいかい ${results.filter(x=>x.correct).length}`;
- $('combo-live').textContent='0 COMBO';$('rhythm-grade').textContent='';
+ $('score-live').textContent=`${results.reduce((sum,r)=>sum+r.points,0)}点`;
+ $('combo-live').textContent='';$('rhythm-grade').textContent='';
  $('feedback').hidden=true;$('progress-caption').textContent=`全${playlist.length}問`;
- $('round-hint').textContent='操作は下の答えボタンだけ。画面の絵は見て楽しもう！';
+ $('round-hint').textContent='正解で100点。ぴったりなら＋50点！';
  const intro=$('game-intro');intro.hidden=!changed;
  intro.querySelector('small').textContent=awaitingIntro?'あそびかた':'つぎのステージ';
  intro.querySelector('h3').textContent=game.title;
@@ -93,8 +97,9 @@ function beginRound(changed){
  renderEquation('listen');$('answers').replaceChildren();
  mini.controls.forEach((c,i)=>{
   const b=document.createElement('button');b.className='answer-button';b.dataset.value=c.value;b.disabled=true;
-  b.setAttribute('aria-label',`${c.label}。リズムに合わせて押す`);
-  if(/^\d+$/.test(c.label))b.append(art.numberElement(c.label,art.theme));else b.append(document.createTextNode(c.label));
+  b.setAttribute('aria-label',`${c.label}。3、2、1、ポンで1回タップ`);
+  const displayLabel=game.id===18?c.label.split(' ')[0]:c.label;
+  if(/^\d+$/.test(displayLabel))b.append(art.numberElement(displayLabel,art.theme));else b.append(document.createTextNode(displayLabel));
   const key=document.createElement('small');key.textContent=`PC: ${i+1}`;b.append(key);
   b.addEventListener('pointerdown',e=>{if(!canPlay()||heldInput)return;e.preventDefault();try{b.setPointerCapture?.(e.pointerId);}catch{}press(c.value,b,e.pointerId);});
   b.addEventListener('pointerup',e=>{if(heldInput?.id===e.pointerId){e.preventDefault();release();}});
@@ -104,19 +109,12 @@ function beginRound(changed){
   b.addEventListener('click',e=>{if(e.detail===0&&canPlay()&&!heldInput){press(c.value,b,'accessible');release();}});
   $('answers').append(b);
  });
- const demo=pattern.notes.filter(n=>n.beat<timing.play+4).map(n=>({...n,beat:n.beat-4,...(n.end==null?{}:{end:n.end-4}),demo:true}));
- $('rhythm-notes').replaceChildren();
- noteNodes=[...demo,...pattern.notes.map((n,i)=>({...n,index:i}))].map(n=>{
-  const el=document.createElement('span');el.className=`rhythm-note${n.end==null?'':' hold'}${n.demo?' demo':''}`;
-  el.textContent=n.end==null?'●':'●';el.setAttribute('aria-hidden','true');
-  if(n.end!=null){const tail=document.createElement('i');tail.className='hold-tail';tail.textContent='○';el.append(tail);}
-  $('rhythm-notes').append(el);return {...n,el};
- });
+ $('rhythm-notes').replaceChildren();noteNodes=[];
  setPhase('intro');mini.update({rhythmMode:true,time:0,beat:0,phase:'listen',reduceMotion:art.reduceMotion});mini.draw(ctx,1000,440);
 }
 function localTime(){return audio.now()-roundStart;}
 function inputBeat(){return localTime()/BEAT-save.settings.offset/(1000*BEAT);}
-function canPlay(){return running&&!paused&&!awaitingIntro&&!watch&&phase==='play'&&!flags.answer;}
+function canPlay(){return running&&!paused&&!awaitingIntro&&!watch&&phase==='play'&&!flags.answer&&rhythm?.result().answerValue===null;}
 function renderEquation(p){const q=playlist[index],truth=[4,21].includes(q.gameId);$('equation').replaceChildren();
  const repair=q.answer>=10?(q.missing==='tens'?['□',q.answer%10]:[Math.floor(q.answer/10),'□']):['□'];
  const parts=p==='reveal'?[q.a,'×',q.b,'＝',q.answer]:q.gameId===18?[q.a,'×',q.b,'＝',...repair]:q.gameId===15?[q.a,'×','□','＝',q.answer]:truth?[q.a,'×',q.b,'＝',q.claimed]:[q.a,'×',q.b,'＝','？'];
@@ -128,47 +126,33 @@ function updateControls(){
 }
 function setPhase(next){
  phase=next;$('play').dataset.phase=next;
- for(const step of $('phase-steps').children){step.classList.toggle('active',step.dataset.phase===next);if(step.dataset.phase===next)step.setAttribute('aria-current','step');else step.removeAttribute('aria-current');}
- const hold=pattern.notes.some(n=>n.end!=null);
- $('phase-label').textContent={intro:'あそびかた',listen:'① 九九をきこう',demo:'② お手本のリズム',play:watch?'③ お手本プレイ':'③ あなたのばん！',reveal:'④ いっしょに九九！'}[next];
- $('instruction').textContent=next==='play'?(hold?'●で押す → 線のあいだ長おし → ○ではなす':'●が「ここ」にきたら、答えをタップ！'):next==='demo'?'まずは見て、リズムを覚えよう。つぎはあなた！':next==='reveal'?'ただしい九九を、いっしょにいってみよう':pattern.instruction;
- $('input-hint').textContent=watch?'お手本を みてね':next==='play'?(hold?'下の答えを 長おし → ○ではなす ↓':'操作はここ！ 同じ答えを リズムでタップ ↓'):next==='demo'?'まだ押さないよ。お手本をきこう':next==='reveal'?'黄色が 正しい答えだよ':'答えを考えよう。まだ押さなくてOK';
+ $('phase-label').textContent={intro:'あそびかた',listen:'九九をきこう',play:'3・2・1・ポン！',reveal:'こたえあわせ'}[next];
+ $('instruction').textContent=next==='play'?'ポン！に合わせて1回タップ':next==='reveal'?'正しい九九をいっしょに言おう':'どれが正しいかな？';
+ $('input-hint').textContent=watch?'お手本を みてね':next==='play'?'ポン！で 答えを1回タップ':next==='reveal'?'黄色が 正しい答えだよ':'答えを考えよう';
  if(next!=='intro')$('game-intro').hidden=true;
  renderEquation(next);updateControls();
 }
 function scheduleCues(){
- if(flags.scheduled)return;
- flags.scheduled=true;
- // Schedule ahead on the AudioContext, rather than timing sounds with animation frames.
- for(let b=timing.demo;b<timing.end;b++)audio.cue?.(roundStart+b*BEAT,b%4===0?'accent':'tick');
- for(const n of pattern.notes.filter(n=>n.beat<timing.play+4)){
-  audio.cue?.(roundStart+(n.beat-4)*BEAT,'demo');
-  if(n.end!=null)audio.cue?.(roundStart+(n.end-4)*BEAT,'release');
- }
+ if(flags.scheduled)return;flags.scheduled=true;
+ for(let b=timing.countdown;b<timing.target;b++)audio.cue?.(roundStart+b*BEAT,'tick');
+ audio.cue?.(roundStart+timing.target*BEAT,'accent');
 }
 function animateEvent(event){
  if(!event||event.type==='ignored')return;
- const hold=event.type==='hold-start';
- if(event.type==='stray'){
-  $('combo-live').textContent=`${rhythm.result().combo} COMBO`;
-  $('rhythm-grade').textContent='●が「ここ」にきたら！';$('rhythm-grade').dataset.grade='early';
-  audio.sfx('tap');flags.flashUntil=localTime()+.5;return;
- }
- if(event.type==='miss'){
-  $('rhythm-grade').textContent='つぎの ● をねらおう';$('rhythm-grade').dataset.grade='miss';
- }else{
-  $('rhythm-grade').textContent=hold?'そのまま… ○ではなす':event.success?(event.timing==='perfect'?'ぴったり！':'ナイス！'):'おしい！';
-  $('rhythm-grade').dataset.grade=event.success||hold?'hit':'miss';
-  audio.sfx(event.success?'hit':'tap');
- }
- flags.flashUntil=localTime()+.55;
- mini.pulse({beat:localTime()/BEAT,success:event.success,value:event.value,index:event.index,total:pattern.notes.length,holding:hold});
- const rr=rhythm.result();$('combo-live').textContent=`${rr.combo} COMBO`;
- $('rhythm-track').classList.remove('pulse');void $('rhythm-track').offsetWidth;$('rhythm-track').classList.add('pulse');
+ if(event.type==='miss')return;
+ const mathCorrect=event.value===expected(playlist[index]);
+ $('rhythm-grade').textContent=event.timing==='perfect'?'タイミングぴったり！':event.timing==='nice'?'ナイスタイミング！':'こたえた！';
+ $('rhythm-grade').dataset.grade='hit';
+ $('input-hint').textContent='こたえを うけとったよ！';
+ audio.sfx(event.success?'hit':'tap');flags.flashUntil=localTime()+1.3;
+ mini.pulse({beat:localTime()/BEAT,success:mathCorrect,value:event.value,index:0,total:1,holding:false});
+ for(const b of $('answers').children)b.classList.toggle('chosen',Number(b.dataset.value)===event.value);
+ updateControls();
 }
 function press(value,button,id){
  if(!canPlay()||heldInput)return;
  heldInput={value,button,id};button.classList.add('pressed');
+ if(!art.reduceMotion)for(const digit of button.querySelectorAll('.sprite-digit'))digit.animate([...JSON.parse(digit.dataset.frames||'[0,1,2,3,4,5]').map(f=>({backgroundPosition:`${(f%3)*50}% ${Math.floor(f/3)*100}%`})),{backgroundPosition:digit.style.backgroundPosition}],{duration:BEAT*2000,easing:'steps(1,end)'});
  const event=rhythm.inputdown(value,inputBeat());
  for(const missed of event?.expired||[])animateEvent(missed);
  if(event?.type==='hold-start')button.classList.add('holding');
@@ -181,16 +165,14 @@ function release(cancel=false){
  const event=cancel?rhythm.cancelHold?.(inputBeat()):rhythm.inputup(inputBeat());
  if(event)animateEvent(event);
 }
-function drawNotes(beat){
- const events=rhythm.result().events;
- for(const n of noteNodes){
-  const visualBeat=beat-(n.demo||watch?0:save.settings.offset/(1000*BEAT));
-  const left=20+(n.beat-visualBeat)*18, width=n.end==null?null:(n.end-n.beat)*18;
-  n.el.style.left=`${left}%`;if(width!=null)n.el.style.width=`${width}%`;
-  n.el.hidden=left>110||(n.end??n.beat)<beat-1;
-  const event=n.demo?null:events.find(e=>e.index===n.index);
-  n.el.classList.toggle('hit',!!event?.success);n.el.classList.toggle('miss',!!event&&!event.success);
- }
+function drawCountdown(beat){
+ const answered=rhythm.result().answerValue!==null;
+ const remaining=Math.ceil(timing.target-beat-1e-6);
+ const text=phase==='intro'?'♪':phase==='listen'?'♪':phase==='reveal'?(flags.grade?.correct?'★':'♪'):answered?'✓':remaining>0?String(Math.min(3,remaining)):'ポン!';
+ $('beat-count').textContent=text;
+ $('rhythm-message').textContent=phase==='intro'?'もうすぐ':phase==='listen'?'きいてね':phase==='reveal'?'こたえあわせ':answered?'こたえた！':remaining>0?'せーの…':'いまだよ！';
+ $('beat-count').classList.toggle('go',phase==='play'&&!answered&&remaining<=0);
+ $('play').style.setProperty('--count-pulse',String(art.reduceMotion?1:1+Math.max(0,1-(beat%1)*4)*.09));
 }
 function tick(){
  if(!running)return;
@@ -207,23 +189,16 @@ function tick(){
   }
   scheduleCues();
   const compensatedBeat=beat-(watch?0:save.settings.offset/(1000*BEAT));
-  const next=beat<0?'intro':beat<timing.demo?'listen':compensatedBeat<timing.play-.38?'demo':beat<timing.reveal?'play':'reveal';
+  const next=beat<0?'intro':compensatedBeat<timing.countdown?'listen':beat<timing.reveal?'play':'reveal';
   if(next!==phase)setPhase(next);
   const q=playlist[index];
-  mini.update({rhythmMode:true,time:Math.max(0,time),beat:Math.max(0,beat),phase:phase==='reveal'?'reveal':phase==='play'?'play':'listen',reduceMotion:art.reduceMotion,correct:flags.grade?.correct});
+  mini.update({rhythmMode:true,time,beat:Math.max(0,beat),beatDuration:BEAT,nextCueBeat:timing.target,phase,anticipating:phase==='play'&&rhythm.result().answerValue===null,reduceMotion:art.reduceMotion,correct:flags.grade?.correct});
   if(beat>=.2&&!flags.q){flags.q=true;const kind=[4,21].includes(q.gameId)?q.truth?'a':'f':q.gameId===15?'r':'q';audio.speak(`${kind}-${q.a}-${q.b}`,{maxSeconds:3.2});}
-  // The demonstration animates the same actions the player will perform.
-  noteNodes.filter(n=>n.demo).forEach((n,i)=>{
-   if(beat>=n.beat&&!seenDemo.has(i)){seenDemo.add(i);mini.pulse({beat,demo:true,value:null,success:true,index:i,total:pattern.notes.length,holding:n.end!=null});}
-   if(n.end!=null&&beat>=n.end&&!seenDemo.has(`end${i}`)){seenDemo.add(`end${i}`);mini.pulse({beat,demo:true,value:null,success:true,index:i,total:pattern.notes.length,holding:false});}
-  });
   if(watch)autoPlay(beat);
   for(const event of rhythm.update(compensatedBeat))animateEvent(event);
   if(beat>=timing.reveal&&!flags.answer)reveal();
   if(flags.answer&&!flags.cheer&&beat>=timing.reveal+audio.duration(`a-${q.a}-${q.b}`)/BEAT+.08)playCheer(beat);
-  drawNotes(beat);
-  $('beat-count').textContent=beat<0?String(Math.ceil(-beat)):phase==='demo'?String(Math.max(1,Math.ceil(timing.play-beat))):phase==='play'?String(Math.floor(Math.max(0,beat-timing.play))%4+1):'♪';
-  $('rhythm-message').textContent=beat<0?'もうすぐ！':phase==='listen'?'九九をきこう':phase==='demo'?'お手本♪':phase==='play'?(beat<timing.play+4?'まねして！':'もう１回！'):'できたね！';
+  drawCountdown(beat);
   if(time>flags.flashUntil&&!heldInput)$('rhythm-grade').textContent='';
   mini.draw(ctx,1000,440);updateControls();
  }
@@ -231,10 +206,7 @@ function tick(){
 }
 function expected(q){return [4,21].includes(q.gameId)?Number(q.truth):q.answer;}
 function autoPlay(beat){
- pattern.notes.forEach((n,i)=>{
-  if(beat>=n.beat&&!flags.auto.has(i)){flags.auto.add(i);animateEvent(rhythm.inputdown(expected(playlist[index]),n.beat));if(n.end==null)rhythm.inputup(n.beat);}
-  if(n.end!=null&&beat>=n.end&&!flags.release.has(i)){flags.release.add(i);animateEvent(rhythm.inputup(n.end));}
- });
+ if(beat>=timing.target&&!flags.auto.has(0)){flags.auto.add(0);animateEvent(rhythm.inputdown(expected(playlist[index]),timing.target));}
 }
 function playCheer(beat){
  flags.cheer=true;const q=playlist[index],r=flags.grade;if(!r)return;
@@ -251,22 +223,23 @@ function reveal(){
  flags.grade=r;results.push(r);streak=r.correct?streak+1:0;mini.setAnswer(r.value,r.correct);
  audio.sfx(r.correct?'correct':'wrong');audio.speak(`a-${q.a}-${q.b}`,{maxSeconds:2.6});renderEquation('reveal');
  $('feedback').hidden=false;$('feedback').className=`feedback ${r.correct?'':'retry'}`;
- $('feedback').textContent=r.correct?(q.gameId===21&&!q.truth?'みやぶった！':sequence.maxCombo===sequence.total&&!sequence.strays?'せいかい！ フルコンボ！':'せいかい！'):`いっしょに！ ${q.a} × ${q.b} ＝ ${q.answer}`;
- $('score-live').textContent=`せいかい ${results.filter(x=>x.correct).length}`;
- for(const b of $('answers').children)b.classList.toggle('correct-answer',Number(b.dataset.value)===expected(q));
- $('round-hint').textContent=`リズム ${sequence.hits} / ${sequence.total}　最大 ${sequence.maxCombo} コンボ。正しい九九を声に出してみよう！`;
+ $('feedback').textContent=r.correct?(`${q.gameId===21&&!q.truth?'みやぶった！':'せいかい！'} +100${r.timingBonus?` ＋${r.timingBonus}`:''}`):`いっしょに！ ${q.a} × ${q.b} ＝ ${q.answer}`;
+ $('score-live').textContent=`${results.reduce((sum,r)=>sum+r.points,0)}点`;
+ for(const b of $('answers').children){b.classList.toggle('correct-answer',Number(b.dataset.value)===expected(q));b.classList.toggle('wrong-answer',r.value!==null&&!r.correct&&Number(b.dataset.value)===r.value);}
+ $('round-hint').textContent=r.correct?`せいかい100点 ＋ タイミング${r.timingBonus}点`:'正しい九九を、いっしょに言ってみよう！';
 }
 async function finish(){
  running=false;paused=false;cancelAnimationFrame(frame);audio.stop();releaseWakeLock();const s=summarize(results);save=record(save,results);if(!watch)persist();refreshHome();screen('results');
- $('result-title').textContent=watch?'お手本、おしまい！':s.correct===s.total?'ぜんぶ、せいかい！':'さいごまで、できたね！';$('result-correct').textContent=`${s.correct} / ${s.total}`;$('result-rhythm').textContent=`${s.rhythmHits} / ${s.rhythmTotal}`;$('result-note').textContent=watch?'お手本はきろくに入りません。つぎは自分でやってみよう！':s.review.length?'下の九九を押すと、正しい答えをもう一度きけるよ。':'楽しくできたね！ 別のゲームや、別のだんでも遊んでみよう。';
- $('review-list').replaceChildren();for(const q of s.review){const b=document.createElement('button');b.textContent=`♪ ${q.a} × ${q.b} ＝ ${q.a*q.b}`;b.onclick=async()=>{await audio.unlock();audio.speak(`a-${q.a}-${q.b}`,{force:true});};$('review-list').append(b);}
+ $('result-title').textContent=watch?'お手本、おしまい！':s.correct===s.total?'ぜんぶ、せいかい！':'さいごまで、できたね！';$('result-correct').textContent=`${s.correct} / ${s.total}`;$('result-rhythm').textContent=`＋${results.reduce((sum,r)=>sum+r.timingBonus,0)}点`;$('result-note').textContent=watch?'お手本はきろくに入りません。つぎは自分でやってみよう！':s.review.length?'下の九九を押すと、正しい答えをもう一度きけるよ。':'楽しくできたね！ 別のゲームや、別のだんでも遊んでみよう。';
+ const practiced=[...new Map(results.map(q=>[`${q.a}-${q.b}`,q])).values()];
+ $('review-list').replaceChildren();for(const q of practiced){const b=document.createElement('button');b.textContent=`♪ ${q.a} × ${q.b} ＝ ${q.a*q.b}`;b.onclick=async()=>{await audio.unlock();audio.speak(`a-${q.a}-${q.b}`,{force:true});};$('review-list').append(b);}
  $('review-btn').hidden=!s.review.length||watch;$('review-btn').onclick=()=>start({mode:'review',gameId:1,review:s.review});audio.sfx('finish');audio.cheer('finish',{allCompleted:true,roundsCompleted:results.length,finale:lastOptions.mode==='tour'},4);
 }
 function home(){++token;running=false;paused=false;audio.stop();cancelAnimationFrame(frame);releaseWakeLock();$('loading').hidden=true;$('dialog').close();refreshHome();screen('home');}
 async function pause(show=true){if(!running||paused)return;paused=true;retryHeldRound=rhythm?.result().holding!==null&&rhythm?.result().holding!==undefined;release(true);await audio.pause();releaseWakeLock();if(show)pauseDialog();}
 function pauseDialog(){openDialog('<h2>ひとやすみ</h2><p>音楽もゲームも、とまっているよ。</p><div class="modal-buttons"><button id="resume-btn" class="primary">つづける</button><button id="pause-settings" class="secondary">設定</button><button id="quit-btn" class="quiet">ホームへ戻る</button></div>');$('resume-btn').onclick=()=>$('dialog').close();$('pause-settings').onclick=settings;$('quit-btn').onclick=home;}
 async function resume(){if(!running||!paused)return;try{await audio.resume();paused=false;if(retryHeldRound){retryHeldRound=false;audio.start(musicFor(playlist[index].gameId));roundStart=4*BEAT;beginRound(false);toast('長おしの途中だったので、この問題からもう一度！');}requestWakeLock();}catch{toast('画面をもう一度タップしてください。');}}
-function settings(){openDialog(`<h2>音とあそびの設定</h2>${[['music','音楽'],['voice','九九の声'],['cheer','掛け声'],['sfx','効果音']].map(([k,label])=>`<label class="setting-row">${label}<input type="range" min="0" max="100" value="${save.settings[k]}" data-setting="${k}" aria-label="${label}"></label>`).join('')}<label class="setting-row">動きをひかえめに<input type="checkbox" id="reduce-motion" ${save.settings.reduceMotion?'checked':''}></label><label class="setting-row">タイミング補正 <output id="offset-label">${save.settings.offset}ms</output><input id="offset" aria-label="タイミング補正" type="range" min="-300" max="300" step="10" value="${save.settings.offset}"></label><p>Bluetoothイヤホンなどでずれを感じるときに調整。プラスにすると、遅いタップに合わせます。</p><p>PCは1・2・3キーが下の答えボタン。音符に合わせて押してね。長い音符は同じキーを押しつづけ、○ではなそう。</p><div class="modal-buttons"><button class="secondary" id="voices-btn">掛け声100コレクション</button><button class="quiet" id="settings-done">もどる</button></div><p style="margin-top:18px;font-size:10px">音声：VOICEVOX:ずんだもん（キャラクターごとに抑揚を調整）<br>音楽6曲は本作のオリジナル。記録はこの端末内に保存されます。</p>`);
+function settings(){openDialog(`<h2>音とあそびの設定</h2>${[['music','音楽'],['voice','九九の声'],['cheer','掛け声'],['sfx','効果音']].map(([k,label])=>`<label class="setting-row">${label}<input type="range" min="0" max="100" value="${save.settings[k]}" data-setting="${k}" aria-label="${label}"></label>`).join('')}<label class="setting-row">動きをひかえめに<input type="checkbox" id="reduce-motion" ${save.settings.reduceMotion?'checked':''}></label><label class="setting-row">タイミング補正 <output id="offset-label">${save.settings.offset}ms</output><input id="offset" aria-label="タイミング補正" type="range" min="-300" max="300" step="10" value="${save.settings.offset}"></label><p>Bluetoothイヤホンなどでずれを感じるときに調整。プラスにすると、遅いタップに合わせます。</p><p>PCは1・2・3キーが答えボタン。3・2・1・ポン！で、答えを1回押そう。正解で100点、タイミングが合えばさらに加点。</p><div class="modal-buttons"><button class="secondary" id="voices-btn">掛け声100コレクション</button><button class="quiet" id="settings-done">もどる</button></div><p style="margin-top:18px;font-size:10px">音声：VOICEVOX:ずんだもん（キャラクターごとに抑揚を調整）<br>音楽6曲は本作のオリジナル。記録はこの端末内に保存されます。</p>`);
  for(const input of document.querySelectorAll('[data-setting]'))input.oninput=()=>{save.settings[input.dataset.setting]=Number(input.value);applySettings();persist();};$('reduce-motion').onchange=e=>{save.settings.reduceMotion=e.target.checked;applySettings();persist();};$('offset').oninput=e=>{save.settings.offset=Number(e.target.value);$('offset-label').textContent=e.target.value+'ms';persist();};$('settings-done').onclick=()=>running?pauseDialog():$('dialog').close();$('voices-btn').onclick=voices;
 }
 async function voices(){previewAudio?.stop();previewAudio=new FestivalAudio();const player=previewAudio;openDialog('<h2>掛け声100コレクション</h2><p>声をじゅんびしています…</p>');const request=dialogRequest;try{await player.unlock();await player.load([],()=>{});if(request!==dialogRequest||!$('dialog').open){player.stop();if(player.ctx.state!=='closed')player.ctx.close();return;}player.setVolumes(save.settings);const clips=player.manifest.cheers;openDialog('<h2>掛け声100コレクション</h2><p>好きな台詞を押すと、声がきけるよ。</p><div class="review-list" id="voice-collection"></div><div class="modal-buttons"><button class="quiet" id="voices-back">設定へ</button></div>');for(const c of clips){const b=document.createElement('button');b.textContent=c.text;b.onclick=()=>player.speak(c.id,{force:true});$('voice-collection').append(b);}$('voices-back').onclick=()=>{player.stop();player.ctx.close();previewAudio=null;settings();};}catch{if(request===dialogRequest&&$('dialog').open)toast('声を読み込めませんでした。通信を確認してください。');}}

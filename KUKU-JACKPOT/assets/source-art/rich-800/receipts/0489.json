@@ -1,0 +1,37 @@
+{
+  "id": 489,
+  "key": "0489-aliens-character-alien-talk-1",
+  "status": "complete",
+  "dispatchedAt": "2026-10-04T13:17:23.151Z",
+  "tool": "image_gen",
+  "prompt": "Use case: identity-preserve. Asset type: production 2D animation sprite sheet. The attached image is the identity reference. Keep exactly the same 宇宙人 (alien) character face, colors, clothing and proportions. Premium original children’s rhythm game, warm hand-painted texture, bold clean navy outlines, rounded cute expressive proportions, rich yet friendly colors. Original KUKU BEAT art, no existing franchise characters, no text, no logos, no watermark. Create a six-frame speaking and grooving loop: smile, knees bend mouth small open, crouch mouth round, rise mouth wide, wink and lean opposite, return toward smile; microphone or hands move with speech; stage context: 宇宙人の逆九九トーク — ピポパ！ 何をかける？. Performance variation 2 of 3: extra lively comic performance with more expressive face and arms. Sheet: landscape 3 columns by 2 rows, EXACTLY SIX equal square cells. Read left-to-right then next row. One complete character per cell, 12% empty margin, identical camera, identical character scale, ground anchor at 87% cell height. Draw each pose differently; not identical stills moved around. Transparent RGBA background only, no ground, no cast shadows, no decorative background, no cell dividers, no labels. All limbs stay inside their cells. Animation must form a coherent sequence.",
+  "completedAt": "2026-10-04T13:19:45.842Z",
+  "source": "assets/source-art/rich-800/0489-aliens-character-alien-talk-1.png",
+  "runtime": "0489-aliens-character-alien-talk-1.webp",
+  "width": 768,
+  "height": 512,
+  "alpha": 0.6376,
+  "bytes": 95334,
+  "qualityNote": "目視済み。マイクと大きな口開き・ウインクの6コマ。全身と効果がセル内に収まる。",
+  "usableFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "boundaryAudit": {
+    "opaquePixelsAtEdges": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "excludedFrames": [],
+    "threshold": 4
+  },
+  "posterFrame": 0
+}
