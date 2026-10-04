@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "at": "2026-10-04T09:41:39.015Z",
+  "build": {
+    "stages": 24,
+    "originalDesigns": 4396,
+    "people": 4300,
+    "animals": 96,
+    "roles": 250,
+    "generatedSourceImages": 469,
+    "plannedSourceImages": 469,
+    "missing": [],
+    "errors": []
+  },
+  "checks": {
+    "coreUnit": 12,
+    "full180SecondSimulations": 24,
+    "fullStageBrowserChecks": 24,
+    "solo": 9,
+    "duo": 9,
+    "revealingPhoto": 4,
+    "isolatedPerformance": 8
+  },
+  "metrics": {
+    "simulatedMinutes": 72,
+    "maxCharacterOverlapSeconds": 2.3,
+    "maxSwimmingRouteError": 3.552713678800501e-15,
+    "medianFrameMs": 16.7,
+    "isolatedWorstP95FrameMs": 16.8,
+    "maximumPopulation": 2000,
+    "physicalControllerTested": false
+  },
+  "method": "Chrome headless 1440 × 900; 30-second scene warmup; Switch-compatible Gamepad API simulated. Isolated measurements recheck all concurrent-load outliers and the 2000-person map.",
+  "codeHashes": {
+    "expedition-core.js": "2e0968586445f7ccdaaa1438558ca2c57c15a477aec8ba25db4dace63ff1b4ed",
+    "expedition-app.js": "0ed99cb4809e9700df721735486f94ac67be18d1f161ae4b0754ac427ddca1b0",
+    "expedition-render.js": "7d2789ed4b4b0b952381649f504ef61724b4ff02f938f6cf5f8a9921492a853d"
+  },
+  "reports": [
+    "core-test-report.txt",
+    "all-stages-simulation.json",
+    "stages-browser-report.json",
+    "browser-report.json",
+    "duo-browser-report.json",
+    "photo-browser-report.json",
+    "performance-isolated-report.json"
+  ],
+  "incrementalValidation": {
+    "at": "2026-10-04T09:40:59.084Z",
+    "change": "Wait for the private runner scene artwork before starting or resuming a large-map game.",
+    "checks": 9,
+    "errors": [],
+    "regression": "Intentionally delayed P2 image preparation keeps both players and the clock frozen, disables begin and resume, and rejects stale scene-ready messages.",
+    "unchanged": [
+      "expedition-core.js",
+      "expedition-render.js"
+    ],
+    "fullStageRetestRequired": false
+  }
+}

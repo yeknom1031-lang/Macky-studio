@@ -1,0 +1,20 @@
+✔ ready stage contains original unique designs, 100 exclusive people, 5 photographers, no palettes (326.5815ms)
+✔ missing artwork cannot be silently replaced by repeats (112.766416ms)
+✔ photographers give one ticket each, exactly five; wrong touches cost time and target wins (21.488292ms)
+✔ photo costs a found ticket, snapshots the target, waits 3 game seconds and pauses fairly (182.660792ms)
+✔ duo requires a gamepad, disconnect pauses both and photos do not freeze the runner (227.127208ms)
+✔ a long simulation stays finite, uncovers bodies within three seconds and expires at 180 (11083.629334ms)
+✔ crowd yields to a stationary controlled target without dragging that player (223.9115ms)
+✔ second-floor interactions use stair edges on entry and exit (922.838625ms)
+✔ boats remain on their water route and board at the dock (2859.562875ms)
+✔ air rides lift passengers, cruise above the ground and land before boarding (3859.713291ms)
+✔ role-specific actions only use matching places, while existing occupants can always leave (16.904875ms)
+✔ ground walkers uncover a stopped passenger without moving the passenger or the vehicle (227.090417ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20543.05375

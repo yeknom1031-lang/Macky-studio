@@ -1,0 +1,41 @@
+{
+  "status": "verified",
+  "generatedImages": 469,
+  "baseCharacters": 4396,
+  "people": 4300,
+  "animals": 96,
+  "playableStages": 24,
+  "reusedBases": 250,
+  "imageCounts": {
+    "peopleSheets": 410,
+    "backgrounds": 17,
+    "stageSets": 24,
+    "animalSheets": 16,
+    "poseRepairSheets": 2
+  },
+  "missingPeopleRepaired": [
+    "S02-C090",
+    "S03-C078",
+    "S16-C018",
+    "S20-C098",
+    "S21-C058",
+    "S23-C019"
+  ],
+  "repairedAnimationFrames": 20,
+  "adjustedColumnRows": 95,
+  "sourceArtworkPolicy": "Original generated PNGs retained unchanged; runtime atlases use measured crops and explicitly recorded generated corrective frames.",
+  "validation": [
+    "All manifest sources and generation receipts present",
+    "Every new character ID assigned exactly once",
+    "Transparent sprite sheets and all declared atlas frames nonempty",
+    "Atlas source rectangles and source hashes checked",
+    "Row-count suspects visually reviewed against exact source hashes",
+    "All 78 new animals viewed in cropped contact sheet",
+    "Every person strip scanned for anomalous walk width and frame height; remaining crouching fishing pose visually accepted",
+    "S04 double-width awning poses visually verified"
+  ],
+  "buildCommand": "python3 build_expedition.py --release",
+  "auditCommand": "python3 audit_artwork.py --release",
+  "auditReport": "assets/production/review/artwork-audit.json",
+  "visualDecisions": "assets/production/review/artwork-decisions.json"
+}

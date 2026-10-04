@@ -1,0 +1,87 @@
+{
+  "at": "2026-10-04T09:32:08.593Z",
+  "method": "headless Chrome at 1440 × 900, no concurrent simulation workers, 30-second warmup, 179-frame sample",
+  "results": [
+    {
+      "id": 15,
+      "name": "大きな博物館",
+      "population": 1200,
+      "visible": 675,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.700000000000728,
+      "maxOverlap": 1.5000000000000002,
+      "elapsed": 33.47609999999993
+    },
+    {
+      "id": 16,
+      "name": "時計仕掛けの工房街",
+      "population": 1300,
+      "visible": 572,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.700000000000728,
+      "maxOverlap": 1.5000000000000002,
+      "elapsed": 33.49360000000448
+    },
+    {
+      "id": 17,
+      "name": "砂漠のバザール",
+      "population": 1400,
+      "visible": 763,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.80000000000291,
+      "maxOverlap": 1.5000000000000002,
+      "elapsed": 33.54360000000002
+    },
+    {
+      "id": 19,
+      "name": "海洋研究都市",
+      "population": 1600,
+      "visible": 772,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.700000000004366,
+      "maxOverlap": 1.5000000000000002,
+      "elapsed": 33.46090000000602
+    },
+    {
+      "id": 20,
+      "name": "雲の上の街",
+      "population": 1700,
+      "visible": 640,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.700000000004366,
+      "maxOverlap": 1.5000000000000002,
+      "elapsed": 33.46050000000301
+    },
+    {
+      "id": 21,
+      "name": "魔法学校",
+      "population": 1800,
+      "visible": 769,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.80000000000291,
+      "maxOverlap": 1.5000000000000002,
+      "elapsed": 33.493700000003095
+    },
+    {
+      "id": 22,
+      "name": "昼と夜の大都会",
+      "population": 1900,
+      "visible": 822,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.80000000000291,
+      "maxOverlap": 1.5000000000000002,
+      "elapsed": 33.54290000000309
+    },
+    {
+      "id": 23,
+      "name": "世界のお祭り大集合",
+      "population": 2000,
+      "visible": 703,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.70000000001164,
+      "maxOverlap": 1.5000000000000002,
+      "elapsed": 33.5102000000031
+    }
+  ],
+  "errors": []
+}
