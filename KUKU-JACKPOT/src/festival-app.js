@@ -30,10 +30,10 @@ function refreshHome(){
 }
 function lessonInstruction(id){
  const meaning=id===21?'九九があっていたら「ほんと」、ちがったら「うそ」。':id===4?'正しい九九は「うけとる」、ちがう九九は「はじく」。':id===15?'□に入る、かける数を答えよう。':id===18?'□に入る数字を答えよう。':'正しい九九の答えを考えよう。';
- return `${meaning} 3・2・1・ポン！で、答えを1回タップ。`;
+ return `${meaning} わかったらすぐ1回タップ。3・2・1・ポン！に合わせてもOK。`;
 }
 function preview(game){
- openDialog(`<img class="modal-hero" src="${artPath(game.id)}" alt="${game.title}"><h2>${game.title}</h2><p>${lessonInstruction(game.id)}</p><p>① 九九をきく　② 3・2・1…<br>③ ポン！で答えを1回タップ。<br>正解で100点。タイミングぴったりなら＋50点！<br>5問・約1分。</p><div class="modal-buttons"><button id="start-single" class="primary">あそぶ！</button><button id="start-watch" class="secondary">お手本をみる</button></div>`);
+ openDialog(`<img class="modal-hero" src="${artPath(game.id)}" alt="${game.title}"><h2>${game.title}</h2><p>${lessonInstruction(game.id)}</p><p>問題が出たら、声の途中でも回答OK！<br>最初の1回で答えが決まるよ。<br>正解で100点。「ポン！」にぴったりなら＋50点！<br>5問・約1分。</p><div class="modal-buttons"><button id="start-single" class="primary">あそぶ！</button><button id="start-watch" class="secondary">お手本をみる</button></div>`);
  $('start-single').onclick=()=>start({mode:'single',gameId:game.id});
  $('start-watch').onclick=()=>start({mode:'single',gameId:game.id,watch:true});
 }
@@ -97,7 +97,7 @@ function beginRound(changed){
  renderEquation('listen');$('answers').replaceChildren();
  mini.controls.forEach((c,i)=>{
   const b=document.createElement('button');b.className='answer-button';b.dataset.value=c.value;b.disabled=true;
-  b.setAttribute('aria-label',`${c.label}。3、2、1、ポンで1回タップ`);
+  b.setAttribute('aria-label',`${c.label}。わかったら1回タップ。ポンに合わせるとボーナス`);
   const displayLabel=game.id===18?c.label.split(' ')[0]:c.label;
   if(/^\d+$/.test(displayLabel))b.append(art.numberElement(displayLabel,art.theme));else b.append(document.createTextNode(displayLabel));
   const key=document.createElement('small');key.textContent=`PC: ${i+1}`;b.append(key);
@@ -113,8 +113,8 @@ function beginRound(changed){
  setPhase('intro');mini.update({rhythmMode:true,time:0,beat:0,phase:'listen',reduceMotion:art.reduceMotion});mini.draw(ctx,1000,440);
 }
 function localTime(){return audio.now()-roundStart;}
-function inputBeat(){return localTime()/BEAT-save.settings.offset/(1000*BEAT);}
-function canPlay(){return running&&!paused&&!awaitingIntro&&!watch&&phase==='play'&&!flags.answer&&rhythm?.result().answerValue===null;}
+function inputBeat(){return localTime()/BEAT;}
+function canPlay(){return running&&!paused&&!awaitingIntro&&!watch&&['listen','play'].includes(phase)&&inputBeat()>=timing.play&&inputBeat()<timing.reveal&&!flags.answer&&rhythm?.result().answerValue===null;}
 function renderEquation(p){const q=playlist[index],truth=[4,21].includes(q.gameId);$('equation').replaceChildren();
  const repair=q.answer>=10?(q.missing==='tens'?['□',q.answer%10]:[Math.floor(q.answer/10),'□']):['□'];
  const parts=p==='reveal'?[q.a,'×',q.b,'＝',q.answer]:q.gameId===18?[q.a,'×',q.b,'＝',...repair]:q.gameId===15?[q.a,'×','□','＝',q.answer]:truth?[q.a,'×',q.b,'＝',q.claimed]:[q.a,'×',q.b,'＝','？'];
@@ -126,9 +126,9 @@ function updateControls(){
 }
 function setPhase(next){
  phase=next;$('play').dataset.phase=next;
- $('phase-label').textContent={intro:'あそびかた',listen:'九九をきこう',play:'3・2・1・ポン！',reveal:'こたえあわせ'}[next];
- $('instruction').textContent=next==='play'?'ポン！に合わせて1回タップ':next==='reveal'?'正しい九九をいっしょに言おう':'どれが正しいかな？';
- $('input-hint').textContent=watch?'お手本を みてね':next==='play'?'ポン！で 答えを1回タップ':next==='reveal'?'黄色が 正しい答えだよ':'答えを考えよう';
+ $('phase-label').textContent={intro:'あそびかた',listen:'もう答えてOK！',play:'3・2・1・ポン！',reveal:'こたえあわせ'}[next];
+ $('instruction').textContent=next==='reveal'?'正しい九九をいっしょに言おう':'わかったら1回タップ。ポンでボーナス！';
+ $('input-hint').textContent=watch?'お手本を みてね':next==='reveal'?'黄色が 正しい答えだよ':rhythm.result().answerValue!==null?'こたえを うけとったよ！':next==='intro'?'答えは1回だけタップ':'今すぐ答えてOK！ ポンで＋50点';
  if(next!=='intro')$('game-intro').hidden=true;
  renderEquation(next);updateControls();
 }
@@ -153,7 +153,7 @@ function press(value,button,id){
  if(!canPlay()||heldInput)return;
  heldInput={value,button,id};button.classList.add('pressed');
  if(!art.reduceMotion)for(const digit of button.querySelectorAll('.sprite-digit'))digit.animate([...JSON.parse(digit.dataset.frames||'[0,1,2,3,4,5]').map(f=>({backgroundPosition:`${(f%3)*50}% ${Math.floor(f/3)*100}%`})),{backgroundPosition:digit.style.backgroundPosition}],{duration:BEAT*2000,easing:'steps(1,end)'});
- const event=rhythm.inputdown(value,inputBeat());
+ const event=rhythm.inputdown(value,inputBeat(),{offsetMs:save.settings.offset});
  for(const missed of event?.expired||[])animateEvent(missed);
  if(event?.type==='hold-start')button.classList.add('holding');
  animateEvent(event);
@@ -168,9 +168,9 @@ function release(cancel=false){
 function drawCountdown(beat){
  const answered=rhythm.result().answerValue!==null;
  const remaining=Math.ceil(timing.target-beat-1e-6);
- const text=phase==='intro'?'♪':phase==='listen'?'♪':phase==='reveal'?(flags.grade?.correct?'★':'♪'):answered?'✓':remaining>0?String(Math.min(3,remaining)):'ポン!';
+ const text=phase==='intro'?'♪':phase==='reveal'?(flags.grade?.correct?'★':'♪'):answered?'✓':phase==='listen'?'♪':remaining>0?String(Math.min(3,remaining)):'ポン!';
  $('beat-count').textContent=text;
- $('rhythm-message').textContent=phase==='intro'?'もうすぐ':phase==='listen'?'きいてね':phase==='reveal'?'こたえあわせ':answered?'こたえた！':remaining>0?'せーの…':'いまだよ！';
+ $('rhythm-message').textContent=phase==='intro'?'もうすぐ':phase==='reveal'?'こたえあわせ':answered?'こたえた！':phase==='listen'?'答えてOK':remaining>0?'ボーナスまで':'ボーナス！';
  $('beat-count').classList.toggle('go',phase==='play'&&!answered&&remaining<=0);
  $('play').style.setProperty('--count-pulse',String(art.reduceMotion?1:1+Math.max(0,1-(beat%1)*4)*.09));
 }
@@ -188,14 +188,13 @@ function tick(){
    beginRound(changed);time=localTime();beat=time/BEAT;
   }
   scheduleCues();
-  const compensatedBeat=beat-(watch?0:save.settings.offset/(1000*BEAT));
-  const next=beat<0?'intro':compensatedBeat<timing.countdown?'listen':beat<timing.reveal?'play':'reveal';
+  const next=beat<0?'intro':beat<timing.countdown?'listen':beat<timing.reveal?'play':'reveal';
   if(next!==phase)setPhase(next);
   const q=playlist[index];
   mini.update({rhythmMode:true,time,beat:Math.max(0,beat),beatDuration:BEAT,nextCueBeat:timing.target,phase,anticipating:phase==='play'&&rhythm.result().answerValue===null,reduceMotion:art.reduceMotion,correct:flags.grade?.correct});
   if(beat>=.2&&!flags.q){flags.q=true;const kind=[4,21].includes(q.gameId)?q.truth?'a':'f':q.gameId===15?'r':'q';audio.speak(`${kind}-${q.a}-${q.b}`,{maxSeconds:3.2});}
   if(watch)autoPlay(beat);
-  for(const event of rhythm.update(compensatedBeat))animateEvent(event);
+  for(const event of rhythm.update(beat))animateEvent(event);
   if(beat>=timing.reveal&&!flags.answer)reveal();
   if(flags.answer&&!flags.cheer&&beat>=timing.reveal+audio.duration(`a-${q.a}-${q.b}`)/BEAT+.08)playCheer(beat);
   drawCountdown(beat);
@@ -239,7 +238,7 @@ function home(){++token;running=false;paused=false;audio.stop();cancelAnimationF
 async function pause(show=true){if(!running||paused)return;paused=true;retryHeldRound=rhythm?.result().holding!==null&&rhythm?.result().holding!==undefined;release(true);await audio.pause();releaseWakeLock();if(show)pauseDialog();}
 function pauseDialog(){openDialog('<h2>ひとやすみ</h2><p>音楽もゲームも、とまっているよ。</p><div class="modal-buttons"><button id="resume-btn" class="primary">つづける</button><button id="pause-settings" class="secondary">設定</button><button id="quit-btn" class="quiet">ホームへ戻る</button></div>');$('resume-btn').onclick=()=>$('dialog').close();$('pause-settings').onclick=settings;$('quit-btn').onclick=home;}
 async function resume(){if(!running||!paused)return;try{await audio.resume();paused=false;if(retryHeldRound){retryHeldRound=false;audio.start(musicFor(playlist[index].gameId));roundStart=4*BEAT;beginRound(false);toast('長おしの途中だったので、この問題からもう一度！');}requestWakeLock();}catch{toast('画面をもう一度タップしてください。');}}
-function settings(){openDialog(`<h2>音とあそびの設定</h2>${[['music','音楽'],['voice','九九の声'],['cheer','掛け声'],['sfx','効果音']].map(([k,label])=>`<label class="setting-row">${label}<input type="range" min="0" max="100" value="${save.settings[k]}" data-setting="${k}" aria-label="${label}"></label>`).join('')}<label class="setting-row">動きをひかえめに<input type="checkbox" id="reduce-motion" ${save.settings.reduceMotion?'checked':''}></label><label class="setting-row">タイミング補正 <output id="offset-label">${save.settings.offset}ms</output><input id="offset" aria-label="タイミング補正" type="range" min="-300" max="300" step="10" value="${save.settings.offset}"></label><p>Bluetoothイヤホンなどでずれを感じるときに調整。プラスにすると、遅いタップに合わせます。</p><p>PCは1・2・3キーが答えボタン。3・2・1・ポン！で、答えを1回押そう。正解で100点、タイミングが合えばさらに加点。</p><div class="modal-buttons"><button class="secondary" id="voices-btn">掛け声100コレクション</button><button class="quiet" id="settings-done">もどる</button></div><p style="margin-top:18px;font-size:10px">音声：VOICEVOX:ずんだもん（キャラクターごとに抑揚を調整）<br>音楽6曲は本作のオリジナル。記録はこの端末内に保存されます。</p>`);
+function settings(){openDialog(`<h2>音とあそびの設定</h2>${[['music','音楽'],['voice','九九の声'],['cheer','掛け声'],['sfx','効果音']].map(([k,label])=>`<label class="setting-row">${label}<input type="range" min="0" max="100" value="${save.settings[k]}" data-setting="${k}" aria-label="${label}"></label>`).join('')}<label class="setting-row">動きをひかえめに<input type="checkbox" id="reduce-motion" ${save.settings.reduceMotion?'checked':''}></label><label class="setting-row">タイミング補正 <output id="offset-label">${save.settings.offset}ms</output><input id="offset" aria-label="タイミング補正" type="range" min="-300" max="300" step="10" value="${save.settings.offset}"></label><p>Bluetoothイヤホンなどでずれを感じるときに調整。プラスにすると、遅いタップに合わせます。</p><p>PCは1・2・3キーが答えボタン。問題が出たら、わかったときに1回押そう。正解で100点。3・2・1・ポン！に合わせるとさらに加点。</p><div class="modal-buttons"><button class="secondary" id="voices-btn">掛け声100コレクション</button><button class="quiet" id="settings-done">もどる</button></div><p style="margin-top:18px;font-size:10px">音声：VOICEVOX:ずんだもん（キャラクターごとに抑揚を調整）<br>音楽6曲は本作のオリジナル。記録はこの端末内に保存されます。</p>`);
  for(const input of document.querySelectorAll('[data-setting]'))input.oninput=()=>{save.settings[input.dataset.setting]=Number(input.value);applySettings();persist();};$('reduce-motion').onchange=e=>{save.settings.reduceMotion=e.target.checked;applySettings();persist();};$('offset').oninput=e=>{save.settings.offset=Number(e.target.value);$('offset-label').textContent=e.target.value+'ms';persist();};$('settings-done').onclick=()=>running?pauseDialog():$('dialog').close();$('voices-btn').onclick=voices;
 }
 async function voices(){previewAudio?.stop();previewAudio=new FestivalAudio();const player=previewAudio;openDialog('<h2>掛け声100コレクション</h2><p>声をじゅんびしています…</p>');const request=dialogRequest;try{await player.unlock();await player.load([],()=>{});if(request!==dialogRequest||!$('dialog').open){player.stop();if(player.ctx.state!=='closed')player.ctx.close();return;}player.setVolumes(save.settings);const clips=player.manifest.cheers;openDialog('<h2>掛け声100コレクション</h2><p>好きな台詞を押すと、声がきけるよ。</p><div class="review-list" id="voice-collection"></div><div class="modal-buttons"><button class="quiet" id="voices-back">設定へ</button></div>');for(const c of clips){const b=document.createElement('button');b.textContent=c.text;b.onclick=()=>player.speak(c.id,{force:true});$('voice-collection').append(b);}$('voices-back').onclick=()=>{player.stop();player.ctx.close();previewAudio=null;settings();};}catch{if(request===dialogRequest&&$('dialog').open)toast('声を読み込めませんでした。通信を確認してください。');}}
