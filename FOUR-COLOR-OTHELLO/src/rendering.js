@@ -13,15 +13,29 @@ export function installStoneTextures(doc, colors, computed = getComputedStyle) {
       ctx.fillStyle = value('--dark'); ctx.shadowColor = '#0009'; ctx.shadowBlur = 9; ctx.shadowOffsetY = 5; ctx.fill();
       ctx.shadowColor = 'transparent';
       ctx.beginPath(); ctx.arc(128, 123, 109, 0, Math.PI * 2);
-      const face = ctx.createRadialGradient(86, 62, 5, 128, 123, 155);
-      face.addColorStop(0, value('--bright')); face.addColorStop(.52, value('--stone')); face.addColorStop(1, value('--dark'));
+      const face = ctx.createLinearGradient(55, 28, 185, 226);
+      face.addColorStop(0, value('--bright')); face.addColorStop(.28, value('--stone')); face.addColorStop(.78, value('--stone')); face.addColorStop(1, value('--rim'));
       ctx.fillStyle = face; ctx.fill(); ctx.strokeStyle = value('--rim'); ctx.lineWidth = 3; ctx.stroke();
       ctx.beginPath(); ctx.arc(128, 122, 101, Math.PI * 1.05, Math.PI * 1.91);
       ctx.strokeStyle = '#ffffff80'; ctx.lineWidth = 2; ctx.stroke();
-      const shine = ctx.createRadialGradient(89, 69, 0, 92, 72, 62);
-      shine.addColorStop(0, '#ffffff8c'); shine.addColorStop(.4, '#ffffff28'); shine.addColorStop(1, '#ffffff00');
-      ctx.fillStyle = shine; ctx.beginPath(); ctx.arc(128, 123, 105, 0, Math.PI * 2); ctx.fill();
-      rules.push(`.${color}{--disc-image:url("${canvas.toDataURL()}")}`);
+      ctx.save();ctx.translate(112,66);ctx.rotate(-.32);ctx.scale(1,.48);
+      const shine=ctx.createRadialGradient(-16,-12,0,0,0,78);
+      shine.addColorStop(0,'#ffffff91');shine.addColorStop(.36,'#ffffff36');shine.addColorStop(1,'#ffffff00');
+      ctx.fillStyle=shine;ctx.beginPath();ctx.arc(0,0,78,0,Math.PI*2);ctx.fill();ctx.restore();
+      ctx.beginPath();ctx.arc(128,123,97,0,Math.PI*2);ctx.strokeStyle='#ffffff16';ctx.lineWidth=1;ctx.stroke();
+      // A whole storage row is one shared bitmap, irrespective of board size.
+      const stock=doc.createElement('canvas');stock.width=544;stock.height=64;
+      const rack=stock.getContext('2d');
+      for(let i=29;i>=0;i--){
+        const x=24+i*17;
+        rack.beginPath();rack.ellipse(x,32,18,27,0,0,Math.PI*2);
+        rack.fillStyle=value('--dark');rack.shadowColor='#000b';rack.shadowBlur=3;rack.shadowOffsetX=3;rack.fill();rack.shadowColor='transparent';
+        const edge=rack.createLinearGradient(x-15,0,x+15,0);edge.addColorStop(0,value('--dark'));edge.addColorStop(.3,value('--rim'));edge.addColorStop(.68,value('--bright'));edge.addColorStop(.85,value('--stone'));edge.addColorStop(1,value('--dark'));
+        rack.fillStyle=edge;rack.fill();rack.strokeStyle='#010504b3';rack.lineWidth=1.5;rack.stroke();
+        rack.beginPath();rack.ellipse(x-2,32,13,24,0,Math.PI*1.08,Math.PI*1.77);rack.strokeStyle='#ffffff75';rack.lineWidth=1.2;rack.stroke();
+      }
+      const vertical=doc.createElement('canvas');vertical.width=64;vertical.height=544;const v=vertical.getContext('2d');v.translate(64,0);v.rotate(Math.PI/2);v.drawImage(stock,0,0);
+      rules.push(`.${color}{--disc-image:url("${canvas.toDataURL()}");--rack-image:url("${stock.toDataURL()}");--rack-vertical:url("${vertical.toDataURL()}")}`);
     }
     style.textContent = rules.join('\n'); doc.head.append(style); doc.body.classList.add('stone-textures');
   } finally { probe.remove(); }

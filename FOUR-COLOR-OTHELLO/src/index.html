@@ -8,14 +8,16 @@
   <title>Irodory — ４色で彩るオセロ</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23183e2b'/%3E%3Ccircle cx='21' cy='21' r='11' fill='%23e93c37'/%3E%3Ccircle cx='44' cy='21' r='11' fill='%232485fa'/%3E%3Ccircle cx='44' cy='44' r='11' fill='%23f4c323'/%3E%3Ccircle cx='21' cy='44' r='11' fill='%2327c45e'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./lounge.css">
   <script type="module" src="./app.js"></script>
 </head>
 <body>
   <main id="home" class="home">
-    <div class="home-topline"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Irodory</span><span class="home-edition">４つの色。ひとつの勝負。</span></div>
+    <div class="home-topline"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Irodory</span><span class="home-edition">THE PRIVATE GAME LOUNGE <i aria-hidden="true">◆</i></span></div>
     <div class="home-content">
-      <p class="eyebrow">THE NEXT MOVE IS YOURS</p>
+      <p class="eyebrow lounge-eyebrow"><span></span> FOUR COLORS. ENDLESS POSSIBILITIES.</p>
       <h1 class="logo"><span class="brand-art" role="img" aria-label="Irodory"></span><span class="logo-line" aria-hidden="true"></span></h1>
+      <p class="home-tagline">一手で、景色が変わる。</p><p class="home-subtitle">４つの色が交差する、あなただけの一局。</p>
       <div class="home-menu">
         <button id="start" class="primary play-button"><span><b>ひとりで遊ぶ</b><small>コンピューター３人と対戦</small></span><span class="play-arrow" aria-hidden="true">▶</span></button>
         <button id="friends-open" class="secondary wide"><span>4人で遊ぶ</span><small>ひとつの画面で交代</small></button>
@@ -24,7 +26,7 @@
         <p id="home-record" class="home-record">好きな色で、じっくり一局。</p>
       </div>
     </div>
-    <div class="home-scene" aria-hidden="true"><div class="scene-orbit"></div><div id="home-board" class="board-shell home-board"></div><div class="scene-caption"><span id="home-theme-name">CLASSIC</span><span>FOUR COLOR COLLECTION</span></div></div>
+    <div class="home-scene"><span class="scene-number" aria-hidden="true">01 / THE LOUNGE</span><button id="collection-open" class="collection-plaque" aria-label="自分のコレクションを見る"><span class="plaque-icon" aria-hidden="true">◇</span><span><small>YOUR TABLE</small><b id="home-theme-name">クラシック</b></span><span aria-hidden="true">↗</span></button></div>
   </main>
   <main id="game" class="game" hidden>
     <header class="scorebar"><span class="brand-art game-logo" role="img" aria-label="Irodory"></span><button id="turn" class="turn" title="ポーズ（Esc）" aria-haspopup="dialog"></button><div id="scores" class="scores"></div></header>
@@ -32,7 +34,7 @@
       <div class="rack rack-top red" aria-hidden="true"></div><div class="rack rack-right blue" aria-hidden="true"></div>
       <div class="rack rack-bottom yellow" aria-hidden="true"></div><div class="rack rack-left green" aria-hidden="true"></div>
       <div id="board" class="board" role="grid" aria-label="Irodoryの盤面"></div>
-      <div id="match-intro" class="match-intro" aria-hidden="true" hidden><span class="brand-art intro-logo" role="img" aria-label="Irodory"></span><strong id="intro-title">対局開始</strong><p id="intro-detail"></p><div id="intro-pieces"></div></div>
+      <div id="match-intro" class="match-intro" aria-hidden="true" hidden><span id="intro-emblem" class="intro-emblem"></span><span id="intro-eyebrow" class="intro-eyebrow">TAKE YOUR SEAT</span><span class="brand-art intro-logo" role="img" aria-label="Irodory"></span><strong id="intro-title">対局開始</strong><p id="intro-detail"></p><div id="intro-pieces"></div></div>
       <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
     </div>
   </main>
@@ -59,7 +61,7 @@
     <p class="small-note">４辺のストックは本物の予備の石をイメージした飾りです。使用枚数の制限はありません。<br>キーボード：矢印でマスを移動、Enter / Space で置く。<br>設定・コイン・購入品はこのブラウザに保存。別の端末やローカルHTMLとは自動同期されません。設定からデータを持ち運べます。</p><button class="primary" data-close>わかった</button>
   </div></dialog>
   <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content">
-    <button class="close" data-close aria-label="閉じる">×</button><h2 id="settings-title">設定</h2>
+    <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">MAKE YOURSELF AT HOME</p><h2 id="settings-title">設定</h2>
     <label class="setting"><span>置ける場所を表示する<small>人が打つ番だけ、置けるマスに目印</small></span><input id="hints-setting" type="checkbox" role="switch"></label>
     <label class="setting"><span>石と盤の音<small>置く音・返す音・勝利の音</small></span><input id="sound-setting" type="checkbox" role="switch" checked></label>
     <label class="setting"><span>静かなBGM<small>操作後に流れ、タブを離れると止まります</small></span><input id="music-setting" type="checkbox" role="switch" checked></label>
@@ -69,14 +71,15 @@
     <button class="primary" data-close>できた</button>
   </div></dialog>
   <dialog id="shop-dialog" aria-labelledby="shop-title"><div class="dialog-content">
-    <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">YOUR COLLECTION</p><h2 id="shop-title">ショップ <small class="coin-balance">0 コイン</small></h2><p class="field-note">ひとりで勝って、あなたの一局を彩ろう。ボードは着せ替え、駒の色は抽選に追加。</p><p id="shop-message" class="shop-message" role="status"></p>
-    <h3>ボードの見た目</h3><div id="board-products" class="products"></div><h3>あなたの駒の色 <small>ひとりモード専用</small></h3><div id="color-products" class="products colors"></div><button class="primary" data-close>ホームに戻る</button>
+    <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">YOUR COLLECTION</p><h2 id="shop-title">コレクション <small class="coin-balance">0 コイン</small></h2><p class="field-note">ひとりで勝って、あなたの一局を彩ろう。ボードは着せ替え、駒の色は抽選に追加。</p><p id="shop-message" class="shop-message" role="status"></p>
+    <div class="collection-showcase"><div class="showcase-stage"><div id="shop-preview-board" class="board-shell showcase-board" aria-hidden="true"></div></div><div class="showcase-copy"><p class="eyebrow">CRAFTED FOR YOUR NEXT MOVE</p><h3 id="shop-preview-name"></h3><p id="shop-preview-description"></p><span id="shop-preview-status" class="collection-status"></span><button id="shop-preview-action" class="product-action"></button><p class="small-note">下のアイテムを選んで、見た目を試せます。</p></div></div>
+    <h3 class="collection-heading"><span>01</span> ボードの見た目</h3><div id="board-products" class="products"></div><h3 class="collection-heading"><span>02</span> あなたの駒の色 <small>ひとりモード専用</small></h3><div id="color-products" class="products colors"></div><button class="primary" data-close>ホームに戻る</button>
   </div></dialog>
   <dialog id="menu-dialog" aria-labelledby="menu-title"><div class="dialog-content game-menu">
-    <span class="pause-emblem" aria-hidden="true">Ⅱ</span><p class="eyebrow">PAUSED</p><h2 id="menu-title">ポーズ</h2><p class="pause-note">ゲームの時間が止まっています</p><p id="match-info" class="field-note"></p><button class="primary" data-close>ゲームを続ける <kbd>Esc</kbd></button><button id="game-rules" class="secondary">ルールブック</button><button id="game-settings" class="secondary">設定</button><button id="resign-open" class="danger">降参する</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
+    <span class="pause-emblem" aria-hidden="true">Ⅱ</span><p class="eyebrow">PAUSED</p><h2 id="menu-title">ポーズ</h2><p class="pause-note">ゲームの時間が止まっています</p><p id="match-info" class="field-note"></p><button class="primary" data-close>ゲームを続ける <kbd>Esc</kbd></button><div class="pause-actions"><button id="game-rules" class="secondary"><span aria-hidden="true">▤</span>ルールブック</button><button id="game-settings" class="secondary"><span aria-hidden="true">⚙</span>設定</button></div><button id="resign-open" class="danger">降参する</button><button id="leave-game" class="text-button">この対局を終了してホームへ</button><p class="field-note">終了した対局の途中経過は保存されません。</p>
   </div></dialog>
   <dialog id="resign-dialog" aria-labelledby="resign-title" aria-describedby="resign-description"><div class="dialog-content resign-confirm"><p class="eyebrow">RESIGN MATCH</p><h2 id="resign-title">降参しますか？</h2><p id="resign-description"></p><button class="primary" data-close autofocus>対局を続ける</button><button id="resign-confirm" class="danger">降参して対局を終了する</button></div></dialog>
-  <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><div id="result-sparks" aria-hidden="true"></div><div id="result-symbol" class="result-symbol" aria-hidden="true"></div><p id="result-eyebrow" class="eyebrow">ゲーム終了</p><h2 id="result-title" tabindex="-1" autofocus></h2><p id="result-context" class="field-note"></p><div id="result-scores"></div><p id="result-reward" class="reward-note"></p><button id="again" class="primary">同じ設定でもう一局</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
+  <dialog id="result-dialog" aria-labelledby="result-title"><div class="dialog-content result"><div id="result-sparks" aria-hidden="true"></div><div id="result-symbol" class="result-symbol" aria-hidden="true"></div><p id="result-flavor" class="result-flavor"></p><p id="result-eyebrow" class="eyebrow">ゲーム終了</p><h2 id="result-title" tabindex="-1" autofocus></h2><p id="result-context" class="field-note"></p><div id="result-scores"></div><p id="result-reward" class="reward-note"></p><button id="again" class="primary">同じ設定でもう一局</button><button id="home-button" class="secondary">ホームに戻る</button></div></dialog>
   <div id="storage-message" class="storage-message" role="status" hidden></div><div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
   <noscript>このゲームで遊ぶには、ブラウザのJavaScriptを有効にしてください。</noscript>
 </body>

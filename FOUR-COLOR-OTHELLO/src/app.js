@@ -79,11 +79,7 @@ function openDialog(id) { if (!$(id).open) { $(id).showModal(); $(id).scrollTop 
 function closeDialogs() { document.querySelectorAll('dialog[open]').forEach(d => d.close()); }
 function announce(text) { ui.live.textContent = text; }
 function renderHome() {
-  const palette = playerColors(profile.equippedColor).colors;
-  const rack = p => `<div class="rack rack-${['top','right','bottom','left'][p]} ${palette[p].id}"></div>`;
-  $('#home-board').innerHTML = [0,1,2,3].map(rack).join('') + `<div class="board hero-grid">${initialBoard().map(p => `<span class="cell">${p === null ? '' : piece(palette[p].id)}</span>`).join('')}</div>`;
   $('#home-theme-name').textContent = CATALOG.find(item => item.id === profile.equippedBoard).name;
-  $('#home-board').dataset.theme = profile.equippedBoard;
   document.querySelectorAll('.coin-balance').forEach(el => { el.textContent = `${profile.coins.toLocaleString('ja-JP')} コイン`; });
   $('#home-record').textContent = profile.stats.played ? `${profile.stats.wins} 勝 · ${profile.stats.draws} 引き分け · ${profile.stats.played} 対局` : '次の色は、対局が始まるお楽しみ。';
 }
@@ -294,11 +290,12 @@ function finish() {
 }
 function decorateResult(outcome) {
   ui.result.dataset.outcome = outcome;
+  $('#result-flavor').textContent = {win:'その一手が、景色を変えた。',draw:'互いに譲らない、見事な一局。',loss:'次の一手に、新しい可能性を。',resigned:'また、この卓で。'}[outcome];
   $('#result-sparks').innerHTML = outcome === 'win' && !preferences.reducedMotion ? Array.from({length:22},(_,i) => `<i style="--x:${(i * 47) % 100}%;--delay:${(i % 7) * .075}s;--spin:${(i % 2 ? 1 : -1) * (120 + i * 13)}deg"></i>`).join('') : '';
   $('#result-eyebrow').textContent = { win:'VICTORY', draw:'DRAW', loss:'MATCH FINISHED', resigned:'RESIGNED' }[outcome];
   const flag = '<path d="M14 34V8m0 1c8-7 12 7 20 0v16c-8 7-12-7-20 0M9 36h10"/>';
   const trophy = '<path d="M15 8h18v9c0 8-4 12-9 12s-9-4-9-12V8Zm0 3H8v6c0 5 4 8 9 8m16-14h7v6c0 5-4 8-9 8M24 29v8m-8 2h16"/>';
-  $('#result-symbol').innerHTML = `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${outcome === 'resigned' ? flag : trophy}</svg>`;
+  $('#result-symbol').innerHTML = outcome === 'win' ? '<span class="victory-seal"></span>' : `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${outcome === 'resigned' ? flag : trophy}</svg>`;
 }
 function resignGame() {
   const ended = endByResignation(state);
@@ -321,6 +318,9 @@ function startGame(config = lastConfig) {
   state = { ...config, ...palette, id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`, board: initialBoard(config.size, config.playerCount ?? 4), player: 0, phase: 'playing', movedPlayers:Array(config.playerCount ?? 4).fill(false) };
   ui.home.hidden = true; ui.game.hidden = false; document.body.classList.add('playing');
   ui.game.dataset.playerCount = String(state.colors.length);
+  ui.game.dataset.difficulty = state.mode === 'solo' ? state.difficulty : 'friends';
+  $('#intro-emblem').textContent = state.mode==='solo' && state.difficulty==='oni' ? '鬼' : '◇';
+  $('#intro-eyebrow').textContent = state.mode==='solo' && state.difficulty==='oni' ? 'THE ONI CHALLENGE' : 'TAKE YOUR SEAT';
   buildBoard(); measureHeldStone(); cells.forEach((_, i) => updateCell(i));
   state.phase = 'intro'; renderStatus();
   $('#intro-title').textContent = state.mode === 'solo' ? `あなたは${nameOf(state.human)}` : '対局開始';
@@ -354,29 +354,52 @@ function setupNotes() {
   $('#color-field').hidden = setupMode !== 'solo' || setupCount === 2;
   $('#size-note').textContent = setupCount === 2 ? '8 × 8 が通常の広さ。中央に黒２枚・白２枚、黒から開始。' : '8 × 8 が基本。中央に各色４枚ずつ、合計16枚。';
   const difficulty = $('#difficulty-options input:checked')?.value ?? preferences.difficulty, size = Number($('#size-options input:checked')?.value ?? preferences.size);
+  $('#setup-dialog').dataset.challenge=setupMode==='solo' && difficulty==='oni' ? 'oni' : 'standard';
   $('#difficulty-description').textContent = DIFFICULTIES[difficulty].description;
   $('#color-note').textContent = '持っている色から１色、手番は１〜４番目から毎回抽選。購入した色も候補に加わります。';
   $('#setup-reward').textContent = setupMode === 'solo' ? `勝つと ${matchReward(difficulty, size)} コイン。最多で引き分けると半分。` : setupCount === 2 ? '黒 → 白の順に、２人で交代します。' : '赤 → 青 → 黄 → 緑の順に、みんなで交代します。';
 }
 function syncSettings() { stoneAudio.sync(); $('#sound-volume').value = String(Math.round(preferences.volume * 100)); $('#volume-value').textContent = `${Math.round(preferences.volume * 100)}%`; $('#sound-volume').disabled = $('#sound-preview').disabled = !preferences.sound; $('#music-setting').checked=preferences.music; document.body.classList.toggle('reduce-motion', preferences.reducedMotion); for (const [id,key] of [['sound-setting','sound'],['motion-setting','reducedMotion'],['hints-setting','hints'],['setup-hints','hints']]) $('#' + id).checked = preferences[key]; }
+let previewItem='classic', previewTheme='classic', previewColor='red';
+function previewBoard(color='red') {
+  const colors=playerColors(color).colors;
+  return colors.map((c,p)=>`<div class="rack rack-${['top','right','bottom','left'][p]} ${c.id}"></div>`).join('')+
+    `<div class="board">${initialBoard().map(p=>`<span class="cell">${p===null?'':piece(colors[p].id)}</span>`).join('')}</div>`;
+}
+function itemAction(item) {
+  const owned=ownsItem(profile,item), equipped=item.kind==='board' && profile.equippedBoard===item.id;
+  return {disabled:(item.kind==='color'&&owned)||equipped||(!owned&&profile.coins<item.price),label:item.kind==='color'&&owned?'抽選の対象':equipped?'使用中':owned?'使う':`${item.price} コインで購入`};
+}
+function renderCollectionPreview() {
+  const item=CATALOG.find(i=>i.id===previewItem), owned=ownsItem(profile,item), action=itemAction(item);
+  const board=$('#shop-preview-board');board.dataset.theme=previewTheme;board.innerHTML=previewBoard(previewColor);
+  $('#shop-preview-name').textContent=item.name;
+  $('#shop-preview-description').textContent=item.description ?? '一局を彩る、つややかな基本の色。';
+  $('#shop-preview-status').textContent=owned ? item.kind==='board'&&profile.equippedBoard===item.id?'現在のボード':'コレクション済み' : `${item.price} コイン`;
+  const button=$('#shop-preview-action');button.dataset.item=item.id;button.textContent=action.label;button.disabled=action.disabled;
+  document.querySelectorAll('[data-preview]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.preview===previewItem)));
+}
 function renderShop() {
   renderHome();
   for (const kind of ['board', 'color']) {
     const items = CATALOG.filter(i => i.kind === kind);
     $('#' + kind + '-products').innerHTML = items.map(item => {
-      const owned = ownsItem(profile, item), equipped = kind === 'board' && profile.equippedBoard === item.id;
-      const preview = kind === 'board' ? `<div class="board-swatch" data-theme="${item.id}"><div>${piece('red')}${piece('blue')}${piece('green')}${piece('yellow')}</div></div>` : `<div class="color-swatch">${piece(item.id)}</div>`;
-      return `<article class="product${equipped ? ' equipped' : ''}">${preview}<h4>${item.name}</h4><p>${item.description ?? '最初から使える基本の色。'}</p><button class="product-action" data-item="${item.id}" ${(kind === 'color' && owned) || (kind === 'board' && equipped) || (!owned && profile.coins < item.price) ? 'disabled' : ''}>${kind === 'color' && owned ? '抽選の対象' : equipped ? '使用中' : owned ? '使う' : `${item.price} コインで購入`}</button>${!owned && profile.coins < item.price ? `<small>あと ${item.price - profile.coins} コイン</small>` : '<small> </small>'}</article>`;
+      const owned=ownsItem(profile,item), equipped=kind==='board'&&profile.equippedBoard===item.id, action=itemAction(item);
+      const art=kind==='board'?`<div class="board-shell product-board" data-theme="${item.id}" aria-hidden="true">${previewBoard()}</div>`:`<div class="color-swatch" aria-hidden="true">${piece(item.id)}</div>`;
+      return `<article class="product${equipped?' equipped':''}"><button class="product-preview" data-preview="${item.id}" aria-label="${item.name}を試す" aria-pressed="false">${art}<span class="preview-label">見た目を試す ↗</span></button><h4>${item.name}</h4><p>${item.description ?? '最初から使える基本の色。'}</p><button class="product-action" data-item="${item.id}" ${action.disabled?'disabled':''}>${action.label}</button><small>${!owned&&profile.coins<item.price?`あと ${item.price-profile.coins} コイン`:owned?'OWNED':'COLLECTION'}</small></article>`;
     }).join('');
   }
+  renderCollectionPreview();
 }
 $('#shop-dialog').addEventListener('click', event => {
+  const preview=event.target.closest('[data-preview]');
+  if(preview){const item=CATALOG.find(i=>i.id===preview.dataset.preview);if(!item)return;previewItem=item.id;if(item.kind==='board')previewTheme=item.id;else previewColor=item.id;renderCollectionPreview();$('.collection-showcase').scrollIntoView({block:'nearest',behavior:preferences.reducedMotion?'instant':'smooth'});return;}
   const button = event.target.closest('[data-item]'); if (!button || button.disabled) return;
   const item = CATALOG.find(i => i.id === button.dataset.item); if (!item) return;
   if (storageWorking) profile = normalizeProfile(readSave(STORAGE.profile) ?? profile);
   let result = ownsItem(profile, item) ? { ok: true, profile } : purchaseItem(profile, item.id);
   if (result.ok && item.kind === 'board') result = equipItem(result.profile, item.id);
-  if (result.ok) { profile = result.profile; persist(); renderShop(); $('#shop-message').textContent = item.kind === 'color' ? `${item.name}が色の抽選に加わりました。` : `${item.name}を選びました。次の対局から使えます。`; $('#shop-dialog [data-item="' + item.id + '"]')?.closest('.product')?.scrollIntoView({ block: 'nearest' }); }
+  if (result.ok) { profile = result.profile; persist(); renderShop(); $('#shop-message').textContent = item.kind === 'color' ? `${item.name}が色の抽選に加わりました。` : `${item.name}を選びました。次の対局から使えます。`;  }
   else $('#shop-message').textContent = result.reason;
 });
 $('#start').addEventListener('click', () => setup('solo')); $('#friends-open').addEventListener('click', () => setup('friends'));
@@ -391,7 +414,8 @@ $('#again').addEventListener('click', () => startGame()); $('#home-button').addE
 window.addEventListener('hashchange', () => { if (location.hash !== '#play' && state.phase !== 'home') goHome(); });
 ui.result.addEventListener('cancel', event => { event.preventDefault(); goHome(); });
 for (const name of ['rules', 'settings']) $(`#${name}-open`).addEventListener('click', () => openDialog(`#${name}-dialog`));
-$('#shop-open').addEventListener('click', () => { renderShop(); $('#shop-message').textContent = ''; openDialog('#shop-dialog'); });
+function openCollection(){previewItem=previewTheme=profile.equippedBoard;previewColor=profile.equippedColor;renderShop();$('#shop-message').textContent='';openDialog('#shop-dialog');}
+$('#shop-open').addEventListener('click',openCollection);$('#collection-open').addEventListener('click',openCollection);
 function openPause() {
   if(['home','ended'].includes(state.phase))return;
   $('#resign-open').disabled = !canResign(state); $('#match-info').textContent = `${state.mode === 'solo' ? `ひとり · ${DIFFICULTIES[state.difficulty].label}` : `${state.colors.length}人で交代`} · ${state.size} × ${state.size}${state.mode === 'solo' ? ` · あなたは${nameOf(state.human)}、${state.human + 1}番目` : ''}\n手番：${state.colors.map(c => c.name).join(' → ')}`; openDialog('#menu-dialog');
