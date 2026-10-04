@@ -1,0 +1,363 @@
+{
+  "id": "A0792",
+  "ordinal": 792,
+  "stage": "S24",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S24: 世界のお祭り大集合.\nRow 1: Seven tiny gold coral teal and cream confetti pieces slowly tumbling, no strobe or fireworks. animation remains centered at the same point.\nRow 2: A small ornate crimson gold and turquoise thread tassel, fixed top loop, fine ends softly sway. top-center attachment remains absolutely fixed.\nRow 3: Five pink coral and pale yellow flower petals gently turning in a small breeze loop, no tree. animation remains centered at the same point.\nRow 4: A tiny colorful wooden bird-shaped wind spinner on a short gold tabletop stand, wings turn around a fixed hub, a toy not a live bird. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S24-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S24-ENV09",
+      "row": 0,
+      "name": "音楽広場の紙吹雪",
+      "action": "Seven tiny gold coral teal and cream confetti pieces slowly tumbling, no strobe or fireworks",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 801.072,
+        "y": 1271.302,
+        "width": 171.8055,
+        "height": 171.2703,
+        "depthY": 1271.302,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          327.0,
+          519.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          61.0,
+          67.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "5083bae4a3e9771b12ece83d6a23c411da2b21487218b44acea4aef12b607f01"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 149.435,
+        "height": 164.134,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          167,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S24-ENV10",
+      "row": 1,
+      "name": "カーニバルの房",
+      "action": "A small ornate crimson gold and turquoise thread tassel, fixed top loop, fine ends softly sway",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 563.4451,
+        "y": 431.1162,
+        "width": 96.9439,
+        "height": 127.8136,
+        "depthY": 431.1162,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          230,
+          176
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          27.0,
+          50.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "5083bae4a3e9771b12ece83d6a23c411da2b21487218b44acea4aef12b607f01"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 66.144,
+        "height": 122.488,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          131,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S24-ENV11",
+      "row": 2,
+      "name": "花祭りの花びら",
+      "action": "Five pink coral and pale yellow flower petals gently turning in a small breeze loop, no tree",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.510417
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 2616.344,
+        "y": 1349.687,
+        "width": 158.4887,
+        "height": 162.8149,
+        "depthY": 1349.687,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1068.0,
+          551.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          62.0,
+          63.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "5083bae4a3e9771b12ece83d6a23c411da2b21487218b44acea4aef12b607f01"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 151.885,
+        "height": 154.335,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          182
+        ]
+      }
+    },
+    {
+      "id": "S24-ENV12",
+      "row": 3,
+      "name": "工芸屋の回転玩具",
+      "action": "A tiny colorful wooden bird-shaped wind spinner on a short gold tabletop stand, wings turn around a fixed hub, a toy not a live bird",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 2900.517,
+        "y": 1344.7873,
+        "width": 58.7541,
+        "height": 70.1217,
+        "depthY": 1344.7873,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1184,
+          549
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          40.0,
+          48.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "5083bae4a3e9771b12ece83d6a23c411da2b21487218b44acea4aef12b607f01"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 56.0,
+        "height": 67.2,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          183,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S24-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S24",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      4096,
+      2305
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S24-background.png",
+        "sha256": "9596fd3efd02ff6a098181600f13c4d9811d8e1a3ee631aaeb29e46331cec342",
+        "worldBounds": [
+          0,
+          0,
+          4096,
+          2305
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S24-detail-0.png",
+        "sha256": "293aa5047a6cb820d75794582083245ff9d7cdd08f125215b6f074325ad1c27d",
+        "worldBounds": [
+          0,
+          0,
+          2252.8,
+          1267.75
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S24-detail-1.png",
+        "sha256": "ebcf54e4fe8469d75ededc996dc4d03a16880898566b254e7a7046bb00585da4",
+        "worldBounds": [
+          1843.2,
+          0,
+          2252.8,
+          1267.75
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S24-detail-2.png",
+        "sha256": "bff82d8110765927f6ae2c4999ccfe5bcf22bb6260f0caafd66023be95bd90fc",
+        "worldBounds": [
+          0,
+          1037.25,
+          2252.8,
+          1267.75
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S24-detail-3.png",
+        "sha256": "d971b32e864ffbe83637b78168cb9a032318804bc7c3b75672cc8ec670543435",
+        "worldBounds": [
+          1843.2,
+          1037.25,
+          2252.8,
+          1267.75
+        ]
+      }
+    ],
+    "referenceSHA256": "5083bae4a3e9771b12ece83d6a23c411da2b21487218b44acea4aef12b607f01"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S24-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0792.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

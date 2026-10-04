@@ -1,0 +1,363 @@
+{
+  "id": "A0763",
+  "ordinal": 763,
+  "stage": "S15",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S15: 飛行船の港.\nRow 1: A small blue cream and gold fabric windsock on a fixed bracket, slowly billowing with irregular folds. top-center attachment remains absolutely fixed.\nRow 2: Two slender warm white coffee wisps rising and dissolving, no cup or table. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 3: A gold knot with two long royal-blue silk ribbons, upper knot fixed, tails flutter gently. top-center attachment remains absolutely fixed.\nRow 4: A little brass four-blade propeller model on a stable navy tabletop base, blades rotate around fixed horizontal hub. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S15-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S15-ENV01",
+      "row": 0,
+      "name": "飛行港の吹き流し",
+      "action": "A small blue cream and gold fabric windsock on a fixed bracket, slowly billowing with irregular folds",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.229167
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1590.495,
+        "y": 182.359,
+        "width": 105.5666,
+        "height": 74.6668,
+        "depthY": 182.359,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          959.0,
+          110.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          61.0,
+          34.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "16010d6d4024123d741edf571696c5c64a443c6b44ed78bdd7a71f15cb389527"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 101.168,
+        "height": 56.389,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          145
+        ]
+      }
+    },
+    {
+      "id": "S15-ENV02",
+      "row": 1,
+      "name": "空港カフェの湯気",
+      "action": "Two slender warm white coffee wisps rising and dissolving, no cup or table",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1648.5423,
+        "y": 795.7496,
+        "width": 93.8264,
+        "height": 62.8174,
+        "depthY": 795.7496,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          994,
+          480
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          37.0,
+          43.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "16010d6d4024123d741edf571696c5c64a443c6b44ed78bdd7a71f15cb389527"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 51.8,
+        "height": 60.2,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          106,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S15-ENV03",
+      "row": 2,
+      "name": "気球工房のリボン",
+      "action": "A gold knot with two long royal-blue silk ribbons, upper knot fixed, tails flutter gently",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 512.4743,
+        "y": 752.6458,
+        "width": 69.7153,
+        "height": 100.3753,
+        "depthY": 752.6458,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          309,
+          454
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          37.0,
+          58.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "16010d6d4024123d741edf571696c5c64a443c6b44ed78bdd7a71f15cb389527"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 61.364,
+        "height": 96.193,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          169,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S15-ENV04",
+      "row": 3,
+      "name": "格納庫の小回転模型",
+      "action": "A little brass four-blade propeller model on a stable navy tabletop base, blades rotate around fixed horizontal hub",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 2383.254,
+        "y": 1024.527,
+        "width": 79.4182,
+        "height": 64.2783,
+        "depthY": 1024.527,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1437.0,
+          618.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          39.0,
+          44.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "16010d6d4024123d741edf571696c5c64a443c6b44ed78bdd7a71f15cb389527"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 54.6,
+        "height": 61.6,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          132,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S15-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S15",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      2773,
+      1560
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S15-background.png",
+        "sha256": "25d1ba4a7cc727be22684d9abc4738cda838246143114e1e0718c73bd4521e38",
+        "worldBounds": [
+          0,
+          0,
+          2773,
+          1560
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S15-detail-0.png",
+        "sha256": "4be78d2151fca1c95004e3ff15932df127c24ae7a1b3637cb4077e79e5e9b344",
+        "worldBounds": [
+          0,
+          0,
+          1525.15,
+          858.0000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S15-detail-1.png",
+        "sha256": "feaed4965dc96fbc18d4cfb2ba0de3e3f54d68d0dcd5d67b9f28bcacd9e3733f",
+        "worldBounds": [
+          1247.8500000000001,
+          0,
+          1525.15,
+          858.0000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S15-detail-2.png",
+        "sha256": "edb984659f9a2090e177169b377779d2a52cf6630e41d37bf93a414fa1bdf1fd",
+        "worldBounds": [
+          0,
+          702.0,
+          1525.15,
+          858.0000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S15-detail-3.png",
+        "sha256": "9bb5395d147c47b08d05df545f550f72d1a2feea5d352deb06215dddb31a44f8",
+        "worldBounds": [
+          1247.8500000000001,
+          702.0,
+          1525.15,
+          858.0000000000001
+        ]
+      }
+    ],
+    "referenceSHA256": "16010d6d4024123d741edf571696c5c64a443c6b44ed78bdd7a71f15cb389527"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S15-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0763.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      450,
+      673,
+      893,
+      1114,
+      1343,
+      1559,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

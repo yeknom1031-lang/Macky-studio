@@ -1,0 +1,14 @@
+{
+  "id": "A0793",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: stylized-concept. Production sprite sheet for Wacha Wacha Town. Use the attached two bookbinders ONLY as a painting-style, scale and costume-material reference. Create ONE NEW DISTINCT bookbinder, not either reference person: a tall slender elderly male artisan, long narrow kind face, long hooked nose, tiny oval red-brown spectacles, silver hair tied into a long braid, a neat pointed silver goatee, navy rolled-up shirt sleeves, a warm ochre leather apron with bookbinding needles in a waist pocket, charcoal trousers and stout brown boots. Gentle overhead three-quarter view facing right, crisp hand-painted storybook chibi style, attractive and readable at miniature game size. Create exactly ONE horizontal row of EIGHT separate full-body sprites, very wide landscape canvas. Columns 1-4: coherent walk cycle with alternating left foot, passing, right foot, passing; hands empty, fixed waist tools remain. Columns 5-8: bookbinding work cycle; holds a small closed brown book, stitches its spine with a small needle, presses and smooths cover, presents finished book. SAME distinct person, scale, glasses, face, silver braid, beard and clothing in all eight frames. Keep head and feet at a fixed scale and planted-foot baseline. Transparent alpha background. No floor, no desk, no scenery, no text, no grid lines, no underfoot shadows. Keep generous transparent gutters around every full head, braid, hands, tools and both shoes. Exactly eight complete sprites, never crop any body part. The new design must be clearly distinct from a short black-haired bespectacled heavily bearded bookbinder and from the two supplied dark-haired women.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0793.png",
+  "startedAt": "2026-10-04T17:22:08.820721+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-3c3c-7f71-a137-36749bca15a9/exec-68405491-c698-469a-97b5-b07401cf2788.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0793.png",
+  "sha256": "3d92629953ac50028f1602ee14c9f796bdad82c3a3feabfe3db990c73d116b6a",
+  "finishedAt": "2026-10-04T17:22:37.380617+00:00",
+  "reviewStatus": "accepted",
+  "reviewNotes": "Source 1x8, normalized strip and repaired original ten-row atlas visually inspected. Full new S05-C019 identity and coherent walk/bookbinding; previous last complete source character restored as S05-C020. No original PNG modification."
+}

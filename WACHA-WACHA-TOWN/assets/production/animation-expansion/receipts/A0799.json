@@ -1,0 +1,15 @@
+{
+  "id": "A0799",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: identity-preserve. The attached image is FOUR full-body existing people arranged vertically. Precisely keep EACH face, age, skin tone, hairstyle, hat, clothing construction, clothing colors and original style. Make FOUR ROWS by TWELVE COLUMNS, one reference person in each row. 48 separate complete sprites. In EVERY cell each person has EMPTY HANDS. No books, no papers, no objects, no pens, no new bags. Do not invent props. First four poses: sequential back-view walk away from viewer. Middle four poses: sequential upstairs movement diagonally right, rear three-quarter, high knee and controlled lean. Last four poses: sequential downstairs movement diagonally right, front three-quarter, careful lower-reaching foot. Fixed body scale and planted-foot baseline, alternating leg motion. Same gently overhead hand-painted storybook chibi illustration. Wide landscape transparent alpha canvas. Do not draw stairs, floors, background, lettering, shadows or grids. Generous transparent gutters and intact head, both hands and shoes in every cell.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0799.png",
+  "startedAt": "2026-10-04T18:24:22.432015+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-78d6fee6-11de-4568-8203-1f82c97778b5.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0799.png",
+  "sha256": "27aaec34ee44a764622c7a0bd8550a10afe0f4b99a5fae6381acfe81679d16da",
+  "finishedAt": "2026-10-04T18:25:51.854154+00:00",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T18:34:02.843881+00:00",
+  "reviewNotes": "Manually reviewed source and complete normalized pose contact sheets. Complete heads, hands, feet and wheelchair retained. A0798 restores the round drum and camera clues in every direction. A0799/A0800 preserve empty-handed walking identities without work-only props. Component extraction checked after removing inherited source boundaries."
+}

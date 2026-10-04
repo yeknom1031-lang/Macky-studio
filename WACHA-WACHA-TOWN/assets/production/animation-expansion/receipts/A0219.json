@@ -1,0 +1,36 @@
+{
+  "id": "A0219",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "PROP ANATOMY LOCK: A handheld object visible in the LEFT reference must remain in the SAME ANATOMICAL HAND or both hands in all 12 poses, including all rear views. Never swap a kettle, briefcase, cane or basket between left and right hands from one frame to the next. Keep carried packages/baskets/books/pouches present even when turning; use partial occlusion, not disappearance. Do NOT import a work object appearing only in the RIGHT reference.\nUse case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 大きな鉄道駅. Stage locations: 駅前広場|改札|ホーム|車両整備場|駅ビル2階|荷物窓口|駅弁売店|連絡階段.\nRow 1: S09-C073, 連絡階段の利用客 3; action context: 階段を上る.\nRow 2: S09-C074, 連絡階段の利用客 4; action context: 階段を上る.\nRow 3: S09-C075, 連絡階段の利用客 5; action context: 階段を上る.\nRow 4: S09-C076, エレベーターの利用客 1; action context: エレベーターに乗降する.\nContinuity lock: use ONLY the carried items visible in the LEFT walking reference of each row, identically throughout ALL TWELVE poses. Do not introduce the work tools from the right reference. If the left pose has empty hands, ALL twelve poses have empty hands. No tool may appear or disappear between frames. Keep any animal companion from the left reference consistently. Exactly 48 total sprites: 4 rows, precisely 4 rear-walk poses + 4 ascending poses + 4 descending poses in each row. Do not add a fifth pose or a turn-transition pose to any group.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0219.png",
+  "startedAt": "2026-10-04T18:08:26.714721+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-5bca5ce9-4004-4837-9677-877691b7a54c.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0219.png",
+  "sha256": "fafb765e47f51970daa61adeb37168ac86536ac90488c65b2ed3175867ede574",
+  "finishedAt": "2026-10-04T18:09:49.134074+00:00",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:39:21.914490+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack再表示。2行の鞄は背面と上りで持つ手が反転/消失するため両clipを除外、下り4コマだけは一貫して保持され追加採用。その他3行は全動作採用維持。"
+  ],
+  "packReport": "review/A0219-pack.json",
+  "preview": "review/A0219-check.jpg",
+  "disabledClipsByRow": {
+    "2": [
+      "walkBack",
+      "stairUp"
+    ]
+  },
+  "clipFramesByRow": {}
+}

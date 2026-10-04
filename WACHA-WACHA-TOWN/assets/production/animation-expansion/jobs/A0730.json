@@ -1,0 +1,323 @@
+{
+  "id": "A0730",
+  "ordinal": 730,
+  "stage": "S04",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S04: お菓子の広場.\nRow 1: A clear candy-shaped glass wind bell with pink ribbon tail, suspended on fixed hook and swaying softly. top-center attachment remains absolutely fixed.\nRow 2: A brown and gold satin gift bow fixed at its center, two long ends flutter in a small breeze, no box. top-center attachment remains absolutely fixed.\nRow 3: A tiny decorative cupcake pinwheel on a short pastel stand, frosting-shaped vanes rotate steadily. bottom-center support remains absolutely fixed.\nRow 4: Two soft irregular curls of warm white bakery steam, no food or oven, rising and dissipating. bottom-center support remains absolutely fixed.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S04-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S04-ENV01",
+      "row": 0,
+      "name": "キャンディ風鈴",
+      "action": "A clear candy-shaped glass wind bell with pink ribbon tail, suspended on fixed hook and swaying softly",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1140.0,
+        "y": 90.0,
+        "width": 35.3374,
+        "height": 51.1304,
+        "depthY": 90.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1140,
+          90
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          30.0,
+          49.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 30.0,
+        "height": 49.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          163,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S04-ENV02",
+      "row": 1,
+      "name": "ショコラ屋のリボン",
+      "action": "A brown and gold satin gift bow fixed at its center, two long ends flutter in a small breeze, no box",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.161458
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1277.0,
+        "y": 395.0,
+        "width": 48.0,
+        "height": 46.1772,
+        "depthY": 395.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1277,
+          395
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          46.0,
+          38.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 46.0,
+        "height": 38.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          158
+        ]
+      }
+    },
+    {
+      "id": "S04-ENV03",
+      "row": 2,
+      "name": "ケーキ屋の回転飾り",
+      "action": "A tiny decorative cupcake pinwheel on a short pastel stand, frosting-shaped vanes rotate steadily",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 566.0,
+        "y": 470.0,
+        "width": 47.6391,
+        "height": 45.913,
+        "depthY": 470.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          566.0,
+          470.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          33.0,
+          44.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 33.0,
+        "height": 44.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          133,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S04-ENV04",
+      "row": 3,
+      "name": "焼き菓子の香り",
+      "action": "Two soft irregular curls of warm white bakery steam, no food or oven, rising and dissipating",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1233.0,
+        "y": 750.0,
+        "width": 82.2857,
+        "height": 48.0,
+        "depthY": 750.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1233,
+          750
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          45.0,
+          46.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 45.0,
+        "height": 46.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          105,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S04-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S04",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S04-background.png",
+        "sha256": "074df5f88178c75559246cbb7d4553322c065844a3ec51b27a2ff3c7031d7fd9",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S04-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0730.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "id": "A0724",
+  "ordinal": 724,
+  "stage": "S02",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S02: 花咲くガーデン.\nRow 1: A small green glass flower bell with a leaf-shaped paper tail, swaying gently on a fixed hanging loop. top-center attachment remains absolutely fixed.\nRow 2: A lavender satin bow with two loose ends tied to a fixed floral gazebo beam, ends flutter asynchronously. top-center attachment remains absolutely fixed.\nRow 3: A tiny butterfly-shaped garden spinner on a thin wooden stake, wings turn slowly around the hub. bottom-center support remains absolutely fixed.\nRow 4: A pair of very thin fragrant tea wisps, curling upwards and fading, no teapot or cup. bottom-center support remains absolutely fixed.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S02-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S02-ENV01",
+      "row": 0,
+      "name": "温室のガラス風鈴",
+      "action": "A small green glass flower bell with a leaf-shaped paper tail, swaying gently on a fixed hanging loop",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 177.0,
+        "y": 47.0,
+        "width": 32.8101,
+        "height": 54.2609,
+        "depthY": 47.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          177,
+          47
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          27.0,
+          52.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 27.0,
+        "height": 52.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          158,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S02-ENV02",
+      "row": 1,
+      "name": "ガゼボの花リボン",
+      "action": "A lavender satin bow with two loose ends tied to a fixed floral gazebo beam, ends flutter asynchronously",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 692.0,
+        "y": 44.0,
+        "width": 43.2527,
+        "height": 40.6957,
+        "depthY": 44.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          692,
+          44
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          41.0,
+          39.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 41.0,
+        "height": 39.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          182,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S02-ENV03",
+      "row": 2,
+      "name": "苗売り場の蝶形風車",
+      "action": "A tiny butterfly-shaped garden spinner on a thin wooden stake, wings turn slowly around the hub",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1367.0,
+        "y": 738.0,
+        "width": 58.368,
+        "height": 55.3043,
+        "depthY": 738.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1367.0,
+          738.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          38.0,
+          53.0
+        ],
+        "surface": "planter",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 38.0,
+        "height": 53.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          125,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S02-ENV04",
+      "row": 3,
+      "name": "庭カフェの湯気",
+      "action": "A pair of very thin fragrant tea wisps, curling upwards and fading, no teapot or cup",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1590.0,
+        "y": 553.0,
+        "width": 53.4261,
+        "height": 41.7391,
+        "depthY": 553.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1590,
+          553
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          32.0,
+          40.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 32.0,
+        "height": 40.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          115,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S02-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S02",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S02-background.png",
+        "sha256": "a78caf8200900115c8b9401740f0dc912e2b736fb44e033047498af7fa9381b8",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S02-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0724.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

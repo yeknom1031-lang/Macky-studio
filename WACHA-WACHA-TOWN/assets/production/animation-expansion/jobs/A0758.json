@@ -1,0 +1,363 @@
+{
+  "id": "A0758",
+  "ordinal": 758,
+  "stage": "S13",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S13: 森の動物園.\nRow 1: Three fine oval aqua ripple rings expanding and disappearing, no bird or opaque pool. animation remains centered at the same point.\nRow 2: Fine translucent water mist and a few glinting droplets, no rocks or waterfall body. animation remains centered at the same point.\nRow 3: A thin low fan of clear water droplets with an intermittent sprinkling cycle, no sprinkler head, no ground. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 4: A few light white foam arcs and bubbles rolling gently, no shore or opaque water. animation remains centered at the same point.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S13-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S13-ENV05",
+      "row": 0,
+      "name": "水鳥池のさざ波",
+      "action": "Three fine oval aqua ripple rings expanding and disappearing, no bird or opaque pool",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.734375
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1228.5,
+        "y": 771.273,
+        "width": 115.8261,
+        "height": 93.0,
+        "depthY": 771.273,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          819.0,
+          514.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          74.0,
+          31.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "1a19902e7bbb49a013f619126a9b8d52754b342a651e7b1a7916507f7bbc6ac4"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 111.0,
+        "height": 46.5,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          96
+        ]
+      }
+    },
+    {
+      "id": "S13-ENV06",
+      "row": 1,
+      "name": "岩場の小さな霧",
+      "action": "Fine translucent water mist and a few glinting droplets, no rocks or waterfall body",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1324.5,
+        "y": 631.724,
+        "width": 104.581,
+        "height": 76.6957,
+        "depthY": 631.724,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          883.0,
+          421.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          65.0,
+          49.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "1a19902e7bbb49a013f619126a9b8d52754b342a651e7b1a7916507f7bbc6ac4"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 97.5,
+        "height": 73.5,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          179,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S13-ENV07",
+      "row": 2,
+      "name": "飼育園の散水",
+      "action": "A thin low fan of clear water droplets with an intermittent sprinkling cycle, no sprinkler head, no ground",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 376.5,
+        "y": 616.7182,
+        "width": 93.4957,
+        "height": 74.1517,
+        "depthY": 616.7182,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          251,
+          411
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          64.0,
+          40.0
+        ],
+        "surface": "planter",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "1a19902e7bbb49a013f619126a9b8d52754b342a651e7b1a7916507f7bbc6ac4"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 89.6,
+        "height": 56.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          145
+        ]
+      }
+    },
+    {
+      "id": "S13-ENV08",
+      "row": 3,
+      "name": "南の川の泡",
+      "action": "A few light white foam arcs and bubbles rolling gently, no shore or opaque water",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.625
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 2209.5,
+        "y": 1212.429,
+        "width": 103.3043,
+        "height": 73.0435,
+        "depthY": 1212.429,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1473.0,
+          808.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          66.0,
+          35.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "1a19902e7bbb49a013f619126a9b8d52754b342a651e7b1a7916507f7bbc6ac4"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 99.0,
+        "height": 52.5,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          138
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S13-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S13",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      2508,
+      1412
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S13-background.png",
+        "sha256": "f54434d3f0516eccd864fa35af94a4c01fa96423ad95b838db1466c075a96c7c",
+        "worldBounds": [
+          0,
+          0,
+          2508,
+          1412
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S13-detail-0.png",
+        "sha256": "97e32371c441968abc47730bd78ef86557bf0ffe77b075bea3a403f8898d79b7",
+        "worldBounds": [
+          0,
+          0,
+          1379.4,
+          776.6
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S13-detail-1.png",
+        "sha256": "8df288a2ef57a1dfef02489c3884baa0d3027ba1013fbb2e3570a31240a41d96",
+        "worldBounds": [
+          1128.6000000000001,
+          0,
+          1379.4,
+          776.6
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S13-detail-2.png",
+        "sha256": "82968e632534ede16431a45d6d3d47fa4d6e8a6dbe0e7fb31df6bdc88785b4fb",
+        "worldBounds": [
+          0,
+          635.4,
+          1379.4,
+          776.6
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S13-detail-3.png",
+        "sha256": "c5a184311cbf6c81c87addd4e9065bd00dbf7199ba2748e28b1476011b8dccf3",
+        "worldBounds": [
+          1128.6000000000001,
+          635.4,
+          1379.4,
+          776.6
+        ]
+      }
+    ],
+    "referenceSHA256": "1a19902e7bbb49a013f619126a9b8d52754b342a651e7b1a7916507f7bbc6ac4"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S13-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0758.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

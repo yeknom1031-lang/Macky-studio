@@ -1,0 +1,17 @@
+{
+  "id": "A0795",
+  "ordinal": 795,
+  "stage": "S06",
+  "kind": "baseRepair",
+  "characters": [
+    "S06-C099"
+  ],
+  "rows": 1,
+  "cols": 8,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0795.png",
+  "transparent": true,
+  "status": "planned",
+  "purpose": "Restore missing S06-C099 full-body photographer; original S06-C100 wheelchair source was split into two runtime rows.",
+  "prompt": "Use case: stylized-concept. Production sprite sheet for Wacha Wacha Town. Use the attached two winter photographers ONLY as a painting-style, scale and winter costume-material reference. Create ONE NEW DISTINCT photographer, not either reference person: a tall slender elderly woman with warm deep-brown skin, silver hair in two long thin braids, small round copper-rimmed glasses, a plum knitted beanie with a cream pompom, forest-green fitted winter parka with cream fleece collar, mustard wool scarf, deep-purple trousers and lace-up brown winter boots. A small tan cross-body camera pouch stays on her hip. She holds the same compact black-and-silver rectangular camera in ALL eight poses. Gentle overhead three-quarter view facing right, crisp hand-painted storybook chibi style, attractive and readable at miniature game size. Create exactly ONE horizontal row of EIGHT separate full-body sprites, very wide landscape canvas. Columns 1-4: coherent walk cycle with alternating left foot, passing, right foot, passing, holding camera safely at chest height. Columns 5-8: photography work cycle; lift camera to eye, focus, press shutter, lower camera to chest. SAME distinct person, scale, glasses, face, two silver braids, beanie, camera and clothing in all eight frames. Keep head and feet at a fixed scale and planted-foot baseline. Transparent alpha background. No floor, no desk, no scenery, no text, no grid lines, no underfoot shadows. Keep generous transparent gutters around every full head, braids, hands, camera and both shoes. Exactly eight complete sprites, never crop any body part. The design must remain clearly distinct from the gray-bearded blue-parka man and slim green-beanie man in the reference and from a bald wheelchair camera user.",
+  "extraction": "components"
+}

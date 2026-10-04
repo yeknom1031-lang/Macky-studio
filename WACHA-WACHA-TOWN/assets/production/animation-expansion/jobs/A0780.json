@@ -1,0 +1,363 @@
+{
+  "id": "A0780",
+  "ordinal": 780,
+  "stage": "S20",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S20: 海洋研究都市.\nRow 1: Two small loose white seabird feathers tumbling in a gentle eddy, no bird. animation remains centered at the same point.\nRow 2: Three short green sea-grass tips with fixed base, sway together slowly as under water, no seabed or pot. animation remains centered at the same point.\nRow 3: A tiny white and aqua three-cup anemometer on a short stable stand, cups rotate smoothly. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 4: Five very faint blue-green luminous motes drifting slowly on transparent space, subtle glow without strobe or animal bodies. animation remains centered at the same point.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S20-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S20-ENV09",
+      "row": 0,
+      "name": "海風の白い羽",
+      "action": "Two small loose white seabird feathers tumbling in a gentle eddy, no bird",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.557292
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 2282.067,
+        "y": 186.701,
+        "width": 102.8682,
+        "height": 125.2355,
+        "depthY": 186.701,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1088.0,
+          89.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          47.0,
+          51.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "3d79def7079eddefa8b9c07ec6fda522ee8ecb0f7d03ef862c7944a255e310b9"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 98.582,
+        "height": 106.972,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          164
+        ]
+      }
+    },
+    {
+      "id": "S20-ENV10",
+      "row": 1,
+      "name": "海藻の細い葉先",
+      "action": "Three short green sea-grass tips with fixed base, sway together slowly as under water, no seabed or pot",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1275.273,
+        "y": 1873.307,
+        "width": 87.3369,
+        "height": 96.3016,
+        "depthY": 1873.307,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          608.0,
+          893.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          36.0,
+          44.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "3d79def7079eddefa8b9c07ec6fda522ee8ecb0f7d03ef862c7944a255e310b9"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 75.51,
+        "height": 92.289,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          166,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S20-ENV11",
+      "row": 2,
+      "name": "環境観測の回転模型",
+      "action": "A tiny white and aqua three-cup anemometer on a short stable stand, cups rotate smoothly",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 2806.4391,
+        "y": 281.1007,
+        "width": 51.1304,
+        "height": 77.4776,
+        "depthY": 281.1007,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1338,
+          134
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          35.0,
+          49.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "3d79def7079eddefa8b9c07ec6fda522ee8ecb0f7d03ef862c7944a255e310b9"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 49.0,
+        "height": 68.6,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          170
+        ]
+      }
+    },
+    {
+      "id": "S20-ENV12",
+      "row": 3,
+      "name": "夜光プランクトンの粒",
+      "action": "Five very faint blue-green luminous motes drifting slowly on transparent space, subtle glow without strobe or animal bodies",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1636.0411,
+        "y": 526.5409,
+        "width": 119.9105,
+        "height": 91.9242,
+        "depthY": 526.5409,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          780,
+          251
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          53.0,
+          42.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "3d79def7079eddefa8b9c07ec6fda522ee8ecb0f7d03ef862c7944a255e310b9"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 111.167,
+        "height": 88.094,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          178,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S20-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S20",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      3507,
+      1974
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S20-background.png",
+        "sha256": "27ab24cbf05188d19ccf8437d9a1c9e8c0e5b8be4aa8fd7cac49354c57ce87da",
+        "worldBounds": [
+          0,
+          0,
+          3507,
+          1974
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S20-detail-0.png",
+        "sha256": "c402bd86c224f1ecd86525f573c5f9cecfcfdcf4b37db4e56689f48ecdf5700c",
+        "worldBounds": [
+          0,
+          0,
+          1928.8500000000001,
+          1085.7
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S20-detail-1.png",
+        "sha256": "31a886a87926dac12d27163c702d285dda3a6f9819d1d074253577a6a50fd2d3",
+        "worldBounds": [
+          1578.15,
+          0,
+          1928.8500000000001,
+          1085.7
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S20-detail-2.png",
+        "sha256": "a0920b3894e209b37d9cce1fdac40e88c8079be87a4b5fd55326b856717ca035",
+        "worldBounds": [
+          0,
+          888.3000000000001,
+          1928.8500000000001,
+          1085.7
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S20-detail-3.png",
+        "sha256": "e4ba5e412ff67a5efa3aec07763ebf44477f1c46cb4ce3a67d52cb1ce11d9372",
+        "worldBounds": [
+          1578.15,
+          888.3000000000001,
+          1928.8500000000001,
+          1085.7
+        ]
+      }
+    ],
+    "referenceSHA256": "3d79def7079eddefa8b9c07ec6fda522ee8ecb0f7d03ef862c7944a255e310b9"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S20-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0780.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

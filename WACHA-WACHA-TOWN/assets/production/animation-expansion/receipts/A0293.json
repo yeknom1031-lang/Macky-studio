@@ -1,0 +1,16 @@
+{
+  "id": "A0293",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: stylized-concept. Create ONE new clearly DISTINCT person for Wacha Wacha Town, using the attached two people ONLY as storybook style references. A tall slim young adult lighting technician, copper-red hair in a high short ponytail with side-swept fringe, small oval thin brass spectacles, light freckles and narrow face, fitted dark navy utility waistcoat over pale sage rolled-sleeve shirt, ochre long trousers, brown leather tool belt and brown lace-up boots. No moustache, no hat, no beard, no plump body. EXACTLY ONE horizontal row of EIGHT full body isolated animation sprites on very wide TRANSPARENT canvas: first4 walk naturally with EMPTY hands and alternating steps/arms; last4 inspect/tilt/wipe/check a round portable black spotlight with yellow warm lens. Same face/glasses/pony tail/clothes/body/color EVERY frame. Fixed character scale and foot baseline, gentle overhead three-quarter facing right, hand-painted storybook chibi. Eight clearly separate cells, generous empty gutters, full head/boots/arms. No floor, text, labels, shadows, grid or scenery.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0293.png",
+  "startedAt": "2026-10-04T18:51:42.233646+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-5c3f6c5d-879b-4f40-a178-64e3e0bb2cc1.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0293.png",
+  "sha256": "63f4e2c00829a13846e5feef0e4bf4b0096e20d1fa445c040d740cfd35c1ed4d",
+  "finishedAt": "2026-10-04T18:52:37.990679+00:00",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T18:59:15.321533+00:00",
+  "reviewer": "root",
+  "reviewNotes": "Compared complete reference identities, raw sheet and every normalized pose. Complete heads, hands, feet and stable outfit/props; column count corrected before packing where needed. Also verified repaired original eight-pose base atlas and restored original full last-row person; technical crops do not count as additional calls."
+}

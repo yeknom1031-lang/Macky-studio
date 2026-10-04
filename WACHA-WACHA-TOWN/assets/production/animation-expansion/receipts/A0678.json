@@ -1,0 +1,29 @@
+{
+  "id": "A0678",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "FIXED FURNITURE BAN: Ignore fixed furniture visible in the reference action pose. Draw ONLY the person, clothing and small handheld tools. DO NOT draw any window frame, chair, full counter/table, steering-wheel pedestal, telescope tripod, boat, vehicle, ground platform, background or floor. Gesture toward the invisible station where relevant; preserve identity and handheld tool. CRITICAL: Produce ONE SHORT CYCLIC WORK MOTION, not a story of preparing, finishing, picking up, putting down or handing over. All 8 poses remain in the SAME working state holding the same single reference tool throughout. Do not add extra equipment such as scales, buckets, extra hammers, bowls or duplicate binoculars. For long rods/nets/paddles keep them compact within each sprite cell, never crossing a gutter or extending beyond the cell. Frame 8 matches frame 1 with the tool still held. Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 separate sprites. Each row is one expressive, coherent EIGHT-FRAME seamless loop of the stated role action, with clear anticipation, contact/effort, follow-through and recovery. Hands interact convincingly at waist/chest height with portable tools or an unseen counter in front-right. Keep the original portable tools; do not attach a large counter, building, chair or floor to the sprite. Facing front-right three-quarter. Make genuinely different body poses, not identical copies. Landscape canvas, ideally 1536 by 1024. Stage: 大きな博物館. Stage locations: 恐竜ホール|古代展示室|科学体験室|修復工房|2階回廊|ミュージアムショップ|中庭|搬入口.\nRow 1: S16-C041, 入館券の係 1; action context: 券を切って渡す.\nRow 2: S16-C046, 博物館土産の店員 1; action context: お土産を選ぶ.\nRow 3: S16-C051, 展示図録を読む客 1; action context: 本を読む.\nRow 4: S16-C056, 展示記録の研究者 1; action context: 手帳に書く.\nLOOP CONTINUITY LOCK: Treat the LEFT reference pose as the authority for the face, body and clothing; the RIGHT pose supplies the role tool. Hold the SAME tools and SAME colors/count of all portable props in ALL EIGHT frames, including frame 8. Never finish by switching to the empty-handed walking reference. Use small continuous hand, wrist, elbow, knee, hip and head movements around the fixed tool; pose 8 must naturally return to pose 1. Do not make props disappear/reappear or randomly recolor. Do not change a finished product into raw material within this short loop. For juggling or balloon work, every frame has exactly the same balls/balloons in the same colors, only positions change. A camera, paddle, net, watering can or steering wheel stays visible through the complete cycle.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0678.png",
+  "startedAt": "2026-10-04T17:15:52.206472+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-7631cfe6-2ef6-450b-bb21-90c004ee83d4.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0678.png",
+  "sha256": "0b4833cb11a365f71a1311470da53c790acc566cf2b87cb6f518b734fde9b362",
+  "finishedAt": "2026-10-04T17:19:45.370375+00:00",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T17:21:29.269183+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "切符確認、猫の置物、図鑑、メモの4列を採用。手に持つ素材と服装が連続し切り出し良好。"
+  ],
+  "packReport": "review/A0678-pack.json",
+  "preview": "review/A0678-check.jpg"
+}

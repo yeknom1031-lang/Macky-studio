@@ -1,0 +1,363 @@
+{
+  "id": "A0760",
+  "ordinal": 760,
+  "stage": "S14",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S14: 映画撮影スタジオ.\nRow 1: A small short loop of cream film leader with dark square perforations but no text, hangs from fixed top and flutters softly. top-center attachment remains absolutely fixed.\nRow 2: A rose-red satin bow and two long tails pinned at the center, tails gently ripple, no costume. top-center attachment remains absolutely fixed.\nRow 3: A tiny silver and turquoise paper pinwheel on a short stable black stand, turning smoothly. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 4: Two thin pale coffee steam curls rising from unseen cup, no cup or tabletop. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S14-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S14-ENV01",
+      "row": 0,
+      "name": "映画館のフィルム飾り",
+      "action": "A small short loop of cream film leader with dark square perforations but no text, hangs from fixed top and flutters softly",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1543.3877,
+        "y": 354.2106,
+        "width": 79.0943,
+        "height": 84.1544,
+        "depthY": 354.2106,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          976,
+          224
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          31.0,
+          51.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "3535734dae0b7fd2c1cac874e151a05c20b4779b4d3aa90233511ceef51ea480"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 49.022,
+        "height": 80.648,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          119,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S14-ENV02",
+      "row": 1,
+      "name": "衣装室のリボン",
+      "action": "A rose-red satin bow and two long tails pinned at the center, tails gently ripple, no costume",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 2063.648,
+        "y": 192.918,
+        "width": 68.2691,
+        "height": 84.1544,
+        "depthY": 192.918,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1305.0,
+          122.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          38.0,
+          51.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "3535734dae0b7fd2c1cac874e151a05c20b4779b4d3aa90233511ceef51ea480"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 60.091,
+        "height": 80.648,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          169,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S14-ENV03",
+      "row": 2,
+      "name": "小道具室の紙風車",
+      "action": "A tiny silver and turquoise paper pinwheel on a short stable black stand, turning smoothly",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 507.6098,
+        "y": 977.2415,
+        "width": 48.0545,
+        "height": 41.2512,
+        "depthY": 977.2415,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          321,
+          618
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          36.0,
+          44.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "3535734dae0b7fd2c1cac874e151a05c20b4779b4d3aa90233511ceef51ea480"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 34.78945669781932,
+        "height": 39.532423139158574,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          139,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S14-ENV04",
+      "row": 3,
+      "name": "カフェのコーヒー蒸気",
+      "action": "Two thin pale coffee steam curls rising from unseen cup, no cup or tabletop",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 2017.7895,
+        "y": 970.9165,
+        "width": 77.4534,
+        "height": 49.5015,
+        "depthY": 970.9165,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1276,
+          614
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          34.0,
+          44.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "3535734dae0b7fd2c1cac874e151a05c20b4779b4d3aa90233511ceef51ea480"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 39.533493338557996,
+        "height": 47.43891693811075,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          98,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S14-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S14",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      2644,
+      1488
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S14-background.png",
+        "sha256": "b07abdb1e7054a8c25818723dcbf3dd87e7feb2c6ea090a001cddd4c0be0916d",
+        "worldBounds": [
+          0,
+          0,
+          2644,
+          1488
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S14-detail-0.png",
+        "sha256": "a1009b364faf6b0a1c5b547803b5fdaa480baf369c30e70a2d94e5f7408bc945",
+        "worldBounds": [
+          0,
+          0,
+          1454.2,
+          818.4000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S14-detail-1.png",
+        "sha256": "9a22c0b546ba9aa16f5b86a7b1c631077e45ee910b3ce24a7157f3651b91fc23",
+        "worldBounds": [
+          1189.8,
+          0,
+          1454.2,
+          818.4000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S14-detail-2.png",
+        "sha256": "f962c8434a976f0dca02d5b52e2dca45b86946df773834d2f905b8ebeb78c01c",
+        "worldBounds": [
+          0,
+          669.6,
+          1454.2,
+          818.4000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S14-detail-3.png",
+        "sha256": "1c3915da071486c07d7fe35786e1ca7f9e64b4e98d374c31f02f84f5718b773e",
+        "worldBounds": [
+          1189.8,
+          669.6,
+          1454.2,
+          818.4000000000001
+        ]
+      }
+    ],
+    "referenceSHA256": "3535734dae0b7fd2c1cac874e151a05c20b4779b4d3aa90233511ceef51ea480"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S14-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0760.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

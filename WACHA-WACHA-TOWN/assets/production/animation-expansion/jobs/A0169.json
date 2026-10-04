@@ -1,0 +1,27 @@
+{
+  "id": "A0169",
+  "ordinal": 169,
+  "stage": "S07",
+  "kind": "directional",
+  "characters": [
+    "S07-C073",
+    "S07-C074",
+    "S07-C075",
+    "S07-C076"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0169.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 星灯りのお祭り. Stage locations: 提灯通り|灯籠の水路|展望やぐら|夜店の2階|音楽舞台|屋台横丁|小橋|星見広場.\nRow 1: S07-C073, 花鉢に水をやる住人 3; action context: 窓辺で水をやる.\nRow 2: S07-C074, 花鉢に水をやる住人 4; action context: 窓辺で水をやる.\nRow 3: S07-C075, 花鉢に水をやる住人 5; action context: 窓辺で水をやる.\nRow 4: S07-C076, 灯籠舟の漕ぎ手 1; action context: 小舟を漕ぐ.\nContinuity lock: use ONLY the carried items visible in the LEFT walking reference of each row, identically throughout ALL TWELVE poses. Do not introduce the work tools from the right reference. If the left pose has empty hands, ALL twelve poses have empty hands. No tool may appear or disappear between frames. Keep any animal companion from the left reference consistently. Exactly 48 total sprites: 4 rows, precisely 4 rear-walk poses + 4 ascending poses + 4 descending poses in each row. Do not add a fifth pose or a turn-transition pose to any group.",
+  "clipFramesByRow": {
+    "1": {
+      "walkBack": [
+        2,
+        3
+      ]
+    }
+  },
+  "extraction": "components"
+}

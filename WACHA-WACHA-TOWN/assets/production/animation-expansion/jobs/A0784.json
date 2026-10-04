@@ -1,0 +1,363 @@
+{
+  "id": "A0784",
+  "ordinal": 784,
+  "stage": "S22",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S22: 魔法学校.\nRow 1: Five tiny pastel green seed motes drifting in a gentle local spiral, restrained soft glow without flashing, no plants. animation remains centered at the same point.\nRow 2: Three cream and purple bookmarks with abstract gold decorations but no letters, hanging from fixed bar and fluttering. top-center attachment remains absolutely fixed.\nRow 3: A small translucent lavender potion vapor curl splitting into two and fading, no flask or counter. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 4: Two thin warm steam wisps from an unseen tea cup, no table or cup. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S22-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S22-ENV01",
+      "row": 0,
+      "name": "温室の光る種",
+      "action": "Five tiny pastel green seed motes drifting in a gentle local spiral, restrained soft glow without flashing, no plants",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 882.554,
+        "y": 392.255,
+        "width": 122.026,
+        "height": 116.6035,
+        "depthY": 392.255,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          387.0,
+          172.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          51.0,
+          49.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 116.306,
+        "height": 111.745,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          183,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S22-ENV02",
+      "row": 1,
+      "name": "魔法図書館のしおり",
+      "action": "Three cream and purple bookmarks with abstract gold decorations but no letters, hanging from fixed bar and fluttering",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.067708
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1582.669,
+        "y": 225.775,
+        "width": 76.1489,
+        "height": 121.9036,
+        "depthY": 225.775,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          694.0,
+          99.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          32.0,
+          49.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 72.976,
+        "height": 111.745,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          176
+        ]
+      }
+    },
+    {
+      "id": "S22-ENV03",
+      "row": 2,
+      "name": "錬金室の薄煙",
+      "action": "A small translucent lavender potion vapor curl splitting into two and fading, no flask or counter",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 3174.459,
+        "y": 1053.615,
+        "width": 80.8421,
+        "height": 77.4261,
+        "depthY": 1053.615,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1392.0,
+          462.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          40.0,
+          53.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 56.0,
+        "height": 74.2,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          133,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S22-ENV04",
+      "row": 3,
+      "name": "食堂のお茶の湯気",
+      "action": "Two thin warm steam wisps from an unseen tea cup, no table or cup",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 659.065,
+        "y": 1566.74,
+        "width": 81.8087,
+        "height": 61.3565,
+        "depthY": 1566.74,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          289.0,
+          687.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          35.0,
+          42.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 49.0,
+        "height": 58.8,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          115,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S22-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S22",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      3813,
+      2146
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-background.png",
+        "sha256": "b71cb43a8fc37399a7f1acf22d905d96296d731e983262a03b0a892d63032698",
+        "worldBounds": [
+          0,
+          0,
+          3813,
+          2146
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-detail-0.png",
+        "sha256": "27ca8c10a84d3aa545e9ede9b29fa16be18c8f507d1ba1fcc4031362ccc8d7ec",
+        "worldBounds": [
+          0,
+          0,
+          2097.15,
+          1180.3000000000002
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-detail-1.png",
+        "sha256": "9bbf49a21337744e325cd3a127d8547b3b670c0b0083b03621b3c9c6c3657d47",
+        "worldBounds": [
+          1715.8500000000001,
+          0,
+          2097.15,
+          1180.3000000000002
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-detail-2.png",
+        "sha256": "05f51cb7010d654288f4973745cf0a19f7fc57aeb9a4c75161bdf485051d137b",
+        "worldBounds": [
+          0,
+          965.7,
+          2097.15,
+          1180.3000000000002
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-detail-3.png",
+        "sha256": "5308d39eebc320bde73755c70f43d628edc858ab71faef78b8be2aa60f91e231",
+        "worldBounds": [
+          1715.8500000000001,
+          965.7,
+          2097.15,
+          1180.3000000000002
+        ]
+      }
+    ],
+    "referenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S22-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0784.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

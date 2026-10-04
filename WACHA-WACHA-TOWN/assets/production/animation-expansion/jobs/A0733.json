@@ -1,0 +1,323 @@
+{
+  "id": "A0733",
+  "ordinal": 733,
+  "stage": "S05",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S05: 秋色の古本市.\nRow 1: Three little paper bookmarks with simple gold leaf patterns, no lettering, hanging from one fixed twig and fluttering. top-center attachment remains absolutely fixed.\nRow 2: A burgundy and gold silk bookmark tassel hanging from a fixed top loop, fine threads gently sway. top-center attachment remains absolutely fixed.\nRow 3: A gentle loop of two warm tea wisps, no cup or table, rise and fade. bottom-center support remains absolutely fixed.\nRow 4: A tiny folded-paper pinwheel made of cream paper with abstract sepia marks but no readable text, turns on a wooden stand. bottom-center support remains absolutely fixed.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S05-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S05-ENV01",
+      "row": 0,
+      "name": "本屋のしおりモビール",
+      "action": "Three little paper bookmarks with simple gold leaf patterns, no lettering, hanging from one fixed twig and fluttering",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 122.0,
+        "y": 100.0,
+        "width": 37.0909,
+        "height": 51.1304,
+        "depthY": 100.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          122,
+          100
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          34.0,
+          49.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "5a8f59044a2f481a191df9b6a28bc31114772f967982f5da3f77abe55a58bca3"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 34.0,
+        "height": 49.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          176,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S05-ENV02",
+      "row": 1,
+      "name": "図書館の房飾り",
+      "action": "A burgundy and gold silk bookmark tassel hanging from a fixed top loop, fine threads gently sway",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 892.0,
+        "y": 84.0,
+        "width": 32.7111,
+        "height": 51.1304,
+        "depthY": 84.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          892,
+          84
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          23.0,
+          49.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "5a8f59044a2f481a191df9b6a28bc31114772f967982f5da3f77abe55a58bca3"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 23.0,
+        "height": 49.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          135,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S05-ENV03",
+      "row": 2,
+      "name": "読書カフェの湯気",
+      "action": "A gentle loop of two warm tea wisps, no cup or table, rise and fade",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1466.0,
+        "y": 159.0,
+        "width": 74.6667,
+        "height": 43.8261,
+        "depthY": 159.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1466,
+          159
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          35.0,
+          42.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "5a8f59044a2f481a191df9b6a28bc31114772f967982f5da3f77abe55a58bca3"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 35.0,
+        "height": 42.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          90,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S05-ENV04",
+      "row": 3,
+      "name": "古書店の小風車",
+      "action": "A tiny folded-paper pinwheel made of cream paper with abstract sepia marks but no readable text, turns on a wooden stand",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 709.0,
+        "y": 780.0,
+        "width": 42.9474,
+        "height": 44.8696,
+        "depthY": 780.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          709.0,
+          780.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          34.0,
+          43.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "5a8f59044a2f481a191df9b6a28bc31114772f967982f5da3f77abe55a58bca3"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 34.0,
+        "height": 43.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          152,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S05-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S05",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S05-background.png",
+        "sha256": "2622f702646a82199f977b1b56b76fa402180eb4ed4cf0a00b7d9b5ff86a586b",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "5a8f59044a2f481a191df9b6a28bc31114772f967982f5da3f77abe55a58bca3"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S05-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0733.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

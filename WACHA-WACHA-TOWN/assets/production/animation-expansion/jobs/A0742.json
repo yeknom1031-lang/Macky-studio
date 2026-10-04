@@ -1,0 +1,323 @@
+{
+  "id": "A0742",
+  "ordinal": 742,
+  "stage": "S08",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S08: 坂道の温泉街.\nRow 1: A small smoky green glass wind bell and linen paper tail, gentle uneven swaying on fixed top hook. top-center attachment remains absolutely fixed.\nRow 2: Three narrow indigo cloth ribbons with simple wave symbols without words on a fixed cord, lower ends ripple. top-center attachment remains absolutely fixed.\nRow 3: A single small white cotton towel clipped along its top edge to a short cord, cloth billows gently, no existing laundry duplicated. top-center attachment remains absolutely fixed.\nRow 4: Three warm translucent white curls rising from an unseen steaming basket, no basket or food. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S08-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S08-ENV01",
+      "row": 0,
+      "name": "温泉宿の風鈴",
+      "action": "A small smoky green glass wind bell and linen paper tail, gentle uneven swaying on fixed top hook",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 521.55,
+        "y": 233.3721,
+        "width": 43.3115,
+        "height": 57.167,
+        "depthY": 233.3721,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          476,
+          213
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          28.0,
+          50.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4b19c13c89ee0f982026d61e2ab2fc76442c1f6c50f649b386ff4b6cbc4ddf82"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 30.679,
+        "height": 54.785,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          136,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S08-ENV02",
+      "row": 1,
+      "name": "湯の町の暖簾飾り",
+      "action": "Three narrow indigo cloth ribbons with simple wave symbols without words on a fixed cord, lower ends ripple",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.208333
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1112.1296,
+        "y": 241.0412,
+        "width": 58.3096,
+        "height": 57.8874,
+        "depthY": 241.0412,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1015,
+          220
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          51.0,
+          41.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4b19c13c89ee0f982026d61e2ab2fc76442c1f6c50f649b386ff4b6cbc4ddf82"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 55.88,
+        "height": 44.923,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          149
+        ]
+      }
+    },
+    {
+      "id": "S08-ENV03",
+      "row": 2,
+      "name": "洗濯庭のタオル",
+      "action": "A single small white cotton towel clipped along its top edge to a short cord, cloth billows gently, no existing laundry duplicated",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.1875
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 826.1532,
+        "y": 566.4472,
+        "width": 57.167,
+        "height": 67.3744,
+        "depthY": 566.4472,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          754,
+          517
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          50.0,
+          49.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4b19c13c89ee0f982026d61e2ab2fc76442c1f6c50f649b386ff4b6cbc4ddf82"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 54.785,
+        "height": 53.689,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          153
+        ]
+      }
+    },
+    {
+      "id": "S08-ENV04",
+      "row": 3,
+      "name": "蒸し饅頭の湯気",
+      "action": "Three warm translucent white curls rising from an unseen steaming basket, no basket or food",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 174.2152,
+        "y": 559.8735,
+        "width": 37.6788,
+        "height": 35.4417,
+        "depthY": 559.8735,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          159,
+          511
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          51.0,
+          59.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4b19c13c89ee0f982026d61e2ab2fc76442c1f6c50f649b386ff4b6cbc4ddf82"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 26.296633962264153,
+        "height": 33.96492857142857,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          134,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S08-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S08",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1832,
+      1031
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S08-background.png",
+        "sha256": "4896189083daeb799fe2788e9f20caea0f119238be1620e242a77a7d232f5fa4",
+        "worldBounds": [
+          0,
+          0,
+          1832,
+          1031
+        ]
+      }
+    ],
+    "referenceSHA256": "4b19c13c89ee0f982026d61e2ab2fc76442c1f6c50f649b386ff4b6cbc4ddf82"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S08-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0742.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

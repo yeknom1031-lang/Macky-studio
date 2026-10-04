@@ -1,0 +1,12 @@
+{
+  "id": "A0601",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 separate sprites. Each row is one expressive, coherent EIGHT-FRAME seamless loop of the stated role action, with clear anticipation, contact/effort, follow-through and recovery. Hands interact convincingly at waist/chest height with portable tools or an unseen counter in front-right. Keep the original portable tools; do not attach a large counter, building, chair or floor to the sprite. Facing front-right three-quarter. Make genuinely different body poses, not identical copies. Landscape canvas, ideally 1536 by 1024. Stage: はじまりのお祭り. Stage locations: 屋台通り|太鼓やぐら|水路の橋|玩具店の2階|休憩縁台|船着き場|射的小屋|路地の玄関.\nRow 1: S01-C001, 鉄板屋台の料理人 1; action context: 鉄板で焼く.\nRow 2: S01-C006, 団子屋の職人 1; action context: 団子を串に刺す.\nRow 3: S01-C011, 綿菓子の職人 1; action context: 綿菓子を巻く.\nRow 4: S01-C016, 風船売り 1; action context: 風船を結んで渡す.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0601.png",
+  "startedAt": "2026-10-04T16:16:14.837264+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-83f42dac-8572-481e-bf36-1003f3f2f578.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0601.png",
+  "sha256": "6951c06236be8aa827eb4fef1147bd77995a5574bde3dbcdb596368416d6a1f0",
+  "finishedAt": "2026-10-04T16:16:54.347120+00:00"
+}

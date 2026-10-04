@@ -1,0 +1,37 @@
+{
+  "id": "A0603",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 separate sprites. Each row is one expressive, coherent EIGHT-FRAME seamless loop of the stated role action, with clear anticipation, contact/effort, follow-through and recovery. Hands interact convincingly at waist/chest height with portable tools or an unseen counter in front-right. Keep the original portable tools; do not attach a large counter, building, chair or floor to the sprite. Facing front-right three-quarter. Make genuinely different body poses, not identical copies. Landscape canvas, ideally 1536 by 1024. Stage: はじまりのお祭り. Stage locations: 屋台通り|太鼓やぐら|水路の橋|玩具店の2階|休憩縁台|船着き場|射的小屋|路地の玄関.\nRow 1: S01-C041, 盆踊りの踊り手 1; action context: 踊る.\nRow 2: S01-C046, お手玉芸人 1; action context: ジャグリングをする.\nRow 3: S01-C051, 玉乗りピエロ 1; action context: 玉乗りをする.\nRow 4: S01-C056, 手品師 1; action context: 手品をする.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0603.png",
+  "startedAt": "2026-10-04T16:16:14.986163+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-eafc4841-18cb-4cde-951f-a4e8f4cc7c37.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0603.png",
+  "sha256": "b991a3fe2b1feaa9d8dd119114f88e4646e6ac224c419aa05aa2503d0b55ee46",
+  "finishedAt": "2026-10-04T16:18:14.342001+00:00",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T16:21:07.600426+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "notes": [
+    "4×8コマと4人の服装/表情の同一性を確認。鳴子踊り、玉乗り、帽子から鳥を出す演技は明瞭。",
+    "row2ジャグリングは赤/青の玉の色と数が2→3→2と変わり連続運動にならない。"
+  ],
+  "usableRows": [
+    1,
+    3,
+    4
+  ],
+  "rejectedRows": [
+    2
+  ],
+  "packReport": "review/A0603-pack.json",
+  "preview": "review/A0603-check.jpg",
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "A0268",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: stylized-concept. Production sprite sheet for Wacha Wacha Town. The attached people are ONLY a style and costume-material reference for a harvest festival farm. Create ONE clearly NEW DISTINCT corn-roasting attendant: a tall slender young adult with a narrow angular friendly face, short straight black chin-length hair with a side part and ears visible, small ROUND brass spectacles, high-collared fitted olive work jacket with narrow rolled sleeves over cream shirt, long deep rust apron, charcoal fitted trousers and sturdy brown ankle boots. Distinct from both elderly curly-haired reference people, no curly hair or plump body. Gentle overhead three-quarter right-facing view, hand-painted storybook chibi rendering, clear miniature silhouette. Exactly ONE horizontal row of EIGHT full-body sprites, very wide landscape canvas. First FOUR columns coherent walking cycle with alternating left and right steps and EMPTY hands. Last FOUR columns coherent corn-roasting work loop holding the SAME golden corn cob on a wooden skewer: rotate to inspect, gently turn skewer, lift to check roasting, return. Same face, glasses, hair, clothes, age, body proportions and exact colors in all eight. Fixed body scale and planted-foot baseline. Transparent alpha background. No floor, fire, stall, scenery, text, labels, grid or underfoot shadows. Complete head, both hands and both boots with generous transparent gutters.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0268.png",
+  "startedAt": "2026-10-04T18:42:58.943323+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-87d886d8-8475-46b8-a17c-c5961521ed3d.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0268.png",
+  "sha256": "31077709f0911538263f79e02a305b782755ec809512fd2339a37dd8083e1f82",
+  "finishedAt": "2026-10-04T18:45:08.804366+00:00",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T18:59:15.314115+00:00",
+  "reviewer": "root",
+  "reviewNotes": "Compared complete reference identities, raw sheet and every normalized pose. Complete heads, hands, feet and stable outfit/props; column count corrected before packing where needed. Also verified repaired original eight-pose base atlas and restored original full last-row person; technical crops do not count as additional calls."
+}

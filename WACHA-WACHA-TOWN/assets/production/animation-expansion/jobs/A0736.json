@@ -1,0 +1,323 @@
+{
+  "id": "A0736",
+  "ordinal": 736,
+  "stage": "S06",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S06: 雪のマーケット.\nRow 1: Three carved wooden snowflake bells tied to a red ribbon, fixed upper loop, quiet irregular swaying. top-center attachment remains absolutely fixed.\nRow 2: A little pair of cream wool mittens on a red hanging cord, swaying softly, fixed top loop. top-center attachment remains absolutely fixed.\nRow 3: Two thick but translucent warm white steam curls, no mug or table, slow rise and dissolve. bottom-center support remains absolutely fixed.\nRow 4: A small ice-blue and white star paper pinwheel on a short wooden stem, smooth rotation around stable hub. bottom-center support remains absolutely fixed.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S06-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S06-ENV01",
+      "row": 0,
+      "name": "雪の木鈴",
+      "action": "Three carved wooden snowflake bells tied to a red ribbon, fixed upper loop, quiet irregular swaying",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.046875
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 222.0,
+        "y": 81.0,
+        "width": 33.3913,
+        "height": 57.6,
+        "depthY": 81.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          222,
+          81
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          32.0,
+          54.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 32.0,
+        "height": 54.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          180
+        ]
+      }
+    },
+    {
+      "id": "S06-ENV02",
+      "row": 1,
+      "name": "毛糸屋のミトン飾り",
+      "action": "A little pair of cream wool mittens on a red hanging cord, swaying softly, fixed top loop",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 506.0,
+        "y": 701.0,
+        "width": 42.4309,
+        "height": 53.2174,
+        "depthY": 701.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          506.0,
+          701.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          40.0,
+          51.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 40.0,
+        "height": 51.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          181,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S06-ENV03",
+      "row": 2,
+      "name": "カフェのマグの湯気",
+      "action": "Two thick but translucent warm white steam curls, no mug or table, slow rise and dissolve",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1042.0,
+        "y": 730.0,
+        "width": 54.0444,
+        "height": 50.087,
+        "depthY": 730.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1042.0,
+          730.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          38.0,
+          48.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 38.0,
+        "height": 48.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          135,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S06-ENV04",
+      "row": 3,
+      "name": "雪市の紙風車",
+      "action": "A small ice-blue and white star paper pinwheel on a short wooden stem, smooth rotation around stable hub",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 96.0,
+        "y": 399.0,
+        "width": 40.9756,
+        "height": 51.1304,
+        "depthY": 399.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          96.0,
+          399.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          35.0,
+          49.0
+        ],
+        "surface": "planter",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 35.0,
+        "height": 49.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          164,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S06-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S06",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S06-background.png",
+        "sha256": "3963fb1440aec77619a0fc80b272c734026ab83628bff0e4297d2ddfb0623eaa",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S06-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0736.png",
+  "rowBoundaries": [
+    0,
+    222,
+    445,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      666,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      900,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

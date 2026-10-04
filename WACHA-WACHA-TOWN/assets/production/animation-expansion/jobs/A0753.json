@@ -1,0 +1,323 @@
+{
+  "id": "A0753",
+  "ordinal": 753,
+  "stage": "S11",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S11: 収穫祭の農園.\nRow 1: A small fan of five colorful thin ribbons fastened at the same upper point, tails flutter at different delays. top-center attachment remains absolutely fixed.\nRow 2: A tiny hanging bundle of sage and lavender tied with linen, fixed top and gently swaying stems. top-center attachment remains absolutely fixed.\nRow 3: Thin white steam curls with faint warm tint, no corn or grill, soft intermittent loop. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 4: Sparse golden sunlight glints in an oval area, no opaque water or ground, gentle changing pattern. animation remains centered at the same point.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S11-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S11-ENV09",
+      "row": 0,
+      "name": "収穫祭のリボン",
+      "action": "A small fan of five colorful thin ribbons fastened at the same upper point, tails flutter at different delays",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1118.817,
+        "y": 871.7321,
+        "width": 60.8545,
+        "height": 76.991,
+        "depthY": 871.7321,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          834,
+          650
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          43.0,
+          55.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 57.685,
+        "height": 73.783,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          182,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S11-ENV10",
+      "row": 1,
+      "name": "干しハーブの束",
+      "action": "A tiny hanging bundle of sage and lavender tied with linen, fixed top and gently swaying stems",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 468.1862,
+        "y": 555.2261,
+        "width": 57.8602,
+        "height": 68.592,
+        "depthY": 555.2261,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          349,
+          414
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          31.0,
+          49.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 41.587,
+        "height": 65.734,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          138,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S11-ENV11",
+      "row": 2,
+      "name": "焼きとうもろこしの湯気",
+      "action": "Thin white steam curls with faint warm tint, no corn or grill, soft intermittent loop",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 851.8571,
+        "y": 980.3632,
+        "width": 100.0264,
+        "height": 60.193,
+        "depthY": 980.3632,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          635,
+          731
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          40.0,
+          43.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 53.66,
+        "height": 57.685,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          103,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S11-ENV12",
+      "row": 3,
+      "name": "南川の金色の光",
+      "action": "Sparse golden sunlight glints in an oval area, no opaque water or ground, gentle changing pattern",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.690104
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 529.895,
+        "y": 1219.084,
+        "width": 102.1878,
+        "height": 68.3809,
+        "depthY": 1219.084,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          395.0,
+          909.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          73.0,
+          30.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 97.93,
+        "height": 40.245,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          113
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S11-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S11",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      2243,
+      1262
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S11-background.png",
+        "sha256": "d7b458a20de1747224782f474bcca855b1732cd3fda3e704a91d06bbd890475c",
+        "worldBounds": [
+          0,
+          0,
+          2243,
+          1262
+        ]
+      }
+    ],
+    "referenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S11-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0753.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

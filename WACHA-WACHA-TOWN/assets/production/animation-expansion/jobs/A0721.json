@@ -1,0 +1,295 @@
+{
+  "id": "A0721",
+  "ordinal": 721,
+  "stage": "S01",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied reference board. The reference has FOUR horizontal rows. Each row shows a town overview and target-location crop. The magenta outlines are placement guides only. Do NOT reproduce any scene, architecture, people, placement marks or reference-board writing. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S01: はじまりのお祭り.\nRow 1: A small clear glass wind bell with a blue wave pattern and pale paper tail, bell and tail swinging gently from a fixed top hook. top-center attachment remains absolutely fixed.\nRow 2: A short cord of three red cream and gold triangular pennants, fabric rippling gently, both cord endpoints fixed. top-center attachment remains absolutely fixed.\nRow 3: A tiny bamboo toy pinwheel on a short stem, six red and gold folded paper vanes rotating around a stable hub. bottom-center support remains absolutely fixed.\nRow 4: Two fine curling wisps of warm tea steam, translucent and soft, no cups or table, rising and fading in place. bottom-center support remains absolutely fixed.\n",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0721.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S01-ENV01",
+      "row": 0,
+      "name": "江戸ガラスの風鈴",
+      "action": "A small clear glass wind bell with a blue wave pattern and pale paper tail, bell and tail swinging gently from a fixed top hook",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 238.0,
+        "y": 62.0,
+        "width": 46.08,
+        "height": 58.4348,
+        "depthY": 62.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          238,
+          62
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          30.0,
+          56.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "01a1caf2090582b8cb0a212bbc6589387998a0f61765a4d035d7f98ea0f0b3d8"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 30.0,
+        "height": 56.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          125,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S01-ENV02",
+      "row": 1,
+      "name": "祭りの三角小旗",
+      "action": "A short cord of three red cream and gold triangular pennants, fabric rippling gently, both cord endpoints fixed",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.447917
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 579.0,
+        "y": 256.0,
+        "width": 70.9565,
+        "height": 55.9223,
+        "depthY": 256.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          579.0,
+          256.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          68.0,
+          30.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "01a1caf2090582b8cb0a212bbc6589387998a0f61765a4d035d7f98ea0f0b3d8"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 68.0,
+        "height": 30.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          103
+        ]
+      }
+    },
+    {
+      "id": "S01-ENV03",
+      "row": 2,
+      "name": "竹の二重風車",
+      "action": "A tiny bamboo toy pinwheel on a short stem, six red and gold folded paper vanes rotating around a stable hub",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1530.0,
+        "y": 386.0,
+        "width": 39.7241,
+        "height": 50.087,
+        "depthY": 386.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1530.0,
+          386.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          30.0,
+          48.0
+        ],
+        "surface": "planter",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "01a1caf2090582b8cb0a212bbc6589387998a0f61765a4d035d7f98ea0f0b3d8"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 30.0,
+        "height": 48.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          145,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S01-ENV04",
+      "row": 3,
+      "name": "茶庭の湯気",
+      "action": "Two fine curling wisps of warm tea steam, translucent and soft, no cups or table, rising and fading in place",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 967.0,
+        "y": 698.0,
+        "width": 64.0,
+        "height": 46.9565,
+        "depthY": 698.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          967.0,
+          698.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          37.0,
+          45.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "01a1caf2090582b8cb0a212bbc6589387998a0f61765a4d035d7f98ea0f0b3d8"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 37.0,
+        "height": 45.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          111,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S01-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S01",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S01-background.png",
+        "sha256": "a6d238d7653cd83d3aa440328663aa686a599ab9ce285984c0fd580ddb99f829",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "01a1caf2090582b8cb0a212bbc6589387998a0f61765a4d035d7f98ea0f0b3d8"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S01-environment-placements.png",
+  "cleanPlateRequired": false,
+  "atlas": {
+    "imageSize": [
+      1774,
+      887
+    ],
+    "rowEdges": [
+      0,
+      242,
+      401,
+      657,
+      887
+    ],
+    "columnEdges": [
+      0,
+      222,
+      444,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "measuredOn": "original-generated-PNG",
+    "notes": "Nonuniform first-sheet row spacing is preserved; do not blindly split A0721 into equal-height rows."
+  }
+}

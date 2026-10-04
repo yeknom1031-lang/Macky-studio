@@ -1,0 +1,21 @@
+{
+  "id": "A0800",
+  "ordinal": 800,
+  "stage": "S20",
+  "kind": "directional",
+  "characters": [
+    "S20-C085",
+    "S20-C086",
+    "S20-C087",
+    "S20-C088"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0800.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. The attached image is FOUR full-body existing people arranged vertically. Precisely keep EACH face, age, skin tone, hairstyle, hat, clothing construction, clothing colors and original style. Make FOUR ROWS by TWELVE COLUMNS, one reference person in each row. 48 separate complete sprites. In EVERY cell each person has EMPTY HANDS. No books, no papers, no objects, no pens, no new bags. Do not invent props. First four poses: sequential back-view walk away from viewer. Middle four poses: sequential upstairs movement diagonally right, rear three-quarter, high knee and controlled lean. Last four poses: sequential downstairs movement diagonally right, front three-quarter, careful lower-reaching foot. Fixed body scale and planted-foot baseline, alternating leg motion. Same gently overhead hand-painted storybook chibi illustration. Wide landscape transparent alpha canvas. Do not draw stairs, floors, background, lettering, shadows or grids. Generous transparent gutters and intact head, both hands and shoes in every cell.",
+  "extractionNotes": "Actual new source recovered as intact connected sprites; inherited old-sheet boundaries removed.",
+  "purpose": "Recover the four S20 directional identities excluded from A0497 because work-only items were added during walking.",
+  "extraction": "components"
+}

@@ -1,0 +1,108 @@
+{
+  "id": "A0583",
+  "ordinal": 583,
+  "stage": "S24",
+  "kind": "directional",
+  "characters": [
+    "S24-C029",
+    "S24-C030",
+    "S24-C031",
+    "S24-C032"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0583.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 世界のお祭り大集合. Stage locations: 中央パレード道|世界の食市場|水辺舞台|職人長屋|展望2階回廊|動物の休憩所|鉄道広場|大きな庭園.\nRow 1: S24-C029, 合同太鼓の奏者 4; action context: 太鼓を叩く.\nRow 2: S24-C030, 合同太鼓の奏者 5; action context: 太鼓を叩く.\nRow 3: S24-C031, 合同弦楽の奏者 1; action context: 弦楽器を弾く.\nRow 4: S24-C032, 合同弦楽の奏者 2; action context: 弦楽器を弾く. LOCOMOTION CONTINUITY: For all TWELVE poses use only the carried items visible in the LEFT walking reference for that row. Do NOT add work tools from the RIGHT reference. Empty walking hands remain empty throughout. Never make an item appear or disappear within a cycle. If a pet accompanies the walking reference, keep that same pet throughout. Each figure occupies at most 70% of its cell height, with generous top and bottom transparent margins.",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      149,
+      295,
+      438,
+      581,
+      734,
+      883,
+      1028,
+      1184,
+      1337,
+      1475,
+      1622,
+      1774
+    ],
+    "1": [
+      0,
+      146,
+      295,
+      442,
+      585,
+      733,
+      881,
+      1027,
+      1179,
+      1337,
+      1484,
+      1634,
+      1774
+    ],
+    "2": [
+      0,
+      146,
+      295,
+      441,
+      582,
+      732,
+      878,
+      1022,
+      1182,
+      1338,
+      1477,
+      1625,
+      1774
+    ],
+    "3": [
+      0,
+      145,
+      292,
+      439,
+      583,
+      729,
+      877,
+      1024,
+      1177,
+      1331,
+      1475,
+      1625,
+      1774
+    ]
+  },
+  "sourceCols": 12,
+  "sourceColumns": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ],
+  "reviewNotes": "Reference, raw transparent source and all 48 packed cells visually checked. Row 1 introduces a work-only drum."
+}

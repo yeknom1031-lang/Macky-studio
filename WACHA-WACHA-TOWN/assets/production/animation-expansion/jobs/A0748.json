@@ -1,0 +1,323 @@
+{
+  "id": "A0748",
+  "ordinal": 748,
+  "stage": "S10",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S10: 運河と橋の街.\nRow 1: Three navy and cream canal-festival pennants on a fixed narrow cord, gentle rippling cloth. top-center attachment remains absolutely fixed.\nRow 2: Three small copper chimes hung from a tiny driftwood bar, top loop fixed, chimes sway with delay. top-center attachment remains absolutely fixed.\nRow 3: A delicate white tea steam curl splitting and fading, no cup or table. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 4: A narrow emerald ribbon bow tied at the top with two fluttering ends, no window frame. top-center attachment remains absolutely fixed.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S10-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S10-ENV01",
+      "row": 0,
+      "name": "運河の細いペナント",
+      "action": "Three navy and cream canal-festival pennants on a fixed narrow cord, gentle rippling cloth",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.401042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1831.6503,
+        "y": 264.3042,
+        "width": 93.7169,
+        "height": 67.224,
+        "depthY": 264.3042,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1448,
+          209
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          71.0,
+          31.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "cc688894131e10728e991ca7cd11a4e753004b884dc065db19130828d6267c72"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 89.812,
+        "height": 39.214,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          112
+        ]
+      }
+    },
+    {
+      "id": "S10-ENV02",
+      "row": 1,
+      "name": "船大工の風鈴",
+      "action": "Three small copper chimes hung from a tiny driftwood bar, top loop fixed, chimes sway with delay",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 278.2898,
+        "y": 512.1682,
+        "width": 50.6597,
+        "height": 71.2769,
+        "depthY": 512.1682,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          220,
+          405
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          34.0,
+          54.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "cc688894131e10728e991ca7cd11a4e753004b884dc065db19130828d6267c72"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 43.008,
+        "height": 68.307,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          163,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S10-ENV03",
+      "row": 2,
+      "name": "運河カフェの湯気",
+      "action": "A delicate white tea steam curl splitting and fading, no cup or table",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1855.6843,
+        "y": 209.9259,
+        "width": 46.0617,
+        "height": 39.5879,
+        "depthY": 209.9259,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1467,
+          166
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          36.0,
+          46.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "cc688894131e10728e991ca7cd11a4e753004b884dc065db19130828d6267c72"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 27.82893974096796,
+        "height": 37.938415662650605,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          116,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S10-ENV04",
+      "row": 3,
+      "name": "窓辺の吊りリボン",
+      "action": "A narrow emerald ribbon bow tied at the top with two fluttering ends, no window frame",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.088542
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 917.0907,
+        "y": 619.66,
+        "width": 43.5579,
+        "height": 66.3661,
+        "depthY": 619.66,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          725,
+          490
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          33.0,
+          47.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "cc688894131e10728e991ca7cd11a4e753004b884dc065db19130828d6267c72"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 41.743,
+        "height": 59.453,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          172
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S10-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S10",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      2115,
+      1190
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S10-background.png",
+        "sha256": "ec5746c89b05a56f7bd8a22ff18748f8493e394644494e0a5b177ed0d61d6f5c",
+        "worldBounds": [
+          0,
+          0,
+          2115,
+          1190
+        ]
+      }
+    ],
+    "referenceSHA256": "cc688894131e10728e991ca7cd11a4e753004b884dc065db19130828d6267c72"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S10-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0748.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "A0215",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 大きな鉄道駅. Stage locations: 駅前広場|改札|ホーム|車両整備場|駅ビル2階|荷物窓口|駅弁売店|連絡階段.\nRow 1: S09-C057, 出発時計を見る客 2; action context: 時計を確認する.\nRow 2: S09-C058, 出発時計を見る客 3; action context: 時計を確認する.\nRow 3: S09-C059, 出発時計を見る客 4; action context: 時計を確認する.\nRow 4: S09-C060, 出発時計を見る客 5; action context: 時計を確認する.\nContinuity lock: use ONLY the carried items visible in the LEFT walking reference of each row, identically throughout ALL TWELVE poses. Do not introduce the work tools from the right reference. If the left pose has empty hands, ALL twelve poses have empty hands. No tool may appear or disappear between frames. Keep any animal companion from the left reference consistently. Exactly 48 total sprites: 4 rows, precisely 4 rear-walk poses + 4 ascending poses + 4 descending poses in each row. Do not add a fifth pose or a turn-transition pose to any group.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0215.png",
+  "startedAt": "2026-10-04T18:03:07.205142+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-d4a3ec3c-d46d-4cb1-9d23-770f1522331d.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0215.png",
+  "sha256": "0be00ec3d4eb45cce395d930bb23f17cf73a25069c42e02dd6460ff4039c456c",
+  "finishedAt": "2026-10-04T18:07:37.140764+00:00",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:09:31.624730+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    3
+  ],
+  "notes": [
+    "白髪ポニー・眼鏡青年・茶髪青年の背負い物と全身を保持。帽子男性は左歩行で手にしていた時計が省略されるため除外。"
+  ],
+  "packReport": "review/A0215-pack.json",
+  "preview": "review/A0215-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

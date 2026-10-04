@@ -1,0 +1,363 @@
+{
+  "id": "A0785",
+  "ordinal": 785,
+  "stage": "S22",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S22: 魔法学校.\nRow 1: Fine pale turquoise water droplets and two soft gold glints, no fountain or opaque water. animation remains centered at the same point.\nRow 2: A few clear droplets falling from a fixed tiny green leaf tip, no pot or large plant. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 3: A miniature brass orrery with three colored spheres gently orbiting above a fixed plinth, no background. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 4: A tiny violet and gold feather-shaped pinwheel on a stable short stand, slow smooth rotation, no magical beam. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S22-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S22-ENV05",
+      "row": 0,
+      "name": "魔法噴水の飛沫",
+      "action": "Fine pale turquoise water droplets and two soft gold glints, no fountain or opaque water",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1899.658,
+        "y": 1621.473,
+        "width": 188.5213,
+        "height": 102.3256,
+        "depthY": 1621.473,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          833.0,
+          711.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          62.0,
+          43.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 141.391,
+        "height": 98.062,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          144,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S22-ENV06",
+      "row": 1,
+      "name": "温室のしずく",
+      "action": "A few clear droplets falling from a fixed tiny green leaf tip, no pot or large plant",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1183.581,
+        "y": 410.499,
+        "width": 63.1096,
+        "height": 74.5043,
+        "depthY": 410.499,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          519.0,
+          180.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          27.0,
+          51.0
+        ],
+        "surface": "planter",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 37.8,
+        "height": 71.4,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          115,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S22-ENV07",
+      "row": 2,
+      "name": "天文の小惑星模型",
+      "action": "A miniature brass orrery with three colored spheres gently orbiting above a fixed plinth, no background",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 2976.0552,
+        "y": 1486.9205,
+        "width": 65.6372,
+        "height": 67.2,
+        "depthY": 1486.9205,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1305,
+          652
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          42.0,
+          46.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 58.8,
+        "height": 64.4,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          172,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S22-ENV08",
+      "row": 3,
+      "name": "魔法工房の羽根風車",
+      "action": "A tiny violet and gold feather-shaped pinwheel on a stable short stand, slow smooth rotation, no magical beam",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 3610.035,
+        "y": 504.002,
+        "width": 67.2,
+        "height": 68.6609,
+        "depthY": 504.002,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1583.0,
+          221.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          36.0,
+          47.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 50.4,
+        "height": 65.8,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          144,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S22-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S22",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      3813,
+      2146
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-background.png",
+        "sha256": "b71cb43a8fc37399a7f1acf22d905d96296d731e983262a03b0a892d63032698",
+        "worldBounds": [
+          0,
+          0,
+          3813,
+          2146
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-detail-0.png",
+        "sha256": "27ca8c10a84d3aa545e9ede9b29fa16be18c8f507d1ba1fcc4031362ccc8d7ec",
+        "worldBounds": [
+          0,
+          0,
+          2097.15,
+          1180.3000000000002
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-detail-1.png",
+        "sha256": "9bbf49a21337744e325cd3a127d8547b3b670c0b0083b03621b3c9c6c3657d47",
+        "worldBounds": [
+          1715.8500000000001,
+          0,
+          2097.15,
+          1180.3000000000002
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-detail-2.png",
+        "sha256": "05f51cb7010d654288f4973745cf0a19f7fc57aeb9a4c75161bdf485051d137b",
+        "worldBounds": [
+          0,
+          965.7,
+          2097.15,
+          1180.3000000000002
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S22-detail-3.png",
+        "sha256": "5308d39eebc320bde73755c70f43d628edc858ab71faef78b8be2aa60f91e231",
+        "worldBounds": [
+          1715.8500000000001,
+          965.7,
+          2097.15,
+          1180.3000000000002
+        ]
+      }
+    ],
+    "referenceSHA256": "822c64f10d9f1ee2485b87dac13ba12df367687c515b9ec7d1330ee3b8257253"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S22-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0785.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

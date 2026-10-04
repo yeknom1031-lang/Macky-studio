@@ -1,0 +1,18 @@
+{
+  "id": "A0029",
+  "ordinal": 29,
+  "stage": "S02",
+  "kind": "directional",
+  "characters": [
+    "S02-C013",
+    "S02-C014",
+    "S02-C015",
+    "S02-C016"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0029.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 花咲くガーデン. Stage locations: 温室|苗販売所|噴水広場|バラのアーチ|庭師小屋の2階|池の桟橋|芝生の休憩所|養蜂区画.\nRow 1: S02-C013, 鉢植えの住人 3; action context: 鉢を植え替える.\nRow 2: S02-C014, 鉢植えの住人 4; action context: 鉢を植え替える.\nRow 3: S02-C015, 鉢植えの住人 5; action context: 鉢を植え替える.\nRow 4: S02-C016, 剪定庭師 1; action context: 植木の枝を切る.\nContinuity lock: use ONLY the carried items visible in the LEFT walking reference of each row, identically throughout ALL TWELVE poses. Do not introduce the work tools from the right reference. If the left pose has empty hands, ALL twelve poses have empty hands. No tool may appear or disappear between frames. Keep any animal companion from the left reference consistently. Exactly 48 total sprites: 4 rows, precisely 4 rear-walk poses + 4 ascending poses + 4 descending poses in each row. Do not add a fifth pose or a turn-transition pose to any group."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "A0681",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "FIXED FURNITURE BAN: Ignore fixed furniture visible in the reference action pose. Draw ONLY the person, clothing and small handheld tools. DO NOT draw any window frame, chair, full counter/table, steering-wheel pedestal, telescope tripod, boat, vehicle, ground platform, background or floor. Gesture toward the invisible station where relevant; preserve identity and handheld tool. CRITICAL: Produce ONE SHORT CYCLIC WORK MOTION, not a story of preparing, finishing, picking up, putting down or handing over. All 8 poses remain in the SAME working state holding the same single reference tool throughout. Do not add extra equipment such as scales, buckets, extra hammers, bowls or duplicate binoculars. For long rods/nets/paddles keep them compact within each sprite cell, never crossing a gutter or extending beyond the cell. Frame 8 matches frame 1 with the tool still held. Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 separate sprites. Each row is one expressive, coherent EIGHT-FRAME seamless loop of the stated role action, with clear anticipation, contact/effort, follow-through and recovery. Hands interact convincingly at waist/chest height with portable tools or an unseen counter in front-right. Keep the original portable tools; do not attach a large counter, building, chair or floor to the sprite. Facing front-right three-quarter. Make genuinely different body poses, not identical copies. Landscape canvas, ideally 1536 by 1024. Stage: 時計仕掛けの工房街. Stage locations: 時計塔|歯車工房|ガラス工房|木工通り|職人の2階部屋|自転車修理所|からくり広場|部品市場.\nRow 1: S17-C001, 時計職人 1; action context: 時計の歯車を調整する.\nRow 2: S17-C006, 金属鍛造職人 1; action context: 金属を叩く.\nRow 3: S17-C011, 宝飾職人 1; action context: 宝石を留める.\nRow 4: S17-C016, ガラス職人 1; action context: ガラスを吹く.\nLOOP CONTINUITY LOCK: Treat the LEFT reference pose as the authority for the face, body and clothing; the RIGHT pose supplies the role tool. Hold the SAME tools and SAME colors/count of all portable props in ALL EIGHT frames, including frame 8. Never finish by switching to the empty-handed walking reference. Use small continuous hand, wrist, elbow, knee, hip and head movements around the fixed tool; pose 8 must naturally return to pose 1. Do not make props disappear/reappear or randomly recolor. Do not change a finished product into raw material within this short loop. For juggling or balloon work, every frame has exactly the same balls/balloons in the same colors, only positions change. A camera, paddle, net, watering can or steering wheel stays visible through the complete cycle.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0681.png",
+  "startedAt": "2026-10-04T17:22:24.473069+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-b131dc06-fc48-4d95-8a6b-450031fb070f.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0681.png",
+  "sha256": "02554a6d59e95b1af2ea34d9870f08e8e3b0ed412c437b5825a53e614c0443df",
+  "finishedAt": "2026-10-04T17:23:06.042461+00:00",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T17:24:40.883386+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    3
+  ],
+  "notes": [
+    "時計修理・鍛造・吹きガラスは手道具と素材が維持され切り出し良好。row 2 のピンセットは中間コマのみ現れるため不採用。"
+  ],
+  "packReport": "review/A0681-pack.json",
+  "preview": "review/A0681-check.jpg"
+}

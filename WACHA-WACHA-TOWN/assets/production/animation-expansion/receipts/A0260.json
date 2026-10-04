@@ -1,0 +1,31 @@
+{
+  "id": "A0260",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "NO HORIZONTAL MIRROR FRAMES: render each pose independently. Shoulder bag, belt pouch, keyring, hair part and carried tool MUST stay on the same anatomical side. Do not create alternate walking frames by flipping the entire character. Only arms/legs alternate, not asymmetrical clothing/accessories.\nPROP ANATOMY LOCK: A handheld object visible in the LEFT reference must remain in the SAME ANATOMICAL HAND or both hands in all 12 poses, including all rear views. Never swap a kettle, briefcase, cane or basket between left and right hands from one frame to the next. Keep carried packages/baskets/books/pouches present even when turning; use partial occlusion, not disappearance. Do NOT import a work object appearing only in the RIGHT reference.\nUse case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 収穫祭の農園. Stage locations: 野菜畑|果樹園|納屋|農家の2階|牧草地|農産物直売所|水車小屋|収穫祭の広場.\nRow 1: S11-C037, 落ち葉の堆肥係 2; action context: 落ち葉を集める.\nRow 2: S11-C038, 落ち葉の堆肥係 3; action context: 落ち葉を集める.\nRow 3: S11-C039, 落ち葉の堆肥係 4; action context: 落ち葉を集める.\nRow 4: S11-C040, 落ち葉の堆肥係 5; action context: 落ち葉を集める.\nContinuity lock: use ONLY the carried items visible in the LEFT walking reference of each row, identically throughout ALL TWELVE poses. Do not introduce the work tools from the right reference. If the left pose has empty hands, ALL twelve poses have empty hands. No tool may appear or disappear between frames. Keep any animal companion from the left reference consistently. Exactly 48 total sprites: 4 rows, precisely 4 rear-walk poses + 4 ascending poses + 4 descending poses in each row. Do not add a fifth pose or a turn-transition pose to any group.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0260.png",
+  "startedAt": "2026-10-04T18:37:19.753397+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-ec6a6d4e-5787-4f7b-99a8-352050a79b31.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0260.png",
+  "sha256": "ef8e6e69d432a2541e715de54fe5c944d18740c7dc96ed6feea69f41d8de64df",
+  "finishedAt": "2026-10-04T18:39:06.243464+00:00",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T18:44:31.091045+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画13コマの背面4・上り4・下り5から12を選別。作業道具を持ち込まず空の手と手袋、三つ編み・金髪・体型を全行維持。pack全身切れなし。"
+  ],
+  "packReport": "review/A0260-pack.json",
+  "preview": "review/A0260-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

@@ -1,0 +1,44 @@
+{
+  "id": "A0220",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "PROP ANATOMY LOCK: A handheld object visible in the LEFT reference must remain in the SAME ANATOMICAL HAND or both hands in all 12 poses, including all rear views. Never swap a kettle, briefcase, cane or basket between left and right hands from one frame to the next. Keep carried packages/baskets/books/pouches present even when turning; use partial occlusion, not disappearance. Do NOT import a work object appearing only in the RIGHT reference.\nUse case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 大きな鉄道駅. Stage locations: 駅前広場|改札|ホーム|車両整備場|駅ビル2階|荷物窓口|駅弁売店|連絡階段.\nRow 1: S09-C077, エレベーターの利用客 2; action context: エレベーターに乗降する.\nRow 2: S09-C078, エレベーターの利用客 3; action context: エレベーターに乗降する.\nRow 3: S09-C079, エレベーターの利用客 4; action context: エレベーターに乗降する.\nRow 4: S09-C080, エレベーターの利用客 5; action context: エレベーターに乗降する.\nContinuity lock: use ONLY the carried items visible in the LEFT walking reference of each row, identically throughout ALL TWELVE poses. Do not introduce the work tools from the right reference. If the left pose has empty hands, ALL twelve poses have empty hands. No tool may appear or disappear between frames. Keep any animal companion from the left reference consistently. Exactly 48 total sprites: 4 rows, precisely 4 rear-walk poses + 4 ascending poses + 4 descending poses in each row. Do not add a fifth pose or a turn-transition pose to any group.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0220.png",
+  "startedAt": "2026-10-04T18:08:26.784329+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-27a05015-f48f-45b6-973a-0371cc445774.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0220.png",
+  "sha256": "8d2cc75c78f3dacd1fbc99626785e63f31caea80bb4db8581e64828d0eee756a",
+  "finishedAt": "2026-10-04T18:10:25.294329+00:00",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:39:21.915545+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "原画・pack再表示し、全行をクリップ単位で再判定。背面4コマは本・杖・袋・鞄が左右反転し除外。全4行の階段8コマは持ち物・衣装・顔・足運びが一貫し採用可能。"
+  ],
+  "packReport": "review/A0220-pack.json",
+  "preview": "review/A0220-check.jpg",
+  "disabledClipsByRow": {
+    "0": [
+      "walkBack"
+    ],
+    "1": [
+      "walkBack"
+    ],
+    "2": [
+      "walkBack"
+    ],
+    "3": [
+      "walkBack"
+    ]
+  },
+  "clipFramesByRow": {}
+}

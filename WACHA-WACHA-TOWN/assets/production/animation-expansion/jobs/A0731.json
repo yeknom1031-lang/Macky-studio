@@ -1,0 +1,323 @@
+{
+  "id": "A0731",
+  "ordinal": 731,
+  "stage": "S04",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S04: お菓子の広場.\nRow 1: A crown of fine clear aqua fountain droplets with faint pink reflections, no cake or fountain base. animation remains centered at the same point.\nRow 2: Two thin oval ripple rings with pastel reflected highlights, no solid water shape. animation remains centered at the same point.\nRow 3: A handful of soft pearly sugar motes drifting above a confectionery tray, no tray or food, no flashing stars. bottom-center support remains absolutely fixed.\nRow 4: A small warm cream-colored steam curl, very transparent, no cup or saucer. bottom-center support remains absolutely fixed.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S04-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S04-ENV05",
+      "row": 0,
+      "name": "ケーキ噴水の飛沫",
+      "action": "A crown of fine clear aqua fountain droplets with faint pink reflections, no cake or fountain base",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.549479
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 837.0,
+        "y": 452.0,
+        "width": 81.3913,
+        "height": 43.6886,
+        "depthY": 452.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          837,
+          452
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          78.0,
+          38.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 78.0,
+        "height": 38.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          167
+        ]
+      }
+    },
+    {
+      "id": "S04-ENV06",
+      "row": 1,
+      "name": "小運河の波紋",
+      "action": "Two thin oval ripple rings with pastel reflected highlights, no solid water shape",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.770833
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1512.0,
+        "y": 381.0,
+        "width": 60.5217,
+        "height": 63.2195,
+        "depthY": 381.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1512,
+          381
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          58.0,
+          27.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 58.0,
+        "height": 27.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          82
+        ]
+      }
+    },
+    {
+      "id": "S04-ENV07",
+      "row": 2,
+      "name": "砂糖菓子のきらめき",
+      "action": "A handful of soft pearly sugar motes drifting above a confectionery tray, no tray or food, no flashing stars",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 106.0,
+        "y": 193.0,
+        "width": 46.8,
+        "height": 37.5652,
+        "depthY": 193.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          106.0,
+          193.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          39.0,
+          36.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 39.0,
+        "height": 36.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          160,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S04-ENV08",
+      "row": 3,
+      "name": "ホットココアの湯気",
+      "action": "A small warm cream-colored steam curl, very transparent, no cup or saucer",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1002.0,
+        "y": 829.0,
+        "width": 53.2277,
+        "height": 38.6087,
+        "depthY": 829.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1002,
+          829
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          28.0,
+          37.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 28.0,
+        "height": 37.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          101,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S04-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S04",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S04-background.png",
+        "sha256": "074df5f88178c75559246cbb7d4553322c065844a3ec51b27a2ff3c7031d7fd9",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "919bf26bcd953e1b8006d63c9340a5afa6243f9227503d9086c6c78db613bd98"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S04-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0731.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "A0798",
+  "ordinal": 798,
+  "stage": "S20",
+  "kind": "directional",
+  "characters": [
+    "S18-C095",
+    "S18-C096",
+    "S20-C097",
+    "S20-C100"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0798.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Exactly preserve the FOUR existing characters in the attached reference, one per row. Match each face, body, age, skin, hair, hat, outfit colors and hand-painted storybook chibi style. FOUR ROWS by TWELVE COLUMNS, 48 isolated full-body sprites, true transparent alpha background. First four columns back-view walking away. Next four columns ascending diagonal stairs, three-quarter rear view. Last four columns descending diagonal stairs, three-quarter front view. Row 4 is a wheelchair user: all twelve poses are ground-level rolling, rear / side-rear / front-side respectively, no stairs, no walking legs. CRITICAL PROPS: Row 1 ALWAYS holds the small ROUND HAND DRUM from reference in front of the chest in the left hand; beige circular skin with brown wooden rim. This is a handheld frame drum, not a marching drum, no harness. Row 2 ALWAYS carries the large vintage black twin-lens camera at chest level, identical throughout. Row 3 ALWAYS has the small dark camera hanging at chest from a neck strap, identical throughout. Row 4 ALWAYS uses the same navy wheelchair and holds the LARGE BOX CAMERA on their lap in EVERY pose. From rear, retain plausible visible prop side silhouette and straps, not a second mirrored prop. The wheelchair stays intact including both wheels, footrests and feet. No new hats, clothes, bags, recolors or handheld items. Maintain scale and foot/wheel baseline across each row. Clear changing limb or wheel motion with props stable. Do not draw floors, stairs, scenery, labels, text or grids. Generous transparent gutters around all heads, hands, feet, camera equipment, handheld round drum and wheelchair. Wide landscape canvas, ideally 2048 by 1024.",
+  "mobility": {
+    "3": "wheelchair"
+  },
+  "purpose": "Restore drum and camera silhouettes lost in directional outputs A0449 and A0500. These props matter for finding characters.",
+  "sourceCols": 13,
+  "sourceColumns": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12
+  ],
+  "extraction": "components"
+}

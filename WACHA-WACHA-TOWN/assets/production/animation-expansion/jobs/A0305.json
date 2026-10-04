@@ -1,0 +1,19 @@
+{
+  "id": "A0305",
+  "ordinal": 305,
+  "stage": "S13",
+  "kind": "directional",
+  "characters": [
+    "S13-C017",
+    "S13-C018",
+    "S13-C019",
+    "S13-C020"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0305.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 森の動物園. Stage locations: 入園広場|草食動物舎|鳥の森|小動物ふれあい場|飼育舎2階|獣医の休憩所|展望橋|池.\nRow 1: S13-C017, 鳥の巣箱係 2; action context: 鳥の巣箱を整える.\nRow 2: S13-C018, 鳥の巣箱係 3; action context: 鳥の巣箱を整える.\nRow 3: S13-C019, 鳥の巣箱係 4; action context: 鳥の巣箱を整える.\nRow 4: S13-C020, 鳥の巣箱係 5; action context: 鳥の巣箱を整える.",
+  "extraction": "components"
+}

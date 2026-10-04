@@ -1,0 +1,23 @@
+{
+  "id": "A0677",
+  "ordinal": 677,
+  "stage": "S16",
+  "kind": "interaction",
+  "characters": [
+    "S16-C021",
+    "S16-C026",
+    "S16-C031",
+    "S16-C036"
+  ],
+  "rows": 4,
+  "cols": 8,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0677.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "FIXED FURNITURE BAN: Ignore fixed furniture visible in the reference action pose. Draw ONLY the person, clothing and small handheld tools. DO NOT draw any window frame, chair, full counter/table, steering-wheel pedestal, telescope tripod, boat, vehicle, ground platform, background or floor. Gesture toward the invisible station where relevant; preserve identity and handheld tool. CRITICAL: Produce ONE SHORT CYCLIC WORK MOTION, not a story of preparing, finishing, picking up, putting down or handing over. All 8 poses remain in the SAME working state holding the same single reference tool throughout. Do not add extra equipment such as scales, buckets, extra hammers, bowls or duplicate binoculars. For long rods/nets/paddles keep them compact within each sprite cell, never crossing a gutter or extending beyond the cell. Frame 8 matches frame 1 with the tool still held. Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 separate sprites. Each row is one expressive, coherent EIGHT-FRAME seamless loop of the stated role action, with clear anticipation, contact/effort, follow-through and recovery. Hands interact convincingly at waist/chest height with portable tools or an unseen counter in front-right. Keep the original portable tools; do not attach a large counter, building, chair or floor to the sprite. Facing front-right three-quarter. Make genuinely different body poses, not identical copies. Landscape canvas, ideally 1536 by 1024. Stage: 大きな博物館. Stage locations: 恐竜ホール|古代展示室|科学体験室|修復工房|2階回廊|ミュージアムショップ|中庭|搬入口.\nRow 1: S16-C021, 陶器修復の職人 1; action context: 陶器に絵付けする.\nRow 2: S16-C026, 彫刻の実演家 1; action context: 彫刻を彫る.\nRow 3: S16-C031, 模写の画家 1; action context: 絵を描く.\nRow 4: S16-C036, 展示のガイド 1; action context: 道を指して案内する.\nLOOP CONTINUITY LOCK: Treat the LEFT reference pose as the authority for the face, body and clothing; the RIGHT pose supplies the role tool. Hold the SAME tools and SAME colors/count of all portable props in ALL EIGHT frames, including frame 8. Never finish by switching to the empty-handed walking reference. Use small continuous hand, wrist, elbow, knee, hip and head movements around the fixed tool; pose 8 must naturally return to pose 1. Do not make props disappear/reappear or randomly recolor. Do not change a finished product into raw material within this short loop. For juggling or balloon work, every frame has exactly the same balls/balloons in the same colors, only positions change. A camera, paddle, net, watering can or steering wheel stays visible through the complete cycle.",
+  "acceptedRows": [
+    0,
+    2,
+    3
+  ]
+}

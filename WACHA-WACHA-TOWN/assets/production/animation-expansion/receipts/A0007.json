@@ -1,0 +1,14 @@
+{
+  "id": "A0007",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: はじまりのお祭り. Stage locations: 屋台通り|太鼓やぐら|水路の橋|玩具店の2階|休憩縁台|船着き場|射的小屋|路地の玄関.\nRow 1: S01-C025, からくり玩具売り 5; action context: 玩具の動作を見せる.\nRow 2: S01-C026, 茶屋の店員 1; action context: 茶を点てる.\nRow 3: S01-C027, 茶屋の店員 2; action context: 茶を点てる.\nRow 4: S01-C028, 茶屋の店員 3; action context: 茶を点てる.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0007.png",
+  "startedAt": "2026-10-04T16:03:53.254547+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-3c3c-7f71-a137-36749bca15a9/exec-55c206b2-8758-44c7-bfd5-5c64a43689d8.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0007.png",
+  "sha256": "41ef3d9df35bb7c6c820d299af136e46b2555d63c99493cfa2da5db4bedf3c14",
+  "finishedAt": "2026-10-04T16:06:17.028981+00:00",
+  "reviewStatus": "accepted-partial",
+  "reviewNotes": "Original reference, generated source and colored pack inspected. Removed third front pose from rows 2 and 3 where bowls disappear."
+}

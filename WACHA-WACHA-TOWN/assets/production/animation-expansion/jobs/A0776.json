@@ -1,0 +1,363 @@
+{
+  "id": "A0776",
+  "ordinal": 776,
+  "stage": "S19",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S19: 雪山のリゾート.\nRow 1: A small soft puff of fine powdered snow drifting locally, no rock or solid snowbank. animation remains centered at the same point.\nRow 2: Tiny bluish white bubbles and thin foam rings moving gently, no stream bed or opaque water. animation remains centered at the same point.\nRow 3: One narrow clear icicle fixed at its top with a tiny drop that falls and reforms, no roof. top-center attachment remains absolutely fixed.\nRow 4: A pale gray exhaust vapor puff curling up slowly, no vehicle or pipe, transparent edges. animation remains centered at the same point.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S19-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S19-ENV05",
+      "row": 0,
+      "name": "崖の粉雪",
+      "action": "A small soft puff of fine powdered snow drifting locally, no rock or solid snowbank",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.591146
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 910.0,
+        "y": 772.0,
+        "width": 137.7391,
+        "height": 144.9536,
+        "depthY": 772.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          455.0,
+          386.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          66.0,
+          57.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 132.0,
+        "height": 114.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          151
+        ]
+      }
+    },
+    {
+      "id": "S19-ENV06",
+      "row": 1,
+      "name": "氷面のきらめき",
+      "action": "Tiny bluish white bubbles and thin foam rings moving gently, no stream bed or opaque water",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.544271
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 2814.0,
+        "y": 1254.0,
+        "width": 83.4783,
+        "height": 45.4438,
+        "depthY": 1254.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1407,
+          627
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          64.0,
+          31.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 80.0,
+        "height": 40.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          169
+        ]
+      }
+    },
+    {
+      "id": "S19-ENV07",
+      "row": 2,
+      "name": "氷の雫",
+      "action": "One narrow clear icicle fixed at its top with a tiny drop that falls and reforms, no roof",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1896.0,
+        "y": 928.0,
+        "width": 115.8095,
+        "height": 108.5217,
+        "depthY": 928.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          948,
+          464
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          19.0,
+          52.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 38.0,
+        "height": 104.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          63,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S19-ENV08",
+      "row": 3,
+      "name": "雪上車工房の排気",
+      "action": "A pale gray exhaust vapor puff curling up slowly, no vehicle or pipe, transparent edges",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 2014.0,
+        "y": 922.0,
+        "width": 104.5063,
+        "height": 127.3043,
+        "depthY": 922.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1007,
+          461
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          43.0,
+          61.0
+        ],
+        "surface": "roof",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 86.0,
+        "height": 122.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          158,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S19-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S19",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      3344,
+      1882
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-background.png",
+        "sha256": "859f79fa4c5b38baae5c91cfa6469b5c0f2688ddea58a602a3cbd5fe6830b2b3",
+        "worldBounds": [
+          0,
+          0,
+          3344,
+          1882
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-detail-0.png",
+        "sha256": "c8802689095567a5904d35f1e6f19f2674f60551bf0d168dc4d88de42683a65b",
+        "worldBounds": [
+          0,
+          0,
+          1839.2,
+          1035.1000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-detail-1.png",
+        "sha256": "e6417cb0c654c4ab247c06fa246c72c6d1b4ea555f81c42749005888d031d6df",
+        "worldBounds": [
+          1504.8,
+          0,
+          1839.2,
+          1035.1000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-detail-2.png",
+        "sha256": "256c2793a6ba9fd2f64844443a92a06ff3534da38d73e43b160fd372fd298ffa",
+        "worldBounds": [
+          0,
+          846.9,
+          1839.2,
+          1035.1000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-detail-3.png",
+        "sha256": "6b9b633bd84a65956a9fa3bb0a7005b8b46a716b040092b141045a2eaa8bce19",
+        "worldBounds": [
+          1504.8,
+          846.9,
+          1839.2,
+          1035.1000000000001
+        ]
+      }
+    ],
+    "referenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S19-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0776.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

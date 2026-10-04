@@ -1,0 +1,30 @@
+{
+  "id": "A0227",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "PROP ANATOMY LOCK: A handheld object visible in the LEFT reference must remain in the SAME ANATOMICAL HAND or both hands in all 12 poses, including all rear views. Never swap a kettle, briefcase, cane or basket between left and right hands from one frame to the next. Keep carried packages/baskets/books/pouches present even when turning; use partial occlusion, not disappearance. Do NOT import a work object appearing only in the RIGHT reference.\nUse case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 運河と橋の街. Stage locations: 運河の市場|可動橋|船着き場|花のバルコニー|修理ドック|石畳カフェ|橋の詰所|水門.\nRow 1: S10-C005, 運河舟の漕ぎ手 5; action context: 小舟を漕ぐ.\nRow 2: S10-C006, 船着き場の乗降客 1; action context: 小舟に乗降する.\nRow 3: S10-C007, 船着き場の乗降客 2; action context: 小舟に乗降する.\nRow 4: S10-C008, 船着き場の乗降客 3; action context: 小舟に乗降する.\nContinuity lock: use ONLY the carried items visible in the LEFT walking reference of each row, identically throughout ALL TWELVE poses. Do not introduce the work tools from the right reference. If the left pose has empty hands, ALL twelve poses have empty hands. No tool may appear or disappear between frames. Keep any animal companion from the left reference consistently. Exactly 48 total sprites: 4 rows, precisely 4 rear-walk poses + 4 ascending poses + 4 descending poses in each row. Do not add a fifth pose or a turn-transition pose to any group.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0227.png",
+  "startedAt": "2026-10-04T18:13:31.193076+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-dc629bf2-0f00-482c-84b3-afb553843729.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0227.png",
+  "sha256": "2bfdd501926e479c7df1355c13ff7b8bb945f3f2fb753e968eea396e837cef1d",
+  "finishedAt": "2026-10-04T18:16:15.960193+00:00",
+  "reviewStatus": "accepted-partial",
+  "reviewedAt": "2026-10-04T18:19:52.336472+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2
+  ],
+  "notes": [
+    "三つ編み人物、リュック人物、左参照でも背負う木箱の人物は12コマ保持。4行目に右作業参照の大きな布袋を背負わせたためその行は除外。"
+  ],
+  "packReport": "review/A0227-pack.json",
+  "preview": "review/A0227-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

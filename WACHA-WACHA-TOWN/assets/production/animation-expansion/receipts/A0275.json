@@ -1,0 +1,31 @@
+{
+  "id": "A0275",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "LEFT-POSE INVENTORY ONLY: the right-hand image in each reference row is a work demonstration, NEVER the source of walking props. For empty-handed LEFT figures every new frame must have EMPTY hands and no new bags, crates, vegetables, tools, or packages. Carry ONLY items unmistakably present in the LEFT figure, retaining them in EVERY frame. NO HORIZONTAL MIRROR FRAMES: render each pose independently. Shoulder bag, belt pouch, keyring, hair part and carried tool MUST stay on the same anatomical side. Do not create alternate walking frames by flipping the entire character. Only arms/legs alternate, not asymmetrical clothing/accessories.\nPROP ANATOMY LOCK: A handheld object visible in the LEFT reference must remain in the SAME ANATOMICAL HAND or both hands in all 12 poses, including all rear views. Never swap a kettle, briefcase, cane or basket between left and right hands from one frame to the next. Keep carried packages/baskets/books/pouches present even when turning; use partial occlusion, not disappearance. Do NOT import a work object appearing only in the RIGHT reference.\nUse case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 収穫祭の農園. Stage locations: 野菜畑|果樹園|納屋|農家の2階|牧草地|農産物直売所|水車小屋|収穫祭の広場.\nRow 1: S11-C097, 収穫祭の農園のカメラマン 2; action context: 写真を撮る.\nRow 2: S11-C098, 収穫祭の農園のカメラマン 3; action context: 写真を撮る.\nRow 3: S11-C099, 収穫祭の農園のカメラマン 4; action context: 写真を撮る.\nRow 4: S11-C100, 収穫祭の農園のカメラマン 5; action context: 写真を撮る.\nContinuity lock: use ONLY the carried items visible in the LEFT walking reference of each row, identically throughout ALL TWELVE poses. Do not introduce the work tools from the right reference. If the left pose has empty hands, ALL twelve poses have empty hands. No tool may appear or disappear between frames. Keep any animal companion from the left reference consistently. Exactly 48 total sprites: 4 rows, precisely 4 rear-walk poses + 4 ascending poses + 4 descending poses in each row. Do not add a fifth pose or a turn-transition pose to any group.\nROW FOUR MOBILITY INVARIANT: the fourth reference character is a wheelchair user. Preserve their exact wheelchair, wheels, seating, camera, face, torso and clothes in ALL twelve poses. Never turn this person into a standing or leg-walking person. Columns 1-4 show rear-view wheel propulsion. Columns 5-8 show gentle uphill RAMP propulsion with forward-balanced torso; columns 9-12 show gentle downhill RAMP movement with careful braking. No stairs or ramp surface in the image. Wheelchair stays complete and correctly attached in every cell. Other three rows use the ordinary human walking/stair cycles.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0275.png",
+  "startedAt": "2026-10-04T18:50:51.077118+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-889d-7bd3-bfff-77014134cd68/exec-14b4f2fc-1ddd-49e9-8464-ebcfa0438e68.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0275.png",
+  "sha256": "0e3a0fe79b44a8bb30509ba44cab623e82c84a67cf998e4909b6037fd129fd41",
+  "finishedAt": "2026-10-04T18:52:35.307348+00:00",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T19:05:22.118941+00:00",
+  "reviewer": "gameplay_qa",
+  "originalViewed": true,
+  "packedViewed": true,
+  "referenceViewed": true,
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "notes": [
+    "14列から12コマへ選別。2人のカメラ、閉じた三脚、車いすと木製カメラを全コマ保持。車いすは足で歩かず車輪と腕の動作。"
+  ],
+  "packReport": "review/A0275-pack.json",
+  "preview": "review/A0275-check.jpg",
+  "disabledClipsByRow": {},
+  "clipFramesByRow": {}
+}

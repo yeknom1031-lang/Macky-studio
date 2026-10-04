@@ -1,0 +1,363 @@
+{
+  "id": "A0773",
+  "ordinal": 773,
+  "stage": "S18",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S18: 砂漠のバザール.\nRow 1: Fine small turquoise oval ripple rings with bright sun reflections, no pool or solid water. animation remains centered at the same point.\nRow 2: Fine clear water droplets in a low spray, no fountain or basin. animation remains centered at the same point.\nRow 3: A few slim clear drops falling in a short continuous trickle with a tiny ripple below, no jar or basin. animation remains centered at the same point.\nRow 4: Five tiny tan leaf-like flecks of dry seed chaff softly tumbling, very sparse, no opaque dust cloud or ground. animation remains centered at the same point.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S18-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S18-ENV05",
+      "row": 0,
+      "name": "オアシスのさざ波",
+      "action": "Fine small turquoise oval ripple rings with bright sun reflections, no pool or solid water",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.6875
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 645.024,
+        "y": 1656.01,
+        "width": 144.5113,
+        "height": 89.4653,
+        "depthY": 1656.01,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          340.0,
+          873.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          73.0,
+          28.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "31519b85ca942148282c9a37a0b1f22f3e10b5480846cfe534d83807b7c4ed8c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 138.49,
+        "height": 53.12,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          114
+        ]
+      }
+    },
+    {
+      "id": "S18-ENV06",
+      "row": 1,
+      "name": "中庭噴水の飛沫",
+      "action": "Fine clear water droplets in a low spray, no fountain or basin",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.549479
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1591.691,
+        "y": 1056.583,
+        "width": 136.5934,
+        "height": 93.7891,
+        "depthY": 1056.583,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          839.0,
+          557.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          69.0,
+          43.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "31519b85ca942148282c9a37a0b1f22f3e10b5480846cfe534d83807b7c4ed8c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 130.902,
+        "height": 81.577,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          167
+        ]
+      }
+    },
+    {
+      "id": "S18-ENV07",
+      "row": 2,
+      "name": "水屋の水滴",
+      "action": "A few slim clear drops falling in a short continuous trickle with a tiny ripple below, no jar or basin",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.520833
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 686.761,
+        "y": 1033.82,
+        "width": 57.409,
+        "height": 96.178,
+        "depthY": 1033.82,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          362.0,
+          545.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          29.0,
+          47.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "31519b85ca942148282c9a37a0b1f22f3e10b5480846cfe534d83807b7c4ed8c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 55.017,
+        "height": 89.165,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          178
+        ]
+      }
+    },
+    {
+      "id": "S18-ENV08",
+      "row": 3,
+      "name": "砂の小さな舞",
+      "action": "Five tiny tan leaf-like flecks of dry seed chaff softly tumbling, very sparse, no opaque dust cloud or ground",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.625
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1024.45,
+        "y": 187.795,
+        "width": 120.7565,
+        "height": 150.4501,
+        "depthY": 187.795,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          540.0,
+          99.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          61.0,
+          57.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "31519b85ca942148282c9a37a0b1f22f3e10b5480846cfe534d83807b7c4ed8c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 115.725,
+        "height": 108.136,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          138
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S18-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S18",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      3172,
+      1785
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S18-background.png",
+        "sha256": "0453235cd2ee52066b9052b888a7c24da31c2c0202eb6b121628678ec6580097",
+        "worldBounds": [
+          0,
+          0,
+          3172,
+          1785
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S18-detail-0.png",
+        "sha256": "91f8e5ead654061252600a6a846b6507a154d64c68b015a259cb9dc789b58f7b",
+        "worldBounds": [
+          0,
+          0,
+          1744.6000000000001,
+          981.7500000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S18-detail-1.png",
+        "sha256": "590f216df79266234d2e2657a0570d8764ccea4f016719047582f5d8eaca210d",
+        "worldBounds": [
+          1427.4,
+          0,
+          1744.6000000000001,
+          981.7500000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S18-detail-2.png",
+        "sha256": "f3551afa48e6cc7685d369a3e9ec7c5b8c8eecef9e8e086618f440c8d5de2b18",
+        "worldBounds": [
+          0,
+          803.25,
+          1744.6000000000001,
+          981.7500000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S18-detail-3.png",
+        "sha256": "e46de7cf94a17db7db6b7621c2aa575e45d44d4a16328e4e88c5ea1b76294b3b",
+        "worldBounds": [
+          1427.4,
+          803.25,
+          1744.6000000000001,
+          981.7500000000001
+        ]
+      }
+    ],
+    "referenceSHA256": "31519b85ca942148282c9a37a0b1f22f3e10b5480846cfe534d83807b7c4ed8c"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S18-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0773.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

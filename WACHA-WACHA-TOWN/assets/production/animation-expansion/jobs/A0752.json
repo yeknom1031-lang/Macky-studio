@@ -1,0 +1,323 @@
+{
+  "id": "A0752",
+  "ordinal": 752,
+  "stage": "S11",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S11: 収穫祭の農園.\nRow 1: Small aqua droplets and white froth in a narrow arc, no wheel or stone wall. animation remains centered at the same point.\nRow 2: A fine low arc of clear irrigation droplets cycling across a small bed-sized gap, no hose or ground. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 3: Four pale apple blossom petals with one small green leaf softly circling in a breeze, no tree. animation remains centered at the same point.\nRow 4: Five pale cream grass seeds floating slowly with irregular spacing, no stems or soil. animation remains centered at the same point.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S11-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S11-ENV05",
+      "row": 0,
+      "name": "水車のはねる水",
+      "action": "Small aqua droplets and white froth in a narrow arc, no wheel or stone wall",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.661458
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1891.525,
+        "y": 791.2641,
+        "width": 104.9875,
+        "height": 105.936,
+        "depthY": 791.2641,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1410,
+          590
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          75.0,
+          51.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 100.613,
+        "height": 68.417,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          124
+        ]
+      }
+    },
+    {
+      "id": "S11-ENV06",
+      "row": 1,
+      "name": "畑の散水しずく",
+      "action": "A fine low arc of clear irrigation droplets cycling across a small bed-sized gap, no hose or ground",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 287.083,
+        "y": 250.791,
+        "width": 99.3882,
+        "height": 65.8445,
+        "depthY": 250.791,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          214.0,
+          187.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          71.0,
+          34.0
+        ],
+        "surface": "planter",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 95.247,
+        "height": 45.611,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          133
+        ]
+      }
+    },
+    {
+      "id": "S11-ENV07",
+      "row": 2,
+      "name": "りんご畑の花びら",
+      "action": "Four pale apple blossom petals with one small green leaf softly circling in a breeze, no tree",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1361.63,
+        "y": 392.95,
+        "width": 84.8973,
+        "height": 78.3903,
+        "depthY": 392.95,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1015.0,
+          293.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          59.0,
+          56.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 79.149,
+        "height": 75.124,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          179,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S11-ENV08",
+      "row": 3,
+      "name": "牧草の穂の綿毛",
+      "action": "Five pale cream grass seeds floating slowly with irregular spacing, no stems or soil",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.5625
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 269.643,
+        "y": 764.442,
+        "width": 89.5889,
+        "height": 87.4465,
+        "depthY": 764.442,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          201.0,
+          570.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          64.0,
+          55.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 85.856,
+        "height": 73.783,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          162
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S11-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S11",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      2243,
+      1262
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S11-background.png",
+        "sha256": "d7b458a20de1747224782f474bcca855b1732cd3fda3e704a91d06bbd890475c",
+        "worldBounds": [
+          0,
+          0,
+          2243,
+          1262
+        ]
+      }
+    ],
+    "referenceSHA256": "51ff3091c71953431933556ee5a0fb948311401677d4e5654735da1e97a6002a"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S11-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0752.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

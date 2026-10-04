@@ -1,0 +1,21 @@
+{
+  "id": "A0350",
+  "ordinal": 350,
+  "stage": "S14",
+  "kind": "directional",
+  "characters": [
+    "S14-C097",
+    "S14-C098",
+    "S14-C099",
+    "S14-C100"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0350.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 映画撮影スタジオ. Stage locations: 西部劇セット|街角セット|衣装室|大道具工房|編集室の2階|照明倉庫|食堂|観覧エリア.\nRow 1: S14-C097, 映画撮影スタジオのカメラマン 2; action context: 写真を撮る.\nRow 2: S14-C098, 映画撮影スタジオのカメラマン 3; action context: 写真を撮る.\nRow 3: S14-C099, 映画撮影スタジオのカメラマン 4; action context: 写真を撮る.\nRow 4: S14-C100, 映画撮影スタジオのカメラマン 5; action context: 写真を撮る. LOCOMOTION CONTINUITY: For all TWELVE poses use only the carried items visible in the LEFT walking reference for that row. Do NOT add work tools from the RIGHT reference. Empty walking hands remain empty throughout. Never make an item appear or disappear within a cycle. If a pet accompanies the walking reference, keep that same pet throughout. Each figure occupies at most 70% of its cell height, with generous top and bottom transparent margins. IMPORTANT ROW 4 MOBILITY: The fourth reference character uses a wheelchair. Preserve this exact seated person and wheelchair in EVERY frame. Never replace the chair with standing or walking legs. Columns 1-4 propel the wheelchair away; 5-8 propel uphill on an INVISIBLE gentle ramp with effort and wheel rotation; 9-12 control descent on an INVISIBLE gentle ramp. No stair climbing, no stairs or ramps drawn. All chair wheels and footrests fully visible.",
+  "mobility": {
+    "3": "wheelchair"
+  }
+}

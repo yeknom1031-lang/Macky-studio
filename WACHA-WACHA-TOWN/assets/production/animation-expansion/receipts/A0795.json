@@ -1,0 +1,14 @@
+{
+  "id": "A0795",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: stylized-concept. Production sprite sheet for Wacha Wacha Town. Use the attached two winter photographers ONLY as a painting-style, scale and winter costume-material reference. Create ONE NEW DISTINCT photographer, not either reference person: a tall slender elderly woman with warm deep-brown skin, silver hair in two long thin braids, small round copper-rimmed glasses, a plum knitted beanie with a cream pompom, forest-green fitted winter parka with cream fleece collar, mustard wool scarf, deep-purple trousers and lace-up brown winter boots. A small tan cross-body camera pouch stays on her hip. She holds the same compact black-and-silver rectangular camera in ALL eight poses. Gentle overhead three-quarter view facing right, crisp hand-painted storybook chibi style, attractive and readable at miniature game size. Create exactly ONE horizontal row of EIGHT separate full-body sprites, very wide landscape canvas. Columns 1-4: coherent walk cycle with alternating left foot, passing, right foot, passing, holding camera safely at chest height. Columns 5-8: photography work cycle; lift camera to eye, focus, press shutter, lower camera to chest. SAME distinct person, scale, glasses, face, two silver braids, beanie, camera and clothing in all eight frames. Keep head and feet at a fixed scale and planted-foot baseline. Transparent alpha background. No floor, no desk, no scenery, no text, no grid lines, no underfoot shadows. Keep generous transparent gutters around every full head, braids, hands, camera and both shoes. Exactly eight complete sprites, never crop any body part. The design must remain clearly distinct from the gray-bearded blue-parka man and slim green-beanie man in the reference and from a bald wheelchair camera user.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0795.png",
+  "startedAt": "2026-10-04T17:47:25.027203+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a10622-3c3c-7f71-a137-36749bca15a9/exec-ca432282-8dcd-43db-92f6-5370f69f77c3.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0795.png",
+  "sha256": "6df7aaae28e5c5a5c3811d5156f64fd5546f3c5c0e65ce2d391e1ea4ded0e2f1",
+  "finishedAt": "2026-10-04T17:47:48.656117+00:00",
+  "reviewStatus": "accepted",
+  "reviewNotes": "Viewed full generated 1x8 source, neutral-background normalized strip, restored S06 10x8 original atlas and repaired A0150 identity reference. Full distinct C099 and complete wheelchair C100 verified. Frame overrides preserve original source and repair is counted once in 800."
+}

@@ -1,0 +1,27 @@
+{
+  "id": "A0189",
+  "ordinal": 189,
+  "stage": "S08",
+  "kind": "directional",
+  "characters": [
+    "S08-C053",
+    "S08-C054",
+    "S08-C055",
+    "S08-C056"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0189.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 坂道の温泉街. Stage locations: 旅館の玄関|外湯の受付|足湯|坂の商店|旅館の2階|洗濯の中庭|石橋|山側の遊歩道.\nRow 1: S08-C053, 旅館で食事する客 3; action context: 椅子に座って食べる.\nRow 2: S08-C054, 旅館で食事する客 4; action context: 椅子に座って食べる.\nRow 3: S08-C055, 旅館で食事する客 5; action context: 椅子に座って食べる.\nRow 4: S08-C056, 温泉土産の店員 1; action context: お土産を選ぶ.\nContinuity lock: use ONLY the carried items visible in the LEFT walking reference of each row, identically throughout ALL TWELVE poses. Do not introduce the work tools from the right reference. If the left pose has empty hands, ALL twelve poses have empty hands. No tool may appear or disappear between frames. Keep any animal companion from the left reference consistently. Exactly 48 total sprites: 4 rows, precisely 4 rear-walk poses + 4 ascending poses + 4 descending poses in each row. Do not add a fifth pose or a turn-transition pose to any group.",
+  "clipFramesByRow": {
+    "1": {
+      "walkBack": [
+        0,
+        1
+      ]
+    }
+  },
+  "extraction": "components"
+}

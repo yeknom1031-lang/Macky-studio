@@ -1,0 +1,323 @@
+{
+  "id": "A0740",
+  "ordinal": 740,
+  "stage": "S07",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S07: 星灯りのお祭り.\nRow 1: Two fine oval aqua ripple rings with sparse warm gold glints, no pond or fish. animation remains centered at the same point.\nRow 2: Fine bluish transparent mist and droplets, no rocks, wheel or solid water surface. animation remains centered at the same point.\nRow 3: Soft elongated lantern reflections broken into three gentle moving gold strokes, no solid black or blue patch. animation remains centered at the same point.\nRow 4: A handful of very faint firefly-like golden motes gently brightening and dimming asynchronously, no insect bodies. animation remains centered at the same point.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S07-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S07-ENV05",
+      "row": 0,
+      "name": "星映る池の輪",
+      "action": "Two fine oval aqua ripple rings with sparse warm gold glints, no pond or fish",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.700521
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 400.0,
+        "y": 857.0,
+        "width": 66.7826,
+        "height": 47.5596,
+        "depthY": 857.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          400,
+          857
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          64.0,
+          27.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 64.0,
+        "height": 27.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          109
+        ]
+      }
+    },
+    {
+      "id": "S07-ENV06",
+      "row": 1,
+      "name": "夜の滝のしぶき",
+      "action": "Fine bluish transparent mist and droplets, no rocks, wheel or solid water surface",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.596354
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 790.0,
+        "y": 196.0,
+        "width": 62.6087,
+        "height": 57.9866,
+        "depthY": 196.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          790,
+          196
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          60.0,
+          45.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 60.0,
+        "height": 45.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          149
+        ]
+      }
+    },
+    {
+      "id": "S07-ENV07",
+      "row": 2,
+      "name": "橋下の水面光",
+      "action": "Soft elongated lantern reflections broken into three gentle moving gold strokes, no solid black or blue patch",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.708333
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1038.0,
+        "y": 220.0,
+        "width": 57.3913,
+        "height": 52.5283,
+        "depthY": 220.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1038,
+          220
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          55.0,
+          29.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 55.0,
+        "height": 29.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          106
+        ]
+      }
+    },
+    {
+      "id": "S07-ENV08",
+      "row": 3,
+      "name": "ランタンの小光",
+      "action": "A handful of very faint firefly-like golden motes gently brightening and dimming asynchronously, no insect bodies",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.59375
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 791.0,
+        "y": 383.0,
+        "width": 54.2609,
+        "height": 53.76,
+        "depthY": 383.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          791.0,
+          383.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          52.0,
+          42.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 52.0,
+        "height": 42.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          150
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S07-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S07",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S07-background.png",
+        "sha256": "c87cbfc9e0533374693dad6c01515e67e145bf6af9471568953ad1953b90918f",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S07-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0740.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "A0292",
+  "ordinal": 292,
+  "stage": "S12",
+  "kind": "interaction",
+  "characters": [
+    "S12-C065",
+    "S12-C066",
+    "S12-C067",
+    "S12-C068"
+  ],
+  "rows": 4,
+  "cols": 8,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0292.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production sprite animation for Wacha Wacha Town. FOUR equal rows by EIGHT equal columns on a wide landscape TRANSPARENT background. Each reference row shows ONE existing person. Preserve each EXACT face, age, skin, hair, body, clothes, hat and colors. Row1 S12-C065 stocky dark curly bearded male mechanic in olive short sleeves/brown overalls: eight-frame turning a small silver wrench with both hands at chest level on an unseen part. Row2 S12-C066 slim short black-haired rectangular-glasses lighting technician in black utility clothes: eight-frame gently pivoting/adjusting a compact round black portable stage spotlight with warm yellow lens. Row3 S12-C067 gray-haired elderly moustached lighting technician in BLACK TALL TOP HAT with thin gold band and black vest/cream shirt/brown trousers: same eight-frame warm round spotlight inspection, keep his exact tall top hat in EVERY frame, never replace with trapper cap. Row4 S12-C068 dark-skinned slim gray afro-haired older technician in long purple outfit: eight-frame aiming, checking and gently wiping the same portable spotlight. Each row is one continuous meaningful loop with anticipation, effort, recovery. Fixed body size/foot baseline, facing right three-quarter. Full head/hands/feet in every cell, generous gutters. NO floor, shadows, text, grid, scenery or large machinery. Match hand-painted storybook chibi reference. Every sprite isolated; no character enters adjacent cell.",
+  "extraction": "components",
+  "sourceCols": 8,
+  "clipFramesByRow": {
+    "0": {
+      "roleWork": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ]
+    }
+  }
+}

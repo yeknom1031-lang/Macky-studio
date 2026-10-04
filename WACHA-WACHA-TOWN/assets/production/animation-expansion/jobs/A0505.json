@@ -1,0 +1,88 @@
+{
+  "id": "A0505",
+  "ordinal": 505,
+  "stage": "S21",
+  "kind": "directional",
+  "characters": [
+    "S21-C017",
+    "S21-C018",
+    "S21-C019",
+    "S21-C020"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0505.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 雲の上の街. Stage locations: 雲上広場|風車の通り|空中桟橋|雲の庭園|家屋の2階|風工房|空の市場|展望回廊.\nRow 1: S21-C017, 雲形風船の売り手 2; action context: 風船を結んで渡す.\nRow 2: S21-C018, 雲形風船の売り手 3; action context: 風船を結んで渡す.\nRow 3: S21-C019, 雲形風船の売り手 4; action context: 風船を結んで渡す.\nRow 4: S21-C020, 雲形風船の売り手 5; action context: 風船を結んで渡す. LOCOMOTION CONTINUITY: For all TWELVE poses use only the carried items visible in the LEFT walking reference for that row. Do NOT add work tools from the RIGHT reference. Empty walking hands remain empty throughout. Never make an item appear or disappear within a cycle. If a pet accompanies the walking reference, keep that same pet throughout. Each figure occupies at most 70% of its cell height, with generous top and bottom transparent margins.",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      149,
+      293,
+      437,
+      588,
+      743,
+      888,
+      1039,
+      1178,
+      1332,
+      1477,
+      1620,
+      1774
+    ],
+    "1": [
+      0,
+      149,
+      289,
+      432,
+      586,
+      742,
+      893,
+      1037,
+      1183,
+      1336,
+      1475,
+      1617,
+      1774
+    ],
+    "2": [
+      0,
+      150,
+      286,
+      429,
+      587,
+      749,
+      892,
+      1037,
+      1178,
+      1326,
+      1475,
+      1618,
+      1774
+    ],
+    "3": [
+      0,
+      150,
+      293,
+      435,
+      592,
+      749,
+      889,
+      1030,
+      1174,
+      1321,
+      1466,
+      1616,
+      1774
+    ]
+  },
+  "extractionNotes": "Source row counts and pose-group boundaries visually checked. Column crops follow actual transparent gutters; generated PNG preserved."
+}

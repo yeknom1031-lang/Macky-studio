@@ -1,0 +1,18 @@
+{
+  "id": "A0797",
+  "ordinal": 797,
+  "stage": "S07",
+  "kind": "interaction",
+  "characters": [
+    "S07-C087",
+    "S10-C018"
+  ],
+  "rows": 2,
+  "cols": 8,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0797.png",
+  "transparent": true,
+  "status": "planned",
+  "alsoRepairsOriginalFrames": true,
+  "purpose": "Repair original work poses showing a different person for S07-C087, and changing coat for S10-C018.",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. Exactly preserve the TWO people top-to-bottom from reference, one complete person per row. TWO equal rows by EIGHT equal columns on wide transparent canvas. Same crisp hand-painted storybook chibi style and gentle overhead three-quarter right-facing view. Row 1: the muscular warm brown-skinned elderly stagehand with long wavy SILVER hair, sleeveless NAVY shirt with GOLD STAR on chest, gold piping and toolbelt, dark trousers and gloves. Eight coherent poses opening and closing a small burgundy theater curtain hanging immediately to their right. Face, silver hair, sleeveless navy clothes NEVER change to black hair or green shirt. Keep the curtain the same small size/location throughout; do not wrap it around the person. Row 2: the bald smiling harbor sailor with tiny curled brown moustache, rust-red scarf, long OLIVE GREEN waistcoat with gold edging over cream rolled sleeves, brown trousers and boots. Eight coherent poses turning a small waist-high wooden ships wheel, looking to sea, then returning. The olive waistcoat must remain OLIVE GREEN in all eight poses, never navy. Fixed person scale, stable planted-foot baseline, fully visible bodies and both boots. Transparent alpha background. No additional people, backdrop, floor, text, labels, grid or shadows. Generous empty gutters between 16 isolated full-body sprites; props remain inside their own cells."
+}

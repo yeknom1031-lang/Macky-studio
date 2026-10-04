@@ -1,0 +1,127 @@
+{
+  "id": "A0578",
+  "ordinal": 578,
+  "stage": "S24",
+  "kind": "directional",
+  "characters": [
+    "S24-C009",
+    "S24-C010",
+    "S24-C011",
+    "S24-C012"
+  ],
+  "rows": 4,
+  "cols": 12,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0578.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by TWELVE equal columns, 48 separate sprites. Columns 1-4: four sequential poses of a BACK-VIEW walk cycle going away from the viewer, show the back of the head and outfit, no face looking at camera. Columns 5-8: four sequential poses ASCENDING stairs diagonally up-right, three-quarter rear view, lean forward slightly, alternate high knee and planted lower foot, believable upward effort. Columns 9-12: four sequential poses DESCENDING stairs diagonally down-right, three-quarter front view, careful lower-reaching foot and counterbalancing arms, clearly different from flat walking. Do not draw stairs: the game supplies the exact staircase under their feet. Small carried tools remain identifiable but are held safely near the body during movement. Wide landscape canvas, ideally 2048 by 1024. Stage: 世界のお祭り大集合. Stage locations: 中央パレード道|世界の食市場|水辺舞台|職人長屋|展望2階回廊|動物の休憩所|鉄道広場|大きな庭園.\nRow 1: S24-C009, 香辛料の商人 4; action context: 香辛料をすくう.\nRow 2: S24-C010, 香辛料の商人 5; action context: 香辛料をすくう.\nRow 3: S24-C011, 記念ケーキの職人 1; action context: ケーキを飾る.\nRow 4: S24-C012, 記念ケーキの職人 2; action context: ケーキを飾る. LOCOMOTION CONTINUITY: For all TWELVE poses use only the carried items visible in the LEFT walking reference for that row. Do NOT add work tools from the RIGHT reference. Empty walking hands remain empty throughout. Never make an item appear or disappear within a cycle. If a pet accompanies the walking reference, keep that same pet throughout. Each figure occupies at most 70% of its cell height, with generous top and bottom transparent margins.",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      160,
+      294,
+      431,
+      581,
+      744,
+      890,
+      1025,
+      1174,
+      1326,
+      1465,
+      1606,
+      1774
+    ],
+    "1": [
+      0,
+      161,
+      296,
+      430,
+      587,
+      751,
+      895,
+      1032,
+      1172,
+      1331,
+      1469,
+      1609,
+      1774
+    ],
+    "2": [
+      0,
+      161,
+      291,
+      427,
+      579,
+      748,
+      891,
+      1028,
+      1170,
+      1322,
+      1459,
+      1604,
+      1774
+    ],
+    "3": [
+      0,
+      162,
+      294,
+      428,
+      584,
+      743,
+      889,
+      1027,
+      1179,
+      1330,
+      1468,
+      1611,
+      1774
+    ]
+  },
+  "sourceCols": 12,
+  "sourceColumns": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "disabledClipsByRow": {
+    "0": [
+      "stairUp",
+      "stairDown"
+    ],
+    "1": [
+      "stairUp",
+      "stairDown"
+    ],
+    "2": [
+      "stairUp",
+      "stairDown"
+    ],
+    "3": [
+      "stairUp",
+      "stairDown"
+    ]
+  },
+  "reviewNotes": "Reference, raw transparent source and all 48 packed cells visually checked. Back silhouettes match empty-handed originals; front/up cycles introduce right-reference-only food props, so only walkBack is used."
+}

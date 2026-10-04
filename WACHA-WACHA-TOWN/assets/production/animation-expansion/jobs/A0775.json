@@ -1,0 +1,363 @@
+{
+  "id": "A0775",
+  "ordinal": 775,
+  "stage": "S19",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S19: 雪山のリゾート.\nRow 1: Two carved pinecone bells on a little red cord, fixed top and gentle alpine wind sway. top-center attachment remains absolutely fixed.\nRow 2: A small red cream and blue windsock, fixed support at opening, fabric tail billows softly. top-center attachment remains absolutely fixed.\nRow 3: Two short red and gold fabric ribbons tied in one fixed knot, tails flutter, no ski equipment. top-center attachment remains absolutely fixed.\nRow 4: Three soft warm white steam curls rising and fading, no mug or food. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S19-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S19-ENV01",
+      "row": 0,
+      "name": "山小屋の木鈴",
+      "action": "Two carved pinecone bells on a little red cord, fixed top and gentle alpine wind sway",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1576.0,
+        "y": 422.0,
+        "width": 78.3158,
+        "height": 108.5217,
+        "depthY": 422.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          788,
+          211
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          31.0,
+          52.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 62.0,
+        "height": 104.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          152,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S19-ENV02",
+      "row": 1,
+      "name": "リフト小屋の吹き流し",
+      "action": "A small red cream and blue windsock, fixed support at opening, fabric tail billows softly",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.114583
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 990.0,
+        "y": 436.0,
+        "width": 127.3043,
+        "height": 75.8802,
+        "depthY": 436.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          495.0,
+          218.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          61.0,
+          33.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 122.0,
+        "height": 66.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          167
+        ]
+      }
+    },
+    {
+      "id": "S19-ENV03",
+      "row": 2,
+      "name": "スキー店の飾り紐",
+      "action": "Two short red and gold fabric ribbons tied in one fixed knot, tails flutter, no ski equipment",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 252.0,
+        "y": 1020.0,
+        "width": 76.8,
+        "height": 100.1739,
+        "depthY": 1020.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          126.0,
+          510.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          35.0,
+          48.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 70.0,
+        "height": 96.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          175,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S19-ENV04",
+      "row": 3,
+      "name": "山のカフェの湯気",
+      "action": "Three soft warm white steam curls rising and fading, no mug or food",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1710.0,
+        "y": 288.0,
+        "width": 68.88,
+        "height": 73.0435,
+        "depthY": 288.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          855,
+          144
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          41.0,
+          50.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 57.4,
+        "height": 70.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          160,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S19-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S19",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      3344,
+      1882
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-background.png",
+        "sha256": "859f79fa4c5b38baae5c91cfa6469b5c0f2688ddea58a602a3cbd5fe6830b2b3",
+        "worldBounds": [
+          0,
+          0,
+          3344,
+          1882
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-detail-0.png",
+        "sha256": "c8802689095567a5904d35f1e6f19f2674f60551bf0d168dc4d88de42683a65b",
+        "worldBounds": [
+          0,
+          0,
+          1839.2,
+          1035.1000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-detail-1.png",
+        "sha256": "e6417cb0c654c4ab247c06fa246c72c6d1b4ea555f81c42749005888d031d6df",
+        "worldBounds": [
+          1504.8,
+          0,
+          1839.2,
+          1035.1000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-detail-2.png",
+        "sha256": "256c2793a6ba9fd2f64844443a92a06ff3534da38d73e43b160fd372fd298ffa",
+        "worldBounds": [
+          0,
+          846.9,
+          1839.2,
+          1035.1000000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S19-detail-3.png",
+        "sha256": "6b9b633bd84a65956a9fa3bb0a7005b8b46a716b040092b141045a2eaa8bce19",
+        "worldBounds": [
+          1504.8,
+          846.9,
+          1839.2,
+          1035.1000000000001
+        ]
+      }
+    ],
+    "referenceSHA256": "6b8e7f439f8511520d05a9497e32a367124dc8f1f9033b1ae5796e1014fa452c"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S19-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0775.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "id": "A0727",
+  "ordinal": 727,
+  "stage": "S03",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S03: 海辺のマルシェ.\nRow 1: A small weathered blue and white striped fabric windsock attached to a fixed short bracket, opening stable and tail billowing. top-center attachment remains absolutely fixed.\nRow 2: A very short pair of indigo fabric streamers on a fixed horizontal cord, subtle wave emblem without letters, fluttering ends. top-center attachment remains absolutely fixed.\nRow 3: Three small pearly shells hanging from a driftwood twig, each sways at a different delay, top hook fixed. top-center attachment remains absolutely fixed.\nRow 4: Thin white fragrant steam from a grill, curling upwards in three uneven wisps, no grill or food. bottom-center support remains absolutely fixed.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S03-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S03-ENV01",
+      "row": 0,
+      "name": "港の吹き流し",
+      "action": "A small weathered blue and white striped fabric windsock attached to a fixed short bracket, opening stable and tail billowing",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.28125
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 596.0,
+        "y": 20.0,
+        "width": 63.6522,
+        "height": 46.9333,
+        "depthY": 20.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          596,
+          20
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          61.0,
+          33.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "af37619045b01edab94b726f8ca662aeb3898f0d8db35ae57127d61dd11db07f"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 61.0,
+        "height": 33.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          135
+        ]
+      }
+    },
+    {
+      "id": "S03-ENV02",
+      "row": 1,
+      "name": "魚屋の暖簾",
+      "action": "A very short pair of indigo fabric streamers on a fixed horizontal cord, subtle wave emblem without letters, fluttering ends",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.177083
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 67.0,
+        "y": 85.0,
+        "width": 44.8696,
+        "height": 47.071,
+        "depthY": 85.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          67,
+          85
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          43.0,
+          38.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "af37619045b01edab94b726f8ca662aeb3898f0d8db35ae57127d61dd11db07f"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 43.0,
+        "height": 38.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          155
+        ]
+      }
+    },
+    {
+      "id": "S03-ENV03",
+      "row": 2,
+      "name": "貝のウインドチャイム",
+      "action": "Three small pearly shells hanging from a driftwood twig, each sways at a different delay, top hook fixed",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.046875
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1484.0,
+        "y": 443.0,
+        "width": 36.5217,
+        "height": 61.8667,
+        "depthY": 443.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1484,
+          443
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          35.0,
+          58.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "af37619045b01edab94b726f8ca662aeb3898f0d8db35ae57127d61dd11db07f"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 35.0,
+        "height": 58.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          180
+        ]
+      }
+    },
+    {
+      "id": "S03-ENV04",
+      "row": 3,
+      "name": "焼き魚の湯気",
+      "action": "Thin white fragrant steam from a grill, curling upwards in three uneven wisps, no grill or food",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 500.0,
+        "y": 807.0,
+        "width": 72.1702,
+        "height": 49.0435,
+        "depthY": 807.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          500,
+          807
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          53.0,
+          47.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "af37619045b01edab94b726f8ca662aeb3898f0d8db35ae57127d61dd11db07f"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 53.0,
+        "height": 47.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          141,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S03-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S03",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S03-background.png",
+        "sha256": "b89a76b9c6925c94f5857f2df32768495622665fd0d66f988f9b7f4ba0e3efb3",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "af37619045b01edab94b726f8ca662aeb3898f0d8db35ae57127d61dd11db07f"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S03-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0727.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

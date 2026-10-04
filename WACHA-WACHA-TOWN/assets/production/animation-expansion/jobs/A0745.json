@@ -1,0 +1,323 @@
+{
+  "id": "A0745",
+  "ordinal": 745,
+  "stage": "S09",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S09: 大きな鉄道駅.\nRow 1: A compact pair of blue and cream railway pennants on a fixed short cord, cloth ripples gently, no letters. top-center attachment remains absolutely fixed.\nRow 2: Fine warm coffee steam rising in two irregular curls, no cup or table. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 3: A tiny brass and sage desk fan with protective cage and stable base, blades rotate smoothly. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 4: A tied blue satin bouquet ribbon, bow center fixed and loose ends fluttering, no bouquet. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S09-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S09-ENV01",
+      "row": 0,
+      "name": "駅の合図小旗",
+      "action": "A compact pair of blue and cream railway pennants on a fixed short cord, cloth ripples gently, no letters",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.359375
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 878.98,
+        "y": 178.6,
+        "width": 79.0049,
+        "height": 56.784,
+        "depthY": 178.6,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          743.0,
+          151.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          64.0,
+          30.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "2720a43579722fc09278203fb5e0956a3faf42292214649d019f2f51e5bd257d"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 75.713,
+        "height": 35.49,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          120
+        ]
+      }
+    },
+    {
+      "id": "S09-ENV02",
+      "row": 1,
+      "name": "駅カフェの湯気",
+      "action": "Fine warm coffee steam rising in two irregular curls, no cup or table",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 315.8646,
+        "y": 632.7892,
+        "width": 62.7856,
+        "height": 56.785,
+        "depthY": 632.7892,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          267,
+          535
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          34.0,
+          46.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "2720a43579722fc09278203fb5e0956a3faf42292214649d019f2f51e5bd257d"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 40.222,
+        "height": 54.419,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          123,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S09-ENV03",
+      "row": 2,
+      "name": "荷物窓口の小扇風機",
+      "action": "A tiny brass and sage desk fan with protective cage and stable base, blades rotate smoothly",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1194.844,
+        "y": 756.982,
+        "width": 61.4819,
+        "height": 51.8473,
+        "depthY": 756.982,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1010.0,
+          640.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          36.0,
+          42.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "2720a43579722fc09278203fb5e0956a3faf42292214649d019f2f51e5bd257d"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 42.589,
+        "height": 49.687,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          133,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S09-ENV04",
+      "row": 3,
+      "name": "花売り場のリボン",
+      "action": "A tied blue satin bouquet ribbon, bow center fixed and loose ends fluttering, no bouquet",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 1153.4392,
+        "y": 350.1041,
+        "width": 48.144,
+        "height": 63.7861,
+        "depthY": 350.1041,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          975,
+          296
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          39.0,
+          41.0
+        ],
+        "surface": "planter",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "2720a43579722fc09278203fb5e0956a3faf42292214649d019f2f51e5bd257d"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 46.138,
+        "height": 48.504,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          146
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S09-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S09",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1978,
+      1113
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S09-background.png",
+        "sha256": "80e0027627475829d77ff3959dad91d66548f2bc4270a8ab05db83d79624faff",
+        "worldBounds": [
+          0,
+          0,
+          1978,
+          1113
+        ]
+      }
+    ],
+    "referenceSHA256": "2720a43579722fc09278203fb5e0956a3faf42292214649d019f2f51e5bd257d"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S09-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0745.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

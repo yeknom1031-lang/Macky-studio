@@ -1,0 +1,15 @@
+{
+  "id": "A0798",
+  "tool": "built-in image_gen.imagegen",
+  "prompt": "Use case: identity-preserve. Exactly preserve the FOUR existing characters in the attached reference, one per row. Match each face, body, age, skin, hair, hat, outfit colors and hand-painted storybook chibi style. FOUR ROWS by TWELVE COLUMNS, 48 isolated full-body sprites, true transparent alpha background. First four columns back-view walking away. Next four columns ascending diagonal stairs, three-quarter rear view. Last four columns descending diagonal stairs, three-quarter front view. Row 4 is a wheelchair user: all twelve poses are ground-level rolling, rear / side-rear / front-side respectively, no stairs, no walking legs. CRITICAL PROPS: Row 1 ALWAYS holds the small ROUND HAND DRUM from reference in front of the chest in the left hand; beige circular skin with brown wooden rim. This is a handheld frame drum, not a marching drum, no harness. Row 2 ALWAYS carries the large vintage black twin-lens camera at chest level, identical throughout. Row 3 ALWAYS has the small dark camera hanging at chest from a neck strap, identical throughout. Row 4 ALWAYS uses the same navy wheelchair and holds the LARGE BOX CAMERA on their lap in EVERY pose. From rear, retain plausible visible prop side silhouette and straps, not a second mirrored prop. The wheelchair stays intact including both wheels, footrests and feet. No new hats, clothes, bags, recolors or handheld items. Maintain scale and foot/wheel baseline across each row. Clear changing limb or wheel motion with props stable. Do not draw floors, stairs, scenery, labels, text or grids. Generous transparent gutters around all heads, hands, feet, camera equipment, handheld round drum and wheelchair. Wide landscape canvas, ideally 2048 by 1024.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0798.png",
+  "startedAt": "2026-10-04T18:24:22.432011+00:00",
+  "state": "generated-unreviewed",
+  "savedFrom": "/Users/makibook/.codex/generated_images/01a0e83d-8460-7b80-81e2-e2d4d0909f18/exec-1a7f5f47-c5fc-477d-9ebb-132393e77cf5.png",
+  "savedPath": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/source/A0798.png",
+  "sha256": "18491e0dd90d02ef2963814d77994fb09d30e46030b828022f5819765d9f041a",
+  "finishedAt": "2026-10-04T18:25:51.853690+00:00",
+  "reviewStatus": "accepted",
+  "reviewedAt": "2026-10-04T18:34:02.843369+00:00",
+  "reviewNotes": "Manually reviewed source and complete normalized pose contact sheets. Complete heads, hands, feet and wheelchair retained. A0798 restores the round drum and camera clues in every direction. A0799/A0800 preserve empty-handed walking identities without work-only props. Component extraction checked after removing inherited source boundaries."
+}

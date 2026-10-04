@@ -1,0 +1,363 @@
+{
+  "id": "A0755",
+  "ordinal": 755,
+  "stage": "S12",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S12: 大きな遊園地.\nRow 1: A small crown of clear cyan water droplets splashing up and falling, no pool or solid water background. animation remains centered at the same point.\nRow 2: A fine pale aqua fountain spray with transparent wispy edges, no basin. animation remains centered at the same point.\nRow 3: Five tiny transparent bubbles drifting above faint oval water ripples, no solid disk. animation remains centered at the same point.\nRow 4: A narrow ribbon of translucent falling water breaking into droplets, no cup or metal structure. animation remains centered at the same point.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S12-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S12-ENV05",
+      "row": 0,
+      "name": "水遊びの飛沫",
+      "action": "A small crown of clear cyan water droplets splashing up and falling, no pool or solid water background",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.567708
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1230.5917,
+        "y": 827.455,
+        "width": 113.6494,
+        "height": 78.0792,
+        "depthY": 827.455,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          870,
+          585
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          77.0,
+          46.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "f4517e1874b12a60058e10f5a90dd002302185fd37939df46c373274f1152d53"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 108.914,
+        "height": 65.066,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          160
+        ]
+      }
+    },
+    {
+      "id": "S12-ENV06",
+      "row": 1,
+      "name": "入園口の噴水霧",
+      "action": "A fine pale aqua fountain spray with transparent wispy edges, no basin",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 424.342,
+        "y": 1055.1815,
+        "width": 101.8424,
+        "height": 67.895,
+        "depthY": 1055.1815,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          300,
+          746
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          69.0,
+          46.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "f4517e1874b12a60058e10f5a90dd002302185fd37939df46c373274f1152d53"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 97.599,
+        "height": 65.066,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S12-ENV07",
+      "row": 2,
+      "name": "水路の虹色泡",
+      "action": "Five tiny transparent bubbles drifting above faint oval water ripples, no solid disk",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1903.882,
+        "y": 1268.764,
+        "width": 114.1666,
+        "height": 63.4664,
+        "depthY": 1268.764,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1346.0,
+          897.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          66.0,
+          43.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "f4517e1874b12a60058e10f5a90dd002302185fd37939df46c373274f1152d53"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 93.355,
+        "height": 60.822,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          157,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S12-ENV08",
+      "row": 3,
+      "name": "カップ噴水の落水",
+      "action": "A narrow ribbon of translucent falling water breaking into droplets, no cup or metal structure",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 1282.928,
+        "y": 654.892,
+        "width": 152.5295,
+        "height": 95.9384,
+        "depthY": 654.892,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          907.0,
+          463.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          41.0,
+          65.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "f4517e1874b12a60058e10f5a90dd002302185fd37939df46c373274f1152d53"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 57.993,
+        "height": 91.941,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          73,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S12-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S12",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      2365,
+      1331
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S12-background.png",
+        "sha256": "44e739b472492029895ea4f920d1e5304d1f14071bb50339c8d7287e096aa590",
+        "worldBounds": [
+          0,
+          0,
+          2365,
+          1331
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S12-detail-0.png",
+        "sha256": "ef79c3aca075d9cc87816bfdb62a02fa9f8430ee71186bc1cf3c5115e2bf0e25",
+        "worldBounds": [
+          0,
+          0,
+          1300.75,
+          732.0500000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S12-detail-1.png",
+        "sha256": "3d44512924ac858edf6d774ec35ae825e090fcd5a1885e4099a0579f54b507c8",
+        "worldBounds": [
+          1064.25,
+          0,
+          1300.75,
+          732.0500000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S12-detail-2.png",
+        "sha256": "977ae75d0520126e74934c7275ba57b036805d16eb97dad35f422fe58a84ae9f",
+        "worldBounds": [
+          0,
+          598.95,
+          1300.75,
+          732.0500000000001
+        ]
+      },
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S12-detail-3.png",
+        "sha256": "9d1c209de4468d2208270e884684ec7e7b1c19de50f14713fdde6d6786bb470b",
+        "worldBounds": [
+          1064.25,
+          598.95,
+          1300.75,
+          732.0500000000001
+        ]
+      }
+    ],
+    "referenceSHA256": "f4517e1874b12a60058e10f5a90dd002302185fd37939df46c373274f1152d53"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S12-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0755.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

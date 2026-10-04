@@ -1,0 +1,323 @@
+{
+  "id": "A0741",
+  "ordinal": 741,
+  "stage": "S07",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S07: 星灯りのお祭り.\nRow 1: Four pale pink blossom petals softly drifting and turning, a little warm edge light, no branches. animation remains centered at the same point.\nRow 2: Three tiny indigo and gold paper stars on hanging strings, top bar fixed, stars sway with slight delay. top-center attachment remains absolutely fixed.\nRow 3: A small brass three-ring armillary ornament rotating slowly on a stable tabletop base, no glow or scenery. bottom-center emission origin or actual object base remains absolutely fixed; for steam, smoke, dust and light effects draw NO base, stand, pedestal, burner, cup or other solid support.\nRow 4: Two long midnight-blue silk ribbons on a gold knot, knot fixed, ribbons flutter gently. top-center attachment remains absolutely fixed.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S07-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S07-ENV09",
+      "row": 0,
+      "name": "桜の夜の花びら",
+      "action": "Four pale pink blossom petals softly drifting and turning, a little warm edge light, no branches",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 275.0,
+        "y": 807.0,
+        "width": 73.2,
+        "height": 63.6522,
+        "depthY": 807.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          275.0,
+          807.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          61.0,
+          61.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 61.0,
+        "height": 61.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          160,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S07-ENV10",
+      "row": 1,
+      "name": "星祭りの紙モビール",
+      "action": "Three tiny indigo and gold paper stars on hanging strings, top bar fixed, stars sway with slight delay",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1525.0,
+        "y": 381.0,
+        "width": 42.6667,
+        "height": 60.5217,
+        "depthY": 381.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1525.0,
+          381.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          38.0,
+          58.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 38.0,
+        "height": 58.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          171,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S07-ENV11",
+      "row": 2,
+      "name": "天文台の回転飾り",
+      "action": "A small brass three-ring armillary ornament rotating slowly on a stable tabletop base, no glow or scenery",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 627.0,
+        "y": 823.0,
+        "width": 33.635,
+        "height": 25.0435,
+        "depthY": 823.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          627,
+          823
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          38.0,
+          45.0
+        ],
+        "surface": "table",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 24.0,
+        "height": 24.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          137,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S07-ENV12",
+      "row": 3,
+      "name": "楽屋の揺れるリボン",
+      "action": "Two long midnight-blue silk ribbons on a gold knot, knot fixed, ribbons flutter gently",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.026042
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 1552.0,
+        "y": 780.0,
+        "width": 51.5436,
+        "height": 55.3043,
+        "depthY": 780.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          1552,
+          780
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          40.0,
+          53.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 40.0,
+        "height": 53.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          149,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S07-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S07",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S07-background.png",
+        "sha256": "c87cbfc9e0533374693dad6c01515e67e145bf6af9471568953ad1953b90918f",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "87f2d61e3fdc9746ac8484ff1fd89c6c3d6e14d4efe79de528b89f6250c6e98b"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S07-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0741.png",
+  "rowBoundaries": [
+    0,
+    222,
+    434,
+    654,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "id": "A0725",
+  "ordinal": 725,
+  "stage": "S02",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S02: 花咲くガーデン.\nRow 1: Fine translucent aqua mist and little droplets in a shallow arc, no fountain or opaque base. animation remains centered at the same point.\nRow 2: Small white foam crescents and scattered clear bubbles above an oval blue-green pond, no rocks or opaque pond. animation remains centered at the same point.\nRow 3: Two delicate oval ripple rings passing one another around clear gaps, no plants or solid water. animation remains centered at the same point.\nRow 4: Three bright clear drops dripping from a fixed short green leaf tip, leaf tip stationary, no branch or pot. bottom-center support remains absolutely fixed.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S02-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S02-ENV05",
+      "row": 0,
+      "name": "花噴水の霧",
+      "action": "Fine translucent aqua mist and little droplets in a shallow arc, no fountain or opaque base",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.604167
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 845.0,
+        "y": 451.0,
+        "width": 67.8261,
+        "height": 55.2329,
+        "depthY": 451.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          845.0,
+          451.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          65.0,
+          42.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 65.0,
+        "height": 42.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          146
+        ]
+      }
+    },
+    {
+      "id": "S02-ENV06",
+      "row": 1,
+      "name": "滝壺の泡",
+      "action": "Small white foam crescents and scattered clear bubbles above an oval blue-green pond, no rocks or opaque pond",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.583333
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 270.0,
+        "y": 511.0,
+        "width": 72.0,
+        "height": 44.8831,
+        "depthY": 511.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          270.0,
+          511.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          69.0,
+          36.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 69.0,
+        "height": 36.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          154
+        ]
+      }
+    },
+    {
+      "id": "S02-ENV07",
+      "row": 2,
+      "name": "睡蓮池の輪",
+      "action": "Two delicate oval ripple rings passing one another around clear gaps, no plants or solid water",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.708333
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 619.0,
+        "y": 266.0,
+        "width": 65.7391,
+        "height": 52.5283,
+        "depthY": 266.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          619.0,
+          266.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          63.0,
+          29.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 63.0,
+        "height": 29.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          106
+        ]
+      }
+    },
+    {
+      "id": "S02-ENV08",
+      "row": 3,
+      "name": "雨上がりの葉しずく",
+      "action": "Three bright clear drops dripping from a fixed short green leaf tip, leaf tip stationary, no branch or pot",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.984375
+      ],
+      "layer": "depth",
+      "motion": "fixed",
+      "placement": {
+        "x": 995.0,
+        "y": 132.0,
+        "width": 50.243,
+        "height": 49.0435,
+        "depthY": 132.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          995.0,
+          132.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          28.0,
+          47.0
+        ],
+        "surface": "planter",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+      },
+      "sizePolicy": "human-scale-capped-1.4",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 28.0,
+        "height": 47.0,
+        "anchor": [
+          0.5,
+          1
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          107,
+          184
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S02-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S02",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S02-background.png",
+        "sha256": "a78caf8200900115c8b9401740f0dc912e2b736fb44e033047498af7fa9381b8",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "4c8b029b7afc27f3f3bf4f8fae62a057b73a61f9839d873d93831ec1489dc19d"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S02-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0725.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    659,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}

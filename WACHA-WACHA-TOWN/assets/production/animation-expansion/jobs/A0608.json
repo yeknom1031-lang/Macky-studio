@@ -1,0 +1,24 @@
+{
+  "id": "A0608",
+  "ordinal": 608,
+  "stage": "S02",
+  "kind": "interaction",
+  "characters": [
+    "S02-C041",
+    "S02-C046",
+    "S02-C051",
+    "S02-C056"
+  ],
+  "rows": 4,
+  "cols": 8,
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0608.png",
+  "transparent": true,
+  "status": "planned",
+  "prompt": "Use case: identity-preserve. Production animation sprite sheet for Wacha Wacha Town. The supplied reference contains FOUR existing characters, top to bottom, each shown in two original poses. Create new poses of EXACTLY these four people, one person per row. Preserve each face, body proportions, skin tone, hairstyle, hat, accessories, outfit construction and EXACT clothing colors. No redesigns or recolors. Match their crisp hand-painted storybook chibi rendering and gentle overhead three-quarter perspective. True transparent alpha background. No floor, scenery, stairs, labels, text, grid lines or shadows under feet. Every cell has generous empty gutters and complete head, hands and feet. Keep fixed character scale and foot baseline across a row; animate limbs and posture, do not translate the character across cells. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 separate sprites. Each row is one expressive, coherent EIGHT-FRAME seamless loop of the stated role action, with clear anticipation, contact/effort, follow-through and recovery. Hands interact convincingly at waist/chest height with portable tools or an unseen counter in front-right. Keep the original portable tools; do not attach a large counter, building, chair or floor to the sprite. Facing front-right three-quarter. Make genuinely different body poses, not identical copies. Landscape canvas, ideally 1536 by 1024. Stage: 花咲くガーデン. Stage locations: 温室|苗販売所|噴水広場|バラのアーチ|庭師小屋の2階|池の桟橋|芝生の休憩所|養蜂区画.\nRow 1: S02-C041, 菜園の収穫係 1; action context: 作物を収穫する.\nRow 2: S02-C046, 落ち葉の清掃係 1; action context: 落ち葉を集める.\nRow 3: S02-C051, 果樹園の摘み取り係 1; action context: 果実を摘む.\nRow 4: S02-C056, 動物のブラッシング係 1; action context: 動物をブラッシングする.",
+  "acceptedRows": [
+    0,
+    1,
+    2,
+    3
+  ]
+}

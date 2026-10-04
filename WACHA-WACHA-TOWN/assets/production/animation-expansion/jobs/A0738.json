@@ -1,0 +1,323 @@
+{
+  "id": "A0738",
+  "ordinal": 738,
+  "stage": "S06",
+  "kind": "environment",
+  "rows": 4,
+  "cols": 8,
+  "prompt": "Use case: game-asset. Create ONE high-quality environment animation sprite sheet for Wacha Wacha Town. Match the hand-painted storybook toy-town look and gentle overhead three-quarter perspective of the supplied town background reference. The reference is the exact finished town background. Use it only for the hand-painted style, lighting, perspective and stage-specific materials. Do NOT reproduce any scene, architecture, people, placement marks or background signs. Create ONLY the four NEW small transparent animated details described below. EXACT GRID: FOUR equal rows by EIGHT equal columns, 32 isolated sprites. Each row is the same object in eight sequential frames of ONE smooth seamless loop. TRUE transparent alpha background everywhere around and between sprites; no white or colored canvas, no floor, no square glow, no matte, no drop shadows. No text, labels, borders, guides, grids or watermarks. Every cell must contain the complete animation silhouette with generous transparent gutters. Keep an identical scale and stable anchor across all eight cells in each row; no cumulative object translation or scale changes. Show clear but gentle sequential motion rather than eight identical copies. First and last frames connect smoothly. Each object must remain finely detailed and readable at a small in-game size; avoid excessive micro-detail or flashing effects. Do not draw additional equipment already present in the background. No human or animal characters. Landscape canvas ideally 2048 x 1024. Stage S06: 雪のマーケット.\nRow 1: Six distinct tiny snowflakes drifting in a slow loop with varied spacing, no cloud or fog. animation remains centered at the same point.\nRow 2: A sparse little puff of fine powdered snow falling and dispersing, no tree or branch. animation remains centered at the same point.\nRow 3: Three little red and cream triangular bunting flags on a fixed cord, softly rippling rather than stiff rotation. top-center attachment remains absolutely fixed.\nRow 4: A few soft reflected white and cyan glints sliding along a flat icy surface, no solid disk and no flashing effect. animation remains centered at the same point.\n\nCRITICAL ATLAS LAYOUT: All FOUR rows have exactly the SAME HEIGHT and all EIGHT columns have exactly the SAME WIDTH. Do not pack short objects into a shorter row. Keep every sprite entirely inside its own equal cell with 12 percent clear padding on all four sides. No clipped extremities, no sprite crossing any cell edge. Fixed-top hooks sit 12 percent below the top cell edge; fixed-bottom supports sit 12 percent above the bottom cell edge. All frames within a row share that exact anchor.",
+  "reference": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S06-runtime-background.png",
+  "transparent": true,
+  "objects": [
+    {
+      "id": "S06-ENV09",
+      "row": 0,
+      "name": "小雪の舞",
+      "action": "Six distinct tiny snowflakes drifting in a slow loop with varied spacing, no cloud or fog",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.546875
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 682.0,
+        "y": 582.0,
+        "width": 73.0435,
+        "height": 86.8571,
+        "depthY": 582.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          682.0,
+          582.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          70.0,
+          76.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 70.0,
+        "height": 76.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          168
+        ]
+      }
+    },
+    {
+      "id": "S06-ENV10",
+      "row": 1,
+      "name": "松枝の粉雪",
+      "action": "A sparse little puff of fine powdered snow falling and dispersing, no tree or branch",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.505208
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 69.0,
+        "y": 657.0,
+        "width": 79.4483,
+        "height": 58.4348,
+        "depthY": 657.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          69.0,
+          657.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          60.0,
+          56.0
+        ],
+        "surface": "air",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 60.0,
+        "height": 56.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          145,
+          184
+        ]
+      }
+    },
+    {
+      "id": "S06-ENV11",
+      "row": 2,
+      "name": "赤い冬の小旗",
+      "action": "Three little red and cream triangular bunting flags on a fixed cord, softly rippling rather than stiff rotation",
+      "frames": 8,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.484375
+      ],
+      "layer": "sky",
+      "motion": "fixed",
+      "placement": {
+        "x": 970.0,
+        "y": 422.0,
+        "width": 76.1739,
+        "height": 60.0,
+        "depthY": 422.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          970,
+          422
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          73.0,
+          30.0
+        ],
+        "surface": "eave",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 73.0,
+        "height": 30.0,
+        "anchor": [
+          0.5,
+          0
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          96
+        ]
+      }
+    },
+    {
+      "id": "S06-ENV12",
+      "row": 3,
+      "name": "氷のきらめき",
+      "action": "A few soft reflected white and cyan glints sliding along a flat icy surface, no solid disk and no flashing effect",
+      "frames": 8,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        0.5,
+        0.661458
+      ],
+      "layer": "underActors",
+      "motion": "fixed",
+      "placement": {
+        "x": 626.0,
+        "y": 139.0,
+        "width": 80.3478,
+        "height": 46.4516,
+        "depthY": 139.0,
+        "coordinateSpace": "world",
+        "referencePosition": [
+          626.0,
+          139.0
+        ],
+        "referenceSize": [
+          1672,
+          941
+        ],
+        "referenceDimensions": [
+          77.0,
+          30.0
+        ],
+        "surface": "water",
+        "integration": "additive",
+        "collision": false,
+        "backgroundReferenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+      },
+      "sizePolicy": "background-relative",
+      "reviewState": "source-and-background-placement-accepted-runtime-pending",
+      "intendedVisibleGeometry": {
+        "width": 77.0,
+        "height": 30.0,
+        "anchor": [
+          0.5,
+          0.5
+        ]
+      },
+      "packedPlacementCorrection": {
+        "method": "Map the full-row visible union to intended world dimensions; registration anchor follows actual visible bounds",
+        "frameSize": 192,
+        "visibleSize": [
+          184,
+          124
+        ]
+      }
+    }
+  ],
+  "status": "generated-awaiting-runtime-integration",
+  "referenceBackground": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S06-runtime-background.png",
+  "referenceProvenance": {
+    "stage": "S06",
+    "referenceSize": [
+      1672,
+      941
+    ],
+    "worldSize": [
+      1672,
+      941
+    ],
+    "sources": [
+      {
+        "path": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/quality/source/S06-background.png",
+        "sha256": "3963fb1440aec77619a0fc80b272c734026ab83628bff0e4297d2ddfb0623eaa",
+        "worldBounds": [
+          0,
+          0,
+          1672,
+          941
+        ]
+      }
+    ],
+    "referenceSHA256": "9d7c981b29bb0abb161a17108102b3e26920305f940c1e9a57967d6d1e9c74a2"
+  },
+  "placementOverview": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/S06-environment-placements.png",
+  "cleanPlateRequired": false,
+  "referenceBoard": "/Users/makibook/Macky-studio/WACHA-WACHA-TOWN/assets/production/animation-expansion/references/A0738.png",
+  "rowBoundaries": [
+    0,
+    222,
+    443,
+    665,
+    887
+  ],
+  "columnBoundaries": {
+    "0": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "1": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "2": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ],
+    "3": [
+      0,
+      222,
+      443,
+      665,
+      887,
+      1109,
+      1330,
+      1552,
+      1774
+    ]
+  }
+}
