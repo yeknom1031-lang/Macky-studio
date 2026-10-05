@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f7ef">
+  <title>BOMB! STUDIO — あそぼう、つくろう。</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💣%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#play" aria-label="BOMB! STUDIO ホーム"><span class="brand-bomb">●<i>✦</i></span><span>BOMB!<small>STUDIO</small></span></a>
+      <div class="side-label">YOUR LITTLE PLAYGROUND</div>
+      <nav aria-label="メインメニュー">
+        <button class="nav-button active" data-view="play"><span class="nav-icon">◈</span>あそぶ<span class="nav-arrow">↗</span></button>
+        <button class="nav-button" data-view="stage"><span class="nav-icon">▦</span>ステージをつくる<span class="nav-arrow">↗</span></button>
+        <button class="nav-button" data-view="character"><span class="nav-icon">☺</span>キャラをつくる<span class="nav-arrow">↗</span></button>
+      </nav>
+      <div class="sidebar-bottom"><div class="mini-sticker">MAKE<br>SOME<br><em>BOOM.</em><span>✷</span></div><p>ひらめきを、あそびに。</p><span class="version"><i></i> LOCAL PLAY · v1.0</span></div>
+    </aside>
+
+    <main>
+      <header class="topbar"><span><span class="tiny-star">✳</span> あそぼう、つくろう。</span><div><span class="saved-tag">このブラウザに自動保存</span><button id="sound-toggle" class="icon-button" aria-label="音をオンにする" title="音のオン・オフ">♪ <span>OFF</span></button><button id="help-button" class="icon-button" aria-label="遊び方">?</button></div></header>
+
+      <section id="view-play" class="view active">
+        <div class="page-heading"><div><p class="eyebrow">01 / LET’S PLAY</p><h1>今日は、どこで<span class="highlight">あそぶ？</span></h1><p class="page-description">爆弾をおいて、道をひらこう。最後まで残れば、きみの勝ち！</p></div><span class="heading-stamp">PLAY<br>YOUR WAY ↗</span></div>
+        <div class="section-label"><h2>ステージをえらぶ</h2><span id="stage-count">03 STAGES</span></div>
+        <div id="stage-list" class="stage-list"></div>
+        <div class="loadout-bar"><label><span>WEAPON / ぶき</span><select id="weapon-select"><option value="normal">✚ まんまるボム</option><option value="line">↔ ヨコヨコボム（横一列）</option><option value="vertical">↕ タテタテボム（縦一列）</option><option value="pierce">» ドリルボム</option></select></label><label><span>PARTNER / たまご</span><select id="egg-select"><option value="paku">🥚 パクたま</option><option value="shield">🛡 まもたま</option><option value="speed">🐇 ピョンたま</option></select></label><div class="egg-hint"><b id="egg-status">E で、ぱくっ！</b><span id="egg-description">爆弾を食べて、横にドカン。</span></div><button id="egg-button" class="egg-action" title="たまごの力を使う（E）">ぱくっ！ <kbd>E</kbd></button></div>
+        <div class="arena-layout">
+          <div class="arena-panel">
+            <div class="arena-top"><div class="live-label"><span></span><b id="arena-name">グリーンガーデン</b><small id="match-label">READY TO PLAY</small></div><div class="arena-actions"><span class="timer" id="timer">02:30</span><button id="pause-button" class="small-icon" aria-label="一時停止" disabled>Ⅱ</button><button id="restart-button" class="small-icon" aria-label="最初からやり直す">↻</button></div></div>
+            <div class="canvas-wrap" id="arena-wrap"><canvas id="game" width="900" height="660" tabindex="0" aria-label="爆弾バトル。矢印キーまたはWASDで移動、スペースで爆弾。"></canvas>
+              <div id="game-overlay" class="game-overlay"><div class="overlay-card"><span class="overlay-kicker" id="overlay-kicker">A LITTLE BOMB, A BIG ADVENTURE.</span><div class="overlay-symbol" id="overlay-symbol">✷</div><h2 id="overlay-title">準備はいい？</h2><p id="overlay-description">3人のライバルと、どきどきバトル。</p><button id="start-button" class="button primary">バトルスタート <span>→</span></button><span id="overlay-note">ひとりで遊べる · CPU対戦</span></div></div>
+            </div>
+            <div class="arena-footer"><span><i class="status-dot"></i><b id="game-message">爆弾をおいたら、すぐに離れよう！</b></span><span id="arena-size">15 × 11 TILES</span></div>
+          </div>
+          <aside class="match-sidebar">
+            <div class="player-panel"><div class="card-kicker">YOUR PLAYER <span>01</span></div><div class="player-preview"><span class="preview-orbit"></span><canvas id="player-preview" width="240" height="220" aria-label="選択中のキャラクター"></canvas><span class="you-tag">YOU!</span></div><h3 id="player-name">シロ</h3><p id="player-subtitle">小さな体に、大きなひらめき。</p><button class="text-button" data-view="character">キャラクターをかえる ↗</button><div class="stats"><div><span>ライフ</span><strong id="health">♥ ♥ ♥</strong></div><div><span>おける爆弾</span><strong id="capacity">1 <small>個</small></strong></div><div><span>爆風の長さ</span><strong id="power">2 <small>マス</small></strong></div></div></div>
+            <div class="rivals-panel"><div class="card-kicker">RIVALS <span id="rival-count">3 LEFT</span></div><div id="rivals"></div></div>
+            <div class="tip-card"><span>✦</span><p><b>ひらめきのヒント</b><br>ブロックの中にアイテムが！<br>集めてパワーアップしよう。</p></div>
+          </aside>
+        </div>
+        <div class="controls-bar"><span><kbd>↑ ← ↓ →</kbd> / <kbd>W A S D</kbd> 移動</span><span><kbd>SPACE</kbd> 爆弾</span><span><kbd>E</kbd> たまご</span><span><kbd>ESC</kbd> 一時停止</span></div>
+        <div class="touch-controls" aria-label="タッチ操作"><div class="dpad"><button data-direction="up" aria-label="上に移動">↑</button><button data-direction="left" aria-label="左に移動">←</button><button data-direction="down" aria-label="下に移動">↓</button><button data-direction="right" aria-label="右に移動">→</button></div><div class="touch-actions"><button id="touch-egg">🥚<span>ぱくっ！</span></button><button id="touch-bomb">● <span>爆弾</span></button></div></div>
+      </section>
+
+      <section id="view-stage" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">02 / BUILD YOUR WORLD</p><h1>きみだけの<span class="highlight pink">ステージ。</span></h1><p class="page-description">タイルをえらんで、マスをぬろう。つくったら、そのままバトル！</p></div><span class="heading-stamp pink-stamp">MAKE IT<br>YOURS ↗</span></div>
+        <div class="editor-layout"><div class="editor-panel"><div class="editor-toolbar"><label>ステージ名<input id="stage-name" maxlength="24" value="マイ・ガーデン" autocomplete="off"></label><div class="toolbar-buttons"><button id="undo-stage" class="button secondary" disabled>↶ もどす</button><button id="clear-stage" class="button secondary">まっさらにする</button></div></div><div class="stage-size-controls"><label>横のマス数<input id="stage-width" type="number" min="7" max="31" step="1" value="15" inputmode="numeric"></label><span>×</span><label>縦のマス数<input id="stage-height" type="number" min="7" max="25" step="1" value="11" inputmode="numeric"></label><button id="resize-stage" class="button secondary">この大きさにする</button><small>外側の壁もふくむよ</small></div><div class="editor-canvas-wrap"><canvas id="stage-editor" width="900" height="660" aria-label="ステージ編集。マスをクリックまたはドラッグしてタイルを配置。"></canvas></div><div class="editor-bottom"><span id="stage-validation">スタート1つ・ライバル1〜3人を置いてね。</span><span id="editor-size">15 × 11</span></div></div>
+          <aside class="tool-panel"><div class="card-kicker">TILE PALETTE <span>✳</span></div><div id="tile-palette" class="tile-palette"></div><label class="field-label">ステージの雰囲気<select id="stage-theme"><option value="garden">🌿 グリーンガーデン</option><option value="candy">🍬 キャンディポップ</option><option value="space">🪐 ムーンベース</option></select></label><div class="editor-tip">ドラッグでまとめてぬれるよ。<br>プレイヤーのまわりには、爆風から逃げる道も作ってね。</div><button id="save-stage" class="button primary full">保存してあそぶ <span>→</span></button><button id="new-stage" class="button secondary full">＋ 新しいステージ</button><div id="saved-stages" class="saved-stages"></div></aside>
+        </div>
+      </section>
+
+      <section id="view-character" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">03 / MEET YOUR ALTER EGO</p><h1>つくろう、<span class="highlight blue">もうひとりの自分。</span></h1><p class="page-description">色も、かたちも、自由に。きみのキャラクターで、あそびにいこう。</p></div><span class="heading-stamp blue-stamp">HELLO,<br>NEW ME! ☺</span></div>
+        <div class="character-layout"><div class="character-showcase"><div class="card-kicker">CHARACTER PREVIEW <span>✦</span></div><div class="big-character"><span class="character-circle"></span><span class="float-star one">✦</span><span class="float-star two">✳</span><canvas id="character-preview" width="500" height="430" aria-label="作成中のキャラクター"></canvas></div><h2 id="character-preview-name">シロ</h2><span class="character-caption">SMALL HERO. BIG PERSONALITY.</span><div class="preset-list" id="character-presets"></div></div>
+          <div class="character-tools"><label class="field-label">キャラクターの名前<input id="character-name" maxlength="16" value="シロ" autocomplete="off"></label><div class="mode-toggle" role="group" aria-label="キャラクター作成方法"><button id="mode-dress" class="active">着せかえる</button><button id="mode-pixel">ドットで描く</button></div>
+            <div id="dress-tools"><div class="color-field"><label for="helmet-color">ヘルメット</label><div><div class="swatches" data-color-for="helmet-color"></div><input id="helmet-color" type="color" value="#fff9ed" aria-label="ヘルメットの色"></div></div><div class="color-field"><label for="body-color">おようふく</label><div><div class="swatches" data-color-for="body-color"></div><input id="body-color" type="color" value="#7161e8" aria-label="服の色"></div></div><div class="color-field"><label for="accent-color">手ぶくろ・くつ</label><div><div class="swatches" data-color-for="accent-color"></div><input id="accent-color" type="color" value="#f583ae" aria-label="手ぶくろとくつの色"></div></div><label class="field-label">アクセサリー<select id="accessory"><option value="antenna">まんまるアンテナ</option><option value="cat">ねこみみ</option><option value="crown">おうかん</option><option value="leaf">ふたば</option><option value="none">なし</option></select></label></div>
+            <div id="pixel-tools" hidden><p class="pixel-hint">16 × 16マスに、オリジナルの姿を描こう。</p><div class="pixel-controls"><input id="pixel-color" type="color" value="#7161e8" aria-label="ドットの色"><button id="pixel-eraser" class="button secondary" aria-pressed="false">消しゴム</button><button id="undo-pixel" class="button secondary" disabled>↶</button><button id="clear-pixel" class="button secondary">クリア</button></div><canvas id="pixel-editor" width="384" height="384" aria-label="16×16ドットのお絵かきキャンバス"></canvas></div>
+            <button id="save-character" class="button primary full">このキャラであそぶ <span>→</span></button><p class="save-note">作ったキャラクターは、このブラウザに保存されるよ。</p><div id="saved-characters" class="saved-characters"></div>
+          </div>
+        </div>
+      </section>
+      <footer class="page-footer"><span>BOMB! STUDIO</span><span>あそびは、つくると、もっとおもしろい。</span><span>MADE FOR YOUR IMAGINATION ✳</span></footer>
+    </main>
+  </div>
+  <dialog id="help-dialog"><button id="close-help" class="dialog-close" aria-label="閉じる">×</button><p class="eyebrow">HOW TO PLAY</p><h2>小さな爆弾、大きなぼうけん。</h2><p>矢印キー / WASD で移動、スペースで爆弾を置こう。約2.3秒後に爆発するよ。</p><p>まんまるボムは十字、ヨコヨコボムは横一列ぜんぶ、タテタテボムは縦一列ぜんぶに爆発！ 一列ボムは壁の先にも届くから、別の列に逃げよう。ドリルボムはブロックを貫通するよ。</p><p>石の壁はこわせない。自分も爆風に当たるから気をつけてね。パクたまは E ボタンで近くの爆弾を食べて、横一列に反撃！ たまごの爆風は自分には当たらないよ。</p><div class="help-items"><span>♥ ライフ回復</span><span>✦ 爆風アップ</span><span>● 爆弾の数アップ</span><span>» スピードアップ</span></div><p>CPUを全員たおせば勝ち！ ライフがなくなるか、時間切れでゲームオーバー。Esc / P で一時停止できるよ。</p><button id="help-ok" class="button primary full">わかった！ →</button></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="engine.js"></script><script src="app.js"></script>
+</body>
+</html>
