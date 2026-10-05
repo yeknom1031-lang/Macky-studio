@@ -447,7 +447,7 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
 
 /* Capture preview: shared textures, opacity only, present for one candidate. */
 .cell.capture-preview::before { content:''; position:absolute; inset:10%; z-index:1; pointer-events:none; background:var(--capture-image) center / contain no-repeat; animation:capture-tint 1.6s ease-in-out infinite; }
-.cell.capture-target::after { content:attr(data-capture-count) '枚'; position:absolute; right:3%; top:3%; width:auto; height:auto; aspect-ratio:auto; min-width:22px; padding:2px 4px; border:1px solid #f3e2b89c; border-radius:4px; color:#fff4d9; background:#132219f2; box-shadow:0 2px 5px #0007; font:600 clamp(9px,1vw,12px)/1.25 sans-serif; z-index:3; }
+.capture-count { position:fixed; transform:translateX(-100%); min-width:22px; padding:2px 4px; border:1px solid #f3e2b89c; border-radius:4px; color:#fff4d9; background:#132219f2; box-shadow:0 2px 5px #0007; font:600 clamp(9px,1vw,12px)/1.25 sans-serif; z-index:51; pointer-events:none; }
 @keyframes capture-tint { 0%,100% { opacity:0; } 35%,65% { opacity:1; } }
 .reduce-motion .cell.capture-preview::before { animation:none!important; opacity:.9; }
 @media(prefers-reduced-motion:reduce) { .cell.capture-preview::before { animation:none!important; opacity:.9; } }
@@ -627,6 +627,7 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
 'use strict';
 // Japanese source messages are stable translation keys. Values in braces are never re-translated.
 const ENGLISH = Object.freeze({
+  "{0}枚": "{0} discs",
   "コマ工房": "Disc atelier",
   "自分だけのコマをつくる": "Create your own disc",
   "コマの色": "Disc color",
@@ -1947,9 +1948,10 @@ function createHeldStonePointer(surface, element, { frame = requestAnimationFram
 
 // Only the hovered/focused move is evaluated. CSS crossfades shared stone
 // textures; there are no polling timers, extra stones, or board mutations.
-function createCapturePreview(surface) {
+function createCapturePreview(surface, badge = null) {
   let enabled = false, cells = [], resolve = () => [], current = null, marked = [], target = null;
   function clear() {
+    if (badge) badge.hidden = true;
     for (const cell of marked) cell.classList.remove('capture-preview');
     marked = [];
     if (target) {
@@ -1971,6 +1973,14 @@ function createCapturePreview(surface) {
     for (const cell of marked) cell.classList.add('capture-preview');
     target = cells[index]; target.classList.add('capture-target');
     target.setAttribute('data-capture-count', String(flips.length));
+    if (badge) {
+      // Read geometry only on a new candidate, never on every pointer frame.
+      const rect = target.getBoundingClientRect();
+      badge.textContent = t`${flips.length}枚`;
+      badge.style.left = `${rect.right - rect.width * .03}px`;
+      badge.style.top = `${rect.top + rect.height * .03}px`;
+      badge.hidden = false;
+    }
     target.setAttribute('aria-description', t`ここに置くと相手の石を${flips.length}枚取れます`);
   }
   function indexOf(event) {
@@ -2098,13 +2108,15 @@ const stoneAudio = createStoneAudio(() => preferences, () => new (window.AudioCo
 const heldElement = document.createElement('i');
 heldElement.hidden=true;heldElement.setAttribute('aria-hidden','true');document.body.append(heldElement);
 const heldPointer = createHeldStonePointer(ui.board,heldElement);
-const capturePreview = createCapturePreview(ui.board);
+const captureBadge = document.createElement('span');
+captureBadge.className='capture-count';captureBadge.hidden=true;captureBadge.setAttribute('aria-hidden','true');document.body.append(captureBadge);
+const capturePreview = createCapturePreview(ui.board,captureBadge);
 let heldSize=40;
 function syncHeldPointer() {
   const humanTurn=state.phase==='playing'&&(state.mode!=='online'||online.connected())&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
   heldPointer.sync(humanTurn?state.colors[state.player].id:null,heldSize);
 }
-function measureHeldStone() { heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
+function measureHeldStone() { capturePreview.hide();heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
 if(window.ResizeObserver)new ResizeObserver(measureHeldStone).observe(ui.board);
 window.addEventListener('resize',measureHeldStone,{passive:true});
 window.addEventListener('scroll',()=>{heldPointer.hide();capturePreview.hide();},{passive:true});

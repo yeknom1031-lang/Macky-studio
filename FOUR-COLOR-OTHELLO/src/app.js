@@ -34,13 +34,15 @@ const stoneAudio = createStoneAudio(() => preferences, () => new (window.AudioCo
 const heldElement = document.createElement('i');
 heldElement.hidden=true;heldElement.setAttribute('aria-hidden','true');document.body.append(heldElement);
 const heldPointer = createHeldStonePointer(ui.board,heldElement);
-const capturePreview = createCapturePreview(ui.board);
+const captureBadge = document.createElement('span');
+captureBadge.className='capture-count';captureBadge.hidden=true;captureBadge.setAttribute('aria-hidden','true');document.body.append(captureBadge);
+const capturePreview = createCapturePreview(ui.board,captureBadge);
 let heldSize=40;
 function syncHeldPointer() {
   const humanTurn=state.phase==='playing'&&(state.mode!=='online'||online.connected())&&!isPaused()&&(state.mode==='friends'||state.player===state.human);
   heldPointer.sync(humanTurn?state.colors[state.player].id:null,heldSize);
 }
-function measureHeldStone() { heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
+function measureHeldStone() { capturePreview.hide();heldSize=ui.board.getBoundingClientRect().width/state.size*.8;syncHeldPointer(); }
 if(window.ResizeObserver)new ResizeObserver(measureHeldStone).observe(ui.board);
 window.addEventListener('resize',measureHeldStone,{passive:true});
 window.addEventListener('scroll',()=>{heldPointer.hide();capturePreview.hide();},{passive:true});

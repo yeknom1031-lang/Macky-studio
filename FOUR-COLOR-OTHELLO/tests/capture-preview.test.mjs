@@ -9,15 +9,16 @@ function harness(board, player=0, moved=Array(4).fill(true), color='red') {
     const classes=new Set(),attrs=new Map();
     return {dataset:{index:String(i)},classList:{add:c=>classes.add(c),remove:c=>classes.delete(c),contains:c=>classes.has(c)},
       setAttribute:(k,v)=>attrs.set(k,v),removeAttribute:k=>attrs.delete(k),getAttribute:k=>attrs.get(k),
+      getBoundingClientRect(){return {top:100,right:200,width:50,height:50};},
       closest(){return this;},matches(){return true;}};
   });
   const surface={contains:c=>cells.includes(c),style:{setProperty:(k,v)=>styles.set(k,v)},
     addEventListener:(k,v)=>handlers.set(k,v),removeEventListener:k=>handlers.delete(k)};
-  const preview=createCapturePreview(surface), legal=new Set(firstRoundMoves(board,player,moved));
+  const badge={hidden:true,style:{}},preview=createCapturePreview(surface,badge), legal=new Set(firstRoundMoves(board,player,moved));
   for(const i of legal)cells[i].classList.add('legal-hint');
   const options={enabled:true,cells,color,resolve:i=>{reads++;return legal.has(i)?captures(board,player,i):[];}};
   preview.sync(options);
-  return {preview,cells,handlers,styles,options,reads:()=>reads,
+  return {preview,badge,cells,handlers,styles,options,reads:()=>reads,
     hover:(i,pointerType='mouse')=>handlers.get('pointermove')({target:cells[i],pointerType}),
     marked:()=>cells.flatMap((c,i)=>c.classList.contains('capture-preview')?[i]:[])};
 }
@@ -68,4 +69,13 @@ test('黒白と購入色に対応し、矢印キーのフォーカスでも予�
     assert.equal(h.styles.get('--capture-image'),`var(--stone-${color})`);
     h.handlers.get('focusout')();assert.deepEqual(h.marked(),[]);
   }
+});
+
+ test('枚数は盤面外の共通バッジに表示し、候補変更・退出・停止で消える',()=>{
+  const board=initialBoard(),h=harness(board),move=firstRoundMoves(board,0,[false,false,false,false])[0];
+  h.hover(move);assert.equal(h.badge.hidden,false);assert.equal(h.badge.textContent,`${captures(board,0,move).length}枚`);
+  assert.equal(h.badge.style.left,'198.5px');assert.equal(h.badge.style.top,'101.5px');
+  h.hover(0);assert.equal(h.badge.hidden,true);
+  h.hover(move);h.handlers.get('pointerleave')();assert.equal(h.badge.hidden,true);
+  h.hover(move);h.preview.sync({...h.options,enabled:false});assert.equal(h.badge.hidden,true);
 });

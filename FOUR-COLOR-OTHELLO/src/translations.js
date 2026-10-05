@@ -1,5 +1,6 @@
 // Japanese source messages are stable translation keys. Values in braces are never re-translated.
 export const ENGLISH = Object.freeze({
+  "{0}枚": "{0} discs",
   "コマ工房": "Disc atelier",
   "自分だけのコマをつくる": "Create your own disc",
   "コマの色": "Disc color",
