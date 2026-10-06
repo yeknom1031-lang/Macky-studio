@@ -1,4 +1,4 @@
-import { normalizeCustomDisc, cleanDiscText, matchCosmetics, DISC_FINISHES, DISC_PATTERNS, DISC_EMBLEMS, DISC_SHAPES, DISC_FONTS, DISC_TEXT_POSITIONS, DISC_COLOR_MODES } from './cosmetics.js';
+import { normalizeCustomDisc, normalizeDiscLayer, transformDiscLayer, DISC_STAMPS, DISC_LAYER_LIMIT, cleanDiscText, matchCosmetics, DISC_FINISHES, DISC_PATTERNS, DISC_EMBLEMS, DISC_SHAPES, DISC_FONTS, DISC_TEXT_POSITIONS, DISC_COLOR_MODES } from './cosmetics.js';
 import { DISC_LIBRARY_LIMIT, saveDiscDesign, equipDiscDesign, removeDiscDesign, restoreDiscDesign } from './disc-library.js';
 import { t, normalizeLanguage, setLanguage, getLanguage, createStaticTranslations, onlineSeatName, onlineNotice } from './i18n.js';
 import { initialBoard, PLAYERS, BOARD_SIZES, captures, legalMoves, firstRoundMoves, playMove, nextTurn, scores, winners } from './engine.js';
@@ -638,10 +638,58 @@ $('#online-host-field').addEventListener('change',()=>{
 });
 let discDraft=normalizeCustomDisc(),discDraftName='',discEditingId=null,discPreviewFrame=null,atelierView='editor',lastRemovedDisc=null;
 const discChoiceGroups=[['creator-shapes','shape',DISC_SHAPES],['creator-color-modes','colorMode',DISC_COLOR_MODES],['creator-finishes','finish',DISC_FINISHES],['creator-patterns','pattern',DISC_PATTERNS],['creator-emblems','emblem',DISC_EMBLEMS],['creator-fonts','textFont',DISC_FONTS],['creator-text-positions','textPosition',DISC_TEXT_POSITIONS]];
+let atelierStep=0,selectedLayer=-1,discUndo=[],discRedo=[];
+function rememberDisc(){discUndo.push(JSON.stringify(discDraft));if(discUndo.length>40)discUndo.shift();discRedo=[];}
+function restoreDiscHistory(from,to){if(!from.length)return;to.push(JSON.stringify(discDraft));discDraft=normalizeCustomDisc(JSON.parse(from.pop()));selectedLayer=Math.min(selectedLayer,discDraft.layers.length-1);renderCreator();}
+function setAtelierStep(step){atelierStep=Math.min(2,Math.max(0,step));document.querySelectorAll('[data-atelier-panel]').forEach(el=>el.hidden=Number(el.dataset.atelierPanel)!==atelierStep);document.querySelectorAll('[data-atelier-step]').forEach(el=>el.setAttribute('aria-pressed',String(Number(el.dataset.atelierStep)===atelierStep)));$('#atelier-prev').disabled=atelierStep===0;$('#atelier-next').hidden=atelierStep===2;renderLayerSheet();}
+function currentDiscLayer(){return discDraft.layers[selectedLayer];}
+function addDiscLayer(type){if(discDraft.layers.length>=DISC_LAYER_LIMIT){$('#creator-message').textContent=t`透明シートは${DISC_LAYER_LIMIT}枚まで重ねられます。`;return;}rememberDisc();discDraft.layers.push(normalizeDiscLayer({type,text:type==='text'?t('彩'):''}));selectedLayer=discDraft.layers.length-1;setAtelierStep(2);renderCreator();}
+function renderLayerSheet(){
+ const layer=currentDiscLayer(),sheet=$('#layer-sheet');sheet.hidden=atelierStep!==2||!layer||atelierView!=='editor';if(sheet.hidden)return;
+ sheet.style.left=`${(126+(layer.x-50)*1.8)/256*100}%`;sheet.style.top=`${(121+(layer.y-50)*1.7)/256*100}%`;
+ sheet.style.width=`${(layer.type==='text'?140:64)/256*layer.scaleX}%`;sheet.style.height=`${64/256*layer.scaleY}%`;sheet.style.transform=`translate(-50%,-50%) rotate(${layer.rotation}deg)`;
+}
+function renderDiscLayers(){
+ const layer=currentDiscLayer();$('#layer-controls').hidden=!layer;$('#layer-empty').hidden=discDraft.layers.length>0;$('#layer-counter').textContent=`${discDraft.layers.length} / ${DISC_LAYER_LIMIT}`;
+ $('#add-text-layer').disabled=$('#add-stamp-layer').disabled=discDraft.layers.length>=DISC_LAYER_LIMIT;
+ const list=$('#layer-list');list.replaceChildren();
+ discDraft.layers.forEach((item,index)=>{const button=document.createElement('button');button.type='button';button.dataset.layerSelect=String(index);button.textContent=`${index+1} · ${item.type==='text'?(item.text||t('文字シート')):t(DISC_STAMPS[item.stamp])}`;button.setAttribute('aria-pressed',String(index===selectedLayer));list.append(button);});
+ if(layer){
+  $('#layer-text-label').hidden=layer.type!=='text';$('#layer-font-label').hidden=layer.type!=='text';$('#layer-stamp-options').hidden=layer.type!=='stamp';
+  for(const input of document.querySelectorAll('[data-layer-input]'))input.value=layer[input.dataset.layerInput];
+  const group=$('#layer-stamp-options');if(!group.children.length)for(const key of Object.keys(DISC_STAMPS)){const button=document.createElement('button');button.dataset.layerStamp=key;group.append(button);}
+  for(const button of group.children){button.textContent=t(DISC_STAMPS[button.dataset.layerStamp]);button.setAttribute('aria-pressed',String(layer.stamp===button.dataset.layerStamp));}
+  $('#layer-backward').disabled=selectedLayer===0;$('#layer-forward').disabled=selectedLayer===discDraft.layers.length-1;
+ }
+ $('#atelier-undo').disabled=!discUndo.length;$('#atelier-redo').disabled=!discRedo.length;renderLayerValues();renderLayerSheet();
+}
+function renderLayerValues(){const layer=currentDiscLayer();if(!layer)return;for(const key of ['x','y','rotation','scaleX','scaleY','opacity']){$('#layer-'+key+'-value').textContent=layer[key]+(key==='rotation'?'°':key.startsWith('scale')||key==='opacity'?'%':'');$('#layer-'+key).value=layer[key];}}
+$('#creator-dialog').addEventListener('click',event=>{
+ const step=event.target.closest('[data-atelier-step]');if(step){setAtelierStep(Number(step.dataset.atelierStep));return;}
+ const choice=event.target.closest('[data-layer-select]');if(choice){selectedLayer=Number(choice.dataset.layerSelect);renderDiscLayers();return;}
+ const stamp=event.target.closest('[data-layer-stamp]');if(stamp&&currentDiscLayer()){rememberDisc();currentDiscLayer().stamp=stamp.dataset.layerStamp;renderCreator();}
+});
+$('#atelier-prev').addEventListener('click',()=>setAtelierStep(atelierStep-1));$('#atelier-next').addEventListener('click',()=>setAtelierStep(atelierStep+1));
+$('#add-text-layer').addEventListener('click',()=>{addDiscLayer('text');$('#layer-text').focus();});$('#add-stamp-layer').addEventListener('click',()=>addDiscLayer('stamp'));
+$('#layer-duplicate').addEventListener('click',()=>{if(!currentDiscLayer()||discDraft.layers.length>=DISC_LAYER_LIMIT)return;rememberDisc();discDraft.layers.push(normalizeDiscLayer({...currentDiscLayer(),x:Math.min(100,currentDiscLayer().x+5),y:Math.min(100,currentDiscLayer().y+5)}));selectedLayer=discDraft.layers.length-1;renderCreator();});
+$('#layer-delete').addEventListener('click',()=>{if(!currentDiscLayer())return;rememberDisc();discDraft.layers.splice(selectedLayer,1);selectedLayer=Math.min(selectedLayer,discDraft.layers.length-1);renderCreator();});
+for(const [id,offset] of [['layer-forward',1],['layer-backward',-1]])$('#'+id).addEventListener('click',()=>{const index=selectedLayer+offset;if(!currentDiscLayer()||index<0||index>=discDraft.layers.length)return;rememberDisc();[discDraft.layers[index],discDraft.layers[selectedLayer]]=[discDraft.layers[selectedLayer],discDraft.layers[index]];selectedLayer=index;renderCreator();});
+$('#atelier-undo').addEventListener('click',()=>restoreDiscHistory(discUndo,discRedo));$('#atelier-redo').addEventListener('click',()=>restoreDiscHistory(discRedo,discUndo));
+for(const input of document.querySelectorAll('[data-layer-input]')){
+ let checkpoint=false;input.addEventListener('focus',()=>checkpoint=false);input.addEventListener('blur',()=>{checkpoint=false;input.value=currentDiscLayer()?.[input.dataset.layerInput]??'';});
+ const update=()=>{if(!currentDiscLayer())return;if(!checkpoint){rememberDisc();checkpoint=true;}const key=input.dataset.layerInput;discDraft.layers[selectedLayer]=normalizeDiscLayer({...currentDiscLayer(),[key]:input.type==='range'?Number(input.value):input.value});renderLayerValues();renderLayerSheet();queueDiscPreview();$('#atelier-undo').disabled=false;$('#atelier-redo').disabled=true;};
+ input.addEventListener('input',event=>{if(!event.isComposing)update();});input.addEventListener('compositionend',update);
+}
+let sheetDrag=null;
+$('#layer-sheet').addEventListener('pointerdown',event=>{if(event.button!==0||!currentDiscLayer())return;event.preventDefault();rememberDisc();const rect=$('#disc-stage').getBoundingClientRect();sheetDrag={id:event.pointerId,startX:event.clientX,startY:event.clientY,rect,layer:{...currentDiscLayer()},resize:!!event.target.closest('[data-sheet-resize]')};$('#layer-sheet').setPointerCapture(event.pointerId);$('#layer-sheet').focus({preventScroll:true});});
+$('#layer-sheet').addEventListener('pointermove',event=>{if(!sheetDrag||event.pointerId!==sheetDrag.id)return;const d=sheetDrag,dx=(event.clientX-d.startX)/d.rect.width,dy=(event.clientY-d.startY)/d.rect.height;
+ discDraft.layers[selectedLayer]=transformDiscLayer(d.layer,dx,dy,d.resize);renderLayerValues();renderLayerSheet();queueDiscPreview();});
+function endSheetDrag(){sheetDrag=null;renderDiscLayers();}$('#layer-sheet').addEventListener('pointerup',endSheetDrag);$('#layer-sheet').addEventListener('pointercancel',endSheetDrag);$('#layer-sheet').addEventListener('lostpointercapture',()=>{sheetDrag=null;});
+$('#layer-sheet').addEventListener('keydown',event=>{const layer=currentDiscLayer();if(!layer)return;const delta={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[event.key];if(!delta)return;event.preventDefault();rememberDisc();const amount=event.shiftKey?5:1;discDraft.layers[selectedLayer]=normalizeDiscLayer({...layer,x:layer.x+delta[0]*amount,y:layer.y+delta[1]*amount});renderLayerValues();renderLayerSheet();queueDiscPreview();});
 function readLatestDiscProfile(){if(storageWorking)profile=normalizeProfile(readSave(STORAGE.profile)??profile);}
 function discTitle(item){return item.name||t('名前のないコマ');}
 function discDescription(design){return [t(DISC_SHAPES[design.shape]),t(DISC_FINISHES[design.finish]),t(DISC_PATTERNS[design.pattern])].join(' · ');}
-function loadDiscDraft(item=null){discEditingId=item?.id??null;discDraftName=item?.name??'';discDraft=normalizeCustomDisc(item?.design);$('#creator-message').textContent='';}
+function loadDiscDraft(item=null){discEditingId=item?.id??null;discDraftName=item?.name??'';discDraft=normalizeCustomDisc(item?.design);discUndo=[];discRedo=[];selectedLayer=discDraft.layers.length?0:-1;atelierStep=0;$('#creator-message').textContent='';}
 function setAtelierView(view){
   atelierView=view;$('#creator-editor').hidden=view!=='editor';$('#creator-library').hidden=view!=='library';
   $('#creator-editor-open').setAttribute('aria-pressed',String(view==='editor'));$('#creator-library-open').setAttribute('aria-pressed',String(view==='library'));
@@ -657,12 +705,15 @@ function renderCreator(){
   }
   $('#creator-editing-note').textContent=discEditingId?t('保存済みのデザインを編集しています'):t('新しいデザイン');
   $('#creator-secondary-label').hidden=discDraft.colorMode!=='gradient';
-  renderDiscPreview();
+  setAtelierStep(atelierStep);renderDiscLayers();renderDiscPreview();
 }
 function renderDiscPreview(){
   installStoneTextures(document,['custom-preview'],getComputedStyle,{'custom-preview':discDraft},'irodory-preview-texture',{racks:false});
   $('#creator-summary').textContent=discDescription(discDraft);
   $('#creator-preview-text').textContent=discDraft.text?t`文字：${discDraft.text}`:'';
+  const layer=currentDiscLayer(),layerButton=$('#layer-list').children[selectedLayer];if(layer&&layerButton)layerButton.textContent=`${selectedLayer+1} · ${layer.type==='text'?(layer.text||t('文字シート')):t(DISC_STAMPS[layer.stamp])}`;
+  $('#atelier-undo').disabled=!discUndo.length;$('#atelier-redo').disabled=!discRedo.length;
+  $('#creator-gradient-value').textContent=discDraft.gradientAngle+'°';renderLayerSheet();
   $('#creator-edge-value').textContent=String(discDraft.edgeWidth);$('#creator-text-size-value').textContent=String(discDraft.textSize);
   document.querySelectorAll('[data-disc-color]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.discColor===discDraft.color)));
 }
@@ -698,17 +749,19 @@ $('#creator-editor-open').addEventListener('click',()=>setAtelierView('editor'))
 $('#creator-new').addEventListener('click',()=>{loadDiscDraft();setAtelierView('editor');$('#creator-name').focus();});
 $('#creator-dialog').addEventListener('click',event=>{
   const button=event.target.closest('[data-disc-field],[data-disc-color]');if(!button)return;
+  rememberDisc();
   if(button.dataset.discColor)discDraft.color=button.dataset.discColor;else discDraft[button.dataset.discField]=button.dataset.discValue;
   renderCreator();
 });
 $('#creator-name').addEventListener('input',event=>{discDraftName=event.target.value;});
 $('#creator-name').addEventListener('blur',event=>{discDraftName=cleanDiscText(discDraftName,24);event.target.value=discDraftName;});
 for(const input of document.querySelectorAll('[data-disc-input]')){
-  const update=()=>{discDraft=normalizeCustomDisc({...discDraft,[input.dataset.discInput]:input.type==='range'?Number(input.value):input.value});queueDiscPreview();};
+  let checkpoint=false;input.addEventListener('focus',()=>checkpoint=false);input.addEventListener('blur',()=>checkpoint=false);
+  const update=()=>{if(!checkpoint){rememberDisc();checkpoint=true;}discDraft=normalizeCustomDisc({...discDraft,[input.dataset.discInput]:input.type==='range'?Number(input.value):input.value});queueDiscPreview();};
   input.addEventListener('input',event=>{if(!event.isComposing)update();});input.addEventListener('compositionend',update);
   input.addEventListener('blur',()=>{input.value=discDraft[input.dataset.discInput];});
 }
-$('#creator-dialog').addEventListener('close',()=>{if(discPreviewFrame!==null)cancelAnimationFrame(discPreviewFrame);discPreviewFrame=null;});
+$('#creator-dialog').addEventListener('close',()=>{if(discPreviewFrame!==null)cancelAnimationFrame(discPreviewFrame);discPreviewFrame=null;sheetDrag=null;});
 function saveCustomDisc(copy=false){
   readLatestDiscProfile();const result=saveDiscDesign(profile,{id:copy?null:discEditingId,name:discDraftName,design:discDraft},()=>globalThis.crypto?.randomUUID?.()??`disc-${Date.now()}-${Math.random().toString(36).slice(2)}`);
   if(!result.ok){$('#creator-message').textContent=t(result.reason);return;}

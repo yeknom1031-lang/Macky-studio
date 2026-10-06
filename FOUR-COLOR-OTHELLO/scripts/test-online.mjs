@@ -22,7 +22,7 @@ try{
  const group=await Promise.all([1,2,3,4].map(i=>player('動作テスト'+i)));
  assert.equal(group[0].state.players?.length,0,'Run integration tests only when the waiting room is empty.');
  const settings={size:6,turnSeconds:30,aiDifficulty:'hard'};
- const customDisc=normalizeCustomDisc({enabled:true,color:'#9354ce',finish:'metal',pattern:'rings',emblem:'star',shape:'hexagon',text:'彩り☆',textPosition:'center',textFont:'serif',edgeWidth:4,colorMode:'gradient',secondaryColor:'#df749d'});
+ const customDisc=normalizeCustomDisc({enabled:true,color:'#9354ce',finish:'metal',pattern:'rings',emblem:'star',shape:'hexagon',text:'彩り☆',textPosition:'center',textFont:'serif',edgeWidth:4,colorMode:'gradient',secondaryColor:'#df749d',layers:Array.from({length:16},(_,i)=>({type:i%2?'text':'stamp',stamp:i%4?'heart':'star',text:'彩り IRODORY',x:30+i*2,y:35+i,rotation:i*10-80,scaleX:60+i*3,scaleY:80,color:'#ffe1a8',font:'serif',opacity:80}))});
  group[0].send('join',{protocol:2,customDisc});await until(()=>group[0].state.isHost,'first player is host');
  const startAt=group[0].state.startAt;
  group[0].send('settings',{settings});await until(()=>group[0].state.settings?.size===6,'host settings saved');

@@ -6,6 +6,24 @@ export const DISC_FONTS = Object.freeze({sans:'すっきり',serif:'クラシカ
 export const DISC_TEXT_POSITIONS = Object.freeze({center:'中央',top:'上',bottom:'下'});
 export const DISC_COLOR_MODES = Object.freeze({solid:'単色',gradient:'グラデーション'});
 export const SEAT_COLORS = Object.freeze({red:'#d82b36',blue:'#147ad5',yellow:'#e9b72c',green:'#0db76c',black:'#24282b',white:'#edece4'});
+export const DISC_STAMPS = Object.freeze({star:'星',heart:'ハート',moon:'月',diamond:'ダイヤ',flower:'花',round:'丸',hexagon:'六角形',sparkle:'きらめき'});
+export const DISC_LAYER_LIMIT = 16;
+export const DISC_FONT_STACKS = Object.freeze({sans:'"Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif',serif:'"Yu Mincho", Georgia, serif',rounded:'"Hiragino Maru Gothic ProN", "Arial Rounded MT Bold", sans-serif',mono:'"SFMono-Regular", Menlo, monospace',cursive:'"Snell Roundhand", "Segoe Script", cursive',impact:'Impact, "Arial Black", sans-serif'});
+export function normalizeDiscLayer(raw={}) {
+  const v=raw&&typeof raw==='object'?raw:{};
+  const num=(k,min,max,d)=>Number.isFinite(v[k])?Math.round(Math.min(max,Math.max(min,v[k]))):d;
+  const hex=(k,d)=>typeof v[k]==='string'&&/^#[0-9a-f]{6}$/i.test(v[k])?v[k].toLowerCase():d;
+  return {type:v.type==='stamp'?'stamp':'text',text:cleanDiscText(v.text,24),stamp:typeof v.stamp==='string'&&Object.hasOwn(DISC_STAMPS,v.stamp)?v.stamp:'star',
+    x:num('x',0,100,50),y:num('y',0,100,50),rotation:num('rotation',-180,180,0),scaleX:num('scaleX',25,250,100),scaleY:num('scaleY',25,250,100),
+    color:hex('color','#fff4dd'),font:typeof v.font==='string'&&Object.hasOwn(DISC_FONT_STACKS,v.font)?v.font:'sans',opacity:num('opacity',10,100,100)};
+}
+// Pointer deltas use fractions of the 256px shared texture, so zoom and screen size agree.
+export function transformDiscLayer(raw,dx,dy,resize=false){
+ const layer=normalizeDiscLayer(raw),angle=layer.rotation*Math.PI/180;
+ const localX=dx*Math.cos(angle)+dy*Math.sin(angle),localY=-dx*Math.sin(angle)+dy*Math.cos(angle);
+ const changes=resize?{scaleX:layer.scaleX+localX*512/(layer.type==='text'?140:64)*100,scaleY:layer.scaleY+localY*512/64*100}:{x:layer.x+dx*256/1.8,y:layer.y+dy*256/1.7};
+ return normalizeDiscLayer({...layer,...changes});
+}
 let discTextSegmenter;
 export function cleanDiscText(value,limit=8) {
   if(typeof value!=='string')return '';
@@ -26,7 +44,8 @@ export function normalizeCustomDisc(raw) {
     shape:choice('shape',DISC_SHAPES,'round'),colorMode:choice('colorMode',DISC_COLOR_MODES,'solid'),secondaryColor:hex('secondaryColor','#203c65'),
     accentColor:hex('accentColor','#f6e2af'),edgeColor:hex('edgeColor','#d6ba76'),edgeWidth:number('edgeWidth',0,8,0),
     text:cleanDiscText(value.text),textColor:hex('textColor','#fff4dd'),textFont:choice('textFont',DISC_FONTS,'sans'),
-    textPosition:choice('textPosition',DISC_TEXT_POSITIONS,'bottom'),textSize:number('textSize',18,48,32)};
+    textPosition:choice('textPosition',DISC_TEXT_POSITIONS,'bottom'),textSize:number('textSize',18,48,32),
+    gradientAngle:number('gradientAngle',0,360,135),layers:Array.isArray(value.layers)?value.layers.slice(0,DISC_LAYER_LIMIT).map(normalizeDiscLayer):[]};
 }
 export function matchCosmetics(colors,mode,human,customDisc,seats=[]) {
   const designs={};
@@ -86,6 +105,17 @@ export function drawDiscDecoration(ctx,design) {
     const maxWidth=shape==='star'?(textPosition==='center'?116:96):shape==='heart'&&textPosition!=='center'?110:132;
     ctx.font=`700 ${textPosition==='center'?textSize:Math.min(textSize,32)}px ${fonts[textFont]}`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';ctx.lineWidth=2;ctx.strokeStyle='#15201899';ctx.fillStyle=textColor;
     ctx.strokeText(text,126,y,maxWidth);ctx.fillText(text,126,y,maxWidth);
+  }
+  for(const layer of normalizeCustomDisc(design).layers){
+    ctx.save();ctx.translate(126+(layer.x-50)*1.8,121+(layer.y-50)*1.7);ctx.rotate(layer.rotation*Math.PI/180);ctx.scale(layer.scaleX/100,layer.scaleY/100);ctx.globalAlpha=layer.opacity/100;ctx.fillStyle=layer.color;
+    if(layer.type==='text'){
+      ctx.font=`700 32px ${DISC_FONT_STACKS[layer.font]}`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(layer.text,0,0,140);
+    }else{
+      if(['star','heart','flower','round','hexagon'].includes(layer.stamp))traceDiscShape(ctx,layer.stamp,0,0,30,30);
+      else {ctx.beginPath();if(layer.stamp==='moon'){ctx.arc(0,0,29,.35*Math.PI,1.65*Math.PI);ctx.bezierCurveTo(-8,-23,-8,23,Math.cos(.35*Math.PI)*29,Math.sin(.35*Math.PI)*29);}else{const narrow=layer.stamp==='sparkle'?8:0;ctx.moveTo(0,-30);ctx.lineTo(narrow||25,-narrow);ctx.lineTo(30,0);ctx.lineTo(narrow, narrow||0);ctx.lineTo(0,30);ctx.lineTo(-narrow,narrow);ctx.lineTo(-30,0);ctx.lineTo(-narrow,-narrow); }ctx.closePath();}
+      ctx.fill();
+    }
+    ctx.restore();
   }
   ctx.restore();
 }

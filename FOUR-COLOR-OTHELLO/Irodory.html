@@ -530,6 +530,13 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
 .cell.opponent-last-move { box-shadow:inset 0 0 0 3px var(--last-move-color),inset 0 0 0 4px #ffffff50; }
 
 .atelier-home-note { display:block; margin-top:5px; font-size:.65rem; color:#c9c5ad; }
+/* Three-step disc workbench. The editing sheet is never part of the saved image. */
+#creator-dialog{width:1180px}.workbench-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 20px}.workbench-steps button{padding:13px 8px;font-size:13px;background:#102119;border:1px solid #c4aa6940}.workbench-steps button[aria-pressed=true]{background:#685131;color:#fff0c7;border-color:#e6c586}.creator-layout{grid-template-columns:minmax(280px,.95fr) minmax(0,1.25fr);align-items:start}.creator-preview{position:sticky;top:0;padding:26px 18px;overflow:hidden}.creator-pedestal{min-height:360px}.creator-pedestal::after{display:none}.disc-stage{position:relative;width:min(100%,340px);aspect-ratio:1;isolation:isolate}.disc-stage>.disc{position:absolute;inset:0;width:100%;margin:0;filter:drop-shadow(5px 15px 8px #0007)}.layer-sheet{position:absolute;z-index:3;border:1.5px dashed #f9e3ab;background:#fff5d909;cursor:move;touch-action:none;box-shadow:0 0 0 1px #121e1b60;outline-offset:4px}.sheet-grip{position:absolute;top:-5px;left:calc(50% - 4px);width:8px;height:8px;border:1px solid #453b2b;background:#ffedbd;border-radius:50%}.sheet-resize{position:absolute;right:-7px;bottom:-7px;width:14px;height:14px;border:2px solid #443c2a;background:#ffedbd;border-radius:3px;cursor:nwse-resize}.sheet-help{font-size:12px;color:#abbaa9;line-height:1.8;margin:16px 0 0}.layer-add,.atelier-navigation,.atelier-history{display:flex;gap:10px;align-items:center;margin:15px 0}.layer-add>button,.atelier-navigation>button{flex:1;margin:0}.layer-list{display:flex;flex-wrap:wrap;gap:7px;margin:15px 0}.layer-list button{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 12px;font-size:12px;background:#14281e}.layer-list button[aria-pressed=true]{border-color:#eacb8c;background:#6a5434;color:#fff2d2}.layer-actions{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.layer-actions button{font-size:12px;padding:10px}.atelier-history button{font-size:12px;padding:8px}.atelier-history span{margin-left:auto;font-size:12px;color:#c8b786}.finish-details{margin:15px 0;border-top:1px solid #d0bc8236;padding-top:15px}.finish-details summary{font-size:13px;cursor:pointer;color:#e5d6b0}.atelier-color-grid select{width:100%;padding:8px;background:#1b3023;color:#fff0cc;border:1px solid #baa06a55;border-radius:5px;font:inherit}.creator-controls [data-atelier-panel] h3{font-size:18px;margin:18px 0 8px}
+@media(max-width:760px){.creator-layout{grid-template-columns:1fr;gap:16px}.workbench-steps{gap:6px}.workbench-steps button{font-size:11px;padding:10px 4px}.creator-preview{padding:10px;position:relative}.creator-pedestal{min-height:230px}.disc-stage{width:230px}.sheet-help{margin:8px 0;font-size:11px}}
+@media(max-width:560px){#creator-editor .creator-preview{display:block;position:relative;padding:10px;text-align:center}.creator-preview .creator-pedestal{min-height:215px}.disc-stage{width:210px}.creator-preview #creator-editing-note{display:block}.creator-preview .creator-caption{font-size:9px}.workbench-steps button{font-size:10px;line-height:1.6}.atelier-toolbar{gap:8px;flex-wrap:wrap}.layer-add>button{font-size:12px;padding:11px 8px}.creator-layout{min-width:0}}
+.layer-add button{background:linear-gradient(135deg,#453e2a,#263d2b);border-color:#c1ac794d;color:#f8e9c6}.layer-actions button{background:#14261d;border-color:#b49e6b42;color:#ebddbb}.atelier-history button{background:#14231b;border-color:#b49e6b42}.creator-controls button:disabled{opacity:.4}.workbench-steps button:disabled{opacity:.4}
+@media(max-width:560px){#creator-editor .creator-preview{position:sticky;top:0;z-index:3;display:grid;grid-template-columns:140px minmax(0,1fr);gap:4px 8px;align-items:center;text-align:left;background:#14231bf5}.creator-preview .creator-pedestal{grid-column:1;grid-row:1/5;min-height:145px}.disc-stage{width:140px}.creator-preview .sheet-help{grid-column:1/-1;font-size:10px;margin:4px 0}.creator-preview #creator-editing-note{font-size:8px;letter-spacing:.05em}.creator-preview #creator-summary{font-size:10px}.creator-preview .creator-caption{font-size:8px;letter-spacing:.08em}}
+@media(max-width:560px){#creator-dialog{scroll-padding-top:215px}.creator-controls button,.creator-controls input,.creator-controls select{scroll-margin-top:215px}}
 
 </style>
 
@@ -590,7 +597,7 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
     <h3>勝利とコイン</h3><p>ひとりモードで勝つとコインがもらえます。強さ・広さによって30〜200コイン。最多で引き分けた場合は半分です。４人モードや途中で終了した対局は対象外。ボードは購入後に選んで着せ替えできます。購入した駒の色は次の対局から抽選候補に加わります。見た目は強さに影響しません。</p>
     <h3>途中で降参する</h3><p>対局メニューの「降参する」から確認すると、その対局を終了します。ひとりモードでは負けとして１対局を記録し、コインは増えません。４人モードでは現在の手番の色が降参し、卓全体の対局を終了します。途中の枚数で勝者は決めません。</p>
     <h3>鬼レベル</h3><p>ひとり対戦で「鬼」を選ぶと、１手に最大５秒を使って深く考えます。２色は相手の最善手を見込み、４色はそれぞれの色の利益を見込んで読みます。終盤では最後まで読むことを狙います。思考中もメニューを開いて降参・終了できます。鬼に勝つと160〜200コイン。</p>
-    <h3>自分だけのコマ</h3><p>ホームの「コマ工房」で形・配色・仕上げ・模様・マーク・文字を自由に組み合わせられます。文字は8文字まで、色・書体・大きさ・位置も変更できます。名前付きで24個まで保存でき、「保存したコマ」から使用・編集・複製・削除ができます。４色のひとり対戦では選んだ色を使い、オンラインと黒白の対戦では席の色を保ちます。形や装飾、文字はオンラインの相手にも見えます。選んだコマは次の対局から使われ、強さには影響しません。</p><h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。オンのとき、置けるマスにポインターを合わせると取れる相手の石が自分の色に点滅し、枚数が表示されます。矢印キーでマスを選んだときも確認できます。「動きを減らす」がオンのときは点滅せずに表示します。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
+    <h3>自分だけのコマ</h3><p>ホームの「コマ工房」で、色とグラデーション、形、装飾の順に作れます。文字や星・ハートなどのスタンプを透明シートとして16枚まで重ねられます。シートはドラッグで移動でき、角度・縦横の大きさ・濃さ・フォントを調整できます。シートの文字は24文字まで。重ねる順番・複製・削除・取り消しにも対応しています。名前付きで24個まで保存でき、「保存したコマ」から使用・編集・複製・削除ができます。４色のひとり対戦では選んだ色を使い、オンラインと黒白の対戦では席の色を保ちます。形や装飾、文字はオンラインの相手にも見えます。選んだコマは次の対局から使われ、強さには影響しません。</p><h3>便利な設定</h3><p>「置ける場所を表示する」は最初はオフ。設定でいつでも切り替えられます。オンのとき、置けるマスにポインターを合わせると取れる相手の石が自分の色に点滅し、枚数が表示されます。矢印キーでマスを選んだときも確認できます。「動きを減らす」がオンのときは点滅せずに表示します。対局中はEscキー、または上の「○の番」でポーズ。演出・待ち時間・AIの思考が止まり、設定変更や降参ができます。「ゲームを続ける」かEscキーで再開します。設定画面でEscキーを押すとポーズ画面に戻ります。</p>
     <p class="small-note">４辺のストックは本物の予備の石をイメージした飾りです。使用枚数の制限はありません。<br>キーボード：矢印でマスを移動、Enter / Space で置く。<br>設定・コイン・購入品はこのブラウザに保存。別の端末やローカルHTMLとは自動同期されません。設定からデータを持ち運べます。</p><button class="primary" data-close>わかった</button>
   </div></dialog>
   <dialog id="settings-dialog" aria-labelledby="settings-title"><div class="dialog-content">
@@ -611,12 +618,21 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
   <dialog id="creator-dialog" aria-labelledby="creator-title"><div class="dialog-content atelier-content">
     <button class="close" data-close aria-label="閉じる">×</button><p class="eyebrow">THE DISC ATELIER</p><h2 id="creator-title">自分だけのコマをつくる</h2>
     <div class="atelier-toolbar"><div class="atelier-tabs"><button id="creator-editor-open" aria-pressed="true">デザインを編集</button><button id="creator-library-open" aria-pressed="false">保存したコマ</button></div><button id="creator-new" class="secondary">＋ 新しくつくる</button></div>
-    <section id="creator-editor"><div class="creator-layout"><div class="creator-preview"><span class="creator-caption">YOUR SIGNATURE DISC</span><div class="creator-pedestal"><i id="creator-disc" class="disc custom-preview" aria-hidden="true"></i></div><p id="creator-summary"></p><p id="creator-preview-text" class="field-note"></p><span id="creator-editing-note" class="creator-caption"></span></div>
+    <section id="creator-editor">
+    <div class="workbench-steps" role="group" aria-label="作成の手順"><button data-atelier-step="0" aria-pressed="true">1 · 色とグラデーション</button><button data-atelier-step="1" aria-pressed="false">2 · コマの形</button><button data-atelier-step="2" aria-pressed="false">3 · 装飾と透明シート</button></div>
+    <div class="creator-layout"><div class="creator-preview"><span class="creator-caption">YOUR SIGNATURE DISC</span><div class="creator-pedestal"><div id="disc-stage" class="disc-stage"><i id="creator-disc" class="disc custom-preview" aria-hidden="true"></i><div id="layer-sheet" class="layer-sheet" hidden tabindex="0" role="button" aria-label="選択中の透明シート。ドラッグで移動、矢印キーで微調整"><span class="sheet-grip" aria-hidden="true"></span><span class="sheet-resize" data-sheet-resize aria-hidden="true"></span></div></div></div><p id="creator-summary"></p><p id="creator-preview-text" class="field-note"></p><span id="creator-editing-note" class="creator-caption"></span><p class="sheet-help">透明シートはドラッグで移動。右下を引くと拡大・縮小できます。枠は保存されません。</p></div>
     <div class="creator-controls"><label class="atelier-label" for="creator-name">デザインの名前<input id="creator-name" type="text" maxlength="96" placeholder="例：星空のコマ" autocomplete="off"></label>
-    <fieldset class="choice-field"><legend>コマの形</legend><div id="creator-shapes" class="creator-options"></div></fieldset>
-    <fieldset class="choice-field"><legend>配色</legend><div id="creator-color-modes" class="creator-options"></div><div class="creator-colors"><button type="button" data-disc-color="#9354ce" style="--swatch:#9354ce" aria-label="紫"></button><button type="button" data-disc-color="#df749d" style="--swatch:#df749d" aria-label="ローズ"></button><button type="button" data-disc-color="#147ad5" style="--swatch:#147ad5" aria-label="青"></button><button type="button" data-disc-color="#0db76c" style="--swatch:#0db76c" aria-label="緑"></button><button type="button" data-disc-color="#e9b72c" style="--swatch:#e9b72c" aria-label="黄"></button><button type="button" data-disc-color="#e9e5d9" style="--swatch:#e9e5d9" aria-label="パール"></button></div><div class="atelier-color-grid"><label>ベース<input id="creator-color" data-disc-input="color" type="color" value="#9354ce"></label><label id="creator-secondary-label">２つめの色<input id="creator-secondary-color" data-disc-input="secondaryColor" type="color" value="#203c65"></label><label>装飾の色<input id="creator-accent-color" data-disc-input="accentColor" type="color" value="#f6e2af"></label><label>ふちの色<input id="creator-edge-color" data-disc-input="edgeColor" type="color" value="#d6ba76"></label></div><label class="atelier-range" for="creator-edge-width">ふちの太さ<output id="creator-edge-value" for="creator-edge-width">0</output><input id="creator-edge-width" data-disc-input="edgeWidth" type="range" min="0" max="8" step="1" value="0"></label></fieldset>
-    <fieldset class="choice-field"><legend>仕上げ</legend><div id="creator-finishes" class="creator-options"></div></fieldset><fieldset class="choice-field"><legend>模様</legend><div id="creator-patterns" class="creator-options"></div></fieldset><fieldset class="choice-field"><legend>マーク</legend><div id="creator-emblems" class="creator-options"></div></fieldset>
-    <fieldset class="choice-field inscription-field"><legend>文字を入れる</legend><label class="atelier-label" for="creator-text">コマに書く文字<input id="creator-text" data-disc-input="text" type="text" maxlength="128" placeholder="例：IRODORY・彩・☆" autocomplete="off"></label><p class="small-note">日本語・英語・記号など8文字まで。空欄にすると文字を消せます。</p><div class="atelier-color-grid"><label>文字の色<input id="creator-text-color" data-disc-input="textColor" type="color" value="#fff4dd"></label></div><div class="atelier-label">書体</div><div id="creator-fonts" class="creator-options"></div><div class="atelier-label">文字の位置</div><div id="creator-text-positions" class="creator-options"></div><label class="atelier-range" for="creator-text-size">文字の大きさ<output id="creator-text-size-value" for="creator-text-size">32</output><input id="creator-text-size" data-disc-input="textSize" type="range" min="18" max="48" step="1" value="32"></label></fieldset>
+    <section data-atelier-panel="0">    <fieldset class="choice-field"><legend>配色</legend><div id="creator-color-modes" class="creator-options"></div><div class="creator-colors"><button type="button" data-disc-color="#9354ce" style="--swatch:#9354ce" aria-label="紫"></button><button type="button" data-disc-color="#df749d" style="--swatch:#df749d" aria-label="ローズ"></button><button type="button" data-disc-color="#147ad5" style="--swatch:#147ad5" aria-label="青"></button><button type="button" data-disc-color="#0db76c" style="--swatch:#0db76c" aria-label="緑"></button><button type="button" data-disc-color="#e9b72c" style="--swatch:#e9b72c" aria-label="黄"></button><button type="button" data-disc-color="#e9e5d9" style="--swatch:#e9e5d9" aria-label="パール"></button></div><div class="atelier-color-grid"><label>ベース<input id="creator-color" data-disc-input="color" type="color" value="#9354ce"></label><label id="creator-secondary-label">２つめの色<input id="creator-secondary-color" data-disc-input="secondaryColor" type="color" value="#203c65"></label></div><label class="atelier-range" for="creator-gradient-angle">グラデーションの角度<output id="creator-gradient-value">135°</output><input id="creator-gradient-angle" data-disc-input="gradientAngle" type="range" min="0" max="360" value="135"></label></fieldset><p class="field-note">まずコマのベースをつくりましょう。２色の組み合わせと光の方向を自由に選べます。</p></section>
+    <section data-atelier-panel="1" hidden>    <fieldset class="choice-field"><legend>コマの形</legend><div id="creator-shapes" class="creator-options"></div></fieldset>
+<p class="field-note">装飾は選んだ形に合わせて切り取られます。</p></section>
+    <section data-atelier-panel="2" hidden><h3>透明シートを重ねる</h3><p class="field-note">文字やスタンプを１枚ずつ貼れます。選んだシートの位置・角度・大きさを調整しましょう。</p><div class="layer-add"><button id="add-text-layer">＋ 文字シート</button><button id="add-stamp-layer">＋ スタンプ</button></div><div id="layer-list" class="layer-list" aria-label="重ねた透明シート"></div><p id="layer-empty" class="field-note">まだシートがありません。文字やスタンプを追加しましょう。</p><div id="layer-controls" hidden>
+    <label class="atelier-label" id="layer-text-label">シートに書く文字<input id="layer-text" data-layer-input="text" type="text" maxlength="128" placeholder="例：彩・HELLO・☆"></label><div id="layer-stamp-options" class="creator-options" aria-label="スタンプの種類"></div>
+    <div class="atelier-color-grid"><label>シートの色<input id="layer-color" data-layer-input="color" type="color" value="#fff4dd"></label><label id="layer-font-label">シートのフォント<select id="layer-font" data-layer-input="font"><option value="sans">すっきり</option><option value="serif">クラシカル</option><option value="rounded">まる文字</option><option value="mono">等幅</option><option value="cursive">手書き</option><option value="impact">太字ポスター</option></select></label></div>
+<label class="atelier-range" for="layer-x">横の位置<output id="layer-x-value">50</output><input id="layer-x" data-layer-input="x" type="range" min="0" max="100" value="50"></label><label class="atelier-range" for="layer-y">縦の位置<output id="layer-y-value">50</output><input id="layer-y" data-layer-input="y" type="range" min="0" max="100" value="50"></label><label class="atelier-range" for="layer-rotation">シートの角度<output id="layer-rotation-value">0</output><input id="layer-rotation" data-layer-input="rotation" type="range" min="-180" max="180" value="0"></label><label class="atelier-range" for="layer-scaleX">横の大きさ<output id="layer-scaleX-value">100</output><input id="layer-scaleX" data-layer-input="scaleX" type="range" min="25" max="250" value="100"></label><label class="atelier-range" for="layer-scaleY">縦の大きさ<output id="layer-scaleY-value">100</output><input id="layer-scaleY" data-layer-input="scaleY" type="range" min="25" max="250" value="100"></label><label class="atelier-range" for="layer-opacity">シートの濃さ<output id="layer-opacity-value">100</output><input id="layer-opacity" data-layer-input="opacity" type="range" min="10" max="100" value="100"></label><div class="layer-actions"><button id="layer-duplicate">複製する</button><button id="layer-forward">手前へ</button><button id="layer-backward">奥へ</button><button id="layer-delete">シートを削除</button></div></div><div class="atelier-history"><button id="atelier-undo">元に戻す</button><button id="atelier-redo">やり直す</button><span id="layer-counter"></span></div>
+    <details class="finish-details"><summary>質感・模様・ふちの仕上げ</summary>    <fieldset class="choice-field"><legend>仕上げ</legend><div id="creator-finishes" class="creator-options"></div></fieldset><fieldset class="choice-field"><legend>模様</legend><div id="creator-patterns" class="creator-options"></div></fieldset><fieldset class="choice-field"><legend>マーク</legend><div id="creator-emblems" class="creator-options"></div></fieldset>
+<div class="atelier-color-grid"><label>装飾の色<input id="creator-accent-color" data-disc-input="accentColor" type="color" value="#f6e2af"></label><label>ふちの色<input id="creator-edge-color" data-disc-input="edgeColor" type="color" value="#d6ba76"></label></div><label class="atelier-range" for="creator-edge-width">ふちの太さ<output id="creator-edge-value" for="creator-edge-width">0</output><input id="creator-edge-width" data-disc-input="edgeWidth" type="range" min="0" max="8" step="1" value="0"></label></details><details class="finish-details"><summary>以前の文字・装飾を調整</summary>    <fieldset class="choice-field inscription-field"><legend>文字を入れる</legend><label class="atelier-label" for="creator-text">コマに書く文字<input id="creator-text" data-disc-input="text" type="text" maxlength="128" placeholder="例：IRODORY・彩・☆" autocomplete="off"></label><p class="small-note">日本語・英語・記号など8文字まで。空欄にすると文字を消せます。</p><div class="atelier-color-grid"><label>文字の色<input id="creator-text-color" data-disc-input="textColor" type="color" value="#fff4dd"></label></div><div class="atelier-label">書体</div><div id="creator-fonts" class="creator-options"></div><div class="atelier-label">文字の位置</div><div id="creator-text-positions" class="creator-options"></div><label class="atelier-range" for="creator-text-size">文字の大きさ<output id="creator-text-size-value" for="creator-text-size">32</output><input id="creator-text-size" data-disc-input="textSize" type="range" min="18" max="48" step="1" value="32"></label></fieldset>
+</details></section>
+    <div class="atelier-navigation"><button id="atelier-prev" class="secondary">前のステップ</button><button id="atelier-next" class="primary">次のステップ</button></div>
     </div></div><p class="field-note">４色のひとり対戦では好きな色を使用。オンラインと黒白の対戦では、席の色でデザインを使います。</p><p id="creator-message" class="field-note" role="status"></p><div class="creator-actions"><button id="creator-save" class="primary">保存してこのコマを使う</button><button id="creator-save-copy" class="secondary">別のコマとして保存</button></div><button id="creator-disable" class="text-button">通常のコマに戻す</button></section>
     <section id="creator-library" hidden aria-label="保存したコマの一覧"><div class="library-heading"><h3>マイコマ・ギャラリー</h3><span id="library-count"></span></div><p class="field-note">24個まで保存できます。使いたいコマを選ぶと、次の対局から反映されます。</p><div class="library-status" role="status"><span id="library-message"></span><button id="library-undo" class="text-button" hidden>削除を取り消す</button></div><div id="disc-library-grid" class="disc-library-grid"></div><p id="disc-library-empty" class="library-empty">まだ保存したコマがありません。「新しくつくる」から、最初のコマを作りましょう。</p><p class="small-note">デザインはこのブラウザに保存されます。設定の「データを書き出す」で一覧ごと持ち運べます。</p></section>
   </div></dialog>
@@ -632,6 +648,50 @@ dialog::backdrop { background:#020805cf; backdrop-filter:blur(5px); }
 'use strict';
 // Japanese source messages are stable translation keys. Values in braces are never re-translated.
 const ENGLISH = Object.freeze({
+  "1 · 色とグラデーション": "1 · Colors & gradient",
+  "2 · コマの形": "2 · Disc shape",
+  "3 · 装飾と透明シート": "3 · Decorations & sheets",
+  "透明シートはドラッグで移動。右下を引くと拡大・縮小できます。枠は保存されません。": "Drag the sheet to move it. Drag its bottom-right corner to resize. The guide is not saved.",
+  "グラデーションの角度": "Gradient angle",
+  "まずコマのベースをつくりましょう。２色の組み合わせと光の方向を自由に選べます。": "Start with your base. Choose two colors and the direction of your gradient.",
+  "装飾は選んだ形に合わせて切り取られます。": "Decorations are clipped to the shape of your disc.",
+  "透明シートを重ねる": "Layer transparent sheets",
+  "文字やスタンプを１枚ずつ貼れます。選んだシートの位置・角度・大きさを調整しましょう。": "Add text or stamps, then adjust each sheet’s position, angle and size.",
+  "＋ 文字シート": "+ Text sheet",
+  "＋ スタンプ": "+ Stamp",
+  "まだシートがありません。文字やスタンプを追加しましょう。": "No sheets yet. Add some text or a stamp.",
+  "シートに書く文字": "Text on this sheet",
+  "シートの色": "Sheet color",
+  "シートのフォント": "Sheet font",
+  "等幅": "Monospace",
+  "手書き": "Handwriting",
+  "太字ポスター": "Poster bold",
+  "横の位置": "Horizontal position",
+  "縦の位置": "Vertical position",
+  "シートの角度": "Sheet angle",
+  "横の大きさ": "Width",
+  "縦の大きさ": "Height",
+  "シートの濃さ": "Opacity",
+  "複製する": "Duplicate",
+  "手前へ": "Bring forward",
+  "奥へ": "Send backward",
+  "シートを削除": "Delete sheet",
+  "元に戻す": "Undo",
+  "やり直す": "Redo",
+  "質感・模様・ふちの仕上げ": "Finish, pattern & border",
+  "以前の文字・装飾を調整": "Adjust earlier text & decoration",
+  "前のステップ": "Previous step",
+  "次のステップ": "Next step",
+  "作成の手順": "Creation steps",
+  "選択中の透明シート。ドラッグで移動、矢印キーで微調整": "Selected transparent sheet. Drag to move; use arrow keys for fine adjustments.",
+  "重ねた透明シート": "Layered transparent sheets",
+  "例：彩・HELLO・☆": "Example: HELLO or a star",
+  "スタンプの種類": "Stamp type",
+  "彩": "IRODORY",
+  "文字シート": "Text sheet",
+  "きらめき": "Sparkle",
+  "透明シートは{0}枚まで重ねられます。": "You can layer up to {0} transparent sheets.",
+
   "マイコマをつくる": "Create your disc",
   "{0}枚": "{0} discs",
   "コマ工房": "Disc atelier",
@@ -1077,7 +1137,7 @@ const ENGLISH = Object.freeze({
   "コマを複製しました。": "Disc duplicated.",
   "コマを削除しました。取り消すことができます。": "Disc deleted. You can undo this.",
   "コマを一覧に戻しました。": "Disc restored to your gallery.",
-  "ホームの「コマ工房」で形・配色・仕上げ・模様・マーク・文字を自由に組み合わせられます。文字は8文字まで、色・書体・大きさ・位置も変更できます。名前付きで24個まで保存でき、「保存したコマ」から使用・編集・複製・削除ができます。４色のひとり対戦では選んだ色を使い、オンラインと黒白の対戦では席の色を保ちます。形や装飾、文字はオンラインの相手にも見えます。選んだコマは次の対局から使われ、強さには影響しません。": "Open Disc atelier to combine shapes, colors, finishes, patterns, emblems and inscriptions. Add up to 8 characters and adjust their color, style, size and position. Save up to 24 named designs, then use, edit, duplicate or delete them in Saved discs. Four-color solo games use your chosen color; online and classic games keep the assigned seat color. Online opponents also see your shape, decorations and text. Your selected disc is used from the next game and never changes playing strength."
+  "ホームの「コマ工房」で、色とグラデーション、形、装飾の順に作れます。文字や星・ハートなどのスタンプを透明シートとして16枚まで重ねられます。シートはドラッグで移動でき、角度・縦横の大きさ・濃さ・フォントを調整できます。シートの文字は24文字まで。重ねる順番・複製・削除・取り消しにも対応しています。名前付きで24個まで保存でき、「保存したコマ」から使用・編集・複製・削除ができます。４色のひとり対戦では選んだ色を使い、オンラインと黒白の対戦では席の色を保ちます。形や装飾、文字はオンラインの相手にも見えます。選んだコマは次の対局から使われ、強さには影響しません。": "In the Disc atelier, start with colors and a gradient, then choose a shape and decorations. Layer up to 16 transparent text or stamp sheets. Each sheet supports dragging, rotation, independent width and height, opacity and fonts. Sheet text supports up to 24 characters. Reorder, duplicate, delete, undo and redo your sheets. Save up to 24 named designs and use the gallery to equip, edit, duplicate or delete them. Solo four-color games use your chosen color; online and black-and-white matches retain your assigned seat color. Shapes, decorations and text are shared with online opponents. Your design applies to the next match and does not affect strength.",
 });
 
 
@@ -1147,6 +1207,24 @@ const DISC_FONTS = Object.freeze({sans:'すっきり',serif:'クラシカル',ro
 const DISC_TEXT_POSITIONS = Object.freeze({center:'中央',top:'上',bottom:'下'});
 const DISC_COLOR_MODES = Object.freeze({solid:'単色',gradient:'グラデーション'});
 const SEAT_COLORS = Object.freeze({red:'#d82b36',blue:'#147ad5',yellow:'#e9b72c',green:'#0db76c',black:'#24282b',white:'#edece4'});
+const DISC_STAMPS = Object.freeze({star:'星',heart:'ハート',moon:'月',diamond:'ダイヤ',flower:'花',round:'丸',hexagon:'六角形',sparkle:'きらめき'});
+const DISC_LAYER_LIMIT = 16;
+const DISC_FONT_STACKS = Object.freeze({sans:'"Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif',serif:'"Yu Mincho", Georgia, serif',rounded:'"Hiragino Maru Gothic ProN", "Arial Rounded MT Bold", sans-serif',mono:'"SFMono-Regular", Menlo, monospace',cursive:'"Snell Roundhand", "Segoe Script", cursive',impact:'Impact, "Arial Black", sans-serif'});
+function normalizeDiscLayer(raw={}) {
+  const v=raw&&typeof raw==='object'?raw:{};
+  const num=(k,min,max,d)=>Number.isFinite(v[k])?Math.round(Math.min(max,Math.max(min,v[k]))):d;
+  const hex=(k,d)=>typeof v[k]==='string'&&/^#[0-9a-f]{6}$/i.test(v[k])?v[k].toLowerCase():d;
+  return {type:v.type==='stamp'?'stamp':'text',text:cleanDiscText(v.text,24),stamp:typeof v.stamp==='string'&&Object.hasOwn(DISC_STAMPS,v.stamp)?v.stamp:'star',
+    x:num('x',0,100,50),y:num('y',0,100,50),rotation:num('rotation',-180,180,0),scaleX:num('scaleX',25,250,100),scaleY:num('scaleY',25,250,100),
+    color:hex('color','#fff4dd'),font:typeof v.font==='string'&&Object.hasOwn(DISC_FONT_STACKS,v.font)?v.font:'sans',opacity:num('opacity',10,100,100)};
+}
+// Pointer deltas use fractions of the 256px shared texture, so zoom and screen size agree.
+function transformDiscLayer(raw,dx,dy,resize=false){
+ const layer=normalizeDiscLayer(raw),angle=layer.rotation*Math.PI/180;
+ const localX=dx*Math.cos(angle)+dy*Math.sin(angle),localY=-dx*Math.sin(angle)+dy*Math.cos(angle);
+ const changes=resize?{scaleX:layer.scaleX+localX*512/(layer.type==='text'?140:64)*100,scaleY:layer.scaleY+localY*512/64*100}:{x:layer.x+dx*256/1.8,y:layer.y+dy*256/1.7};
+ return normalizeDiscLayer({...layer,...changes});
+}
 let discTextSegmenter;
 function cleanDiscText(value,limit=8) {
   if(typeof value!=='string')return '';
@@ -1167,7 +1245,8 @@ function normalizeCustomDisc(raw) {
     shape:choice('shape',DISC_SHAPES,'round'),colorMode:choice('colorMode',DISC_COLOR_MODES,'solid'),secondaryColor:hex('secondaryColor','#203c65'),
     accentColor:hex('accentColor','#f6e2af'),edgeColor:hex('edgeColor','#d6ba76'),edgeWidth:number('edgeWidth',0,8,0),
     text:cleanDiscText(value.text),textColor:hex('textColor','#fff4dd'),textFont:choice('textFont',DISC_FONTS,'sans'),
-    textPosition:choice('textPosition',DISC_TEXT_POSITIONS,'bottom'),textSize:number('textSize',18,48,32)};
+    textPosition:choice('textPosition',DISC_TEXT_POSITIONS,'bottom'),textSize:number('textSize',18,48,32),
+    gradientAngle:number('gradientAngle',0,360,135),layers:Array.isArray(value.layers)?value.layers.slice(0,DISC_LAYER_LIMIT).map(normalizeDiscLayer):[]};
 }
 function matchCosmetics(colors,mode,human,customDisc,seats=[]) {
   const designs={};
@@ -1227,6 +1306,17 @@ function drawDiscDecoration(ctx,design) {
     const maxWidth=shape==='star'?(textPosition==='center'?116:96):shape==='heart'&&textPosition!=='center'?110:132;
     ctx.font=`700 ${textPosition==='center'?textSize:Math.min(textSize,32)}px ${fonts[textFont]}`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';ctx.lineWidth=2;ctx.strokeStyle='#15201899';ctx.fillStyle=textColor;
     ctx.strokeText(text,126,y,maxWidth);ctx.fillText(text,126,y,maxWidth);
+  }
+  for(const layer of normalizeCustomDisc(design).layers){
+    ctx.save();ctx.translate(126+(layer.x-50)*1.8,121+(layer.y-50)*1.7);ctx.rotate(layer.rotation*Math.PI/180);ctx.scale(layer.scaleX/100,layer.scaleY/100);ctx.globalAlpha=layer.opacity/100;ctx.fillStyle=layer.color;
+    if(layer.type==='text'){
+      ctx.font=`700 32px ${DISC_FONT_STACKS[layer.font]}`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(layer.text,0,0,140);
+    }else{
+      if(['star','heart','flower','round','hexagon'].includes(layer.stamp))traceDiscShape(ctx,layer.stamp,0,0,30,30);
+      else {ctx.beginPath();if(layer.stamp==='moon'){ctx.arc(0,0,29,.35*Math.PI,1.65*Math.PI);ctx.bezierCurveTo(-8,-23,-8,23,Math.cos(.35*Math.PI)*29,Math.sin(.35*Math.PI)*29);}else{const narrow=layer.stamp==='sparkle'?8:0;ctx.moveTo(0,-30);ctx.lineTo(narrow||25,-narrow);ctx.lineTo(30,0);ctx.lineTo(narrow, narrow||0);ctx.lineTo(0,30);ctx.lineTo(-narrow,narrow);ctx.lineTo(-30,0);ctx.lineTo(-narrow,-narrow); }ctx.closePath();}
+      ctx.fill();
+    }
+    ctx.restore();
   }
   ctx.restore();
 }
@@ -1854,7 +1944,8 @@ function installStoneTextures(doc, colors, computed = getComputedStyle, designs 
       side.addColorStop(0,edge); side.addColorStop(.73,edge); side.addColorStop(1,value('--dark'));
       ctx.fillStyle=side;ctx.fill();
       traceDiscShape(ctx,design?.shape);
-      const face = ctx.createLinearGradient(40, 20, 181, 225);
+      const angle=((design?.gradientAngle??135)-90)*Math.PI/180;
+      const face = ctx.createLinearGradient(126-Math.cos(angle)*110,121-Math.sin(angle)*110,126+Math.cos(angle)*110,121+Math.sin(angle)*110);
       face.addColorStop(0, light); face.addColorStop(.38, base);
       if(design?.finish==='metal'){face.addColorStop(.52,tint(value('--stone'),[255,237,190],.65));face.addColorStop(.62,base);}
       face.addColorStop(.8,design?.colorMode==='gradient'?tint(design.secondaryColor,[92,79,55],.18):base);face.addColorStop(1,design?.colorMode==='gradient'?shade(design.secondaryColor,.6):edge);
@@ -2729,10 +2820,58 @@ $('#online-host-field').addEventListener('change',()=>{
 });
 let discDraft=normalizeCustomDisc(),discDraftName='',discEditingId=null,discPreviewFrame=null,atelierView='editor',lastRemovedDisc=null;
 const discChoiceGroups=[['creator-shapes','shape',DISC_SHAPES],['creator-color-modes','colorMode',DISC_COLOR_MODES],['creator-finishes','finish',DISC_FINISHES],['creator-patterns','pattern',DISC_PATTERNS],['creator-emblems','emblem',DISC_EMBLEMS],['creator-fonts','textFont',DISC_FONTS],['creator-text-positions','textPosition',DISC_TEXT_POSITIONS]];
+let atelierStep=0,selectedLayer=-1,discUndo=[],discRedo=[];
+function rememberDisc(){discUndo.push(JSON.stringify(discDraft));if(discUndo.length>40)discUndo.shift();discRedo=[];}
+function restoreDiscHistory(from,to){if(!from.length)return;to.push(JSON.stringify(discDraft));discDraft=normalizeCustomDisc(JSON.parse(from.pop()));selectedLayer=Math.min(selectedLayer,discDraft.layers.length-1);renderCreator();}
+function setAtelierStep(step){atelierStep=Math.min(2,Math.max(0,step));document.querySelectorAll('[data-atelier-panel]').forEach(el=>el.hidden=Number(el.dataset.atelierPanel)!==atelierStep);document.querySelectorAll('[data-atelier-step]').forEach(el=>el.setAttribute('aria-pressed',String(Number(el.dataset.atelierStep)===atelierStep)));$('#atelier-prev').disabled=atelierStep===0;$('#atelier-next').hidden=atelierStep===2;renderLayerSheet();}
+function currentDiscLayer(){return discDraft.layers[selectedLayer];}
+function addDiscLayer(type){if(discDraft.layers.length>=DISC_LAYER_LIMIT){$('#creator-message').textContent=t`透明シートは${DISC_LAYER_LIMIT}枚まで重ねられます。`;return;}rememberDisc();discDraft.layers.push(normalizeDiscLayer({type,text:type==='text'?t('彩'):''}));selectedLayer=discDraft.layers.length-1;setAtelierStep(2);renderCreator();}
+function renderLayerSheet(){
+ const layer=currentDiscLayer(),sheet=$('#layer-sheet');sheet.hidden=atelierStep!==2||!layer||atelierView!=='editor';if(sheet.hidden)return;
+ sheet.style.left=`${(126+(layer.x-50)*1.8)/256*100}%`;sheet.style.top=`${(121+(layer.y-50)*1.7)/256*100}%`;
+ sheet.style.width=`${(layer.type==='text'?140:64)/256*layer.scaleX}%`;sheet.style.height=`${64/256*layer.scaleY}%`;sheet.style.transform=`translate(-50%,-50%) rotate(${layer.rotation}deg)`;
+}
+function renderDiscLayers(){
+ const layer=currentDiscLayer();$('#layer-controls').hidden=!layer;$('#layer-empty').hidden=discDraft.layers.length>0;$('#layer-counter').textContent=`${discDraft.layers.length} / ${DISC_LAYER_LIMIT}`;
+ $('#add-text-layer').disabled=$('#add-stamp-layer').disabled=discDraft.layers.length>=DISC_LAYER_LIMIT;
+ const list=$('#layer-list');list.replaceChildren();
+ discDraft.layers.forEach((item,index)=>{const button=document.createElement('button');button.type='button';button.dataset.layerSelect=String(index);button.textContent=`${index+1} · ${item.type==='text'?(item.text||t('文字シート')):t(DISC_STAMPS[item.stamp])}`;button.setAttribute('aria-pressed',String(index===selectedLayer));list.append(button);});
+ if(layer){
+  $('#layer-text-label').hidden=layer.type!=='text';$('#layer-font-label').hidden=layer.type!=='text';$('#layer-stamp-options').hidden=layer.type!=='stamp';
+  for(const input of document.querySelectorAll('[data-layer-input]'))input.value=layer[input.dataset.layerInput];
+  const group=$('#layer-stamp-options');if(!group.children.length)for(const key of Object.keys(DISC_STAMPS)){const button=document.createElement('button');button.dataset.layerStamp=key;group.append(button);}
+  for(const button of group.children){button.textContent=t(DISC_STAMPS[button.dataset.layerStamp]);button.setAttribute('aria-pressed',String(layer.stamp===button.dataset.layerStamp));}
+  $('#layer-backward').disabled=selectedLayer===0;$('#layer-forward').disabled=selectedLayer===discDraft.layers.length-1;
+ }
+ $('#atelier-undo').disabled=!discUndo.length;$('#atelier-redo').disabled=!discRedo.length;renderLayerValues();renderLayerSheet();
+}
+function renderLayerValues(){const layer=currentDiscLayer();if(!layer)return;for(const key of ['x','y','rotation','scaleX','scaleY','opacity']){$('#layer-'+key+'-value').textContent=layer[key]+(key==='rotation'?'°':key.startsWith('scale')||key==='opacity'?'%':'');$('#layer-'+key).value=layer[key];}}
+$('#creator-dialog').addEventListener('click',event=>{
+ const step=event.target.closest('[data-atelier-step]');if(step){setAtelierStep(Number(step.dataset.atelierStep));return;}
+ const choice=event.target.closest('[data-layer-select]');if(choice){selectedLayer=Number(choice.dataset.layerSelect);renderDiscLayers();return;}
+ const stamp=event.target.closest('[data-layer-stamp]');if(stamp&&currentDiscLayer()){rememberDisc();currentDiscLayer().stamp=stamp.dataset.layerStamp;renderCreator();}
+});
+$('#atelier-prev').addEventListener('click',()=>setAtelierStep(atelierStep-1));$('#atelier-next').addEventListener('click',()=>setAtelierStep(atelierStep+1));
+$('#add-text-layer').addEventListener('click',()=>{addDiscLayer('text');$('#layer-text').focus();});$('#add-stamp-layer').addEventListener('click',()=>addDiscLayer('stamp'));
+$('#layer-duplicate').addEventListener('click',()=>{if(!currentDiscLayer()||discDraft.layers.length>=DISC_LAYER_LIMIT)return;rememberDisc();discDraft.layers.push(normalizeDiscLayer({...currentDiscLayer(),x:Math.min(100,currentDiscLayer().x+5),y:Math.min(100,currentDiscLayer().y+5)}));selectedLayer=discDraft.layers.length-1;renderCreator();});
+$('#layer-delete').addEventListener('click',()=>{if(!currentDiscLayer())return;rememberDisc();discDraft.layers.splice(selectedLayer,1);selectedLayer=Math.min(selectedLayer,discDraft.layers.length-1);renderCreator();});
+for(const [id,offset] of [['layer-forward',1],['layer-backward',-1]])$('#'+id).addEventListener('click',()=>{const index=selectedLayer+offset;if(!currentDiscLayer()||index<0||index>=discDraft.layers.length)return;rememberDisc();[discDraft.layers[index],discDraft.layers[selectedLayer]]=[discDraft.layers[selectedLayer],discDraft.layers[index]];selectedLayer=index;renderCreator();});
+$('#atelier-undo').addEventListener('click',()=>restoreDiscHistory(discUndo,discRedo));$('#atelier-redo').addEventListener('click',()=>restoreDiscHistory(discRedo,discUndo));
+for(const input of document.querySelectorAll('[data-layer-input]')){
+ let checkpoint=false;input.addEventListener('focus',()=>checkpoint=false);input.addEventListener('blur',()=>{checkpoint=false;input.value=currentDiscLayer()?.[input.dataset.layerInput]??'';});
+ const update=()=>{if(!currentDiscLayer())return;if(!checkpoint){rememberDisc();checkpoint=true;}const key=input.dataset.layerInput;discDraft.layers[selectedLayer]=normalizeDiscLayer({...currentDiscLayer(),[key]:input.type==='range'?Number(input.value):input.value});renderLayerValues();renderLayerSheet();queueDiscPreview();$('#atelier-undo').disabled=false;$('#atelier-redo').disabled=true;};
+ input.addEventListener('input',event=>{if(!event.isComposing)update();});input.addEventListener('compositionend',update);
+}
+let sheetDrag=null;
+$('#layer-sheet').addEventListener('pointerdown',event=>{if(event.button!==0||!currentDiscLayer())return;event.preventDefault();rememberDisc();const rect=$('#disc-stage').getBoundingClientRect();sheetDrag={id:event.pointerId,startX:event.clientX,startY:event.clientY,rect,layer:{...currentDiscLayer()},resize:!!event.target.closest('[data-sheet-resize]')};$('#layer-sheet').setPointerCapture(event.pointerId);$('#layer-sheet').focus({preventScroll:true});});
+$('#layer-sheet').addEventListener('pointermove',event=>{if(!sheetDrag||event.pointerId!==sheetDrag.id)return;const d=sheetDrag,dx=(event.clientX-d.startX)/d.rect.width,dy=(event.clientY-d.startY)/d.rect.height;
+ discDraft.layers[selectedLayer]=transformDiscLayer(d.layer,dx,dy,d.resize);renderLayerValues();renderLayerSheet();queueDiscPreview();});
+function endSheetDrag(){sheetDrag=null;renderDiscLayers();}$('#layer-sheet').addEventListener('pointerup',endSheetDrag);$('#layer-sheet').addEventListener('pointercancel',endSheetDrag);$('#layer-sheet').addEventListener('lostpointercapture',()=>{sheetDrag=null;});
+$('#layer-sheet').addEventListener('keydown',event=>{const layer=currentDiscLayer();if(!layer)return;const delta={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[event.key];if(!delta)return;event.preventDefault();rememberDisc();const amount=event.shiftKey?5:1;discDraft.layers[selectedLayer]=normalizeDiscLayer({...layer,x:layer.x+delta[0]*amount,y:layer.y+delta[1]*amount});renderLayerValues();renderLayerSheet();queueDiscPreview();});
 function readLatestDiscProfile(){if(storageWorking)profile=normalizeProfile(readSave(STORAGE.profile)??profile);}
 function discTitle(item){return item.name||t('名前のないコマ');}
 function discDescription(design){return [t(DISC_SHAPES[design.shape]),t(DISC_FINISHES[design.finish]),t(DISC_PATTERNS[design.pattern])].join(' · ');}
-function loadDiscDraft(item=null){discEditingId=item?.id??null;discDraftName=item?.name??'';discDraft=normalizeCustomDisc(item?.design);$('#creator-message').textContent='';}
+function loadDiscDraft(item=null){discEditingId=item?.id??null;discDraftName=item?.name??'';discDraft=normalizeCustomDisc(item?.design);discUndo=[];discRedo=[];selectedLayer=discDraft.layers.length?0:-1;atelierStep=0;$('#creator-message').textContent='';}
 function setAtelierView(view){
   atelierView=view;$('#creator-editor').hidden=view!=='editor';$('#creator-library').hidden=view!=='library';
   $('#creator-editor-open').setAttribute('aria-pressed',String(view==='editor'));$('#creator-library-open').setAttribute('aria-pressed',String(view==='library'));
@@ -2748,12 +2887,15 @@ function renderCreator(){
   }
   $('#creator-editing-note').textContent=discEditingId?t('保存済みのデザインを編集しています'):t('新しいデザイン');
   $('#creator-secondary-label').hidden=discDraft.colorMode!=='gradient';
-  renderDiscPreview();
+  setAtelierStep(atelierStep);renderDiscLayers();renderDiscPreview();
 }
 function renderDiscPreview(){
   installStoneTextures(document,['custom-preview'],getComputedStyle,{'custom-preview':discDraft},'irodory-preview-texture',{racks:false});
   $('#creator-summary').textContent=discDescription(discDraft);
   $('#creator-preview-text').textContent=discDraft.text?t`文字：${discDraft.text}`:'';
+  const layer=currentDiscLayer(),layerButton=$('#layer-list').children[selectedLayer];if(layer&&layerButton)layerButton.textContent=`${selectedLayer+1} · ${layer.type==='text'?(layer.text||t('文字シート')):t(DISC_STAMPS[layer.stamp])}`;
+  $('#atelier-undo').disabled=!discUndo.length;$('#atelier-redo').disabled=!discRedo.length;
+  $('#creator-gradient-value').textContent=discDraft.gradientAngle+'°';renderLayerSheet();
   $('#creator-edge-value').textContent=String(discDraft.edgeWidth);$('#creator-text-size-value').textContent=String(discDraft.textSize);
   document.querySelectorAll('[data-disc-color]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.discColor===discDraft.color)));
 }
@@ -2789,17 +2931,19 @@ $('#creator-editor-open').addEventListener('click',()=>setAtelierView('editor'))
 $('#creator-new').addEventListener('click',()=>{loadDiscDraft();setAtelierView('editor');$('#creator-name').focus();});
 $('#creator-dialog').addEventListener('click',event=>{
   const button=event.target.closest('[data-disc-field],[data-disc-color]');if(!button)return;
+  rememberDisc();
   if(button.dataset.discColor)discDraft.color=button.dataset.discColor;else discDraft[button.dataset.discField]=button.dataset.discValue;
   renderCreator();
 });
 $('#creator-name').addEventListener('input',event=>{discDraftName=event.target.value;});
 $('#creator-name').addEventListener('blur',event=>{discDraftName=cleanDiscText(discDraftName,24);event.target.value=discDraftName;});
 for(const input of document.querySelectorAll('[data-disc-input]')){
-  const update=()=>{discDraft=normalizeCustomDisc({...discDraft,[input.dataset.discInput]:input.type==='range'?Number(input.value):input.value});queueDiscPreview();};
+  let checkpoint=false;input.addEventListener('focus',()=>checkpoint=false);input.addEventListener('blur',()=>checkpoint=false);
+  const update=()=>{if(!checkpoint){rememberDisc();checkpoint=true;}discDraft=normalizeCustomDisc({...discDraft,[input.dataset.discInput]:input.type==='range'?Number(input.value):input.value});queueDiscPreview();};
   input.addEventListener('input',event=>{if(!event.isComposing)update();});input.addEventListener('compositionend',update);
   input.addEventListener('blur',()=>{input.value=discDraft[input.dataset.discInput];});
 }
-$('#creator-dialog').addEventListener('close',()=>{if(discPreviewFrame!==null)cancelAnimationFrame(discPreviewFrame);discPreviewFrame=null;});
+$('#creator-dialog').addEventListener('close',()=>{if(discPreviewFrame!==null)cancelAnimationFrame(discPreviewFrame);discPreviewFrame=null;sheetDrag=null;});
 function saveCustomDisc(copy=false){
   readLatestDiscProfile();const result=saveDiscDesign(profile,{id:copy?null:discEditingId,name:discDraftName,design:discDraft},()=>globalThis.crypto?.randomUUID?.()??`disc-${Date.now()}-${Math.random().toString(36).slice(2)}`);
   if(!result.ok){$('#creator-message').textContent=t(result.reason);return;}

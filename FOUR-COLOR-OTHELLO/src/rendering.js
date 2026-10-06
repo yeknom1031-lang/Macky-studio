@@ -31,7 +31,8 @@ export function installStoneTextures(doc, colors, computed = getComputedStyle, d
       side.addColorStop(0,edge); side.addColorStop(.73,edge); side.addColorStop(1,value('--dark'));
       ctx.fillStyle=side;ctx.fill();
       traceDiscShape(ctx,design?.shape);
-      const face = ctx.createLinearGradient(40, 20, 181, 225);
+      const angle=((design?.gradientAngle??135)-90)*Math.PI/180;
+      const face = ctx.createLinearGradient(126-Math.cos(angle)*110,121-Math.sin(angle)*110,126+Math.cos(angle)*110,121+Math.sin(angle)*110);
       face.addColorStop(0, light); face.addColorStop(.38, base);
       if(design?.finish==='metal'){face.addColorStop(.52,tint(value('--stone'),[255,237,190],.65));face.addColorStop(.62,base);}
       face.addColorStop(.8,design?.colorMode==='gradient'?tint(design.secondaryColor,[92,79,55],.18):base);face.addColorStop(1,design?.colorMode==='gradient'?shade(design.secondaryColor,.6):edge);

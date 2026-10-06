@@ -71,7 +71,7 @@ export class IrodoryHub extends DurableObject {
   async webSocketMessage(ws,message){
     return this.ctx.blockConcurrencyWhile(async()=>{
       const p=ws.deserializeAttachment(),now=Date.now();
-      if(typeof message!=='string'||message.length>1024){ws.close(1009,'大きすぎるメッセージです');return;}
+      if(typeof message!=='string'||message.length>16384){ws.close(1009,'大きすぎるメッセージです');return;}
       if(now-p.window>=10000){p.window=now;p.count=0;}p.count++;ws.serializeAttachment(p);
       if(p.count>30){ws.send(JSON.stringify({error:'操作が速すぎます。少しお待ちください'}));return;}
       let error;
