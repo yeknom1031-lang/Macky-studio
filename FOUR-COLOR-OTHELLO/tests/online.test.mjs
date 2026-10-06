@@ -71,3 +71,17 @@ test('通信クライアントは操作前に接続せず、切断後に再参�
   client.stop();await new Promise(r=>setTimeout(r,760));assert.equal(all.length,2);
  }finally{client.stop();globalThis.WebSocket=oldWS;globalThis.location=oldLocation;}
 });
+
+test('全席の最新着手を保存し、再接続にも共有。古い保存対局にも追加できる',()=>{
+ const r=createRoom('markers',people.slice(0,4),0,()=>.999);tickRoom(r,5000);delete r.lastPlacements;
+ const expected=new Map();
+ for(let turn=0;turn<8&&r.phase!=='ended';turn++){
+  const p=r.player,index=firstRoundMoves(r.board,p,r.moved)[0];
+  roomAction(r,r.seats[p].id,'move',{index,ply:r.ply,room:r.id},5100+turn*100);
+  expected.set(p,{player:p,index});
+  for(const [player,move] of expected)assert.deepEqual(r.lastPlacements[player],move);
+ }
+ const restored=JSON.parse(JSON.stringify(r));
+ assert.deepEqual(publicRoom(restored,'p0',6000).lastPlacements,r.lastPlacements);
+ assert.ok(expected.size>1);
+});

@@ -11,7 +11,7 @@ import { CATALOG, normalizeProfile, ownsItem, purchaseItem, equipItem, matchRewa
 import { createOnlineClient, mergeOnlineLedger, ONLINE_URL } from './online.js';
 import { createStoneAudio } from './audio.js';
 import { createCapturePreview } from './capture-preview.js';
-import { installStoneTextures, paintStone, createCellEffects, createHeldStonePointer } from './rendering.js';
+import { installStoneTextures, paintLastPlacements, paintStone, createCellEffects, createHeldStonePointer } from './rendering.js';
 
 // Reaction payloads and palette names stay canonical across client languages.
 const ONLINE_STAMPS=['よろしく！','いい一手！','ありがとう！','楽しかった！'];
@@ -125,6 +125,9 @@ function updateCell(index) {
   cell.setAttribute('aria-label', t`${Math.floor(index / state.size) + 1}行${index % state.size + 1}列、${player === null ? t('空きマス') : nameOf(player) + t('の石')}`);
 }
 let scoreKey = '', turnKey = '', scoreNodes = [];
+function renderLastPlacements() {
+  paintLastPlacements(cells,state.lastPlacements,state.mode==='friends'?state.player:state.human,scoreNodes.map(({row})=>getComputedStyle(row).getPropertyValue('--stone').trim()));
+}
 function renderStatus() {
   const counts = scores(state.board), p = state.player;
   if(state.mode!=='online')ui.turn.title=t('ポーズ（Esc）');
@@ -154,6 +157,7 @@ function renderStatus() {
     ui.turn.title=t('対局メニュー（Esc）');ui.turn.setAttribute('aria-label',nameOf(p)+t('の番。対局メニューを開く（Esc）'));
     ui.turn.querySelector('span').textContent=t`${nameOf(p)} · ${p===state.human?t('あなた'):onlineSeatName(onlineRoom.seats[p],p)}の番`;
   }
+  renderLastPlacements();
   updateInputState();
 }
 function updateInputState() {
@@ -238,7 +242,8 @@ async function moveAt(index, actor = 'human') {
   }
   hideNotice(); const run = epoch, player = state.player, n = state.size;
   state.movedPlayers[player] = true;
-  state.phase = 'animating'; state.board = result.board; updateInputState(); updateCell(index);
+  state.lastPlacements ??= []; state.lastPlacements[player] = {player,index};
+  state.phase = 'animating'; state.board = result.board; updateInputState(); updateCell(index);renderLastPlacements();
   if (!preferences.reducedMotion) cellEffects.pulse(cells[index]);
   const animatedFlips=result.flips.length>8?[]:result.flips;
   if(result.flips.length>8) result.flips.forEach(updateCell);
@@ -351,7 +356,7 @@ function startGame(config = lastConfig) {
   cancelRun(); hideNotice(); closeDialogs();
   stoneAudio.unlock();
   const palette = config.playerCount === 2 ? { colors:[{id:'black',name:BLACK_NAME,seat:0},{id:'white',name:WHITE_NAME,seat:1}], human:config.mode === 'solo' ? Math.floor(Math.random()*2) : 0 } : config.mode === 'solo' ? randomSoloLineup(profile) : playerColors('red','friends'); lastConfig = { ...config };
-  state = { ...config, ...palette, id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`, board: initialBoard(config.size, config.playerCount ?? 4), player: 0, phase: 'playing', movedPlayers:Array(config.playerCount ?? 4).fill(false) };
+  state = { ...config, ...palette, id: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`, board: initialBoard(config.size, config.playerCount ?? 4), player: 0, phase: 'playing', lastPlacements:[], movedPlayers:Array(config.playerCount ?? 4).fill(false) };
   installMatchCosmetics();
   ui.home.hidden = true; ui.game.hidden = false; document.body.classList.add('playing');
   ui.game.dataset.playerCount = String(state.colors.length);
@@ -563,6 +568,7 @@ function receiveOnline(data){
     if(location.hash!=='#play')history.pushState(null,'','#play');
   }
   const changed=room.board.flatMap((p,i)=>previous&&previous.board[i]!==p?[i]:[]);
+  state.lastPlacements=room.lastPlacements??(room.lastMove?[room.lastMove]:[]);
   state.board=room.board;state.player=room.player;state.movedPlayers=room.moved;state.phase=room.phase==='countdown'?'intro':room.phase==='ended'?'ended':room.seats[room.you].forfeit?'watching':'playing';
   for(const i of changed){updateCell(i);if(!preferences.reducedMotion&&changed.length<=8&&!isPaused()){cells[i].firstElementChild?.animate([{transform:'scaleX(.15) translateY(-5px)'},{transform:'scaleX(1) translateY(0)'}],{duration:320,easing:'ease-out'});}}
   if(changed.length&&!isPaused()){sound('place',room.lastMove.index);announce(t`${onlineSeatName(room.seats[room.lastMove.player],room.lastMove.player)}が${room.lastMove.flips.length}枚返しました`);}

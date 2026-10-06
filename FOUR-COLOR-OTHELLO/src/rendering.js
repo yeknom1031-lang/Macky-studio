@@ -127,3 +127,14 @@ export function createHeldStonePointer(surface, element, { frame = requestAnimat
     destroy(){leave();for(const [type,handler] of [['pointerenter',move],['pointermove',move],['pointerleave',leave],['pointercancel',leave]])surface.removeEventListener(type,handler);}
   };
 }
+
+// One persistent last-placement marker per opponent; no animations or timers.
+export function paintLastPlacements(cells, moves, ownPlayer, colors) {
+  const marked = new Map((moves ?? []).filter(move => move && move.player !== ownPlayer).map(move => [move.index, move.player]));
+  cells.forEach((cell,index) => {
+    const player = marked.get(index);
+    cell.classList.toggle('opponent-last-move', player !== undefined);
+    if (player !== undefined) cell.style.setProperty('--last-move-color', colors[player]);
+    else cell.style.removeProperty('--last-move-color');
+  });
+}

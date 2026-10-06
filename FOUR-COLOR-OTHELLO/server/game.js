@@ -14,7 +14,7 @@ export function createRoom(id,members,now,random=Math.random,settings={}) {
   const seats=members.map(p=>({id:p.id,name:p.name,customDisc:normalizeCustomDisc(p.customDisc),bot:false,connected:true,disconnectedAt:null,forfeit:false,misses:0,rematch:false}));
   while(seats.length<4)seats.push({id:null,name:`コンピューター ${seats.length+1}`,bot:true,connected:true,disconnectedAt:null,forfeit:false,misses:0,rematch:true});
   for(let i=seats.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[seats[i],seats[j]]=[seats[j],seats[i]];}
-  return {id,seats,settings,board:initialBoard(settings.size),player:0,moved:[false,false,false,false],phase:'countdown',startAt:now+COUNTDOWN_MS,deadline:now+COUNTDOWN_MS,ply:0,lastMove:null,notice:'まもなく対局開始',reactions:[],createdAt:now,endedAt:null};
+  return {id,seats,settings,board:initialBoard(settings.size),player:0,moved:[false,false,false,false],phase:'countdown',startAt:now+COUNTDOWN_MS,deadline:now+COUNTDOWN_MS,ply:0,lastMove:null,lastPlacements:[],notice:'まもなく対局開始',reactions:[],createdAt:now,endedAt:null};
 }
 export function endRoom(room,now,abandoned=false) {
   room.phase='ended';room.endedAt=now;room.deadline=null;room.abandoned=abandoned;
@@ -35,6 +35,7 @@ export function applyRoomMove(room,index,now,automatic=false) {
   if(!firstRoundMoves(room.board,room.player,room.moved).includes(index))throw new Error('そこには置けません');
   const p=room.player,result=playMove(room.board,p,index);
   room.board=result.board;room.moved[p]=true;room.ply++;room.lastMove={index,player:p,flips:result.flips,automatic,ply:room.ply,at:now};
+  room.lastPlacements ??= [];room.lastPlacements[p]={index,player:p};
   advanceRoom(room,now);
 }
 export function tickRoom(room,now) {

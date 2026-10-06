@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { paintStone, createCellEffects } from '../src/rendering.js';
+import { paintStone, paintLastPlacements, createCellEffects } from '../src/rendering.js';
 
 const cell = () => ({ firstElementChild:null, classList:new Set(), append(node) { this.firstElementChild=node; }, replaceChildren() { this.firstElementChild=null; } });
 function effectCell() {
@@ -80,4 +80,14 @@ test('盤面外・タッチ入力・手番終了ではポインター石と予�
  handlers.get('pointermove')({pointerType:'touch',clientX:50,clientY:60});assert.equal(queue.size,0);
  handlers.get('pointermove')({pointerType:'pen',clientX:50,clientY:60});assert.equal(queue.size,1);
  pointer.sync(null,42);assert.equal(queue.size,0);assert.equal(element.hidden,true);
+});
+
+test('相手ごとの最新着手だけを元の色で残し、自分・次の着手・新対局を正しく反映',()=>{
+  const cells=Array.from({length:64},()=>{const classes=new Set(),style=new Map();return {classList:{toggle:(c,on)=>on?classes.add(c):classes.delete(c)},style:{setProperty:(k,v)=>style.set(k,v),removeProperty:k=>style.delete(k)},classes,values:style};});
+  const colors=['red','blue','yellow','green'];
+  paintLastPlacements(cells,[{index:1,player:0},{index:2,player:1},{index:3,player:2}],0,colors);
+  assert.ok(!cells[1].classes.size);assert.equal(cells[2].values.get('--last-move-color'),'blue');assert.equal(cells[3].values.get('--last-move-color'),'yellow');
+  paintLastPlacements(cells,[{index:1,player:0},{index:4,player:1},{index:3,player:2}],0,colors);
+  assert.equal(cells[2].classes.size,0);assert.equal(cells[2].values.size,0);assert.equal(cells[4].values.get('--last-move-color'),'blue');
+  paintLastPlacements(cells,[],0,colors);assert.ok(cells.every(c=>c.classes.size===0&&c.values.size===0));
 });

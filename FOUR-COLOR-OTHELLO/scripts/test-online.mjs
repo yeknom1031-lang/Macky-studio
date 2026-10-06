@@ -44,6 +44,7 @@ try{
   const room=group[0].state.room,c=group.find(c=>c.state.room.you===room.player),index=firstRoundMoves(room.board,room.player,room.moved)[0];
   c.send('move',{index,ply:room.ply,room:room.id});await until(()=>group.every(c=>c.state.room.ply>room.ply),'move sync');
   assert.ok(group.every(c=>JSON.stringify(c.state.room.board)===JSON.stringify(group[0].state.room.board)));
+  for(const client of group)assert.deepEqual(client.state.room.lastPlacements[room.player],{index,player:room.player});
   moves++;await wait(180);
  }
  assert.ok(moves>0);assert.equal(group[0].state.room.board.filter(p=>p!==null).length,16+moves);
