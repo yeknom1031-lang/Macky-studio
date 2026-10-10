@@ -123,8 +123,8 @@ function setTool(value){tool=value;$('#fill-tool').classList.toggle('selected',v
 $('#fill-tool').onclick=()=>setTool('fill');$('#mark-tool').onclick=()=>setTool('mark');
 $('#board').addEventListener('contextmenu',e=>e.preventDefault());
 $('#board').addEventListener('pointerdown',e=>{
-  const el=e.target.closest('.cell');if(!el||game.status!=='playing'||e.button>2)return;
-  e.preventDefault();const index=Number(el.dataset.index),inputTool=e.button===2?'mark':tool;
+  const el=e.target.closest('.cell');if(!el||game.status!=='playing'||e.button>2||(e.pointerType==='mouse'&&e.button===1))return;
+  e.preventDefault();const index=Number(el.dataset.index),inputTool=e.button===2?'mark':e.pointerType==='mouse'?'fill':tool;
   drag={id:e.pointerId,seen:new Set([index]),tool:inputTool,erase:inputTool==='mark'&&game.cells[index]===2,start:index,axis:null};
   $('#board').setPointerCapture(e.pointerId);$('#board').focus({preventScroll:true});act(index,inputTool,drag.erase);
 });
@@ -168,7 +168,7 @@ function closeModal(){$('#dialog').close();lastTick=performance.now();}
 $('#dialog').addEventListener('close',()=>{roulette=null;lastTick=performance.now();});
 $('#dialog').addEventListener('cancel',()=>{roulette=null;lastTick=performance.now();});
 $('#help').onclick=()=>{
-  modal(`<p class="dialog-eyebrow">HOW TO PLAY</p><h2>数字から、絵を見つけよう。</h2><ol class="help-steps"><li>上と左の数字は、その列に<strong>連続して塗るマスの数</strong>。数字は上から下・左から右の順です。</li><li>「2 1」なら、2マス → 1マス以上の空白 → 1マス。0の列は全部空白です。</li><li>空白だと思う場所には×印を。×は自由に消せて、間違えても減点されません。</li><li>正解のマスをすべて塗るとクリア。空白の×は必須ではありません。</li><li>制限時間は30分。塗り間違いは1回目−2分、2回目−4分、3回目以降−8分です。</li><li>開始時のヒントは無料。途中のヒントは−5分で、縦横1列ずつの答えが開きます。</li></ol><p class="keyboard-help">マウス：クリック・直線ドラッグで塗る／右クリックで×<br>キーボード：矢印で移動／Zで塗る／Xで×／Pで一時停止<br>スマホ：下の「塗る」「×をつける」を選んでタッチ<br>画面を離れると自動で一時停止。途中経過も保存します。</p><div class="modal-actions"><button class="primary" id="close-help">わかった、遊んでみる ↗</button></div>`);
+  modal(`<p class="dialog-eyebrow">HOW TO PLAY</p><h2>数字から、絵を見つけよう。</h2><ol class="help-steps"><li>上と左の数字は、その列に<strong>連続して塗るマスの数</strong>。数字は上から下・左から右の順です。</li><li>「2 1」なら、2マス → 1マス以上の空白 → 1マス。0の列は全部空白です。</li><li>空白だと思う場所には×印を。×は自由に消せて、間違えても減点されません。</li><li>正解のマスをすべて塗るとクリア。空白の×は必須ではありません。</li><li>制限時間は30分。塗り間違いは1回目−2分、2回目−4分、3回目以降−8分です。</li><li>開始時のヒントは無料。途中のヒントは−5分で、縦横1列ずつの答えが開きます。</li></ol><p class="keyboard-help">マウス：左クリック・左ドラッグで塗る／右クリック・右ドラッグで×<br>キーボード：矢印で移動／Zで塗る／Xで×／Pで一時停止<br>スマホ：下の「塗る」「×をつける」を選んでタッチ<br>画面を離れると自動で一時停止。途中経過も保存します。</p><div class="modal-actions"><button class="primary" id="close-help">わかった、遊んでみる ↗</button></div>`);
   $('#close-help').onclick=closeModal;
 };
 function startRoulette(free=false){
