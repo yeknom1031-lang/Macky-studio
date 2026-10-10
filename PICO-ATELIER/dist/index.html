@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#202923">
+  <meta name="description" content="数字を頼りに、小さな絵を見つける。24問のオリジナルピクロス。">
+  <title>PICO ATELIER · ピクロス工房</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d7ed8c'/%3E%3Cpath d='M8 8h6v6H8zm10 0h6v6h-6zm-4 6h4v6h-4zm0 6h4v6h-4z' fill='%23202923'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css"><script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <header class="header"><a class="brand" href="./" aria-label="PICO ATELIER ホーム"><span class="brand-icon">▦</span>PICO ATELIER<span class="brand-ja">ピクロス工房</span></a><div class="header-right"><span class="local-note"><i></i> のんびり、ひとマスずつ。</span><button class="icon-button" id="sound" aria-label="効果音をオンにする" title="効果音">♪<span id="sound-status">OFF</span></button><button class="help-button" id="help">? <span>遊びかた</span></button></div></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">A LITTLE LOGIC. A LITTLE MAGIC.</p><h1>ピクセルを、<span>解きあかそう。</span></h1><p class="intro-copy">数字を頼りに、隠れた絵を見つける。小さなひらめきの時間。</p></div><div class="intro-art" aria-hidden="true"><div class="pixel-heart"></div><span>ONE SQUARE AT A TIME</span></div></section>
+    <div class="workspace">
+      <aside class="library"><div class="panel-heading"><h2>パズル帳</h2><span id="collection-count">0 / 24</span></div><div class="level-tabs" role="tablist" aria-label="盤面サイズ"><button role="tab" aria-selected="true" data-size="5">5×5<small>はじめの一歩</small></button><button role="tab" aria-selected="false" data-size="10">10×10<small>ひらめき</small></button><button role="tab" aria-selected="false" data-size="15">15×15<small>じっくり</small></button></div><div id="puzzle-list" class="puzzle-list"></div><div class="library-bottom"><span class="mini-flower">✳</span><div>解けた絵は、あなたのコレクション。<br><small>進み具合はこのブラウザに保存されます。</small></div></div></aside>
+      <section class="game-panel" aria-label="ピクロスゲーム"><div class="game-heading"><div><p class="eyebrow" id="puzzle-category">FIRST STEPS / 01</p><h2 id="puzzle-title">はじめてのパズル</h2></div><span class="size-badge" id="size-badge">5 × 5</span></div><div class="game-stats"><div class="time-stat"><span class="stat-label">残り時間</span><strong id="timer">30:00</strong><span id="penalty" aria-live="polite"></span></div><div class="mistake-stat"><span class="stat-label">ミス</span><strong id="mistakes">0</strong><span class="stat-sep">/</span><small id="next-penalty">次は −2分</small></div><button class="icon-button pause-button" id="pause" aria-label="一時停止">Ⅱ</button></div>
+        <div class="board-area"><div id="board" class="board" aria-label="数字の手がかりとパズル盤面"></div><div id="board-overlay" class="board-overlay"><span class="overlay-flower">✳</span><p>どんな絵が隠れているかな？</p><button class="primary" id="start">パズルをはじめる <span>↗</span></button><button class="text-button" id="start-hint">無料ヒントを使ってはじめる</button></div></div>
+        <div class="game-controls"><div class="tool-switch" role="group" aria-label="入力ツール"><button id="fill-tool" class="selected" aria-pressed="true"><span>■</span> 塗る <kbd>Z</kbd></button><button id="mark-tool" aria-pressed="false"><span>×</span> ×をつける <kbd>X</kbd></button></div><button class="hint-button" id="hint"><span>✧</span> ヒント <small>−5分</small></button></div><div class="game-footnote"><span>ドラッグで連続入力 · 右クリックで×</span><button id="restart" class="text-button">↻ やり直す</button></div><p id="game-message" class="game-message" aria-live="polite">準備ができたら、はじめよう。</p>
+      </section>
+      <aside class="guide"><div class="guide-tag">HOW TO PLAY</div><h2>数字の先に、<br>絵がある。</h2><p>上と左の数字は、連続して塗る<br>マスの数を表しています。</p><div class="rule-example"><div class="example-clues">2 <span>1</span></div><div class="example-cells"><b></b><b></b><i>×</i><b></b><i>×</i></div></div><p class="example-note">数字と数字のあいだは<br><strong>必ず1マス以上</strong>空けます。</p><div class="guide-divider"></div><div class="guide-row"><span>■</span><div><strong>確信したら、塗る。</strong><p>すべての正解マスで絵が完成。</p></div></div><div class="guide-row"><span>×</span><div><strong>空白には、×印。</strong><p>×は間違えてもペナルティなし。</p></div></div><div class="guide-row"><span>◷</span><div><strong>持ち時間は30分。</strong><p>塗り間違いは−2 / −4 / −8分。</p></div></div><div class="guide-tip"><span>✦</span><p>まずは、数字が大きい列から。<br>重なるマスが最初の手がかり。</p></div></aside>
+    </div><footer><span>MADE FOR LITTLE MOMENTS OF DISCOVERY.</span><span>PICO ATELIER <i>✳</i> MACKY STUDIO</span></footer>
+  </main>
+  <dialog id="dialog"><div id="dialog-body"></div></dialog><div class="confetti" id="confetti" aria-hidden="true"></div>
+</body>
+</html>
