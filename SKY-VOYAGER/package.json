@@ -1,0 +1,1 @@
+{"name":"sky-voyager","version":"1.0.0","private":true,"description":"雲海の航海者 — A standalone 3D sky adventure","scripts":{"dev":"node server.mjs","check":"node --check dist/game.js && node --check dist/models.js && node --check server.mjs"}}

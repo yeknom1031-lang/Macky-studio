@@ -1,0 +1,11 @@
+/* Final art pass and unobtrusive combat notifications. */
+.potions>button{width:62px;height:72px}.potions .bottle{width:36px;height:48px}.potion-caption{font-size:11px}
+#toasts{left:25px;top:205px;transform:none;align-items:flex-start;max-width:285px}
+.toast{font-size:11px;white-space:normal;line-height:1.7;max-width:285px;padding:10px 15px;backdrop-filter:blur(5px)}
+.bottle{width:30px;height:40px;margin:0 auto;border:0;border-radius:0;background-image:url('assets/potions.png');background-size:400% 100%;background-repeat:no-repeat;box-shadow:none;filter:drop-shadow(0 2px 4px #06182788)}
+.bottle:before,.bottle:after{display:none}.bottle.heal{background-position:0% 50%}.bottle.invisible{background-position:33.3333% 50%}.bottle.defense{background-position:66.6667% 50%}.bottle.strength{background-position:100% 50%}
+.potions>button{width:62px;height:72px;padding:9px 6px 7px}.potions>button b{bottom:5px;right:7px;text-shadow:0 1px 3px #061e30;font-size:11px}.potion-caption{position:absolute;left:0;right:0;top:-20px;font-size:11px;color:#fff1cf;text-shadow:0 2px 4px #16394c;letter-spacing:1px}.weapons{margin-bottom:30px}.shop-item .bottle{width:40px;height:54px;flex-shrink:0;transform:none}
+.shop-item{background:linear-gradient(135deg,#29526477,#17394c66)}.modal-window{box-shadow:0 20px 90px #09223566,inset 0 0 50px #294b5b33}
+.map-illustration{height:145px;opacity:.86;object-position:50% 46%;border:1px solid #e4c68b55}
+@media(max-width:900px){.potions>button{width:45px}.potions .bottle{width:27px;height:36px}#toasts{left:15px;top:155px;max-width:245px}.toast{font-size:10px;max-width:245px}.potions>button{height:57px}.bottle{width:27px;height:36px}.potion-caption{font-size:8px;top:-17px}.weapons{margin-bottom:25px}}
+@media(max-width:600px){.potions>button{width:38px}.potions .bottle{width:25px;height:34px}#toasts{left:15px;top:225px;max-width:180px}.toast{font-size:9px;max-width:180px;padding:7px 11px}.potions>button{height:46px;padding:4px 1px}.bottle{width:25px;height:34px;transform:none}.potion-caption{font-size:8px;top:-15px}.weapons{margin-bottom:21px}.map-illustration{height:100px}}
