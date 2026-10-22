@@ -1,3 +1,4 @@
+import {normalizeEndlessRecords} from './starline-records.js';
 export const BPM=132, BEAT=60/BPM, ROUND_BEATS=24, TARGET_BEAT=12, REVEAL_BEAT=14;
 export const shuffle=(values,random=Math.random)=>{const a=[...values];for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
 // This exact set is also the contract for the recorded f-a-b-claimed voices.
@@ -95,9 +96,10 @@ export function grade(question,result,{offset=0,watch=false}={}){
   return {a:question.a,b:question.b,answer:question.answer,gameId:question.gameId,value,correct,points:correct?100+timingBonus:0,timingBonus,performed:!!result?.performed,rhythm,errorMs:sequence?.single?sequence.errorMs:error,watch,...(sequence?{rhythmHits:sequence.hits,rhythmTotal:sequence.total,perfectHits:sequence.perfect,maxCombo:sequence.maxCombo,events:sequence.events}: {})};
 }
 export function summarize(results){return {total:results.length,correct:results.filter(x=>x.correct).length,rhythm:results.filter(x=>x.rhythm==='perfect'||x.rhythm==='nice').length,rhythmHits:results.reduce((n,r)=>n+(r.rhythmHits||0),0),rhythmTotal:results.reduce((n,r)=>n+(r.rhythmTotal||0),0),maxCombo:Math.max(0,...results.map(r=>r.maxCombo||0)),review:[...new Map(results.filter(x=>!x.correct).map(x=>[`${x.a}-${x.b}`,{a:x.a,b:x.b}])).values()]};}
-export function newSave(){return {version:1,plays:0,correct:0,attempts:0,stars:{},facts:{},settings:{music:55,voice:95,cheer:85,sfx:65,reduceMotion:false,offset:0}};}
+export function newSave(){return {version:1,plays:0,correct:0,attempts:0,stars:{},facts:{},endlessRecords:{},settings:{music:55,voice:95,cheer:85,sfx:65,reduceMotion:false,offset:0}};}
 export function normalizeSave(raw){
   const d=newSave();if(!raw||raw.version!==1)return d;
+  d.endlessRecords=normalizeEndlessRecords(raw.endlessRecords);
   for(const k of ['plays','correct','attempts'])d[k]=Math.min(1e8,Math.max(0,Number(raw[k])||0));
   for(let i=1;i<=22;i++)d.stars[i]=Math.min(3,Math.max(0,Math.floor(Number(raw.stars?.[i])||0)));
   for(let a=1;a<=9;a++)for(let b=1;b<=9;b++){const k=`${a}-${b}`,v=raw.facts?.[k];if(v)d.facts[k]={attempts:Math.max(0,Number(v.attempts)||0),correct:Math.max(0,Number(v.correct)||0),lastCorrect:!!v.lastCorrect};}

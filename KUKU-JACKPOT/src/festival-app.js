@@ -1,3 +1,4 @@
+import {endlessRecordKey,updateEndlessRecords} from './starline-records.js';
 import {StarlineStage} from './starline.js';
 import {STARLINE_GAME} from './starline-core.js';
 import {GAMES,createMiniGame} from './minigames.js';
@@ -341,6 +342,7 @@ function reveal(){
  $('round-hint').textContent=r.correct?`せいかい100点 ＋ タイミング${r.timingBonus}点`:'正しい九九を、いっしょに言ってみよう！';
 }
 async function finish(){
+ $('endless-result').hidden=true;
  running=false;paused=false;cancelAnimationFrame(frame);audio.stop();releaseWakeLock();const s=summarize(results);save=record(save,results);if(!watch)persist();refreshHome();screen('results');
  $('result-title').textContent=watch?'お手本、おしまい！':s.correct===s.total?'ぜんぶ、せいかい！':'さいごまで、できたね！';$('result-correct').textContent=`${s.correct} / ${s.total}`;$('result-rhythm').textContent=`＋${results.reduce((sum,r)=>sum+r.timingBonus,0)}点`;$('result-note').textContent=watch?'お手本はきろくに入りません。つぎは自分でやってみよう！':s.review.length?'下の九九を押すと、正しい答えをもう一度きけるよ。':'楽しくできたね！ 別のゲームや、別のだんでも遊んでみよう。';
  const practiced=[...new Map(results.map(q=>[`${q.a}-${q.b}`,q])).values()];
@@ -349,7 +351,18 @@ async function finish(){
 }
 function startStarline(options={}){
  ++token;running=false;paused=false;tutorial=null;cancelAnimationFrame(frame);audio.stop();releaseWakeLock();$('dialog').close();starline?.dispose();
- starline=new StarlineStage({audio,settings:save.settings,mode:options.starlineMode,table:Number($('table').value),onExit:home,onFinish:(rounds,meta)=>{starline=null;results=rounds;playlist=rounds;index=rounds.length-1;watch=meta.watch;lastOptions={mode:'single',gameId:22,starlineMode:meta.mode};finish();$('result-note').textContent=`${meta.mode==='expert'?'上級 '+meta.maxBpm+' BPM 完走！ ':''}最大 ${meta.maxCombo} COMBO！ `+$('result-note').textContent;}});
+ const table=Number($('table').value),key=endlessRecordKey(table);
+ const saveEndless=(meta,finished=false)=>{const update=updateEndlessRecords(save.endlessRecords,meta,{table,watch:meta.watch,finished});if(update.changed){save.endlessRecords=update.records;persist();}return update.record;};
+ starline=new StarlineStage({audio,settings:save.settings,mode:options.starlineMode,table,best:save.endlessRecords[key],onProgress:meta=>saveEndless(meta),onExit:home,onFinish:(rounds,meta)=>{
+  starline=null;results=rounds;playlist=rounds;index=rounds.length-1;watch=meta.watch;lastOptions={mode:'single',gameId:22,starlineMode:meta.mode};
+  const best=meta.mode==='endless'?saveEndless(meta,true):null;
+  finish();
+  if(meta.mode==='endless'){
+   $('result-title').textContent=meta.newBest?'自己ベスト更新！':`${meta.correct}問つないだ！`;
+   $('result-note').textContent=`${meta.reason==='timeout'?'時間切れ':'おしい！'} · ${meta.score}点 · ${meta.maxBpm} BPM / ノート×${meta.maxSpeed.toFixed(2)}。正しい九九をもう一度きいてみよう。`;
+   $('endless-result').hidden=false;$('endless-result').innerHTML=`<small>${table?table+'の段':'ミックス'}の自己ベスト</small><strong>${best.bestCorrect}問 <span>/ ${best.bestScore}点</span></strong><p>最高到達 ${best.bestBpm} BPM · ノート×${best.bestSpeed.toFixed(2)}</p>`;
+  }else $('result-note').textContent=`${meta.mode==='expert'?'上級 '+meta.maxBpm+' BPM 完走！ ':''}最大 ${meta.maxCombo} COMBO！ `+$('result-note').textContent;
+ }});
  screen('starline');
 }
 function home(){starline?.dispose();starline=null;++token;running=false;paused=false;tutorial=null;audio.stop();cancelAnimationFrame(frame);releaseWakeLock();$('loading').hidden=true;$('dialog').close();refreshHome();screen('home');}
@@ -360,7 +373,7 @@ function settings(){openDialog(`<h2>音とあそびの設定</h2>${[['music','�
  for(const input of document.querySelectorAll('[data-setting]'))input.oninput=()=>{save.settings[input.dataset.setting]=Number(input.value);applySettings();persist();};$('reduce-motion').onchange=e=>{save.settings.reduceMotion=e.target.checked;applySettings();persist();};$('offset').oninput=e=>{save.settings.offset=Number(e.target.value);$('offset-label').textContent=e.target.value+'ms';persist();};$('settings-done').onclick=()=>running?pauseDialog():$('dialog').close();$('voices-btn').onclick=voices;
 }
 async function voices(){previewAudio?.stop();previewAudio=new FestivalAudio();const player=previewAudio;openDialog('<h2>掛け声100コレクション</h2><p>声をじゅんびしています…</p>');const request=dialogRequest;try{await player.unlock();await player.load([],()=>{});if(request!==dialogRequest||!$('dialog').open){player.stop();if(player.ctx.state!=='closed')player.ctx.close();return;}player.setVolumes(save.settings);const clips=player.manifest.cheers;openDialog('<h2>掛け声100コレクション</h2><p>好きな台詞を押すと、声がきけるよ。</p><div class="review-list" id="voice-collection"></div><div class="modal-buttons"><button class="quiet" id="voices-back">設定へ</button></div>');for(const c of clips){const b=document.createElement('button');b.textContent=c.text;b.onclick=()=>player.speak(c.id,{force:true});$('voice-collection').append(b);}$('voices-back').onclick=()=>{player.stop();player.ctx.close();previewAudio=null;settings();};}catch{if(request===dialogRequest&&$('dialog').open)toast('声を読み込めませんでした。通信を確認してください。');}}
-function records(){const facts=Object.entries(save.facts);openDialog(`<h2>九九のきろく</h2><p>${save.plays}回プレイ ／ ${save.correct}問せいかい ／ ★ ${Object.values(save.stars).reduce((a,b)=>a+b,0)} / 66</p><div class="fact-grid">${Array.from({length:81},(_,i)=>{const a=Math.floor(i/9)+1,b=i%9+1,f=save.facts[`${a}-${b}`];return `<span class="${f?f.lastCorrect?'learned':'retry':''}" title="${a}×${b}：${f?.correct||0}回正解">${a}×${b}</span>`;}).join('')}</div><p class="record-legend">緑：さいきん正解した九九　黄：もう一度れんしゅう<br>お手本の結果は記録しません。</p><div class="modal-buttons"><button class="primary" id="weak-btn">苦手な九九をれんしゅう</button><button class="quiet" id="export-btn">きろくを書き出す</button></div>`);$('weak-btn').onclick=()=>{const review=facts.filter(([,f])=>!f.lastCorrect).map(([k])=>{const [a,b]=k.split('-').map(Number);return{a,b};});if(!review.length){toast('苦手の記録はまだないよ。好きなゲームを遊んでみよう！');return;}start({mode:'review',gameId:1,review});};$('export-btn').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(save,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='kuku-beat-record.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};}
+function records(){const facts=Object.entries(save.facts);openDialog(`<h2>九九のきろく</h2><p>${save.plays}回プレイ ／ ${save.correct}問せいかい ／ ★ ${Object.values(save.stars).reduce((a,b)=>a+b,0)} / 66</p>${Object.keys(save.endlessRecords).length?`<section class="sl-record-card"><b>エンドレスの自己ベスト</b>${Object.entries(save.endlessRecords).map(([key,r])=>`<p>${key==='mix'?'ミックス':key+'の段'}：${r.bestCorrect}問 / ${r.bestScore}点 · ${r.bestBpm} BPM · ×${r.bestSpeed.toFixed(2)}</p>`).join('')}</section>`:''}<div class="fact-grid">${Array.from({length:81},(_,i)=>{const a=Math.floor(i/9)+1,b=i%9+1,f=save.facts[`${a}-${b}`];return `<span class="${f?f.lastCorrect?'learned':'retry':''}" title="${a}×${b}：${f?.correct||0}回正解">${a}×${b}</span>`;}).join('')}</div><p class="record-legend">緑：さいきん正解した九九　黄：もう一度れんしゅう<br>お手本の結果は記録しません。</p><div class="modal-buttons"><button class="primary" id="weak-btn">苦手な九九をれんしゅう</button><button class="quiet" id="export-btn">きろくを書き出す</button></div>`);$('weak-btn').onclick=()=>{const review=facts.filter(([,f])=>!f.lastCorrect).map(([k])=>{const [a,b]=k.split('-').map(Number);return{a,b};});if(!review.length){toast('苦手の記録はまだないよ。好きなゲームを遊んでみよう！');return;}start({mode:'review',gameId:1,review});};$('export-btn').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(save,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='kuku-beat-record.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};}
 document.addEventListener('keydown',e=>{
  if(e.key==='Escape'&&running&&!$('dialog').open){e.preventDefault();pause();return;}
  if(!canPlay()||e.repeat||heldInput)return;

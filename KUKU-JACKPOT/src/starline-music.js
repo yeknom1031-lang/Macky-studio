@@ -1,11 +1,11 @@
 /** Tempo-specific recordings share the existing audio clock, pause and volume buses. */
 export class StarlineMusic{
  constructor(audio){this.audio=audio;this.buffers=new Map();this.current=null;this.scheduledBpm=132;}
- async load(){
+ async load(maxBpm=220){
   const base=new URL('../assets/audio/festival/starline/',import.meta.url);
   const response=await fetch(new URL('manifest.json',base));if(!response.ok)throw Error('加速する音楽を読み込めませんでした');
   const manifest=await response.json();this.buffers.set(132,this.audio.buffers.get('music:space'));
-  const entries=Object.values(manifest.tracks).filter(t=>t.bpm!==132);let cursor=0;
+  const entries=Object.values(manifest.tracks).filter(t=>t.bpm!==132&&t.bpm<=maxBpm);let cursor=0;
   await Promise.all(Array.from({length:2},async()=>{while(cursor<entries.length){const track=entries[cursor++],res=await fetch(new URL(track.file,base));if(!res.ok)throw Error('加速する音楽を読み込めませんでした');this.buffers.set(track.bpm,await this.audio.ctx.decodeAudioData(await res.arrayBuffer()));}}));
  }
  schedule(bpm,at,beat){

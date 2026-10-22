@@ -7,7 +7,7 @@ import tempfile
 import build_festival_audio as music
 
 DEST = music.ROOT / 'assets/audio/festival/starline'
-TEMPOS = [132, 154, 176, 198, 220]
+TEMPOS = [132, 154, 176, 198, 220, 242, 264, 286, 308, 330]
 
 def main():
     DEST.mkdir(parents=True, exist_ok=True)

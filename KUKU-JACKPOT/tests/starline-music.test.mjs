@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {StarlineMusic} from '../src/starline-music.js';
-import {STARLINE_TEMPOS} from '../src/starline-core.js';
+import {STARLINE_TEMPOS,ENDLESS_TEMPOS} from '../src/starline-core.js';
 
 test('expert music uses the original score and pitches, with real shorter loops at each BPM',async()=>{
  const base=new URL('../assets/audio/festival/starline/',import.meta.url);
  const manifest=JSON.parse(await readFile(new URL('manifest.json',base),'utf8'));
- assert.deepEqual(Object.keys(manifest.tracks).map(Number),STARLINE_TEMPOS);
+ assert.deepEqual(Object.keys(manifest.tracks).map(Number),ENDLESS_TEMPOS);
  const original=JSON.parse(await readFile(new URL('../music/space-score.json',base),'utf8'));
- for(const bpm of STARLINE_TEMPOS.slice(1)){
+ for(const bpm of ENDLESS_TEMPOS.slice(1)){
   const track=manifest.tracks[bpm],score=JSON.parse(await readFile(new URL(`score-${bpm}.json`,base),'utf8'));
   assert.equal(score.bpm,bpm);assert.deepEqual(score.notes,original.notes);
   const wav=await readFile(new URL(track.file,base));assert.equal(createHash('sha256').update(wav).digest('hex'),track.sha256);

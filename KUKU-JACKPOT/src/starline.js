@@ -1,12 +1,12 @@
 import {BEAT} from './festival-core.js';
 import {StarlineMusic} from './starline-music.js';
-import {makeStarlineChart,StarlineSession,STARLINE_MODES,STARLINE_TEMPOS} from './starline-core.js';
+import {makeStarlineChart,StarlineSession,STARLINE_MODES,STARLINE_TEMPOS,EndlessStarlineSession} from './starline-core.js';
 const ROOT=new URL('../assets/runtime/starline/',import.meta.url),COLORS=['#5de4ff','#ffdb72','#ff78d2'];
 const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
 const image=file=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('ステージの絵を読み込めませんでした'));im.src=new URL(file,ROOT);});
 export class StarlineStage{
- constructor({audio,settings,table,onFinish,onExit,mode='normal'}){
-  Object.assign(this,{audio,settings,table,onFinish,onExit});this.abort=new AbortController();this.active=true;this.state='menu';this.mode=STARLINE_MODES[mode]?mode:'normal';this.watch=false;this.frame=0;this.lastIndex=-1;this.lastBeat=-1;this.particles=[];this.flash=null;this.keys=new Set();this.reduced=settings.reduceMotion||matchMedia('(prefers-reduced-motion: reduce)').matches;
+ constructor({audio,settings,table,onFinish,onExit,mode='normal',best={},onProgress}){
+  Object.assign(this,{audio,settings,table,onFinish,onExit,onProgress});this.best={...best};this.initialBest={...best};this.abort=new AbortController();this.active=true;this.state='menu';this.mode=STARLINE_MODES[mode]?mode:'normal';this.watch=false;this.frame=0;this.lastIndex=-1;this.lastBeat=-1;this.particles=[];this.flash=null;this.keys=new Set();this.reduced=settings.reduceMotion||matchMedia('(prefers-reduced-motion: reduce)').matches;
   let el=document.getElementById('starline');if(!el){el=document.createElement('main');el.id='starline';document.body.append(el);}this.el=el;el.hidden=false;el.className=this.reduced?'sl-reduced':'';
   el.innerHTML=`<div class="sl-bg"></div><div class="sl-vignette"></div><canvas class="sl-canvas" aria-hidden="true"></canvas><header class="sl-top"><div class="sl-brand"><small>SHOW 22 / STARLINE</small><b>九九ビート・スターライン</b></div><div class="sl-status"><span id="sl-count">12問</span><b id="sl-score">0点</b><button id="sl-pause" aria-label="いちじていし">Ⅱ</button></div></header><div class="sl-question"><small id="sl-scope">${table?table+'のだん':'1〜9のだんミックス'}</small><strong id="sl-equation" aria-live="polite">7 × 8 = ?</strong></div><div class="sl-next" id="sl-next"></div><div class="sl-tip" id="sl-tip">正しい答えを<br>1回タップ！</div><div class="sl-combo"><b id="sl-combo">0</b><span>COMBO</span></div><div class="sl-hit-label">光るラインで<br>タイミングボーナス →</div><div class="sl-pads" role="group" aria-label="3つの答えレーン">${COLORS.map((c,i)=>`<button class="sl-pad" data-lane="${i}" style="--lane:${c}" disabled><b>—</b><small>PC ${i+1}</small></button>`).join('')}</div><div class="sl-feedback" id="sl-feedback" aria-live="polite"></div><div class="sl-training" id="sl-training"></div><div class="sl-progress"></div><div class="sl-modal"><div class="sl-panel"></div></div><div class="sl-rotate"><div>スマホを横にしてね<span>音楽を止めて待っているよ。<br>横にしたら「つづける」で再開。</span></div></div>`;
   this.canvas=el.querySelector('canvas');this.ctx=this.canvas.getContext('2d');this.pads=[...el.querySelectorAll('.sl-pad')];this.q=s=>el.querySelector(s);
@@ -22,36 +22,48 @@ export class StarlineStage{
  resize(){this.w=this.el.clientWidth;this.h=this.el.clientHeight;const d=Math.min(2,devicePixelRatio||1);this.canvas.width=Math.round(this.w*d);this.canvas.height=Math.round(this.h*d);this.ctx.setTransform(d,0,0,d,0,0);}
  modal(html){this.q('.sl-modal').hidden=false;this.q('.sl-panel').innerHTML=html;}
  menu(){
-  this.state='menu';this.modal(`<small>SHOW 22 · 3 LANE RHYTHM</small><h2>答えを、ビートにのせよう。</h2><p>正しい答えのレーンを <b>1回だけタップ。</b><br>すぐ押しても正解100点。光るラインで＋50点！</p><div class="sl-modes" role="group" aria-label="むずかしさ">${[['easy','ゆっくり'],['normal','ノーマル'],['expert','上級・スピードUP']].map(([key,label])=>`<button data-mode="${key}" aria-pressed="false">${label}</button>`).join('')}</div><p id="sl-mode-summary"></p><div class="sl-actions"><button class="main" id="sl-go">練習して はじめる</button><button id="sl-watch">お手本を見る</button><button id="sl-back">ホームへ</button></div>`);
+  this.state='menu';this.modal(`<small>SHOW 22 · 3 LANE RHYTHM</small><h2>答えを、ビートにのせよう。</h2><p>正しい答えのレーンを <b>1回だけタップ。</b><br>すぐ押しても正解100点。光るラインで＋50点！</p><div class="sl-modes" role="group" aria-label="むずかしさ">${[['easy','ゆっくり'],['normal','ノーマル'],['expert','上級・スピードUP'],['endless','エンドレス ∞']].map(([key,label])=>`<button data-mode="${key}" aria-pressed="false">${label}</button>`).join('')}</div><p id="sl-mode-summary"></p><p id="sl-best" class="sl-best" hidden></p><div class="sl-actions"><button class="main" id="sl-go">練習して はじめる</button><button id="sl-watch">お手本を見る</button><button id="sl-back">ホームへ</button></div>`);
   this.q('#sl-go').onclick=()=>this.load(false);this.q('#sl-watch').onclick=()=>this.load(true);this.q('#sl-back').onclick=()=>this.exit();
   this.el.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>this.selectMode(b.dataset.mode));this.selectMode(this.mode);
  }
  selectMode(mode){
-  this.mode=mode;this.el.classList.toggle('sl-expert',mode==='expert');
+  this.mode=mode;this.el.classList.toggle('sl-expert',['expert','endless'].includes(mode));this.el.classList.toggle('sl-endless',mode==='endless');
   this.el.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));
-  this.q('#sl-count').textContent=STARLINE_MODES[mode].count+'問';
-  this.q('#sl-mode-summary').innerHTML=mode==='expert'?'24問。4問正解するたび、<b>132 → 220 BPM</b>へ加速！<br>上級は問題の声のみ。答えは画面と結果で復習。':mode==='easy'?'8問・約1分。ゆっくり考えて、ビートに合わせよう。<br>問題と答えの声つき。':'12問・約1分。音楽にのって連続チャレンジ！<br>問題と答えの声つき。';
-  this.q('#sl-go').textContent=mode==='expert'?'上級ライブをはじめる':'練習して はじめる';
+  this.q('#sl-count').textContent=mode==='endless'?'∞ 問':STARLINE_MODES[mode].count+'問';
+  this.q('#sl-mode-summary').innerHTML=mode==='endless'?'1ミス・時間切れまで！ <b>4問正解ごとに加速。</b><br>330 BPMの先はノート間隔も短くなる。高速域は目で答えよう。':mode==='expert'?'24問。4問正解するたび、<b>132 → 220 BPM</b>へ加速！<br>上級は問題の声のみ。答えは画面と結果で復習。':mode==='easy'?'8問・約1分。ゆっくり考えて、ビートに合わせよう。<br>問題と答えの声つき。':'12問・約1分。音楽にのって連続チャレンジ！<br>問題と答えの声つき。';
+  this.q('#sl-go').textContent=mode==='endless'?'エンドレスに挑戦！':mode==='expert'?'上級ライブをはじめる':'練習して はじめる';
+  this.q('#sl-watch').hidden=mode==='endless';this.q('#sl-best').hidden=mode!=='endless';this.q('#sl-best').textContent=this.best.bestBpm?`${this.table?this.table+'の段':'ミックス'}の自己ベスト：${this.best.bestCorrect||0}問 / ${this.best.bestScore||0}点 · ${this.best.bestBpm} BPM · ×${(this.best.bestSpeed||0).toFixed(2)}`:`${this.table?this.table+'の段':'ミックス'}の記録に挑戦！ 最高記録はこのブラウザに保存されるよ。`;
  }
  updateTempo(q){
-  if(this.mode!=='expert'||this.state==='practice')return;
-  const next=this.chart[q.index+1],level=STARLINE_TEMPOS.indexOf(q.bpm)+1,remaining=4-this.session.correctCount%4;
-  const detail=next?.bpm>q.bpm?`つぎから ${next.bpm} BPM！`:q.bpm===220?'MAX SPEED！':`あと${remaining}正解でスピードUP`;
-  this.q('#sl-tip').innerHTML=`<span class="sl-speed-name">EXPERT · LV ${level} / 5</span><b>${q.bpm} BPM</b><small>${detail}</small>`;
+  if(!['expert','endless'].includes(this.mode)||this.state==='practice')return;
+  const next=this.chart[q.index+1],endless=this.mode==='endless',level=endless?q.level:STARLINE_TEMPOS.indexOf(q.bpm)+1,remaining=4-this.session.correctCount%4;
+  const detail=next?.bpm>q.bpm?`つぎから ${next.bpm} BPM！`:endless&&next?.speed>q.speed?'つぎからノートが加速！':!endless&&q.bpm===220?'MAX SPEED！':`あと${remaining}正解でスピードUP`;
+  this.q('#sl-tip').innerHTML=`<span class="sl-speed-name">${endless?'ENDLESS':'EXPERT'} · LV ${level}${endless?'':' / 5'}</span><b>${q.bpm} BPM</b><small>${endless?'ノート ×'+q.speed.toFixed(2)+'<br>':''}${detail}</small>`;
+  if(endless)this.q('#sl-training').textContent=`BEST ${this.best.bestCorrect||0}問 / ${this.best.bestScore||0}点`;
+ }
+ summary(){
+  const rows=[...this.session.results.values()];return {mode:this.mode,watch:this.watch,correct:this.session.correctCount,score:this.session.score,maxCombo:this.session.maxCombo,maxBpm:rows.reduce((v,q)=>Math.max(v,q.bpm||132),0),maxSpeed:rows.reduce((v,q)=>Math.max(v,q.speed||1),0),reason:this.session.failed?.value===null?'timeout':'wrong'};
+ }
+ finishRun(){const rows=[...this.session.results.values()],meta=this.summary();meta.newBest=meta.correct>(this.initialBest.bestCorrect||0)||meta.score>(this.initialBest.bestScore||0);this.dispose();this.onFinish(rows,meta);}
+ endChallenge(r,time){
+  this.state='ending';this.frozenVisual=time;this.audio.stop();
+  const spoken=this.audio.speak(`a-${r.a}-${r.b}`,{force:true});this.endingAt=this.audio.ctx.currentTime+(spoken?.seconds||.8)+.8;
+  this.q('#sl-next').textContent='チャレンジ終了';this.q('#sl-training').textContent=`${this.session.correctCount}問正解！`;
  }
 
  async load(watch){
-  if(this.state==='loading')return;this.state='loading';this.watch=watch;this.modal('<small>GET READY</small><h2>音と光を、準備中…</h2><p id="sl-load-status">0%</p>');
+  if(this.state==='loading')return;this.state='loading';this.watch=watch;this.initialBest={...this.best};this.modal('<small>GET READY</small><h2>音と光を、準備中…</h2><p id="sl-load-status">0%</p>');
   try{
-   await this.audio.unlock();this.audio.setVolumes(this.settings);this.chart=makeStarlineChart({table:this.table,mode:this.mode});
-   await Promise.all([this.audio.load([...this.chart,{a:2,b:3,gameId:3}].map(q=>({...q,gameId:3})),p=>{const node=this.q('#sl-load-status');if(node)node.textContent=Math.round(p*100)+'%';}),image('backdrop.webp'),image('cast.webp').then(im=>this.cast=im)]);
-   if(this.mode==='expert'){this.tempoMusic=new StarlineMusic(this.audio);await this.tempoMusic.load();}else this.tempoMusic=null;
+   await this.audio.unlock();this.audio.setVolumes(this.settings);this.pendingSession=this.mode==='endless'?new EndlessStarlineSession({table:this.table,offset:this.settings.offset,watch}):null;this.chart=this.pendingSession?.chart||makeStarlineChart({table:this.table,mode:this.mode});
+   const voices=this.mode==='endless'?Array.from({length:81},(_,i)=>({a:Math.floor(i/9)+1,b:i%9+1})):this.chart;
+   await Promise.all([this.audio.load([...voices,{a:2,b:3,gameId:3}].map(q=>({...q,gameId:3})),p=>{const node=this.q('#sl-load-status');if(node)node.textContent=Math.round(p*100)+'%';}),image('backdrop.webp'),image('cast.webp').then(im=>this.cast=im)]);
+   if(['expert','endless'].includes(this.mode)){this.tempoMusic=new StarlineMusic(this.audio);await this.tempoMusic.load(this.mode==='endless'?330:220);}else this.tempoMusic=null;
    if(!this.active)return;this.audio.start('space');this.q('.sl-modal').hidden=true;
    if(watch)this.begin();else{this.state='practice';this.practiceStart=this.audio.now();this.practiceAnswer=null;this.practiceSpoken=false;this.practiceAnswerSpoken=false;this.practiceQ={a:2,b:3,answer:6,choices:[8,6,5],index:0,start:0,target:7*BEAT,end:12*BEAT};this.setQuestion(this.practiceQ);this.q('#sl-count').textContent='練習・点数なし';this.q('#sl-tip').innerHTML='「6」のレーンを<br>1回タップしよう！';this.q('#sl-training').textContent='光る真ん中のボタンを押してみてね';this.pads[1].classList.add('guide');}
   }catch(e){if(!this.active)return;this.state='error';this.audio.stop();this.modal('<h2>準備がとまったよ</h2><p>音と絵を読み込めませんでした。もう一度ためしてね。</p><div class="sl-actions"><button class="main" id="sl-retry">もう一度</button><button id="sl-back">ホームへ</button></div>');this.q('#sl-retry').onclick=()=>this.load(watch);this.q('#sl-back').onclick=()=>this.exit();}
  }
- begin(){this.state='playing';this.session=new StarlineSession(this.chart,{offset:this.settings.offset,watch:this.watch});this.audio.start('space');if(this.tempoMusic)this.tempoMusic.schedule(132,0,0);this.origin=4*BEAT;this.lastIndex=-1;this.lastBeat=-1;this.voiceQ=new Set();this.voiceA=new Set();this.cheered=new Set();this.cues=new Set();this.flash=null;this.particles=[];this.q('#sl-score').textContent='0点';this.q('#sl-combo').textContent='0';this.q('#sl-training').textContent=this.watch?'お手本・点数は保存しないよ':'';this.q('#sl-tip').innerHTML='正しい答えを<br>1回タップ！';this.pads.forEach(b=>b.classList.remove('guide'));this.q('.sl-modal').hidden=true;this.setQuestion(this.chart[0]);this.q('#sl-equation').textContent='READY?';this.pads.forEach(b=>{b.disabled=true;b.querySelector('b').textContent='♪';});this.wake();}
- setQuestion(q){this.current=q;this.q('.sl-question').classList.remove('answered');this.q('#sl-equation').textContent=`${q.a} × ${q.b} = ?`;this.q('#sl-count').textContent=`${q.index+1} / ${this.chart?.length||1}`;this.pads.forEach((b,i)=>{b.disabled=this.watch;b.classList.remove('chosen');b.querySelector('b').textContent=q.choices[i];b.setAttribute('aria-label',`${q.choices[i]}、${['左','まん中','右'][i]}のレーン`);});this.q('#sl-feedback').textContent='';if(this.state==='playing')this.updateTempo(q);}
+ begin(){this.state='playing';this.session=this.pendingSession||new StarlineSession(this.chart,{offset:this.settings.offset,watch:this.watch});this.audio.start('space');if(this.tempoMusic)this.tempoMusic.schedule(132,0,0);this.origin=4*BEAT;this.lastIndex=-1;this.lastBeat=-1;this.voiceQ=new Set();this.voiceA=new Set();this.cheered=new Set();this.cues=new Set();this.flash=null;this.particles=[];this.q('#sl-score').textContent='0点';this.q('#sl-combo').textContent='0';this.q('#sl-training').textContent=this.watch?'お手本・点数は保存しないよ':'';this.q('#sl-tip').innerHTML='正しい答えを<br>1回タップ！';this.pads.forEach(b=>b.classList.remove('guide'));this.q('.sl-modal').hidden=true;this.setQuestion(this.chart[0]);this.q('#sl-equation').textContent='READY?';this.pads.forEach(b=>{b.disabled=true;b.querySelector('b').textContent='♪';});this.wake();}
+ setQuestion(q){this.current=q;this.q('.sl-question').classList.remove('answered');this.q('#sl-equation').textContent=`${q.a} × ${q.b} = ?`;this.q('#sl-count').textContent=this.mode==='endless'?`第${q.index+1}問 ∞`:`${q.index+1} / ${this.chart?.length||1}`;this.pads.forEach((b,i)=>{b.disabled=this.watch;b.classList.remove('chosen');b.querySelector('b').textContent=q.choices[i];b.setAttribute('aria-label',`${q.choices[i]}、${['左','まん中','右'][i]}のレーン`);});this.q('#sl-feedback').textContent='';if(this.state==='playing')this.updateTempo(q);}
  answer(lane){
   if(this.state==='practice'){
    if(this.practiceAnswer!==null)return;const correct=lane===1;this.practiceAnswer=lane;this.practiceAt=this.audio.now();this.pads.forEach((b,i)=>{b.disabled=true;b.classList.toggle('chosen',i===lane);b.classList.remove('guide');});this.q('#sl-equation').textContent='2 × 3 = 6';this.q('#sl-feedback').innerHTML=correct?'そう！ できたね！':'正しくは 6。覚えたね！';this.q('#sl-training').textContent='このあと本番。早く押してもOK！';this.audio.sfx(correct?'correct':'wrong');return;
@@ -63,13 +75,14 @@ export class StarlineStage{
  }
  hit(r,time){
   const q=this.current;if(!q||q.index!==r.index)return;
-  if(this.mode==='expert'){const next=this.chart[q.index+1];if(next&&next.bpm!==this.tempoMusic.scheduledBpm)this.tempoMusic.schedule(next.bpm,this.origin+next.start,4+next.beatStart);this.updateTempo(q);}
+  if(['expert','endless'].includes(this.mode)){if(this.mode==='endless'&&r.correct)this.best=this.onProgress?.(this.summary())||this.best;const next=this.chart[q.index+1];if(r.correct&&next&&next.bpm!==this.tempoMusic.scheduledBpm)this.tempoMusic.schedule(next.bpm,this.origin+next.start,4+next.beatStart);this.updateTempo(q);}
   this.flash={...r,time};this.q('.sl-question').classList.add('answered');this.q('#sl-equation').textContent=`${r.a} × ${r.b} = ${r.answer}`;this.q('#sl-score').textContent=this.session.score+'点';this.q('#sl-combo').textContent=this.session.combo;
-  this.q('#sl-feedback').innerHTML=r.correct?`${r.rhythm==='perfect'?'PERFECT!':r.rhythm==='nice'?'NICE!':'せいかい！'}<small>＋100${r.timingBonus?' ＋'+r.timingBonus:''}${this.session.combo>=3?'　'+this.session.combo+' COMBO':''}</small>`:`${r.value===null?'いっしょに！':'おしい！'} ${r.a} × ${r.b} = ${r.answer}<small>つぎの問題で、またやってみよう</small>`;
+  this.q('#sl-feedback').innerHTML=r.correct?`${r.rhythm==='perfect'?'PERFECT!':r.rhythm==='nice'?'NICE!':'せいかい！'}<small>＋100${r.timingBonus?' ＋'+r.timingBonus:''}${this.session.combo>=3?'　'+this.session.combo+' COMBO':''}</small>`:`${r.value===null?'いっしょに！':'おしい！'} ${r.a} × ${r.b} = ${r.answer}<small>${this.mode==='endless'?`${this.session.correctCount}問正解！ またチャレンジしよう`:'つぎの問題で、またやってみよう'}</small>`;
   this.pads.forEach((b,i)=>{b.disabled=true;b.classList.toggle('chosen',i===(r.correct?r.lane:r.choices.indexOf(r.answer)));});
   this.audio.sfx(r.correct?'correct':'wrong');if(r.correct){this.audio.action(15,{correct:true,timing:r.rhythm,value:r.value});if(!this.reduced){for(let i=0;i<(r.rhythm==='perfect'?38:18);i++)this.particles.push({x:this.laneX(r.lane,.78),y:this.h*.77,vx:(Math.random()-.5)*180,vy:-70-Math.random()*150,t:time,life:.6+Math.random()*.6,color:COLORS[r.lane]});this.particles=this.particles.slice(-100);}}
+  if(this.mode==='endless'&&!r.correct)this.endChallenge(r,time);
  }
- async pause(){if(!['playing','practice'].includes(this.state))return;this.beforePause=this.state;this.frozenVisual=this.state==='practice'?this.audio.now()-this.practiceStart:this.audio.now()-this.origin;this.state='paused';await this.audio.pause();if(!this.active)return;this.releaseWake();this.modal('<small>TAKE A BREAK</small><h2>ひとやすみ</h2><p>音楽も答えも、そのまま止まっているよ。</p><div class="sl-actions"><button class="main" id="sl-resume">つづける</button><button id="sl-restart">はじめから</button><button id="sl-back">ホームへ</button></div>');this.q('#sl-resume').onclick=async()=>{try{await this.audio.resume();if(!this.active)return;this.state=this.beforePause;this.q('.sl-modal').hidden=true;this.wake();}catch{this.q('#sl-resume').textContent='もう一度タップしてね';}};this.q('#sl-restart').onclick=()=>{this.audio.stop();this.load(this.watch);};this.q('#sl-back').onclick=()=>this.exit();}
+ async pause(){if(!['playing','practice','ending'].includes(this.state))return;this.beforePause=this.state;this.frozenVisual=this.state==='ending'?this.frozenVisual:this.state==='practice'?this.audio.now()-this.practiceStart:this.audio.now()-this.origin;this.state='paused';await this.audio.pause();if(!this.active)return;this.releaseWake();this.modal('<small>TAKE A BREAK</small><h2>ひとやすみ</h2><p>音楽も答えも、そのまま止まっているよ。</p><div class="sl-actions"><button class="main" id="sl-resume">つづける</button><button id="sl-restart">はじめから</button><button id="sl-back">ホームへ</button></div>');this.q('#sl-resume').onclick=async()=>{try{await this.audio.resume();if(!this.active)return;this.state=this.beforePause;this.q('.sl-modal').hidden=true;this.wake();}catch{this.q('#sl-resume').textContent='もう一度タップしてね';}};this.q('#sl-restart').onclick=()=>{this.audio.stop();this.load(this.watch);};this.q('#sl-back').onclick=()=>this.exit();}
  async wake(){try{if(navigator.wakeLock)this.lock=await navigator.wakeLock.request('screen');}catch{}}
  releaseWake(){this.lock?.release().catch(()=>{});this.lock=null;}
  exit(){this.dispose();this.onExit();}
@@ -82,29 +95,33 @@ export class StarlineStage{
    if(!this.practiceSpoken){const p=this.audio.speak('q-2-3');if(p){this.practiceSpoken=true;this.practiceVoiceEnd=time+p.seconds;}}
    if(this.practiceAnswer!==null&&!this.practiceAnswerSpoken&&time>Math.max(this.practiceAt+.4,this.practiceVoiceEnd+.1)){const p=this.audio.speak('a-2-3');if(p){this.practiceAnswerSpoken=true;this.practiceEnd=time+p.seconds+.8;}}
    if(this.practiceAnswerSpoken&&time>=this.practiceEnd)this.begin();
+  }else if(this.state==='ending'){
+   if(this.audio.ctx.currentTime>=this.endingAt){this.finishRun();return;}
   }else if(this.state==='playing'){
+   if(this.mode==='endless'){for(const r of this.session.advance(t)){if(this.current?.index!==r.index)this.setQuestion(r);this.hit(r,t);}}
+   if(this.state==='ending'){this.draw(this.frozenVisual);this.frame=requestAnimationFrame(this.tick);return;}
    const q=this.session.current(t);
-   if(q&&q.index!==this.lastIndex){this.lastIndex=q.index;this.setQuestion(q);this.q('#sl-scope').textContent=`${this.table?this.table+'のだん':'1〜9のだんミックス'}${this.mode==='expert'?' / 上級':''}`;const next=this.chart[q.index+1];this.q('#sl-next').textContent=next?`つぎ　${next.a} × ${next.b}`:'ラスト！';}
+   if(q&&q.index!==this.lastIndex){this.lastIndex=q.index;this.setQuestion(q);this.q('#sl-scope').textContent=`${this.table?this.table+'のだん':'1〜9のだんミックス'}${this.mode==='endless'?' / エンドレス':this.mode==='expert'?' / 上級':''}`;const next=this.chart[q.index+1];this.q('#sl-next').textContent=next?`つぎ　${next.a} × ${next.b}`:'ラスト！';}
    if(t<0){const c=Math.ceil(-t/BEAT);this.q('#sl-feedback').innerHTML=c>1?String(c-1):'GO!';}
    if(q){
-    if(!this.voiceQ.has(q.index)&&t-q.start<2){const p=this.audio.speak(`q-${q.a}-${q.b}`,this.mode==='expert'?{maxSeconds:q.end-t}:undefined);if(p)this.voiceQ.add(q.index);}
+    if(!this.voiceQ.has(q.index)&&t-q.start<2){const p=this.audio.speak(`q-${q.a}-${q.b}`,['expert','endless'].includes(this.mode)?{maxSeconds:q.end-t}:undefined);if(p)this.voiceQ.add(q.index);}
     // Schedule the final three approach beats ahead on the audio clock, not by RAF arrival.
-    for(let n=2;n>=0;n--){const when=q.target-n*q.beat,key=q.index+':'+n;if(!this.cues.has(key)&&t>=when-.15){this.cues.add(key);this.audio.cue(this.origin+when,n===0?'accent':'tick',{gameId:15,step:2-n});}}
+    for(let n=2;n>=0;n--){const when=q.target-n*(q.cueBeat||q.beat),key=q.index+':'+n;if(!this.cues.has(key)&&t>=when-.15){this.cues.add(key);this.audio.cue(this.origin+when,n===0?'accent':'tick',{gameId:15,step:2-n});}}
     if(this.watch&&t>=q.target&&!this.session.results.has(q.index)){const r=this.session.submit(q.choices.indexOf(q.answer),q.target);if(r)this.hit(r,t);}
    }
-   for(const r of this.session.advance(t))this.hit(r,t);
+   if(this.mode!=='endless')for(const r of this.session.advance(t))this.hit(r,t);
    if(q&&this.session.combo>=3&&!this.cheered.has(q.index)&&this.session.results.get(q.index)?.correct&&t<q.target-.3){const room=Math.min(q.target+.3-t,q.end-t-.15);if(this.audio.cheer('correct',{correct:true,streak:this.session.combo},Math.min(room,1.4)))this.cheered.add(q.index);}
-   if(this.mode!=='expert'&&q&&t>=q.target+.4&&!this.voiceA.has(q.index)){const p=this.audio.speak(`a-${q.a}-${q.b}`);if(p)this.voiceA.add(q.index);}
-   this.q('.sl-progress').style.width=clamp(q?(q.index+clamp((t-q.start)/(q.end-q.start)))/this.chart.length:t<0?0:1)*100+'%';
-   if(t>=this.chart.at(-1).end){const results=[...this.session.results.values()];this.dispose();this.onFinish(results,{mode:this.mode,watch:this.watch,maxCombo:this.session.maxCombo,maxBpm:Math.max(...this.chart.map(q=>q.bpm))});return;}
+   if(!['expert','endless'].includes(this.mode)&&q&&t>=q.target+.4&&!this.voiceA.has(q.index)){const p=this.audio.speak(`a-${q.a}-${q.b}`);if(p)this.voiceA.add(q.index);}
+   this.q('.sl-progress').style.width=this.mode==='endless'?`${(this.session.correctCount%4)/4*100}%`:clamp(q?(q.index+clamp((t-q.start)/(q.end-q.start)))/this.chart.length:t<0?0:1)*100+'%';
+   if(this.mode!=='endless'&&t>=this.chart.at(-1).end){this.finishRun();return;}
   }
-  this.draw(this.state==='paused'?this.frozenVisual:Number.isFinite(t)?t:0);this.frame=requestAnimationFrame(this.tick);
+  this.draw(['paused','ending'].includes(this.state)?this.frozenVisual:Number.isFinite(t)?t:0);this.frame=requestAnimationFrame(this.tick);
  };
  laneX(i,p){return this.w*(.5+(i-1)*(.105+.065*clamp(p)));}
  text(text,x,y,size,color='#fff'){const c=this.ctx;c.font=`900 ${size}px "Kuku Maru",sans-serif`;c.textAlign='center';c.textBaseline='middle';c.fillStyle=color;c.fillText(text,x,y);}
  rounded(x,y,w,h,r,fill,stroke){const c=this.ctx;c.beginPath();c.roundRect(x,y,w,h,r);c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=2;c.stroke();}}
  draw(t){
-  const c=this.ctx,w=this.w,h=this.h;c.clearRect(0,0,w,h);const playing=this.state==='playing'||this.state==='paused'&&this.beforePause==='playing',q=this.current||{a:7,b:8,answer:56,choices:[54,56,63],start:0,target:7*BEAT,index:0};
+  const c=this.ctx,w=this.w,h=this.h;c.clearRect(0,0,w,h);const playing=['playing','ending'].includes(this.state)||this.state==='paused'&&['playing','ending'].includes(this.beforePause),q=this.current||{a:7,b:8,answer:56,choices:[54,56,63],start:0,target:7*BEAT,index:0};
   const visual=(this.state==='practice'||this.state==='paused'&&this.beforePause==='practice')?Math.min(7*BEAT,Math.max(0,t)):Math.max(0,t-q.start),duration=q.target-q.start||7*BEAT,progress=clamp(visual/duration,0,1.18);
   const musicBeats=playing?(q.beatStart||0)+Math.max(0,t-q.start)/(q.beat||BEAT):Math.max(0,t)/BEAT;
   const pulse=this.reduced?0:Math.pow(1-(musicBeats%1),4);
