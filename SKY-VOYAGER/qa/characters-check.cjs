@@ -2,12 +2,15 @@
 const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');
 const dist=path.resolve(__dirname,'../dist'),THREE=require(path.join(dist,'vendor/three.min.js'));
 THREE.TextureLoader.prototype.load=function(file,onLoad){assert.ok(fs.existsSync(path.join(dist,file)),file);const t=new THREE.Texture();if(onLoad)onLoad(t);return t;};
-const sandbox={window:{},THREE,console};vm.createContext(sandbox);
+const canvasCalls=[];
+const document={createElement(type){assert.equal(type,'canvas');return{width:0,height:0,getContext(){return{fillStyle:'',fillRect(...args){canvasCalls.push(['fill',...args]);},drawImage(...args){canvasCalls.push(['draw',...args]);}};}};}};
+const sandbox={window:{},THREE,console,document};vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(path.join(dist,'models.js'),'utf8'),sandbox);vm.runInContext(fs.readFileSync(path.join(dist,'characters.js'),'utf8'),sandbox);
-const M=sandbox.window.SkyModels,stats=[],checkedLocks=new Set(),surfaceChecks={locks:0,sideFaces:0,capFaces:0};
+const M=sandbox.window.SkyModels,stats=[],checkedLocks=new Set(),checkedSleeveCaps=new Set(),surfaceChecks={locks:0,sideFaces:0,capFaces:0,sleeveCaps:0};
 const originalBatch=M.batchStatic;
 M.batchStatic=function(root,...rest){
   root.traverse(o=>{
+    if(o.userData.tailoredCap&&!checkedSleeveCaps.has(o)){checkedSleeveCaps.add(o);const normal=new THREE.Vector3().fromBufferAttribute(o.geometry.attributes.normal,0).applyQuaternion(o.quaternion);assert.ok(o.userData.tailoredCap==='top'?normal.y>.99:normal.y<-.99,'closed sleeve caps face outwards');surfaceChecks.sleeveCaps++;}
     const g=o.geometry,layout=g?.userData?.taperedLock;if(!layout||checkedLocks.has(g))return;checkedLocks.add(g);surfaceChecks.locks++;
     const {rings,sides}=layout,p=g.attributes.position,indices=g.index.array,centers=[];
     const point=i=>new THREE.Vector3().fromBufferAttribute(p,i);
@@ -30,6 +33,9 @@ M.batchStatic=function(root,...rest){
 function snapshot(r){return JSON.stringify([r.body.position.toArray(),r.torso.rotation.toArray(),r.head.rotation.toArray(),...r.legs.map(x=>x.rotation.toArray()),...r.knees.map(x=>x.rotation.toArray()),...r.arms.map(x=>x.rotation.toArray()),...r.elbows.map(x=>x.rotation.toArray())]);}
 for(const type of ['hero','merchant','alchemist','cook','pirate','archer','shield','boss']){
   const r=M.character(type),meshes=[];r.group.traverse(o=>{if(o.isMesh){meshes.push(o);for(const v of o.geometry.attributes.position.array)assert.ok(Number.isFinite(v),type+' has finite vertices');}});
+  assert.ok(meshes.length<=45,'joint batching keeps every character below 45 meshes');
+  assert.equal(new Set(meshes.map(o=>o.material)).size,1,'all character surfaces share one PBR atlas');
+  for(const o of meshes){assert.ok(o.material.userData.characterArt,'character atlas opts out of global canvas surface replacement');assert.ok(o.material.roughnessMap&&o.material.metalnessMap,'atlas preserves material properties');const uv=o.geometry.attributes.uv;for(let v=0;v<uv.count;v++){assert.ok(uv.getX(v)>=0&&uv.getX(v)<=1);assert.ok(uv.getY(v)>=0&&uv.getY(v)<=1);}}
   assert.equal(r.legs.length,2);assert.equal(r.knees.length,2);assert.equal(r.elbows.length,2);assert.ok(r.sword.parent&&r.bow.parent);
   const parent=new THREE.Group();parent.add(r.group);M.batchStatic(parent);assert.equal(r.group.parent,parent,'outer world batching preserves articulated rig');
   const savedPosition=r.group.position.clone().set(8,2,-5);r.group.position.copy(savedPosition);M.animateCharacter(r,1,0,0,false,{dt:1/60});const idle=snapshot(r);
@@ -43,7 +49,8 @@ for(const type of ['hero','merchant','alchemist','cook','pirate','archer','shiel
   r.group.updateMatrixWorld(true);r.group.traverse(o=>o.matrixWorld.elements.forEach(v=>assert.ok(Number.isFinite(v))));
   stats.push({type,meshes:meshes.length,vertices:meshes.reduce((n,m)=>n+m.geometry.attributes.position.count,0)});
 }
-assert.equal(M.characterArtStatus().generatedTextures,3);assert.ok(Object.values(M.characterArtStatus().textures).every(x=>x==='ready'));
+assert.equal(M.characterArtStatus().generatedTextures,7);assert.equal(M.characterArtStatus().newGeneratedTextures,4);assert.ok(Object.values(M.characterArtStatus().textures).every(x=>x==='ready'));assert.ok(canvasCalls.length>20,'PBR atlas was assembled');
 const stone=M.character('stone');M.animateCharacter(stone,1,.5,.3,false);assert.ok(stone.group.children.length>0);
 assert.ok(surfaceChecks.locks>=80&&surfaceChecks.capFaces>0,'real unbatched hair geometry was checked');
+assert.equal(surfaceChecks.sleeveCaps,144,'both ends of all nine tailored body sections are closed in all eight characters');
 console.log(JSON.stringify({passed:true,assets:M.characterArtStatus(),surfaceChecks,characters:stats},null,2));

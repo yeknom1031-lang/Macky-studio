@@ -5,6 +5,6 @@
   "description": "雲海の航海者 — A standalone 3D sky adventure",
   "scripts": {
     "dev": "node server.mjs",
-    "check": "node --check dist/game.js && node --check dist/models.js && node --check dist/characters.js && node --check dist/village.js && node --check dist/motion.js && node --check dist/grandeur.js && node --check server.mjs && node qa/models-check.cjs && node qa/characters-check.cjs && node qa/motion-check.cjs"
+    "check": "node --check dist/game.js && node --check dist/models.js && node --check dist/characters.js && node --check dist/village.js && node --check dist/motion.js && node --check dist/grandeur.js && node --check server.mjs && node qa/models-check.cjs && node qa/characters-check.cjs && node qa/motion-check.cjs && node --check dist/performance.js && node --check dist/shipwright.js && node qa/performance-check.cjs && node qa/shipwright-check.cjs && node qa/village-check.cjs && node qa/background-lod-check.cjs"
   }
 }

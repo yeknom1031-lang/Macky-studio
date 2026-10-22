@@ -164,10 +164,12 @@ window.SkyModels = (() => {
       const key=node.material.uuid+':'+node.castShadow+':'+node.receiveShadow,vertices=node.geometry.index?node.geometry.toNonIndexed():node.geometry.clone();vertices.applyMatrix4(new T.Matrix4().multiplyMatrices(inverse,node.matrixWorld));
       let batch=batches.get(key);if(!batch){batch={material:node.material,cast:node.castShadow,receive:node.receiveShadow,parts:[]};batches.set(key,batch);}batch.parts.push(vertices);node.parent.remove(node);
     }visit(root);
+    // Merged geometry has no remaining use for empty helper transforms.
+    function prune(node){if(excluded.has(node)||node.userData.skyDynamic)return;for(const child of [...node.children]){prune(child);if(child.isGroup&&!child.children.length&&!excluded.has(child)&&!child.userData.skyDynamic)node.remove(child);}}prune(root);
     for(const batch of batches.values()){
       const total=batch.parts.reduce((n,g)=>n+g.attributes.position.count,0),position=new Float32Array(total*3),normal=new Float32Array(total*3),uv=new Float32Array(total*2),color=new Float32Array(total*3);color.fill(1);let offset=0;
       for(const part of batch.parts){const count=part.attributes.position.count;position.set(part.attributes.position.array,offset*3);normal.set(part.attributes.normal.array,offset*3);if(part.attributes.uv)uv.set(part.attributes.uv.array,offset*2);if(part.attributes.color)color.set(part.attributes.color.array,offset*3);offset+=count;part.dispose();}
-      const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.BufferAttribute(position,3));geometry.setAttribute('normal',new T.BufferAttribute(normal,3));geometry.setAttribute('uv',new T.BufferAttribute(uv,2));geometry.setAttribute('color',new T.BufferAttribute(color,3));const combined=new T.Mesh(geometry,batch.material);combined.castShadow=batch.cast;combined.receiveShadow=batch.receive;root.add(combined);
+      const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.BufferAttribute(position,3));geometry.setAttribute('normal',new T.BufferAttribute(normal,3));geometry.setAttribute('uv',new T.BufferAttribute(uv,2));geometry.setAttribute('color',new T.BufferAttribute(color,3));const combined=new T.Mesh(geometry,batch.material);combined.castShadow=batch.cast;combined.receiveShadow=batch.receive;combined.updateMatrix();combined.matrixAutoUpdate=false;root.add(combined);
     }
   }
   return{cliff,batchStatic,T,palette,mat,mesh,box,cyl,ball,torus,seeded,beam,island,tree,grass,plankFloor,railing,dock,barrel,crate,lantern,sign,potion,stall,arch,chest,windmill,vane,character,animateCharacter,ship,beacon,house};

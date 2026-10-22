@@ -1,0 +1,166 @@
+node --check dist/game.js
+node --check dist/models.js
+node --check dist/characters.js
+node --check dist/village.js
+node --check dist/motion.js
+node --check dist/grandeur.js
+node --check server.mjs
+node qa/models-check.cjs
+PASS: static transforms, shared materials, character motion, sword/bow visibility, live chest lid
+node qa/characters-check.cjs
+{
+  "passed": true,
+  "assets": {
+    "version": 4,
+    "generatedTextures": 7,
+    "newGeneratedTextures": 4,
+    "sharedPBRAtlas": true,
+    "textures": {
+      "embroidery": "ready",
+      "hair": "ready",
+      "skin": "ready",
+      "leather": "ready",
+      "brocade": "ready",
+      "herbal": "ready",
+      "linen": "ready"
+    },
+    "rigs": 8,
+    "articulatedRigs": 8,
+    "features": [
+      "sculpted-face",
+      "geometric-blink",
+      "woven-embroidery",
+      "tapered-hair",
+      "knee-elbow-rig",
+      "foot-roll",
+      "attack-phases",
+      "secondary-cloth",
+      "tailored-sleeves",
+      "curled-fingers",
+      "layered-cape",
+      "shared-PBR-atlas"
+    ]
+  },
+  "surfaceChecks": {
+    "locks": 95,
+    "sideFaces": 15960,
+    "capFaces": 1330,
+    "sleeveCaps": 144
+  },
+  "characters": [
+    {
+      "type": "hero",
+      "meshes": 28,
+      "vertices": 69540
+    },
+    {
+      "type": "merchant",
+      "meshes": 26,
+      "vertices": 60870
+    },
+    {
+      "type": "alchemist",
+      "meshes": 27,
+      "vertices": 64734
+    },
+    {
+      "type": "cook",
+      "meshes": 26,
+      "vertices": 64500
+    },
+    {
+      "type": "pirate",
+      "meshes": 26,
+      "vertices": 60954
+    },
+    {
+      "type": "archer",
+      "meshes": 26,
+      "vertices": 60954
+    },
+    {
+      "type": "shield",
+      "meshes": 27,
+      "vertices": 63456
+    },
+    {
+      "type": "boss",
+      "meshes": 27,
+      "vertices": 64506
+    }
+  ]
+}
+node qa/motion-check.cjs
+PASS: pinned cloth, finite flutter, moving-only footsteps, airborne/teleport suppression
+node --check dist/performance.js
+node --check dist/shipwright.js
+node qa/performance-check.cjs
+PASS: equal movement/timers at 15–120 FPS, bounded stalls, adaptive resolution and recovery hysteresis
+node qa/shipwright-check.cjs
+{
+  "result": "PASS: API, live cloth/propellers, outward normals, generated maps, shared resources and bounded geometry",
+  "results": [
+    {
+      "enemy": false,
+      "before": {
+        "calls": 70,
+        "triangles": 22220
+      },
+      "after": {
+        "calls": 79,
+        "triangles": 33794
+      },
+      "addedCalls": 9,
+      "addedTriangles": 11574
+    },
+    {
+      "enemy": true,
+      "before": {
+        "calls": 21,
+        "triangles": 8848
+      },
+      "after": {
+        "calls": 30,
+        "triangles": 18614
+      },
+      "addedCalls": 9,
+      "addedTriangles": 9766
+    }
+  ]
+}
+node qa/village-check.cjs
+{
+  "ok": true,
+  "vertexCount": 196207,
+  "instances": 3560,
+  "meshes": 153,
+  "loadedTextures": 10,
+  "leaves": 2055,
+  "marketLOD": {
+    "nearIslands": 1,
+    "farIslands": 4,
+    "detailedLeavesVisible": 549,
+    "culledDetailMeshes": 19
+  },
+  "ruinsLOD": {
+    "nearIslands": 1,
+    "farIslands": 4,
+    "detailedLeavesVisible": 389,
+    "culledDetailMeshes": 26
+  }
+}
+node qa/background-lod-check.cjs
+{
+  "result": "PASS: real Three.js scenery layers, world transforms, preserved cliff/top/trees, approach restoration, hysteresis, playable-island isolation",
+  "singleIsland": {
+    "fullTriangles": 10308,
+    "distantTriangles": 720,
+    "savedTriangles": 9588
+  },
+  "background25": {
+    "fullTriangles": 254628,
+    "distantTriangles": 14928,
+    "savedTriangles": 239700,
+    "savedDraws": 75
+  }
+}

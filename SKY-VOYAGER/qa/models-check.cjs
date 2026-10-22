@@ -45,6 +45,7 @@ function vertices() {
 const before = vertices();
 const material = nested.children[0].material;
 M.batchStatic(root, exclusions);
+assert.equal(nested.parent,null,'Empty static helper groups should be pruned');
 assert.deepEqual(vertices(), before, 'Static world vertices must stay in place');
 assert.equal(rig.group.parent, root, 'Character rig must keep its parent');
 assert.equal(chest.lid.parent, chest.group, 'Chest lid must remain independently animated');
@@ -58,4 +59,9 @@ assert.equal(rig.sword.visible, false);
 assert.equal(rig.bow.visible, true);
 chest.lid.rotation.x=-1;
 assert.equal(chest.lid.rotation.x,-1);
+const combined=root.children.find(mesh=>mesh.material===material);
+assert.equal(combined.matrixAutoUpdate,false);
+const originalWorld=new THREE.Vector3().setFromMatrixPosition(combined.matrixWorld);
+root.position.x+=10;scene.updateMatrixWorld(true);
+assert(Math.abs(new THREE.Vector3().setFromMatrixPosition(combined.matrixWorld).x-originalWorld.x-10)<1e-6,'A batched ship or rig must still follow its moving parent');
 console.log('PASS: static transforms, shared materials, character motion, sword/bow visibility, live chest lid');

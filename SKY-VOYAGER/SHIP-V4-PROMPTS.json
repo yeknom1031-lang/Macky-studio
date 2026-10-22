@@ -1,0 +1,36 @@
+{
+  "generator": "built-in image_gen",
+  "count": 4,
+  "budgetCap": 1000,
+  "purpose": "Local ship geometry materials, four unique generated textures",
+  "assets": [
+    {
+      "key": "hull",
+      "file": "teal-gold-planking.png",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless albedo texture for a premium fantasy skyship hull, NOT a ship illustration. Straight-on orthographic flat surface, full-frame. Six horizontal narrow weathered deep teal painted oak planks, restrained warm gold inlaid hairline flourishes flowing horizontally with small brass nail heads, worn edges reveal brown timber. Rich elegant painterly craftsmanship, realistic grain, no baked lighting or shadows, no perspective, no lettering, no border, no objects, tileable left/right and top/bottom. Color predominantly dark petrol teal with fine warm antique gold, subtle small-scale detail. Create one square 1024x1024 texture.",
+      "source": "/Users/makibook/.codex/generated_images/01a163d0-b89f-70f2-bb25-07dfdfd1436f/exec-84628a9b-af00-4d89-94fe-127e80b03fe2.png",
+      "path": "dist/assets/ship-v4/teal-gold-planking.png"
+    },
+    {
+      "key": "brass",
+      "file": "carved-brass.png",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless albedo texture for carved brass decorative trim on a fantasy airship. Flat orthographic full-frame repeating low-relief interlaced sweeping feather filigree and nautical compass curls carved into softly aged antique brass. Small intricate engravings, warm restrained golden brass midtones, subtle patina in crevices, very modest contrast for 3D material. No large emblem, no text, no objects, no perspective, no border, no directional shadows, seamless on all sides. One 1024x1024 texture.",
+      "source": "/Users/makibook/.codex/generated_images/01a163d0-b89f-70f2-bb25-07dfdfd1436f/exec-c0cf91c0-c561-47bf-9db6-d457bf0b14d0.png",
+      "path": "dist/assets/ship-v4/carved-brass.png"
+    },
+    {
+      "key": "sail",
+      "file": "embroidered-sail.png",
+      "prompt": "Use case: stylized-concept. Asset type: one square 1024x1024 fabric albedo texture mapped across the main sail of a fantasy skyship. Flat front view of ivory linen square filling image, fine warm woven fabric and vertical panel stitching. A single elegant navy-teal compass rose with eight fine antique-gold tipped points centered at 50% x 55%, occupying middle 30%, fine branching gold wing flourishes to left and right. Two thin teal vertical ornamental stripes at x 18% and 82%, and delicate stitched gold double border inset 4%. Quiet ivory fabric majority, graceful handpainted fantasy art direction, clean and readable from far away, no text/letters/numbers, no perspective, no draped folds, no background, no shadows. Full square fabric texture, no ship.",
+      "source": "/Users/makibook/.codex/generated_images/01a163d0-b89f-70f2-bb25-07dfdfd1436f/exec-e9c0284d-6a3e-483a-aa1e-f8fc66ea329e.png",
+      "path": "dist/assets/ship-v4/embroidered-sail.png"
+    },
+    {
+      "key": "deck",
+      "file": "honey-oak.png",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless albedo surface texture for fine golden oak wood of fantasy skyship decks. Full-frame flat orthographic close-up of honey-brown warm oak grain, lengthwise flowing from bottom to top, fine visible organic pores and occasional small knots. No board seams, no nails, no border, no objects, no lettering, no perspective. Subtle painterly realism and softly aged varnish, evenly lit flat texture, no specular highlights or baked shadows, seamless all edges. One 1024x1024 image.",
+      "source": "/Users/makibook/.codex/generated_images/01a163d0-b89f-70f2-bb25-07dfdfd1436f/exec-ec7e154a-ddf2-4c0f-b68e-772f3f313715.png",
+      "path": "dist/assets/ship-v4/honey-oak.png"
+    }
+  ]
+}

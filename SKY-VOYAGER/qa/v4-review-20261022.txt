@@ -1,0 +1,56 @@
+SKY VOYAGER — V4 art and performance review
+Date: 2026-10-22 (Japan task date; browser testing ended after midnight)
+Local URL: http://127.0.0.1:4477/
+Isolated save profile: qa-v4-20261022
+Sites: not used. All game assets and runtime remain local on this Mac.
+
+Team and scope
+- character_art: 4 new generated character materials, fitted clothing/hand/boot forms, shared PBR atlas, closed shoulder caps and thinner brows.
+- village_art: 5 new generated botanical/architecture materials, roof detailing, ruins, lighthouse, street furniture and vegetation LOD.
+- visual_review: 4 new generated ship materials and modeled details, then independent implementation/performance review.
+- parent: integration, lighting, frame pacing/quality settings, static batching cleanup, background-island LOD and real browser gameplay checks.
+
+Generated images
+13 new unique built-in image_gen images integrated (ship 4 / characters 4 / island 5).
+Budget total 26 / 1000, remaining 974. The budget is an upper bound.
+Exact prompts, original generated paths and final local paths: SHIP-V4-PROMPTS.json, CHARACTER-V4-PROMPTS.json, ISLAND-V4-PROMPTS.json.
+All new material load states were ready/true in the real browser; village errors [].
+
+Actual play checks
+- Continued an isolated save; walked through market and reached potion seller without prop obstruction.
+- Bought healing potion: gold 420 -> 340, healing potions 3 -> 4.
+- Returned to dock, boarded, set automatic route, boosted to ruins, landed.
+- Bow: scout HP 42 -> 19, arrows 30 -> 29.
+- Sword: scout HP 19 -> 1, matching delayed swing contact.
+- Bow finished scout; gold 340 -> 375, kills 1. Defense potion consumed normally.
+- Jump frozen during flight: grounded=false, height 0.411. Pose simulation and landing/dodge continuity additionally covered by character checks.
+- Changed vane twice: wind=2, bridge=true. Bridge moved and windmill animated with added ruins in place.
+- Saved, reloaded, continued: gold 375, heal 4, kill 1, scout remains defeated.
+- Returned by ship to market.
+- Quality controls clear/light/auto toggled correctly; restored auto on delivery.
+- Real browser close view caught cloth bump accidentally applied to shared character atlas; excluded characterArt from sail cloth bump loading. Verified skin smooth afterward.
+- Shoulder sleeve opening caught in close view; agent closed all 144 sleeve/body/leg cap surfaces across the eight rigs, and rechecked normals. Verified no black shoulder hole afterward.
+- Floating old porthole rings caught in ship view; wrapper removes only six old ship rings. New portholes retained. Verified corrected ship image.
+
+Performance evidence (not an FPS guarantee)
+- Hero mesh count 68 -> 28; NPCs roughly 62-64 -> 26-27 through per-joint material atlas batching.
+- Identical ruins camera position, clear mode at pixelRatio 1.5: 328 -> 250 draw calls; 526,712 -> 286,950 triangles (45.5% fewer). Camera coordinates recorded in v4-lod-before.json and v4-lod-after.json match to floating-point tolerance.
+- Main reduction: distant decorative islands previously drew all 25 sets of small rocks/vines/flowers despite offscreen distance. 90/120m hysteresis preserves silhouettes, trees and all playable islands. Actual Three.js fixture removes 239,700 triangles / 75 calls when all 25 are distant.
+- Browser wall frame times varied substantially (same-camera sample 52.7 -> 100.6ms); this did NOT demonstrate an FPS gain. CPU render submission samples were 9.1 -> 6.5ms, but these single samples are not a sustained benchmark. Report workload reductions only.
+- Final market sample: 577 calls, 468,433 triangles. Initial market sample 781 calls / 678,613 triangles, with slightly different final walking position; not a controlled FPS comparison.
+- Menus render at most 15 fps; title at most 30; hidden documents skip simulation/render and pause.
+- Simulation subdivides elapsed time into <=.04s steps (equal distance/timer unit checks 15–120 fps); stalls capped at .15s to avoid teleporting.
+- Automatic resolution recovers slowly to avoid oscillation; continuous >150ms frame samples now also trigger adaptation after independent review.
+
+Checks
+All package check commands passed; full output in v4-check-results.txt.
+Syntax: game, models, characters, village, motion, grandeur, performance, shipwright, server.
+Runtime geometry: world-space batching/shared references/dynamic boundaries; eight character rigs and hair/cap normals; cloth and dust; timing and quality hysteresis; ship API/cloth/propellers/material use; village assets/UV/LOD; real Three.js background island LOD.
+Final fresh normal-profile tab console warnings/errors: []. A prior intermediate character-file load error from an unfinished edit remained in old tab logs, but was fixed before the integrated V4 screenshots and is absent from the final fresh tab.
+
+Delivery
+Normal URL opened with existing Continue option, preserving user's normal save. Test profile not used for delivery.
+Desktop 雲海の航海者.command and SKY-VOYAGER/遊ぶ.command remain the launch methods.
+Screenshots: v4-market-final.jpg, v4-character-final.jpg, v4-flight-final.jpg, v4-ruins.jpg, v4-shop.jpg, v4-quality-menu.jpg, v4-delivered-title.jpg.
+Evidence: v4-playtest.json; v4-jump-state.json; v4-lod-before.json / v4-lod-after.json.
+This pass rechecked market/ruins/combat/save, not the entire chapter through the final boss. Remaining islands' new geometry and dynamic boundaries were covered by model tests. The visual style is more detailed but still a stylized procedural 3D game, not a pixel-identical reproduction of generated concept art.

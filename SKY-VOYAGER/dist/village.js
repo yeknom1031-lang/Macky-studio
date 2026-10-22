@@ -6,7 +6,7 @@ window.SkyVillage = (() => {
   function create({scene,worldGroups,islands,renderer}) {
     const random=M.seeded(7302026), loader=new T.TextureLoader();
     const clock={value:0}, loaded={}, errors=[], flags=[];
-    const counts={houses:0,trees:0,leaves:0,ferns:0,flowers:0,banners:0};
+    const counts={houses:0,trees:0,leaves:0,ferns:0,flowers:0,banners:0,ruinColumns:0,benches:0,lighthouseDetails:0};
     const islandRoots=new Set(Object.values(worldGroups)),lodGroups=new Map();
     const lodStatus={nearIslands:0,farIslands:0,detailedLeavesVisible:0,culledDetailMeshes:0};
     function islandOf(node){while(node&&!islandRoots.has(node))node=node.parent;return node;}
@@ -29,11 +29,14 @@ window.SkyVillage = (() => {
     const roof=material(0xffffff),pot=material(0xb76e4e),soil=material(0x414c32);
     const glass=material(0xffdb8e,{emissive:0xe4aa51,emissiveIntensity:.2,roughness:.4});
     const fernMaterial=material(0xe4f2ce,{side:T.DoubleSide,alphaTest:.48});
-    const leafMaterial=material(0x7fa776,{side:T.DoubleSide,roughness:.93});
+    const leafMaterial=material(0xffffff,{side:T.DoubleSide,roughness:.93,alphaTest:.48});
+    const barkMaterial=material(0xe6dcc9),masonryMaterial=material(0xf2ead7);
+    const wildflowerMaterial=material(0xffffff,{side:T.DoubleSide,alphaTest:.48});
+    const signMaterial=material(0xffffff,{side:T.DoubleSide});
     const bannerMaterial=material(0xffffff,{side:T.DoubleSide});
-    function texture(key,file,materials,repeat=1) {
+    function texture(key,file,materials,repeat=1,directory='village') {
       loaded[key]=false;
-      loader.load('assets/village/'+file,t=>{
+      loader.load('assets/'+directory+'/'+file,t=>{
         t.encoding=T.sRGBEncoding;t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(repeat,repeat);
         t.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
         for(const m of materials){m.map=t;m.needsUpdate=true;}loaded[key]=true;
@@ -44,6 +47,11 @@ window.SkyVillage = (() => {
     texture('timber','harbor-carved-timber.png',[wood]);
     texture('fern','harbor-fern.png',[fernMaterial]);
     texture('banner','harbor-banner.png',[bannerMaterial]);
+    texture('barkV4','silver-oak-bark.png',[barkMaterial],1,'island-v4');
+    texture('leavesV4','olive-leaf-spray.png',[leafMaterial],1,'island-v4');
+    texture('masonryV4','moss-limestone.png',[masonryMaterial],1,'island-v4');
+    texture('flowersV4','lavender-wildflowers.png',[wildflowerMaterial],1,'island-v4');
+    texture('signV4','mariner-guild-sign.png',[signMaterial],1,'island-v4');
 
     function wind(m,strength,frequency) {
       m.onBeforeCompile=shader=>{
@@ -62,7 +70,7 @@ window.SkyVillage = (() => {
       };
       m.customProgramCacheKey=()=>`villageWind-${strength}-${frequency}`;
     }
-    wind(fernMaterial,.075,1.8);wind(leafMaterial,.11,2.2);
+    wind(fernMaterial,.075,1.8);wind(leafMaterial,.065,2.2);wind(wildflowerMaterial,.06,1.7);
     bannerMaterial.onBeforeCompile=shader=>{
       shader.uniforms.villageTime=clock;
       shader.vertexShader='uniform float villageTime;\n'+shader.vertexShader;
@@ -146,16 +154,59 @@ window.SkyVillage = (() => {
       cylinder(parent,.44*s,.44*s,.035*s,soil,x,y+.8*s,z,12);
       return {p:[x,y+.78*s,z],s:1.65*s};
     }
-    const fernGroups=new Map(),leafGroups=new Map(),flowerGroups=new Map();
+    function curve(parent,points,width,mat){
+      const path=new T.CatmullRomCurve3(points.map(p=>new T.Vector3(...p)));
+      return mesh(parent,new T.TubeGeometry(path,16,width,5,false),mat);
+    }
+    function hangingSign(parent,x,y,z,scale=1){
+      beam(parent,[x-.9*scale,y+.7*scale,z],[x+.9*scale,y+.7*scale,z],.09,iron);
+      for(const xx of [-.55,.55])beam(parent,[x+xx*scale,y+.7*scale,z],[x+xx*scale,y+.25*scale,z],.035,gold);
+      // The oval mesh trims the generated sign's surrounding studio margin.
+      const geo=new T.CircleGeometry(1,32),uv=geo.attributes.uv;
+      for(let i=0;i<uv.count;i++)uv.setXY(i,.5+(uv.getX(i)-.5)*.95,.5+(uv.getY(i)-.5)*.91);
+      const sign=mesh(parent,geo,signMaterial,x,y-.1*scale,z+.03);sign.scale.set(1.3*scale,.86*scale,1);
+    }
+    const detailGroups=new Map();
+    function architecturalDetails(parent){
+      if(!detailGroups.has(parent)){const g=new T.Group();g.name='Near architectural craftsmanship';parent.add(g);detailGroups.set(parent,g);}return detailGroups.get(parent);
+    }
+    function bench(parent,x,z,yaw=0){
+      const g=new T.Group();g.position.set(x,.1,z);g.rotation.y=yaw;parent.add(g);
+      for(const a of [-1,1]){
+        beam(g,[a*1.2,.1,-.3],[a*1.2,.8,.3],.14,iron);
+        beam(g,[a*1.2,.1,.3],[a*1.2,1.6,-.35],.14,iron);
+        beam(g,[a*1.3,1.1,-.3],[a*1.3,1.1,.48],.09,gold);
+      }
+      for(let i=0;i<3;i++)box(g,3.05,.12,.23,wood,0,.78,-.25+i*.26);
+      for(const y of [1.12,1.46])box(g,2.95,.2,.12,wood,0,y,-.34);
+      counts.benches++;
+    }
+    function ruinColumn(parent,x,z,h=4,broken=false){
+      const g=new T.Group();g.position.set(x,.08,z);parent.add(g);
+      box(g,1.8,.25,1.8,masonryMaterial,0,.14,0);
+      cylinder(g,.85,.95,.35,masonryMaterial,0,.44,0,12);
+      cylinder(g,.53,.64,h,masonryMaterial,0,h/2+.62,0,12);
+      // Shallow fluting gives the shaft readable highlights without a high-poly mesh.
+      for(let i=0;i<8;i++){const a=i/8*TAU;cylinder(g,.055,.065,h*.83,stone,Math.sin(a)*.54,h/2+.65,Math.cos(a)*.54,5);}
+      cylinder(g,.78,.59,.25,stone,0,h+.7,0,12);
+      if(!broken){box(g,1.6,.25,1.6,masonryMaterial,0,h+.95,0);mesh(g,new T.OctahedronGeometry(.32),gold,0,h+1.3,0);}
+      else {const shard=box(g,.64,.48,.85,masonryMaterial,.27,h+.84,0);shard.rotation.z=.25;}
+      addLeaves(g,[.48,h*.45,.35],.32,10);addWildflowers(g,[-.6,.14,.4],.6);counts.ruinColumns++;
+      return g;
+    }
+    const fernGroups=new Map(),leafGroups=new Map(),flowerGroups=new Map(),wildflowerGroups=new Map();
     function addFern(g,p,s=1,yaw=0) {
       if(!fernGroups.has(g))fernGroups.set(g,[]);
       for(const angle of [yaw,yaw+Math.PI/2])fernGroups.get(g).push({p,s,r:angle});counts.ferns++;
     }
     function addLeaves(g,p,scale=.5,n=12) {
+      // Each alpha card now contains seven painted leaves. Fewer cards give richer
+      // silhouettes while reducing the previous solid-leaf vertex count.
+      n=Math.ceil(n*.5);scale*=1.15;
       if(!leafGroups.has(g))leafGroups.set(g,[]);
       for(let k=0;k<n;k++){
         const a=random()*TAU,b=random()*Math.PI,dist=random()*scale;
-        leafGroups.get(g).push({p:[p[0]+Math.sin(a)*dist,p[1]+Math.cos(b)*dist*.65,p[2]+Math.cos(a)*dist],s:scale*(.55+random()*.7),r:[random()*.9-.45,random()*TAU,random()*2-1],color:new T.Color().setHSL(.25+random()*.07,.28+random()*.14,.25+random()*.17)});
+        leafGroups.get(g).push({p:[p[0]+Math.sin(a)*dist,p[1]+Math.cos(b)*dist*.65,p[2]+Math.cos(a)*dist],s:scale*(.55+random()*.7),r:[random()*.9-.45,random()*TAU,random()*2-1],color:new T.Color().setRGB(.78+random()*.2,.83+random()*.17,.72+random()*.2)});
       }
       counts.leaves+=n;
     }
@@ -165,6 +216,11 @@ window.SkyVillage = (() => {
         const a=i/n*TAU,r=.15+random()*.45;
         flowerGroups.get(g).push({p:[p[0]+Math.sin(a)*r*s,p[1]+(.18+random()*.3)*s,p[2]+Math.cos(a)*r*s],s:(.1+random()*.06)*s,r:[-.8+random(),a,0],color:new T.Color([0xe9bf68,0xe6ad97,0xf5dfaa,0xbd87bd][i%4]).convertSRGBToLinear()});
       }counts.flowers+=n;
+    }
+    function addWildflowers(g,p,s=.8){
+      if(!wildflowerGroups.has(g))wildflowerGroups.set(g,[]);
+      const yaw=random()*TAU;
+      for(const r of [yaw,yaw+Math.PI/2])wildflowerGroups.get(g).push({p,s,r});
     }
     function ornamentHouse(parent,spec,index) {
       const [x,z,w,d,h]=spec;
@@ -193,6 +249,17 @@ window.SkyVillage = (() => {
       mesh(g,new T.CylinderGeometry(.39,.39,.18,20),glass,0,h+.9,d*.62+.14).rotation.x=Math.PI/2;
       box(g,.065,.75,.22,wood,0,h+.9,d*.62+.24);box(g,.75,.065,.22,wood,0,h+.9,d*.62+.24);
       for(const zz of [-d*.62,d*.62]){cylinder(g,.04,.12,.8,gold,0,h+3.0,zz,8);mesh(g,new T.SphereGeometry(.13,8,6),gold,0,h+3.45,zz);}
+      // Swept ridge ends, gilded corbels and small chimneys enrich the roof outline.
+      for(const zz of [-1,1])curve(g,[[0,h+2.78,zz*d*.5],[0,h+2.81,zz*d*.64],[0,h+3.12,zz*d*.73]],.13,wood);
+      for(const xx of [-1,1])for(const zz of [-1,1]){
+        const px=xx*w*.49,pz=zz*d*.48;
+        curve(g,[[px,h-.65,pz],[px+xx*.18,h-.3,pz],[px+xx*.5,h+.06,pz]],.09,wood);
+      }
+      for(let i=0;i<3;i++){
+        const chimney=box(g,.42,1.0+i*.16,.45,masonryMaterial,-w*.24+i*.48,h+1.5,-d*.18);
+        box(g,.55,.12,.58,stone,chimney.position.x,h+2.02+i*.24,-d*.18);
+      }
+      if(index===2)hangingSign(g,0,5.05,front+.5,.78);
       // Two gabled dormers break the long roof silhouette, differently on each house.
       for(const side of [-1,1]) {
         const dormer=new T.Group();dormer.position.set(side*w*.3,h+.12,index===1?0:-d*.12);dormer.rotation.y=side*Math.PI/2;g.add(dormer);
@@ -216,6 +283,7 @@ window.SkyVillage = (() => {
       banner(g,index===0?w*.34:-w*.34,h+.15,front+.42,.54);
       for(const sx of [-1,1]) {
         const p=potPlant(g,sx*(w*.42),.4,front+.35,.6);addFern(g,p.p,p.s,random()*TAU);
+        addWildflowers(g,[sx*(w*.42),1.0,front+.35],.65);
         for(let row=0;row<2;row++) {
           const yy=h*(row?.77:.34)-1.0;
           box(g,1.7,.33,.5,wood,sx*w*.29,yy,front+.25);
@@ -245,6 +313,71 @@ window.SkyVillage = (() => {
         banner(market,x,6.9,18.5,.65);
         cylinder(market,.33,.44,.4,stone,x,.3,18.5,10);
       }
+      const detail=architecturalDetails(market);
+      bench(detail,20.5,8,-Math.PI/2);bench(detail,-21,-5,Math.PI/2);
+      // Low curbs define the garden edge, leaving a broad clear approach to the dock.
+      for(const side of [-1,1])for(let i=0;i<8;i++){
+        box(detail,.55,.2,.9,masonryMaterial,side*(7.8+i*.35),.18,18-i*.9);
+        if(i%2===0)addWildflowers(market,[side*(8.8+i*.35),.18,18-i*.9],.7);
+      }
+      for(const side of [-1,1]){
+        const x=side*21;
+        for(let i=0;i<4;i++)cylinder(detail,.08,.12,1.2,iron,x,.75,2+i*1.5,8);
+        for(let i=0;i<3;i++)curve(detail,[[x,1.25,2+i*1.5],[x,1.0,2.75+i*1.5],[x,1.25,3.5+i*1.5]],.028,gold);
+      }
+      hangingSign(detail,-17.5,4.7,8,.62);
+    }
+
+    for(const I of islands){
+      const root=worldGroups[I.id];if(!root)continue;
+      if(I.kind==='ruins'){
+        const detail=architecturalDetails(root);
+        for(const [x,z,h,broken] of [[-12,7,3.3,true],[12,22,4.2,false],[-10,-25,3,true],[10,-24,4.6,false]])ruinColumn(detail,x,z,h,broken);
+        for(const side of [-1,1])for(let i=0;i<6;i++){
+          const x=side*(11.5+i*.18),z=11+i*1.3;
+          box(detail,.65,.19,1.08,masonryMaterial,x,.2,z);
+          if(i%2===0)addWildflowers(root,[x+side*.6,.16,z],.8);
+        }
+        // Broken parapets are behind the playable windmill platform, not on the bridge.
+        for(const side of [-1,1]){
+          box(detail,3.2,.9,.7,masonryMaterial,side*8, .55,-31);
+          box(detail,3.5,.18,.9,stone,side*8,1.09,-31);
+        }
+        const mill=root.children.find(g=>g.isGroup&&g.position.x===0&&g.position.z===-29&&g.children[0]?.geometry?.type==='CylinderGeometry');
+        if(mill){mill.children[0].material=masonryMaterial;for(const side of [-1,1])beam(mill,[side*1.6,.3,1],[side*1.1,5.7,1],.16,wood);}
+      }else if(I.kind==='storm'){
+        const detail=architecturalDetails(root);
+        const tower=root.children.find(m=>m.isMesh&&m.geometry?.type==='CylinderGeometry'&&m.geometry.parameters.height===14);
+        if(tower)tower.material=masonryMaterial;
+        door(detail,0,.15,-1.5,1.65,3.1);
+        for(const y of [5.5,8.5])windowFrame(detail,0,y,-1.9,.8,1.2);
+        cylinder(detail,3.7,3.45,.35,masonryMaterial,0,11.4,-5,24);
+        for(const y of [11.6,12.8]){
+          const ring=mesh(detail,new T.TorusGeometry(3.65,.065,5,32),gold,0,y,-5);ring.rotation.x=Math.PI/2;
+        }
+        for(let k=0;k<18;k++){
+          const a=k/18*TAU;cylinder(detail,.045,.045,1.2,iron,Math.sin(a)*3.65,12.2,-5+Math.cos(a)*3.65,6);
+          if(k%3===0)beam(detail,[Math.sin(a)*2.85,10.5,-5+Math.cos(a)*2.85],[Math.sin(a)*3.6,11.3,-5+Math.cos(a)*3.6],.13,iron);
+        }
+        for(let k=0;k<8;k++){
+          const a=k/8*TAU;cylinder(detail,.1,.13,2.3,gold,Math.sin(a)*2.55,13.15,-5+Math.cos(a)*2.55,8);
+        }
+        for(const y of [12.05,14.35]){const ring=mesh(detail,new T.TorusGeometry(2.65,.14,6,24),gold,0,y,-5);ring.rotation.x=Math.PI/2;}
+        cylinder(detail,0,.7,2.4,gold,0,18,-5,8);
+        for(const x of [-8,8]){bench(detail,x,1,x>0?-Math.PI/2:Math.PI/2);addWildflowers(root,[x,0,-1],1.1);}
+        counts.lighthouseDetails=1;
+      }else if(I.kind==='ancient'){
+        const detail=architecturalDetails(root);
+        for(const x of [-17,17]){
+          ruinColumn(detail,x,-5,5.4,false);
+          box(detail,4.5,1.25,.8,masonryMaterial,x>0?13.7:-13.7,.75,-18);
+          box(detail,4.9,.2,1,stone,x>0?13.7:-13.7,1.48,-18);
+          addWildflowers(root,[x*.86,0,-16],1.1);
+        }
+      }else if(I.kind==='mirror'){
+        const detail=architecturalDetails(root);bench(detail,-15,0,Math.PI/2);bench(detail,15,0,-Math.PI/2);
+        for(const x of [-15,15])for(let i=0;i<4;i++)addWildflowers(root,[x+Math.sin(i),.16,-6-i*1.6],.9);
+      }
     }
 
     // Upgrade every existing decorative tree from solid canopy primitives to leaf clusters.
@@ -256,6 +389,8 @@ window.SkyVillage = (() => {
         if(node.isGroup&&trunk?.geometry?.type==='CylinderGeometry'&&trunk.geometry.parameters.radiusTop===.23&&trunk.geometry.parameters.height===3.8)trees.push(node);
       });
       for(const tree of trees) {
+        tree.children[0].material=barkMaterial;
+        for(const b of tree.children.slice(1,3))b.material=barkMaterial;
         const isPine=tree.children[3]?.geometry?.type==='CylinderGeometry';
         // Preserve the original solid canopy for distant silhouettes, then collect it
         // into one island batch. It is only drawn when detailed botanical cards hide.
@@ -272,13 +407,13 @@ window.SkyVillage = (() => {
         if(isPine) {
           for(let level=0;level<5;level++)for(let j=0;j<9;j++) {
             const a=j/9*TAU+level*.35,r=1.75-level*.28,yy=2.9+level*.75;
-            beam(tree,[0,yy+.35,0],[Math.cos(a)*r,yy,Math.sin(a)*r],.065,darkWood);
+            beam(tree,[0,yy+.35,0],[Math.cos(a)*r,yy,Math.sin(a)*r],.065,barkMaterial);
             addLeaves(canopy,[Math.cos(a)*r*.7,yy+.12,Math.sin(a)*r*.7],.58-level*.055,9);
           }
         } else {
           for(let cluster=0;cluster<9;cluster++) {
             const a=cluster*2.4,r=cluster?1.25:0,yy=3.8+cluster%3*.62;
-            const end=[Math.sin(a)*r,yy,Math.cos(a)*r];beam(tree,[0,2.5,0],end,.09,wood);addLeaves(canopy,end,.92,32);
+            const end=[Math.sin(a)*r,yy,Math.cos(a)*r];beam(tree,[0,2.5,0],end,.09,barkMaterial);addLeaves(canopy,end,.92,32);
           }
         }
         counts.trees++;
@@ -289,6 +424,7 @@ window.SkyVillage = (() => {
         if(z>I.r*.55&&Math.abs(x)<9)continue;
         if(I.kind==='market'&&z<-8&&Math.abs(x)<18)continue;
         addFern(group,[x,.1,z],1.1+random()*.9,a);addFlowers(group,[x,.2,z],1,7);
+        if(k%3===0)addWildflowers(group,[x+.4,.13,z+.5],.8+random()*.4);
       }
       if(I.kind==='ruins')for(const [x,z] of [[-13,14],[13,15],[-10,22],[11,23],[-10,-22],[10,-25]])addFern(group,[x,.1,z],1.5,random()*TAU);
     }
@@ -309,8 +445,16 @@ window.SkyVillage = (() => {
       }
       leafGroups.delete(g);
     }
-    const leafShape=new T.Shape();leafShape.moveTo(0,0);leafShape.bezierCurveTo(-.44,.29,-.3,.78,0,1.15);leafShape.bezierCurveTo(.3,.78,.44,.29,0,0);
-    const leafGeo=new T.ShapeGeometry(leafShape,3);
+    for(const [g,items] of [...wildflowerGroups]){
+      const island=islandOf(g);if(!island||island===g)continue;
+      island.updateMatrixWorld(true);g.updateMatrixWorld(true);
+      const transform=new T.Matrix4().copy(island.matrixWorld).invert().multiply(g.matrixWorld);
+      const scaling=new T.Vector3(),position=new T.Vector3(),rotation=new T.Quaternion();transform.decompose(position,rotation,scaling);
+      if(!wildflowerGroups.has(island))wildflowerGroups.set(island,[]);
+      for(const item of items){item.p=new T.Vector3(...item.p).applyMatrix4(transform).toArray();item.s*=scaling.x;wildflowerGroups.get(island).push(item);}
+      wildflowerGroups.delete(g);
+    }
+    const leafGeo=new T.PlaneGeometry(1.15,1.2,2,2);leafGeo.translate(0,.55,0);
     const positions=leafGeo.attributes.position;
     for(let i=0;i<positions.count;i++)positions.setZ(i,Math.sin(positions.getY(i)*2.4)*.09-Math.abs(positions.getX(i))*.23);
     leafGeo.computeVertexNormals();
@@ -322,7 +466,7 @@ window.SkyVillage = (() => {
       const inst=new T.InstancedMesh(geo,mat,items.length),d=new T.Object3D();inst.name='Village '+kind;
       for(let i=0;i<items.length;i++) {
         const a=items[i];d.position.set(...a.p);
-        if(kind==='ferns'){d.rotation.set(0,a.r,0);d.scale.set(a.s,a.s,a.s);}
+        if(kind==='ferns'||kind==='wildflowers'){d.rotation.set(0,a.r,0);d.scale.set(a.s,a.s,a.s);}
         else {d.rotation.set(...a.r);d.scale.set(a.s,a.s,kind==='flowers'?a.s*.4:a.s);}
         d.updateMatrix();inst.setMatrixAt(i,d.matrix);if(a.color)inst.setColorAt(i,a.color);
       }
@@ -334,6 +478,11 @@ window.SkyVillage = (() => {
     for(const [g,a] of leafGroups)instances(g,leafGeo,leafMaterial,a,'leaves');
     for(const [g,a] of fernGroups)instances(g,fernGeo,fernMaterial,a,'ferns');
     for(const [g,a] of flowerGroups)instances(g,bloomGeo,bloomMat,a,'flowers');
+    for(const [g,a] of wildflowerGroups)instances(g,fernGeo,wildflowerMaterial,a,'wildflowers');
+    for(const [parent,g] of detailGroups){
+      M.batchStatic(g);g.userData.skyDynamic=true;
+      lodFor(parent).high.push({mesh:g,leaves:0});
+    }
     for(const lod of lodGroups.values()){
       // Batch once before marking the whole low-detail layer as switchable.
       M.batchStatic(lod.low);lod.low.userData.skyDynamic=true;lod.low.visible=false;
@@ -348,8 +497,8 @@ window.SkyVillage = (() => {
           if(cameraPosition){
             const distance=lod.center.distanceTo(cameraPosition);
             // Hysteresis prevents flicker when a ship hovers at the transition.
-            if(lod.near&&distance>190)lod.near=false;
-            else if(!lod.near&&distance<160)lod.near=true;
+            if(lod.near&&distance>155)lod.near=false;
+            else if(!lod.near&&distance<125)lod.near=true;
           }
           lod.low.visible=!lod.near;
           if(lod.near)lodStatus.nearIslands++;else lodStatus.farIslands++;

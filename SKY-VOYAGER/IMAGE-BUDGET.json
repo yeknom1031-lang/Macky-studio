@@ -14,9 +14,22 @@
     {
       "manifest": "VILLAGE-ASSET-PROMPTS.json",
       "generated": 6
+    },
+    {
+      "manifest": "SHIP-V4-PROMPTS.json",
+      "generated": 4
+    },
+    {
+      "manifest": "CHARACTER-V4-PROMPTS.json",
+      "generated": 4
+    },
+    {
+      "manifest": "ISLAND-V4-PROMPTS.json",
+      "generated": 5
     }
   ],
-  "generatedTotal": 13,
+  "generatedTotal": 26,
   "generatedThisDetailPass": 9,
-  "remaining": 987
+  "remaining": 974,
+  "generatedThisRefinementPass": 13
 }
