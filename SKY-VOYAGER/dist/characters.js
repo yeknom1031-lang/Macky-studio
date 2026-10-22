@@ -85,7 +85,13 @@
   function batchJoint(joint){for(const child of joint.children)if(child.userData.skyDynamic)batchJoint(child);bakeAtlas(joint);const flag=joint.userData.skyDynamic;joint.userData.skyDynamic=false;M.batchStatic(joint);joint.userData.skyDynamic=flag;}
 
   function character(type='hero'){
-    if(type==='stone')return previousCharacter(type);
+    if(type==='stone'){
+      const stone=previousCharacter(type),body=pivot(stone.group);
+      // Preserve the original stone meshes and limb references. An internal pivot gives
+      // the rigid guardian its own weight and collapse without touching gameplay position.
+      for(const child of [...stone.group.children])if(child!==body)body.add(child);
+      stone.stoneBody=body;stone.group.userData.skyDynamic=true;return stone;
+    }
     const g=new T.Group(),body=pivot(g),torso=pivot(body,0,1.36,0),head=pivot(torso,0,.83,0),npc=['merchant','alchemist','cook'].includes(type),boss=type==='boss';
     g.userData.skyDynamic=true;g.userData.characterArtVersion=4;
     const r={group:g,type,body,torso,head,legs:[],knees:[],feet:[],arms:[],elbows:[],wrists:[],eyes:[],eyelids:[],tails:[],frontTails:[],materials:[],phase:0,move:0,lastTime:undefined,npc};
@@ -174,17 +180,74 @@
     weapon.visible=!npc;batchJoint(body);rigs.push(r);return r;
   }
   const clamp=(n,a,b)=>Math.max(a,Math.min(b,n)),smooth=n=>{n=clamp(n,0,1);return n*n*(3-2*n);},lerp=(a,b,t)=>a+(b-a)*t;
+  // Combat clips describe whole-body silhouettes, in local rig coordinates. Their different
+  // timing separates readable anticipation, a fast contact arc and weighted recovery.
+  const combatClips={
+    slash:{times:[0,.25,.46,.7,1],poses:[
+      {spine:[.05,-.18,.02],right:[-.5,.1,.35],rElbow:[.5,0,0],left:[.2,0,-.2],lElbow:[.7,0,0]},
+      {hip:[.03,-.045,.035],body:[.04,-.12,.03],spine:[.1,-.62,.04],head:[0,.32,0],right:[-1.4,.15,.8],rElbow:[1.1,0,.1],rWrist:[-.7,0,.1],left:[.4,0,-.38],lElbow:[1.0,0,0],lLeg:[-.2,0,-.04],rLeg:[.32,0,.04],lKnee:-.18,rKnee:-.38},
+      {hip:[-.03,-.07,-.18],body:[-.09,.13,-.04],spine:[-.13,.62,-.08],head:[.02,-.28,0],right:[1.02,-.22,-.93],rElbow:[.2,0,0],rWrist:[.22,0,-.2],left:[-.3,0,-.45],lElbow:[.85,0,0],lLeg:[.38,0,-.04],rLeg:[-.25,0,.04],lKnee:-.42,rKnee:-.12},
+      {hip:[-.03,-.045,-.09],body:[-.03,.12,0],spine:[-.06,.42,-.05],right:[.2,-.2,-1.1],rElbow:[.35,0,0],rWrist:[.35,0,-.15],left:[-.22,0,-.25],lElbow:[.5,0,0],lLeg:[.24,0,-.03],rLeg:[-.12,0,.03],lKnee:-.22,rKnee:-.1},
+      {}]},
+    backhand:{times:[0,.2,.43,.7,1],poses:[
+      {spine:[0,.24,-.03],right:[.45,0,-.75],rElbow:[.8,0,0],left:[.1,0,-.25]},
+      {hip:[-.04,-.07,.025],body:[.02,.16,-.04],spine:[.05,.76,-.1],head:[0,-.4,0],right:[.8,.25,-1.36],rElbow:[.9,0,-.1],rWrist:[-.35,0,-.45],left:[.3,0,-.52],lElbow:[.75,0,0],lLeg:[.28,0,-.06],rLeg:[-.22,0,.06],lKnee:-.4,rKnee:-.16},
+      {hip:[.045,-.055,-.17],body:[-.08,-.2,.055],spine:[-.12,-.82,.08],head:[0,.4,0],right:[1.08,-.1,.96],rElbow:[.12,0,0],rWrist:[.38,0,.1],left:[-.5,0,-.32],lElbow:[.9,0,0],lLeg:[-.26,0,-.04],rLeg:[.4,0,.04],lKnee:-.15,rKnee:-.42},
+      {hip:[.025,-.035,-.08],body:[-.025,-.13,.025],spine:[-.04,-.53,.04],right:[.4,-.2,1.02],rElbow:[.35,0,0],rWrist:[.25,0,.1],left:[-.3,0,-.2],lElbow:[.5,0,0],lLeg:[-.14,0,-.03],rLeg:[.24,0,.03],lKnee:-.1,rKnee:-.25},
+      {}]},
+    finisher:{times:[0,.33,.53,.76,1],poses:[
+      {spine:[.08,-.12,0],right:[1.1,0,.25],rElbow:[.7,0,0],left:[.5,0,-.35],lElbow:[.7,0,0]},
+      {hip:[0,.035,.045],body:[.04,-.1,0],spine:[.2,-.2,0],head:[-.13,.08,0],right:[2.65,.08,.22],rElbow:[.6,0,0],rWrist:[-.35,0,0],left:[1.9,0,-.25],lElbow:[1.0,0,0],lLeg:[-.14,0,-.03],rLeg:[.15,0,.03],lKnee:-.13,rKnee:-.18},
+      {hip:[0,-.19,-.26],body:[-.12,.11,0],spine:[-.4,.23,0],head:[.2,-.1,0],right:[.95,0,-.14],rElbow:[.12,0,0],rWrist:[.2,0,0],left:[.65,0,-.32],lElbow:[.4,0,0],lLeg:[.52,0,-.05],rLeg:[-.3,0,.04],lKnee:-.75,rKnee:-.25,lFoot:.12,rFoot:-.12},
+      {hip:[0,-.1,-.14],body:[-.06,.05,0],spine:[-.24,.14,0],right:[.35,0,-.22],rElbow:[.3,0,0],rWrist:[.1,0,0],left:[.2,0,-.28],lElbow:[.45,0,0],lLeg:[.35,0,-.03],rLeg:[-.2,0,.03],lKnee:-.42,rKnee:-.15},
+      {}]},
+    heavy:{times:[0,.43,.62,.81,1],poses:[
+      {hip:[0,-.04,.025],spine:[.1,-.1,0],right:[.9,0,.24],rElbow:[.85,0,0],left:[.8,0,-.25],lElbow:[.9,0,0]},
+      {hip:[0,-.09,.1],body:[.08,-.18,0],spine:[.25,-.36,.04],head:[-.12,.17,0],right:[2.6,.1,.2],rElbow:[.65,0,0],rWrist:[-.35,0,0],left:[2.38,0,-.16],lElbow:[.72,0,0],lLeg:[.1,0,-.09],rLeg:[.15,0,.09],lKnee:-.4,rKnee:-.5},
+      {hip:[0,-.24,-.3],body:[-.16,.16,0],spine:[-.48,.35,-.02],head:[.23,-.16,0],right:[1.08,0,-.12],rElbow:[.05,0,0],rWrist:[.38,0,0],left:[.98,0,.2],lElbow:[.18,0,0],lLeg:[.58,0,-.1],rLeg:[-.34,0,.1],lKnee:-.86,rKnee:-.34,lFoot:.14,rFoot:-.15},
+      {hip:[0,-.15,-.18],body:[-.08,.1,0],spine:[-.3,.22,0],right:[.45,0,-.16],rElbow:[.4,0,0],left:[.4,0,-.12],lElbow:[.5,0,0],lLeg:[.36,0,-.08],rLeg:[-.2,0,.08],lKnee:-.5,rKnee:-.25},
+      {}]}
+  };
+  const combatJointNames=['body','spine','head','right','rElbow','rWrist','left','lElbow','lWrist','lLeg','rLeg'];
+  function applyCombatClip(r,style,progress){
+    const clip=combatClips[style]||combatClips.slash,a=clamp(progress,0,1),weight=smooth(a/.09)*(1-smooth((a-.75)/.25));
+    let k=0;while(k<clip.times.length-2&&a>clip.times[k+1])k++;
+    const t=smooth((a-clip.times[k])/(clip.times[k+1]-clip.times[k])),from=clip.poses[k],to=clip.poses[k+1];
+    const joints=[r.body,r.torso,r.head,r.arms[1],r.elbows[1],r.wrists[1],r.arms[0],r.elbows[0],r.wrists[0],r.legs[0],r.legs[1]];
+    for(let j=0;j<joints.length;j++){const node=joints[j],key=combatJointNames[j],start=from[key],end=to[key];if(!start&&!end)continue;for(let axis=0;axis<3;axis++){const name=axis===0?'x':axis===1?'y':'z',base=node.rotation[name];node.rotation[name]=lerp(base,lerp(start?start[axis]:base,end?end[axis]:base,t),weight);}}
+    for(let i=0;i<2;i++){const knee=i?'rKnee':'lKnee',foot=i?'rFoot':'lFoot';for(const [node,key]of [[r.knees[i],knee],[r.feet[i],foot]]){const base=node.rotation.x;node.rotation.x=lerp(base,lerp(from[key]??base,to[key]??base,t),weight);}}
+    const p=from.hip||[0,0,0],q=to.hip||[0,0,0];r.body.position.x+=lerp(p[0],q[0],t)*weight;r.body.position.y+=lerp(p[1],q[1],t)*weight;r.body.position.z+=lerp(p[2],q[2],t)*weight;
+    return weight;
+  }
+  function animateStone(r,time,speed,attack,context){
+    previousAnimate(r,time,speed,0,false);
+    const body=r.stoneBody,a=clamp(attack,0,1),hit=smooth(context.hitReaction||0),defeat=smooth(context.defeat||0);
+    body.position.set(0,0,0);body.rotation.set(0,0,0);
+    if(a>0){
+      const wind=smooth(a/.43),slam=smooth((a-.43)/.19),recover=smooth((a-.62)/.38),held=1-recover,raise=wind*(1-slam);
+      body.position.y=.045*raise-.14*slam*held;body.position.z=-.1*slam*held;
+      body.rotation.x=.12*raise-.28*slam*held;
+      for(let i=0;i<2;i++){const side=i?1:-1;r.arms[i].rotation.set(2.72*raise+.98*slam*held,0,side*(.08+.16*raise));r.legs[i].rotation.x+=.12*slam*held;}
+    }
+    if(hit>0){body.rotation.x+=hit*.24;body.position.z+=hit*.11;body.position.y-=hit*.045;for(let i=0;i<2;i++)r.arms[i].rotation.z+=(i?1:-1)*hit*.14;}
+    if(defeat>0){
+      body.position.set(0,lerp(body.position.y,.22,defeat),lerp(body.position.z,.25,defeat));body.rotation.set(lerp(body.rotation.x,Math.PI*.47,defeat),0,lerp(body.rotation.z,-.12,defeat));
+      for(let i=0;i<2;i++){r.arms[i].rotation.set(lerp(r.arms[i].rotation.x,.08,defeat),0,lerp(r.arms[i].rotation.z,i?.38:-.42,defeat));r.legs[i].rotation.set(lerp(r.legs[i].rotation.x,i?.12:-.07,defeat),0,0);}
+    }
+    r.sword.visible=false;r.bow.visible=false;
+  }
   function animateCharacter(r,time,speed=0,attack=0,bow=false,context={}){
+    if(r.stoneBody){animateStone(r,time,speed,attack,context);return;}
     if(!r.body){previousAnimate(r,time,speed,attack,bow);return;}
     const dt=clamp(context.dt|| (r.lastTime===undefined?1/60:time-r.lastTime),1/240,.06);r.lastTime=time;
     r.move=lerp(r.move,clamp(speed,0,1),1-Math.exp(-dt*9));const move=r.move,phase=r.phase+=(3.5+move*7.6)*dt,breath=Math.sin(time*2.15)*.008;
-    r.body.position.y=breath+Math.abs(Math.sin(phase))*.035*move;r.body.rotation.set(.045*move,0,Math.sin(phase)*.025*move);
+    r.body.position.set(0,breath+Math.abs(Math.sin(phase))*.035*move,0);r.body.rotation.set(.045*move,0,Math.sin(phase)*.025*move);
     r.torso.rotation.set(-.035*move,Math.sin(phase)*.075*move,Math.sin(phase)*.015*move);r.torso.scale.y=1+breath*.45;
     r.head.rotation.set(Math.sin(time*1.7)*.018,Math.sin(time*.55+(r.npc?1:0))*.065*(1-move),Math.sin(time*.8)*.014);
     for(let i=0;i<2;i++){
       const p=phase+i*Math.PI,swing=Math.sin(p),lift=Math.max(0,swing),s=i?1:-1;
-      r.legs[i].rotation.set(swing*.62*move,0,s*.025);r.knees[i].rotation.x=-Math.max(0,-swing)*.86*move-.025;
-      r.feet[i].rotation.x=-swing*.16*move-Math.max(0,-Math.cos(p))*.12*move;
+      r.legs[i].rotation.set(swing*.62*move,0,s*.025);r.knees[i].rotation.set(-Math.max(0,-swing)*.86*move-.025,0,0);
+      r.feet[i].rotation.set(-swing*.16*move-Math.max(0,-Math.cos(p))*.12*move,0,0);
       r.arms[i].rotation.set(-swing*.45*move-.06,Math.sin(p)*.035*move,s*.075);r.elbows[i].rotation.set(-.1-lift*.4*move,0,0);r.wrists[i].rotation.set(0,0,0);
       r.tails[i].rotation.set(-.12-move*.22+Math.sin(phase-.5+i*.6)*move*.11+Math.sin(time*2+i)*.025,0,s*.03);
       r.frontTails[i].rotation.x=.06+Math.max(0,Math.sin(p))*.22*move;
@@ -193,29 +256,57 @@
     const blinkPeriod=4.1+(r.type.length%3)*.47,blinkPhase=(time+r.type.length*.31)%blinkPeriod,blink=blinkPhase<.14?Math.sin(blinkPhase/.14*Math.PI):0;
     for(const eye of r.eyes)eye.scale.y=1-.96*blink;
     for(let i=0;i<r.eyelids.length;i++)r.eyelids[i].rotation.z=(i?1:-1)*(attack>0?.13:Math.sin(time*.7)*.025);
-    if(attack>0&&!bow){
-      const a=clamp(attack,0,1),wind=smooth(a/.24),strike=smooth((a-.24)/.32),recover=smooth((a-.56)/.44),hold=1-recover;
-      r.torso.rotation.y=(-.55*wind+1.05*strike)*hold;r.torso.rotation.x=-.08*strike*hold;r.head.rotation.y=-r.torso.rotation.y*.6;
-      r.arms[1].rotation.x=(-1.5*wind+2.15*strike)*hold;r.arms[1].rotation.z=(-.72*wind- .5*strike)*hold;
-      r.elbows[1].rotation.x=(-1.1*wind+1.02*strike)*hold;r.wrists[1].rotation.x=(-.25*wind+.6*strike)*hold;
-      r.arms[0].rotation.x=-.42*hold;r.elbows[0].rotation.x=-.72*hold;r.body.position.y-=Math.sin(a*Math.PI)*.055;
-    }
+    let attackWeight=0;
+    if(attack>0&&!bow)attackWeight=applyCombatClip(r,context.attackStyle|| (context.combo===2?'backhand':context.combo===3?'finisher':'slash'),attack);
     if(bow||r.type==='archer'){
-      const draw=attack>0?Math.sin(clamp(attack,0,1)*Math.PI):.2;
-      r.torso.rotation.y=-.25;r.arms[0].rotation.set(1.35,0,-.15);r.elbows[0].rotation.x=.05;r.wrists[0].rotation.x=-.18;
-      r.arms[1].rotation.set(1.15,-.45,.68);r.elbows[1].rotation.set(-1.2-draw*.3,0,.35);r.head.rotation.y=.2;
+      const a=clamp(attack,0,1),raise=attack>0?smooth(a/.2)*(1-smooth((a-.68)/.32)):0,draw=smooth((a-.15)/.35)*(1-smooth((a-.52)/.095)),release=smooth((a-.52)/.07)*(1-smooth((a-.62)/.25));
+      r.torso.rotation.y=-.18-raise*.36;r.head.rotation.y=.14+raise*.24;r.body.position.y-=raise*.025;
+      r.arms[0].rotation.set(.58+raise*.9,0,-.12);r.elbows[0].rotation.x=.15-raise*.12;r.wrists[0].rotation.x=-.13;
+      r.arms[1].rotation.set(.55+raise*.55,-.18-draw*.28,.28+draw*.53+release*.14);r.elbows[1].rotation.set(.65+draw*.87-release*.3,0,.08+draw*.2);r.wrists[1].rotation.y=draw*-.3+release*.15;
+      r.head.rotation.x-=release*.025;
     }
     if(context.grounded===false){const rise=clamp((context.jumpVelocity||0)/8,-1,1);r.legs[0].rotation.x=-.4;r.legs[1].rotation.x=.35;r.knees[0].rotation.x=-.85;r.knees[1].rotation.x=-.55;r.arms[0].rotation.z=-.35;r.arms[1].rotation.z=.35;r.body.rotation.x=-rise*.1;r.wasAirborne=true;}
     else if(context.grounded===true&&r.wasAirborne){r.wasAirborne=false;r.landing=.22;}
     if(r.landing>0){r.landing=Math.max(0,r.landing-dt);const settle=Math.sin(r.landing/.22*Math.PI);r.body.position.y-=settle*.12;r.knees.forEach(k=>k.rotation.x-=settle*.25);r.torso.rotation.x-=settle*.07;}
-    if(context.dodge>0){const d=smooth(Math.min(context.dodge/.15,1));r.body.position.y-=d*.25;r.torso.rotation.x=-d*.3;r.knees.forEach(k=>k.rotation.x-=d*.8);}
     if(context.flight){r.arms.forEach((a,i)=>a.rotation.set(.68,0,i?.18:-.18));r.elbows.forEach(e=>e.rotation.x=-.65);r.head.rotation.y=Math.sin(time*.32)*.12;r.torso.rotation.z=Math.sin(time*1.5)*.015;}
     if(r.npc&&!attack){r.arms[0].rotation.x=.18+Math.sin(time*1.2)*.08;r.elbows[0].rotation.x=-.55;r.arms[1].rotation.x=.25;r.elbows[1].rotation.x=-.6+Math.sin(time*.8)*.08;}
-    r.scarf.rotation.x=-.15-move*.65+Math.sin(time*3.7)*.08;r.scarf.rotation.z=-.3+Math.sin(time*2.6)*.06;
-    if(r.cape){r.cape.rotation.x=-.04-move*.28+Math.sin(time*2.3)*.035;r.cape.rotation.z=(r.capeHalf?-.13:0)+Math.sin(time*1.8)*.025+Math.sin(phase)*move*.035;}
+    r.guardMix=lerp(r.guardMix||0,context.guard&&attack<=0?1:0,1-Math.exp(-dt*15));
+    if(r.guardMix>.001&&attack<=0&&!context.flight){
+      const w=r.guardMix,shield=r.type==='shield';
+      const arms=shield?[[1.18,.08,-.18],[.55,-.2,.48]]:[[.55,.18,-.25],[.44,-.18,-.36]],elbows=shield?[.2,1.1]:[1.05,1.7];
+      for(let i=0;i<2;i++){for(let j=0;j<3;j++){const axis=j===0?'x':j===1?'y':'z';r.arms[i].rotation[axis]=lerp(r.arms[i].rotation[axis],arms[i][j],w);}r.elbows[i].rotation.x=lerp(r.elbows[i].rotation.x,elbows[i],w);}
+      r.wrists[1].rotation.x=lerp(r.wrists[1].rotation.x,.47,w);r.wrists[0].rotation.x=lerp(r.wrists[0].rotation.x,shield?-.65:.1,w);
+      r.body.position.y-=w*.075;r.torso.rotation.y-=w*.2;r.torso.rotation.x-=w*.07;r.head.rotation.y+=w*.14;r.knees.forEach(k=>k.rotation.x-=w*.18);
+    }
+    const parry=smooth(context.parry||0),hit=smooth(context.hitReaction||0);
+    if(parry>0){r.torso.rotation.y-=parry*.23;r.torso.rotation.x-=parry*.05;r.arms[1].rotation.x+=parry*.38;r.arms[0].rotation.x+=parry*.28;r.elbows[1].rotation.x-=parry*.32;r.wrists[1].rotation.z-=parry*.32;r.body.position.z+=parry*.055;r.head.rotation.y+=parry*.12;}
+    const dodging=(context.dodge||0)>0||(context.dodgeProgress||0)>0;
+    let dodgeWeight=0;
+    if(dodging){
+      const a=Number.isFinite(context.dodgeProgress)?clamp(context.dodgeProgress,0,1):clamp(1-context.dodge/.3,0,1),side=clamp(context.dodgeSide??1,-1,1),d=smooth(a/.18)*(1-smooth((a-.68)/.32));dodgeWeight=d;
+      r.body.position.y-=d*.24;r.body.position.x+=side*d*.09;r.body.rotation.z-=side*d*.22;r.torso.rotation.x=lerp(r.torso.rotation.x,-.48,d);r.head.rotation.x+=d*.2;
+      r.legs[0].rotation.x=lerp(r.legs[0].rotation.x,.36-side*.12,d);r.legs[1].rotation.x=lerp(r.legs[1].rotation.x,.36+side*.12,d);r.knees.forEach(k=>k.rotation.x=lerp(k.rotation.x,-.82,d));
+      for(let i=0;i<2;i++){r.arms[i].rotation.x=lerp(r.arms[i].rotation.x,.36,d);r.arms[i].rotation.z=lerp(r.arms[i].rotation.z,i?.14:-.14,d);r.elbows[i].rotation.x=lerp(r.elbows[i].rotation.x,1.4,d);}
+    }
+    if(hit>0){r.body.position.z+=hit*.12;r.body.position.y-=hit*.045;r.torso.rotation.x+=hit*.43;r.torso.rotation.z-=hit*.1;r.head.rotation.x+=hit*.22;r.arms.forEach((a,i)=>{a.rotation.x-=hit*.35;a.rotation.z+=(i?1:-1)*hit*.18;});r.knees.forEach(k=>k.rotation.x-=hit*.16);for(const eye of r.eyes)eye.scale.y*=1-hit*.7;}
+    const defeated=smooth(context.defeat||0);
+    if(defeated>0){
+      r.body.position.set(0,lerp(r.body.position.y,.16,defeated),lerp(r.body.position.z,.12,defeated));r.body.rotation.set(lerp(r.body.rotation.x,Math.PI*.48,defeated),0,lerp(r.body.rotation.z,-.14,defeated));
+      r.torso.rotation.set(lerp(r.torso.rotation.x,.04,defeated),lerp(r.torso.rotation.y,.08,defeated),0);r.head.rotation.set(lerp(r.head.rotation.x,-.08,defeated),lerp(r.head.rotation.y,.2,defeated),lerp(r.head.rotation.z,.12,defeated));
+      r.torso.scale.y=lerp(r.torso.scale.y,1,defeated);
+      for(let i=0;i<2;i++){r.arms[i].rotation.set(lerp(r.arms[i].rotation.x,.12,defeated),0,lerp(r.arms[i].rotation.z,i?.54:-.62,defeated));r.elbows[i].rotation.set(lerp(r.elbows[i].rotation.x,.2,defeated),0,lerp(r.elbows[i].rotation.z,0,defeated));r.wrists[i].rotation.set(lerp(r.wrists[i].rotation.x,.06,defeated),lerp(r.wrists[i].rotation.y,0,defeated),lerp(r.wrists[i].rotation.z,0,defeated));r.legs[i].rotation.x=lerp(r.legs[i].rotation.x,i?.12:-.05,defeated);r.knees[i].rotation.x=lerp(r.knees[i].rotation.x,i?-.3:-.1,defeated);r.feet[i].rotation.x=lerp(r.feet[i].rotation.x,.05,defeated);r.eyes[i].scale.y=lerp(r.eyes[i].scale.y,.02,defeated);}
+    }
+    // Secondary motion follows actual torso rotation and acceleration; the spring settles
+    // after attacks instead of snapping the scarf and coat to the neutral animation.
+    const angularVelocity=clamp((r.torso.rotation.y-(r.lastCombatYaw??r.torso.rotation.y))/dt,-5,5);r.lastCombatYaw=r.torso.rotation.y;
+    r.clothCombat=lerp(r.clothCombat||0,-r.torso.rotation.y*.22-angularVelocity*.035,1-Math.exp(-dt*11));
+    const cloth=r.clothCombat,clothKick=attackWeight*.1+dodgeWeight*.17+hit*.09;
+    r.scarf.rotation.x=-.15-move*.65+Math.sin(time*3.7)*.08-clothKick;r.scarf.rotation.z=-.3+Math.sin(time*2.6)*.06+cloth;
+    if(r.cape){r.cape.rotation.x=-.04-move*.28+Math.sin(time*2.3)*.035-clothKick;r.cape.rotation.z=(r.capeHalf?-.13:0)+Math.sin(time*1.8)*.025+Math.sin(phase)*move*.035+cloth*.6;}
+    for(let i=0;i<2;i++){r.tails[i].rotation.z+=cloth*.35;r.tails[i].rotation.x-=clothKick*.6;r.frontTails[i].rotation.z=cloth*.18;}
     if(r.compass)r.compass.rotation.z=Math.sin(phase-.5)*move*.15;
     r.sword.visible=!bow&&!r.npc&&!context.flight;r.bow.visible=(bow||r.type==='archer')&&!context.flight;
   }
   M.character=character;M.animateCharacter=animateCharacter;
-  M.characterArtStatus=()=>({version:4,generatedTextures:7,newGeneratedTextures:4,sharedPBRAtlas:true,textures:{...assetState},rigs:rigs.length,articulatedRigs:rigs.filter(r=>r.body).length,features:['sculpted-face','geometric-blink','woven-embroidery','tapered-hair','knee-elbow-rig','foot-roll','attack-phases','secondary-cloth','tailored-sleeves','curled-fingers','layered-cape','shared-PBR-atlas']});
+  M.characterArtStatus=()=>({version:4,combatAnimationVersion:2,generatedTextures:7,newGeneratedTextures:4,sharedPBRAtlas:true,textures:{...assetState},rigs:rigs.length,articulatedRigs:rigs.filter(r=>r.body).length,features:['sculpted-face','geometric-blink','woven-embroidery','tapered-hair','knee-elbow-rig','foot-roll','attack-phases','secondary-cloth','tailored-sleeves','curled-fingers','layered-cape','shared-PBR-atlas','three-hit-combo','heavy-strike','guard-parry','hit-defeat','directional-dodge']});
 })();

@@ -1,0 +1,132 @@
+{
+  "before": {
+    "version": 1,
+    "hp": 100,
+    "sp": 100,
+    "shipHp": 100,
+    "gold": 420,
+    "materials": 0,
+    "arrows": 30,
+    "potions": {
+      "heal": 3,
+      "invisible": 2,
+      "defense": 2,
+      "strength": 2
+    },
+    "buffs": {
+      "invisible": 0,
+      "defense": 0,
+      "strength": 0,
+      "feather": 0
+    },
+    "upgrades": {
+      "sword": 0,
+      "bow": 0,
+      "hull": 0,
+      "engine": 0
+    },
+    "flags": {
+      "market": false,
+      "wind": 0,
+      "bridge": false,
+      "sigil": false,
+      "boss": false,
+      "twinA": false,
+      "twin": false,
+      "storm": false,
+      "mirror": false,
+      "ancient": false,
+      "fort": false,
+      "crew": false
+    },
+    "opened": [],
+    "defeated": [],
+    "kills": 0,
+    "mode": "flight",
+    "island": "market",
+    "ship": {
+      "x": 0,
+      "z": 33.96188036261265,
+      "yaw": 0,
+      "altitude": 3
+    },
+    "player": {
+      "x": 0,
+      "z": 30,
+      "yaw": 0
+    },
+    "weapon": "sword",
+    "checkpoint": "market",
+    "playTime": 0.9152999999523163,
+    "camera": {
+      "yaw": 0,
+      "pitch": 0.32,
+      "distance": 10.5
+    }
+  },
+  "after": {
+    "version": 1,
+    "hp": 100,
+    "sp": 100,
+    "shipHp": 100,
+    "gold": 420,
+    "materials": 0,
+    "arrows": 30,
+    "potions": {
+      "heal": 3,
+      "invisible": 2,
+      "defense": 2,
+      "strength": 2
+    },
+    "buffs": {
+      "invisible": 0,
+      "defense": 0,
+      "strength": 0,
+      "feather": 0
+    },
+    "upgrades": {
+      "sword": 0,
+      "bow": 0,
+      "hull": 0,
+      "engine": 0
+    },
+    "flags": {
+      "market": false,
+      "wind": 0,
+      "bridge": false,
+      "sigil": false,
+      "boss": false,
+      "twinA": false,
+      "twin": false,
+      "storm": false,
+      "mirror": false,
+      "ancient": false,
+      "fort": false,
+      "crew": false
+    },
+    "opened": [],
+    "defeated": [],
+    "kills": 0,
+    "mode": "flight",
+    "island": "market",
+    "ship": {
+      "x": 0,
+      "z": 33.96188036261265,
+      "yaw": 0,
+      "altitude": 3
+    },
+    "player": {
+      "x": 0,
+      "z": 30,
+      "yaw": 0
+    },
+    "weapon": "sword",
+    "checkpoint": "market",
+    "playTime": 0.9152999999523163,
+    "camera": {
+      "yaw": 0,
+      "pitch": 0.32,
+      "distance": 10.5
+    }
+  }
+}

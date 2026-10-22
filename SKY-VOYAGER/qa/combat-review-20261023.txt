@@ -1,0 +1,51 @@
+SKY VOYAGER / Combat review / 2026-10-23 JST
+
+Request: richer animation and combat inspired by AAA action games. Local Mac files only; no Sites or deployment. Three agents split articulated animation, bounded visual/audio effects, and independent integration review.
+
+Implemented
+- Shared attack clock, 3-hit sword chain, one-slot input buffer, resource checks at action start; distinct heavy and bow clips.
+- Contact normalized times match poses: slash .46, backhand .43, finisher .53, heavy .62, bow .52.
+- Directional held guard, .18-second edge-triggered parry, stun/posture break, counter bonus; evasion and contact-confirmed perfect-dodge window.
+- Full-body anticipation, strike, follow-through and recovery; parry, hit, defeat, bow release, cloth follow-through. Stone rig has double-arm slam and defeat.
+- Enemy attack/recovery timing and boss 3-phase pattern; radial red/gold warnings.
+- Weapon ribbons, sparks, impact rings, dust and layered WebAudio; short hitstop and decaying camera translation. Camera baseline restored after render to prevent accumulation.
+- 13 pooled meshes / 3 shared materials; capacities sparks160/dust40/rings12/trails10/audio24. Fresh effects retain their birth frame under low FPS. Trail life .24/.30 seconds.
+- Practice modes in ruins and captain deck; no normal-save writes. Entering practice from a voyage saves that voyage first. Delayed victory follows simulation time and resets with the session.
+- Closer captain camera, combat notice below boss HUD, optional reduced camera shake in pause menu.
+
+Actual UI playtest through CUA, independent profile qa-combat-20261023
+1. J timing produced slash/backhand/finisher: three contacts, 18+20+28 damage, scout defeated once, gold420->455 and arrows30->33.
+2. Held G against scout: HP100->97 versus ordinary14 damage, SP consumed; guard audio/visual status confirmed.
+3. Timed G just before impact: HP stayed97, PARRY text, enemy stagger .875 remaining, counterWindow1.425, 28 active sparks / 1 impact ring / 1 trail.
+4. K after parry: 55 damage, scout defeated, normal progress unaffected.
+5. F draw/release: arrows33->32; distant stone HP85->70 (armor), one hit.
+6. Q evaded captain backhand with HP95 unchanged. Late Q against scout correctly took14 damage before dodge. Perfect-dodge contact branch is covered by integration tests; no claim of manual success for it.
+7. Captain practice: held guard then K, strength potion, another K, stamina recovery, K and two light attacks. Five hits,242 total damage; captain HP230->0. HP recovered to100, gold420->1070, boss flag true. Resume displayed CHAPTER01 victory and650G reward once. Browser warning/error log empty.
+8. Save protection: started normal voyage, moved ship to z33.96188036261265, entered practice and fought. Returning to Continue restored the same x/z/yaw/altitude, HP100, gold420, all original flags and mode flight. Before/after snapshots in combat-save-isolation-20261023.json.
+9. Final normal-profile load: title Continue and practice buttons present; only practice was used for final visual check, then returned to title. Final warn/error log empty. Tab left at http://127.0.0.1:4477/.
+
+Automated verification
+- Entire existing package check suite passed: models, characters, motion, performance, shipwright, village, scenery LOD and syntax.
+- combat-check: 15/30/60/120 FPS chains, once-only contact, SP start checks, delayed bow release, cancel and defense decisions.
+- combat-animation-check: 859 frames, finite joint/world coordinates, different weapon arcs, full recovery, actual stone slam/defeat/reset, root transform invariance; hero28 and stone27 meshes unchanged.
+- combat-fx-check:1000 consecutive event bursts, mesh/geometry allocation bounded, pool expiry/reset, camera application, reduced motion, audio caps, low-FPS birth and lifetime checks.
+- combat-integration-check:23 actual game functions extracted into VM with real Three/character/attack modules. Tests death during flight and other islands, neutral pose restore, arrow counter30->45, actual defense damage, save isolation, victory pause/reset/once. Reviewer mutation-tested five old defects in memory and each was detected.
+
+Issues found and corrected during this pass
+- Camera shake accumulated during hitstop -> render-only offset restored.
+- Enemy heavy damage occurred before the visible slam -> phase mapped to clip contact.
+- Death timer froze after boarding -> update all dying enemies before mode/island early-outs.
+- Dead pose survived reset -> animate neutral in syncWorld.
+- Bow consumed counter but omitted power -> retain multiplier on projectile; ammo spent at release.
+- Delayed boss victory leaked into new sessions -> simulation timer cleared by resetBattle.
+- Boss HUD overlapped combat notice -> move notice lower for boss fights.
+- Short effects aged before their first visible frame -> fresh slots and longer trails.
+- Hit sparks emitted into victim geometry -> contact point moved to struck surface and spray toward attacker.
+
+Limitations
+This is an improved local stylized browser game, not equivalent to a commercial AAA production. Browser wall frame timing varied substantially during automation (roughly47-80ms snapshots); no60FPS claim or before/after performance claim. New animation adds no character meshes and effects are bounded. No new generated images; budget remains26 used /974 remaining.
+
+Screenshots
+combat-final-20261023.png: final heavy anticipation pose and current practice UI.
+combat-boss-20261023.png: closer captain camera and separated combat notice.
+combat-impact-20261023.png: heavy hit and damage number during tuning.

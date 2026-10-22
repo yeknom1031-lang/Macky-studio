@@ -1,0 +1,330 @@
+{
+  "playing": true,
+  "modal": "victory",
+  "state": {
+    "version": 1,
+    "hp": 100,
+    "sp": 24.240250001370853,
+    "shipHp": 100,
+    "gold": 1070,
+    "materials": 8,
+    "arrows": 30,
+    "potions": {
+      "heal": 3,
+      "invisible": 2,
+      "defense": 2,
+      "strength": 1
+    },
+    "buffs": {
+      "invisible": 0,
+      "defense": 0,
+      "strength": 19.115799999922512,
+      "feather": 0
+    },
+    "upgrades": {
+      "sword": 0,
+      "bow": 0,
+      "hull": 0,
+      "engine": 0
+    },
+    "flags": {
+      "market": true,
+      "wind": 2,
+      "bridge": true,
+      "sigil": true,
+      "boss": true,
+      "twinA": false,
+      "twin": false,
+      "storm": false,
+      "mirror": false,
+      "ancient": false,
+      "fort": false,
+      "crew": false
+    },
+    "opened": [],
+    "defeated": [
+      "gardo"
+    ],
+    "kills": 1,
+    "mode": "walk",
+    "island": "captain",
+    "ship": {
+      "x": 184,
+      "z": -374,
+      "yaw": -0.3
+    },
+    "player": {
+      "x": 170,
+      "z": -402.8039282433897,
+      "yaw": 0
+    },
+    "weapon": "sword",
+    "checkpoint": "captain",
+    "playTime": 9.43750000008941
+  },
+  "interaction": null,
+  "enemies": [
+    {
+      "id": "ruin-scout",
+      "type": "pirate",
+      "hp": 42,
+      "max": 42,
+      "state": "idle",
+      "posture": 0,
+      "timer": 1,
+      "deathTimer": 0,
+      "position": {
+        "x": 6,
+        "y": 0,
+        "z": -183
+      }
+    },
+    {
+      "id": "ruin-shield",
+      "type": "shield",
+      "hp": 65,
+      "max": 65,
+      "state": "idle",
+      "posture": 0,
+      "timer": 1,
+      "deathTimer": 0,
+      "position": {
+        "x": -5,
+        "y": 0,
+        "z": -218
+      }
+    },
+    {
+      "id": "ruin-stone",
+      "type": "stone",
+      "hp": 85,
+      "max": 85,
+      "state": "idle",
+      "posture": 0,
+      "timer": 1,
+      "deathTimer": 0,
+      "position": {
+        "x": 3,
+        "y": 0,
+        "z": -217
+      }
+    },
+    {
+      "id": "fort-sword",
+      "type": "pirate",
+      "hp": 42,
+      "max": 42,
+      "state": "idle",
+      "posture": 0,
+      "timer": 1,
+      "deathTimer": 0,
+      "position": {
+        "x": 171,
+        "y": 0,
+        "z": -224
+      }
+    },
+    {
+      "id": "fort-shield",
+      "type": "shield",
+      "hp": 65,
+      "max": 65,
+      "state": "idle",
+      "posture": 0,
+      "timer": 1,
+      "deathTimer": 0,
+      "position": {
+        "x": 181,
+        "y": 0,
+        "z": -230
+      }
+    },
+    {
+      "id": "fort-archer",
+      "type": "archer",
+      "hp": 42,
+      "max": 42,
+      "state": "idle",
+      "posture": 0,
+      "timer": 1,
+      "deathTimer": 0,
+      "position": {
+        "x": 167,
+        "y": 0,
+        "z": -239
+      }
+    },
+    {
+      "id": "gardo",
+      "type": "boss",
+      "hp": 0,
+      "max": 230,
+      "state": "defeated",
+      "posture": 52.425100000013906,
+      "timer": 0.6643999999960264,
+      "deathTimer": 0,
+      "position": {
+        "x": 170,
+        "y": 0,
+        "z": -404.932560000086
+      }
+    }
+  ],
+  "combat": {
+    "action": null,
+    "combo": 0,
+    "progress": 0,
+    "queued": null,
+    "serial": 5,
+    "guard": false,
+    "guardAge": 99,
+    "parryFlash": 0,
+    "counterWindow": 0,
+    "hits": 5,
+    "damage": 242,
+    "training": true,
+    "fx": {
+      "active": {
+        "sparks": 0,
+        "dust": 0,
+        "rings": 0,
+        "trails": 0
+      },
+      "capacity": {
+        "sparks": 160,
+        "dust": 40,
+        "rings": 12,
+        "trails": 10,
+        "audioVoices": 24
+      },
+      "emitted": 15,
+      "recycled": 0,
+      "lastSwing": "backhand",
+      "lastImpact": "defeat",
+      "reducedMotion": false,
+      "shake": 0,
+      "cameraOffset": 0,
+      "audioVoices": 0,
+      "audioEvents": 15,
+      "audioErrors": 0,
+      "poolMeshes": 13
+    }
+  },
+  "animation": {
+    "grounded": true,
+    "jumpHeight": 0,
+    "attackProgress": 0,
+    "dodge": 0
+  },
+  "art": {
+    "loaded": {
+      "day": true,
+      "sunset": true,
+      "relief": true
+    },
+    "generatedImages": 4,
+    "skyBlend": 1,
+    "monuments": 4,
+    "traffic": 6,
+    "characters": {
+      "version": 4,
+      "combatAnimationVersion": 2,
+      "generatedTextures": 7,
+      "newGeneratedTextures": 4,
+      "sharedPBRAtlas": true,
+      "textures": {
+        "embroidery": "ready",
+        "hair": "ready",
+        "skin": "ready",
+        "leather": "ready",
+        "brocade": "ready",
+        "herbal": "ready",
+        "linen": "ready"
+      },
+      "rigs": 12,
+      "articulatedRigs": 12,
+      "features": [
+        "sculpted-face",
+        "geometric-blink",
+        "woven-embroidery",
+        "tapered-hair",
+        "knee-elbow-rig",
+        "foot-roll",
+        "attack-phases",
+        "secondary-cloth",
+        "tailored-sleeves",
+        "curled-fingers",
+        "layered-cape",
+        "shared-PBR-atlas",
+        "three-hit-combo",
+        "heavy-strike",
+        "guard-parry",
+        "hit-defeat",
+        "directional-dodge"
+      ]
+    },
+    "shipwright": {
+      "version": 4,
+      "ships": 3,
+      "textures": {
+        "hull": true,
+        "brass": true,
+        "sail": true,
+        "deck": true
+      },
+      "generatedTextures": 4
+    },
+    "village": {
+      "loaded": {
+        "plaster": true,
+        "roof": true,
+        "timber": true,
+        "fern": true,
+        "banner": true,
+        "barkV4": true,
+        "leavesV4": true,
+        "masonryV4": true,
+        "flowersV4": true,
+        "signV4": true
+      },
+      "errors": [],
+      "houses": 3,
+      "trees": 44,
+      "leaves": 9138,
+      "ferns": 140,
+      "flowers": 976,
+      "banners": 9,
+      "ruinColumns": 6,
+      "benches": 6,
+      "lighthouseDetails": 1,
+      "wind": true,
+      "lod": {
+        "nearIslands": 0,
+        "farIslands": 7,
+        "detailedLeavesVisible": 0,
+        "culledDetailMeshes": 38
+      }
+    },
+    "motion": {
+      "clothSurfaces": 6,
+      "footstepParticles": 24
+    },
+    "meadow": true
+  },
+  "renderer": {
+    "calls": 169,
+    "triangles": 282947,
+    "frameMs": 74.4,
+    "updateMs": 0.2,
+    "renderMs": 6,
+    "mode": "auto",
+    "pixelRatio": 1.05,
+    "simplifiedNPCShadows": 4,
+    "backgroundIslandsDetailed": 3
+  },
+  "camera": {
+    "x": 170.80000000000013,
+    "y": 4.059200000000003,
+    "z": -394.80392824338946
+  }
+}

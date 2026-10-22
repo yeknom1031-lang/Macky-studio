@@ -11,7 +11,7 @@
   <div id="vignette"></div><div id="hit-flash"></div>
   <div id="loading"><span class="loading-compass">✦</span><p>風をつかまえています…</p></div>
   <main id="title-screen" class="screen hidden">
-    <div class="title-content"><p class="eyebrow">BEYOND THE ENDLESS CLOUDSEA.</p><div class="title-mark">✦</div><h1>SKY<br><span>VOYAGER</span></h1><p class="title-ja">雲海の航海者</p><div class="title-line"></div><p class="title-copy">天空門をくぐり、古代の王都を望む。<br>果てしない雲海へ、あなたの船で。</p><button id="continue" class="primary hidden">つづきから <span>→</span></button><button id="start" class="primary">冒険をはじめる <span>→</span></button><button id="title-help" class="text-button">操作と冒険のヒント</button><small>3Dアクションアドベンチャー · 自動セーブ対応</small></div>
+    <div class="title-content"><p class="eyebrow">BEYOND THE ENDLESS CLOUDSEA.</p><div class="title-mark">✦</div><h1>SKY<br><span>VOYAGER</span></h1><p class="title-ja">雲海の航海者</p><div class="title-line"></div><p class="title-copy">天空門をくぐり、古代の王都を望む。<br>果てしない雲海へ、あなたの船で。</p><button id="continue" class="primary hidden">つづきから <span>→</span></button><button id="start" class="primary">冒険をはじめる <span>→</span></button><button id="practice" class="text-button">戦闘稽古 · 記録を変えずに試す</button><button id="title-help" class="text-button">操作と冒険のヒント</button><small>3Dアクションアドベンチャー · 自動セーブ対応</small></div>
     <div class="title-stamp">THE CLOUDSEA CHRONICLES<br><b>01</b><span>風を継ぐ者</span></div>
   </main>
   <div id="hud" class="hidden">
@@ -19,7 +19,7 @@
     <section id="location"><div class="location-rule"></div><h2 id="location-name">雲海の航路</h2><p id="objective">市場島へ上陸しよう</p></section>
     <div id="right-hud"><button id="map-toggle" class="minimap-shell" aria-label="航海図を開く"><canvas id="minimap" width="220" height="220"></canvas><span>航海図 <kbd>M</kbd></span></button><div class="wallet glass"><span>◈</span> <b id="gold">420</b><small>G</small><button id="sound-toggle" aria-label="音を切り替える">♫</button><button id="pause-toggle" aria-label="一時停止">Ⅱ</button></div></div>
     <div id="boss-hud" class="hidden"><strong id="boss-name">鉄爪船長ガルド</strong><div><i id="boss-fill"></i></div><small id="boss-action"></small></div>
-    <div id="crosshair" class="hidden">＋</div><div id="enemy-labels"></div><div id="damage-numbers"></div>
+    <div id="combat-readout" class="hidden" aria-live="polite"><strong id="combat-message"></strong><small id="combat-chain"></small></div><div id="crosshair" class="hidden">＋</div><div id="enemy-labels"></div><div id="damage-numbers"></div>
     <div id="toasts" role="status" aria-live="polite"></div>
     <div id="controls" class="glass"></div>
     <div id="interaction" class="hidden"><kbd>E</kbd><div><strong id="interaction-title"></strong><small id="interaction-sub"></small></div></div>
@@ -27,7 +27,7 @@
     <div id="saved">✦ 記録しました</div><button id="journal-toggle" class="journal-button glass">航海日誌 <kbd>I</kbd></button>
   </div>
   <div id="modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-shade"></div><section class="modal-window"><header><div><p id="modal-eyebrow">CLOUDSEA JOURNAL</p><h2 id="modal-title"></h2></div><button id="modal-close" aria-label="閉じる">×</button></header><div id="modal-body"></div></section></div>
-  <div id="touch-controls" class="hidden"><div class="dpad"><button data-key="KeyW">▲</button><button data-key="KeyA">◀</button><button data-key="KeyS">▼</button><button data-key="KeyD">▶</button></div><div class="touch-actions"><button data-key="KeyQ">回避</button><button data-key="Space">跳ぶ</button><button data-key="KeyE">E</button><button data-key="KeyJ">攻撃</button></div></div>
+  <div id="touch-controls" class="hidden"><div class="dpad"><button data-key="KeyW">▲</button><button data-key="KeyA">◀</button><button data-key="KeyS">▼</button><button data-key="KeyD">▶</button></div><div class="touch-actions"><button data-key="KeyG">防御</button><button data-key="KeyK">重斬り</button><button data-key="KeyQ">回避</button><button data-key="Space">跳ぶ</button><button data-key="KeyE">E</button><button data-key="KeyJ">攻撃</button></div></div>
   <div id="fatal" class="hidden"></div><script id="game-state" type="application/json">{}</script>
-  <script src="vendor/three.min.js"></script><script src="models.js"></script><script src="characters.js"></script><script src="shipwright.js"></script><script src="motion.js"></script><script src="village.js"></script><script src="grandeur.js"></script><script src="performance.js"></script><script src="game.js"></script>
+  <script src="vendor/three.min.js"></script><script src="models.js"></script><script src="characters.js"></script><script src="shipwright.js"></script><script src="motion.js"></script><script src="village.js"></script><script src="grandeur.js"></script><script src="performance.js"></script><script src="combat.js"></script><script src="combat-fx.js"></script><script src="game.js"></script>
 </body></html>
