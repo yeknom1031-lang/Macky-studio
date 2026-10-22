@@ -1,0 +1,22 @@
+{
+  "createdAt": "2026-10-22",
+  "tool": "image_gen",
+  "assets": [
+    {
+      "file": "assets/runtime/starline/backdrop.webp",
+      "prompt": "Use case: illustration-story. Game-ready background asset for a premium adorable Japanese children's multiplication rhythm game. Very wide landscape 16:9. A lavish magical nighttime outdoor concert in a fairytale castle, vibrant cyan magenta gold lighting, jeweled stage trusses, star shaped lanterns, distant sparkling castle towers, stylized cute soft 3D painted illustration, crisp polished game art. Camera centered straight onto the stage, strong symmetry and perspective. Keep middle 65 percent of composition deliberately dark navy and clean, atmospheric open space for a three lane falling note highway to be drawn by game code. Decorated edges: giant rounded speaker stacks and illuminated DJ booths at far left and far right, low silhouettes of cute animal audience along bottom outer corners. Dark blue stage floor lower half, neon reflections. Upper center mostly dark night sky for question overlay. Beautiful details at outer edges only. No characters in foreground, no text, no letters, no digits, no UI, no lanes, no buttons. Full bleed artwork, no frame."
+    },
+    {
+      "file": "assets/runtime/starline/cast.webp",
+      "prompt": "Use case: stylized-concept. Transparent PNG game sprite sheet, exactly FOUR columns and TWO rows equal size cells, wide 2:1 sheet. Each cell isolated fully transparent with generous margin, no gridlines no labels no letters no UI. Upper row all four cells show the SAME adorable chibi gray wolf DJ with cyan headphones and little blue bomber jacket, full body standing, consistent scale feet baseline: frame1 relaxed smiling arms down, frame2 leaning right hand touching headphones open mouth singing, frame3 arms raised joyful eyes closed, frame4 leaning left pointing to rhythm eyes bright. Bottom row all four cells the SAME adorable white rabbit pink bow and pink concert outfit full body same scale: frame1 happy neutral, frame2 leaning right waving one paw, frame3 both paws up jumping joyful, frame4 leaning left waving opposite paw. Premium soft 3D illustrated game art, bold dark outlines, vibrant polished materials, matching a whimsical neon cyan pink gold fairytale music arcade. No instruments, no floor or backgrounds, no shadows outside characters, no crops, consistent identity between all four poses. Real transparent alpha outside every character.",
+      "frames": {
+        "columns": 4,
+        "rows": 2,
+        "characters": [
+          "wolf",
+          "rabbit"
+        ]
+      }
+    }
+  ]
+}

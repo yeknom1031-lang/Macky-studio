@@ -1,0 +1,73 @@
+{
+  "updatedAt": "2026-10-23",
+  "status": "implemented_locally",
+  "stage": {
+    "id": 22,
+    "title": "九九ビート・スターライン",
+    "entry": "ホームの新ステージバナー／SHOW 22カード／結果画面から",
+    "tour": "定番21本のツアーとは別"
+  },
+  "play": {
+    "input": "正しい答えのレーンを1回タップ。PCは1/2/3または左/下/右。",
+    "earlyAnswer": "問題表示直後から受付。タイミングは加点だけ。",
+    "correctPoints": 100,
+    "perfect": {
+      "windowMs": 150,
+      "bonus": 50
+    },
+    "nice": {
+      "windowMs": 320,
+      "bonus": 25
+    },
+    "bpm": 132,
+    "normal": {
+      "questions": 12,
+      "beatsPerQuestion": 12,
+      "targetBeat": 7
+    },
+    "easy": {
+      "questions": 8,
+      "beatsPerQuestion": 16,
+      "targetBeat": 10
+    },
+    "opening": "点数なしの1問練習と3・2・1・GO",
+    "questionPool": "全81式。全段ミックスは9段を均等に出題。段指定も対応。"
+  },
+  "production": {
+    "background": "新規生成の夜空のライブ会場",
+    "animation": "新規生成の狼DJ4ポーズ・ウサギ4ポーズを拍に同期",
+    "effects": [
+      "選択レーンの光",
+      "成功リング",
+      "星の粒子",
+      "コンボ",
+      "次問と次のノートの予告"
+    ],
+    "audio": "既存のオリジナルspace BGMとVOICEVOX九九音声・掛け声を再利用",
+    "clock": "音楽・ノート・採点はAudioContext時計を共用。停止／復帰／縦向き停止に対応。",
+    "assetProvenance": "../../assets/runtime/starline/creation.json"
+  },
+  "verification": {
+    "unitTests": 128,
+    "unitPassed": 128,
+    "normalPlay": "12/12正答、1200点、最大12コンボ。6問後に停止・再開して完走。",
+    "watchPlay": "12/12正答、1800点、タイミング加点600点。星は2のまま、記録を更新しない。",
+    "reload": "7回プレイ／星43を再読み込み後も保持。",
+    "viewports": [
+      "667x375",
+      "1280x720",
+      "390x844 portrait pause"
+    ],
+    "input": "練習と本番でPCキーの誤答入力、正しい式への訂正、0点、一回の受付を確認。",
+    "phoneLandscape": "667x375で3ボタン各約110x60px、画面内に収まる。",
+    "browserErrors": 0,
+    "physicalIPhone": "未確認",
+    "offline": "既存のPWAビルドに追加素材を含めた。今回追加後の実機オフライン起動は未確認。"
+  },
+  "release": {
+    "localOnly": true,
+    "url": "http://127.0.0.1:4177/",
+    "cloudflareDeployed": false,
+    "sitesUsed": false
+  }
+}

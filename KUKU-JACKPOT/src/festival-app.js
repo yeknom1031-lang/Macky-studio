@@ -1,3 +1,5 @@
+import {StarlineStage} from './starline.js';
+import {STARLINE_GAME} from './starline-core.js';
 import {GAMES,createMiniGame} from './minigames.js';
 import {FestivalAudio,musicForGame as musicFor} from './festival-audio.js';
 import {FestivalArt} from './festival-art.js';
@@ -12,6 +14,7 @@ try{save=normalizeSave(JSON.parse(localStorage.getItem(KEY)));}catch{storageAvai
 let playlist=[],results=[],index=0,mini=null,roundStart=0,phase='',running=false,paused=false,watch=false,flags={},streak=0,lastOptions={},token=0,frame=0,allowPortrait=false,wakeLock=null,toastTimer;
 let swRegistration=null,cacheStatus=null,offlineManifest=null,previewAudio=null,dialogRequest=0;
 let artReady=null, rhythm=null, pattern=null, timing=null, noteNodes=[], awaitingIntro=false, launching=false, preparing=false, retryHeldRound=false, heldInput=null, seenDemo=new Set(), tutorial=null, stageProgress=null;
+let starline=null;
 const DEMO_KEY='kuku-beat-first-taps-v1';
 try{const seen=JSON.parse(localStorage.getItem(DEMO_KEY));if(Array.isArray(seen))seenDemo=new Set(seen.filter(id=>Number.isInteger(id)&&id>=1&&id<=21));}catch{}
 function rememberDemo(id){seenDemo.add(id);try{localStorage.setItem(DEMO_KEY,JSON.stringify([...seenDemo]));}catch{}}
@@ -19,17 +22,17 @@ function ensureArt(){if(!artReady)artReady=art.load().catch(error=>{artReady=nul
 ensureArt().then(()=>{if(!$('home').hidden)decorations.show('home');}).catch(()=>{});
 const ctx=$('stage').getContext('2d');
 const paths=['jackpot','sushi','rocket','ninja','frog','quiz','donuts','gorilla','train','magic','basketball','ghost','socks','hero','aliens','fishing','delivery','octopus','dragon','orchestra','forest'];
-const artPath=id=>`./designs/20-minigames/images/${String(id).padStart(2,'0')}-${paths[id-1]}.webp`;
+const artPath=id=>id===22?'./assets/runtime/starline/concept.webp':`./designs/20-minigames/images/${String(id).padStart(2,'0')}-${paths[id-1]}.webp`;
 const safeText=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function toast(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,4500);}
 function persist(){try{localStorage.setItem(KEY,JSON.stringify(save));}catch{storageAvailable=false;toast('このブラウザでは記録を保存できません。遊びは続けられます。');}}
-function screen(name){for(const id of ['home','play','results'])$(id).hidden=id!==name;document.body.classList.toggle('in-game',name==='play');decorations.show(name,GAMES[(playlist[Math.min(index,playlist.length-1)]?.gameId||1)-1]);window.scrollTo(0,0);orientation();}
+function screen(name){for(const id of ['home','play','results','starline']){if($(id))$(id).hidden=id!==name;};document.body.classList.toggle('in-game',['play','starline'].includes(name));decorations.show(name,GAMES[(playlist[Math.min(index,playlist.length-1)]?.gameId||1)-1]);window.scrollTo(0,0);orientation();}
 function openDialog(content){dialogRequest++;$('dialog-content').innerHTML=content;if(!$('dialog').open)$('dialog').showModal();}
 function applySettings(){audio.setVolumes(save.settings);art.reduceMotion=save.settings.reduceMotion||matchMedia('(prefers-reduced-motion: reduce)').matches;document.body.classList.toggle('reduced',art.reduceMotion);}
 function refreshHome(){
- $('home-record').textContent=save.plays?`${save.plays}回あそんだね！ ★ ${Object.values(save.stars).reduce((a,b)=>a+b,0)} / 63`:'はじめての九九も、だいじょうぶ。';
+ $('home-record').textContent=save.plays?`${save.plays}回あそんだね！ ★ ${Object.values(save.stars).reduce((a,b)=>a+b,0)} / 66`:'はじめての九九も、だいじょうぶ。';
  $('game-grid').replaceChildren();
- for(const game of GAMES){const b=document.createElement('button');b.className='game-card';b.dataset.game=game.id;b.innerHTML=`<img loading="lazy" src="${artPath(game.id)}" alt=""><div class="card-copy"><small>SHOW ${String(game.id).padStart(2,'0')}</small><span class="card-stars">${'★'.repeat(save.stars[game.id]||0)}${'☆'.repeat(3-(save.stars[game.id]||0))}</span><h3>${game.title}</h3><p>${game.subtitle}</p></div>`;b.addEventListener('click',()=>preview(game));$('game-grid').append(b);}
+ for(const game of [...GAMES,STARLINE_GAME]){const b=document.createElement('button');b.className='game-card';b.dataset.game=game.id;b.innerHTML=`<img loading="lazy" src="${artPath(game.id)}" alt=""><div class="card-copy"><small>SHOW ${String(game.id).padStart(2,'0')}</small><span class="card-stars">${'★'.repeat(save.stars[game.id]||0)}${'☆'.repeat(3-(save.stars[game.id]||0))}</span><h3>${game.title}</h3><p>${game.subtitle}</p></div>`;b.addEventListener('click',()=>preview(game));$('game-grid').append(b);}
 }
 function lessonInstruction(id){return `${stageDesign(id).instruction} わかったらすぐ1回。ポン！に合わせるとボーナス。`;}
 function currentQuestion(){return tutorial?.q||playlist[index];}
@@ -53,12 +56,14 @@ async function prepareQuestion(at){
  }
 }
 function preview(game){
+ if(game.id===22){startStarline();return;}
  openDialog(`<img class="modal-hero" src="${artPath(game.id)}" alt="${game.title}"><h2>${game.title}</h2><p>${lessonInstruction(game.id)}</p><p>問題が出たら、声の途中でも回答OK！<br>最初の1回で答えが決まるよ。<br>正解で100点。「ポン！」にぴったりなら＋50点！<br>5問・約1分。</p><div class="modal-buttons"><button id="start-single" class="primary">あそぶ！</button><button id="start-watch" class="secondary">お手本をみる</button><button id="start-practice" class="quiet">操作をためす</button></div>`);
  $('start-single').onclick=()=>start({mode:'single',gameId:game.id});
  $('start-watch').onclick=()=>start({mode:'single',gameId:game.id,watch:true});
  $('start-practice').onclick=()=>start({mode:'single',gameId:game.id,practice:true});
 }
 async function start(options){
+ if(options.gameId===22){startStarline(options);return;}
  const run=++token;
  running=false;paused=false;awaitingIntro=false;launching=false;preparing=false;tutorial=null;retryHeldRound=false;heldInput=null;
  audio.stop();cancelAnimationFrame(frame);$('dialog').close();$('loading').hidden=false;
@@ -342,7 +347,12 @@ async function finish(){
  $('review-list').replaceChildren();for(const q of practiced){const b=document.createElement('button');b.textContent=`♪ ${q.a} × ${q.b} ＝ ${q.a*q.b}`;b.onclick=async()=>{await audio.unlock();audio.speak(`a-${q.a}-${q.b}`,{force:true});};$('review-list').append(b);}
  $('review-btn').hidden=!s.review.length||watch;$('review-btn').onclick=()=>start({mode:'review',gameId:1,review:s.review});audio.sfx('finish');audio.cheer('finish',{allCompleted:true,roundsCompleted:results.length,finale:lastOptions.mode==='tour'},4);
 }
-function home(){++token;running=false;paused=false;tutorial=null;audio.stop();cancelAnimationFrame(frame);releaseWakeLock();$('loading').hidden=true;$('dialog').close();refreshHome();screen('home');}
+function startStarline(options={}){
+ ++token;running=false;paused=false;tutorial=null;cancelAnimationFrame(frame);audio.stop();releaseWakeLock();$('dialog').close();starline?.dispose();
+ starline=new StarlineStage({audio,settings:save.settings,table:Number($('table').value),onExit:home,onFinish:(rounds,meta)=>{starline=null;results=rounds;playlist=rounds;index=rounds.length-1;watch=meta.watch;lastOptions={mode:'single',gameId:22};finish();$('result-note').textContent=`最大 ${meta.maxCombo} COMBO！ `+$('result-note').textContent;}});
+ screen('starline');
+}
+function home(){starline?.dispose();starline=null;++token;running=false;paused=false;tutorial=null;audio.stop();cancelAnimationFrame(frame);releaseWakeLock();$('loading').hidden=true;$('dialog').close();refreshHome();screen('home');}
 async function pause(show=true){if(!running||paused)return;paused=true;retryHeldRound=rhythm?.result().holding!==null&&rhythm?.result().holding!==undefined;release(true);await audio.pause();releaseWakeLock();if(show)pauseDialog();}
 function pauseDialog(){openDialog('<h2>ひとやすみ</h2><p>音楽もゲームも、とまっているよ。</p><div class="modal-buttons"><button id="resume-btn" class="primary">つづける</button><button id="pause-settings" class="secondary">設定</button><button id="quit-btn" class="quiet">ホームへ戻る</button></div>');$('resume-btn').onclick=()=>$('dialog').close();$('pause-settings').onclick=settings;$('quit-btn').onclick=home;}
 async function resume(){if(!running||!paused)return;try{await audio.resume();paused=false;if(retryHeldRound){retryHeldRound=false;audio.start(musicFor(playlist[index].gameId));roundStart=4*BEAT;beginRound(false);toast('長おしの途中だったので、この問題からもう一度！');}requestWakeLock();}catch{toast('画面をもう一度タップしてください。');}}
@@ -350,7 +360,7 @@ function settings(){openDialog(`<h2>音とあそびの設定</h2>${[['music','�
  for(const input of document.querySelectorAll('[data-setting]'))input.oninput=()=>{save.settings[input.dataset.setting]=Number(input.value);applySettings();persist();};$('reduce-motion').onchange=e=>{save.settings.reduceMotion=e.target.checked;applySettings();persist();};$('offset').oninput=e=>{save.settings.offset=Number(e.target.value);$('offset-label').textContent=e.target.value+'ms';persist();};$('settings-done').onclick=()=>running?pauseDialog():$('dialog').close();$('voices-btn').onclick=voices;
 }
 async function voices(){previewAudio?.stop();previewAudio=new FestivalAudio();const player=previewAudio;openDialog('<h2>掛け声100コレクション</h2><p>声をじゅんびしています…</p>');const request=dialogRequest;try{await player.unlock();await player.load([],()=>{});if(request!==dialogRequest||!$('dialog').open){player.stop();if(player.ctx.state!=='closed')player.ctx.close();return;}player.setVolumes(save.settings);const clips=player.manifest.cheers;openDialog('<h2>掛け声100コレクション</h2><p>好きな台詞を押すと、声がきけるよ。</p><div class="review-list" id="voice-collection"></div><div class="modal-buttons"><button class="quiet" id="voices-back">設定へ</button></div>');for(const c of clips){const b=document.createElement('button');b.textContent=c.text;b.onclick=()=>player.speak(c.id,{force:true});$('voice-collection').append(b);}$('voices-back').onclick=()=>{player.stop();player.ctx.close();previewAudio=null;settings();};}catch{if(request===dialogRequest&&$('dialog').open)toast('声を読み込めませんでした。通信を確認してください。');}}
-function records(){const facts=Object.entries(save.facts);openDialog(`<h2>九九のきろく</h2><p>${save.plays}回プレイ ／ ${save.correct}問せいかい ／ ★ ${Object.values(save.stars).reduce((a,b)=>a+b,0)} / 63</p><div class="fact-grid">${Array.from({length:81},(_,i)=>{const a=Math.floor(i/9)+1,b=i%9+1,f=save.facts[`${a}-${b}`];return `<span class="${f?f.lastCorrect?'learned':'retry':''}" title="${a}×${b}：${f?.correct||0}回正解">${a}×${b}</span>`;}).join('')}</div><p class="record-legend">緑：さいきん正解した九九　黄：もう一度れんしゅう<br>お手本の結果は記録しません。</p><div class="modal-buttons"><button class="primary" id="weak-btn">苦手な九九をれんしゅう</button><button class="quiet" id="export-btn">きろくを書き出す</button></div>`);$('weak-btn').onclick=()=>{const review=facts.filter(([,f])=>!f.lastCorrect).map(([k])=>{const [a,b]=k.split('-').map(Number);return{a,b};});if(!review.length){toast('苦手の記録はまだないよ。好きなゲームを遊んでみよう！');return;}start({mode:'review',gameId:1,review});};$('export-btn').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(save,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='kuku-beat-record.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};}
+function records(){const facts=Object.entries(save.facts);openDialog(`<h2>九九のきろく</h2><p>${save.plays}回プレイ ／ ${save.correct}問せいかい ／ ★ ${Object.values(save.stars).reduce((a,b)=>a+b,0)} / 66</p><div class="fact-grid">${Array.from({length:81},(_,i)=>{const a=Math.floor(i/9)+1,b=i%9+1,f=save.facts[`${a}-${b}`];return `<span class="${f?f.lastCorrect?'learned':'retry':''}" title="${a}×${b}：${f?.correct||0}回正解">${a}×${b}</span>`;}).join('')}</div><p class="record-legend">緑：さいきん正解した九九　黄：もう一度れんしゅう<br>お手本の結果は記録しません。</p><div class="modal-buttons"><button class="primary" id="weak-btn">苦手な九九をれんしゅう</button><button class="quiet" id="export-btn">きろくを書き出す</button></div>`);$('weak-btn').onclick=()=>{const review=facts.filter(([,f])=>!f.lastCorrect).map(([k])=>{const [a,b]=k.split('-').map(Number);return{a,b};});if(!review.length){toast('苦手の記録はまだないよ。好きなゲームを遊んでみよう！');return;}start({mode:'review',gameId:1,review});};$('export-btn').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(save,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='kuku-beat-record.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};}
 document.addEventListener('keydown',e=>{
  if(e.key==='Escape'&&running&&!$('dialog').open){e.preventDefault();pause();return;}
  if(!canPlay()||e.repeat||heldInput)return;
@@ -361,6 +371,8 @@ document.addEventListener('keydown',e=>{
 });
 document.addEventListener('keyup',e=>{if(heldInput?.id===`key:${e.code}`){e.preventDefault();release();}});
 $('dialog').addEventListener('close',()=>{previewAudio?.stop();previewAudio?.ctx?.close();previewAudio=null;dialogRequest++;if(!running)audio.stopSpoken();if(running&&paused&&$('rotate').hidden)resume();});
+$('starline-feature').onclick=()=>startStarline();
+$('starline-encore').onclick=()=>startStarline();
 $('mix-btn').onclick=()=>start({mode:'mix'});$('tour-btn').onclick=()=>start({mode:'tour'});$('browse-btn').onclick=()=>$('library').scrollIntoView({behavior:art.reduceMotion?'instant':'smooth'});$('settings-btn').onclick=settings;$('records-btn').onclick=records;$('pause-btn').onclick=()=>pause();$('home-btn').onclick=home;$('again-btn').onclick=()=>start(lastOptions);
 function orientation(){const portrait=innerHeight>innerWidth&&innerWidth<700;const show=running&&portrait&&!allowPortrait;$('rotate').hidden=!show;if(show&&!paused)pause(false);else if(!show&&running&&paused&&!$('dialog').open)pauseDialog();}
 $('portrait-continue').onclick=()=>{allowPortrait=true;$('rotate').hidden=true;pauseDialog();};addEventListener('resize',orientation);document.addEventListener('visibilitychange',()=>{if(document.hidden&&running)pause();});addEventListener('pagehide',()=>{if(running)pause(false);});

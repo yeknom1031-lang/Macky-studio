@@ -99,7 +99,7 @@ export function newSave(){return {version:1,plays:0,correct:0,attempts:0,stars:{
 export function normalizeSave(raw){
   const d=newSave();if(!raw||raw.version!==1)return d;
   for(const k of ['plays','correct','attempts'])d[k]=Math.min(1e8,Math.max(0,Number(raw[k])||0));
-  for(let i=1;i<=21;i++)d.stars[i]=Math.min(3,Math.max(0,Math.floor(Number(raw.stars?.[i])||0)));
+  for(let i=1;i<=22;i++)d.stars[i]=Math.min(3,Math.max(0,Math.floor(Number(raw.stars?.[i])||0)));
   for(let a=1;a<=9;a++)for(let b=1;b<=9;b++){const k=`${a}-${b}`,v=raw.facts?.[k];if(v)d.facts[k]={attempts:Math.max(0,Number(v.attempts)||0),correct:Math.max(0,Number(v.correct)||0),lastCorrect:!!v.lastCorrect};}
   for(const k of ['music','voice','cheer','sfx'])d.settings[k]=Math.min(100,Math.max(0,Number.isFinite(raw.settings?.[k])?raw.settings[k]:d.settings[k]));
   d.settings.offset=Math.min(300,Math.max(-300,Number(raw.settings?.offset)||0));d.settings.reduceMotion=!!raw.settings?.reduceMotion;return d;
