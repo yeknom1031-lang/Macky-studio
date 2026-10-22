@@ -1,0 +1,75 @@
+{
+  "title": "スターライン・加速ライブ",
+  "method": "The original space score is synthesized at each BPM; no playback-rate or pitch shift.",
+  "tracks": {
+    "132": {
+      "file": "../music/space.wav",
+      "bpm": 132,
+      "beats": 32
+    },
+    "154": {
+      "file": "space-154.wav",
+      "title": "かけざん銀河エクスプレス",
+      "bpm": 154,
+      "beats": 32,
+      "seconds": 12.467528,
+      "sampleRate": 44100,
+      "frames": 549818,
+      "peak": 0.73,
+      "rms": 0.1395,
+      "loopBoundaryDelta": 0.0,
+      "renderVersion": 1,
+      "original": true,
+      "externalSamples": false,
+      "sha256": "deb2b2a165ef08e811682adcf0c55ba27eafc6eb32afcd1567241f26beee71a9"
+    },
+    "176": {
+      "file": "space-176.wav",
+      "title": "かけざん銀河エクスプレス",
+      "bpm": 176,
+      "beats": 32,
+      "seconds": 10.909093,
+      "sampleRate": 44100,
+      "frames": 481091,
+      "peak": 0.73,
+      "rms": 0.144,
+      "loopBoundaryDelta": 0.0,
+      "renderVersion": 1,
+      "original": true,
+      "externalSamples": false,
+      "sha256": "4600a08228f06529fd4697c9b9cddb17d7fcf4957aeed706fa7860fd433ded13"
+    },
+    "198": {
+      "file": "space-198.wav",
+      "title": "かけざん銀河エクスプレス",
+      "bpm": 198,
+      "beats": 32,
+      "seconds": 9.696961,
+      "sampleRate": 44100,
+      "frames": 427636,
+      "peak": 0.73,
+      "rms": 0.1475,
+      "loopBoundaryDelta": 0.0,
+      "renderVersion": 1,
+      "original": true,
+      "externalSamples": false,
+      "sha256": "7b115c646defbd7afcf035a7f8e99dfae45ae2a5af3a183797b12d9488271b58"
+    },
+    "220": {
+      "file": "space-220.wav",
+      "title": "かけざん銀河エクスプレス",
+      "bpm": 220,
+      "beats": 32,
+      "seconds": 8.727279,
+      "sampleRate": 44100,
+      "frames": 384873,
+      "peak": 0.73,
+      "rms": 0.1523,
+      "loopBoundaryDelta": 0.0,
+      "renderVersion": 1,
+      "original": true,
+      "externalSamples": false,
+      "sha256": "4da0848b3a8dce59d2e43f379b14d1612452e8a71cb44b8a55110640da417fcb"
+    }
+  }
+}

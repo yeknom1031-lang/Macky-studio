@@ -31,7 +31,23 @@
       "targetBeat": 10
     },
     "opening": "点数なしの1問練習と3・2・1・GO",
-    "questionPool": "全81式。全段ミックスは9段を均等に出題。段指定も対応。"
+    "questionPool": "全81式。全段ミックスは9段を均等に出題。段指定も対応。",
+    "expert": {
+      "questions": 24,
+      "beatsPerQuestion": 8,
+      "targetBeat": 5,
+      "temposBpm": [
+        132,
+        154,
+        176,
+        198,
+        220
+      ],
+      "rule": "4問正解ごとに次問から加速。誤答では正解数と到達速度を維持。",
+      "maxSpeed": "220 BPM",
+      "speech": "問題だけを通常の音程で読む。答えは画面と結果の音声復習。",
+      "replay": "上級の選択を保持"
+    }
   },
   "production": {
     "background": "新規生成の夜空のライブ会場",
@@ -45,11 +61,16 @@
     ],
     "audio": "既存のオリジナルspace BGMとVOICEVOX九九音声・掛け声を再利用",
     "clock": "音楽・ノート・採点はAudioContext時計を共用。停止／復帰／縦向き停止に対応。",
-    "assetProvenance": "../../assets/runtime/starline/creation.json"
+    "assetProvenance": "../../assets/runtime/starline/creation.json",
+    "expertMusic": {
+      "path": "../../assets/audio/festival/starline/manifest.json",
+      "method": "元の楽譜と音程を保ち、154/176/198/220 BPMで再合成した4音源。次問開始の音声時計に、曲内の拍位置を合わせてクロスフェード。",
+      "script": "scripts/build_starline_expert_audio.py"
+    }
   },
   "verification": {
-    "unitTests": 128,
-    "unitPassed": 128,
+    "unitTests": 135,
+    "unitPassed": 135,
     "normalPlay": "12/12正答、1200点、最大12コンボ。6問後に停止・再開して完走。",
     "watchPlay": "12/12正答、1800点、タイミング加点600点。星は2のまま、記録を更新しない。",
     "reload": "7回プレイ／星43を再読み込み後も保持。",
@@ -62,7 +83,17 @@
     "phoneLandscape": "667x375で3ボタン各約110x60px、画面内に収まる。",
     "browserErrors": 0,
     "physicalIPhone": "未確認",
-    "offline": "既存のPWAビルドに追加素材を含めた。今回追加後の実機オフライン起動は未確認。"
+    "offline": "既存のPWAビルドに追加素材を含めた。今回追加後の実機オフライン起動は未確認。",
+    "expert": {
+      "input": "実ブラウザで24/24早押し正答・2,400点・24コンボ・220 BPM完走。8問後に一時停止し、スマホ横幅からPC幅へ変えて再開。",
+      "watch": "24/24正答、タイミング加点1,200点、220 BPM完走。加速直前の停止・再開も確認。",
+      "viewports": [
+        "667x375",
+        "1280x720"
+      ],
+      "replay": "もういっかいで上級選択を維持。",
+      "audio": "全テンポの楽譜・音程一致、ループ尺、WAVハッシュ、拍位置、遅延フレーム補正をテスト。"
+    }
   },
   "release": {
     "localOnly": true,

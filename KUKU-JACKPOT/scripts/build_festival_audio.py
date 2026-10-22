@@ -202,7 +202,7 @@ def build_voice(manifest, force=False, answers_only=False):
     manifest['pronunciationAudit']['numberSpeechCount']=sum(entry.get('pronunciation',{}).get('verified',False) for entry in manifest['clips'].values())
     save_manifest(manifest)
 
-def build_music(manifest, force=False):
+def build_music(manifest, force=False, only=None):
     sr = MUSIC_SR
     length = round(MUSIC_BEATS*BEAT*sr)
     settings = {
@@ -219,6 +219,8 @@ def build_music(manifest, force=False):
     def filter_(samples, cut, kind='lowpass'):
         return sosfilt(butter(2, cut, kind, fs=sr, output='sos'), samples)
     for name, spec in settings.items():
+        if only is not None and name not in only:
+            continue
         path = OUT/'music'/f'{name}.wav'
         stems_ready=name!='finale' or len(manifest.get('orchestra',{}).get('stems',{}))==6
         if not force and stems_ready and path.exists() and manifest['music'].get(name, {}).get('renderVersion') == RENDER_VERSION:

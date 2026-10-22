@@ -349,7 +349,7 @@ async function finish(){
 }
 function startStarline(options={}){
  ++token;running=false;paused=false;tutorial=null;cancelAnimationFrame(frame);audio.stop();releaseWakeLock();$('dialog').close();starline?.dispose();
- starline=new StarlineStage({audio,settings:save.settings,table:Number($('table').value),onExit:home,onFinish:(rounds,meta)=>{starline=null;results=rounds;playlist=rounds;index=rounds.length-1;watch=meta.watch;lastOptions={mode:'single',gameId:22};finish();$('result-note').textContent=`最大 ${meta.maxCombo} COMBO！ `+$('result-note').textContent;}});
+ starline=new StarlineStage({audio,settings:save.settings,mode:options.starlineMode,table:Number($('table').value),onExit:home,onFinish:(rounds,meta)=>{starline=null;results=rounds;playlist=rounds;index=rounds.length-1;watch=meta.watch;lastOptions={mode:'single',gameId:22,starlineMode:meta.mode};finish();$('result-note').textContent=`${meta.mode==='expert'?'上級 '+meta.maxBpm+' BPM 完走！ ':''}最大 ${meta.maxCombo} COMBO！ `+$('result-note').textContent;}});
  screen('starline');
 }
 function home(){starline?.dispose();starline=null;++token;running=false;paused=false;tutorial=null;audio.stop();cancelAnimationFrame(frame);releaseWakeLock();$('loading').hidden=true;$('dialog').close();refreshHome();screen('home');}
