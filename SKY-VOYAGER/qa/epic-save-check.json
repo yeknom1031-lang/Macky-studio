@@ -1,0 +1,268 @@
+{
+  "checks": {
+    "flags": true,
+    "upgrades": true,
+    "gold": true,
+    "materials": true,
+    "potions": true,
+    "opened": true,
+    "defeated": true,
+    "mode": true,
+    "island": true
+  },
+  "before": {
+    "version": 1,
+    "hp": 100,
+    "sp": 100,
+    "shipHp": 100,
+    "gold": 565,
+    "materials": 7,
+    "arrows": 54,
+    "potions": {
+      "heal": 2,
+      "invisible": 1,
+      "defense": 0,
+      "strength": 0
+    },
+    "buffs": {
+      "invisible": 0,
+      "defense": 0,
+      "strength": 0,
+      "feather": 0
+    },
+    "upgrades": {
+      "sword": 1,
+      "bow": 0,
+      "hull": 0,
+      "engine": 0
+    },
+    "flags": {
+      "market": true,
+      "wind": 2,
+      "bridge": true,
+      "sigil": true,
+      "boss": false,
+      "twinA": false,
+      "twin": false,
+      "storm": false,
+      "mirror": false,
+      "ancient": false,
+      "fort": false,
+      "crew": false
+    },
+    "opened": [
+      "ruins"
+    ],
+    "defeated": [
+      "ruin-scout",
+      "ruin-stone",
+      "ruin-shield"
+    ],
+    "kills": 3,
+    "mode": "flight",
+    "island": "market",
+    "ship": {
+      "x": 0,
+      "z": 49,
+      "yaw": 0,
+      "altitude": 3
+    },
+    "player": {
+      "x": 170,
+      "z": -386.9452799998286,
+      "yaw": 0
+    },
+    "weapon": "sword",
+    "checkpoint": "captain",
+    "playTime": 253.26729999977042,
+    "camera": {
+      "yaw": 0,
+      "pitch": 0.32
+    }
+  },
+  "after": {
+    "playing": true,
+    "modal": null,
+    "state": {
+      "version": 1,
+      "hp": 100,
+      "sp": 100,
+      "shipHp": 100,
+      "gold": 565,
+      "materials": 7,
+      "arrows": 54,
+      "potions": {
+        "heal": 2,
+        "invisible": 1,
+        "defense": 0,
+        "strength": 0
+      },
+      "buffs": {
+        "invisible": 0,
+        "defense": 0,
+        "strength": 0,
+        "feather": 0
+      },
+      "upgrades": {
+        "sword": 1,
+        "bow": 0,
+        "hull": 0,
+        "engine": 0
+      },
+      "flags": {
+        "market": true,
+        "wind": 2,
+        "bridge": true,
+        "sigil": true,
+        "boss": false,
+        "twinA": false,
+        "twin": false,
+        "storm": false,
+        "mirror": false,
+        "ancient": false,
+        "fort": false,
+        "crew": false
+      },
+      "opened": [
+        "ruins"
+      ],
+      "defeated": [
+        "ruin-scout",
+        "ruin-stone",
+        "ruin-shield"
+      ],
+      "kills": 3,
+      "mode": "flight",
+      "island": "market",
+      "ship": {
+        "x": 0,
+        "z": 49,
+        "yaw": 0,
+        "altitude": 3
+      },
+      "player": {
+        "x": 170,
+        "z": -386.9452799998286,
+        "yaw": 0
+      },
+      "weapon": "sword",
+      "checkpoint": "captain",
+      "playTime": 253.5568999997943,
+      "camera": {
+        "yaw": 0,
+        "pitch": 0.32
+      }
+    },
+    "interaction": {
+      "type": "land",
+      "title": "空賊の市場島に上陸"
+    },
+    "enemies": [
+      {
+        "id": "ruin-scout",
+        "type": "pirate",
+        "hp": 0,
+        "max": 42,
+        "state": "idle",
+        "position": {
+          "x": 6,
+          "y": 0,
+          "z": -183
+        }
+      },
+      {
+        "id": "ruin-shield",
+        "type": "shield",
+        "hp": 0,
+        "max": 65,
+        "state": "idle",
+        "position": {
+          "x": -5,
+          "y": 0,
+          "z": -218
+        }
+      },
+      {
+        "id": "ruin-stone",
+        "type": "stone",
+        "hp": 0,
+        "max": 85,
+        "state": "idle",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": -217
+        }
+      },
+      {
+        "id": "fort-sword",
+        "type": "pirate",
+        "hp": 42,
+        "max": 42,
+        "state": "idle",
+        "position": {
+          "x": 171,
+          "y": 0,
+          "z": -224
+        }
+      },
+      {
+        "id": "fort-shield",
+        "type": "shield",
+        "hp": 65,
+        "max": 65,
+        "state": "idle",
+        "position": {
+          "x": 181,
+          "y": 0,
+          "z": -230
+        }
+      },
+      {
+        "id": "fort-archer",
+        "type": "archer",
+        "hp": 42,
+        "max": 42,
+        "state": "idle",
+        "position": {
+          "x": 167,
+          "y": 0,
+          "z": -239
+        }
+      },
+      {
+        "id": "gardo",
+        "type": "boss",
+        "hp": 230,
+        "max": 230,
+        "state": "idle",
+        "position": {
+          "x": 170,
+          "y": 0,
+          "z": -411
+        }
+      }
+    ],
+    "art": {
+      "loaded": {
+        "day": true,
+        "sunset": true,
+        "relief": true
+      },
+      "generatedImages": 4,
+      "skyBlend": 0,
+      "monuments": 4,
+      "traffic": 6
+    },
+    "renderer": {
+      "calls": 694,
+      "triangles": 636596,
+      "frameMs": 22.2
+    },
+    "camera": {
+      "x": 9.38754566779145,
+      "y": 15.618267492946481,
+      "z": 71.90272703578727
+    }
+  }
+}

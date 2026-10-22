@@ -1,0 +1,33 @@
+{
+  "tool": "Built-in image_gen",
+  "generatedCount": 3,
+  "assets": [
+    {
+      "name": "coat",
+      "prompt": "Use case: stylized-concept. Asset type: seamless square albedo texture for a real-time 3D sky pirate captain's tailored coat. Full frame woven deep desaturated teal wool with very fine visible threads, tiny golden compass-star embroidery in evenly spaced small repeats, delicate ochre seam-like geometric motifs. Painterly hand-crafted premium animated adventure film material, realistic textile scale. Orthographic flat material scan, no lighting gradient, no folds, no shadow, no perspective, no garment or person, no text, no border. Tileable on all four edges. Gold embroidery occupies less than 10 percent of surface; teal woven cloth dominates.",
+      "outputHint": "Generated images are saved to /Users/makibook/.codex/generated_images/01a163d0-2acd-7ca0-84cb-55709b20bbeb as /Users/makibook/.codex/generated_images/01a163d0-2acd-7ca0-84cb-55709b20bbeb/exec-de5b173d-7244-4ed7-b23e-63f39fb3d066.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "savedPath": "dist/assets/characters/captain-embroidered-wool.png",
+      "usage": "characters.js 3D material surface map; geometric face features are not baked into the texture",
+      "inspection": "Inspected generated original: suitable low contrast surface, no unintended text, usable as real-time material",
+      "file": "dist/assets/characters/captain-embroidered-wool.png"
+    },
+    {
+      "name": "hair",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless hair albedo material for 3D stylized adventure character. Full frame warm chestnut brown hair strand texture, all strands running perfectly vertically from top to bottom, sculpted clumps with subtle amber highlights and rich dark brown groove lines. Painterly premium animated film look, detailed fine hair threads within larger clumps. Flat orthographic evenly lit diffuse material map, no head no hairstyle silhouette no skin no object no text no border no lighting gradient. Must tile seamlessly left/right and top/bottom. Brown medium dark surface, low contrast, no large bright white streaks.",
+      "outputHint": "Generated images are saved to /Users/makibook/.codex/generated_images/01a163d0-2acd-7ca0-84cb-55709b20bbeb as /Users/makibook/.codex/generated_images/01a163d0-2acd-7ca0-84cb-55709b20bbeb/exec-552deb1b-d80a-43f7-830c-2dadc3a70aec.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "savedPath": "dist/assets/characters/chestnut-strands.png",
+      "usage": "characters.js 3D material surface map; geometric face features are not baked into the texture",
+      "inspection": "Inspected generated original: suitable low contrast surface, no unintended text, usable as real-time material",
+      "file": "dist/assets/characters/chestnut-strands.png"
+    },
+    {
+      "name": "skin",
+      "prompt": "Use case: stylized-concept. Asset type: square seamless skin diffuse albedo texture for stylized 3D face geometry, full frame uniform warm light tan peach skin surface. Very subtle tiny natural pores and scattered soft freckles, delicate warm peach and cream color variations. Premium painterly animated adventure film style, not photographic wrinkles. Absolutely no facial features, no eyes, no mouth, no nose, no ears, no silhouette, no face or body. Flat material scan neutral even light, no shadows or gradient, seamless on all four edges. Soft muted warm tan peach, low contrast.",
+      "outputHint": "Generated images are saved to /Users/makibook/.codex/generated_images/01a163d0-2acd-7ca0-84cb-55709b20bbeb as /Users/makibook/.codex/generated_images/01a163d0-2acd-7ca0-84cb-55709b20bbeb/exec-34d6375e-3d09-4940-ade8-4a123f5a6d42.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "savedPath": "dist/assets/characters/warm-skin-freckles.png",
+      "usage": "characters.js 3D material surface map; geometric face features are not baked into the texture",
+      "inspection": "Inspected generated original: suitable low contrast surface, no unintended text, usable as real-time material",
+      "file": "dist/assets/characters/warm-skin-freckles.png"
+    }
+  ]
+}

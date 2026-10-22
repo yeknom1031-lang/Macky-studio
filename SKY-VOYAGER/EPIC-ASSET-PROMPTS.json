@@ -1,0 +1,28 @@
+{
+  "mode": "built-in image_gen",
+  "budget": 1000,
+  "generated": 4,
+  "date": "2026-10-22",
+  "assets": [
+    {
+      "file": "dist/assets/epic/cloudsea-day.png",
+      "prompt": "Use case: stylized-concept. Asset type: full 360-degree equirectangular sky texture for a real-time 3D sky pirate adventure game. Generate a 2:1 wide panoramic image, 2048x1024 or wider. A majestic luminous turquoise-blue sky above an endless cloud ocean, towering sculptural white cumulus cloud mountains around the entire horizon, soft golden sunlight, subtle atmospheric layered distant blue silhouettes of floating rock continents. Sky takes upper 65 percent, soft cloud ocean lower 35 percent. Horizon is perfectly level at 60 percent from top. Broad uncluttered open blue overhead, no foreground objects. Hand-painted high-end animated fantasy film environmental art, rich painterly cloud detail, soft elegant color transitions, airy dramatic scale. IMPORTANT spherical equirectangular projection, left and right edges match seamlessly; no border, no panels, no text, no typography, no sun disc, no ships, no close islands or buildings. Light from upper left. Lower edge fades to pale blue cloud mist.",
+      "usage": "360 degree daytime sky"
+    },
+    {
+      "file": "dist/assets/epic/cloudsea-sunset.png",
+      "prompt": "Use case: stylized-concept. Asset type: 360 degree equirectangular spherical sky panorama for a fantasy sky pirate 3D videogame, wide 2:1 aspect. An awe-inspiring sunset over an endless sea of clouds. Vast purple blue stormcloud towers on horizon rim-lit by molten amber and coral sunset, thin gold crepuscular rays, distant enigmatic tiny floating mountain silhouettes. Upper 65 percent open indigo blue fading through mauve toward apricot horizon, lower 35 percent luminous cloud ocean fading to muted lavender mist at bottom. Painterly premium animated adventure film art, majestic yet readable and calm in center; no black shadows. Horizon at 60 percent image height, equirectangular projection, seamlessly matching left-right edges. No foreground, no ship, no text, no buildings, no frames, no sun disc. Only sky and distant cloudscape. Game environment texture rather than screenshot.",
+      "usage": "Captain sunset and mirror island sky blend"
+    },
+    {
+      "file": "dist/assets/epic/voyage-title.png",
+      "prompt": "Use case: stylized-concept. Asset type: cinematic title screen key art for a local sky exploration adventure videogame. Landscape 16:9. Vast and magnificent archipelago of floating islands over glowing cloud ocean, a small adventurous wooden airship with ivory and turquoise sails and subtle cyan engines viewed from behind in lower right third, sailing toward a gigantic ancient circular stone gateway hovering vertically in the sky, a distant layered sky citadel built on immense floating cliffs with waterfalls cascading into the clouds. Warm morning sun, turquoise sky, golden architecture and lush emerald foliage, hand-painted premium animated film illustration, exquisitely detailed but cohesive atmospheric depth, true sense of scale, inviting exploration. Composition: entire left 38 percent darker teal cloudshadow with low detail and ample negative space for UI title, visual focus gateway and ship in right half. No lettering, no title, no watermarks, no frame, no HUD. Elegant adventurous, not ominous.",
+      "usage": "Title background"
+    },
+    {
+      "file": "dist/assets/epic/ancient-relief.png",
+      "prompt": "Use case: stylized-concept. Asset type: square tileable albedo texture applied to massive ancient stone gate architecture in a fantasy sky adventure game. Orthographic straight-on flat close-up surface filling the whole image. Weathered pale ivory sandstone masonry with shallow beautifully carved geometric concentric wind motifs, ancient compass symbols and restrained bronze-gold inlaid lines, small cracks, tiny touches of teal patina in recessed seams. Large blocks, balanced detail with areas of resting stone. Sophisticated hand-painted game environment texture, tactile limestone, old lost civilization, no letters or readable text, no perspective, no cast shadows, no lighting gradient, no vignette, no border, no objects, no glow, seamless matching edges on all sides. Neutral diffuse illumination. Texture only, not a building illustration.",
+      "usage": "Gate, citadel and harbor stone albedo/bump"
+    }
+  ]
+}

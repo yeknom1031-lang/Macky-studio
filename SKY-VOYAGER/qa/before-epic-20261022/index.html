@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102c3e"><meta name="description" content="飛行船で雲海を巡る3Dアクションアドベンチャー。市場で準備し、島の謎を解き、空賊に挑もう。">
+  <title>SKY VOYAGER — 雲海の航海者</title>
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="polish.css">
+</head>
+<body>
+  <canvas id="world" aria-label="雲海の航海者 3Dゲーム画面"></canvas>
+  <div id="vignette"></div><div id="hit-flash"></div>
+  <div id="loading"><span class="loading-compass">✦</span><p>風をつかまえています…</p></div>
+  <main id="title-screen" class="screen hidden">
+    <div class="title-content"><p class="eyebrow">A LITTLE SHIP. A WIDE OPEN SKY.</p><div class="title-mark">✦</div><h1>SKY<br><span>VOYAGER</span></h1><p class="title-ja">雲海の航海者</p><div class="title-line"></div><p class="title-copy">雲の向こうに、まだ知らない島がある。<br>帆を上げよう。ここから、あなたの航海が始まる。</p><button id="continue" class="primary hidden">つづきから <span>→</span></button><button id="start" class="primary">冒険をはじめる <span>→</span></button><button id="title-help" class="text-button">操作と冒険のヒント</button><small>3Dアクションアドベンチャー · 自動セーブ対応</small></div>
+    <div class="title-stamp">THE CLOUDSEA CHRONICLES<br><b>01</b><span>風を継ぐ者</span></div>
+  </main>
+  <div id="hud" class="hidden">
+    <section id="status" class="glass"><div class="status-heading"><span class="compass-icon">✦</span><div><strong>雲海の航海者</strong><small id="mode-label">AIRSHIP / 航行中</small></div></div><div class="meter-row"><label>HP</label><div class="meter"><i id="hp-fill"></i></div><span id="hp-text">100 / 100</span></div><div class="meter-row"><label>SP</label><div class="meter sp"><i id="sp-fill"></i></div><span id="sp-text">100 / 100</span></div><div id="ship-status" class="meter-row"><label>船体</label><div class="meter ship"><i id="ship-fill"></i></div><span id="ship-text">100 / 100</span></div><div id="buffs"></div></section>
+    <section id="location"><div class="location-rule"></div><h2 id="location-name">雲海の航路</h2><p id="objective">市場島へ上陸しよう</p></section>
+    <div id="right-hud"><button id="map-toggle" class="minimap-shell" aria-label="航海図を開く"><canvas id="minimap" width="220" height="220"></canvas><span>航海図 <kbd>M</kbd></span></button><div class="wallet glass"><span>◈</span> <b id="gold">420</b><small>G</small><button id="sound-toggle" aria-label="音を切り替える">♫</button><button id="pause-toggle" aria-label="一時停止">Ⅱ</button></div></div>
+    <div id="boss-hud" class="hidden"><strong id="boss-name">鉄爪船長ガルド</strong><div><i id="boss-fill"></i></div><small id="boss-action"></small></div>
+    <div id="crosshair" class="hidden">＋</div><div id="enemy-labels"></div><div id="damage-numbers"></div>
+    <div id="toasts" role="status" aria-live="polite"></div>
+    <div id="controls" class="glass"></div>
+    <div id="interaction" class="hidden"><kbd>E</kbd><div><strong id="interaction-title"></strong><small id="interaction-sub"></small></div></div>
+    <div id="loadout"><div class="weapons"><button id="weapon-sword" class="selected" title="剣に切り替え">⚔ <span>剣</span></button><button id="weapon-bow" title="弓に切り替え">➶ <span>弓 <b id="arrows">30</b></span></button><small><kbd>R</kbd> 切替</small></div><div class="potions"><button data-potion="heal" aria-label="回復薬を使う"><span class="potion-caption">回復</span><i class="bottle heal"></i><b id="count-heal">3</b><kbd>1</kbd></button><button data-potion="invisible" aria-label="透明薬を使う"><span class="potion-caption">透明</span><i class="bottle invisible"></i><b id="count-invisible">2</b><kbd>2</kbd></button><button data-potion="defense" aria-label="防御薬を使う"><span class="potion-caption">防御</span><i class="bottle defense"></i><b id="count-defense">2</b><kbd>3</kbd></button><button data-potion="strength" aria-label="怪力薬を使う"><span class="potion-caption">怪力</span><i class="bottle strength"></i><b id="count-strength">2</b><kbd>4</kbd></button></div></div>
+    <div id="saved">✦ 記録しました</div><button id="journal-toggle" class="journal-button glass">航海日誌 <kbd>I</kbd></button>
+  </div>
+  <div id="modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-shade"></div><section class="modal-window"><header><div><p id="modal-eyebrow">CLOUDSEA JOURNAL</p><h2 id="modal-title"></h2></div><button id="modal-close" aria-label="閉じる">×</button></header><div id="modal-body"></div></section></div>
+  <div id="touch-controls" class="hidden"><div class="dpad"><button data-key="KeyW">▲</button><button data-key="KeyA">◀</button><button data-key="KeyS">▼</button><button data-key="KeyD">▶</button></div><div class="touch-actions"><button data-key="KeyQ">回避</button><button data-key="Space">跳ぶ</button><button data-key="KeyE">E</button><button data-key="KeyJ">攻撃</button></div></div>
+  <div id="fatal" class="hidden"></div><script id="game-state" type="application/json">{}</script>
+  <script src="vendor/three.min.js"></script><script src="models.js"></script><script src="game.js"></script>
+</body></html>

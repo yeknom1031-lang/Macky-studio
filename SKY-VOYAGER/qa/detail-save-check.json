@@ -1,0 +1,142 @@
+{
+  "checks": {
+    "gold": true,
+    "potions": true,
+    "arrows": true,
+    "player": true,
+    "mode": true,
+    "island": true,
+    "camera": true,
+    "flags": true
+  },
+  "before": {
+    "version": 1,
+    "hp": 100,
+    "sp": 100,
+    "shipHp": 100,
+    "gold": 340,
+    "materials": 0,
+    "arrows": 29,
+    "potions": {
+      "heal": 4,
+      "invisible": 2,
+      "defense": 2,
+      "strength": 2
+    },
+    "buffs": {
+      "invisible": 0,
+      "defense": 0,
+      "strength": 0,
+      "feather": 0
+    },
+    "upgrades": {
+      "sword": 0,
+      "bow": 0,
+      "hull": 0,
+      "engine": 0
+    },
+    "flags": {
+      "market": true,
+      "wind": 0,
+      "bridge": false,
+      "sigil": false,
+      "boss": false,
+      "twinA": false,
+      "twin": false,
+      "storm": false,
+      "mirror": false,
+      "ancient": false,
+      "fort": false,
+      "crew": false
+    },
+    "opened": [],
+    "defeated": [],
+    "kills": 0,
+    "mode": "walk",
+    "island": "market",
+    "ship": {
+      "x": 14,
+      "z": 42,
+      "yaw": -0.3,
+      "altitude": 3
+    },
+    "player": {
+      "x": 7.441751939872428,
+      "z": 1.4977292286179826,
+      "yaw": -1.2702363268509165
+    },
+    "weapon": "sword",
+    "checkpoint": "market",
+    "playTime": 375.1729000005328,
+    "camera": {
+      "yaw": 0.30055999991893656,
+      "pitch": 0.32,
+      "distance": 10.5
+    }
+  },
+  "after": {
+    "version": 1,
+    "hp": 100,
+    "sp": 100,
+    "shipHp": 100,
+    "gold": 340,
+    "materials": 0,
+    "arrows": 29,
+    "potions": {
+      "heal": 4,
+      "invisible": 2,
+      "defense": 2,
+      "strength": 2
+    },
+    "buffs": {
+      "invisible": 0,
+      "defense": 0,
+      "strength": 0,
+      "feather": 0
+    },
+    "upgrades": {
+      "sword": 0,
+      "bow": 0,
+      "hull": 0,
+      "engine": 0
+    },
+    "flags": {
+      "market": true,
+      "wind": 0,
+      "bridge": false,
+      "sigil": false,
+      "boss": false,
+      "twinA": false,
+      "twin": false,
+      "storm": false,
+      "mirror": false,
+      "ancient": false,
+      "fort": false,
+      "crew": false
+    },
+    "opened": [],
+    "defeated": [],
+    "kills": 0,
+    "mode": "walk",
+    "island": "market",
+    "ship": {
+      "x": 14,
+      "z": 42,
+      "yaw": -0.3,
+      "altitude": 3
+    },
+    "player": {
+      "x": 7.441751939872428,
+      "z": 1.4977292286179826,
+      "yaw": -1.2702363268509165
+    },
+    "weapon": "sword",
+    "checkpoint": "market",
+    "playTime": 375.52450000049714,
+    "camera": {
+      "yaw": 0.30055999991893656,
+      "pitch": 0.32,
+      "distance": 10.5
+    }
+  }
+}

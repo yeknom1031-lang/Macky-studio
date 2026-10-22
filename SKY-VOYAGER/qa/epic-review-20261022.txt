@@ -1,0 +1,11 @@
+SKY VOYAGER 雲海景観拡張 — 2026-10-22
+画像生成: 内蔵 image_gen、上限1000枚のうち4枚使用。全画像をdist/assets/epicへ同梱。EPIC-ASSET-PROMPTS.jsonにプロンプトを記録。
+実装: 昼/夕景360度背景、天空門、浮遊王都4つ、動く滝、商船6隻、鳥24羽、遺跡アーチ、港の彫刻柱、風景発見演出、タイトル画。
+検証: 専用の新規プロフィール qa-epic-20261022 で、開始→市場上陸→剣購入→出航→遺跡自動航行→偵察兵撃破→風向き2回→橋開通→守り手2体撃破→宝箱・紋章取得→旗艦自動航行→上陸→夕景100%ブレンドまで確認。
+船長戦: 夕景と赤い予兆は描画正常。スクリーンショット・ツール操作の間に攻撃を受けて敗北。今回は船長撃破までは完了していない。救助で市場に戻りHP/船体100、紋章・装備を保持することを確認。
+保存検証: メニューの記録→再読み込み→つづきから。flags/upgrades/gold/materials/potions/opened/defeated/mode/islandの9項目が一致（epic-save-check.json）。ユーザー用の通常プロフィールにはテスト記録を書き込んでいない。
+構文: models.js / grandeur.js / game.js / server.mjs の node --check 通過。qa/models-check.cjs の既存バッチ化・キャラクターアニメ・武器表示・宝箱テスト通過。
+読み込み: day/sunset/relief true。タイトル画も画面で確認。最初の起動時にcliffの未公開によるエラーを検出し、models.jsでexportして修正。以降のコンソールに新規error/warnなし。
+描画参考値: 航行中24.1ms/492calls/527561triangles、再読み込み後22.2ms/694calls/636596triangles。開始直後35.3msの観測もあり。性能保証・長時間負荷試験ではない。
+画面: 通常サイズと横長1440x900指定でUI確認。viewport指定は最後にreset。最終の通常サイズ画像 epic-final-gameplay.jpg に天空門・船・雲海・市場を記録。
+上陸先8島と既存進行はそのまま。追加した王都・商船は環境演出。変更前ファイルをqa/before-epic-20261022に保存。

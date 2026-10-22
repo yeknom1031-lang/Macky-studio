@@ -1,0 +1,22 @@
+{
+  "maximumImages": 1000,
+  "interpretation": "Upper bound, not a requirement to generate 1000 images",
+  "tool": "built-in image_gen",
+  "groups": [
+    {
+      "manifest": "EPIC-ASSET-PROMPTS.json",
+      "generated": 4
+    },
+    {
+      "manifest": "CHARACTER-ASSET-PROMPTS.json",
+      "generated": 3
+    },
+    {
+      "manifest": "VILLAGE-ASSET-PROMPTS.json",
+      "generated": 6
+    }
+  ],
+  "generatedTotal": 13,
+  "generatedThisDetailPass": 9,
+  "remaining": 987
+}

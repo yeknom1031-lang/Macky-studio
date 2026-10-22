@@ -1,0 +1,83 @@
+node --check dist/game.js
+node --check dist/models.js
+node --check dist/characters.js
+node --check dist/village.js
+node --check dist/motion.js
+node --check dist/grandeur.js
+node --check server.mjs
+node qa/models-check.cjs
+PASS: static transforms, shared materials, character motion, sword/bow visibility, live chest lid
+node qa/characters-check.cjs
+{
+  "passed": true,
+  "assets": {
+    "version": 3,
+    "generatedTextures": 3,
+    "textures": {
+      "embroidery": "ready",
+      "hair": "ready",
+      "skin": "ready"
+    },
+    "rigs": 8,
+    "articulatedRigs": 8,
+    "features": [
+      "sculpted-face",
+      "geometric-blink",
+      "woven-embroidery",
+      "tapered-hair",
+      "knee-elbow-rig",
+      "foot-roll",
+      "attack-phases",
+      "secondary-cloth"
+    ]
+  },
+  "surfaceChecks": {
+    "locks": 95,
+    "sideFaces": 15960,
+    "capFaces": 1330
+  },
+  "characters": [
+    {
+      "type": "hero",
+      "meshes": 68,
+      "vertices": 60408
+    },
+    {
+      "type": "merchant",
+      "meshes": 62,
+      "vertices": 52818
+    },
+    {
+      "type": "alchemist",
+      "meshes": 64,
+      "vertices": 54210
+    },
+    {
+      "type": "cook",
+      "meshes": 63,
+      "vertices": 55170
+    },
+    {
+      "type": "pirate",
+      "meshes": 62,
+      "vertices": 52902
+    },
+    {
+      "type": "archer",
+      "meshes": 62,
+      "vertices": 52902
+    },
+    {
+      "type": "shield",
+      "meshes": 63,
+      "vertices": 55404
+    },
+    {
+      "type": "boss",
+      "meshes": 64,
+      "vertices": 55374
+    }
+  ]
+}
+node qa/motion-check.cjs
+PASS: pinned cloth, finite flutter, moving-only footsteps, airborne/teleport suppression

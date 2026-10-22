@@ -160,7 +160,7 @@ window.SkyModels = (() => {
   }
   function batchStatic(root,excluded=new Set()){
     root.updateMatrixWorld(true);const inverse=new T.Matrix4().copy(root.matrixWorld).invert(),batches=new Map();
-    function visit(node){if(excluded.has(node)||node.isInstancedMesh)return;for(const child of [...node.children])visit(child);if(!node.isMesh||Array.isArray(node.material)||node.children.length||!node.visible)return;
+    function visit(node){if(excluded.has(node)||node.userData.skyDynamic||node.isInstancedMesh)return;for(const child of [...node.children])visit(child);if(!node.isMesh||Array.isArray(node.material)||node.children.length||!node.visible)return;
       const key=node.material.uuid+':'+node.castShadow+':'+node.receiveShadow,vertices=node.geometry.index?node.geometry.toNonIndexed():node.geometry.clone();vertices.applyMatrix4(new T.Matrix4().multiplyMatrices(inverse,node.matrixWorld));
       let batch=batches.get(key);if(!batch){batch={material:node.material,cast:node.castShadow,receive:node.receiveShadow,parts:[]};batches.set(key,batch);}batch.parts.push(vertices);node.parent.remove(node);
     }visit(root);
@@ -170,5 +170,5 @@ window.SkyModels = (() => {
       const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.BufferAttribute(position,3));geometry.setAttribute('normal',new T.BufferAttribute(normal,3));geometry.setAttribute('uv',new T.BufferAttribute(uv,2));geometry.setAttribute('color',new T.BufferAttribute(color,3));const combined=new T.Mesh(geometry,batch.material);combined.castShadow=batch.cast;combined.receiveShadow=batch.receive;root.add(combined);
     }
   }
-  return{batchStatic,T,palette,mat,mesh,box,cyl,ball,torus,seeded,beam,island,tree,grass,plankFloor,railing,dock,barrel,crate,lantern,sign,potion,stall,arch,chest,windmill,vane,character,animateCharacter,ship,beacon,house};
+  return{cliff,batchStatic,T,palette,mat,mesh,box,cyl,ball,torus,seeded,beam,island,tree,grass,plankFloor,railing,dock,barrel,crate,lantern,sign,potion,stall,arch,chest,windmill,vane,character,animateCharacter,ship,beacon,house};
 })();
