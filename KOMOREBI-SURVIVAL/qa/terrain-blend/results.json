@@ -1,0 +1,20 @@
+{
+  "samples": 32568,
+  "maxWeightChangeOver14cm": 0.008934360332108926,
+  "checks": [
+    "Weights sum to one and stay in range",
+    "Smooth transitions across world sample grid",
+    "Absolute texture coordinates unchanged after world origin rebase",
+    "Climate weights unchanged after world origin rebase",
+    "Adjacent chunk edge positions and blend weights match"
+  ],
+  "renderChecks": {
+    "chromium": {
+      "changedPixelComponentsAfter1024mRebase": 0,
+      "shaderErrors": 0
+    },
+    "safari": {
+      "changedPixelComponentsAfter1024mRebase": 0
+    }
+  }
+}

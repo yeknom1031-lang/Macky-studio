@@ -1,0 +1,391 @@
+(() => {
+  const hash = (east, north, salt = 0) => {
+    let value = Math.imul(east | 0, 374761393) ^ Math.imul(north | 0, 668265263) ^ Math.imul(salt + 731, 1274126177);
+    value = Math.imul(value ^ value >>> 13, 1274126177);
+    return ((value ^ value >>> 16) >>> 0) / 4294967296;
+  };
+  const smooth = (value) => value * value * (3 - 2 * value);
+  const noise = (east, north, salt = 0) => {
+    const column = Math.floor(east), row = Math.floor(north);
+    const horizontal = smooth(east - column), vertical = smooth(north - row);
+    return THREE.MathUtils.lerp(THREE.MathUtils.lerp(hash(column, row, salt), hash(column + 1, row, salt), horizontal), THREE.MathUtils.lerp(hash(column, row + 1, salt), hash(column + 1, row + 1, salt), horizontal), vertical);
+  };
+  const fbm = (east, north, salt = 0) => noise(east, north, salt) * 0.58 + noise(east * 2, north * 2, salt + 1) * 0.27 + noise(east * 4, north * 4, salt + 2) * 0.15;
+  const riverCenter = (north) => Math.sin(north * 0.0028) * 180 + Math.sin(north * 0.008) * 40;
+  function height(east, north) {
+    const broad = fbm(east / 820, north / 820, 5);
+    const ridge = 1 - Math.abs(noise(east / 330, north / 330, 41) * 2 - 1);
+    const channel = Math.exp(-(((east - riverCenter(north)) / 57) ** 2));
+    const base = 12 + (broad - 0.25) * 100 + Math.pow(ridge, 4) * Math.max(0, broad - 0.35) * 320 + fbm(east / 80, north / 80, 22) * 12 - channel * 68;
+    const massif = Math.max(0,fbm(east / 1800,north / 1800,211)-0.53);
+    if (massif === 0) return base;
+    const envelope = massif * massif / (massif+0.045);
+    const warpedEast = east + (noise(east/1400,north/1400,213)-0.5)*620;
+    const warpedNorth = north + (noise(east/1400,north/1400,214)-0.5)*620;
+    const along = warpedEast*0.84+warpedNorth*0.54, across = -warpedEast*0.54+warpedNorth*0.84;
+    const backbone = 1-Math.abs(noise(along/1450,across/780,212)*2-1);
+    const spurs = 1-Math.abs(noise((along+across*0.22)/390,across/340,215)*2-1);
+    const gullies = Math.pow(1-spurs,3)*backbone;
+    return base + envelope*(350+Math.pow(backbone,2.3)*2350+Math.pow(spurs,2.2)*750-gullies*260);
+  }
+  const biomes = [
+    { id: 'meadow', name: '風渡る草原', color: '#9eae75', family: 0 },
+    { id: 'forest', name: '深緑の原生林', color: '#638361', family: 1 },
+    { id: 'alpine', name: '天空の山稜', color: '#9b9d93', family: 2 },
+    { id: 'snow', name: '白銀の雪山', color: '#d5e3e5', family: 3 },
+    { id: 'desert', name: '夕映えの渓谷', color: '#c1a27b', family: 18 },
+    { id: 'autumn', name: '黄金の紅葉林', color: '#b19d6b', family: 5 },
+    { id: 'wetland', name: '水鏡の湿原', color: '#839d8c', family: 7 }
+  ];
+  function biome(east, north, altitude = height(east, north)) {
+    if (altitude < 10) return biomes[6];
+    if (altitude > 265) return biomes[3];
+    if (altitude > 85) return biomes[2];
+    const climate = noise(east / 550, north / 550, 74);
+    if (climate < 0.3) return biomes[4];
+    if (climate > 0.69) return biomes[5];
+    if (noise(east / 230, north / 230, 92) > 0.49) return biomes[1];
+    return biomes[0];
+  }
+  const species = Wildlife.species;
+  const geometryCache = new Map();
+  function geometry(kind) {
+    if (!geometryCache.has(kind)) geometryCache.set(kind, kind === 'sphere' ? new THREE.SphereGeometry(1, 10, 7) : kind === 'cone' ? new THREE.ConeGeometry(1, 1, 8) : kind === 'trunk' ? new THREE.CylinderGeometry(0.6, 1, 1, 7) : new THREE.BoxGeometry(1, 1, 1));
+    return geometryCache.get(kind);
+  }
+  class NatureWorld {
+    constructor(scene) {
+      this.scene = scene; this.chunks = new Map(); this.queue = []; this.center = ''; this.offset = new THREE.Vector3(); this.animals = []; this.occluders = []; this.materials = new Map(); this.waterLevel = 4; this.horizonSamples = new Map();
+      this.loader = new THREE.TextureLoader();
+      this.atlas = this.loader.load('assets/nature-atlas.png'); this.atlas.flipY = false;
+      this.atlas.encoding = THREE.sRGBEncoding; this.atlas.anisotropy = 4;
+      this.originals = {};
+      for (const name of ['moss', 'rock', 'bark', 'fur', 'forest-floor', 'alpine-cliff']) {
+        const texture = this.loader.load(`assets/originals/${name}.png`);
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping; texture.encoding = THREE.sRGBEncoding; texture.anisotropy = 4;
+        this.originals[name] = texture;
+      }
+      this.vegetation = new Vegetation(this.loader, this.originals.bark);
+      this.shadowGeometry = new THREE.PlaneGeometry(1, 1);
+      this.shadowMaterial = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, vertexShader: 'varying vec2 vShade; void main(){vShade=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}', fragmentShader: 'varying vec2 vShade; void main(){float shade=1.0-smoothstep(0.05,0.5,length(vShade-0.5)); gl_FragColor=vec4(0.12,0.15,0.1,shade*0.28);}' });
+      this.terrainMaterial = new THREE.MeshStandardMaterial({ roughness: 0.98, vertexColors: true, bumpMap: this.originals.rock, bumpScale: 0.06 });
+      this.terrainMaterial.onBeforeCompile = (shader) => {
+        shader.uniforms.natureAtlas = { value: this.atlas };
+        shader.uniforms.mossDetail = { value: this.originals.moss };
+        shader.uniforms.rockDetail = { value: this.originals.rock };
+        shader.uniforms.cliffDetail = { value: this.originals['alpine-cliff'] };
+        shader.uniforms.forestFloor = { value: this.originals['forest-floor'] };
+        shader.uniforms.worldOffset = { value: this.offset };
+        shader.vertexShader = 'attribute float family; varying float vFamily; varying vec3 vNature; varying vec3 vGroundNormal; uniform vec3 worldOffset;\n' + shader.vertexShader;
+        shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nvFamily = family; vNature = (modelMatrix * vec4(position, 1.0)).xyz + worldOffset; vGroundNormal = normal;');
+        shader.fragmentShader = 'uniform sampler2D natureAtlas; uniform sampler2D mossDetail; uniform sampler2D rockDetail; uniform sampler2D cliffDetail; uniform sampler2D forestFloor; varying float vFamily; varying vec3 vNature; varying vec3 vGroundNormal;\n' + shader.fragmentShader;
+        shader.fragmentShader = shader.fragmentShader.replace('#include <color_fragment>', `#include <color_fragment>
+          float variant = mod(floor(abs(vNature.x + vNature.z) / 128.0), 50.0);
+          float index = floor(vFamily + 0.5) * 50.0 + variant;
+          vec2 tile = vec2(mod(index, 32.0), floor(index / 32.0));
+          vec2 tileUV = (tile + (fract(vNature.xz / 14.0) * 126.0 + 1.0) / 128.0) / 32.0;
+          vec3 detail = texture2D(natureAtlas, tileUV).rgb;
+          vec3 axisWeight = pow(abs(normalize(vGroundNormal)), vec3(4.0)); axisWeight /= max(0.001, axisWeight.x + axisWeight.y + axisWeight.z);
+          vec3 rock = texture2D(rockDetail, vNature.yz / 4.0).rgb * axisWeight.x + texture2D(rockDetail, vNature.xz / 4.0).rgb * axisWeight.y + texture2D(rockDetail, vNature.xy / 4.0).rgb * axisWeight.z;
+          vec3 cliff = texture2D(cliffDetail,vNature.zy / vec2(95.0,145.0)).rgb * axisWeight.x + texture2D(cliffDetail,vNature.xz / 100.0).rgb * axisWeight.y + texture2D(cliffDetail,vNature.xy / vec2(95.0,145.0)).rgb * axisWeight.z;
+          cliff = mix(cliff,vec3(dot(cliff,vec3(0.22,0.7,0.08))),0.35);
+          cliff = mix(cliff,vec3(0.53,0.55,0.56),smoothstep(300.0,2200.0,length(vViewPosition))*0.65);
+          rock = mix(rock,cliff,smoothstep(50.0,260.0,length(vViewPosition)) * 0.85);
+          vec3 moss = texture2D(mossDetail, vNature.xz / 2.4).rgb;
+          vec3 litter = texture2D(forestFloor, vNature.xz / 2.8).rgb;
+          float macro = sin(vNature.x * 0.021 + sin(vNature.z * 0.017) * 2.0) * sin(vNature.z * 0.033) * 0.5 + 0.5;
+          vec3 original = mix(litter, moss, smoothstep(0.45,0.85,macro) * 0.6);
+          float detailLight = dot(detail, vec3(0.299, 0.587, 0.114));
+          float originalLight = dot(original, vec3(0.299, 0.587, 0.114));
+          float distanceFade = 1.0 - smoothstep(35.0,180.0,length(vViewPosition));
+          diffuseColor.rgb *= (0.72 + (detailLight-0.5) * 0.16 * distanceFade) * (0.76 + macro * 0.35);
+          float forestBlend = 1.0 - smoothstep(0.0, 0.8, abs(vFamily - 1.0));
+          float autumnBlend = 1.0 - smoothstep(0.0,0.8,abs(vFamily - 5.0));
+          diffuseColor.rgb = mix(diffuseColor.rgb, pow(original, vec3(2.2)) * 0.85, max(forestBlend,autumnBlend) * 0.9);
+          float slope = 1.0 - abs(normalize(vGroundNormal).y);
+          float rockBlend = smoothstep(0.12,0.4,slope) + (1.0 - smoothstep(0.0,0.8,abs(vFamily - 2.0))) * 0.65;
+          diffuseColor.rgb = mix(diffuseColor.rgb, pow(rock,vec3(2.2)) * 0.85, clamp(rockBlend,0.0,0.95));
+          float snowRegion = 1.0 - smoothstep(0.0,0.8,abs(vFamily-3.0));
+          float lee = dot(normalize(vGroundNormal),normalize(vec3(-0.4,0.2,0.7)))*26.0;
+          float snowLine = 235.0 + sin(vNature.x*0.004+sin(vNature.z*0.003))*30.0;
+          float snowCover = (1.0-smoothstep(0.15,0.43,slope)) * smoothstep(snowLine-25.0,snowLine+110.0,vNature.y+macro*21.0+lee);
+          diffuseColor.rgb = mix(diffuseColor.rgb,mix(pow(cliff,vec3(2.2))*0.75,vec3(0.67,0.73,0.74),snowCover),snowRegion * 0.85);
+          float groundBump = mix(originalLight * max(forestBlend,autumnBlend),dot(rock,vec3(0.299,0.587,0.114)),clamp(rockBlend,0.0,1.0)) * 0.045 * distanceFade;
+        `);
+        shader.fragmentShader = shader.fragmentShader.replace('#include <normal_fragment_maps>', 'normal = perturbNormalArb(-vViewPosition, normal, vec2(dFdx(groundBump), dFdy(groundBump)), faceDirection);');
+      };
+      this.waterUniforms = { clock: { value: 0 }, horizon: { value: new THREE.Color('#a0bfc6') }, zenith: { value: new THREE.Color('#5499c2') }, sunDirection: { value: new THREE.Vector3(0.3,0.7,-0.5) }, daylight: { value: 1 } };
+      this.waterUniforms.cloudLayer = { value: null }; this.waterUniforms.cloudShift = { value: 0 }; this.waterUniforms.dusk = { value: 0 };
+      const waterMaterial = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, uniforms: this.waterUniforms,
+        vertexShader: 'varying vec3 vWater; void main(){vWater=(modelMatrix*vec4(position,1.0)).xyz;gl_Position=projectionMatrix*viewMatrix*vec4(vWater,1.0);}',
+        fragmentShader: `varying vec3 vWater; uniform float clock; uniform vec3 horizon; uniform vec3 zenith; uniform vec3 sunDirection; uniform float daylight; uniform sampler2D cloudLayer; uniform float cloudShift; uniform float dusk;
+          void main(){
+            vec2 point=vWater.xz; float distanceToEye=length(cameraPosition-vWater);
+            float fineFade=1.0-smoothstep(35.0,260.0,distanceToEye);
+            float warp=sin(point.x*0.019+point.y*0.027+clock*0.11)*1.8+sin(point.x*0.043-point.y*0.017)*0.7;
+            float swell=sin(point.x*0.084+point.y*0.063+clock*0.41+warp);
+            float waves=sin(point.x*0.37-point.y*0.21+clock*0.83+warp);
+            float crosswave=sin(point.x*0.67+point.y*0.52-clock*1.14+warp*0.73)*fineFade;
+            float ripple=sin(point.x*1.43-point.y*1.17+clock*1.93+warp*1.2)*fineFade;
+            vec3 normal=normalize(vec3(swell*0.012+waves*0.014+crosswave*0.012+ripple*0.004,1.0,swell*0.009-waves*0.009+crosswave*0.009-ripple*0.003));
+            vec3 view=normalize(cameraPosition-vWater); vec3 reflection=reflect(-view,normal); float fresnel=0.035+0.965*pow(1.0-max(0.0,dot(view,normal)),5.0);
+            vec3 reflectedSky=mix(horizon,zenith,smoothstep(0.0,0.65,reflection.y));
+            float longitude=fract(atan(reflection.z,reflection.x)*0.63661977+0.5+clock*0.000014+cloudShift);
+            float latitude=clamp(asin(clamp(reflection.y,0.0,1.0))*1.2732395,0.0,1.0);
+            vec4 cloud=texture2D(cloudLayer,vec2(longitude,latitude),2.0);
+            vec4 overlap=texture2D(cloudLayer,vec2(fract(longitude+0.5),latitude),2.0);
+            cloud=mix(cloud,overlap,smoothstep(0.88,1.0,abs(longitude-0.5)*2.0));
+            float cloudLight=pow(dot(cloud.rgb,vec3(0.22,0.70,0.08)),1.4);
+            vec3 reflectedCloud=mix(vec3(0.22,0.28,0.36),vec3(0.98,0.97,0.93),cloudLight);
+            reflectedCloud=mix(reflectedCloud,reflectedCloud*vec3(1.5,0.72,0.37),dusk*0.65)*(0.018+daylight*1.05+dusk*0.14);
+            float cloudOpacity=cloud.a*smoothstep(0.008,0.055,reflection.y);
+            reflectedSky=mix(reflectedSky,reflectedCloud,cloudOpacity*0.78);
+            vec3 water=mix(vec3(0.025,0.085,0.075)*(0.15+daylight*0.85),reflectedSky,fresnel*0.88+0.08);
+            water+=vec3(1.0,0.86,0.65)*pow(max(0.0,dot(reflect(-sunDirection,normal),view)),450.0)*daylight*2.8;
+            water=mix(water,horizon,1.0-exp(-length(cameraPosition-vWater)*0.00028));
+            gl_FragColor=vec4(water,0.91);
+            #include <tonemapping_fragment>
+            #include <encodings_fragment>
+          }` });
+      this.water = new THREE.Mesh(new THREE.PlaneGeometry(11000, 11000), waterMaterial); this.water.rotation.x = -Math.PI / 2; this.water.position.y = 4; scene.add(this.water);
+      this.destinations = [];
+      for (const region of biomes) {
+        let selected;
+        for (let ring = 0; ring < 70 && !selected; ring++) for (let sample = 0; sample < 24; sample++) {
+          const east = 140 + Math.cos(sample * Math.PI / 12) * ring * 100;
+          const north = 120 + Math.sin(sample * Math.PI / 12) * ring * 100;
+          if (biome(east, north).id === region.id && height(east, north) > 6) { selected = { ...region, east, north }; break; }
+        }
+        if (selected) this.destinations.push(selected);
+      }
+    }
+    material(color, textureName) {
+      const key = color + (textureName || '');
+      if (!this.materials.has(key)) this.materials.set(key, new THREE.MeshStandardMaterial({ color: new THREE.Color(color).convertSRGBToLinear(), map: textureName ? this.originals[textureName] : null, roughness: 0.9 }));
+      return this.materials.get(key);
+    }
+    part(group, kind, color, position, scale, textureName) {
+      const mesh = new THREE.Mesh(geometry(kind), this.material(color, textureName));
+      mesh.position.set(...position); mesh.scale.set(...scale); group.add(mesh); return mesh;
+    }
+    animal(spec, east, north, salt, group) {
+      const rig = Wildlife.create(spec, this.originals.fur), model = rig.model; group.add(model);
+      model.position.set(east, height(east + group.userData.east, north + group.userData.north), north);
+      const shadow = new THREE.Mesh(this.shadowGeometry, this.shadowMaterial); shadow.rotation.x = -Math.PI / 2;
+      shadow.scale.set(spec.width * spec.scale * 5, spec.length * spec.scale * 1.6, 1); group.add(shadow);
+      const entry = { model, rig, shadow, spec, east, north, salt, chunk: group, offset: rig.focusHeight, travelled: 0, previousTime: null, heading: salt };
+      model.castShadow = true; model.receiveShadow = true;
+      rig.groundAt = (localEast, localNorth) => {
+        const cosine = Math.cos(model.rotation.y), sine = Math.sin(model.rotation.y);
+        const worldEast = group.userData.east + model.position.x + (localEast * cosine + localNorth * sine) * spec.scale;
+        const worldNorth = group.userData.north + model.position.z + (localNorth * cosine - localEast * sine) * spec.scale;
+        return (height(worldEast, worldNorth) - model.position.y) / spec.scale;
+      };
+      this.animals.push(entry); return entry;
+    }
+    updateHorizon(column, row) {
+      if (this.horizon) { this.scene.remove(this.horizon); this.occluders = this.occluders.filter((mesh) => mesh !== this.horizon); this.horizon.geometry.dispose(); }
+      const surface = new THREE.PlaneGeometry(8192, 8192, 256, 256); surface.rotateX(-Math.PI / 2);
+      const positions = surface.attributes.position, colors = [], families = [], indices = [];
+      const centerEast = column * 128 + 64, centerNorth = row * 128 + 64;
+      const nextSamples = new Map();
+      for (let index = 0; index < positions.count; index++) {
+        const east = centerEast + positions.getX(index), north = centerNorth + positions.getZ(index);
+        const key = `${east},${north}`;
+        let sample = this.horizonSamples.get(key);
+        if (!sample) {
+          const ground = height(east,north), region = biome(east,north,ground);
+          sample = { ground, family: region.family, tint: new THREE.Color(region.color).convertSRGBToLinear().multiplyScalar(0.8) };
+        }
+        nextSamples.set(key,sample);
+        positions.setXYZ(index,east-this.offset.x,sample.ground-4,north-this.offset.z); colors.push(sample.tint.r,sample.tint.g,sample.tint.b); families.push(sample.family);
+      }
+      this.horizonSamples = nextSamples;
+      for (let rowIndex = 0; rowIndex < 256; rowIndex++) for (let columnIndex = 0; columnIndex < 256; columnIndex++) {
+        const horizontal = (columnIndex + 0.5) * 32 - 4096, vertical = (rowIndex + 0.5) * 32 - 4096;
+        if (Math.abs(horizontal) < 576 && Math.abs(vertical) < 576) continue;
+        const vertex = rowIndex * 257 + columnIndex; indices.push(vertex,vertex+257,vertex+1,vertex+1,vertex+257,vertex+258);
+      }
+      surface.setIndex(indices); surface.setAttribute('color',new THREE.Float32BufferAttribute(colors,3)); surface.setAttribute('family',new THREE.Float32BufferAttribute(families,1)); surface.computeVertexNormals(); surface.computeBoundingSphere();
+      this.horizon = new THREE.Mesh(surface,this.terrainMaterial); this.scene.add(this.horizon); this.occluders.push(this.horizon);
+    }
+    createChunk(column, row, distant = false) {
+      const size = 128, divisions = distant ? 8 : 24;
+      const group = new THREE.Group(); group.userData = { east: column * size, north: row * size, owned: [], distant };
+      group.position.set(column * size - this.offset.x, 0, row * size - this.offset.z);
+      const surface = new THREE.PlaneGeometry(size, size, divisions, divisions); surface.rotateX(-Math.PI / 2); surface.translate(size / 2, 0, size / 2);
+      const points = surface.attributes.position; const colors = [], families = [];
+      for (let index = 0; index < points.count; index++) {
+        const east = column * size + points.getX(index), north = row * size + points.getZ(index);
+        const altitude = height(east, north), region = biome(east, north, altitude);
+        points.setY(index, altitude); const shade = new THREE.Color(region.color).convertSRGBToLinear().multiplyScalar(0.8); colors.push(shade.r, shade.g, shade.b); families.push(region.family);
+      }
+      surface.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3)); surface.setAttribute('family', new THREE.Float32BufferAttribute(families, 1)); surface.computeVertexNormals();
+      const terrain = new THREE.Mesh(surface, this.terrainMaterial); terrain.receiveShadow = true; group.add(terrain); group.userData.owned.push(surface); this.occluders.push(terrain);
+      const region = biome(column * size + 64, row * size + 64);
+      const trees = [], rocks = [], flowers = [];
+      for (let index = 0; index < 70; index++) {
+        const east = hash(column, row, index * 3) * size, north = hash(column, row, index * 3 + 1) * size;
+        const worldEast = east + column * size, worldNorth = north + row * size;
+        const altitude = height(worldEast, worldNorth), localBiome = biome(worldEast, worldNorth, altitude);
+        const scale = 0.8 + hash(column, row, index * 3 + 2) * 1.2;
+        const grove = noise(worldEast / 110,worldNorth / 110,416), woodland = ['forest','autumn'].includes(localBiome.id);
+        const treeAllowed = woodland ? grove > 0.2 : index < 28 && grove > 0.48;
+        if (treeAllowed && altitude > 6 && altitude < 105 && localBiome.id !== 'desert' && Math.hypot(worldEast - 211, worldNorth - 191) > 15 && !this.destinations.some((point) => Math.hypot(worldEast - point.east, worldNorth - point.north) < 12)) trees.push({ east, north, altitude, scale, autumn: localBiome.id === 'autumn', conifer: localBiome.id === 'alpine' || (localBiome.id !== 'autumn' && hash(column, row, index + 7600) > 0.65) });
+        if (index < 12) {
+          const rockEast = hash(column, row, 7000 + index) * size, rockNorth = hash(column, row, 7100 + index) * size;
+          const rockAltitude = height(column * size + rockEast, row * size + rockNorth);
+          if (rockAltitude > 5) rocks.push({ east: rockEast, north: rockNorth, altitude: rockAltitude, scale });
+        }
+        if (index < 30 && altitude > 7 && altitude < 85) flowers.push({ east, north, altitude, scale });
+      }
+      const matrix = new THREE.Matrix4(), quaternion = new THREE.Quaternion();
+      group.userData.trees = trees;
+      if (distant) {
+        this.vegetation.buildDistant(group, trees, hash);
+        this.scene.add(group); this.chunks.set(`${column},${row}`,group); return;
+      }
+      const instances = (items, kind, color, transform, textureName) => {
+        if (!items.length) return;
+        const mesh = new THREE.InstancedMesh(geometry(kind), this.material(color, textureName), items.length);
+        items.forEach((item, index) => {
+          const { position, scale } = transform(item, index);
+          matrix.compose(new THREE.Vector3(...position), quaternion, new THREE.Vector3(...scale)); mesh.setMatrixAt(index, matrix);
+        });
+        mesh.instanceMatrix.needsUpdate = true; mesh.castShadow = true; mesh.receiveShadow = true; group.add(mesh); return mesh;
+      };
+      this.vegetation.build(group, trees, hash, height);
+      instances(rocks, 'sphere', '#bec1af', (item) => ({ position: [item.east, item.altitude, item.north], scale: [item.scale * 2, item.scale, item.scale * 1.7] }), 'rock');
+      instances(flowers, 'trunk', '#6a8253', (item) => ({ position: [item.east, item.altitude + 0.18 * item.scale, item.north], scale: [0.008, 0.36 * item.scale, 0.008] }));
+      instances(flowers, 'sphere', '#d7c5bd', (item) => ({ position: [item.east, item.altitude + 0.36 * item.scale, item.north], scale: [0.045 * item.scale, 0.025, 0.045 * item.scale] }));
+      for (let index = 0; index < 4; index++) {
+        const east = 20 + hash(column, row, 1000 + index) * 88, north = 20 + hash(column, row, 2000 + index) * 88;
+        const ground = height(east + column * size, north + row * size);
+        const localBiome = biome(east + column * size, north + row * size, ground);
+        const pool = species.filter((spec) => spec.habitats.includes(localBiome.id));
+        const spec = pool[Math.floor(hash(column, row, 3000 + index) * pool.length)];
+        if (ground > 4.5) this.animal(spec, east, north, hash(column, row, 4000 + index) * 100, group);
+      }
+      this.scene.add(group); this.chunks.set(`${column},${row}`, group);
+    }
+    update(east, north, time) {
+      const column = Math.floor(east / 128), row = Math.floor(north / 128), center = `${column},${row}`;
+      if (center !== this.center) {
+        this.center = center;
+        this.offset.set(Math.floor(east / 1024) * 1024, 0, Math.floor(north / 1024) * 1024);
+        this.updateHorizon(column,row);
+        const needed = new Set(); this.queue = [];
+        for (let horizontal = -5; horizontal <= 5; horizontal++) for (let vertical = -5; vertical <= 5; vertical++) {
+          const key = `${column + horizontal},${row + vertical}`; needed.add(key);
+          const distant = Math.max(Math.abs(horizontal), Math.abs(vertical)) > 3;
+          const existing = this.chunks.get(key);
+          if (existing && existing.userData.distant !== distant) this.dropChunk(key, existing);
+          if (!this.chunks.has(key)) this.queue.push({ column: column + horizontal, row: row + vertical, distance: Math.hypot(horizontal, vertical), distant });
+        }
+        this.queue.sort((first, second) => first.distance - second.distance);
+        for (const [key, group] of this.chunks) {
+          if (!needed.has(key)) {
+            this.dropChunk(key, group);
+          } else group.position.set(group.userData.east - this.offset.x, 0, group.userData.north - this.offset.z);
+        }
+      }
+      if (this.queue.length) { const next = this.queue.shift(); this.createChunk(next.column,next.row,next.distant); }
+      this.water.position.set(east - this.offset.x, 4 + Math.sin(time * 0.4) * 0.07, north - this.offset.z);
+      this.waterUniforms.clock.value = time;
+      this.vegetation.clock.value = time;
+      for (const chunk of this.chunks.values()) for (const mesh of chunk.children) {
+        if (mesh.userData.drawRange) {
+          const distance = Math.hypot(chunk.userData.east + 64 - east,chunk.userData.north + 64 - north);
+          mesh.visible = distance < mesh.userData.drawRange && distance >= (mesh.userData.minDrawRange || 0);
+        }
+        if (mesh.isInstancedMesh && !mesh.userData.noShadow) mesh.castShadow = Math.hypot(chunk.userData.east + 64 - east, chunk.userData.north + 64 - north) < 150;
+      }
+      for (const entry of this.animals) {
+        const delta = entry.previousTime === null ? 0 : Math.min(0.1, Math.max(0, time - entry.previousTime));
+        entry.previousTime = time;
+        const worldEast = entry.chunk.userData.east + entry.model.position.x, worldNorth = entry.chunk.userData.north + entry.model.position.z;
+        const distance = Math.hypot(worldEast - east, worldNorth - north); entry.rig.detailDistance = distance; entry.model.visible = distance < 180; entry.shadow.visible = entry.model.visible && !entry.rig.flying;
+        if (!entry.model.visible) continue;
+        const localTime = time + entry.salt, cycle = localTime % 26;
+        const alert = !entry.rig.flying && distance < Math.max(5, entry.spec.scale * 12);
+        const moving = entry.rig.flying || alert || cycle > 10;
+        const speed = moving ? (entry.rig.flying ? entry.spec.plan === 'insect' ? 0.6 : 5 : alert ? 2.4 : 0.55) * Math.sqrt(entry.spec.scale) : 0;
+        const targetHeading = alert ? Math.atan2(east - worldEast, north - worldNorth) : Math.atan2(entry.model.position.x - entry.east, entry.model.position.z - entry.north) + Math.sin(localTime * 0.08) * 1.8;
+        let difference = Math.atan2(Math.sin(targetHeading - entry.heading), Math.cos(targetHeading - entry.heading));
+        entry.heading += Math.max(-delta * 1.5, Math.min(delta * 1.5, difference));
+        const proposedEast = entry.model.position.x - Math.sin(entry.heading) * speed * delta;
+        const proposedNorth = entry.model.position.z - Math.cos(entry.heading) * speed * delta;
+        const ground = height(entry.chunk.userData.east + proposedEast, entry.chunk.userData.north + proposedNorth);
+        const currentGround = height(worldEast, worldNorth);
+        const homeDistance = Math.hypot(proposedEast - entry.east, proposedNorth - entry.north);
+        const canStep = ground > 4.5 && Math.abs(ground - currentGround) < Math.max(0.2, speed * delta * 1.2) && homeDistance < 44;
+        if (entry.rig.flying || canStep) {
+          entry.model.position.x = proposedEast; entry.model.position.z = proposedNorth;
+          entry.travelled += speed * delta;
+        } else entry.heading += delta * 2;
+        const actualGround = height(entry.chunk.userData.east + entry.model.position.x, entry.chunk.userData.north + entry.model.position.z);
+        entry.model.position.y = Math.max(actualGround, 4.5) + (entry.rig.flying ? entry.spec.plan === 'insect' ? 1.1 + Math.sin(localTime) * 0.3 : 12 + Math.sin(localTime * 0.3) * 2 : 0);
+        entry.model.rotation.y = entry.heading;
+        entry.shadow.position.set(entry.model.position.x, actualGround + 0.035, entry.model.position.z); entry.shadow.rotation.z = -entry.heading;
+        const ahead = height(worldEast - Math.sin(entry.heading) * 0.6, worldNorth - Math.cos(entry.heading) * 0.6);
+        const slope = entry.rig.flying ? 0 : Math.max(-0.3, Math.min(0.3, Math.atan2(ahead - currentGround, 0.6)));
+        entry.rig.travelled = entry.travelled;
+        Wildlife.animate(entry.rig, localTime, speed > 0 && (canStep || entry.rig.flying) ? 1 : 0, alert ? 1 : 0, slope);
+      }
+    }
+
+    dropChunk(key, group) {
+      group.traverse((mesh) => { if (mesh.isSkinnedMesh && mesh.skeleton) mesh.skeleton.dispose(); });
+      this.scene.remove(group); this.animals = this.animals.filter((entry) => entry.chunk !== group); this.occluders = this.occluders.filter((entry) => entry.parent !== group);
+      group.userData.owned.forEach((owned) => owned.dispose());
+      group.traverse((entry) => { if (entry.isInstancedMesh && entry.dispose) entry.dispose(); });
+      this.chunks.delete(key);
+    }
+    candidates() {
+      return this.animals.filter((entry) => entry.model.visible).map((entry) => {
+        const point = new THREE.Vector3(); entry.model.getWorldPosition(point); point.y += entry.offset;
+        return { id: entry.spec.id, name: entry.spec.name, point, group: entry.model, range: Math.max(12, Math.min(150, entry.spec.length * entry.spec.scale * 80)), ideal: Math.max(3, entry.spec.length * entry.spec.scale * 12) };
+      });
+    }
+    vegetationBlocks(origin, target) {
+      const direction = new THREE.Vector3().subVectors(target, origin), length = direction.length();
+      direction.normalize();
+      for (const chunk of this.chunks.values()) {
+        if (Math.hypot(chunk.position.x+64-origin.x,chunk.position.z+64-origin.z)>length+110) continue;
+        for (const tree of chunk.userData.trees || []) {
+          const relativeEast = chunk.position.x+tree.east-origin.x, relativeNorth = chunk.position.z+tree.north-origin.z;
+          const horizontalLength = direction.x*direction.x+direction.z*direction.z;
+          const trunkAlong = horizontalLength > 0.0001 ? (relativeEast*direction.x+relativeNorth*direction.z)/horizontalLength : -1;
+          if (trunkAlong > 0 && trunkAlong < length) {
+            const vertical = origin.y+direction.y*trunkAlong-tree.altitude;
+            if (vertical > 0 && vertical < (tree.trunkHeight || tree.scale*9) && Math.hypot(relativeEast-direction.x*trunkAlong,relativeNorth-direction.z*trunkAlong)<tree.scale*0.45) return true;
+          }
+          const crown = tree.crownCenter;
+          const radius = tree.crownRadius || tree.scale*4.4, halfHeight = tree.crownHalfHeight || radius;
+          const offsetEast = (origin.x-chunk.position.x-(crown ? crown.x : tree.east))/radius;
+          const offsetUp = (origin.y-(crown ? crown.y : tree.altitude+tree.scale*6.5))/halfHeight;
+          const offsetNorth = (origin.z-chunk.position.z-(crown ? crown.z : tree.north))/radius;
+          const directionEast = direction.x/radius, directionUp = direction.y/halfHeight, directionNorth = direction.z/radius;
+          const quadratic = directionEast*directionEast+directionUp*directionUp+directionNorth*directionNorth;
+          const linear = offsetEast*directionEast+offsetUp*directionUp+offsetNorth*directionNorth;
+          const constant = offsetEast*offsetEast+offsetUp*offsetUp+offsetNorth*offsetNorth-1;
+          const discriminant = linear*linear-quadratic*constant;
+          if (quadratic > 0 && discriminant >= 0) {
+            const near = (-linear-Math.sqrt(discriminant))/quadratic, far = (-linear+Math.sqrt(discriminant))/quadratic;
+            if (near < length && far > 0) return true;
+          }
+        }
+      }
+      return false;
+    }
+    canMove(east, north) {
+      for (const chunk of this.chunks.values()) {
+        if (Math.abs(chunk.userData.east + 64 - east) > 70 || Math.abs(chunk.userData.north + 64 - north) > 70) continue;
+        for (const tree of chunk.userData.trees || []) if (Math.hypot(chunk.userData.east + tree.east - east, chunk.userData.north + tree.north - north) < tree.scale * 0.45 + 0.35) return false;
+      }
+      return true;
+    }
+  }
+  NatureWorld.height = height; NatureWorld.biome = biome; NatureWorld.biomes = biomes; NatureWorld.species = species; NatureWorld.hash = hash;
+  window.NatureWorld = NatureWorld;
+})();

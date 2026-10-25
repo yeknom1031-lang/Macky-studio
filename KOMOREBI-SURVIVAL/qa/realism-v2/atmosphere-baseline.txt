@@ -1,0 +1,88 @@
+(() => {
+  class Atmosphere {
+    constructor(scene) {
+      this.sunDirection = new THREE.Vector3();
+      this.horizon = new THREE.Color();
+      this.zenith = new THREE.Color();
+      this.material = new THREE.ShaderMaterial({
+        side: THREE.BackSide, depthWrite: false,
+        uniforms: { sunDirection: { value: this.sunDirection }, daylight: { value: 1 }, dusk: { value: 0 }, weather: { value: 0 }, clock: { value: 0 }, observer: { value: new THREE.Vector3() } },
+        vertexShader: 'varying vec3 vSky; void main(){vSky=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
+        fragmentShader: `
+          varying vec3 vSky;
+          uniform vec3 sunDirection;
+          uniform vec3 observer;
+          uniform float daylight;
+          uniform float dusk;
+          uniform float weather;
+          uniform float clock;
+          float hashCloud(vec3 point) {
+            point = fract(point * 0.1031); point += dot(point, point.yzx + 33.33);
+            return fract((point.x + point.y) * point.z);
+          }
+          float cloudNoise(vec3 point) {
+            vec3 cell = floor(point), fraction = fract(point); fraction = fraction * fraction * (3.0 - 2.0 * fraction);
+            return mix(mix(mix(hashCloud(cell), hashCloud(cell + vec3(1,0,0)), fraction.x), mix(hashCloud(cell + vec3(0,1,0)), hashCloud(cell + vec3(1,1,0)), fraction.x), fraction.y), mix(mix(hashCloud(cell + vec3(0,0,1)), hashCloud(cell + vec3(1,0,1)), fraction.x), mix(hashCloud(cell + vec3(0,1,1)), hashCloud(cell + vec3(1,1,1)), fraction.x), fraction.y), fraction.z);
+          }
+          float cloudField(vec3 point) {
+            float value = cloudNoise(point) * 0.55;
+            point = point * 2.03 + vec3(7.2, 3.1, 4.9); value += cloudNoise(point) * 0.27;
+            point = point * 2.01 + vec3(2.5, 6.7, 1.3); value += cloudNoise(point) * 0.13;
+            return value + cloudNoise(point * 2.03) * 0.05;
+          }
+          void main() {
+            vec3 direction = normalize(vSky);
+            float elevation = max(0.0, direction.y);
+            float sunAngle = clamp(dot(direction, sunDirection), -1.0, 1.0);
+            float airMass = exp(-elevation * 5.5);
+            vec3 blue = vec3(0.12, 0.30, 0.56);
+            vec3 haze = vec3(0.56, 0.67, 0.72);
+            float rayleighPhase = 0.75 * (1.0 + sunAngle * sunAngle);
+            vec3 sky = mix(blue * (0.8 + rayleighPhase * 0.2), haze, airMass * 0.83);
+            float miePhase = 0.012 / pow(max(0.025, 1.0 + 0.82 * 0.82 - 1.64 * sunAngle), 1.5);
+            sky += vec3(0.98, 0.83, 0.64) * miePhase * daylight * 0.4;
+            vec3 sunset = mix(vec3(0.11,0.12,0.19), vec3(0.85,0.32,0.10), airMass * (0.35 + 0.65 * pow(max(0.0, sunAngle), 3.0)));
+            sky = mix(sky, sunset, dusk * 0.85);
+            sky = mix(vec3(0.003,0.008,0.021) + vec3(0.015,0.022,0.032) * airMass, sky, clamp(daylight * 1.5 + dusk * 0.48, 0.0, 1.0));
+            sky = mix(sky, vec3(0.30,0.36,0.39) * (0.1 + daylight * 0.9), weather * 0.65);
+            float solarDisc = smoothstep(0.99994, 0.99997, sunAngle) * smoothstep(-0.025, 0.02, sunDirection.y);
+            sky += vec3(1.0,0.87,0.65) * solarDisc * 7.0;
+            if (direction.y > 0.025) {
+              vec3 position = direction * vec3(4.8,3.1,4.8) + observer * 0.00016 + vec3(clock * 0.0013,0.0,clock * 0.0004);
+              float field = cloudField(position);
+              float density = smoothstep(0.50 - weather * 0.13,0.67 - weather * 0.08,field);
+              float sunward = cloudField(position + sunDirection * 0.23);
+              float shadow = smoothstep(0.47,0.68,sunward) * density;
+              float rim = pow(1.0-density,2.0) * density * pow(max(0.0,sunAngle),8.0);
+              vec3 shade = mix(vec3(0.91,0.92,0.92),vec3(0.35,0.41,0.47),shadow * 0.72);
+              shade += vec3(0.85,0.71,0.48) * rim;
+              shade = mix(shade,vec3(0.87,0.41,0.18) * (0.6 + density * 0.2),dusk * 0.7);
+              shade *= 0.035 + daylight * (1.0-weather * 0.35) + dusk * 0.17;
+              float opacity = density * smoothstep(0.025,0.16,direction.y) * 0.97;
+              sky = mix(sky,shade,opacity);
+              float wisps = cloudField(direction * vec3(8.0,1.5,8.0) + vec3(clock * 0.0006,19.0,0.0));
+              sky = mix(sky,vec3(0.64,0.71,0.77) * daylight,smoothstep(0.64,0.79,wisps) * 0.12);
+            }
+            gl_FragColor = vec4(max(sky, vec3(0.0)),1.0);
+            #include <tonemapping_fragment>
+            #include <encodings_fragment>
+          }
+        `
+      });
+      this.dome = new THREE.Mesh(new THREE.SphereGeometry(4800, 32, 20), this.material); this.dome.renderOrder = -10; this.dome.frustumCulled = false; scene.add(this.dome);
+    }
+    update(camera, day, time, weather, east, north) {
+      const phase = (day - 0.25) * Math.PI * 2;
+      this.sunDirection.set(Math.cos(phase) * 0.9, Math.sin(phase), -0.36).normalize();
+      const daylight = Math.max(0, this.sunDirection.y), dusk = Math.max(0, 1 - Math.abs(this.sunDirection.y - 0.03) * 5);
+      this.material.uniforms.daylight.value = daylight; this.material.uniforms.dusk.value = dusk;
+      this.material.uniforms.weather.value = weather; this.material.uniforms.clock.value = time;
+      this.material.uniforms.observer.value.set(east, camera.position.y, north); this.dome.position.copy(camera.position);
+      this.horizon.setRGB(0.36, 0.49, 0.59).lerp(new THREE.Color(0.72, 0.36, 0.17), dusk * 0.6).multiplyScalar(0.055 + daylight * 0.945);
+      this.horizon.lerp(new THREE.Color(0.22, 0.28, 0.31).multiplyScalar(0.1 + daylight), weather * 0.5);
+      this.zenith.setRGB(0.12, 0.30, 0.56).multiplyScalar(0.025 + daylight * 0.975);
+      return { daylight, dusk };
+    }
+  }
+  window.Atmosphere = Atmosphere;
+})();

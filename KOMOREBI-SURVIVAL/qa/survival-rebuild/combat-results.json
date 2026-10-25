@@ -1,0 +1,25 @@
+{
+  "passed": 19,
+  "checks": [
+    "Normal attack deals damage: bomb",
+    "Normal attack deals damage: hammer",
+    "Normal attack deals damage: sword",
+    "Normal attack deals damage: spear",
+    "Normal attack deals damage: axe",
+    "Normal attack deals damage: daggers",
+    "Normal attack deals damage: bow",
+    "Normal attack deals damage: staff",
+    "Normal attack deals damage: boomerang",
+    "Normal attack deals damage: gravity",
+    "Normal attack deals damage: stormblade",
+    "Bow refuses to fire without arrows",
+    "Malformed inventory is rejected",
+    "Malformed structure is rejected",
+    "Nonfinite save values are rejected",
+    "Death respawns at lit checkpoint",
+    "Death preserves weapons and seals, drops materials and half the gold",
+    "Death bag restores materials and gold",
+    "Inventory drag-to-equip and fuel use work"
+  ],
+  "errors": []
+}

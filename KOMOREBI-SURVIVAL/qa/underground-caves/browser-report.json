@@ -1,0 +1,313 @@
+{
+  "ready": true,
+  "caves": 32,
+  "walk": [
+    {
+      "id": "cave-0",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-1",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-2",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-3",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-4",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-5",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-6",
+      "s": 18.9,
+      "exit": -2.1
+    },
+    {
+      "id": "cave-7",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-8",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-9",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-10",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-11",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-12",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-13",
+      "s": 18.9,
+      "exit": -2.1
+    },
+    {
+      "id": "cave-14",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-15",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-16",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-17",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-18",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-19",
+      "s": 19,
+      "exit": -1.9
+    },
+    {
+      "id": "cave-20",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-21",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-22",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-23",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-24",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-25",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-26",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-27",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-28",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-29",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-30",
+      "s": 19,
+      "exit": -2
+    },
+    {
+      "id": "cave-31",
+      "s": 19,
+      "exit": -2
+    }
+  ],
+  "pictures": [
+    "entrance",
+    "inside",
+    "deep",
+    "exit",
+    "dark",
+    "light"
+  ],
+  "paths": [
+    {
+      "id": "cave-0",
+      "failures": []
+    },
+    {
+      "id": "cave-1",
+      "failures": []
+    },
+    {
+      "id": "cave-2",
+      "failures": []
+    },
+    {
+      "id": "cave-3",
+      "failures": []
+    },
+    {
+      "id": "cave-4",
+      "failures": []
+    },
+    {
+      "id": "cave-5",
+      "failures": []
+    },
+    {
+      "id": "cave-6",
+      "failures": []
+    },
+    {
+      "id": "cave-7",
+      "failures": []
+    },
+    {
+      "id": "cave-8",
+      "failures": []
+    },
+    {
+      "id": "cave-9",
+      "failures": []
+    },
+    {
+      "id": "cave-10",
+      "failures": []
+    },
+    {
+      "id": "cave-11",
+      "failures": []
+    },
+    {
+      "id": "cave-12",
+      "failures": []
+    },
+    {
+      "id": "cave-13",
+      "failures": []
+    },
+    {
+      "id": "cave-14",
+      "failures": []
+    },
+    {
+      "id": "cave-15",
+      "failures": []
+    },
+    {
+      "id": "cave-16",
+      "failures": []
+    },
+    {
+      "id": "cave-17",
+      "failures": []
+    },
+    {
+      "id": "cave-18",
+      "failures": []
+    },
+    {
+      "id": "cave-19",
+      "failures": []
+    },
+    {
+      "id": "cave-20",
+      "failures": []
+    },
+    {
+      "id": "cave-21",
+      "failures": []
+    },
+    {
+      "id": "cave-22",
+      "failures": []
+    },
+    {
+      "id": "cave-23",
+      "failures": []
+    },
+    {
+      "id": "cave-24",
+      "failures": []
+    },
+    {
+      "id": "cave-25",
+      "failures": []
+    },
+    {
+      "id": "cave-26",
+      "failures": []
+    },
+    {
+      "id": "cave-27",
+      "failures": []
+    },
+    {
+      "id": "cave-28",
+      "failures": []
+    },
+    {
+      "id": "cave-29",
+      "failures": []
+    },
+    {
+      "id": "cave-30",
+      "failures": []
+    },
+    {
+      "id": "cave-31",
+      "failures": []
+    }
+  ],
+  "brightness": {
+    "40": 40,
+    "140": 140
+  },
+  "saved": true,
+  "reloaded": {
+    "brightness": 140,
+    "underground": true
+  }
+}

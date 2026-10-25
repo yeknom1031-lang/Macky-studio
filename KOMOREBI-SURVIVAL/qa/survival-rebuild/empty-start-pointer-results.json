@@ -1,0 +1,25 @@
+{
+  "passed": 19,
+  "checks": [
+    "Fresh game has no inventory, money or equipped item",
+    "Empty hand renders no tool",
+    "Start button captures and hides pointer automatically",
+    "Mouse movement alone changes view",
+    "Empty inventory UI shows bare hands",
+    "Closing inventory with Tab restores mouse look",
+    "Escape releases pointer and pauses world",
+    "Pause resume button captures pointer again",
+    "Wood and stone can be gathered empty-handed",
+    "First hammer job starts without granting a free tool",
+    "Hand assembly takes time",
+    "Completed first hammer is received and equipped",
+    "Crafted hammer enables normal construction",
+    "Zero-start path reaches lit campfire and 20 save slots",
+    "Crafted tools and campfire are saved",
+    "Closing save screen restores captured mouse",
+    "Other recipes cannot create a free hammer or consume ingredients without one",
+    "Consuming last held item returns to bare hands",
+    "Existing saves keep their inventory"
+  ],
+  "errors": []
+}

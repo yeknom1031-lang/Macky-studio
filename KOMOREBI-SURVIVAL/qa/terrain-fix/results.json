@@ -1,0 +1,45 @@
+{
+  "checks": [
+    "Rendered ground and physics agree within 2 mm across loaded chunks",
+    "Grass roots stay embedded in the rendered surface",
+    "Unnaturally steep slopes reduced by more than half",
+    "Visible cave ramp matches its collision surface",
+    "Island edge support stays inside the actual polygonal mesh",
+    "Legacy save rebases player, preserving possessions",
+    "Saved buildings and checkpoint follow corrected terrain",
+    "Save migration is idempotent",
+    "A traversable downhill test slope exists",
+    "Walking downhill stays grounded instead of repeatedly floating",
+    "Leaving an island starts a real fall",
+    "Island has no invisible support layer below its surface",
+    "Sprinting into a cave wall neither crosses it nor lifts the player",
+    "Jetpack hits the visible cave ceiling without escaping through it",
+    "A built house supports the player at the visible floor height"
+  ],
+  "metrics": {
+    "ground": {
+      "samples": 588,
+      "maxError": 0.000004009246566738511,
+      "grassRoots": 21294,
+      "rootRange": [
+        -0.025009523262269795,
+        -0.024990071266074665
+      ]
+    },
+    "before": {
+      "maxGradient": 4.8543494036112005,
+      "over45Degrees": 9559,
+      "samples": 68121,
+      "meanGradient": 0.49535572474088346
+    },
+    "after": {
+      "maxGradient": 2.5654194087050715,
+      "over45Degrees": 3151,
+      "samples": 68121,
+      "meanGradient": 0.3550936716349386
+    },
+    "rampError": 0.000001302333480168727,
+    "walkGap": 0
+  },
+  "errors": []
+}

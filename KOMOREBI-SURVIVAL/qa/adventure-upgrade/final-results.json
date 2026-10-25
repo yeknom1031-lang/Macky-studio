@@ -1,0 +1,28 @@
+{
+  "passed": 141,
+  "suites": [
+    {
+      "path": "qa/adventure-upgrade/verification.json",
+      "passed": 61,
+      "errors": []
+    },
+    {
+      "path": "qa/survival-rebuild/empty-start-pointer-results.json",
+      "passed": 19,
+      "errors": []
+    },
+    {
+      "path": "qa/survival-rebuild/gameplay-results.json",
+      "passed": 61,
+      "errors": []
+    }
+  ],
+  "generatedItems": 38,
+  "totalCaves": 33,
+  "additionalCavePatterns": 32,
+  "original": {
+    "files": 1117,
+    "mismatches": [],
+    "originalUntouched": true
+  }
+}

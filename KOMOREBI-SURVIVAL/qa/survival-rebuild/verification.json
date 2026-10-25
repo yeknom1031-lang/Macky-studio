@@ -1,0 +1,407 @@
+{
+  "original_files_checked": 1117,
+  "original_changed": [],
+  "inherited_core_exact": {
+    "world.js": true,
+    "vegetation.js": true,
+    "wildlife.js": true,
+    "wildlife-catalog.js": true,
+    "atmosphere.js": true,
+    "climate.js": true,
+    "soundscape.js": true
+  },
+  "generated": 64,
+  "unique_new_images": 64,
+  "categories": {
+    "items": 38,
+    "materials": 14,
+    "bosses": 6,
+    "regions": 6
+  },
+  "assets": [
+    {
+      "id": "item-wood",
+      "file": "items/wood.png",
+      "bytes": 2905085,
+      "sha256": "6335340d56ad0d73565527cd104001c9d4598505998ee00e1848b563d09ae2d7"
+    },
+    {
+      "id": "item-stone",
+      "file": "items/stone.png",
+      "bytes": 2775890,
+      "sha256": "5de4e32a84cb08ab9b620bb3e115524d73f74351ab839ffe50de2e9d42445639"
+    },
+    {
+      "id": "item-fiber",
+      "file": "items/fiber.png",
+      "bytes": 1944516,
+      "sha256": "1d453bb8c4e3bd931e68c0128b6970223ee48981adfb6d3400e9463017d94bdf"
+    },
+    {
+      "id": "item-ore",
+      "file": "items/ore.png",
+      "bytes": 2804227,
+      "sha256": "3be189639f0b85c9834ffce29b2f28c19b44998fd87156bf7cea61f7ee729b54"
+    },
+    {
+      "id": "item-crystal",
+      "file": "items/crystal.png",
+      "bytes": 2120468,
+      "sha256": "5ad90b955e6b0b3d1c5f09b0df1255404ce391fd412c52d2183e5cf52a16d404"
+    },
+    {
+      "id": "item-resin",
+      "file": "items/resin.png",
+      "bytes": 1505834,
+      "sha256": "5765b03835bb06ba4e23bd4317e86bc3ef9cf6ccf39f6eb4f4c0d38d8591d1ea"
+    },
+    {
+      "id": "item-hide",
+      "file": "items/hide.png",
+      "bytes": 2412009,
+      "sha256": "a7dd94731c8e3ecb8e5265577c9b626f7209fd2548c47ecd43b84b5727852d15"
+    },
+    {
+      "id": "item-fang",
+      "file": "items/fang.png",
+      "bytes": 1195906,
+      "sha256": "de555e7413dcb429871df89edf11b2de8e0bb02407da8517d7b03fb8d35a8a80"
+    },
+    {
+      "id": "item-shell",
+      "file": "items/shell.png",
+      "bytes": 1600257,
+      "sha256": "8ecfde4a3edd96673205cad3019a4291fbec918ad14ac69ea74288a673eb7909"
+    },
+    {
+      "id": "item-spore",
+      "file": "items/spore.png",
+      "bytes": 1645524,
+      "sha256": "52f7615a96f3fc2e70f4047833569c5896866732c7817805a2e5aa56b3abc64f"
+    },
+    {
+      "id": "item-wing",
+      "file": "items/wing.png",
+      "bytes": 2240049,
+      "sha256": "89eba06446a3dad69008c82e54b23243c428364f95300fc0a63b42655ead8692"
+    },
+    {
+      "id": "item-ember",
+      "file": "items/ember.png",
+      "bytes": 1971487,
+      "sha256": "b2bb6a9edbd92d2b9d8436cf85287afaa635fed51c0ebc4aa21fd2313acb346e"
+    },
+    {
+      "id": "item-berry",
+      "file": "items/berry.png",
+      "bytes": 1954269,
+      "sha256": "89ea654ca6272b01c45283e63f28c2542bf135fec19e58c08a00f7e334164e8b"
+    },
+    {
+      "id": "item-meal",
+      "file": "items/meal.png",
+      "bytes": 2440045,
+      "sha256": "0fa6ec88bc27270d16810d335559ace3ca940eb06c91eadf91e1a4daf294762d"
+    },
+    {
+      "id": "item-fuel",
+      "file": "items/fuel.png",
+      "bytes": 1652789,
+      "sha256": "431ae0bfa347e07d9c2339e619e1eb81f362316856c3f1cc06842a95b5355bab"
+    },
+    {
+      "id": "item-arrow",
+      "file": "items/arrow.png",
+      "bytes": 1288733,
+      "sha256": "4ee111927b0d415e8b9856522bbb1a7d93c977e986ede2baa84e0c1447b9f684"
+    },
+    {
+      "id": "item-bomb",
+      "file": "items/bomb.png",
+      "bytes": 1919330,
+      "sha256": "ca1c242ad7ebba7979d6b9b8a826fe8253b7ec3122b65fbeaf2dc329c6230e79"
+    },
+    {
+      "id": "item-hammer",
+      "file": "items/hammer.png",
+      "bytes": 1208839,
+      "sha256": "8ef6a56eaac295f034700456c20d0e5c2a93e1451aade6808127e6932916877f"
+    },
+    {
+      "id": "item-sword",
+      "file": "items/sword.png",
+      "bytes": 536355,
+      "sha256": "b714c2577a48d7672e13e277df9740ed3a835ae51fc65b6457303c106723722a"
+    },
+    {
+      "id": "item-spear",
+      "file": "items/spear.png",
+      "bytes": 1207939,
+      "sha256": "10a19e3c43f7c9079ef59073f410af36c3387d3a623ca8ee8744e7c99e55086c"
+    },
+    {
+      "id": "item-axe",
+      "file": "items/axe.png",
+      "bytes": 1304378,
+      "sha256": "924e2bda8ecaffe985e61fbb2c24c30c888f21574f32b9909bb027566bf1a643"
+    },
+    {
+      "id": "item-daggers",
+      "file": "items/daggers.png",
+      "bytes": 2229421,
+      "sha256": "bde800471438cbf79ae1bbebf681dd7e67ac4029a438a355c0542d863c2f6943"
+    },
+    {
+      "id": "item-bow",
+      "file": "items/bow.png",
+      "bytes": 538846,
+      "sha256": "bd2a8708109be8fa4bcda2ee39ff37c580b4748e9c3d8e6a8e5ef22ccbe8a886"
+    },
+    {
+      "id": "item-staff",
+      "file": "items/staff.png",
+      "bytes": 1316842,
+      "sha256": "a191e8d6d95d012ade287a35a65ebb8fcf89d3b436175f5a24cda7fdcb2a354b"
+    },
+    {
+      "id": "item-boomerang",
+      "file": "items/boomerang.png",
+      "bytes": 1794296,
+      "sha256": "19d0c7d1ad7154a1bc414842f1d6deacd78906f34414fce3efeace957f86c430"
+    },
+    {
+      "id": "item-gravity",
+      "file": "items/gravity.png",
+      "bytes": 1964065,
+      "sha256": "29d866b5072764ce79780d2b620987edcc34c4dea377083aa9cc6514d286758c"
+    },
+    {
+      "id": "item-stormblade",
+      "file": "items/stormblade.png",
+      "bytes": 762244,
+      "sha256": "ea5f499034ed9676b0100a63e55d8a9d2c35a3222ce20e79c4b5edb66f7fc10a"
+    },
+    {
+      "id": "item-shield",
+      "file": "items/shield.png",
+      "bytes": 2595164,
+      "sha256": "92ec07e234cca397e83557c9a71f6b2a73812f37f3569a95f82892c8099dd0ac"
+    },
+    {
+      "id": "item-jetpack",
+      "file": "items/jetpack.png",
+      "bytes": 2205468,
+      "sha256": "18af4049793e0f1444e19156ae21f69f1096fcb1cbc5aac7470e3a9f05f4cd53"
+    },
+    {
+      "id": "item-campfire",
+      "file": "items/campfire.png",
+      "bytes": 2212392,
+      "sha256": "6f53f6e15ef5d5cb7a89970416501ef31e1d5056c83f83cf4885e580acbf85ac"
+    },
+    {
+      "id": "item-house",
+      "file": "items/house.png",
+      "bytes": 2680619,
+      "sha256": "f702e44f10d21c769563ee6c89032f360ae61d7769a7e89baca92d3cdafae370"
+    },
+    {
+      "id": "item-chest",
+      "file": "items/chest.png",
+      "bytes": 2489582,
+      "sha256": "dc2b31bbf982f570d2394ef8662d10a8db0275655620b06453629a93c0a73b1b"
+    },
+    {
+      "id": "item-seal-forest",
+      "file": "items/seal-forest.png",
+      "bytes": 2516361,
+      "sha256": "2142e1935b568e03ca7534436266733dbbd9a3f6b80432fa0138ec3afbdb2f1b"
+    },
+    {
+      "id": "item-seal-desert",
+      "file": "items/seal-desert.png",
+      "bytes": 1976477,
+      "sha256": "ac7a780c5bae13a1183e4eabe456c9e8c0cca3d02fa30daf0b05b36101e81485"
+    },
+    {
+      "id": "item-seal-jungle",
+      "file": "items/seal-jungle.png",
+      "bytes": 1868092,
+      "sha256": "ea6cfdd367a0714a4a1cf54665b80e561a0758ec21deae2ef8a1215dbb68fa90"
+    },
+    {
+      "id": "item-seal-cave",
+      "file": "items/seal-cave.png",
+      "bytes": 2380213,
+      "sha256": "9daa170bb7e86f7c5d7038968ab4444bb32d1af9c016da57767d6b3727a60667"
+    },
+    {
+      "id": "item-seal-sky",
+      "file": "items/seal-sky.png",
+      "bytes": 2159228,
+      "sha256": "392d21918254cbeb70e2ddb2a5721cc5a452af0e2253e92ccce83f76ab2cddb4"
+    },
+    {
+      "id": "item-heart",
+      "file": "items/heart.png",
+      "bytes": 2088886,
+      "sha256": "3e4be90c44bca0d610282ea3485db84e2cfa4b9863e3700ddad1c7ff72bbede4"
+    },
+    {
+      "id": "material-cave-limestone",
+      "file": "materials/cave-limestone.png",
+      "bytes": 4301889,
+      "sha256": "a63107d036e7c481693ad7013b78faf12d71d6cbc6a1cbedcf8646ddc0bc505f"
+    },
+    {
+      "id": "material-sandstone",
+      "file": "materials/sandstone.png",
+      "bytes": 4044987,
+      "sha256": "f1ce5012469b54db9bbacf529c7dbbc12f252d0e15d644584eda52381a3193f0"
+    },
+    {
+      "id": "material-ancient-runes",
+      "file": "materials/ancient-runes.png",
+      "bytes": 4018449,
+      "sha256": "3ceba0d5800cf32974afcc8b424d155f2d930dbc4be12fc317684aca6de73492"
+    },
+    {
+      "id": "material-timber",
+      "file": "materials/timber.png",
+      "bytes": 3642145,
+      "sha256": "f9824f1a83aa8c925c9da7da312325511e9fe4eb3784da6e8c841b703aed671a"
+    },
+    {
+      "id": "material-shingles",
+      "file": "materials/shingles.png",
+      "bytes": 3928536,
+      "sha256": "6884ea8e54efa0c049c2ab3fd8b2ce22c58201c4bd141539ea10cc03675c523e"
+    },
+    {
+      "id": "material-forged-iron",
+      "file": "materials/forged-iron.png",
+      "bytes": 3546682,
+      "sha256": "5908eb409e17b5c8db0741396f88983d422810d3cc9b06bffd22fbb84a66e300"
+    },
+    {
+      "id": "material-brass",
+      "file": "materials/brass.png",
+      "bytes": 3708685,
+      "sha256": "3ae1f0320218b36e2279dcb82e15a9ac18cb9162c075aa3cb4fc941c2bc90577"
+    },
+    {
+      "id": "material-leather",
+      "file": "materials/leather.png",
+      "bytes": 3920004,
+      "sha256": "88e967db6d9fcfa2e94d06345056de311b8ed4a0ae5d532ae15d88a5fdaa4104"
+    },
+    {
+      "id": "material-blue-crystal",
+      "file": "materials/blue-crystal.png",
+      "bytes": 3501150,
+      "sha256": "f07f7cef7a7e85b2ad035bdd9b49db06289e44758e910e950b39565ab6e27254"
+    },
+    {
+      "id": "material-obsidian",
+      "file": "materials/obsidian.png",
+      "bytes": 3345643,
+      "sha256": "935b3499207ceae64fbe291634d439c3ee122c18f6e78a86dd476c7fb9326419"
+    },
+    {
+      "id": "material-moss-stone",
+      "file": "materials/moss-stone.png",
+      "bytes": 4413862,
+      "sha256": "78e00a02474b5e2360b6fe9468044fe28b5901a0c0d4d0f26278306a93195e19"
+    },
+    {
+      "id": "material-bone",
+      "file": "materials/bone.png",
+      "bytes": 2937856,
+      "sha256": "157709e23859088f3946cd28ff3573a3e44615d2d8a25ff5a8b498de64354c5f"
+    },
+    {
+      "id": "material-scale-hide",
+      "file": "materials/scale-hide.png",
+      "bytes": 3864063,
+      "sha256": "ba2bbb773a380314c623169ebb57bc621559c5870b4dc0641f05e68faf990e43"
+    },
+    {
+      "id": "material-wild-fur",
+      "file": "materials/wild-fur.png",
+      "bytes": 4233685,
+      "sha256": "a2872b06ccd1865632a4286aeee6e6cd26d16cab4c80a3cc40b684595ff8fe64"
+    },
+    {
+      "id": "boss-bark",
+      "file": "bosses/bark.png",
+      "bytes": 3183451,
+      "sha256": "77d3ed61cf2f8dcfb741fdc4d7f63a54b9d0504e299ff553526ad2cc21314c36"
+    },
+    {
+      "id": "boss-dune",
+      "file": "bosses/dune.png",
+      "bytes": 2916272,
+      "sha256": "e8c0cae7bc2cb45de3091881f756ecc23748cc9461f62f43e0e67e8ad9972b6a"
+    },
+    {
+      "id": "boss-bloom",
+      "file": "bosses/bloom.png",
+      "bytes": 3218609,
+      "sha256": "ac2de97f9dfca37ce3b4ad3fa09906d1feaf7036c687350b5712a6719d460d95"
+    },
+    {
+      "id": "boss-geode",
+      "file": "bosses/geode.png",
+      "bytes": 3425180,
+      "sha256": "36c46dbb1e1dde5dfcf2c217b38e7b39a56099255495e8935789801d6079129d"
+    },
+    {
+      "id": "boss-zephyr",
+      "file": "bosses/zephyr.png",
+      "bytes": 3134930,
+      "sha256": "8ef958854aab183bf5938361bd827caf1e65bf4a471a2a9410500abf52735311"
+    },
+    {
+      "id": "boss-final",
+      "file": "bosses/final.png",
+      "bytes": 2718371,
+      "sha256": "b03f0f91b76597976942c7c7d09ea7bbfbf64cef488a4b20539f4500b14bc21d"
+    },
+    {
+      "id": "region-forest",
+      "file": "regions/forest.png",
+      "bytes": 3668124,
+      "sha256": "ff14e4c72c4c676eb4de15655db4de785c07f0cc3b815b2b0af0d48b42e51648"
+    },
+    {
+      "id": "region-desert",
+      "file": "regions/desert.png",
+      "bytes": 3239384,
+      "sha256": "a6f9b6bd4a7d3142483c6a37558cbac74a6a2314f345b1156bd5d1aca3ca1fb7"
+    },
+    {
+      "id": "region-jungle",
+      "file": "regions/jungle.png",
+      "bytes": 3316075,
+      "sha256": "ab6d0e7ebe3588cb8a6602ef6518ab2fe3c98266732192078874b817cabdf39b"
+    },
+    {
+      "id": "region-cave",
+      "file": "regions/cave.png",
+      "bytes": 3651012,
+      "sha256": "557b0e450e1de20fcfc4f7d8be70caafbb4bbe8e2e8e8a6756601d7ad250b379"
+    },
+    {
+      "id": "region-snow",
+      "file": "regions/snow.png",
+      "bytes": 3305257,
+      "sha256": "11fc0287af4f7f95dbb3c78b8e8e2f36f3784712dc4f5d0c7ce1a34e9b69e966"
+    },
+    {
+      "id": "region-sky",
+      "file": "regions/sky.png",
+      "bytes": 3107632,
+      "sha256": "d17158a3e5fe16a1a823408f19afaed5dbbb63e2b5060ac5593da8f8c5e7fbca"
+    }
+  ]
+}

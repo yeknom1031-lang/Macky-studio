@@ -1,0 +1,270 @@
+2026-10-22 local verification
+
+100 unique species; 22 procedural body plans.
+100 species have valid natural spawn candidates in the deterministic world.
+All 100 rigs constructed; 400 sampled animation poses have finite bone matrices.
+100 species selected through the real browser field-guide UI; headings matched.
+No browser console errors during the field-guide pass or final gameplay.
+121 maximum resident terrain chunks; observed maximum 196 animals.
+Seven travel destinations have clear walkable arrival points.
+Origin rebasing tested at east 1,000,000 / north -1,000,000 and back.
+1,000 unique procedural PNG textures and six generated originals exist locally.
+Oak and pine foliage images have actual 0..255 alpha channels.
+Photography and album display tested; two QA photos persisted after reload.
+Tree occlusion expanded for the new foliage canopy and trunks.
+All six application JavaScript files passed node --check.
+
+Actual browser captures: wildlife-guide.png, forest-final.png.
+Quality limitation: procedural models, not scanned photorealistic wildlife.
+No Sites operations or external publication performed in this implementation.
+
+2026-10-22 realism revision (supersedes asset and application-file counts above)
+
+Three specialist subagents: wildlife, vegetation, independent visual review.
+Three screenshot review / correction rounds, all against the local running app.
+Independent final visual ratings (photographic reference = 5): wildlife 3/5,
+forest interior 3/5, open landscape 2/5. These are subjective, not benchmark scores.
+Improvements confirmed in continuous body surfaces, hoof/limb silhouettes, canine
+neck and shoulder joins, bark, rooted trunks, smaller leaf clusters, forest litter,
+directional shadows, cloud and water banding, and distant forest continuity.
+Remaining limitations: simple faces and fur silhouettes, planar leaf cards,
+repeated distant crowns, angular mountain ridges and approximate cloud shading.
+This revision is NOT photorealistic or scan-quality.
+
+All 100 species selected through the final real browser guide; names matched.
+Subagent numerical validation: all 100 rigs, 6000 sampled poses, finite attributes.
+Deer/giraffe/wolf/elephant stance reference points checked on grades up to +/-28%.
+Maximum reported contact reference error 0.4mm. This measures the IK reference
+point, NOT every vertex of the hoof/foot surface, and is not motion-capture proof.
+Final canine recheck: maximum contact reference error about 0.06mm.
+UI walking/rest toggle and visibly different poses confirmed; no continuous-video
+or exhaustive real-time gait review was performed.
+
+Final world regression: 121 resident chunks, 49 detailed and 72 distant;
+observed maximum 196 animals; 66049 horizon vertices. Full streaming exercised at
+(211,191), (1025,-1025), (1000000,-1000000), then back to (211,191).
+All seven biome destinations walkable; all 100 species have valid biome pools.
+Ellipsoidal crown/trunk occlusion checked, including clear and zero-length rays.
+All seven application JS files passed node --check.
+1000 unique procedural PNG files and seven generated original PNG files verified.
+New built-in image-generated asset: dist/assets/originals/forest-floor.png.
+Prompt set: ASSET-PROMPTS.txt.
+
+Browser regression: photography, album image, reload persistence, all 100 guide
+selections, day/dusk/night changes, and return to daytime passed.
+One r128 instanceColor/material compatibility error was found during integration,
+fixed by providing consistent instance attributes, and retested. Zero new browser
+errors after final reload and the complete guide/photography checks.
+Sample UI render counter showed 44 FPS in the forest at 1424x800 CSS viewport with
+pixel-ratio cap 1.25. This is a single machine/scene sample, not a guaranteed rate.
+Main world drawing is suspended while the animated guide is open.
+
+Final actual browser captures in realism/:
+forest-final.png, wolf-final.png, wolf-rest.png, giraffe-pass2.png,
+landscape-pass3.png, night-final.png, dusk-final.png.
+Earlier pass images are retained for comparison. No Sites, publication or commit.
+
+2026-10-23 realism-v2 revision
+
+Three existing specialist subagents reused: wildlife, vegetation, independent
+visual and numerical review. Multiple screenshot/correction passes completed.
+Independent final subjective photographic-reference ratings (5 = photograph):
+animal faces 2-3/5; forest 3/5; clouds 3/5; broad landscape 2-3/5.
+This revision is an improvement, NOT photorealistic or scan-quality.
+
+New local built-in image-generated originals: cloud-panorama.png, fur-tuft.png,
+spruce-twig.png, alpine-cliff.png. Prompts recorded in ASSET-PROMPTS.txt.
+1000 unique procedural PNGs + 11 original PNGs = 1011 source texture images.
+The packing atlas is not counted again. The first three new images have genuine
+alpha ranges 0..253, 0..253 and 0..255 respectively; cliff is opaque RGB.
+The previous pine-needles.png is retained but replaced by spruce-twig at runtime.
+
+Wildlife: socket/lid/iris/pupil/nose detail; short directional fur silhouette
+cards for 53 mammals, at most 180 per animal and hidden past 32m. Grey-white
+flecks in the first revision were corrected by opaque alpha-tested surviving
+fragments, narrower/deeper cards and silhouette-only shading. Wolf muzzle,
+mouth, facial bump, upper eyelid and neck profile revised after actual screenshots.
+Separate floating inner-ear geometry removed; the ear base was then embedded
+in the skull after a further independent review. Guide has a face-focus toggle.
+Final validation: 100 species, 6000 sampled poses, finite values and normalized
+weights. 786326 body vertices and 27204 fur vertices across all species.
+Foot contact reference max errors on flat/+/-15%/+/-28% grades: wolf 0.059mm,
+deer 0.072mm, giraffe 0.129mm, elephant 0.443mm. These refer to IK reference
+points, not the whole foot surface, gait-video quality or motion capture.
+
+Vegetation: continuous tapered trunks, curved branch geometry/shadows, leaf
+twist/normals, approximate directional translucency and close-up bump. Spruce
+texture stems aligned and rooted to supporting twigs without increasing card
+counts. Distant crowns use complementary dithering. Found and corrected the
+r128 BasicMaterial cameraPosition issue using modelViewMatrix distance, plus
+per-chunk visibility margins that had exposed a belt of bare trunks.
+70-tree numerical sample: 181467 triangles / 13 batches, distant 3768 / 4;
+finite normals/attributes/transforms, bounds and ownership validated by subagent.
+
+Landscape: ridge/backbone/spur terrain, macro cliff material versus near rock,
+slope-dependent snow. Cloud atlas projected at a corrected aspect; overlap
+sampling removes a visible vertical blue seam. Reflections use the same atlas
+with softer contrast and mip bias. Time-of-day and weather modulation retained.
+Horizon cache is bounded to 66049 samples; a 128m horizontal shift reuses 65021
+(98.44%). This is sample reuse, not proof that all streaming stalls are removed.
+
+Independent final world regression using real Three.js and application code,
+TextureLoader stubbed (no GPU validation): five positions, 125 updates each,
+(211,191) -> (1025,-1025) -> (1000000,-1000000) -> (-1000000,1000000) -> start.
+121 maximum resident chunks, 49 detailed / 72 distant when fully loaded;
+maximum 196 animals; horizon cache 66049; finite terrain/animal positions and
+rebased local coordinates under 2048. All 100 species have valid habitat pools.
+All seven destinations have height > 6, matching biome, canMove=true, and at
+least 12.38m tree clearance. Trunk/crown occlusion true; clear/zero-length false.
+
+Final browser UI: all 100 selections matched visible headings after final ear
+fix. Wolf/deer close-ups, full-body view, day/dusk/night, photography and album
+checked. One photo persisted across reload under isolated profile realism-v2.
+No new browser console errors after final reload/100-species pass. All seven
+application JavaScript files passed node --check.
+Actual captures in realism-v2/: wolf-face-verified.png (final ear fix),
+wolf-face-final.png (before final ear fix), deer-face-final.png,
+wolf-full-final.png, forest-pass3.png, landscape-final.png, dusk-final.png,
+night-final.png, album-final.png. Earlier failed-pass images retained.
+
+Performance: intermediate UI samples ranged 9-19 FPS at 1280x720; later 22 FPS
+at 571x764, scene-dependent. Other applications/renderers/Metal compilation were
+simultaneously using substantial CPU. Viewport changed during QA. These are
+observations, NOT controlled before/after benchmarks or a claimed speedup.
+No unrelated processes were terminated. No stable FPS guarantee is made.
+
+Remaining visible limits: procedural rounded faces and neck ridges, limited fur
+silhouette, sparse conifer crowns, repeated distant trees, rounded mountain
+masses and uniform rock patterns. Clouds are a repeating 2D sky layer, not volume.
+No Sites, external publication, recurring automation, branch or commit created.
+
+2026-10-23 expansion-300 revision
+
+Three existing subagents reused for animal implementation, forest implementation
+and independent screenshot/numerical review. Multiple correction passes were
+made against actual local browser screenshots. This is still NOT photorealistic.
+
+Catalog: 300 unique IDs and names, preserving original IDs. Added 200 entries:
+100 mammals, 70 birds, 22 reptiles, 5 amphibians, 3 insects; 22 shared body plans.
+Scientific names are present for the new 200 and 10 concretized original names.
+The remaining original taxonomy was not comprehensively audited. These are
+species-specific parameter variations, not 300 independently sculpted models.
+
+Animal changes: family skull profiles, continuous neck/body lofts, embedded
+upper-leg roots, curved/unequal antler branches, wolf cheek/neck/muzzle tuning,
+and irregular black/tan/white painted-dog patches instead of giraffe-like cells.
+300 species / 18,000 sampled poses passed finite attributes, normalized skin
+weights, indices, bone matrices and fur-distance LOD. Aggregate body vertices
+2,416,339; fur vertices 58,920; 117 furred species, max 180 cards per animal.
+Root UI selected all 300 and matched headings after the last muzzle correction.
+Japanese and Latin search, zero results, snow-habitat filtering (27 results),
+filtered previous/next wrap, and face/full-body views passed.
+
+Forest: 70 -> 121 placement candidates per 128m chunk with local spacing.
+11-14 asymmetric conifer tiers; 3 broadleaf habits; photo-based needle fans
+cover 2.34x the alpha area without adding cards. Photo crown proxy mip black
+fringes were found in pass1 and fixed by transparent-RGB bleeding. Detailed
+leaves crossfade at 95-150m, 64m leaf tiles support smaller visibility ranges.
+Dense understory patches added after the final forest screenshot exposed a
+bare floor. Final 100-tree sample: 265,196 triangles / 21 batches, +7.79% over
+the preceding pass, distant 5,796 / 4. Transforms, attributes, bounds, geometry
+ownership, shadow-map sharing, LOD and elevations 150/210m checked by subagent.
+
+Terrain: warped main ridges, spurs and erosion replace rounded mountain masses;
+normal samples align across chunks and the bounded horizon cache. Slope/snow
+materials revised; distant cliff contrast attenuated and snowy rock bump reduced.
+Grass/forest/autumn classification occurs per vertex before blending to avoid
+strong wrong-biome material bands. Weak grayscale atlas variation still uses an
+interpolated family ID; this is not a claim to remove every tile-boundary artifact.
+Mountain travel points now require terrain normal.y >= .91 and face the lowest
+120m-away view. Alpine point normal.y .9466, snow .9436; correct biome and no trees.
+
+Independent real-Three regression (texture loading stubbed): five locations
+including +/-1,000,000m and return; 121 chunks (49 detailed,72 distant), maximum
+196 animals, horizon samples 66,049, queue drained, finite/rebased coordinates.
+All seven biome pools nonempty. Trunk/crown blocked rays and clear/zero rays pass.
+Animal aiming excludes the distant horizon outside its <=150m range, and tree
+ray tests skip chunks outside the ray corridor without changing tree tests.
+
+Browser: day/dusk/night, photography, album and reload persistence passed under
+isolated profile wildlife-300-qa (one photo). No console errors/warnings after
+the final reload/300-species loop. Eight application JS files passed syntax.
+1000 procedural PNGs + 11 AI original PNGs remain; no new AI images this revision.
+Screenshots: expansion-300/. Final animal image wolf-face-last.png; other useful
+captures forest-camera-verified.png, alpine-arrival-verified.png, night-verified.png,
+wild-dog-verified.png, album-verified.png. Earlier passes retained for comparison.
+Viewport changed from 1280x720 to 571x764 during QA, so images/FPS are not a
+controlled benchmark. Observed UI samples included 41 FPS (forest,1280x720),
+30 FPS (mountain,571x764) and 22 FPS (dusk,571x764). No speedup guarantee.
+Independent evaluation: neck and legs improved, painted dog easier to recognize;
+fine animal anatomy/fur, forest-floor coverage and mountain repetition remain
+simplified. Approximate visual scores 2-3/5, not photographic equivalence.
+
+2026-10-23 living-cycle revision
+
+WorldClimate owns saved world time, 4/12/24-minute day speed, automatic advance
+and weather override. Default is automatic time / 12 minutes / natural weather.
+Smooth weather fronts have 113 world-second intervals, independent of the
+720-world-second day; spatial modulation is continuous. Menus and document
+visibility pause clock and audio. Hidden-page audio suspension is immediate;
+resuming does not catch up off-screen time. Time-slider changes save on change.
+
+Independent climate checks: snapshot/legacy restore, all three day speeds,
+15-120 FPS equivalence, midnight and weather-key continuity, +/-900m boundaries.
+Maximum sampled boundary differences: spatial 8.71e-9, weather key 5.66e-8.
+Same time on following day cloud cover changed .0533 -> .7582, not a daily loop.
+
+Atmosphere: two differently moving/morphing photo-cloud layers, coverage-driven
+formation, crater/maria-like moon surface and approximate 29.53-day phase.
+1,441 samples passed finite values, normalized directions and orthogonal bases.
+Midnight moonlight difference 2.4e-9; direction difference 5.7e-8. At 20:10,
+clear/cloudy/rain moonlight .895/.432/.169 for tested cover .1/.6/.95. Paused
+updates and restored state were deterministic; +/-1e6 coordinates remained finite.
+Clear-sky fixed coverage bias removed after visual review; night clouds dimmed.
+Main solar/lunar shadow shares one directional light. Hemisphere colors blend
+continuously. Water receives moon glint and matching primary cloud UV/time/cover;
+reflection does not duplicate the second layer or every sky-noise distortion.
+
+Rain: 900 short line segments replace square points. Paired endpoints wrap
+together so the rain volume boundary cannot produce 70m-long streaks. Wind,
+fog, rain intensity, sky and ambient sound follow the same climate sample.
+
+Wildlife: activity profiles for all 300 (136 diurnal, 59 nocturnal, 70 crepuscular,
+35 cathemeral); game approximations, not complete biological models. Activity,
+rest, wing folding and altitude interpolate; nearby player alert wakes animals.
+28,800 activity cases and 18,000 poses passed. 60,600 interpolation samples had
+max joint changes .0596rad for .01 flight steps, .0183rad for rest steps.
+Final folded-wing fix: all 90 birds had wing geometry above ground, minimum
+.0195 local units. 720 flight=1 poses hash-identical before/after folding fix.
+Browser review found upward-pointing resting owl wings; revised rotation folds
+them alongside the body/tail. Final day/night owl images confirm regression fixed.
+
+Independent real-Three world checks (texture loads stubbed): five positions
+including +/-1e6 and return, 121 chunks / 196 animals / 66,049 horizon samples.
+Eagle, butterfly and barn owl retain UUID and visibility across day/night. After
+20 seconds, daytime fliers at rest were <.00002m above ground and owl ~10.04m
+aloft. Largest sampled altitude change .0681m/frame at 60 FPS, not an abrupt pop.
+Repeated updates at identical physical time did not advance wind/activity/flight.
+
+Audio mock verifies day birds -> night insects/forest owl, rainfall gain 0 -> .65,
+night music gain .5 -> .4, pause/resume and no burst of delayed notes. This is
+synthetic Web Audio and scheduling validation, not recorded audio or listening QA.
+
+Final browser reload kept one photo and saved manual time .73, clear weather,
+automatic OFF, 4-minute speed. All 300 species selected at day and night (600
+selections): visible name and nonempty activity status matched; zero failures and
+no console errors/warnings. Nine application JavaScript files passed node --check.
+Actual captures in living-cycle/: clear-final.png, rain-final.png,
+owl-day-final.png and owl-night-final.png. Failed/earlier passes retained.
+Independent visual review confirms clear/rain coverage, haze and streak differences,
+and the owl fold fix; remaining procedural shapes and photo-cloud compositing
+are visible. Clouds are two texture layers, NOT volumetric scattering.
+
+Actual automatic-time check: 2026-10-22T16:03:10.713Z HUD 17:31 dusk ->
+16:04:06.054Z HUD 23:02 night/moonlight, 55.34 real seconds at 4-minute day.
+No slider changes occurred in that interval. Dusk and night-natural-final.png
+record that progression; moon-final.png is a separate manual 20:09 preview.
+This distinguishes natural advancement from manually seeking the clock.
+Final settings restored to automatic ON / 12-minute day / natural weather and
+confirmed after reload. One photo remains in the isolated QA profile. Final
+reload console errors/warnings: zero. settings-final.png records the controls.

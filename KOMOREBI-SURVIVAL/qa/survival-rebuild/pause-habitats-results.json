@@ -1,0 +1,37 @@
+{
+  "passed": 21,
+  "checks": [
+    "Normal play retains HP and held item, removes persistent quest/navigation panels",
+    "Pause includes inventory, next goal, and previous save point",
+    "Pause freezes simulation",
+    "Inventory is reachable through pause menu",
+    "Before first save, checkpoint screen clearly says no save",
+    "Pause offers 20 load slots but no remote save buttons",
+    "Every gatherable material has a location guide",
+    "Resume returns to captured mouse look",
+    "Resource habitats are generated around the original landscape",
+    "Old random field resource scatter is gone",
+    "Iron exists only in rock veins and cave walls",
+    "Crystals grow along cave walls",
+    "Wood lies at real tree bases or fallen logs",
+    "Resin attaches to real tree trunks",
+    "Stone flakes belong to outcrops, boulders and riverbanks",
+    "Fungi grow by cave walls and damp jungle logs",
+    "Starter wood and stone remain reachable nearby",
+    "Harvestable pieces are separate from persistent habitat geometry",
+    "Resource IDs are unique",
+    "Previous save point includes real saved slot and cave location",
+    "Mining requires a hammer and leaves source rock behind"
+  ],
+  "habitats": {
+    "wood": 153,
+    "stone": 180,
+    "fiber": 38,
+    "berry": 39,
+    "resin": 39,
+    "ore": 21,
+    "crystal": 5,
+    "spore": 13
+  },
+  "errors": []
+}

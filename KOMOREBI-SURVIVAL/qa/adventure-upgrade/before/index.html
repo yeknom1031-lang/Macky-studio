@@ -1,0 +1,14 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102e31"><link rel="icon" href="data:,">
+<title>KOMOREBI SURVIVAL — 五つの封石</title><link rel="stylesheet" href="survival.css"></head><body>
+<canvas id="world" aria-label="KOMOREBI SURVIVALの3Dゲーム画面"></canvas>
+<div id="vignette"></div><div id="hurt"></div>
+<button id="pauseButton" aria-label="ポーズメニューを開く">Ⅱ <kbd>Esc</kbd></button>
+<div id="bossbar" hidden><span id="bossName"></span><div class="meter"><i id="bossHealth"></i></div></div>
+<div id="crosshair">＋</div><div id="interaction"></div><div id="construction" hidden><span id="constructionName"></span><div class="meter"><i id="constructionFill"></i></div><small>左クリック長押しで作業 · 途中から再開できます</small></div>
+<div id="toast" role="status"></div>
+<footer><div class="vitals"><div class="healthlabel"><span>HP <b id="hpText">100</b></span></div><div class="meter health"><i id="hp"></i></div></div><div id="hand"><span id="handIcon"></span><div><small>手に持っているもの</small><strong id="handName">素手</strong></div></div></footer>
+<section id="welcome"><div class="welcomeShade"></div><div class="welcomeContent"><div class="eyebrow">A WORLD WAITING TO BE REKINDLED</div><h1>KOMOREBI<br><em>SURVIVAL</em></h1><p class="subtitle">五つの封石</p><p class="intro">木を拾い、火を灯し、まだ見ぬ空へ。<br>世界に散った五つの石が、最後の扉を開く。</p><button id="newGame" class="primary">冒険をはじめる <span>→</span></button><button id="loadGame">焚き火の記録から続ける</button><div class="welcomeMeta">探索 / 制作 / 建築 / ボス戦<br>このMacで遊ぶ、ひとりのサバイバル冒険</div></div><div class="chapter">01 — THE FIRST EMBER<br><span>あなたの焚き火から、物語がはじまる。</span></div></section>
+<dialog id="modal"><div class="modalhead"><div><small id="modalEyebrow">KOMOREBI SURVIVAL</small><h2 id="modalTitle"></h2></div><button id="modalBack" hidden>← ポーズへ</button><button id="closeModal" aria-label="閉じる">×</button></div><div id="modalBody"></div></dialog>
+<button id="resumeLook" hidden>クリックして冒険に戻る<small>マウスを動かして見回す · Esc で一時停止</small></button>
+<div id="error" hidden></div>
+<script src="vendor/three.min.js"></script><script src="wildlife-catalog.js"></script><script src="wildlife.js"></script><script src="vegetation.js"></script><script src="world.js"></script><script src="soundscape.js"></script><script src="atmosphere.js"></script><script src="climate.js"></script><script src="survival-landscape.js"></script><script src="survival-data.js"></script><script src="survival-world.js"></script><script src="survival-sky.js"></script><script src="survival.js"></script></body></html>

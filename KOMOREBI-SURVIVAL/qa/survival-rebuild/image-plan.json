@@ -1,0 +1,391 @@
+{
+  "method": "built-in image_gen",
+  "budget": 1000,
+  "planned": 64,
+  "jobs": [
+    {
+      "id": "item-wood",
+      "file": "items/wood.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a bundle of weathered split hardwood logs tied with rough twine. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-stone",
+      "file": "items/stone.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: three irregular grey granite stones with mineral flecks. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-fiber",
+      "file": "items/fiber.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a coil of natural green plant fibers and two long grass leaves. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-ore",
+      "file": "items/ore.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a chunk of dark rock threaded with raw iron ore. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-crystal",
+      "file": "items/crystal.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a cluster of luminous translucent blue quartz crystals. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-resin",
+      "file": "items/resin.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: two glossy golden amber tree resin droplets. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-hide",
+      "file": "items/hide.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a folded rough brown animal pelt. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-fang",
+      "file": "items/fang.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: two curved ivory beast fangs tied with leather. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-shell",
+      "file": "items/shell.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a chitinous segmented ochre armored carapace. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-spore",
+      "file": "items/spore.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a small purple bioluminescent mushroom releasing glowing spores. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-wing",
+      "file": "items/wing.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: three elegant blue-green iridescent feathers. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-ember",
+      "file": "items/ember.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: an ancient burning amber coal inside a black stone cage. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-berry",
+      "file": "items/berry.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a handful of red forest berries with leaves. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-meal",
+      "file": "items/meal.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a travel meal of bread and roasted vegetables in a wooden bowl. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-fuel",
+      "file": "items/fuel.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a brass-capped glass fuel canister with luminous turquoise liquid. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-arrow",
+      "file": "items/arrow.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: three flint arrows with feather fletching. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-bomb",
+      "file": "items/bomb.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a handmade round iron bomb with a short unlit rope fuse. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-hammer",
+      "file": "items/hammer.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a sturdy steel crafting hammer with worn wooden handle and leather grip. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-sword",
+      "file": "items/sword.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a finely worked iron longsword with simple brass crossguard and leather hilt. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-spear",
+      "file": "items/spear.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a long hunting spear with steel leaf-shaped tip and wood shaft. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-axe",
+      "file": "items/axe.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a heavy double-edged forged iron battle axe with carved wooden handle. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-daggers",
+      "file": "items/daggers.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a matched pair of short curved daggers with leather wrapped handles. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-bow",
+      "file": "items/bow.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: an elegant curved hardwood hunting bow with taut string. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-staff",
+      "file": "items/staff.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a dark wooden mage staff with a glowing blue crystal held by bronze prongs. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-boomerang",
+      "file": "items/boomerang.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a graceful curved wooden boomerang with turquoise inlay. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-gravity",
+      "file": "items/gravity.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a pair of ancient brass articulated gauntlets with floating teal mineral stones. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-stormblade",
+      "file": "items/stormblade.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: an ornate steel sword with branching turquoise lightning etched into its blade. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-shield",
+      "file": "items/shield.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a round reinforced wooden shield with an iron rim and amber central boss. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-jetpack",
+      "file": "items/jetpack.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a crafted brass jetpack with two compact tanks, leather harness and twin blue exhaust nozzles. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-campfire",
+      "file": "items/campfire.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a small campfire of detailed logs encircled by stones with amber flames. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-house",
+      "file": "items/house.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a detailed small timber survival cabin with shingle roof and open doorway, isometric object view. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-chest",
+      "file": "items/chest.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a wooden storage chest with iron straps and a brass latch. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-seal-forest",
+      "file": "items/seal-forest.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a palm-sized emerald-green ancient stone seal carved with a branching tree symbol. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-seal-desert",
+      "file": "items/seal-desert.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a palm-sized amber ancient stone seal carved with a spiral sand dune symbol. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-seal-jungle",
+      "file": "items/seal-jungle.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a palm-sized jade ancient stone seal carved with a curling vine symbol. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-seal-cave",
+      "file": "items/seal-cave.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a palm-sized violet crystal ancient stone seal carved with a branching cave symbol. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-seal-sky",
+      "file": "items/seal-sky.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a palm-sized turquoise ancient stone seal carved with a feather and wind symbol. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "item-heart",
+      "file": "items/heart.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: individual high quality inventory icon for a naturalistic 3D wilderness survival game. Subject: a luminous golden-red heart-shaped faceted final boss stone with dark ancient shell. A single isolated object, complete silhouette, centered with generous clean margins, three-quarter view, tactile realistic material detail, elegantly painted game item rendering, warm light from top left, readable at 96 pixels. Transparent background. No text, no labels, no logo, no extra objects, no frame, not low-poly, not cartoon."
+    },
+    {
+      "id": "material-cave-limestone",
+      "file": "materials/cave-limestone.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: rough grey-blue limestone cave wall, crevices, mineral veins, moist subtle sheen. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-sandstone",
+      "file": "materials/sandstone.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: weathered warm sandstone blocks and natural erosion, golden fine sand. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-ancient-runes",
+      "file": "materials/ancient-runes.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: dark weathered teal temple stone with restrained thin gold and turquoise geometric runes. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-timber",
+      "file": "materials/timber.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: rich brown rough-sawn wooden planks with grain, knots, small gaps. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-shingles",
+      "file": "materials/shingles.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: overlapping aged cedar roof shingles with subtle moss edges. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-forged-iron",
+      "file": "materials/forged-iron.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: hammered dark forged iron with subtle scratches, irregular restrained metal. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-brass",
+      "file": "materials/brass.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: worn warm brass with small scratches and subtle green patina. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-leather",
+      "file": "materials/leather.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: rich dark brown leather with natural pores and shallow creases. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-blue-crystal",
+      "file": "materials/blue-crystal.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: large blue translucent mineral facets with pale internal inclusions, continuous surface. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-obsidian",
+      "file": "materials/obsidian.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: black volcanic obsidian with faint glowing red fissures. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-moss-stone",
+      "file": "materials/moss-stone.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: old grey stone masonry with small patches of thick moss and weathering. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-bone",
+      "file": "materials/bone.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: warm ivory animal bone surface, pores and organic striations. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-scale-hide",
+      "file": "materials/scale-hide.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: organic overlapping ochre and green reptilian armored scales. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "material-wild-fur",
+      "file": "materials/wild-fur.png",
+      "transparent": false,
+      "prompt": "Use case: photorealistic-natural. Asset type: seamless tileable albedo texture for a 3D game material. Subject: detailed coarse dark brown and grey animal fur aligned in natural clumps. Square image, surface fills the entire frame edge to edge, orthographic front-on view, flat diffuse illumination without baked directional shadows, rich natural detail and plausible scale, seamlessly repeating edges. No perspective, no objects in scene, no lettering, no border, no watermark. This is a production surface texture, not a concept scene."
+    },
+    {
+      "id": "boss-bark",
+      "file": "bosses/bark.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: boss field-journal portrait for a high-quality 3D wilderness survival game. Subject: a powerful ancient forest guardian wolf with antlers and moss-covered bark armor. Show a complete creature in a dynamic three-quarter stance, intricate believable anatomical structure and beautiful tactile materials. Painterly naturalistic fantasy art, imposing readable silhouette, restrained muted background appropriate to creature, dramatic natural lighting, square composition. No words, no logo, no user interface, not low-poly."
+    },
+    {
+      "id": "boss-dune",
+      "file": "bosses/dune.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: boss field-journal portrait for a high-quality 3D wilderness survival game. Subject: a gigantic armored amber desert scorpion queen with sandstone armor. Show a complete creature in a dynamic three-quarter stance, intricate believable anatomical structure and beautiful tactile materials. Painterly naturalistic fantasy art, imposing readable silhouette, restrained muted background appropriate to creature, dramatic natural lighting, square composition. No words, no logo, no user interface, not low-poly."
+    },
+    {
+      "id": "boss-bloom",
+      "file": "bosses/bloom.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: boss field-journal portrait for a high-quality 3D wilderness survival game. Subject: a terrifying yet beautiful jungle carnivorous flower creature with vines and purple petals. Show a complete creature in a dynamic three-quarter stance, intricate believable anatomical structure and beautiful tactile materials. Painterly naturalistic fantasy art, imposing readable silhouette, restrained muted background appropriate to creature, dramatic natural lighting, square composition. No words, no logo, no user interface, not low-poly."
+    },
+    {
+      "id": "boss-geode",
+      "file": "bosses/geode.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: boss field-journal portrait for a high-quality 3D wilderness survival game. Subject: a massive ancient crystal and limestone golem glowing violet from internal fractures. Show a complete creature in a dynamic three-quarter stance, intricate believable anatomical structure and beautiful tactile materials. Painterly naturalistic fantasy art, imposing readable silhouette, restrained muted background appropriate to creature, dramatic natural lighting, square composition. No words, no logo, no user interface, not low-poly."
+    },
+    {
+      "id": "boss-zephyr",
+      "file": "bosses/zephyr.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: boss field-journal portrait for a high-quality 3D wilderness survival game. Subject: a majestic enormous turquoise feathered sky wyvern with four sweeping wings. Show a complete creature in a dynamic three-quarter stance, intricate believable anatomical structure and beautiful tactile materials. Painterly naturalistic fantasy art, imposing readable silhouette, restrained muted background appropriate to creature, dramatic natural lighting, square composition. No words, no logo, no user interface, not low-poly."
+    },
+    {
+      "id": "boss-final",
+      "file": "bosses/final.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: boss field-journal portrait for a high-quality 3D wilderness survival game. Subject: an ancient humanoid obsidian king with six horn-like crown spires, fiery amber heart and floating stone armor. Show a complete creature in a dynamic three-quarter stance, intricate believable anatomical structure and beautiful tactile materials. Painterly naturalistic fantasy art, imposing readable silhouette, restrained muted background appropriate to creature, dramatic natural lighting, square composition. No words, no logo, no user interface, not low-poly."
+    },
+    {
+      "id": "region-forest",
+      "file": "regions/forest.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: region journal illustration in a wilderness survival game. Subject: a rich mountain forest with layered real-looking trees, valley stream and weathered ancient circular ruins. Landscape composition, rich natural materials, detailed yet atmospheric high-end game illustration, believable scale and depth, beautiful natural light, no characters, no text, no logos, no UI."
+    },
+    {
+      "id": "region-desert",
+      "file": "regions/desert.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: region journal illustration in a wilderness survival game. Subject: golden sandstone desert canyons, eroded cliffs, wind-carved arches and a hidden ruin. Landscape composition, rich natural materials, detailed yet atmospheric high-end game illustration, believable scale and depth, beautiful natural light, no characters, no text, no logos, no UI."
+    },
+    {
+      "id": "region-jungle",
+      "file": "regions/jungle.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: region journal illustration in a wilderness survival game. Subject: a dense lush emerald jungle with layered leaves, massive roots, orchids and mysterious overgrown temple. Landscape composition, rich natural materials, detailed yet atmospheric high-end game illustration, believable scale and depth, beautiful natural light, no characters, no text, no logos, no UI."
+    },
+    {
+      "id": "region-cave",
+      "file": "regions/cave.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: region journal illustration in a wilderness survival game. Subject: a deep rocky limestone cavern with detailed stalactites, violet-blue crystals and a distant giant stone doorway. Landscape composition, rich natural materials, detailed yet atmospheric high-end game illustration, believable scale and depth, beautiful natural light, no characters, no text, no logos, no UI."
+    },
+    {
+      "id": "region-snow",
+      "file": "regions/snow.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: region journal illustration in a wilderness survival game. Subject: a grand snowy alpine ridge with sharp distant mountains and conifer forest below. Landscape composition, rich natural materials, detailed yet atmospheric high-end game illustration, believable scale and depth, beautiful natural light, no characters, no text, no logos, no UI."
+    },
+    {
+      "id": "region-sky",
+      "file": "regions/sky.png",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: region journal illustration in a wilderness survival game. Subject: a network of rocky floating islands with roots, moss, trees and ancient impossible stone rings above clouds. Landscape composition, rich natural materials, detailed yet atmospheric high-end game illustration, believable scale and depth, beautiful natural light, no characters, no text, no logos, no UI."
+    }
+  ]
+}

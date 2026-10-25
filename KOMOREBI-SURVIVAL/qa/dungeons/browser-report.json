@@ -1,0 +1,31 @@
+{
+  "initialEnabled": 0,
+  "initialKnown": [
+    "hammer",
+    "meal",
+    "campfire"
+  ],
+  "routes": [
+    {
+      "id": "dungeon-0",
+      "endZ": 74.49999999999818,
+      "blueprints": 6
+    },
+    {
+      "id": "dungeon-1",
+      "endZ": 74.49999999999818,
+      "blueprints": 5
+    },
+    {
+      "id": "dungeon-2",
+      "endZ": 74.49999999999818,
+      "blueprints": 5
+    }
+  ],
+  "spikeHp": 82,
+  "pitHp": 78,
+  "deathBagRecoverable": true,
+  "saveKnown": 16,
+  "chests": 3,
+  "enemies": 0
+}
