@@ -1,0 +1,104 @@
+{
+  "villages": [
+    {
+      "name": "木立の村",
+      "x": 14,
+      "z": -195
+    },
+    {
+      "name": "風見の村",
+      "x": 55,
+      "z": -482
+    },
+    {
+      "name": "水音の村",
+      "x": 362,
+      "z": -691
+    },
+    {
+      "name": "琥珀の村",
+      "x": -119,
+      "z": -1149
+    },
+    {
+      "name": "高原の村",
+      "x": 440,
+      "z": -1041
+    },
+    {
+      "name": "星待ちの村",
+      "x": -1519,
+      "z": -502
+    }
+  ],
+  "houses": [
+    {
+      "id": "village-0-house-0",
+      "z": 0.6499999999994373,
+      "y": 0.29999999999999716
+    },
+    {
+      "id": "village-1-house-0",
+      "z": 0.6499999999994088,
+      "y": 0.30000000000000004
+    },
+    {
+      "id": "village-2-house-0",
+      "z": 0.6499999999994088,
+      "y": 0.29999999999999716
+    },
+    {
+      "id": "village-3-house-0",
+      "z": 0.650000000008049,
+      "y": 0.3000000000000007
+    },
+    {
+      "id": "village-4-house-0",
+      "z": 0.650000000008049,
+      "y": 0.3000000000000007
+    },
+    {
+      "id": "village-5-house-0",
+      "z": 0.6499999999994088,
+      "y": 0.2999999999999998
+    }
+  ],
+  "lake": {
+    "x": -64.52941988665937,
+    "z": -47.28587494264234,
+    "y": -50.67410782969033
+  },
+  "swimming": {
+    "diving": true,
+    "drowning": true,
+    "surfaceRecovery": true
+  },
+  "flashlightCrafted": true,
+  "saveCompatible": true,
+  "templeStairs": {
+    "z": 0.16666666666669983,
+    "y": 2.6
+  },
+  "flashlightBeam": true,
+  "particlePool": 96,
+  "pictures": [
+    "village",
+    "temple",
+    "water-surface",
+    "underwater",
+    "sword",
+    "flashlight",
+    "pickup",
+    "elephant"
+  ],
+  "enemies": 0,
+  "whiteUI": {
+    "modal": "rgb(255, 255, 252)",
+    "button": "rgb(255, 255, 255)"
+  },
+  "isolatedElephantRender": {
+    "pixelRatio": 1,
+    "calls": 1,
+    "triangles": 10816
+  }
+}

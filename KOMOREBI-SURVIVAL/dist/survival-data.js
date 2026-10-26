@@ -4,6 +4,7 @@
 const items={};
 function item(id,name,icon,price=0,extra={}){items[id]={id,name,icon,price,...extra};}
 item('wood','木材','🪵',3);item('stone','石','🪨',3);item('fiber','植物の繊維','🌿',4);item('ore','鉄鉱石','⛏',12);item('crystal','青い結晶','💎',25);item('resin','樹脂','🟠',9);item('hide','獣の毛皮','🐾',15);item('fang','鋭い牙','🦷',18);item('shell','硬い甲殻','🐚',20);item('spore','発光胞子','🍄',23);item('wing','風の羽根','🪶',30);item('ember','古代の火種','🔥',60);item('berry','野いちご','🍒',3,{heal:18});item('meal','旅人の保存食','🍲',25,{heal:65});item('fuel','濃縮ジェット燃料','🧪',24);item('arrow','矢','➶',2);item('bomb','炸裂爆弾','💣',35,{weapon:true,damage:65,range:22,cooldown:1.1,kind:'bomb'});
+item('flashlight','懐中電灯','🔦',50,{light:true});
 item('hammer','作業ハンマー','🔨',0,{weapon:true,damage:14,range:3.6,cooldown:.7,kind:'hammer'});
 item('sword','鉄の剣','⚔',70,{weapon:true,damage:25,range:4.2,cooldown:.4,kind:'sword'});
 item('spear','狩人の槍','🔱',65,{weapon:true,damage:23,range:6.5,cooldown:.6,kind:'spear'});
@@ -28,9 +29,9 @@ for(const b of bosses)item(b.stone,biomes.find(v=>v.id===b.biome).name+'の封�
 item('heart','終焉の心石','✺',0,{key:true});
 const recipes=[];
 function recipe(id,cost,time,count=1){recipes.push({id,cost,time,count});}
-recipe('hammer',{wood:2,stone:2},4);recipe('sword',{wood:3,ore:5},12);recipe('spear',{wood:5,stone:4,fiber:2},9);recipe('axe',{wood:5,ore:7},16);recipe('daggers',{ore:6,fang:3},13);recipe('bow',{wood:6,fiber:6},12);recipe('arrow',{wood:1,stone:1},3,8);recipe('staff',{wood:4,crystal:6,spore:2},20);recipe('boomerang',{wood:5,wing:2},12);recipe('bomb',{stone:2,resin:2,ore:1},6,3);recipe('gravity',{ore:8,crystal:10,wing:4},25);recipe('stormblade',{ore:10,ember:2,wing:3},30);recipe('shield',{wood:6,ore:4,hide:2},15);recipe('jetpack',{ore:12,crystal:6,hide:4},35);recipe('fuel',{resin:2,spore:1},5,2);recipe('meal',{berry:4,fiber:1},4,2);recipe('campfire',{wood:6,stone:4},12);recipe('chest',{wood:10,ore:2},25);recipe('house',{wood:40,stone:24,fiber:16},120);
+recipe('flashlight',{wood:2,ore:3,crystal:1},10);recipe('hammer',{wood:2,stone:2},4);recipe('sword',{wood:3,ore:5},12);recipe('spear',{wood:5,stone:4,fiber:2},9);recipe('axe',{wood:5,ore:7},16);recipe('daggers',{ore:6,fang:3},13);recipe('bow',{wood:6,fiber:6},12);recipe('arrow',{wood:1,stone:1},3,8);recipe('staff',{wood:4,crystal:6,spore:2},20);recipe('boomerang',{wood:5,wing:2},12);recipe('bomb',{stone:2,resin:2,ore:1},6,3);recipe('gravity',{ore:8,crystal:10,wing:4},25);recipe('stormblade',{ore:10,ember:2,wing:3},30);recipe('shield',{wood:6,ore:4,hide:2},15);recipe('jetpack',{ore:12,crystal:6,hide:4},35);recipe('fuel',{resin:2,spore:1},5,2);recipe('meal',{berry:4,fiber:1},4,2);recipe('campfire',{wood:6,stone:4},12);recipe('chest',{wood:10,ore:2},25);recipe('house',{wood:40,stone:24,fiber:16},120);
 // Knowledge persists independently of items, including after death.
-const basicRecipes=['hammer','campfire','meal'];
+const basicRecipes=['hammer','campfire','meal','flashlight'];
 const blueprintSets=[['chest','house','spear','bow','arrow','shield'],['sword','axe','daggers','boomerang','bomb'],['jetpack','fuel','staff','gravity','stormblade']];
 function knows(state,id){return basicRecipes.includes(id)||!!state.blueprints?.includes(id);}
 function upgradeKnowledge(state){state.blueprints||=[];state.openedDungeonChests||=[];}
@@ -43,12 +44,15 @@ const enemies=Object.entries(names).flatMap(([biome,ns])=>ns.map((name,i)=>({id:
 function canPay(bag,cost){return Object.entries(cost).every(([k,n])=>(bag[k]||0)>=n);}
 function pay(bag,cost){if(!canPay(bag,cost))return false;for(const[k,n]of Object.entries(cost)){bag[k]-=n;if(!bag[k])delete bag[k];}return true;}
 function add(bag,id,n=1){if(!items[id]||!Number.isInteger(n)||n<=0)return;bag[id]=(bag[id]||0)+n;}
-function fresh(){return{version:1,terrainVersion:2,caveVersion:2,caveBrightness:70,worldTime:259.2,dayLength:720,automaticTime:true,weatherMode:'auto',time:0,x:0,z:24,y:root.EmberTerrain?root.EmberTerrain.floor(0,24,0):0,yaw:.15,pitch:-.1,hp:100,stamina:100,money:0,fuel:0,hand:null,quickSlots:[null,null,null,null,null],activeSlot:0,back:null,shield:false,inventory:{},blueprints:[],openedDungeonChests:[],inserted:[],bosses:[],cleared:false,finalAwake:false,checkpoint:null,structures:[],piles:[],jobs:[],bags:[],depleted:{},enemyStates:{},nextId:1};}
+function fresh(){return{version:1,terrainVersion:2,caveVersion:2,caveBrightness:70,worldTime:259.2,dayLength:720,automaticTime:true,weatherMode:'auto',time:0,x:0,z:24,y:root.EmberTerrain?root.EmberTerrain.floor(0,24,0):0,yaw:.15,pitch:-.1,hp:100,stamina:100,oxygen:100,flashlightOn:true,renderQuality:'auto',money:0,fuel:0,hand:null,quickSlots:[null,null,null,null,null],activeSlot:0,back:null,shield:false,inventory:{},blueprints:[],openedDungeonChests:[],inserted:[],bosses:[],cleared:false,finalAwake:false,checkpoint:null,structures:[],piles:[],jobs:[],bags:[],depleted:{},enemyStates:{},nextId:1};}
 function validSave(s){
  const num=(v,min=0,max=1e9)=>Number.isFinite(v)&&v>=min&&v<=max;
  const bag=b=>!!b&&typeof b==='object'&&!Array.isArray(b)&&Object.entries(b).every(([id,n])=>items[id]&&Number.isInteger(n)&&num(n,0,1e6));
  const point=p=>p&&num(p.x,-100000,100000)&&num(p.z,-100000,100000)&&num(p.y,-2000,10000);
  const id=v=>typeof v==='string'&&/^[a-zA-Z0-9-]{1,60}$/.test(v);
+ if(s?.oxygen!==undefined&&!num(s.oxygen,0,100))return false;
+ if(s?.flashlightOn!==undefined&&typeof s.flashlightOn!=='boolean')return false;
+ if(s?.renderQuality!==undefined&&!['auto','light','high'].includes(s.renderQuality))return false;
  if(s?.blueprints!==undefined&&(!Array.isArray(s.blueprints)||s.blueprints.length>recipes.length||new Set(s.blueprints).size!==s.blueprints.length||s.blueprints.some(id=>!recipes.some(r=>r.id===id))))return false;
  if(s?.openedDungeonChests!==undefined&&(!Array.isArray(s.openedDungeonChests)||s.openedDungeonChests.length>3||new Set(s.openedDungeonChests).size!==s.openedDungeonChests.length||s.openedDungeonChests.some(id=>!/^dungeon-[0-2]$/.test(id))))return false;
  if(s?.caveBrightness!==undefined&&!num(s.caveBrightness,40,140))return false;

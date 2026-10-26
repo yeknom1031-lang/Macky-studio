@@ -302,15 +302,11 @@
         const trunkPoint = (fraction) => origin.clone().add(new THREE.Vector3(leanEast * fraction + Math.sin(fraction * 4.4) * tree.scale * 0.12, treeHeight * fraction, leanNorth * fraction + Math.sin(fraction * 3.1) * tree.scale * 0.15));
         const barkColor = new THREE.Color().setRGB(0.8 + random(8503) * 0.2, 0.8 + random(8503) * 0.16, 0.76 + random(8503) * 0.16);
         stem(trunkPoint, treeHeight, tree.scale, barkColor, habit * Math.PI * 2);
-        for (let root = 0; root < 5; root++) {
-          const angle = root * 1.256 + random(root + 8510) * 0.8;
-          const length = tree.scale * (0.75 + random(root + 8520) * 0.7);
-          const bend = origin.clone().add(new THREE.Vector3(Math.cos(angle) * length * 0.4, 0.08, Math.sin(angle) * length * 0.4));
-          bend.y = groundAt(bend.x, bend.z) + 0.08;
-          const tip = origin.clone().add(new THREE.Vector3(Math.cos(angle + 0.15) * length, 0, Math.sin(angle + 0.15) * length));
-          tip.y = groundAt(tip.x, tip.z) + 0.025;
-          branch(origin.clone().add(new THREE.Vector3(0, 0.35 * tree.scale, 0)), bend, tree.scale * 0.21, barkColor);
-          branch(bend, tip, tree.scale * 0.09, barkColor);
+        // Continuous tapered roots merge into the trunk and disappear below the soil.
+        for(let root=0;root<4;root++){const angle=root*Math.PI/2+random(root+8510)*.55,length=tree.scale*(.65+random(root+8520)*.55),first=stemPositions.length/3;
+          for(let j=0;j<=6;j++){const t=j/6,r=tree.scale*.23*Math.pow(1-t,1.7)+.002,theta=angle+t*.18,x=origin.x+Math.cos(theta)*length*t,z=origin.z+Math.sin(theta)*length*t,y=groundAt(x,z)+tree.scale*(.19*(1-t)*(1-t)-.10*t);
+            for(let k=0;k<=10;k++){const a=k/10*Math.PI*2;stemPositions.push(x-Math.sin(theta)*Math.cos(a)*r,y+Math.sin(a)*r*.6,z+Math.cos(theta)*Math.cos(a)*r);stemUvs.push(k/10,t*length);stemColors.push(barkColor.r,barkColor.g,barkColor.b);if(j<6&&k<10){const i=first+j*11+k;stemIndices.push(i,i+11,i+1,i+1,i+11,i+12);}}
+          }
         }
         if (conifer) {
           const tiers = 11 + Math.floor(random(8550) * 4);

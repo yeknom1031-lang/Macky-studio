@@ -6,19 +6,19 @@ const types=[
  {name:'割れた楔岩',sx:1.6,sy:1.2,sz:1.3,n:5,kind:'wedge'},
  {name:'細長い岩稜',sx:2.6,sy:.85,sz:.85,n:7,kind:'ridge'},
  {name:'層状の露岩',sx:2.1,sy:1.1,sz:1.55,n:8,kind:'strata'},
- {name:'尖った岩柱',sx:.95,sy:1.9,sz:.85,n:5,kind:'spire'},
+ {name:'低い割れ岩',sx:1.55,sy:.65,sz:1.3,n:10,kind:'worn'},
  {name:'割れ目のある双岩',sx:1.9,sy:1.1,sz:1.3,n:6,kind:'split'},
  {name:'崩れた岩塊',sx:2.1,sy:.85,sz:1.6,n:6,kind:'cluster'},
  {name:'傾いた岩盤',sx:1.9,sy:.65,sz:1.45,n:6,kind:'tilt'},
- {name:'鋸状の岩塊',sx:1.7,sy:1.2,sz:1.2,n:7,kind:'jagged'}
+ {name:'風化した露岩',sx:1.7,sy:.65,sz:1.4,n:11,kind:'worn'}
 ];
 const hash=(a,b)=>{const v=Math.sin(a*127.1+b*311.7)*43758.5453;return v-Math.floor(v);};
 function shape(type,index){const pos=[],uv=[],tri=(a,b,c)=>{pos.push(...a,...b,...c);for(const p of[a,b,c])uv.push((p[0]+p[1]*.3)/2,(p[2]+p[1]*.6)/2);};
- function piece(cx,cz,scale,seed){const n=type.n,rings=[],levels=type.kind==='strata'?[[-.9,.97],[-.2,1],[.0,.92],[.32,.96],[.45,.78],[.72,.8],[.9,.61]]:[[-.9,.82],[-.12,1],[.48,.86],[1,.52]];
- for(let j=0;j<levels.length;j++){const[y,r]=levels[j],ring=[];for(let k=0;k<n;k++){const a=k/n*Math.PI*2+(hash(k,seed)-.5)*.15,rad=r*(.82+hash(k,seed+2)*.3),tilt=type.kind==='tilt'?Math.cos(a)*.52:0,peak=type.kind==='wedge'?Math.cos(a)*.35:type.kind==='jagged'?(hash(k,44)-.5)*.6:0;
+ function piece(cx,cz,scale,seed){const n=type.n,rings=[],levels=type.kind==='strata'?[[-.9,.97],[-.2,1],[.0,.96],[.32,.9],[.45,.84],[.72,.72],[.9,.61]]:[[-.9,.82],[-.12,1],[.48,.86],[1,.52]];
+ for(let j=0;j<levels.length;j++){const[y,r]=levels[j],ring=[];for(let k=0;k<n;k++){const a=k/n*Math.PI*2+(hash(k,seed)-.5)*.15,rad=r*(.82+hash(k,seed+2)*.3),tilt=type.kind==='tilt'?Math.cos(a)*.15:0,peak=type.kind==='wedge'?Math.cos(a)*.12:type.kind==='jagged'?(hash(k,44)-.5)*.6:0;
  const py=y<0?y:y+tilt+peak*(j/(levels.length-1));ring.push([cx+(Math.cos(a)*rad+j*.025)*scale,py*scale,cz+Math.sin(a)*rad*scale]);}rings.push(ring);}
  for(let j=1;j<rings.length;j++)for(let k=0;k<n;k++){const next=(k+1)%n;tri(rings[j-1][k],rings[j][k],rings[j][next]);tri(rings[j-1][k],rings[j][next],rings[j-1][next]);}
- const cap=[cx+.06*scale,(type.kind==='spire'?1.7:type.kind==='slab'?.96:1.13)*scale,cz-.06*scale];for(let k=0;k<n;k++){tri(rings.at(-1)[k],cap,rings.at(-1)[(k+1)%n]);tri(rings[0][(k+1)%n],[cx,-.9*scale,cz],rings[0][k]);}}
+ const cap=[cx+.06*scale,(type.kind==='slab'?.92:.99)*scale,cz-.06*scale];for(let k=0;k<n;k++){tri(rings.at(-1)[k],cap,rings.at(-1)[(k+1)%n]);tri(rings[0][(k+1)%n],[cx,-.9*scale,cz],rings[0][k]);}}
  if(type.kind==='split'){piece(-.48,0,.58,index);piece(.46,.1,.67,index+31);}else if(type.kind==='cluster'){piece(-.45,-.28,.58,index);piece(.43,-.16,.55,index+21);piece(.1,.45,.61,index+43);}else piece(0,0,1,index+10);
  const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(pos,3));g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.computeVertexNormals();g.computeBoundingBox();g.computeBoundingSphere();g.userData.rockType=index;return g;
 }

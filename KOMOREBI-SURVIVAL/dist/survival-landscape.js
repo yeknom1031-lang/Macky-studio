@@ -30,7 +30,7 @@ function rampHeight(x,z){
 }
 function onIsland(x,z,i){const dx=x-i.x,dz=z-i.z,step=Math.PI/8,a=((Math.atan2(dz,dx)%step)+step)%step;return Math.hypot(dx,dz)<=i.r*Math.cos(step/2)/Math.cos(a-step/2)-.01;}
 function floor(x,z,y=0){
- let h=Math.max(water-1.2,ground(x,z));
+ let h=ground(x,z);
  if(inCave(x,z))h=Math.max(h,caveY);
  if(bossContentEnabled&&Math.abs(x-cave.x)<=caveHalf+2.5&&Math.abs(z-cave.z)<=caveHalf+2.5&&y>=caveY+13-.05)h=Math.max(h,caveY+13);
  const dz=z-cave.z-caveHalf;if(bossContentEnabled&&Math.abs(x-cave.x)<=5&&dz>=0&&dz<=20)h=Math.max(h,rampHeight(x,z));

@@ -122,8 +122,10 @@
       this.vegetation = new Vegetation(this.loader, this.originals.bark);
       this.shadowGeometry = new THREE.PlaneGeometry(1, 1);
       this.shadowMaterial = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1, vertexShader: 'varying vec2 vShade; void main(){vShade=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}', fragmentShader: 'varying vec2 vShade; void main(){float shade=1.0-smoothstep(0.05,0.5,length(vShade-0.5)); gl_FragColor=vec4(0.12,0.15,0.1,shade*0.28);}' });
+      this.riverbed=this.loader.load('assets/survival/exploration/riverbed-v1.png');this.riverbed.wrapS=this.riverbed.wrapT=THREE.RepeatWrapping;this.riverbed.encoding=THREE.sRGBEncoding;this.riverbed.anisotropy=4;
       this.terrainMaterial = new THREE.MeshStandardMaterial({ roughness: 0.98, vertexColors: true, bumpMap: this.originals.rock, bumpScale: 0.06 });
       this.terrainMaterial.onBeforeCompile = (shader) => {
+        shader.uniforms.riverbed={value:this.riverbed};
         shader.uniforms.desertSand={value:this.desertSand};
         shader.uniforms.natureAtlas = { value: this.atlas };
         shader.uniforms.mossDetail = { value: this.originals.moss };
@@ -133,7 +135,7 @@
         
         shader.vertexShader = 'attribute vec3 terrainLocation; attribute vec3 groundCover; attribute float sandCover; varying float vSand; varying vec3 vNature; varying vec3 vGroundNormal; varying vec3 vGroundCover;\n' + shader.vertexShader;
         shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nvNature = terrainLocation; vGroundNormal = normal; vGroundCover = groundCover; vSand = sandCover;');
-        shader.fragmentShader = `uniform sampler2D desertSand; uniform sampler2D natureAtlas; uniform sampler2D mossDetail; uniform sampler2D rockDetail; uniform sampler2D cliffDetail; uniform sampler2D forestFloor; varying float vSand; varying vec3 vNature; varying vec3 vGroundNormal; varying vec3 vGroundCover;
+        shader.fragmentShader = `uniform sampler2D riverbed; uniform sampler2D desertSand; uniform sampler2D natureAtlas; uniform sampler2D mossDetail; uniform sampler2D rockDetail; uniform sampler2D cliffDetail; uniform sampler2D forestFloor; varying float vSand; varying vec3 vNature; varying vec3 vGroundNormal; varying vec3 vGroundCover;
           float groundHash(vec2 cell) { return fract(sin(dot(cell,vec2(127.1,311.7)))*43758.5453); }
           float groundNoise(vec2 point) {
             vec2 cell=floor(point), blend=fract(point); blend=blend*blend*(3.0-2.0*blend);
@@ -155,8 +157,8 @@
           cliff = mix(cliff,vec3(0.47,0.51,0.53),smoothstep(350.0,2400.0,length(vViewPosition))*0.68);
           rock = mix(rock,cliff,smoothstep(50.0,260.0,length(vViewPosition)) * 0.85);
           rock *= mix(vec3(0.65,0.72,0.62),vec3(1.0),smoothstep(35.0,115.0,vNature.y));
-          vec3 moss = texture2D(mossDetail, vNature.xz / 2.4).rgb;
-          vec3 litter = texture2D(forestFloor, vNature.xz / 2.8).rgb;
+          vec3 moss = texture2D(mossDetail, vNature.xz / 3.5).rgb;
+          vec3 litter = texture2D(forestFloor, vNature.xz / 4.1).rgb;
           float macro = groundNoise(vNature.xz/95.0)*0.6+groundNoise(vNature.xz/31.0)*0.3+groundNoise(vNature.xz/8.0)*0.1;
           vec3 original = mix(litter, moss, smoothstep(0.45,0.85,macro) * 0.6);
           float detailLight = dot(detail, vec3(0.299, 0.587, 0.114));
@@ -167,7 +169,7 @@
           diffuseColor.rgb = mix(diffuseColor.rgb, pow(original, vec3(2.2)) * 0.85, forestBlend * 0.9);
           float grassBlend = clamp(vGroundCover.x,0.0,1.0);
           vec3 meadow = mix(vec3(0.10,0.14,0.047),vec3(0.18,0.21,0.095),macro);
-          meadow *= 0.65+dot(moss,vec3(0.299,0.587,0.114))*0.85;
+          meadow *= 0.86+dot(moss,vec3(0.299,0.587,0.114))*0.42;
           diffuseColor.rgb = mix(diffuseColor.rgb,meadow,grassBlend*0.85);
           vec2 sandUV=vNature.xz/5.5;
           vec3 fineSand=texture2D(desertSand,sandUV).rgb;
@@ -184,7 +186,8 @@
           float snowLine = 420.0+(groundNoise(vNature.xz/240.0)-0.5)*90.0;
           float snowCover = (1.0-smoothstep(0.22,0.58,slope))*smoothstep(snowLine-35.0,snowLine+95.0,vNature.y+macro*27.0+lee);
           diffuseColor.rgb = mix(diffuseColor.rgb,vec3(0.70,0.76,0.79)*(0.9+macro*0.12),snowCover);
-          float groundBump = mix(originalLight * max(forestBlend,grassBlend),dot(rock,vec3(0.299,0.587,0.114)),clamp(rockBlend,0.0,1.0)) * 0.045 * distanceFade;
+          float submerged=1.0-smoothstep(3.4,5.5,vNature.y); diffuseColor.rgb=mix(diffuseColor.rgb,pow(texture2D(riverbed,vNature.xz/8.0).rgb,vec3(2.2))*.88,submerged);
+          float groundBump = mix(originalLight * max(forestBlend,grassBlend),dot(rock,vec3(0.299,0.587,0.114)),clamp(rockBlend,0.0,1.0)) * 0.025 * distanceFade;
           groundBump=mix(groundBump,dot(fineSand,vec3(.299,.587,.114))*.018*distanceFade,vSand);
           groundBump *= mix(1.0,0.12,snowCover);
         `);
@@ -194,7 +197,7 @@
       this.waterUniforms.cloudLayer = { value: null }; this.waterUniforms.cloudShift = { value: 0 }; this.waterUniforms.dusk = { value: 0 };
       this.waterUniforms.moonDirection = { value: new THREE.Vector3(0,1,0) }; this.waterUniforms.moonlight = { value: 0 };
       this.waterUniforms.cloudTime = { value: 0 }; this.waterUniforms.cloudCover = { value: 0 };
-      const waterMaterial = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, uniforms: this.waterUniforms,
+      const waterMaterial = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, side:THREE.DoubleSide, uniforms: this.waterUniforms,
         vertexShader: 'varying vec3 vWater; void main(){vWater=(modelMatrix*vec4(position,1.0)).xyz;gl_Position=projectionMatrix*viewMatrix*vec4(vWater,1.0);}',
         fragmentShader: `varying vec3 vWater; uniform float clock; uniform vec3 horizon; uniform vec3 zenith; uniform vec3 sunDirection; uniform float daylight; uniform sampler2D cloudLayer; uniform float cloudShift; uniform float cloudTime; uniform float cloudCover; uniform float dusk; uniform vec3 moonDirection; uniform float moonlight;
           void main(){
@@ -206,7 +209,7 @@
             float crosswave=sin(point.x*0.67+point.y*0.52-clock*1.14+warp*0.73)*fineFade;
             float ripple=sin(point.x*1.43-point.y*1.17+clock*1.93+warp*1.2)*fineFade;
             vec3 normal=normalize(vec3(swell*0.012+waves*0.014+crosswave*0.012+ripple*0.004,1.0,swell*0.009-waves*0.009+crosswave*0.009-ripple*0.003));
-            vec3 view=normalize(cameraPosition-vWater); vec3 reflection=reflect(-view,normal); float fresnel=0.035+0.965*pow(1.0-max(0.0,dot(view,normal)),5.0);
+            if(cameraPosition.y<vWater.y)normal=-normal;vec3 view=normalize(cameraPosition-vWater); vec3 reflection=reflect(-view,normal); float fresnel=0.035+0.965*pow(1.0-max(0.0,dot(view,normal)),5.0);
             vec3 reflectedSky=mix(horizon,zenith,smoothstep(0.0,0.65,reflection.y));
             float longitude=fract(atan(reflection.z,reflection.x)*0.47746483+0.5+cloudTime*0.000018+cloudShift);
             float latitude=clamp(asin(clamp(reflection.y,0.0,1.0))*0.8276057,0.0,1.0);
@@ -222,7 +225,7 @@
             water+=vec3(1.0,0.86,0.65)*pow(max(0.0,dot(reflect(-sunDirection,normal),view)),450.0)*daylight*2.8;
             water+=vec3(0.58,0.72,0.94)*pow(max(0.0,dot(reflect(-moonDirection,normal),view)),280.0)*moonlight*0.8;
             water=mix(water,horizon,1.0-exp(-length(cameraPosition-vWater)*0.00028));
-            gl_FragColor=vec4(water,0.91);
+            gl_FragColor=vec4(water,mix(0.24,0.76,clamp(fresnel*1.4+distanceToEye/3500.0,0.0,1.0)));
             #include <tonemapping_fragment>
             #include <encodings_fragment>
           }` });
@@ -330,7 +333,7 @@
         if (index < 12) {
           const rockEast = hash(column, row, 7000 + index) * size, rockNorth = hash(column, row, 7100 + index) * size;
           const rockAltitude = height(column * size + rockEast, row * size + rockNorth);
-          if (rockAltitude > 5 && !window.KomorebiSurvivalPlacement?.excludeTree(column*size+rockEast,row*size+rockNorth)) rocks.push({ east: rockEast, north: rockNorth, altitude: rockAltitude, scale });
+          if (rockAltitude > 5 && !window.KomorebiSurvivalPlacement?.excludeTree(column*size+rockEast,row*size+rockNorth)) if(!window.KomorebiSurvivalPlacement?.excludeRock?.(worldEast,worldNorth))rocks.push({ east: rockEast, north: rockNorth, altitude: rockAltitude, scale });
         }
         if (index < 30 && altitude > 7 && altitude < 85 && !window.KomorebiSurvivalPlacement?.excludeTree(worldEast,worldNorth)) flowers.push({ east, north, altitude, scale });
       }
@@ -349,7 +352,7 @@
         });
         mesh.instanceMatrix.needsUpdate = true; mesh.castShadow = true; mesh.receiveShadow = true; group.add(mesh); return mesh;
       };
-      this.vegetation.build(group, trees, hash, height);
+      this.vegetation.build(group, trees, hash, height);window.buildAquaticPlants?.(this,group);
       this.naturalRockMaterial ||= NaturalRocks.material(this.originals.rock);NaturalRocks.build(group,rocks,this.naturalRockMaterial,height);
       instances(flowers, 'trunk', '#6a8253', (item) => ({ position: [item.east, item.altitude + 0.18 * item.scale, item.north], scale: [0.008, 0.36 * item.scale, 0.008] }));
       instances(flowers, 'sphere', '#d7c5bd', (item) => ({ position: [item.east, item.altitude + 0.36 * item.scale, item.north], scale: [0.045 * item.scale, 0.025, 0.045 * item.scale] }));
@@ -374,9 +377,9 @@
         this.offset.set(Math.floor(east / 1024) * 1024, 0, Math.floor(north / 1024) * 1024);
         this.updateHorizon(column,row);
         const needed = new Set(); this.queue = [];
-        for (let horizontal = -5; horizontal <= 5; horizontal++) for (let vertical = -5; vertical <= 5; vertical++) {
+        for (let horizontal = -4; horizontal <= 4; horizontal++) for (let vertical = -4; vertical <= 4; vertical++) {
           const key = `${column + horizontal},${row + vertical}`; needed.add(key);
-          const distant = Math.max(Math.abs(horizontal), Math.abs(vertical)) > 3;
+          const distant = Math.max(Math.abs(horizontal), Math.abs(vertical)) > 2;
           const existing = this.chunks.get(key);
           if (existing && existing.userData.distant !== distant) this.dropChunk(key, existing);
           if (!this.chunks.has(key)) this.queue.push({ column: column + horizontal, row: row + vertical, distance: Math.hypot(horizontal, vertical), distant });
@@ -441,7 +444,7 @@
         const ahead = height(worldEast - Math.sin(entry.heading) * 0.6, worldNorth - Math.cos(entry.heading) * 0.6);
         const slope = airborne ? 0 : Math.max(-0.3, Math.min(0.3, Math.atan2(ahead - currentGround, 0.6)));
         entry.rig.travelled = entry.travelled;
-        Wildlife.animate(entry.rig, localTime, speed > 0 && (canStep || airborne) ? 1 : 0, alert ? 1 : 0, slope);
+        if(distance<45||Math.floor(time*12)!==entry.lastPoseFrame){entry.lastPoseFrame=Math.floor(time*12);Wildlife.animate(entry.rig, localTime, speed > 0 && (canStep || airborne) ? 1 : 0, alert ? 1 : 0, slope);}
       }
     }
 

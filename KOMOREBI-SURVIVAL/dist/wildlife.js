@@ -152,6 +152,7 @@
     return { ...proportions, reach: spec.head * 0.94 + spec.muzzle * proportions.reach, eyeForward: spec.head * 0.49 };
   };
   const neckConfiguration = (spec) => {
+    if(spec.plan==='elephant')return{rise:.12,forward:spec.length*.43,headRise:.12,headForward:.24};
     const canine = spec.plan === 'canine', giraffe = spec.plan === 'giraffe', ungulate = spec.hoof && !giraffe;
     return {
       rise: spec.depth * (giraffe ? 0.72 : canine ? 0.4 : spec.hoof ? 0.36 : 0.22),
@@ -316,6 +317,7 @@
       node(head, [0, -spec.head * 0.3, -spec.head - spec.muzzle], avian ? 0.003 : noseWidth * 0.64, avian ? 0.003 : spec.head * 0.2),
       node(head, [0, -spec.head * 0.3, -spec.head - spec.muzzle * 1.08], 0.002, 0.002)
     ];
+    if(spec.trunk){body.splice(6,body.length-6,node(head,[0,0,.28],.62,.74,neck,.2),node(head,[0,.15,-.08],.66,.79),node(head,[0,-.05,-.47],.48,.58),node(head,[0,-.32,-.64],.24,.28),node(head,[0,-.38,-.7],.10,.12));}
     if (canine) body.splice(0, body.length,
       node(root, [0, 0, spec.length * 0.57], 0.004, 0.006),
       node(root, [0, spec.depth * 0.06, spec.length * 0.43], spec.width * 0.74, spec.depth * 0.62),
@@ -372,7 +374,7 @@
     } : null;
     loft(body, spec.color, 28, 4, 1, sculptFace);
     furZones.push({ start: 0, end: positions.length / 3, tail: false });
-    if (!avian && !insect) {
+    if (!avian && !insect && !spec.trunk) {
       const noseColor = ['pig', 'elephant', 'rhino'].includes(spec.plan) ? '#787265' : '#393a34';
       if (face) {
         const noseHeight = -spec.head * face.drop, rhinarium = ['horse', 'bovine', 'camel', 'giraffe', 'pig'].includes(spec.plan) ? '#' + new THREE.Color(spec.color).multiplyScalar(0.64).getHexString() : '#29302a';
@@ -391,7 +393,7 @@
     }
     for (const side of [-1, 1]) {
       const eyeWidth = face ? face.width * 0.92 * Math.sqrt(Math.max(0.1, 1 - ((face.eye + face.drop * 0.18) / face.cheek) ** 2)) * 0.94 : headWidth * 0.83;
-      const eye = makeBone(`eye${side}`, head, [side * spec.head * eyeWidth, spec.head * (face ? face.eye : 0.2), face ? -face.eyeForward : -spec.head * 0.58]); eyes.push(eye);
+      const eye = makeBone(`eye${side}`, head, [side * (spec.trunk ? .54 : spec.head * eyeWidth), spec.trunk ? .06 : spec.head * (face ? face.eye : 0.2), spec.trunk ? -.32 : face ? -face.eyeForward : -spec.head * 0.58]); eyes.push(eye);
       if (detailedEyes) {
         piece(eye, 'sphere', [0, 0, 0], [spec.head * 0.056, spec.head * (canine ? 0.058 : 0.075), spec.head * 0.10], '#302d21');
         piece(eye, 'sphere', [side * spec.head * 0.042, 0, -spec.head * 0.015], [spec.head * 0.024, spec.head * (canine ? 0.039 : 0.049), spec.head * 0.057], canine ? '#947235' : spec.plan === 'feline' ? '#8d894e' : '#4b3822');
@@ -410,7 +412,8 @@
         piece(eye, 'sphere', [side * spec.head * 0.085, 0, -spec.head * 0.055], [spec.head * 0.043, spec.head * 0.05, spec.head * 0.048], '#171e19');
         piece(eye, 'sphere', [side * spec.head * 0.105, spec.head * 0.025, -spec.head * 0.075], [spec.head * 0.012, spec.head * 0.012, spec.head * 0.012], '#bbbdb1');
       }
-      if (spec.ear) {
+      if(spec.trunk){const ear=makeBone(`ear${side}`,head,[side*.46,.15,.06]);ears.push(ear);piece(ear,'sphere',[side*.43,-.26,.06],[.62,.82,.115],spec.color,[0,side*.28,side*.18]);}
+      if (spec.ear && !spec.trunk) {
         const ear = makeBone(`ear${side}`, head, [side * spec.head * (face ? face.width * 0.67 : 0.56), spec.head * (face ? face.dome * 0.48 : 0.56), spec.head * 0.1]); ears.push(ear);
         const round = ['bear', 'feline', 'rodent', 'elephant'].includes(spec.plan);
         const earVertexStart = positions.length / 3;
@@ -527,19 +530,20 @@
       let previous = parent;
       const nodes = [];
       for (let segment = 0; segment <= 6; segment++) {
-        const joint = makeBone(`${trunk ? 'trunk' : 'tail'}${segment}`, previous, segment === 0 ? startPoint : [0, trunk ? -length / 6 : 0, trunk ? 0 : length / 6]);
+        const joint = makeBone(`${trunk ? 'trunk' : 'tail'}${segment}`, previous, segment === 0 ? startPoint : [0, trunk ? -length / 6 * (segment > 4 ? .65 : 1) : 0, trunk ? (segment > 3 ? -.10 : -.015) : length / 6]);
         const taper = 1 - segment / 7;
-        const radius = trunk ? 0.2 * taper : spec.bushyTail ? 0.12 * Math.sin((0.2 + segment / 7 * 0.8) * Math.PI) + 0.025 : spec.plan === 'canine' ? 0.095 * Math.sqrt(taper) : spec.plan === 'reptile' ? spec.width * 0.55 * taper : 0.04 * taper;
-        nodes.push(node(joint, [0, 0, 0], segment === 6 ? 0.004 : radius, segment === 6 ? 0.004 : spec.flatTail ? radius * 0.28 : radius, previous, segment === 0 ? 0.3 : 0.5));
+        const radius = trunk ? (.22 * taper + .055) : spec.bushyTail ? 0.12 * Math.sin((0.2 + segment / 7 * 0.8) * Math.PI) + 0.025 : spec.plan === 'canine' ? 0.095 * Math.sqrt(taper) : spec.plan === 'reptile' ? spec.width * 0.55 * taper : 0.04 * taper;
+        nodes.push(node(joint, [0, 0, 0], segment === 6 && !trunk ? 0.004 : radius, segment === 6 && !trunk ? 0.004 : spec.flatTail ? radius * 0.28 : radius, previous, segment === 0 ? 0.3 : 0.5));
         tail.push({ joint, trunk, segment }); previous = joint;
       }
       const tailStart = positions.length / 3;
-      loft(nodes, spec.color, 12, 3);
+      loft(nodes, spec.color, 16, 4);
+      if(trunk)piece(previous,'sphere',[0,-.015,-.005],[.085,.075,.085],spec.color);
       if (!trunk) furZones.push({ start: tailStart, end: positions.length / 3, tail: true });
       if (spec.plan === 'giraffe' || spec.plan === 'bovine') piece(previous, 'sphere', [0, -0.02, 0.04], [0.055, 0.06, 0.13], '#51483a');
     };
     if (spec.tail) appendTail(spec.tail);
-    if (spec.trunk) appendTail(1.6, head, [0, -0.2, -spec.head * 1.05], true);
+    if (spec.trunk) appendTail(1.85, head, [0, -.20, -.64], true);
     if (avian || insect) for (const side of [-1, 1]) {
       const wing = makeBone(`wing${side}`, root, [side * spec.width * 0.75, spec.depth * 0.3, -spec.length * 0.13]);
       const wrist = makeBone(`wrist${side}`, wing, [side * spec.wingspan * 0.27, 0, spec.length * 0.12]);
