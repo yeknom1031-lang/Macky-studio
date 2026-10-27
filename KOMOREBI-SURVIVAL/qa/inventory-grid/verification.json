@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-27",
+  "browser": "Chromium in-app browser, isolated inventory-check profile",
+  "checks": {
+    "recipeSearch": true,
+    "recipeIngredientsPreview": true,
+    "selectItem": true,
+    "assignFlashlightToSlot4": true,
+    "depositFlashlightMaterials": {"woodBefore":24,"woodAfter":22,"oreBefore":8,"oreAfter":5},
+    "unknownSwordRecipeDisabled": true,
+    "escapeClosesInventory": true,
+    "consoleErrors": 0,
+    "visualInspection": "white square slots, recipe book, ingredients, 5-slot hotbar and footer visible at 1280x720"
+  },
+  "references": ["https://www.minecraft.net/en-us/article/a-hardcore-challenge", "https://miyashimo-studio.jp/blog/detail/minecraft-operation/"]
+}

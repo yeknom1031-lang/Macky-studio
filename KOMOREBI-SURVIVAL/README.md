@@ -141,3 +141,13 @@ JS/CSS変更後は `python3 tools/version-assets.py` を実行して、新旧の
 内蔵画像生成で3枚（川底・水草・懐中電灯）を制作しました。保存先は `dist/assets/survival/exploration/` と `dist/assets/survival/items-v3/flashlight.png`。生成プロンプトは `qa/exploration-upgrade/imagegen-prompts.json`。
 
 検証：`tools/test-natural-rocks.cjs`、`tools/test-dungeons.cjs`、隔離セーブを使う `dist/exploration-check.html?qa=1&profile=exploration-check` と `dist/dungeon-check.html?qa=1&profile=dungeon-check`。村の売買・入室、神殿の階段、水泳・溺水・回復、ライト制作、保存互換性、3遺跡の通行・罠・宝箱を確認。画面と結果は `qa/exploration-upgrade/` に保存しています。
+
+## マス目の持ち物画面（2026-10-27）
+
+Minecraftの持ち物画面の画像を調べ、左にレシピ本、右上に材料と完成品、右下に9列の持ち物マス、最下部に手持ち5枠を配置しました。白い配色と既存のゲーム内アイテム画像を使用。持ち物が27種類を超えた場合は行を追加し、容量を削っていません。レシピ検索、材料の所持数／必要数、未習得表示、折りたたみ式の表示設定を追加しました。材料を地面に置いてハンマーで制作する仕組みは継続しています。Escでも画面を閉じられます。
+
+参考画像の掲載ページ：
+- https://www.minecraft.net/en-us/article/a-hardcore-challenge
+- https://miyashimo-studio.jp/blog/detail/minecraft-operation/
+
+`dist/inventory-check.html?qa=1&profile=inventory-check` は専用の所持品で表示する確認ページ。通常のセーブには触れません。画面の記録は `qa/inventory-grid/inventory.png`。
