@@ -1,0 +1,106 @@
+{
+  "rows": [
+    {
+      "weather": "clear",
+      "hour": 12,
+      "sun": 1.5334829569201494,
+      "ambient": 0.7952,
+      "skyLight": 1
+    },
+    {
+      "weather": "clear",
+      "hour": 16,
+      "sun": 0.9772584997777716,
+      "ambient": 0.7952,
+      "skyLight": 1
+    },
+    {
+      "weather": "clear",
+      "hour": 17,
+      "sun": 0.6369810369271836,
+      "ambient": 0.7549670728428075,
+      "skyLight": 0.936661008883513
+    },
+    {
+      "weather": "clear",
+      "hour": 18,
+      "sun": 0.0014737430666349007,
+      "ambient": 0.44050848326162384,
+      "skyLight": 0.44060116698060786
+    },
+    {
+      "weather": "clear",
+      "hour": 18.5,
+      "sun": 0.07860236890223396,
+      "ambient": 0.3046012095209519,
+      "skyLight": 0.17402421756399636
+    },
+    {
+      "weather": "clear",
+      "hour": 19.2,
+      "sun": 0.23314721713972797,
+      "ambient": 0.2610304607605488,
+      "skyLight": 0
+    },
+    {
+      "weather": "clear",
+      "hour": 23,
+      "sun": 0.2798995086220504,
+      "ambient": 0.2812897870695552,
+      "skyLight": 0
+    },
+    {
+      "weather": "rain",
+      "hour": 12,
+      "sun": 0.7552115314155623,
+      "ambient": 0.7232000000000001,
+      "skyLight": 1
+    },
+    {
+      "weather": "rain",
+      "hour": 16,
+      "sun": 0.48128144161988,
+      "ambient": 0.7232000000000001,
+      "skyLight": 1
+    },
+    {
+      "weather": "rain",
+      "hour": 17,
+      "sun": 0.3137011873588761,
+      "ambient": 0.6875274802031945,
+      "skyLight": 0.936661008883513
+    },
+    {
+      "weather": "rain",
+      "hour": 18,
+      "sun": 0.00026376443439215684,
+      "ambient": 0.4082608751650483,
+      "skyLight": 0.44060116698060786
+    },
+    {
+      "weather": "rain",
+      "hour": 18.5,
+      "sun": 0.014081821145453016,
+      "ambient": 0.26411256182840576,
+      "skyLight": 0.17402421756399636
+    },
+    {
+      "weather": "rain",
+      "hour": 19.2,
+      "sun": 0.04172346446362993,
+      "ambient": 0.17808016793423964,
+      "skyLight": 0
+    },
+    {
+      "weather": "rain",
+      "hour": 23,
+      "sun": 0.047705283922205376,
+      "ambient": 0.18067228969962235,
+      "skyLight": 0
+    }
+  ],
+  "cave": {
+    "depth": 1,
+    "ambient": 0.0665
+  }
+}

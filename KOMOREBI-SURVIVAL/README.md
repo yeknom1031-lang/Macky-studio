@@ -151,3 +151,9 @@ Minecraftの持ち物画面の画像を調べ、左にレシピ本、右上に�
 - https://miyashimo-studio.jp/blog/detail/minecraft-operation/
 
 `dist/inventory-check.html?qa=1&profile=inventory-check` は専用の所持品で表示する確認ページ。通常のセーブには触れません。画面の記録は `qa/inventory-grid/inventory.png`。
+
+## 時刻と屋外照明の同期（2026-10-28）
+
+夕空が明るいのに地表だけ早く暗くなる問題を修正。空の昼夜混合と環境光に同じ太陽高度の滑らかな係数を使い、日没後からゲーム内19時ごろまで薄明を残します。低い太陽の直接光、地面からの反射色、遠景樹冠と星の出現も調整。月光・雨天・洞窟の暗さ設定・時間進行とセーブ時刻は維持します。
+
+`dist/lighting-check.html?qa=1&profile=lighting-check` で昼・16時・17時・18時・18時半・19時12分・23時を晴天／雨天で比較し、洞窟への影響を確認します。結果と画面は `qa/lighting-time/`。

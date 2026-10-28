@@ -65,8 +65,9 @@
             sky = mix(sky, sunset, dusk * 0.85);
             vec3 nightSky = vec3(0.011,0.019,0.038) + vec3(0.016,0.023,0.031) * airMass;
             nightSky += vec3(0.013,0.017,0.026) * moonlight;
-            sky = mix(nightSky, sky, smoothstep(-0.17,0.34,sunDirection.y));
-            sky = mix(sky, vec3(0.30,0.36,0.39) * (0.075 + daylight * 0.925 + moonlight * 0.065), weather * 0.6);
+            float skyLight = smoothstep(-0.29,0.34,sunDirection.y);
+            sky = mix(nightSky, sky, skyLight);
+            sky = mix(sky, vec3(0.30,0.36,0.39) * (0.075 + skyLight * 0.925 + moonlight * 0.065), weather * 0.6);
             float solarDisc = smoothstep(0.999985, 0.999988, sunAngle) * smoothstep(-0.025, 0.02, sunDirection.y);
             sky += vec3(1.0,0.87,0.65) * solarDisc * 7.0;
             float moonAngle = clamp(dot(direction, moonDirection), -1.0, 1.0);
@@ -152,6 +153,7 @@
       this.moonRight.crossVectors(this.orbitAxis,this.moonDirection).normalize();
       this.moonUp.crossVectors(this.moonDirection,this.moonRight).normalize();
       const daylight = Math.max(0, this.sunDirection.y), dusk = (1-THREE.MathUtils.smoothstep(Math.abs(this.sunDirection.y-0.025),0.01,0.32))*THREE.MathUtils.smoothstep(this.sunDirection.y,-0.23,0.02);
+      const skyLight = THREE.MathUtils.smoothstep(this.sunDirection.y,-0.29,0.34);
       const night = 1-THREE.MathUtils.smoothstep(this.sunDirection.y,-0.12,0.1);
       const cloudCover = THREE.MathUtils.clamp(weather+Math.sin(time/115+east*0.00005)*0.035+Math.sin(time/271+north*0.00005)*0.025,0.015,0.98);
       const moonPhase = THREE.MathUtils.clamp((1-this.sunDirection.dot(this.moonDirection))*0.5,0,1);
@@ -160,11 +162,11 @@
       this.material.uniforms.night.value = night; this.material.uniforms.moonlight.value = moonlight; this.material.uniforms.cloudCover.value = cloudCover;
       this.material.uniforms.weather.value = weather; this.material.uniforms.clock.value = time;
       this.material.uniforms.observer.value.set(east, camera.position.y, north); this.dome.position.copy(camera.position);
-      this.horizon.setRGB(0.36, 0.49, 0.59).lerp(this.duskHorizon, dusk * 0.6).multiplyScalar(0.075 + daylight * 0.925 + moonlight * 0.06 + dusk * 0.055);
-      this.weatherHorizon.setRGB(0.22, 0.28, 0.31).multiplyScalar(0.11 + daylight * 0.89 + moonlight * 0.06);
+      this.horizon.setRGB(0.36, 0.49, 0.59).lerp(this.duskHorizon, dusk * 0.6).multiplyScalar(0.075 + skyLight * 0.925 + moonlight * 0.06 + dusk * 0.055);
+      this.weatherHorizon.setRGB(0.22, 0.28, 0.31).multiplyScalar(0.11 + skyLight * 0.89 + moonlight * 0.06);
       this.horizon.lerp(this.weatherHorizon, weather * 0.5);
-      this.zenith.setRGB(0.12, 0.30, 0.56).multiplyScalar(0.055 + daylight * 0.945 + moonlight * 0.055);
-      return { daylight, dusk, moonlight, cloudCover, moonPhase };
+      this.zenith.setRGB(0.12, 0.30, 0.56).multiplyScalar(0.055 + skyLight * 0.945 + moonlight * 0.055);
+      return { daylight, skyLight, dusk, moonlight, cloudCover, moonPhase };
     }
   }
   window.Atmosphere = Atmosphere;
