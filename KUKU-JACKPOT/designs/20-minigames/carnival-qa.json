@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-30",
+  "scope": "New Wonder Carnival: mini-games 23–34",
+  "claim": "Recorded checks, not a claim of objective AAA quality or completed child usability testing.",
+  "adoptedGeneratedImages": 25,
+  "browserPlaythrough": {
+    "reportedBy": "root agent, direct browser QA",
+    "practiceGamesCompleted": 12,
+    "tourQuestions": 36,
+    "tourCorrect": 36,
+    "tourScore": 3600,
+    "answerStyle": "Early answers: 100 points per correct answer, without waiting for the rhythm target.",
+    "resultScreenshot": "../../qa/carnival/tour-result.png",
+    "pauseResumeRace": "Root verified rapid resume+portrait leaves the pause menu and rotate overlay visible; returning to landscape and resuming works.",
+    "savePersistence": "Root verified game34 two-star result survives reload.",
+    "watch": {
+      "game": 30,
+      "correct": 6,
+      "timingBonus": 300,
+      "recordBefore": "16 plays, 67 stars",
+      "recordAfter": "16 plays, 67 stars"
+    },
+    "pointerWrongAnswer": {
+      "game": 27,
+      "equation": "5 × 4 = 20",
+      "chosen": 18,
+      "score": 0,
+      "correctionShown": true
+    },
+    "existingStarlineMenu": "normal, slow, expert and endless choices still available"
+  },
+  "automatedChecks": {
+    "repositoryTestsPassed": 157,
+    "repositoryResultReportedBy": "root agent",
+    "groupCIntegrationTestsPassed": 7,
+    "groupCIntegrationTestFile": "tests/carnival-integration.test.mjs",
+    "groupCDrawCasesPassed": 3888,
+    "drawCoverage": "4 scenes × 81 multiplication facts × 2 viewport sizes × 2 motion settings × 3 outcomes",
+    "planCards": 12,
+    "planLocalReferencesVerified": 43,
+    "resumeRaceRegression": "Deferred audio resume followed by portrait rotation or page hiding stays paused, pauses resumed audio, keeps the modal visible, and still permits a later landscape resume."
+  },
+  "independentGroupCVisualReview": {
+    "reviewedBy": "new_games_c agent",
+    "screenshots": [
+      "../../qa/carnival/31-practice.png",
+      "../../qa/carnival/31-success.png",
+      "../../qa/carnival/32-practice.png",
+      "../../qa/carnival/32-success.png",
+      "../../qa/carnival/33-practice.png",
+      "../../qa/carnival/33-success.png",
+      "../../qa/carnival/34-practice.png",
+      "../../qa/carnival/34-success.png"
+    ],
+    "observations": [
+      "Central objects, characters, answer buttons and answer feedback have no blocking overlaps.",
+      "The normal keychain question hides its answer behind a question mark before submission.",
+      "Treasure bag quantities and copier group counts match the shown multiplication facts.",
+      "Success captures show the start of the intended paint, copy and unlock animations, not their final frames."
+    ],
+    "followUp": "Final refreshed screenshots reviewed: shared instruction chip and scene count labels are separated; central game objects, characters and answer buttons remain clear at 667x375. Keychain also checked at 1280x720. No blocking overlap or normal-question answer spoiler found.",
+    "captureLimit": "Original practice/success captures precede the stageTotal/layout update. Five final screenshots above verify the updated layout. The 3-question tour and 6-question solo mural completion conditions are separately regression-tested.",
+    "finalScreenshots": [
+      "../../qa/carnival/31-final-small.png",
+      "../../qa/carnival/32-final-small.png",
+      "../../qa/carnival/33-final-small.png",
+      "../../qa/carnival/34-final-small.png",
+      "../../qa/carnival/34-final-desktop.png"
+    ],
+    "finalViewports": [
+      "667x375: all four Group C games",
+      "1280x720: keychain"
+    ]
+  },
+  "remainingValidationLimits": [
+    "Desktop browser inspection does not establish real iPhone PWA audio, safe-area or touch performance.",
+    "A child playtest is still needed to assess first-time comprehension, learning retention and sustained enjoyment."
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "updatedAt": "2026-10-30",
+  "mode": "built-in image_gen",
+  "generatedImages": 9,
+  "castLayout": {
+    "columns": 4,
+    "rows": 1,
+    "frames": [
+      "idle",
+      "dance",
+      "win",
+      "celebrate"
+    ],
+    "preserveAlpha": true
+  },
+  "games": [
+    {
+      "id": 31,
+      "slug": "paint",
+      "title": "九九ペンキ・ころころローラー",
+      "input": "マスの数を1回タップ",
+      "learning": "a列×b行の長方形を正確に描画。正解でa*bマスを塗る。",
+      "outcome": "ローラーが左から右へ進み、各マスに生成した街の絵が現れる。正解ごとに右側の壁画1/6を完成。",
+      "progression": "単体は6正解、ツアーは3正解で生成した町の壁画完成。q.stageTotalに同期。",
+      "wrong": "空の正確な配列と正しい式を保持し復習。"
+    },
+    {
+      "id": 32,
+      "slug": "treasure",
+      "title": "九九お宝・金貨を見抜け！",
+      "input": "金貨の総数を1回タップ",
+      "learning": "b袋に各a枚。正解で全袋を開き、金貨の正確な個数を見せる。",
+      "outcome": "金貨が回転し、海賊カワウソが喜ぶ。",
+      "progression": "問題ごとに袋数と各袋の枚数が変わる。",
+      "wrong": "正しいa枚ずつb袋の式を表示し、音声復習。"
+    },
+    {
+      "id": 33,
+      "slug": "copier",
+      "title": "九九コピーマシン",
+      "input": "コピー後の匹数を1回タップ",
+      "learning": "a匹の同じまとまりをb組生成。先に1組見せ、残りは?で出題。",
+      "outcome": "コピー機のランプとともにb組が順次現れ、正解で動物が跳ねる。",
+      "progression": "動物の色と組数が変わり、最大9組×9匹を収める。",
+      "wrong": "正しい全組を表示してa*bのまとまりを確認。"
+    },
+    {
+      "id": 34,
+      "slug": "keychain",
+      "title": "九九連鎖・答えが次のカギ",
+      "input": "式に合うカギを1回タップ",
+      "learning": "通常a×bと同じ九九の逆問題a×□=a*bを連続して解く。",
+      "outcome": "カギが扉へ動き、扉が開いて黄金の光がこぼれる。",
+      "progression": "単体は6個、ツアーは3個のカギ進捗。正解した数だけ点灯し、未回答の現在位置では点灯しない。",
+      "wrong": "正しい式を表示し再学習。"
+    }
+  ],
+  "assets": [
+    {
+      "slug": "treasure",
+      "kind": "background",
+      "path": "assets/runtime/carnival/treasure/background.webp",
+      "prompt": "Use case: stylized-concept. Asset type: premium children's rhythm game 16:9 landscape full-bleed background. A warm magical pirate treasury on a tropical island, richly crafted polished clay-toy illustration, turquoise sea through cave opening, golden sunlight and teal shadows, carved wooden planks in foreground, ropes shells foliage at far edges only. Center 65% at y25%-70% is a clear flat empty sandy display platform for game bags and coins drawn in code. No treasure piles or coins in center, no characters, no numbers, no text, no UI, no logos. Lush cinematic charm, readable quiet center, strong depth and exquisite soft materials.",
+      "source": "Generated images are saved to /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906 as /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906/exec-4d526713-cb36-46cf-96c6-54463725c9c2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "sourceFile": "assets/source-art/carnival/treasure/background.png"
+    },
+    {
+      "slug": "copier",
+      "kind": "background",
+      "path": "assets/runtime/carnival/copier/background.webp",
+      "prompt": "Use case: stylized-concept. Asset type: 16:9 full-bleed children's rhythm game background. A delightful futuristic toy animal-copying laboratory with mint teal glass pipes and pastel peach mechanical details. Polished high-end clay-toy 3D illustration, soft volumetric daylight, rounded safe shapes, hanging lamps and small instruments only at extreme edges. Middle 65% y25%-70% is an empty pale mint workbench wall space, lower quarter an uncluttered glossy platform. No machine in center (code will draw it), no animals, no characters, no text, no digits, no UI. Premium cozy laboratory stage.",
+      "source": "Generated images are saved to /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906 as /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906/exec-3cbfc174-6b89-4bee-b5f1-e73a7cb95bba.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "sourceFile": "assets/source-art/carnival/copier/background.png"
+    },
+    {
+      "slug": "keychain",
+      "kind": "background",
+      "path": "assets/runtime/carnival/keychain/background.webp",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed 16:9 premium children's multiplication adventure rhythm game background. Enchanted royal library with lavender-blue stone archways, rich golden trim, glowing crystals, floating little warm lights at edges, storybook clay-toy 3D style. A clear quiet central wall space at x30%-75% y25%-70% for a magical door rendered by the game; do not draw that door. Sideways grand corridor depth, purple night through a small side window. Blank upper area for question UI, empty lower area for game controls. No characters, no words, no numbers, no letters, no logos. Beautiful tactile materials and cinematic lighting.",
+      "source": "Generated images are saved to /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906 as /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906/exec-1b59cf43-4396-4e94-9e62-19ab2452ffda.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "sourceFile": "assets/source-art/carnival/keychain/background.png"
+    },
+    {
+      "slug": "paint",
+      "kind": "cast",
+      "path": "assets/runtime/carnival/paint/cast.webp",
+      "prompt": "Use case: stylized-concept. Asset type: true transparent PNG animation sprite sheet for children's game. EXACTLY FOUR equal square cells in ONE horizontal row, aspect ratio 4:1 if possible, no gutters, no separators. Four full-body poses of THE SAME character: a cute original orange fox painter wearing a mint beret and cream overalls with paint flecks, holding a little paint roller. Premium polished clay-toy 3D illustration matching a cozy storybook game, clean silhouette and beautiful material detail. Each character wholly inside its own cell with generous margin, same size feet baseline, centered, no cropping and no overlap between cells. Frame1 relaxed happy idle facing camera; frame2 lively dancing step facing camera with a different arm pose; frame3 triumphant happy arms raised; frame4 delighted bouncing celebration, full body lifted a little. All four must have visibly distinct limb positions. Transparent background, no floor, no cast shadows outside character, no text, no labels, no numbers, no UI, no additional props or characters.",
+      "source": "Generated images are saved to /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906 as /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906/exec-3bdda75e-103b-4267-bbcb-8a7fd5aae8fa.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "sourceFile": "assets/source-art/carnival/paint/cast.png"
+    },
+    {
+      "slug": "treasure",
+      "kind": "cast",
+      "path": "assets/runtime/carnival/treasure/cast.webp",
+      "prompt": "Use case: stylized-concept. Asset type: true transparent PNG animation sprite sheet for children's game. EXACTLY FOUR equal square cells in ONE horizontal row, aspect ratio 4:1 if possible, no gutters, no separators. Four full-body poses of THE SAME character: a cute original fluffy turquoise otter pirate captain wearing a tiny burgundy tricorn and warm gold waistcoat, holding a treasure map. Premium polished clay-toy 3D illustration matching a cozy storybook game, clean silhouette and beautiful material detail. Each character wholly inside its own cell with generous margin, same size feet baseline, centered, no cropping and no overlap between cells. Frame1 relaxed happy idle facing camera; frame2 lively dancing step facing camera with a different arm pose; frame3 triumphant happy arms raised; frame4 delighted bouncing celebration, full body lifted a little. All four must have visibly distinct limb positions. Transparent background, no floor, no cast shadows outside character, no text, no labels, no numbers, no UI, no additional props or characters.",
+      "source": "Generated images are saved to /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906 as /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906/exec-eb6c2952-2266-4004-98c7-3d1e6fe5a6d3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "sourceFile": "assets/source-art/carnival/treasure/cast.png"
+    },
+    {
+      "slug": "copier",
+      "kind": "cast",
+      "path": "assets/runtime/carnival/copier/cast.webp",
+      "prompt": "Use case: stylized-concept. Asset type: true transparent PNG animation sprite sheet for children's game. EXACTLY FOUR equal square cells in ONE horizontal row, aspect ratio 4:1 if possible, no gutters, no separators. Four full-body poses of THE SAME character: a cute original round mint-and-peach robot laboratory assistant with expressive dark eyes and small rabbit-ear antennas. Premium polished clay-toy 3D illustration matching a cozy storybook game, clean silhouette and beautiful material detail. Each character wholly inside its own cell with generous margin, same size feet baseline, centered, no cropping and no overlap between cells. Frame1 relaxed happy idle facing camera; frame2 lively dancing step facing camera with a different arm pose; frame3 triumphant happy arms raised; frame4 delighted bouncing celebration, full body lifted a little. All four must have visibly distinct limb positions. Transparent background, no floor, no cast shadows outside character, no text, no labels, no numbers, no UI, no additional props or characters.",
+      "source": "Generated images are saved to /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906 as /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906/exec-de4e8876-a04b-4a9a-a2b3-fe9c665d3ad3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "sourceFile": "assets/source-art/carnival/copier/cast.png"
+    },
+    {
+      "slug": "keychain",
+      "kind": "cast",
+      "path": "assets/runtime/carnival/keychain/cast.webp",
+      "prompt": "Use case: stylized-concept. Asset type: true transparent PNG animation sprite sheet for children's game. EXACTLY FOUR equal square cells in ONE horizontal row, aspect ratio 4:1 if possible, no gutters, no separators. Four full-body poses of THE SAME character: a cute original lavender kitten magician wearing a royal blue cape with gold clasp, holding a golden key. Premium polished clay-toy 3D illustration matching a cozy storybook game, clean silhouette and beautiful material detail. Each character wholly inside its own cell with generous margin, same size feet baseline, centered, no cropping and no overlap between cells. Frame1 relaxed happy idle facing camera; frame2 lively dancing step facing camera with a different arm pose; frame3 triumphant happy arms raised; frame4 delighted bouncing celebration, full body lifted a little. All four must have visibly distinct limb positions. Transparent background, no floor, no cast shadows outside character, no text, no labels, no numbers, no UI, no additional props or characters.",
+      "source": "Generated images are saved to /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906 as /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906/exec-b6304a6d-b5d1-4c5d-bf84-c25e25ccfdf3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "sourceFile": "assets/source-art/carnival/keychain/cast.png"
+    },
+    {
+      "slug": "paint",
+      "kind": "background",
+      "path": "assets/runtime/carnival/paint/background.webp",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed landscape 16:9 background for a premium children's multiplication rhythm game, no UI or lettering. A magical sunny painter's workshop courtyard, beautiful toy-like handcrafted 3D illustration with soft painted textures, warm coral and turquoise palette, small paint jars, rainbow-colored pipes and brushes placed only along far left and right edges. The middle 65% is a large clean blank pale ivory plaster wall, absolutely no markings or grids (the game will draw an exact mathematical grid here), spanning y25%-70%. Bottom is a clean wooden platform, upper sky is simple. Rich bevels, cinematic soft lighting, charming clean composition, no characters, no numbers, no text, no logos. Sharp game-ready scene, high polish.",
+      "source": "Generated images are saved to /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906 as /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906/exec-c5800a77-a855-4324-97e8-43c0063da145.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "sourceFile": "assets/source-art/carnival/paint/background.png"
+    },
+    {
+      "slug": "paint",
+      "kind": "mural",
+      "path": "assets/runtime/carnival/paint/mural.webp",
+      "sourceFile": "assets/source-art/carnival/paint/mural.png",
+      "prompt": "Use case: illustration-story. Asset type: reward mural artwork for a children's multiplication game. A joyful original fox painter's finished mural of a whimsical rainbow town: small coral and turquoise houses with rounded roofs, fluffy trees, a smiling sun, rainbow bunting, little birds, tiny flower gardens. Square composition, rich but clean hand-painted gouache toy storybook style, warm cream paper texture, vivid coordinated coral mint yellow lavender palette. No writing, no lettering, no digits, no logos, no frames, no interface, no grids. This is a single coherent beautiful painting that a game will reveal tile-by-tile.",
+      "source": "Generated images are saved to /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906 as /Users/makibook/.codex/generated_images/01a18d28-40c4-70e3-8ae4-933e81206906/exec-fbb51c80-8801-4d6a-91bc-ed59a9aaae9b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    }
+  ],
+  "runtimeFormat": "WebP quality 92, alpha preserved; original PNG under assets/source-art/carnival/",
+  "verification": {
+    "generatedAssetsVisuallyInspected": 9,
+    "castAlpha": true,
+    "spriteFrames": 4,
+    "canvasDrawCases": 3888,
+    "scope": "all 81 facts, 4 scenes, 667x375 + 1280x720, normal/reduced motion, unanswered/correct/wrong",
+    "browser": "integration review by parent"
+  }
+}

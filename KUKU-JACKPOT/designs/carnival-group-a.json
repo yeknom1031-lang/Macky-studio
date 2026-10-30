@@ -1,0 +1,60 @@
+{
+  "updatedAt": "2026-10-30",
+  "group": "A",
+  "status": "implemented_locally",
+  "assetTool": "built-in image_gen",
+  "imageGenerationCalls": 9,
+  "assets": "assets/runtime/carnival/{bowling,photo,burger,rescue}/{background,cast}.webp",
+  "originals": "assets/source-art/carnival/{bowling,photo,burger,rescue}/",
+  "prompts": "assets/runtime/carnival/bowling/creation.json",
+  "sharedRules": {
+    "input": "正しい答えを1回タップ。表示直後から受付。",
+    "rhythm": "正解とは独立のタイミング加点。",
+    "feedback": "誤答でも正しい数量を表示してから進む。",
+    "accessibility": "動きを減らす設定で揺れ・フラッシュ・粒子を省略。"
+  },
+  "games": [
+    {
+      "id": 23,
+      "slug": "bowling",
+      "title": "九九ボウリング",
+      "brushUp": "ピンの数をa本×b列で正確に配置。数字のボールを選ぶことで投球が起きる。正解でピンが後列から連鎖して倒れ、誤答は横へ転がり正しい数が残る。",
+      "firstLook": "ピンは何本？→下の数字ボールを1回",
+      "learning": "列ごとに背景色を薄く変え、同じ数のまとまりが繰り返されることを見せる。",
+      "animation": "生成猫4ポーズを拍・投球結果で切替。ボールの移動・ピンの連鎖倒れ・星の粒子。"
+    },
+    {
+      "id": 24,
+      "slug": "photo",
+      "title": "忍者の分身写真館",
+      "brushUp": "分身したa人×b組の忍者を数え、人数シャッターを押して撮影。ぴったり正解なら決めポーズ、早押し正解ならくしゃみ写真になる。速さ以外にも押す楽しさを作る。",
+      "firstLook": "忍者は何人？→人数ボタンでパシャ",
+      "learning": "同じ狐忍者を正確な人数だけ並べ、写真に人数が残る。",
+      "animation": "生成狐4ポーズ。全員が拍で演技を変え、撮影時はポーズ固定、短いフラッシュ。獲得した写真枚数をアルバムとして表示。"
+    },
+    {
+      "id": 25,
+      "slug": "burger",
+      "title": "九九ハンバーガータワー",
+      "brushUp": "a枚のチーズをb人分用意する。回答前は注文ごとの小さなカード、回答後は全枚数が1つの巨大タワーへ合流する。",
+      "firstLook": "チーズは何枚？→数を選んでつくる",
+      "learning": "a枚ずつb組が合計ab枚になる移動を追える。1〜81枚の実枚数で描画し、段数が増えたら厚さを調整。",
+      "animation": "生成パンダ4ポーズ。各チーズの山から中央へ飛ぶ軌道、タワーの完成、バンズと祝福。"
+    },
+    {
+      "id": 26,
+      "slug": "rescue",
+      "title": "九九レスキュー",
+      "brushUp": "a匹がb階に住む動物を、人数ぴったりのマットでキャッチ。各窓から順番に跳んでマットへ集合する。",
+      "firstLook": "何匹助ける？→数字マットを選ぶ",
+      "learning": "窓のa列×b階に合計ab匹を正確に表示。",
+      "animation": "生成救助犬4ポーズ。各動物の窓から着地への軌道とマットの弾み。誤答でも補助マットで全員安心の演出。"
+    }
+  ],
+  "verification": {
+    "renderCases": 1944,
+    "scope": "4ゲーム×全81式×通常/動き軽減×未回答/正答/誤答。座標有限、Canvas save/restore釣り合い、入力データ不変を検査。",
+    "imageReview": "背景4枚・キャラ4枚を出力画像で確認。狐の額当ての不要な記号を追加編集で除去。",
+    "browser": "統合担当の844×390で23〜26の練習・実問題の8画面を独立画像検収。23/25は数量・操作・HUDの重なりなし。24の写真枠と26の建物が数量ラベルにかかる点を見つけ、描画開始y=.35へ修正。初見時の数える対象を「わくの中」「まど」と明記。修正後の実表示確認は統合担当が担当。"
+  }
+}

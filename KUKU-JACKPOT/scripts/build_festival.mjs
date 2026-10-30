@@ -71,6 +71,10 @@ export async function buildFestival({ root = projectRoot, outDir = path.join(roo
     const absolute = path.join(root, dir);
     if (await exists(absolute)) files.push(...(await walk(absolute, accept)).map(file => path.relative(root, file)));
   }
+  for (const group of ['a','b','c']) {
+    const relative=`designs/carnival-group-${group}.json`;
+    if(await exists(path.join(root,relative))) files.push(relative);
+  }
   for (const relative of [...new Set(files)]) {
     const target = path.join(outDir, relative);
     await mkdir(path.dirname(target), { recursive: true });

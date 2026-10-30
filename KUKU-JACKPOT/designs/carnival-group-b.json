@@ -1,0 +1,149 @@
+{
+  "updatedAt": "2026-10-30",
+  "scope": "SHOW27-30",
+  "implemented": true,
+  "tool": "built-in image_gen",
+  "generation": {
+    "calls": 11,
+    "adopted": 8,
+    "rejectedOutputs": 3,
+    "note": "Three benign transparent sprite requests failed output moderation; successful new generations adopted. No CLI fallback."
+  },
+  "assets": [
+    {
+      "slug": "balance",
+      "type": "background",
+      "file": "assets/runtime/carnival/balance/background.webp",
+      "source": "/Users/makibook/.codex/generated_images/01a18d27-ca8c-7272-8082-bc1e0d588322/exec-3c526b48-c473-4a41-a3d9-e54c8d85fc79.png",
+      "prompt": "Use case: stylized-concept. Asset type: full bleed 16:9 landscape background for an original premium Japanese children's multiplication rhythm game. A whimsical sunset woodland toy playground built around a balancing game. Honey wooden stage floor in lower half, softly glowing peach and mint forest, round leafy trees, little flags, mushroom lanterns, distant audience of tiny indistinct animals on edges only. Keep the entire central 65% wide and middle 60% tall uncluttered empty playable floor for a large CODE-DRAWN seesaw, weights and numbers. No seesaw, no foreground characters, no text, no letters, no numbers, no interface, no borders. Luxurious hand-painted 3D storybook toy materials, soft rim light, sophisticated turquoise coral cream palette, highly polished delightful game art, clear depth and large shapes, horizontal widescreen composition.",
+      "tool": "built-in image_gen",
+      "sourceFile": "assets/source-art/carnival/balance/background.png",
+      "inspected": true,
+      "encoding": "WebP quality 92, alpha preserved"
+    },
+    {
+      "slug": "balance",
+      "type": "cast",
+      "file": "assets/runtime/carnival/balance/cast.webp",
+      "source": "/Users/makibook/.codex/generated_images/01a18d27-ca8c-7272-8082-bc1e0d588322/exec-51ea2a9a-86ca-4600-80a0-52803ddffcad.png",
+      "prompt": "Use case: stylized-concept. Asset type: game animation sprite sheet PNG with truly transparent background. Exactly FOUR equal square cells in ONE HORIZONTAL ROW, no gridlines, no text. Same adorable fluffy red panda circus balance keeper in every cell, full body, mint waistcoat, little gold bow tie, coral round ears, soft brown paws. Cell1 neutral standing holding tiny conductor baton, cell2 leaning left with expressive surprised face, cell3 leaning right with expressive face, cell4 joyful arms raised little jump. Consistent identity, scale, frontal 3/4 camera, feet near same baseline, complete body contained inside each cell with generous padding and no overlap. Premium handpainted 3D wooden plush toy style, soft studio light, beautiful clean silhouette. No shadows outside each character, no backdrop. Sheet should be very wide, four equal cells, transparent alpha.",
+      "tool": "built-in image_gen",
+      "sourceFile": "assets/source-art/carnival/balance/cast.png",
+      "inspected": true,
+      "encoding": "WebP quality 92, alpha preserved"
+    },
+    {
+      "slug": "chameleon",
+      "type": "background",
+      "file": "assets/runtime/carnival/chameleon/background.webp",
+      "source": "/Users/makibook/.codex/generated_images/01a18d27-ca8c-7272-8082-bc1e0d588322/exec-7aa1ca44-643d-44fe-abc2-a2a59f372028.png",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed horizontal 16:9 game backdrop for premium cute children's multiplication rhythm game, original art. A magnificent tiny tropical canopy concert garden at golden twilight, translucent teal leaves, orchid pink blossoms, golden firefly glow, curled vines framing corners. Broad gently curved dark green branch across lower quarter, center .25-.7 height left empty unobstructed for CODE-DRAWN bugs and chameleon. No foreground animals, no insects, no text or numbers or interface. Distant soft bioluminescent forest creates depth. Polished handpainted 3D toy storybook aesthetic, rounded shapes, rich turquoise mint green and coral accents, soft cinematic lighting, not photorealistic, clear large readable silhouettes, edge detailing, no border.",
+      "tool": "built-in image_gen",
+      "sourceFile": "assets/source-art/carnival/chameleon/background.png",
+      "inspected": true,
+      "encoding": "WebP quality 92, alpha preserved"
+    },
+    {
+      "slug": "domino",
+      "type": "background",
+      "file": "assets/runtime/carnival/domino/background.webp",
+      "source": "/Users/makibook/.codex/generated_images/01a18d27-ca8c-7272-8082-bc1e0d588322/exec-4d544281-e4a6-4be9-ab37-c86f69ef5db9.png",
+      "prompt": "Use case: stylized-concept. Asset type: full-bleed 16:9 landscape background for a premium original children's multiplication rhythm game. Whimsical miniature clockwork domino workshop, deep cobalt shelves at extreme edges, brass toy windmills, pastel bunting, glossy coral and turquoise wooden gears, warm glowing festival lights, a huge curved pale honey workbench occupying middle and foreground. The center 70% of workbench is EMPTY for interactive domino tiles and numbers to be drawn by code. NO domino tiles, no main characters, no readable text, no numbers, no UI, no frame. Premium tactile handmade wooden toy illustration with refined 3D shading, cinematic warm rim lighting, adorable sophisticated illustration, generous uncluttered central game area, visual depth, original and joyful.",
+      "tool": "built-in image_gen",
+      "sourceFile": "assets/source-art/carnival/domino/background.png",
+      "inspected": true,
+      "encoding": "WebP quality 92, alpha preserved"
+    },
+    {
+      "slug": "domino",
+      "type": "cast",
+      "file": "assets/runtime/carnival/domino/cast.webp",
+      "source": "/Users/makibook/.codex/generated_images/01a18d27-ca8c-7272-8082-bc1e0d588322/exec-6edb7ba6-65e1-4874-90c5-6eea920c0acc.png",
+      "prompt": "Use case: stylized-concept. Asset type: animation sprite sheet with true transparent alpha for a beautiful children's domino multiplication game. FOUR equal square frames in ONE HORIZONTAL ROW, no labels or grid. Same adorable small orange hamster engineer in all four frames, round ears, teal overalls with brass button, goggles on forehead, fluffy full body. Frame1 standing with hands behind back expectantly, frame2 leaning forward with one paw extended to push a domino (NO domino included), frame3 surprised face arms wide, frame4 joyful victory hop holding arms up. All identical scale frontal 3/4 view, complete body in each cell, generous empty padding, no touching other cells, no background, no external floor shadow. Premium hand-painted toy storybook rendering, richly shaded warm fur, clear expressive silhouette, charming original character.",
+      "tool": "built-in image_gen",
+      "sourceFile": "assets/source-art/carnival/domino/cast.png",
+      "inspected": true,
+      "encoding": "WebP quality 92, alpha preserved"
+    },
+    {
+      "slug": "tv",
+      "type": "background",
+      "file": "assets/runtime/carnival/tv/background.webp",
+      "source": "/Users/makibook/.codex/generated_images/01a18d27-ca8c-7272-8082-bc1e0d588322/exec-7b83a4c7-b55c-472a-b55a-88e324ce3c41.png",
+      "prompt": "Use case: stylized-concept. Asset type: full bleed horizontal 16:9 background for original children's mathematics rhythm game. A magical retro television broadcast studio, plum purple and electric teal set, plush curved shapes, tiny star ceiling lights, coral spotlights illuminating an empty central stage, velvet side curtains, rounded speakers at bottom corners, bubble-like planets in the distant dark background. Center 65% EMPTY dark indigo stage for code-drawn giant television and controls. No actual TV in center, no main character, no letters, numbers, text, interface, borders. Premium whimsical handpainted toy illustration, polished 3D volume, cute festival aesthetic, warm gold highlights, clear readable central negative space, rich depth.",
+      "tool": "built-in image_gen",
+      "sourceFile": "assets/source-art/carnival/tv/background.png",
+      "inspected": true,
+      "encoding": "WebP quality 92, alpha preserved"
+    },
+    {
+      "slug": "tv",
+      "type": "cast",
+      "file": "assets/runtime/carnival/tv/cast.webp",
+      "source": "/Users/makibook/.codex/generated_images/01a18d27-ca8c-7272-8082-bc1e0d588322/exec-02e7a88c-28e0-4ce8-bae9-74a53ae70fdf.png",
+      "prompt": "A transparent PNG sprite sheet for a cheerful cartoon educational game. Four equal square cells arranged in a single horizontal row. A charming friendly cartoon grey wolf mascot wearing a white bunny costume with long rabbit ears and pink bow tie. Same full body character four times: neutral standing, waving, surprised, happy dance. Beautiful soft plush toy storybook illustration, expressive kind eyes, detailed fur and cloth, rounded shapes. Consistent size and camera in all four frames, every character complete inside cell with wide transparent padding, no overlap. No text, no scenery, no grid.",
+      "tool": "built-in image_gen",
+      "sourceFile": "assets/source-art/carnival/tv/cast.png",
+      "inspected": true,
+      "encoding": "WebP quality 92, alpha preserved"
+    },
+    {
+      "slug": "chameleon",
+      "type": "cast",
+      "file": "assets/runtime/carnival/chameleon/cast.webp",
+      "source": "/Users/makibook/.codex/generated_images/01a18d27-ca8c-7272-8082-bc1e0d588322/exec-037f26a7-6e2e-4f2e-a880-554a46ab6e56.png",
+      "prompt": "Create a clean animation sprite sheet: four distinct poses of an original cheerful green toy lizard mascot, laid out as four equal panels in one horizontal row. Rounded toy design, curled tail, bright orange scarf, large friendly eyes. Poses are resting, leaning, smiling, celebrating. Consistent character and scale, full body entirely inside each panel with margin. High quality illustrated 3D toy rendering. Transparent background. No writing or labels or panel borders.",
+      "tool": "built-in image_gen",
+      "sourceFile": "assets/source-art/carnival/chameleon/cast.png",
+      "inspected": true,
+      "encoding": "WebP quality 92, alpha preserved",
+      "frameEdges": [
+        0,
+        600,
+        1144,
+        1635,
+        2172
+      ]
+    }
+  ],
+  "games": [
+    {
+      "id": 27,
+      "slug": "balance",
+      "design": "Read a kg repeated b times, choose total weight. Left pan holds exactly b blocks labelled a. Before answering the left side hangs lower; chosen heavier/lighter weight produces physically consistent tilt, equality settles horizontal.",
+      "firstTap": "Three weights; tap exactly once.",
+      "reward": "Panda four-pose celebration, equality sign, light ring.",
+      "learning": "Same total weight demonstrates a repeated b times. Wrong feedback distinguishes too heavy and too light."
+    },
+    {
+      "id": 28,
+      "slug": "chameleon",
+      "design": "Three stationary readable number insects. One selected answer sends the tongue to that exact insect. Correct capture produces skin-pattern rewards; wrong choice receives correct-value feedback.",
+      "firstTap": "Three catch buttons corresponding to the three insects.",
+      "reward": "Green mascot four poses, animated wings, extending/retracting tongue, collectible color spots.",
+      "learning": "Stable positions avoid a motor-speed requirement; timing only adds bonus."
+    },
+    {
+      "id": 29,
+      "slug": "domino",
+      "design": "One missing tile blocks the chain. Correct chosen tile slots into the gap, dominoes topple sequentially, windmill spins, persistent flags illuminate.",
+      "firstTap": "Choose the answer tile once.",
+      "reward": "Hamster four poses, sequenced physical domino fall, 5 flags and final machine celebration.",
+      "learning": "The numeric answer is the missing arithmetic result. Other tiles bear musical symbols, not misleading arithmetic counts."
+    },
+    {
+      "id": 30,
+      "slug": "tv",
+      "design": "Correct answers remove frosted blocks from an original mystery character. Three successes fully reveal a friendly wolf in a bunny costume; full reveal is retained for remaining rounds.",
+      "firstTap": "Choose the answer to focus the picture once.",
+      "reward": "Four animated poses, screen reception bars, progressive reveal and final dance.",
+      "learning": "No second identity-guess input competes with multiplication. Wrong answer does not erase earned reveal."
+    }
+  ],
+  "verification": {
+    "syntax": "node --check passed",
+    "canvas": "All 4 games × all81 facts × both motion settings × success/error × playing/feedback: 391878 calls with finite geometry.",
+    "visualAssets": "All 8 generated assets viewed. Sprite frames use original alpha; chameleon irregular cell edges explicitly mapped.",
+    "browser": "Parent integration verification pending."
+  }
+}
