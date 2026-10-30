@@ -1,0 +1,352 @@
+{
+  "ui": "passed",
+  "desktop": 1440,
+  "mobile": 390,
+  "errors": [],
+  "checks": [
+    {
+      "id": "3D-AVOID-GAME",
+      "kind": "web",
+      "url": "http://127.0.0.1:50588/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "ABSTRACT-RIFT-RUNNER",
+      "kind": "web",
+      "url": "http://127.0.0.1:56251/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "ARCHIVE-GACHA",
+      "kind": "file",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "BLOCKBOUND",
+      "kind": "web",
+      "url": "http://127.0.0.1:49413/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "BOMB-STUDIO",
+      "kind": "file",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "CRAZY-MUSCLE-LAUNCHER",
+      "kind": "web",
+      "url": "http://127.0.0.1:49497/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "CUBE-SURVIVAL",
+      "kind": "web",
+      "url": "http://127.0.0.1:57779/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "FLOOR-COMMAND",
+      "kind": "web",
+      "url": "http://127.0.0.1:48113/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "FOUR-COLOR-OTHELLO",
+      "kind": "file",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "GD-COMPLETE",
+      "kind": "web",
+      "url": "http://127.0.0.1:53263/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "GD-PRACTICE",
+      "kind": "web",
+      "url": "http://127.0.0.1:56112/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "GLITCH-PLATFORMER",
+      "kind": "web",
+      "url": "http://127.0.0.1:51693/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "GRAVITY-LAB",
+      "kind": "web",
+      "url": "http://127.0.0.1:55096/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "KENNEY-PULSE-DASH",
+      "kind": "web",
+      "url": "http://127.0.0.1:55042/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "KEYBOARD-CHAOS-FIGHTER",
+      "kind": "web",
+      "url": "http://127.0.0.1:52008/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "KOMOREBI-PHOTO",
+      "kind": "web",
+      "url": "http://127.0.0.1:4186/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "KOMOREBI-PHOTO-NEW",
+      "kind": "web",
+      "url": "http://127.0.0.1:4196/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "KOMOREBI-SURVIVAL",
+      "kind": "web",
+      "url": "http://127.0.0.1:4197/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "KUKU-JACKPOT",
+      "kind": "web",
+      "url": "http://127.0.0.1:4177/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "LAST-PLATFORM",
+      "kind": "app",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "MAGMA-ESCAPE",
+      "kind": "web",
+      "url": "http://127.0.0.1:4188/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "MEDAL-LOUNGE",
+      "kind": "app",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "MUSCLE-BATTLE-RUNNER",
+      "kind": "web",
+      "url": "http://127.0.0.1:49736/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "NEON-GALAXY-RACER",
+      "kind": "web",
+      "url": "http://127.0.0.1:54380/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "NEON-MAZE",
+      "kind": "web",
+      "url": "http://127.0.0.1:55926/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "PICO-ATELIER",
+      "kind": "web",
+      "url": "http://127.0.0.1:57595/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "SHOP-KEEPER-STORY",
+      "kind": "web",
+      "url": "http://127.0.0.1:54178/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "SIMPLE-RUNNER",
+      "kind": "web",
+      "url": "http://127.0.0.1:48232/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "SKY-BUILDER-3D",
+      "kind": "web",
+      "url": "http://127.0.0.1:51446/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "SKY-VOYAGER",
+      "kind": "web",
+      "url": "http://127.0.0.1:4477/index.html",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "STAGE-MAKER-WORK",
+      "kind": "web",
+      "url": "http://127.0.0.1:53631/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "SUPER-PLATFORMER",
+      "kind": "web",
+      "url": "http://127.0.0.1:52602/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "SUPER-SKY-DROP",
+      "kind": "web",
+      "url": "http://127.0.0.1:52103/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "SURVIVAL-ANIMALS",
+      "kind": "web",
+      "url": "http://127.0.0.1:56784/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "TOILET-60",
+      "kind": "file",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "TOWER-TOGETHER-3D",
+      "kind": "web",
+      "url": "http://127.0.0.1:56452/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "TSUMIKI-TOWER-3D",
+      "kind": "web",
+      "url": "http://127.0.0.1:55949/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "WACHA-WACHA-TOWN",
+      "kind": "file",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "WHITE-ROOM",
+      "kind": "app",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "WILDCRAFT",
+      "kind": "file",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "YURUMON-MARCH",
+      "kind": "web",
+      "url": "http://127.0.0.1:4178/index.html",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "neon-dash",
+      "kind": "web",
+      "url": "http://127.0.0.1:57098/",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "medal-party",
+      "kind": "app",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "pico-2d",
+      "kind": "web",
+      "url": "http://127.0.0.1:53758/2d.html",
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "rift-maker",
+      "kind": "godot",
+      "url": null,
+      "available": true,
+      "ok": true
+    },
+    {
+      "id": "falling-classic",
+      "kind": "file",
+      "url": null,
+      "available": true,
+      "ok": true
+    }
+  ],
+  "previews": [
+    {
+      "id": "PICO-ATELIER",
+      "failures": [],
+      "gameErrors": []
+    },
+    {
+      "id": "KOMOREBI-SURVIVAL",
+      "failures": [],
+      "gameErrors": []
+    },
+    {
+      "id": "SKY-VOYAGER",
+      "failures": [],
+      "gameErrors": []
+    },
+    {
+      "id": "TOWER-TOGETHER-3D",
+      "failures": [],
+      "gameErrors": []
+    }
+  ]
+}

@@ -1,15 +1,21 @@
 #!/bin/zsh
-set -eu
-medal_party_dir="${0:A:h}"
-medal_party_app="$medal_party_dir/build/v7/MEDAL LOUNGE.app"
-if [[ -d "$medal_party_app" ]]; then
-  open "$medal_party_app" --args --party
-  exit 0
+# Macky Studio 共通ランチャー。ポート競合を確認して、このゲームを開きます。
+launcher_dir="${0:A:h}"
+portal_script="$launcher_dir/../GAME-PORTAL/server.py"
+launcher_python="$(command -v python3)"
+if [[ -z "$launcher_python" ]]; then
+  launcher_python="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3"
 fi
-for medal_party_engine in "${GODOT_BIN:-}" /Applications/Godot.app/Contents/MacOS/Godot /private/tmp/godot-4.7.2/Godot.app/Contents/MacOS/Godot; do
-  if [[ -n "$medal_party_engine" && -x "$medal_party_engine" ]]; then
-    exec "$medal_party_engine" --path "$medal_party_dir" -- --party
-  fi
-done
-print 'Godot 4.7.2か、build/v7のアプリから起動してください。'
-read 'medal_party_reply?Enterで閉じる'
+if [[ ! -x "$launcher_python" || ! -f "$portal_script" ]]; then
+  print '起動に必要なPython 3またはGAME-PORTALフォルダが見つかりません。'
+  print 'ゲームとGAME-PORTALをMacky-studioフォルダ内に置いてください。'
+  [[ -t 0 ]] && read 'launcher_reply?Enterで閉じる'
+  exit 1
+fi
+"$launcher_python" "$portal_script" --game medal-party "$@"
+launcher_result=$?
+if [[ "$launcher_result" != 0 ]]; then
+  print 'ゲームを起動できませんでした。上のメッセージをご確認ください。'
+  [[ -t 0 ]] && read 'launcher_reply?Enterで閉じる'
+fi
+exit "$launcher_result"

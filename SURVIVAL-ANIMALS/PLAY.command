@@ -1,12 +1,21 @@
-#!/bin/bash
-cd "$(dirname "$0")" || exit 1
-game_node="$(command -v node)"
-if [ -z "$game_node" ]; then
-  game_node="/Users/makibook/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
+#!/bin/zsh
+# Macky Studio 共通ランチャー。ポート競合を確認して、このゲームを開きます。
+launcher_dir="${0:A:h}"
+portal_script="$launcher_dir/../GAME-PORTAL/server.py"
+launcher_python="$(command -v python3)"
+if [[ -z "$launcher_python" ]]; then
+  launcher_python="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3"
 fi
-if [ ! -x "$game_node" ]; then
-  echo "Node.js が見つかりません。Node.js 20 以降をインストールしてください。"
-  read -r -p "Enter で閉じる" game_reply
+if [[ ! -x "$launcher_python" || ! -f "$portal_script" ]]; then
+  print '起動に必要なPython 3またはGAME-PORTALフォルダが見つかりません。'
+  print 'ゲームとGAME-PORTALをMacky-studioフォルダ内に置いてください。'
+  [[ -t 0 ]] && read 'launcher_reply?Enterで閉じる'
   exit 1
 fi
-"$game_node" server.mjs --open
+"$launcher_python" "$portal_script" --game SURVIVAL-ANIMALS "$@"
+launcher_result=$?
+if [[ "$launcher_result" != 0 ]]; then
+  print 'ゲームを起動できませんでした。上のメッセージをご確認ください。'
+  [[ -t 0 ]] && read 'launcher_reply?Enterで閉じる'
+fi
+exit "$launcher_result"

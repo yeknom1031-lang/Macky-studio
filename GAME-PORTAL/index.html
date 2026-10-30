@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101613"><title>Macky Studio — ゲームポータル</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+ <aside class="sidebar">
+  <a class="brand" href="/" aria-label="Macky Studio ホーム"><span class="brand-icon">m<span>✦</span></span><span>MACKY<span class="brand-sub">STUDIO / PLAY</span></span></a>
+  <div class="nav-label">MY PLAYGROUND</div>
+  <nav aria-label="ライブラリ">
+   <button class="nav-item active" data-view="all"><span class="nav-symbol">▦</span>すべてのゲーム<span id="nav-total" class="nav-count">—</span></button>
+   <button class="nav-item" data-view="favorites"><span class="nav-symbol">♡</span>お気に入り<span id="nav-favorites" class="nav-count">0</span></button>
+   <button class="nav-item" data-view="recent"><span class="nav-symbol">◷</span>最近遊んだ</button>
+  </nav>
+  <div class="sidebar-note"><span class="mini-orbit">✳</span><p>つくった世界が、<br>ここにつながる。</p><small>あなたのゲームコレクション</small></div>
+  <div class="side-bottom"><span class="status-dot"></span>このMacのゲーム<button id="help" aria-label="使い方">?</button></div>
+ </aside>
+ <main>
+  <header class="topbar"><div><span class="breadcrumb">MACKY STUDIO</span><span class="slash">/</span><span>ゲームライブラリ</span></div><button id="refresh" class="text-button">↻ <span>一覧を更新</span></button></header>
+  <section class="hero" aria-labelledby="welcome-title">
+   <div class="hero-copy"><span class="eyebrow"><i></i> YOUR WORLDS, ONE PLACE</span><h1 id="welcome-title">次は、<br>どの世界へ？</h1><p>これまでつくった冒険を、ここから。<br>お気に入りのゲームを選んで、遊びに行こう。</p><button id="surprise" class="primary-button">おまかせで遊ぶ <span>↗</span></button></div>
+   <div class="hero-tag"><span>✦</span> MACKY'S GAME UNIVERSE</div>
+  </section>
+  <section class="library" aria-labelledby="library-title">
+   <div class="library-top"><div class="title-line"><h2 id="library-title">すべてのゲーム</h2><span id="result-count" class="count-badge">—</span></div><div class="library-actions"><div class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="ゲームをさがす" aria-label="ゲームを検索"><kbd>/</kbd></div><select id="sort" aria-label="並び順"><option value="recommended">おすすめ順</option><option value="name">名前順</option><option value="recent">最近遊んだ順</option></select></div></div>
+   <div id="categories" class="categories" role="group" aria-label="ジャンルで絞り込む"></div>
+   <div id="filter-summary" class="filter-summary"></div>
+   <div id="games" class="game-grid" aria-busy="true"><div class="empty">ゲームを集めています…</div></div>
+   <div id="empty" class="empty" hidden><span>⌕</span><h3>ゲームが見つかりませんでした</h3><p id="empty-description">検索ワードやジャンルを変えてみてください。</p><button id="clear" class="secondary-button">すべて表示する</button></div>
+  </section>
+  <footer><span>MACKY STUDIO <span class="footer-star">✳</span> MADE TO BE PLAYED.</span><span>ゲームをクリックして起動 <span aria-hidden="true">↗</span></span></footer>
+ </main>
+ <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+ <dialog id="help-dialog"><button id="close-help" class="close" aria-label="閉じる">×</button><span class="eyebrow">HOW TO PLAY</span><h2>遊びたい世界をクリック。</h2><p>ゲームの画像や「遊ぶ」を押すと、ブラウザまたはMacアプリで開きます。このポータルは開いたままで大丈夫です。</p><p>♡でお気に入りに登録。「最近遊んだ」から、前に開いたゲームをすぐ見つけられます。</p><p>次からは「ゲームポータルを開く.command」をダブルクリック。新しい作品をフォルダに追加したら「一覧を更新」で探せます。</p><p class="muted">ゲーム内の「つづきから」は、そのゲームのセーブに従います。別のURLから起動していた作品はセーブ先が異なる場合があります。サムネイルは各ゲームをイメージした生成イラストです。実際のゲーム画面とは異なります。</p><button id="help-done" class="primary-button">遊びに行こう ↗</button></dialog>
+ <noscript>このポータルを利用するにはブラウザのJavaScriptを有効にしてください。</noscript>
+</body>
+</html>

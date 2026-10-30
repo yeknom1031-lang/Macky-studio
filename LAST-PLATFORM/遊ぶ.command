@@ -1,14 +1,21 @@
 #!/bin/zsh
-set -euo pipefail
-game_dir="${0:A:h}"
-if [[ -d "$game_dir/build/終電のあと.app" ]]; then
-  open "$game_dir/build/終電のあと.app"
-  exit 0
+# Macky Studio 共通ランチャー。ポート競合を確認して、このゲームを開きます。
+launcher_dir="${0:A:h}"
+portal_script="$launcher_dir/../GAME-PORTAL/server.py"
+launcher_python="$(command -v python3)"
+if [[ -z "$launcher_python" ]]; then
+  launcher_python="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3"
 fi
-for engine in "${GODOT_BIN:-}" /Applications/Godot.app/Contents/MacOS/Godot "$HOME/Desktop/マッキー最強/Godot.app/Contents/MacOS/Godot"; do
-  if [[ -n "$engine" && -x "$engine" ]]; then
-    exec "$engine" --path "$game_dir"
-  fi
-done
-print 'Godot 4.7以降で、このフォルダの project.godot を開いてください。'
-read '?Enterで閉じる'
+if [[ ! -x "$launcher_python" || ! -f "$portal_script" ]]; then
+  print '起動に必要なPython 3またはGAME-PORTALフォルダが見つかりません。'
+  print 'ゲームとGAME-PORTALをMacky-studioフォルダ内に置いてください。'
+  [[ -t 0 ]] && read 'launcher_reply?Enterで閉じる'
+  exit 1
+fi
+"$launcher_python" "$portal_script" --game LAST-PLATFORM "$@"
+launcher_result=$?
+if [[ "$launcher_result" != 0 ]]; then
+  print 'ゲームを起動できませんでした。上のメッセージをご確認ください。'
+  [[ -t 0 ]] && read 'launcher_reply?Enterで閉じる'
+fi
+exit "$launcher_result"

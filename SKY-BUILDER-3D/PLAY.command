@@ -1,14 +1,21 @@
 #!/bin/zsh
-
-GAME_DIR="$(cd "$(dirname "$0")" && pwd)"
-GAME_URL="http://127.0.0.1:8765/"
-LOG_FILE="/tmp/sky-builder-3d-server.log"
-
-cd "$GAME_DIR" || exit 1
-
-if ! /usr/bin/curl --silent --fail "$GAME_URL" >/dev/null 2>&1; then
-  /usr/bin/nohup /usr/bin/python3 -m http.server 8765 --bind 127.0.0.1 >"$LOG_FILE" 2>&1 &
-  sleep 1
+# Macky Studio 共通ランチャー。ポート競合を確認して、このゲームを開きます。
+launcher_dir="${0:A:h}"
+portal_script="$launcher_dir/../GAME-PORTAL/server.py"
+launcher_python="$(command -v python3)"
+if [[ -z "$launcher_python" ]]; then
+  launcher_python="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3"
 fi
-
-/usr/bin/open "$GAME_URL"
+if [[ ! -x "$launcher_python" || ! -f "$portal_script" ]]; then
+  print '起動に必要なPython 3またはGAME-PORTALフォルダが見つかりません。'
+  print 'ゲームとGAME-PORTALをMacky-studioフォルダ内に置いてください。'
+  [[ -t 0 ]] && read 'launcher_reply?Enterで閉じる'
+  exit 1
+fi
+"$launcher_python" "$portal_script" --game SKY-BUILDER-3D "$@"
+launcher_result=$?
+if [[ "$launcher_result" != 0 ]]; then
+  print 'ゲームを起動できませんでした。上のメッセージをご確認ください。'
+  [[ -t 0 ]] && read 'launcher_reply?Enterで閉じる'
+fi
+exit "$launcher_result"

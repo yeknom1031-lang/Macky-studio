@@ -1,0 +1,498 @@
+[
+  {
+    "id": "KOMOREBI-SURVIVAL",
+    "path": "KOMOREBI-SURVIVAL/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4197/"
+  },
+  {
+    "id": "KOMOREBI-SURVIVAL",
+    "path": "KOMOREBI-SURVIVAL/遊ぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4197/"
+  },
+  {
+    "id": "SKY-VOYAGER",
+    "path": "SKY-VOYAGER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4477/index.html"
+  },
+  {
+    "id": "SKY-VOYAGER",
+    "path": "SKY-VOYAGER/遊ぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4477/index.html"
+  },
+  {
+    "id": "TOWER-TOGETHER-3D",
+    "path": "TOWER-TOGETHER-3D/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:56452/"
+  },
+  {
+    "id": "TOWER-TOGETHER-3D",
+    "path": "TOWER-TOGETHER-3D/PLAY.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:56452/"
+  },
+  {
+    "id": "KUKU-JACKPOT",
+    "path": "KUKU-JACKPOT/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4177/"
+  },
+  {
+    "id": "KUKU-JACKPOT",
+    "path": "KUKU-JACKPOT/九九ジャックポットを起動.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4177/"
+  },
+  {
+    "id": "KOMOREBI-PHOTO",
+    "path": "KOMOREBI-PHOTO/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4186/"
+  },
+  {
+    "id": "KOMOREBI-PHOTO",
+    "path": "KOMOREBI-PHOTO/遊ぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4186/"
+  },
+  {
+    "id": "KOMOREBI-PHOTO-NEW",
+    "path": "KOMOREBI-PHOTO-NEW/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4196/"
+  },
+  {
+    "id": "KOMOREBI-PHOTO-NEW",
+    "path": "KOMOREBI-PHOTO-NEW/遊ぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4196/"
+  },
+  {
+    "id": "WACHA-WACHA-TOWN",
+    "path": "WACHA-WACHA-TOWN/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "WACHA-WACHA-TOWN",
+    "path": "WACHA-WACHA-TOWN/遊ぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "YURUMON-MARCH",
+    "path": "YURUMON-MARCH/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4178/index.html"
+  },
+  {
+    "id": "YURUMON-MARCH",
+    "path": "YURUMON-MARCH/遊ぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4178/index.html"
+  },
+  {
+    "id": "SURVIVAL-ANIMALS",
+    "path": "SURVIVAL-ANIMALS/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:56784/"
+  },
+  {
+    "id": "SURVIVAL-ANIMALS",
+    "path": "SURVIVAL-ANIMALS/PLAY.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:56784/"
+  },
+  {
+    "id": "WHITE-ROOM",
+    "path": "WHITE-ROOM/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "WHITE-ROOM",
+    "path": "WHITE-ROOM/遊ぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "LAST-PLATFORM",
+    "path": "LAST-PLATFORM/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "LAST-PLATFORM",
+    "path": "LAST-PLATFORM/遊ぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "MEDAL-LOUNGE",
+    "path": "MEDAL-LOUNGE/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "MEDAL-LOUNGE",
+    "path": "MEDAL-LOUNGE/Play.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "PICO-ATELIER",
+    "path": "PICO-ATELIER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:57595/"
+  },
+  {
+    "id": "FOUR-COLOR-OTHELLO",
+    "path": "FOUR-COLOR-OTHELLO/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "BOMB-STUDIO",
+    "path": "BOMB-STUDIO/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "BOMB-STUDIO",
+    "path": "BOMB-STUDIO/あそぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "WILDCRAFT",
+    "path": "WILDCRAFT/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "WILDCRAFT",
+    "path": "WILDCRAFT/PLAY.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "SKY-BUILDER-3D",
+    "path": "SKY-BUILDER-3D/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:51446/"
+  },
+  {
+    "id": "SKY-BUILDER-3D",
+    "path": "SKY-BUILDER-3D/PLAY.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:51446/"
+  },
+  {
+    "id": "BLOCKBOUND",
+    "path": "BLOCKBOUND/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:49413/"
+  },
+  {
+    "id": "STAGE-MAKER-WORK",
+    "path": "STAGE-MAKER-WORK/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:53631/"
+  },
+  {
+    "id": "SHOP-KEEPER-STORY",
+    "path": "SHOP-KEEPER-STORY/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:54178/"
+  },
+  {
+    "id": "MAGMA-ESCAPE",
+    "path": "MAGMA-ESCAPE/ゲームを起動.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:4188/"
+  },
+  {
+    "id": "TOILET-60",
+    "path": "TOILET-60/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "TOILET-60",
+    "path": "TOILET-60/いつでも遊ぶ.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "GD-COMPLETE",
+    "path": "GD-COMPLETE/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:53263/"
+  },
+  {
+    "id": "GD-PRACTICE",
+    "path": "GD-PRACTICE/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:56112/"
+  },
+  {
+    "id": "KENNEY-PULSE-DASH",
+    "path": "KENNEY-PULSE-DASH/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:55042/"
+  },
+  {
+    "id": "neon-dash",
+    "path": "neon-dash/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:57098/"
+  },
+  {
+    "id": "ABSTRACT-RIFT-RUNNER",
+    "path": "ABSTRACT-RIFT-RUNNER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:56251/"
+  },
+  {
+    "id": "3D-AVOID-GAME",
+    "path": "3D-AVOID-GAME/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:50588/"
+  },
+  {
+    "id": "CUBE-SURVIVAL",
+    "path": "CUBE-SURVIVAL/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:57779/"
+  },
+  {
+    "id": "CRAZY-MUSCLE-LAUNCHER",
+    "path": "CRAZY-MUSCLE-LAUNCHER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:49497/"
+  },
+  {
+    "id": "MUSCLE-BATTLE-RUNNER",
+    "path": "MUSCLE-BATTLE-RUNNER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:49736/"
+  },
+  {
+    "id": "KEYBOARD-CHAOS-FIGHTER",
+    "path": "KEYBOARD-CHAOS-FIGHTER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:52008/"
+  },
+  {
+    "id": "GLITCH-PLATFORMER",
+    "path": "GLITCH-PLATFORMER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:51693/"
+  },
+  {
+    "id": "GRAVITY-LAB",
+    "path": "GRAVITY-LAB/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:55096/"
+  },
+  {
+    "id": "FLOOR-COMMAND",
+    "path": "FLOOR-COMMAND/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:48113/"
+  },
+  {
+    "id": "NEON-GALAXY-RACER",
+    "path": "NEON-GALAXY-RACER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:54380/"
+  },
+  {
+    "id": "NEON-MAZE",
+    "path": "NEON-MAZE/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:55926/"
+  },
+  {
+    "id": "SIMPLE-RUNNER",
+    "path": "SIMPLE-RUNNER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:48232/"
+  },
+  {
+    "id": "SUPER-PLATFORMER",
+    "path": "SUPER-PLATFORMER/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:52602/"
+  },
+  {
+    "id": "SUPER-SKY-DROP",
+    "path": "SUPER-SKY-DROP/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:52103/"
+  },
+  {
+    "id": "TSUMIKI-TOWER-3D",
+    "path": "TSUMIKI-TOWER-3D/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:55949/"
+  },
+  {
+    "id": "ARCHIVE-GACHA",
+    "path": "ARCHIVE-GACHA/ゲームを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "pico-2d",
+    "path": "PICO-ATELIER/2D版を起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "http://127.0.0.1:53758/2d.html"
+  },
+  {
+    "id": "medal-party",
+    "path": "MEDAL-LOUNGE/Party Fever.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  },
+  {
+    "id": "rift-maker",
+    "path": "ABSTRACT-RIFT-RUNNER/Abstract Rift Maker.command",
+    "action": "updated",
+    "syntax": 0,
+    "exit": 0,
+    "output": "Godot版ゲームを開きました。"
+  },
+  {
+    "id": "falling-classic",
+    "path": "非公開/Falling Gameを起動.command",
+    "action": "added",
+    "syntax": 0,
+    "exit": 0,
+    "output": "ゲームを開きました。Dockまたはブラウザをご確認ください。"
+  }
+]
