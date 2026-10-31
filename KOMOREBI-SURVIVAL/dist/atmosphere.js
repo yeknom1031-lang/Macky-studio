@@ -68,14 +68,14 @@
             float skyLight = smoothstep(-0.29,0.34,sunDirection.y);
             sky = mix(nightSky, sky, skyLight);
             sky = mix(sky, vec3(0.30,0.36,0.39) * (0.075 + skyLight * 0.925 + moonlight * 0.065), weather * 0.6);
-            float solarDisc = smoothstep(0.999985, 0.999988, sunAngle) * smoothstep(-0.025, 0.02, sunDirection.y);
+            float solarDisc = smoothstep(0.99976, 0.99980, sunAngle) * smoothstep(-0.025, 0.02, sunDirection.y);
             sky += vec3(1.0,0.87,0.65) * solarDisc * 7.0;
             float moonAngle = clamp(dot(direction, moonDirection), -1.0, 1.0);
             float lunarHorizon = smoothstep(-0.025,0.035,moonDirection.y);
             float lunarHalo = exp((moonAngle-1.0)*1800.0)*0.034 + exp((moonAngle-1.0)*180.0)*0.006;
             sky += vec3(0.58,0.68,0.87)*lunarHalo*moonlight;
-            if (moonAngle > 0.999982 && direction.y > -0.015) {
-              vec2 lunarUv = vec2(dot(direction,moonRight),dot(direction,moonUp))/0.0052;
+            if (moonAngle > 0.99972 && direction.y > -0.015) {
+              vec2 lunarUv = vec2(dot(direction,moonRight),dot(direction,moonUp))/0.0208;
               float lunarRadius = length(lunarUv), lunarEdge = 1.0-smoothstep(0.94,1.04,lunarRadius);
               if (lunarRadius < 1.04) {
                 float lunarDepth = sqrt(max(0.0,1.0-dot(lunarUv,lunarUv)));

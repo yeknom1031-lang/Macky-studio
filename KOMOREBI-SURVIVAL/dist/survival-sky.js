@@ -16,6 +16,7 @@ class SurvivalSky{
  const step=170/2048;sun.target.position.set(Math.round(camera.position.x/step)*step,camera.position.y-1.8,Math.round(camera.position.z/step)*step);sun.position.copy(sun.target.position).addScaledVector(moon?a.moonDirection:a.sunDirection,260);sun.target.updateMatrixWorld();const now=performance.now();if(now-this.shadowUpdate>180){renderer.shadowMap.needsUpdate=true;this.shadowUpdate=now;}
  const u=world.native.waterUniforms;u.horizon.value.copy(a.horizon);u.zenith.value.copy(a.zenith);u.sunDirection.value.copy(a.sunDirection);u.daylight.value=daylight;u.moonDirection.value.copy(a.moonDirection||a.sunDirection);u.moonlight.value=moonlight;u.cloudShift.value=east*.0000008;u.cloudTime.value=cycle.worldTime;u.cloudCover.value=climate.cloudCover;u.dusk.value=dusk;
  this.stars.position.copy(camera.position);this.stars.material.opacity=Math.max(0,.85-skyLight*1.1-dusk*.3)*(1-climate.cloudCover*.94)*(1-moonlight*.35);
+ world.native.water.visible=caveDepth<.1;
  const cave=Number.isFinite(EmberTerrain.caveCeiling(state.x,state.z,state.y));
  this.rain.position.set(camera.position.x,camera.position.y-5,camera.position.z);this.rain.visible=!cave&&climate.rainfall>.005;this.rain.material.opacity=climate.rainfall*.44;
  if(this.rain.visible&&!paused){const p=this.rain.geometry.attributes.position;for(let i=0;i<p.count;i+=2){let y=p.getY(i)-dt*35,x=p.getX(i)+dt*climate.wind*4;if(y<0)y+=70;if(x>55)x-=110;p.setXY(i,x,y);p.setXY(i+1,x-climate.wind*.13,y+.75);}p.needsUpdate=true;}

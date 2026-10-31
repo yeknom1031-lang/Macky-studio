@@ -2,7 +2,7 @@
 (()=>{'use strict';const T=THREE,W=EmberTerrain,P=EmberWorld.prototype;
 const villages=[];for(let i=0;i<6;i++){let best=null;for(let k=0;k<800;k++){const a=i*2.399+k*.037,r=180+i*220+(k%80)*5,x=Math.round(Math.sin(a)*r),z=Math.round(Math.cos(a)*r),y=W.ground(x,z);if(y<W.water+5||villages.some(v=>Math.hypot(v.x-x,v.z-z)<210)||W.caves.some(c=>Math.hypot(c.x-x,c.z-z)<125))continue;const heights=[[-18,-18],[-18,18],[18,-18],[18,18],[0,0]].map(([dx,dz])=>W.ground(x+dx,z+dz)),spread=Math.max(...heights)-Math.min(...heights);if(!best||spread<best.spread)best={id:'village-'+i,name:['木立の村','風見の村','水音の村','琥珀の村','高原の村','星待ちの村'][i],x,z,y,spread};if(spread<2.2)break;}if(best)villages.push(best);}
 W.villages=villages;W.merchants=villages.map(v=>({...v,id:v.id+'-merchant',x:v.x+5,z:v.z+3,y:W.ground(v.x+5,v.z+3)}));
-const landmarks=[{id:'jungle-temple',name:'苔むした階段神殿',x:W.sites.jungle.x+26,z:W.sites.jungle.z+12,kind:'temple'},...W.islands.map((island,i)=>({id:'sky-ring-'+i,name:'浮島の石環',x:island.x,z:island.z,y:island.y,kind:'ring',r:island.r}))];
+const landmarks=[{id:'jungle-temple',name:'苔むした階段神殿',x:W.sites.jungle.x+26,z:W.sites.jungle.z+12,kind:'temple'},...W.islands.filter((island,i)=>i<2||island.variant===0).map((island,i)=>({id:'sky-ring-'+i,name:'浮島の石環',x:island.x,z:island.z,y:island.y,kind:'ring',r:island.r}))];
 // Select a dry forest clearing using the current terrain, not the old biome map.
 const temple=landmarks[0];let templeScore=Infinity;for(let dx=-200;dx<=200;dx+=20)for(let dz=-200;dz<=200;dz+=20){const x=W.sites.jungle.x+dx,z=W.sites.jungle.z+dz,h=W.ground(x,z);if(h<W.water+7||W.nativeBiome(x,z)!=='forest'||W.caves.some(c=>Math.hypot(c.x-x,c.z-z)<100))continue;const levels=[[-12,-12],[-12,12],[12,-12],[12,12]].map(([a,b])=>W.ground(x+a,z+b)),spread=Math.max(...levels)-Math.min(...levels),score=spread*15+Math.hypot(dx,dz)*.04;if(score<templeScore){templeScore=score;temple.x=x;temple.z=z;}}
 W.landmarks=landmarks;
@@ -26,7 +26,7 @@ function build(world){world.villageGroups=[];world.villageHouses=[];world.explor
    for(let n=0;n<5;n++)block(g,0,y+n*.65-.4,0,18-n*2.2,.8,16-n*1.8);for(let n=0;n<10;n++)block(g,0,y+.15+n*.3,14-n*1.2,3,.3,1.25,'moss-stone');
    for(const x of[-3.1,3.1]){block(g,x,y+5.4,0,1.25,5.6,1.5,'ancient-runes');block(g,x,y+8.3,0,2,.5,2);}block(g,0,y+8.8,0,8,1,2.2,'ancient-runes');block(g,0,y+9.5,0,6,.4,2.5);for(const x of[-7,7])for(const z of[-5,5])block(g,x,y+2.2,z,1,4.5,1,'ancient-runes');
    ramp(l.x,l.z+14.6,y,W.ground(l.x,l.z+20)+.03,3,5.4,world.static);
-  }else{g.position.y=l.y;const ring=new T.Mesh(new T.TorusGeometry(3.2,.48,8,32),world.mat('#b8bea8',false,'ancient-runes'));ring.position.set(0,4,0);g.add(ring);for(const x of[-3.1,3.1])block(g,x,1.2,0,1.1,2.4,1.5);for(let n=0;n<5;n++)world.mesh(g,'shard','#abcac1',Math.sin(n*1.8)*4,.2,Math.cos(n*1.8)*4,.5,.4,.6,false,'moss-stone');}
+  }else{g.position.y=l.y;const ring=new T.Mesh(new T.TorusGeometry(3.2,.48,8,32),world.mat('#b8bea8',false,'ancient-runes'));const uv=ring.geometry.attributes.uv;for(let i=0;i<uv.count;i++)uv.setXY(i,uv.getX(i)*10,uv.getY(i)*1.5);ring.position.set(0,4,0);g.add(ring);for(const x of[-3.1,3.1])block(g,x,1.2,0,1.1,2.4,1.5);for(let n=0;n<5;n++)world.mesh(g,'shard','#abcac1',Math.sin(n*1.8)*4,.2,Math.cos(n*1.8)*4,.5,.4,.6,false,'moss-stone');}
   world.landmarkGroups.push({l,g});
  }
  // A crystalline stone gate sits in a wide underground chamber, without blocking its paths.
@@ -45,7 +45,7 @@ P.itemVisual=function(id,held=false){if(!held||!['sword','stormblade','flashligh
 let plantMaterial,plantGeo;
 window.buildAquaticPlants=(native,chunk)=>{if(!plantMaterial){const tex=native.loader.load('assets/survival/exploration/aquatic-leaves-v1.png');tex.encoding=T.sRGBEncoding;plantMaterial=new T.MeshStandardMaterial({map:tex,side:T.DoubleSide,alphaTest:.35,roughness:1});plantGeo=new T.PlaneGeometry(1,1);plantGeo.translate(0,.5,0);}
  const points=[];for(let n=0;n<70;n++){const x=W.hash(chunk.userData.east,n,401)*128,z=W.hash(chunk.userData.north,n,402)*128,y=NatureWorld.height(chunk.userData.east+x,chunk.userData.north+z);if(y<2.9&&y>-10)points.push({x,z,y,size:.5+W.hash(n,40)*.8});}if(!points.length)return;const m=new T.InstancedMesh(plantGeo,plantMaterial,points.length*2),matrix=new T.Matrix4();points.forEach((p,i)=>{for(let k=0;k<2;k++){matrix.compose(new T.Vector3(p.x,p.y-.08,p.z),new T.Quaternion().setFromAxisAngle(new T.Vector3(0,1,0),k*Math.PI/2+i),new T.Vector3(p.size,p.size*1.2,p.size));m.setMatrixAt(i*2+k,matrix);}});m.userData.aquatic=true;chunk.add(m);};
-function waterAt(state){return !W.inCave(state.x,state.z,state.y)&&W.ground(state.x,state.z)<W.water-.8&&state.y<W.water-.65;}
+function waterAt(state){return !W.inCave(state.x,state.z,state.y)&&W.ground(state.x,state.z)<W.water-1.35&&state.y<W.water-1.15;}
 function nearestMerchant(state){return W.merchants.find(m=>Math.hypot(state.x-m.x,state.z-m.z)<5&&Math.abs(state.y-m.y)<3);}
 window.SurvivalExploration={build,waterAt,nearestMerchant,villages,landmarks};
 })();

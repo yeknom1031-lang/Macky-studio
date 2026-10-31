@@ -2,7 +2,7 @@
 (()=>{'use strict';const W=EmberTerrain,T=THREE,clamp=T.MathUtils.clamp;
 const themes=[['石灰','cave-limestone','#b7ac96'],['青晶','cave-limestone','#83969e'],['苔岩','moss-stone','#87927b'],['黒曜','obsidian','#8e8792']];
 const forms=['蛇行洞','環状洞','双子の岩窟','三叉洞','岩柱の洞','折れ曲がる洞','枝分かれ洞','連なる岩窟'];
-const width=s=>3.8+.35*Math.sin(s*.31),bump=(u,s)=>.17*Math.sin(s*.42)*Math.cos(u*.53),plane=(c,u,s)=>c.y-.30*s+bump(u,s)-1.5*Math.exp(-(((s-2)/7)**2))*Math.max(0,1-(u/width(s))**2);
+const width=s=>3.8+.35*Math.sin(s*.31),bump=(u,s)=>.17*Math.sin(s*.42)*Math.cos(u*.53),plane=(c,u,s)=>{const base=c.y-.30*s+bump(u,s)-1.5*Math.exp(-(((s-2)/7)**2))*Math.max(0,1-(u/width(s))**2);if(!c.reach||s<75)return base;const p=point(c,u,s);return Math.min(base,T.MathUtils.lerp(base,W.ground(p.x,p.z)-14,T.MathUtils.smoothstep(s,75,100)));};
 const local=(c,x,z)=>{const dx=x-c.x,dz=z-c.z;return{u:dx*c.fz-dz*c.fx,s:dx*c.fx+dz*c.fz};};
 const point=(c,u,s)=>({x:c.x+u*c.fz+s*c.fx,z:c.z-u*c.fx+s*c.fz});
 function layout(n){const v=Math.floor(n/8),f=n%8,q=1+v*.11,paths=[[ [0,-5,3.8],[0,23,4.2] ]];
@@ -19,7 +19,9 @@ function layout(n){const v=Math.floor(n/8),f=n%8,q=1+v*.11,paths=[[ [0,-5,3.8],[
 function field(c,u,s){if(s<20){const end=Math.max(0,-5-s);return width(s)-Math.hypot(u,end);}
  let best=-1e6;for(const p of c.paths)for(let i=1;i<p.length;i++){const a=p[i-1],b=p[i],dx=b[0]-a[0],dz=b[1]-a[1],t=clamp(((u-a[0])*dx+(s-a[1])*dz)/(dx*dx+dz*dz),0,1);best=Math.max(best,a[2]+t*(b[2]-a[2])-Math.hypot(u-a[0]-dx*t,s-a[1]-dz*t));}
  return best+Math.min(1,(s-20)/6)*(.38*Math.sin(u*1.31+s*.43)+.23*Math.sin(s*.91-u*.73));}
-function floor(c,u,s){const p=point(c,u,s);return Math.min(W.ground(p.x,p.z)-(W.entranceLift?.(p.x+W.anchor.x,p.z+W.anchor.z)||0)-.035,plane(c,u,s));}
+function rawFloor(c,u,s){const cache=c.reach?(c.floorCache||=(new Map())):null,key=u+","+s;if(cache?.has(key))return cache.get(key);const p=point(c,u,s),h=Math.min(W.ground(p.x,p.z)-(W.entranceLift?.(p.x+W.anchor.x,p.z+W.anchor.z)||0)-.035,plane(c,u,s));cache?.set(key,h);return h;}
+// Walking uses the same two triangles as the visible one-metre floor cells.
+function floor(c,u,s){const x=Math.floor(u),z=Math.floor(s),a=u-x,b=s-z,h00=rawFloor(c,x,z),h10=rawFloor(c,x+1,z),h01=rawFloor(c,x,z+1);if(a+b<=1)return h00+(h10-h00)*a+(h01-h00)*b;const h11=rawFloor(c,x+1,z+1);return h11+(h01-h11)*(1-a)+(h10-h11)*(1-b);}
 function roof(c,u,s){const d=field(c,u,s),w=s<20?width(s):5;return plane(c,u,s)+1.9+3.9*Math.sqrt(clamp(d/w,0,1))+(s<20?0:.25*Math.sin(s*.68+u*.89));}
 const caves=[];
 for(let n=0;n<32;n++){let c=null;const spec=layout(n);for(let k=0;k<1000;k++){const a=n*2.399963+k*.23,r=260+Math.floor(n/8)*330+k*4,x=Math.round(Math.sin(a)*r),z=Math.round(Math.cos(a)*r),y=W.ground(x,z);if(y<W.water+38||caves.some(p=>Math.hypot(p.x-x,p.z-z)<155)||Math.hypot(x-W.shop.x,z-W.shop.z)<100)continue;
@@ -31,16 +33,24 @@ for(let n=0;n<32;n++){let c=null;const spec=layout(n);for(let k=0;k<1000;k++){co
  c.entrance={...point(c,0,0),y:c.y};c.spawnPoints=[32,42,54].map(s=>{const p=c.paths[1][Math.min(c.paths[1].length-1,Math.floor((s-25)/12)+1)],v=point(c,p[0],p[1]);return{...v,y:floor(c,p[0],p[1])};});
  c.bounds={minU:Math.floor(Math.min(...c.paths.flat().map(p=>p[0]-p[2]))-2),maxU:Math.ceil(Math.max(...c.paths.flat().map(p=>p[0]+p[2]))+2),minS:-10,maxS:Math.ceil(Math.max(...c.paths.flat().map(p=>p[1]+p[2]))+2)};caves.push(c);
 }
+// Each stable entrance has its own seeded deeper network, with bottlenecks and chambers.
+for(const c of caves){
+ const start=c.paths[1].at(-1),main=[start.slice()];let u=start[0],v=start[1];
+ for(let j=0;j<10;j++){const nextU=u+(W.hash(c.index,j,1821)-.5)*18,nextS=v+12+W.hash(c.index,j,1822)*8;main.push([nextU,nextS,j%3===1?.95:5+W.hash(c.index,j,1823)*7]);u=nextU;v=nextS;}
+ c.paths.push(main);for(let branch=0;branch<4;branch++){const root=main[2+branch*2],side=branch%2?1:-1,path=[root.slice()];for(let j=1;j<=3;j++)path.push([root[0]+side*j*(7+W.hash(c.index,branch,1870)*6),root[1]+j*(3+W.hash(c.index,j,1871)*6),j===1?1.1:4+W.hash(c.index,branch+j,1872)*6]);c.paths.push(path);}
+ c.bounds={minU:Math.floor(Math.min(...c.paths.flat().map(p=>p[0]-p[2]))-2),maxU:Math.ceil(Math.max(...c.paths.flat().map(p=>p[0]+p[2]))+2),minS:-10,maxS:Math.ceil(Math.max(...c.paths.flat().map(p=>p[1]+p[2]))+2)};
+ c.reach=Math.hypot(Math.max(Math.abs(c.bounds.minU),c.bounds.maxU),c.bounds.maxS)+4;
+}
 // A broad outcrop merges into the existing hillside. Its front face encloses the mouth.
 W.entranceLift=(east,north)=>{const x=east-W.anchor.x,z=north-W.anchor.z,c=caves.find(c=>Math.abs(x-c.x)<35&&Math.abs(z-c.z)<35);if(!c)return 0;const p=local(c,x,z),u=p.u,s=p.s;if(Math.abs(u)>=14||s<=-4||s>=23)return 0;const across=Math.max(0,1-(u/14)**2);return 5.4*across*across*T.MathUtils.smoothstep(s,-4,1)*(1-T.MathUtils.smoothstep(s,7,23))*(1+.09*Math.sin(u*.7+s*.4));};
-function near(x,z){return caves.find(c=>Math.hypot(x-c.x,z-c.z)<110);}
-function at(x,z,y){const c=near(x,z);if(!c)return null;const p=local(c,x,z);if(field(c,p.u,p.s)<0||p.s<-9)return null;if(y!==undefined&&y>=roof(c,p.u,p.s)-.1)return null;return c;}
+function near(x,z,y){return caves.filter(c=>Math.hypot(x-c.x,z-c.z)<(c.reach||110)).sort((a,b)=>{const pa=local(a,x,z),pb=local(b,x,z);const da=field(a,pa.u,pa.s),db=field(b,pb.u,pb.s);return y===undefined?db-da:(Math.abs(y-floor(a,pa.u,pa.s))+Math.max(0,-da)*10)-(Math.abs(y-floor(b,pb.u,pb.s))+Math.max(0,-db)*10);})[0];}
+function at(x,z,y){const c=near(x,z,y);if(!c)return null;const p=local(c,x,z);if(field(c,p.u,p.s)<0||p.s<-9)return null;if(y!==undefined&&y>=roof(c,p.u,p.s)-.1)return null;return c;}
 const oldFloor=W.floor,oldBiome=W.biome;
 W.floor=(x,z,y=0)=>{const c=at(x,z,y);if(!c)return oldFloor(x,z,y);const p=local(c,x,z);return floor(c,p.u,p.s);};
 W.inCave=(x,z,y)=>!!at(x,z,y);W.biome=(x,z,y)=>at(x,z,y)?'cave':oldBiome(x,z,y);
 W.caveCeiling=(x,z,y)=>{const c=at(x,z,y);if(!c)return Infinity;const p=local(c,x,z),h=roof(c,p.u,p.s);return h<W.ground(x,z)+.1?Math.min(h,p.s<20?W.ground(x,z)-.4:Infinity):Infinity;};
 W.caveDarkness=(x,z,y)=>{const c=at(x,z,y);if(!c)return 0;const p=local(c,x,z);return T.MathUtils.smoothstep(p.s,4,30);};
-W.caveBlocked=(x,z,y,r=.32)=>{const c=near(x,z);if(!c)return false;const p=local(c,x,z),b=c.bounds;if(p.u<b.minU-1||p.u>b.maxU+1||p.s<b.minS-1||p.s>b.maxS+1||y>=W.ground(x,z)-.45)return false;const d=field(c,p.u,p.s);return d<r||y+1.8>roof(c,p.u,p.s);};
+W.caveBlocked=(x,z,y,r=.32)=>{const c=near(x,z,y);if(!c)return false;const p=local(c,x,z),b=c.bounds;if(p.u<b.minU-1||p.u>b.maxU+1||p.s<b.minS-1||p.s>b.maxS+1||y>=W.ground(x,z)-.45)return false;const d=field(c,p.u,p.s);return d<r||y+1.8>roof(c,p.u,p.s);};
 W.caves=caves;W.cavePatterns=caves;W.extraCaveAt=at;W.caveLocal=local;W.cavePoint=point;W.caveField=field;W.caveFloor=floor;W.caveRoof=roof;
 const exclude=window.KomorebiSurvivalPlacement.excludeTree;window.KomorebiSurvivalPlacement.excludeTree=(x,z)=>{if(exclude(x,z))return true;const c=near(x-W.anchor.x,z-W.anchor.z);if(!c)return false;const p=local(c,x-W.anchor.x,z-W.anchor.z);return p.s>-12&&p.s<22&&Math.abs(p.u)<width(p.s)+3;};
 // Only the exposed mouth is cut out of the height field; the mountain remains over the tunnels.
@@ -254,7 +264,8 @@ window.buildSurvivalCaves=world=>{world.caveGroups=[];world.entranceRocks=[];for
  const ground=(u,s)=>{const p=point(c,u,s);return W.ground(p.x,p.z);};
  const grid=new Map(),sample=(u,s)=>{const key=u+','+s;if(!grid.has(key))grid.set(key,{u,s,d:field(c,u,s)});return grid.get(key);};
  for(let u=c.bounds.minU;u<c.bounds.maxU;u++)for(let s=c.bounds.minS;s<c.bounds.maxS;s++){
- for(const raw of [[[u,s],[u+1,s],[u,s+1]],[[u+1,s],[u+1,s+1],[u,s+1]]]){const poly=clip(raw,p=>sample(p[0],p[1]).d+(p[1]<20?.35:0));if(poly.length<3)continue;
+ const corners=[sample(u,s).d,sample(u+1,s).d,sample(u,s+1).d,sample(u+1,s+1).d],step=Math.min(...corners)<1.6&&Math.max(...corners)>-.6?.5:1;
+ for(let a=u;a<u+1;a+=step)for(let b=s;b<s+1;b+=step)for(const raw of [[[a,b],[a+step,b],[a,b+step]],[[a+step,b],[a+step,b+step],[a,b+step]]]){const poly=clip(raw,p=>sample(p[0],p[1]).d+(p[1]<20?.35:0));if(poly.length<3)continue;
  fan(clip(poly.map(([u,s])=>[u,floor(c,u,s),s]),p=>ground(p[0],p[2])-p[1]-.015));
  const ceiling=poly.map(([u,s])=>[u,roof(c,u,s),s]);fan(clip(ceiling,p=>ground(p[0],p[2])+.3-p[1]));
  const edges=[];for(let i=0;i<raw.length;i++){const a=raw[i],b=raw[(i+1)%raw.length],da=field(c,...a),db=field(c,...b);if((da>=0)!==(db>=0)){const t=da/(da-db);edges.push(a.map((v,j)=>v+(b[j]-v)*t));}}
@@ -271,7 +282,7 @@ window.buildSurvivalCaves=world=>{world.caveGroups=[];world.entranceRocks=[];for
  const patchGeometry=new T.BufferGeometry(),pp=[],locations=[],colors=[],normals=[],cover=[],sand=[],indices=[];const count=35;
  for(let iz=0;iz<count;iz++)for(let ix=0;ix<count;ix++){const u=ix-17,s=iz-8,p=point(c,u,s),h=ground(u,s),east=p.x+W.anchor.x,north=p.z+W.anchor.z,sample=NatureWorld.surfaceSample(east,north,h+W.anchor.y),dx=ground(u+.15,s)-ground(u-.15,s),dz=ground(u,s+.15)-ground(u,s-.15),normal=new T.Vector3(-dx,.3,-dz).normalize();pp.push(u,h+.025,s);locations.push(east,h+W.anchor.y,north);colors.push(sample.tint.r,sample.tint.g,sample.tint.b);normals.push(normal.x,normal.y,normal.z);cover.push(...sample.cover);sand.push(sample.sand);if(ix<count-1&&iz<count-1){const i=iz*count+ix;indices.push(i,i+count,i+1,i+1,i+count,i+count+1);}}
  for(const [name,data,size]of[['position',pp,3],['terrainLocation',locations,3],['color',colors,3],['normal',normals,3],['groundCover',cover,3],['sandCover',sand,1],['uv',pp.filter((_,i)=>i%3!==1),2]])patchGeometry.setAttribute(name,new T.Float32BufferAttribute(data,size));patchGeometry.setIndex(indices);patchGeometry.computeBoundingSphere();
- const patchMat=world.native.terrainMaterial.clone();patchMat.onBeforeCompile=shader=>{world.native.terrainMaterial.onBeforeCompile(shader);shader.uniforms.cavePatch.value=1;};patchMat.customProgramCacheKey=()=> 'cave-outcrop-terrain-v1';const patchMesh=new T.Mesh(patchGeometry,patchMat);patchMesh.receiveShadow=true;patchMesh.castShadow=false;patchMesh.userData.caveOutcrop=true;g.add(patchMesh);
+ const patchMat=world.native.terrainMaterial.clone();patchMat.onBeforeCompile=shader=>{world.native.terrainMaterial.onBeforeCompile(shader);shader.uniforms.cavePatch.value=1;};patchMat.customProgramCacheKey=()=> 'cave-outcrop-terrain-v1';const patchMesh=new T.Mesh(patchGeometry,patchMat);patchMesh.receiveShadow=true;patchMesh.castShadow=false;patchMesh.userData.caveOutcrop=true;const patchGroup=world.group(c.x,0,c.z);patchGroup.rotation.copy(g.rotation);patchGroup.userData.terrainPatch=true;patchGroup.add(patchMesh);world.caveGroups.push({c,g:patchGroup});
  const rimRoot=world.group(-W.anchor.x,-W.anchor.y,-W.anchor.z);world.caveGroups.push({c,g:rimRoot});let previous=null;const rockMat=NaturalRocks.material(world.native.originals.rock);
  for(let i=0;i<rim.length;i++){const [u,s]=rim[i];if(previous&&Math.hypot(u-previous[0],s-previous[1])<1.5)continue;const du=mouth(u+.05,s)-mouth(u-.05,s),ds=mouth(u,s+.05)-mouth(u,s-.05),len=Math.hypot(du,ds)||1,ou=u-du/len*1.0,os=s-ds/len*1.0,v=point(c,ou,os);previous=[u,s];
  const r={east:v.x+W.anchor.x,north:v.z+W.anchor.z,scale:.45+(i%3)*.1,variant:[1,3,4,9][i%4],angle:Math.atan2(c.fx,c.fz)+i*.27};r.baseY=NatureWorld.height(r.east,r.north)-.45;NaturalRocks.prepare(r,0,0,NatureWorld.height);const rock=new T.Mesh(NaturalRocks.geometries[r.variant],rockMat);rock.matrix.copy(r.matrix);rock.matrixAutoUpdate=false;rock.castShadow=rock.receiveShadow=true;rimRoot.add(rock);world.entranceRocks.push(r);}
@@ -280,7 +291,7 @@ window.buildSurvivalCaves=world=>{world.caveGroups=[];world.entranceRocks=[];for
  vec3 cw=pow(abs(normalize(caveNormal)),vec3(4.0));cw/=max(.001,cw.x+cw.y+cw.z);vec4 stone=texture2D(map,cavePosition.zy/4.0)*cw.x+texture2D(map,cavePosition.xz/4.0)*cw.y+texture2D(map,cavePosition.xy/4.0)*cw.z;diffuseColor*=mapTexelToLinear(stone);
  #endif`);};mat.customProgramCacheKey=()=>"organic-cave-triplanar-v1";
  const mesh=new T.Mesh(geometry,mat);mesh.castShadow=mesh.receiveShadow=true;g.add(mesh);g.userData.surface=mesh;
- const path=c.paths.slice(1).flat();for(let i=0;i<Math.min(12,path.length*2);i++){const p=path[i%path.length],u=p[0]+(i%2?1:-1)*(p[2]-1.6),s=p[1]+(i%3-1)*.5;if(field(c,u,s)<.7)continue;const v=point(c,u,s),h=floor(c,u,s);world.resource(c.id+'-'+i,['ore','crystal','spore','stone'][i%4],v.x,h,v.z,'cave',{type:'cave-wall',cave:c.id});
+ const path=c.paths.slice(1).flat();for(let i=0;i<Math.min(24,path.length*2);i++){const p=path[Math.floor(i*path.length/Math.min(24,path.length*2))],u=p[0]+(i%2?1:-1)*(p[2]-1.6),s=p[1]+(i%3-1)*.5;if(field(c,u,s)<.7)continue;const v=point(c,u,s),h=floor(c,u,s);world.resource(c.id+'-'+i,['ore','crystal','spore','stone'][i%4],v.x,h,v.z,'cave',{type:'cave-wall',cave:c.id});
  if(i%3===0&&s>25){const stal=world.mesh(g,'cone',c.theme[2],u,roof(c,u,s)-.65,s,.22,-1.3,.3,false,c.theme[1]);stal.material=mat;}}
  }};
 })();

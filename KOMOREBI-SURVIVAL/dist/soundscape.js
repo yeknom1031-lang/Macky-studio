@@ -51,9 +51,9 @@
       const now = this.context.currentTime;
       this.master.gain.setTargetAtTime(this.muted ? 0 : 0.65, now, 0.08);
       this.music.gain.setTargetAtTime(this.musicVolume*(1-night*0.2), now, 1.2); this.nature.gain.setTargetAtTime(this.natureVolume, now, 0.3);
-      this.wind.gain.gain.setTargetAtTime(0.1 + wind*0.28 + Math.min(0.4, altitude / 450) + Math.sin(time * 0.15) * 0.04, now, 1.5);
+      this.wind.gain.gain.setTargetAtTime(Math.max(0.01,0.025 + wind*0.12 + Math.min(0.15, Math.max(0,altitude) / 1600) + Math.sin(time * 0.15) * 0.012), now, 1.5);
       this.wind.filter.frequency.setTargetAtTime(280+wind*550,now,2);
-      this.water.gain.gain.setTargetAtTime(water ? 0.8 : 0.015, now, 2);
+      this.water.gain.gain.setTargetAtTime(Math.max(0,Math.min(1,Number(water)||0)) * 0.24, now, 2);
       this.rain.gain.gain.setTargetAtTime(weather * 0.65, now, 1);
       const chords = [[50, 57, 62, 66], [46, 53, 58, 62], [53, 60, 65, 69], [48, 55, 60, 64], [50, 57, 61, 69], [43, 50, 57, 62], [46, 53, 60, 65], [48, 55, 62, 67]];
       const melody = [0, 2, 1, 3, 2, 1, 0, 2, 3, 1, 2, 0, 1, 3, 2, 1];

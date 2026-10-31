@@ -374,7 +374,7 @@
           leafCloud(trunkPoint(0.94), tree.scale * 0.86, 15710, 40);
           leafCloud(trunkPoint(0.77).add(new THREE.Vector3(0.3 * tree.scale, 0, -0.2 * tree.scale)), tree.scale * 1.02, 16510, 30);
         }
-        if (random(8900) > 0.65) {
+        if (!window.KomorebiSurvivalPlacement && random(8900) > 0.65) {
           const angle = random(8901) * Math.PI * 2, start = origin.clone().add(new THREE.Vector3(Math.cos(angle) * 1.2, 0, Math.sin(angle) * 1.2));
           const end = start.clone().add(new THREE.Vector3(Math.cos(angle + 0.4) * tree.scale * 2.1, 0, Math.sin(angle + 0.4) * tree.scale * 2.1));
           start.y = groundAt(start.x, start.z) + 0.12; end.y = groundAt(end.x, end.z) + 0.08;

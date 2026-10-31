@@ -157,8 +157,10 @@
           cliff = mix(cliff,vec3(0.47,0.51,0.53),smoothstep(350.0,2400.0,length(vViewPosition))*0.68);
           rock = mix(rock,cliff,smoothstep(50.0,260.0,length(vViewPosition)) * 0.85);
           rock *= mix(vec3(0.65,0.72,0.62),vec3(1.0),smoothstep(35.0,115.0,vNature.y));
-          vec3 moss = texture2D(mossDetail, vNature.xz / 3.5).rgb;
-          vec3 litter = texture2D(forestFloor, vNature.xz / 4.1).rgb;
+          vec2 groundWarp=vec2(sin(vNature.z*.047),cos(vNature.x*.039))*.35;
+          float groundBlend=smoothstep(-.6,.6,sin(vNature.x*.031+sin(vNature.z*.025)));
+          vec3 moss = mix(texture2D(mossDetail, vNature.xz / 3.5+groundWarp).rgb,texture2D(mossDetail,mat2(.8,-.6,.6,.8)*vNature.xz/5.9+vec2(.27,.61)).rgb,groundBlend*.55);
+          vec3 litter = mix(texture2D(forestFloor,vNature.xz/4.1+groundWarp).rgb,texture2D(forestFloor,mat2(.6,-.8,.8,.6)*vNature.xz/7.7).rgb,groundBlend*.55);
           float macro = groundNoise(vNature.xz/95.0)*0.6+groundNoise(vNature.xz/31.0)*0.3+groundNoise(vNature.xz/8.0)*0.1;
           vec3 original = mix(litter, moss, smoothstep(0.45,0.85,macro) * 0.6);
           float detailLight = dot(detail, vec3(0.299, 0.587, 0.114));
@@ -186,7 +188,7 @@
           float snowLine = 420.0+(groundNoise(vNature.xz/240.0)-0.5)*90.0;
           float snowCover = (1.0-smoothstep(0.22,0.58,slope))*smoothstep(snowLine-35.0,snowLine+95.0,vNature.y+macro*27.0+lee);
           diffuseColor.rgb = mix(diffuseColor.rgb,vec3(0.70,0.76,0.79)*(0.9+macro*0.12),snowCover);
-          float submerged=1.0-smoothstep(3.4,5.5,vNature.y); diffuseColor.rgb=mix(diffuseColor.rgb,pow(texture2D(riverbed,vNature.xz/8.0).rgb,vec3(2.2))*.88,submerged);
+          float submerged=1.0-smoothstep(3.4,5.5,vNature.y); diffuseColor.rgb=mix(diffuseColor.rgb,pow(mix(texture2D(riverbed,vNature.xz/8.0+groundWarp).rgb,texture2D(riverbed,mat2(.8,-.6,.6,.8)*vNature.xz/13.7).rgb,groundBlend*.6),vec3(2.2))*.88,submerged);
           float groundBump = mix(originalLight * max(forestBlend,grassBlend),dot(rock,vec3(0.299,0.587,0.114)),clamp(rockBlend,0.0,1.0)) * 0.025 * distanceFade;
           groundBump=mix(groundBump,dot(fineSand,vec3(.299,.587,.114))*.018*distanceFade,vSand);
           groundBump *= mix(1.0,0.12,snowCover);
@@ -225,7 +227,7 @@
             water+=vec3(1.0,0.86,0.65)*pow(max(0.0,dot(reflect(-sunDirection,normal),view)),450.0)*daylight*2.8;
             water+=vec3(0.58,0.72,0.94)*pow(max(0.0,dot(reflect(-moonDirection,normal),view)),280.0)*moonlight*0.8;
             water=mix(water,horizon,1.0-exp(-length(cameraPosition-vWater)*0.00028));
-            gl_FragColor=vec4(water,mix(0.24,0.76,clamp(fresnel*1.4+distanceToEye/3500.0,0.0,1.0)));
+            gl_FragColor=vec4(water,mix(0.72,0.96,clamp(fresnel*1.4+distanceToEye/3500.0,0.0,1.0)));
             #include <tonemapping_fragment>
             #include <encodings_fragment>
           }` });
@@ -404,6 +406,7 @@
         if (mesh.isInstancedMesh && !mesh.userData.noShadow) mesh.castShadow = distance < 150;
       }
       for (const entry of this.animals) {
+        if(entry.hunted){entry.model.visible=false;entry.shadow.visible=false;continue;}
         const delta = entry.previousTime === null ? 0 : Math.min(0.1, Math.max(0, time - entry.previousTime));
         entry.previousTime = time;
         const worldEast = entry.chunk.userData.east + entry.model.position.x, worldNorth = entry.chunk.userData.north + entry.model.position.z;

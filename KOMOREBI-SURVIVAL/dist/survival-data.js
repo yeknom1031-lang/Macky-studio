@@ -4,6 +4,7 @@
 const items={};
 function item(id,name,icon,price=0,extra={}){items[id]={id,name,icon,price,...extra};}
 item('wood','木材','🪵',3);item('stone','石','🪨',3);item('fiber','植物の繊維','🌿',4);item('ore','鉄鉱石','⛏',12);item('crystal','青い結晶','💎',25);item('resin','樹脂','🟠',9);item('hide','獣の毛皮','🐾',15);item('fang','鋭い牙','🦷',18);item('shell','硬い甲殻','🐚',20);item('spore','発光胞子','🍄',23);item('wing','風の羽根','🪶',30);item('ember','古代の火種','🔥',60);item('berry','野いちご','🍒',3,{heal:18});item('meal','旅人の保存食','🍲',25,{heal:65});item('fuel','濃縮ジェット燃料','🧪',24);item('arrow','矢','➶',2);item('bomb','炸裂爆弾','💣',35,{weapon:true,damage:65,range:22,cooldown:1.1,kind:'bomb'});
+item('compass','帰路のコンパス','🧭',35);item('pickaxe','石のつるはし','⛏',20,{weapon:true,damage:8,range:3.6,cooldown:.8,kind:'pickaxe'});item('meat','生肉','🥩',8);item('antler','鹿の角','🦌',24);item('bone','丈夫な骨','🦴',10);item('fish','魚肉','🐟',10);
 item('flashlight','懐中電灯','🔦',50,{light:true});
 item('hammer','作業ハンマー','🔨',0,{weapon:true,damage:14,range:3.6,cooldown:.7,kind:'hammer'});
 item('sword','鉄の剣','⚔',70,{weapon:true,damage:25,range:4.2,cooldown:.4,kind:'sword'});
@@ -29,12 +30,12 @@ for(const b of bosses)item(b.stone,biomes.find(v=>v.id===b.biome).name+'の封�
 item('heart','終焉の心石','✺',0,{key:true});
 const recipes=[];
 function recipe(id,cost,time,count=1){recipes.push({id,cost,time,count});}
-recipe('flashlight',{wood:2,ore:3,crystal:1},10);recipe('hammer',{wood:2,stone:2},4);recipe('sword',{wood:3,ore:5},12);recipe('spear',{wood:5,stone:4,fiber:2},9);recipe('axe',{wood:5,ore:7},16);recipe('daggers',{ore:6,fang:3},13);recipe('bow',{wood:6,fiber:6},12);recipe('arrow',{wood:1,stone:1},3,8);recipe('staff',{wood:4,crystal:6,spore:2},20);recipe('boomerang',{wood:5,wing:2},12);recipe('bomb',{stone:2,resin:2,ore:1},6,3);recipe('gravity',{ore:8,crystal:10,wing:4},25);recipe('stormblade',{ore:10,ember:2,wing:3},30);recipe('shield',{wood:6,ore:4,hide:2},15);recipe('jetpack',{ore:12,crystal:6,hide:4},35);recipe('fuel',{resin:2,spore:1},5,2);recipe('meal',{berry:4,fiber:1},4,2);recipe('campfire',{wood:6,stone:4},12);recipe('chest',{wood:10,ore:2},25);recipe('house',{wood:40,stone:24,fiber:16},120);
+recipe('compass',{wood:2,ore:2,resin:1},8);recipe('pickaxe',{wood:3,stone:5,fiber:2},7);recipe('flashlight',{wood:2,ore:3,crystal:1},10);recipe('hammer',{wood:2,stone:2},4);recipe('sword',{wood:3,ore:5},12);recipe('spear',{wood:5,stone:4,fiber:2},9);recipe('axe',{wood:5,ore:7},16);recipe('daggers',{ore:6,fang:3},13);recipe('bow',{wood:6,fiber:6},12);recipe('arrow',{wood:1,stone:1},3,8);recipe('staff',{wood:4,crystal:6,spore:2},20);recipe('boomerang',{wood:5,wing:2},12);recipe('bomb',{stone:2,resin:2,ore:1},6,3);recipe('gravity',{ore:8,crystal:10,wing:4},25);recipe('stormblade',{ore:10,ember:2,wing:3},30);recipe('shield',{wood:6,ore:4,hide:2},15);recipe('jetpack',{ore:12,crystal:6,hide:4},35);recipe('fuel',{resin:2,spore:1},5,2);recipe('meal',{berry:4,fiber:1},4,2);recipe('campfire',{wood:6,stone:4},12);recipe('chest',{wood:10,ore:2},25);recipe('house',{wood:40,stone:24,fiber:16},120);
 // Knowledge persists independently of items, including after death.
-const basicRecipes=['hammer','campfire','meal','flashlight'];
+const basicRecipes=['hammer','campfire','meal','flashlight','compass','pickaxe'];
 const blueprintSets=[['chest','house','spear','bow','arrow','shield'],['sword','axe','daggers','boomerang','bomb'],['jetpack','fuel','staff','gravity','stormblade']];
 function knows(state,id){return basicRecipes.includes(id)||!!state.blueprints?.includes(id);}
-function upgradeKnowledge(state){state.blueprints||=[];state.openedDungeonChests||=[];}
+function upgradeKnowledge(state){state.blueprints||=[];state.openedDungeonChests||=[];state.openedVillageChests||=[];state.huntedAnimals||={};}
 function dungeonLoot(state,index){upgradeKnowledge(state);const id='dungeon-'+index;if(index<0||index>=3||state.openedDungeonChests.includes(id))return null;
  const learned=blueprintSets[index].filter(id=>!knows(state,id));state.blueprints.push(...learned);const materials=[{crystal:8,ember:2},{wing:8,ember:3},{crystal:12,ember:4}][index];for(const [id,n]of Object.entries(materials))add(state.inventory,id,n);state.openedDungeonChests.push(id);return{learned,materials};}
 const names={forest:['苔スライム','森の牙獣','樹皮の衛兵','針葉の射手'],desert:['砂潜り','琥珀サソリ','砂岩のゴーレム','砂煙の蛾'],jungle:['胞子キノコ','つるの狩人','翡翠の甲虫','毒花の精'],cave:['晶窟コウモリ','盲目の這い虫','結晶ゴーレム','深淵の目'],snow:['霜オオカミ','氷のスライム','氷晶の衛兵','雪風の精'],sky:['風のエイ','空殻の番人','雷のクラゲ','雲の射手']};
@@ -50,6 +51,8 @@ function validSave(s){
  const bag=b=>!!b&&typeof b==='object'&&!Array.isArray(b)&&Object.entries(b).every(([id,n])=>items[id]&&Number.isInteger(n)&&num(n,0,1e6));
  const point=p=>p&&num(p.x,-100000,100000)&&num(p.z,-100000,100000)&&num(p.y,-2000,10000);
  const id=v=>typeof v==='string'&&/^[a-zA-Z0-9-]{1,60}$/.test(v);
+ if(s?.openedVillageChests!==undefined&&(!Array.isArray(s.openedVillageChests)||s.openedVillageChests.length>18||new Set(s.openedVillageChests).size!==s.openedVillageChests.length||s.openedVillageChests.some(v=>!/^village-[0-5]-treasure-[0-2]$/.test(v))))return false;
+ if(s?.huntedAnimals!==undefined&&(!s.huntedAnimals||typeof s.huntedAnimals!=='object'||Object.entries(s.huntedAnimals).some(([k,v])=>!id(k)||!num(v))))return false;
  if(s?.oxygen!==undefined&&!num(s.oxygen,0,100))return false;
  if(s?.flashlightOn!==undefined&&typeof s.flashlightOn!=='boolean')return false;
  if(s?.renderQuality!==undefined&&!['auto','light','high'].includes(s.renderQuality))return false;
@@ -73,8 +76,8 @@ const resourceRules={
  fiber:{place:'草むら・水辺の植物',action:'繊維を採る',hint:'細長い葉の草むらから採取します。'},
  berry:{place:'森の縁の実のなる低木',action:'実を摘む',hint:'低木の枝についた赤い実を摘みます。'},
  resin:{place:'森の木の幹',action:'樹脂を採る',hint:'木の幹に付いた琥珀色の樹液から採取します。'},
- ore:{place:'山の岩場・砂漠の露岩・洞窟の鉱脈',action:'鉱脈を掘る',hint:'岩に埋まった茶色い鉄の筋が目印。ハンマーで採掘します。'},
- crystal:{place:'洞窟の結晶群',action:'結晶を掘る',hint:'洞窟の壁際から伸びる青い結晶をハンマーで採掘します。'},
+ ore:{place:'山の岩場・砂漠の露岩・洞窟の鉱脈',action:'鉱脈を掘る',hint:'岩に埋まった茶色い鉄の筋が目印。つるはしで採掘します。'},
+ crystal:{place:'洞窟の結晶群',action:'結晶を掘る',hint:'洞窟の壁際から伸びる青い結晶をつるはしで採掘します。'},
  spore:{place:'洞窟・密林の湿った倒木',action:'胞子を採る',hint:'日陰の倒木や洞窟の壁際に生えるキノコから集めます。'}
 };
 const api={basicRecipes,blueprintSets,knows,upgradeKnowledge,dungeonLoot,items,recipes,biomes,bosses,enemies,resourceRules,canPay,pay,add,fresh,validSave};if(typeof module!=='undefined')module.exports=api;root.SurvivalData=api;

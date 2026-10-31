@@ -34,7 +34,7 @@ function floor(x,z,y=0){
  if(inCave(x,z))h=Math.max(h,caveY);
  if(bossContentEnabled&&Math.abs(x-cave.x)<=caveHalf+2.5&&Math.abs(z-cave.z)<=caveHalf+2.5&&y>=caveY+13-.05)h=Math.max(h,caveY+13);
  const dz=z-cave.z-caveHalf;if(bossContentEnabled&&Math.abs(x-cave.x)<=5&&dz>=0&&dz<=20)h=Math.max(h,rampHeight(x,z));
- for(const i of islands.filter((_,n)=>bossContentEnabled||n<2))if(onIsland(x,z,i)&&y>=i.y-.05)h=Math.max(h,i.y);
+ for(const i of islands)if(onIsland(x,z,i)&&y>=i.y-.05)h=Math.max(h,i.y);
  return h;
 }
 function upgradeTerrainSave(s){
@@ -48,9 +48,12 @@ function upgradeTerrainSave(s){
  };
  [s,s.checkpoint,...s.structures,...s.piles,...s.jobs,...s.bags].forEach(rebase);s.terrainVersion=2;
 }
-function biome(x,z,y=0){if(islands.filter((_,n)=>bossContentEnabled||n<2).some(i=>Math.hypot(x-i.x,z-i.z)<i.r&&y>i.y-3))return'sky';if(inCave(x,z))return'cave';if(Math.hypot(x-jungle.x,z-jungle.z)<100)return'jungle';const b=nativeBiome(x,z);return b==='desert'?'desert':b==='snow'||b==='alpine'?'snow':'forest';}
+function biome(x,z,y=0){if(islands.some(i=>Math.hypot(x-i.x,z-i.z)<i.r&&y>i.y-3))return'sky';if(inCave(x,z))return'cave';if(Math.hypot(x-jungle.x,z-jungle.z)<100)return'jungle';const b=nativeBiome(x,z);return b==='desert'?'desert':b==='snow'||b==='alpine'?'snow':'forest';}
 const shrine={x:0,z:-7,y:naturalGround(0,-7)+.3},shop={x:14,z:9,y:naturalGround(14,9)+.2};
 function excludeTree(east,north){const x=east-anchor.x,z=north-anchor.z;return Math.hypot(x-shop.x,z-shop.z)<9||(bossContentEnabled&&(Math.hypot(x,z)<24||Object.values(sites).some(s=>Math.hypot(x-s.x,z-s.z)<(s===cave?34:18))));}
+// Keep the original two reachable islands, then spread a seeded sky archipelago across the world.
+if(!bossContentEnabled)islands.splice(2,1);
+for(let n=0;n<48;n++){const a=n*2.399963,r=600+Math.sqrt(n)*790,x=Math.round(Math.sin(a)*r),z=Math.round(Math.cos(a)*r),radius=10+hash(n,912)*22;islands.push({x,z,r:radius,y:Math.max(naturalGround(x,z),water)+80+hash(n,913)*150,variant:n%6});}
 window.KomorebiSurvivalPlacement={excludeTree};
-window.EmberTerrain={enemiesEnabled:false,bossContentEnabled,anchor,hash,ground,naturalGround,nativeBiome,slope,floor,onIsland,rampHeight,upgradeTerrainSave,biome,inCave,islands:bossContentEnabled?islands:islands.slice(0,2),sites,caveY,caveHalf,water,shrine,shop};
+window.EmberTerrain={enemiesEnabled:false,bossContentEnabled,anchor,hash,ground,naturalGround,nativeBiome,slope,floor,onIsland,rampHeight,upgradeTerrainSave,biome,inCave,islands,sites,caveY,caveHalf,water,shrine,shop};
 })();
