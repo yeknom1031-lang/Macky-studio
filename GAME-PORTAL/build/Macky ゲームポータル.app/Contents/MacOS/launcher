@@ -1,0 +1,20 @@
+#!/bin/zsh
+launcher_dir="${0:A:h}"
+portal_script="$launcher_dir/../../../../server.py"
+portal_log="${TMPDIR:-/tmp/}macky-game-portal-launcher.log"
+launcher_python="$(command -v python3)"
+if [[ -z "$launcher_python" ]]; then
+  launcher_python="$HOME/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3"
+fi
+if [[ ! -x "$launcher_python" || ! -f "$portal_script" ]]; then
+  print 'ゲームポータルを起動できませんでした。' > "$portal_log"
+  print 'Macky-studio内のGAME-PORTALフォルダとPython 3を確認してください。' >> "$portal_log"
+  /usr/bin/open -t "$portal_log"
+  exit 1
+fi
+"$launcher_python" "$portal_script" "$@" > "$portal_log" 2>&1
+launcher_result=$?
+if [[ "$launcher_result" != 0 ]]; then
+  /usr/bin/open -t "$portal_log"
+fi
+exit "$launcher_result"
