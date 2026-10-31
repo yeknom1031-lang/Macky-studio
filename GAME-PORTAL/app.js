@@ -52,12 +52,25 @@ async function load() {
 async function launch(id) {
  if(busy.has(id))return;
  const game=games.find(g=>g.id===id);if(!game?.available)return;
+ // Reserve the tab during the click gesture, before the asynchronous server request.
+ // Browser games must not depend on macOS's default URL-handler registration.
+ let gameTab=null;
+ if(game.kind==='web') {
+  gameTab=window.open('about:blank','_blank');
+  if(gameTab){gameTab.opener=null;gameTab.document.title=game.title;gameTab.document.body.textContent='ゲームを開いています…';}
+ }
  busy.add(id);render();toast(`${game.title} を開いています…`);
  try {
-  const response=await fetch('/api/launch',{method:'POST',headers:{'Content-Type':'application/json','X-Portal-Token':token},body:JSON.stringify({id}),signal:AbortSignal.timeout(45000)});
+  const response=await fetch(game.kind==='web'?'/api/prepare':'/api/launch',{method:'POST',headers:{'Content-Type':'application/json','X-Portal-Token':token},body:JSON.stringify({id}),signal:AbortSignal.timeout(45000)});
   const data=await response.json();if(!response.ok)throw new Error(data.error||'起動できませんでした。');
+  if(game.kind==='web') {
+   const target=new URL(data.url);
+   if(target.protocol!=='http:'||target.hostname!=='127.0.0.1')throw new Error('ゲームの起動先を確認できませんでした。');
+   if(gameTab&&!gameTab.closed)gameTab.location.replace(target.href);
+   else window.location.assign(target.href);
+  }
   recent[id]=Date.now();save();toast(`${game.title}：${data.message}`);
- } catch(error) {toast(error.name==='TimeoutError'?'起動の確認が時間切れになりました。ブラウザまたはDockをご確認ください。':error.message||'起動できませんでした。もう一度お試しください。',true);}
+ } catch(error) {if(gameTab&&!gameTab.closed)gameTab.close();toast(error.name==='TimeoutError'?'起動の確認が時間切れになりました。ブラウザまたはDockをご確認ください。':error.message||'起動できませんでした。もう一度お試しください。',true);}
  finally {busy.delete(id);render();}
 }
 $('#games').addEventListener('click',event=>{

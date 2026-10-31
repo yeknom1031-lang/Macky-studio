@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import plistlib
 import sys
+import subprocess
 import tempfile
 import threading
 import unittest
@@ -16,6 +17,17 @@ import server
 from catalog import discover
 
 class LauncherTests(unittest.TestCase):
+    def test_broken_default_browser_falls_back_to_safari(self):
+        with patch('server.Path.is_dir',return_value=True),patch('server.subprocess.run') as run:
+            run.side_effect=[subprocess.CalledProcessError(1,['open']),None]
+            server.open_in_browser('http://127.0.0.1:4197/')
+            self.assertEqual(run.call_count,2)
+            self.assertEqual(run.call_args.args[0],['/usr/bin/open','-a','/Applications/Safari.app','http://127.0.0.1:4197/'])
+    def test_prepare_web_never_opens_an_external_browser(self):
+        with patch('server.web_url',return_value='http://127.0.0.1:4197/'),patch('server.open_in_browser') as browser:
+            result=server.launch_game({'available':True,'kind':'web'},prepare=True)
+            browser.assert_not_called()
+            self.assertEqual(result['url'],'http://127.0.0.1:4197/')
     def test_catalog_entries_and_app_binaries(self):
         games=discover()
         self.assertEqual(len({g['id'] for g in games}),len(games))

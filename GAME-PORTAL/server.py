@@ -91,14 +91,31 @@ def web_url(game):
     return f'http://127.0.0.1:{port}/{suffix}'
 
 
+def open_in_browser(target):
+    """Preserve the default browser when usable; recover from broken URL associations."""
+    commands=[['/usr/bin/open',str(target)]]
+    for app in ('/Applications/Safari.app','/System/Applications/Safari.app','/Applications/Google Chrome.app'):
+        if Path(app).is_dir():commands.append(['/usr/bin/open','-a',app,str(target)])
+    for command in commands:
+        try:
+            subprocess.run(command,check=True,timeout=10,capture_output=True,text=True)
+            return
+        except (OSError,subprocess.SubprocessError):
+            continue
+    raise RuntimeError('ブラウザを開けませんでした。Safariでポータルを開き、もう一度お試しください。')
+
+
 def launch_game(game, prepare=False):
     if not game['available']:
         raise RuntimeError('起動に必要なゲーム本体またはGodotが見つかりません。')
     if game['kind']=='web':
         url=web_url(game)
-        if not prepare:subprocess.run(['/usr/bin/open',url],check=True,timeout=10)
+        if not prepare:open_in_browser(url)
         return {'url':url,'message':'ブラウザでゲームを開きました。'}
-    if game['kind'] in ('app','file'):
+    if game['kind']=='file':
+        if not prepare:open_in_browser(game['entry'])
+        return {'message':'ブラウザでゲームを開きました。'}
+    if game['kind']=='app':
         command=['/usr/bin/open',game['entry']]
         if game['args']:command+=['--args']+game['args']
         if not prepare:subprocess.run(command,check=True,timeout=10)
@@ -222,7 +239,7 @@ def main():
         print(result.get('url',result['message']),flush=True)
         return
     print(url,flush=True)
-    if not args.no_open:subprocess.run(['/usr/bin/open',url],check=True)
+    if not args.no_open:open_in_browser(url)
 
 
 if __name__=='__main__':main()
