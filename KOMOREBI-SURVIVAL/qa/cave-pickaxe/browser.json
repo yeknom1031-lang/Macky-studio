@@ -1,0 +1,41 @@
+{
+  "hand": "pickaxe",
+  "art": [
+    {
+      "tip": false,
+      "images": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "pickaxe",
+      "tip": true,
+      "images": [
+        "http://127.0.0.1:4197/assets/survival/items-v3/pickaxe-held.png",
+        null
+      ]
+    }
+  ],
+  "generatedHeldTexture": true,
+  "oreFound": true,
+  "standingPoint": true,
+  "aimedOre": true,
+  "behindPlayerNotTargeted": true,
+  "noInstantLoot": true,
+  "lootOnImpact": true,
+  "tipHitsCrosshair": true,
+  "tipError": 3.467154909438457e-14,
+  "singleReward": true,
+  "turningAwayMisses": true,
+  "done": true
+}

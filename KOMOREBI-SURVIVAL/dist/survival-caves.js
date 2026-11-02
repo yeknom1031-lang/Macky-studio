@@ -260,16 +260,18 @@ state.caveVersion=2;state.caveBrightness=70;};
 function clip(poly,fn){const out=[];for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],da=fn(a),db=fn(b);if(da>=0)out.push(a);if((da>=0)!==(db>=0)){const t=da/(da-db);out.push(a.map((v,j)=>v+(b[j]-v)*t));}}return out;}
 window.buildSurvivalCaves=world=>{world.caveGroups=[];world.entranceRocks=[];for(const c of caves){const g=world.group(c.x,0,c.z);g.rotation.y=Math.atan2(c.fx,c.fz);g.userData.caveId=c.id;world.caveGroups.push({c,g});const positions=[],uv=[];
  const triangle=(a,b,d)=>{positions.push(...a,...b,...d);for(const p of[a,b,d])uv.push((p[0]+p[1]*.31)/3.3,(p[2]+p[1]*.57)/3.3);};
- const fan=poly=>{for(let i=1;i+1<poly.length;i++)triangle(poly[0],poly[i],poly[i+1]);};
+ const fan=poly=>{if(poly.length<3)return;if(poly.length===3){triangle(...poly);return;}const center=[0,1,2].map(k=>poly.reduce((n,p)=>n+p[k],0)/poly.length);for(let i=0;i<poly.length;i++)triangle(center,poly[i],poly[(i+1)%poly.length]);};
  const ground=(u,s)=>{const p=point(c,u,s);return W.ground(p.x,p.z);};
  const grid=new Map(),sample=(u,s)=>{const key=u+','+s;if(!grid.has(key))grid.set(key,{u,s,d:field(c,u,s)});return grid.get(key);};
+ const fine=(u,s)=>{const d=[sample(u,s).d,sample(u+1,s).d,sample(u,s+1).d,sample(u+1,s+1).d];return Math.min(...d)<1.6&&Math.max(...d)>-.6;};
  for(let u=c.bounds.minU;u<c.bounds.maxU;u++)for(let s=c.bounds.minS;s<c.bounds.maxS;s++){
- const corners=[sample(u,s).d,sample(u+1,s).d,sample(u,s+1).d,sample(u+1,s+1).d],step=Math.min(...corners)<1.6&&Math.max(...corners)>-.6?.5:1;
- for(let a=u;a<u+1;a+=step)for(let b=s;b<s+1;b+=step)for(const raw of [[[a,b],[a+step,b],[a,b+step]],[[a+step,b],[a+step,b+step],[a,b+step]]]){const poly=clip(raw,p=>sample(p[0],p[1]).d+(p[1]<20?.35:0));if(poly.length<3)continue;
+ // Stitch coarse edges to neighboring half-cell vertices, retaining narrow passages.
+ const step=fine(u,s)?.5:1;
+ for(let a=u;a<u+1;a+=step)for(let b=s;b<s+1;b+=step)for(const raw of [[[a,b],[a+step,b],[a,b+step]],[[a+step,b],[a+step,b+step],[a,b+step]]]){const outline=step===1?raw.flatMap((p,i)=>{const q=raw[(i+1)%raw.length];const split=p[0]===q[0]?fine(p[0]===u?u-1:u+1,s):p[1]===q[1]?fine(u,p[1]===s?s-1:s+1):false;return split?[p,[(p[0]+q[0])/2,(p[1]+q[1])/2]]:[p];}):raw;const poly=clip(outline,p=>sample(p[0],p[1]).d);if(poly.length<3)continue;
  fan(clip(poly.map(([u,s])=>[u,floor(c,u,s),s]),p=>ground(p[0],p[2])-p[1]-.015));
  const ceiling=poly.map(([u,s])=>[u,roof(c,u,s),s]);fan(clip(ceiling,p=>ground(p[0],p[2])+.3-p[1]));
  const edges=[];for(let i=0;i<raw.length;i++){const a=raw[i],b=raw[(i+1)%raw.length],da=field(c,...a),db=field(c,...b);if((da>=0)!==(db>=0)){const t=da/(da-db);edges.push(a.map((v,j)=>v+(b[j]-v)*t));}}
- if(edges.length===2){const[a,b]=edges,fa=floor(c,...a),fb=floor(c,...b),ra=Math.min(roof(c,...a),ground(...a)+.2),rb=Math.min(roof(c,...b),ground(...b)+.2);
+ if(edges.length===2){const[a,b]=edges,fa=floor(c,...a),fb=floor(c,...b),ra=Math.min(roof(c,...a),ground(...a)+.3),rb=Math.min(roof(c,...b),ground(...b)+.3);
  const wallPoint=(p,f,r,t)=>{const du=field(c,p[0]+.05,p[1])-field(c,p[0]-.05,p[1]),ds=field(c,p[0],p[1]+.05)-field(c,p[0],p[1]-.05),len=Math.hypot(du,ds)||1,bulge=.13*Math.sin(t*Math.PI)*Math.sin(p[1]*1.3+t*7);return[p[0]+du/len*bulge,f+(r-f)*t,p[1]+ds/len*bulge];};
  if(Math.max(ra-fa,rb-fb)>.3)for(let j=0;j<4;j++)fan([wallPoint(a,fa,ra,j/4),wallPoint(b,fb,rb,j/4),wallPoint(b,fb,rb,(j+1)/4),wallPoint(a,fa,ra,(j+1)/4)]);}
 

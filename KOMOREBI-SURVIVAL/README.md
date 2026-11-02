@@ -200,3 +200,9 @@ Minecraftの持ち物画面の画像を調べ、左にレシピ本、右上に�
 - Blender 4.5.15 LTSで車内・座席・計器・タイヤ・灯火・車体／機体を制作。編集元 `assets-source/vehicles/car.blend` / `airplane.blend`、再生成スクリプト `build_models.py`。公式配布元：https://download.blender.org/release/Blender4.5/ 。ブラウザに必要なモデルはJSONへ書き出し済みで、プレイ時にBlenderは不要です。
 - 内蔵image_genで5素材（車・機体・燃料缶のアイコン、塗装、座席生地）を生成。保存先とプロンプトは `qa/vehicles/imagegen-prompts.json`。紹介用画像だけでなく、車体と座席にも生成テクスチャを使用。
 - 検証：`tools/test-vehicles.cjs`、`tools/test-storage.cjs`、`tools/test-dungeons.cjs`、`vehicle-check.html?qa=1&profile=vehicle-check`。実地形で車・飛行機・燃料の制作、走行、約85mまでの離陸、燃料切れ後の着地、降車、セーブ／読み込みを確認。テスト用セーブは通常のセーブから分離。記録・実ゲームの画像は `qa/vehicles/`。
+
+### 洞窟の継ぎ目・つるはし（2026-11-02）
+- 洞窟内の半セルと全セルの境目に共有頂点を追加。細い通路の細かさを維持して天井の隙間を解消し、床・壁の切り取り輪郭、壁上端の高さも揃えました。既存の洞窟配置やセーブ位置は維持。
+- 手持ちつるはしを新しい生成画像 `dist/assets/survival/items-v3/pickaxe-held.png` に変更。柄を握り、左側の尖った先端を照準に向ける専用動作を追加。光の強さは時間帯・洞窟に追従。
+- 鉱石・結晶・石は、つるはし装備中に照準で狙って左クリックまたはE。振り下ろしの着弾時に採掘し、視線を外すと空振り。洞窟の壁越しや背後の鉱脈には届きません。通常の素材回収やハンマー制作は従来通り。
+- 検証：`tools/test-cave-seams.cjs`（32洞窟の内部辺の接続検査）、`tools/test-underground.cjs`、`cave-pickaxe-check.html?qa=1&profile=cave-pickaxe-check`（画像読み込み、照準判定、着弾時の取得、先端の照準一致、重複取得防止）。結果・画像・生成プロンプト：`qa/cave-pickaxe/`。
