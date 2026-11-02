@@ -17,7 +17,7 @@ item('boomerang','風切りブーメラン','◈',100,{weapon:true,damage:23,ran
 item('gravity','重力の手袋','🧤',210,{weapon:true,damage:48,range:22,cooldown:1.5,kind:'gravity'});
 item('stormblade','封石の嵐剣','⚡',250,{weapon:true,damage:55,range:5,cooldown:.45,kind:'stormblade'});
 item('shield','鉄木の盾','🛡',80,{shield:true});item('jetpack','真鍮のジェットパック','🚀',200,{back:true});
-item('campfire','焚き火','🔥',0,{structure:true});item('house','旅人の家','⌂',0,{structure:true});item('storagebox','木の収納箱','▣',0,{structure:true,placeable:true});item('chest','収納箱','▣',0,{structure:true});
+item('car','探索用四輪駆動車','🚙',0,{vehicle:true});item('airplane','小型プロペラ機','✈',0,{vehicle:true});item('motorfuel','車両用燃料','▣',18,{vehicleFuel:true});item('campfire','焚き火','🔥',0,{structure:true});item('house','旅人の家','⌂',0,{structure:true});item('storagebox','木の収納箱','▣',0,{structure:true,placeable:true});item('chest','収納箱','▣',0,{structure:true});
 const biomes=[{id:'forest',name:'木霊の森',color:'#87ab70',ink:'#c3e3a8'}, {id:'desert',name:'琥珀の砂漠',color:'#cca775',ink:'#f6d59a'},{id:'jungle',name:'翡翠の密林',color:'#3d8768',ink:'#88d7a7'},{id:'cave',name:'晶窟',color:'#626080',ink:'#b9a4fb'},{id:'snow',name:'霜の荒野',color:'#bfd5d7',ink:'#d2f4fa'},{id:'sky',name:'浮島の回廊',color:'#8eaaaa',ink:'#a5edee'}];
 const bosses=[
 {id:'bark',name:'森の番人・グロウル',biome:'forest',x:-99,z:12,hp:320,color:'#8ba45b',kind:'brute',stone:'seal-forest',drop:'hide'},
@@ -30,12 +30,12 @@ for(const b of bosses)item(b.stone,biomes.find(v=>v.id===b.biome).name+'の封�
 item('heart','終焉の心石','✺',0,{key:true});
 const recipes=[];
 function recipe(id,cost,time,count=1){recipes.push({id,cost,time,count});}
-recipe('storagebox',{wood:10,fiber:4},15);recipe('compass',{wood:2,ore:2,resin:1},8);recipe('pickaxe',{wood:3,stone:5,fiber:2},7);recipe('flashlight',{wood:2,ore:3,crystal:1},10);recipe('hammer',{wood:2,stone:2},4);recipe('sword',{wood:3,ore:5},12);recipe('spear',{wood:5,stone:4,fiber:2},9);recipe('axe',{wood:5,ore:7},16);recipe('daggers',{ore:6,fang:3},13);recipe('bow',{wood:6,fiber:6},12);recipe('arrow',{wood:1,stone:1},3,8);recipe('staff',{wood:4,crystal:6,spore:2},20);recipe('boomerang',{wood:5,wing:2},12);recipe('bomb',{stone:2,resin:2,ore:1},6,3);recipe('gravity',{ore:8,crystal:10,wing:4},25);recipe('stormblade',{ore:10,ember:2,wing:3},30);recipe('shield',{wood:6,ore:4,hide:2},15);recipe('jetpack',{ore:12,crystal:6,hide:4},35);recipe('fuel',{resin:2,spore:1},5,2);recipe('meal',{berry:4,fiber:1},4,2);recipe('campfire',{wood:6,stone:4},12);recipe('chest',{wood:10,ore:2},25);recipe('house',{wood:40,stone:24,fiber:16},120);
+recipe('car',{wood:120,ore:180,resin:50,hide:30,fiber:60,crystal:20},240);recipe('airplane',{wood:240,ore:320,resin:90,hide:50,fiber:160,crystal:60},480);recipe('motorfuel',{resin:12,spore:6,ore:2},20);recipe('storagebox',{wood:10,fiber:4},15);recipe('compass',{wood:2,ore:2,resin:1},8);recipe('pickaxe',{wood:3,stone:5,fiber:2},7);recipe('flashlight',{wood:2,ore:3,crystal:1},10);recipe('hammer',{wood:2,stone:2},4);recipe('sword',{wood:3,ore:5},12);recipe('spear',{wood:5,stone:4,fiber:2},9);recipe('axe',{wood:5,ore:7},16);recipe('daggers',{ore:6,fang:3},13);recipe('bow',{wood:6,fiber:6},12);recipe('arrow',{wood:1,stone:1},3,8);recipe('staff',{wood:4,crystal:6,spore:2},20);recipe('boomerang',{wood:5,wing:2},12);recipe('bomb',{stone:2,resin:2,ore:1},6,3);recipe('gravity',{ore:8,crystal:10,wing:4},25);recipe('stormblade',{ore:10,ember:2,wing:3},30);recipe('shield',{wood:6,ore:4,hide:2},15);recipe('jetpack',{ore:12,crystal:6,hide:4},35);recipe('fuel',{resin:2,spore:1},5,2);recipe('meal',{berry:4,fiber:1},4,2);recipe('campfire',{wood:6,stone:4},12);recipe('chest',{wood:10,ore:2},25);recipe('house',{wood:40,stone:24,fiber:16},120);
 // Knowledge persists independently of items, including after death.
-const basicRecipes=['storagebox','hammer','campfire','meal','flashlight','compass','pickaxe'];
+const basicRecipes=['car','airplane','motorfuel','storagebox','hammer','campfire','meal','flashlight','compass','pickaxe'];
 const blueprintSets=[['chest','house','spear','bow','arrow','shield'],['sword','axe','daggers','boomerang','bomb'],['jetpack','fuel','staff','gravity','stormblade']];
 function knows(state,id){return basicRecipes.includes(id)||!!state.blueprints?.includes(id);}
-function upgradeKnowledge(state){state.blueprints||=[];state.openedDungeonChests||=[];state.openedVillageChests||=[];state.huntedAnimals||={};}
+function upgradeKnowledge(state){state.vehicles||=[];state.riding??=null;state.blueprints||=[];state.openedDungeonChests||=[];state.openedVillageChests||=[];state.huntedAnimals||={};}
 function dungeonLoot(state,index){upgradeKnowledge(state);const id='dungeon-'+index;if(index<0||index>=3||state.openedDungeonChests.includes(id))return null;
  const learned=blueprintSets[index].filter(id=>!knows(state,id));state.blueprints.push(...learned);const materials=[{crystal:8,ember:2},{wing:8,ember:3},{crystal:12,ember:4}][index];for(const [id,n]of Object.entries(materials))add(state.inventory,id,n);state.openedDungeonChests.push(id);return{learned,materials};}
 const names={forest:['苔スライム','森の牙獣','樹皮の衛兵','針葉の射手'],desert:['砂潜り','琥珀サソリ','砂岩のゴーレム','砂煙の蛾'],jungle:['胞子キノコ','つるの狩人','翡翠の甲虫','毒花の精'],cave:['晶窟コウモリ','盲目の這い虫','結晶ゴーレム','深淵の目'],snow:['霜オオカミ','氷のスライム','氷晶の衛兵','雪風の精'],sky:['風のエイ','空殻の番人','雷のクラゲ','雲の射手']};
@@ -48,7 +48,7 @@ function add(bag,id,n=1){if(!items[id]||!Number.isInteger(n)||n<=0)return;bag[id
 const storageCapacity=20,storageStack=99;
 function storageSlots(bag){const out=[];for(const [id,n]of Object.entries(bag))for(let left=n;left>0;left-=storageStack)out.push({id,count:Math.min(left,storageStack)});return out;}
 function storageTransfer(state,box,id,toBox,count=1){if(box?.type!=='storagebox'||box.progress!==1||!items[id]||!Number.isInteger(count)||count<1)return 0;const from=toBox?state.inventory:box.items,to=toBox?box.items:state.inventory;let n=Math.min(count,from[id]||0,1e6-(to[id]||0));if(toBox){const others=Object.entries(to).reduce((sum,[key,value])=>sum+(key===id?0:Math.ceil(value/storageStack)),0);n=Math.min(n,Math.max(0,(storageCapacity-others)*storageStack-(to[id]||0)));}if(n<=0)return 0;pay(from,{[id]:n});add(to,id,n);return n;}
-function fresh(){return{version:1,terrainVersion:2,caveVersion:2,caveBrightness:70,worldTime:259.2,dayLength:720,automaticTime:true,weatherMode:'auto',time:0,x:0,z:24,y:root.EmberTerrain?root.EmberTerrain.floor(0,24,0):0,yaw:.15,pitch:-.1,hp:100,stamina:100,oxygen:100,flashlightOn:true,renderQuality:'auto',money:0,fuel:0,hand:null,quickSlots:[null,null,null,null,null],activeSlot:0,back:null,shield:false,inventory:{},blueprints:[],openedDungeonChests:[],inserted:[],bosses:[],cleared:false,finalAwake:false,checkpoint:null,structures:[],piles:[],jobs:[],bags:[],depleted:{},enemyStates:{},nextId:1};}
+function fresh(){return{version:1,terrainVersion:2,caveVersion:2,caveBrightness:70,worldTime:259.2,dayLength:720,automaticTime:true,weatherMode:'auto',time:0,x:0,z:24,y:root.EmberTerrain?root.EmberTerrain.floor(0,24,0):0,yaw:.15,pitch:-.1,hp:100,stamina:100,oxygen:100,flashlightOn:true,renderQuality:'auto',money:0,fuel:0,hand:null,quickSlots:[null,null,null,null,null],activeSlot:0,vehicles:[],riding:null,back:null,shield:false,inventory:{},blueprints:[],openedDungeonChests:[],inserted:[],bosses:[],cleared:false,finalAwake:false,checkpoint:null,structures:[],piles:[],jobs:[],bags:[],depleted:{},enemyStates:{},nextId:1};}
 function validSave(s){
  const num=(v,min=0,max=1e9)=>Number.isFinite(v)&&v>=min&&v<=max;
  const bag=b=>!!b&&typeof b==='object'&&!Array.isArray(b)&&Object.entries(b).every(([id,n])=>items[id]&&Number.isInteger(n)&&num(n,0,1e6));
@@ -56,6 +56,8 @@ function validSave(s){
  const id=v=>typeof v==='string'&&/^[a-zA-Z0-9-]{1,60}$/.test(v);
  if(s?.openedVillageChests!==undefined&&(!Array.isArray(s.openedVillageChests)||s.openedVillageChests.length>18||new Set(s.openedVillageChests).size!==s.openedVillageChests.length||s.openedVillageChests.some(v=>!/^village-[0-5]-treasure-[0-2]$/.test(v))))return false;
  if(s?.huntedAnimals!==undefined&&(!s.huntedAnimals||typeof s.huntedAnimals!=='object'||Object.entries(s.huntedAnimals).some(([k,v])=>!id(k)||!num(v))))return false;
+ if(s?.vehicles!==undefined&&(!Array.isArray(s.vehicles)||s.vehicles.length>64||new Set(s.vehicles.map(v=>v.id)).size!==s.vehicles.length||s.vehicles.some(v=>!point(v)||!id(v.id)||!['car','airplane'].includes(v.kind)||!num(v.yaw,-1e9,1e9)||!num(v.pitch,-1.6,1.6)||!num(v.roll,-1.6,1.6)||!num(v.speed,-10,60)||!num(v.throttle,0,1)||!num(v.fuel,0,100)||!num(v.hp,0,100)||typeof v.airborne!=='boolean')))return false;
+ if(s?.riding!==undefined&&s.riding!==null&&!s.vehicles?.some(v=>v.id===s.riding))return false;
  if(s?.oxygen!==undefined&&!num(s.oxygen,0,100))return false;
  if(s?.flashlightOn!==undefined&&typeof s.flashlightOn!=='boolean')return false;
  if(s?.renderQuality!==undefined&&!['auto','light','high'].includes(s.renderQuality))return false;
@@ -69,7 +71,7 @@ function validSave(s){
  if(s.checkpoint!==null&&(!point(s.checkpoint)||!id(s.checkpoint.id)))return false;
  if(!s.structures.every(v=>point(v)&&id(v.id)&&items[v.type]?.structure&&num(v.progress,0,1)&&typeof v.lit==='boolean'&&bag(v.items)&&(v.storageName===undefined||typeof v.storageName==='string'&&v.storageName.length<=20)&&(v.type!=='storagebox'||Object.values(v.items).reduce((n,v)=>n+Math.ceil(v/99),0)<=20)))return false;
  if(!s.piles.every(v=>point(v)&&id(v.id)&&bag(v.items))||!s.bags.every(v=>point(v)&&id(v.id)&&bag(v.items)&&(v.gold===undefined||num(v.gold))))return false;
- if(!s.jobs.every(v=>point(v)&&id(v.id)&&recipes.some(r=>r.id===v.type&&r.time===v.time&&r.count===v.count)&&num(v.progress,0,1)))return false;
+ if(!s.jobs.every(v=>point(v)&&id(v.id)&&recipes.some(r=>r.id===v.type&&r.time===v.time&&r.count===v.count)&&num(v.progress,0,1)&&(v.yaw===undefined||num(v.yaw,-1e9,1e9))))return false;
  if(!s.depleted||typeof s.depleted!=='object'||!Object.entries(s.depleted).every(([k,v])=>id(k)&&num(v)))return false;
  return !!s.enemyStates&&typeof s.enemyStates==='object'&&Object.entries(s.enemyStates).every(([k,v])=>id(k)&&v&&num(v.hp,0,10000)&&num(v.deadUntil));
 }
