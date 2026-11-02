@@ -3,3 +3,5 @@ window.SurvivalItemArt={"seal-forest": {"src": "assets/survival/items-v3/seal-fo
 
 SurvivalItemArt.flashlight={src:'assets/survival/items-v3/flashlight.png',width:1536,height:1024,uv:[0,0,1,1]};
 for(const id of ['compass','pickaxe','meat','antler','bone','fish'])SurvivalItemArt[id]={src:'assets/survival/items-v3/'+id+'.png',width:1254,height:1254,uv:[0,0,1,1]};
+
+SurvivalItemArt.storagebox={src:'assets/survival/items-v3/storagebox.png',width:1254,height:1254,uv:[0,0,1,1]};

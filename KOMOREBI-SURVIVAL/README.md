@@ -172,3 +172,12 @@ Minecraftの持ち物画面の画像を調べ、左にレシピ本、右上に�
 検証: `tools/test-exploration-upgrade.cjs`（深部通路・方位用データ・宝箱・セーブ）、`tools/test-underground.cjs`、`tools/test-dungeons.cjs`、`tools/test-natural-rocks.cjs`。ブラウザ検証ページは `upgrade-check.html?qa=1&profile=upgrade-check` と `upgrade-physics-check.html?qa=1&profile=upgrade-physics-check`。通常のセーブ領域は変更しません。結果と画像は `qa/world-upgrade/`。
 
 今回の実測確認: 岸からの脱出10地点、村18軒の入室と壁衝突、階段の目線変化最大0.080m/フレーム、洞窟の埋設145,248地点・床5,480本・壁64本のレイ検査が通過。
+
+### 木の収納箱（2026-11-02）
+- 木材10・繊維4を地面にまとめ、作業ハンマーで15秒叩いて制作。設計図は不要。既存の設計図式収納箱も維持。
+- 近づいてEで開き、左右の持ち物／箱のマスをクリックして1個移動、Shift＋クリックでそのマスのまとまり（最大99個）を移動。20マス、1マス99個。名前は20文字まで。
+- 名前と中身は焚き火のセーブに保存。中身のある箱は回収禁止。空箱は持ち物に回収し、「設置する」で安全な場所へ置き直せる。
+- 生成画像を制作手帳・持ち物・収納画面に使用。3D箱には板、補強材、ふた、名札、ロープの取っ手と衝突判定を追加。
+- 制作作業が誤ってつるはしを要求していた判定もハンマーへ修正。
+- 検証：`tools/test-storage.cjs`、`tools/test-dungeons.cjs`、`storage-check.html?qa=1&profile=storage-check`。テスト用セーブは通常プレイから分離。
+- 内蔵image_genで生成。素材：`dist/assets/survival/items-v3/storagebox.png`、プロンプト：`qa/storage/imagegen-prompt.txt`。
