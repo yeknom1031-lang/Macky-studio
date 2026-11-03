@@ -34,13 +34,19 @@ for(let n=0;n<32;n++){let c=null;const spec=layout(n);for(let k=0;k<1000;k++){co
  c.bounds={minU:Math.floor(Math.min(...c.paths.flat().map(p=>p[0]-p[2]))-2),maxU:Math.ceil(Math.max(...c.paths.flat().map(p=>p[0]+p[2]))+2),minS:-10,maxS:Math.ceil(Math.max(...c.paths.flat().map(p=>p[1]+p[2]))+2)};caves.push(c);
 }
 // Each stable entrance has its own seeded deeper network, with bottlenecks and chambers.
-for(const c of caves){
+function extendCave(c){
  const start=c.paths[1].at(-1),main=[start.slice()];let u=start[0],v=start[1];
  for(let j=0;j<10;j++){const nextU=u+(W.hash(c.index,j,1821)-.5)*18,nextS=v+12+W.hash(c.index,j,1822)*8;main.push([nextU,nextS,j%3===1?.95:5+W.hash(c.index,j,1823)*7]);u=nextU;v=nextS;}
  c.paths.push(main);for(let branch=0;branch<4;branch++){const root=main[2+branch*2],side=branch%2?1:-1,path=[root.slice()];for(let j=1;j<=3;j++)path.push([root[0]+side*j*(7+W.hash(c.index,branch,1870)*6),root[1]+j*(3+W.hash(c.index,j,1871)*6),j===1?1.1:4+W.hash(c.index,branch+j,1872)*6]);c.paths.push(path);}
  c.bounds={minU:Math.floor(Math.min(...c.paths.flat().map(p=>p[0]-p[2]))-2),maxU:Math.ceil(Math.max(...c.paths.flat().map(p=>p[0]+p[2]))+2),minS:-10,maxS:Math.ceil(Math.max(...c.paths.flat().map(p=>p[1]+p[2]))+2)};
  c.reach=Math.hypot(Math.max(Math.abs(c.bounds.minU),c.bounds.maxU),c.bounds.maxS)+4;
 }
+for(const c of caves)extendCave(c);
+// The cell key fixes location, rock style and loot IDs independently of visit order.
+W.createWildCave=(cx,cz)=>{if(cx< -125||cx>124||cz< -125||cz>124||W.hash(cx,cz,8100)>.85)return null;const index=((cx+125)*250+cz+125)+1000,spec=layout(Math.floor(W.hash(cx,cz,8101)*32));
+ for(let k=0;k<180;k++){const x=cx*800+180+W.hash(cx,cz,8200+k*2)*440,z=cz*800+180+W.hash(cx,cz,8201+k*2)*440;if(Math.hypot(x,z)<2700)continue;const y=W.ground(x,z);if(y<W.water+38)continue;const gx=W.ground(x+8,z)-W.ground(x-8,z),gz=W.ground(x,z+8)-W.ground(x,z-8),len=Math.hypot(gx,gz);if(len<1.6||len>11)continue;const c={...spec,id:'wild-cave-'+cx+'-'+cz,index,x,z,y,fx:gx/len,fz:gz/len};let valid=true;
+ for(const path of c.paths)for(const [u,v,r]of path){if(v<20)continue;for(const du of[-r,0,r]){const p=point(c,u+du,v);if(W.ground(p.x,p.z)<roof(c,u+du,v)+1||floor(c,u+du,v)<W.water+3)valid=false;}}if(!valid)continue;
+ c.entrance={...point(c,0,0),y};c.spawnPoints=[];extendCave(c);c.hasDungeon=W.hash(cx,cz,8991)<.1;return c;}return null;};
 // A broad outcrop merges into the existing hillside. Its front face encloses the mouth.
 W.entranceLift=(east,north)=>{const x=east-W.anchor.x,z=north-W.anchor.z,c=caves.find(c=>Math.abs(x-c.x)<35&&Math.abs(z-c.z)<35);if(!c)return 0;const p=local(c,x,z),u=p.u,s=p.s;if(Math.abs(u)>=14||s<=-4||s>=23)return 0;const across=Math.max(0,1-(u/14)**2);return 2.2*across*across*T.MathUtils.smoothstep(s,-4,1)*(1-T.MathUtils.smoothstep(s,7,23))*(1+.09*Math.sin(u*.7+s*.4));};
 function near(x,z,y){return caves.filter(c=>Math.hypot(x-c.x,z-c.z)<(c.reach||110)).sort((a,b)=>{const pa=local(a,x,z),pb=local(b,x,z);const da=field(a,pa.u,pa.s),db=field(b,pb.u,pb.s);return y===undefined?db-da:(Math.abs(y-floor(a,pa.u,pa.s))+Math.max(0,-da)*10)-(Math.abs(y-floor(b,pb.u,pb.s))+Math.max(0,-db)*10);})[0];}
@@ -54,7 +60,8 @@ W.caveBlocked=(x,z,y,r=.32)=>{const c=near(x,z,y);if(!c)return false;const p=loc
 W.caves=caves;W.cavePatterns=caves;W.extraCaveAt=at;W.caveLocal=local;W.cavePoint=point;W.caveField=field;W.caveFloor=floor;W.caveRoof=roof;
 const exclude=window.KomorebiSurvivalPlacement.excludeTree;window.KomorebiSurvivalPlacement.excludeTree=(x,z)=>{if(exclude(x,z))return true;const c=near(x-W.anchor.x,z-W.anchor.z);if(!c)return false;const p=local(c,x-W.anchor.x,z-W.anchor.z);return p.s>-12&&p.s<22&&Math.abs(p.u)<width(p.s)+3;};
 // Only the exposed mouth is cut out of the height field; the mountain remains over the tunnels.
-W.cutCaveMouths=shader=>{shader.uniforms.cavePatch={value:0};shader.uniforms.cavePortals={value:caves.map(c=>new T.Vector4(c.x+W.anchor.x,c.z+W.anchor.z,c.fx,c.fz))};shader.uniforms.caveLevels={value:caves.map(c=>c.y+W.anchor.y)};
+const portalUniform={value:Array.from({length:32},()=>new T.Vector4(1e9,1e9,0,1))},levelUniform={value:Array(32).fill(0)};W.setVisibleCavePortals=list=>{for(let i=0;i<32;i++){const c=list[i];portalUniform.value[i].set(c?c.x+W.anchor.x:1e9,c?c.z+W.anchor.z:1e9,c?.fx||0,c?.fz||1);levelUniform.value[i]=c?c.y+W.anchor.y:0;}};W.setVisibleCavePortals(caves);
+W.cutCaveMouths=shader=>{shader.uniforms.cavePatch={value:0};shader.uniforms.cavePortals=portalUniform;shader.uniforms.caveLevels=levelUniform;
  shader.fragmentShader='uniform float cavePatch; uniform vec4 cavePortals[32]; uniform float caveLevels[32];\n'+shader.fragmentShader;
  shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>',`#include <clipping_planes_fragment>
  float caveMouthStone=0.0;
@@ -258,7 +265,7 @@ const oldSites=[
 W.upgradeCaveSave=state=>{if(state.caveVersion===2)return;for(const p of[state,state.checkpoint,...state.structures,...state.piles,...state.jobs,...state.bags]){if(p&&oldSites.some(c=>Math.abs(p.x-c.x)<30&&Math.abs(p.z-c.z)<75))p.y=W.ground(p.x,p.z);}
 state.caveVersion=2;state.caveBrightness=70;};
 function clip(poly,fn){const out=[];for(let i=0;i<poly.length;i++){const a=poly[i],b=poly[(i+1)%poly.length],da=fn(a),db=fn(b);if(da>=0)out.push(a);if((da>=0)!==(db>=0)){const t=da/(da-db);out.push(a.map((v,j)=>v+(b[j]-v)*t));}}return out;}
-window.buildSurvivalCaves=world=>{world.caveGroups=[];world.entranceRocks=[];for(const c of caves){const g=world.group(c.x,0,c.z);g.rotation.y=Math.atan2(c.fx,c.fz);g.userData.caveId=c.id;world.caveGroups.push({c,g});const positions=[],uv=[];
+function* caveParts(world,list=caves){world.caveGroups||=[];world.entranceRocks||=[];for(const c of list){const g=world.group(c.x,0,c.z);g.rotation.y=Math.atan2(c.fx,c.fz);g.userData.caveId=c.id;world.caveGroups.push({c,g});const positions=[],uv=[];
  const triangle=(a,b,d)=>{positions.push(...a,...b,...d);for(const p of[a,b,d])uv.push((p[0]+p[1]*.31)/3.3,(p[2]+p[1]*.57)/3.3);};
  const fan=poly=>{if(poly.length<3)return;if(poly.length===3){triangle(...poly);return;}const center=[0,1,2].map(k=>poly.reduce((n,p)=>n+p[k],0)/poly.length);for(let i=0;i<poly.length;i++)triangle(center,poly[i],poly[(i+1)%poly.length]);};
  const ground=(u,s)=>{const p=point(c,u,s);return W.ground(p.x,p.z);};
@@ -275,7 +282,8 @@ window.buildSurvivalCaves=world=>{world.caveGroups=[];world.entranceRocks=[];for
  const wallPoint=(p,f,r,t)=>{const du=field(c,p[0]+.05,p[1])-field(c,p[0]-.05,p[1]),ds=field(c,p[0],p[1]+.05)-field(c,p[0],p[1]-.05),len=Math.hypot(du,ds)||1,bulge=.13*Math.sin(t*Math.PI)*Math.sin(p[1]*1.3+t*7);return[p[0]+du/len*bulge,f+(r-f)*t,p[1]+ds/len*bulge];};
  if(Math.max(ra-fa,rb-fb)>.3)for(let j=0;j<4;j++)fan([wallPoint(a,fa,ra,j/4),wallPoint(b,fb,rb,j/4),wallPoint(b,fb,rb,(j+1)/4),wallPoint(a,fa,ra,(j+1)/4)]);}
 
- }}
+ }if((s-c.bounds.minS)%4===0)yield;
+ }
  // A continuous stone reveal follows the actual terrain/tunnel intersection.
  // Its irregular rim is part of the hillside, rather than an isolated arch on the grass.
  const mouth=(u,s)=>Math.min(width(s)-Math.abs(u),ground(u,s)-plane(c,u,s)+.12,roof(c,u,s)-ground(u,s)-.02);
@@ -287,7 +295,7 @@ window.buildSurvivalCaves=world=>{world.caveGroups=[];world.entranceRocks=[];for
  const patchMat=world.native.terrainMaterial.clone();patchMat.onBeforeCompile=shader=>{world.native.terrainMaterial.onBeforeCompile(shader);shader.uniforms.cavePatch.value=1;};patchMat.customProgramCacheKey=()=> 'cave-outcrop-terrain-v1';const patchMesh=new T.Mesh(patchGeometry,patchMat);patchMesh.receiveShadow=true;patchMesh.castShadow=false;patchMesh.userData.caveOutcrop=true;const patchGroup=world.group(c.x,0,c.z);patchGroup.rotation.copy(g.rotation);patchGroup.userData.terrainPatch=true;patchGroup.add(patchMesh);world.caveGroups.push({c,g:patchGroup});
  const rimRoot=world.group(-W.anchor.x,-W.anchor.y,-W.anchor.z);world.caveGroups.push({c,g:rimRoot});let previous=null;const rockMat=NaturalRocks.material(world.native.originals.rock);
  for(let i=0;i<rim.length;i++){const [u,s]=rim[i];if(W.hash(c.index,i,291)<.55||previous&&Math.hypot(u-previous[0],s-previous[1])<2.3)continue;const du=mouth(u+.05,s)-mouth(u-.05,s),ds=mouth(u,s+.05)-mouth(u,s-.05),len=Math.hypot(du,ds)||1,ou=u-du/len*1.0,os=s-ds/len*1.0,v=point(c,ou,os);previous=[u,s];
- const r={east:v.x+W.anchor.x,north:v.z+W.anchor.z,scale:.3+W.hash(c.index,i,292)*.4,variant:[1,3,4,9][i%4],angle:Math.atan2(c.fx,c.fz)+i*.27};r.baseY=NatureWorld.height(r.east,r.north)-.65;NaturalRocks.prepare(r,0,0,NatureWorld.height);const rock=new T.Mesh(NaturalRocks.geometries[r.variant],rockMat);rock.matrix.copy(r.matrix);rock.matrixAutoUpdate=false;rock.castShadow=rock.receiveShadow=true;rimRoot.add(rock);world.entranceRocks.push(r);}
+ const r={east:v.x+W.anchor.x,north:v.z+W.anchor.z,scale:.3+W.hash(c.index,i,292)*.4,variant:[1,3,4,9][i%4],angle:Math.atan2(c.fx,c.fz)+i*.27};r.baseY=NatureWorld.height(r.east,r.north)-.65;NaturalRocks.prepare(r,0,0,NatureWorld.height);const rock=new T.Mesh(NaturalRocks.geometries[r.variant],rockMat);rock.matrix.copy(r.matrix);rock.matrixAutoUpdate=false;rock.castShadow=rock.receiveShadow=true;rimRoot.add(rock);r.caveId=c.id;world.entranceRocks.push(r);}
  const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(positions,3));geometry.setAttribute('uv',new T.Float32BufferAttribute(uv,2));geometry.computeVertexNormals();geometry.computeBoundingSphere();const mat=world.mat(c.theme[2],false,c.theme[1]).clone();mat.side=T.DoubleSide;mat.emissive.set(0);mat.roughness=c.rockStyle===9?.35:1;mat.bumpMap=null;
  mat.onBeforeCompile=shader=>{shader.vertexShader='varying vec3 cavePosition; varying vec3 caveNormal;\n'+shader.vertexShader;shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\ncavePosition=position;caveNormal=normal;');shader.uniforms.caveStyle={value:c.rockStyle};shader.fragmentShader='uniform float caveStyle; varying vec3 cavePosition; varying vec3 caveNormal;\n'+shader.fragmentShader;shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#ifdef USE_MAP
  vec3 cw=pow(abs(normalize(caveNormal)),vec3(4.0));cw/=max(.001,cw.x+cw.y+cw.z);vec4 stone=texture2D(map,cavePosition.zy/4.0)*cw.x+texture2D(map,cavePosition.xz/4.0)*cw.y+texture2D(map,cavePosition.xy/4.0)*cw.z;diffuseColor*=mapTexelToLinear(stone);
@@ -308,5 +316,6 @@ window.buildSurvivalCaves=world=>{world.caveGroups=[];world.entranceRocks=[];for
  const mesh=new T.Mesh(geometry,mat);mesh.castShadow=mesh.receiveShadow=true;g.add(mesh);g.userData.surface=mesh;
  const path=c.paths.slice(1).flat();for(let i=0;i<Math.min(24,path.length*2);i++){const p=path[Math.floor(i*path.length/Math.min(24,path.length*2))],u=p[0]+(i%2?1:-1)*(p[2]-1.6),s=p[1]+(i%3-1)*.5;if(field(c,u,s)<.7)continue;const v=point(c,u,s),h=floor(c,u,s);world.resource(c.id+'-'+i,['ore','crystal','spore','stone'][i%4],v.x,h,v.z,'cave',{type:'cave-wall',cave:c.id});
  if(i%3===0&&s>25){const stal=world.mesh(g,'cone',c.theme[2],u,roof(c,u,s)-.65,s,.22,-1.3,.3,false,c.theme[1]);stal.material=mat;}}
- }};
+ }}
+window.createSurvivalCaveBuilder=caveParts;window.buildSurvivalCaves=(world,list=caves)=>{for(const unused of caveParts(world,list)){} };
 })();

@@ -36,8 +36,9 @@ const basicRecipes=['car','airplane','motorfuel','storagebox','hammer','campfire
 const blueprintSets=[['chest','house','spear','bow','arrow','shield'],['sword','axe','daggers','boomerang','bomb'],['jetpack','fuel','staff','gravity','stormblade']];
 function knows(state,id){return basicRecipes.includes(id)||!!state.blueprints?.includes(id);}
 function upgradeKnowledge(state){state.vehicles||=[];state.riding??=null;state.blueprints||=[];state.openedDungeonChests||=[];state.openedVillageChests||=[];state.huntedAnimals||={};}
-function dungeonLoot(state,index){upgradeKnowledge(state);const id='dungeon-'+index;if(index<0||index>=3||state.openedDungeonChests.includes(id))return null;
- const learned=blueprintSets[index].filter(id=>!knows(state,id));state.blueprints.push(...learned);const materials=[{crystal:8,ember:2},{wing:8,ember:3},{crystal:12,ember:4}][index];for(const [id,n]of Object.entries(materials))add(state.inventory,id,n);state.openedDungeonChests.push(id);return{learned,materials};}
+const validDungeonIndex=index=>Number.isInteger(index)&&(index>=0&&index<3||index>=1000&&index<=63499);
+function dungeonLoot(state,index){upgradeKnowledge(state);const id='dungeon-'+index;if(!validDungeonIndex(index)||state.openedDungeonChests.includes(id))return null;
+ const learned=blueprintSets[index%3].filter(id=>!knows(state,id));state.blueprints.push(...learned);const materials=[{crystal:8,ember:2},{wing:8,ember:3},{crystal:12,ember:4}][index%3];for(const [id,n]of Object.entries(materials))add(state.inventory,id,n);state.openedDungeonChests.push(id);return{learned,materials};}
 const names={forest:['苔スライム','森の牙獣','樹皮の衛兵','針葉の射手'],desert:['砂潜り','琥珀サソリ','砂岩のゴーレム','砂煙の蛾'],jungle:['胞子キノコ','つるの狩人','翡翠の甲虫','毒花の精'],cave:['晶窟コウモリ','盲目の這い虫','結晶ゴーレム','深淵の目'],snow:['霜オオカミ','氷のスライム','氷晶の衛兵','雪風の精'],sky:['風のエイ','空殻の番人','雷のクラゲ','雲の射手']};
 const kinds={forest:['slime','beast','golem','spitter'],desert:['burrow','crawler','golem','flyer'],jungle:['slime','beast','crawler','spitter'],cave:['flyer','crawler','golem','spitter'],snow:['beast','slime','golem','flyer'],sky:['flyer','golem','slime','spitter']};
 const drops={forest:['resin','hide','wood','fang'],desert:['shell','fang','ore','resin'],jungle:['spore','hide','shell','spore'],cave:['wing','fang','crystal','spore'],snow:['hide','crystal','ore','wing'],sky:['wing','ore','crystal','wing']};
@@ -62,7 +63,7 @@ function validSave(s){
  if(s?.flashlightOn!==undefined&&typeof s.flashlightOn!=='boolean')return false;
  if(s?.renderQuality!==undefined&&!['auto','light','high'].includes(s.renderQuality))return false;
  if(s?.blueprints!==undefined&&(!Array.isArray(s.blueprints)||s.blueprints.length>recipes.length||new Set(s.blueprints).size!==s.blueprints.length||s.blueprints.some(id=>!recipes.some(r=>r.id===id))))return false;
- if(s?.openedDungeonChests!==undefined&&(!Array.isArray(s.openedDungeonChests)||s.openedDungeonChests.length>3||new Set(s.openedDungeonChests).size!==s.openedDungeonChests.length||s.openedDungeonChests.some(id=>!/^dungeon-[0-2]$/.test(id))))return false;
+ if(s?.openedDungeonChests!==undefined&&(!Array.isArray(s.openedDungeonChests)||s.openedDungeonChests.length>62503||new Set(s.openedDungeonChests).size!==s.openedDungeonChests.length||s.openedDungeonChests.some(id=>typeof id!=='string'||!/^dungeon-[0-9]{1,5}$/.test(id)||!validDungeonIndex(Number(id.slice(8))))))return false;
  if(s?.caveBrightness!==undefined&&!num(s.caveBrightness,40,140))return false;
  if(s?.quickSlots!==undefined&&(!Array.isArray(s.quickSlots)||s.quickSlots.length!==5||s.quickSlots.some(id=>id!==null&&!items[id])||!Number.isInteger(s.activeSlot)||s.activeSlot<0||s.activeSlot>4))return false;
  if(!s||s.version!==1||!point(s)||!num(s.time)||!num(s.hp,0,100)||!num(s.stamina,0,100)||!num(s.fuel,0,100)||!num(s.money)||!num(s.yaw,-1e9,1e9)||!num(s.pitch,-1.31,1.31)||!bag(s.inventory)||(s.hand!==null&&(!items[s.hand]||!s.inventory[s.hand]))||s.back!==null&&s.back!=='jetpack'||typeof s.shield!=='boolean'||!Number.isInteger(s.nextId)||!num(s.nextId,1))return false;
