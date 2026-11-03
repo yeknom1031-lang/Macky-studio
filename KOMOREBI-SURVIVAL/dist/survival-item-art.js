@@ -8,3 +8,6 @@ SurvivalItemArt.storagebox={src:'assets/survival/items-v3/storagebox.png',width:
 
 for(const id of ['car','airplane'])SurvivalItemArt[id]={src:'assets/survival/items-v3/'+id+'.png',width:1536,height:1024,uv:[0,0,1,1]};
 SurvivalItemArt.motorfuel={src:'assets/survival/items-v3/motorfuel.png',width:1228,height:1281,uv:[0,0,1,1]};
+
+// One generated image for inventory, hotbar, ground items and held pickaxe.
+SurvivalItemArt.pickaxe={src:'assets/survival/items-v3/pickaxe-held.png',width:1024,height:1536,uv:[0,0,1,1]};
