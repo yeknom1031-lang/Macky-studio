@@ -1,6 +1,6 @@
 /* Organic, buried passages. Terrain apertures, walking and mesh share these functions. */
 (()=>{'use strict';const W=EmberTerrain,T=THREE,clamp=T.MathUtils.clamp;
-const themes=[['石灰','cave-limestone','#b7ac96'],['青晶','cave-limestone','#83969e'],['苔岩','moss-stone','#87927b'],['黒曜','obsidian','#8e8792']];
+const themes=[['白亜','cave-limestone','#e4ded0'],['青晶','blue-crystal','#859ba8'],['苔岩','moss-stone','#81916a'],['黒曜','obsidian','#4e4859'],['砂岩','sandstone','#c49b68'],['層状頁岩','cave-limestone','#777c86'],['花崗岩','cave-limestone','#b9b4ad'],['赤鉄岩','sandstone','#ae7462'],['大理石','cave-limestone','#d0c6b6'],['濡れた玄武岩','obsidian','#687b80']];
 const forms=['蛇行洞','環状洞','双子の岩窟','三叉洞','岩柱の洞','折れ曲がる洞','枝分かれ洞','連なる岩窟'];
 const width=s=>3.8+.35*Math.sin(s*.31),bump=(u,s)=>.17*Math.sin(s*.42)*Math.cos(u*.53),plane=(c,u,s)=>{const base=c.y-.30*s+bump(u,s)-1.5*Math.exp(-(((s-2)/7)**2))*Math.max(0,1-(u/width(s))**2);if(!c.reach||s<75)return base;const p=point(c,u,s);return Math.min(base,T.MathUtils.lerp(base,W.ground(p.x,p.z)-14,T.MathUtils.smoothstep(s,75,100)));};
 const local=(c,x,z)=>{const dx=x-c.x,dz=z-c.z;return{u:dx*c.fz-dz*c.fx,s:dx*c.fx+dz*c.fz};};
@@ -15,7 +15,7 @@ function layout(n){const v=Math.floor(n/8),f=n%8,q=1+v*.11,paths=[[ [0,-5,3.8],[
  if(f===5)add([[0,23],[-12,33],[-15,44],[0,48,5],[14,53],[12,65],[-2,73,6]]);
  if(f===6){add([[0,23],[0,40,8],[0,66,5]]);add([[-22,54,6],[-10,43],[0,40],[12,44],[22,56,7]]);}
  if(f===7)add([[0,23],[5,34,7],[-3,47,4],[4,59,7],[-5,73,6]]);
- return{paths,name:themes[v][0]+'の'+forms[f],theme:themes[v]};}
+ return{paths,name:themes[n%10][0]+'の'+forms[f],theme:themes[n%10],rockStyle:n%10};}
 function field(c,u,s){if(s<20){const end=Math.max(0,-5-s);return width(s)-Math.hypot(u,end);}
  let best=-1e6;for(const p of c.paths)for(let i=1;i<p.length;i++){const a=p[i-1],b=p[i],dx=b[0]-a[0],dz=b[1]-a[1],t=clamp(((u-a[0])*dx+(s-a[1])*dz)/(dx*dx+dz*dz),0,1);best=Math.max(best,a[2]+t*(b[2]-a[2])-Math.hypot(u-a[0]-dx*t,s-a[1]-dz*t));}
  return best+Math.min(1,(s-20)/6)*(.38*Math.sin(u*1.31+s*.43)+.23*Math.sin(s*.91-u*.73));}
@@ -288,9 +288,22 @@ window.buildSurvivalCaves=world=>{world.caveGroups=[];world.entranceRocks=[];for
  const rimRoot=world.group(-W.anchor.x,-W.anchor.y,-W.anchor.z);world.caveGroups.push({c,g:rimRoot});let previous=null;const rockMat=NaturalRocks.material(world.native.originals.rock);
  for(let i=0;i<rim.length;i++){const [u,s]=rim[i];if(previous&&Math.hypot(u-previous[0],s-previous[1])<1.5)continue;const du=mouth(u+.05,s)-mouth(u-.05,s),ds=mouth(u,s+.05)-mouth(u,s-.05),len=Math.hypot(du,ds)||1,ou=u-du/len*1.0,os=s-ds/len*1.0,v=point(c,ou,os);previous=[u,s];
  const r={east:v.x+W.anchor.x,north:v.z+W.anchor.z,scale:.45+(i%3)*.1,variant:[1,3,4,9][i%4],angle:Math.atan2(c.fx,c.fz)+i*.27};r.baseY=NatureWorld.height(r.east,r.north)-.45;NaturalRocks.prepare(r,0,0,NatureWorld.height);const rock=new T.Mesh(NaturalRocks.geometries[r.variant],rockMat);rock.matrix.copy(r.matrix);rock.matrixAutoUpdate=false;rock.castShadow=rock.receiveShadow=true;rimRoot.add(rock);world.entranceRocks.push(r);}
- const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(positions,3));geometry.setAttribute('uv',new T.Float32BufferAttribute(uv,2));geometry.computeVertexNormals();geometry.computeBoundingSphere();const mat=world.mat(c.theme[2],false,c.theme[1]).clone();mat.side=T.DoubleSide;mat.emissive.set(0);mat.roughness=1;mat.bumpMap=null;
- mat.onBeforeCompile=shader=>{shader.vertexShader='varying vec3 cavePosition; varying vec3 caveNormal;\n'+shader.vertexShader;shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\ncavePosition=position;caveNormal=normal;');shader.fragmentShader='varying vec3 cavePosition; varying vec3 caveNormal;\n'+shader.fragmentShader;shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#ifdef USE_MAP
+ const geometry=new T.BufferGeometry();geometry.setAttribute('position',new T.Float32BufferAttribute(positions,3));geometry.setAttribute('uv',new T.Float32BufferAttribute(uv,2));geometry.computeVertexNormals();geometry.computeBoundingSphere();const mat=world.mat(c.theme[2],false,c.theme[1]).clone();mat.side=T.DoubleSide;mat.emissive.set(0);mat.roughness=c.rockStyle===9?.35:1;mat.bumpMap=null;
+ mat.onBeforeCompile=shader=>{shader.vertexShader='varying vec3 cavePosition; varying vec3 caveNormal;\n'+shader.vertexShader;shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\ncavePosition=position;caveNormal=normal;');shader.uniforms.caveStyle={value:c.rockStyle};shader.fragmentShader='uniform float caveStyle; varying vec3 cavePosition; varying vec3 caveNormal;\n'+shader.fragmentShader;shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#ifdef USE_MAP
  vec3 cw=pow(abs(normalize(caveNormal)),vec3(4.0));cw/=max(.001,cw.x+cw.y+cw.z);vec4 stone=texture2D(map,cavePosition.zy/4.0)*cw.x+texture2D(map,cavePosition.xz/4.0)*cw.y+texture2D(map,cavePosition.xy/4.0)*cw.z;diffuseColor*=mapTexelToLinear(stone);
+ float grain=fract(sin(dot(floor(cavePosition*8.0),vec3(12.9898,78.233,34.11)))*43758.5453);
+ float layer=sin(cavePosition.y*5.0+sin(cavePosition.x*.6)+sin(cavePosition.z*.4));
+ float vein=pow(abs(sin(cavePosition.x*.65+cavePosition.y*.9+cavePosition.z*.36+sin(cavePosition.z*1.2))),18.0);
+ if(caveStyle<.5)diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.65,.62,.54),.12);
+ else if(caveStyle<1.5)diffuseColor.rgb*=.88+.12*grain;
+ else if(caveStyle<2.5)diffuseColor.rgb*=mix(vec3(.75,.9,.65),vec3(1.),smoothstep(-.4,.7,layer));
+ else if(caveStyle<3.5)diffuseColor.rgb*=1.0-vein*.4;
+ else if(caveStyle<4.5)diffuseColor.rgb*=.85+.15*layer;
+ else if(caveStyle<5.5)diffuseColor.rgb*=.66+.34*smoothstep(-.8,-.3,layer);
+ else if(caveStyle<6.5)diffuseColor.rgb*=.65+grain*.65;
+ else if(caveStyle<7.5)diffuseColor.rgb=mix(diffuseColor.rgb,vec3(.3,.09,.035),vein*.45);
+ else if(caveStyle<8.5)diffuseColor.rgb*=1.0-vein*.55;
+ else diffuseColor.rgb*=.72+.28*grain;
  #endif`);};mat.customProgramCacheKey=()=>"organic-cave-triplanar-v1";
  const mesh=new T.Mesh(geometry,mat);mesh.castShadow=mesh.receiveShadow=true;g.add(mesh);g.userData.surface=mesh;
  const path=c.paths.slice(1).flat();for(let i=0;i<Math.min(24,path.length*2);i++){const p=path[Math.floor(i*path.length/Math.min(24,path.length*2))],u=p[0]+(i%2?1:-1)*(p[2]-1.6),s=p[1]+(i%3-1)*.5;if(field(c,u,s)<.7)continue;const v=point(c,u,s),h=floor(c,u,s);world.resource(c.id+'-'+i,['ore','crystal','spore','stone'][i%4],v.x,h,v.z,'cave',{type:'cave-wall',cave:c.id});

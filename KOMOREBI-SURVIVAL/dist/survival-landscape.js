@@ -28,7 +28,8 @@ function rampHeight(x,z){
  const a=vertex(ix,iz),b=vertex(ix+1,iz),c=vertex(ix,iz+1),d=vertex(ix+1,iz+1);
  return fx+fz<=1?a+(b-a)*fx+(c-a)*fz:d+(c-d)*(1-fx)+(b-d)*(1-fz);
 }
-function onIsland(x,z,i){const dx=x-i.x,dz=z-i.z,step=Math.PI/8,a=((Math.atan2(dz,dx)%step)+step)%step;return Math.hypot(dx,dz)<=i.r*Math.cos(step/2)/Math.cos(a-step/2)-.01;}
+function islandRadius(i,a){return i.r*(i.giant?1+.07*Math.sin(a*3)+.04*Math.cos(a*7):1);}
+function onIsland(x,z,i){if(i.giant){const dx=x-i.x,dz=z-i.z,a=(Math.atan2(dz,dx)+Math.PI*2)%(Math.PI*2),step=Math.PI*2/i.segments,k=Math.floor(a/step),t=a-k*step,r0=islandRadius(i,k*step),r1=islandRadius(i,(k+1)*step);return Math.hypot(dx,dz)<=r0*r1*Math.sin(step)/(r1*Math.sin(step-t)+r0*Math.sin(t))-.01;}const dx=x-i.x,dz=z-i.z,step=Math.PI*2/(i.segments||16),a=((Math.atan2(dz,dx)%step)+step)%step;return Math.hypot(dx,dz)<=i.r*Math.cos(step/2)/Math.cos(a-step/2)-.01;}
 function floor(x,z,y=0){
  let h=ground(x,z);
  if(inCave(x,z))h=Math.max(h,caveY);
@@ -55,5 +56,7 @@ function excludeTree(east,north){const x=east-anchor.x,z=north-anchor.z;return M
 if(!bossContentEnabled)islands.splice(2,1);
 for(let n=0;n<48;n++){const a=n*2.399963,r=600+Math.sqrt(n)*790,x=Math.round(Math.sin(a)*r),z=Math.round(Math.cos(a)*r),radius=10+hash(n,912)*22;islands.push({x,z,r:radius,y:Math.max(naturalGround(x,z),water)+80+hash(n,913)*150,variant:n%6});}
 window.KomorebiSurvivalPlacement={excludeTree};
-window.EmberTerrain={enemiesEnabled:false,bossContentEnabled,anchor,hash,ground,naturalGround,nativeBiome,slope,floor,onIsland,rampHeight,upgradeTerrainSave,biome,inCave,islands,sites,caveY,caveHalf,water,shrine,shop};
+// Exactly three stable giant islands; preserve every existing small island.
+for(const [n,p]of [[-1800,2200,260,'樹海の大浮島'],[3200,1400,320,'青晶の大浮島'],[-2400,-3000,380,'天空遺跡の大浮島']].entries()){const [x,z,r,name]=p;let highest=water;for(let dx=-r;dx<=r;dx+=r/4)for(let dz=-r;dz<=r;dz+=r/4)highest=Math.max(highest,naturalGround(x+dx,z+dz));islands.push({x,z,r,name,y:highest+420+n*40,giant:true,segments:96,variant:7+n,depth:r*.6});}
+window.EmberTerrain={enemiesEnabled:false,bossContentEnabled,anchor,hash,ground,naturalGround,nativeBiome,slope,floor,onIsland,islandRadius,rampHeight,upgradeTerrainSave,biome,inCave,islands,sites,caveY,caveHalf,water,shrine,shop};
 })();
