@@ -507,6 +507,11 @@
       return true;
     }
   }
+  NatureWorld.grassDensity = (east,north,altitude=height(east,north)) => {
+    const climate=noise(east/550,north/550,74),woods=noise(east/230,north/230,92);
+    if(altitude<=10||altitude>=160||climate<=.3||climate>=.69||woods>=.49)return 0;
+    return fade(10,24,altitude)*(1-fade(125,160,altitude))*fade(.3,.37,climate)*(1-fade(.62,.69,climate))*(1-fade(.35,.49,woods));
+  };
   NatureWorld.surfaceSample = surfaceSample; NatureWorld.legacyHeight = legacyHeight; NatureWorld.terrainVersion = 2; NatureWorld.height = height; NatureWorld.biome = biome; NatureWorld.biomes = biomes; NatureWorld.species = species; NatureWorld.hash = hash;
   window.NatureWorld = NatureWorld;
 })();

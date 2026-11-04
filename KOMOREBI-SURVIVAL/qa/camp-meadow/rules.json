@@ -1,0 +1,26 @@
+{
+  "grassSamples": {
+    "interior": 4140,
+    "edge": 4337,
+    "outside": 22413
+  },
+  "resourceVariants": {
+    "wood": 10,
+    "stone": 10,
+    "ore": 10,
+    "crystal": 10,
+    "resin": 10,
+    "spore": 10
+  },
+  "tentRecipe": {
+    "id": "tent",
+    "cost": {
+      "wood": 8,
+      "fiber": 16,
+      "resin": 2
+    },
+    "time": 25,
+    "count": 1
+  },
+  "tentSaveValid": true
+}

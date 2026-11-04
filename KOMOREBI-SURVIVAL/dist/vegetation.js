@@ -397,21 +397,22 @@
           }
         }
       });
-      for (let tuft = 0; tuft < 1400; tuft++) {
-        const colony = Math.floor(tuft / 14), angle = tuft * 2.399, spread = Math.sqrt(hash(column, row, tuft + 10500)) * (0.8 + hash(column, row, colony + 10800) * 1.7);
-        const east = hash(column, row, colony + 10000) * 128 + Math.cos(angle) * spread, north = hash(column, row, colony + 12000) * 128 + Math.sin(angle) * spread;
+      for (let tuft = 0; tuft < 6400; tuft++) {
+        const east = (tuft % 80 + .12 + hash(column,row,tuft+10000)*.76)*1.6, north=(Math.floor(tuft/80)+.12+hash(column,row,tuft+12000)*.76)*1.6;
         const worldEast = group.userData.east + east, worldNorth = group.userData.north + north, ground = height(worldEast, worldNorth);
         if (ground < 5 || ground > 160 || window.KomorebiSurvivalPlacement?.excludeTree(worldEast,worldNorth)) continue;
         const patch = Math.sin(worldEast * 0.12 + Math.sin(worldNorth * 0.07) * 2) * Math.cos(worldNorth * 0.11) * 0.5 + 0.5;
-        if (hash(column, row, tuft + 14000) > 0.3 + patch * 0.65) continue;
+        const density = window.NatureWorld.grassDensity(worldEast,worldNorth,ground);
+        if (hash(column, row, tuft + 14000) >= density) continue;
         const dry = hash(Math.floor(worldEast / 10), Math.floor(worldNorth / 10), 9100) > 0.83;
         const color = new THREE.Color(dry ? '#beb38b' : ['#b2bb8b', '#8ba171', '#a8b57a'][tuft % 3]);
         const slopeEast = groundAt(east + 0.3, north) - ground, slopeNorth = groundAt(east, north + 0.3) - ground;
         if (Math.hypot(slopeEast, slopeNorth) / 0.3 > 0.85) continue;
-        const bladeCount = 7 + (patch > 0.55 ? Math.min(3, Math.floor(trees.length / 30)) : 0);
+        const bladeCount = 8;
         for (let blade = 0; blade < bladeCount; blade++) {
-          const angle = blade * 2.399 + tuft, radius = hash(tuft, blade, 9200) * 0.24;
+          const angle = blade * 2.399 + tuft, radius = hash(tuft, blade, 9200) * 0.65;
           const bladeEast = east + Math.cos(angle) * radius, bladeNorth = north + Math.sin(angle) * radius;
+          if (window.NatureWorld.grassDensity(group.userData.east+bladeEast,group.userData.north+bladeNorth,height(group.userData.east+bladeEast,group.userData.north+bladeNorth))<=0) continue;
           grasses.push({ position: new THREE.Vector3(bladeEast, groundAt(bladeEast, bladeNorth) - 0.025, bladeNorth), quaternion: new THREE.Quaternion().setFromEuler(new THREE.Euler(0, angle, 0)), scale: new THREE.Vector3(0.24 + hash(tuft, blade, 9203) * 0.32, 0.15 + hash(tuft, blade, 9204) * (0.22 + patch * 0.32) + (ground < 10 ? 0.18 : 0), 1), color });
         }
       }
@@ -465,7 +466,7 @@
       tiledLeaves(autumnLeaf, this.autumnLeaves, this.leafDepth['oak-leaves']);
       tiledLeaves(needles, this.leaves['pine-needles'], this.leafDepth['pine-needles']);
       batch(understory, leafGeometry, this.leaves['oak-leaves'], 140, false);
-      batch(grasses, grassGeometry, this.grass, 130, false);
+      batch(grasses, grassGeometry, this.grass, 105, false);
       batch(ferns, fernGeometry, this.ferns, 130, false);
       this.buildCanopies(group, trees, hash, 250);
     }
