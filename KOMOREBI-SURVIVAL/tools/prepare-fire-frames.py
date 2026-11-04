@@ -16,5 +16,5 @@ for i in range(60):
     frames.append({'file':name,'sha256':hashlib.sha256(frame.tobytes()).hexdigest()})
 assert len({f['sha256'] for f in frames})==60
 atlas.save(out/'flame-atlas.png')
-(out/'manifest.json').write_text(json.dumps({'frames':frames,'fps':30,'duration':2,'columns':10,'rows':6,'cell':164,'padding':2},indent=2))
-print('60 distinct transparent frames, 30fps, 2 second loop')
+(out/'manifest.json').write_text(json.dumps({'frames':frames,'fps':45,'duration':60/45,'columns':10,'rows':6,'cell':164,'padding':2},indent=2))
+print('60 distinct transparent frames, 45fps, 1.333 second loop')
