@@ -1,15 +1,19 @@
 {
-  "flatPlacement": true,
+  "gentleSlopePlacement": true,
   "materialsDeposited": true,
   "constructionStarted": true,
   "builtWithHammer": true,
   "daySleepRefused": true,
   "doorOpen": true,
   "canvasSolid": true,
+  "tentTilted": true,
+  "unusedSave": true,
+  "restoreUnusedTent": true,
   "sleepToNextMorning": true,
-  "sameDaySleepRefused": true,
+  "singleUseRemoved": true,
+  "reuseRefused": true,
   "afterMidnightSleep": true,
   "save": true,
-  "restoreTent": true,
+  "consumedStaysRemoved": true,
   "complete": true
 }
